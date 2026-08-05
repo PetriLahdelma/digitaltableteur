@@ -1,16 +1,16 @@
 {
   "storyId": "forms-combobox-keyboard-selection",
   "mode": "light",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:25:21.204Z",
-  "runner": "backfill",
+  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
+  "capturedAt": "2026-08-05T09:38:42.477Z",
+  "runner": "beta-flip-dt1412",
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

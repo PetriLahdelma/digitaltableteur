@@ -1,0 +1,12 @@
+{
+  "storyId": "forms-combobox-disabled",
+  "mode": "forced-colors",
+  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
+  "capturedAt": "2026-08-05T09:39:01.429Z",
+  "runner": "beta-flip-dt1412",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

@@ -1,9 +1,9 @@
 {
   "storyId": "data-display-tablerow-playground",
   "mode": "light",
-  "sourceSHA": "707d7917acb7fe832bfefa4c4314d79be17cd22a",
-  "capturedAt": "2026-08-04T06:57:50.711Z",
-  "runner": "table-family-phase1",
+  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
+  "capturedAt": "2026-08-05T09:37:21.032Z",
+  "runner": "beta-flip-dt1412",
   "checks": {
     "accessibility-tree": {
       "passed": true

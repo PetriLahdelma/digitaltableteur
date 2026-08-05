@@ -1,9 +1,9 @@
 {
   "storyId": "data-display-datatable-overflow",
   "mode": "dark",
-  "sourceSHA": "767b28187b761a33d54329feed37e3e0081c1e00",
-  "capturedAt": "2026-08-03T20:13:10.986Z",
-  "runner": "datatable-phase1",
+  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
+  "capturedAt": "2026-08-05T09:37:47.048Z",
+  "runner": "beta-flip-dt1412",
   "checks": {
     "accessibility-tree": {
       "passed": true
