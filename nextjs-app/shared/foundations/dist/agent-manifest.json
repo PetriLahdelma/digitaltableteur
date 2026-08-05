@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-04T12:26:40.893Z",
+  "generatedAt": "2026-08-05T08:09:32.289Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 90.8,
     "codebaseComponentCount": 195,
     "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 38,
+    "componentsWithProductionUsage": 42,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,19 +79,19 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 177,
     "withAnyUsage": 165,
-    "withProductionUsage": 38,
+    "withProductionUsage": 42,
     "uniqueImportedComponents": 165,
-    "totalEvidenceRows": 828,
-    "aliasImportFiles": 431,
+    "totalEvidenceRows": 832,
+    "aliasImportFiles": 435,
     "relativeImportFiles": 430,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-27T05:57:59.042Z",
+    "generatedAt": "2026-08-05T08:09:22.131Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 90,
+    "nodesWithComposesWith": 91,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -11054,9 +11054,9 @@
           "Button",
           "TextInput",
           "Text",
-          "Select",
           "FileUpload",
-          "PhoneInput"
+          "PhoneInput",
+          "TextArea"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -12628,11 +12628,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Combobox",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 1,
+        "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Combobox",
+            "context": "component"
+          },
           {
             "path": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.tsx",
             "importKind": "alias",
@@ -12740,7 +12746,13 @@
         "forbiddenUse": [
           "nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`)."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Button",
+          "FileUpload",
+          "MultiCombobox",
+          "CheckboxGroup",
+          "PhoneInput"
+        ],
         "prefersOver": [],
         "declaredPropCount": 11,
         "guidelines": [
@@ -12770,20 +12782,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -12794,8 +12806,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -14107,14 +14119,14 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
@@ -19548,10 +19560,10 @@
         "composesWith": [
           "Button",
           "CheckboxGroup",
-          "Select",
           "PhoneInput",
           "TextInput",
-          "Modal"
+          "Modal",
+          "Toast"
         ],
         "prefersOver": [],
         "declaredPropCount": 15,
@@ -21386,20 +21398,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -32258,9 +32270,9 @@
         "composesWith": [
           "Button",
           "FileUpload",
+          "Combobox",
           "CheckboxGroup",
-          "PhoneInput",
-          "Select"
+          "PhoneInput"
         ],
         "prefersOver": [],
         "declaredPropCount": 11,
@@ -35679,10 +35691,10 @@
         "composesWith": [
           "Button",
           "CheckboxGroup",
-          "Select",
           "FileUpload",
           "TextInput",
-          "Modal"
+          "Modal",
+          "Toast"
         ],
         "prefersOver": [],
         "declaredPropCount": 10,
@@ -41700,19 +41712,13 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Select",
-        "importCount": 4,
+        "importCount": 3,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 3,
+        "componentImportCount": 2,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/ContactForm/ContactForm.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Select",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.tsx",
             "importKind": "alias",
             "importPath": "@dt/Select",
             "context": "component"
@@ -41832,12 +41838,12 @@
           "wrap the native chevron with a button overlay. The native click target is the entire control already; an overlay breaks forced-colors and mobile sheets."
         ],
         "composesWith": [
+          "TextInput",
+          "Text",
           "Button",
           "CheckboxGroup",
-          "FileUpload",
-          "PhoneInput",
-          "TextInput",
-          "Text"
+          "Modal",
+          "Toast"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -49065,11 +49071,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Table",
-        "importCount": 8,
-        "productionImportCount": 0,
+        "importCount": 9,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 4,
         "evidence": [
+          {
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Table",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -49491,11 +49503,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableCell",
-        "importCount": 6,
-        "productionImportCount": 0,
+        "importCount": 7,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableCell",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -49897,11 +49915,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableHeaderCell",
-        "importCount": 6,
-        "productionImportCount": 0,
+        "importCount": 7,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableHeaderCell",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -50623,11 +50647,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableRow",
-        "importCount": 6,
-        "productionImportCount": 0,
+        "importCount": 7,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableRow",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",

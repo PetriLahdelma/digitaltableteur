@@ -1,3 +1,4 @@
+import React from "react";
 import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import Combobox from "@dt/Combobox";
@@ -159,6 +160,43 @@ describe("Combobox", () => {
     expect(screen.getByText("Choose a timeline")).toHaveAttribute(
       "id",
       "timeline-helper",
+    );
+  });
+
+  it("keeps keyboard navigation working when options are rebuilt every render", () => {
+    // Consumers idiomatically build options inline (new array identity each
+    // render). The highlight must survive those re-renders: a regression
+    // here resets it to the selected option on every arrow key.
+    function InlineOptionsHarness() {
+      const [, force] = React.useState(0);
+      React.useEffect(() => {
+        const bump = () => force((n) => n + 1);
+        window.addEventListener("keydown", bump);
+        return () => window.removeEventListener("keydown", bump);
+      }, []);
+      return (
+        <Combobox
+          label="Timeline"
+          id="inline-timeline"
+          options={[
+            { value: "", label: "Select..." },
+            { value: "asap", label: "ASAP" },
+            { value: "flexible", label: "Flexible" },
+          ]}
+          value=""
+          onValueChange={() => {}}
+        />
+      );
+    }
+    render(<InlineOptionsHarness />);
+
+    const trigger = screen.getByRole("combobox");
+    fireEvent.keyDown(trigger, { key: "ArrowDown" }); // opens
+    fireEvent.keyDown(trigger, { key: "ArrowDown" }); // -> index 1 (asap)
+    fireEvent.keyDown(trigger, { key: "ArrowDown" }); // -> index 2 (flexible)
+    expect(trigger).toHaveAttribute(
+      "aria-activedescendant",
+      "inline-timeline-option-flexible",
     );
   });
 });

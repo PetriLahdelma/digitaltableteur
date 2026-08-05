@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T07:33:23.518Z",
+  "generatedAt": "2026-08-05T08:09:32.025Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -5741,9 +5741,9 @@
         "Button",
         "TextInput",
         "Text",
-        "Select",
         "FileUpload",
-        "PhoneInput"
+        "PhoneInput",
+        "TextArea"
       ],
       "prefersOver": [],
       "declaredPropCount": 8,
@@ -6594,7 +6594,13 @@
       "forbiddenUse": [
         "nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`)."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Button",
+        "FileUpload",
+        "MultiCombobox",
+        "CheckboxGroup",
+        "PhoneInput"
+      ],
       "prefersOver": [],
       "declaredPropCount": 11,
       "guidelines": [
@@ -6624,20 +6630,20 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -6648,8 +6654,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "human-a11y-review",
@@ -7433,14 +7439,14 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "forced-colors-real-browser",
@@ -10282,10 +10288,10 @@
       "composesWith": [
         "Button",
         "CheckboxGroup",
-        "Select",
         "PhoneInput",
         "TextInput",
-        "Modal"
+        "Modal",
+        "Toast"
       ],
       "prefersOver": [],
       "declaredPropCount": 15,
@@ -11328,20 +11334,20 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -16932,9 +16938,9 @@
       "composesWith": [
         "Button",
         "FileUpload",
+        "Combobox",
         "CheckboxGroup",
-        "PhoneInput",
-        "Select"
+        "PhoneInput"
       ],
       "prefersOver": [],
       "declaredPropCount": 11,
@@ -18892,10 +18898,10 @@
       "composesWith": [
         "Button",
         "CheckboxGroup",
-        "Select",
         "FileUpload",
         "TextInput",
-        "Modal"
+        "Modal",
+        "Toast"
       ],
       "prefersOver": [],
       "declaredPropCount": 10,
@@ -22194,12 +22200,12 @@
         "wrap the native chevron with a button overlay. The native click target is the entire control already; an overlay breaks forced-colors and mobile sheets."
       ],
       "composesWith": [
+        "TextInput",
+        "Text",
         "Button",
         "CheckboxGroup",
-        "FileUpload",
-        "PhoneInput",
-        "TextInput",
-        "Text"
+        "Modal",
+        "Toast"
       ],
       "prefersOver": [],
       "declaredPropCount": 8,
