@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-05T09:43:13.196Z",
+  "generatedAt": "2026-08-05T10:13:02.334Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -82,8 +82,8 @@
     "withProductionUsage": 42,
     "uniqueImportedComponents": 165,
     "totalEvidenceRows": 832,
-    "aliasImportFiles": 435,
-    "relativeImportFiles": 430,
+    "aliasImportFiles": 428,
+    "relativeImportFiles": 437,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -15599,8 +15599,8 @@
         "evidence": [
           {
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/DataTable",
+            "importKind": "relative",
+            "importPath": "../../../nextjs-app/shared/components/DataTable/DataTable",
             "context": "production"
           },
           {
@@ -39392,8 +39392,8 @@
         "evidence": [
           {
             "path": "app/design-system/agent/ComponentTaxonomyTree.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/ResizablePanelGroup",
+            "importKind": "relative",
+            "importPath": "../../../nextjs-app/shared/components/ResizablePanelGroup/ResizablePanelGroup",
             "context": "production"
           },
           {
@@ -49082,8 +49082,8 @@
         "evidence": [
           {
             "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Table",
+            "importKind": "relative",
+            "importPath": "../../../nextjs-app/shared/components/Table/Table",
             "context": "production"
           },
           {
@@ -49515,8 +49515,8 @@
         "evidence": [
           {
             "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/TableCell",
+            "importKind": "relative",
+            "importPath": "../../../nextjs-app/shared/components/TableCell/TableCell",
             "context": "production"
           },
           {
@@ -49927,8 +49927,8 @@
         "evidence": [
           {
             "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/TableHeaderCell",
+            "importKind": "relative",
+            "importPath": "../../../nextjs-app/shared/components/TableHeaderCell/TableHeaderCell",
             "context": "production"
           },
           {
@@ -50660,8 +50660,8 @@
         "evidence": [
           {
             "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/TableRow",
+            "importKind": "relative",
+            "importPath": "../../../nextjs-app/shared/components/TableRow/TableRow",
             "context": "production"
           },
           {
@@ -56962,8 +56962,8 @@
         "evidence": [
           {
             "path": "app/design-system/agent/ComponentTaxonomyTree.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/TreeView",
+            "importKind": "relative",
+            "importPath": "../../../nextjs-app/shared/components/TreeView/TreeView",
             "context": "production"
           },
           {
