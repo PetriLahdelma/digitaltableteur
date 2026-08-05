@@ -1,8 +1,8 @@
 {
-  "storyId": "site-enhancedprojectcard-forced-colors",
+  "storyId": "site-enhancedprojectcard-coming-soon",
   "mode": "forced-colors",
   "sourceSHA": "72ed5b59cffe0596bc887b5d1c9cdcad400c2fd6",
-  "capturedAt": "2026-08-05T11:22:46.152Z",
+  "capturedAt": "2026-08-05T11:22:46.176Z",
   "runner": "precedent-teaser",
   "checks": {
     "accessibility-tree": {

@@ -6142,6 +6142,16 @@
           "type": "boolean",
           "description": "Autoplay video thumbnail continuously (not just on hover)"
         },
+        "comingSoon": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+        },
+        "comingSoonLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+        },
         "className": {
           "optional": true,
           "type": "string",

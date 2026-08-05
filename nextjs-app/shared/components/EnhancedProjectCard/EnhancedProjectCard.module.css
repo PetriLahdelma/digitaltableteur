@@ -46,8 +46,8 @@
 .asset {
   position: absolute;
   inset: 0;
-  inline-size: 100%;
   block-size: 100%;
+  inline-size: 100%;
   transition:
     opacity var(--duration-fast) var(--ease-out-cubic),
     transform var(--duration-slow) var(--ease-out-expo);
@@ -132,6 +132,57 @@
   color: color-mix(in srgb, var(--primary-text-color) 84%, transparent);
 }
 
+/* Coming-soon teaser: same chrome, no interactivity. The root is a div, so
+   the :hover/:focus-visible rules keyed to link affordances are neutralised
+   and the hover-gated tags become statically visible. */
+
+.comingSoon {
+  cursor: default;
+}
+
+.comingSoon .tags {
+  transform: none;
+  opacity: 1;
+}
+
+.comingSoon:hover .media {
+  box-shadow: none;
+  transform: none;
+}
+
+.comingSoon:hover .asset {
+  transform: scale(1.001);
+}
+
+.comingSoon:hover .category,
+.comingSoon:hover .title {
+  color: var(--primary-text-color);
+}
+
+.comingSoonBadge {
+  display: inline-flex;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  margin: auto;
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-16);
+  block-size: fit-content;
+  inline-size: fit-content;
+  align-items: center;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 12%, transparent);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
 .card:hover .media,
 .card:focus-visible .media {
   box-shadow:
@@ -189,6 +240,15 @@
 @media (width >= 768px) {
   .title {
     font-size: 1.125rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .comingSoonBadge {
+    border-color: CanvasText;
+    background: Canvas;
+    box-shadow: none;
+    color: CanvasText;
   }
 }
 

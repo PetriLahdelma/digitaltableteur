@@ -29,6 +29,10 @@ export interface EnhancedProjectCardProps {
   showDescription?: boolean;
   /** Autoplay video thumbnail continuously (not just on hover) */
   autoPlayVideo?: boolean;
+  /** Render as a non-interactive teaser with a "coming soon" badge over the media */
+  comingSoon?: boolean;
+  /** Visible badge label for the coming-soon overlay (pass a translated string) */
+  comingSoonLabel?: string;
   /** Custom className */
   className?: string;
 }
@@ -58,6 +62,8 @@ export function EnhancedProjectCard({
   showCategory = true,
   showDescription = true,
   autoPlayVideo = false,
+  comingSoon = false,
+  comingSoonLabel = "Coming soon",
   className,
 }: EnhancedProjectCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -106,16 +112,8 @@ export function EnhancedProjectCard({
   // Generate unique ID for aria relationships
   const descriptionId = `${slug}-desc`;
 
-  return (
-    <Link
-      href={`/work/${slug}`}
-      className={cn(styles.card, className)}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      aria-describedby={description ? descriptionId : undefined}
-      data-enhanced-project-card=""
-      data-donny-interest="portfolio-project"
-    >
+  const content = (
+    <>
       {/* Screen reader accessible description */}
       {description && (
         <span id={descriptionId} className="sr-only">
@@ -125,7 +123,7 @@ export function EnhancedProjectCard({
         </span>
       )}
 
-      {/* Media Container - Clean, no overlays */}
+      {/* Media Container - Clean, no overlays (coming-soon badge excepted) */}
       <div
         className={cn(
           styles.media,
@@ -156,6 +154,13 @@ export function EnhancedProjectCard({
             data-project-card-asset=""
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
+        )}
+
+        {/* Coming-soon overlay badge */}
+        {comingSoon && (
+          <span className={styles.comingSoonBadge} data-project-card-coming-soon="">
+            {comingSoonLabel}
+          </span>
         )}
       </div>
 
@@ -191,6 +196,32 @@ export function EnhancedProjectCard({
           </div>
         )}
       </div>
+    </>
+  );
+
+  if (comingSoon) {
+    return (
+      <div
+        className={cn(styles.card, styles.comingSoon, className)}
+        aria-describedby={description ? descriptionId : undefined}
+        data-enhanced-project-card=""
+      >
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={`/work/${slug}`}
+      className={cn(styles.card, className)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      aria-describedby={description ? descriptionId : undefined}
+      data-enhanced-project-card=""
+      data-donny-interest="portfolio-project"
+    >
+      {content}
     </Link>
   );
 }
