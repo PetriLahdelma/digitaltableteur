@@ -10,10 +10,10 @@ import { FormFieldEditorial } from "../FormFieldEditorial";
 import { ExpandableSection } from "../ExpandableSection";
 import { useToast } from "../../lib/toast";
 import FileUpload from "@dt/FileUpload";
+import Combobox from "@dt/Combobox";
 import MultiCombobox from "@dt/MultiCombobox";
 import CheckboxGroup from "@dt/CheckboxGroup";
 import PhoneInput from "@dt/PhoneInput";
-import Select from "@dt/Select";
 import styles from "./ContactFormEditorial.module.css";
 import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
@@ -518,35 +518,35 @@ export function ContactFormEditorial({
         className={styles.expandable}
       >
         <div className={styles.fields}>
-          <Select
+          <Combobox
+            className={styles.alignedCombobox}
             label={t("contactBudgetLabel", "Budget range")}
+            placeholder={t("contactSelectPlaceholder", "Select...")}
             value={formData.budget}
             onValueChange={updateSelectField("budget")}
-          >
-            <option value="">
-              {t("contactSelectPlaceholder", "Select...")}
-            </option>
-            {BUDGET_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {t(opt.labelKey)}
-              </option>
-            ))}
-          </Select>
+            options={[
+              { value: "", label: t("contactSelectPlaceholder", "Select...") },
+              ...BUDGET_OPTIONS.map((opt) => ({
+                value: opt.value,
+                label: t(opt.labelKey),
+              })),
+            ]}
+          />
 
-          <Select
+          <Combobox
+            className={styles.alignedCombobox}
             label={t("contactTimelineLabel", "Timeline")}
+            placeholder={t("contactSelectPlaceholder", "Select...")}
             value={formData.timeline}
             onValueChange={updateSelectField("timeline")}
-          >
-            <option value="">
-              {t("contactSelectPlaceholder", "Select...")}
-            </option>
-            {TIMELINE_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {t(opt.labelKey)}
-              </option>
-            ))}
-          </Select>
+            options={[
+              { value: "", label: t("contactSelectPlaceholder", "Select...") },
+              ...TIMELINE_OPTIONS.map((opt) => ({
+                value: opt.value,
+                label: t(opt.labelKey),
+              })),
+            ]}
+          />
 
           <MultiCombobox
             className={styles.alignedCombobox}
@@ -599,20 +599,23 @@ export function ContactFormEditorial({
               }
             />
 
-            <Select
+            <Combobox
+              className={styles.alignedCombobox}
               label={t("contactHearAbout")}
+              placeholder={t("contactSelectPlaceholder", "Select...")}
               value={formData.hearAbout}
               onValueChange={updateSelectField("hearAbout")}
-            >
-              <option value="">
-                {t("contactSelectPlaceholder", "Select...")}
-              </option>
-              {HEAR_ABOUT_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {t(opt.labelKey)}
-                </option>
-              ))}
-            </Select>
+              options={[
+                {
+                  value: "",
+                  label: t("contactSelectPlaceholder", "Select..."),
+                },
+                ...HEAR_ABOUT_OPTIONS.map((opt) => ({
+                  value: opt.value,
+                  label: t(opt.labelKey),
+                })),
+              ]}
+            />
 
             <div className={styles.fileUploadWrapper}>
               <FileUpload
@@ -674,6 +677,7 @@ export function ContactFormEditorial({
       <Button
         submits
         variant="primary"
+        size="lg"
         loading={isSubmitting}
         disabled={!isFormValid}
         className={styles.submitButton}

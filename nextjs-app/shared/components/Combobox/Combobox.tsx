@@ -92,15 +92,29 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       setHighlightedIndex(0);
     }, []);
 
+    // Highlight follows the selected value at the moment the dropdown
+    // opens. This must NOT live in an effect keyed on `options`: consumers
+    // idiomatically build the options array inline, so its identity changes
+    // every render and an options-keyed effect resets the highlight on each
+    // arrow-key re-render, breaking keyboard navigation entirely.
+    const syncHighlightToValue = useCallback(() => {
+      const selectedIndex = options.findIndex(
+        (option) => option.value === value,
+      );
+      setHighlightedIndex(selectedIndex >= 0 ? selectedIndex : 0);
+    }, [options, value]);
+
     const openDropdown = useCallback(() => {
       if (disabled) return;
+      syncHighlightToValue();
       setOpen(true);
-    }, [disabled]);
+    }, [disabled, syncHighlightToValue]);
 
     const toggleDropdown = useCallback(() => {
       if (disabled) return;
+      if (!open) syncHighlightToValue();
       setOpen((current) => !current);
-    }, [disabled]);
+    }, [disabled, open, syncHighlightToValue]);
 
     const selectOption = useCallback(
       (optionValue: string) => {
@@ -117,12 +131,6 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       listRef,
       containerRef,
     } = useComboboxDropdown(open, options.length, closeDropdown);
-
-    useEffect(() => {
-      if (!open) return;
-      const selectedIndex = options.findIndex((option) => option.value === value);
-      setHighlightedIndex(selectedIndex >= 0 ? selectedIndex : 0);
-    }, [open, options, value]);
 
     useEffect(() => {
       if (!open || !listRef.current) return;

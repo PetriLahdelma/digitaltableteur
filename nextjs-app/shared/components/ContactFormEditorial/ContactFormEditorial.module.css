@@ -30,9 +30,9 @@
  * components' own md sizing is untouched elsewhere.
  */
 
-.fields select {
-  padding-block: var(--space-internal-12);
-}
+/* (Native selects left the form when Budget/Timeline/Hear-about moved to
+ * Combobox; the only remaining <select> is react-phone-number-input's
+ * internal country picker, which keeps its own metrics.) */
 
 /* PhoneInput pads its composite wrapper (0.5rem); the inner input makes up
  * the remaining quarter rem so the wrapper rests at the same 56px. */
