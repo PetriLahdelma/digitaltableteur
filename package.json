@@ -302,7 +302,7 @@
   "overrides": {
     "@types/react": "$@types/react",
     "@types/react-dom": "$@types/react-dom",
-    "undici": "^7.24.7",
+    "undici": "^7.29.0",
     "@pnpm/npm-conf": "^3.0.2",
     "path-to-regexp": "^8.2.0",
     "glob": "^7.2.3",
@@ -314,7 +314,8 @@
       "tar": "^7.5.10"
     },
     "@vercel/python-analysis": {
-      "minimatch": "^10.2.4"
+      "minimatch": "^10.2.4",
+      "js-yaml": "^4.3.0"
     },
     "@vercel/static-config": {
       "ajv": "^8.18.0"
@@ -332,10 +333,13 @@
     "tmp": "^0.2.6",
     "shell-quote": "^1.9.0",
     "minimatch@3.1.5": {
-      "brace-expansion": "^1.1.16"
+      "brace-expansion": "^1.1.18"
     },
     "next": {
       "postcss": "^8.5.22"
+    },
+    "@vercel/frameworks": {
+      "js-yaml": "^3.15.0"
     }
   },
   "devDependencies": {
