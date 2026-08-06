@@ -136,6 +136,11 @@ const automatedChecks = [
     reason: "per-component minified+gzip cost of the built dist is measured and stamped as publish evidence",
   },
   {
+    name: "ssr-evidence",
+    command: ["run", "audit:ssr-evidence"],
+    reason: "every renderable export server-renders without DOM globals and hydrates cleanly in jsdom, recorded as publish evidence",
+  },
+  {
     name: "compatibility-manifest",
     command: ["run", "audit:compatibility"],
     reason: "the toolchain combinations actually exercised by the gates are recorded as the per-publish compatibility manifest",

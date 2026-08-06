@@ -141,7 +141,15 @@
   (resolved versions, never ranges), declared peer ranges vs the single
   exercised version, and a summary of the latest recorded publish
   preflight. Output: `public/ds-health/compatibility-manifest.json`.
-- Both run automatically inside `check:react-publish-preflight` (after
+- `npm run audit:ssr-evidence` — server-renders every renderable export in
+  plain Node (no DOM globals, the real server condition) and hydrates the
+  captured HTML in a jsdom worker with the unit suite's browser stubs;
+  records ssr pass/error, hydration clean/mismatch, and HTML bytes as
+  deterministic substance (timings informational). Fragment elements
+  (td/tr/li) hydrate inside a valid ancestor chain from their contract
+  `element`. Requires a built dist; `-- --build` rebuilds first. Output:
+  `public/ds-health/ssr-evidence.json`.
+- All three run automatically inside `check:react-publish-preflight` (after
   `react-public-api` rebuilds the dist), so every publish regenerates its
   evidence; commit the regenerated artifacts with the publish PR.
 
