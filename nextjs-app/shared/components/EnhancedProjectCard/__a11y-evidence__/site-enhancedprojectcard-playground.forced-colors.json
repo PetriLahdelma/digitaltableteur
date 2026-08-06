@@ -1,12 +1,16 @@
 {
   "storyId": "site-enhancedprojectcard-playground",
   "mode": "forced-colors",
-  "sourceSHA": "90475ef1f843b1f6831acb2de3c7868a2ff775b4",
-  "capturedAt": "2026-08-06T15:39:16.794Z",
-  "runner": "hc-refresh",
+  "sourceSHA": "c7838b9be6dcdc112b78b3841cbed6ccf8c61ac0",
+  "capturedAt": "2026-08-06T18:44:58.520Z",
+  "runner": "fc-race-fix2",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

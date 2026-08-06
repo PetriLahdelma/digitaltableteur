@@ -136,6 +136,18 @@ export type ForcedColorsGlobal = "none" | "active";
  */
 const isForcedColorsRuntime = (): boolean => {
   if (typeof window === "undefined") return false;
+  // Deterministic first: the test-runner and the AT capture script inject this
+  // flag via addInitScript, which runs before any module evaluates. matchMedia
+  // at module-eval time raced Playwright's emulateMedia on warm workers, so
+  // whole-run behaviors keyed off it (a11y addon state, evidence emission)
+  // flipped run-to-run (#1424). The media query stays as the fallback for
+  // manual browsing under a real OS forced-colors mode.
+  if (
+    (window as { __DT_FORCED_COLORS__?: string }).__DT_FORCED_COLORS__ ===
+    "active"
+  ) {
+    return true;
+  }
   try {
     return window.matchMedia("(forced-colors: active)").matches;
   } catch {
@@ -507,10 +519,16 @@ const preview: Preview = {
       },
     },
     a11y: (() => {
-      // Detect forced-colors at module evaluation in the iframe. By the time this
-      // module loads under test-runner, Playwright has already applied emulateMedia.
+      // Detect forced-colors at module evaluation in the iframe (deterministic:
+      // the test-runner injects __DT_FORCED_COLORS__ before module eval).
       const forced = isForcedColorsRuntime();
-      const disabled = forced || process.env.DT_DISABLE_A11Y === "1";
+      // Forced-colors no longer force-disables the a11y config. Doing so made
+      // the merged `disable`/`test: "off"` ambiguous between author opt-outs
+      // and the runtime toggle, so the runner's evidence pass could not tell
+      // them apart (#1424). Under fc the addon is instead quieted via the
+      // `a11y.manual` initial global, and color-contrast is rule-disabled
+      // below; author opt-outs keep their own disable/test keys.
+      const disabled = process.env.DT_DISABLE_A11Y === "1";
 
       // In forced-colors mode the user agent overrides author colors. axe-core's
       // color-contrast rule then evaluates author colors that are not what the user
