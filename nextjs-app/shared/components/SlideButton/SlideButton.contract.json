@@ -157,7 +157,16 @@
         "use it for form submission or in-page actions; reach for `Button` there.",
         "place more than one per view. It is a focal CTA, not a repeated control."
     ],
-    "keywords": ["cta", "pill", "slide", "link", "sprint", "hover", "icon", "anchor"],
+    "keywords": [
+        "cta",
+        "pill",
+        "slide",
+        "link",
+        "sprint",
+        "hover",
+        "icon",
+        "anchor"
+    ],
     "dense": "focal pill CTA link; decorative icon disc slides across the pill and rolls on hover; iconSide left/right; motion gated by prefers-reduced-motion; renders a real <a href>",
     "usage": {
         "description": "SlideButton is a focal pill call-to-action for a single, high-value destination. On hover its icon disc slides across the pill, the label shifts to make room, and the disc rolls a full turn. It renders a real anchor, so it is keyboard-reachable and activates like any link; all motion is suppressed under prefers-reduced-motion.",
@@ -203,5 +212,11 @@
                 "description": "A coloured disc holding a decorative Phosphor icon; it slides across the pill and rolls on hover."
             }
         ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Start your sprint",
+            "href": "/contact?service=design-sprint"
+        }
     }
 }

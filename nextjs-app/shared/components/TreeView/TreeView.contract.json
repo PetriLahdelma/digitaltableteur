@@ -189,8 +189,40 @@
             "defaultExpandedIds": [
                 "components"
             ],
-            "defaultSelectedId": "button",
-            "size": "md"
+            "defaultSelectedId": "actions",
+            "size": "md",
+            "nodes": [
+                {
+                    "id": "foundations",
+                    "label": "Foundations",
+                    "children": [
+                        {
+                            "id": "color",
+                            "label": "Color"
+                        },
+                        {
+                            "id": "typography",
+                            "label": "Typography"
+                        }
+                    ]
+                },
+                {
+                    "id": "components",
+                    "label": "Components",
+                    "children": [
+                        {
+                            "id": "actions",
+                            "label": "Actions",
+                            "description": "Stable"
+                        },
+                        {
+                            "id": "data-display",
+                            "label": "Data display",
+                            "description": "Beta"
+                        }
+                    ]
+                }
+            ]
         }
     },
     "prefersOver": [

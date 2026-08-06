@@ -121,7 +121,15 @@
     },
     "playground": {
         "defaults": {
-            "position": "bottom-center"
+            "position": "bottom-center",
+            "toasts": [
+                {
+                    "id": "saved",
+                    "message": "Settings saved.",
+                    "tone": "success",
+                    "duration": 60000
+                }
+            ]
         }
     },
     "composesWith": [

@@ -243,7 +243,43 @@
             "caption": "Project contributors",
             "hideCaption": false,
             "size": "md",
-            "striped": false
+            "striped": false,
+            "data": [
+                {
+                    "id": "ada",
+                    "name": "Ada Lovelace",
+                    "role": "Engineer",
+                    "projects": 8
+                },
+                {
+                    "id": "dieter",
+                    "name": "Dieter Rams",
+                    "role": "Designer",
+                    "projects": 5
+                },
+                {
+                    "id": "grace",
+                    "name": "Grace Hopper",
+                    "role": "Engineer",
+                    "projects": 12
+                }
+            ],
+            "columns": [
+                {
+                    "id": "name",
+                    "header": "Name",
+                    "rowHeader": true
+                },
+                {
+                    "id": "role",
+                    "header": "Role"
+                },
+                {
+                    "id": "projects",
+                    "header": "Projects",
+                    "align": "end"
+                }
+            ]
         }
     },
     "composesWith": [

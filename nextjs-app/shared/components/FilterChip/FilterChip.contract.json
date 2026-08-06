@@ -194,5 +194,11 @@
                 "description": "Do not use FilterChip for multi-select token input; use MultiCombobox."
             }
         ]
+    },
+    "playground": {
+        "defaults": {
+            "pressed": false,
+            "children": "Design systems"
+        }
     }
 }

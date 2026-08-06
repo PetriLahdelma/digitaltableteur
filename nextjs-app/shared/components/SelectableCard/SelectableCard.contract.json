@@ -110,5 +110,11 @@
                 "description": "For bare text options without supporting content, use RadioGroup or CheckboxGroup."
             }
         ]
+    },
+    "playground": {
+        "defaults": {
+            "value": "starter",
+            "children": "Starter"
+        }
     }
 }

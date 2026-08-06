@@ -5,7 +5,9 @@ import {
   componentRecord,
   hydrationContainerChainFor,
   renderPlanFor,
+  resolveDescriptors,
   stableErrorMessage,
+  synthesizeProp,
 } from "./ssr-evidence-lib.mjs";
 
 test("no contract means an honest non-component skip", () => {
@@ -21,7 +23,7 @@ test("playground defaults become render props", () => {
   expect(plan.props).toEqual({ variant: "primary", children: "Save" });
 });
 
-test("a required prop with no default skips with the prop named", () => {
+test("a required non-synthesizable prop skips with the prop named", () => {
   const plan = renderPlanFor("Chart", {
     props: {
       data: { type: "Point[]" },
@@ -30,6 +32,70 @@ test("a required prop with no default skips with the prop named", () => {
     playground: { defaults: {} },
   });
   expect(plan.skip).toMatch(/required props without playground defaults: data/);
+});
+
+test("required function and ref props are synthesized and recorded", () => {
+  const plan = renderPlanFor("List", {
+    props: {
+      onChange: { type: "(value: string) => void" },
+      getRowId: { type: "(row: Row) => string" },
+      getKey: { type: "(item: Item, index: number) => React.Key" },
+      getContent: { type: "(item: Item) => ItemContent" },
+      targetRef: { type: "RefObject<HTMLElement | null>" },
+    },
+    playground: { defaults: {} },
+  });
+  expect(plan.skip).toBeUndefined();
+  expect(Object.keys(plan.synthesized).sort()).toEqual([
+    "getContent",
+    "getKey",
+    "getRowId",
+    "onChange",
+    "targetRef",
+  ]);
+  expect(plan.props.onChange()).toBeUndefined();
+  expect(plan.props.getRowId({ id: "ada" })).toBe("ada");
+  expect(plan.props.getKey({}, 7)).toBe(7);
+  expect(plan.props.getContent({})).toEqual({ children: "Evidence" });
+  expect(plan.props.targetRef).toEqual({ current: null });
+});
+
+test("synthesis rules from types", () => {
+  expect(synthesizeProp("(e: MouseEvent) => void | Promise<void>").rule).toMatch(/no-op/);
+  expect(synthesizeProp("(row: Row) => string").rule).toMatch(/stable id/);
+  expect(synthesizeProp("RefObject<HTMLElement | null>").value).toEqual({
+    current: null,
+  });
+  expect(synthesizeProp("string")).toBeNull();
+  expect(synthesizeProp("Point[]")).toBeNull();
+});
+
+test("resolveDescriptors builds elements through the injected registry", () => {
+  const createElement = (component, props, ...children) => ({
+    component,
+    props,
+    children: children.length ? children : undefined,
+  });
+  const lookup = (name) => (name === "Icon" ? "ICON_COMPONENT" : undefined);
+  const resolved = resolveDescriptors(
+    {
+      icon: { __element: "Icon", props: { name: "Sparkle" } },
+      panels: [
+        {
+          id: "a",
+          content: { __element: "Title", props: {}, children: "Hello" },
+        },
+      ],
+      plain: "text",
+    },
+    createElement,
+    lookup,
+  );
+  expect(resolved.icon.component).toBe("ICON_COMPONENT");
+  expect(resolved.icon.props.name).toBe("Sparkle");
+  expect(resolved.panels[0].content.component).toBe("Title");
+  expect(resolved.panels[0].content.children).toEqual(["Hello"]);
+  expect(resolved.plain).toBe("text");
 });
 
 test("required children are satisfied with a placeholder string", () => {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T21:05:31.796Z",
+  "generatedAt": "2026-08-06T21:45:24.372Z",
   "package": {
     "name": "@digitaltableteur/react",
     "version": "0.1.22"
@@ -11,16 +11,16 @@
     "hydration": "hydrateRoot over the server HTML in jsdom with the unit suite's browser-API stubs (matchMedia, ResizeObserver, IntersectionObserver); recoverable hydration errors and hydration console errors fail the check"
   },
   "methodology": {
-    "props": "components render with their contract playground defaults; a required prop with no default skips the component (harness limitation, recorded, never counted as component evidence)",
+    "props": "components render with their contract playground defaults; required function/ref props (inexpressible in JSON) are synthesized by type-driven rules and recorded per component under `synthesized`; element descriptors ({ __element }) resolve against the built dist exactly as Storybook resolves them; a required prop that is neither defaulted nor synthesizable skips the component (harness limitation, recorded, never counted as component evidence)",
     "errors": "an ssr error means renderToString threw for this component standalone; the recorded message distinguishes browser-API access from missing host context — both are real facts about server-rendering the component outside the app shell",
     "timings": "render timings are informational runtime data outside the substance stamp; they vary by machine and never gate anything"
   },
   "totals": {
-    "ssrPass": 66,
+    "ssrPass": 90,
     "ssrError": 2,
-    "hydrationClean": 66,
-    "hydrationError": 0,
-    "skipped": 75
+    "hydrationClean": 89,
+    "hydrationError": 1,
+    "skipped": 51
   },
   "entries": {
     "actions": {
@@ -46,8 +46,14 @@
           }
         },
         "FilterChip": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: pressed"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 116
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "IconButton": {
           "status": "pass",
@@ -60,8 +66,14 @@
           }
         },
         "SlideButton": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: label, href"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 653
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "SplitButton": {
           "status": "pass",
@@ -119,8 +131,17 @@
           }
         },
         "DataTable": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: data, columns, getRowId"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1064
+          },
+          "synthesized": {
+            "getRowId": "string-deriving fn → stable id/stringify"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "ExpandableSection": {
           "status": "pass",
@@ -133,8 +154,14 @@
           }
         },
         "Gallery": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: images"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1165
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "List": {
           "status": "pass",
@@ -167,12 +194,27 @@
           }
         },
         "ReadingProgress": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: targetRef"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 0
+          },
+          "synthesized": {
+            "targetRef": "ref → { current: null }"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "Table": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: caption"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 140
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "TableCell": {
           "status": "pass",
@@ -215,16 +257,38 @@
           }
         },
         "ValueCard": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: icon, title, description"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1472
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "VirtualList": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: items, getItemKey, getItemProps"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1099
+          },
+          "synthesized": {
+            "getItemKey": "key-deriving fn → index",
+            "getItemProps": "content-deriving fn → { children: 'Evidence' }"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "VirtualListItem": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: posInSet, setSize"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 211
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "formatTimestamp": {
           "status": "skipped",
@@ -295,8 +359,14 @@
           }
         },
         "ToastStack": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: toasts"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 648
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "Tooltip": {
           "status": "ssr-error",
@@ -342,8 +412,17 @@
           }
         },
         "Combobox": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: onValueChange"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1102
+          },
+          "synthesized": {
+            "onValueChange": "handler → no-op (never called during render)"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "FileUpload": {
           "status": "pass",
@@ -396,8 +475,17 @@
           }
         },
         "MultiCombobox": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: onValueChange"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1198
+          },
+          "synthesized": {
+            "onValueChange": "handler → no-op (never called during render)"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "PhoneInput": {
           "status": "pass",
@@ -444,8 +532,14 @@
           "reason": "no component contract (not a renderable component export)"
         },
         "SelectableCard": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: value"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 232
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "SelectableCardGroup": {
           "status": "skipped",
@@ -522,8 +616,14 @@
     "identity": {
       "components": {
         "Author": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: name"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 312
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "Avatar": {
           "status": "pass",
@@ -670,8 +770,14 @@
           }
         },
         "ResizablePanelGroup": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: panels"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 635
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "Section": {
           "status": "pass",
@@ -718,12 +824,33 @@
           }
         },
         "CommandPalette": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: open, onClose, items"
+          "status": "hydration-error",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 0
+          },
+          "synthesized": {
+            "onClose": "handler → no-op (never called during render)"
+          },
+          "hydration": {
+            "ok": false,
+            "errors": [
+              "Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:"
+            ]
+          }
         },
         "LanguageSwitcher": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: onLanguageChange"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 700
+          },
+          "synthesized": {
+            "onLanguageChange": "handler → no-op (never called during render)"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "Link": {
           "status": "pass",
@@ -784,12 +911,27 @@
           }
         },
         "NavMenuList": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: items"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 240
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "Pagination": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: onPageChange"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 2953
+          },
+          "synthesized": {
+            "onPageChange": "handler → no-op (never called during render)"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "ScrollIndicator": {
           "status": "pass",
@@ -802,8 +944,17 @@
           }
         },
         "SegmentedControl": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: items, value, onValueChange, ariaLabel"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 426
+          },
+          "synthesized": {
+            "onValueChange": "handler → no-op (never called during render)"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "SkipLink": {
           "status": "pass",
@@ -826,8 +977,14 @@
           }
         },
         "TreeView": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: nodes"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 3090
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "getTabPanelProps": {
           "status": "skipped",
@@ -838,12 +995,27 @@
     "patterns": {
       "components": {
         "CategoryFilter": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: categories, activeCategory, onCategoryChange"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 511
+          },
+          "synthesized": {
+            "onCategoryChange": "handler → no-op (never called during render)"
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "Modal": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: isOpen"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 702
+          },
+          "hydration": {
+            "ok": true
+          }
         },
         "PageLayout": {
           "status": "pass",
@@ -856,8 +1028,14 @@
           }
         },
         "ProcessBlock": {
-          "status": "skipped",
-          "reason": "required props without playground defaults: phases"
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1001
+          },
+          "hydration": {
+            "ok": true
+          }
         }
       }
     },
@@ -1049,40 +1227,58 @@
   "informational": {
     "timings": {
       "Button": {
-        "renderToStringMs": 0.28
+        "renderToStringMs": 0.261
       },
       "ButtonGroup": {
-        "renderToStringMs": 0.049
+        "renderToStringMs": 0.038
       },
-      "IconButton": {
-        "renderToStringMs": 0.076
-      },
-      "SplitButton": {
-        "renderToStringMs": 0.306
-      },
-      "AuthorBio": {
-        "renderToStringMs": 0.007
-      },
-      "CodeBlockWindow": {
-        "renderToStringMs": 0.09
-      },
-      "CodeSnippet": {
-        "renderToStringMs": 0.348
-      },
-      "ExpandableSection": {
-        "renderToStringMs": 0.034
-      },
-      "List": {
-        "renderToStringMs": 0.022
-      },
-      "ListItem": {
+      "FilterChip": {
         "renderToStringMs": 0.016
       },
+      "IconButton": {
+        "renderToStringMs": 0.073
+      },
+      "SlideButton": {
+        "renderToStringMs": 0.059
+      },
+      "SplitButton": {
+        "renderToStringMs": 0.265
+      },
+      "AuthorBio": {
+        "renderToStringMs": 0.006
+      },
+      "CodeBlockWindow": {
+        "renderToStringMs": 0.092
+      },
+      "CodeSnippet": {
+        "renderToStringMs": 0.342
+      },
+      "DataTable": {
+        "renderToStringMs": 0.163
+      },
+      "ExpandableSection": {
+        "renderToStringMs": 0.032
+      },
+      "Gallery": {
+        "renderToStringMs": 0.108
+      },
+      "List": {
+        "renderToStringMs": 0.021
+      },
+      "ListItem": {
+        "renderToStringMs": 0.013
+      },
       "Logo": {
-        "renderToStringMs": 0.053
+        "renderToStringMs": 0.051
+      },
+      "ReadingProgress": {
+        "renderToStringMs": 0.005
+      },
+      "Table": {
+        "renderToStringMs": 0.017
       },
       "TableCell": {
-        "renderToStringMs": 0.009
+        "renderToStringMs": 0.008
       },
       "TableHeaderCell": {
         "renderToStringMs": 0.01
@@ -1091,16 +1287,25 @@
         "renderToStringMs": 0.008
       },
       "Timestamp": {
-        "renderToStringMs": 0.049
+        "renderToStringMs": 0.045
+      },
+      "ValueCard": {
+        "renderToStringMs": 0.044
+      },
+      "VirtualList": {
+        "renderToStringMs": 0.084
+      },
+      "VirtualListItem": {
+        "renderToStringMs": 0.018
       },
       "AlertBanner": {
-        "renderToStringMs": 0.052
+        "renderToStringMs": 0.047
       },
       "EmptyState": {
-        "renderToStringMs": 0.052
+        "renderToStringMs": 0.055
       },
       "Progress": {
-        "renderToStringMs": 0.019
+        "renderToStringMs": 0.016
       },
       "Skeleton": {
         "renderToStringMs": 0.024
@@ -1109,94 +1314,112 @@
         "renderToStringMs": 0.01
       },
       "Toast": {
-        "renderToStringMs": 0.036
+        "renderToStringMs": 0.042
+      },
+      "ToastStack": {
+        "renderToStringMs": 0.042
       },
       "Checkbox": {
-        "renderToStringMs": 0.03
+        "renderToStringMs": 0.028
       },
       "CheckboxGroup": {
-        "renderToStringMs": 0.138
+        "renderToStringMs": 0.107
+      },
+      "Combobox": {
+        "renderToStringMs": 0.079
       },
       "FileUpload": {
-        "renderToStringMs": 0.074
+        "renderToStringMs": 0.071
       },
       "FormField": {
-        "renderToStringMs": 0.019
-      },
-      "GroupLabel": {
-        "renderToStringMs": 0.016
-      },
-      "HelperText": {
-        "renderToStringMs": 0.011
-      },
-      "Label": {
         "renderToStringMs": 0.018
       },
+      "GroupLabel": {
+        "renderToStringMs": 0.014
+      },
+      "HelperText": {
+        "renderToStringMs": 0.012
+      },
+      "Label": {
+        "renderToStringMs": 0.017
+      },
+      "MultiCombobox": {
+        "renderToStringMs": 0.081
+      },
       "PhoneInput": {
-        "renderToStringMs": 1.217
+        "renderToStringMs": 1.233
       },
       "Radio": {
-        "renderToStringMs": 0.023
+        "renderToStringMs": 0.017
       },
       "RadioGroup": {
-        "renderToStringMs": 0.077
+        "renderToStringMs": 0.072
       },
       "Select": {
-        "renderToStringMs": 0.11
+        "renderToStringMs": 0.057
+      },
+      "SelectableCard": {
+        "renderToStringMs": 0.02
       },
       "Switch": {
-        "renderToStringMs": 0.033
+        "renderToStringMs": 0.036
       },
       "TextArea": {
-        "renderToStringMs": 0.036
+        "renderToStringMs": 0.03
       },
       "TextInput": {
-        "renderToStringMs": 0.036
+        "renderToStringMs": 0.032
+      },
+      "Author": {
+        "renderToStringMs": 0.023
       },
       "Avatar": {
-        "renderToStringMs": 0.014
+        "renderToStringMs": 0.012
       },
       "AvatarGroup": {
-        "renderToStringMs": 0.015
+        "renderToStringMs": 0.013
       },
       "Badge": {
-        "renderToStringMs": 0.047
+        "renderToStringMs": 0.034
       },
       "Icon": {
-        "renderToStringMs": 0.027
+        "renderToStringMs": 0.017
       },
       "StatusDot": {
-        "renderToStringMs": 0.014
+        "renderToStringMs": 0.012
       },
       "Accordion": {
-        "renderToStringMs": 0.105
+        "renderToStringMs": 0.08
       },
       "AspectRatio": {
-        "renderToStringMs": 0.009
+        "renderToStringMs": 0.008
       },
       "Card": {
-        "renderToStringMs": 0.027
+        "renderToStringMs": 0.026
       },
       "Center": {
-        "renderToStringMs": 0.01
+        "renderToStringMs": 0.006
       },
       "Container": {
-        "renderToStringMs": 0.007
+        "renderToStringMs": 0.006
       },
       "Divider": {
         "renderToStringMs": 0.007
       },
       "FlexBox": {
-        "renderToStringMs": 0.009
+        "renderToStringMs": 0.008
       },
       "Grid": {
         "renderToStringMs": 0.009
       },
       "MacWindowFrame": {
-        "renderToStringMs": 0.035
+        "renderToStringMs": 0.031
+      },
+      "ResizablePanelGroup": {
+        "renderToStringMs": 0.043
       },
       "Section": {
-        "renderToStringMs": 0.009
+        "renderToStringMs": 0.008
       },
       "Spacer": {
         "renderToStringMs": 0.007
@@ -1205,10 +1428,16 @@
         "renderToStringMs": 0.007
       },
       "Breadcrumb": {
-        "renderToStringMs": 0.066
+        "renderToStringMs": 0.049
+      },
+      "CommandPalette": {
+        "renderToStringMs": 0.006
+      },
+      "LanguageSwitcher": {
+        "renderToStringMs": 0.046
       },
       "Link": {
-        "renderToStringMs": 0.011
+        "renderToStringMs": 0.01
       },
       "Menu": {
         "renderToStringMs": 0.025
@@ -1216,23 +1445,44 @@
       "NavLink": {
         "renderToStringMs": 0.011
       },
+      "NavMenuList": {
+        "renderToStringMs": 0.028
+      },
+      "Pagination": {
+        "renderToStringMs": 0.128
+      },
       "ScrollIndicator": {
-        "renderToStringMs": 0.048
+        "renderToStringMs": 0.035
+      },
+      "SegmentedControl": {
+        "renderToStringMs": 0.033
       },
       "SkipLink": {
-        "renderToStringMs": 0.008
+        "renderToStringMs": 0.007
       },
       "Tabs": {
-        "renderToStringMs": 0.062
+        "renderToStringMs": 0.059
+      },
+      "TreeView": {
+        "renderToStringMs": 0.162
+      },
+      "CategoryFilter": {
+        "renderToStringMs": 0.033
+      },
+      "Modal": {
+        "renderToStringMs": 0.044
       },
       "PageLayout": {
-        "renderToStringMs": 0.01
+        "renderToStringMs": 0.008
+      },
+      "ProcessBlock": {
+        "renderToStringMs": 0.06
       },
       "ThemeProvider": {
-        "renderToStringMs": 0.01
+        "renderToStringMs": 0.009
       },
       "Display": {
-        "renderToStringMs": 0.008
+        "renderToStringMs": 0.007
       },
       "Kbd": {
         "renderToStringMs": 0.007
@@ -1241,17 +1491,17 @@
         "renderToStringMs": 0.006
       },
       "Title": {
-        "renderToStringMs": 0.007
+        "renderToStringMs": 0.006
       },
       "VisuallyHidden": {
-        "renderToStringMs": 0.007
+        "renderToStringMs": 0.006
       }
     }
   },
   "provenance": {
-    "sourceCommit": "69b2ae84c430c8450feb9920b8d04ea1a0a2f4e5",
+    "sourceCommit": "97ab60760666ecad7b51ea597c2af17ce5b6eecf",
     "workingTreeClean": false,
-    "dirtyPathCount": 2,
+    "dirtyPathCount": 28,
     "generator": {
       "name": "measure-ssr-evidence",
       "version": 1,

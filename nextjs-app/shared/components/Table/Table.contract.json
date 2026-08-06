@@ -148,5 +148,10 @@
         "TableHeaderCell",
         "TableCell",
         "DataTable"
-    ]
+    ],
+    "playground": {
+        "defaults": {
+            "caption": "Project contributors"
+        }
+    }
 }

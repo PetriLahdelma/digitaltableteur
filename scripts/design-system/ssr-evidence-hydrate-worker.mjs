@@ -16,6 +16,11 @@
 import { readFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import {
+  loadComponentContract,
+  renderPlanFor,
+  resolveDescriptors,
+} from "./ssr-evidence-lib.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -93,6 +98,26 @@ async function entryModule(entry) {
   return moduleCache.get(entry);
 }
 
+function distExportLookup(name) {
+  for (const mod of moduleCache.values()) {
+    if (name in mod) return mod[name];
+  }
+  return undefined;
+}
+
+// Preload every entry so descriptor resolution can reference components
+// (Icon, Badge, …) from entries this worker never hydrates directly.
+const manifest = JSON.parse(
+  readFileSync(join(ROOT, "packages/react/public-api.manifest.json"), "utf8"),
+);
+for (const entryName of Object.keys(manifest.runtimeExportsByEntry ?? {})) {
+  try {
+    await entryModule(entryName);
+  } catch {
+    // The SSR phase already recorded entry import failures.
+  }
+}
+
 function stableMessage(value) {
   return String(value?.message ?? value ?? "unknown error")
     .split("\n")[0]
@@ -112,6 +137,16 @@ for (const job of jobs) {
   try {
     const mod = await entryModule(job.entry);
     const Component = mod[job.exportName];
+    // Re-derive the render plan from the contract: synthesized functions and
+    // resolved descriptor elements cannot cross the JSON boundary from the
+    // SSR process, and re-deriving guarantees both phases hydrate the exact
+    // element the server rendered.
+    const plan = renderPlanFor(
+      job.exportName,
+      loadComponentContract(ROOT, job.exportName),
+    );
+    if (plan.skip) throw new Error(`render plan unavailable: ${plan.skip}`);
+    const props = resolveDescriptors(plan.props, createElement, distExportLookup);
     // Fragment elements (td/tr/li/…) need a valid ancestor chain so the
     // parser context matches what the component renders; the chain comes
     // from the component's contract element.
@@ -126,7 +161,7 @@ for (const job of jobs) {
     container.innerHTML = job.html;
     const root = hydrateRoot(
       container,
-      createElement(Component, job.props),
+      createElement(Component, props),
       {
         onRecoverableError: (error) => {
           errors.push(stableMessage(error));

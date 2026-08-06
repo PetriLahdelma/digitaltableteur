@@ -121,7 +121,23 @@
     },
     "playground": {
         "defaults": {
-            "size": "md"
+            "size": "md",
+            "items": [
+                {
+                    "value": "list",
+                    "label": "List"
+                },
+                {
+                    "value": "grid",
+                    "label": "Grid"
+                },
+                {
+                    "value": "board",
+                    "label": "Board"
+                }
+            ],
+            "value": "list",
+            "ariaLabel": "View"
         }
     },
     "composesWith": [],

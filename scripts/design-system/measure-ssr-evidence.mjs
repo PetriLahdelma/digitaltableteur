@@ -27,7 +27,9 @@ import {
   assembleSsrEvidence,
   componentRecord,
   hydrationContainerChainFor,
+  loadComponentContract,
   renderPlanFor,
+  resolveDescriptors,
   stableErrorMessage,
 } from "./ssr-evidence-lib.mjs";
 import { currentProvenance, runtimeStampFor } from "./evidence-stamp-lib.mjs";
@@ -78,21 +80,33 @@ if (missingDist.length) {
   process.exit(1);
 }
 
-function contractFor(name) {
-  for (const base of [
-    "nextjs-app/shared/components",
-    "nextjs-app/shared/patterns",
-  ]) {
-    const path = join(ROOT, base, name, `${name}.contract.json`);
-    if (existsSync(path)) return readJson(path);
-  }
-  return null;
-}
-
 const { createElement } = await import("react");
 const { renderToString } = await import("react-dom/server");
 const reactVersion = (await import("react")).version;
 const jsdomVersion = readJson(join(ROOT, "node_modules/jsdom/package.json")).version;
+
+// Preload every entry module first: descriptor resolution may reference a
+// component (Icon, Badge, …) from a different entry than the one under
+// measurement.
+const entryModules = new Map();
+const entryImportErrors = new Map();
+for (const entryName of Object.keys(exportsByEntry)) {
+  try {
+    entryModules.set(
+      entryName,
+      await import(pathToFileURL(join(PKG_DIR, "dist", `${entryName}.js`)).href),
+    );
+  } catch (error) {
+    entryImportErrors.set(entryName, stableErrorMessage(error));
+  }
+}
+
+function distExportLookup(name) {
+  for (const mod of entryModules.values()) {
+    if (name in mod) return mod[name];
+  }
+  return undefined;
+}
 
 const entries = {};
 const informationalTimings = {};
@@ -100,15 +114,8 @@ const hydrationJobs = [];
 
 for (const [entryName, exportNames] of Object.entries(exportsByEntry)) {
   const components = {};
-  let entryModule = null;
-  let importError = null;
-  try {
-    entryModule = await import(
-      pathToFileURL(join(PKG_DIR, "dist", `${entryName}.js`)).href
-    );
-  } catch (error) {
-    importError = stableErrorMessage(error);
-  }
+  const entryModule = entryModules.get(entryName) ?? null;
+  const importError = entryImportErrors.get(entryName) ?? null;
   for (const exportName of exportNames) {
     if (importError) {
       components[exportName] = componentRecord({
@@ -116,22 +123,23 @@ for (const [entryName, exportNames] of Object.entries(exportsByEntry)) {
       });
       continue;
     }
-    const contract = contractFor(exportName);
+    const contract = loadComponentContract(ROOT, exportName);
     const plan = renderPlanFor(exportName, contract);
     if (plan.skip) {
       components[exportName] = componentRecord({ skip: plan.skip });
       continue;
     }
+    const props = resolveDescriptors(plan.props, createElement, distExportLookup);
     const Component = entryModule[exportName];
     let html = null;
     try {
-      const element = createElement(Component, plan.props);
+      const element = createElement(Component, props);
       // Warmup render, then timed median of 5 (informational only).
       html = renderToString(element);
       const runs = [];
       for (let i = 0; i < 5; i += 1) {
         const start = performance.now();
-        renderToString(createElement(Component, plan.props));
+        renderToString(createElement(Component, props));
         runs.push(performance.now() - start);
       }
       runs.sort((a, b) => a - b);
@@ -141,17 +149,21 @@ for (const [entryName, exportNames] of Object.entries(exportsByEntry)) {
     } catch (error) {
       components[exportName] = componentRecord({
         ssrError: stableErrorMessage(error),
+        synthesized: plan.synthesized,
       });
       continue;
     }
     components[exportName] = componentRecord({
       htmlBytes: Buffer.byteLength(html),
       hydrationErrors: null, // filled by the hydration phase
+      synthesized: plan.synthesized,
     });
+    // The worker re-derives the render plan itself (functions and resolved
+    // elements cannot cross a JSON boundary); it only needs the server HTML
+    // and the container chain.
     hydrationJobs.push({
       entry: entryName,
       exportName,
-      props: plan.props,
       html,
       containerChain: hydrationContainerChainFor(contract?.element),
     });

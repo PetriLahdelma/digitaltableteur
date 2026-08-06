@@ -88,5 +88,12 @@
         "Icon",
         "Badge",
         "StatusDot"
-    ]
+    ],
+    "playground": {
+        "defaults": {
+            "posInSet": 3,
+            "setSize": 1000,
+            "children": "Component result 3"
+        }
+    }
 }

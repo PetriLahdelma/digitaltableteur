@@ -100,5 +100,19 @@
     "dense": "Image gallery grid with click-to-expand lightbox and hover motion; used on work/case-study pages",
     "usage": {
         "description": "Image gallery grid with a click-to-expand lightbox and hover motion, used on case-study pages. Provide meaningful alt text per image."
+    },
+    "playground": {
+        "defaults": {
+            "images": [
+                {
+                    "src": "/images/authors/petri-lahdelma.jpg",
+                    "alt": "Portrait of the author"
+                },
+                {
+                    "src": "/images/authors/petri-lahdelma-inquiries.png",
+                    "alt": "Author at work"
+                }
+            ]
+        }
     }
 }

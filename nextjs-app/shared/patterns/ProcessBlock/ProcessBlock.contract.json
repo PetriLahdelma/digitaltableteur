@@ -197,5 +197,25 @@
         "ProjectHero",
         "RelatedProjects",
         "GridBlock"
-    ]
+    ],
+    "playground": {
+        "defaults": {
+            "phases": [
+                {
+                    "title": "Discover",
+                    "activities": [
+                        "Stakeholder workshops",
+                        "User research"
+                    ]
+                },
+                {
+                    "title": "Define",
+                    "activities": [
+                        "User personas",
+                        "Journey mapping"
+                    ]
+                }
+            ]
+        }
+    }
 }
