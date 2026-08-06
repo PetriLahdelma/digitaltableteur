@@ -18,7 +18,6 @@
     "jsx": "react-jsx",
     "incremental": true,
     "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
     "typeRoots": [
       "./node_modules/@types"
     ],
