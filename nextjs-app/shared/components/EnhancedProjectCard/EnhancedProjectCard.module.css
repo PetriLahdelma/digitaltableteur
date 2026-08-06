@@ -133,16 +133,12 @@
 }
 
 /* Coming-soon teaser: same chrome, no interactivity. The root is a div, so
-   the :hover/:focus-visible rules keyed to link affordances are neutralised
-   and the hover-gated tags become statically visible. */
+   the :hover/:focus-visible link affordances (lift, zoom, accent color) are
+   neutralised. Tags keep the sibling resting behavior: hidden until hover,
+   statically visible only under (hover: none). */
 
 .comingSoon {
   cursor: default;
-}
-
-.comingSoon .tags {
-  transform: none;
-  opacity: 1;
 }
 
 .comingSoon:hover .media {
