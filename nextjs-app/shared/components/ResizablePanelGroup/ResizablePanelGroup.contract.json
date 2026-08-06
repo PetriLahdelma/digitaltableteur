@@ -153,7 +153,37 @@
     "playground": {
         "defaults": {
             "orientation": "horizontal",
-            "keyboardStep": 5
+            "keyboardStep": 5,
+            "panels": [
+                {
+                    "id": "navigation",
+                    "ariaLabel": "Navigation",
+                    "content": {
+                        "__element": "Title",
+                        "props": {
+                            "as": "h3",
+                            "size": "xs"
+                        },
+                        "children": "Navigation"
+                    },
+                    "initialSize": 32,
+                    "minSize": 20
+                },
+                {
+                    "id": "content",
+                    "ariaLabel": "Content",
+                    "content": {
+                        "__element": "Text",
+                        "props": {
+                            "as": "p",
+                            "size": "s"
+                        },
+                        "children": "Inspect the selected component documentation."
+                    },
+                    "initialSize": 68,
+                    "minSize": 30
+                }
+            ]
         }
     },
     "composesWith": [

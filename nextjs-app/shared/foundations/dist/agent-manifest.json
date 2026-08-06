@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-06T18:46:19.120Z",
+  "generatedAt": "2026-08-06T21:45:19.439Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -2731,6 +2731,12 @@
               "description": "Text attribution, optionally linked to the author profile."
             }
           ]
+        },
+        "playground": {
+          "defaults": {
+            "name": "Petri Lahdelma",
+            "imageUrl": "/images/authors/petri-lahdelma.jpg"
+          }
         }
       },
       "spec": "# Author\n\n## Intent\nDocuments how **Author** is used in production layouts and Storybook examples.\n\nReusable byline atom: every detail is an input. `name` plus optional\n`imageUrl` (a URL, an imported asset path, or static image data) render the\navatar byline; `profileUrl` turns it into a link. The byline prefix defaults\nto the localized \"By\" (fi \"Kirjoittanut\", sv \"Av\") — parity with the native\n`dt-author` element — and `bylinePrefix` overrides it for custom attributions\n(e.g. \"Reviewed by\") or a fixed language.\n\nAuthor composes the Avatar atom and exposes its behavior rather than\nre-implementing it: `size` is Avatar's `AvatarSize` (token sizes `sm`/`md`/\n`lg`/`xl` canonical, CSS lengths accepted), `name` is passed through as the\navatar's accessible name, and omitting `imageUrl` yields Avatar's initials\nfallback.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on Author pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
@@ -8901,6 +8907,25 @@
         "dense": "Filter pill row for list pages (blog archive, work index) with selected state and multiple visual treatments",
         "usage": {
           "description": "Pill-row filter for list pages: one selectable category set with visual treatments per surface (blog archive, work index). Selection state lives in the parent."
+        },
+        "playground": {
+          "defaults": {
+            "categories": [
+              {
+                "value": "all",
+                "label": "All"
+              },
+              {
+                "value": "design",
+                "label": "Design"
+              },
+              {
+                "value": "accessibility",
+                "label": "Accessibility"
+              }
+            ],
+            "activeCategory": "all"
+          }
         }
       },
       "spec": "# CategoryFilter\n\n## Intent\nRender the canonical filter-by-category row used on list pages. Owns the active-state announcement and the visual variants so list-page consumers do not reinvent them.\n\n## Interaction contract\n- Keyboard: Tab between filters; Enter / Space toggles.\n- Pointer: Click a filter to activate.\n- Screen readers: Filter buttons announce as 'toggle button, {label}, pressed' for the active filter and 'not pressed' for the rest.\n\n## Do / don't\n- Do: Use on list pages where filtering is the primary UI affordance.\n- Do: Keep the filter labels short — they sit in a row.\n- Don't: Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.\n- Don't: Stack two filter rows when one composite control would do — readability collapses.\n\n## Design notes\n- Colors: --color-text, --color-accent, --color-border-default\n- Spacing: --space-internal-4, --space-internal-8\n- Typography: --font-size-sm, --font-size-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
@@ -13018,7 +13043,32 @@
         },
         "composesWith": [],
         "schemaVersion": 2,
-        "displayName": "CommandPalette"
+        "displayName": "CommandPalette",
+        "playground": {
+          "defaults": {
+            "open": true,
+            "items": [
+              {
+                "id": "home",
+                "label": "Go to Home",
+                "keywords": [
+                  "start",
+                  "index"
+                ]
+              },
+              {
+                "id": "blog",
+                "label": "Go to Blog",
+                "keywords": [
+                  "articles",
+                  "posts"
+                ]
+              }
+            ],
+            "label": "Command palette",
+            "placeholder": "Search commands…"
+          }
+        }
       },
       "spec": "# CommandPalette\n\n## Intent\nA modal, keyboard-first launcher for jumping to a command, page, or action\nwithout reaching for the mouse. Opened by a shortcut (e.g. Cmd/Ctrl-K), it filters\na flat list of commands as you type and runs the highlighted one on Enter. Use it\nfor cross-surface navigation and quick actions, not as a menu bound to one control.\n\n## Interaction contract\n- Keyboard: type to filter (matches label + keywords); Arrow Down/Up move the\n  active option, wrapping; Enter runs the active command and closes; Escape\n  closes. Focus is trapped in the dialog and background scroll is locked while open.\n- Pointer: hovering an option makes it active; clicking runs it; clicking the\n  scrim closes.\n- Controlled only: `open` + `onClose` own visibility; the component holds query\n  and active-index state internally and resets them on open.\n- Screen readers: the overlay is `role=dialog aria-modal`; the input is\n  `role=combobox` with `aria-controls` + `aria-activedescendant` onto the\n  `role=listbox`; each command is `role=option` with `aria-selected`.\n\n## Do / don't\n- Do: keep commands flat and label them as actions (\"Go to Blog\", \"New post\").\n- Do: pass `keywords` for synonyms so fuzzy intent still matches.\n- Don't: nest submenus or put long forms inside it — it is a launcher, not a\n  workspace. Route or run on Enter and close.\n- Don't: hardcode copy in the component — `label` / `placeholder` / `emptyText`\n  are props so the host owns translation.\n\n## Design notes\n- Tokens: scrim from `--color-black`; dialog `--color-surface` + `--color-border`\n  + shadow; text `--color-text` / `--color-muted`; radius/spacing from\n  `--radius-*` / `--space-internal-*`. No hardcoded colors.\n- Reuses `useFocusTrap` and `useScrollLock` (see Foundations/Utilities). The\n  active option is a neutral tint; forced-colors maps it to a `Highlight` outline.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `Command Palette`, reduced to the core launcher). Ships at\nalpha with the WIP badge. Do not promote past alpha/beta without a documented\nproduction consumer, AT snapshots, and forced-colors + light/dark verification.\n",
       "documentationDebt": false,
@@ -15578,7 +15628,43 @@
             "caption": "Project contributors",
             "hideCaption": false,
             "size": "md",
-            "striped": false
+            "striped": false,
+            "data": [
+              {
+                "id": "ada",
+                "name": "Ada Lovelace",
+                "role": "Engineer",
+                "projects": 8
+              },
+              {
+                "id": "dieter",
+                "name": "Dieter Rams",
+                "role": "Designer",
+                "projects": 5
+              },
+              {
+                "id": "grace",
+                "name": "Grace Hopper",
+                "role": "Engineer",
+                "projects": 12
+              }
+            ],
+            "columns": [
+              {
+                "id": "name",
+                "header": "Name",
+                "rowHeader": true
+              },
+              {
+                "id": "role",
+                "header": "Role"
+              },
+              {
+                "id": "projects",
+                "header": "Projects",
+                "align": "end"
+              }
+            ]
           }
         },
         "composesWith": [
@@ -19962,6 +20048,12 @@
               "description": "Do not use FilterChip for multi-select token input; use MultiCombobox."
             }
           ]
+        },
+        "playground": {
+          "defaults": {
+            "pressed": false,
+            "children": "Design systems"
+          }
         }
       },
       "spec": "# FilterChip\n\n## Intent\nOne toggle-chip implementation for single-select filters. CategoryFilter and BlogCategoryFilter each hand-rolled the same aria-pressed button in three visual treatments; FilterChip collapses the six copies into one control.\n\n## Interaction contract\n- Keyboard: Tab focuses each chip; Enter/Space toggles (native button).\n- Pointer: click toggles; hover shifts muted → text ink.\n- Screen readers: announced as a toggle button with pressed state; a filter is a UI control, not a tablist, so parents wrap chips in a labelled role=\"group\".\n\n## Do / don't\n- Do: keep exactly one chip pressed per group (single-select filters).\n- Do: pass counts via the count prop so the \"(n)\" suffix stays in the accessible name.\n- Don't: use for navigation between panels (that is Tabs).\n- Don't: nest interactive content inside the label.\n\n## Design notes\n- Tokens: --color-muted/-text/-border ink+chrome, --focus-ring-color, --space-internal-{6,8,12,16,24} paddings, --font-size-text-{xs,s,m}.\n- Pressed pill inverts (text bg / canvas ink); rectangle matches pill with 8px (--radius-lg) corners; underline variant sits on the group border (-1px margin); forced colors use Highlight/HighlightText.\n- Figma: pending (alpha); create in DT-Site-stuff Atoms before beta.\n",
@@ -21646,6 +21738,20 @@
         "dense": "Image gallery grid with click-to-expand lightbox and hover motion; used on work/case-study pages",
         "usage": {
           "description": "Image gallery grid with a click-to-expand lightbox and hover motion, used on case-study pages. Provide meaningful alt text per image."
+        },
+        "playground": {
+          "defaults": {
+            "images": [
+              {
+                "src": "/images/authors/petri-lahdelma.jpg",
+                "alt": "Portrait of the author"
+              },
+              {
+                "src": "/images/authors/petri-lahdelma-inquiries.png",
+                "alt": "Author at work"
+              }
+            ]
+          }
         }
       },
       "spec": "# Gallery\n\n## Intent\nShow a grid of images that the reader can dwell on or expand. Hover motion is decorative; the lightbox is the primary affordance.\n\n## Interaction contract\n- Keyboard: Tab between items; Enter / Space opens; Esc closes the lightbox.\n- Pointer: Click an item to open the lightbox; click outside or on close to dismiss.\n- Screen readers: Each item announces as 'button, {alt text}, image'. Lightbox opens as a modal; the source image alt becomes the dialog name.\n\n## Do / don't\n- Do: Use for work-detail / case-study image rows where the image is the content.\n- Do: Provide real `alt` text on each image; it doubles as the lightbox's accessible name.\n- Don't: Use as a navigation surface — gallery items are not links.\n- Don't: Auto-open the lightbox on mount — confine motion to explicit user actions.\n\n## Design notes\n- Colors: --color-text, --color-surface-elevated\n- Spacing: --space-internal-8, --space-internal-12\n- Radii: --radius-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
@@ -31463,7 +31569,8 @@
             "title": "Confirm changes",
             "description": "Review the summary below before continuing.",
             "children": "Your edits will be applied immediately.",
-            "showCloseIcon": true
+            "showCloseIcon": true,
+            "isOpen": true
           }
         },
         "governance": {
@@ -32974,6 +33081,21 @@
         "dense": "Reusable nav link list for mobile/drawer menus; derives active state from the current location",
         "usage": {
           "description": "Navigation list for drawer and mobile menus: renders link items and derives the active item from the current route. Site chrome building block."
+        },
+        "playground": {
+          "defaults": {
+            "items": [
+              {
+                "to": "/",
+                "label": "Home",
+                "exact": true
+              },
+              {
+                "to": "/work",
+                "label": "Work"
+              }
+            ]
+          }
         }
       },
       "spec": "# NavMenuList\n\n## Intent\nDocuments how **NavMenuList** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on NavMenuList pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
@@ -39386,7 +39508,37 @@
         "playground": {
           "defaults": {
             "orientation": "horizontal",
-            "keyboardStep": 5
+            "keyboardStep": 5,
+            "panels": [
+              {
+                "id": "navigation",
+                "ariaLabel": "Navigation",
+                "content": {
+                  "__element": "Title",
+                  "props": {
+                    "as": "h3",
+                    "size": "xs"
+                  },
+                  "children": "Navigation"
+                },
+                "initialSize": 32,
+                "minSize": 20
+              },
+              {
+                "id": "content",
+                "ariaLabel": "Content",
+                "content": {
+                  "__element": "Text",
+                  "props": {
+                    "as": "p",
+                    "size": "s"
+                  },
+                  "children": "Inspect the selected component documentation."
+                },
+                "initialSize": 68,
+                "minSize": 30
+              }
+            ]
           }
         },
         "composesWith": [
@@ -41249,7 +41401,23 @@
         },
         "playground": {
           "defaults": {
-            "size": "md"
+            "size": "md",
+            "items": [
+              {
+                "value": "list",
+                "label": "List"
+              },
+              {
+                "value": "grid",
+                "label": "Grid"
+              },
+              {
+                "value": "board",
+                "label": "Board"
+              }
+            ],
+            "value": "list",
+            "ariaLabel": "View"
           }
         },
         "composesWith": [],
@@ -42134,6 +42302,12 @@
               "description": "For bare text options without supporting content, use RadioGroup or CheckboxGroup."
             }
           ]
+        },
+        "playground": {
+          "defaults": {
+            "value": "starter",
+            "children": "Starter"
+          }
         }
       },
       "spec": "# SelectableCard\n\n## Intent\nTurn a Card into a selectable option so a set of rich choices (plan pickers,\nonboarding options, add-ons, settings tiles) reads as cards rather than bare\nradios or checkboxes. `SelectableCardGroup` owns the selection; `SelectableCard`\nis one option in it.\n\n## Interaction contract\n- Keyboard: Tab moves focus into the group; Arrow keys move within a single-select\n  set (native radio behavior); Space toggles the focused option.\n- Pointer: the whole card is the hit area — clicking anywhere toggles the option.\n- Screen readers: the group is a fieldset announced by its legend; each option is\n  a native radio (single) or checkbox (multiple) whose accessible name is the\n  card content; errors announce via role=alert and set aria-invalid on the group.\n\n## Do / don't\n- Do: write the legend as the question; keep each card's title short and scannable.\n- Do: use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons.\n- Don't: nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.\n- Don't: use it for navigation; selecting must not commit or route on click.\n\n## Design notes\n- Tokens: `--color-primary` (selected ring), `--color-focus-ring` (focus),\n  `--color-border` / `--color-border-light` (rest/hover);\n  spacing from `--space-internal-*`. No hardcoded colors.\n- The whole card is the control: no radio/checkbox glyph is drawn. The selected\n  state is shown by a ring on the surface in `--color-primary`, with a\n  forced-colors mapping to `Highlight`. Card content centers vertically so a\n  lone title sits mid-card when grid rows stretch options to equal heights.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `SelectableCard`). Ships at alpha with the WIP badge. Do not\npromote past alpha/beta without a documented production consumer, AT snapshots,\nand forced-colors + light/dark verification.\n",
@@ -44628,6 +44802,12 @@
               "description": "A coloured disc holding a decorative Phosphor icon; it slides across the pill and rolls on hover."
             }
           ]
+        },
+        "playground": {
+          "defaults": {
+            "label": "Start your sprint",
+            "href": "/contact?service=design-sprint"
+          }
         }
       },
       "spec": "# SlideButton\n\n## Intent\n\nA prominent pill call-to-action for a single, high-value destination. On hover the icon\ndisc slides across the pill while the label shifts to make room and the disc rolls a full\nturn -- a playful affordance that draws the eye without changing meaning. It renders a real\n`<a href>`, so it is keyboard-reachable and activates like any link. Extracted from the\nhome page's \"Start your sprint\" button so any surface can reuse the same treatment.\n\n## Interaction contract\n\n| Input | Result |\n|-------|--------|\n| Click / Enter | Follows the link to `href` |\n| Tab | Receives focus in DOM order; the focus ring must stay visible on the pill |\n| Hover | Disc slides to the far edge, label padding flips, disc rolls 360 degrees |\n| `prefers-reduced-motion: reduce` | Disc, label, and roll stay put on hover; layout, label, and activation are unchanged |\n\n## Do / don't\n\n- Do (must): give a `label` that names the destination -- it is the control's accessible\n  name. The disc is `aria-hidden` and carries no meaning.\n- Do: pass a real `href`. This is a link, not a button; use it to navigate, not to submit.\n- Do: forward `data-*` hooks (e.g. `data-donny-interest`) via the spread anchor props when a\n  surface needs them.\n- Do: keep the label short (<= 24 chars) so the pill stays compact and the slide reads.\n- Don't (must): rely on the slide or roll to communicate anything -- both are suppressed\n  under reduced motion, so the label must stand alone.\n- Don't: use it for form submission or in-page actions; reach for `Button` there.\n- Don't: place more than one per view. It is a focal CTA, not a repeated control.\n\n## Design notes\n\nThe pill is a 44px anchor holding a 32px disc; at rest the disc sits 6px inside the leading\nedge and travels to `calc(100% - 38px)` on hover while the label's inline padding flips.\n`iconSide=\"right\"` mirrors the resting and hover positions. The roll is a CSS keyframe on the\ndisc; all motion is gated behind `@media (prefers-reduced-motion: reduce)`.\n\nColours come from tokens only: `--color-primary` / `--color-primary-foreground` for the\npill, `--logo-background` for the disc, `--color-foreground` for the icon, `--color-ring`\nfor focus. A `forced-colors` block keeps the pill border, disc, and icon legible against the\nsystem palette.\n\n## Status\n\nAlpha. Beta needs `forcedColorsVerified` (the ForcedColors story verified in a real browser)\nand `lightDarkVerified`. Neither has been run; the contract records both as false.\n",
@@ -49077,7 +49257,12 @@
           "TableHeaderCell",
           "TableCell",
           "DataTable"
-        ]
+        ],
+        "playground": {
+          "defaults": {
+            "caption": "Project contributors"
+          }
+        }
       },
       "spec": "# Table\n\nComposable table primitives — `Table`, `TableRow`, `TableHeaderCell`, and\n`TableCell` — that render semantic `<table>` markup with design-system chrome.\nThey are the presentational layer beneath `DataTable`; behavior (sorting,\nselection, pagination) lives in the `useTable*` hooks.\n\n## Intent\n\nGive the design system a low-level, composable table so product surfaces can\nassemble bespoke tables from DS-styled parts, while `DataTable` provides the\nbatteries-included configuration on top. Compose with native `<thead>` and\n`<tbody>`:\n\n- **Table** — scroll wrapper + `<table>` with the `<caption>`; owns density\n  (`sm`/`md`/`lg`), `striped`, and `stickyHeader`.\n- **TableRow** — `<tr>`; `selected` renders the selected surface and sets\n  `data-selected`.\n- **TableHeaderCell** — `<th scope=\"col\">`; `sortable` + `sortDirection` render\n  a sort button whose caret is a DS `Icon` (`caret-up-down` unsorted,\n  `caret-up` ascending, `caret-down` descending).\n- **TableCell** — `<td>`; `align` and `numeric` (tabular figures, end-aligned).\n\n## Interaction contract\n\n- Sortable headers toggle via an inner `<button>`; drive the actual sort with\n  `useTableSortable` and pass the resulting `sortDirection`/`onSort`.\n- `aria-sort` is exposed only while a column is actively sorted; the caret is\n  decorative (`aria-hidden`) and never the sole carrier of state.\n- Row selection is presentational here (`selected`) — the state lives in\n  `useTableSelection`; render a DS `Checkbox` in the leading cell.\n\n## Do / don't\n\n- Do: Give every table a concise `caption`.\n- Do: Drive sorting/selection with the `useTable*` hooks rather than local state.\n- Do: Use `numeric` for figures so columns align on the decimal.\n- Don't: Use Table for page layout.\n- Don't: Put sort logic inside a cell instead of the hooks.\n- Don't: Rely on the caret color alone to convey sort state.\n\n## Design notes\n\n- Quiet header: small uppercase `--font-size-text-xs` labels in `--color-muted`\n  on a `--color-light-bg` surface, with hairline (`1px`) row dividers.\n- The active sort caret uses `--color-primary`; the unsorted caret sits at\n  `--color-muted` so a sorted column reads at a glance while the unsorted\n  affordance still clears ≥3:1 non-text contrast in every theme (including\n  HCB, where `--color-border` would fail).\n- Density scales header/cell padding across `sm`/`md`/`lg`.\n- Forced-colors: borders map to `CanvasText`, the focus ring to `Highlight`.\n",
       "documentationDebt": false,
@@ -55682,7 +55867,15 @@
         },
         "playground": {
           "defaults": {
-            "position": "bottom-center"
+            "position": "bottom-center",
+            "toasts": [
+              {
+                "id": "saved",
+                "message": "Settings saved.",
+                "tone": "success",
+                "duration": 60000
+              }
+            ]
           }
         },
         "composesWith": [
@@ -56923,8 +57116,40 @@
             "defaultExpandedIds": [
               "components"
             ],
-            "defaultSelectedId": "button",
-            "size": "md"
+            "defaultSelectedId": "actions",
+            "size": "md",
+            "nodes": [
+              {
+                "id": "foundations",
+                "label": "Foundations",
+                "children": [
+                  {
+                    "id": "color",
+                    "label": "Color"
+                  },
+                  {
+                    "id": "typography",
+                    "label": "Typography"
+                  }
+                ]
+              },
+              {
+                "id": "components",
+                "label": "Components",
+                "children": [
+                  {
+                    "id": "actions",
+                    "label": "Actions",
+                    "description": "Stable"
+                  },
+                  {
+                    "id": "data-display",
+                    "label": "Data display",
+                    "description": "Beta"
+                  }
+                ]
+              }
+            ]
           }
         },
         "prefersOver": [
@@ -57374,6 +57599,18 @@
         "dense": "Values/principles card: icon + title + short description; grid unit for about/culture sections",
         "usage": {
           "description": "Card for one value or principle (icon, title, one-liner) in about/culture grids."
+        },
+        "playground": {
+          "defaults": {
+            "icon": {
+              "__element": "Icon",
+              "props": {
+                "name": "Sparkle"
+              }
+            },
+            "title": "Clarity first",
+            "description": "Interfaces should explain themselves before they decorate."
+          }
         }
       },
       "spec": "# ValueCard\n\n## Intent\nStable visual for the 'values', 'principles', and 'what we believe' grid layouts. Slot order is icon → title → description so the grid scans visually before reading.\n\n## Interaction contract\n- Keyboard: None — `ValueCard` is non-interactive.\n- Pointer: Hover on `elevated` raises the card; the card body has no click target.\n- Screen readers: Announced as 'article, {title}' followed by the body text.\n\n## Do / don't\n- Do: Use in 3 / 4 / 6-column grids on about / values / methodology pages.\n- Do: Keep titles to ≤ 4 words for a clean grid rhythm.\n- Don't: Use for content with a primary CTA — that is `ServiceCard` or `Card`.\n- Don't: Mix `ValueCard` with `Card` in the same grid row — the rhythm desyncs.\n\n## Design notes\n- Colors: --color-text, --color-text-muted, --color-surface-elevated\n- Spacing: --space-internal-8, --space-internal-12, --space-internal-16\n- Radii: --radius-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
@@ -57794,7 +58031,21 @@
             "aria-label": "Component results",
             "height": 320,
             "itemHeight": 48,
-            "overscan": 3
+            "overscan": 3,
+            "items": [
+              {
+                "id": "item-1",
+                "label": "Component result 1"
+              },
+              {
+                "id": "item-2",
+                "label": "Component result 2"
+              },
+              {
+                "id": "item-3",
+                "label": "Component result 3"
+              }
+            ]
           }
         },
         "composesWith": [
@@ -58163,7 +58414,14 @@
           "Icon",
           "Badge",
           "StatusDot"
-        ]
+        ],
+        "playground": {
+          "defaults": {
+            "posInSet": 3,
+            "setSize": 1000,
+            "children": "Component result 3"
+          }
+        }
       },
       "spec": "# VirtualListItem\n\nA single windowed list row. It is the item `VirtualList` renders for each\nvisible index, and the reason a virtualized list stays announceable.\n\n## Intent\n\nGive `VirtualList` a real item component instead of ad-hoc row markup, sharing\nthe same chrome as menus and other lists. It **composes the stable `ListItem`**\n(leading `icon`, truncating label, end `meta` such as Badge / Kbd / StatusDot,\n`trailingIcon`, `selected` check, `destructive` tone) rather than duplicating\nit — exactly how `MenuItem` reuses `ListItem`. On top of that chrome it owns the\nwindowed-row semantics: `role=\"listitem\"` plus `aria-posinset` / `aria-setsize`\nso a screen reader can announce \"item 500 of 1000\" even though only the ~10\nvisible rows are mounted.\n\n## Interaction contract\n\n- `VirtualList` injects `posInSet`, `setSize`, and the positioning `style`\n  (absolute + `translateY` + `block-size`); consumers supply the chrome via\n  `getItemProps`.\n- Selection is **visual only** (`selected` renders a check); the semantic\n  selection model, if any, belongs to the surrounding application.\n- Must live inside a `role=\"list\"` container — `VirtualList`'s viewport\n  provides it. Rendering it standalone without a list ancestor is invalid.\n\n## Do / don't\n\n- Do: Compose it from `VirtualList` via `getItemProps`, or use it directly inside your own `role=\"list\"`.\n- Do: Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value).\n- Don't: Render it outside a `role=\"list\"` container.\n- Don't: Reimplement the ListItem chrome — compose it.\n- Don't: Attach interactive semantics to the row; selection is presentational.\n\n## Design notes\n\n- The row is a bordered container (`--color-border-light` divider); the composed\n  `ListItem` fills it and supplies padding, the icon gutter, and truncation.\n- Positioning is not baked into the item — it arrives via `style` so the item\n  stays reusable outside a virtualized context.\n- Forced-colors: the divider maps to `CanvasText`.\n",
       "documentationDebt": false,
@@ -68706,7 +68964,27 @@
           "ProjectHero",
           "RelatedProjects",
           "GridBlock"
-        ]
+        ],
+        "playground": {
+          "defaults": {
+            "phases": [
+              {
+                "title": "Discover",
+                "activities": [
+                  "Stakeholder workshops",
+                  "User research"
+                ]
+              },
+              {
+                "title": "Define",
+                "activities": [
+                  "User personas",
+                  "Journey mapping"
+                ]
+              }
+            ]
+          }
+        }
       },
       "spec": "# ProcessBlock\n\n## Intent\nDocuments how **ProcessBlock** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on ProcessBlock pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,

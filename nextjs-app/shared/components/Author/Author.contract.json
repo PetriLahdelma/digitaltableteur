@@ -100,5 +100,11 @@
                 "description": "Text attribution, optionally linked to the author profile."
             }
         ]
+    },
+    "playground": {
+        "defaults": {
+            "name": "Petri Lahdelma",
+            "imageUrl": "/images/authors/petri-lahdelma.jpg"
+        }
     }
 }

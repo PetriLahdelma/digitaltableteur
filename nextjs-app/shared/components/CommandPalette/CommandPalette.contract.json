@@ -112,5 +112,30 @@
     },
     "composesWith": [],
     "schemaVersion": 2,
-    "displayName": "CommandPalette"
+    "displayName": "CommandPalette",
+    "playground": {
+        "defaults": {
+            "open": true,
+            "items": [
+                {
+                    "id": "home",
+                    "label": "Go to Home",
+                    "keywords": [
+                        "start",
+                        "index"
+                    ]
+                },
+                {
+                    "id": "blog",
+                    "label": "Go to Blog",
+                    "keywords": [
+                        "articles",
+                        "posts"
+                    ]
+                }
+            ],
+            "label": "Command palette",
+            "placeholder": "Search commands…"
+        }
+    }
 }

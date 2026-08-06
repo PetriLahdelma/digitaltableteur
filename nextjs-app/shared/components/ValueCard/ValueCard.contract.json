@@ -148,5 +148,17 @@
     "dense": "Values/principles card: icon + title + short description; grid unit for about/culture sections",
     "usage": {
         "description": "Card for one value or principle (icon, title, one-liner) in about/culture grids."
+    },
+    "playground": {
+        "defaults": {
+            "icon": {
+                "__element": "Icon",
+                "props": {
+                    "name": "Sparkle"
+                }
+            },
+            "title": "Clarity first",
+            "description": "Interfaces should explain themselves before they decorate."
+        }
     }
 }

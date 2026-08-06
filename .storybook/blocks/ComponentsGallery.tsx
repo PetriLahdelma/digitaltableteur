@@ -197,6 +197,9 @@ const PREVIEW_SPECS: Record<string, PreviewSpec> = {
   Spacer: { render: SpacerPreview, fill: true },
   Modal: { render: ModalPreview },
   Tooltip: { render: TooltipPreview },
+  // Contract defaults open the palette for SSR evidence; the live component
+  // portals a full-screen dialog, so the gallery keeps it closed.
+  CommandPalette: { props: { open: false } },
 };
 
 class PreviewBoundary extends React.Component<

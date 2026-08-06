@@ -154,5 +154,24 @@
     "dense": "Filter pill row for list pages (blog archive, work index) with selected state and multiple visual treatments",
     "usage": {
         "description": "Pill-row filter for list pages: one selectable category set with visual treatments per surface (blog archive, work index). Selection state lives in the parent."
+    },
+    "playground": {
+        "defaults": {
+            "categories": [
+                {
+                    "value": "all",
+                    "label": "All"
+                },
+                {
+                    "value": "design",
+                    "label": "Design"
+                },
+                {
+                    "value": "accessibility",
+                    "label": "Accessibility"
+                }
+            ],
+            "activeCategory": "all"
+        }
     }
 }

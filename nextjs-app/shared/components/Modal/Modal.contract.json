@@ -308,7 +308,8 @@
             "title": "Confirm changes",
             "description": "Review the summary below before continuing.",
             "children": "Your edits will be applied immediately.",
-            "showCloseIcon": true
+            "showCloseIcon": true,
+            "isOpen": true
         }
     },
     "governance": {

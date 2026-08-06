@@ -1,5 +1,8 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+
 /**
- * Pure helpers for SSR + hydration evidence (Astryx-gap Phase 4).
+ * Helpers for SSR + hydration evidence (Astryx-gap Phase 4).
  *
  * The evidence answers two deterministic questions per exported component of
  * @digitaltableteur/react, measured against the built dist:
@@ -15,9 +18,65 @@
  */
 
 /**
+ * Load a component's contract JSON from either shared/components or
+ * shared/patterns. Shared by the SSR process and the hydration worker so
+ * both derive the exact same render plan.
+ */
+export function loadComponentContract(root, name) {
+  for (const base of [
+    "nextjs-app/shared/components",
+    "nextjs-app/shared/patterns",
+  ]) {
+    const path = join(root, base, name, `${name}.contract.json`);
+    if (existsSync(path)) return JSON.parse(readFileSync(path, "utf8"));
+  }
+  return null;
+}
+
+/**
+ * Type-driven synthesis for required props that JSON contract defaults can
+ * never express: functions and refs. Synthesis is a HARNESS capability and
+ * every synthesized prop is recorded in the artifact, so the evidence stays
+ * transparent about what the contract supplied vs what the harness filled.
+ *
+ * Returns { value, rule } or null when the type is not synthesizable.
+ */
+export function synthesizeProp(type) {
+  const normalized = String(type ?? "");
+  if (/^(React\.)?RefObject\b/.test(normalized)) {
+    return { value: { current: null }, rule: "ref → { current: null }" };
+  }
+  if (!normalized.includes("=>")) return null;
+  const returnType = normalized.slice(normalized.lastIndexOf("=>") + 2).trim();
+  if (/^void\b|^Promise<void>/.test(returnType)) {
+    return { value: () => {}, rule: "handler → no-op (never called during render)" };
+  }
+  if (/^string\b/.test(returnType)) {
+    return {
+      value: (input) =>
+        typeof input === "object" && input !== null
+          ? String(input.id ?? input.key ?? JSON.stringify(input))
+          : String(input ?? "evidence"),
+      rule: "string-deriving fn → stable id/stringify",
+    };
+  }
+  if (/^(React\.)?Key\b/.test(returnType)) {
+    return {
+      value: (_input, index) => index ?? 0,
+      rule: "key-deriving fn → index",
+    };
+  }
+  return {
+    value: () => ({ children: "Evidence" }),
+    rule: "content-deriving fn → { children: 'Evidence' }",
+  };
+}
+
+/**
  * Decide how (and whether) a component can be rendered from contract data
- * alone. Returns { props } when renderable, { skip } with an honest reason
- * when not. A skip is a harness limitation, never component evidence.
+ * alone. Returns { props, synthesized } when renderable, { skip } with an
+ * honest reason when not. A skip is a harness limitation, never component
+ * evidence.
  */
 export function renderPlanFor(exportName, contract) {
   if (!contract) {
@@ -27,13 +86,18 @@ export function renderPlanFor(exportName, contract) {
   }
   const defaults = contract.playground?.defaults ?? {};
   const props = { ...defaults };
-  const propEntries = Object.entries(contract.props ?? {});
-  const missingRequired = propEntries
-    .filter(
-      ([name, spec]) =>
-        spec?.optional !== true && name !== "children" && !(name in props),
-    )
-    .map(([name]) => name);
+  const synthesized = {};
+  const missingRequired = [];
+  for (const [name, spec] of Object.entries(contract.props ?? {})) {
+    if (spec?.optional === true || name === "children" || name in props) continue;
+    const synthesis = synthesizeProp(spec?.type);
+    if (synthesis) {
+      props[name] = synthesis.value;
+      synthesized[name] = synthesis.rule;
+    } else {
+      missingRequired.push(name);
+    }
+  }
   if (missingRequired.length) {
     return {
       skip: `required props without playground defaults: ${missingRequired.join(", ")}`,
@@ -43,7 +107,43 @@ export function renderPlanFor(exportName, contract) {
   if (childrenSpec && childrenSpec.optional !== true && !("children" in props)) {
     props.children = "Evidence";
   }
-  return { props };
+  return { props, synthesized };
+}
+
+/**
+ * Resolve JSON-safe element descriptors ({ __element, props, children })
+ * into real React elements, mirroring .storybook/lib/resolveElements.tsx so
+ * contract defaults render the same way in the harness as in Storybook.
+ * createElement and the component lookup are injected so both the SSR
+ * process and the hydration worker resolve against the built dist.
+ */
+export function resolveDescriptors(value, createElement, lookup) {
+  if (Array.isArray(value)) {
+    return value.map((item) => resolveDescriptors(item, createElement, lookup));
+  }
+  if (typeof value === "object" && value !== null) {
+    if (typeof value.__element === "string") {
+      const { __element, props = {}, children } = value;
+      const component = lookup(__element) ?? __element;
+      const resolvedProps = {};
+      for (const [name, propValue] of Object.entries(props)) {
+        resolvedProps[name] = resolveDescriptors(propValue, createElement, lookup);
+      }
+      return children !== undefined
+        ? createElement(
+            component,
+            resolvedProps,
+            resolveDescriptors(children, createElement, lookup),
+          )
+        : createElement(component, resolvedProps);
+    }
+    const resolved = {};
+    for (const [name, propValue] of Object.entries(value)) {
+      resolved[name] = resolveDescriptors(propValue, createElement, lookup);
+    }
+    return resolved;
+  }
+  return value;
 }
 
 /**
@@ -90,7 +190,7 @@ export function assembleSsrEvidence({
     },
     methodology: {
       props:
-        "components render with their contract playground defaults; a required prop with no default skips the component (harness limitation, recorded, never counted as component evidence)",
+        "components render with their contract playground defaults; required function/ref props (inexpressible in JSON) are synthesized by type-driven rules and recorded per component under `synthesized`; element descriptors ({ __element }) resolve against the built dist exactly as Storybook resolves them; a required prop that is neither defaulted nor synthesizable skips the component (harness limitation, recorded, never counted as component evidence)",
       errors:
         "an ssr error means renderToString threw for this component standalone; the recorded message distinguishes browser-API access from missing host context — both are real facts about server-rendering the component outside the app shell",
       timings:
@@ -104,10 +204,22 @@ export function assembleSsrEvidence({
 /**
  * Classify one component measurement into the record the artifact stores.
  */
-export function componentRecord({ skip, ssrError, htmlBytes, hydrationErrors }) {
+export function componentRecord({
+  skip,
+  ssrError,
+  htmlBytes,
+  hydrationErrors,
+  synthesized,
+}) {
   if (skip) return { status: "skipped", reason: skip };
+  const synthesizedField =
+    synthesized && Object.keys(synthesized).length ? { synthesized } : {};
   if (ssrError) {
-    return { status: "ssr-error", ssr: { ok: false, error: ssrError } };
+    return {
+      status: "ssr-error",
+      ssr: { ok: false, error: ssrError },
+      ...synthesizedField,
+    };
   }
   const hydration =
     hydrationErrors == null
@@ -119,6 +231,7 @@ export function componentRecord({ skip, ssrError, htmlBytes, hydrationErrors }) 
     status: hydration?.ok === false ? "hydration-error" : "pass",
     ssr: { ok: true, htmlBytes },
     ...(hydration ? { hydration } : {}),
+    ...synthesizedField,
   };
 }
 

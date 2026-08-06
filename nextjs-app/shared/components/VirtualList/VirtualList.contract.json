@@ -162,7 +162,21 @@
             "aria-label": "Component results",
             "height": 320,
             "itemHeight": 48,
-            "overscan": 3
+            "overscan": 3,
+            "items": [
+                {
+                    "id": "item-1",
+                    "label": "Component result 1"
+                },
+                {
+                    "id": "item-2",
+                    "label": "Component result 2"
+                },
+                {
+                    "id": "item-3",
+                    "label": "Component result 3"
+                }
+            ]
         }
     },
     "composesWith": [
