@@ -205,7 +205,7 @@ export const projects: Project[] = [
     title: "VertaaUX",
     description:
       "UX and accessibility auditing platform for dev teams who treat accessibility as craft, not compliance.",
-    thumbnail: "/images/portfolio/vertaaux/logo-on-white.svg",
+    thumbnail: "/images/portfolio/vertaaux/logo-on-white-thumb.svg",
     category: "ux-design",
     tags: ["AI Product", "UX Intelligence", "Accessibility", "Startup"],
     featured: false,
