@@ -10,7 +10,12 @@ type ArmSummary = {
   firstTryPass: number;
   finalPass: number;
   passViaRepairLoop: number;
-  costUsdPerRun: { mean: number; min: number; max: number } | null;
+  costUsdPerRun: {
+    mean: number;
+    sd?: number | null;
+    min: number;
+    max: number;
+  } | null;
   dsReuse: { hits: number; eligible: number };
 };
 
@@ -88,7 +93,11 @@ export function AgentBenchSection({
                 </TableCell>
                 <TableCell>
                   {arms[arm].costUsdPerRun
-                    ? `$${arms[arm].costUsdPerRun.mean.toFixed(2)}`
+                    ? `$${arms[arm].costUsdPerRun.mean.toFixed(2)}${
+                        arms[arm].costUsdPerRun.sd != null
+                          ? ` ± ${arms[arm].costUsdPerRun.sd.toFixed(2)}`
+                          : ""
+                      }`
                     : "—"}
                 </TableCell>
                 <TableCell>{reuse(arms[arm])}</TableCell>
@@ -142,8 +151,9 @@ export function AgentBenchSection({
         >
           /ds-health/agent-bench.json
         </a>{" "}
-        · n=3 per arm per task; runs are nondeterministic, so treat single
-        deltas as noise and distributions as the signal.
+        · n={tasks[0]?.with.runs ?? "?"} per arm per task; cost is mean ±
+        sample sd. Runs are nondeterministic, so treat single deltas as noise
+        and distributions as the signal.
       </p>
     </section>
   );
