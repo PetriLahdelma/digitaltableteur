@@ -133,6 +133,12 @@ const page = await context.newPage();
 
 if (FORCED_COLORS === "active") {
   await page.emulateMedia({ forcedColors: "active" });
+  // Deterministic forced-colors signal, mirroring .storybook/test-runner.ts:
+  // the preview's isForcedColorsRuntime() reads this before falling back to
+  // matchMedia, so both capture paths agree run-to-run (#1424).
+  await page.addInitScript(() => {
+    window.__DT_FORCED_COLORS__ = "active";
+  });
 }
 
 if (THEME) {

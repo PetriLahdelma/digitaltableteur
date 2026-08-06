@@ -405,6 +405,8 @@ async function captureA11yEvidence(
   // story with `parameters.a11y.disable` or `test: "off"` is not axe-checked, so
   // recording an axe result for it would be a false failure the enforced gate
   // never produces. Evidence must match the gate, not a stricter parallel run.
+  // Since #1424 the preview no longer injects disable/test-off under forced
+  // colors, so under fc these merged keys are author intent again.
   const axeDisabled = a11yParams?.disable === true || a11yParams?.test === "off";
   if (!axeDisabled) {
     try {
@@ -423,8 +425,20 @@ async function captureA11yEvidence(
       if (disabledRules.length) axe = axe.disableRules(disabledRules);
       const results = await axe.analyze();
       const axeViolations = results.violations.length;
-      checks["axe-no-violations"] = { passed: axeViolations === 0, axeViolations };
-      if (forced) checks["forced-colors-real-browser"] = { passed: axeViolations === 0 };
+      if (forced) {
+        // Under forced-colors the a11y addon is quieted (a11y.manual initial
+        // global), so there is no addon gate to mirror: this axe pass IS the
+        // real-browser forced-colors evidence. axe-no-violations stays a
+        // light/dark mirror of the addon gate and is deliberately NOT written
+        // in fc mode, so fc-only findings never contaminate the stable
+        // axe-no-violations tally (#1424).
+        checks["forced-colors-real-browser"] = {
+          passed: axeViolations === 0,
+          axeViolations,
+        };
+      } else {
+        checks["axe-no-violations"] = { passed: axeViolations === 0, axeViolations };
+      }
     } catch (err) {
       console.warn(
         `[a11y-evidence] axe skipped ${storyId}${suffix}: ${(err as Error).message}`,
@@ -472,6 +486,13 @@ const config: TestRunnerConfig = {
     }
     if (FORCED_COLORS === "active") {
       await page.emulateMedia({ forcedColors: "active" });
+      // Deterministic forced-colors signal for the preview: addInitScript runs
+      // before any iframe module evaluates, so isForcedColorsRuntime() no
+      // longer races emulateMedia on warm workers (#1424).
+      await page.addInitScript(() => {
+        (window as { __DT_FORCED_COLORS__?: string }).__DT_FORCED_COLORS__ =
+          "active";
+      });
     }
     await page.goto(iframeURL, { waitUntil: "load" });
   },
@@ -489,6 +510,10 @@ const config: TestRunnerConfig = {
     // Re-assert forced-colors per story in case the page was reset.
     if (FORCED_COLORS === "active") {
       await page.emulateMedia({ forcedColors: "active" });
+      await page.addInitScript(() => {
+        (window as { __DT_FORCED_COLORS__?: string }).__DT_FORCED_COLORS__ =
+          "active";
+      });
     }
     // Force prefers-reduced-motion so JS-driven animations (GSAP/Framer) collapse
     // to no-op tweens. Without this, axe color-contrast misreports partial-opacity
