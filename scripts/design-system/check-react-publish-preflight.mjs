@@ -129,6 +129,18 @@ const automatedChecks = [
     reason: "the package runtime exports and subpath entrypoints match the frozen public API manifest",
   },
   {
+    // Runs after react-public-api so the dist it measures is the one that
+    // check just rebuilt — the exact payload this publish ships.
+    name: "bundle-evidence",
+    command: ["run", "audit:bundle-evidence"],
+    reason: "per-component minified+gzip cost of the built dist is measured and stamped as publish evidence",
+  },
+  {
+    name: "compatibility-manifest",
+    command: ["run", "audit:compatibility"],
+    reason: "the toolchain combinations actually exercised by the gates are recorded as the per-publish compatibility manifest",
+  },
+  {
     name: "site-package-dogfood",
     command: ["run", "check:site-package-dogfood"],
     reason: "the running Next app still dogfoods the package boundary in EN/FI/SV",
