@@ -41,8 +41,19 @@ function stats(values) {
   const clean = values.filter((value) => value != null);
   if (clean.length === 0) return null;
   const mean = clean.reduce((a, b) => a + b, 0) / clean.length;
+  // Sample standard deviation (n-1): the variance readers need to judge
+  // whether an arm delta is signal or run-to-run noise. null below n=2.
+  const sd =
+    clean.length > 1
+      ? Math.sqrt(
+          clean.reduce((total, value) => total + (value - mean) ** 2, 0) /
+            (clean.length - 1),
+        )
+      : null;
   return {
     mean: Number(mean.toFixed(4)),
+    sd: sd == null ? null : Number(sd.toFixed(4)),
+    n: clean.length,
     min: Number(Math.min(...clean).toFixed(4)),
     max: Number(Math.max(...clean).toFixed(4)),
   };
