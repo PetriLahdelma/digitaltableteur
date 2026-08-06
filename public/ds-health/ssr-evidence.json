@@ -1,0 +1,1261 @@
+{
+  "generatedAt": "2026-08-06T21:05:31.796Z",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "version": "0.1.22"
+  },
+  "environment": {
+    "react": "19.2.8",
+    "jsdom": "30.0.1",
+    "ssr": "node renderToString without DOM globals (the server condition Next runs the package in)",
+    "hydration": "hydrateRoot over the server HTML in jsdom with the unit suite's browser-API stubs (matchMedia, ResizeObserver, IntersectionObserver); recoverable hydration errors and hydration console errors fail the check"
+  },
+  "methodology": {
+    "props": "components render with their contract playground defaults; a required prop with no default skips the component (harness limitation, recorded, never counted as component evidence)",
+    "errors": "an ssr error means renderToString threw for this component standalone; the recorded message distinguishes browser-API access from missing host context — both are real facts about server-rendering the component outside the app shell",
+    "timings": "render timings are informational runtime data outside the substance stamp; they vary by machine and never gate anything"
+  },
+  "totals": {
+    "ssrPass": 66,
+    "ssrError": 2,
+    "hydrationClean": 66,
+    "hydrationError": 0,
+    "skipped": 75
+  },
+  "entries": {
+    "actions": {
+      "components": {
+        "Button": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 160
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "ButtonGroup": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 92
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "FilterChip": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: pressed"
+        },
+        "IconButton": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 828
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "SlideButton": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: label, href"
+        },
+        "SplitButton": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 944
+          },
+          "hydration": {
+            "ok": true
+          }
+        }
+      }
+    },
+    "consent": {
+      "components": {
+        "CookieConsent": {
+          "status": "ssr-error",
+          "ssr": {
+            "ok": false,
+            "error": "useCookieConsent must be used within CookieConsentProvider"
+          }
+        }
+      }
+    },
+    "content": {
+      "components": {
+        "AuthorBio": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 0
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "CodeBlockWindow": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1002
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "CodeSnippet": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1829
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "DataTable": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: data, columns, getRowId"
+        },
+        "ExpandableSection": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 194
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Gallery": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: images"
+        },
+        "List": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 129
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "ListItem": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 98
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Logo": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 978
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "ReadingProgress": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: targetRef"
+        },
+        "Table": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: caption"
+        },
+        "TableCell": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 51
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "TableHeaderCell": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 69
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "TableRow": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 32
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Timestamp": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 134
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "ValueCard": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: icon, title, description"
+        },
+        "VirtualList": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: items, getItemKey, getItemProps"
+        },
+        "VirtualListItem": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: posInSet, setSize"
+        },
+        "formatTimestamp": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        }
+      }
+    },
+    "feedback": {
+      "components": {
+        "AlertBanner": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 818
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "EmptyState": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 694
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Progress": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 230
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Skeleton": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 238
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Spinner": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 91
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Toast": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 594
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "ToastStack": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: toasts"
+        },
+        "Tooltip": {
+          "status": "ssr-error",
+          "ssr": {
+            "ok": false,
+            "error": "`Tooltip` must be used within `TooltipProvider`"
+          }
+        },
+        "TooltipContent": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "TooltipProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "TooltipTrigger": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        }
+      }
+    },
+    "forms": {
+      "components": {
+        "Checkbox": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 225
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "CheckboxGroup": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1123
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Combobox": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: onValueChange"
+        },
+        "FileUpload": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 648
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "FormField": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 220
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "GroupLabel": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 82
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "HelperText": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 63
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Label": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 163
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "MultiCombobox": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: onValueChange"
+        },
+        "PhoneInput": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 10117
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Radio": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 213
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "RadioGroup": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 896
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Select": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 832
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "SelectOption": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "SelectableCard": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: value"
+        },
+        "SelectableCardGroup": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "Switch": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 420
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "TextArea": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 315
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "TextInput": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 342
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "optionsFromSelectChildren": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "splitPlaceholderOption": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        }
+      }
+    },
+    "hooks": {
+      "components": {
+        "useFocusTrap": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useMediaQuery": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useOverflow": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useScrollLock": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useScrollOverflow": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useStreamingText": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        }
+      }
+    },
+    "identity": {
+      "components": {
+        "Author": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: name"
+        },
+        "Avatar": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 70
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "AvatarGroup": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 132
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Badge": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 695
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Icon": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 575
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "StatusDot": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 167
+          },
+          "hydration": {
+            "ok": true
+          }
+        }
+      }
+    },
+    "layout": {
+      "components": {
+        "Accordion": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 1878
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "AspectRatio": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 108
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Card": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 360
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Center": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 69
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Container": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 91
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Divider": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 45
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "FlexBox": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 137
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Grid": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 132
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "MacWindowFrame": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 669
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "ResizablePanelGroup": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: panels"
+        },
+        "Section": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 86
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Spacer": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 42
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Stack": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 82
+          },
+          "hydration": {
+            "ok": true
+          }
+        }
+      }
+    },
+    "navigation": {
+      "components": {
+        "Breadcrumb": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 501
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "CommandPalette": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: open, onClose, items"
+        },
+        "LanguageSwitcher": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: onLanguageChange"
+        },
+        "Link": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 85
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Menu": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 8
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "MenuContent": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "MenuItem": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "MenuSeparator": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "MenuSub": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "MenuSubContent": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "MenuSubTrigger": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "MenuTrigger": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "NavLink": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 157
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "NavMenuList": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: items"
+        },
+        "Pagination": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: onPageChange"
+        },
+        "ScrollIndicator": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 621
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "SegmentedControl": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: items, value, onValueChange, ariaLabel"
+        },
+        "SkipLink": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 74
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Tabs": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 967
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "TreeView": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: nodes"
+        },
+        "getTabPanelProps": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        }
+      }
+    },
+    "patterns": {
+      "components": {
+        "CategoryFilter": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: categories, activeCategory, onCategoryChange"
+        },
+        "Modal": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: isOpen"
+        },
+        "PageLayout": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 115
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "ProcessBlock": {
+          "status": "skipped",
+          "reason": "required props without playground defaults: phases"
+        }
+      }
+    },
+    "runtime": {
+      "components": {
+        "AnimationRuntimeProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "CookieConsentProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "DEFAULT_CONSENTS": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "Image": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "ImageProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "LayerProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "LinkProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "NavigationProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "ThemeProvider": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 8
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "ToastRuntimeProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "TranslationProvider": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "clearConsentState": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "cn": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "hasGivenConsent": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "isSvgSrc": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "loadConsentState": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "resolveMotionPlan": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "saveConsentState": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "stateToConsents": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useAnimationContext": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useCookieConsent": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useLayer": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useLocalization": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useNavigationPathname": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useNavigationRouter": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useNavigationRuntime": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useNavigationSearchParams": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useTheme": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useToast": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        },
+        "useTranslate": {
+          "status": "skipped",
+          "reason": "no component contract (not a renderable component export)"
+        }
+      }
+    },
+    "typography": {
+      "components": {
+        "Display": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 110
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Kbd": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 66
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Text": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 83
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "Title": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 67
+          },
+          "hydration": {
+            "ok": true
+          }
+        },
+        "VisuallyHidden": {
+          "status": "pass",
+          "ssr": {
+            "ok": true,
+            "htmlBytes": 43
+          },
+          "hydration": {
+            "ok": true
+          }
+        }
+      }
+    }
+  },
+  "informational": {
+    "timings": {
+      "Button": {
+        "renderToStringMs": 0.28
+      },
+      "ButtonGroup": {
+        "renderToStringMs": 0.049
+      },
+      "IconButton": {
+        "renderToStringMs": 0.076
+      },
+      "SplitButton": {
+        "renderToStringMs": 0.306
+      },
+      "AuthorBio": {
+        "renderToStringMs": 0.007
+      },
+      "CodeBlockWindow": {
+        "renderToStringMs": 0.09
+      },
+      "CodeSnippet": {
+        "renderToStringMs": 0.348
+      },
+      "ExpandableSection": {
+        "renderToStringMs": 0.034
+      },
+      "List": {
+        "renderToStringMs": 0.022
+      },
+      "ListItem": {
+        "renderToStringMs": 0.016
+      },
+      "Logo": {
+        "renderToStringMs": 0.053
+      },
+      "TableCell": {
+        "renderToStringMs": 0.009
+      },
+      "TableHeaderCell": {
+        "renderToStringMs": 0.01
+      },
+      "TableRow": {
+        "renderToStringMs": 0.008
+      },
+      "Timestamp": {
+        "renderToStringMs": 0.049
+      },
+      "AlertBanner": {
+        "renderToStringMs": 0.052
+      },
+      "EmptyState": {
+        "renderToStringMs": 0.052
+      },
+      "Progress": {
+        "renderToStringMs": 0.019
+      },
+      "Skeleton": {
+        "renderToStringMs": 0.024
+      },
+      "Spinner": {
+        "renderToStringMs": 0.01
+      },
+      "Toast": {
+        "renderToStringMs": 0.036
+      },
+      "Checkbox": {
+        "renderToStringMs": 0.03
+      },
+      "CheckboxGroup": {
+        "renderToStringMs": 0.138
+      },
+      "FileUpload": {
+        "renderToStringMs": 0.074
+      },
+      "FormField": {
+        "renderToStringMs": 0.019
+      },
+      "GroupLabel": {
+        "renderToStringMs": 0.016
+      },
+      "HelperText": {
+        "renderToStringMs": 0.011
+      },
+      "Label": {
+        "renderToStringMs": 0.018
+      },
+      "PhoneInput": {
+        "renderToStringMs": 1.217
+      },
+      "Radio": {
+        "renderToStringMs": 0.023
+      },
+      "RadioGroup": {
+        "renderToStringMs": 0.077
+      },
+      "Select": {
+        "renderToStringMs": 0.11
+      },
+      "Switch": {
+        "renderToStringMs": 0.033
+      },
+      "TextArea": {
+        "renderToStringMs": 0.036
+      },
+      "TextInput": {
+        "renderToStringMs": 0.036
+      },
+      "Avatar": {
+        "renderToStringMs": 0.014
+      },
+      "AvatarGroup": {
+        "renderToStringMs": 0.015
+      },
+      "Badge": {
+        "renderToStringMs": 0.047
+      },
+      "Icon": {
+        "renderToStringMs": 0.027
+      },
+      "StatusDot": {
+        "renderToStringMs": 0.014
+      },
+      "Accordion": {
+        "renderToStringMs": 0.105
+      },
+      "AspectRatio": {
+        "renderToStringMs": 0.009
+      },
+      "Card": {
+        "renderToStringMs": 0.027
+      },
+      "Center": {
+        "renderToStringMs": 0.01
+      },
+      "Container": {
+        "renderToStringMs": 0.007
+      },
+      "Divider": {
+        "renderToStringMs": 0.007
+      },
+      "FlexBox": {
+        "renderToStringMs": 0.009
+      },
+      "Grid": {
+        "renderToStringMs": 0.009
+      },
+      "MacWindowFrame": {
+        "renderToStringMs": 0.035
+      },
+      "Section": {
+        "renderToStringMs": 0.009
+      },
+      "Spacer": {
+        "renderToStringMs": 0.007
+      },
+      "Stack": {
+        "renderToStringMs": 0.007
+      },
+      "Breadcrumb": {
+        "renderToStringMs": 0.066
+      },
+      "Link": {
+        "renderToStringMs": 0.011
+      },
+      "Menu": {
+        "renderToStringMs": 0.025
+      },
+      "NavLink": {
+        "renderToStringMs": 0.011
+      },
+      "ScrollIndicator": {
+        "renderToStringMs": 0.048
+      },
+      "SkipLink": {
+        "renderToStringMs": 0.008
+      },
+      "Tabs": {
+        "renderToStringMs": 0.062
+      },
+      "PageLayout": {
+        "renderToStringMs": 0.01
+      },
+      "ThemeProvider": {
+        "renderToStringMs": 0.01
+      },
+      "Display": {
+        "renderToStringMs": 0.008
+      },
+      "Kbd": {
+        "renderToStringMs": 0.007
+      },
+      "Text": {
+        "renderToStringMs": 0.006
+      },
+      "Title": {
+        "renderToStringMs": 0.007
+      },
+      "VisuallyHidden": {
+        "renderToStringMs": 0.007
+      }
+    }
+  },
+  "provenance": {
+    "sourceCommit": "69b2ae84c430c8450feb9920b8d04ea1a0a2f4e5",
+    "workingTreeClean": false,
+    "dirtyPathCount": 2,
+    "generator": {
+      "name": "measure-ssr-evidence",
+      "version": 1,
+      "node": "v22.22.3"
+    }
+  }
+}
