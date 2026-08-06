@@ -127,6 +127,24 @@
   verbatim (numbers are generated, never hand-written); commit the
   regenerated artifact with the run's caveats as notes.
 
+### Compat/perf evidence (design-system, Astryx-gap Phase 4)
+
+- `npm run audit:bundle-evidence` — measures per-component minified+gzip
+  cost of the built `@digitaltableteur/react` dist (two honest numbers:
+  `self` = package code only, all deps external; `withDeps` = marginal cost
+  to a consumer that satisfies the peer contract). Requires a built dist;
+  pass `-- --build` to rebuild first. Output:
+  `public/ds-health/bundle-evidence.json` (provenance-stamped, byte-stable
+  on unchanged substance).
+- `npm run audit:compatibility` — writes the per-publish compatibility
+  manifest: toolchain combinations ACTUALLY exercised by the gates
+  (resolved versions, never ranges), declared peer ranges vs the single
+  exercised version, and a summary of the latest recorded publish
+  preflight. Output: `public/ds-health/compatibility-manifest.json`.
+- Both run automatically inside `check:react-publish-preflight` (after
+  `react-public-api` rebuilds the dist), so every publish regenerates its
+  evidence; commit the regenerated artifacts with the publish PR.
+
 ---
 
 ## Key Patterns
