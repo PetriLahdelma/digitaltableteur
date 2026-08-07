@@ -76,10 +76,10 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
   ariaLabel,
 }) => {
   const Wrapper = as;
-  const bgColors = {
-    light: "var(--color-light-bg)",
-    white: "var(--color-white)",
-    transparent: "transparent",
+  const bgClasses = {
+    light: styles.bgLight,
+    white: styles.bgWhite,
+    transparent: styles.bgTransparent,
   };
 
   const gridClass =
@@ -91,11 +91,9 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
 
   return (
     <Wrapper
-      className={[styles.processBlock, className].filter(Boolean).join(" ")}
-      style={{
-        backgroundColor: bgColors[backgroundColor],
-        paddingBlock: "var(--space-xl, 3rem)",
-      }}
+      className={[styles.processBlock, bgClasses[backgroundColor], className]
+        .filter(Boolean)
+        .join(" ")}
       aria-label={ariaLabel || sectionTitle}
     >
       <PageLayout maxWidth={maxWidth} spacing={spacing} as="div">

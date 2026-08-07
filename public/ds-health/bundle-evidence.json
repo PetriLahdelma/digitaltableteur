@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T09:46:28.271Z",
+  "generatedAt": "2026-08-07T11:46:57.979Z",
   "package": {
     "name": "@digitaltableteur/react",
     "version": "0.1.22"
@@ -1220,17 +1220,17 @@
     "patterns": {
       "js": {
         "self": {
-          "minBytes": 120411,
+          "minBytes": 120426,
           "gzipBytes": 44347
         },
         "withDeps": {
-          "minBytes": 365023,
-          "gzipBytes": 103132
+          "minBytes": 365038,
+          "gzipBytes": 103131
         }
       },
       "css": {
-        "rawBytes": 22381,
-        "gzipBytes": 4359
+        "rawBytes": 22608,
+        "gzipBytes": 4404
       },
       "components": {
         "CategoryFilter": {
@@ -1256,21 +1256,21 @@
         "PageLayout": {
           "self": {
             "minBytes": 31055,
-            "gzipBytes": 10042
+            "gzipBytes": 10043
           },
           "withDeps": {
             "minBytes": 31985,
-            "gzipBytes": 10418
+            "gzipBytes": 10417
           }
         },
         "ProcessBlock": {
           "self": {
-            "minBytes": 35950,
-            "gzipBytes": 11487
+            "minBytes": 35962,
+            "gzipBytes": 11490
           },
           "withDeps": {
-            "minBytes": 36878,
-            "gzipBytes": 11855
+            "minBytes": 36890,
+            "gzipBytes": 11861
           }
         }
       }
@@ -1665,23 +1665,23 @@
   "totals": {
     "js": {
       "self": {
-        "minBytes": 2219335,
+        "minBytes": 2219350,
         "gzipBytes": 739827
       },
       "withDeps": {
-        "minBytes": 4630816,
-        "gzipBytes": 1320794
+        "minBytes": 4630831,
+        "gzipBytes": 1320793
       }
     },
     "css": {
-      "rawBytes": 254807,
-      "gzipBytes": 48011
+      "rawBytes": 255034,
+      "gzipBytes": 48056
     }
   },
   "provenance": {
-    "sourceCommit": "292c7c8d5fa0cd7f89b3c0857510aa835d3342ca",
+    "sourceCommit": "af1915a5b5391c6a05b73e8b40ce2ffc5de91987",
     "workingTreeClean": false,
-    "dirtyPathCount": 2,
+    "dirtyPathCount": 18,
     "generator": {
       "name": "measure-bundle-evidence",
       "version": 1,

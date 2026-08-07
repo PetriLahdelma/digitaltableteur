@@ -1,0 +1,1221 @@
+{
+  "generatedAt": "2026-08-07T11:47:01.591Z",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "version": "0.1.22"
+  },
+  "contract": "OWNER DECISION 2026-08-07: className-override-wins. A consumer's single-class, no-!important selector applied via className wins over component base styles for the probed properties on the root element, under the documented consumer arrangement (design-system CSS before consumer CSS).",
+  "environment": {
+    "chromium": "151.0.7922.34",
+    "playwright": "1.62.1",
+    "reducedMotion": true
+  },
+  "methodology": {
+    "probe": "single class .dtProbeOverride with color, margin-block-start, background-color; sentinel values no token resolves to; probe stylesheet loads after design-system CSS, mirroring the documented consumer import order",
+    "rendering": "components render from the built dist with the SSR-evidence render plans (contract playground defaults, type-driven function/ref synthesis, descriptor resolution); computed styles read in real Chromium with reduced motion",
+    "themingVars": "each contract-declared theming var is probed for liveness: setting it on a wrapper must change some computed style in the component subtree; zero declared vars is reported honestly, not hidden",
+    "skips": "a skip is a harness limitation (no className prop, no in-flow root such as portals, or an unrenderable plan), recorded with its reason and never counted as component evidence"
+  },
+  "totals": {
+    "pass": 47,
+    "fail": 0,
+    "renderError": 2,
+    "skipped": 94,
+    "themingVarsDeclared": 0
+  },
+  "components": {
+    "Accordion": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "AlertBanner": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "AnimationRuntimeProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "AspectRatio": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Author": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "AuthorBio": {
+      "status": "skipped",
+      "reason": "renders no in-flow root element (portal or null render)"
+    },
+    "Avatar": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "AvatarGroup": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Badge": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Breadcrumb": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Button": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "ButtonGroup": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Card": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "CategoryFilter": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Center": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Checkbox": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "CheckboxGroup": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "CodeBlockWindow": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "CodeSnippet": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Combobox": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "CommandPalette": {
+      "status": "skipped",
+      "reason": "renders no in-flow root element (portal or null render)"
+    },
+    "Container": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "CookieConsent": {
+      "status": "render-error",
+      "error": "useCookieConsent must be used within CookieConsentProvider"
+    },
+    "CookieConsentProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "DEFAULT_CONSENTS": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "DataTable": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Display": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Divider": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "EmptyState": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "ExpandableSection": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "FileUpload": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "FilterChip": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "FlexBox": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "FormField": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Gallery": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Grid": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "GroupLabel": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "HelperText": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Icon": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "IconButton": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Image": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "ImageProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "Kbd": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Label": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "LanguageSwitcher": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "LayerProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "Link": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "LinkProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "List": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "ListItem": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Logo": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "MacWindowFrame": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Menu": {
+      "status": "skipped",
+      "reason": "renders no in-flow root element (portal or null render)"
+    },
+    "MenuContent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuItem": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuSeparator": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuSub": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuSubContent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuSubTrigger": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuTrigger": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "Modal": {
+      "status": "skipped",
+      "reason": "renders no in-flow root element (portal or null render)"
+    },
+    "MultiCombobox": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "NavLink": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "NavMenuList": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "NavigationProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "PageLayout": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Pagination": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "PhoneInput": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "ProcessBlock": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Progress": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Radio": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "RadioGroup": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "ReadingProgress": {
+      "status": "skipped",
+      "reason": "renders no in-flow root element (portal or null render)"
+    },
+    "ResizablePanelGroup": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "ScrollIndicator": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Section": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "SegmentedControl": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Select": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "SelectOption": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "SelectableCard": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "SelectableCardGroup": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "Skeleton": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "SkipLink": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "SlideButton": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Spacer": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Spinner": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "SplitButton": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Stack": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "StatusDot": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Switch": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Table": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "TableCell": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "TableHeaderCell": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "TableRow": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "Tabs": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Text": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "TextArea": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "TextInput": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "ThemeProvider": {
+      "status": "skipped",
+      "reason": "renders no in-flow root element (portal or null render)"
+    },
+    "Timestamp": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Title": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Toast": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "ToastRuntimeProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "ToastStack": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "Tooltip": {
+      "status": "render-error",
+      "error": "`Tooltip` must be used within `TooltipProvider`"
+    },
+    "TooltipContent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "TooltipProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "TooltipTrigger": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "TranslationProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "TreeView": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "ValueCard": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "VirtualList": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "VirtualListItem": {
+      "status": "skipped",
+      "reason": "contract declares neither className nor theming.vars (out of scope)"
+    },
+    "VisuallyHidden": {
+      "overrideWins": {
+        "ok": true,
+        "props": {
+          "color": {
+            "pass": true
+          },
+          "margin-block-start": {
+            "pass": true
+          },
+          "background-color": {
+            "pass": true
+          }
+        }
+      },
+      "status": "pass"
+    },
+    "clearConsentState": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "cn": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "formatTimestamp": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "getTabPanelProps": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "hasGivenConsent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "isSvgSrc": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "loadConsentState": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "optionsFromSelectChildren": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "resolveMotionPlan": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "saveConsentState": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "splitPlaceholderOption": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "stateToConsents": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useAnimationContext": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useCookieConsent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useFocusTrap": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useLayer": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useLocalization": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useMediaQuery": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useNavigationPathname": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useNavigationRouter": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useNavigationRuntime": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useNavigationSearchParams": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useOverflow": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useScrollLock": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useScrollOverflow": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useStreamingText": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useTheme": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useToast": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useTranslate": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    }
+  },
+  "provenance": {
+    "sourceCommit": "af1915a5b5391c6a05b73e8b40ce2ffc5de91987",
+    "workingTreeClean": false,
+    "dirtyPathCount": 18,
+    "generator": {
+      "name": "measure-override-evidence",
+      "version": 1,
+      "node": "v22.22.3"
+    }
+  }
+}

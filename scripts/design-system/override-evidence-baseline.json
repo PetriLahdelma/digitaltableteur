@@ -1,0 +1,4 @@
+{
+  "note": "Approved override-precedence failures (docs/OVERRIDE_EVIDENCE_SPEC.md). Each entry is { \"<Component>\": { \"note\": <why this is approved debt>, \"on\": <date> } }. Never blanket-update; every entry is an explained, dated decision and a burn-down candidate.",
+  "entries": {}
+}
