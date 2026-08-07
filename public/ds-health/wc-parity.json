@@ -1,0 +1,1586 @@
+{
+  "generatedAt": "2026-08-07T20:20:10.947Z",
+  "package": {
+    "name": "@digitaltableteur/web-components",
+    "version": "0.10.0",
+    "reactPackageVersion": "0.1.24"
+  },
+  "coverage": {
+    "nativeTags": 87,
+    "contractedReactExports": 92,
+    "pairsCompared": 85,
+    "note": "native twins are built component by component (tribunal order); absence of a twin means not built yet, not divergence"
+  },
+  "roster": {
+    "enforced": [
+      "AspectRatio",
+      "Avatar",
+      "Badge",
+      "BlogMediaImage",
+      "Container",
+      "CookieConsent",
+      "Divider",
+      "GroupLabel",
+      "IconButton",
+      "List",
+      "ListItem",
+      "Menu",
+      "NavMenuList",
+      "SelectOption",
+      "SelectableCard",
+      "SkipLink",
+      "SplitButton",
+      "Testimonial",
+      "Text",
+      "VisuallyHidden"
+    ],
+    "enforcedCount": 20,
+    "exceptions": []
+  },
+  "methodology": {
+    "source": "check:rendered-parity:ci — React story vs native twin screenshotted in the same Storybook across the viewport/theme matrix; pixel comparison at the gate's tolerance plus integer geometry deltas",
+    "substance": "gate verdicts (pass/geometryPass counts) and max geometry deltas are stamped substance; raw pixel-diff ratios wobble with antialiasing and live under informational",
+    "enforcement": "roster-based ratchet: enforced components fail the underlying gate on regression, and this evidence cannot regenerate over a red gate"
+  },
+  "totals": {
+    "comparisons": 413,
+    "visualParity": "145/413",
+    "geometryParity": "197/413",
+    "pixelTolerance": 0.01
+  },
+  "components": {
+    "Accordion": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 360,
+        "height": 0
+      }
+    },
+    "AlertBanner": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 456,
+        "height": 23
+      }
+    },
+    "AspectRatio": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Author": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Avatar": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "AvatarGroup": {
+      "comparisons": 5,
+      "visualPass": 4,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 2,
+        "height": 2
+      }
+    },
+    "Badge": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "BlogMediaImage": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "BlogNav": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 292,
+        "height": 2
+      }
+    },
+    "Breadcrumb": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 4,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 2,
+        "height": 11
+      }
+    },
+    "Button": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 128,
+        "height": 0
+      }
+    },
+    "ButtonGroup": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 4,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 100,
+        "height": 0
+      }
+    },
+    "Card": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 2,
+        "height": 4
+      }
+    },
+    "CategoryFilter": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 1,
+        "height": 3
+      }
+    },
+    "Center": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 2,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 448,
+        "height": 0
+      }
+    },
+    "Checkbox": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 49,
+        "height": 0
+      }
+    },
+    "CheckboxGroup": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 18
+      }
+    },
+    "CodeBlockWindow": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 102,
+        "height": 69
+      }
+    },
+    "CodeSnippet": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 264,
+        "height": 529
+      }
+    },
+    "Combobox": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 620,
+        "height": 16
+      }
+    },
+    "CommandPalette": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 212,
+        "height": 64
+      }
+    },
+    "Container": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "CookieConsent": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Display": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 335,
+        "height": 124
+      }
+    },
+    "Divider": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "EmptyState": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 37,
+        "height": 50
+      }
+    },
+    "ExpandableSection": {
+      "comparisons": 1,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 39,
+        "height": 3
+      }
+    },
+    "FileUpload": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 21
+      }
+    },
+    "FilterChip": {
+      "comparisons": 1,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 32,
+        "height": 2
+      }
+    },
+    "FlexBox": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 233,
+        "height": 58
+      }
+    },
+    "FormField": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 2
+      }
+    },
+    "Gallery": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 100,
+        "height": 427
+      }
+    },
+    "Grid": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 339,
+        "height": 140
+      }
+    },
+    "GroupLabel": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "HelperText": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 46,
+        "height": 45
+      }
+    },
+    "Icon": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 18,
+        "height": 18
+      }
+    },
+    "IconButton": {
+      "comparisons": 1,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Kbd": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 76,
+        "height": 0
+      }
+    },
+    "Label": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 22,
+        "height": 3
+      }
+    },
+    "LanguageSwitcher": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 4,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 26,
+        "height": 26
+      }
+    },
+    "Link": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 68,
+        "height": 16
+      }
+    },
+    "List": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "ListItem": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Logo": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 9,
+        "height": 0
+      }
+    },
+    "MacWindowFrame": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 302,
+        "height": 89
+      }
+    },
+    "Menu": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Modal": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 34,
+        "height": 228
+      }
+    },
+    "MultiCombobox": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 424,
+        "height": 42
+      }
+    },
+    "NavLink": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 231,
+        "height": 6
+      }
+    },
+    "NavMenuList": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Pagination": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 14,
+        "height": 0
+      }
+    },
+    "PersonCard": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 50,
+        "height": 37
+      }
+    },
+    "PhoneInput": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 96,
+        "height": 35
+      }
+    },
+    "Progress": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 616,
+        "height": 0
+      }
+    },
+    "Radio": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 26,
+        "height": 33
+      }
+    },
+    "RadioGroup": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 60,
+        "height": 33
+      }
+    },
+    "ReadingProgress": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 4,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 510,
+        "height": 151
+      }
+    },
+    "Section": {
+      "comparisons": 5,
+      "visualPass": 2,
+      "geometryPass": 3,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 522,
+        "height": 1
+      }
+    },
+    "SegmentedControl": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 18,
+        "height": 0
+      }
+    },
+    "Select": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 18,
+        "height": 101
+      }
+    },
+    "SelectOption": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "SelectableCard": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "SelectableCardGroup": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 2
+      }
+    },
+    "Skeleton": {
+      "comparisons": 5,
+      "visualPass": 4,
+      "geometryPass": 4,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 983,
+        "height": 63
+      }
+    },
+    "SkipLink": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "SocialShare": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 2,
+        "height": 0
+      }
+    },
+    "Spacer": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 1
+      }
+    },
+    "Spinner": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 10,
+        "height": 10
+      }
+    },
+    "SplitButton": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Stack": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 234,
+        "height": 4
+      }
+    },
+    "StatusDot": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 61,
+        "height": 0
+      }
+    },
+    "Switch": {
+      "comparisons": 5,
+      "visualPass": 2,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 1
+      }
+    },
+    "Tabs": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 176,
+        "height": 23
+      }
+    },
+    "Testimonial": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "Text": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "TextArea": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 18,
+        "height": 40
+      }
+    },
+    "TextInput": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 224,
+        "height": 91
+      }
+    },
+    "Timestamp": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 4,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 14,
+        "height": 2
+      }
+    },
+    "Title": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 134,
+        "height": 60
+      }
+    },
+    "Toast": {
+      "comparisons": 5,
+      "visualPass": 1,
+      "geometryPass": 2,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 18,
+        "height": 7
+      }
+    },
+    "ToastStack": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 7,
+        "height": 32
+      }
+    },
+    "Tooltip": {
+      "comparisons": 5,
+      "visualPass": 4,
+      "geometryPass": 5,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 4,
+        "height": 3
+      }
+    },
+    "ValueCard": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 0,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 106,
+        "height": 56
+      }
+    },
+    "VisuallyHidden": {
+      "comparisons": 5,
+      "visualPass": 5,
+      "geometryPass": 5,
+      "enforced": true,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    "WorkNav": {
+      "comparisons": 5,
+      "visualPass": 0,
+      "geometryPass": 1,
+      "enforced": false,
+      "exceptedStories": [],
+      "maxGeometryDelta": {
+        "width": 292,
+        "height": 2
+      }
+    }
+  },
+  "informational": {
+    "pixelRatios": {
+      "Button": {
+        "Default (desktop-light)": 0.1085,
+        "Example (desktop-light)": 0.3596,
+        "Example (mobile-light)": 0.3859,
+        "Example (desktop-dark)": 0.5418,
+        "Example (desktop-forced-colors)": 0.316
+      },
+      "Badge": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0.0053,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "IconButton": {
+        "Default (desktop-light)": 0
+      },
+      "ButtonGroup": {
+        "Default (desktop-light)": 0.0852,
+        "Example (desktop-light)": 0.0488,
+        "Example (mobile-light)": 0.0465,
+        "Example (desktop-dark)": 0.0482,
+        "Example (desktop-forced-colors)": 0.0494
+      },
+      "FilterChip": {
+        "Default (desktop-light)": 0.4016
+      },
+      "Link": {
+        "Default (desktop-light)": 0.0875,
+        "Example (desktop-light)": 0.0957,
+        "Example (mobile-light)": 0.0865,
+        "Example (desktop-dark)": 0.3642,
+        "Example (desktop-forced-colors)": 0.0954
+      },
+      "NavLink": {
+        "Default (desktop-light)": 0.0872,
+        "Example (desktop-light)": 0.0433,
+        "Example (mobile-light)": 0.0369,
+        "Example (desktop-dark)": 0.6518,
+        "Example (desktop-forced-colors)": 0.0435
+      },
+      "SkipLink": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Spinner": {
+        "Default (desktop-light)": 0.0201,
+        "Example (desktop-light)": 0.0756,
+        "Example (mobile-light)": 0.0841,
+        "Example (desktop-dark)": 0.3702,
+        "Example (desktop-forced-colors)": 0.0903
+      },
+      "Progress": {
+        "Default (desktop-light)": 0.0655,
+        "Example (desktop-light)": 0.0453,
+        "Example (mobile-light)": 0.002,
+        "Example (desktop-dark)": 0.1384,
+        "Example (desktop-forced-colors)": 0.0559
+      },
+      "StatusDot": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0878,
+        "Example (mobile-light)": 0.0891,
+        "Example (desktop-dark)": 0.3668,
+        "Example (desktop-forced-colors)": 0.0711
+      },
+      "Divider": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Icon": {
+        "Default (desktop-light)": 0.0869,
+        "Example (desktop-light)": 0.2018,
+        "Example (mobile-light)": 0.2188,
+        "Example (desktop-dark)": 0.4144,
+        "Example (desktop-forced-colors)": 0.2018
+      },
+      "AlertBanner": {
+        "Default (desktop-light)": 0.0366,
+        "Example (desktop-light)": 0.022,
+        "Example (mobile-light)": 0.0484,
+        "Example (desktop-dark)": 0.4712,
+        "Example (desktop-forced-colors)": 0.0222
+      },
+      "Text": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Title": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.1611,
+        "Example (mobile-light)": 0.1078,
+        "Example (desktop-dark)": 0.2528,
+        "Example (desktop-forced-colors)": 0.1606
+      },
+      "List": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Section": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0007,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0.5309,
+        "Example (desktop-forced-colors)": 0.0126
+      },
+      "Stack": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0317,
+        "Example (mobile-light)": 0.0326,
+        "Example (desktop-dark)": 0.6509,
+        "Example (desktop-forced-colors)": 0.0319
+      },
+      "Card": {
+        "Default (desktop-light)": 0.0427,
+        "Example (desktop-light)": 0.0484,
+        "Example (mobile-light)": 0.0527,
+        "Example (desktop-dark)": 0.0549,
+        "Example (desktop-forced-colors)": 0.0555
+      },
+      "Center": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0091,
+        "Example (mobile-light)": 0.0112,
+        "Example (desktop-dark)": 0.4604,
+        "Example (desktop-forced-colors)": 0.0093
+      },
+      "Container": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Spacer": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0267,
+        "Example (mobile-light)": 0.023,
+        "Example (desktop-dark)": 0.0381,
+        "Example (desktop-forced-colors)": 0.0272
+      },
+      "AspectRatio": {
+        "Default (desktop-light)": 0.0015,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "EmptyState": {
+        "Default (desktop-light)": 0.0797,
+        "Example (desktop-light)": 0.0693,
+        "Example (mobile-light)": 0.068,
+        "Example (desktop-dark)": 0.244,
+        "Example (desktop-forced-colors)": 0.0721
+      },
+      "Label": {
+        "Default (desktop-light)": 0.1094,
+        "Example (desktop-light)": 0.1028,
+        "Example (mobile-light)": 0.0838,
+        "Example (desktop-dark)": 0.2324,
+        "Example (desktop-forced-colors)": 0.1042
+      },
+      "HelperText": {
+        "Default (desktop-light)": 0.0998,
+        "Example (desktop-light)": 0.0526,
+        "Example (mobile-light)": 0.0592,
+        "Example (desktop-dark)": 0.5466,
+        "Example (desktop-forced-colors)": 0.0495
+      },
+      "FormField": {
+        "Default (desktop-light)": 0.0185,
+        "Example (desktop-light)": 0.0185,
+        "Example (mobile-light)": 0.0199,
+        "Example (desktop-dark)": 0.0298,
+        "Example (desktop-forced-colors)": 0.0191
+      },
+      "TextInput": {
+        "Default (desktop-light)": 0.0054,
+        "Example (desktop-light)": 0.1369,
+        "Example (mobile-light)": 0.208,
+        "Example (desktop-dark)": 0.653,
+        "Example (desktop-forced-colors)": 0.0229
+      },
+      "TextArea": {
+        "Default (desktop-light)": 0.0058,
+        "Example (desktop-light)": 0.5605,
+        "Example (mobile-light)": 0.5387,
+        "Example (desktop-dark)": 0.2042,
+        "Example (desktop-forced-colors)": 0.022
+      },
+      "Checkbox": {
+        "Default (desktop-light)": 0.003,
+        "Example (desktop-light)": 0.1024,
+        "Example (mobile-light)": 0.0972,
+        "Example (desktop-dark)": 0.3216,
+        "Example (desktop-forced-colors)": 0.1118
+      },
+      "CheckboxGroup": {
+        "Default (desktop-light)": 0.0688,
+        "Example (desktop-light)": 0.0688,
+        "Example (mobile-light)": 0.0623,
+        "Example (desktop-dark)": 0.1329,
+        "Example (desktop-forced-colors)": 0.07
+      },
+      "Radio": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0377,
+        "Example (mobile-light)": 0.0471,
+        "Example (desktop-dark)": 0.5623,
+        "Example (desktop-forced-colors)": 0.038
+      },
+      "RadioGroup": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0523,
+        "Example (mobile-light)": 0.0276,
+        "Example (desktop-dark)": 0.3693,
+        "Example (desktop-forced-colors)": 0.0474
+      },
+      "Select": {
+        "Default (desktop-light)": 0.0015,
+        "Example (desktop-light)": 0.0186,
+        "Example (mobile-light)": 0.0179,
+        "Example (desktop-dark)": 0.5043,
+        "Example (desktop-forced-colors)": 0.0186
+      },
+      "SelectOption": {
+        "Default (desktop-light)": 0.0005,
+        "Example (desktop-light)": 0.0009,
+        "Example (mobile-light)": 0.0025,
+        "Example (desktop-dark)": 0.0009,
+        "Example (desktop-forced-colors)": 0.0009
+      },
+      "Avatar": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "AvatarGroup": {
+        "Default (desktop-light)": 0.0005,
+        "Example (desktop-light)": 0.0005,
+        "Example (mobile-light)": 0.0006,
+        "Example (desktop-dark)": 0.0005,
+        "Example (desktop-forced-colors)": 0.0312
+      },
+      "Display": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0521,
+        "Example (mobile-light)": 0.1141,
+        "Example (desktop-dark)": 0.3971,
+        "Example (desktop-forced-colors)": 0.0519
+      },
+      "FlexBox": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0236,
+        "Example (mobile-light)": 0.0248,
+        "Example (desktop-dark)": 0.5298,
+        "Example (desktop-forced-colors)": 0.0235
+      },
+      "Grid": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0072,
+        "Example (mobile-light)": 0.0118,
+        "Example (desktop-dark)": 0.436,
+        "Example (desktop-forced-colors)": 0.007
+      },
+      "Kbd": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0499,
+        "Example (mobile-light)": 0.0475,
+        "Example (desktop-dark)": 0.5035,
+        "Example (desktop-forced-colors)": 0.0658
+      },
+      "ListItem": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0.0001
+      },
+      "Skeleton": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0.552
+      },
+      "VisuallyHidden": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Switch": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0.0206,
+        "Example (desktop-dark)": 0.0128,
+        "Example (desktop-forced-colors)": 0.0109
+      },
+      "Modal": {
+        "Default (desktop-light)": 0.5947,
+        "Example (desktop-light)": 0.5947,
+        "Example (mobile-light)": 0.3364,
+        "Example (desktop-dark)": 0.5304,
+        "Example (desktop-forced-colors)": 0.0077
+      },
+      "Tooltip": {
+        "Default (desktop-light)": 0.1344,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Menu": {
+        "Default (desktop-light)": 0.0041,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "SplitButton": {
+        "Default (desktop-light)": 0.0011,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0.0002,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Tabs": {
+        "Default (desktop-light)": 0.2255,
+        "Example (desktop-light)": 0.0894,
+        "Example (mobile-light)": 0.0992,
+        "Example (desktop-dark)": 0.6067,
+        "Example (desktop-forced-colors)": 0.0866
+      },
+      "SegmentedControl": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0338,
+        "Example (mobile-light)": 0.0296,
+        "Example (desktop-dark)": 0.1046,
+        "Example (desktop-forced-colors)": 0.089
+      },
+      "Accordion": {
+        "Default (desktop-light)": 0.0171,
+        "Example (desktop-light)": 0.011,
+        "Example (mobile-light)": 0.008,
+        "Example (desktop-dark)": 0.3655,
+        "Example (desktop-forced-colors)": 0.011
+      },
+      "ExpandableSection": {
+        "Default (desktop-light)": 0.0455
+      },
+      "CommandPalette": {
+        "Default (desktop-light)": 0.2582,
+        "Example (desktop-light)": 0.1388,
+        "Example (mobile-light)": 0.1471,
+        "Example (desktop-dark)": 0.1533,
+        "Example (desktop-forced-colors)": 0.1132
+      },
+      "NavMenuList": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "LanguageSwitcher": {
+        "Default (desktop-light)": 0.055,
+        "Example (desktop-light)": 0.055,
+        "Example (mobile-light)": 0.0893,
+        "Example (desktop-dark)": 0.0782,
+        "Example (desktop-forced-colors)": 0.0651
+      },
+      "Toast": {
+        "Default (desktop-light)": 0.0208,
+        "Example (desktop-light)": 0.073,
+        "Example (mobile-light)": 0.0657,
+        "Example (desktop-dark)": 0.0068,
+        "Example (desktop-forced-colors)": 0.4656
+      },
+      "ToastStack": {
+        "Default (desktop-light)": 0.0961,
+        "Example (desktop-light)": 0.0961,
+        "Example (mobile-light)": 0.1868,
+        "Example (desktop-dark)": 0.0952,
+        "Example (desktop-forced-colors)": 0.3771
+      },
+      "PhoneInput": {
+        "Default (desktop-light)": 0.0426,
+        "Example (desktop-light)": 0.0401,
+        "Example (mobile-light)": 0.0485,
+        "Example (desktop-dark)": 0.3722,
+        "Example (desktop-forced-colors)": 0.0405
+      },
+      "Combobox": {
+        "Default (desktop-light)": 0.0231,
+        "Example (desktop-light)": 0.0225,
+        "Example (mobile-light)": 0.0365,
+        "Example (desktop-dark)": 0.6742,
+        "Example (desktop-forced-colors)": 0.0552
+      },
+      "MultiCombobox": {
+        "Default (desktop-light)": 0.0403,
+        "Example (desktop-light)": 0.0414,
+        "Example (mobile-light)": 0.0601,
+        "Example (desktop-dark)": 0.6094,
+        "Example (desktop-forced-colors)": 0.0805
+      },
+      "CookieConsent": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0.0002,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "CodeSnippet": {
+        "Default (desktop-light)": 0.0237,
+        "Example (desktop-light)": 0.0237,
+        "Example (mobile-light)": 0.0462,
+        "Example (desktop-dark)": 0.1571,
+        "Example (desktop-forced-colors)": 0.0242
+      },
+      "CodeBlockWindow": {
+        "Default (desktop-light)": 0.0189,
+        "Example (desktop-light)": 0.0187,
+        "Example (mobile-light)": 0.0313,
+        "Example (desktop-dark)": 0.1893,
+        "Example (desktop-forced-colors)": 0.019
+      },
+      "Breadcrumb": {
+        "Default (desktop-light)": 0.0287,
+        "Example (desktop-light)": 0.0225,
+        "Example (mobile-light)": 0.0125,
+        "Example (desktop-dark)": 0.047,
+        "Example (desktop-forced-colors)": 0.0726
+      },
+      "Pagination": {
+        "Default (desktop-light)": 0.0271,
+        "Example (desktop-light)": 0.0266,
+        "Example (mobile-light)": 0.0925,
+        "Example (desktop-dark)": 0.0496,
+        "Example (desktop-forced-colors)": 0.0905
+      },
+      "Timestamp": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0873,
+        "Example (mobile-light)": 0.0886,
+        "Example (desktop-dark)": 0.1298,
+        "Example (desktop-forced-colors)": 0.0912
+      },
+      "GroupLabel": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "MacWindowFrame": {
+        "Default (desktop-light)": 0.0692,
+        "Example (desktop-light)": 0.0632,
+        "Example (mobile-light)": 0.0816,
+        "Example (desktop-dark)": 0.3536,
+        "Example (desktop-forced-colors)": 0.0385
+      },
+      "FileUpload": {
+        "Default (desktop-light)": 0.0423,
+        "Example (desktop-light)": 0.0423,
+        "Example (mobile-light)": 0.0582,
+        "Example (desktop-dark)": 0.0926,
+        "Example (desktop-forced-colors)": 0.0431
+      },
+      "CategoryFilter": {
+        "Default (desktop-light)": 0.0391,
+        "Example (desktop-light)": 0.0441,
+        "Example (mobile-light)": 0.024,
+        "Example (desktop-dark)": 0.0592,
+        "Example (desktop-forced-colors)": 0.129
+      },
+      "Gallery": {
+        "Default (desktop-light)": 0.4688,
+        "Example (desktop-light)": 0.592,
+        "Example (mobile-light)": 0.7847,
+        "Example (desktop-dark)": 0.8087,
+        "Example (desktop-forced-colors)": 0.4415
+      },
+      "ReadingProgress": {
+        "Default (desktop-light)": 0.0341,
+        "Example (desktop-light)": 0.0341,
+        "Example (mobile-light)": 0.0519,
+        "Example (desktop-dark)": 0.0326,
+        "Example (desktop-forced-colors)": 0.0359
+      },
+      "SelectableCard": {
+        "Default (desktop-light)": 0.0088,
+        "Example (desktop-light)": 0.0046,
+        "Example (mobile-light)": 0.0052,
+        "Example (desktop-dark)": 0.0034,
+        "Example (desktop-forced-colors)": 0
+      },
+      "SelectableCardGroup": {
+        "Default (desktop-light)": 0.0023,
+        "Example (desktop-light)": 0.0023,
+        "Example (mobile-light)": 0.0063,
+        "Example (desktop-dark)": 0.0095,
+        "Example (desktop-forced-colors)": 0.0023
+      },
+      "Logo": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0.0897,
+        "Example (mobile-light)": 0.0928,
+        "Example (desktop-dark)": 0.1326,
+        "Example (desktop-forced-colors)": 0.0904
+      },
+      "BlogMediaImage": {
+        "Default (desktop-light)": 0,
+        "Example (desktop-light)": 0,
+        "Example (mobile-light)": 0,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0
+      },
+      "Author": {
+        "Default (desktop-light)": 0.0844,
+        "Example (desktop-light)": 0.0844,
+        "Example (mobile-light)": 0.111,
+        "Example (desktop-dark)": 0.0841,
+        "Example (desktop-forced-colors)": 0.0844
+      },
+      "SocialShare": {
+        "Default (desktop-light)": 0.0234,
+        "Example (desktop-light)": 0.0234,
+        "Example (mobile-light)": 0.0045,
+        "Example (desktop-dark)": 0.0257,
+        "Example (desktop-forced-colors)": 0.0239
+      },
+      "BlogNav": {
+        "Default (desktop-light)": 0.0253,
+        "Example (desktop-light)": 0.0253,
+        "Example (mobile-light)": 0.0202,
+        "Example (desktop-dark)": 0.3386,
+        "Example (desktop-forced-colors)": 0.0255
+      },
+      "WorkNav": {
+        "Default (desktop-light)": 0.0228,
+        "Example (desktop-light)": 0.0228,
+        "Example (mobile-light)": 0.0528,
+        "Example (desktop-dark)": 0.3374,
+        "Example (desktop-forced-colors)": 0.023
+      },
+      "PersonCard": {
+        "Default (desktop-light)": 0.113,
+        "Example (desktop-light)": 0.113,
+        "Example (mobile-light)": 0.074,
+        "Example (desktop-dark)": 0.3436,
+        "Example (desktop-forced-colors)": 0.1104
+      },
+      "Testimonial": {
+        "Default (desktop-light)": 0.0001,
+        "Example (desktop-light)": 0.0001,
+        "Example (mobile-light)": 0.0012,
+        "Example (desktop-dark)": 0,
+        "Example (desktop-forced-colors)": 0.0001
+      },
+      "ValueCard": {
+        "Default (desktop-light)": 0.0355,
+        "Example (desktop-light)": 0.0343,
+        "Example (mobile-light)": 0.0436,
+        "Example (desktop-dark)": 0.1485,
+        "Example (desktop-forced-colors)": 0.0347
+      }
+    },
+    "sweepGeneratedAt": "2026-08-07T20:20:10.644Z"
+  },
+  "provenance": {
+    "sourceCommit": "e51b381c3ca92a98f51811b858c78e86a8b34608",
+    "workingTreeClean": false,
+    "dirtyPathCount": 9,
+    "generator": {
+      "name": "generate-wc-parity-evidence",
+      "version": 1,
+      "node": "v22.22.3"
+    }
+  }
+}

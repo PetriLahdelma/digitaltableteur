@@ -8,8 +8,11 @@ import {
 const styles = `
   :host { display: block; }
   :host([hidden]) { display: none; }
-  blockquote { box-sizing: border-box; margin: 0; padding: 1.5rem; border: 1px solid var(--color-gray-light); border-radius: .5rem; background: var(--color-white); color: var(--color-text); box-shadow: 0 2px 4px rgb(0 0 0 / 10%); transition: box-shadow .2s ease-in-out; }
-  blockquote:hover { box-shadow: 0 4px 8px rgb(0 0 0 / 15%); }
+  /* Card chrome mirrors Testimonial.module.css post-#1308/#1365: ramp
+     tokens replace the retired --color-gray-light phantom and the
+     hardcoded shadow/radius. */
+  blockquote { box-sizing: border-box; margin: 0; padding: 1.5rem; border: 1px solid var(--color-border-light, #ccc); border-radius: var(--radius-lg, .5rem); background: var(--color-white); color: var(--color-text); box-shadow: var(--shadow-sm, 0 1px 2px rgb(0 0 0 / 6%)); transition: box-shadow .2s ease-in-out; }
+  blockquote:hover { box-shadow: var(--shadow-md, 0 4px 12px rgb(0 0 0 / 10%)); }
   /* The React card composes the Text component (quote + name = Text M, title
      row = Text S) whose sizing and trailing margin live in Text.module.css;
      shadow DOM must restate them. */
@@ -38,7 +41,11 @@ const styles = `
   a:hover { color: var(--color-linkedin-hover, #005885); }
   .meta { margin: 0 0 var(--space-layout-16, 1rem); color: var(--color-gray-medium); font-family: var(--font-text); font-size: var(--font-size-text-s, .875rem); font-style: italic; line-height: 1.4; }
   @media (prefers-reduced-motion: reduce) { blockquote, a { transition: none; } }
-  @media (forced-colors: active) { blockquote { border-color: CanvasText; background: Canvas; color: CanvasText; box-shadow: none; } a { color: LinkText; } }
+  /* Border color is NOT overridden here: React keeps its author color and
+     lets forced-colors map it, and the parity gate treats React as the
+     visual source of truth — an explicit CanvasText ring rendered a shade
+     apart (2026-08-07). */
+  @media (forced-colors: active) { blockquote { background: Canvas; color: CanvasText; box-shadow: none; } a { color: LinkText; } }
 `;
 
 export class DtTestimonialElement extends DigitaltableteurElement {

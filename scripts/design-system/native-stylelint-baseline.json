@@ -1,7 +1,7 @@
 {
   "generatedBy": "npm run lint:css:update",
   "templateCount": 86,
-  "warningCount": 627,
+  "warningCount": 626,
   "warnings": [
     {
       "column": 21,
@@ -1932,7 +1932,7 @@
     {
       "column": 13,
       "file": "packages/web-components/src/native/group-label.ts",
-      "line": 64,
+      "line": 66,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -1950,7 +1950,7 @@
     {
       "column": 13,
       "file": "packages/web-components/src/native/group-label.ts",
-      "line": 64,
+      "line": 66,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
@@ -1959,7 +1959,7 @@
     {
       "column": 40,
       "file": "packages/web-components/src/native/group-label.ts",
-      "line": 50,
+      "line": 52,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
@@ -1968,7 +1968,7 @@
     {
       "column": 40,
       "file": "packages/web-components/src/native/group-label.ts",
-      "line": 58,
+      "line": 60,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
@@ -1977,7 +1977,7 @@
     {
       "column": 18,
       "file": "packages/web-components/src/native/group-label.ts",
-      "line": 66,
+      "line": 68,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
@@ -1986,7 +1986,7 @@
     {
       "column": 17,
       "file": "packages/web-components/src/native/group-label.ts",
-      "line": 67,
+      "line": 69,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
@@ -2463,7 +2463,7 @@
     {
       "column": 17,
       "file": "packages/web-components/src/native/menu.ts",
-      "line": 172,
+      "line": 176,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
@@ -5082,34 +5082,25 @@
     {
       "column": 47,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 20,
+      "line": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \".25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/testimonial.ts::rhythmguard/prefer-token::Unexpected raw scale value \".25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
-      "column": 126,
+      "column": 81,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 11,
+      "line": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \".5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/testimonial.ts::rhythmguard/prefer-token::Unexpected raw scale value \".5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
-      "column": 81,
-      "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 20,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \".5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "packages/web-components/src/native/testimonial.ts::rhythmguard/prefer-token::Unexpected raw scale value \".5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
       "column": 57,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 17,
+      "line": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \".75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -5118,7 +5109,7 @@
     {
       "column": 60,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 11,
+      "line": 14,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -5127,7 +5118,7 @@
     {
       "column": 73,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 18,
+      "line": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -5136,7 +5127,7 @@
     {
       "column": 68,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 24,
+      "line": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -5145,7 +5136,7 @@
     {
       "column": 152,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 39,
+      "line": 42,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \".875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
@@ -5154,7 +5145,7 @@
     {
       "column": 68,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 24,
+      "line": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
@@ -5163,7 +5154,7 @@
     {
       "column": 17,
       "file": "packages/web-components/src/native/testimonial.ts",
-      "line": 30,
+      "line": 33,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",

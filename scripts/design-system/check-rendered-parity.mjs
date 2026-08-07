@@ -304,6 +304,19 @@ function diffPair(reactPng, nativePng) {
 
 mkdirSync(REPORT_DIR, { recursive: true });
 const context = await browser.newContext({ deviceScaleFactor: 1 });
+// Theme choice persists to web storage (ThemeProvider), so a dark-mode
+// capture otherwise leaks into later same-page loads whose mode passes no
+// explicit globals — caught 2026-08-07 as a deterministic in-sweep-only
+// Menu failure (native pair rendered dark during a desktop-light
+// comparison). Clearing at document-start makes every load theme-clean.
+await context.addInitScript(() => {
+  try {
+    localStorage.clear();
+    sessionStorage.clear();
+  } catch {
+    /* storage may be unavailable; the capture then matches old behavior */
+  }
+});
 const page = await context.newPage();
 
 const results = [];

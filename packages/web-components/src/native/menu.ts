@@ -74,7 +74,7 @@ const styles = `
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: var(--color-white);
-    box-shadow: 0 12px 32px rgb(0 0 0 / 15%);
+    box-shadow: var(--shadow-lg, 0 12px 32px rgb(0 0 0 / 12%));
   }
   .panel[hidden] { display: none; }
   .itemWrap { position: relative; display: flex; }
@@ -94,6 +94,10 @@ const styles = `
     border-radius: var(--radius-md);
     outline: none;
     background: none;
+    /* Shadow buttons keep the UA font (13.33px Arial) — without this reset
+       the composed dt-list-item row inherits it instead of the document's
+       Satoshi (parity gate catch, 2026-08-07). */
+    font: inherit;
     text-align: start;
     text-decoration: none;
     color: inherit;
