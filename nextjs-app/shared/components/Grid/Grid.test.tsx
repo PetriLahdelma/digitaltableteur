@@ -37,16 +37,23 @@ describe("Grid", () => {
     expect(container.firstChild).toHaveClass("custom-class");
   });
 
-  it("keeps the legacy inline path when no responsive props are set", () => {
+  it("routes columns/gap through custom properties even without responsive props", () => {
+    // Inline declarations of the real properties would beat any consumer
+    // className override (override-precedence gate catch); the values flow
+    // as custom properties read by the .responsive class instead, keeping
+    // the legacy repeat(n, 1fr) template form.
     const { container } = render(
       <Grid columns={3} gap="1rem">
         <div>Item</div>
       </Grid>,
     );
     const grid = container.firstChild as HTMLElement;
-    expect(grid.style.gridTemplateColumns).toBe("repeat(3, 1fr)");
-    expect(grid.style.gap).toBe("1rem");
-    expect(grid.style.getPropertyValue("--grid-cols")).toBe("");
+    expect(grid.style.gridTemplateColumns).toBe("");
+    expect(grid.style.gap).toBe("");
+    expect(grid.style.getPropertyValue("--dt-grid-columns")).toBe(
+      "repeat(3, 1fr)",
+    );
+    expect(grid.style.getPropertyValue("--dt-grid-gap")).toBe("1rem");
   });
 
   it("switches to custom-property resolution when responsive props are set", () => {

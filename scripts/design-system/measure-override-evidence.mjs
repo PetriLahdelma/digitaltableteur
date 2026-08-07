@@ -314,7 +314,8 @@ writeFileSync(OUT, `${JSON.stringify(report, null, 2)}\n`);
 
 // --- Baseline gate --------------------------------------------------------
 const baseline = existsSync(BASELINE) ? readJson(BASELINE) : { entries: {} };
-const { newFailures, stale } = compareToBaseline(substance, baseline);
+const comparison = compareToBaseline(substance, baseline);
+const { newFailures, stale } = comparison;
 const { totals } = substance;
 const encapsulation = substance.encapsulation;
 console.log(
@@ -332,12 +333,21 @@ if (stale.length) {
     `note: baseline entries no longer failing (prune them): ${stale.join(", ")}`,
   );
 }
-if (newFailures.length) {
+if (comparison.stalePairs?.length) {
+  console.log(
+    `note: baseline encapsulation entries no longer affected (prune them): ${comparison.stalePairs.join(", ")}`,
+  );
+}
+const newAffectedPairs = comparison.newAffectedPairs ?? [];
+if (newFailures.length || newAffectedPairs.length) {
   console.error(
-    `\nFAIL: ${newFailures.length} override failure(s) not in the baseline:`,
+    `\nFAIL: ${newFailures.length} override failure(s) and ${newAffectedPairs.length} encapsulation pair(s) not in the baseline:`,
   );
   for (const name of newFailures) {
     console.error(`  x ${name}: ${JSON.stringify(records[name]).slice(0, 200)}`);
+  }
+  for (const key of newAffectedPairs) {
+    console.error(`  x ${key}`);
   }
   console.error(
     "  Fix the component, or add a dated, explained entry to scripts/design-system/override-evidence-baseline.json.",

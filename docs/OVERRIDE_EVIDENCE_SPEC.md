@@ -13,9 +13,17 @@ context, so inherited-by-design values never register as interference.
 Current artifact: Menu × 23 children, 0 affected. A `--containers` debug
 flag exercises the machinery against any renderable export.
 
-Increment C remains open: graduate INV-3 to the baseline gate, compose
-children inside semantic sub-slots (e.g. Menu items) rather than only as
-direct children, and extend the probe set.
+Increment C (implemented): INV-3 graduated to the baseline gate — NEW
+affected matrix pairs fail against dated `encapsulation` baseline entries
+keyed `"Container × Child (via)"`. Children now also compose inside
+semantic sub-slots through explicit runtime recipes (Menu:
+Trigger + Content > Item, open; recipes are added when a container's
+hostile rules are unreachable through direct children). Probe set extended
+with `font-size` and `gap` — the gap probe immediately caught Grid applying
+gap/columns as inline styles on its non-responsive path (fixed by routing
+both through the existing custom-property mechanism unconditionally).
+Current artifact: 47 pass / 0 fail, 64 matrix pairs (direct + subslot),
+0 affected, empty baseline.
 
 ## Why
 
