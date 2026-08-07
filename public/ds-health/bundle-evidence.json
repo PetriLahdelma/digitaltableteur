@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-07T11:46:57.979Z",
+  "generatedAt": "2026-08-07T12:43:18.581Z",
   "package": {
     "name": "@digitaltableteur/react",
-    "version": "0.1.22"
+    "version": "0.1.23"
   },
   "toolchain": {
     "esbuild": "0.28.1",
@@ -1679,9 +1679,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "af1915a5b5391c6a05b73e8b40ce2ffc5de91987",
+    "sourceCommit": "03c781e9941dac3d5d24beace438e4fee32d3985",
     "workingTreeClean": false,
-    "dirtyPathCount": 18,
+    "dirtyPathCount": 2,
     "generator": {
       "name": "measure-bundle-evidence",
       "version": 1,

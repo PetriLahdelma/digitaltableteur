@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-06T20:54:24.167Z",
+  "generatedAt": "2026-08-07T12:43:27.195Z",
   "scope": "combinations actually exercised by the local gates at generation time. Absence from this manifest means untested, not incompatible.",
   "packages": {
     "@digitaltableteur/cli": "0.5.0",
-    "@digitaltableteur/react": "0.1.22",
+    "@digitaltableteur/react": "0.1.23",
     "@digitaltableteur/tokens": "0.1.4",
     "@digitaltableteur/tokens-css": "0.1.5",
     "@digitaltableteur/web-components": "0.10.0"
@@ -103,26 +103,19 @@
   ],
   "preflight": {
     "note": "most recent RECORDED preflight run at manifest generation time; when the manifest is regenerated inside a preflight run, this describes the previous run",
-    "generatedAt": "2026-08-05T10:14:06.438Z",
-    "status": "passed-clearance-recorded",
+    "generatedAt": "2026-08-07T12:28:31.500Z",
+    "status": "failed",
     "checks": {
       "astryx-roadmap": true,
       "beta-promotion-readiness": true,
       "build": true,
-      "i18n-visual-matrix": true,
       "lint": true,
-      "npm-consumer-install": true,
-      "package-publish-dry-run": true,
+      "npm-consumer-install": false,
       "package-registry-resolution": true,
       "package-registry-status": true,
       "package-release-notes": true,
-      "package-tarballs": true,
-      "react-public-api": true,
-      "react-public-surface": true,
-      "react-publish-review": true,
       "react-registry-install-waiting": true,
       "registry-token-install": true,
-      "site-package-dogfood": true,
       "storybook-build": true,
       "storybook-registry-package": true,
       "test": true,
@@ -131,9 +124,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "121eef5b8d2ddcd6ed43273f129f996bdf22cf13",
+    "sourceCommit": "03c781e9941dac3d5d24beace438e4fee32d3985",
     "workingTreeClean": false,
-    "dirtyPathCount": 2,
+    "dirtyPathCount": 5,
     "generator": {
       "name": "generate-compatibility-manifest",
       "version": 1,
