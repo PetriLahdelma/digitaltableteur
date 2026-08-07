@@ -32,6 +32,11 @@ for cross-surface navigation and quick actions, not as a menu bound to one contr
   `--radius-*` / `--space-internal-*`. No hardcoded colors.
 - Reuses `useFocusTrap` and `useScrollLock` (see Foundations/Utilities). The
   active option is a neutral tint; forced-colors maps it to a `Highlight` outline.
+- SSR stability: the portal is gated on a mounted-state flag (server and
+  initial client render both return null), so with `open` at render time the
+  dialog appears only after the mount effect. Harnesses and tests must await
+  a paint after mounting before querying or interacting with the dialog
+  (see audit:interaction-evidence and audit:ssr-evidence).
 - Figma: TODO (parity build; no Figma node yet).
 
 ## Promotion notes

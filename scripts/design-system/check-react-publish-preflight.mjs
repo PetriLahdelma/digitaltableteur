@@ -151,6 +151,11 @@ const automatedChecks = [
     reason: "mount/re-render cost, DOM render weight, and data-primitive interaction recipes are measured in real Chromium and stamped as publish evidence",
   },
   {
+    name: "compat-matrix",
+    command: ["run", "audit:compat-matrix"],
+    reason: "the declared react peer range is exercised at its endpoints (floor + current) in isolated consumers; combo divergence fails the publish",
+  },
+  {
     name: "compatibility-manifest",
     command: ["run", "audit:compatibility"],
     reason: "the toolchain combinations actually exercised by the gates are recorded as the per-publish compatibility manifest",
