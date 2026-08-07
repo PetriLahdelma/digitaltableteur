@@ -158,7 +158,10 @@
   2026-08-07); also probes contract theming.vars for liveness. Exit 2 on
   failures not in `override-evidence-baseline.json` (dated entries, never
   blanket-updated). Requires a built dist; `-- --build` rebuilds first.
-  Output: `public/ds-health/override-evidence.json`.
+  Output: `public/ds-health/override-evidence.json`. Increment B adds the
+  informational encapsulation section: universal-selector container scan +
+  container × child interference matrix on child-pinned properties (never
+  gated; `-- --containers Name` exercises the machinery ad hoc).
 - All four run automatically inside `check:react-publish-preflight` (after
   `react-public-api` rebuilds the dist), so every publish regenerates its
   evidence; commit the regenerated artifacts with the publish PR.

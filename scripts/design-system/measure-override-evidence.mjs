@@ -39,9 +39,11 @@ import { createRequire } from "node:module";
 import { build } from "esbuild";
 import { loadComponentContract } from "./ssr-evidence-lib.mjs";
 import {
+  assembleEncapsulation,
   assembleOverrideEvidence,
   compareToBaseline,
   componentOverrideRecord,
+  hostileContainerScan,
   probeStylesheet,
 } from "./override-evidence-lib.mjs";
 import { currentProvenance, runtimeStampFor } from "./evidence-stamp-lib.mjs";
@@ -58,6 +60,14 @@ const GENERATOR_VERSION = 1;
 const require = createRequire(import.meta.url);
 
 const shouldBuild = process.argv.includes("--build");
+// Debug affordance: --containers Name,Name overrides the scan-selected
+// matrix containers so the composition machinery can be exercised against
+// any renderable export. Never used by the committed artifact flow.
+const containersFlagIndex = process.argv.indexOf("--containers");
+const containersOverride =
+  containersFlagIndex !== -1
+    ? (process.argv[containersFlagIndex + 1] ?? "").split(",").filter(Boolean)
+    : null;
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -104,6 +114,37 @@ for (const [entry, exportNames] of Object.entries(exportsByEntry)) {
   }
 }
 
+// INV-3 container scan reads SOURCE module.css (the shipped CSS is
+// entry-aggregated and cannot be attributed per component); the scan only
+// SELECTS matrix candidates — every measurement still runs against the dist.
+const scanInput = components.map(({ exportName, contract }) => {
+  let cssText = "";
+  for (const base of [
+    "nextjs-app/shared/components",
+    "nextjs-app/shared/patterns",
+  ]) {
+    const cssPath = join(ROOT, base, exportName, `${exportName}.module.css`);
+    if (existsSync(cssPath)) {
+      cssText = readFileSync(cssPath, "utf8");
+      break;
+    }
+  }
+  return {
+    name: exportName,
+    cssText,
+    hasChildren: Boolean(contract.props?.children),
+  };
+});
+const scan = hostileContainerScan(scanInput);
+const matrixContainers =
+  containersOverride ??
+  scan.filter((entry) => entry.composesChildren).map((entry) => entry.name);
+if (containersOverride) {
+  console.log(
+    `note: --containers override active (${matrixContainers.join(", ")}); artifact must not be committed from this run`,
+  );
+}
+
 // --- Assemble the harness in a temp dir -----------------------------------
 const harnessDir = mkdtempSync(join(tmpdir(), "dt-override-evidence-"));
 const cssLinks = [];
@@ -142,6 +183,7 @@ runOverrideEvidence({
   ReactDOMClient,
   modules,
   components: window.__OVERRIDE_DATA__.components,
+  matrixContainers: window.__OVERRIDE_DATA__.matrixContainers,
 })
   .then((results) => {
     window.__OVERRIDE_RESULTS__ = results;
@@ -172,7 +214,7 @@ await build({
 const html = `<!doctype html>
 <html><head><meta charset="utf-8">
 ${cssLinks.map((href) => `<link rel="stylesheet" href="${href}">`).join("\n")}
-<script>window.__OVERRIDE_DATA__ = ${JSON.stringify({ components })};</script>
+<script>window.__OVERRIDE_DATA__ = ${JSON.stringify({ components, matrixContainers })};</script>
 </head><body><script src="bundle.js"></script></body></html>`;
 writeFileSync(join(harnessDir, "index.html"), html);
 
@@ -225,9 +267,11 @@ if (pageErrors.length) {
 }
 
 // --- Assemble artifact ----------------------------------------------------
+const componentResults = rawResults.results ?? {};
+const matrixResults = rawResults.matrix ?? [];
 const records = {};
 for (const { exportName } of components) {
-  records[exportName] = componentOverrideRecord(rawResults[exportName] ?? {
+  records[exportName] = componentOverrideRecord(componentResults[exportName] ?? {
     skip: "no measurement returned by the harness",
   });
 }
@@ -250,6 +294,10 @@ const substance = assembleOverrideEvidence({
   },
   components: records,
 });
+substance.encapsulation = assembleEncapsulation({
+  scan,
+  matrix: matrixResults,
+});
 
 const provenance = currentProvenance(ROOT, {
   name: "measure-override-evidence",
@@ -268,10 +316,16 @@ writeFileSync(OUT, `${JSON.stringify(report, null, 2)}\n`);
 const baseline = existsSync(BASELINE) ? readJson(BASELINE) : { entries: {} };
 const { newFailures, stale } = compareToBaseline(substance, baseline);
 const { totals } = substance;
+const encapsulation = substance.encapsulation;
 console.log(
   `\n✓ override evidence written: ${totals.pass} pass, ${totals.fail} fail ` +
     `(${Object.keys(baseline.entries ?? {}).length} baselined), ${totals.renderError} render errors, ` +
     `${totals.skipped} skipped, ${totals.themingVarsDeclared} theming vars declared → public/ds-health/override-evidence.json`,
+);
+console.log(
+  `  encapsulation (informational): ${encapsulation.scan.length} hostile containers scanned ` +
+    `(${matrixContainers.length} compose children), ${encapsulation.matrix.pairsMeasured} pairs measured, ` +
+    `${encapsulation.matrix.pairsAffected} affected`,
 );
 if (stale.length) {
   console.log(

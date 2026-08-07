@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T12:43:26.903Z",
+  "generatedAt": "2026-08-07T14:46:15.416Z",
   "package": {
     "name": "@digitaltableteur/react",
     "version": "0.1.23"
@@ -1208,10 +1208,71 @@
       "reason": "no component contract (not a renderable component export)"
     }
   },
+  "encapsulation": {
+    "note": "informational (increment B): container × child interference on properties the child PINS itself (standalone computed differs from a neutral div), so inherited-by-design values never count. Not gated; graduation to the baseline gate is increment C.",
+    "scan": [
+      {
+        "name": "Menu",
+        "universalSelectors": [
+          ".item > *",
+          ".item[data-disabled] > *",
+          ".subTrigger[data-state=\"open\"] > *",
+          ":global(html.sb-forced-colors-active) .item[data-disabled] > *",
+          ":global(html.sb-forced-colors-active) .item[data-highlighted] > *"
+        ],
+        "composesChildren": true
+      },
+      {
+        "name": "ProcessBlock",
+        "universalSelectors": [
+          ".processBlock *"
+        ],
+        "composesChildren": false
+      },
+      {
+        "name": "ToastStack",
+        "universalSelectors": [
+          ".stack > *"
+        ],
+        "composesChildren": false
+      }
+    ],
+    "matrix": {
+      "pairsMeasured": 23,
+      "pairsAffected": 0,
+      "affected": {},
+      "skips": {
+        "Menu × AspectRatio": "child pins none of the probed properties",
+        "Menu × CategoryFilter": "child pins none of the probed properties",
+        "Menu × Center": "child pins none of the probed properties",
+        "Menu × Combobox": "child pins none of the probed properties",
+        "Menu × Container": "child pins none of the probed properties",
+        "Menu × DataTable": "child pins none of the probed properties",
+        "Menu × ExpandableSection": "child pins none of the probed properties",
+        "Menu × FormField": "child pins none of the probed properties",
+        "Menu × Grid": "child pins none of the probed properties",
+        "Menu × LanguageSwitcher": "child pins none of the probed properties",
+        "Menu × List": "child pins none of the probed properties",
+        "Menu × Logo": "child pins none of the probed properties",
+        "Menu × MultiCombobox": "child pins none of the probed properties",
+        "Menu × PageLayout": "child pins none of the probed properties",
+        "Menu × Pagination": "child pins none of the probed properties",
+        "Menu × RadioGroup": "child pins none of the probed properties",
+        "Menu × Section": "child pins none of the probed properties",
+        "Menu × Skeleton": "child pins none of the probed properties",
+        "Menu × Spacer": "child pins none of the probed properties",
+        "Menu × Spinner": "child pins none of the probed properties",
+        "Menu × SplitButton": "child pins none of the probed properties",
+        "Menu × Stack": "child pins none of the probed properties",
+        "Menu × ToastStack": "child pins none of the probed properties",
+        "Menu × ValueCard": "child pins none of the probed properties"
+      }
+    }
+  },
   "provenance": {
-    "sourceCommit": "03c781e9941dac3d5d24beace438e4fee32d3985",
+    "sourceCommit": "b860d3ae80379e78aa3d6e6b040aa8590de5caa5",
     "workingTreeClean": false,
-    "dirtyPathCount": 4,
+    "dirtyPathCount": 6,
     "generator": {
       "name": "measure-override-evidence",
       "version": 1,

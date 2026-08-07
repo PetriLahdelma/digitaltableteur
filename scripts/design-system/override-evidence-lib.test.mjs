@@ -3,9 +3,11 @@ import { expect, test } from "vitest";
 import {
   PROBE_CLASS,
   PROBE_PROPERTIES,
+  assembleEncapsulation,
   assembleOverrideEvidence,
   compareToBaseline,
   componentOverrideRecord,
+  hostileContainerScan,
   overrideTargetsFor,
   probeStylesheet,
   varProbeValue,
@@ -121,6 +123,52 @@ test("assembleOverrideEvidence sorts, totals, and states the contract", () => {
     themingVarsDeclared: 0,
   });
   expect(report.contract).toMatch(/className-override-wins/);
+});
+
+test("hostileContainerScan finds universal selectors and ignores comments", () => {
+  const scan = hostileContainerScan([
+    {
+      name: "Menu",
+      cssText: ".item > * { color: red; }\n.plain { color: blue; }",
+      hasChildren: true,
+    },
+    {
+      name: "ProcessBlock",
+      cssText: "@media (prefers-reduced-motion: reduce) { .processBlock * { transition: none; } }",
+      hasChildren: false,
+    },
+    {
+      name: "Card",
+      cssText: "/* a * in a comment */ .card { padding: 0; }",
+      hasChildren: true,
+    },
+  ]);
+  expect(scan.map((s) => s.name)).toEqual(["Menu", "ProcessBlock"]);
+  expect(scan[0].composesChildren).toBe(true);
+  expect(scan[0].universalSelectors).toEqual([".item > *"]);
+  expect(scan[1].composesChildren).toBe(false);
+});
+
+test("assembleEncapsulation totals pairs and keeps only real diffs", () => {
+  const section = assembleEncapsulation({
+    scan: [{ name: "Menu", universalSelectors: [".item > *"], composesChildren: true }],
+    matrix: [
+      {
+        container: "Menu",
+        child: "Badge",
+        diffs: {
+          color: { standalone: "rgb(1, 2, 3)", inContainer: "rgb(9, 9, 9)" },
+        },
+      },
+      { container: "Menu", child: "Text", diffs: {} },
+      { container: "Menu", child: "Spacer", skip: "child pins none of the probed properties" },
+    ],
+  });
+  expect(section.matrix.pairsMeasured).toBe(2);
+  expect(section.matrix.pairsAffected).toBe(1);
+  expect(section.matrix.affected.Menu.Badge.color.inContainer).toBe("rgb(9, 9, 9)");
+  expect(section.matrix.skips["Menu × Spacer"]).toMatch(/pins none/);
+  expect(section.note).toMatch(/informational/);
 });
 
 test("compareToBaseline reports new failures and stale approvals", () => {

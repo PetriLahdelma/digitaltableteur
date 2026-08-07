@@ -167,6 +167,97 @@ export function assembleOverrideEvidence({
 }
 
 /**
+ * INV-3 (increment B, informational): formalized hostile-container scan.
+ * A hostile container is a component whose stylesheet contains a universal
+ * selector (`*` as a compound in any combinator position) — the selector
+ * shape behind the #1280 Modal/Switch bug. Containers that also compose
+ * consumer children (contract declares `children`) enter the encapsulation
+ * matrix; the rest are inventoried as a watchlist.
+ *
+ * Input: [{ name, cssText, hasChildren }]. CSS comments are stripped before
+ * matching so asterisks inside comment blocks never false-positive.
+ */
+export function hostileContainerScan(components) {
+  const results = [];
+  for (const { name, cssText, hasChildren } of components) {
+    const css = String(cssText ?? "").replace(/\/\*[\s\S]*?\*\//g, "");
+    const selectors = [...css.matchAll(/([^{}]+)\{/g)]
+      .map((match) => match[1].trim())
+      .filter(
+        (selector) =>
+          !selector.startsWith("@") &&
+          /(^|[\s>+~(])\*/.test(selector),
+      );
+    if (selectors.length) {
+      results.push({
+        name,
+        universalSelectors: [...new Set(selectors)].sort(),
+        composesChildren: Boolean(hasChildren),
+      });
+    }
+  }
+  return results.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Assemble the informational encapsulation section from the scan and the
+ * in-browser matrix measurements. Deterministic substance, but NEVER gated:
+ * a difference on a pinned property is a fact to interpret (a container may
+ * style children by design), not an automatic defect — that judgment is
+ * increment C's.
+ */
+export function assembleEncapsulation({ scan, matrix }) {
+  const affected = {};
+  let measured = 0;
+  let affectedCount = 0;
+  const skips = {};
+  for (const pair of matrix) {
+    if (pair.skip) {
+      skips[`${pair.container} × ${pair.child}`] = pair.skip;
+      continue;
+    }
+    measured += 1;
+    const diffs = {};
+    for (const [prop, diff] of Object.entries(pair.diffs ?? {})) {
+      diffs[prop] = diff;
+    }
+    if (Object.keys(diffs).length) {
+      affectedCount += 1;
+      affected[pair.container] = affected[pair.container] ?? {};
+      affected[pair.container][pair.child] = diffs;
+    }
+  }
+  return {
+    note: "informational (increment B): container × child interference on properties the child PINS itself (standalone computed differs from a neutral div), so inherited-by-design values never count. Not gated; graduation to the baseline gate is increment C.",
+    scan,
+    matrix: {
+      pairsMeasured: measured,
+      pairsAffected: affectedCount,
+      affected: sortObjectDeep(affected),
+      skips: sortObject(skips),
+    },
+  };
+}
+
+function sortObject(object) {
+  const sorted = {};
+  for (const key of Object.keys(object).sort()) sorted[key] = object[key];
+  return sorted;
+}
+
+function sortObjectDeep(object) {
+  const sorted = {};
+  for (const key of Object.keys(object).sort()) {
+    const value = object[key];
+    sorted[key] =
+      value && typeof value === "object" && !Array.isArray(value)
+        ? sortObjectDeep(value)
+        : value;
+  }
+  return sorted;
+}
+
+/**
  * Baseline comparison. The baseline lists APPROVED failures as
  * { "<Component>": { note, on } } (agent-experience-baseline precedent:
  * dated, explained, never blanket-updated). Returns failures not covered by
