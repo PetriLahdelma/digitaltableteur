@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-07T11:46:46.179Z",
+  "generatedAt": "2026-08-07T12:43:23.286Z",
   "package": {
     "name": "@digitaltableteur/react",
-    "version": "0.1.22"
+    "version": "0.1.23"
   },
   "environment": {
     "react": "19.2.8",
@@ -1224,49 +1224,49 @@
   "informational": {
     "timings": {
       "Button": {
-        "renderToStringMs": 0.262
+        "renderToStringMs": 0.281
       },
       "ButtonGroup": {
-        "renderToStringMs": 0.037
+        "renderToStringMs": 0.048
       },
       "FilterChip": {
-        "renderToStringMs": 0.022
+        "renderToStringMs": 0.04
       },
       "IconButton": {
-        "renderToStringMs": 0.072
+        "renderToStringMs": 0.075
       },
       "SlideButton": {
-        "renderToStringMs": 0.066
+        "renderToStringMs": 0.064
       },
       "SplitButton": {
-        "renderToStringMs": 0.264
+        "renderToStringMs": 0.288
       },
       "AuthorBio": {
-        "renderToStringMs": 0.006
+        "renderToStringMs": 0.007
       },
       "CodeBlockWindow": {
-        "renderToStringMs": 0.084
+        "renderToStringMs": 0.095
       },
       "CodeSnippet": {
-        "renderToStringMs": 0.341
+        "renderToStringMs": 0.543
       },
       "DataTable": {
-        "renderToStringMs": 0.158
+        "renderToStringMs": 0.176
       },
       "ExpandableSection": {
-        "renderToStringMs": 0.031
+        "renderToStringMs": 0.036
       },
       "Gallery": {
-        "renderToStringMs": 0.193
+        "renderToStringMs": 0.128
       },
       "List": {
-        "renderToStringMs": 0.024
+        "renderToStringMs": 0.022
       },
       "ListItem": {
-        "renderToStringMs": 0.012
+        "renderToStringMs": 0.013
       },
       "Logo": {
-        "renderToStringMs": 0.045
+        "renderToStringMs": 0.053
       },
       "ReadingProgress": {
         "renderToStringMs": 0.005
@@ -1275,22 +1275,22 @@
         "renderToStringMs": 0.017
       },
       "TableCell": {
-        "renderToStringMs": 0.008
+        "renderToStringMs": 0.009
       },
       "TableHeaderCell": {
-        "renderToStringMs": 0.01
+        "renderToStringMs": 0.011
       },
       "TableRow": {
         "renderToStringMs": 0.01
       },
       "Timestamp": {
-        "renderToStringMs": 0.045
+        "renderToStringMs": 0.049
       },
       "ValueCard": {
-        "renderToStringMs": 0.046
+        "renderToStringMs": 0.045
       },
       "VirtualList": {
-        "renderToStringMs": 0.074
+        "renderToStringMs": 0.085
       },
       "VirtualListItem": {
         "renderToStringMs": 0.018
@@ -1299,118 +1299,118 @@
         "renderToStringMs": 0.049
       },
       "EmptyState": {
-        "renderToStringMs": 0.05
+        "renderToStringMs": 0.049
       },
       "Progress": {
-        "renderToStringMs": 0.016
+        "renderToStringMs": 0.015
       },
       "Skeleton": {
-        "renderToStringMs": 0.026
+        "renderToStringMs": 0.024
       },
       "Spinner": {
         "renderToStringMs": 0.009
       },
       "Toast": {
-        "renderToStringMs": 0.044
+        "renderToStringMs": 0.047
       },
       "ToastStack": {
-        "renderToStringMs": 0.044
+        "renderToStringMs": 0.047
       },
       "Checkbox": {
-        "renderToStringMs": 0.029
+        "renderToStringMs": 0.03
       },
       "CheckboxGroup": {
-        "renderToStringMs": 0.109
+        "renderToStringMs": 0.11
       },
       "Combobox": {
-        "renderToStringMs": 0.093
+        "renderToStringMs": 0.084
       },
       "FileUpload": {
-        "renderToStringMs": 0.07
+        "renderToStringMs": 0.071
       },
       "FormField": {
-        "renderToStringMs": 0.018
-      },
-      "GroupLabel": {
-        "renderToStringMs": 0.011
-      },
-      "HelperText": {
-        "renderToStringMs": 0.01
-      },
-      "Label": {
-        "renderToStringMs": 0.016
-      },
-      "MultiCombobox": {
-        "renderToStringMs": 0.076
-      },
-      "PhoneInput": {
-        "renderToStringMs": 1.308
-      },
-      "Radio": {
         "renderToStringMs": 0.021
       },
+      "GroupLabel": {
+        "renderToStringMs": 0.016
+      },
+      "HelperText": {
+        "renderToStringMs": 0.011
+      },
+      "Label": {
+        "renderToStringMs": 0.017
+      },
+      "MultiCombobox": {
+        "renderToStringMs": 0.116
+      },
+      "PhoneInput": {
+        "renderToStringMs": 1.325
+      },
+      "Radio": {
+        "renderToStringMs": 0.018
+      },
       "RadioGroup": {
-        "renderToStringMs": 0.068
+        "renderToStringMs": 0.08
       },
       "Select": {
-        "renderToStringMs": 0.059
+        "renderToStringMs": 0.055
       },
       "SelectableCard": {
-        "renderToStringMs": 0.023
+        "renderToStringMs": 0.02
       },
       "Switch": {
         "renderToStringMs": 0.028
       },
       "TextArea": {
-        "renderToStringMs": 0.029
+        "renderToStringMs": 0.035
       },
       "TextInput": {
-        "renderToStringMs": 0.031
-      },
-      "Author": {
-        "renderToStringMs": 0.022
-      },
-      "Avatar": {
-        "renderToStringMs": 0.012
-      },
-      "AvatarGroup": {
-        "renderToStringMs": 0.014
-      },
-      "Badge": {
         "renderToStringMs": 0.032
       },
+      "Author": {
+        "renderToStringMs": 0.023
+      },
+      "Avatar": {
+        "renderToStringMs": 0.015
+      },
+      "AvatarGroup": {
+        "renderToStringMs": 0.013
+      },
+      "Badge": {
+        "renderToStringMs": 0.033
+      },
       "Icon": {
-        "renderToStringMs": 0.019
+        "renderToStringMs": 0.02
       },
       "StatusDot": {
         "renderToStringMs": 0.012
       },
       "Accordion": {
-        "renderToStringMs": 0.089
+        "renderToStringMs": 0.09
       },
       "AspectRatio": {
-        "renderToStringMs": 0.008
+        "renderToStringMs": 0.009
       },
       "Card": {
-        "renderToStringMs": 0.026
+        "renderToStringMs": 0.027
       },
       "Center": {
-        "renderToStringMs": 0.006
+        "renderToStringMs": 0.007
       },
       "Container": {
-        "renderToStringMs": 0.006
+        "renderToStringMs": 0.007
       },
       "Divider": {
-        "renderToStringMs": 0.008
+        "renderToStringMs": 0.007
       },
       "FlexBox": {
-        "renderToStringMs": 0.009
+        "renderToStringMs": 0.01
       },
       "Grid": {
         "renderToStringMs": 0.011
       },
       "MacWindowFrame": {
-        "renderToStringMs": 0.034
+        "renderToStringMs": 0.032
       },
       "ResizablePanelGroup": {
         "renderToStringMs": 0.043
@@ -1422,61 +1422,61 @@
         "renderToStringMs": 0.007
       },
       "Stack": {
-        "renderToStringMs": 0.007
+        "renderToStringMs": 0.01
       },
       "Breadcrumb": {
-        "renderToStringMs": 0.05
+        "renderToStringMs": 0.052
       },
       "CommandPalette": {
         "renderToStringMs": 0.006
       },
       "LanguageSwitcher": {
-        "renderToStringMs": 0.046
+        "renderToStringMs": 0.04
       },
       "Link": {
-        "renderToStringMs": 0.011
+        "renderToStringMs": 0.01
       },
       "Menu": {
-        "renderToStringMs": 0.026
+        "renderToStringMs": 0.025
       },
       "NavLink": {
         "renderToStringMs": 0.011
       },
       "NavMenuList": {
-        "renderToStringMs": 0.028
+        "renderToStringMs": 0.034
       },
       "Pagination": {
-        "renderToStringMs": 0.114
+        "renderToStringMs": 0.134
       },
       "ScrollIndicator": {
-        "renderToStringMs": 0.036
+        "renderToStringMs": 0.038
       },
       "SegmentedControl": {
-        "renderToStringMs": 0.038
+        "renderToStringMs": 0.035
       },
       "SkipLink": {
         "renderToStringMs": 0.008
       },
       "Tabs": {
-        "renderToStringMs": 0.058
+        "renderToStringMs": 0.055
       },
       "TreeView": {
-        "renderToStringMs": 0.158
+        "renderToStringMs": 0.208
       },
       "CategoryFilter": {
-        "renderToStringMs": 0.034
+        "renderToStringMs": 0.032
       },
       "Modal": {
-        "renderToStringMs": 0.044
+        "renderToStringMs": 0.043
       },
       "PageLayout": {
         "renderToStringMs": 0.008
       },
       "ProcessBlock": {
-        "renderToStringMs": 0.062
+        "renderToStringMs": 0.063
       },
       "ThemeProvider": {
-        "renderToStringMs": 0.01
+        "renderToStringMs": 0.009
       },
       "Display": {
         "renderToStringMs": 0.007
@@ -1491,14 +1491,14 @@
         "renderToStringMs": 0.006
       },
       "VisuallyHidden": {
-        "renderToStringMs": 0.007
+        "renderToStringMs": 0.006
       }
     }
   },
   "provenance": {
-    "sourceCommit": "af1915a5b5391c6a05b73e8b40ce2ffc5de91987",
+    "sourceCommit": "03c781e9941dac3d5d24beace438e4fee32d3985",
     "workingTreeClean": false,
-    "dirtyPathCount": 18,
+    "dirtyPathCount": 3,
     "generator": {
       "name": "measure-ssr-evidence",
       "version": 1,
