@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.23 - 2026-08-07
+
+- Fixes `TreeView` leaf icons: leaf nodes request the `file` icon, whose
+  Phosphor component was never in the bundled icon registry (the name lives
+  in a ternary the icon-codegen JSX scan cannot see), so leaves silently
+  rendered without an icon. `File` is now curated in the registry.
+- `CommandPalette` is SSR-stable: the portal is gated on a mounted flag so
+  the server and initial client render agree, eliminating the hydration
+  mismatch when `open` is true at server-render time. Focus trap and scroll
+  lock arm once the dialog node exists; opening from user interaction is
+  unchanged.
+- `ProcessBlock` background and padding move from inline styles to module
+  classes, so consumer `className` overrides can win (the first catch of the
+  new override-precedence evidence gate). The padding now references the
+  real `--space-layout-48` token instead of a phantom var that only worked
+  through its fallback; rendered values are unchanged.
+
 ## 0.1.22 - 2026-08-05
 
 - Ships the matured data primitives at beta: `DataTable` (managed sortable/
