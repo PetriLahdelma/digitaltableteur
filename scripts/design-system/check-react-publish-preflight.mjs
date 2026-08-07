@@ -146,6 +146,11 @@ const automatedChecks = [
     reason: "consumer className overrides win over component base styles in real Chromium (className-override-wins contract), gated against the dated baseline",
   },
   {
+    name: "interaction-evidence",
+    command: ["run", "audit:interaction-evidence"],
+    reason: "mount/re-render cost, DOM render weight, and data-primitive interaction recipes are measured in real Chromium and stamped as publish evidence",
+  },
+  {
     name: "compatibility-manifest",
     command: ["run", "audit:compatibility"],
     reason: "the toolchain combinations actually exercised by the gates are recorded as the per-publish compatibility manifest",

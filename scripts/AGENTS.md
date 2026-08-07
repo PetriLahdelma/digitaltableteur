@@ -164,7 +164,15 @@
   sub-slot recipes; `-- --containers Name` exercises the machinery ad hoc).
   Since increment C, NEW affected matrix pairs gate against dated
   `encapsulation` baseline entries alongside component failures.
-- All four run automatically inside `check:react-publish-preflight` (after
+- `npm run audit:interaction-evidence` — real-browser interaction cost:
+  mount/re-render commit cost per component (flushSync medians,
+  informational) + deterministic DOM render weight (substance), plus named
+  interaction recipes for the data primitives (DataTable sort 1k rows,
+  TreeView branch expand, VirtualList 9000-row scroll jump, CommandPalette
+  query filter) with deterministic outcome facts. Requires a built dist;
+  `-- --build` rebuilds first. Output:
+  `public/ds-health/interaction-evidence.json`.
+- All five run automatically inside `check:react-publish-preflight` (after
   `react-public-api` rebuilds the dist), so every publish regenerates its
   evidence; commit the regenerated artifacts with the publish PR.
 

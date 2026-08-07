@@ -1,0 +1,1009 @@
+{
+  "generatedAt": "2026-08-07T17:02:56.272Z",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "version": "0.1.24"
+  },
+  "environment": {
+    "chromium": "151.0.7922.34",
+    "playwright": "1.62.1",
+    "reducedMotion": true
+  },
+  "methodology": {
+    "rendering": "components render from the built dist with the SSR-evidence render plans (contract playground defaults, type-driven synthesis, descriptor resolution) in real Chromium with reduced motion",
+    "costs": "mount and re-render run inside ReactDOM flushSync — timings capture synchronous main-thread commit work, not frame scheduling; medians of 7 runs after a warmup, informational only",
+    "domNodes": "element count of the rendered wrapper subtree after mount — deterministic render weight, part of the stamped substance (portal content is excluded and noted where a recipe measures it)",
+    "recipes": "named interaction recipes exercise the documented hot paths of the data primitives with deterministic index-generated datasets (no randomness, no clock); outcome facts (counts, aria state) are substance, durations informational",
+    "timings": "all milliseconds live under `informational`, outside the substance stamp: they vary by machine and never gate anything"
+  },
+  "totals": {
+    "measured": 90,
+    "recipes": 4,
+    "renderError": 2,
+    "skipped": 51
+  },
+  "components": {
+    "Accordion": {
+      "status": "measured",
+      "domNodes": 21
+    },
+    "AlertBanner": {
+      "status": "measured",
+      "domNodes": 7
+    },
+    "AnimationRuntimeProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "AspectRatio": {
+      "status": "measured",
+      "domNodes": 2
+    },
+    "Author": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "AuthorBio": {
+      "status": "measured",
+      "domNodes": 0
+    },
+    "Avatar": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "AvatarGroup": {
+      "status": "measured",
+      "domNodes": 2
+    },
+    "Badge": {
+      "status": "measured",
+      "domNodes": 6
+    },
+    "Breadcrumb": {
+      "status": "measured",
+      "domNodes": 10
+    },
+    "Button": {
+      "status": "measured",
+      "domNodes": 2
+    },
+    "ButtonGroup": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Card": {
+      "status": "measured",
+      "domNodes": 5
+    },
+    "CategoryFilter": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "Center": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Checkbox": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "CheckboxGroup": {
+      "status": "measured",
+      "domNodes": 15
+    },
+    "CodeBlockWindow": {
+      "status": "measured",
+      "domNodes": 15
+    },
+    "CodeSnippet": {
+      "status": "measured",
+      "domNodes": 22
+    },
+    "Combobox": {
+      "status": "measured",
+      "domNodes": 10
+    },
+    "CommandPalette": {
+      "status": "measured",
+      "domNodes": 0,
+      "recipe": {
+        "name": "filter 100 commands (query keystroke)",
+        "status": "completed",
+        "facts": {
+          "visibleOptions": 11
+        },
+        "factsScope": "document (portal content)"
+      }
+    },
+    "Container": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "CookieConsent": {
+      "status": "render-error",
+      "error": "useCookieConsent must be used within CookieConsentProvider"
+    },
+    "CookieConsentProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "DEFAULT_CONSENTS": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "DataTable": {
+      "status": "measured",
+      "domNodes": 22,
+      "recipe": {
+        "name": "sort 1k rows (header click)",
+        "status": "completed",
+        "facts": {
+          "ariaSort": "ascending",
+          "visibleRows": 1000
+        }
+      }
+    },
+    "Display": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Divider": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "EmptyState": {
+      "status": "measured",
+      "domNodes": 7
+    },
+    "ExpandableSection": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "FileUpload": {
+      "status": "measured",
+      "domNodes": 9
+    },
+    "FilterChip": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "FlexBox": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "FormField": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "Gallery": {
+      "status": "measured",
+      "domNodes": 9
+    },
+    "Grid": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "GroupLabel": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "HelperText": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Icon": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "IconButton": {
+      "status": "measured",
+      "domNodes": 5
+    },
+    "Image": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "ImageProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "Kbd": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Label": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "LanguageSwitcher": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "LayerProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "Link": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "LinkProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "List": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "ListItem": {
+      "status": "measured",
+      "domNodes": 2
+    },
+    "Logo": {
+      "status": "measured",
+      "domNodes": 9
+    },
+    "MacWindowFrame": {
+      "status": "measured",
+      "domNodes": 10
+    },
+    "Menu": {
+      "status": "measured",
+      "domNodes": 0
+    },
+    "MenuContent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuItem": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuSeparator": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuSub": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuSubContent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuSubTrigger": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "MenuTrigger": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "Modal": {
+      "status": "measured",
+      "domNodes": 0
+    },
+    "MultiCombobox": {
+      "status": "measured",
+      "domNodes": 10
+    },
+    "NavLink": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "NavMenuList": {
+      "status": "measured",
+      "domNodes": 5
+    },
+    "NavigationProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "PageLayout": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Pagination": {
+      "status": "measured",
+      "domNodes": 13
+    },
+    "PhoneInput": {
+      "status": "measured",
+      "domNodes": 255
+    },
+    "ProcessBlock": {
+      "status": "measured",
+      "domNodes": 14
+    },
+    "Progress": {
+      "status": "measured",
+      "domNodes": 2
+    },
+    "Radio": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "RadioGroup": {
+      "status": "measured",
+      "domNodes": 12
+    },
+    "ReadingProgress": {
+      "status": "measured",
+      "domNodes": 0
+    },
+    "ResizablePanelGroup": {
+      "status": "measured",
+      "domNodes": 7
+    },
+    "ScrollIndicator": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "Section": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "SegmentedControl": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "Select": {
+      "status": "measured",
+      "domNodes": 10
+    },
+    "SelectOption": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "SelectableCard": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "SelectableCardGroup": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "Skeleton": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "SkipLink": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "SlideButton": {
+      "status": "measured",
+      "domNodes": 7
+    },
+    "Spacer": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Spinner": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "SplitButton": {
+      "status": "measured",
+      "domNodes": 9
+    },
+    "Stack": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "StatusDot": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "Switch": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "Table": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "TableCell": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "TableHeaderCell": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "TableRow": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "Tabs": {
+      "status": "measured",
+      "domNodes": 8
+    },
+    "Text": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "TextArea": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "TextInput": {
+      "status": "measured",
+      "domNodes": 4
+    },
+    "ThemeProvider": {
+      "status": "measured",
+      "domNodes": 0
+    },
+    "Timestamp": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Title": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "Toast": {
+      "status": "measured",
+      "domNodes": 5
+    },
+    "ToastRuntimeProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "ToastStack": {
+      "status": "measured",
+      "domNodes": 6
+    },
+    "Tooltip": {
+      "status": "render-error",
+      "error": "`Tooltip` must be used within `TooltipProvider`"
+    },
+    "TooltipContent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "TooltipProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "TooltipTrigger": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "TranslationProvider": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "TreeView": {
+      "status": "measured",
+      "domNodes": 33,
+      "recipe": {
+        "name": "expand a 30-leaf branch (row click)",
+        "status": "completed",
+        "facts": {
+          "treeItems": 40,
+          "expanded": 1
+        }
+      }
+    },
+    "ValueCard": {
+      "status": "measured",
+      "domNodes": 8
+    },
+    "VirtualList": {
+      "status": "measured",
+      "domNodes": 11,
+      "recipe": {
+        "name": "jump 9000 rows into 10k (scroll re-window)",
+        "status": "completed",
+        "facts": {
+          "renderedItems": 13,
+          "firstPosInSet": "8998"
+        }
+      }
+    },
+    "VirtualListItem": {
+      "status": "measured",
+      "domNodes": 3
+    },
+    "VisuallyHidden": {
+      "status": "measured",
+      "domNodes": 1
+    },
+    "clearConsentState": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "cn": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "formatTimestamp": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "getTabPanelProps": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "hasGivenConsent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "isSvgSrc": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "loadConsentState": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "optionsFromSelectChildren": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "resolveMotionPlan": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "saveConsentState": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "splitPlaceholderOption": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "stateToConsents": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useAnimationContext": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useCookieConsent": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useFocusTrap": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useLayer": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useLocalization": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useMediaQuery": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useNavigationPathname": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useNavigationRouter": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useNavigationRuntime": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useNavigationSearchParams": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useOverflow": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useScrollLock": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useScrollOverflow": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useStreamingText": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useTheme": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useToast": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    },
+    "useTranslate": {
+      "status": "skipped",
+      "reason": "no component contract (not a renderable component export)"
+    }
+  },
+  "informational": {
+    "timings": {
+      "Button": {
+        "mountMs": 0.2,
+        "rerenderMs": 0.2
+      },
+      "ButtonGroup": {
+        "mountMs": 0.1,
+        "rerenderMs": 0.1
+      },
+      "FilterChip": {
+        "mountMs": 0.1,
+        "rerenderMs": 0.1
+      },
+      "IconButton": {
+        "mountMs": 0.4,
+        "rerenderMs": 0.4
+      },
+      "SlideButton": {
+        "mountMs": 0.4,
+        "rerenderMs": 0.4
+      },
+      "SplitButton": {
+        "mountMs": 2.4,
+        "rerenderMs": 2
+      },
+      "AuthorBio": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "CodeBlockWindow": {
+        "mountMs": 0.8,
+        "rerenderMs": 0.7
+      },
+      "CodeSnippet": {
+        "mountMs": 4.1,
+        "rerenderMs": 2
+      },
+      "DataTable": {
+        "mountMs": 1.5,
+        "rerenderMs": 1.4,
+        "recipeMs": 16.4
+      },
+      "ExpandableSection": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "Gallery": {
+        "mountMs": 0.2,
+        "rerenderMs": 0.1
+      },
+      "List": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "ListItem": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Logo": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "ReadingProgress": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Table": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "TableCell": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "TableHeaderCell": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "TableRow": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Timestamp": {
+        "mountMs": 0,
+        "rerenderMs": 0.1
+      },
+      "ValueCard": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "VirtualList": {
+        "mountMs": 0.1,
+        "rerenderMs": 0,
+        "recipeMs": 17.3
+      },
+      "VirtualListItem": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "AlertBanner": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "EmptyState": {
+        "mountMs": 0,
+        "rerenderMs": 0.1
+      },
+      "Progress": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Skeleton": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Spinner": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Toast": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "ToastStack": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Checkbox": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "CheckboxGroup": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "Combobox": {
+        "mountMs": 0.1,
+        "rerenderMs": 0.1
+      },
+      "FileUpload": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "FormField": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "GroupLabel": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "HelperText": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Label": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "MultiCombobox": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "PhoneInput": {
+        "mountMs": 1.2,
+        "rerenderMs": 0.8
+      },
+      "Radio": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "RadioGroup": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "Select": {
+        "mountMs": 0.1,
+        "rerenderMs": 0.1
+      },
+      "SelectableCard": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Switch": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "TextArea": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "TextInput": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Author": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Avatar": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "AvatarGroup": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "Badge": {
+        "mountMs": 0,
+        "rerenderMs": 0.1
+      },
+      "Icon": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "StatusDot": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Accordion": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "AspectRatio": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Card": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Center": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Container": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Divider": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "FlexBox": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Grid": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "MacWindowFrame": {
+        "mountMs": 0,
+        "rerenderMs": 0.1
+      },
+      "ResizablePanelGroup": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Section": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Spacer": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Stack": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Breadcrumb": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "CommandPalette": {
+        "mountMs": 0,
+        "rerenderMs": 0.1,
+        "recipeMs": 0.8
+      },
+      "LanguageSwitcher": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Link": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Menu": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "NavLink": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "NavMenuList": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Pagination": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "ScrollIndicator": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "SegmentedControl": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "SkipLink": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Tabs": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "TreeView": {
+        "mountMs": 0.2,
+        "rerenderMs": 0.1,
+        "recipeMs": 1.3
+      },
+      "CategoryFilter": {
+        "mountMs": 0.1,
+        "rerenderMs": 0
+      },
+      "Modal": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "PageLayout": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "ProcessBlock": {
+        "mountMs": 0,
+        "rerenderMs": 0.1
+      },
+      "ThemeProvider": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Display": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Kbd": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Text": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "Title": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      },
+      "VisuallyHidden": {
+        "mountMs": 0,
+        "rerenderMs": 0
+      }
+    }
+  },
+  "provenance": {
+    "sourceCommit": "da6b2272b7c7275510ad8d916669610a516d473f",
+    "workingTreeClean": false,
+    "dirtyPathCount": 3,
+    "generator": {
+      "name": "measure-interaction-evidence",
+      "version": 1,
+      "node": "v22.22.3"
+    }
+  }
+}
