@@ -152,6 +152,8 @@
 - All three run automatically inside `check:react-publish-preflight` (after
   `react-public-api` rebuilds the dist), so every publish regenerates its
   evidence; commit the regenerated artifacts with the publish PR.
+- Next increment (specced, not implemented): override-precedence evidence —
+  see `docs/OVERRIDE_EVIDENCE_SPEC.md`.
 
 ---
 
