@@ -1,9 +1,9 @@
 {
   "storyId": "content-icon-playground",
   "mode": "dark",
-  "sourceSHA": "d14b56331362c888c62bab010b88217a3b7ab6ce",
-  "capturedAt": "2026-07-26T22:00:34.363Z",
-  "runner": "table-icons",
+  "sourceSHA": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+  "capturedAt": "2026-08-07T12:37:01.817Z",
+  "runner": "react-0.1.23-publish",
   "checks": {
     "accessibility-tree": {
       "passed": true

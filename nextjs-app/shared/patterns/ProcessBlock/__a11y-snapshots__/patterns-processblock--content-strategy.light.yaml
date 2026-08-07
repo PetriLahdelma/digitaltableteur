@@ -1,0 +1,26 @@
+- region "Content Strategy Framework":
+  - heading "Content Strategy Framework" [level=2]
+  - heading "Audit & Analysis" [level=3]
+  - list:
+    - listitem: — Content Inventory
+    - listitem: — Gap Analysis
+    - listitem: — Competitor Review
+    - listitem: — User Needs Assessment
+  - heading "Strategy Development" [level=3]
+  - list:
+    - listitem: — Content Guidelines
+    - listitem: — Tone & Voice
+    - listitem: — Information Architecture
+    - listitem: — SEO Strategy
+  - heading "Content Creation" [level=3]
+  - list:
+    - listitem: — Writing & Editing
+    - listitem: — Visual Assets
+    - listitem: — Localization
+    - listitem: — Quality Assurance
+  - heading "Distribution & Optimization" [level=3]
+  - list:
+    - listitem: — Publishing
+    - listitem: — Performance Monitoring
+    - listitem: — A/B Testing
+    - listitem: — Continuous Improvement

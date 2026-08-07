@@ -1,0 +1,39 @@
+- region "Our UX Process":
+  - heading "Our UX Process" [level=2]
+  - paragraph: We follow a human-centered design approach that puts users at the heart of every decision. Our iterative process ensures that we deliver solutions that are both beautiful and functional.
+  - heading "Discover" [level=3]
+  - list:
+    - listitem: — Stakeholder Workshops
+    - listitem: — Contextual Inquiry
+    - listitem: — User Research
+    - listitem: — User Interviews
+    - listitem: — Benchmark Analysis
+    - listitem: — Brand Application and Restrictions
+  - heading "Define" [level=3]
+  - list:
+    - listitem: — User Personas
+    - listitem: — Empathy Map
+    - listitem: — User Journey Mapping
+    - listitem: — Accessibility
+    - listitem: — CI/CD process
+    - listitem: — Information Architecture
+    - listitem: — Definition of Done
+  - heading "Ideate" [level=3]
+  - list:
+    - listitem: — User Flows
+    - listitem: — Component Structures
+    - listitem: — Accessibility and inclusivity guidelines
+    - listitem: — Sync with stakeholders
+    - listitem: — User Research
+    - listitem: — Wireframes
+    - listitem: — Prototypes
+  - heading "Design" [level=3]
+  - list:
+    - listitem: — Reusable Components
+    - listitem: — Token base
+    - listitem: — Patterns and templates
+    - listitem: — Accessibility Reviews
+    - listitem: — Documentation
+    - listitem: — Design Reviews
+    - listitem: — Feedback Loops
+    - listitem: — Maintenance

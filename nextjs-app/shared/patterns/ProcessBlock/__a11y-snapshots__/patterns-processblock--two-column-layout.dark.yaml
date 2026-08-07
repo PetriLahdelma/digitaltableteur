@@ -1,0 +1,15 @@
+- region "Our Approach":
+  - heading "Our Approach" [level=2]
+  - heading "Research & Planning" [level=3]
+  - list:
+    - listitem: — User Research
+    - listitem: — Competitive Analysis
+    - listitem: — Stakeholder Interviews
+    - listitem: — Requirements Definition
+  - heading "Design & Delivery" [level=3]
+  - list:
+    - listitem: — Wireframing
+    - listitem: — Visual Design
+    - listitem: — Prototyping
+    - listitem: — User Testing
+    - listitem: — Handoff & Documentation

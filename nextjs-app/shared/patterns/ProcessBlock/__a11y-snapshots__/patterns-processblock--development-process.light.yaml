@@ -1,0 +1,21 @@
+- region "Development Workflow":
+  - heading "Development Workflow" [level=2]
+  - heading "Planning" [level=3]
+  - list:
+    - listitem: — Requirements Gathering
+    - listitem: — Technical Architecture
+    - listitem: — Sprint Planning
+    - listitem: — Risk Assessment
+  - heading "Development" [level=3]
+  - list:
+    - listitem: — Component Development
+    - listitem: — Unit Testing
+    - listitem: — Code Reviews
+    - listitem: — Integration Testing
+    - listitem: — Documentation
+  - heading "Deployment" [level=3]
+  - list:
+    - listitem: — CI/CD Pipeline
+    - listitem: — Production Deployment
+    - listitem: — Monitoring & Analytics
+    - listitem: — Bug Fixes & Maintenance
