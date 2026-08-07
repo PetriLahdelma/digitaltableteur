@@ -223,7 +223,7 @@
     "@ai-sdk/openai": "^4.0.26",
     "@ai-sdk/react": "^4.0.48",
     "@calcom/embed-react": "^1.5.3",
-    "@digitaltableteur/react": "^0.1.23",
+    "@digitaltableteur/react": "^0.1.24",
     "@digitaltableteur/tokens": "^0.1.4",
     "@digitaltableteur/tokens-css": "^0.1.5",
     "@digitaltableteur/web-components": "^0.10.0",

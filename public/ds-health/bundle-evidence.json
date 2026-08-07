@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-07T12:43:18.581Z",
+  "generatedAt": "2026-08-07T16:33:01.829Z",
   "package": {
     "name": "@digitaltableteur/react",
-    "version": "0.1.23"
+    "version": "0.1.24"
   },
   "toolchain": {
     "esbuild": "0.28.1",
@@ -844,12 +844,12 @@
     "layout": {
       "js": {
         "self": {
-          "minBytes": 141047,
-          "gzipBytes": 46633
+          "minBytes": 141028,
+          "gzipBytes": 46626
         },
         "withDeps": {
-          "minBytes": 385551,
-          "gzipBytes": 105408
+          "minBytes": 385532,
+          "gzipBytes": 105400
         }
       },
       "css": {
@@ -859,22 +859,22 @@
       "components": {
         "Accordion": {
           "self": {
-            "minBytes": 135943,
-            "gzipBytes": 44941
+            "minBytes": 135924,
+            "gzipBytes": 44924
           },
           "withDeps": {
-            "minBytes": 380434,
-            "gzipBytes": 103699
+            "minBytes": 380413,
+            "gzipBytes": 103686
           }
         },
         "AspectRatio": {
           "self": {
-            "minBytes": 134733,
-            "gzipBytes": 44523
+            "minBytes": 134714,
+            "gzipBytes": 44506
           },
           "withDeps": {
-            "minBytes": 379218,
-            "gzipBytes": 103286
+            "minBytes": 379197,
+            "gzipBytes": 103267
           }
         },
         "Card": {
@@ -889,102 +889,102 @@
         },
         "Center": {
           "self": {
-            "minBytes": 134534,
-            "gzipBytes": 44451
+            "minBytes": 134515,
+            "gzipBytes": 44435
           },
           "withDeps": {
-            "minBytes": 379018,
-            "gzipBytes": 103204
+            "minBytes": 378997,
+            "gzipBytes": 103183
           }
         },
         "Container": {
           "self": {
-            "minBytes": 134749,
-            "gzipBytes": 44522
+            "minBytes": 134730,
+            "gzipBytes": 44507
           },
           "withDeps": {
-            "minBytes": 379233,
-            "gzipBytes": 103283
+            "minBytes": 379212,
+            "gzipBytes": 103265
           }
         },
         "Divider": {
           "self": {
-            "minBytes": 134410,
-            "gzipBytes": 44407
+            "minBytes": 134391,
+            "gzipBytes": 44393
           },
           "withDeps": {
-            "minBytes": 378893,
-            "gzipBytes": 103150
+            "minBytes": 378872,
+            "gzipBytes": 103130
           }
         },
         "FlexBox": {
           "self": {
-            "minBytes": 134881,
-            "gzipBytes": 44569
+            "minBytes": 134862,
+            "gzipBytes": 44555
           },
           "withDeps": {
-            "minBytes": 379365,
-            "gzipBytes": 103337
+            "minBytes": 379344,
+            "gzipBytes": 103323
           }
         },
         "Grid": {
           "self": {
-            "minBytes": 134407,
-            "gzipBytes": 44407
+            "minBytes": 134388,
+            "gzipBytes": 44393
           },
           "withDeps": {
-            "minBytes": 378890,
-            "gzipBytes": 103150
+            "minBytes": 378869,
+            "gzipBytes": 103130
           }
         },
         "MacWindowFrame": {
           "self": {
-            "minBytes": 134417,
-            "gzipBytes": 44407
+            "minBytes": 134398,
+            "gzipBytes": 44392
           },
           "withDeps": {
-            "minBytes": 378900,
-            "gzipBytes": 103150
+            "minBytes": 378879,
+            "gzipBytes": 103133
           }
         },
         "ResizablePanelGroup": {
           "self": {
-            "minBytes": 134422,
-            "gzipBytes": 44406
+            "minBytes": 134403,
+            "gzipBytes": 44392
           },
           "withDeps": {
-            "minBytes": 378905,
-            "gzipBytes": 103148
+            "minBytes": 378884,
+            "gzipBytes": 103129
           }
         },
         "Section": {
           "self": {
-            "minBytes": 134410,
-            "gzipBytes": 44406
+            "minBytes": 134391,
+            "gzipBytes": 44392
           },
           "withDeps": {
-            "minBytes": 378893,
-            "gzipBytes": 103149
+            "minBytes": 378872,
+            "gzipBytes": 103129
           }
         },
         "Spacer": {
           "self": {
-            "minBytes": 134768,
-            "gzipBytes": 44509
+            "minBytes": 134749,
+            "gzipBytes": 44494
           },
           "withDeps": {
-            "minBytes": 379252,
-            "gzipBytes": 103254
+            "minBytes": 379231,
+            "gzipBytes": 103238
           }
         },
         "Stack": {
           "self": {
-            "minBytes": 134938,
-            "gzipBytes": 44609
+            "minBytes": 134919,
+            "gzipBytes": 44593
           },
           "withDeps": {
-            "minBytes": 379422,
-            "gzipBytes": 103352
+            "minBytes": 379401,
+            "gzipBytes": 103337
           }
         }
       }
@@ -1665,12 +1665,12 @@
   "totals": {
     "js": {
       "self": {
-        "minBytes": 2219350,
-        "gzipBytes": 739827
+        "minBytes": 2219331,
+        "gzipBytes": 739820
       },
       "withDeps": {
-        "minBytes": 4630831,
-        "gzipBytes": 1320793
+        "minBytes": 4630812,
+        "gzipBytes": 1320785
       }
     },
     "css": {
@@ -1679,9 +1679,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "03c781e9941dac3d5d24beace438e4fee32d3985",
-    "workingTreeClean": false,
-    "dirtyPathCount": 2,
+    "sourceCommit": "f298a71c11e4d882402afeebbaee1256023dfced",
+    "workingTreeClean": true,
+    "dirtyPathCount": 0,
     "generator": {
       "name": "measure-bundle-evidence",
       "version": 1,

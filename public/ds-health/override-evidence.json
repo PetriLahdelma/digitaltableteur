@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-07T15:04:48.393Z",
+  "generatedAt": "2026-08-07T16:33:11.731Z",
   "package": {
     "name": "@digitaltableteur/react",
-    "version": "0.1.23"
+    "version": "0.1.24"
   },
   "contract": "OWNER DECISION 2026-08-07: className-override-wins. A consumer's single-class, no-!important selector applied via className wins over component base styles for the probed properties on the root element, under the documented consumer arrangement (design-system CSS before consumer CSS).",
   "environment": {
@@ -1543,9 +1543,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "39eca237b4d2692ae74417706f0743b7cee6efd5",
+    "sourceCommit": "f298a71c11e4d882402afeebbaee1256023dfced",
     "workingTreeClean": false,
-    "dirtyPathCount": 8,
+    "dirtyPathCount": 2,
     "generator": {
       "name": "measure-override-evidence",
       "version": 1,
