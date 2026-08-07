@@ -43,11 +43,14 @@ function subtreeFingerprint(root) {
   return parts.join("\n");
 }
 
+const CHILD_MARKER = "dtProbeChildMarker";
+
 export async function runOverrideEvidence({
   React,
   ReactDOMClient,
   modules,
   components,
+  matrixContainers = [],
 }) {
   const { createElement } = React;
   const lookup = (name) => {
@@ -92,6 +95,21 @@ export async function runOverrideEvidence({
     };
   }
 
+  // Neutral reference for the pinned-property discriminator (INV-3): a
+  // child only participates in matrix comparisons for properties whose
+  // standalone computed value differs from a plain div in the same context,
+  // so inherited-by-design values never register as interference.
+  const neutralDiv = document.createElement("div");
+  mountHost.appendChild(neutralDiv);
+  await nextPaint();
+  const neutralStyle = getComputedStyle(neutralDiv);
+  const neutralComputed = {};
+  for (const { prop } of PROBE_PROPERTIES) {
+    neutralComputed[prop] = neutralStyle.getPropertyValue(prop);
+  }
+  neutralDiv.remove();
+
+  const componentCache = new Map();
   const results = {};
   for (const { entry, exportName, contract } of components) {
     const measurement = {};
@@ -107,9 +125,15 @@ export async function runOverrideEvidence({
       const containerChain = hydrationContainerChainFor(contract?.element);
       const targets = overrideTargetsFor(contract);
 
+      // Containers in the INV-3 matrix only need a working render plan (their
+      // child is located document-wide, so portal containers qualify); cache
+      // before the in-flow-root check. Children additionally need
+      // baseComputed + forwarded, added below.
+      componentCache.set(exportName, { Component, props, containerChain });
       const base = await renderInto(Component, props, containerChain);
       if (base.renderError) {
         base.cleanup();
+        componentCache.delete(exportName);
         results[exportName] = { renderError: base.renderError };
         continue;
       }
@@ -123,6 +147,12 @@ export async function runOverrideEvidence({
       const baseFingerprint = targets.vars.length
         ? subtreeFingerprint(base.rootElement)
         : null;
+      const baseStyle = getComputedStyle(base.rootElement);
+      const baseComputed = {};
+      for (const { prop } of PROBE_PROPERTIES) {
+        baseComputed[prop] = baseStyle.getPropertyValue(prop);
+      }
+      componentCache.get(exportName).baseComputed = baseComputed;
       base.cleanup();
 
       if (targets.hasClassName) {
@@ -183,6 +213,10 @@ export async function runOverrideEvidence({
         measurement.skip =
           "contract declares neither className nor theming.vars (out of scope)";
       }
+      if (componentCache.has(exportName)) {
+        componentCache.get(exportName).forwarded =
+          measurement.classNameForwarded === true;
+      }
       results[exportName] = measurement;
     } catch (error) {
       results[exportName] = {
@@ -191,5 +225,77 @@ export async function runOverrideEvidence({
     }
   }
 
-  return results;
+  // --- INV-3 matrix (informational): container × child interference ------
+  const matrix = [];
+  for (const containerName of matrixContainers) {
+    const container = componentCache.get(containerName);
+    if (!container) {
+      matrix.push({
+        container: containerName,
+        child: "*",
+        skip: "container is not renderable in the harness",
+      });
+      continue;
+    }
+    for (const [childName, child] of componentCache) {
+      if (childName === containerName) continue;
+      if (!child.baseComputed || !child.forwarded) continue; // marker travels via className
+      if (child.containerChain.length) continue; // fragments need table ancestry
+      const pinned = PROBE_PROPERTIES.map((p) => p.prop).filter(
+        (prop) => child.baseComputed[prop] !== neutralComputed[prop],
+      );
+      if (!pinned.length) {
+        matrix.push({
+          container: containerName,
+          child: childName,
+          skip: "child pins none of the probed properties",
+        });
+        continue;
+      }
+      try {
+        const childElement = createElement(child.Component, {
+          ...child.props,
+          className: [child.props.className, CHILD_MARKER]
+            .filter(Boolean)
+            .join(" "),
+        });
+        const composed = await renderInto(
+          container.Component,
+          { ...container.props, children: childElement },
+          container.containerChain,
+        );
+        // Portals may place the child outside the wrapper; search the page.
+        const marked = document.querySelector(`.${CHILD_MARKER}`);
+        if (!marked) {
+          matrix.push({
+            container: containerName,
+            child: childName,
+            skip: "container did not render the marked child",
+          });
+        } else {
+          const style = getComputedStyle(marked);
+          const diffs = {};
+          for (const prop of pinned) {
+            const inContainer = style.getPropertyValue(prop);
+            if (inContainer !== child.baseComputed[prop]) {
+              diffs[prop] = {
+                standalone: child.baseComputed[prop],
+                inContainer,
+              };
+            }
+          }
+          matrix.push({ container: containerName, child: childName, diffs });
+        }
+        composed.cleanup();
+      } catch (error) {
+        matrix.push({
+          container: containerName,
+          child: childName,
+          skip: `composition render failed: ${String(error?.message ?? error).split("\n")[0].slice(0, 200)}`,
+        });
+      }
+    }
+  }
+
+  return { results, matrix };
 }

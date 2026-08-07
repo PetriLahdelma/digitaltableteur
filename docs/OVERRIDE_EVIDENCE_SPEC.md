@@ -1,9 +1,21 @@
 # Override-precedence evidence (Phase 4, next increment)
 
-Status: **increment A implemented** (`npm run audit:override-evidence`).
+Status: **increments A and B implemented** (`npm run audit:override-evidence`).
 Owner decisions recorded: className-override-wins IS the contract (2026-08-07,
 open question 1 resolved); root-only probing for A; probe set v1 as specced.
-Increments B/C (hostile-ancestor matrix) remain open.
+
+Increment B ships INV-3 informationally: the formalized universal-selector
+scan (3 package exports today: Menu composes children; ProcessBlock and
+ToastStack are watchlist-only) and the container × child matrix with a
+pinned-property discriminator — a child participates only for properties
+whose standalone computed value differs from a neutral div in the same
+context, so inherited-by-design values never register as interference.
+Current artifact: Menu × 23 children, 0 affected. A `--containers` debug
+flag exercises the machinery against any renderable export.
+
+Increment C remains open: graduate INV-3 to the baseline gate, compose
+children inside semantic sub-slots (e.g. Menu items) rather than only as
+direct children, and extend the probe set.
 
 ## Why
 
