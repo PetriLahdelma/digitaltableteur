@@ -56,9 +56,18 @@ export function CommandPalette({
   const dialogRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
+  // SSR renders null (no document for the portal); the initial client render
+  // must agree or hydration regenerates the tree. The portal appears only
+  // after mount, and the trap/lock arm on the same flag so their effects
+  // re-run once the dialog node actually exists.
+  const [mounted, setMounted] = useState(false);
 
-  useFocusTrap(dialogRef, open);
-  useScrollLock(open);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useFocusTrap(dialogRef, open && mounted);
+  useScrollLock(open && mounted);
 
   useEffect(() => {
     if (open) {
@@ -81,7 +90,7 @@ export function CommandPalette({
     setActive((a) => Math.min(a, Math.max(0, filtered.length - 1)));
   }, [filtered.length]);
 
-  if (!open || typeof document === "undefined") return null;
+  if (!open || !mounted) return null;
 
   const run = (item: CommandPaletteItem) => {
     item.onSelect();

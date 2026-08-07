@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T21:40:21.260Z",
+  "generatedAt": "2026-08-07T09:46:28.271Z",
   "package": {
     "name": "@digitaltableteur/react",
     "version": "0.1.22"
@@ -992,12 +992,12 @@
     "navigation": {
       "js": {
         "self": {
-          "minBytes": 351450,
-          "gzipBytes": 124922
+          "minBytes": 351471,
+          "gzipBytes": 124947
         },
         "withDeps": {
-          "minBytes": 596082,
-          "gzipBytes": 184230
+          "minBytes": 596097,
+          "gzipBytes": 184247
         }
       },
       "css": {
@@ -1017,12 +1017,12 @@
         },
         "CommandPalette": {
           "self": {
-            "minBytes": 255235,
-            "gzipBytes": 92531
+            "minBytes": 255256,
+            "gzipBytes": 92554
           },
           "withDeps": {
-            "minBytes": 499864,
-            "gzipBytes": 151088
+            "minBytes": 499885,
+            "gzipBytes": 151073
           }
         },
         "LanguageSwitcher": {
@@ -1665,12 +1665,12 @@
   "totals": {
     "js": {
       "self": {
-        "minBytes": 2219314,
-        "gzipBytes": 739802
+        "minBytes": 2219335,
+        "gzipBytes": 739827
       },
       "withDeps": {
-        "minBytes": 4630801,
-        "gzipBytes": 1320777
+        "minBytes": 4630816,
+        "gzipBytes": 1320794
       }
     },
     "css": {
@@ -1679,9 +1679,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "97ab60760666ecad7b51ea597c2af17ce5b6eecf",
+    "sourceCommit": "292c7c8d5fa0cd7f89b3c0857510aa835d3342ca",
     "workingTreeClean": false,
-    "dirtyPathCount": 26,
+    "dirtyPathCount": 2,
     "generator": {
       "name": "measure-bundle-evidence",
       "version": 1,
