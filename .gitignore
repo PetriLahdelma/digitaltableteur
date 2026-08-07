@@ -113,3 +113,17 @@ public/visual-diff/report.json
 .ds-sync/
 ds-bundle/
 packages/react/_ds-sync-globals.css
+
+# TypeScript declaration emit must never land next to shared sources (a
+# broken tsconfig once sprayed 384 of these and mass-staled the a11y
+# evidence path guard, #1438); generated declarations live in package dist.
+nextjs-app/shared/components/**/*.d.ts
+nextjs-app/shared/components/**/*.d.ts.map
+nextjs-app/shared/patterns/**/*.d.ts
+nextjs-app/shared/patterns/**/*.d.ts.map
+nextjs-app/shared/hooks/*.d.ts
+nextjs-app/shared/hooks/*.d.ts.map
+nextjs-app/shared/data/*.d.ts
+nextjs-app/shared/data/*.d.ts.map
+nextjs-app/shared/lib/*.d.ts
+nextjs-app/shared/lib/*.d.ts.map
