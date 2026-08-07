@@ -30,9 +30,11 @@ const styles = `
     gap: 0.5rem;
     margin: 0;
     color: var(--color-primary, currentColor);
-    font-family: var(--font-body, sans-serif);
+    /* Typography matches the Label primitive exactly — one label treatment
+       across single fields and group legends (unified 2026-08-05, #1409). */
+    font-family: var(--font-text, sans-serif);
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     cursor: pointer;
   }
 

@@ -156,6 +156,11 @@ const automatedChecks = [
     reason: "the declared react peer range is exercised at its endpoints (floor + current) in isolated consumers; combo divergence fails the publish",
   },
   {
+    name: "wc-parity-evidence",
+    command: ["run", "audit:wc-parity"],
+    reason: "React↔native rendered parity (pixels + geometry across the viewport/theme matrix) is swept and stamped as publish evidence; enforced regressions fail the publish",
+  },
+  {
     name: "compatibility-manifest",
     command: ["run", "audit:compatibility"],
     reason: "the toolchain combinations actually exercised by the gates are recorded as the per-publish compatibility manifest",

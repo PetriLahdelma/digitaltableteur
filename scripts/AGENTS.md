@@ -178,7 +178,15 @@
   consumer's React; combo divergence (an outcome differing across the
   range) exits 2. Requires a built dist + network for the floor install.
   Output: `public/ds-health/compat-matrix.json`.
-- All six run automatically inside `check:react-publish-preflight` (after
+- `npm run audit:wc-parity` — runs the rendered-parity sweep
+  (`check:rendered-parity:ci`, React↔native pixels + geometry across the
+  viewport/theme matrix) and elevates the report into
+  `public/ds-health/wc-parity.json`: coverage, the enforcement roster with
+  its reviewed exceptions, per-component gate verdicts and max geometry
+  deltas as substance; raw pixel ratios stay informational (antialiasing
+  wobble). Cannot regenerate over a red sweep. `-- --from-report` reuses a
+  report younger than 30 minutes.
+- All seven run automatically inside `check:react-publish-preflight` (after
   `react-public-api` rebuilds the dist), so every publish regenerates its
   evidence; commit the regenerated artifacts with the publish PR.
 

@@ -185,7 +185,10 @@ const maxPackedFiles = 40 + tags.length * 2;
 // +2 kB for the File icon (#1428, TreeView leaf-icon fix): six inline SVG
 // weights in native-icon-data; measured 1,890,670 bytes unpacked, ~1.4 kB
 // over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_341_000;
+// +1 kB for the rendered-parity drift repairs (2026-08-07): menu font reset
+// + shadow token, testimonial ramp tokens, group-label typography, with
+// their explanatory comments; measured 1,891,309 bytes, 34 bytes over.
+const sharedBundleAndManifestCeiling = 1_342_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
