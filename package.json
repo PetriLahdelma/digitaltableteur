@@ -148,6 +148,7 @@
     "audit:ssr-evidence": "node scripts/design-system/measure-ssr-evidence.mjs",
     "audit:override-evidence": "node scripts/design-system/measure-override-evidence.mjs",
     "audit:interaction-evidence": "node scripts/design-system/measure-interaction-evidence.mjs",
+    "audit:compat-matrix": "node scripts/design-system/measure-compat-matrix.mjs",
     "agentic-ds-audit": "node scripts/design-system/agentic-ds-audit.mjs",
     "release:gate": "node scripts/design-system/release-gate.mjs",
     "check:trusted-publisher": "node scripts/design-system/check-trusted-publisher-config.mjs",

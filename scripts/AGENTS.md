@@ -172,7 +172,13 @@
   query filter) with deterministic outcome facts. Requires a built dist;
   `-- --build` rebuilds first. Output:
   `public/ds-health/interaction-evidence.json`.
-- All five run automatically inside `check:react-publish-preflight` (after
+- `npm run audit:compat-matrix` — React peer-range matrix: installs the
+  packed tarball with react at the declared floor AND the resolved current
+  into isolated consumers and runs the SSR render-plan smoke with each
+  consumer's React; combo divergence (an outcome differing across the
+  range) exits 2. Requires a built dist + network for the floor install.
+  Output: `public/ds-health/compat-matrix.json`.
+- All six run automatically inside `check:react-publish-preflight` (after
   `react-public-api` rebuilds the dist), so every publish regenerates its
   evidence; commit the regenerated artifacts with the publish PR.
 

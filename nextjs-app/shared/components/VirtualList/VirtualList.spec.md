@@ -63,3 +63,10 @@ to zero width and only its border shows.
   PageUp/PageDown, Home/End) is trusted-event browser behavior that synthetic
   test events cannot trigger; the play verifies focusability and drives the
   same scroll pathway programmatically.
+- Harness trap (2026-08-07, interaction-evidence build): a synthetically
+  dispatched `Event("scroll")` — bubbling or not — never reaches React's
+  `onScroll`, so the window does not move. Only a plain `scrollTop`
+  assignment fires the native scroll event React listens for, and the
+  element must be laid out first or the assignment clamps to 0. Scroll
+  harnesses must assign and await a paint, measuring assignment → painted
+  re-window (see audit:interaction-evidence).
