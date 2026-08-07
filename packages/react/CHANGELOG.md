@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.24 - 2026-08-07
+
+- `Grid` columns and gap are consumer-overridable: the non-responsive path
+  applied `gap` and `grid-template-columns` as inline styles, which no
+  consumer `className` could beat (caught by the override-precedence gate's
+  new `gap` probe). Both values now always flow through the CSS
+  custom-property mechanism read by the stylesheet (`--dt-grid-columns`,
+  `--dt-grid-gap`); with no per-breakpoint props the var fallback chains
+  resolve to the base values at every breakpoint and the legacy
+  `repeat(n, 1fr)` template form is preserved, so rendered output is
+  unchanged. The `columns`/`gap` props behave exactly as before.
+
 ## 0.1.23 - 2026-08-07
 
 - Fixes `TreeView` leaf icons: leaf nodes request the `file` icon, whose
