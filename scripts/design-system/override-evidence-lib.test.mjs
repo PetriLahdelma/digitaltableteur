@@ -149,26 +149,61 @@ test("hostileContainerScan finds universal selectors and ignores comments", () =
   expect(scan[1].composesChildren).toBe(false);
 });
 
-test("assembleEncapsulation totals pairs and keeps only real diffs", () => {
+test("assembleEncapsulation totals pairs, keys by via, keeps only real diffs", () => {
   const section = assembleEncapsulation({
     scan: [{ name: "Menu", universalSelectors: [".item > *"], composesChildren: true }],
     matrix: [
       {
         container: "Menu",
         child: "Badge",
+        via: "subslot",
         diffs: {
           color: { standalone: "rgb(1, 2, 3)", inContainer: "rgb(9, 9, 9)" },
         },
       },
+      { container: "Menu", child: "Badge", via: "direct", diffs: {} },
       { container: "Menu", child: "Text", diffs: {} },
       { container: "Menu", child: "Spacer", skip: "child pins none of the probed properties" },
     ],
   });
-  expect(section.matrix.pairsMeasured).toBe(2);
+  expect(section.matrix.pairsMeasured).toBe(3);
   expect(section.matrix.pairsAffected).toBe(1);
-  expect(section.matrix.affected.Menu.Badge.color.inContainer).toBe("rgb(9, 9, 9)");
-  expect(section.matrix.skips["Menu × Spacer"]).toMatch(/pins none/);
-  expect(section.note).toMatch(/informational/);
+  expect(section.matrix.affected.Menu.Badge.subslot.color.inContainer).toBe(
+    "rgb(9, 9, 9)",
+  );
+  expect(section.matrix.skips["Menu × Spacer (direct)"]).toMatch(/pins none/);
+  expect(section.note).toMatch(/gate against the dated baseline/);
+});
+
+test("new affected matrix pairs gate; baselined and stale pairs are reported", () => {
+  const substance = {
+    components: { Text: { status: "pass" } },
+    encapsulation: {
+      matrix: {
+        affected: {
+          Menu: {
+            Badge: { subslot: { color: {} } },
+            Kbd: { direct: { "font-size": {} } },
+          },
+        },
+      },
+    },
+  };
+  const { newAffectedPairs, stalePairs } = compareToBaseline(substance, {
+    entries: {},
+    encapsulation: {
+      "Menu × Kbd (direct)": { note: "approved", on: "2026-08-07" },
+      "Menu × Gone (direct)": { note: "old", on: "2026-08-01" },
+    },
+  });
+  expect(newAffectedPairs).toEqual(["Menu × Badge (subslot)"]);
+  expect(stalePairs).toEqual(["Menu × Gone (direct)"]);
+});
+
+test("probe set carries the increment C additions", () => {
+  const props = PROBE_PROPERTIES.map((p) => p.prop);
+  expect(props).toContain("font-size");
+  expect(props).toContain("gap");
 });
 
 test("compareToBaseline reports new failures and stale approvals", () => {

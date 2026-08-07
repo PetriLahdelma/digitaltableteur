@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T14:46:15.416Z",
+  "generatedAt": "2026-08-07T15:04:48.393Z",
   "package": {
     "name": "@digitaltableteur/react",
     "version": "0.1.23"
@@ -11,7 +11,7 @@
     "reducedMotion": true
   },
   "methodology": {
-    "probe": "single class .dtProbeOverride with color, margin-block-start, background-color; sentinel values no token resolves to; probe stylesheet loads after design-system CSS, mirroring the documented consumer import order",
+    "probe": "single class .dtProbeOverride with color, margin-block-start, background-color, font-size, gap; sentinel values no token resolves to; probe stylesheet loads after design-system CSS, mirroring the documented consumer import order",
     "rendering": "components render from the built dist with the SSR-evidence render plans (contract playground defaults, type-driven function/ref synthesis, descriptor resolution); computed styles read in real Chromium with reduced motion",
     "themingVars": "each contract-declared theming var is probed for liveness: setting it on a wrapper must change some computed style in the component subtree; zero declared vars is reported honestly, not hidden",
     "skips": "a skip is a harness limitation (no className prop, no in-flow root such as portals, or an unrenderable plan), recorded with its reason and never counted as component evidence"
@@ -35,6 +35,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -60,6 +66,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -94,6 +106,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -127,6 +145,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -143,6 +167,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -165,6 +195,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -181,6 +217,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -203,6 +245,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -223,6 +271,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -253,6 +307,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -273,6 +333,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -295,6 +361,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -312,6 +384,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -328,6 +406,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -350,6 +434,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -371,6 +461,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -391,6 +487,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -433,6 +535,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -462,6 +570,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -478,6 +592,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -496,6 +616,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -512,6 +638,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -566,6 +698,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -582,6 +720,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -608,6 +752,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -624,6 +774,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -646,6 +802,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -662,6 +824,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -684,6 +852,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -705,6 +879,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -721,6 +901,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -739,6 +925,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -755,6 +947,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -789,6 +987,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -805,6 +1009,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -827,6 +1037,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -843,6 +1059,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -861,6 +1083,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -877,6 +1105,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -919,6 +1153,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -952,6 +1192,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -968,6 +1214,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -993,6 +1245,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -1031,6 +1289,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -1048,6 +1312,12 @@
           },
           "background-color": {
             "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
+            "pass": true
           }
         }
       },
@@ -1064,6 +1334,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -1085,6 +1361,12 @@
             "pass": true
           },
           "background-color": {
+            "pass": true
+          },
+          "font-size": {
+            "pass": true
+          },
+          "gap": {
             "pass": true
           }
         }
@@ -1209,7 +1491,7 @@
     }
   },
   "encapsulation": {
-    "note": "informational (increment B): container × child interference on properties the child PINS itself (standalone computed differs from a neutral div), so inherited-by-design values never count. Not gated; graduation to the baseline gate is increment C.",
+    "note": "container × child interference on properties the child PINS itself (standalone computed differs from a neutral div), so inherited-by-design values never count. Composition runs as direct children and, where a sub-slot recipe exists, inside the container's semantic slot (via: subslot). Since increment C, NEW affected pairs gate against the dated baseline.",
     "scan": [
       {
         "name": "Menu",
@@ -1238,41 +1520,32 @@
       }
     ],
     "matrix": {
-      "pairsMeasured": 23,
+      "pairsMeasured": 64,
       "pairsAffected": 0,
       "affected": {},
       "skips": {
-        "Menu × AspectRatio": "child pins none of the probed properties",
-        "Menu × CategoryFilter": "child pins none of the probed properties",
-        "Menu × Center": "child pins none of the probed properties",
-        "Menu × Combobox": "child pins none of the probed properties",
-        "Menu × Container": "child pins none of the probed properties",
-        "Menu × DataTable": "child pins none of the probed properties",
-        "Menu × ExpandableSection": "child pins none of the probed properties",
-        "Menu × FormField": "child pins none of the probed properties",
-        "Menu × Grid": "child pins none of the probed properties",
-        "Menu × LanguageSwitcher": "child pins none of the probed properties",
-        "Menu × List": "child pins none of the probed properties",
-        "Menu × Logo": "child pins none of the probed properties",
-        "Menu × MultiCombobox": "child pins none of the probed properties",
-        "Menu × PageLayout": "child pins none of the probed properties",
-        "Menu × Pagination": "child pins none of the probed properties",
-        "Menu × RadioGroup": "child pins none of the probed properties",
-        "Menu × Section": "child pins none of the probed properties",
-        "Menu × Skeleton": "child pins none of the probed properties",
-        "Menu × Spacer": "child pins none of the probed properties",
-        "Menu × Spinner": "child pins none of the probed properties",
-        "Menu × SplitButton": "child pins none of the probed properties",
-        "Menu × Stack": "child pins none of the probed properties",
-        "Menu × ToastStack": "child pins none of the probed properties",
-        "Menu × ValueCard": "child pins none of the probed properties"
+        "Menu × AspectRatio (direct)": "child pins none of the probed properties",
+        "Menu × CategoryFilter (direct)": "child pins none of the probed properties",
+        "Menu × Center (direct)": "child pins none of the probed properties",
+        "Menu × Container (direct)": "child pins none of the probed properties",
+        "Menu × ExpandableSection (direct)": "child pins none of the probed properties",
+        "Menu × LanguageSwitcher (direct)": "child pins none of the probed properties",
+        "Menu × Logo (direct)": "child pins none of the probed properties",
+        "Menu × PageLayout (direct)": "child pins none of the probed properties",
+        "Menu × Pagination (direct)": "child pins none of the probed properties",
+        "Menu × RadioGroup (direct)": "child pins none of the probed properties",
+        "Menu × Section (direct)": "child pins none of the probed properties",
+        "Menu × Spacer (direct)": "child pins none of the probed properties",
+        "Menu × Spinner (direct)": "child pins none of the probed properties",
+        "Menu × Stack (direct)": "child pins none of the probed properties",
+        "Menu × ValueCard (direct)": "child pins none of the probed properties"
       }
     }
   },
   "provenance": {
-    "sourceCommit": "b860d3ae80379e78aa3d6e6b040aa8590de5caa5",
+    "sourceCommit": "39eca237b4d2692ae74417706f0743b7cee6efd5",
     "workingTreeClean": false,
-    "dirtyPathCount": 6,
+    "dirtyPathCount": 8,
     "generator": {
       "name": "measure-override-evidence",
       "version": 1,

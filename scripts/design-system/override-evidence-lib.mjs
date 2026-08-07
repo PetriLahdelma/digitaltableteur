@@ -11,15 +11,18 @@
  */
 
 /**
- * Probe set v1, sourced from the two shipped bug classes (#1280
- * Modal/Switch ink+surface, Title/Text spacing). Sentinels are valid,
- * visually meaningless values no token resolves to, so computed === sentinel
- * is unambiguous.
+ * Probe set: v1 props sourced from the two shipped bug classes (#1280
+ * Modal/Switch ink+surface, Title/Text spacing); font-size and gap added in
+ * increment C (typography compound-selector class, layout rhythm class).
+ * Sentinels are valid, visually meaningless values no token resolves to, so
+ * computed === sentinel is unambiguous.
  */
 export const PROBE_PROPERTIES = [
   { prop: "color", value: "rgb(9, 8, 7)" },
   { prop: "margin-block-start", value: "7px" },
   { prop: "background-color", value: "rgb(7, 8, 9)" },
+  { prop: "font-size", value: "13px" },
+  { prop: "gap", value: "9px" },
 ];
 
 export const PROBE_CLASS = "dtProbeOverride";
@@ -212,8 +215,9 @@ export function assembleEncapsulation({ scan, matrix }) {
   let affectedCount = 0;
   const skips = {};
   for (const pair of matrix) {
+    const via = pair.via ?? "direct";
     if (pair.skip) {
-      skips[`${pair.container} × ${pair.child}`] = pair.skip;
+      skips[`${pair.container} × ${pair.child} (${via})`] = pair.skip;
       continue;
     }
     measured += 1;
@@ -224,11 +228,13 @@ export function assembleEncapsulation({ scan, matrix }) {
     if (Object.keys(diffs).length) {
       affectedCount += 1;
       affected[pair.container] = affected[pair.container] ?? {};
-      affected[pair.container][pair.child] = diffs;
+      affected[pair.container][pair.child] =
+        affected[pair.container][pair.child] ?? {};
+      affected[pair.container][pair.child][via] = diffs;
     }
   }
   return {
-    note: "informational (increment B): container × child interference on properties the child PINS itself (standalone computed differs from a neutral div), so inherited-by-design values never count. Not gated; graduation to the baseline gate is increment C.",
+    note: "container × child interference on properties the child PINS itself (standalone computed differs from a neutral div), so inherited-by-design values never count. Composition runs as direct children and, where a sub-slot recipe exists, inside the container's semantic slot (via: subslot). Since increment C, NEW affected pairs gate against the dated baseline.",
     scan,
     matrix: {
       pairsMeasured: measured,
@@ -259,7 +265,9 @@ function sortObjectDeep(object) {
 
 /**
  * Baseline comparison. The baseline lists APPROVED failures as
- * { "<Component>": { note, on } } (agent-experience-baseline precedent:
+ * { "<Component>": { note, on } } under `entries`, and (since increment C)
+ * approved encapsulation interference as { "<Container> × <Child> (<via>)":
+ * { note, on } } under `encapsulation` (agent-experience-baseline precedent:
  * dated, explained, never blanket-updated). Returns failures not covered by
  * the baseline plus baseline entries that no longer fail (to be pruned).
  */
@@ -272,5 +280,22 @@ export function compareToBaseline(report, baseline) {
   const stale = Object.keys(approved).filter(
     (name) => report.components[name]?.status !== "fail",
   );
-  return { newFailures, stale };
+
+  // Increment C: affected matrix pairs gate too. A pair key is
+  // "Container × Child (via)".
+  const approvedPairs = baseline?.encapsulation ?? {};
+  const affected = report.encapsulation?.matrix?.affected ?? {};
+  const affectedKeys = [];
+  for (const [container, children] of Object.entries(affected)) {
+    for (const [child, byVia] of Object.entries(children)) {
+      for (const via of Object.keys(byVia)) {
+        affectedKeys.push(`${container} × ${child} (${via})`);
+      }
+    }
+  }
+  const newAffectedPairs = affectedKeys.filter((key) => !approvedPairs[key]);
+  const stalePairs = Object.keys(approvedPairs).filter(
+    (key) => !affectedKeys.includes(key),
+  );
+  return { newFailures, stale, newAffectedPairs, stalePairs };
 }

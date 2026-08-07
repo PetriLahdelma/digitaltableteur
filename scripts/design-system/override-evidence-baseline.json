@@ -1,4 +1,5 @@
 {
-  "note": "Approved override-precedence failures (docs/OVERRIDE_EVIDENCE_SPEC.md). Each entry is { \"<Component>\": { \"note\": <why this is approved debt>, \"on\": <date> } }. Never blanket-update; every entry is an explained, dated decision and a burn-down candidate.",
-  "entries": {}
+  "note": "Approved override-precedence failures (docs/OVERRIDE_EVIDENCE_SPEC.md). `entries` holds component failures as { \"<Component>\": { note, on } }; `encapsulation` (increment C) holds approved interference pairs as { \"<Container> × <Child> (<via>)\": { note, on } }. Never blanket-update; every entry is an explained, dated decision and a burn-down candidate.",
+  "entries": {},
+  "encapsulation": {}
 }

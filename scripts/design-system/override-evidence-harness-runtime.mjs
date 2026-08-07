@@ -45,6 +45,33 @@ function subtreeFingerprint(root) {
 
 const CHILD_MARKER = "dtProbeChildMarker";
 
+/**
+ * Sub-slot composition recipes (increment C): how to place a child inside a
+ * container's SEMANTIC slot, where the container's descendant rules actually
+ * reach (Menu's `.item > *` only applies inside MenuItem). Explicit and
+ * reviewable, like the gallery's PreviewSpec — a recipe is added when a
+ * hostile container's rules are unreachable through direct children.
+ */
+const SUBSLOT_RECIPES = {
+  Menu(createElement, lookup, child) {
+    const MenuTrigger = lookup("MenuTrigger");
+    const MenuContent = lookup("MenuContent");
+    const MenuItem = lookup("MenuItem");
+    if (!MenuTrigger || !MenuContent || !MenuItem) return null;
+    return {
+      props: { open: true },
+      children: [
+        createElement(MenuTrigger, { key: "t" }, "Open"),
+        createElement(
+          MenuContent,
+          { key: "c" },
+          createElement(MenuItem, null, child),
+        ),
+      ],
+    };
+  },
+};
+
 export async function runOverrideEvidence({
   React,
   ReactDOMClient,
@@ -252,47 +279,86 @@ export async function runOverrideEvidence({
         });
         continue;
       }
-      try {
-        const childElement = createElement(child.Component, {
+      const childElement = () =>
+        createElement(child.Component, {
           ...child.props,
           className: [child.props.className, CHILD_MARKER]
             .filter(Boolean)
             .join(" "),
         });
-        const composed = await renderInto(
-          container.Component,
-          { ...container.props, children: childElement },
-          container.containerChain,
-        );
-        // Portals may place the child outside the wrapper; search the page.
-        const marked = document.querySelector(`.${CHILD_MARKER}`);
-        if (!marked) {
+
+      const compositions = [
+        {
+          via: "direct",
+          props: { ...container.props, children: childElement() },
+        },
+      ];
+      const recipe = SUBSLOT_RECIPES[containerName];
+      if (recipe) {
+        const slotted = recipe(createElement, lookup, childElement());
+        if (slotted) {
+          compositions.push({
+            via: "subslot",
+            props: {
+              ...container.props,
+              ...slotted.props,
+              children: slotted.children,
+            },
+          });
+        } else {
           matrix.push({
             container: containerName,
             child: childName,
-            skip: "container did not render the marked child",
+            via: "subslot",
+            skip: "sub-slot recipe parts are not exported from the dist",
           });
-        } else {
-          const style = getComputedStyle(marked);
-          const diffs = {};
-          for (const prop of pinned) {
-            const inContainer = style.getPropertyValue(prop);
-            if (inContainer !== child.baseComputed[prop]) {
-              diffs[prop] = {
-                standalone: child.baseComputed[prop],
-                inContainer,
-              };
-            }
-          }
-          matrix.push({ container: containerName, child: childName, diffs });
         }
-        composed.cleanup();
-      } catch (error) {
-        matrix.push({
-          container: containerName,
-          child: childName,
-          skip: `composition render failed: ${String(error?.message ?? error).split("\n")[0].slice(0, 200)}`,
-        });
+      }
+
+      for (const composition of compositions) {
+        try {
+          const composed = await renderInto(
+            container.Component,
+            composition.props,
+            container.containerChain,
+          );
+          // Portals may place the child outside the wrapper; search the page.
+          const marked = document.querySelector(`.${CHILD_MARKER}`);
+          if (!marked) {
+            matrix.push({
+              container: containerName,
+              child: childName,
+              via: composition.via,
+              skip: "container did not render the marked child",
+            });
+          } else {
+            const style = getComputedStyle(marked);
+            const diffs = {};
+            for (const prop of pinned) {
+              const inContainer = style.getPropertyValue(prop);
+              if (inContainer !== child.baseComputed[prop]) {
+                diffs[prop] = {
+                  standalone: child.baseComputed[prop],
+                  inContainer,
+                };
+              }
+            }
+            matrix.push({
+              container: containerName,
+              child: childName,
+              via: composition.via,
+              diffs,
+            });
+          }
+          composed.cleanup();
+        } catch (error) {
+          matrix.push({
+            container: containerName,
+            child: childName,
+            via: composition.via,
+            skip: `composition render failed: ${String(error?.message ?? error).split("\n")[0].slice(0, 200)}`,
+          });
+        }
       }
     }
   }
