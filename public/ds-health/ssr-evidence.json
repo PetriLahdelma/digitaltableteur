@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T21:45:24.372Z",
+  "generatedAt": "2026-08-07T09:46:10.028Z",
   "package": {
     "name": "@digitaltableteur/react",
     "version": "0.1.22"
@@ -18,8 +18,8 @@
   "totals": {
     "ssrPass": 90,
     "ssrError": 2,
-    "hydrationClean": 89,
-    "hydrationError": 1,
+    "hydrationClean": 90,
+    "hydrationError": 0,
     "skipped": 51
   },
   "entries": {
@@ -824,7 +824,7 @@
           }
         },
         "CommandPalette": {
-          "status": "hydration-error",
+          "status": "pass",
           "ssr": {
             "ok": true,
             "htmlBytes": 0
@@ -833,10 +833,7 @@
             "onClose": "handler → no-op (never called during render)"
           },
           "hydration": {
-            "ok": false,
-            "errors": [
-              "Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:"
-            ]
+            "ok": true
           }
         },
         "LanguageSwitcher": {
@@ -1227,281 +1224,281 @@
   "informational": {
     "timings": {
       "Button": {
-        "renderToStringMs": 0.261
+        "renderToStringMs": 0.309
       },
       "ButtonGroup": {
-        "renderToStringMs": 0.038
+        "renderToStringMs": 0.052
       },
       "FilterChip": {
-        "renderToStringMs": 0.016
-      },
-      "IconButton": {
-        "renderToStringMs": 0.073
-      },
-      "SlideButton": {
-        "renderToStringMs": 0.059
-      },
-      "SplitButton": {
-        "renderToStringMs": 0.265
-      },
-      "AuthorBio": {
-        "renderToStringMs": 0.006
-      },
-      "CodeBlockWindow": {
-        "renderToStringMs": 0.092
-      },
-      "CodeSnippet": {
-        "renderToStringMs": 0.342
-      },
-      "DataTable": {
-        "renderToStringMs": 0.163
-      },
-      "ExpandableSection": {
-        "renderToStringMs": 0.032
-      },
-      "Gallery": {
-        "renderToStringMs": 0.108
-      },
-      "List": {
-        "renderToStringMs": 0.021
-      },
-      "ListItem": {
-        "renderToStringMs": 0.013
-      },
-      "Logo": {
-        "renderToStringMs": 0.051
-      },
-      "ReadingProgress": {
-        "renderToStringMs": 0.005
-      },
-      "Table": {
-        "renderToStringMs": 0.017
-      },
-      "TableCell": {
-        "renderToStringMs": 0.008
-      },
-      "TableHeaderCell": {
-        "renderToStringMs": 0.01
-      },
-      "TableRow": {
-        "renderToStringMs": 0.008
-      },
-      "Timestamp": {
-        "renderToStringMs": 0.045
-      },
-      "ValueCard": {
-        "renderToStringMs": 0.044
-      },
-      "VirtualList": {
-        "renderToStringMs": 0.084
-      },
-      "VirtualListItem": {
-        "renderToStringMs": 0.018
-      },
-      "AlertBanner": {
-        "renderToStringMs": 0.047
-      },
-      "EmptyState": {
-        "renderToStringMs": 0.055
-      },
-      "Progress": {
-        "renderToStringMs": 0.016
-      },
-      "Skeleton": {
-        "renderToStringMs": 0.024
-      },
-      "Spinner": {
-        "renderToStringMs": 0.01
-      },
-      "Toast": {
-        "renderToStringMs": 0.042
-      },
-      "ToastStack": {
-        "renderToStringMs": 0.042
-      },
-      "Checkbox": {
-        "renderToStringMs": 0.028
-      },
-      "CheckboxGroup": {
-        "renderToStringMs": 0.107
-      },
-      "Combobox": {
-        "renderToStringMs": 0.079
-      },
-      "FileUpload": {
-        "renderToStringMs": 0.071
-      },
-      "FormField": {
-        "renderToStringMs": 0.018
-      },
-      "GroupLabel": {
-        "renderToStringMs": 0.014
-      },
-      "HelperText": {
-        "renderToStringMs": 0.012
-      },
-      "Label": {
-        "renderToStringMs": 0.017
-      },
-      "MultiCombobox": {
-        "renderToStringMs": 0.081
-      },
-      "PhoneInput": {
-        "renderToStringMs": 1.233
-      },
-      "Radio": {
-        "renderToStringMs": 0.017
-      },
-      "RadioGroup": {
-        "renderToStringMs": 0.072
-      },
-      "Select": {
-        "renderToStringMs": 0.057
-      },
-      "SelectableCard": {
-        "renderToStringMs": 0.02
-      },
-      "Switch": {
-        "renderToStringMs": 0.036
-      },
-      "TextArea": {
-        "renderToStringMs": 0.03
-      },
-      "TextInput": {
-        "renderToStringMs": 0.032
-      },
-      "Author": {
-        "renderToStringMs": 0.023
-      },
-      "Avatar": {
-        "renderToStringMs": 0.012
-      },
-      "AvatarGroup": {
-        "renderToStringMs": 0.013
-      },
-      "Badge": {
-        "renderToStringMs": 0.034
-      },
-      "Icon": {
-        "renderToStringMs": 0.017
-      },
-      "StatusDot": {
-        "renderToStringMs": 0.012
-      },
-      "Accordion": {
-        "renderToStringMs": 0.08
-      },
-      "AspectRatio": {
-        "renderToStringMs": 0.008
-      },
-      "Card": {
-        "renderToStringMs": 0.026
-      },
-      "Center": {
-        "renderToStringMs": 0.006
-      },
-      "Container": {
-        "renderToStringMs": 0.006
-      },
-      "Divider": {
-        "renderToStringMs": 0.007
-      },
-      "FlexBox": {
-        "renderToStringMs": 0.008
-      },
-      "Grid": {
-        "renderToStringMs": 0.009
-      },
-      "MacWindowFrame": {
         "renderToStringMs": 0.031
       },
-      "ResizablePanelGroup": {
-        "renderToStringMs": 0.043
+      "IconButton": {
+        "renderToStringMs": 0.216
       },
-      "Section": {
-        "renderToStringMs": 0.008
+      "SlideButton": {
+        "renderToStringMs": 0.191
       },
-      "Spacer": {
-        "renderToStringMs": 0.007
+      "SplitButton": {
+        "renderToStringMs": 0.868
       },
-      "Stack": {
-        "renderToStringMs": 0.007
-      },
-      "Breadcrumb": {
-        "renderToStringMs": 0.049
-      },
-      "CommandPalette": {
-        "renderToStringMs": 0.006
-      },
-      "LanguageSwitcher": {
-        "renderToStringMs": 0.046
-      },
-      "Link": {
-        "renderToStringMs": 0.01
-      },
-      "Menu": {
-        "renderToStringMs": 0.025
-      },
-      "NavLink": {
-        "renderToStringMs": 0.011
-      },
-      "NavMenuList": {
-        "renderToStringMs": 0.028
-      },
-      "Pagination": {
-        "renderToStringMs": 0.128
-      },
-      "ScrollIndicator": {
-        "renderToStringMs": 0.035
-      },
-      "SegmentedControl": {
-        "renderToStringMs": 0.033
-      },
-      "SkipLink": {
-        "renderToStringMs": 0.007
-      },
-      "Tabs": {
-        "renderToStringMs": 0.059
-      },
-      "TreeView": {
-        "renderToStringMs": 0.162
-      },
-      "CategoryFilter": {
-        "renderToStringMs": 0.033
-      },
-      "Modal": {
-        "renderToStringMs": 0.044
-      },
-      "PageLayout": {
-        "renderToStringMs": 0.008
-      },
-      "ProcessBlock": {
-        "renderToStringMs": 0.06
-      },
-      "ThemeProvider": {
+      "AuthorBio": {
         "renderToStringMs": 0.009
       },
-      "Display": {
+      "CodeBlockWindow": {
+        "renderToStringMs": 0.25
+      },
+      "CodeSnippet": {
+        "renderToStringMs": 1.008
+      },
+      "DataTable": {
+        "renderToStringMs": 0.486
+      },
+      "ExpandableSection": {
+        "renderToStringMs": 0.068
+      },
+      "Gallery": {
+        "renderToStringMs": 0.207
+      },
+      "List": {
+        "renderToStringMs": 0.064
+      },
+      "ListItem": {
+        "renderToStringMs": 0.027
+      },
+      "Logo": {
+        "renderToStringMs": 0.13
+      },
+      "ReadingProgress": {
         "renderToStringMs": 0.007
+      },
+      "Table": {
+        "renderToStringMs": 0.047
+      },
+      "TableCell": {
+        "renderToStringMs": 0.02
+      },
+      "TableHeaderCell": {
+        "renderToStringMs": 0.022
+      },
+      "TableRow": {
+        "renderToStringMs": 0.02
+      },
+      "Timestamp": {
+        "renderToStringMs": 0.055
+      },
+      "ValueCard": {
+        "renderToStringMs": 0.159
+      },
+      "VirtualList": {
+        "renderToStringMs": 0.238
+      },
+      "VirtualListItem": {
+        "renderToStringMs": 0.057
+      },
+      "AlertBanner": {
+        "renderToStringMs": 0.158
+      },
+      "EmptyState": {
+        "renderToStringMs": 0.185
+      },
+      "Progress": {
+        "renderToStringMs": 0.033
+      },
+      "Skeleton": {
+        "renderToStringMs": 0.052
+      },
+      "Spinner": {
+        "renderToStringMs": 0.02
+      },
+      "Toast": {
+        "renderToStringMs": 0.115
+      },
+      "ToastStack": {
+        "renderToStringMs": 0.139
+      },
+      "Checkbox": {
+        "renderToStringMs": 0.09
+      },
+      "CheckboxGroup": {
+        "renderToStringMs": 0.396
+      },
+      "Combobox": {
+        "renderToStringMs": 0.234
+      },
+      "FileUpload": {
+        "renderToStringMs": 0.209
+      },
+      "FormField": {
+        "renderToStringMs": 0.051
+      },
+      "GroupLabel": {
+        "renderToStringMs": 0.021
+      },
+      "HelperText": {
+        "renderToStringMs": 0.026
+      },
+      "Label": {
+        "renderToStringMs": 0.064
+      },
+      "MultiCombobox": {
+        "renderToStringMs": 0.201
+      },
+      "PhoneInput": {
+        "renderToStringMs": 3.5
+      },
+      "Radio": {
+        "renderToStringMs": 0.071
+      },
+      "RadioGroup": {
+        "renderToStringMs": 0.286
+      },
+      "Select": {
+        "renderToStringMs": 0.24
+      },
+      "SelectableCard": {
+        "renderToStringMs": 0.065
+      },
+      "Switch": {
+        "renderToStringMs": 0.104
+      },
+      "TextArea": {
+        "renderToStringMs": 0.077
+      },
+      "TextInput": {
+        "renderToStringMs": 0.076
+      },
+      "Author": {
+        "renderToStringMs": 0.05
+      },
+      "Avatar": {
+        "renderToStringMs": 0.021
+      },
+      "AvatarGroup": {
+        "renderToStringMs": 0.029
+      },
+      "Badge": {
+        "renderToStringMs": 0.096
+      },
+      "Icon": {
+        "renderToStringMs": 0.058
+      },
+      "StatusDot": {
+        "renderToStringMs": 0.039
+      },
+      "Accordion": {
+        "renderToStringMs": 0.231
+      },
+      "AspectRatio": {
+        "renderToStringMs": 0.022
+      },
+      "Card": {
+        "renderToStringMs": 0.085
+      },
+      "Center": {
+        "renderToStringMs": 0.016
+      },
+      "Container": {
+        "renderToStringMs": 0.016
+      },
+      "Divider": {
+        "renderToStringMs": 0.017
+      },
+      "FlexBox": {
+        "renderToStringMs": 0.018
+      },
+      "Grid": {
+        "renderToStringMs": 0.019
+      },
+      "MacWindowFrame": {
+        "renderToStringMs": 0.114
+      },
+      "ResizablePanelGroup": {
+        "renderToStringMs": 0.127
+      },
+      "Section": {
+        "renderToStringMs": 0.023
+      },
+      "Spacer": {
+        "renderToStringMs": 0.018
+      },
+      "Stack": {
+        "renderToStringMs": 0.022
+      },
+      "Breadcrumb": {
+        "renderToStringMs": 0.159
+      },
+      "CommandPalette": {
+        "renderToStringMs": 0.01
+      },
+      "LanguageSwitcher": {
+        "renderToStringMs": 0.091
+      },
+      "Link": {
+        "renderToStringMs": 0.026
+      },
+      "Menu": {
+        "renderToStringMs": 0.154
+      },
+      "NavLink": {
+        "renderToStringMs": 0.04
+      },
+      "NavMenuList": {
+        "renderToStringMs": 0.103
+      },
+      "Pagination": {
+        "renderToStringMs": 0.312
+      },
+      "ScrollIndicator": {
+        "renderToStringMs": 0.107
+      },
+      "SegmentedControl": {
+        "renderToStringMs": 0.077
+      },
+      "SkipLink": {
+        "renderToStringMs": 0.018
+      },
+      "Tabs": {
+        "renderToStringMs": 0.144
+      },
+      "TreeView": {
+        "renderToStringMs": 0.541
+      },
+      "CategoryFilter": {
+        "renderToStringMs": 0.111
+      },
+      "Modal": {
+        "renderToStringMs": 0.168
+      },
+      "PageLayout": {
+        "renderToStringMs": 0.019
+      },
+      "ProcessBlock": {
+        "renderToStringMs": 0.239
+      },
+      "ThemeProvider": {
+        "renderToStringMs": 0.021
+      },
+      "Display": {
+        "renderToStringMs": 0.018
       },
       "Kbd": {
-        "renderToStringMs": 0.007
+        "renderToStringMs": 0.022
       },
       "Text": {
-        "renderToStringMs": 0.006
+        "renderToStringMs": 0.021
       },
       "Title": {
-        "renderToStringMs": 0.006
+        "renderToStringMs": 0.021
       },
       "VisuallyHidden": {
-        "renderToStringMs": 0.006
+        "renderToStringMs": 0.017
       }
     }
   },
   "provenance": {
-    "sourceCommit": "97ab60760666ecad7b51ea597c2af17ce5b6eecf",
+    "sourceCommit": "292c7c8d5fa0cd7f89b3c0857510aa835d3342ca",
     "workingTreeClean": false,
-    "dirtyPathCount": 28,
+    "dirtyPathCount": 1,
     "generator": {
       "name": "measure-ssr-evidence",
       "version": 1,
