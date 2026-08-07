@@ -1,8 +1,8 @@
 {
-  "storyId": "layout-grid-playground",
+  "storyId": "layout-grid-responsive-columns",
   "mode": "light",
   "sourceSHA": "d9b31b8aff066337012c39e00a9f1a2626861d49",
-  "capturedAt": "2026-08-07T16:16:26.503Z",
+  "capturedAt": "2026-08-07T16:16:27.522Z",
   "runner": "react-0.1.24-publish",
   "checks": {
     "accessibility-tree": {
