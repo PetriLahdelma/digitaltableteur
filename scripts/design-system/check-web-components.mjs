@@ -182,7 +182,10 @@ const maxPackedFiles = 40 + tags.length * 2;
 // Cube) the Table/VirtualList round (#1351/#1352) added to the icon registry:
 // each ships six inline SVG weights in the shared native-icon-data chunk;
 // measured 1,888,230 bytes unpacked, ~9.9 kB over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_339_000;
+// +2 kB for the File icon (#1428, TreeView leaf-icon fix): six inline SVG
+// weights in native-icon-data; measured 1,890,670 bytes unpacked, ~1.4 kB
+// over the prior ceiling.
+const sharedBundleAndManifestCeiling = 1_341_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.

@@ -14,14 +14,12 @@
       "react-dom"
     ],
     "tsBuildInfoFile": "dist/.tsbuildinfo",
-    "paths": {
-      "@digitaltableteur/react": [
-        "../react/src/index.ts"
-      ],
-      "@dt/*": [
-        "../../nextjs-app/shared/components/*"
-      ]
-    }
+    // No paths overrides: before the root tsconfig dropped baseUrl (#1423)
+    // the old src-pointing mappings resolved against the ROOT and were dead,
+    // so @digitaltableteur/react always resolved via node_modules dist types
+    // (the honest consumer posture). Dropping baseUrl activated them and
+    // dragged react package SOURCE into this rootDir:src program (TS6059).
+    "paths": {}
   },
   "include": [
     "src/**/*.ts",

@@ -1,0 +1,27 @@
+- region "Agile Sprint Cycle":
+  - heading "Agile Sprint Cycle" [level=2]
+  - paragraph: Our 2-week sprint cycle ensures rapid delivery and continuous improvement.
+  - heading "Sprint Planning" [level=3]
+  - list:
+    - listitem: — Backlog Refinement
+    - listitem: — Story Estimation
+    - listitem: — Sprint Goal Definition
+    - listitem: — Capacity Planning
+  - heading "Sprint Execution" [level=3]
+  - list:
+    - listitem: — Daily Standups
+    - listitem: — Development Work
+    - listitem: — Continuous Testing
+    - listitem: — Pair Programming
+    - listitem: — Code Reviews
+  - heading "Sprint Review" [level=3]
+  - list:
+    - listitem: — Demo to Stakeholders
+    - listitem: — Feedback Collection
+    - listitem: — Acceptance Testing
+  - heading "Sprint Retrospective" [level=3]
+  - list:
+    - listitem: — Team Reflection
+    - listitem: — Process Improvements
+    - listitem: — Action Items
+    - listitem: — Celebration

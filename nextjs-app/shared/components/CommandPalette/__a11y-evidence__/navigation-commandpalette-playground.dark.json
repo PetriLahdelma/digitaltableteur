@@ -1,16 +1,16 @@
 {
   "storyId": "navigation-commandpalette-playground",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:39:33.271Z",
-  "runner": "backfill",
+  "sourceSHA": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+  "capturedAt": "2026-08-07T12:37:02.703Z",
+  "runner": "react-0.1.23-publish",
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }
