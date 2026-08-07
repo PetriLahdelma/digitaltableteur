@@ -1,6 +1,27 @@
 /* ProcessBlock - Reusable process phase display component */
 
-/* Container styles applied via inline style (background, padding) */
+/* Container */
+
+.processBlock {
+  /* The old inline style referenced phantom --space-xl and only worked via
+     its 3rem fallback; --space-layout-48 is the real 3rem token. */
+  padding-block: var(--space-layout-48);
+}
+
+/* Background variants (classes, not inline styles, so consumer className
+   overrides keep winning — see docs/OVERRIDE_EVIDENCE_SPEC.md) */
+
+.bgLight {
+  background-color: var(--color-light-bg);
+}
+
+.bgWhite {
+  background-color: var(--color-white);
+}
+
+.bgTransparent {
+  background-color: transparent;
+}
 
 .sectionTitle {
   display: flex;

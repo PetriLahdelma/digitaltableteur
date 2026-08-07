@@ -1,7 +1,9 @@
 # Override-precedence evidence (Phase 4, next increment)
 
-Status: **specced, not implemented**. Owner review welcome; open questions at
-the end.
+Status: **increment A implemented** (`npm run audit:override-evidence`).
+Owner decisions recorded: className-override-wins IS the contract (2026-08-07,
+open question 1 resolved); root-only probing for A; probe set v1 as specced.
+Increments B/C (hostile-ancestor matrix) remain open.
 
 ## Why
 

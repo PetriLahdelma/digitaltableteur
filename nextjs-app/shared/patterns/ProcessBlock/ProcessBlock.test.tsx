@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import ProcessBlock from "./ProcessBlock";
+import styles from "./ProcessBlock.module.css";
 
 const mockPhases = [
   {
@@ -139,26 +140,29 @@ describe("ProcessBlock", () => {
       expect(container.firstChild?.nodeName).toBe("DIV");
     });
 
-    it("applies light background by default", () => {
+    // Backgrounds are variant classes, not inline styles, so consumer
+    // className overrides can win (docs/OVERRIDE_EVIDENCE_SPEC.md).
+    it("applies the light background class by default with no inline style", () => {
       const { container } = render(<ProcessBlock phases={mockPhases} />);
       const section = container.firstChild as HTMLElement;
-      expect(section.style.backgroundColor).toBe("var(--color-light-bg)");
+      expect(section.className).toContain(styles.bgLight);
+      expect(section.getAttribute("style")).toBeNull();
     });
 
-    it("applies white background when specified", () => {
+    it("applies the white background class when specified", () => {
       const { container } = render(
         <ProcessBlock phases={mockPhases} backgroundColor="white" />,
       );
       const section = container.firstChild as HTMLElement;
-      expect(section.style.backgroundColor).toBe("var(--color-white)");
+      expect(section.className).toContain(styles.bgWhite);
     });
 
-    it("applies transparent background when specified", () => {
+    it("applies the transparent background class when specified", () => {
       const { container } = render(
         <ProcessBlock phases={mockPhases} backgroundColor="transparent" />,
       );
       const section = container.firstChild as HTMLElement;
-      expect(section.style.backgroundColor).toBe("transparent");
+      expect(section.className).toContain(styles.bgTransparent);
     });
 
     it("applies 4-column grid class by default", () => {

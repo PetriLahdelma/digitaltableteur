@@ -149,11 +149,19 @@
   (td/tr/li) hydrate inside a valid ancestor chain from their contract
   `element`. Requires a built dist; `-- --build` rebuilds first. Output:
   `public/ds-health/ssr-evidence.json`.
-- All three run automatically inside `check:react-publish-preflight` (after
+- `npm run audit:override-evidence` — override-precedence gate
+  (docs/OVERRIDE_EVIDENCE_SPEC.md, increment A): renders every contracted
+  export from the built dist in real Chromium (esbuild harness + Playwright,
+  reduced motion, tokens-css + entry CSS like a registry consumer) and
+  asserts a consumer's single-class className override wins for the probed
+  properties (className-override-wins is the contract, owner decision
+  2026-08-07); also probes contract theming.vars for liveness. Exit 2 on
+  failures not in `override-evidence-baseline.json` (dated entries, never
+  blanket-updated). Requires a built dist; `-- --build` rebuilds first.
+  Output: `public/ds-health/override-evidence.json`.
+- All four run automatically inside `check:react-publish-preflight` (after
   `react-public-api` rebuilds the dist), so every publish regenerates its
   evidence; commit the regenerated artifacts with the publish PR.
-- Next increment (specced, not implemented): override-precedence evidence —
-  see `docs/OVERRIDE_EVIDENCE_SPEC.md`.
 
 ---
 

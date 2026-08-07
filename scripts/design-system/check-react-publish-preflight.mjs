@@ -141,6 +141,11 @@ const automatedChecks = [
     reason: "every renderable export server-renders without DOM globals and hydrates cleanly in jsdom, recorded as publish evidence",
   },
   {
+    name: "override-evidence",
+    command: ["run", "audit:override-evidence"],
+    reason: "consumer className overrides win over component base styles in real Chromium (className-override-wins contract), gated against the dated baseline",
+  },
+  {
     name: "compatibility-manifest",
     command: ["run", "audit:compatibility"],
     reason: "the toolchain combinations actually exercised by the gates are recorded as the per-publish compatibility manifest",
