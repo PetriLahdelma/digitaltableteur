@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-07T12:43:27.195Z",
+  "generatedAt": "2026-08-07T16:33:11.970Z",
   "scope": "combinations actually exercised by the local gates at generation time. Absence from this manifest means untested, not incompatible.",
   "packages": {
     "@digitaltableteur/cli": "0.5.0",
-    "@digitaltableteur/react": "0.1.23",
+    "@digitaltableteur/react": "0.1.24",
     "@digitaltableteur/tokens": "0.1.4",
     "@digitaltableteur/tokens-css": "0.1.5",
     "@digitaltableteur/web-components": "0.10.0"
@@ -103,19 +103,30 @@
   ],
   "preflight": {
     "note": "most recent RECORDED preflight run at manifest generation time; when the manifest is regenerated inside a preflight run, this describes the previous run",
-    "generatedAt": "2026-08-07T12:28:31.500Z",
-    "status": "failed",
+    "generatedAt": "2026-08-07T12:44:07.858Z",
+    "status": "passed-clearance-recorded",
     "checks": {
       "astryx-roadmap": true,
       "beta-promotion-readiness": true,
       "build": true,
+      "bundle-evidence": true,
+      "compatibility-manifest": true,
+      "i18n-visual-matrix": true,
       "lint": true,
-      "npm-consumer-install": false,
+      "npm-consumer-install": true,
+      "override-evidence": true,
+      "package-publish-dry-run": true,
       "package-registry-resolution": true,
       "package-registry-status": true,
       "package-release-notes": true,
+      "package-tarballs": true,
+      "react-public-api": true,
+      "react-public-surface": true,
+      "react-publish-review": true,
       "react-registry-install-waiting": true,
       "registry-token-install": true,
+      "site-package-dogfood": true,
+      "ssr-evidence": true,
       "storybook-build": true,
       "storybook-registry-package": true,
       "test": true,
@@ -124,9 +135,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "03c781e9941dac3d5d24beace438e4fee32d3985",
+    "sourceCommit": "f298a71c11e4d882402afeebbaee1256023dfced",
     "workingTreeClean": false,
-    "dirtyPathCount": 5,
+    "dirtyPathCount": 3,
     "generator": {
       "name": "generate-compatibility-manifest",
       "version": 1,
