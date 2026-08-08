@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.10.1 - 2026-08-08
+
+- Rendered-parity drift repairs, porting the React source of truth to three
+  native twins (all three were enforced-roster regressions caught by the new
+  per-publish parity evidence):
+  - `dt-group-label` typography matches the unified field-label treatment
+    (`--font-text`, weight 400 — previously the pre-unification
+    `--font-body` / 500).
+  - `dt-testimonial` card chrome moves to the ramp tokens
+    (`--color-border-light`, `--radius-lg`, `--shadow-sm`/`--shadow-md`),
+    replacing a border that had silently vanished with the retired
+    `--color-gray-light` phantom and a hardcoded shadow. The forced-colors
+    border override is removed so the browser maps the author color exactly
+    as it does for the React card.
+  - `dt-menu` item shells declare `font: inherit` — shadow-DOM buttons keep
+    the UA font (13.33px Arial) by default, which leaked into every composed
+    `dt-list-item` row — and the panel shadow uses `--shadow-lg`.
+
 ## 0.10.0 - 2026-07-24
 
 - Adds two native custom elements (fleet 85 -> 87):
