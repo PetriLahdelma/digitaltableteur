@@ -13,6 +13,17 @@ import {
   type TaxonomyEntry,
 } from "./ComponentTaxonomyTree";
 import agentBenchJson from "../../../public/ds-health/agent-bench.json";
+import bundleEvidenceJson from "../../../public/ds-health/bundle-evidence.json";
+import compatibilityManifestJson from "../../../public/ds-health/compatibility-manifest.json";
+import ssrEvidenceJson from "../../../public/ds-health/ssr-evidence.json";
+import overrideEvidenceJson from "../../../public/ds-health/override-evidence.json";
+import interactionEvidenceJson from "../../../public/ds-health/interaction-evidence.json";
+import compatMatrixJson from "../../../public/ds-health/compat-matrix.json";
+import wcParityJson from "../../../public/ds-health/wc-parity.json";
+import {
+  EvidencePerPublishSection,
+  type EvidenceArtifacts,
+} from "./EvidencePerPublishSection";
 import {
   AgentBenchSection,
   type AgentBenchArtifact,
@@ -132,6 +143,20 @@ export default function DesignSystemAgentPage() {
 
       <AgentBenchSection
         artifact={agentBenchJson as unknown as AgentBenchArtifact}
+      />
+
+      <EvidencePerPublishSection
+        artifacts={
+          {
+            bundle: bundleEvidenceJson,
+            compatibility: compatibilityManifestJson,
+            ssr: ssrEvidenceJson,
+            override: overrideEvidenceJson,
+            interaction: interactionEvidenceJson,
+            compatMatrix: compatMatrixJson,
+            wcParity: wcParityJson,
+          } as unknown as EvidenceArtifacts
+        }
       />
 
       <section className="mt-12">
