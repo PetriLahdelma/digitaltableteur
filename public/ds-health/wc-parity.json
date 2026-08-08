@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-07T20:20:10.947Z",
+  "generatedAt": "2026-08-08T08:50:13.140Z",
   "package": {
     "name": "@digitaltableteur/web-components",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "reactPackageVersion": "0.1.24"
   },
   "coverage": {
@@ -1036,11 +1036,11 @@
         "Example (desktop-forced-colors)": 0
       },
       "Spinner": {
-        "Default (desktop-light)": 0.0201,
-        "Example (desktop-light)": 0.0756,
-        "Example (mobile-light)": 0.0841,
-        "Example (desktop-dark)": 0.3702,
-        "Example (desktop-forced-colors)": 0.0903
+        "Default (desktop-light)": 0.0394,
+        "Example (desktop-light)": 0.0522,
+        "Example (mobile-light)": 0.0787,
+        "Example (desktop-dark)": 0.3692,
+        "Example (desktop-forced-colors)": 0.0907
       },
       "Progress": {
         "Default (desktop-light)": 0.0655,
@@ -1418,10 +1418,10 @@
       },
       "CodeSnippet": {
         "Default (desktop-light)": 0.0237,
-        "Example (desktop-light)": 0.0237,
+        "Example (desktop-light)": 0.0182,
         "Example (mobile-light)": 0.0462,
         "Example (desktop-dark)": 0.1571,
-        "Example (desktop-forced-colors)": 0.0242
+        "Example (desktop-forced-colors)": 0.0187
       },
       "CodeBlockWindow": {
         "Default (desktop-light)": 0.0189,
@@ -1480,11 +1480,11 @@
         "Example (desktop-forced-colors)": 0.129
       },
       "Gallery": {
-        "Default (desktop-light)": 0.4688,
-        "Example (desktop-light)": 0.592,
-        "Example (mobile-light)": 0.7847,
-        "Example (desktop-dark)": 0.8087,
-        "Example (desktop-forced-colors)": 0.4415
+        "Default (desktop-light)": 0.5021,
+        "Example (desktop-light)": 0.4951,
+        "Example (mobile-light)": 0.8183,
+        "Example (desktop-dark)": 0.7844,
+        "Example (desktop-forced-colors)": 0.5478
       },
       "ReadingProgress": {
         "Default (desktop-light)": 0.0341,
@@ -1571,12 +1571,12 @@
         "Example (desktop-forced-colors)": 0.0347
       }
     },
-    "sweepGeneratedAt": "2026-08-07T20:20:10.644Z"
+    "sweepGeneratedAt": "2026-08-08T08:50:12.770Z"
   },
   "provenance": {
-    "sourceCommit": "e51b381c3ca92a98f51811b858c78e86a8b34608",
+    "sourceCommit": "12cabe9a72e3711110622ec69466086520244c72",
     "workingTreeClean": false,
-    "dirtyPathCount": 9,
+    "dirtyPathCount": 4,
     "generator": {
       "name": "generate-wc-parity-evidence",
       "version": 1,
