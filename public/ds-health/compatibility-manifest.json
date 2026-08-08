@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-07T16:33:11.970Z",
+  "generatedAt": "2026-08-08T08:50:13.422Z",
   "scope": "combinations actually exercised by the local gates at generation time. Absence from this manifest means untested, not incompatible.",
   "packages": {
     "@digitaltableteur/cli": "0.5.0",
     "@digitaltableteur/react": "0.1.24",
     "@digitaltableteur/tokens": "0.1.4",
     "@digitaltableteur/tokens-css": "0.1.5",
-    "@digitaltableteur/web-components": "0.10.0"
+    "@digitaltableteur/web-components": "0.10.1"
   },
   "runtime": {
     "node": "v22.22.3",
@@ -103,7 +103,7 @@
   ],
   "preflight": {
     "note": "most recent RECORDED preflight run at manifest generation time; when the manifest is regenerated inside a preflight run, this describes the previous run",
-    "generatedAt": "2026-08-07T12:44:07.858Z",
+    "generatedAt": "2026-08-07T16:33:56.013Z",
     "status": "passed-clearance-recorded",
     "checks": {
       "astryx-roadmap": true,
@@ -135,9 +135,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "f298a71c11e4d882402afeebbaee1256023dfced",
+    "sourceCommit": "12cabe9a72e3711110622ec69466086520244c72",
     "workingTreeClean": false,
-    "dirtyPathCount": 3,
+    "dirtyPathCount": 5,
     "generator": {
       "name": "generate-compatibility-manifest",
       "version": 1,

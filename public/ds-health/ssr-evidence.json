@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T16:33:07.054Z",
+  "generatedAt": "2026-08-08T08:34:20.699Z",
   "package": {
     "name": "@digitaltableteur/react",
     "version": "0.1.24"
@@ -1224,199 +1224,199 @@
   "informational": {
     "timings": {
       "Button": {
-        "renderToStringMs": 0.448
+        "renderToStringMs": 0.354
       },
       "ButtonGroup": {
-        "renderToStringMs": 0.06
+        "renderToStringMs": 0.067
       },
       "FilterChip": {
-        "renderToStringMs": 0.037
+        "renderToStringMs": 0.026
       },
       "IconButton": {
-        "renderToStringMs": 0.258
+        "renderToStringMs": 0.169
       },
       "SlideButton": {
-        "renderToStringMs": 0.205
+        "renderToStringMs": 0.076
       },
       "SplitButton": {
-        "renderToStringMs": 0.973
+        "renderToStringMs": 0.336
       },
       "AuthorBio": {
-        "renderToStringMs": 0.01
-      },
-      "CodeBlockWindow": {
-        "renderToStringMs": 0.293
-      },
-      "CodeSnippet": {
-        "renderToStringMs": 1.428
-      },
-      "DataTable": {
-        "renderToStringMs": 0.589
-      },
-      "ExpandableSection": {
-        "renderToStringMs": 0.08
-      },
-      "Gallery": {
-        "renderToStringMs": 0.272
-      },
-      "List": {
-        "renderToStringMs": 0.075
-      },
-      "ListItem": {
-        "renderToStringMs": 0.033
-      },
-      "Logo": {
-        "renderToStringMs": 0.168
-      },
-      "ReadingProgress": {
         "renderToStringMs": 0.008
       },
-      "Table": {
-        "renderToStringMs": 0.059
+      "CodeBlockWindow": {
+        "renderToStringMs": 0.163
       },
-      "TableCell": {
-        "renderToStringMs": 0.024
+      "CodeSnippet": {
+        "renderToStringMs": 0.413
       },
-      "TableHeaderCell": {
-        "renderToStringMs": 0.033
+      "DataTable": {
+        "renderToStringMs": 0.193
       },
-      "TableRow": {
-        "renderToStringMs": 0.027
+      "ExpandableSection": {
+        "renderToStringMs": 0.035
       },
-      "Timestamp": {
-        "renderToStringMs": 0.073
+      "Gallery": {
+        "renderToStringMs": 0.134
       },
-      "ValueCard": {
-        "renderToStringMs": 0.171
-      },
-      "VirtualList": {
-        "renderToStringMs": 0.322
-      },
-      "VirtualListItem": {
-        "renderToStringMs": 0.08
-      },
-      "AlertBanner": {
-        "renderToStringMs": 0.195
-      },
-      "EmptyState": {
-        "renderToStringMs": 0.259
-      },
-      "Progress": {
-        "renderToStringMs": 0.042
-      },
-      "Skeleton": {
-        "renderToStringMs": 0.064
-      },
-      "Spinner": {
-        "renderToStringMs": 0.023
-      },
-      "Toast": {
-        "renderToStringMs": 0.135
-      },
-      "ToastStack": {
-        "renderToStringMs": 0.166
-      },
-      "Checkbox": {
-        "renderToStringMs": 0.167
-      },
-      "CheckboxGroup": {
-        "renderToStringMs": 0.479
-      },
-      "Combobox": {
-        "renderToStringMs": 0.283
-      },
-      "FileUpload": {
-        "renderToStringMs": 0.244
-      },
-      "FormField": {
-        "renderToStringMs": 0.062
-      },
-      "GroupLabel": {
-        "renderToStringMs": 0.025
-      },
-      "HelperText": {
+      "List": {
         "renderToStringMs": 0.029
       },
-      "Label": {
+      "ListItem": {
+        "renderToStringMs": 0.015
+      },
+      "Logo": {
+        "renderToStringMs": 0.059
+      },
+      "ReadingProgress": {
+        "renderToStringMs": 0.007
+      },
+      "Table": {
+        "renderToStringMs": 0.026
+      },
+      "TableCell": {
+        "renderToStringMs": 0.01
+      },
+      "TableHeaderCell": {
+        "renderToStringMs": 0.011
+      },
+      "TableRow": {
+        "renderToStringMs": 0.009
+      },
+      "Timestamp": {
+        "renderToStringMs": 0.055
+      },
+      "ValueCard": {
+        "renderToStringMs": 0.053
+      },
+      "VirtualList": {
+        "renderToStringMs": 0.1
+      },
+      "VirtualListItem": {
+        "renderToStringMs": 0.023
+      },
+      "AlertBanner": {
+        "renderToStringMs": 0.054
+      },
+      "EmptyState": {
+        "renderToStringMs": 0.061
+      },
+      "Progress": {
+        "renderToStringMs": 0.019
+      },
+      "Skeleton": {
+        "renderToStringMs": 0.027
+      },
+      "Spinner": {
+        "renderToStringMs": 0.01
+      },
+      "Toast": {
+        "renderToStringMs": 0.049
+      },
+      "ToastStack": {
+        "renderToStringMs": 0.055
+      },
+      "Checkbox": {
+        "renderToStringMs": 0.035
+      },
+      "CheckboxGroup": {
+        "renderToStringMs": 0.123
+      },
+      "Combobox": {
+        "renderToStringMs": 0.108
+      },
+      "FileUpload": {
         "renderToStringMs": 0.078
       },
+      "FormField": {
+        "renderToStringMs": 0.023
+      },
+      "GroupLabel": {
+        "renderToStringMs": 0.017
+      },
+      "HelperText": {
+        "renderToStringMs": 0.011
+      },
+      "Label": {
+        "renderToStringMs": 0.021
+      },
       "MultiCombobox": {
-        "renderToStringMs": 0.243
+        "renderToStringMs": 0.103
       },
       "PhoneInput": {
-        "renderToStringMs": 4.099
+        "renderToStringMs": 1.404
       },
       "Radio": {
-        "renderToStringMs": 0.082
+        "renderToStringMs": 0.025
       },
       "RadioGroup": {
-        "renderToStringMs": 0.315
+        "renderToStringMs": 0.077
       },
       "Select": {
-        "renderToStringMs": 0.309
+        "renderToStringMs": 0.317
       },
       "SelectableCard": {
-        "renderToStringMs": 0.073
+        "renderToStringMs": 0.069
       },
       "Switch": {
-        "renderToStringMs": 0.117
+        "renderToStringMs": 0.114
       },
       "TextArea": {
-        "renderToStringMs": 0.101
+        "renderToStringMs": 0.097
       },
       "TextInput": {
-        "renderToStringMs": 0.129
+        "renderToStringMs": 0.103
       },
       "Author": {
-        "renderToStringMs": 0.056
+        "renderToStringMs": 0.074
       },
       "Avatar": {
-        "renderToStringMs": 0.028
+        "renderToStringMs": 0.024
       },
       "AvatarGroup": {
-        "renderToStringMs": 0.034
+        "renderToStringMs": 0.032
       },
       "Badge": {
         "renderToStringMs": 0.11
       },
       "Icon": {
-        "renderToStringMs": 0.062
+        "renderToStringMs": 0.067
       },
       "StatusDot": {
-        "renderToStringMs": 0.04
+        "renderToStringMs": 0.041
       },
       "Accordion": {
-        "renderToStringMs": 0.268
+        "renderToStringMs": 0.271
       },
       "AspectRatio": {
-        "renderToStringMs": 0.03
+        "renderToStringMs": 0.029
       },
       "Card": {
-        "renderToStringMs": 0.099
+        "renderToStringMs": 0.093
       },
       "Center": {
-        "renderToStringMs": 0.02
+        "renderToStringMs": 0.018
       },
       "Container": {
-        "renderToStringMs": 0.019
+        "renderToStringMs": 0.018
       },
       "Divider": {
-        "renderToStringMs": 0.02
+        "renderToStringMs": 0.019
       },
       "FlexBox": {
-        "renderToStringMs": 0.022
+        "renderToStringMs": 0.021
       },
       "Grid": {
-        "renderToStringMs": 0.023
+        "renderToStringMs": 0.021
       },
       "MacWindowFrame": {
-        "renderToStringMs": 0.128
+        "renderToStringMs": 0.122
       },
       "ResizablePanelGroup": {
-        "renderToStringMs": 0.142
+        "renderToStringMs": 0.136
       },
       "Section": {
-        "renderToStringMs": 0.028
+        "renderToStringMs": 0.026
       },
       "Spacer": {
         "renderToStringMs": 0.021
@@ -1425,80 +1425,80 @@
         "renderToStringMs": 0.021
       },
       "Breadcrumb": {
-        "renderToStringMs": 0.206
+        "renderToStringMs": 0.174
       },
       "CommandPalette": {
-        "renderToStringMs": 0.011
+        "renderToStringMs": 0.014
       },
       "LanguageSwitcher": {
-        "renderToStringMs": 0.105
+        "renderToStringMs": 0.126
       },
       "Link": {
-        "renderToStringMs": 0.031
+        "renderToStringMs": 0.03
       },
       "Menu": {
-        "renderToStringMs": 0.197
+        "renderToStringMs": 0.217
       },
       "NavLink": {
-        "renderToStringMs": 0.049
+        "renderToStringMs": 0.045
       },
       "NavMenuList": {
-        "renderToStringMs": 0.124
+        "renderToStringMs": 0.112
       },
       "Pagination": {
-        "renderToStringMs": 0.347
+        "renderToStringMs": 0.311
       },
       "ScrollIndicator": {
-        "renderToStringMs": 0.128
+        "renderToStringMs": 0.122
       },
       "SegmentedControl": {
-        "renderToStringMs": 0.093
+        "renderToStringMs": 0.085
       },
       "SkipLink": {
         "renderToStringMs": 0.022
       },
       "Tabs": {
-        "renderToStringMs": 0.185
+        "renderToStringMs": 0.166
       },
       "TreeView": {
-        "renderToStringMs": 0.663
+        "renderToStringMs": 0.612
       },
       "CategoryFilter": {
-        "renderToStringMs": 0.116
+        "renderToStringMs": 0.111
       },
       "Modal": {
-        "renderToStringMs": 0.2
+        "renderToStringMs": 0.218
       },
       "PageLayout": {
         "renderToStringMs": 0.023
       },
       "ProcessBlock": {
-        "renderToStringMs": 0.289
+        "renderToStringMs": 0.265
       },
       "ThemeProvider": {
-        "renderToStringMs": 0.024
+        "renderToStringMs": 0.022
       },
       "Display": {
-        "renderToStringMs": 0.022
+        "renderToStringMs": 0.019
       },
       "Kbd": {
-        "renderToStringMs": 0.035
+        "renderToStringMs": 0.024
       },
       "Text": {
-        "renderToStringMs": 0.027
+        "renderToStringMs": 0.023
       },
       "Title": {
-        "renderToStringMs": 0.026
+        "renderToStringMs": 0.023
       },
       "VisuallyHidden": {
-        "renderToStringMs": 0.022
+        "renderToStringMs": 0.019
       }
     }
   },
   "provenance": {
-    "sourceCommit": "f298a71c11e4d882402afeebbaee1256023dfced",
-    "workingTreeClean": false,
-    "dirtyPathCount": 1,
+    "sourceCommit": "12cabe9a72e3711110622ec69466086520244c72",
+    "workingTreeClean": true,
+    "dirtyPathCount": 0,
     "generator": {
       "name": "measure-ssr-evidence",
       "version": 1,

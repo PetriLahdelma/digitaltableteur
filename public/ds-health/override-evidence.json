@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T16:33:11.731Z",
+  "generatedAt": "2026-08-08T08:34:25.332Z",
   "package": {
     "name": "@digitaltableteur/react",
     "version": "0.1.24"
@@ -1543,9 +1543,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "f298a71c11e4d882402afeebbaee1256023dfced",
+    "sourceCommit": "12cabe9a72e3711110622ec69466086520244c72",
     "workingTreeClean": false,
-    "dirtyPathCount": 2,
+    "dirtyPathCount": 1,
     "generator": {
       "name": "measure-override-evidence",
       "version": 1,
