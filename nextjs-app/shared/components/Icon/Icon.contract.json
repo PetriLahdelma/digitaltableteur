@@ -109,12 +109,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/design-system/agent/page.tsx",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
         }
     ],
