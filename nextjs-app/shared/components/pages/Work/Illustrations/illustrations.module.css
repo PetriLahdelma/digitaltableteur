@@ -1,7 +1,17 @@
+/*
+ * Illustrations — asymmetric editorial gallery.
+ *
+ * The base grid comes from the design-system Grid component (6 columns,
+ * 12 from the desktop breakpoint). Every placement class below positions a
+ * work on that grid with explicit grid-column lines; heights follow each
+ * image's intrinsic aspect ratio, which is what makes the hang asymmetric.
+ * Formations: full-bleed statements, a lead/tall pair, an offset trio, a
+ * staggered portrait triptych, unequal pairs, and sheet/closer duos.
+ */
+
 .page {
   padding-block: var(--space-layout-32) var(--space-layout-120);
   padding-inline: var(--page-margin-mobile);
-  max-inline-size: 100%;
   background-color: var(--main-body-background-color);
 }
 
@@ -17,629 +27,262 @@
   }
 }
 
+/* Header */
+
 .header {
-  margin-block-end: var(--space-layout-64);
+  margin-block-end: var(--space-layout-48);
   margin-inline: auto;
-  max-inline-size: var(--container-lg);
-  text-align: center;
+  max-inline-size: var(--container-xl);
 }
 
-.title {
-  margin-block-end: var(--space-internal-16);
-}
-
-/* justify/wrap come from FlexBox props (inline styles beat any selector). */
-
-.badges {
-  gap: var(--space-internal-8);
-}
-
-/* Gallery - Mobile: simple stack */
+/* Gallery */
 
 .gallery {
-  display: flex;
   margin-inline: auto;
-  max-inline-size: 500px;
-  flex-direction: column;
-  gap: var(--space-internal-16);
+  max-inline-size: var(--container-xl);
 }
 
-/* Gallery Items */
-
-.galleryItem {
-  position: relative;
-  inline-size: 100%;
-  max-inline-size: 100%;
+.item {
+  margin: 0;
   min-inline-size: 0;
-  border-radius: var(--radius-lg);
+  grid-column: 1 / -1;
+}
+
+.plate {
+  border-radius: var(--radius-sm);
   background-color: var(--color-light-bg);
-  box-shadow: var(--shadow-md);
   overflow: hidden;
 }
 
-.galleryItem > img {
-  border-radius: var(--radius-lg);
-}
-
-.galleryItemSharp {
-  position: relative;
-  inline-size: 100%;
-  max-inline-size: 100%;
-  min-inline-size: 0;
-  border-radius: 0;
-  background-color: var(--color-light-bg);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-
-.galleryImage {
+.image {
   display: block;
   inline-size: 100%;
   block-size: auto;
-  transition: transform 0.4s ease;
 }
 
-.galleryItem:hover {
-  z-index: 35; /* Must stay below WorkNav z-index: 40 */
+/* Square window onto the top scene of a vertically stacked source asset. */
+
+.plateSquareTop {
+  aspect-ratio: 1 / 1;
 }
 
-.dragging {
-  box-shadow: var(--shadow-xl) !important;
-  cursor: grabbing !important;
+.plateSquareTop .image {
+  block-size: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
-.dragging .galleryImage {
-  transform: none !important;
-}
+/* Captions — quiet gallery labels: title, annotation. */
 
-/* Handles - hidden by default */
-
-.handle {
-  position: absolute;
-  z-index: 10;
-  transition:
-    opacity 0.2s ease,
-    transform 0.15s ease;
-  opacity: 0;
-}
-
-.galleryItem:hover .handle,
-.galleryItemSharp:hover .handle {
-  opacity: 1;
-}
-
-/* Resize handles - corners with diagonal resize indicator */
-
-.handleNW,
-.handleNE,
-.handleSW,
-.handleSE {
-  display: flex;
-  inline-size: 24px;
-  block-size: 24px;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--radius-md);
-  background: rgb(0 0 0 / 70%);
-}
-
-/* Diagonal double-arrow icons via content */
-
-.handleNW::before,
-.handleSE::before {
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1;
-  color: white;
-  content: "⤡";
-}
-
-.handleNE::before,
-.handleSW::before {
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1;
-  color: white;
-  content: "⤢";
-}
-
-/* Corner positions set via inline style for counter-scaling */
-
-.handleNW {
-  cursor: nwse-resize;
-}
-
-.handleNE {
-  cursor: nesw-resize;
-}
-
-.handleSW {
-  cursor: nesw-resize;
-}
-
-.handleSE {
-  cursor: nwse-resize;
-}
-
-/* Rotate handles - edge midpoints with curved arrow */
-
-.handleRotateN,
-.handleRotateE,
-.handleRotateS,
-.handleRotateW {
-  display: flex;
-  inline-size: 28px;
-  block-size: 28px;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--radius-circle);
-  background: rgb(0 0 0 / 70%);
-  cursor: grab;
-}
-
-/* Curved rotation arrow icon */
-
-.handleRotateN::before,
-.handleRotateE::before,
-.handleRotateS::before,
-.handleRotateW::before {
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1;
-  color: white;
-  content: "↻";
-}
-
-/* Edge positions set via inline style for counter-scaling */
-
-.handleRotateN {
-  inset-inline-start: 50%;
-}
-
-.handleRotateE {
-  inset-block-start: 50%;
-}
-
-.handleRotateS {
-  inset-inline-start: 50%;
-}
-
-.handleRotateW {
-  inset-block-start: 50%;
-}
-
-/* Hover effects - only change background, counter-scale is handled via inline styles */
-
-.handleNW:hover,
-.handleNE:hover,
-.handleSW:hover,
-.handleSE:hover {
-  background: rgb(59 130 246 / 90%);
-}
-
-.handleRotateN:hover,
-.handleRotateE:hover,
-.handleRotateS:hover,
-.handleRotateW:hover {
-  background: rgb(59 130 246 / 90%);
-}
-
-.dragHint {
-  font-size: 0.875rem;
-  color: var(--color-muted);
-  opacity: 1;
+.caption {
   margin-block-start: var(--space-internal-8);
-}
-
-@media (width < 900px) {
-  .dragHint {
-    display: none;
-  }
-
-  /* Hide handles on mobile */
-
-  .handle {
-    display: none;
-  }
-
-  .gallery {
-    inline-size: 100%;
-    max-inline-size: 100%;
-    min-inline-size: 0;
-  }
-
-  .galleryItem,
-  .galleryItemSharp {
-    position: static !important;
-    inline-size: 100% !important;
-    max-inline-size: 100%;
-    min-inline-size: 0;
-    transform: none !important;
-  }
-}
-
-/* Desktop: Scattered collage with overlaps and rotations */
-@media (width >= 900px) {
-  .gallery {
-    position: relative;
-    margin-inline: auto;
-    max-inline-size: 1400px;
-    block-size: 3500px;
-  }
-
-  .galleryItem,
-  .galleryItemSharp {
-    position: absolute;
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-
-  .galleryItem:hover,
-  .galleryItemSharp:hover {
-    box-shadow: var(--shadow-lg);
-  }
-
-  /* A: Hero top-left */
-
-  .areaA {
-    inset-block-start: 0;
-    inset-inline-start: 0;
-    inline-size: 580px;
-  }
-
-  /* B: Tiny, tucked top-right corner */
-
-  .areaB {
-    inset-block-start: 20px;
-    inset-inline-end: 180px;
-    inline-size: 220px;
-  }
-
-  /* C: Medium, overlapping A bottom-right */
-
-  .areaC {
-    inset-block-start: 280px;
-    inset-inline-start: 480px;
-    z-index: 2;
-    inline-size: 340px;
-  }
-
-  /* D: Small, floating right - rotated */
-
-  .areaD {
-    inset-block-start: 120px;
-    inset-inline-end: 40px;
-    inline-size: 200px;
-    transform: rotate(5deg);
-  }
-
-  /* E: Large landscape, row 2 left */
-
-  .areaE {
-    inset-block-start: 520px;
-    inset-inline-start: 60px;
-    inline-size: 520px;
-  }
-
-  /* F: Small, nestled between */
-
-  .areaF {
-    inset-block-start: 480px;
-    inset-inline-start: 620px;
-    z-index: 3;
-    inline-size: 180px;
-  }
-
-  /* G: Large, right side row 2 */
-
-  .areaG {
-    inset-block-start: 620px;
-    inset-inline-end: 20px;
-    inline-size: 480px;
-  }
-
-  /* H: Tiny accent - rotated */
-
-  .areaH {
-    inset-block-start: 820px;
-    inset-inline-start: 320px;
-    z-index: 4;
-    inline-size: 200px;
-    transform: rotate(10deg);
-  }
-
-  /* I: Hero center */
-
-  .areaI {
-    inset-block-start: 980px;
-    /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
-    left: 50%;
-    inline-size: 600px;
-    transform: translateX(-50%);
-  }
-
-  /* J: Medium left */
-
-  .areaJ {
-    inset-block-start: 1050px;
-    inset-inline-start: 40px;
-    inline-size: 300px;
-  }
-
-  /* K: Large right, overlapping */
-
-  .areaK {
-    inset-block-start: 1380px;
-    inset-inline-end: 80px;
-    inline-size: 500px;
-  }
-
-  /* L: Tiny floating - rotated */
-
-  .areaL {
-    inset-block-start: 1320px;
-    inset-inline-start: 180px;
-    z-index: 5;
-    inline-size: 200px;
-    transform: rotate(15deg);
-  }
-
-  /* M: Large left */
-
-  .areaM {
-    inset-block-start: 1680px;
-    inset-inline-start: 20px;
-    inline-size: 460px;
-  }
-
-  /* N: Medium center-right */
-
-  .areaN {
-    inset-block-start: 1780px;
-    inset-inline-start: 520px;
-    z-index: 2;
-    inline-size: 320px;
-  }
-
-  /* O: Large right */
-
-  .areaO {
-    inset-block-start: 1900px;
-    inset-inline-end: 60px;
-    inline-size: 440px;
-  }
-
-  /* P: Small scattered */
-
-  .areaP {
-    inset-block-start: 2200px;
-    inset-inline-start: 100px;
-    inline-size: 190px;
-  }
-
-  /* Q: Hero bottom */
-
-  .areaQ {
-    inset-block-start: 2400px;
-    inset-inline-start: 280px;
-    inline-size: 580px;
-  }
-
-  /* R: Tiny - rotated */
-
-  .areaR {
-    inset-block-start: 2350px;
-    inset-inline-end: 200px;
-    z-index: 6;
-    inline-size: 200px;
-    transform: rotate(20deg);
-  }
-
-  /* S: Large bottom-right */
-
-  .areaS {
-    inset-block-start: 2650px;
-    inset-inline-end: 40px;
-    inline-size: 420px;
-  }
-
-  /* T: Medium bottom-left */
-
-  .areaT {
-    inset-block-start: 2850px;
-    inset-inline-start: 60px;
-    inline-size: 350px;
-  }
-}
-
-/* Legacy styles below - kept for compatibility */
-
-.caseStudy {
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem 4rem;
-  max-inline-size: 100%;
   font-family: var(--secondary-body-font), sans-serif;
-  font-size: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.captionTitle {
+  display: block;
   color: var(--main-body-copy-color);
 }
 
-.caseHeroSection {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  margin-block-end: 2rem;
+.captionNote {
+  display: block;
+  color: var(--color-muted);
 }
 
-.heroText {
-  min-inline-size: 0;
-  flex: 1 1 320px;
+/* Mobile (< 768px, 6-column base): mostly full width; smaller pieces take
+ * partial widths with offsets so the rhythm stays asymmetric. */
+
+.trailTall {
+  grid-column: 1 / 5;
 }
 
-.heroText h1 {
-  font-family: var(--primary-body-font), sans-serif;
-  font-size: 2.8rem;
-  margin-block-end: 1rem;
+.trioEnd {
+  grid-column: 3 / 7;
 }
 
-.heroText h2 {
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--color-primary);
-  margin-block-end: 2rem;
+.pairSmall {
+  grid-column: 2 / 6;
 }
 
-.caseBadges {
-  display: flex;
-  margin-block-end: 1.5rem;
-  flex-wrap: wrap;
-  gap: 0.8rem;
+.closerSmall {
+  grid-column: 1 / 5;
 }
 
-.heroSummary {
-  margin-block: 4rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
+.full {
+  margin-block: var(--space-layout-24);
 }
 
-.heroImage {
-  display: flex;
-  min-inline-size: 0;
-  flex: 1 1 320px;
-  justify-content: flex-end;
-  align-items: flex-end;
+.full:first-child {
+  margin-block-start: 0;
 }
 
-.heroVideo {
-  margin-block-end: 2rem;
-  inline-size: 100%;
-  block-size: auto;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-}
+/* Tablet (768–1023px, 6 columns) */
 
-.section {
-  margin-block-end: 3rem;
-}
-
-.gallerySection {
-  position: relative;
-  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
-  left: 50%;
-  margin-inline: -50vi;
-  padding-inline: 32px;
-  box-sizing: border-box;
-  inline-size: 100vi;
-  max-inline-size: 100vi;
-  background: var(--gallery-bg, #fff);
-  transform: translateX(-50%);
-}
-
-.galleryGridWrapper {
-  margin: 0 auto;
-  box-sizing: border-box;
-  inline-size: 100%;
-  max-inline-size: 1920px;
-}
-
-/* stylelint-disable-next-line no-duplicate-selectors -- intentional override of mobile .gallery in line 40 for desktop layout. TODO: refactor into one .gallery with proper @media. */
-.gallery {
-  display: flex;
-  inline-size: 100%;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 32px;
-}
-
-.gallery > * {
-  border-radius: var(--radius-xl);
-  background: #f7f7fa;
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-
-.twoCol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-}
-
-.twoCol > div {
-  min-inline-size: 0;
-  flex: 1 1 320px;
-}
-
-.projectMeta {
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-  list-style: none;
-  list-style-type: " ";
-}
-
-.projectMeta li {
-  margin-block-end: 0.5rem;
-}
-
-.processSteps {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
-}
-
-.processStep {
-  padding: 1.2rem 1rem 1.2rem 1.2rem;
-  min-inline-size: 160px;
-  border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--color-gray-dark) 5%, transparent);
-  box-shadow: var(--shadow-sm);
-}
-
-.processStep h4 {
-  font-family: var(--primary-body-font), sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-block: 0 0.5rem;
-}
-
-.resultsList {
-  margin: 0;
-  padding-inline-start: 1.2em;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  list-style: none;
-  list-style-type: " ";
-}
-
-.resultsList li::before {
-  margin-inline: -1.2em 0.5em;
-  content: "—";
-}
-
-@media (width <= 700px) {
-  .heroSection,
-  .twoCol,
-  .gallery {
-    flex-direction: column;
-    gap: 1.2rem;
+@media (width >= 768px) {
+  .leadWide {
+    grid-column: 1 / 5;
   }
 
-  .processSteps {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+  .trailTall {
+    grid-column: 5 / 7;
   }
 
-  .heroImage {
-    justify-content: center;
+  .trioStart {
+    grid-column: 1 / 3;
   }
 
-  .gallerySection {
-    padding-inline: 8px;
+  .trioMid {
+    grid-column: 3 / 5;
+  }
+
+  .trioEnd {
+    grid-column: 5 / 7;
+  }
+
+  .panelStart {
+    grid-column: 1 / 3;
+  }
+
+  .panelMid {
+    grid-column: 3 / 5;
+  }
+
+  .panelEnd {
+    grid-column: 5 / 7;
+  }
+
+  .pairSmall {
+    grid-column: 1 / 3;
+  }
+
+  .pairLarge {
+    grid-column: 3 / 7;
+  }
+
+  .duoWide {
+    grid-column: 1 / 5;
+  }
+
+  .duoCompact {
+    grid-column: 5 / 7;
+  }
+
+  .sheetStart {
+    grid-column: 1 / 4;
+  }
+
+  .sheetEnd {
+    grid-column: 4 / 7;
+  }
+
+  .closerSmall {
+    grid-column: 1 / 3;
+  }
+
+  .closerWide {
+    grid-column: 3 / 7;
+  }
+
+  .full {
+    margin-block: var(--space-layout-32);
   }
 }
 
-@media (width <= 1200px) {
-  .gallerySection {
-    padding-inline: 16px;
+/* Desktop (>= 1024px, 12 columns): the full asymmetric hang. */
+
+@media (width >= 1024px) {
+  .full {
+    margin-block: var(--space-layout-48);
+    grid-column: 1 / -1;
+  }
+
+  .leadWide {
+    grid-column: 1 / 8;
+  }
+
+  .trailTall {
+    grid-column: 8 / 13;
+  }
+
+  .trioStart {
+    grid-column: 2 / 6;
+  }
+
+  .trioMid {
+    grid-column: 6 / 10;
+  }
+
+  .trioEnd {
+    grid-column: 10 / 13;
+  }
+
+  .panelStart {
+    grid-column: 1 / 5;
+  }
+
+  .panelMid {
+    grid-column: 5 / 9;
+  }
+
+  .panelEnd {
+    grid-column: 9 / 13;
+  }
+
+  .pairSmall {
+    grid-column: 1 / 5;
+  }
+
+  .pairLarge {
+    grid-column: 6 / 13;
+  }
+
+  .duoWide {
+    grid-column: 1 / 9;
+  }
+
+  .duoCompact {
+    grid-column: 9 / 13;
+  }
+
+  .sheetStart {
+    grid-column: 1 / 8;
+  }
+
+  .sheetEnd {
+    grid-column: 8 / 13;
+  }
+
+  .closerSmall {
+    grid-column: 2 / 6;
+  }
+
+  .closerWide {
+    grid-column: 6 / 13;
+  }
+}
+
+/* Scroll reveal — IntersectionObserver adds .shown as figures enter the
+ * viewport (see IllustrationsPage.tsx). Items are visible by default; the
+ * hidden state only exists once JS arms the gallery, so no-JS visitors and
+ * reduced-motion users always see everything. */
+
+.armed .item:not(.shown) {
+  transform: translateY(16px);
+  opacity: 0;
+}
+
+/* Transition lives on .shown only: arming snaps instantly, revealing eases. */
+
+.armed .item.shown {
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .armed .item.shown {
+    transition: none;
   }
 }
