@@ -7,6 +7,7 @@ export const contentType = "image/png";
 
 export default async function Image() {
   return generatePageOgImage({
+    tag: "ACCESSIBILITY",
     title: "Accessibility",
     subtitle: "WCAG 2.1 AA commitment and inclusive design practices",
   });

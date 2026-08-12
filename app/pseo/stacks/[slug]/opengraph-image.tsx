@@ -13,6 +13,7 @@ export default async function Image({ params }: { params: Promise<Params> }) {
   const stack = getPseoStackBySlug(slug);
 
   return generatePageOgImage({
+    tag: "STACKS",
     title: stack?.name ?? "Stack",
     subtitle: stack?.shortDescription?.slice(0, 90),
   });

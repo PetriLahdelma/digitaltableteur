@@ -7,6 +7,7 @@ export const contentType = "image/png";
 
 export default async function Image() {
   return generatePageOgImage({
+    tag: "TOOLS",
     title: "Email Signature",
     subtitle: "Free generator with live preview and dark mode",
   });

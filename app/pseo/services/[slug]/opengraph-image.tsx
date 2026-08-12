@@ -13,6 +13,7 @@ export default async function Image({ params }: { params: Promise<Params> }) {
   const service = getPseoServiceBySlug(slug);
 
   return generatePageOgImage({
+    tag: "SERVICES",
     title: service?.name ?? "Service",
     subtitle: service?.shortDescription?.slice(0, 90),
   });

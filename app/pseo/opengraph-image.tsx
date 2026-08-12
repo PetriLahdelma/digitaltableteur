@@ -7,6 +7,7 @@ export const contentType = "image/png";
 
 export default async function Image() {
   return generatePageOgImage({
+    tag: "GUIDES",
     title: "Guides",
     subtitle: "Design system and DesignOps implementation library",
   });

@@ -13,6 +13,7 @@ export default async function Image({ params }: { params: Promise<Params> }) {
   const author = getAuthorBySlug(slug);
 
   return generatePageOgImage({
+    tag: "BLOG",
     title: author?.name ?? "Author",
     subtitle:
       author?.bio?.slice(0, 90) ?? "Articles and insights from Digitaltableteur",

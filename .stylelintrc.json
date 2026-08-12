@@ -10,6 +10,7 @@
   ],
   "ignoreFiles": [
     ".claude/**",
+    "scripts/og/mocks/**",
     "src-legacy-vite-DO-NOT-USE/**/*.css",
     "vite-app/**/*.css",
     "nextjs-app/src/**/*.css",

@@ -1,0 +1,22 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+}
+.mark { position: absolute; }
+.corner {
+  position: absolute;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.footer {
+  position: absolute;
+  bottom: 36px;
+  inset-inline: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+}

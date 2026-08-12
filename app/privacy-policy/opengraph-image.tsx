@@ -7,6 +7,7 @@ export const contentType = "image/png";
 
 export default async function Image() {
   return generatePageOgImage({
+    tag: "PRIVACY",
     title: "Privacy Policy",
     subtitle: "How we collect, use, and protect your data",
   });

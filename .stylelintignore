@@ -24,3 +24,7 @@ packages/react/_ds-sync-globals.css
 # Agent-benchmark task fixtures: seeded with INTENTIONAL violations
 # (hardcoded hex, forced-colors bugs) that the benchmarked agent must fix.
 scripts/design-system/agent-bench/fixtures/**
+
+# OG image mock stylesheets: fixed 1200x630 Playwright render inputs for
+# scripts/og/render-og-images.mjs, never shipped to the site.
+scripts/og/mocks/**
