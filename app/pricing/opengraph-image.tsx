@@ -8,6 +8,7 @@ export const contentType = "image/png";
 
 export default async function Image() {
   return generatePageOgImage({
+    tag: "PRICING",
     title: "Pricing",
     subtitle: "Fixed-scope design packages from €7k",
   });

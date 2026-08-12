@@ -9,6 +9,14 @@
 
 ## Available Scripts
 
+### OG Sharing Images
+
+**`scripts/og/render-og-images.mjs`**
+
+- Renders the static postcard OG composites (`scripts/og/mocks/*.html`) into the app router as `opengraph-image.jpg` files
+- Run: `node scripts/og/render-og-images.mjs` (needs network for Google Fonts)
+- System doc: `docs/OG_SHARING_SYSTEM.md`
+
 ### Linear Automation
 
 **`scripts/linear/create-issue.ts`**

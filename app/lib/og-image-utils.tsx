@@ -1,14 +1,21 @@
 import { ImageResponse } from "next/og";
+import { CHROME_MARK_DATA_URL } from "./og-postcard-mark";
 
 // Brand colors
 export const BRAND_LIME = "#DFFF00";
 export const BRAND_DARK = "#041B23";
+export const POSTCARD_BLACK = "#050505";
 
 // Standard OG image size
 export const OG_SIZE = {
   width: 1200,
   height: 630,
 };
+
+// JetBrains Mono ExtraBold static TTF (the previous shared URL served the
+// 400-weight file, so titles rendered faux-bold in satori)
+const MONO_FONT_URL =
+  "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8SKtjPQ.ttf";
 
 // Logo SVG component for OG images
 export function LogoSvg({ size = 72, color = BRAND_DARK }: { size?: number; color?: string }) {
@@ -37,16 +44,33 @@ export function LogoSvg({ size = 72, color = BRAND_DARK }: { size?: number; colo
   );
 }
 
-interface PageOgImageProps {
+interface MetaSegment {
+  text: string;
+  accent?: boolean;
+}
+
+interface PostcardOgImageProps {
   title: string;
-  subtitle?: string;
-  showLogo?: boolean;
+  tag?: string;
+  meta?: MetaSegment[];
+}
+
+function titleFontSize(title: string) {
+  if (title.length > 110) return 44;
+  if (title.length > 70) return 52;
+  return 64;
 }
 
 /**
- * Generate a standard page OG image with title and optional subtitle
+ * Postcard OG template (brand system 2026): black canvas, lime section tag,
+ * JetBrains Mono title, chrome DX mark bleeding from the bottom-right corner.
+ * Static brand surfaces (/, /about, /contact, /work, /blog) use pre-rendered
+ * composites from scripts/og/render-og-images.mjs; every dynamic page derives
+ * from this template.
  */
-export function generatePageOgImage({ title, subtitle, showLogo = true }: PageOgImageProps) {
+export async function generatePostcardOgImage({ title, tag, meta }: PostcardOgImageProps) {
+  const monoFont = await fetch(MONO_FONT_URL).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -54,106 +78,133 @@ export function generatePageOgImage({ title, subtitle, showLogo = true }: PageOg
           height: "100%",
           width: "100%",
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: BRAND_DARK,
-          backgroundImage:
-            "radial-gradient(circle at 20% 30%, #0a3040 0%, transparent 40%), radial-gradient(circle at 80% 70%, #0a3040 0%, transparent 40%)",
+          fontFamily: "JetBrains Mono",
+          backgroundColor: POSTCARD_BLACK,
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Logo mark with lime background */}
-        {showLogo && (
+        {tag && (
           <div
             style={{
+              position: "absolute",
+              top: 60,
+              left: 72,
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 100,
-              height: 100,
-              backgroundColor: BRAND_LIME,
-              borderRadius: 50,
-              marginBottom: 40,
+              fontSize: 22,
+              fontWeight: 800,
+              color: BRAND_LIME,
+              letterSpacing: "0.22em",
             }}
           >
-            <LogoSvg size={60} color={BRAND_DARK} />
+            {tag}
           </div>
         )}
 
-        {/* Page title */}
         <div
           style={{
+            position: "absolute",
+            top: 60,
+            right: 72,
             display: "flex",
-            fontSize: 64,
-            fontWeight: 700,
+            fontSize: 22,
+            fontWeight: 800,
+            color: "rgba(255,255,255,0.55)",
+            letterSpacing: "0.04em",
+          }}
+        >
+          digitaltableteur.com
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            left: 72,
+            top: 150,
+            width: 760,
+            display: "flex",
+            fontSize: titleFontSize(title),
+            fontWeight: 800,
             color: "#ffffff",
-            letterSpacing: "-0.02em",
-            marginBottom: subtitle ? 20 : 0,
-            textAlign: "center",
-            maxWidth: "80%",
+            lineHeight: 1.08,
+            letterSpacing: "-0.03em",
           }}
         >
           {title}
         </div>
 
-        {/* Subtitle */}
-        {subtitle && (
+        {meta && meta.length > 0 && (
           <div
             style={{
+              position: "absolute",
+              bottom: 56,
+              left: 72,
               display: "flex",
-              fontSize: 28,
-              fontWeight: 400,
-              color: BRAND_LIME,
-              letterSpacing: "0.02em",
-              textAlign: "center",
-              maxWidth: "70%",
+              gap: 18,
+              fontSize: 21,
+              fontWeight: 800,
+              letterSpacing: "0.04em",
             }}
           >
-            {subtitle}
+            {meta.map((segment, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "flex",
+                  color: segment.accent ? "#ffffff" : "rgba(255,255,255,0.55)",
+                }}
+              >
+                {segment.text}
+              </div>
+            ))}
           </div>
         )}
 
-        {/* Brand footer */}
-        <div
+        {/* Chrome DX mark bleeding from the bottom-right corner */}
+        <img
+          src={CHROME_MARK_DATA_URL}
+          width={460}
+          height={591}
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
             position: "absolute",
-            bottom: 40,
+            right: -60,
+            bottom: -80,
+            transform: "rotate(6deg)",
           }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 32,
-              height: 32,
-              backgroundColor: BRAND_LIME,
-              borderRadius: 16,
-            }}
-          >
-            <LogoSvg size={20} color={BRAND_DARK} />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 20,
-              fontWeight: 600,
-              color: "#ffffff",
-              opacity: 0.8,
-            }}
-          >
-            Digitaltableteur
-          </div>
-        </div>
+        />
       </div>
     ),
     {
       ...OG_SIZE,
+      fonts: [
+        {
+          name: "JetBrains Mono",
+          data: monoFont,
+          style: "normal",
+          weight: 800,
+        },
+      ],
     }
   );
+}
+
+interface PageOgImageProps {
+  title: string;
+  subtitle?: string;
+  tag?: string;
+  showLogo?: boolean;
+}
+
+/**
+ * Generate a standard page OG image with title and optional subtitle.
+ * Delegates to the postcard template; subtitle renders as the meta line.
+ */
+export function generatePageOgImage({ title, subtitle, tag }: PageOgImageProps) {
+  return generatePostcardOgImage({
+    title,
+    tag,
+    meta: subtitle ? [{ text: subtitle }] : undefined,
+  });
 }
 
 interface BlogOgImageProps {
@@ -164,155 +215,14 @@ interface BlogOgImageProps {
 }
 
 /**
- * Generate a blog post OG image with article-specific styling
+ * Generate a blog post OG image with article meta.
  */
 export function generateBlogOgImage({ title, author, date, readTime }: BlogOgImageProps) {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: BRAND_DARK,
-          backgroundImage:
-            "radial-gradient(circle at 10% 20%, #0a3040 0%, transparent 30%), radial-gradient(circle at 90% 80%, #0a3040 0%, transparent 30%)",
-          padding: 60,
-        }}
-      >
-        {/* Top bar with logo and "BLOG" label */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: 60,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 48,
-                height: 48,
-                backgroundColor: BRAND_LIME,
-                borderRadius: 24,
-              }}
-            >
-              <LogoSvg size={28} color={BRAND_DARK} />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                fontSize: 24,
-                fontWeight: 700,
-                color: "#ffffff",
-              }}
-            >
-              Digitaltableteur
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 16,
-              fontWeight: 600,
-              color: BRAND_LIME,
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              padding: "8px 16px",
-              border: `2px solid ${BRAND_LIME}`,
-              borderRadius: 4,
-            }}
-          >
-            Blog
-          </div>
-        </div>
-
-        {/* Title */}
-        <div
-          style={{
-            display: "flex",
-            flex: 1,
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              fontSize: 56,
-              fontWeight: 700,
-              color: "#ffffff",
-              letterSpacing: "-0.02em",
-              lineHeight: 1.2,
-              maxWidth: "90%",
-            }}
-          >
-            {title}
-          </div>
-        </div>
-
-        {/* Footer with meta */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
-            marginTop: 40,
-          }}
-        >
-          {author && (
-            <div
-              style={{
-                display: "flex",
-                fontSize: 18,
-                color: "#ffffff",
-                opacity: 0.8,
-              }}
-            >
-              By {author}
-            </div>
-          )}
-          {date && (
-            <div
-              style={{
-                display: "flex",
-                fontSize: 18,
-                color: BRAND_LIME,
-                opacity: 0.8,
-              }}
-            >
-              {date}
-            </div>
-          )}
-          {readTime && (
-            <div
-              style={{
-                display: "flex",
-                fontSize: 18,
-                color: "#ffffff",
-                opacity: 0.6,
-              }}
-            >
-              {readTime} read
-            </div>
-          )}
-        </div>
-      </div>
-    ),
-    {
-      ...OG_SIZE,
-    }
-  );
+  const meta: MetaSegment[] = [];
+  if (author) meta.push({ text: author, accent: true });
+  if (date) meta.push({ text: date });
+  if (readTime) meta.push({ text: readTime });
+  return generatePostcardOgImage({ title, tag: "BLOG", meta });
 }
 
 interface WorkOgImageProps {
@@ -322,136 +232,11 @@ interface WorkOgImageProps {
 }
 
 /**
- * Generate a work/portfolio OG image
+ * Generate a work/portfolio OG image.
  */
 export function generateWorkOgImage({ title, category, tags }: WorkOgImageProps) {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: BRAND_DARK,
-          backgroundImage:
-            "radial-gradient(circle at 10% 20%, #0a3040 0%, transparent 30%), radial-gradient(circle at 90% 80%, #0a3040 0%, transparent 30%)",
-          padding: 60,
-        }}
-      >
-        {/* Top bar with logo and category */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: 60,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 48,
-                height: 48,
-                backgroundColor: BRAND_LIME,
-                borderRadius: 24,
-              }}
-            >
-              <LogoSvg size={28} color={BRAND_DARK} />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                fontSize: 24,
-                fontWeight: 700,
-                color: "#ffffff",
-              }}
-            >
-              Digitaltableteur
-            </div>
-          </div>
-          {category && (
-            <div
-              style={{
-                display: "flex",
-                fontSize: 16,
-                fontWeight: 600,
-                color: BRAND_LIME,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                padding: "8px 16px",
-                border: `2px solid ${BRAND_LIME}`,
-                borderRadius: 4,
-              }}
-            >
-              {category}
-            </div>
-          )}
-        </div>
-
-        {/* Title */}
-        <div
-          style={{
-            display: "flex",
-            flex: 1,
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              fontSize: 60,
-              fontWeight: 700,
-              color: "#ffffff",
-              letterSpacing: "-0.02em",
-              lineHeight: 1.2,
-              maxWidth: "90%",
-            }}
-          >
-            {title}
-          </div>
-        </div>
-
-        {/* Tags */}
-        {tags && tags.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              gap: 12,
-              marginTop: 40,
-            }}
-          >
-            {tags.slice(0, 4).map((tag) => (
-              <div
-                key={tag}
-                style={{
-                  display: "flex",
-                  fontSize: 16,
-                  fontWeight: 500,
-                  color: "#ffffff",
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  padding: "8px 16px",
-                  borderRadius: 4,
-                }}
-              >
-                {tag}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    ),
-    {
-      ...OG_SIZE,
-    }
-  );
+  const meta: MetaSegment[] = [];
+  if (category) meta.push({ text: category, accent: true });
+  for (const tag of tags?.slice(0, 3) ?? []) meta.push({ text: tag });
+  return generatePostcardOgImage({ title, tag: "WORK", meta });
 }

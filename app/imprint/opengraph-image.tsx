@@ -7,6 +7,7 @@ export const contentType = "image/png";
 
 export default async function Image() {
   return generatePageOgImage({
+    tag: "IMPRINT",
     title: "Imprint",
     subtitle: "Legal business information for Digitaltableteur",
   });

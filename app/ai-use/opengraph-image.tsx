@@ -7,6 +7,7 @@ export const contentType = "image/png";
 
 export default async function Image() {
   return generatePageOgImage({
+    tag: "AI USE",
     title: "AI Use",
     subtitle: "Transparent, responsible AI-assisted design workflows",
   });
