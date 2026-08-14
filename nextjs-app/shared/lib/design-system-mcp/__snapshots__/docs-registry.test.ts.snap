@@ -789,31 +789,6 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "form",
     "import": "import { FilterChip } from "@dt/FilterChip";",
   },
-  "FlexBox": {
-    "exampleStories": [
-      "InlineCluster",
-      "SpaceBetween",
-      "ColumnWithTokenGap",
-    ],
-    "fields": [
-      "composesWith",
-      "dense",
-      "description",
-      "examples",
-      "forbiddenUse",
-      "group",
-      "import",
-      "keywords",
-      "name",
-      "prefersOver",
-      "props",
-      "status",
-      "tokens",
-      "usage",
-    ],
-    "group": "layout",
-    "import": "import FlexBox from "@dt/FlexBox";",
-  },
   "FormField": {
     "exampleStories": [
       "CheckboxCluster",
