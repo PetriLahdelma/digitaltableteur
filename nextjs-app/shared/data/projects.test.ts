@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   filterProjects,
+  getProjectNavigation,
+  getProjectNavigationCatalog,
   projects,
   resolveProjectNavigationPath,
 } from "./projects";
@@ -58,5 +60,36 @@ describe("filterProjects", () => {
 
   it("returns every project for 'all'", () => {
     expect(filterProjects(projects, "all")).toHaveLength(projects.length);
+  });
+});
+
+describe("coming-soon projects are unroutable", () => {
+  const comingSoonProjects = projects.filter((project) => project.comingSoon);
+
+  it("has at least one coming-soon project to exercise the guards", () => {
+    expect(comingSoonProjects.length).toBeGreaterThan(0);
+  });
+
+  it("never surfaces a coming-soon project as previous/next navigation", () => {
+    for (const project of projects.filter((p) => !p.comingSoon)) {
+      const { previous, next } = getProjectNavigation(project.slug);
+      expect(previous?.comingSoon ?? false).toBe(false);
+      expect(next?.comingSoon ?? false).toBe(false);
+    }
+  });
+
+  it("does not resolve navigation queries to coming-soon projects", () => {
+    for (const project of comingSoonProjects) {
+      expect(resolveProjectNavigationPath(project.slug)).toBeNull();
+      expect(resolveProjectNavigationPath(project.title)).toBeNull();
+      expect(resolveProjectNavigationPath(`/work/${project.slug}`)).toBeNull();
+    }
+  });
+
+  it("excludes coming-soon projects from the navigation catalog", () => {
+    const slugs = getProjectNavigationCatalog().map((entry) => entry.slug);
+    for (const project of comingSoonProjects) {
+      expect(slugs).not.toContain(project.slug);
+    }
   });
 });

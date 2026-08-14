@@ -98,6 +98,8 @@ export function RelatedProjects({
                 aspectRatio="video"
                 showCategory={true}
                 showDescription={true}
+                comingSoon={project.comingSoon}
+                comingSoonLabel={t("workComingSoon", "Coming soon")}
               />
             </FadeIn>
           ))}
