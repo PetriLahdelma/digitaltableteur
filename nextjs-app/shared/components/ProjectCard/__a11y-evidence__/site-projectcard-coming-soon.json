@@ -1,0 +1,16 @@
+{
+  "storyId": "site-projectcard-coming-soon",
+  "mode": "light",
+  "sourceSHA": "e97246dda02211701bf2dc9aa874bafb424b14bc",
+  "capturedAt": "2026-08-14T08:35:52.701Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

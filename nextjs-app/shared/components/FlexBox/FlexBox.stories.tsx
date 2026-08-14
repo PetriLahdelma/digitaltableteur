@@ -25,7 +25,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/FlexBox",
   component: FlexBox,
-  tags: ["stable", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

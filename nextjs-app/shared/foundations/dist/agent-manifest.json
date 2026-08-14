@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-07T18:31:56.074Z",
+  "generatedAt": "2026-08-14T08:34:06.552Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
-      "beta": 49,
-      "stable": 104,
+      "beta": 50,
+      "stable": 103,
       "alpha": 23,
       "deprecated": 1
     },
@@ -13,14 +13,14 @@
     "catalogCompletenessPercent": 90.8,
     "codebaseComponentCount": 195,
     "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 35,
+    "componentsWithProductionUsage": 36,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 104,
+    "stableCount": 103,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -63,7 +63,7 @@
     "catalogCompletenessPercent": 90.8,
     "artifactCoverage": {
       "stories": 161,
-      "tests": 162,
+      "tests": 163,
       "mdx": 4,
       "spec": 177
     },
@@ -79,19 +79,19 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 177,
     "withAnyUsage": 165,
-    "withProductionUsage": 35,
+    "withProductionUsage": 36,
     "uniqueImportedComponents": 165,
-    "totalEvidenceRows": 825,
-    "aliasImportFiles": 428,
+    "totalEvidenceRows": 826,
+    "aliasImportFiles": 429,
     "relativeImportFiles": 430,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-08-05T08:09:22.131Z",
+    "generatedAt": "2026-08-14T08:28:00.623Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 91,
+    "nodesWithComposesWith": 92,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 49,
-        "stable": 104,
+        "beta": 50,
+        "stable": 103,
         "alpha": 23,
         "deprecated": 1
       },
@@ -4444,7 +4444,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -20360,7 +20360,7 @@
         "name": "FlexBox",
         "tier": "atom",
         "group": "layout",
-        "status": "stable",
+        "status": "beta",
         "description": "Flexbox layout primitive for stacks and rows.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1176-1698",
         "radixPrimitive": null,
@@ -20402,18 +20402,7 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
-            "since": "2026-06-04"
-          }
-        ],
+        "consumers": [],
         "schemaVersion": 2,
         "props": {
           "direction": {
@@ -22067,6 +22056,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
             "since": "2026-06-04"
           },
@@ -22305,11 +22304,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Grid",
-        "importCount": 3,
-        "productionImportCount": 0,
+        "importCount": 4,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Grid",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -23652,12 +23657,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/design-system/agent/page.tsx",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -36906,7 +36911,8 @@
         "a11y": {
           "keyboard": [],
           "ariaRequirements": [
-            "Whole card is a single link to the project detail page; the thumbnail carries the project title as alt text"
+            "Whole card is a single link to the project detail page; the thumbnail carries the project title as alt text",
+            "With comingSoon the root is a non-interactive div (no link role); the badge label is plain visible text"
           ],
           "motion": true,
           "reducedMotion": true,
@@ -36968,6 +36974,16 @@
             ],
             "description": "Title overlay position"
           },
+          "comingSoon": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+          },
+          "comingSoonLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -37022,7 +37038,7 @@
           }
         ]
       },
-      "spec": "# ProjectCard\n\n## Intent\nBasic portfolio project card for the work grid: a clickable thumbnail with title, optional category eyebrow and up to three tags.\n\n## Interaction contract\n- Keyboard: the whole card is a single focusable link to the project detail page\n- Pointer: click anywhere on the card to open the project; hover scales the thumbnail\n- Screen readers: one link; the thumbnail carries the project title as alt text\n- Reduced motion: hover scale/translate/opacity transitions are gated behind `motion-reduce:` utilities\n\n## Do / don't\n- Do: pass `title`, `slug` and `thumbnail`; add `category`/`tags` for richer cards\n- Do: choose `titlePosition` (overlay | below) and `aspectRatio` per surface\n- Don't: invent parallel primitives inside this folder\n- Don't: reach for this when EnhancedProjectCard's richer surface is needed — pick one per surface\n\n## Design notes\n- Tokens: Tailwind utility classes mapped to theme tokens; thumbnail radius uses rounded-lg\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1031-109\n",
+      "spec": "# ProjectCard\n\n## Intent\nBasic portfolio project card for the work grid: a clickable thumbnail with title, optional category eyebrow and up to three tags.\n\n## Interaction contract\n- Keyboard: the whole card is a single focusable link to the project detail page\n- Pointer: click anywhere on the card to open the project; hover scales the thumbnail\n- Screen readers: one link; the thumbnail carries the project title as alt text\n- Reduced motion: hover scale/translate/opacity transitions are gated behind `motion-reduce:` utilities\n- Coming soon: with `comingSoon` the root is a non-interactive `div` (nothing focusable, no hover affordances) and a badge with `comingSoonLabel` overlays the media; matches EnhancedProjectCard's teaser mode\n\n## Do / don't\n- Do: pass `title`, `slug` and `thumbnail`; add `category`/`tags` for richer cards\n- Do: choose `titlePosition` (overlay | below) and `aspectRatio` per surface\n- Do: set `comingSoon` for projects without a case-study route, passing a translated `comingSoonLabel` (`t(\"workComingSoon\")`)\n- Don't: invent parallel primitives inside this folder\n- Don't: reach for this when EnhancedProjectCard's richer surface is needed — pick one per surface\n\n## Design notes\n- Tokens: Tailwind utility classes mapped to theme tokens; thumbnail radius uses rounded-lg\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1031-109\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectCard",
@@ -37088,6 +37104,16 @@
             ],
             "description": "Title overlay position"
           },
+          "comingSoon": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+          },
+          "comingSoonLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -37100,14 +37126,16 @@
         "variantsFnName": null,
         "useWhen": [
           "pass `title`, `slug` and `thumbnail`; add `category`/`tags` for richer cards",
-          "choose `titlePosition` (overlay | below) and `aspectRatio` per surface"
+          "choose `titlePosition` (overlay | below) and `aspectRatio` per surface",
+          "set `comingSoon` for projects without a case-study route, passing a translated `comingSoonLabel` (`t(\"workComingSoon\")`)"
         ],
         "avoidWhen": [
           "invent parallel primitives inside this folder",
           "reach for this when EnhancedProjectCard's richer surface is needed — pick one per surface"
         ],
         "requiredA11y": [
-          "Whole card is a single link to the project detail page; the thumbnail carries the project title as alt text"
+          "Whole card is a single link to the project detail page; the thumbnail carries the project title as alt text",
+          "With comingSoon the root is a non-interactive div (no link role); the badge label is plain visible text"
         ],
         "keyboard": [],
         "compositionRules": [
@@ -37126,7 +37154,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 8,
+        "declaredPropCount": 10,
         "guidelines": [
           {
             "level": "should",
@@ -37138,6 +37166,13 @@
           {
             "level": "should",
             "guidance": "choose `titlePosition` (overlay | below) and `aspectRatio` per surface",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "set `comingSoon` for projects without a case-study route, passing a translated `comingSoonLabel` (`t(\"workComingSoon\")`)",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
@@ -48305,7 +48340,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
           }
         ]
@@ -59483,7 +59518,10 @@
           "invent parallel primitives inside this folder",
           "use this for site-wide navigation (that is SiteHeader)"
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Grid",
+          "ProjectDetailLayout"
+        ],
         "prefersOver": [],
         "declaredPropCount": 4,
         "guidelines": [

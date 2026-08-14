@@ -248,6 +248,8 @@ export function WorkMagneticField({
                   thumbnail={project.thumbnail}
                   category={project.category}
                   tags={project.tags}
+                  comingSoon={project.comingSoon}
+                  comingSoonLabel={t("workComingSoon", "Coming soon")}
                   aspectRatio="landscape"
                   showCategory={true}
                   showDescription={false}

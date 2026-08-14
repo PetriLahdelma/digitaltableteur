@@ -19,6 +19,10 @@ export interface ProjectCardProps {
   aspectRatio?: "square" | "video" | "portrait" | "landscape";
   /** Title overlay position */
   titlePosition?: "overlay" | "below";
+  /** Render as a non-interactive teaser with a "coming soon" badge over the media */
+  comingSoon?: boolean;
+  /** Visible badge label for the coming-soon overlay (pass a translated string) */
+  comingSoonLabel?: string;
   /** Custom className */
   className?: string;
 }
@@ -34,8 +38,9 @@ const aspectRatioClasses: Record<NonNullable<ProjectCardProps["aspectRatio"]>, s
  * Basic portfolio project card for the work grid: a clickable thumbnail with
  * the project title, optional category eyebrow and up to three tags. The title
  * can sit over the image (`overlay`) or beneath it (`below`), and the thumbnail
- * frame follows the chosen `aspectRatio`. EnhancedProjectCard is the richer
- * variant — pick one per surface.
+ * frame follows the chosen `aspectRatio`. With `comingSoon` the card renders as
+ * a non-interactive teaser with a badge over the media instead of a link.
+ * EnhancedProjectCard is the richer variant — pick one per surface.
  */
 export function ProjectCard({
   title,
@@ -45,18 +50,12 @@ export function ProjectCard({
   tags,
   aspectRatio = "video",
   titlePosition = "overlay",
+  comingSoon = false,
+  comingSoonLabel = "Coming soon",
   className,
 }: ProjectCardProps) {
-  return (
-    <Link
-      href={`/work/${slug}`}
-      className={cn(
-        "group relative block overflow-hidden rounded-lg",
-        "bg-muted",
-        className
-      )}
-      data-donny-interest="portfolio-project"
-    >
+  const content = (
+    <>
       {/* Image Container */}
       <div
         className={cn(
@@ -76,6 +75,22 @@ export function ProjectCard({
           )}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
+
+        {/* Coming-soon overlay badge */}
+        {comingSoon && (
+          <span
+            className={cn(
+              "absolute inset-0 z-10 m-auto h-fit w-fit",
+              "inline-flex items-center rounded-full border border-white/40 px-4 py-2",
+              "bg-black/60 backdrop-blur-sm",
+              "text-sm font-body font-medium text-white",
+              "forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]"
+            )}
+            data-project-card-coming-soon=""
+          >
+            {comingSoonLabel}
+          </span>
+        )}
 
         {/* Overlay (for overlay title position) */}
         {titlePosition === "overlay" && (
@@ -150,6 +165,37 @@ export function ProjectCard({
           )}
         </div>
       )}
+    </>
+  );
+
+  // Non-interactive teaser: no link, no hover affordances (the `group` class
+  // is omitted so group-hover: utilities stay at rest).
+  if (comingSoon) {
+    return (
+      <div
+        className={cn(
+          "relative block overflow-hidden rounded-lg",
+          "bg-muted",
+          className
+        )}
+        data-project-card-coming-soon-root=""
+      >
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={`/work/${slug}`}
+      className={cn(
+        "group relative block overflow-hidden rounded-lg",
+        "bg-muted",
+        className
+      )}
+      data-donny-interest="portfolio-project"
+    >
+      {content}
     </Link>
   );
 }

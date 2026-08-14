@@ -234,7 +234,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
         }
     ]

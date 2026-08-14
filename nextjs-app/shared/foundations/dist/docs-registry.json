@@ -6704,7 +6704,7 @@
       "name": "FlexBox",
       "group": "layout",
       "tier": 1,
-      "status": "stable",
+      "status": "beta",
       "description": "Flexbox layout primitive for stacks and rows.",
       "dense": "Style-prop flexbox (css-less by design): direction/wrap/justify/align/alignContent + gap|rowGap|columnGap (number=px, string=token); passes through div attributes",
       "keywords": [
@@ -12174,6 +12174,16 @@
             "below"
           ],
           "description": "Title overlay position"
+        },
+        "comingSoon": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+        },
+        "comingSoonLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
         },
         "className": {
           "optional": true,

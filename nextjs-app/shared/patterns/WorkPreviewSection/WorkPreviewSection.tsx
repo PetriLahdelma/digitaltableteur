@@ -21,6 +21,8 @@ export interface ProjectItem {
   category?: string;
   /** Project tags */
   tags?: string[];
+  /** Render as a non-interactive teaser (no case-study route yet) */
+  comingSoon?: boolean;
 }
 
 export interface WorkPreviewSectionProps {
@@ -61,6 +63,8 @@ export function WorkPreviewSection({
             thumbnail={project.thumbnail}
             category={project.category}
             tags={project.tags}
+            comingSoon={project.comingSoon}
+            comingSoonLabel={t("workComingSoon", "Coming soon")}
             aspectRatio="video"
           />
         </FadeIn>
@@ -81,6 +85,8 @@ export function WorkPreviewSection({
               thumbnail={first.thumbnail}
               category={first.category}
               tags={first.tags}
+              comingSoon={first.comingSoon}
+              comingSoonLabel={t("workComingSoon", "Coming soon")}
               aspectRatio="square"
               className="h-full"
             />
@@ -96,6 +102,8 @@ export function WorkPreviewSection({
                 thumbnail={project.thumbnail}
                 category={project.category}
                 tags={project.tags}
+                comingSoon={project.comingSoon}
+                comingSoonLabel={t("workComingSoon", "Coming soon")}
                 aspectRatio="video"
               />
             </FadeIn>
@@ -116,6 +124,8 @@ export function WorkPreviewSection({
               thumbnail={project.thumbnail}
               category={project.category}
               tags={project.tags}
+              comingSoon={project.comingSoon}
+              comingSoonLabel={t("workComingSoon", "Coming soon")}
               aspectRatio="landscape"
               showCategory={true}
               showDescription={false}

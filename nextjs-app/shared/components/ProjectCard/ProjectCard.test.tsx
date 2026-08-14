@@ -52,6 +52,24 @@ describe("ProjectCard", () => {
     ).toBeInTheDocument();
   });
 
+  it("renders comingSoon as a non-interactive card with the badge", () => {
+    render(
+      <ProjectCard {...baseProps} comingSoon comingSoonLabel="Coming soon" />,
+    );
+    expect(screen.queryByRole("link")).not.toBeInTheDocument();
+    expect(screen.getByText("Coming soon")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: baseProps.title, level: 3 }),
+    ).toBeInTheDocument();
+  });
+
+  it("comingSoon card has no axe violations", async () => {
+    const { container } = render(
+      <ProjectCard {...baseProps} comingSoon category="Tools" tags={["Figma"]} />,
+    );
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
   it("has no axe violations (overlay)", async () => {
     const { container } = render(
       <ProjectCard {...baseProps} category="Design systems" tags={["Figma"]} />,
