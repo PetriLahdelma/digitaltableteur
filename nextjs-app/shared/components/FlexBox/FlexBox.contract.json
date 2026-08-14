@@ -3,7 +3,7 @@
     "name": "FlexBox",
     "tier": "atom",
     "group": "layout",
-    "status": "stable",
+    "status": "beta",
     "description": "Flexbox layout primitive for stacks and rows.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1176-1698",
     "radixPrimitive": null,
@@ -45,18 +45,7 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
-            "since": "2026-06-04"
-        }
-    ],
+    "consumers": [],
     "schemaVersion": 2,
     "props": {
         "direction": {

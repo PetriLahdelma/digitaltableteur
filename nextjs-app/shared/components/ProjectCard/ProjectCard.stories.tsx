@@ -64,6 +64,18 @@ const meta: Meta<typeof ProjectCard> = {
       description: "Whether the title sits over the image or beneath it.",
       table: { category: "Appearance", defaultValue: { summary: "overlay" } },
     },
+    comingSoon: {
+      control: "boolean",
+      description:
+        "Render as a non-interactive teaser with a badge over the media instead of a link.",
+      table: { category: "Behavior", defaultValue: { summary: "false" } },
+    },
+    comingSoonLabel: {
+      control: "text",
+      description:
+        "Visible badge label for the coming-soon overlay (pass a translated string).",
+      table: { category: "Content", defaultValue: { summary: "Coming soon" } },
+    },
     className: {
       control: "text",
       description: "Extra class names merged onto the card link.",
@@ -78,6 +90,8 @@ const meta: Meta<typeof ProjectCard> = {
     tags: tagPresets.Few as unknown as string[],
     aspectRatio: "video",
     titlePosition: "overlay",
+    comingSoon: false,
+    comingSoonLabel: "Coming soon",
     className: "",
   },
   decorators: [
@@ -116,6 +130,23 @@ export const TitleBelow: Story = {
 /** Square thumbnail frame. */
 export const SquareRatio: Story = {
   args: { aspectRatio: "square" },
+};
+
+/** Non-interactive teaser: no link wrapper, badge overlaid on the media. */
+export const ComingSoon: Story = {
+  args: {
+    title: "Precedent",
+    slug: "precedent",
+    category: "Tools",
+    tags: tagPresets.Few as unknown as string[],
+    comingSoon: true,
+    comingSoonLabel: "Coming soon",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.queryByRole("link")).not.toBeInTheDocument();
+    expect(canvas.getByText("Coming soon")).toBeInTheDocument();
+  },
 };
 
 export const Playground: Story = Default;

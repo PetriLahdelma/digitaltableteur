@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T16:16:44.124Z",
+  "generatedAt": "2026-08-14T08:28:09.691Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -19619,6 +19619,16 @@
           ],
           "description": "Title overlay position"
         },
+        "comingSoon": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+        },
+        "comingSoonLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -19631,14 +19641,16 @@
       "variantsFnName": null,
       "useWhen": [
         "pass `title`, `slug` and `thumbnail`; add `category`/`tags` for richer cards",
-        "choose `titlePosition` (overlay | below) and `aspectRatio` per surface"
+        "choose `titlePosition` (overlay | below) and `aspectRatio` per surface",
+        "set `comingSoon` for projects without a case-study route, passing a translated `comingSoonLabel` (`t(\"workComingSoon\")`)"
       ],
       "avoidWhen": [
         "invent parallel primitives inside this folder",
         "reach for this when EnhancedProjectCard's richer surface is needed — pick one per surface"
       ],
       "requiredA11y": [
-        "Whole card is a single link to the project detail page; the thumbnail carries the project title as alt text"
+        "Whole card is a single link to the project detail page; the thumbnail carries the project title as alt text",
+        "With comingSoon the root is a non-interactive div (no link role); the badge label is plain visible text"
       ],
       "keyboard": [],
       "compositionRules": [
@@ -19657,7 +19669,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 8,
+      "declaredPropCount": 10,
       "guidelines": [
         {
           "level": "should",
@@ -19669,6 +19681,13 @@
         {
           "level": "should",
           "guidance": "choose `titlePosition` (overlay | below) and `aspectRatio` per surface",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "set `comingSoon` for projects without a case-study route, passing a translated `comingSoonLabel` (`t(\"workComingSoon\")`)",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"
@@ -32109,7 +32128,10 @@
         "invent parallel primitives inside this folder",
         "use this for site-wide navigation (that is SiteHeader)"
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Grid",
+        "ProjectDetailLayout"
+      ],
       "prefersOver": [],
       "declaredPropCount": 4,
       "guidelines": [

@@ -39,7 +39,8 @@
     "a11y": {
         "keyboard": [],
         "ariaRequirements": [
-            "Whole card is a single link to the project detail page; the thumbnail carries the project title as alt text"
+            "Whole card is a single link to the project detail page; the thumbnail carries the project title as alt text",
+            "With comingSoon the root is a non-interactive div (no link role); the badge label is plain visible text"
         ],
         "motion": true,
         "reducedMotion": true,
@@ -100,6 +101,16 @@
                 "below"
             ],
             "description": "Title overlay position"
+        },
+        "comingSoon": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+        },
+        "comingSoonLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
         },
         "className": {
             "optional": true,
