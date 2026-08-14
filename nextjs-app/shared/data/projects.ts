@@ -364,20 +364,21 @@ export function getFeaturedProjects(maxItems: number = 4): Project[] {
 }
 
 /**
- * Get previous and next projects for navigation
+ * Get previous and next projects for navigation. Coming-soon projects have
+ * no case-study route, so they are skipped in the sequence.
  */
 export function getProjectNavigation(currentSlug: string): {
   previous: Project | null;
   next: Project | null;
 } {
-  const currentIndex = sortedProjects.findIndex((p) => p.slug === currentSlug);
+  const sequence = sortedProjects.filter((p) => !p.comingSoon);
+  const currentIndex = sequence.findIndex((p) => p.slug === currentSlug);
+  if (currentIndex === -1) return { previous: null, next: null };
 
   return {
-    previous: currentIndex > 0 ? sortedProjects[currentIndex - 1] : null,
+    previous: currentIndex > 0 ? sequence[currentIndex - 1] : null,
     next:
-      currentIndex < sortedProjects.length - 1
-        ? sortedProjects[currentIndex + 1]
-        : null,
+      currentIndex < sequence.length - 1 ? sequence[currentIndex + 1] : null,
   };
 }
 
@@ -440,13 +441,18 @@ function scoreProjectMatch(project: Project, query: string): number {
  * Resolve a project slug, title, alias, or free-text query to `/work/{slug}`.
  * Returns null when no confident single match exists.
  */
+/** Coming-soon projects have no case-study route to navigate to. */
+function isRoutableProject(project: Project | undefined): project is Project {
+  return Boolean(project && !project.comingSoon);
+}
+
 export function resolveProjectNavigationPath(input: string): string | null {
   const normalized = normalizeProjectQuery(input);
   if (!normalized) return null;
 
   if (normalized.startsWith("/work/")) {
     const slug = normalized.split("/")[2]?.split("#")[0]?.split("?")[0];
-    if (slug && getProjectBySlug(slug)) {
+    if (slug && isRoutableProject(getProjectBySlug(slug))) {
       return `/work/${slug}`;
     }
     return null;
@@ -458,17 +464,18 @@ export function resolveProjectNavigationPath(input: string): string | null {
 
   const aliasKey = normalized.toLowerCase();
   const aliasSlug = PROJECT_NAV_ALIASES[aliasKey];
-  if (aliasSlug && getProjectBySlug(aliasSlug)) {
+  if (aliasSlug && isRoutableProject(getProjectBySlug(aliasSlug))) {
     return `/work/${aliasSlug}`;
   }
 
   const slugCandidate = slugifyProjectQuery(normalized);
   const bySlug = getProjectBySlug(slugCandidate);
-  if (bySlug) {
+  if (isRoutableProject(bySlug)) {
     return `/work/${bySlug.slug}`;
   }
 
   const scored = projects
+    .filter((project) => isRoutableProject(project))
     .map((project) => ({ project, score: scoreProjectMatch(project, normalized) }))
     .filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score);
@@ -493,7 +500,7 @@ export function getProjectNavigationCatalog(): Array<{
   title: string;
   url: string;
 }> {
-  return sortedProjects.map((project) => ({
+  return sortedProjects.filter((p) => !p.comingSoon).map((project) => ({
     slug: project.slug,
     title: project.title,
     url: `/work/${project.slug}`,
