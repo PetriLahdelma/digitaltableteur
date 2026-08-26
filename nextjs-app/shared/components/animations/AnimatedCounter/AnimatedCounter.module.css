@@ -3,14 +3,23 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-internal-8, 0.5rem);
+
+  /* Size container so the value can scale to the column it sits in. */
+  container-type: inline-size;
 }
 
 .value {
   font-family: var(--font-title, sans-serif);
-  font-size: var(--font-size-display, 3.5rem);
+
+  /* The display token is viewport-scaled, so in a multi-column stats grid a
+   * four-glyph value like "300+" outgrows its column and wraps. Cap the size
+   * against the column instead: 37cqi keeps the widest realistic value
+   * (4 glyphs at ~2.56em) on one line at every breakpoint. */
+  font-size: min(var(--font-size-display, 3.5rem), 37cqi);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 
   /* Inherit from parent by default so containers (e.g. `bg-primary` sections)
    * can drive contrast via `text-primary-foreground` instead of fighting an

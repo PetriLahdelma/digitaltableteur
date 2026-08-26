@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2149,
+  "warningCount": 2148,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -931,7 +931,7 @@
     },
     {
       "file": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css",
-      "line": 13,
+      "line": 21,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -940,7 +940,7 @@
     },
     {
       "file": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css",
-      "line": 25,
+      "line": 34,
       "column": 38,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -949,21 +949,12 @@
     },
     {
       "file": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css",
-      "line": 23,
+      "line": 32,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css::rhythmguard/use-scale::Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css",
-      "line": 10,
-      "column": 39,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"3.5rem\". Use scale values (nearest: 48px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css::rhythmguard/use-scale::Unexpected off-scale value \"3.5rem\". Use scale values (nearest: 48px or 64px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/animations/AnimatedFormField/AnimatedFormField.module.css",
