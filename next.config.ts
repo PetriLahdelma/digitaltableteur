@@ -192,6 +192,13 @@ const nextConfig: NextConfig = {
       {
         pathname: "/blog/**",
       },
+      // Partner/certification marks (ReliablePartnerBadge). This list is a
+      // whitelist: an unlisted local path throws at render, and because the
+      // badge sits in the footer that surfaces as a 500 on every page rather
+      // than a broken image. Neither the build nor jsdom tests catch it.
+      {
+        pathname: "/logos/**",
+      },
     ],
     // Local SVG heroes/diagrams use <img> via BlogMediaImage; this allows raster fallbacks.
     dangerouslyAllowSVG: true,

@@ -3,6 +3,7 @@
 import { Link } from "../../lib/linkComponent";
 import { Image } from "../../lib/imageComponent";
 import { cn } from "../../lib/cn";
+import styles from "./ProjectCard.module.css";
 
 export interface ProjectCardProps {
   /** Project title */
@@ -79,13 +80,7 @@ export function ProjectCard({
         {/* Coming-soon overlay badge */}
         {comingSoon && (
           <span
-            className={cn(
-              "absolute inset-0 z-10 m-auto h-fit w-fit",
-              "inline-flex items-center rounded-full border border-white/40 px-4 py-2",
-              "bg-black/60 backdrop-blur-sm",
-              "text-sm font-body font-medium text-white",
-              "forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]"
-            )}
+            className={styles.comingSoonBadge}
             data-project-card-coming-soon=""
           >
             {comingSoonLabel}
@@ -94,15 +89,7 @@ export function ProjectCard({
 
         {/* Overlay (for overlay title position) */}
         {titlePosition === "overlay" && (
-          <div
-            className={cn(
-              "absolute inset-0",
-              "bg-gradient-to-t from-black/80 via-black/20 to-transparent",
-              "opacity-60 group-hover:opacity-90",
-              "transition-opacity duration-300",
-              "motion-reduce:transition-none"
-            )}
-          />
+          <div className={styles.overlayScrim} />
         )}
 
         {/* Title Overlay */}
@@ -188,7 +175,11 @@ export function ProjectCard({
   return (
     <Link
       href={`/work/${slug}`}
+      // styles.card scopes the scrim's hover rule. It goes only on the linked
+      // wrapper, never the coming-soon teaser, so hover affordances stay at
+      // rest there exactly as the `group` omission below already ensured.
       className={cn(
+        styles.card,
         "group relative block overflow-hidden rounded-lg",
         "bg-muted",
         className

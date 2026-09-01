@@ -1,0 +1,63 @@
+/* Coming-soon overlay badge.
+   Lifted out of inline Tailwind: the teaser mode added five utility lines to
+   ProjectCard.tsx, pushing the file past its dogfood-ratchet baseline of 19.
+   CSS Modules are the repo default (CLAUDE.md), so the styling lives here.
+   Behaviour is unchanged — this is the same rule set, moved. */
+
+.comingSoonBadge {
+  display: inline-flex;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  margin: auto;
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-16);
+  block-size: fit-content;
+  inline-size: fit-content;
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 40%);
+  border-radius: var(--radius-full);
+  background-color: rgb(0 0 0 / 60%);
+  backdrop-filter: blur(4px);
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-s);
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+/* Scrim behind the overlay title. Same overlay chrome as the badge above, so
+   it moves with it rather than staying half inline. */
+
+.overlayScrim {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to top,
+    rgb(0 0 0 / 80%),
+    rgb(0 0 0 / 20%),
+    transparent
+  );
+  transition: opacity 0.3s;
+  opacity: 0.6;
+}
+
+.card:hover .overlayScrim {
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlayScrim {
+    transition: none;
+  }
+}
+
+/* Forced colours: the translucent scrim and the white hairline both collapse
+   against a user-chosen palette, so hand the badge back to system colours. */
+
+@media (forced-colors: active) {
+  .comingSoonBadge {
+    border-color: CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+}

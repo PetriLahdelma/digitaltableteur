@@ -1,0 +1,50 @@
+/* Shared chrome for the /design-system/agent evidence sections.
+   These were Tailwind utility strings inline in the three section files,
+   which the dogfood ratchet counts as debt; CSS Modules are the repo
+   default (see CLAUDE.md), so the styling lives here instead. */
+
+.lede {
+  margin-block-start: var(--space-internal-8);
+  color: var(--color-muted);
+}
+
+.footnote {
+  margin-block-start: var(--space-internal-8);
+  color: var(--color-muted);
+}
+
+.notes {
+  margin-block-start: var(--space-layout-16);
+  padding-inline-start: var(--space-layout-24);
+  color: var(--color-muted);
+}
+
+/* Taxonomy tree: the node list scrolls inside a fixed pane so the page does
+   not grow with the component count. */
+
+.scrollPane {
+  padding-inline-end: var(--space-internal-8);
+  max-block-size: min(100%, 24rem);
+
+  /* Shorthand, not the overflow-y/overflow-block pair: the logical-CSS
+     contract wants the pair in one order and stylelint's property-order
+     wants the other, so they cannot both be satisfied. */
+  overflow: auto;
+}
+
+.detail {
+  padding-inline-start: var(--space-layout-16);
+  color: var(--color-muted);
+}
+
+/* Identifiers copied into code, so they keep the mono face. */
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-xs);
+}
+
+.recordText {
+  font-size: var(--font-size-text-xs);
+  line-height: 1.5;
+}

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { TreeView, type TreeViewNode } from "@digitaltableteur/react";
 import { ResizablePanelGroup } from "@digitaltableteur/react";
+import styles from "./agent.module.css";
 
 export type TaxonomyEntry = {
   name: string;
@@ -62,7 +63,7 @@ export function ComponentTaxonomyTree({ entries }: { entries: TaxonomyEntry[] })
           minSize: 30,
           initialSize: 55,
           content: (
-            <div className="max-h-96 overflow-y-auto pr-2">
+            <div className={styles.scrollPane}>
               <TreeView
                 aria-label="Component taxonomy"
                 nodes={nodes}
@@ -81,12 +82,12 @@ export function ComponentTaxonomyTree({ entries }: { entries: TaxonomyEntry[] })
           content: (
             <p
               aria-live="polite"
-              className="pl-4 text-sm leading-relaxed text-muted-foreground"
+              className={styles.detail}
             >
               {selected ? (
                 <>
-                  <span className="font-mono text-xs">{selected.name}</span>{" "}
-                  <span className="font-mono text-xs">
+                  <span className={styles.mono}>{selected.name}</span>{" "}
+                  <span className={styles.mono}>
                     ({selected.status})
                   </span>{" "}
                   — {selected.dense}
