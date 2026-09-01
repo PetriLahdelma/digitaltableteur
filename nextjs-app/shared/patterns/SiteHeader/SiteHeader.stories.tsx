@@ -38,8 +38,13 @@ const meta: Meta<typeof SiteHeader> = {
 export default meta;
 type Story = StoryObj<typeof SiteHeader>;
 
+// Axe runs here, and only here, on purpose. Every story in this file used to
+// opt out, which left a `stable` contract claiming axe evidence that could
+// never be produced — a July backfill had been recording passes for stories
+// that are never checked. Default is the canonical composition, so it is the
+// one that carries the claim; the others stay opted out because they render
+// the same chrome and would only duplicate the findings.
 export const Default: Story = {
-  parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
 };
 export const Playground: Story = {
