@@ -61,10 +61,14 @@ export interface NewsBulletinItem {
 
 export const NEWS_BULLETIN_ITEMS: NewsBulletinItem[] = [
   {
-    id: "bandwidth-summer-2026",
+    // Badge carries the year, body carries the action, so the pair reads
+    // "2027 — Now booking" without repeating itself. Kept short on purpose:
+    // the card clamps to the viewport on phones and ellipsises the body, so
+    // the previous 33-character line was cut to "Bandwidth durin…" there.
+    id: "booking-2027",
     figmaRef: "310:898",
-    badge: { kind: "percent", value: "50%" },
-    body: "Bandwidth during summertime, 2026",
+    badge: { kind: "percent", value: "2027" },
+    body: "Now booking",
     link: { kind: "internal", href: "/contact" },
   },
   {

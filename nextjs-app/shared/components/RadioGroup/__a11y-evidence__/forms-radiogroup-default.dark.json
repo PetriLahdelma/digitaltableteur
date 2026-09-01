@@ -1,16 +1,16 @@
 {
   "storyId": "forms-radiogroup-default",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:35:46.698Z",
-  "runner": "backfill",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:06:01.761Z",
+  "runner": "local-farm-parity",
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

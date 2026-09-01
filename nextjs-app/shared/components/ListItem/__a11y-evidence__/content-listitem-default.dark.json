@@ -1,9 +1,9 @@
 {
   "storyId": "content-listitem-default",
   "mode": "dark",
-  "sourceSHA": "f71a2fef898d45c691d877f96d43b34db356b3cb",
-  "capturedAt": "2026-07-26T19:33:27.849Z",
-  "runner": "promote-listitem-stable",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:14:15.987Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

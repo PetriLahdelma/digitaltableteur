@@ -1,9 +1,9 @@
 {
   "storyId": "data-display-virtuallist-forced-colors",
   "mode": "light",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:37:13.147Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:02:16.952Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

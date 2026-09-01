@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-designsprintssection-playground",
   "mode": "light",
-  "sourceSHA": "b8f02be88a28c82d4541d0360ac7901a0f323c2f",
-  "capturedAt": "2026-08-03T16:13:33.579Z",
-  "runner": "fix-sprint-cta-href",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:00:02.301Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

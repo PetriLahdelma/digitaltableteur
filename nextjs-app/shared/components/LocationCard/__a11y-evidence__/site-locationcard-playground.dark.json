@@ -1,9 +1,9 @@
 {
   "storyId": "site-locationcard-playground",
   "mode": "dark",
-  "sourceSHA": "63c2fd02ac4617d4e01650175b1e3da8f88dd0d4",
-  "capturedAt": "2026-07-26T19:57:29.048Z",
-  "runner": "promote-locationcard-stable",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:06:27.501Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

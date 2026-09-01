@@ -1,9 +1,9 @@
 {
   "storyId": "content-codesnippet-forced-colors",
   "mode": "light",
-  "sourceSHA": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-  "capturedAt": "2026-08-03T16:53:41.562Z",
-  "runner": "fix-hcb-code-comment",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:03:26.487Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

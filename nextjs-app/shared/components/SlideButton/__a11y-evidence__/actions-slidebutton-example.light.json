@@ -1,9 +1,9 @@
 {
   "storyId": "actions-slidebutton-example",
   "mode": "light",
-  "sourceSHA": "603bb8cb8dc731534156897e8607a5851e99b148",
-  "capturedAt": "2026-07-30T09:01:53.953Z",
-  "runner": null,
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:05:03.553Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true
