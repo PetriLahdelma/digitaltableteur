@@ -67,3 +67,44 @@ describe("SiteFooter — C4 cookie preferences reopen", () => {
     ).not.toBeInTheDocument();
   });
 });
+
+/**
+ * Stacked, the four columns ran 1328px against an 844px viewport. Visit,
+ * Billing and Explore are dropped below tablet because each is reachable
+ * elsewhere on a phone; Legal is the only one with no other home, so it must
+ * stay visible at every width. jsdom applies no Tailwind CSS, so assert on the
+ * responsive classes rather than computed visibility.
+ */
+describe("SiteFooter — mobile column inventory", () => {
+  function columnFor(headingKey: string, container: HTMLElement) {
+    const heading = [...container.querySelectorAll("p")].find(
+      (p) => p.textContent === headingKey,
+    );
+    expect(heading, `no column heading for ${headingKey}`).toBeDefined();
+    return heading!.parentElement as HTMLElement;
+  }
+
+  it.each(["footerAddressTitle", "footerBillingTitle", "footerExploreTitle"])(
+    "%s column is hidden below tablet and restored at md",
+    (headingKey) => {
+      const { container } = render(<SiteFooter />);
+      const column = columnFor(headingKey, container);
+      expect(column.className).toContain("hidden");
+      expect(column.className).toContain("md:block");
+    },
+  );
+
+  it("keeps the Legal column visible at every width", () => {
+    const { container } = render(<SiteFooter />);
+    const column = columnFor("footerLegalTitle", container);
+    expect(column.className).not.toContain("hidden");
+  });
+
+  it("still renders the dropped columns' content for tablet and desktop", () => {
+    render(<SiteFooter />);
+    // Hidden by CSS, not removed: the markup must survive for wider viewports.
+    expect(screen.getByText("footerBillingEInvoiceLabel")).toBeInTheDocument();
+    expect(screen.getByText("navPricing")).toBeInTheDocument();
+    expect(screen.getByText("mail@digitaltableteur.com")).toBeInTheDocument();
+  });
+});

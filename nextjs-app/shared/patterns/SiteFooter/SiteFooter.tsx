@@ -84,9 +84,17 @@ export function SiteFooter({ className }: SiteFooterProps) {
       className={cn("border-t border-border bg-muted/30 py-16", className)}
     >
       <Container>
+        {/* Below tablet only the Legal column survives. Stacked, the four
+            columns ran 1328px on an 844px viewport — 1.57 screens of footer.
+            Compressing them into narrow columns just traded height for a
+            cramped measure, so the redundant ones are dropped instead:
+            Explore is the burger menu verbatim, Billing is reproduced in full
+            on /imprint, and Visit's contact route is the burger's Contact
+            entry. All three stay in the DOM for tablet and desktop, where the
+            footer is the "reached the bottom, where next?" affordance. */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Company Info */}
-          <div className="lg:col-span-2">
+          <div className="hidden md:block lg:col-span-2">
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerAddressTitle")}
             </p>
@@ -112,7 +120,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
           </div>
 
           {/* Billing Info */}
-          <div>
+          <div className="hidden md:block">
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerBillingTitle")}
             </p>
@@ -132,7 +140,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
           </div>
 
           {/* Primary navigation */}
-          <div>
+          <div className="hidden md:block">
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerExploreTitle")}
             </p>
