@@ -1,0 +1,40 @@
+.root {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.link {
+  border-radius: var(--radius-sm);
+}
+
+.link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* The mark's green is fixed by Vastuu Group's brand, so it is deliberately
+   not themed. max-inline-size overrides the global `img { max-width: 100% }`
+   reset, which otherwise squeezes the badge inside flex rows. The radius
+   clips the white corner notches baked into the delivered assets so the
+   green plate sits cleanly on dark backgrounds. */
+
+.green {
+  display: block;
+  inline-size: auto;
+  max-inline-size: none;
+  border-radius: var(--radius-lg);
+}
+
+.green.sm {
+  block-size: 32px;
+  border-radius: var(--radius-md);
+}
+
+.green.md {
+  block-size: 48px;
+}
+
+.green.lg {
+  block-size: 64px;
+}

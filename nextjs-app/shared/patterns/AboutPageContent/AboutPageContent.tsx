@@ -26,6 +26,11 @@ import { StatsSection } from "../../patterns/StatsSection/StatsSection";
 import { ManifestoSection, type ManifestoToken } from "../ManifestoSection";
 import { CTASection } from "../CTASection";
 import { SlideButton } from "../../components/SlideButton";
+import {
+  ReliablePartnerBadge,
+  getReliablePartnerReportHref,
+} from "../../components/ReliablePartnerBadge";
+import DtLink from "../../components/Link";
 import styles from "./AboutPageContent.module.css";
 
 const TECH_STACK = [
@@ -356,6 +361,44 @@ export function AboutPageContent({
         cardVariant="bordered"
         background="default"
       />
+
+      {/* Reliable Partner trust band */}
+      <section
+        className={styles.trustBand}
+        aria-labelledby="about-trust-title"
+      >
+        <div className={styles.trustBandInner}>
+          <ReliablePartnerBadge size="lg" />
+          <div className={styles.trustBandText}>
+            <p id="about-trust-title" className={styles.trustBandTitle}>
+              {t(
+                "reliablePartnerHeading",
+                "A Vastuu Group Reliable Partner",
+              )}
+            </p>
+            <p className={styles.trustBandBody}>
+              {t(
+                "reliablePartnerBody",
+                "Tax, pension and employer obligations are continuously verified through Vastuu Group's Reliable Partner programme, as required by the Finnish Contractor's Obligations Act.",
+              )}
+            </p>
+            <p className={styles.trustBandLink}>
+              <DtLink
+                href={getReliablePartnerReportHref(i18n.language || "en")}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                size="sm"
+              >
+                {t(
+                  "reliablePartnerVerify",
+                  "Open the Reliable Partner report (PDF)",
+                )}
+              </DtLink>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Strategy to scale */}
       <ValuesSection

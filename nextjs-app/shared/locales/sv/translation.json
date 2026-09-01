@@ -1400,5 +1400,11 @@
   "pricingCalcPartnershipFreeDay": "Partnerskapspris: en dag i veckan är gratis.",
   "pricingCalcLiveSummary": "{{hours}} timmar, {{days}} dagar i veckan, {{rate}}, totalt {{total}} €",
   "pricingCalcPartnershipHint": "Partnerskapspriset 90 €/timme gäller uppdrag på 6 och 12 månader med en arbetsmängd på minst 4 dagar per vecka.",
-  "pricingCalcAllocationValue": "{{percent}} %"
+  "pricingCalcAllocationValue": "{{percent}} %",
+  "reliablePartnerAlt": "Pålitlig Partner — verifierad av Vastuu Group",
+  "reliablePartnerTitle": "Öppna Pålitlig Partner-rapporten (PDF)",
+  "reliablePartnerHeading": "Pålitlig Partner hos Vastuu Group",
+  "reliablePartnerBody": "Skatte-, pensions- och arbetsgivarförpliktelser verifieras kontinuerligt genom Vastuu Groups program Pålitlig Partner, i enlighet med beställaransvarslagen.",
+  "reliablePartnerVerify": "Öppna Pålitlig Partner-rapporten (PDF)",
+  "pricingTrustNote": "Digitaltableteur är en Pålitlig Partner hos Vastuu Group: skatte-, pensions- och arbetsgivarförpliktelser verifieras kontinuerligt."
 }

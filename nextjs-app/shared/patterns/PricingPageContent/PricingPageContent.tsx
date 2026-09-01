@@ -6,6 +6,7 @@ import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import { Button, Icon, Text, Title } from "@digitaltableteur/react";
 import { PricingCalculator } from "../PricingCalculator";
+import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
 import styles from "./PricingPageContent.module.css";
 
 const PRICING_HERO_IMAGE = "/images/pricing/dsharp3-hero.png";
@@ -483,6 +484,16 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
                 ))}
               </ul>
             </div>
+          </div>
+
+          <div className={styles.trustRow}>
+            <ReliablePartnerBadge size="md" />
+            <Text as="p" size="s" className={styles.trustRowText}>
+              {t(
+                "pricingTrustNote",
+                "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified.",
+              )}
+            </Text>
           </div>
 
           <div className={styles.ctaRow}>

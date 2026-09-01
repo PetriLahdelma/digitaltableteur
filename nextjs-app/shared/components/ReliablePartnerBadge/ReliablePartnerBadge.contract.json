@@ -1,0 +1,89 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "ReliablePartnerBadge",
+    "tier": "atom",
+    "group": "marketing",
+    "status": "alpha",
+    "description": "Vastuu Group \"Luotettava Kumppani\" trust mark, language-matched, linking to the corresponding Reliable Partner report PDF.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "a",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab moves focus to the badge link; Enter activates it (native anchor)."
+        ],
+        "ariaRequirements": [
+            "the badge image carries a translated alt describing the certification, never an empty alt, because the link has no other accessible name",
+            "the link opens a PDF in a new tab and says so in its title/alt so the context change is not a surprise",
+            "when rendered unlinked (href={null}) the alt still carries the meaning"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": [],
+        "typography": []
+    },
+    "lightDarkVerified": false,
+    "props": {
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "description": "Badge height: sm 32px (footer), md 48px, lg 64px."
+        },
+        "href": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Link target. Omit for the language-matched Reliable Partner report PDF; pass null to render unlinked."
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional wrapper class."
+        }
+    },
+    "displayName": "ReliablePartnerBadge",
+    "keywords": [
+        "reliable partner",
+        "luotettava kumppani",
+        "pålitlig partner",
+        "vastuu group",
+        "tilaajavastuu",
+        "trust mark",
+        "certification",
+        "compliance"
+    ],
+    "dense": "language-matched Vastuu Group trust mark (fi/sv/en) linking to that language's Reliable Partner report PDF; sm/md/lg heights",
+    "composesWith": [
+        "SiteFooter",
+        "AboutPageContent",
+        "PricingPageContent"
+    ]
+}
