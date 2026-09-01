@@ -238,10 +238,24 @@
   padding: clamp(1rem, 4vi, var(--space-layout-48));
 }
 
-/* Square mark variants (icon-only logos) */
+/* Square mark variants (icon-only logos).
+   The cap has to act on the inline axis. .logoCard is a column flex with the
+   default align-items: stretch, so the tile's inline-size is already definite
+   at the full grid-column width; clamping only max-block-size then left the
+   aspect ratio unsatisfiable and the browser simply violated it — tiles came
+   out 420x280 on desktop and 354x240 on a 390px phone, never square. Capping
+   inline-size and centring lets aspect-ratio hold at every width. */
+
 .logoCardMark {
+  margin-inline: auto;
+
+  /* Fixed inset, not the shared `clamp(1rem, 4vi, ...)`: with a viewport-based
+     padding the mark's share of a now fixed-size tile still drifted (54% at
+     390px down to 41% at 1280px). A constant inset holds one ratio. */
+  padding: var(--space-layout-32);
+  inline-size: 100%;
+  max-inline-size: min(100%, 280px);
   aspect-ratio: 1;
-  max-block-size: min(280px, 72vi);
 }
 
 /* Wide wordmark variants — match SVG viewBox (~1346×416) */
@@ -260,10 +274,6 @@
 }
 
 @media (width < 768px) {
-  .logoCardMark {
-    max-block-size: min(240px, 65vi);
-  }
-
   .logoCardWordmark {
     padding: var(--space-layout-16);
   }
@@ -273,12 +283,17 @@
   background-color: #141414;
 }
 
+/* Sized against the tile, not the viewport. `42vi` made the mark's share of
+   its tile depend on the window rather than the box it sits in, so the same
+   specimen filled 38% of the tile at 1280px, 57% at 700px and 46% at 390px.
+   A percentage of the (now square) tile keeps one fill ratio everywhere. */
+
 .logoImageMark {
   display: block;
-  flex: 0 1 auto;
-  inline-size: clamp(4rem, 42vi, 10rem);
+  inline-size: 62%;
   max-inline-size: 100%;
   block-size: auto;
+  flex: 0 1 auto;
   object-fit: contain;
 }
 
