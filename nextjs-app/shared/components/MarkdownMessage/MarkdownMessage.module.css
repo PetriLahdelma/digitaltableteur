@@ -6,7 +6,15 @@
   font-size: var(--font-size-text);
   line-height: 1.5;
   overflow-wrap: break-word;
-  color: var(--color-text);
+
+  /* Inherit rather than re-assert --color-text. Both resolve to the same ink
+     when the parent hasn't set one (body carries --color-text), but a
+     container that inverts its own ink used to lose it here: the chat user
+     bubble paints --color-primary and sets --inverted-text-color, and this
+     declaration put the body grey back on top of it. In dark theme that was
+     #e0e0e0 on #6fa8ff — 1.82:1, a serious axe color-contrast failure on
+     every ChatMessages story. */
+  color: inherit;
 }
 
 .root :global(::marker) {

@@ -41,6 +41,20 @@ export type NewsBulletinNpmBadge = {
   version: string;
 };
 
+/**
+ * Phosphor glyph, for slots whose subject has no mark of its own — an essay is
+ * not a product. Rendered bare in the band's ink like the image marks, not in
+ * the lime circle: the circle is reserved for the availability stat, so the
+ * two never read as the same kind of thing.
+ */
+export type NewsBulletinIconBadge = {
+  kind: "icon";
+  /** Phosphor name, PascalCase or slug (see Icon's registry). */
+  name: string;
+  /** Spoken before the body in the card's accessible name. */
+  label: string;
+};
+
 /** Grey square until final art is ready (Figma “Group 20”) */
 export type NewsBulletinPlaceholderBadge = {
   kind: "placeholder";
@@ -50,6 +64,7 @@ export type NewsBulletinBadge =
   | NewsBulletinImageBadge
   | NewsBulletinPercentBadge
   | NewsBulletinNpmBadge
+  | NewsBulletinIconBadge
   | NewsBulletinPlaceholderBadge;
 
 export interface NewsBulletinItem {
@@ -75,13 +90,19 @@ export const NEWS_BULLETIN_ITEMS: NewsBulletinItem[] = [
     link: { kind: "internal", href: "/contact" },
   },
   {
-    id: "rhythmguard-2",
+    // Replaces the Rhythmguard slot, which had sat unchanged since 2026-06-01
+    // and still advertised 2.0.0 after 2.0.1 published on 2026-06-17 — a
+    // release announcement that outlived its release. This is the newest post
+    // on the blog and it argues the positioning the rest of the site takes as
+    // given, so the slot now sends people to the argument rather than to a
+    // package page they have no reason to open.
+    id: "designops-to-agentops",
     figmaRef: "310:897",
-    badge: { kind: "npm", version: "v2.0.0" },
-    body: "Rhythmguard 2.0 out now",
+    badge: { kind: "icon", name: "Newspaper", label: "Article" },
+    body: "From DesignOps to AgentOps",
     link: {
-      kind: "external",
-      href: "https://www.npmjs.com/package/stylelint-plugin-rhythmguard",
+      kind: "internal",
+      href: "/blog/from-designops-to-agentops",
     },
   },
   {

@@ -21,7 +21,7 @@ describe("news-bulletin data", () => {
   // booking signal. Slots 2 and 3 still track the design.
   it("matches Figma slot copy (310:899)", () => {
     expect(NEWS_BULLETIN_ITEMS[0]?.body).toBe("Now booking for Q1–Q2");
-    expect(NEWS_BULLETIN_ITEMS[1]?.body).toBe("Rhythmguard 2.0 out now");
+    expect(NEWS_BULLETIN_ITEMS[1]?.body).toBe("From DesignOps to AgentOps");
     expect(NEWS_BULLETIN_ITEMS[2]?.body).toBe("2026 State of Digital Accessibility");
   });
 });

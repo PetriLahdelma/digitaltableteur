@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T21:36:41.584Z",
+  "generatedAt": "2026-09-01T21:56:20.260Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -12583,7 +12583,7 @@
         "Badge",
         "Title",
         "ComplianceCard",
-        "HelperText"
+        "Card"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,

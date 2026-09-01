@@ -64,7 +64,7 @@ describe("NewsBulletin", () => {
         name: /2027\. now booking for q1/i,
       }),
     ).toHaveAttribute("href", "/contact");
-    expect(screen.getByText("Rhythmguard 2.0 out now")).toBeInTheDocument();
+    expect(screen.getByText("From DesignOps to AgentOps")).toBeInTheDocument();
     expect(
       screen.getByRole("link", {
         name: /vertaaux\. 2026 state of digital accessibility/i,
@@ -74,10 +74,7 @@ describe("NewsBulletin", () => {
       "https://vertaaux.ai/articles/state-of-digital-accessibility-2026-eu",
     );
     expect(
-      screen.getByRole("link", { name: /rhythmguard 2\.0 out now/i }),
-    ).toHaveAttribute(
-      "href",
-      "https://www.npmjs.com/package/stylelint-plugin-rhythmguard",
-    );
+      screen.getByRole("link", { name: /article\. from designops to agentops/i }),
+    ).toHaveAttribute("href", "/blog/from-designops-to-agentops");
   });
 });

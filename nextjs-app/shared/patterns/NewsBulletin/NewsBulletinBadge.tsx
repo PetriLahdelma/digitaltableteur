@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import Icon from "@dt/Icon";
 import type { NewsBulletinBadge } from "@/nextjs-app/shared/data/news-bulletin";
 import styles from "./NewsBulletin.module.css";
 
@@ -16,6 +17,12 @@ export function NewsBulletinBadgeMark({ badge }: { badge: NewsBulletinBadge }) {
         <span className={styles.npmBadge} aria-hidden>
           <span className={styles.npmBadgeLabel}>npm</span>
           <span className={styles.npmBadgeVersion}>{badge.version}</span>
+        </span>
+      );
+    case "icon":
+      return (
+        <span className={styles.iconBadge} aria-hidden>
+          <Icon name={badge.name} size={40} weight="light" />
         </span>
       );
     case "placeholder":
@@ -64,6 +71,8 @@ export function badgeAccessibleLabel(badge: NewsBulletinBadge): string {
       return badge.value;
     case "npm":
       return `npm ${badge.version}`;
+    case "icon":
+      return badge.label;
     case "placeholder":
       return "";
     case "image":
