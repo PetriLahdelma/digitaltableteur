@@ -21,10 +21,14 @@ export function NewsBulletinBadgeMark({ badge }: { badge: NewsBulletinBadge }) {
     case "placeholder":
       return <span className={styles.placeholderBadge} aria-hidden />;
     case "image":
-      if (badge.tint === "logo-color") {
+      if (badge.tint === "logo-color" || badge.tint === "vertaaux-brand") {
         return (
           <span
-            className={styles.logoColorMark}
+            className={
+              badge.tint === "vertaaux-brand"
+                ? `${styles.logoColorMark} ${styles.vertaauxMark}`
+                : styles.logoColorMark
+            }
             style={
               {
                 inlineSize: `${badge.width}px`,

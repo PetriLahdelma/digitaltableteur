@@ -17,6 +17,7 @@
   --bulletin-mark-color: #fff;
   --bulletin-mix: #fff;
   --bulletin-percent-bg: var(--logo-background);
+  --bulletin-vertaaux-mark: #00997a;
   --bulletin-percent-color: var(--logo-color);
   --bulletin-card-gap: var(--space-layout-24);
   --bulletin-content-gap: var(--space-layout-32);
@@ -32,8 +33,13 @@
   color: var(--bulletin-copy);
 }
 
+:global(.themeDark) .section {
+  --bulletin-vertaaux-mark: #0fc;
+}
+
 :global(.themeHCB) .section {
   --bulletin-card-bg: #000;
+  --bulletin-vertaaux-mark: #fff;
 }
 
 :global(.themeHCW) .section {
@@ -41,6 +47,7 @@
   --bulletin-copy: #000;
   --bulletin-mark-color: #000;
   --bulletin-mix: #000;
+  --bulletin-vertaaux-mark: #000;
 }
 
 .viewport {
@@ -96,15 +103,30 @@
   outline-offset: 2px;
 }
 
+/* Grid, not flex: the cards are equal-width slots regardless of how long each
+   headline is. As a flex row with `inline-size: max-content` cards they came
+   out 303 / 358 / 367px at 1280px, sized by their copy, so the strip read as
+   three unrelated boxes. Equal columns make it one component, and editing a
+   headline no longer reflows the row. */
+
 .track {
-  display: flex;
+  display: grid;
 
   /* Room for descenders — overflow-x:auto otherwise clips overflow-y */
   padding-block: 0.125rem;
   box-sizing: border-box;
   inline-size: 100%;
+  grid-auto-flow: column;
+
+  /* The floor keeps the copy readable once three equal columns no longer fit;
+     below it the track scrolls, still in equal widths. Sized so the headline
+     clears the 3rem badge and the card inset at the normal spacing: measured,
+     the copy needs 197px and the surrounding chrome takes 134px. Wider than
+     the ~300px visible between the nav buttons on a phone, so the next card
+     peeks — which is the affordance that says the strip scrolls. */
   align-items: stretch;
   gap: var(--bulletin-card-gap);
+  grid-auto-columns: minmax(19rem, 1fr);
   -ms-overflow-style: none;
   overflow-x: auto;
   overflow-inline: auto;
@@ -138,10 +160,11 @@
   padding-block: 1rem; /* Figma vertical inset (16px) */
   padding-inline: var(--bulletin-card-padding-inline);
   box-sizing: border-box;
-  inline-size: max-content;
+
+  /* Width comes from the grid column, not the content. min-inline-size: 0
+     lets the body ellipsise inside its slot instead of widening it. */
   min-block-size: var(--bulletin-card-min-height);
-  max-inline-size: 100%;
-  flex: 0 0 auto;
+  min-inline-size: 0;
   align-items: center;
   background-color: var(--bulletin-card-bg);
   transition: background-color 0.2s ease;
@@ -196,6 +219,17 @@
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: contain;
+}
+
+/* VertaaUX keeps its own palette rather than being flattened to the band's
+   monochrome: mint on dark, the darker green on light. Both clear 3:1 against
+   the navy band (13.6:1 and 4.9:1) — note the band is the same navy in light
+   and dark, so the light-theme green reads dimmer by design, not by accident.
+   The high-contrast themes drop the brand entirely and take the band's own
+   ink, which is the only way to stay legible against a user-chosen palette. */
+
+.vertaauxMark {
+  background-color: var(--bulletin-vertaaux-mark);
 }
 
 .percentBadge {
@@ -291,6 +325,14 @@
    true and pinned the "next" arrow on screen at the end of the strip. */
 
 .body {
+  /* Wraps to at most two lines rather than ellipsising on one. The card
+     reserves 5rem and a single line uses ~22px of it, so the second line is
+     free height that was already there; headlines past ~21 characters were
+     otherwise cut mid-word on phones ("2026 State of Digi…"). Clamping at two
+     keeps every card the same height. Wrapping also removes the failure mode
+     behind the stuck "next" arrow: a nowrap line could overflow its card and
+     inflate the track's scrollWidth past the content. */
+  display: -webkit-box;
   margin: 0;
   min-inline-size: 0;
   max-inline-size: 100%;
@@ -299,10 +341,11 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.375; /* Figma 16px / 22px — avoids clipping g, p, y */
-  text-overflow: ellipsis;
-  white-space: nowrap;
   color: var(--bulletin-copy);
-  overflow: hidden visible;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 @media (forced-colors: active) {

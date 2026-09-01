@@ -20,10 +20,13 @@ export type NewsBulletinImageBadge = {
   width: number;
   height: number;
   /**
-   * Tint via CSS mask using theme logo tokens.
-   * Light theme: `--color-white`; dark theme: `--logo-color` (see NewsBulletin.module.css).
+   * Tint via CSS mask.
+   * `logo-color` follows the theme logo tokens (white on the navy band, black
+   * on the HCW band). `vertaaux-brand` follows VertaaUX's own palette instead,
+   * so the mark stays on-brand rather than being flattened to the band's
+   * monochrome — see NewsBulletin.module.css.
    */
-  tint?: "logo-color";
+  tint?: "logo-color" | "vertaaux-brand";
 };
 
 /** Lime circle + bold value (Figma “First”) */
@@ -68,7 +71,7 @@ export const NEWS_BULLETIN_ITEMS: NewsBulletinItem[] = [
     id: "booking-2027",
     figmaRef: "310:898",
     badge: { kind: "percent", value: "2027" },
-    body: "Now booking",
+    body: "Now booking for Q1–Q2",
     link: { kind: "internal", href: "/contact" },
   },
   {
@@ -82,18 +85,26 @@ export const NEWS_BULLETIN_ITEMS: NewsBulletinItem[] = [
     },
   },
   {
-    id: "dsharp-case-study",
+    // Replaces the DSharp case-study slot: DSharp already appears six times on
+    // the homepage, and WorkMagneticField above covers the portfolio job. This
+    // is the one item backed by outside urgency — the European Accessibility
+    // Act became enforceable in June 2025, and the research audited 198 pages
+    // across 53 EU companies six months later.
+    id: "eu-accessibility-2026",
     figmaRef: "310:896",
     badge: {
       kind: "image",
-      src: "/images/news-bulletin/dsharp-logobig.svg",
-      alt: "DSharp",
-      width: 48,
+      src: "/images/news-bulletin/vertaaux-mark.svg",
+      alt: "VertaaUX",
+      width: 57,
       height: 48,
-      tint: "logo-color",
+      tint: "vertaaux-brand",
     },
-    body: "Check out the DSharp Case Study",
-    link: { kind: "internal", href: "/work/dsharp-design-system" },
+    body: "2026 State of Digital Accessibility",
+    link: {
+      kind: "external",
+      href: "https://vertaaux.ai/articles/state-of-digital-accessibility-2026-eu",
+    },
   },
 ];
 

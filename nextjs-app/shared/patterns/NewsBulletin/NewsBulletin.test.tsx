@@ -61,15 +61,18 @@ describe("NewsBulletin", () => {
 
     expect(
       screen.getByRole("link", {
-        name: /2027\. now booking/i,
+        name: /2027\. now booking for q1/i,
       }),
     ).toHaveAttribute("href", "/contact");
     expect(screen.getByText("Rhythmguard 2.0 out now")).toBeInTheDocument();
     expect(
       screen.getByRole("link", {
-        name: /dsharp\. check out the dsharp case study/i,
+        name: /vertaaux\. 2026 state of digital accessibility/i,
       }),
-    ).toHaveAttribute("href", "/work/dsharp-design-system");
+    ).toHaveAttribute(
+      "href",
+      "https://vertaaux.ai/articles/state-of-digital-accessibility-2026-eu",
+    );
     expect(
       screen.getByRole("link", { name: /rhythmguard 2\.0 out now/i }),
     ).toHaveAttribute(
