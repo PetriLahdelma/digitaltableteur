@@ -9,6 +9,7 @@ import { Stack } from "../../components/Stack";
 import DtLink from "../../components/Link";
 import { SocialIconLink } from "../../components/SocialIconLink";
 import { Divider } from "../../components/Divider";
+import styles from "./SiteFooter.module.css";
 import {
   InstagramLogo,
   FacebookLogo,
@@ -94,7 +95,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
             footer is the "reached the bottom, where next?" affordance. */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Company Info */}
-          <div className="hidden md:block lg:col-span-2">
+          <div className={cn(styles.mobileHidden, "lg:col-span-2")}>
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerAddressTitle")}
             </p>
@@ -120,7 +121,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
           </div>
 
           {/* Billing Info */}
-          <div className="hidden md:block">
+          <div className={styles.mobileHidden}>
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerBillingTitle")}
             </p>
@@ -140,7 +141,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
           </div>
 
           {/* Primary navigation */}
-          <div className="hidden md:block">
+          <div className={styles.mobileHidden}>
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerExploreTitle")}
             </p>

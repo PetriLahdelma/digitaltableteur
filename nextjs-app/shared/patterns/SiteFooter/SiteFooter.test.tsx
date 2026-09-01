@@ -28,6 +28,7 @@ vi.mock("../../lib/cookieConsent", () => ({
 }));
 
 import { SiteFooter } from "./SiteFooter";
+import styles from "./SiteFooter.module.css";
 
 beforeEach(() => {
   openBanner.mockClear();
@@ -85,19 +86,19 @@ describe("SiteFooter — mobile column inventory", () => {
   }
 
   it.each(["footerAddressTitle", "footerBillingTitle", "footerExploreTitle"])(
-    "%s column is hidden below tablet and restored at md",
+    "%s column carries the below-tablet hide",
     (headingKey) => {
       const { container } = render(<SiteFooter />);
       const column = columnFor(headingKey, container);
-      expect(column.className).toContain("hidden");
-      expect(column.className).toContain("md:block");
+      expect(styles.mobileHidden).toBeTruthy();
+      expect(column.className).toContain(styles.mobileHidden);
     },
   );
 
   it("keeps the Legal column visible at every width", () => {
     const { container } = render(<SiteFooter />);
     const column = columnFor("footerLegalTitle", container);
-    expect(column.className).not.toContain("hidden");
+    expect(column.className).not.toContain(styles.mobileHidden);
   });
 
   it("still renders the dropped columns' content for tablet and desktop", () => {

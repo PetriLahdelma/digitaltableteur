@@ -26,6 +26,7 @@ import { StatsSection } from "../../patterns/StatsSection/StatsSection";
 import { ManifestoSection, type ManifestoToken } from "../ManifestoSection";
 import { CTASection } from "../CTASection";
 import { SlideButton } from "../../components/SlideButton";
+import { Title } from "@digitaltableteur/react";
 import styles from "./AboutPageContent.module.css";
 
 const TECH_STACK = [
@@ -409,9 +410,14 @@ export function AboutPageContent({
         aria-labelledby="about-billing-title"
       >
         <div className={styles.billingInner}>
-          <h2 id="about-billing-title" className={styles.billingTitle}>
+          <Title
+            level={2}
+            size="s"
+            id="about-billing-title"
+            className={styles.billingTitle}
+          >
             {t("footerBillingTitle")}
-          </h2>
+          </Title>
           <dl className={styles.billingList}>
             {BILLING_DETAILS.map(({ labelKey, valueKey }) => (
               <div key={labelKey} className={styles.billingItem}>

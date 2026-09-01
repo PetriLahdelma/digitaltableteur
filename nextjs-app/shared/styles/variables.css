@@ -43,7 +43,15 @@
   --font-size-title-s: clamp(1.5rem, 2vi + 1.1rem, 2.25rem);
   --font-size-title-m: clamp(2rem, 2.8vi + 1.3rem, 3rem);
   --font-size-title-l: clamp(2.75rem, 4vi + 1.75rem, 4.25rem);
-  --font-size-title-xl: clamp(3.5rem, 6vi + 2.5rem, 5.5rem);
+
+  /* Retuned 2026-09-01. The old curve, clamp(3.5rem, 6vi + 2.5rem, 5.5rem),
+     was dominated by its 2.5rem intercept at phone widths: 6vi contributes
+     only ~23px at 390px, so an h1 rendered 68px there — about ten characters
+     per line, which towered any headline and made the pricing hero fill 0.92
+     of the viewport against 0.56 on desktop. Steepening the slope and
+     dropping the intercept scales the small end down while leaving the large
+     end identical: both curves still cap at 5.5rem well before desktop. */
+  --font-size-title-xl: clamp(2rem, 9vi + 0.5rem, 5.5rem);
   --font-size-title-xxl: clamp(4.5rem, 8vi + 3rem, 7rem);
   --font-size-display: clamp(
     5rem,
