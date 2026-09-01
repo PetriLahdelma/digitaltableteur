@@ -94,7 +94,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
             on /imprint, and Visit's contact route is the burger's Contact
             entry. All three stay in the DOM for tablet and desktop, where the
             footer is the "reached the bottom, where next?" affordance. */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className={cn(styles.mobileHidden, "lg:col-span-2")}>
             <p className="font-heading text-text-m font-semibold mb-3">
@@ -121,25 +121,10 @@ export function SiteFooter({ className }: SiteFooterProps) {
             </address>
           </div>
 
-          {/* Billing Info */}
-          <div className={styles.mobileHidden}>
-            <p className="font-heading text-text-m font-semibold mb-3">
-              {t("footerBillingTitle")}
-            </p>
-            <address className="font-body text-text-s text-muted-foreground not-italic leading-relaxed">
-              <span className="font-medium text-foreground">{t("footerBillingEInvoiceLabel")}</span>
-              <br />
-              {t("footerBillingEInvoice")}
-              <br />
-              <span className="font-medium text-foreground">{t("footerBillingOperatorLabel")}</span>
-              <br />
-              {t("footerBillingOperator")}
-              <br />
-              <span className="font-medium text-foreground">{t("footerBillingOperatorIdLabel")}</span>
-              <br />
-              {t("footerBillingOperatorId")}
-            </address>
-          </div>
+          {/* Billing details are not repeated here. They live on /pricing,
+              with the rest of the commercial terms; rendering them in the
+              footer too put "Billing details" on screen twice at once on any
+              desktop view of that page. */}
 
           {/* Primary navigation */}
           <div className={styles.mobileHidden}>

@@ -1406,5 +1406,7 @@
   "reliablePartnerHeading": "A Vastuu Group Reliable Partner",
   "reliablePartnerBody": "Tax, pension and employer obligations are continuously verified through Vastuu Group's Reliable Partner programme, as required by the Finnish Contractor's Obligations Act.",
   "reliablePartnerVerify": "Open the Reliable Partner report (PDF)",
-  "pricingTrustNote": "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified."
+  "pricingTrustNote": "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified.",
+  "pricingBillingCopy": "Copy {{field}}",
+  "pricingBillingCopied": "Copied"
 }

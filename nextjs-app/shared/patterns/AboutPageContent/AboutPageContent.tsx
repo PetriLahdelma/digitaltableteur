@@ -31,7 +31,6 @@ import {
   getReliablePartnerReportHref,
 } from "../../components/ReliablePartnerBadge";
 import DtLink from "../../components/Link";
-import { Title } from "@digitaltableteur/react";
 import styles from "./AboutPageContent.module.css";
 
 const TECH_STACK = [
@@ -63,25 +62,6 @@ const DESIGN_SYSTEM_PACKAGES = [
     name: "@digitaltableteur/tokens-css",
     shortName: "tokens-css",
     version: DESIGN_SYSTEM_PACKAGE_VERSIONS["tokens-css"],
-  },
-] as const;
-
-/**
- * E-invoicing details, shown here because the footer drops its Billing column
- * below tablet (the four stacked columns ran 1.57 viewports tall). These three
- * fields exist nowhere else: /imprint carries the Business ID and VAT ID but
- * not the e-invoice route, and /contact carries the postal address and email.
- *
- * Labels and values are read from the same translation keys the footer uses,
- * deliberately — an operator ID duplicated across six locale files is an
- * operator ID that goes stale in five of them.
- */
-const BILLING_DETAILS = [
-  { labelKey: "footerBillingEInvoiceLabel", valueKey: "footerBillingEInvoice" },
-  { labelKey: "footerBillingOperatorLabel", valueKey: "footerBillingOperator" },
-  {
-    labelKey: "footerBillingOperatorIdLabel",
-    valueKey: "footerBillingOperatorId",
   },
 ] as const;
 
@@ -447,30 +427,6 @@ export function AboutPageContent({
           icon="ArrowRight"
         />
       </div>
-
-      <section
-        className={styles.billingSection}
-        aria-labelledby="about-billing-title"
-      >
-        <div className={styles.billingInner}>
-          <Title
-            level={2}
-            size="s"
-            id="about-billing-title"
-            className={styles.billingTitle}
-          >
-            {t("footerBillingTitle")}
-          </Title>
-          <dl className={styles.billingList}>
-            {BILLING_DETAILS.map(({ labelKey, valueKey }) => (
-              <div key={labelKey} className={styles.billingItem}>
-                <dt className={styles.billingLabel}>{t(labelKey)}</dt>
-                <dd className={styles.billingValue}>{t(valueKey)}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
 
       <section
         className={styles.versioningSection}

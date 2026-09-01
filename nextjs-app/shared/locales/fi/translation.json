@@ -1406,5 +1406,7 @@
   "reliablePartnerHeading": "Vastuu Groupin Luotettava Kumppani",
   "reliablePartnerBody": "Tilaajavastuulain edellyttämät vero-, eläke- ja työnantajavelvoitteet todennetaan jatkuvasti Vastuu Groupin Luotettava Kumppani -ohjelmassa.",
   "reliablePartnerVerify": "Avaa Luotettava Kumppani -raportti (PDF)",
-  "pricingTrustNote": "Digitaltableteur on Vastuu Groupin Luotettava Kumppani: vero-, eläke- ja työnantajavelvoitteet todennetaan jatkuvasti."
+  "pricingTrustNote": "Digitaltableteur on Vastuu Groupin Luotettava Kumppani: vero-, eläke- ja työnantajavelvoitteet todennetaan jatkuvasti.",
+  "pricingBillingCopy": "Kopioi {{field}}",
+  "pricingBillingCopied": "Kopioitu"
 }

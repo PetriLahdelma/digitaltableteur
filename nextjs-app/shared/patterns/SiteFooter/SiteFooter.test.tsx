@@ -85,7 +85,7 @@ describe("SiteFooter — mobile column inventory", () => {
     return heading!.parentElement as HTMLElement;
   }
 
-  it.each(["footerAddressTitle", "footerBillingTitle", "footerExploreTitle"])(
+  it.each(["footerAddressTitle", "footerExploreTitle"])(
     "%s column carries the below-tablet hide",
     (headingKey) => {
       const { container } = render(<SiteFooter />);
@@ -104,8 +104,17 @@ describe("SiteFooter — mobile column inventory", () => {
   it("still renders the dropped columns' content for tablet and desktop", () => {
     render(<SiteFooter />);
     // Hidden by CSS, not removed: the markup must survive for wider viewports.
-    expect(screen.getByText("footerBillingEInvoiceLabel")).toBeInTheDocument();
     expect(screen.getByText("navPricing")).toBeInTheDocument();
     expect(screen.getByText("mail@digitaltableteur.com")).toBeInTheDocument();
+  });
+
+  // Billing moved to /pricing. Repeating it here rendered "Billing details"
+  // twice on one screen for any desktop view of that page.
+  it("does not repeat the billing details that live on /pricing", () => {
+    render(<SiteFooter />);
+    expect(screen.queryByText("footerBillingTitle")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("footerBillingEInvoiceLabel"),
+    ).not.toBeInTheDocument();
   });
 });
