@@ -79,7 +79,10 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       return button;
     }
 
-    return <span className={className}>{button}</span>;
+    // inline-flex, not a bare span: an inline wrapper establishes a text
+    // baseline, so the strut's descender space padded the box and pushed the
+    // button off the optical centre of flex rows like the site header.
+    return <span className={`inline-flex ${className}`}>{button}</span>;
   },
 );
 

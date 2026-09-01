@@ -239,7 +239,7 @@ export function SiteHeader({
                     )}
                     aria-hidden
                   >
-                    <ThemeIcon weight="bold" className="size-4" />
+                    <ThemeIcon weight="bold" />
                   </span>
                 }
                 label={t("toggleDarkMode")}
@@ -252,7 +252,7 @@ export function SiteHeader({
 
           {/* Mobile Menu Button */}
           <IconButton
-            icon={<List weight="bold" className="size-5" />}
+            icon={<List weight="bold" />}
             label={t("navMenuOpen", "Open navigation menu")}
             onClick={openMobileMenu}
             className="lg:hidden"

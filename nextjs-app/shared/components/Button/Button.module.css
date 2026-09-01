@@ -335,6 +335,11 @@
     block-size: 2.75rem;
     inline-size: 2.75rem;
     min-inline-size: 2.75rem;
+
+    /* Scale the glyph with the touch-target bump. Growing the box from 2.5rem
+       to 2.75rem while pinning the icon at 1.5rem left it visibly adrift in
+       its own button on phones. 1.625rem keeps the desktop 24/40 fill ratio. */
+    --btn-icon-size: 1.625rem; /* 26px */
   }
 }
 
