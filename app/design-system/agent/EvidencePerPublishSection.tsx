@@ -154,7 +154,7 @@ export function EvidencePerPublishSection({
         because they vary by machine.
       </Text>
 
-      <div className="mt-4 overflow-x-auto">
+      <div className={styles.tableScroll}>
         <Table caption="Per-publish evidence artifacts" size="sm">
           <thead>
             <TableRow>
