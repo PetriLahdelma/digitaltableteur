@@ -14,6 +14,49 @@
   text-align: center;
 }
 
+.trustBand {
+  padding-block: var(--space-layout-48);
+  padding-inline: var(--space-layout-24);
+  background: var(--main-body-background-color);
+  color: var(--color-text);
+}
+
+.trustBandInner {
+  display: flex;
+  margin-inline: auto;
+  padding: var(--space-layout-32);
+  max-inline-size: min(100%, 46rem);
+  align-items: center;
+  gap: var(--space-layout-32);
+  border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+  border-radius: var(--radius-lg);
+}
+
+.trustBandText {
+  display: grid;
+  gap: var(--space-internal-8);
+}
+
+.trustBandTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-text-m);
+  font-weight: 600;
+}
+
+.trustBandBody {
+  margin: 0;
+  font-size: var(--font-size-text-s);
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.trustBandLink {
+  margin: 0;
+  margin-block-start: var(--space-internal-8);
+  font-size: var(--font-size-text-s);
+}
+
 /* E-invoicing details. Sits directly above the versioning strip so the page
    ends on a run of plain facts: how to invoice us, then what the site is
    built from. */
@@ -76,6 +119,13 @@
 }
 
 @media (width <= 640px) {
+  .trustBandInner {
+    padding: var(--space-layout-24);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-layout-24);
+  }
+
   .billingSection {
     padding-block: var(--space-layout-32) var(--space-layout-16);
     padding-inline: var(--space-layout-16);

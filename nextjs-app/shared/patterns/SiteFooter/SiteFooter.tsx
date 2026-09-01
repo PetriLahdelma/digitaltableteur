@@ -9,6 +9,7 @@ import { Stack } from "../../components/Stack";
 import DtLink from "../../components/Link";
 import { SocialIconLink } from "../../components/SocialIconLink";
 import { Divider } from "../../components/Divider";
+import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
 import styles from "./SiteFooter.module.css";
 import {
   InstagramLogo,
@@ -220,8 +221,11 @@ export function SiteFooter({ className }: SiteFooterProps) {
           {/* <span>, not <p>: a global `p { margin-block-end }` rule (unlayered,
               so it beats Tailwind's m-0) added an asymmetric bottom margin that
               pushed the copyright above the social icons' centre in this row. */}
-          <span className="font-body text-text-s text-muted-foreground">
-            &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
+          <span className="flex items-center gap-4 font-body text-text-s text-muted-foreground">
+            <span>
+              &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
+            </span>
+            <ReliablePartnerBadge size="sm" />
           </span>
         </div>
       </Container>

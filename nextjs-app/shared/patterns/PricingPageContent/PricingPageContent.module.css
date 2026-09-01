@@ -456,3 +456,26 @@
   flex-wrap: wrap;
   gap: var(--space-layout-16);
 }
+
+.trustRow {
+  display: flex;
+  margin-block: var(--space-layout-32) var(--space-layout-24);
+  padding-block-start: var(--space-layout-24);
+  align-items: center;
+  gap: var(--space-layout-16);
+  border-block-start: 1px solid
+    color-mix(in srgb, var(--color-text) 10%, transparent);
+}
+
+.trustRowText {
+  margin: 0;
+  max-inline-size: 46ch;
+  color: var(--color-muted);
+}
+
+@media (width <= 640px) {
+  .trustRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
