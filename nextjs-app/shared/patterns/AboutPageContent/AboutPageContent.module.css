@@ -14,6 +14,74 @@
   text-align: center;
 }
 
+/* E-invoicing details. Sits directly above the versioning strip so the page
+   ends on a run of plain facts: how to invoice us, then what the site is
+   built from. */
+
+.billingSection {
+  padding-block: var(--space-layout-48) var(--space-layout-24);
+  padding-inline: var(--space-layout-24);
+  background: var(--main-body-background-color);
+  color: var(--color-text);
+}
+
+.billingInner {
+  display: grid;
+  margin-inline: auto;
+  max-inline-size: min(100%, 42rem);
+  justify-items: center;
+  gap: var(--space-layout-16);
+  text-align: center;
+}
+
+.billingTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-text-m);
+  font-weight: 600;
+}
+
+.billingList {
+  display: flex;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-layout-16) var(--space-layout-32);
+}
+
+.billingItem {
+  display: grid;
+  min-inline-size: 0;
+  justify-items: center;
+  gap: var(--space-internal-2);
+}
+
+.billingLabel {
+  margin: 0;
+  font-size: var(--font-size-text-xs);
+  font-weight: 700;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+
+/* Mono, and selectable: these get copied into an AP system, so the glyphs
+   have to be unambiguous (0 vs O in the operator ID). */
+
+.billingValue {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-s);
+  line-height: 1.3;
+  color: var(--color-muted);
+}
+
+@media (width <= 640px) {
+  .billingSection {
+    padding-block: var(--space-layout-32) var(--space-layout-16);
+    padding-inline: var(--space-layout-16);
+  }
+}
+
 .seeWorkCta {
   display: flex;
   justify-content: center;
