@@ -3,13 +3,19 @@
 import { useCallback, useEffect, useRef, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import WorkNav from "@/nextjs-app/shared/components/WorkNav/WorkNav";
-import { sortedProjects } from "@/nextjs-app/shared/data/projects";
+import { getProjectNavigationCatalog } from "@/nextjs-app/shared/data/projects";
 
 import styles from "./NextWorkNav.module.css";
 
-const workPages = sortedProjects.map((p) => ({
-  path: `/work/${p.slug}`,
-  label: p.title,
+// Derived from the shared catalog rather than mapping sortedProjects here.
+// This used to keep its own unfiltered list, so coming-soon projects (which
+// have no case-study route) stayed in the prev/next sequence: DSharp sorts
+// immediately before Precedent, and stepping "next" from DSharp walked into
+// a 404. The catalog already filters them, and reusing it means this list
+// cannot drift from the one the data layer tests cover.
+const workPages = getProjectNavigationCatalog().map((project) => ({
+  path: project.url,
+  label: project.title,
 }));
 
 export function NextWorkNav() {

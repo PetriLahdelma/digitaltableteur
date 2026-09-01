@@ -92,4 +92,20 @@ describe("coming-soon projects are unroutable", () => {
       expect(slugs).not.toContain(project.slug);
     }
   });
+
+  // The catalog is what app/work/NextWorkNav.tsx builds its prev/next
+  // sequence from. It previously mapped sortedProjects itself, unfiltered,
+  // which is how "next" from DSharp reached the routeless Precedent page.
+  // Stepping the catalog end to end asserts the shipped sequence never
+  // offers a route that does not exist.
+  it("yields a catalog sequence whose every step is routable", () => {
+    const catalog = getProjectNavigationCatalog();
+    expect(catalog.length).toBeGreaterThan(1);
+
+    const comingSoonSlugs = new Set(comingSoonProjects.map((p) => p.slug));
+    for (const entry of catalog) {
+      expect(comingSoonSlugs.has(entry.slug)).toBe(false);
+      expect(entry.url).toBe(`/work/${entry.slug}`);
+    }
+  });
 });
