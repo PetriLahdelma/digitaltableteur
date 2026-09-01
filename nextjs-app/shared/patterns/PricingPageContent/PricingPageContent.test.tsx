@@ -19,7 +19,7 @@ describe("PricingPageContent", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /design systems/i,
+        name: /transparent price tags/i,
       })
     ).toBeInTheDocument();
     expect(

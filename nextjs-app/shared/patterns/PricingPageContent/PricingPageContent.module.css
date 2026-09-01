@@ -92,22 +92,7 @@
   color: inherit;
 }
 
-.heroTitleClosing {
-  display: block;
-  margin-block-start: var(--space-layout-8);
-  text-wrap: balance;
-  color: inherit;
-}
-
-@media (width >= 768px) {
-  .heroTitleClosing {
-    display: inline;
-    margin-block-start: 0;
-  }
-}
-
 /* Legacy hero block removed — kept selector out of cascade */
-
 
 .value {
   display: flex;

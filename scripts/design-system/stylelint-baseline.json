@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2145,
+  "warningCount": 2144,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -14566,7 +14566,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 35,
+      "line": 87,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14575,7 +14575,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 55,
+      "line": 107,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14584,7 +14584,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 63,
+      "line": 115,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14593,7 +14593,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 20,
+      "line": 72,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14602,7 +14602,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 26,
+      "line": 78,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14611,7 +14611,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 25,
+      "line": 77,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14620,7 +14620,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 34,
+      "line": 86,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14629,7 +14629,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 35,
+      "line": 87,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15988,7 +15988,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 166,
+      "line": 151,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -15997,7 +15997,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 181,
+      "line": 166,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16006,7 +16006,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 186,
+      "line": 171,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16024,7 +16024,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 175,
+      "line": 160,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16033,7 +16033,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 254,
+      "line": 239,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16042,21 +16042,12 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 381,
+      "line": 366,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"border-radius\" to come before \"outline-offset\" (order/properties-order)",
       "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"border-radius\" to come before \"outline-offset\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 99,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"color\" to come before \"text-wrap\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"color\" to come before \"text-wrap\" (order/properties-order)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
@@ -16069,7 +16060,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 343,
+      "line": 328,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16078,7 +16069,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 375,
+      "line": 360,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16087,7 +16078,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 159,
+      "line": 144,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16096,7 +16087,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 300,
+      "line": 285,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16114,7 +16105,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 124,
+      "line": 109,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16123,7 +16114,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 369,
+      "line": 354,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16132,7 +16123,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 253,
+      "line": 238,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16141,7 +16132,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 174,
+      "line": 159,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16150,7 +16141,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 173,
+      "line": 158,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16159,7 +16150,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 388,
+      "line": 373,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16168,7 +16159,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 287,
+      "line": 272,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16177,7 +16168,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 363,
+      "line": 348,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16186,7 +16177,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16213,7 +16204,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 155,
+      "line": 140,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16222,7 +16213,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 117,
+      "line": 102,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16240,7 +16231,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 393,
+      "line": 378,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16249,7 +16240,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 406,
+      "line": 391,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16258,7 +16249,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 268,
+      "line": 253,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16267,7 +16258,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 203,
+      "line": 188,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16285,7 +16276,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 118,
+      "line": 103,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16303,7 +16294,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 218,
+      "line": 203,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16312,7 +16303,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 313,
+      "line": 298,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16321,7 +16312,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 370,
+      "line": 355,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16330,7 +16321,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 236,
+      "line": 221,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16339,7 +16330,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 415,
+      "line": 400,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16348,7 +16339,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -16357,7 +16348,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -16366,7 +16357,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 239,
+      "line": 224,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -16375,7 +16366,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 380,
+      "line": 365,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -16384,7 +16375,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16393,7 +16384,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16402,7 +16393,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 239,
+      "line": 224,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16411,7 +16402,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 174,
+      "line": 159,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16420,7 +16411,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 175,
+      "line": 160,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16429,7 +16420,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 353,
+      "line": 338,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16438,7 +16429,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 354,
+      "line": 339,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19237,7 +19228,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 799,
+      "line": 807,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -19246,7 +19237,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 787,
+      "line": 795,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -19255,7 +19246,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 787,
+      "line": 795,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19264,7 +19255,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 787,
+      "line": 795,
       "column": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19273,7 +19264,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 799,
+      "line": 807,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19282,7 +19273,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 385,
+      "line": 393,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -19291,7 +19282,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 473,
+      "line": 481,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -19300,7 +19291,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 683,
+      "line": 691,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

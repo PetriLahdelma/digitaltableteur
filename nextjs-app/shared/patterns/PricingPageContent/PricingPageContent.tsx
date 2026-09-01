@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useId, useState } from "react";
 import { useTranslate } from "../../lib/translation";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 import { cn } from "../../lib/cn";
 import { Button, Icon, Text, Title } from "@digitaltableteur/react";
 import { PricingCalculator } from "../PricingCalculator";
@@ -342,30 +343,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
   const aaasPanelId = useId();
   const aaasHeadingId = useId();
   const [aaasOpen, setAaasOpen] = useState(false);
-  const [copiedField, setCopiedField] = useState<string | null>(null);
-  const copyResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Clear on unmount so the reset never fires against a gone component.
-  useEffect(
-    () => () => {
-      if (copyResetRef.current) clearTimeout(copyResetRef.current);
-    },
-    [],
-  );
-
-  const copyField = useCallback(async (field: string, value: string) => {
-    try {
-      await navigator.clipboard.writeText(value);
-    } catch {
-      // Clipboard access can be refused (permissions, insecure origin). The
-      // value stays selectable on the page, so fail quiet rather than claim a
-      // copy that did not happen.
-      return;
-    }
-    setCopiedField(field);
-    if (copyResetRef.current) clearTimeout(copyResetRef.current);
-    copyResetRef.current = setTimeout(() => setCopiedField(null), 1500);
-  }, []);
+  const { copiedKey: copiedField, copy: copyField } = useCopyToClipboard();
 
   return (
     <div className={cn(styles.page, className)}>
@@ -387,13 +365,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
             className={styles.heroTitle}
             id="pricing-hero-title"
           >
-            {t(
-              "pricingHeroTitleLead",
-              "Design Systems. Digital branding. UX/UI.",
-            )}{" "}
-            <span className={styles.heroTitleClosing}>
-              {t("pricingHeroTitleClosing", "One clear investment.")}
-            </span>
+            {t("pricingHeroTitle", "Transparent price tags.")}
           </Title>
         </div>
       </section>
