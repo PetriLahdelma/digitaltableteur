@@ -1,0 +1,21 @@
+/* Below tablet only the Legal column survives. Stacked, the four columns ran
+   1328px against an 844px viewport — 1.57 screens of footer under every
+   mobile page. Compressing them into two narrow columns only traded height
+   for a cramped 171px measure that broke the email address mid-word, so the
+   redundant ones are dropped instead: Explore is the burger menu verbatim,
+   and Billing's e-invoicing details live on /about.
+
+   A module class rather than Tailwind `hidden md:block` because CSS Modules
+   are the repo default and the dogfood ratchet only lets utility-class debt
+   go down. 768px matches --breakpoint-tablet and the `md:` the grid already
+   uses for its column count. */
+
+.mobileHidden {
+  display: block;
+}
+
+@media (width < 768px) {
+  .mobileHidden {
+    display: none;
+  }
+}

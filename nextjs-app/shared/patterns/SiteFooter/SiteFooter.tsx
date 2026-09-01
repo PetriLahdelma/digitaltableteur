@@ -9,6 +9,8 @@ import { Stack } from "../../components/Stack";
 import DtLink from "../../components/Link";
 import { SocialIconLink } from "../../components/SocialIconLink";
 import { Divider } from "../../components/Divider";
+import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
+import styles from "./SiteFooter.module.css";
 import {
   InstagramLogo,
   FacebookLogo,
@@ -84,9 +86,17 @@ export function SiteFooter({ className }: SiteFooterProps) {
       className={cn("border-t border-border bg-muted/30 py-16", className)}
     >
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        {/* Below tablet only the Legal column survives. Stacked, the four
+            columns ran 1328px on an 844px viewport — 1.57 screens of footer.
+            Compressing them into narrow columns just traded height for a
+            cramped measure, so the redundant ones are dropped instead:
+            Explore is the burger menu verbatim, Billing is reproduced in full
+            on /imprint, and Visit's contact route is the burger's Contact
+            entry. All three stay in the DOM for tablet and desktop, where the
+            footer is the "reached the bottom, where next?" affordance. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
-          <div className="lg:col-span-2">
+          <div className={cn(styles.mobileHidden, "lg:col-span-2")}>
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerAddressTitle")}
             </p>
@@ -111,28 +121,13 @@ export function SiteFooter({ className }: SiteFooterProps) {
             </address>
           </div>
 
-          {/* Billing Info */}
-          <div>
-            <p className="font-heading text-text-m font-semibold mb-3">
-              {t("footerBillingTitle")}
-            </p>
-            <address className="font-body text-text-s text-muted-foreground not-italic leading-relaxed">
-              <span className="font-medium text-foreground">{t("footerBillingEInvoiceLabel")}</span>
-              <br />
-              {t("footerBillingEInvoice")}
-              <br />
-              <span className="font-medium text-foreground">{t("footerBillingOperatorLabel")}</span>
-              <br />
-              {t("footerBillingOperator")}
-              <br />
-              <span className="font-medium text-foreground">{t("footerBillingOperatorIdLabel")}</span>
-              <br />
-              {t("footerBillingOperatorId")}
-            </address>
-          </div>
+          {/* Billing details are not repeated here. They live on /pricing,
+              with the rest of the commercial terms; rendering them in the
+              footer too put "Billing details" on screen twice at once on any
+              desktop view of that page. */}
 
           {/* Primary navigation */}
-          <div>
+          <div className={styles.mobileHidden}>
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerExploreTitle")}
             </p>
@@ -211,8 +206,11 @@ export function SiteFooter({ className }: SiteFooterProps) {
           {/* <span>, not <p>: a global `p { margin-block-end }` rule (unlayered,
               so it beats Tailwind's m-0) added an asymmetric bottom margin that
               pushed the copyright above the social icons' centre in this row. */}
-          <span className="font-body text-text-s text-muted-foreground">
-            &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
+          <span className="flex items-center gap-4 font-body text-text-s text-muted-foreground">
+            <span>
+              &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
+            </span>
+            <ReliablePartnerBadge size="sm" />
           </span>
         </div>
       </Container>

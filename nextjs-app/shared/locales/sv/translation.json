@@ -100,7 +100,7 @@
   "footerAddress1": "Tavastvägen 8",
   "footerAddress2": "00530 Helsingfors",
   "footerBillingTitle": "Faktureringsuppgifter",
-  "footerBillingEInvoiceLabel": "E-fakturaadress",
+  "footerBillingEInvoiceLabel": "e-fakturaadress",
   "footerBillingEInvoice": "003722644552",
   "footerBillingOperatorLabel": "Operatör",
   "footerBillingOperator": "APIX Messaging Oy",
@@ -157,8 +157,7 @@
   "contactNewBusinessLink": "Kontakt",
   "contactNewBusinessImageAlt": "Porträtt av Petri Lahdelma",
   "contactPullQuote": "Vi hjälper ambitiösa team att förvandla det de gör till produkter med tydlighet och övertygelse. Dela din vision och vi formar hur den syns i världen.",
-  "pricingHeroTitleLead": "Design System. Digital branding. UX/UI.",
-  "pricingHeroTitleClosing": "Transparent prissättning.",
+  "pricingHeroTitle": "Transparent prissättning.",
   "pricingHeroImageAlt": "Förhandsvisning av designsystemets komponentbibliotek",
   "pricingComparisonUsTitle": "Digitaltableteur",
   "pricingComparisonThemTitle": "Traditionell byrå",
@@ -1400,5 +1399,13 @@
   "pricingCalcPartnershipFreeDay": "Partnerskapspris: en dag i veckan är gratis.",
   "pricingCalcLiveSummary": "{{hours}} timmar, {{days}} dagar i veckan, {{rate}}, totalt {{total}} €",
   "pricingCalcPartnershipHint": "Partnerskapspriset 90 €/timme gäller uppdrag på 6 och 12 månader med en arbetsmängd på minst 4 dagar per vecka.",
-  "pricingCalcAllocationValue": "{{percent}} %"
+  "pricingCalcAllocationValue": "{{percent}} %",
+  "reliablePartnerAlt": "Pålitlig Partner — verifierad av Vastuu Group",
+  "reliablePartnerTitle": "Öppna Pålitlig Partner-rapporten (PDF)",
+  "reliablePartnerHeading": "Pålitlig Partner hos Vastuu Group",
+  "reliablePartnerBody": "Skatte-, pensions- och arbetsgivarförpliktelser verifieras kontinuerligt genom Vastuu Groups program Pålitlig Partner, i enlighet med beställaransvarslagen.",
+  "reliablePartnerVerify": "Öppna Pålitlig Partner-rapporten (PDF)",
+  "pricingTrustNote": "Digitaltableteur är en Pålitlig Partner hos Vastuu Group: skatte-, pensions- och arbetsgivarförpliktelser verifieras kontinuerligt.",
+  "pricingBillingCopy": "Kopiera {{field}}",
+  "pricingBillingCopied": "Kopierad"
 }

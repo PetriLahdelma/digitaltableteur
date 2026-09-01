@@ -189,7 +189,7 @@ export function MobileDrawer({
           </span>
           <IconButton
             ref={closeButtonRef}
-            icon={<X weight="bold" className="size-5" />}
+            icon={<X weight="bold" />}
             label={t("navMenuClose")}
             onClick={onClose}
             variant="tertiary"
@@ -251,7 +251,7 @@ export function MobileDrawer({
               {t("navMenuTheme")}
             </span>
             <IconButton
-              icon={<ThemeIcon weight="bold" className="size-4" />}
+              icon={<ThemeIcon weight="bold" />}
               label={t("navMenuThemeToggle")}
               onClick={onThemeToggle}
               variant="secondary"

@@ -28,6 +28,7 @@ vi.mock("../../lib/cookieConsent", () => ({
 }));
 
 import { SiteFooter } from "./SiteFooter";
+import styles from "./SiteFooter.module.css";
 
 beforeEach(() => {
   openBanner.mockClear();
@@ -64,6 +65,56 @@ describe("SiteFooter — C4 cookie preferences reopen", () => {
     render(<SiteFooter />);
     expect(
       screen.queryByRole("button", { name: /cookie preferences/i }),
+    ).not.toBeInTheDocument();
+  });
+});
+
+/**
+ * Stacked, the four columns ran 1328px against an 844px viewport. Visit,
+ * Billing and Explore are dropped below tablet because each is reachable
+ * elsewhere on a phone; Legal is the only one with no other home, so it must
+ * stay visible at every width. jsdom applies no Tailwind CSS, so assert on the
+ * responsive classes rather than computed visibility.
+ */
+describe("SiteFooter — mobile column inventory", () => {
+  function columnFor(headingKey: string, container: HTMLElement) {
+    const heading = [...container.querySelectorAll("p")].find(
+      (p) => p.textContent === headingKey,
+    );
+    expect(heading, `no column heading for ${headingKey}`).toBeDefined();
+    return heading!.parentElement as HTMLElement;
+  }
+
+  it.each(["footerAddressTitle", "footerExploreTitle"])(
+    "%s column carries the below-tablet hide",
+    (headingKey) => {
+      const { container } = render(<SiteFooter />);
+      const column = columnFor(headingKey, container);
+      expect(styles.mobileHidden).toBeTruthy();
+      expect(column.className).toContain(styles.mobileHidden);
+    },
+  );
+
+  it("keeps the Legal column visible at every width", () => {
+    const { container } = render(<SiteFooter />);
+    const column = columnFor("footerLegalTitle", container);
+    expect(column.className).not.toContain(styles.mobileHidden);
+  });
+
+  it("still renders the dropped columns' content for tablet and desktop", () => {
+    render(<SiteFooter />);
+    // Hidden by CSS, not removed: the markup must survive for wider viewports.
+    expect(screen.getByText("navPricing")).toBeInTheDocument();
+    expect(screen.getByText("mail@digitaltableteur.com")).toBeInTheDocument();
+  });
+
+  // Billing moved to /pricing. Repeating it here rendered "Billing details"
+  // twice on one screen for any desktop view of that page.
+  it("does not repeat the billing details that live on /pricing", () => {
+    render(<SiteFooter />);
+    expect(screen.queryByText("footerBillingTitle")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("footerBillingEInvoiceLabel"),
     ).not.toBeInTheDocument();
   });
 });

@@ -100,7 +100,7 @@
   "footerAddress1": "Hämeentie 8 C",
   "footerAddress2": "00530 Helsinki",
   "footerBillingTitle": "Billing details",
-  "footerBillingEInvoiceLabel": "E-invoice address",
+  "footerBillingEInvoiceLabel": "e-invoice address",
   "footerBillingEInvoice": "003722644552",
   "footerBillingOperatorLabel": "Operator",
   "footerBillingOperator": "APIX Messaging Oy",
@@ -157,8 +157,7 @@
   "contactNewBusinessLink": "Contact",
   "contactNewBusinessImageAlt": "Portrait of Petri Lahdelma",
   "contactPullQuote": "We help ambitious teams turn what they do into products with clarity and conviction. Bring us your vision and we'll shape how it shows up in the world.",
-  "pricingHeroTitleLead": "Design Systems. Digital branding. UX/UI.",
-  "pricingHeroTitleClosing": "Transparent price tags.",
+  "pricingHeroTitle": "Transparent price tags.",
   "pricingHeroImageAlt": "Design system component library preview",
   "pricingComparisonUsTitle": "Digitaltableteur",
   "pricingComparisonThemTitle": "Traditional agency",
@@ -1400,5 +1399,13 @@
   "pricingCalcPartnershipFreeDay": "Partnership pricing: 1 day per week is free.",
   "pricingCalcLiveSummary": "{{hours}} hours at {{days}} days/week, {{rate}}, total {{total}} €",
   "pricingCalcPartnershipHint": "Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.",
-  "pricingCalcAllocationValue": "{{percent}}%"
+  "pricingCalcAllocationValue": "{{percent}}%",
+  "reliablePartnerAlt": "Reliable Partner — verified by Vastuu Group",
+  "reliablePartnerTitle": "Open the Reliable Partner report (PDF)",
+  "reliablePartnerHeading": "A Vastuu Group Reliable Partner",
+  "reliablePartnerBody": "Tax, pension and employer obligations are continuously verified through Vastuu Group's Reliable Partner programme, as required by the Finnish Contractor's Obligations Act.",
+  "reliablePartnerVerify": "Open the Reliable Partner report (PDF)",
+  "pricingTrustNote": "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified.",
+  "pricingBillingCopy": "Copy {{field}}",
+  "pricingBillingCopied": "Copied"
 }

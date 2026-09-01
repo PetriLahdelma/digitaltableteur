@@ -31,22 +31,51 @@
 }
 
 .value {
+  display: flex;
   margin: 0;
+  min-block-size: 2rem;
+  align-items: center;
+  gap: var(--space-internal-4);
   white-space: pre-line;
 }
 
-.link {
-  text-decoration: underline;
-  color: var(--color-primary);
-  text-decoration-color: var(--color-primary);
-  text-decoration-style: wavy;
-  text-underline-offset: 0.2em;
+.valueText {
+  min-inline-size: 0;
 }
 
-.link:hover {
-  color: var(--color-primary);
-  text-decoration-color: var(--color-primary);
+/* Revealed on hover, but never hover-only: it stays in the tab order and
+   :focus-within brings it back for keyboard users. Coarse pointers, which
+   have no hover at all, get it permanently. */
+
+.copyControl {
+  transition: opacity 0.15s ease;
+  opacity: 0;
 }
+
+.row:hover .copyControl,
+.row:focus-within .copyControl {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .copyControl {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copyControl {
+    transition: none;
+  }
+}
+
+/* The email link is a DS Link now. It used to be a raw anchor with
+   `text-decoration-style: wavy`, which the default skip-ink cuts at every
+   descender — "mail@digitaltableteur.com" has both @ and g, so the wave was
+   sliced twice and restarted out of phase, reading as a broken underline.
+   The DS treatment draws the wave as a repeating mask on a pseudo-element,
+   so descenders cannot interrupt it, and it matches the underline used
+   everywhere else on the site. */
 
 @media (width <= 768px) {
   .page h1 {

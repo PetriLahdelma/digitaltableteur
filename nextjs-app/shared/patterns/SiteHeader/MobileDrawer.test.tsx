@@ -141,4 +141,33 @@ describe("MobileDrawer focus trap (#6)", () => {
     fireEvent.keyDown(window, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
   });
+
+  // Regression guard. Button sizes its glyphs from --btn-icon-size, but the
+  // rule lives in @layer components, so a Tailwind size-* utility on the icon
+  // (emitted into @layer utilities) silently wins by layer order. The drawer
+  // shipped size-5 on the close X and size-4 on the theme toggle, pinning them
+  // at 20px and 16px inside a 44px touch target long after the platinum uplift
+  // raised the token to 24px. jsdom computes no layer cascade, so assert on the
+  // class instead: the icons must not carry their own size utility.
+  describe("icon sizing is left to the design system", () => {
+    it.each([
+      ["Close menu", /close/i],
+      ["Theme toggle", /theme/i],
+    ])("%s icon has no size-* utility class", (_name, labelPattern) => {
+      renderDrawer();
+      const button = screen
+        .getAllByRole("button")
+        .find((b) => labelPattern.test(b.getAttribute("aria-label") ?? ""));
+      expect(button).toBeDefined();
+
+      const svg = button!.querySelector("svg");
+      expect(svg).not.toBeNull();
+
+      const classes = (svg!.getAttribute("class") ?? "").split(/\s+/);
+      const sizeUtilities = classes.filter((c) =>
+        /^(size|[wh])-\d/.test(c),
+      );
+      expect(sizeUtilities).toEqual([]);
+    });
+  });
 });

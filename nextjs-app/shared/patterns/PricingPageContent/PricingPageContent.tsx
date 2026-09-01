@@ -3,9 +3,13 @@
 import Image from "next/image";
 import { useId, useState } from "react";
 import { useTranslate } from "../../lib/translation";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 import { cn } from "../../lib/cn";
 import { Button, Icon, Text, Title } from "@digitaltableteur/react";
 import { PricingCalculator } from "../PricingCalculator";
+import { IconButton } from "../../components/IconButton";
+import { VisuallyHidden } from "../../components/VisuallyHidden";
+import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
 import styles from "./PricingPageContent.module.css";
 
 const PRICING_HERO_IMAGE = "/images/pricing/dsharp3-hero.png";
@@ -177,6 +181,38 @@ const AAAS_PACKAGES: AaasPackageItem[] = [
   },
 ];
 
+/**
+ * E-invoicing details. They live on Pricing rather than About because this is
+ * the page about the commercial terms: what it costs, how to book, how to
+ * invoice. On About they sat directly above the "made with" tech colophon,
+ * where company payment data and package versions read as two unrelated
+ * fact-blocks stacked on each other.
+ *
+ * The footer still carries these from tablet up but drops the column on
+ * phones, so this is the mobile route to them. Labels and values read from
+ * the footer's own translation keys deliberately — an operator ID duplicated
+ * across six locale files is an operator ID that goes stale in five of them.
+ */
+const BILLING_DETAILS = [
+  {
+    labelKey: "footerBillingEInvoiceLabel",
+    valueKey: "footerBillingEInvoice",
+    copyable: true,
+  },
+  // The operator is a company name, not an identifier keyed into a form, so it
+  // gets no copy control.
+  {
+    labelKey: "footerBillingOperatorLabel",
+    valueKey: "footerBillingOperator",
+    copyable: false,
+  },
+  {
+    labelKey: "footerBillingOperatorIdLabel",
+    valueKey: "footerBillingOperatorId",
+    copyable: true,
+  },
+] as const;
+
 function packageContactHref(packageId: string): string {
   const params = new URLSearchParams({
     mode: "book",
@@ -307,6 +343,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
   const aaasPanelId = useId();
   const aaasHeadingId = useId();
   const [aaasOpen, setAaasOpen] = useState(false);
+  const { copiedKey: copiedField, copy: copyField } = useCopyToClipboard();
 
   return (
     <div className={cn(styles.page, className)}>
@@ -328,13 +365,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
             className={styles.heroTitle}
             id="pricing-hero-title"
           >
-            {t(
-              "pricingHeroTitleLead",
-              "Design Systems. Digital branding. UX/UI.",
-            )}{" "}
-            <span className={styles.heroTitleClosing}>
-              {t("pricingHeroTitleClosing", "One clear investment.")}
-            </span>
+            {t("pricingHeroTitle", "Transparent price tags.")}
           </Title>
         </div>
       </section>
@@ -492,6 +523,71 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
             <Button href="/work" variant="secondary" size="lg">
               {t("pricingCtaSecondary", "See our work")}
             </Button>
+          </div>
+
+          {/* Invoicing route and the certification that says the obligations
+              behind it are in order — one block, because they answer the same
+              question: what it is like to have us as a supplier. */}
+          <div className={styles.billingRow}>
+            <Title level={3} size="s" className={styles.billingTitle}>
+              {t("footerBillingTitle")}
+            </Title>
+            <dl className={styles.billingList}>
+              {BILLING_DETAILS.map(({ labelKey, valueKey, copyable }) => {
+                const value = t(valueKey);
+                const copied = copiedField === valueKey;
+                return (
+                  <div key={labelKey} className={styles.billingItem}>
+                    <dt className={styles.billingLabel}>{t(labelKey)}</dt>
+                    <dd className={styles.billingValue}>
+                      <span className={styles.billingValueText}>{value}</span>
+                      {copyable ? (
+                        <IconButton
+                          size="sm"
+                          variant="tertiary"
+                          className={styles.copyControl}
+                          onClick={() => copyField(valueKey, value)}
+                          label={
+                            copied
+                              ? t("pricingBillingCopied", "Copied")
+                              : t("pricingBillingCopy", "Copy {{field}}", {
+                                  field: t(labelKey),
+                                })
+                          }
+                          icon={
+                            <Icon
+                              name={copied ? "check-fat" : "copy-simple"}
+                              size="sm"
+                              decorative
+                            />
+                          }
+                        />
+                      ) : null}
+                    </dd>
+                  </div>
+                );
+              })}
+            </dl>
+
+            {/* Announces the copy for assistive tech: the icon swap and the
+                relabelled button are visual-only signals. The live region has
+                to be the wrapper, not the hidden span, so the announcement
+                fires on text change rather than on the region appearing. */}
+            <div aria-live="polite">
+              <VisuallyHidden>
+                {copiedField ? t("pricingBillingCopied", "Copied") : ""}
+              </VisuallyHidden>
+            </div>
+
+            <div className={styles.trustRow}>
+              <ReliablePartnerBadge size="md" />
+              <Text as="p" size="s" className={styles.trustRowText}>
+                {t(
+                  "pricingTrustNote",
+                  "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified.",
+                )}
+              </Text>
+            </div>
           </div>
         </section>
       </div>

@@ -97,14 +97,31 @@
   justify-content: flex-end;
 }
 
-/* App tab screenshots: always one row. GridBlock's grid3Col collapses to
-   2-col below 1024px and 1-col below 768px; the portrait shots are narrow
-   enough to sit 3-across at every width, so the doubled class pins the
-   template through those breakpoints without !important. */
+/* App tab screenshots: one row down to tablet. GridBlock's grid3Col collapses
+   to 2-col below 1024px, which would break the three-tab comparison, so the
+   doubled class pins the template through that breakpoint without
+   !important. Phones are handled below — 3-across does not survive there. */
 
 .tabsGrid.tabsGrid {
   margin-block-start: var(--space-layout-32);
   grid-template-columns: repeat(3, 1fr);
+}
+
+/* Below tablet, three columns put these 1044x1870 portrait screenshots at
+   ~131px wide on a 390px viewport, where the UI in them is unreadable. The
+   comparison is worth nothing if you cannot see what is being compared, so
+   stack and cap the width instead: ~340px each, legible, scrolled through
+   in source order (Remote, Devices, Settings) to match the caption. */
+
+@media (width < 768px) {
+  .tabsGrid.tabsGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .tabsGrid.tabsGrid img {
+    max-inline-size: min(100%, 22rem);
+  }
 }
 
 /* Clay specimens: color and relief stack in the left column while the tall

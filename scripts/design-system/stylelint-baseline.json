@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2148,
+  "warningCount": 2144,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -1732,7 +1732,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 344,
+      "line": 349,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1741,7 +1741,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 353,
+      "line": 358,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1750,7 +1750,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 366,
+      "line": 371,
       "column": 16,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1777,7 +1777,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 344,
+      "line": 349,
       "column": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1804,7 +1804,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 367,
+      "line": 372,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1849,7 +1849,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 359,
+      "line": 364,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -10984,7 +10984,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 288,
+      "line": 303,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10993,7 +10993,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 591,
+      "line": 606,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11002,7 +11002,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 281,
+      "line": 295,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11011,7 +11011,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 295,
+      "line": 310,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11020,21 +11020,12 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 250,
+      "line": 264,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"inline-size\" to come before \"aspect-ratio\" (order/properties-order)",
       "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::order/properties-order::Expected \"inline-size\" to come before \"aspect-ratio\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 279,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"inline-size\" to come before \"flex\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::order/properties-order::Expected \"inline-size\" to come before \"flex\" (order/properties-order)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
@@ -11044,15 +11035,6 @@
       "severity": "warning",
       "text": "Expected \"justify-content\" to come before \"overflow\" (order/properties-order)",
       "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::order/properties-order::Expected \"justify-content\" to come before \"overflow\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 244,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"max-block-size\" to come before \"aspect-ratio\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::order/properties-order::Expected \"max-block-size\" to come before \"aspect-ratio\" (order/properties-order)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
@@ -11092,7 +11074,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 345,
+      "line": 360,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11101,7 +11083,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 523,
+      "line": 538,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11110,7 +11092,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 351,
+      "line": 366,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11119,7 +11101,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 334,
+      "line": 349,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11137,7 +11119,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 515,
+      "line": 530,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11146,7 +11128,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 523,
+      "line": 538,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11155,7 +11137,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 374,
+      "line": 389,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11164,7 +11146,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 334,
+      "line": 349,
       "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11173,7 +11155,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 335,
+      "line": 350,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11182,21 +11164,12 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 242,
+      "line": 262,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)",
       "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 248,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)",
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::2"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
@@ -11209,7 +11182,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 254,
+      "line": 268,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11218,7 +11191,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 259,
+      "line": 273,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11227,7 +11200,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 273,
+      "line": 283,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11236,7 +11209,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 381,
+      "line": 396,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11245,7 +11218,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 382,
+      "line": 397,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11254,7 +11227,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 386,
+      "line": 401,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11263,7 +11236,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 387,
+      "line": 402,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11272,7 +11245,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 391,
+      "line": 406,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11281,7 +11254,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 392,
+      "line": 407,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11290,7 +11263,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 396,
+      "line": 411,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11299,7 +11272,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 397,
+      "line": 412,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11308,7 +11281,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 403,
+      "line": 418,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11317,7 +11290,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 404,
+      "line": 419,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11326,7 +11299,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 408,
+      "line": 423,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11335,7 +11308,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 409,
+      "line": 424,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11344,7 +11317,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 413,
+      "line": 428,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11353,7 +11326,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 414,
+      "line": 429,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11362,7 +11335,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 418,
+      "line": 433,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11371,7 +11344,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 419,
+      "line": 434,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11380,7 +11353,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 426,
+      "line": 441,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11389,7 +11362,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 427,
+      "line": 442,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11398,7 +11371,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 431,
+      "line": 446,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11407,7 +11380,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 432,
+      "line": 447,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11416,7 +11389,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 436,
+      "line": 451,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11425,7 +11398,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 437,
+      "line": 452,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11434,7 +11407,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 441,
+      "line": 456,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11443,7 +11416,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 442,
+      "line": 457,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11452,7 +11425,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 626,
+      "line": 641,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11461,7 +11434,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 627,
+      "line": 642,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11470,7 +11443,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 655,
+      "line": 670,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11479,7 +11452,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 675,
+      "line": 690,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -14593,7 +14566,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 35,
+      "line": 87,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14602,7 +14575,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 55,
+      "line": 107,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14611,7 +14584,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 63,
+      "line": 115,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14620,7 +14593,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 20,
+      "line": 72,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14629,7 +14602,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 26,
+      "line": 78,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14638,7 +14611,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 25,
+      "line": 77,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14647,7 +14620,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 34,
+      "line": 86,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14656,7 +14629,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 35,
+      "line": 87,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15826,7 +15799,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 259,
+      "line": 260,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15835,7 +15808,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 269,
+      "line": 270,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15862,7 +15835,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 173,
+      "line": 174,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15871,7 +15844,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 213,
+      "line": 214,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15880,7 +15853,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 274,
+      "line": 275,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15889,7 +15862,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 259,
+      "line": 260,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15898,7 +15871,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 269,
+      "line": 270,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15907,7 +15880,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 229,
+      "line": 230,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15916,7 +15889,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 260,
+      "line": 261,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15925,7 +15898,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 270,
+      "line": 271,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15934,7 +15907,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 283,
+      "line": 284,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15943,7 +15916,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 303,
+      "line": 311,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15952,7 +15925,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 320,
+      "line": 328,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15961,7 +15934,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 315,
+      "line": 323,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15970,7 +15943,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 304,
+      "line": 312,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15979,7 +15952,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 321,
+      "line": 329,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -16015,7 +15988,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 166,
+      "line": 151,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16024,7 +15997,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 181,
+      "line": 166,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16033,7 +16006,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 186,
+      "line": 171,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16051,7 +16024,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 175,
+      "line": 160,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16060,7 +16033,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 254,
+      "line": 239,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16069,21 +16042,12 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 381,
+      "line": 366,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"border-radius\" to come before \"outline-offset\" (order/properties-order)",
       "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"border-radius\" to come before \"outline-offset\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 99,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"color\" to come before \"text-wrap\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"color\" to come before \"text-wrap\" (order/properties-order)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
@@ -16096,7 +16060,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 343,
+      "line": 328,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16105,7 +16069,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 375,
+      "line": 360,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16114,7 +16078,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 159,
+      "line": 144,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16123,7 +16087,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 300,
+      "line": 285,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16141,7 +16105,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 124,
+      "line": 109,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16150,7 +16114,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 369,
+      "line": 354,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16159,7 +16123,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 253,
+      "line": 238,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16168,7 +16132,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 174,
+      "line": 159,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16177,7 +16141,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 173,
+      "line": 158,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16186,7 +16150,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 388,
+      "line": 373,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16195,7 +16159,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 287,
+      "line": 272,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16204,7 +16168,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 363,
+      "line": 348,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16213,7 +16177,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16240,7 +16204,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 155,
+      "line": 140,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16249,7 +16213,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 117,
+      "line": 102,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16267,7 +16231,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 393,
+      "line": 378,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16276,7 +16240,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 406,
+      "line": 391,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16285,7 +16249,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 268,
+      "line": 253,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16294,7 +16258,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 203,
+      "line": 188,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16312,7 +16276,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 118,
+      "line": 103,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16330,7 +16294,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 218,
+      "line": 203,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16339,7 +16303,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 313,
+      "line": 298,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16348,7 +16312,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 370,
+      "line": 355,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16357,7 +16321,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 236,
+      "line": 221,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16366,7 +16330,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 415,
+      "line": 400,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16375,7 +16339,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -16384,7 +16348,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -16393,7 +16357,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 239,
+      "line": 224,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -16402,7 +16366,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 380,
+      "line": 365,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -16411,7 +16375,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16420,7 +16384,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 255,
+      "line": 240,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16429,7 +16393,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 239,
+      "line": 224,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16438,7 +16402,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 174,
+      "line": 159,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16447,7 +16411,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 175,
+      "line": 160,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16456,7 +16420,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 353,
+      "line": 338,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16465,7 +16429,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 354,
+      "line": 339,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19264,7 +19228,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 799,
+      "line": 807,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -19273,7 +19237,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 787,
+      "line": 795,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -19282,7 +19246,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 787,
+      "line": 795,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19291,7 +19255,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 787,
+      "line": 795,
       "column": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19300,7 +19264,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 799,
+      "line": 807,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19309,7 +19273,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 385,
+      "line": 393,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -19318,7 +19282,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 473,
+      "line": 481,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -19327,7 +19291,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 683,
+      "line": 691,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
