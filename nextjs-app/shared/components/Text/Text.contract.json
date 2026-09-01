@@ -78,6 +78,21 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/code-window/page.tsx",
             "since": "2026-06-04"
         },
@@ -94,21 +109,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "since": "2026-06-04"
         }
     ],

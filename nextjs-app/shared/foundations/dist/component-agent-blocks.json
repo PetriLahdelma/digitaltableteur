@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T08:28:09.691Z",
+  "generatedAt": "2026-09-01T21:36:41.584Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -5274,8 +5274,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "Latest a11y evidence for 'axe-no-violations' is failing; re-run npm run test:stories:matrix:ci."
         },
         {
           "id": "accessibility-tree",
@@ -10904,8 +10904,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -12883,8 +12883,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -13494,7 +13494,7 @@
         "Text",
         "Checkbox",
         "TextInput",
-        "Grid"
+        "Icon"
       ],
       "prefersOver": [],
       "declaredPropCount": 4,
@@ -14232,7 +14232,7 @@
         "Title",
         "Avatar",
         "Badge",
-        "Grid"
+        "ReliablePartnerBadge"
       ],
       "prefersOver": [
         "Button with href for body-copy links"
@@ -19723,8 +19723,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "reduced-motion",
@@ -20892,6 +20892,188 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "ReadingProgress.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "ReliablePartnerBadge": {
+      "preferredImport": "@dt/ReliablePartnerBadge",
+      "intent": "Shows that Digitaltableteur is a Vastuu Group **Luotettava Kumppani** (Reliable Partner): a Finnish certification confirming that tax, pension and employer obligations required by the Contractor's Obligations Act (tilaa…",
+      "props": {
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Badge height: sm 28px (footer), md 48px, lg 64px."
+        },
+        "href": {
+          "optional": true,
+          "type": "string | null",
+          "description": "Link target. Defaults to the language-matched Reliable Partner report\nPDF. Pass null to render unlinked."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "sm"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "the badge image carries a translated alt describing the certification, never an empty alt, because the link has no other accessible name",
+        "the link opens a PDF in a new tab and says so in its title/alt so the context change is not a surprise",
+        "when rendered unlinked (href={null}) the alt still carries the meaning"
+      ],
+      "keyboard": [
+        "Tab moves focus to the badge link; Enter activates it (native anchor)."
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [
+        "Link",
+        "StatsSection",
+        "SlideButton",
+        "Container",
+        "Stack",
+        "SocialIconLink"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 3,
+      "guidelines": [],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ReliablePartnerBadge.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ReliablePartnerBadge.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ReliablePartnerBadge.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ReliablePartnerBadge.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",
@@ -24281,6 +24463,8 @@
       ],
       "composesWith": [
         "StatsSection",
+        "ReliablePartnerBadge",
+        "Link",
         "Section",
         "Container"
       ],
@@ -24589,7 +24773,8 @@
         "Container",
         "Stack",
         "Link",
-        "Divider"
+        "Divider",
+        "ReliablePartnerBadge"
       ],
       "prefersOver": [],
       "declaredPropCount": 7,
@@ -25929,11 +26114,11 @@
       ],
       "composesWith": [
         "Container",
-        "HeroBackground",
-        "ScrollIndicator",
         "Link",
         "SocialIconLink",
-        "Divider"
+        "Divider",
+        "ReliablePartnerBadge",
+        "HeroBackground"
       ],
       "prefersOver": [],
       "declaredPropCount": 8,
@@ -28863,8 +29048,8 @@
         "Text",
         "Button",
         "CheckboxGroup",
-        "Badge",
         "TextArea",
+        "Badge",
         "Title"
       ],
       "prefersOver": [],
@@ -31758,7 +31943,10 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "IconButton",
+        "ReliablePartnerBadge"
+      ],
       "prefersOver": [],
       "declaredPropCount": 3,
       "guidelines": [
@@ -32910,8 +33098,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -37282,20 +37470,20 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -37307,8 +37495,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "human-a11y-review",
@@ -37928,8 +38116,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -40281,8 +40469,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -40656,7 +40844,9 @@
         "promote to stable without production consumer evidence"
       ],
       "composesWith": [
-        "SlideButton"
+        "SlideButton",
+        "ReliablePartnerBadge",
+        "Link"
       ],
       "prefersOver": [],
       "declaredPropCount": 4,
@@ -41966,8 +42156,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -42168,8 +42358,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",

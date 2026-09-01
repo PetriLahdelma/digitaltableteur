@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-14T08:34:06.552Z",
+  "generatedAt": "2026-09-01T21:36:42.134Z",
   "summary": {
-    "componentCount": 177,
+    "componentCount": 178,
     "statusCounts": {
       "beta": 50,
       "stable": 103,
-      "alpha": 23,
+      "alpha": 24,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 90.8,
-    "codebaseComponentCount": 195,
-    "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 36,
+    "codebaseComponentCount": 196,
+    "usageCoveragePercent": 93.3,
+    "componentsWithProductionUsage": 40,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 195,
-    "inCatalog": 177,
+    "totalComponentsInCodebase": 196,
+    "inCatalog": 178,
     "outOfCatalog": 18,
     "catalogCompletenessPercent": 90.8,
     "artifactCoverage": {
-      "stories": 161,
-      "tests": 163,
+      "stories": 162,
+      "tests": 164,
       "mdx": 4,
-      "spec": 177
+      "spec": 178
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 177,
-    "withAnyUsage": 165,
-    "withProductionUsage": 36,
-    "uniqueImportedComponents": 165,
-    "totalEvidenceRows": 826,
-    "aliasImportFiles": 429,
-    "relativeImportFiles": 430,
+    "catalogedComponents": 178,
+    "withAnyUsage": 166,
+    "withProductionUsage": 40,
+    "uniqueImportedComponents": 166,
+    "totalEvidenceRows": 839,
+    "aliasImportFiles": 432,
+    "relativeImportFiles": 440,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-08-14T08:28:00.623Z",
+    "generatedAt": "2026-09-01T21:36:19.255Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 92,
+    "nodesWithComposesWith": 94,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 177,
+      "digitaltableteur": 178,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 50,
         "stable": 103,
-        "alpha": 23,
+        "alpha": 24,
         "deprecated": 1
       },
       "dsharp": {
@@ -10081,8 +10081,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "Latest a11y evidence for 'axe-no-violations' is failing; re-run npm run test:stories:matrix:ci."
           },
           {
             "id": "accessibility-tree",
@@ -20740,8 +20740,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -24501,11 +24501,23 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/IconButton",
-        "importCount": 8,
-        "productionImportCount": 0,
-        "patternImportCount": 2,
+        "importCount": 10,
+        "productionImportCount": 1,
+        "patternImportCount": 3,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../IconButton",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/IconButton",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
             "importKind": "relative",
@@ -24711,8 +24723,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -25912,7 +25924,7 @@
           "Text",
           "Checkbox",
           "TextInput",
-          "Grid"
+          "Icon"
         ],
         "prefersOver": [],
         "declaredPropCount": 4,
@@ -27035,22 +27047,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -27143,11 +27155,35 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 12,
-        "productionImportCount": 0,
-        "patternImportCount": 1,
-        "componentImportCount": 10,
+        "importCount": 17,
+        "productionImportCount": 3,
+        "patternImportCount": 2,
+        "componentImportCount": 11,
         "evidence": [
+          {
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "production"
+          },
+          {
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../Link",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Link",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx",
             "importKind": "relative",
@@ -27195,30 +27231,6 @@
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/SiteTree/SiteTree.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/Testimonial/Testimonial.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/stories/KitchenSink.stories.tsx",
-            "importKind": "relative",
-            "importPath": "../components/Link/Link.stories",
-            "context": "story"
           }
         ]
       },
@@ -27297,7 +27309,7 @@
           "Title",
           "Avatar",
           "Badge",
-          "Grid"
+          "ReliablePartnerBadge"
         ],
         "prefersOver": [
           "Button with href for body-copy links"
@@ -28091,11 +28103,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 2,
-        "productionImportCount": 0,
+        "importCount": 3,
+        "productionImportCount": 1,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
             "importKind": "alias",
@@ -37208,8 +37226,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "reduced-motion",
@@ -39350,6 +39368,309 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "ReadingProgress.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
+      "name": "ReliablePartnerBadge",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "ReliablePartnerBadge",
+        "tier": "atom",
+        "group": "marketing",
+        "status": "alpha",
+        "description": "Vastuu Group \"Luotettava Kumppani\" trust mark, language-matched, linking to the corresponding Reliable Partner report PDF.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "a",
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab moves focus to the badge link; Enter activates it (native anchor)."
+          ],
+          "ariaRequirements": [
+            "the badge image carries a translated alt describing the certification, never an empty alt, because the link has no other accessible name",
+            "the link opens a PDF in a new tab and says so in its title/alt so the context change is not a surprise",
+            "when rendered unlinked (href={null}) the alt still carries the meaning"
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [],
+          "spacing": [],
+          "typography": []
+        },
+        "lightDarkVerified": false,
+        "props": {
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Badge height: sm 32px (footer), md 48px, lg 64px."
+          },
+          "href": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Link target. Omit for the language-matched Reliable Partner report PDF; pass null to render unlinked."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional wrapper class."
+          }
+        },
+        "displayName": "ReliablePartnerBadge",
+        "keywords": [
+          "reliable partner",
+          "luotettava kumppani",
+          "pålitlig partner",
+          "vastuu group",
+          "tilaajavastuu",
+          "trust mark",
+          "certification",
+          "compliance"
+        ],
+        "dense": "language-matched Vastuu Group trust mark (fi/sv/en) linking to that language's Reliable Partner report PDF; sm/md/lg heights",
+        "composesWith": [
+          "SiteFooter",
+          "AboutPageContent",
+          "PricingPageContent"
+        ]
+      },
+      "spec": "# ReliablePartnerBadge\n\n## Intent\n\nShows that Digitaltableteur is a Vastuu Group **Luotettava Kumppani** (Reliable\nPartner): a Finnish certification confirming that tax, pension and employer\nobligations required by the Contractor's Obligations Act (tilaajavastuulaki)\nare verified and in order.\n\nThe badge is third-party proof, not decoration. It earns its place where a\nbuyer is deciding whether to trust the business: the site footer, the About\npage's delivery/governance story, and next to the pricing packages. Each badge\nopens that language's report PDF so the claim is checkable rather than asserted.\n\n## Interaction contract\n\n- Renders the official green badge matched to the active UI language:\n  `fi` → luotettava kumppani, `sv` → pålitlig partner, anything else → reliable\n  partner. Language comes from `useLocalization().resolvedLanguage`; with no\n  TranslationProvider it falls back to English.\n- Links, by default, to the matching report PDF under\n  `/docs/reliable-partner/reliable-partner-report-{fi,sv,en}.pdf`, opened in a\n  new tab (`target=\"_blank\"` with `rel=\"noopener noreferrer\"`) so the PDF\n  hands off to the viewer's own reader.\n- `href` overrides the target; `href={null}` renders the badge unlinked, for\n  contexts that already provide their own link to the report.\n- `size` controls height only: `sm` 32px, `md` 48px, `lg` 64px. Width is always\n  derived from the asset's aspect ratio.\n- The badge is a static image. It has no hover, active, or loading state, and\n  no motion, so `prefers-reduced-motion` needs no special handling.\n\n## Do / don't\n\n- **Do** let the badge link to the report. The certification's value is that it\n  is verifiable; a badge that links nowhere reads as a sticker.\n- **Do** keep the language of the badge and the language of the page the same.\n  A Finnish mark on an English page looks like a stray asset.\n- **Do** use `sm` in dense chrome (footer) and `md`/`lg` where the badge is\n  making an argument alongside body copy.\n- **Don't** recolor, crop, redraw, or add effects to the mark. The asset as\n  delivered by Vastuu Group is the brand; only whitespace has been trimmed.\n- **Don't** stretch it. Set height via `size`; never set width.\n- **Don't** use it as a generic \"verified\" or \"certified\" icon. It means one\n  specific Finnish certification and misusing it misrepresents the business.\n- **Don't** hardcode a report path at the call site. Use the default, or\n  `getReliablePartnerReportHref(language)` so a language stays in sync.\n\n## Design notes\n\n- Three assets, one per language. The Finnish PNG and the English/Swedish JPGs\n  ship from Vastuu Group with a white plate around the green field; only that\n  whitespace is trimmed. `border-radius` on the image clips the residual white\n  corner notches so the green plate sits cleanly on dark backgrounds without\n  touching the artwork itself.\n- The mark's own green is fixed by the brand and is deliberately **not**\n  themed. It is the same in light, dark, and high-contrast themes, which is\n  why the contract lists no color tokens. Only the focus ring is themed.\n- `max-width: none` and `flex-shrink: 0` guard against the global\n  `img { max-width: 100% }` reset squeezing the badge inside flex rows — that\n  squeeze was the first defect found when the badge shipped into the About\n  band.\n- Report PDFs expire roughly quarterly (the current set is valid until\n  2026-11-13). The filenames are language-stable on purpose: refreshing the\n  certification is a drop-in replacement of three files, with no code change.\n- Only the Finnish mark carries a ® symbol; that asymmetry is Vastuu Group's,\n  reproduced as delivered.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/ReliablePartnerBadge",
+        "importCount": 3,
+        "productionImportCount": 0,
+        "patternImportCount": 3,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ReliablePartnerBadge",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ReliablePartnerBadge",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ReliablePartnerBadge",
+            "context": "pattern"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/ReliablePartnerBadge",
+        "intent": "Shows that Digitaltableteur is a Vastuu Group **Luotettava Kumppani** (Reliable Partner): a Finnish certification confirming that tax, pension and employer obligations required by the Contractor's Obligations Act (tilaa…",
+        "props": {
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Badge height: sm 28px (footer), md 48px, lg 64px."
+          },
+          "href": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Link target. Defaults to the language-matched Reliable Partner report\nPDF. Pass null to render unlinked."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "sm"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [],
+        "avoidWhen": [],
+        "requiredA11y": [
+          "the badge image carries a translated alt describing the certification, never an empty alt, because the link has no other accessible name",
+          "the link opens a PDF in a new tab and says so in its title/alt so the context change is not a surprise",
+          "when rendered unlinked (href={null}) the alt still carries the meaning"
+        ],
+        "keyboard": [
+          "Tab moves focus to the badge link; Enter activates it (native anchor)."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [],
+        "composesWith": [
+          "Link",
+          "StatsSection",
+          "SlideButton",
+          "Container",
+          "Stack",
+          "SocialIconLink"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 3,
+        "guidelines": [],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ReliablePartnerBadge.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ReliablePartnerBadge.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ReliablePartnerBadge.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ReliablePartnerBadge.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
@@ -44935,6 +45256,8 @@
         ],
         "composesWith": [
           "StatsSection",
+          "ReliablePartnerBadge",
+          "Link",
           "Section",
           "Container"
         ],
@@ -45403,7 +45726,8 @@
           "Container",
           "Stack",
           "Link",
-          "Divider"
+          "Divider",
+          "ReliablePartnerBadge"
         ],
         "prefersOver": [],
         "declaredPropCount": 7,
@@ -47960,11 +48284,11 @@
         ],
         "composesWith": [
           "Container",
-          "HeroBackground",
-          "ScrollIndicator",
           "Link",
           "SocialIconLink",
-          "Divider"
+          "Divider",
+          "ReliablePartnerBadge",
+          "HeroBackground"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -53482,8 +53806,8 @@
           "Text",
           "Button",
           "CheckboxGroup",
-          "Badge",
           "TextArea",
+          "Badge",
           "Title"
         ],
         "prefersOver": [],
@@ -58772,11 +59096,23 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/VisuallyHidden",
-        "importCount": 2,
-        "productionImportCount": 0,
-        "patternImportCount": 0,
+        "importCount": 4,
+        "productionImportCount": 1,
+        "patternImportCount": 1,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../VisuallyHidden",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/VisuallyHidden",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -58838,7 +59174,10 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "IconButton",
+          "ReliablePartnerBadge"
+        ],
         "prefersOver": [],
         "declaredPropCount": 3,
         "guidelines": [
@@ -60153,8 +60492,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -67486,20 +67825,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -67511,8 +67850,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -68692,8 +69031,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -72720,8 +73059,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -73318,7 +73657,9 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "SlideButton"
+          "SlideButton",
+          "ReliablePartnerBadge",
+          "Link"
         ],
         "prefersOver": [],
         "declaredPropCount": 4,
@@ -75522,8 +75863,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -75881,8 +76222,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",

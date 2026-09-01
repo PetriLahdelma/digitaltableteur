@@ -118,6 +118,26 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ImprintPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
         },
@@ -128,17 +148,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
             "since": "2026-06-04"
         }
     ],

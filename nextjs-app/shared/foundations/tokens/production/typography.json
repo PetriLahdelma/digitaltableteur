@@ -210,7 +210,7 @@
           }
         },
         "xl": {
-          "$value": "clamp(3.5rem, 6vi + 2.5rem, 5.5rem)",
+          "$value": "clamp(2rem, 9vi + 0.5rem, 5.5rem)",
           "$description": "Fluid type size token (title-xl); uses clamp().",
           "$type": "dimension",
           "$extensions": {

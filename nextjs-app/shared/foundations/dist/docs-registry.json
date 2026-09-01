@@ -12784,6 +12784,78 @@
       },
       "examples": []
     },
+    "ReliablePartnerBadge": {
+      "name": "ReliablePartnerBadge",
+      "group": "marketing",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Vastuu Group \"Luotettava Kumppani\" trust mark, language-matched, linking to the corresponding Reliable Partner report PDF.",
+      "dense": "language-matched Vastuu Group trust mark (fi/sv/en) linking to that language's Reliable Partner report PDF; sm/md/lg heights",
+      "keywords": [
+        "reliable partner",
+        "luotettava kumppani",
+        "pålitlig partner",
+        "vastuu group",
+        "tilaajavastuu",
+        "trust mark",
+        "certification",
+        "compliance"
+      ],
+      "importLine": "import ReliablePartnerBadge from \"@dt/ReliablePartnerBadge\";",
+      "keyProps": [
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "href",
+          "type": "string | null",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Badge height: sm 32px (footer), md 48px, lg 64px."
+        },
+        "href": {
+          "optional": true,
+          "type": "string | null",
+          "description": "Link target. Omit for the language-matched Reliable Partner report PDF; pass null to render unlinked."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Optional wrapper class."
+        }
+      },
+      "composesWith": [
+        "SiteFooter",
+        "AboutPageContent",
+        "PricingPageContent"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [],
+        "spacing": [],
+        "typography": []
+      },
+      "examples": []
+    },
     "ResizablePanelGroup": {
       "name": "ResizablePanelGroup",
       "group": "layout",

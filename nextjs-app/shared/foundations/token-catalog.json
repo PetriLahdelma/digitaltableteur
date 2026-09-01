@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-22T20:59:50.578Z",
+  "generatedAt": "2026-09-01T21:36:18.920Z",
   "tokenCount": 198,
   "usageCoverage": 162,
   "themes": [
@@ -2172,7 +2172,7 @@
         },
         {
           "name": "--font-size-title-xl",
-          "value": "clamp(3.5rem, 6vi + 2.5rem, 5.5rem)",
+          "value": "clamp(2rem, 9vi + 0.5rem, 5.5rem)",
           "usage": "Fluid type size token (title-xl); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
