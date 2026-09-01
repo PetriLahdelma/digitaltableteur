@@ -151,6 +151,7 @@
 .cardLayout {
   display: flex;
   min-block-size: 3rem;
+  min-inline-size: 0;
   align-items: center;
   gap: var(--bulletin-content-gap);
 }
@@ -283,10 +284,17 @@
   background-color: #d9d9d9;
 }
 
+/* flex-shrink must stay 1 (and min-inline-size 0) or text-overflow never
+   fires: a non-shrinking nowrap line overflows the width-clamped card
+   instead of ellipsising. That overflow also inflates the track's
+   scrollWidth past the last card, which left canScrollEnd permanently
+   true and pinned the "next" arrow on screen at the end of the strip. */
+
 .body {
   margin: 0;
+  min-inline-size: 0;
   max-inline-size: 100%;
-  flex-shrink: 0;
+  flex-shrink: 1;
   font-family: var(--font-sans, var(--primary-body-font));
   font-size: 1rem;
   font-weight: 400;
