@@ -1,10 +1,10 @@
 - region "Current highlights":
-  - link "2027. Now booking":
+  - link "2027. Now booking for Q1–Q2":
     - /url: /contact
-    - paragraph: Now booking
-  - link "npm v2.0.0. Rhythmguard 2.0 out now":
-    - /url: https://www.npmjs.com/package/stylelint-plugin-rhythmguard
-    - paragraph: Rhythmguard 2.0 out now
-  - link "DSharp. Check out the DSharp Case Study":
-    - /url: /work/dsharp-design-system
-    - paragraph: Check out the DSharp Case Study
+    - paragraph: Now booking for Q1–Q2
+  - link "Article. From DesignOps to AgentOps":
+    - /url: /blog/from-designops-to-agentops
+    - paragraph: From DesignOps to AgentOps
+  - link "VertaaUX. 2026 State of Digital Accessibility":
+    - /url: https://vertaaux.ai/articles/state-of-digital-accessibility-2026-eu
+    - paragraph: 2026 State of Digital Accessibility

@@ -1,16 +1,16 @@
 {
   "storyId": "site-chat-chatmessages-default",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:10:24.422Z",
+  "sourceSHA": "3bb66d3602c34a3b4e0096dc6ce84e161bbd64f4",
+  "capturedAt": "2026-09-01T21:58:40.196Z",
   "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true
     },
     "axe-no-violations": {
-      "passed": false,
-      "axeViolations": 1
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }
