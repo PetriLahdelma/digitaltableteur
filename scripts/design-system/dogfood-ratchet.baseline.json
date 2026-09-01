@@ -25,9 +25,13 @@
       "rawElements": 3,
       "utilityLines": 0
     },
+    "app/design-system/agent/EvidencePerPublishSection.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
     "app/design-system/agent/page.tsx": {
       "rawElements": 11,
-      "utilityLines": 20
+      "utilityLines": 19
     },
     "app/error.tsx": {
       "rawElements": 1,
@@ -35,6 +39,10 @@
     },
     "app/global-error.tsx": {
       "rawElements": 2,
+      "utilityLines": 0
+    },
+    "app/lib/og-image-utils.tsx": {
+      "rawElements": 1,
       "utilityLines": 0
     },
     "app/pricing/page.tsx": {
@@ -299,7 +307,7 @@
     },
     "nextjs-app/shared/components/ProjectCard/ProjectCard.tsx": {
       "rawElements": 2,
-      "utilityLines": 19
+      "utilityLines": 16
     },
     "nextjs-app/shared/components/ProjectGallery/ProjectGallery.tsx": {
       "rawElements": 1,
@@ -441,10 +449,6 @@
       "rawElements": 0,
       "utilityLines": 4
     },
-    "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx": {
-      "rawElements": 1,
-      "utilityLines": 0
-    },
     "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx": {
       "rawElements": 1,
       "utilityLines": 0
@@ -460,10 +464,6 @@
     "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx": {
       "rawElements": 0,
       "utilityLines": 3
-    },
-    "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx": {
-      "rawElements": 1,
-      "utilityLines": 1
     },
     "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx": {
       "rawElements": 2,
@@ -607,7 +607,7 @@
     },
     "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx": {
       "rawElements": 3,
-      "utilityLines": 15
+      "utilityLines": 11
     },
     "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx": {
       "rawElements": 2,

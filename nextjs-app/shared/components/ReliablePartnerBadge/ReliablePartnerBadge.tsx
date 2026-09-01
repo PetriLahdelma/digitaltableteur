@@ -1,15 +1,34 @@
 "use client";
 
+import Image from "next/image";
 import { useLocalization } from "../../lib/translation";
 import { cn } from "../../lib/cn";
+import DtLink from "../Link";
 import styles from "./ReliablePartnerBadge.module.css";
 
 /** Language-matched green badge assets. The mark is Vastuu Group's; assets
- * are used as delivered (whitespace-trimmed only, geometry untouched). */
-const GREEN_BADGE_BY_LANGUAGE: Record<string, string> = {
-  fi: "/logos/partners/luotettava-kumppani-green.png",
-  sv: "/logos/partners/palitlig-partner-green.jpg",
-  en: "/logos/partners/reliable-partner-green.jpg",
+ * are used as delivered (whitespace-trimmed only, geometry untouched).
+ * Intrinsic dimensions are carried here because next/image needs them and the
+ * three files are not the same shape. */
+const GREEN_BADGE_BY_LANGUAGE: Record<
+  string,
+  { src: string; width: number; height: number }
+> = {
+  fi: {
+    src: "/logos/partners/luotettava-kumppani-green.png",
+    width: 425,
+    height: 200,
+  },
+  sv: {
+    src: "/logos/partners/palitlig-partner-green.jpg",
+    width: 545,
+    height: 217,
+  },
+  en: {
+    src: "/logos/partners/reliable-partner-green.jpg",
+    width: 545,
+    height: 217,
+  },
 };
 
 /** Language-matched Reliable Partner report PDFs. Filenames are stable so a
@@ -58,10 +77,13 @@ export function ReliablePartnerBadge({
     "Reliable Partner — verified by Vastuu Group",
   );
 
+  const asset = GREEN_BADGE_BY_LANGUAGE[language] ?? GREEN_BADGE_BY_LANGUAGE.en;
   const image = (
-    <img
-      src={GREEN_BADGE_BY_LANGUAGE[language] ?? GREEN_BADGE_BY_LANGUAGE.en}
+    <Image
+      src={asset.src}
       alt={alt}
+      width={asset.width}
+      height={asset.height}
       className={cn(styles.green, styles[size])}
     />
   );
@@ -71,10 +93,12 @@ export function ReliablePartnerBadge({
   }
 
   return (
-    <a
+    <DtLink
       href={resolvedHref}
       target="_blank"
       rel="noopener noreferrer"
+      // The mark is the whole link, so it carries no wavy underline.
+      underline="none"
       className={cn(styles.root, styles.link, className)}
       title={t(
         "reliablePartnerTitle",
@@ -82,7 +106,7 @@ export function ReliablePartnerBadge({
       )}
     >
       {image}
-    </a>
+    </DtLink>
   );
 }
 

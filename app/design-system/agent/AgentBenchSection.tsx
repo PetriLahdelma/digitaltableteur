@@ -3,7 +3,12 @@ import {
   TableCell,
   TableHeaderCell,
   TableRow,
+  Text,
+  Title,
 } from "@digitaltableteur/react";
+import DtLink from "@dt/Link";
+import List from "@dt/List";
+import styles from "./agent.module.css";
 
 type ArmSummary = {
   runs: number;
@@ -56,10 +61,10 @@ export function AgentBenchSection({
   const { arms, tasks } = artifact;
   return (
     <section className="mt-12">
-      <h2 className="font-display text-xl font-semibold">
+      <Title level={2} size="s">
         Agent benchmark (A/B)
-      </h2>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      </Title>
+      <Text as="p" size="s" lineHeight="relaxed" className={styles.lede}>
         The same coding agent, twice per task: WITH the design-system
         affordances documented in its workspace vs WITHOUT (identical
         repository access). {artifact.totalRuns} runs, {artifact.runtime[0]},{" "}
@@ -67,7 +72,7 @@ export function AgentBenchSection({
         semantics, not implementation — reuse of <code className="text-xs">@dt/*</code>{" "}
         is reported separately. Methodology:{" "}
         <code className="text-xs">{artifact.methodology}</code>.
-      </p>
+      </Text>
 
       <div className="mt-4 overflow-x-auto">
         <Table caption="Agent benchmark arm summary" size="sm">
@@ -138,23 +143,22 @@ export function AgentBenchSection({
         </Table>
       </div>
 
-      <ul className="mt-4 list-disc space-y-1 pl-5 text-xs leading-relaxed text-muted-foreground">
-        {artifact.notes.map((note) => (
-          <li key={note.slice(0, 40)}>{note}</li>
-        ))}
-      </ul>
-      <p className="mt-2 text-xs text-muted-foreground">
+      <List
+        items={artifact.notes}
+        listStyleType="disc"
+        size="xs"
+        lineHeight="relaxed"
+        className={styles.notes}
+      />
+      <Text as="p" size="xs" className={styles.footnote}>
         Raw artifact:{" "}
-        <a
-          href="/ds-health/agent-bench.json"
-          className="underline underline-offset-2"
-        >
+        <DtLink href="/ds-health/agent-bench.json" size="sm">
           /ds-health/agent-bench.json
-        </a>{" "}
+        </DtLink>{" "}
         · n={tasks[0]?.with.runs ?? "?"} per arm per task; cost is mean ±
         sample sd. Runs are nondeterministic, so treat single deltas as noise
         and distributions as the signal.
-      </p>
+      </Text>
     </section>
   );
 }

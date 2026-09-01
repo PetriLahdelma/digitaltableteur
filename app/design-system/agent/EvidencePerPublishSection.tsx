@@ -3,7 +3,11 @@ import {
   TableCell,
   TableHeaderCell,
   TableRow,
+  Text,
+  Title,
 } from "@digitaltableteur/react";
+import DtLink from "@dt/Link";
+import styles from "./agent.module.css";
 
 /**
  * The seven per-publish evidence artifacts, rendered verbatim from
@@ -135,10 +139,10 @@ export function EvidencePerPublishSection({
 
   return (
     <section className="mt-12">
-      <h2 className="font-display text-xl font-semibold">
+      <Title level={2} size="s">
         Evidence per publish
-      </h2>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      </Title>
+      <Text as="p" size="s" lineHeight="relaxed" className={styles.lede}>
         Seven artifacts regenerate inside the publish preflight and ship
         stamped at the published version — currently{" "}
         <code className="text-xs">
@@ -148,7 +152,7 @@ export function EvidencePerPublishSection({
         hand-written; each raw file carries its own provenance (source commit,
         generator, tree state), and timings live outside the stamped substance
         because they vary by machine.
-      </p>
+      </Text>
 
       <div className="mt-4 overflow-x-auto">
         <Table caption="Per-publish evidence artifacts" size="sm">
@@ -165,18 +169,15 @@ export function EvidencePerPublishSection({
               <TableRow key={row.file}>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>
-                  <span className="text-xs leading-relaxed">{row.records}</span>
+                  <span className={styles.recordText}>{row.records}</span>
                 </TableCell>
                 <TableCell>
                   <span className="text-xs">{row.headline}</span>
                 </TableCell>
                 <TableCell>
-                  <a
-                    href={`/ds-health/${row.file}`}
-                    className="text-xs underline underline-offset-2"
-                  >
+                  <DtLink href={`/ds-health/${row.file}`} size="sm">
                     JSON
-                  </a>
+                  </DtLink>
                 </TableCell>
               </TableRow>
             ))}
