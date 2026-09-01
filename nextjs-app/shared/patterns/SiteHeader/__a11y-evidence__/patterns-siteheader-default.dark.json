@@ -1,12 +1,16 @@
 {
   "storyId": "patterns-siteheader-default",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:16:07.103Z",
+  "sourceSHA": "2d009d4a0b2a2f4cb5a78439fa80d177a9fda5bc",
+  "capturedAt": "2026-09-01T13:25:23.867Z",
   "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }
