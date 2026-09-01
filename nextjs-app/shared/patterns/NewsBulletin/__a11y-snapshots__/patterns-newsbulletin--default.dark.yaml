@@ -1,7 +1,7 @@
 - region "Current highlights":
-  - link "50%. Bandwidth during summertime, 2026":
+  - link "2027. Now booking":
     - /url: /contact
-    - paragraph: Bandwidth during summertime, 2026
+    - paragraph: Now booking
   - link "npm v2.0.0. Rhythmguard 2.0 out now":
     - /url: https://www.npmjs.com/package/stylelint-plugin-rhythmguard
     - paragraph: Rhythmguard 2.0 out now

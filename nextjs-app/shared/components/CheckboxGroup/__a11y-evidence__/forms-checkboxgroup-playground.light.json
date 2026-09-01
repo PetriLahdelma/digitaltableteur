@@ -1,14 +1,10 @@
 {
   "storyId": "forms-checkboxgroup-playground",
   "mode": "light",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:25:01.346Z",
-  "runner": "backfill",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T09:59:16.760Z",
+  "runner": "local-farm-parity",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     }

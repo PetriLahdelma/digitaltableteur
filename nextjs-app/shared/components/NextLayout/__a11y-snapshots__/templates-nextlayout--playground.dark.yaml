@@ -29,8 +29,6 @@
   - text: Hämeentie 8 C 00530 Helsinki
   - link "mail@digitaltableteur.com":
     - /url: mailto:mail@digitaltableteur.com
-  - paragraph: Billing details
-  - text: E-invoice address 003722644552 Operator APIX Messaging Oy Operator ID 003723327487
   - paragraph: Explore
   - link "Home":
     - /url: /
@@ -73,5 +71,8 @@
   - link "Dribbble":
     - /url: https://dribbble.com/digitaltableteur
   - text: © 2026 Digitaltableteur. All rights reserved.
+  - link "Reliable Partner — verified by Vastuu Group":
+    - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
+    - img "Reliable Partner — verified by Vastuu Group"
 - button "Chat — Chat with Donny": Chat
 - status

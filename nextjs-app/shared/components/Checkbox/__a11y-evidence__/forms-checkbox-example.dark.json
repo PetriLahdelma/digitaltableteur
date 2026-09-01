@@ -1,9 +1,9 @@
 {
   "storyId": "forms-checkbox-example",
   "mode": "dark",
-  "sourceSHA": "c380345d06d3d3a681e1cee3fa6264f6c5491c5d",
-  "capturedAt": "2026-07-26T21:54:07.091Z",
-  "runner": "fix-hcb-checkbox",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:09:56.841Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

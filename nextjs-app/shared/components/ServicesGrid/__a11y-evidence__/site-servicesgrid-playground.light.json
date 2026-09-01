@@ -1,9 +1,9 @@
 {
   "storyId": "site-servicesgrid-playground",
   "mode": "light",
-  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
-  "capturedAt": "2026-07-30T08:14:32.946Z",
-  "runner": null,
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:03:30.159Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

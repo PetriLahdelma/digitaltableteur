@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-designsprintssection-forced-colors",
   "mode": "dark",
-  "sourceSHA": "b8f02be88a28c82d4541d0360ac7901a0f323c2f",
-  "capturedAt": "2026-08-03T16:13:38.595Z",
-  "runner": "fix-sprint-cta-href",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:12:43.019Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

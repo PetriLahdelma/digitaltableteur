@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-forms-textinput-forced-colors",
   "mode": "light",
-  "sourceSHA": "b7ca85a33df1343202006569dc6680dee1c20a8b",
-  "capturedAt": "2026-07-26T19:41:14.994Z",
-  "runner": "fix-textinput-evidence",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T09:53:44.757Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

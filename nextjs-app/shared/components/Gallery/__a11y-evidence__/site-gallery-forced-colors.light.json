@@ -1,9 +1,9 @@
 {
   "storyId": "site-gallery-forced-colors",
   "mode": "light",
-  "sourceSHA": "59e827e5f36058ccb93e304bdc6ddeffd9f69fc8",
-  "capturedAt": "2026-07-26T19:51:32.572Z",
-  "runner": "promote-gallery-stable",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T09:52:52.394Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

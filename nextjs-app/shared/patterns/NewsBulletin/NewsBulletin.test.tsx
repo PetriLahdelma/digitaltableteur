@@ -61,7 +61,7 @@ describe("NewsBulletin", () => {
 
     expect(
       screen.getByRole("link", {
-        name: /50%\. bandwidth during summertime, 2026/i,
+        name: /2027\. now booking/i,
       }),
     ).toHaveAttribute("href", "/contact");
     expect(screen.getByText("Rhythmguard 2.0 out now")).toBeInTheDocument();

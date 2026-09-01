@@ -44,6 +44,15 @@
 - article:
   - heading "You Own the IP" [level=3]
   - paragraph: You keep full ownership of the code, design and tokens we build together. No lock-in, no licensing games.
+- region "A Vastuu Group Reliable Partner":
+  - link "Reliable Partner — verified by Vastuu Group":
+    - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
+    - img "Reliable Partner — verified by Vastuu Group"
+  - paragraph: A Vastuu Group Reliable Partner
+  - paragraph: Tax, pension and employer obligations are continuously verified through Vastuu Group's Reliable Partner programme, as required by the Finnish Contractor's Obligations Act.
+  - paragraph:
+    - link "Open the Reliable Partner report (PDF)":
+      - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
 - heading "Strategy to scale" [level=2]
 - paragraph: A compact operating model for teams that need direction, delivery and a system that keeps working after launch.
 - article:
@@ -75,7 +84,7 @@
   - term: react
   - definition: 0.1.24
   - term: web-components
-  - definition: 0.10.0
+  - definition: 0.10.1
   - term: tokens
   - definition: 0.1.4
   - term: tokens-css

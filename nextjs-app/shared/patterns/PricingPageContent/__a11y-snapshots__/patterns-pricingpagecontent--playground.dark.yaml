@@ -1,5 +1,5 @@
-- region "Design Systems. Digital branding. UX/UI. Transparent price tags.":
-  - heading "Design Systems. Digital branding. UX/UI. Transparent price tags." [level=1]
+- region "Transparent price tags.":
+  - heading "Transparent price tags." [level=1]
 - region "Digitaltableteur / Traditional agency":
   - heading "Digitaltableteur" [level=2]
   - list:
@@ -92,3 +92,18 @@
     - /url: /contact?mode=book
   - link "See our work":
     - /url: /work
+  - heading "Billing details" [level=3]
+  - term: e-invoice address
+  - definition:
+    - text: "003722644552"
+    - button "Copy e-invoice address"
+  - term: Operator
+  - definition: APIX Messaging Oy
+  - term: Operator ID
+  - definition:
+    - text: "003723327487"
+    - button "Copy Operator ID"
+  - link "Reliable Partner — verified by Vastuu Group":
+    - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
+    - img "Reliable Partner — verified by Vastuu Group"
+  - paragraph: "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified."

@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-content-icon-forced-colors",
   "mode": "light",
-  "sourceSHA": "d14b56331362c888c62bab010b88217a3b7ab6ce",
-  "capturedAt": "2026-07-26T22:00:23.118Z",
-  "runner": "table-icons",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:02:06.009Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

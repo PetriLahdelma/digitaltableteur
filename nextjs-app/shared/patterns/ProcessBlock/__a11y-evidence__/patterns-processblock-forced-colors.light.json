@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-processblock-forced-colors",
   "mode": "light",
-  "sourceSHA": "d856f95afca735a7c9aee3e70996749f3181aa8f",
-  "capturedAt": "2026-08-07T12:34:06.087Z",
-  "runner": "react-0.1.23-publish",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:02:42.754Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true

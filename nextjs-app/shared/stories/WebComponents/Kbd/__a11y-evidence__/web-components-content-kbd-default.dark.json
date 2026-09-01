@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-content-kbd-default",
   "mode": "dark",
-  "sourceSHA": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
-  "capturedAt": "2026-07-26T18:01:28.157Z",
-  "runner": "promote-kbd-stable",
+  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
+  "capturedAt": "2026-09-01T10:08:17.277Z",
+  "runner": "local-farm-parity",
   "checks": {
     "accessibility-tree": {
       "passed": true
