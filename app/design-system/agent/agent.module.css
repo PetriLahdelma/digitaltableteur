@@ -48,3 +48,11 @@
   font-size: var(--font-size-text-xs);
   line-height: 1.5;
 }
+
+/* Wide evidence tables scroll inside their own container so the page body
+   never scrolls sideways. */
+
+.tableScroll {
+  margin-block-start: var(--space-layout-16);
+  overflow: auto;
+}

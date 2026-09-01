@@ -74,7 +74,7 @@ export function AgentBenchSection({
         <code className="text-xs">{artifact.methodology}</code>.
       </Text>
 
-      <div className="mt-4 overflow-x-auto">
+      <div className={styles.tableScroll}>
         <Table caption="Agent benchmark arm summary" size="sm">
           <thead>
             <TableRow>
@@ -112,7 +112,7 @@ export function AgentBenchSection({
         </Table>
       </div>
 
-      <div className="mt-4 overflow-x-auto">
+      <div className={styles.tableScroll}>
         <Table caption="Agent benchmark per task" size="sm">
           <thead>
             <TableRow>
