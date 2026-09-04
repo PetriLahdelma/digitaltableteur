@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: PR Agent action step
-        uses: Codium-ai/pr-agent@570f67ed5fc8db5be74c18df070bc20079b64b0d # v0.39.0 (was @main, a moving ref)
+        uses: Codium-ai/pr-agent@4ebd5c5333c6ef21509e7304d27969eb825e6f22 # v0.39.0 (was @main, a moving ref)
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
