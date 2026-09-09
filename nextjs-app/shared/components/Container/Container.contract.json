@@ -103,7 +103,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
         }
     ],

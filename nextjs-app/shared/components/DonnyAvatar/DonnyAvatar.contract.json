@@ -51,6 +51,11 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
         }
     ],
     "schemaVersion": 2,

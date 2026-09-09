@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
   "source": "nextjs-app/shared/styles/variables.css",
-  "tokenCount": 198,
-  "usageCoverage": 162,
+  "tokenCount": 200,
+  "usageCoverage": 164,
   "dtcgFiles": [
     "tokens/production/color.json",
     "tokens/production/elevation.json",
@@ -47,6 +47,8 @@
     "--color-primary-disabled",
     "--color-primary",
     "--color-primary-dark",
+    "--color-on-media-scrim",
+    "--color-on-media-text",
     "--color-title",
     "--color-text",
     "--color-focus-ring",
@@ -227,5 +229,5 @@
     "--line-height-relaxed",
     "--line-height-loose"
   ],
-  "generatedAt": "2026-07-22T20:59:50.659Z"
+  "generatedAt": "2026-09-09T19:57:58.469Z"
 }

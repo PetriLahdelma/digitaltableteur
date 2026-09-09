@@ -241,6 +241,34 @@
         }
       }
     },
+    "on": {
+      "media": {
+        "scrim": {
+          "$value": "rgb(0 0 0 / 62%)",
+          "$description": "Color token (on-media-scrim).",
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--color-on-media-scrim",
+              "category": "color",
+              "subgroup": "Semantic"
+            }
+          }
+        },
+        "text": {
+          "$value": "#fff",
+          "$description": "Color token (on-media-text).",
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--color-on-media-text",
+              "category": "color",
+              "subgroup": "Semantic"
+            }
+          }
+        }
+      }
+    },
     "title": {
       "$value": "var(--primary-text-color, #041b23)",
       "$description": "Heading color; usually aligned with primary text.",

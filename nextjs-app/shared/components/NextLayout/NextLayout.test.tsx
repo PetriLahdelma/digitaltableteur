@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { NextLayout } from "./NextLayout";
+import { NextLayout, useHideChatWidget } from "./NextLayout";
 
 vi.mock("../ChatWidget/ChatWidget", () => ({
   default: () => <div>Mocked chat</div>,
@@ -77,5 +77,58 @@ describe("NextLayout", () => {
     );
     const main = container.querySelector('[class*="main"]');
     expect(main).toBeInTheDocument();
+  });
+
+  describe("useHideChatWidget", () => {
+    function HidesChat() {
+      useHideChatWidget();
+      return <div>Error page</div>;
+    }
+
+    it("renders the chat widget by default", async () => {
+      render(
+        <NextLayout>
+          <div>Content</div>
+        </NextLayout>,
+      );
+      expect(await screen.findByText("Mocked chat")).toBeInTheDocument();
+    });
+
+    it("hides the chat widget while a page opts out", async () => {
+      render(
+        <NextLayout>
+          <HidesChat />
+        </NextLayout>,
+      );
+      expect(await screen.findByText("Error page")).toBeInTheDocument();
+      expect(screen.queryByText("Mocked chat")).toBeNull();
+    });
+
+    it("leaves the cookie consent modal alone", async () => {
+      render(
+        <NextLayout>
+          <HidesChat />
+        </NextLayout>,
+      );
+      expect(
+        await screen.findByText("Mocked cookie consent"),
+      ).toBeInTheDocument();
+    });
+
+    it("restores the widget once the opting-out page unmounts", async () => {
+      const { rerender } = render(
+        <NextLayout>
+          <HidesChat />
+        </NextLayout>,
+      );
+      expect(screen.queryByText("Mocked chat")).toBeNull();
+
+      rerender(
+        <NextLayout>
+          <div>Another page</div>
+        </NextLayout>,
+      );
+      expect(await screen.findByText("Mocked chat")).toBeInTheDocument();
+    });
   });
 });

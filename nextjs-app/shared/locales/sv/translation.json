@@ -1410,10 +1410,5 @@
   "pricingBillingCopied": "Kopierad",
   "notFoundTitle": "Sidan hittades inte",
   "notFoundBody": "Sidan finns inte eller har flyttats. Fortsätt härifrån.",
-  "notFoundLinksLabel": "Vart du kan gå härnäst",
-  "notFoundLinkSitemap": "Webbplatskarta",
-  "notFoundLinkWork": "Arbeten",
-  "notFoundLinkBlog": "Blogg",
-  "notFoundLinkContact": "Kontakt",
-  "notFoundLinkLlms": "llms.txt (för agenter)"
+  "notFoundViewSitemap": "Visa webbplatskarta"
 }

@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-09-01T21:36:18.920Z",
-  "tokenCount": 198,
-  "usageCoverage": 162,
+  "generatedAt": "2026-09-09T19:57:58.410Z",
+  "tokenCount": 200,
+  "usageCoverage": 164,
   "themes": [
     {
       "id": "light",
@@ -879,6 +879,20 @@
           "name": "--selection-color",
           "value": "var(--color-white)",
           "usage": "Text selection foreground.",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-on-media-scrim",
+          "value": "rgb(0 0 0 / 62%)",
+          "usage": "Color token (on-media-scrim).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-on-media-text",
+          "value": "#fff",
+          "usage": "Color token (on-media-text).",
           "category": "color",
           "subgroup": "Semantic"
         },

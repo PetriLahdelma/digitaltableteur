@@ -8,6 +8,12 @@ import NotFound from "./not-found";
 // Resolve against the real English catalogue rather than a hand-written map:
 // this asserts the copy actually reaches the DOM *and* fails if a key is
 // removed from translation.json.
+// The hook's real module pulls in the whole site shell; behaviour is covered
+// in NextLayout.test.tsx instead.
+vi.mock("@dt/NextLayout", () => ({
+  useHideChatWidget: vi.fn(),
+}));
+
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key: string) =>
@@ -42,19 +48,28 @@ describe("NotFound", () => {
     ).toBeInTheDocument();
   });
 
-  it("offers recovery links agents can follow without JavaScript", () => {
+  it("offers exactly two destinations: home and the sitemap", () => {
     render(<NotFound />);
-    const nav = screen.getByRole("navigation", { name: /where to go next/i });
-    const hrefs = Array.from(nav.querySelectorAll("a")).map((a) =>
-      a.getAttribute("href"),
-    );
-    expect(hrefs).toEqual(["/sitemap", "/work", "/blog", "/contact", "/llms.txt"]);
+    const links = screen.getAllByRole("link");
+    expect(links.map((a) => a.getAttribute("href"))).toEqual(["/", "/sitemap"]);
   });
 
-  it("points agents at llms.txt explicitly", () => {
+  it("labels the sitemap action", () => {
     render(<NotFound />);
     expect(
-      screen.getByRole("link", { name: /llms\.txt/i }),
-    ).toHaveAttribute("href", "/llms.txt");
+      screen.getByRole("link", { name: /view sitemap/i }),
+    ).toHaveAttribute("href", "/sitemap");
+  });
+
+  it("does not repeat the header navigation", () => {
+    render(<NotFound />);
+    for (const label of [/^work$/i, /^blog$/i, /^contact$/i]) {
+      expect(screen.queryByRole("link", { name: label })).toBeNull();
+    }
+  });
+
+  it("does not surface llms.txt to humans (it ships as a Link header instead)", () => {
+    render(<NotFound />);
+    expect(screen.queryByRole("link", { name: /llms/i })).toBeNull();
   });
 });

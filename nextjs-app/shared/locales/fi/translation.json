@@ -1410,10 +1410,5 @@
   "pricingBillingCopied": "Kopioitu",
   "notFoundTitle": "Sivua ei löytynyt",
   "notFoundBody": "Sivua ei ole olemassa tai se on siirretty. Jatka tästä.",
-  "notFoundLinksLabel": "Mistä jatkaa",
-  "notFoundLinkSitemap": "Sivukartta",
-  "notFoundLinkWork": "Työt",
-  "notFoundLinkBlog": "Blogi",
-  "notFoundLinkContact": "Yhteystiedot",
-  "notFoundLinkLlms": "llms.txt (agenteille)"
+  "notFoundViewSitemap": "Katso sivukartta"
 }

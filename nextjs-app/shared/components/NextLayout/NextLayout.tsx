@@ -1,8 +1,10 @@
 "use client";
 
 import React, {
+  createContext,
   lazy,
   Suspense,
+  useContext,
   useEffect,
   useState,
   type ReactNode,
@@ -16,6 +18,30 @@ import styles from "./NextLayout.module.css";
 
 const ChatWidget = lazy(() => import("../ChatWidget/ChatWidget"));
 const CookieConsentModal = lazy(() => import("../CookieConsent/CookieConsent"));
+
+/**
+ * Lets a routed page hide the floating chat widget for as long as it is
+ * mounted. Provided by NextLayout, consumed by app/not-found.tsx: offering a
+ * chat assistant on an error page is noise, not help.
+ */
+const ChatVisibilityContext = createContext<
+  ((hidden: boolean) => void) | null
+>(null);
+
+/**
+ * Hide the floating chat widget while the calling component is mounted.
+ * Restores it automatically on unmount, so navigating away from the page
+ * brings the widget back.
+ */
+export function useHideChatWidget(): void {
+  const setHidden = useContext(ChatVisibilityContext);
+
+  useEffect(() => {
+    if (!setHidden) return undefined;
+    setHidden(true);
+    return () => setHidden(false);
+  }, [setHidden]);
+}
 
 function ClientOnly({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
@@ -44,8 +70,10 @@ export function NextLayout({ children, className }: NextLayoutProps) {
   // The skip link is the first focusable element on every page, so it must
   // speak the visitor's language (EN/FI/SV) rather than the SkipLink default.
   const t = useTranslate();
+  const [chatHidden, setChatHidden] = useState(false);
+
   return (
-    <>
+    <ChatVisibilityContext.Provider value={setChatHidden}>
       <DonnyActionProvider>
         <div
           className={
@@ -65,14 +93,16 @@ export function NextLayout({ children, className }: NextLayoutProps) {
             <PageTransition>{children}</PageTransition>
           </main>
           <SiteFooter />
-          <ClientOnly>
-            <ChatWidget />
-          </ClientOnly>
+          {!chatHidden && (
+            <ClientOnly>
+              <ChatWidget />
+            </ClientOnly>
+          )}
         </div>
       </DonnyActionProvider>
       <ClientOnly>
         <CookieConsentModal />
       </ClientOnly>
-    </>
+    </ChatVisibilityContext.Provider>
   );
 }

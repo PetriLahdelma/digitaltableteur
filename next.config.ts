@@ -255,6 +255,15 @@ const nextConfig: NextConfig = {
         source: "/:path+",
         headers: securityHeaders,
       },
+      {
+        // Agent discovery links belong on every document response, not just the
+        // homepage: an agent that lands on a deep page or a 404 should still be
+        // told where llms.txt, the agent cards and the MCP server card live.
+        // Paths containing a dot and everything under /_next/ are excluded so
+        // the header does not repeat on every static asset for no benefit.
+        source: "/:path((?!_next/|.*\\.).*)",
+        headers: [agentLinkHeader],
+      },
     ];
   },
   async redirects() {

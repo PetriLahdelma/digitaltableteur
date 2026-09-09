@@ -142,6 +142,8 @@
   --color-dt-muted-light: var(--color-muted-light);
   --color-dt-neutral-bg: var(--color-neutral-bg);
   --color-dt-neutral-text: var(--color-neutral-text);
+  --color-dt-on-media-scrim: var(--color-on-media-scrim);
+  --color-dt-on-media-text: var(--color-on-media-text);
   --color-dt-placeholder-dark: var(--color-placeholder-dark);
   --color-dt-placeholder-dark-fg: var(--color-placeholder-dark-fg);
   --color-dt-primary: var(--color-primary);

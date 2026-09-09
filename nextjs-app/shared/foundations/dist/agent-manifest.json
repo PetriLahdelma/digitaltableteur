@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-01T21:56:20.589Z",
+  "generatedAt": "2026-09-09T19:58:13.148Z",
   "summary": {
     "componentCount": 178,
     "statusCounts": {
@@ -25,8 +25,8 @@
   },
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
-    "tokenCount": 198,
-    "usageCoverage": 162,
+    "tokenCount": 200,
+    "usageCoverage": 164,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",
@@ -81,8 +81,8 @@
     "withAnyUsage": 166,
     "withProductionUsage": 40,
     "uniqueImportedComponents": 166,
-    "totalEvidenceRows": 840,
-    "aliasImportFiles": 433,
+    "totalEvidenceRows": 841,
+    "aliasImportFiles": 434,
     "relativeImportFiles": 440,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -10081,8 +10081,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "Latest a11y evidence for 'axe-no-violations' is failing; re-run npm run test:stories:matrix:ci."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
@@ -33710,13 +33710,19 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/NextLayout",
-        "importCount": 3,
-        "productionImportCount": 1,
+        "importCount": 4,
+        "productionImportCount": 2,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
           {
             "path": "app/layout.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/NextLayout",
+            "context": "production"
+          },
+          {
+            "path": "app/not-found.tsx",
             "importKind": "alias",
             "importPath": "@dt/NextLayout",
             "context": "production"
@@ -52385,12 +52391,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -54995,17 +55001,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -67835,14 +67841,14 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
@@ -67860,8 +67866,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "human-a11y-review",

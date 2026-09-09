@@ -20,6 +20,16 @@
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
 
+  /* On-media tokens.
+   *
+   * Deliberately theme-invariant: these sit on fixed photographic artwork
+   * (for example the 404 background) that does not change with the theme.
+   * Themed tokens must NOT be used there, since --color-white flips to #000
+   * in dark mode and would render dark text on a dark scrim. Defined once,
+   * outside every theme block, so they stay constant. */
+  --color-on-media-scrim: rgb(0 0 0 / 62%);
+  --color-on-media-text: #fff;
+
   /* Typography tokens - Satoshi everywhere (next/font provides --font-body; --font-heading follows it) */
   --font-title: var(--font-heading), system-ui, sans-serif;
   --font-text: var(--font-body), system-ui, sans-serif;

@@ -1,62 +1,76 @@
 .notFoundPage {
   display: flex;
   position: relative;
+  padding: var(--space-layout-24);
   block-size: 100vb;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: var(--space-layout-16);
   background-color: var(--color-primary);
-  background-image: url("/404.webp");
+
+  /* Centre-weighted scrim over the artwork. The copy sits in the middle of the
+     frame, directly on top of the bright 404 numerals, so the darkening has to
+     be strongest there. The photograph stays visible towards the edges. */
+  background-image: radial-gradient(
+      ellipse at center,
+      var(--color-on-media-scrim) 0%,
+      color-mix(in srgb, var(--color-on-media-scrim) 78%, transparent) 45%,
+      color-mix(in srgb, var(--color-on-media-scrim) 55%, transparent) 100%
+    ),
+    url("/404.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  text-align: center;
+  color: var(--color-on-media-text);
 }
 
-.notFoundPage > :first-child {
-  position: absolute;
-  inset-block-start: 2rem;
-  inset-inline-start: 2rem;
+/* Title and Text set their own colour on the base class, so these need the
+   extra element selector to win on specificity. Covers app/error.tsx too,
+   which renders an h2 into this same layout. */
+
+.notFoundPage h1,
+.notFoundPage h2,
+.notFoundPage p {
+  color: var(--color-on-media-text);
 }
 
-/* Recovery cluster: keeps the original top-left placement of the CTA while
-   adding readable copy and links for humans and non-JS agents. */
-
-.recovery {
-  display: flex;
-  max-inline-size: min(38rem, calc(100vi - 4rem));
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-layout-16);
+.notFoundBody {
+  max-inline-size: 46ch;
 }
 
-.recoveryBody {
-  max-inline-size: 42ch;
-}
+/* Responsive adjustments: cover on every width, so the artwork always fills the
+   frame and the centred copy never lands on a letterboxed background. */
 
-.recoveryNav {
-  margin-block-start: var(--space-internal-8);
-}
-
-.recoveryList {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-  gap: var(--space-internal-12) var(--space-layout-16);
-  list-style: none;
-}
-
-/* Responsive adjustments */
 @media (width <= 768px) {
   .notFoundPage {
-    background-size: contain;
+    background-position: center;
   }
+}
+
+/* The secondary Button is an outline style tuned for themed surfaces: dark text
+   on a hairline border. Over the artwork it disappears, so it is restated here
+   for on-media use. Two class selectors to out-rank the component base class. */
+
+.actions .secondaryAction {
+  border-color: var(--color-on-media-text);
+  background-color: color-mix(
+    in srgb,
+    var(--color-on-media-scrim) 85%,
+    transparent
+  );
+  color: var(--color-on-media-text);
+}
+
+.actions .secondaryAction:hover {
+  background-color: var(--color-on-media-text);
+  color: var(--color-primary);
 }
 
 /* Shared with app/error.tsx, which imports this stylesheet. */
 
 .actions {
-  display: flex;
-  margin-block-start: 1rem;
-  gap: 1rem;
+  margin-block-start: var(--space-layout-8);
+  gap: var(--space-layout-16);
 }

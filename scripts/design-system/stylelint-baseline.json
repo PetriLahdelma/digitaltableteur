@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2144,
+  "warningCount": 2140,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -847,42 +847,6 @@
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)",
       "id": "app/globals.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::2"
-    },
-    {
-      "file": "app/not-found.module.css",
-      "line": 30,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "app/not-found.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "app/not-found.module.css",
-      "line": 31,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "app/not-found.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "app/not-found.module.css",
-      "line": 17,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "app/not-found.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "app/not-found.module.css",
-      "line": 18,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "app/not-found.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
     },
     {
       "file": "app/work/NextWorkNav.module.css",
@@ -7726,16 +7690,16 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 155,
+      "line": 163,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".chat p\" to come before selector \".root p:first-child\", at line 27 (no-descending-specificity)",
+      "text": "Expected selector \".chat p\" to come before selector \".root p:first-child\", at line 35 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::no-descending-specificity::Expected selector \".chat p\" to come before selector \".root p:first-child\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 146,
+      "line": 154,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -7744,7 +7708,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 47,
+      "line": 55,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -7753,7 +7717,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 171,
+      "line": 179,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7762,7 +7726,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 181,
+      "line": 189,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7771,7 +7735,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 156,
+      "line": 164,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7780,7 +7744,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 163,
+      "line": 171,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7789,7 +7753,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 188,
+      "line": 196,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7798,7 +7762,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 171,
+      "line": 179,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7807,7 +7771,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 181,
+      "line": 189,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7816,7 +7780,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 163,
+      "line": 171,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7825,7 +7789,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 70,
+      "line": 78,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7834,7 +7798,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 65,
+      "line": 73,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -7843,7 +7807,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 156,
+      "line": 164,
       "column": 11,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7852,7 +7816,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 163,
+      "line": 171,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7861,7 +7825,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 188,
+      "line": 196,
       "column": 11,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7870,7 +7834,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 171,
+      "line": 179,
       "column": 11,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7879,7 +7843,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 181,
+      "line": 189,
       "column": 11,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7888,7 +7852,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 172,
+      "line": 180,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7897,7 +7861,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 182,
+      "line": 190,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7906,7 +7870,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 164,
+      "line": 172,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7915,7 +7879,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 152,
+      "line": 160,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7924,7 +7888,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 157,
+      "line": 165,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7933,7 +7897,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 189,
+      "line": 197,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -7942,7 +7906,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 151,
+      "line": 159,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -9778,7 +9742,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 53,
+      "line": 82,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15763,7 +15727,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 110,
+      "line": 132,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -15772,7 +15736,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 123,
+      "line": 145,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -15781,7 +15745,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 112,
+      "line": 134,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -15790,7 +15754,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 103,
+      "line": 116,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15799,7 +15763,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 260,
+      "line": 308,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15808,7 +15772,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 270,
+      "line": 318,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15817,7 +15781,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 138,
+      "line": 160,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15826,7 +15790,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 96,
+      "line": 103,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15835,7 +15799,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 174,
+      "line": 197,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -15844,7 +15808,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 214,
+      "line": 262,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15853,7 +15817,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 275,
+      "line": 323,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15862,7 +15826,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 260,
+      "line": 308,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15871,7 +15835,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 270,
+      "line": 318,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15880,7 +15844,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 230,
+      "line": 278,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15889,7 +15853,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 261,
+      "line": 309,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15898,7 +15862,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 271,
+      "line": 319,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15907,7 +15871,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 284,
+      "line": 332,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15916,7 +15880,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 311,
+      "line": 368,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15925,7 +15889,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 328,
+      "line": 385,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15934,7 +15898,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 323,
+      "line": 380,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15943,7 +15907,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 312,
+      "line": 369,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -15952,7 +15916,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 329,
+      "line": 386,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -19228,7 +19192,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 807,
+      "line": 817,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -19237,7 +19201,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 795,
+      "line": 805,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -19246,7 +19210,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 795,
+      "line": 805,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19255,7 +19219,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 795,
+      "line": 805,
       "column": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19264,7 +19228,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 807,
+      "line": 817,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19273,7 +19237,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 393,
+      "line": 403,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -19282,7 +19246,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 481,
+      "line": 491,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -19291,7 +19255,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 691,
+      "line": 701,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
