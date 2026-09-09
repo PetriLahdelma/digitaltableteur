@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.25 - 2026-09-09
+
+- Adds the Phosphor `TreeView` icon to the curated icon registry. Consumers
+  asking for `<Icon name="treeView" />` (or `tree-view`) previously resolved
+  to `null` and rendered an empty icon slot with no error, because the bundled
+  registry only carries curated names and the app consumes `Icon` from this
+  package rather than from local source. Needed for the site's 404 page, whose
+  sitemap action wants a hierarchy glyph rather than a generic list.
+
 ## 0.1.24 - 2026-08-07
 
 - `Grid` columns and gap are consumer-overridable: the non-responsive path

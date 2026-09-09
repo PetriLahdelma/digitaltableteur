@@ -6,8 +6,7 @@ import {
   Text,
   Title,
 } from "@digitaltableteur/react";
-import DtLink from "@dt/Link";
-import List from "@dt/List";
+import { Link as DtLink, List } from "@digitaltableteur/react";
 import styles from "./agent.module.css";
 
 type ArmSummary = {

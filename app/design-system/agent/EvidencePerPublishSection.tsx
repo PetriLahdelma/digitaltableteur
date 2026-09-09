@@ -6,7 +6,7 @@ import {
   Text,
   Title,
 } from "@digitaltableteur/react";
-import DtLink from "@dt/Link";
+import { Link as DtLink } from "@digitaltableteur/react";
 import styles from "./agent.module.css";
 
 /**
