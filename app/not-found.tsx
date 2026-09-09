@@ -38,7 +38,7 @@ export default function NotFound() {
           variant="secondary"
           size="lg"
           href="/sitemap"
-          icon={<Icon name="list" />}
+          icon={<Icon name="treeView" />}
           className={styles.secondaryAction}
         >
           {t("notFoundViewSitemap")}
