@@ -953,7 +953,7 @@ export const elementMigrationManifest = [
   { tagName: "dt-avatar", sourceComponent: "Avatar", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-avatar-group", sourceComponent: "AvatarGroup", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-display", sourceComponent: "Display", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
-  { tagName: "dt-flex-box", sourceComponent: "FlexBox", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-flex-box", sourceComponent: "FlexBox", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-grid", sourceComponent: "Grid", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-list-item", sourceComponent: "ListItem", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },

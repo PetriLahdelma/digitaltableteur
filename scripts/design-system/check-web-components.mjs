@@ -188,7 +188,11 @@ const maxPackedFiles = 40 + tags.length * 2;
 // +1 kB for the rendered-parity drift repairs (2026-08-07): menu font reset
 // + shadow token, testimonial ramp tokens, group-label typography, with
 // their explanatory comments; measured 1,891,309 bytes, 34 bytes over.
-const sharedBundleAndManifestCeiling = 1_342_000;
+// +4 kB for the TreeView icon (2026-09-09): the site's 404 sitemap action needs
+// a hierarchy glyph, and every curated icon ships six inline SVG weights in the
+// shared native-icon-data chunk; measured 1,895,539 bytes unpacked, ~3.2 kB
+// over the prior ceiling.
+const sharedBundleAndManifestCeiling = 1_346_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
