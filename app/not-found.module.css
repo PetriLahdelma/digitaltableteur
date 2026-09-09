@@ -18,12 +18,42 @@
   inset-inline-start: 2rem;
 }
 
+/* Recovery cluster: keeps the original top-left placement of the CTA while
+   adding readable copy and links for humans and non-JS agents. */
+
+.recovery {
+  display: flex;
+  max-inline-size: min(38rem, calc(100vi - 4rem));
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-layout-16);
+}
+
+.recoveryBody {
+  max-inline-size: 42ch;
+}
+
+.recoveryNav {
+  margin-block-start: var(--space-internal-8);
+}
+
+.recoveryList {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: var(--space-internal-12) var(--space-layout-16);
+  list-style: none;
+}
+
 /* Responsive adjustments */
 @media (width <= 768px) {
   .notFoundPage {
     background-size: contain;
   }
 }
+
+/* Shared with app/error.tsx, which imports this stylesheet. */
 
 .actions {
   display: flex;

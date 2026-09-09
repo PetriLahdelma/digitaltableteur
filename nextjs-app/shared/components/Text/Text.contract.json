@@ -103,12 +103,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
         }
     ],

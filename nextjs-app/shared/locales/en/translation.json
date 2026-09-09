@@ -1407,5 +1407,13 @@
   "reliablePartnerVerify": "Open the Reliable Partner report (PDF)",
   "pricingTrustNote": "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified.",
   "pricingBillingCopy": "Copy {{field}}",
-  "pricingBillingCopied": "Copied"
+  "pricingBillingCopied": "Copied",
+  "notFoundTitle": "Page not found",
+  "notFoundBody": "That page does not exist, or it has moved. Here is where to look next.",
+  "notFoundLinksLabel": "Where to go next",
+  "notFoundLinkSitemap": "Sitemap",
+  "notFoundLinkWork": "Work",
+  "notFoundLinkBlog": "Blog",
+  "notFoundLinkContact": "Contact",
+  "notFoundLinkLlms": "llms.txt (for agents)"
 }

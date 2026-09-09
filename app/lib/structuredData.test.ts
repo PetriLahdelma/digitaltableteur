@@ -31,6 +31,21 @@ describe("structuredData", () => {
       expect(schema.contactPoint.email).toBeDefined();
     });
 
+    it("includes a telephone on the contactPoint", () => {
+      const schema = getOrganizationSchema() as any;
+      expect(schema.contactPoint.telephone).toBe("+358 45 657 4469");
+    });
+
+    it("includes a complete PostalAddress", () => {
+      const schema = getOrganizationSchema() as any;
+      expect(schema.address).toBeDefined();
+      expect(schema.address["@type"]).toBe("PostalAddress");
+      expect(schema.address.streetAddress).toBe("Hämeentie 8 C");
+      expect(schema.address.postalCode).toBe("00530");
+      expect(schema.address.addressLocality).toBe("Helsinki");
+      expect(schema.address.addressCountry).toBe("FI");
+    });
+
     it("includes social links", () => {
       const schema = getOrganizationSchema();
       expect(Array.isArray(schema.sameAs)).toBe(true);

@@ -1407,5 +1407,13 @@
   "reliablePartnerVerify": "Öppna Pålitlig Partner-rapporten (PDF)",
   "pricingTrustNote": "Digitaltableteur är en Pålitlig Partner hos Vastuu Group: skatte-, pensions- och arbetsgivarförpliktelser verifieras kontinuerligt.",
   "pricingBillingCopy": "Kopiera {{field}}",
-  "pricingBillingCopied": "Kopierad"
+  "pricingBillingCopied": "Kopierad",
+  "notFoundTitle": "Sidan hittades inte",
+  "notFoundBody": "Sidan finns inte eller har flyttats. Fortsätt härifrån.",
+  "notFoundLinksLabel": "Vart du kan gå härnäst",
+  "notFoundLinkSitemap": "Webbplatskarta",
+  "notFoundLinkWork": "Arbeten",
+  "notFoundLinkBlog": "Blogg",
+  "notFoundLinkContact": "Kontakt",
+  "notFoundLinkLlms": "llms.txt (för agenter)"
 }

@@ -20,6 +20,7 @@ export interface OrganizationSchemaOptions {
   logo?: string;
   socialLinks?: string[];
   contactEmail?: string;
+  contactPhone?: string;
 }
 
 /**
@@ -42,6 +43,7 @@ export function getOrganizationSchema(
       "https://www.facebook.com/digitaltableteur",
     ],
     contactEmail = "mail@digitaltableteur.com",
+    contactPhone = "+358 45 657 4469",
   } = options;
 
   return {
@@ -56,9 +58,17 @@ export function getOrganizationSchema(
       height: 512,
     },
     sameAs: socialLinks,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Hämeentie 8 C",
+      postalCode: "00530",
+      addressLocality: "Helsinki",
+      addressCountry: "FI",
+    },
     contactPoint: {
       "@type": "ContactPoint",
       email: contactEmail,
+      telephone: contactPhone,
       contactType: "Customer Support",
       availableLanguage: ["English", "Finnish", "Swedish"],
     },

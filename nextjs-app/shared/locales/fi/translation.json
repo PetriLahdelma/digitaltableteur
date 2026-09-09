@@ -1407,5 +1407,13 @@
   "reliablePartnerVerify": "Avaa Luotettava Kumppani -raportti (PDF)",
   "pricingTrustNote": "Digitaltableteur on Vastuu Groupin Luotettava Kumppani: vero-, eläke- ja työnantajavelvoitteet todennetaan jatkuvasti.",
   "pricingBillingCopy": "Kopioi {{field}}",
-  "pricingBillingCopied": "Kopioitu"
+  "pricingBillingCopied": "Kopioitu",
+  "notFoundTitle": "Sivua ei löytynyt",
+  "notFoundBody": "Sivua ei ole olemassa tai se on siirretty. Jatka tästä.",
+  "notFoundLinksLabel": "Mistä jatkaa",
+  "notFoundLinkSitemap": "Sivukartta",
+  "notFoundLinkWork": "Työt",
+  "notFoundLinkBlog": "Blogi",
+  "notFoundLinkContact": "Yhteystiedot",
+  "notFoundLinkLlms": "llms.txt (agenteille)"
 }
