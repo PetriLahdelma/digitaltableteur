@@ -1,3 +1,8 @@
 - status: Work in progress (beta)
-- status:
-  - status "Loading content"
+- heading "Sentry Issues" [level=3]
+- text: "1"
+- list "Issues":
+  - listitem:
+    - text: "TypeError: Cannot read property 'foo' of undefined Status: unresolved Users: 3 First: 1/15/2026 Last: 1/15/2026 env: production"
+    - link "Open":
+      - /url: https://sentry.io/issue/1

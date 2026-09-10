@@ -1,9 +1,9 @@
 {
   "storyId": "site-sentrysummarycard-playground",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:15:30.839Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "4a422963abe45ee691c0a9c7a50813ffc55a85a9",
+  "capturedAt": "2026-09-10T06:55:52.560Z",
+  "runner": null,
   "checks": {
     "accessibility-tree": {
       "passed": true
