@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-forms-grouplabel-playground",
   "mode": "light",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T09:54:42.256Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+  "capturedAt": "2026-09-10T06:28:06.705Z",
+  "runner": null,
   "checks": {
     "accessibility-tree": {
       "passed": true

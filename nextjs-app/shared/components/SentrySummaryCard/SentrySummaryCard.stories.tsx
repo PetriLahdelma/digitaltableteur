@@ -38,8 +38,10 @@ export default meta;
 
 type Story = StoryObj<typeof SentrySummaryCard>;
 
+const FIXED_TIMESTAMP = "2026-01-15T10:00:00.000Z";
+
 const mockIssue: SentrySummaryData = {
-  generatedAt: new Date().toISOString(),
+  generatedAt: FIXED_TIMESTAMP,
   project: "frontend",
   filters: { unresolved: true, environment: "production" },
   count: 1,
@@ -52,8 +54,8 @@ const mockIssue: SentrySummaryData = {
       userCount: 3,
       status: "unresolved",
       isUnhandled: true,
-      firstSeen: new Date().toISOString(),
-      lastSeen: new Date().toISOString(),
+      firstSeen: FIXED_TIMESTAMP,
+      lastSeen: FIXED_TIMESTAMP,
       permalink: "https://sentry.io/issue/1",
       environment: "production",
     },
@@ -86,7 +88,7 @@ export const Empty: Story = {
   render: () => (
     <SentrySummaryCard
       dataOverride={{
-        generatedAt: new Date().toISOString(),
+        generatedAt: FIXED_TIMESTAMP,
         project: "frontend",
         filters: { unresolved: false, environment: null },
         count: 0,
@@ -116,7 +118,7 @@ export const Stub: Story = {
   render: () => (
     <SentrySummaryCard
       dataOverride={{
-        generatedAt: new Date().toISOString(),
+        generatedAt: FIXED_TIMESTAMP,
         project: "frontend",
         filters: { unresolved: true, environment: null },
         count: 0,
@@ -149,13 +151,24 @@ export const Z_SentrySummaryCardCompliance: Story = {
   ),
 };
 
-export const Default = { tags: ["beta-matrix"] };
-export const Playground = { tags: ["beta-matrix"] };
+// The bare component fetches its summary JSON at runtime. In Storybook that
+// request has no server, so these stories raced between "Loading content" and
+// "Failed to load Sentry data" and whichever state won got baked into the
+// accessibility snapshot: Default/Playground recorded the error, Example/
+// ForcedColors recorded the spinner, and any re-run could flip either way.
+// dataOverride settles them on real content. Passing it through args (not
+// render) keeps Playground's controls working.
+const settled = { dataOverride: mockIssue };
+
+export const Default = { tags: ["beta-matrix"], args: settled };
+export const Playground = { tags: ["beta-matrix"], args: settled };
 export const Example = {
   tags: ["beta-matrix"],
+  args: settled,
   parameters: { controls: { disable: true } },
 };
 export const ForcedColors = {
   tags: ["beta-matrix"],
+  args: settled,
   globals: { forcedColors: "active" },
 };

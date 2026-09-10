@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-09T19:58:13.148Z",
+  "generatedAt": "2026-09-09T20:31:56.955Z",
   "summary": {
     "componentCount": 178,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 90.8,
     "codebaseComponentCount": 196,
     "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 40,
+    "componentsWithProductionUsage": 39,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,10 +79,10 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 178,
     "withAnyUsage": 166,
-    "withProductionUsage": 40,
+    "withProductionUsage": 39,
     "uniqueImportedComponents": 166,
-    "totalEvidenceRows": 841,
-    "aliasImportFiles": 434,
+    "totalEvidenceRows": 838,
+    "aliasImportFiles": 431,
     "relativeImportFiles": 440,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -4404,6 +4404,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
           },
@@ -4440,11 +4445,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -10290,6 +10290,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           },
@@ -10817,6 +10822,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {
@@ -14384,7 +14394,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -16696,6 +16706,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -17072,6 +17087,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -19329,6 +19349,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {
@@ -22046,6 +22071,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
             "since": "2026-06-04"
           },
@@ -22727,6 +22757,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
           },
@@ -23127,6 +23162,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -23153,11 +23193,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -24108,8 +24143,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
@@ -24120,8 +24155,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -24338,6 +24373,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
             "since": "2026-06-04"
           },
@@ -24364,11 +24404,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/navigation/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -25677,6 +25712,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -25703,11 +25743,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -26137,6 +26172,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {
@@ -27072,7 +27112,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -27165,23 +27205,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 17,
-        "productionImportCount": 3,
+        "importCount": 15,
+        "productionImportCount": 1,
         "patternImportCount": 2,
         "componentImportCount": 11,
         "evidence": [
-          {
-            "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "production"
-          },
-          {
-            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
             "importKind": "relative",
@@ -27240,6 +27268,18 @@
             "path": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ReliablePartnerBadge/ReliablePartnerBadge.tsx",
+            "importKind": "relative",
+            "importPath": "../Link",
             "context": "component"
           }
         ]
@@ -28113,17 +28153,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 3,
-        "productionImportCount": 1,
+        "importCount": 2,
+        "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/List",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
             "importKind": "alias",
@@ -29352,6 +29386,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {
@@ -31357,6 +31396,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -32667,6 +32711,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -33801,20 +33850,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -35123,6 +35172,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {
@@ -42135,6 +42189,11 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
           }
         ],
         "schemaVersion": 2,
@@ -44666,6 +44725,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -46694,6 +46758,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -47638,6 +47707,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {
@@ -48640,6 +48714,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
           },
@@ -48676,11 +48755,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
           }
         ]
@@ -49037,6 +49111,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -52916,6 +52995,11 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
           }
         ],
         "schemaVersion": 2,
@@ -53372,6 +53456,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -53408,11 +53497,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -55591,6 +55675,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {
@@ -72925,6 +73014,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -73254,6 +73348,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           },
           {

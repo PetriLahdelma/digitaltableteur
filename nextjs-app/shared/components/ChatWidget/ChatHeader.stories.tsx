@@ -21,8 +21,14 @@ export default meta;
 
 type Story = StoryObj<typeof ChatHeader>;
 
+// Thursday 15 Jan 2026, 10:00 UTC = 12:00 Europe/Helsinki: inside the
+// weekday 09:00-16:59 availability window the header computes. Without a fixed
+// instant the status flips to "Away" outside office hours and the accessibility
+// snapshot fails depending on what time of day the suite runs. Passing
+// currentDate also disables the component's 60s re-tick timer.
 export const Default: Story = {
   tags: ["beta-matrix"],
+  args: { currentDate: new Date("2026-01-15T10:00:00Z") },
   parameters: {
     design: {
       type: "figma",
