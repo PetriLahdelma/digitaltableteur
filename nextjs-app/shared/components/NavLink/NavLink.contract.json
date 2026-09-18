@@ -124,6 +124,11 @@
             "optional": true,
             "type": "string",
             "description": "Class names applied when the route is inactive."
+        },
+        "onClick": {
+            "optional": true,
+            "type": "() => void",
+            "description": "Called when the link is activated. Fires only for the navigable anchor;\nthe current-page indicator is a non-interactive span and never calls it.\nLets containers (the mobile drawer) close as soon as the visitor taps a\ndestination instead of waiting for the route change to land."
         }
     },
     "forbiddenUse": [

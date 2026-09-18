@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-10T06:56:22.512Z",
+  "generatedAt": "2026-09-18T09:26:42.694Z",
   "summary": {
     "componentCount": 178,
     "statusCounts": {
@@ -32771,6 +32771,11 @@
             "optional": true,
             "type": "string",
             "description": "Class names applied when the route is inactive."
+          },
+          "onClick": {
+            "optional": true,
+            "type": "() => void",
+            "description": "Called when the link is activated. Fires only for the navigable anchor;\nthe current-page indicator is a non-interactive span and never calls it.\nLets containers (the mobile drawer) close as soon as the visitor taps a\ndestination instead of waiting for the route change to land."
           }
         },
         "forbiddenUse": [
@@ -32828,7 +32833,7 @@
           }
         }
       },
-      "spec": "# NavLink\n\n## Intent\nSingle primitive for site-level navigation links. Owns active-route detection so consumers do not reimplement the `aria-current` plumbing.\n\n## Interaction contract\n- Keyboard: Tab in document order; Enter follows.\n- Pointer: Click to follow.\n- Screen readers: Announced as 'link, {text}'. The active item adds 'current page' when `aria-current='page'` resolves.\n\n## Do / don't\n- Do: Use in `SiteHeader`, `Footer`, and breadcrumb-style in-page nav.\n- Do: Pass the route's canonical href — the active-route match is exact-path.\n- Don't: Use inside body prose — that is `Link`.\n- Don't: Use as a button — primary actions belong on `Button`.\n\n## Design notes\n- Colors: --color-text, --color-link, --color-link-hover\n- Typography: --font-size-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
+      "spec": "# NavLink\n\n## Intent\nSingle primitive for site-level navigation links. Owns active-route detection so consumers do not reimplement the `aria-current` plumbing.\n\n## Interaction contract\n- Keyboard: Tab in document order; Enter follows.\n- Pointer: Click to follow.\n- Screen readers: Announced as 'link, {text}'. The active item adds 'current page' when `aria-current='page'` resolves.\n\n- `onClick` fires only when the navigable `<a>` is activated; the current-page `<span>` never calls it. Containers use it to close themselves (mobile drawer) before the route change lands.\n\n## Do / don't\n- Do: Use in `SiteHeader`, `Footer`, and breadcrumb-style in-page nav.\n- Do: Pass the route's canonical href — the active-route match is exact-path.\n- Don't: Use inside body prose — that is `Link`.\n- Don't: Use as a button — primary actions belong on `Button`.\n\n## Design notes\n- Colors: --color-text, --color-link, --color-link-hover\n- Typography: --font-size-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/NavLink",
@@ -32890,6 +32895,11 @@
             "optional": true,
             "type": "string",
             "description": "Class names applied when the route is inactive."
+          },
+          "onClick": {
+            "optional": true,
+            "type": "() => void",
+            "description": "Called when the link is activated. Fires only for the navigable anchor;\nthe current-page indicator is a non-interactive span and never calls it.\nLets containers (the mobile drawer) close as soon as the visitor taps a\ndestination instead of waiting for the route change to land."
           }
         },
         "propRelationships": [],
@@ -32935,7 +32945,7 @@
           "SkipLink"
         ],
         "prefersOver": [],
-        "declaredPropCount": 6,
+        "declaredPropCount": 7,
         "guidelines": [
           {
             "level": "should",
@@ -32970,20 +32980,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -32994,8 +33004,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -73519,14 +73529,14 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
@@ -73544,8 +73554,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",

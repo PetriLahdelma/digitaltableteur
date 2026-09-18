@@ -8,6 +8,8 @@ Single primitive for site-level navigation links. Owns active-route detection so
 - Pointer: Click to follow.
 - Screen readers: Announced as 'link, {text}'. The active item adds 'current page' when `aria-current='page'` resolves.
 
+- `onClick` fires only when the navigable `<a>` is activated; the current-page `<span>` never calls it. Containers use it to close themselves (mobile drawer) before the route change lands.
+
 ## Do / don't
 - Do: Use in `SiteHeader`, `Footer`, and breadcrumb-style in-page nav.
 - Do: Pass the route's canonical href — the active-route match is exact-path.

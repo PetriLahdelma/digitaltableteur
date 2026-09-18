@@ -21,6 +21,13 @@ export interface NavLinkProps {
   activeClassName?: string;
   /** Class names applied when the route is inactive. */
   inactiveClassName?: string;
+  /**
+   * Called when the link is activated. Fires only for the navigable anchor;
+   * the current-page indicator is a non-interactive span and never calls it.
+   * Lets containers (the mobile drawer) close as soon as the visitor taps a
+   * destination instead of waiting for the route change to land.
+   */
+  onClick?: () => void;
 }
 
 export function NavLink({
@@ -30,6 +37,7 @@ export function NavLink({
   className,
   activeClassName = "text-foreground",
   inactiveClassName = "text-muted-foreground hover:text-foreground",
+  onClick,
 }: NavLinkProps) {
   // usePathname() returns string | null per Next.js typing — null occurs in
   // SSR fallback and outside the app router (e.g. Storybook). Treat null as
@@ -72,6 +80,7 @@ export function NavLink({
       href={href}
       className={linkClassName}
       aria-current={isActive ? "page" : undefined}
+      onClick={onClick}
     >
       {children}
     </Link>

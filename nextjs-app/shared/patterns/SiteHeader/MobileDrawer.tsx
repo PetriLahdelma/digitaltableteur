@@ -204,6 +204,11 @@ export function MobileDrawer({
                 <NavLink
                   href={item.href}
                   exact={item.exact}
+                  // Close on tap: the route-change effect in useNavigation only
+                  // fires once the RSC payload lands, which on a slow mobile
+                  // connection left the drawer open with no feedback for
+                  // seconds (Sentry rage-click on /blog).
+                  onClick={onClose}
                   className="block py-3 px-4 rounded-md text-title-s font-medium hover:bg-muted"
                   activeClassName="bg-muted text-foreground"
                   inactiveClassName="text-muted-foreground"

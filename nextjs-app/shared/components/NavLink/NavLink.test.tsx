@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { NavLink } from "./NavLink";
 import {
@@ -29,6 +29,31 @@ describe("NavLink", () => {
       "aria-current",
       "page",
     );
+  });
+
+  it("calls onClick when the navigable link is activated", () => {
+    let clicks = 0;
+    renderWithPathname(
+      "/about",
+      <NavLink href="/work" onClick={() => void clicks++}>
+        Work
+      </NavLink>,
+    );
+    fireEvent.click(screen.getByRole("link", { name: "Work" }));
+    expect(clicks).toBe(1);
+  });
+
+  it("does not call onClick for the current-page indicator", () => {
+    let clicks = 0;
+    renderWithPathname(
+      "/work",
+      <NavLink href="/work" onClick={() => void clicks++}>
+        Work
+      </NavLink>,
+    );
+    fireEvent.click(screen.getByText("Work"));
+    expect(screen.queryByRole("link", { name: "Work" })).toBeNull();
+    expect(clicks).toBe(0);
   });
 
   it("does not mark a different route active", () => {
