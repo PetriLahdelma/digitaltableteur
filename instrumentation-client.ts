@@ -18,10 +18,33 @@ if (dsn && process.env.NODE_ENV === "production") {
     integrations: [
       // Replay must be added explicitly — the sample rates above do nothing
       // without this integration. Mask text + media for privacy (GDPR).
-      Sentry.replayIntegration({ maskAllText: true, blockAllMedia: true }),
+      // `blockAllMedia` does not cover iframes; block them too so rrweb never
+      // hooks the load of cross-origin frames (the Cal.com booking embed on
+      // /contact threw "Blocked a frame with origin ... from accessing a
+      // cross-origin frame" from inside the recorder, 120 events).
+      Sentry.replayIntegration({
+        maskAllText: true,
+        blockAllMedia: true,
+        block: ["iframe"],
+      }),
     ],
     // Do not attach PII (IP, cookies) to events.
     sendDefaultPii: false,
+    // Third-party noise that is not ours to fix. Browser extensions inject
+    // scripts (e.g. `executors/200.js` reading `M_ID`) and Microsoft
+    // Outlook/Edge SafeLinks previews reject with "Object Not Found Matching
+    // Id"; none of it originates from our bundles.
+    ignoreErrors: [
+      /Object Not Found Matching Id:\d+, MethodName:\w+, ParamCount:\d+/,
+      /Blocked a frame with origin .* from accessing a cross-origin frame/,
+      /Cannot read properties of undefined \(reading 'M_ID'\)/,
+    ],
+    denyUrls: [
+      /^chrome-extension:\/\//i,
+      /^moz-extension:\/\//i,
+      /^safari(-web)?-extension:\/\//i,
+      /\/executors\/\d+\.js$/i,
+    ],
   });
 }
 
