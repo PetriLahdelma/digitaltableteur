@@ -11,9 +11,24 @@ import { NavigationProvider as LocalNavigationProvider } from "@/nextjs-app/shar
 
 type NavigationOptions = Parameters<NavigationRuntime["push"]>[1];
 
+/**
+ * Vercel regenerates the ISR root route under its internal `/index` alias, so
+ * `usePathname()` reads "/index" on the server while the browser reads "/".
+ * NavLink renders the current page as a `<span>` and everything else as an
+ * `<a>`, so the alias turned every homepage load into a React #418 tag
+ * mismatch (Sentry "Hydration Error", 90 events, only ever on `/`; the
+ * build-time prerender and local dev were fine). Map the alias back to the
+ * public path before it reaches any consumer.
+ */
+export function normalizePathname(pathname: string | null): string | null {
+  if (pathname === "/index") return "/";
+  if (pathname?.endsWith("/index")) return pathname.slice(0, -"/index".length);
+  return pathname;
+}
+
 /** Adapts Next App Router navigation to the design-system navigation runtime. */
 export function NextNavigationProvider({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
+  const pathname = normalizePathname(usePathname());
   const router = useRouter();
   const searchParams = useMemo(
     () =>
