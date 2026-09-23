@@ -62,7 +62,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   currentDate,
 }) => {
   const t = useTranslate();
-  const tagline = t("chatTagline", "DT Donny");
+  const tagline = t("chatTagline", "AI assistant · DT Donny");
   const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
 
   // Finnish (Europe/Helsinki) business hours: Mon–Fri 09:00–17:00 local time (inclusive start, exclusive end)
@@ -145,6 +145,9 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         <Title level={2} size="s" className={styles.title}>
           {title}
         </Title>
+        <Text as="p" size="xs" className={styles.subtitle}>
+          {description}
+        </Text>
       </div>
       <div className={styles.headerActions}>
         <Button

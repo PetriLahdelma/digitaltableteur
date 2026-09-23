@@ -21,7 +21,7 @@
   inline-size: min(32.5rem, 90vi);
   max-inline-size: 32.5rem;
   min-block-size: 24rem;
-  max-block-size: min(70vb, 640px);
+  max-block-size: min(84vb, 720px);
   flex-direction: column;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
@@ -164,8 +164,34 @@
 .subtitle {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
   color: var(--secondary-text-color);
+}
+
+.transparencyNotice {
+  padding: 0.75rem 1.25rem;
+  border-block: 1px solid var(--color-border);
+  background: var(--color-light-bg);
+}
+
+.transparencyCopy {
+  margin: 0;
+  color: var(--secondary-text-color);
+}
+
+.transparencyLinks {
+  display: flex;
+  margin-block-start: 0.35rem;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.85rem;
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.8rem;
+}
+
+.transparencyLinks a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .headerActions {
@@ -502,7 +528,8 @@
   /* Override size to match icon size in button */
   inline-size: 28px !important;
   block-size: 28px !important;
-  transition: transform 0.2s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+  transition: transform 0.2s
+    var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 .toggle:hover .toggleAvatar {
@@ -603,6 +630,46 @@
   .toggle {
     inset: auto 1rem 1rem auto;
     padding-inline: 0.9rem;
+  }
+
+  :global(body[data-cookie-banner-open="true"]) .container[data-open="true"] {
+    inset-block-end: calc(var(--cookie-banner-height, 8rem) + 0.5rem);
+  }
+
+  :global(body[data-cookie-banner-open="true"])
+    .container[data-open="true"]
+    .panel {
+    max-block-size: calc(100vb - var(--cookie-banner-height, 8rem) - 0.75rem);
+  }
+}
+
+@media (width <= 480px) {
+  .subtitle {
+    display: none;
+  }
+
+  .input {
+    padding-inline-end: 3.5rem;
+  }
+
+  .sendButton {
+    padding-inline: 0.55rem;
+  }
+
+  .sendButton :global([data-button-slot="text"]) {
+    display: none;
+  }
+
+  .hintRow {
+    padding-inline: 0.25rem;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .shortcutHint,
+  .resetInline {
+    font-size: 0.75rem;
+    line-height: 1.35;
   }
 }
 
@@ -913,7 +980,9 @@
   border-radius: var(--radius-lg);
   background-color: var(--color-surface);
   text-decoration: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .projectCardThumb {
@@ -1060,7 +1129,8 @@
 .chatTextArea:focus,
 .chatTextArea:focus-visible {
   border-color: var(--color-primary);
-  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, var(--color-primary));
   outline-offset: var(--focus-ring-offset, 2px);
   box-shadow: none; /* Use outline instead of box-shadow for better a11y */
 }

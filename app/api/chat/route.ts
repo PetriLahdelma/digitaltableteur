@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { convertToModelMessages, streamText, stepCountIs, type ToolSet } from "ai";
+import {
+  convertToModelMessages,
+  streamText,
+  stepCountIs,
+  type ToolSet,
+} from "ai";
 import * as Sentry from "@sentry/nextjs";
 import {
   GatewayAuthenticationError,
@@ -76,7 +81,7 @@ const normalizeError = (caught: unknown): ChatApiError => {
 
 function trackChatUsage(
   result: Awaited<ReturnType<typeof streamText>>,
-  context: { modelId: string; ipAddress: string },
+  context: { modelId: string },
 ): void {
   void (async () => {
     try {
@@ -90,7 +95,6 @@ function trackChatUsage(
             totalTokens,
             promptTokens: usage.inputTokens,
             completionTokens: usage.outputTokens,
-            ipAddress: context.ipAddress,
             maxTokensLimit: MAX_TOKENS,
           },
         });
@@ -103,7 +107,6 @@ function trackChatUsage(
             totalTokens,
             maxTokens: MAX_TOKENS,
             utilizationPercent: (totalTokens / MAX_TOKENS) * 100,
-            ipAddress: context.ipAddress,
           },
         });
       }
@@ -148,8 +151,7 @@ function normalizeIncomingMessages(rawPayload: unknown): IncomingUiMessages {
       parts?: unknown;
     };
     const content =
-      record.content ??
-      (Array.isArray(record.parts) ? record.parts : []);
+      record.content ?? (Array.isArray(record.parts) ? record.parts : []);
     return { ...message, content };
   });
 }
@@ -233,7 +235,7 @@ export async function POST(request: NextRequest) {
         "X-Chat-Model-Backend": primaryBackend,
       },
       onUsage: (result, context) => {
-        trackChatUsage(result, { ...context, ipAddress });
+        trackChatUsage(result, context);
       },
     });
   } catch (error) {

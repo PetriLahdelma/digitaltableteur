@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-18T09:26:42.694Z",
+  "generatedAt": "2026-09-23T17:06:32.792Z",
   "summary": {
     "componentCount": 178,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 166,
     "withProductionUsage": 39,
     "uniqueImportedComponents": 166,
-    "totalEvidenceRows": 838,
-    "aliasImportFiles": 431,
+    "totalEvidenceRows": 840,
+    "aliasImportFiles": 433,
     "relativeImportFiles": 440,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -9887,7 +9887,7 @@
         "tier": "organism",
         "group": "overlay",
         "status": "beta",
-        "description": "Collapsible site assistant chat widget with streaming replies.",
+        "description": "Collapsible AI assistant with first-interaction transparency, session-only history and streaming replies.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
         "radixPrimitive": null,
         "element": "div",
@@ -9941,7 +9941,7 @@
         },
         "forbiddenUse": [
           "gate the widget behind user authentication. The widget is",
-          "store chat history in cookies. The current storage is",
+          "store chat history in cookies or persistent localStorage. The current storage is sessionStorage",
           "tamper with the email-workflow reducer state from outside."
         ],
         "composesWith": [
@@ -9963,7 +9963,7 @@
           "description": "The site's collapsible assistant widget: streaming chat with Donny, grapheme-safe burst smoothing for the active reply, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
         }
       },
-      "spec": "# ChatWidget\n\n## Intent\nProvide a persistent, floating AI assistant for site visitors that\ndoesn't take up layout space until invoked. ChatWidget is opinionated\non purpose — it owns its endpoint resolution, its storage, its\nguardrails, and its email-handoff flow — because every consumer of\n\"AI chat on a Next.js site\" has the same dozen problems to solve.\n\n## Interaction contract\n- Keyboard: Tab reaches the floating toggle. Enter / Space toggles\n  the panel. Inside the panel, Tab walks composer → send button →\n  message list (which is scrollable but not individually\n  tab-stoppable). Escape closes the panel.\n- Pointer: click on the toggle opens / closes. Click outside the\n  panel does *not* close (the panel is non-modal). Click on a\n  message bubble does nothing unless it carries an action; the\n  email-workflow bubbles expose explicit buttons.\n- Screen readers: the toggle's `aria-expanded` reflects state. The\n  message log uses `role=\"log\"` with a polite live region and remains\n  `aria-busy` while a reply streams, so assistive technology receives\n  the completed response instead of repeated partial-text mutations.\n\n## Do / don't\n- Do: mount once globally in the layout. The widget is designed for\n  a single global instance.\n- Do: rely on the env-resolved endpoint for normal use. Override only\n  for preview deployments or partner contexts.\n- Don't: gate the widget behind user authentication. The widget is\n  for anonymous visitors; auth-gated chat is a different pattern.\n- Don't: store chat history in cookies. The current storage is\n  `localStorage`; cookies have size limits and travel with every\n  request, which is wrong for chat transcripts.\n- Don't: tamper with the email-workflow reducer state from outside.\n  The reducer has invariants (e.g. \"review can only follow\n  compose\") that direct mutation breaks.\n\n## Design notes\n- Tokens: toggle uses `Button variant=\"primary\"` with a custom\n  fixed-position wrapper. Panel surface uses\n  `--color-surface-elevated`; bubbles use `--color-primary-surface`\n  (user) and `--color-surface-muted` (assistant). Radius is\n  `--radius-lg` for the panel; bubbles use `--radius-md`.\n- Figma: https://www.figma.com/design/digitaltableteur/chat-widget\n  — closed, open, streaming, and email-workflow frames.\n- Endpoint resolution lives in `resolveChatApiEndpoint`:\n  1. Explicit `endpoint` prop wins.\n  2. `VITE_DONNY_CHAT_ENDPOINT` env var second.\n  3. For trusted hosts (`digitaltableteur.com`, subdomains) or\n     local-like hosts (localhost, 127.0.0.1, RFC1918), use\n     `${origin}/api/chat`.\n  4. Otherwise fall back to the public production endpoint.\n- Email workflow is a separate reducer (`emailWorkflowReducer`)\n  with states `idle | compose | field:<key> | review | send`.\n  Each state has its own UI sub-component (`ComposePrompt`,\n  `FieldPrompt`, `ReviewSummary`, `SendStatus`) so the main widget\n  stays lean.\n- Storage key is `dt-donny-chat-v2`. The migration from\n  `dt-donny-chat` is one-way on mount.\n- Guardrails are applied via `processConversationWithFlags`, which\n  runs after every assistant response and can flip flags (e.g.\n  \"user is angry\" or \"user asked for human\"). Flags drive UI\n  decisions like surfacing the email-handoff prompt.\n- The active assistant text part consumes the public `useStreamingText`\n  utility. It smooths bursty accumulated chunks for sighted users,\n  preserves grapheme clusters, bypasses animation for reduced motion,\n  and snaps to the complete response when streaming ends. Historical\n  assistant messages and user messages never enter the reveal loop.\n",
+      "spec": "# ChatWidget\n\n## Intent\n\nProvide a persistent, floating AI assistant for site visitors that\ndoesn't take up layout space until invoked. ChatWidget is opinionated\non purpose — it owns its endpoint resolution, its storage, its\nguardrails, and its email-handoff flow — because every consumer of\n\"AI chat on a Next.js site\" has the same dozen problems to solve.\n\n## Interaction contract\n\n- Keyboard: Tab reaches the floating toggle. Enter / Space toggles\n  the panel. Inside the panel, Tab walks composer → send button →\n  message list (which is scrollable but not individually\n  tab-stoppable). Escape closes the panel.\n- Pointer: click on the toggle opens / closes. Click outside the\n  panel does _not_ close (the panel is non-modal). Click on a\n  message bubble does nothing unless it carries an action; the\n  email-workflow bubbles expose explicit buttons.\n- Screen readers: the toggle's `aria-expanded` reflects state. The\n  message log uses `role=\"log\"` with a polite live region and remains\n  `aria-busy` while a reply streams, so assistive technology receives\n  the completed response instead of repeated partial-text mutations.\n\n## Do / don't\n\n- Do: mount once globally in the layout. The widget is designed for\n  a single global instance.\n- Do: rely on the env-resolved endpoint for normal use. Override only\n  for preview deployments or partner contexts.\n- Don't: gate the widget behind user authentication. The widget is\n  for anonymous visitors; auth-gated chat is a different pattern.\n- Don't: store chat history in cookies or persistent `localStorage`.\n  The current storage is `sessionStorage`, so the browser copy ends with the\n  tab session and never travels with a request.\n- Don't: tamper with the email-workflow reducer state from outside.\n  The reducer has invariants (e.g. \"review can only follow\n  compose\") that direct mutation breaks.\n\n## Design notes\n\n- Tokens: toggle uses `Button variant=\"primary\"` with a custom\n  fixed-position wrapper. Panel surface uses\n  `--color-surface-elevated`; bubbles use `--color-primary-surface`\n  (user) and `--color-surface-muted` (assistant). Radius is\n  `--radius-lg` for the panel; bubbles use `--radius-md`.\n- Figma: https://www.figma.com/design/digitaltableteur/chat-widget\n  — closed, open, streaming, and email-workflow frames.\n- Endpoint resolution lives in `resolveChatApiEndpoint`:\n  1. Explicit `endpoint` prop wins.\n  2. `VITE_DONNY_CHAT_ENDPOINT` env var second.\n  3. For trusted hosts (`digitaltableteur.com`, subdomains) or\n     local-like hosts (localhost, 127.0.0.1, RFC1918), use\n     `${origin}/api/chat`.\n  4. Otherwise fall back to the public production endpoint.\n- Email workflow is a separate reducer (`emailWorkflowReducer`)\n  with states `idle | compose | field:<key> | review | send`.\n  Each state has its own UI sub-component (`ComposePrompt`,\n  `FieldPrompt`, `ReviewSummary`, `SendStatus`) so the main widget\n  stays lean.\n- Storage key is `dt-donny-chat-v2` in `sessionStorage`. Persistent\n  `localStorage` values from `dt-donny-chat-v2` and `dt-donny-chat` are\n  deleted on mount rather than migrated.\n- The open panel identifies Donny as an AI assistant before the first user\n  message, keeps a limitations/data notice visible, and links to the AI-use\n  statement and problem-reporting route.\n- Assistant message containers expose `data-ai-generated=\"true\"`,\n  `data-ai-output-type=\"text\"`, and `data-ai-system=\"donny\"`. These are\n  application metadata, not a substitute for validating any standardised\n  provider-level content-marking obligation.\n- Guardrails are applied via `processConversationWithFlags`, which\n  runs after every assistant response and can flip flags (e.g.\n  \"user is angry\" or \"user asked for human\"). Flags drive UI\n  decisions like surfacing the email-handoff prompt.\n- The active assistant text part consumes the public `useStreamingText`\n  utility. It smooths bursty accumulated chunks for sighted users,\n  preserves grapheme clusters, bypasses animation for reduced motion,\n  and snaps to the complete response when streaming ends. Historical\n  assistant messages and user messages never enter the reveal loop.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ChatWidget",
@@ -52608,10 +52608,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 56,
+        "importCount": 57,
         "productionImportCount": 0,
         "patternImportCount": 1,
-        "componentImportCount": 27,
+        "componentImportCount": 28,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
@@ -52656,6 +52656,12 @@
             "context": "component"
           },
           {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatWidget.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Text",
+            "context": "component"
+          },
+          {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/ComposePrompt.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
@@ -52675,12 +52681,6 @@
           },
           {
             "path": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Text",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "component"
@@ -54683,13 +54683,19 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Timestamp",
-        "importCount": 3,
-        "productionImportCount": 2,
+        "importCount": 4,
+        "productionImportCount": 3,
         "patternImportCount": 0,
         "componentImportCount": 0,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Timestamp",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Timestamp",
             "context": "production"

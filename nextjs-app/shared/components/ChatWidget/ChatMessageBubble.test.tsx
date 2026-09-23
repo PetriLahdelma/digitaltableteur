@@ -44,6 +44,18 @@ describe("ChatMessageBubble", () => {
         "data-role",
         "assistant",
       );
+      expect(screen.getByTestId("chat-message-assistant")).toHaveAttribute(
+        "data-ai-generated",
+        "true",
+      );
+      expect(screen.getByTestId("chat-message-assistant")).toHaveAttribute(
+        "data-ai-output-type",
+        "text",
+      );
+      expect(screen.getByTestId("chat-message-assistant")).toHaveAttribute(
+        "data-ai-system",
+        "donny",
+      );
     });
 
     it("renders user message correctly", () => {
@@ -59,6 +71,9 @@ describe("ChatMessageBubble", () => {
       expect(screen.getByTestId("chat-message-user")).toHaveAttribute(
         "data-role",
         "user",
+      );
+      expect(screen.getByTestId("chat-message-user")).not.toHaveAttribute(
+        "data-ai-generated",
       );
     });
 

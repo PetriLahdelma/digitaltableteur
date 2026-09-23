@@ -1,82 +1,59 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-    "name": "ChatWidget",
-    "tier": "organism",
-    "group": "overlay",
-    "status": "beta",
-    "description": "Collapsible site assistant chat widget with streaming replies.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
-    "radixPrimitive": null,
-    "element": "div",
-    "variants": {},
-    "slots": [],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-    ],
-    "a11y": {
-        "keyboard": [
-            "Tab",
-            "Enter",
-            "Escape"
-        ],
-        "ariaRequirements": [
-            "launcher button labeled",
-            "chat region when open"
-        ],
-        "reducedMotion": true,
-        "reviewed": true,
-        "reviewedNote": "2026-07-14 — streaming display reviewed: only the active assistant reply uses grapheme-safe adaptive smoothing; reduced motion bypasses it and the polite message log remains aria-busy until the complete response is available.",
-        "forcedColorsVerified": true,
-        "accessibilityTreeVerified": true
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "ChatWidget",
+  "tier": "organism",
+  "group": "overlay",
+  "status": "beta",
+  "description": "Collapsible AI assistant with first-interaction transparency, session-only history and streaming replies.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": ["Tab", "Enter", "Escape"],
+    "ariaRequirements": ["launcher button labeled", "chat region when open"],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-07-14 — streaming display reviewed: only the active assistant reply uses grapheme-safe adaptive smoothing; reduced motion bypasses it and the polite message log remains aria-busy until the complete response is available.",
+    "forcedColorsVerified": true,
+    "accessibilityTreeVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": [],
+  "schemaVersion": 2,
+  "props": {
+    "title": {
+      "optional": true,
+      "type": "string"
     },
-    "tokens": {
-        "colors": [],
-        "spacing": []
+    "description": {
+      "optional": true,
+      "type": "string"
     },
-    "lightDarkVerified": true,
-    "consumers": [],
-    "schemaVersion": 2,
-    "props": {
-        "title": {
-            "optional": true,
-            "type": "string"
-        },
-        "description": {
-            "optional": true,
-            "type": "string"
-        },
-        "endpoint": {
-            "optional": true,
-            "type": "string",
-            "description": "Optional override for the API endpoint.\nDefaults to VITE_DONNY_CHAT_ENDPOINT, otherwise falls back to the secure proxy or /api/chat."
-        }
-    },
-    "forbiddenUse": [
-        "gate the widget behind user authentication. The widget is",
-        "store chat history in cookies. The current storage is",
-        "tamper with the email-workflow reducer state from outside."
-    ],
-    "composesWith": [
-        "Button",
-        "Text",
-        "TextInput",
-        "DonnyAvatar"
-    ],
-    "displayName": "ChatWidget",
-    "keywords": [
-        "chat",
-        "assistant",
-        "donny",
-        "streaming",
-        "widget"
-    ],
-    "dense": "Collapsible site assistant (Donny) chat widget: streaming replies, tool actions, i18n, mobile sheet behavior",
-    "usage": {
-        "description": "The site's collapsible assistant widget: streaming chat with Donny, grapheme-safe burst smoothing for the active reply, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
+    "endpoint": {
+      "optional": true,
+      "type": "string",
+      "description": "Optional override for the API endpoint.\nDefaults to VITE_DONNY_CHAT_ENDPOINT, otherwise falls back to the secure proxy or /api/chat."
     }
+  },
+  "forbiddenUse": [
+    "gate the widget behind user authentication. The widget is",
+    "store chat history in cookies or persistent localStorage. The current storage is sessionStorage",
+    "tamper with the email-workflow reducer state from outside."
+  ],
+  "composesWith": ["Button", "Text", "TextInput", "DonnyAvatar"],
+  "displayName": "ChatWidget",
+  "keywords": ["chat", "assistant", "donny", "streaming", "widget"],
+  "dense": "Collapsible site assistant (Donny) chat widget: streaming replies, tool actions, i18n, mobile sheet behavior",
+  "usage": {
+    "description": "The site's collapsible assistant widget: streaming chat with Donny, grapheme-safe burst smoothing for the active reply, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
+  }
 }

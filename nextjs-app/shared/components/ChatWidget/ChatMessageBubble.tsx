@@ -119,7 +119,8 @@ function renderComponentPart(
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t("chatVertaauxProduct", "Score your accessibility with VertaaUX")} →
+            {t("chatVertaauxProduct", "Score your accessibility with VertaaUX")}{" "}
+            →
           </a>
         </div>
       </div>,
@@ -156,7 +157,9 @@ function renderComponentPart(
                 {pkg.priceRangeEur} · {pkg.duration}
               </span>
               {pkg.description ? (
-                <span className={styles.projectCardDesc}>{pkg.description}</span>
+                <span className={styles.projectCardDesc}>
+                  {pkg.description}
+                </span>
               ) : null}
               <span className={styles.projectCardCta}>
                 {t("chatViewPricing", "View on pricing")} →
@@ -175,7 +178,9 @@ function renderComponentPart(
         <div className={styles.followUpDraft}>
           <p className={styles.followUpDraftSubject}>{draftProps.subject}</p>
           <pre className={styles.followUpDraftBody}>{draftProps.body}</pre>
-          <p className={styles.followUpDraftDisclaimer}>{draftProps.disclaimer}</p>
+          <p className={styles.followUpDraftDisclaimer}>
+            {draftProps.disclaimer}
+          </p>
           <div className={styles.followUpDraftActions}>
             <button
               type="button"
@@ -249,6 +254,9 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
     <div
       className={styles.message}
       data-role={message.role}
+      data-ai-generated={isAssistant ? "true" : undefined}
+      data-ai-output-type={isAssistant ? "text" : undefined}
+      data-ai-system={isAssistant ? "donny" : undefined}
       data-testid={`chat-message-${message.role}`}
     >
       {showProcessingState ? (

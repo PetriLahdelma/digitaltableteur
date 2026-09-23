@@ -8,10 +8,10 @@ import ChatWidget from "@dt/ChatWidget";
 describe("ChatWidget focus behavior", () => {
   it("focuses textarea when chat is opened via toggle", async () => {
     const { getByRole, findByLabelText } = render(<ChatWidget />);
-    const toggle = getByRole("button", { name: /chat with donny/i });
+    const toggle = getByRole("button", { name: /AI assistant/i });
     fireEvent.click(toggle);
     expect(getByRole("dialog")).toHaveAttribute("aria-modal", "false");
-    const textarea = await findByLabelText(/ask donny a question/i);
+    const textarea = await findByLabelText(/ask the AI assistant a question/i);
     await waitFor(() => expect(textarea).toHaveFocus());
   });
 });

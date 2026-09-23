@@ -100,14 +100,15 @@ export function PrivacyPolicyPage() {
 
   return (
     <Container size="sm" className={styles.prosePage}>
-
       <Title level={1} size="xs">
         {t("privacyPolicyHeading")}
       </Title>
-      <Text as="p" size="xs">{t("privacyPolicyIntro")}</Text>
+      <Text as="p" size="xs">
+        {t("privacyPolicyIntro")}
+      </Text>
       <Text as="p" size="xs">
         {t("privacyPolicyLastUpdatedLabel")}{" "}
-        <Timestamp value="2025-11-29" format="date" size="xs" />
+        <Timestamp value="2026-09-23" format="date" size="xs" />
       </Text>
 
       <Section spacing="none">
@@ -126,7 +127,9 @@ export function PrivacyPolicyPage() {
         <Title level={2} size="xxs">
           {t("privacyPolicyPurposeTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyPurposeBody")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyPurposeBody")}
+        </Text>
       </Section>
 
       <Section spacing="none">
@@ -136,82 +139,155 @@ export function PrivacyPolicyPage() {
         <Title level={3} size="xxs">
           {t("privacyPolicyContactFormSubtitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyContactFormIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="dash" items={whatWeCollect.map((key) => t(key))} />
-        <Text as="p" size="xs">{t("privacyPolicyContactFormUsage")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyContactFormIntro")}
+        </Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={whatWeCollect.map((key) => t(key))}
+        />
+        <Text as="p" size="xs">
+          {t("privacyPolicyContactFormUsage")}
+        </Text>
 
         <Title level={3} size="xxs">
           {t("privacyPolicyWebsiteVisitorsSubtitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyWebsiteVisitorsIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="dash" items={websiteVisitors.map((key) => t(key))} />
-        <Text as="p" size="xs">{t("privacyPolicyWebsiteVisitorsUsage")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyWebsiteVisitorsIntro")}
+        </Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={websiteVisitors.map((key) => t(key))}
+        />
+        <Text as="p" size="xs">
+          {t("privacyPolicyWebsiteVisitorsUsage")}
+        </Text>
+
+        <Title level={3} size="xxs">
+          {t("privacyPolicyChatSubtitle")}
+        </Title>
+        <Text as="p" size="xs">
+          {t("privacyPolicyChatBody")}
+        </Text>
       </Section>
 
       <Section spacing="none">
         <Title level={2} size="xxs">
           {t("privacyPolicyLegalBasisTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyLegalBasisBody")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyLegalBasisBody")}
+        </Text>
       </Section>
 
       <Section spacing="none">
         <Title level={2} size="xxs">
           {t("privacyPolicySharingTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicySharingIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="dash" items={sharingItems.map((key) => t(key))} />
-        <Text as="p" size="xs">{t("privacyPolicySharingFooter")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicySharingIntro")}
+        </Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={sharingItems.map((key) => t(key))}
+        />
+        <Text as="p" size="xs">
+          {t("privacyPolicySharingFooter")}
+        </Text>
       </Section>
 
       <Section spacing="none">
         <Title level={2} size="xxs">
           {t("privacyPolicyTransfersTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyTransfersBody")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyTransfersBody")}
+        </Text>
       </Section>
 
       <Section spacing="none">
         <Title level={2} size="xxs">
           {t("privacyPolicyCookiesTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyCookiesIntro")}</Text>
-        <Text as="p" size="xs">{t("privacyPolicyCookiesTypes")}</Text>
-        <List as="ul" size="xs" listStyleType="dash" items={cookiesItems.map((key) => t(key))} />
-        <Text as="p" size="xs">{t("privacyPolicyCookiesControl")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyCookiesIntro")}
+        </Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyCookiesTypes")}
+        </Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={cookiesItems.map((key) => t(key))}
+        />
+        <Text as="p" size="xs">
+          {t("privacyPolicyCookiesControl")}
+        </Text>
       </Section>
 
       <Section spacing="none">
         <Title level={2} size="xxs">
           {t("privacyPolicyRetentionTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyRetentionBody")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyRetentionBody")}
+        </Text>
       </Section>
 
       <Section spacing="none">
         <Title level={2} size="xxs">
           {t("privacyPolicyYourRightsTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyYourRightsIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="dash" items={rights.map((key) => t(key))} />
-        <Text as="p" size="xs">{t("privacyPolicyRightsExercise")}</Text>
-        <Text as="p" size="xs">{t("privacyPolicyRightsComplaint")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyYourRightsIntro")}
+        </Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={rights.map((key) => t(key))}
+        />
+        <Text as="p" size="xs">
+          {t("privacyPolicyRightsExercise")}
+        </Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyRightsComplaint")}
+        </Text>
       </Section>
 
       <Section spacing="none">
         <Title level={2} size="xxs">
           {t("privacyPolicySecurityTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicySecurityIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="dash" items={securityItems.map((key) => t(key))} />
-        <Text as="p" size="xs">{t("privacyPolicySecurityFooter")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicySecurityIntro")}
+        </Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={securityItems.map((key) => t(key))}
+        />
+        <Text as="p" size="xs">
+          {t("privacyPolicySecurityFooter")}
+        </Text>
       </Section>
 
       <Section spacing="none">
         <Title level={2} size="xxs">
           {t("privacyPolicyChangesTitle")}
         </Title>
-        <Text as="p" size="xs">{t("privacyPolicyChangesBody")}</Text>
+        <Text as="p" size="xs">
+          {t("privacyPolicyChangesBody")}
+        </Text>
       </Section>
 
       <Section spacing="none">

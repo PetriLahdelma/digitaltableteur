@@ -56,17 +56,22 @@ vi.mock("../../lib/translation", () => {
 describe("ChatWidget behaviors", () => {
   beforeEach(() => {
     localStorage.clear();
+    sessionStorage.clear();
     mockError = null;
     vi.clearAllMocks();
   });
 
-  it("hydrates from stored transcripts (including legacy) and clears legacy storage", async () => {
-    localStorage.setItem(
+  it("hydrates session transcripts and clears persistent legacy storage", async () => {
+    sessionStorage.setItem(
       STORAGE_KEY,
       JSON.stringify([
         { id: "intro", role: "assistant", text: "Persisted hello" },
         { id: "u1", role: "user", text: "Hi" },
       ]),
+    );
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify([{ id: "persistent", role: "user", text: "Remove me" }]),
     );
     localStorage.setItem(
       LEGACY_STORAGE_KEY,
@@ -76,7 +81,31 @@ describe("ChatWidget behaviors", () => {
     render(<ChatWidget />);
 
     await waitFor(() => expect(mockSetMessages).toHaveBeenCalled());
+    expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
     expect(localStorage.getItem(LEGACY_STORAGE_KEY)).toBeNull();
+    expect(sessionStorage.getItem(STORAGE_KEY)).toBeTruthy();
+  });
+
+  it("shows AI identity, limitations, policy, and reporting before input", () => {
+    render(<ChatWidget />);
+
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
+
+    expect(
+      screen.getByRole("heading", { name: /AI assistant/i }),
+    ).toBeVisible();
+    expect(screen.getAllByText(/replies may be wrong/i).length).toBeGreaterThan(
+      0,
+    );
+    expect(
+      screen.getByRole("link", { name: /AI use and data details/i }),
+    ).toHaveAttribute("href", "/ai-use");
+    expect(
+      screen.getByRole("link", { name: /report a problem/i }),
+    ).toHaveAttribute(
+      "href",
+      expect.stringContaining("mailto:mail@digitaltableteur.com"),
+    );
   });
 
   it("shows recoverable error banner and reset clears stored messages", async () => {
@@ -86,7 +115,7 @@ describe("ChatWidget behaviors", () => {
 
     await screen.findByText(/lost the connection/i);
 
-    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
     fireEvent.click(screen.getByRole("button", { name: /Clear/i }));
 
     expect(mockClearError).toHaveBeenCalled();
@@ -97,7 +126,7 @@ describe("ChatWidget behaviors", () => {
     );
 
     await waitFor(() => {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = sessionStorage.getItem(STORAGE_KEY);
       expect(stored).toBeTruthy();
       expect(stored).toContain("Digitaltableteur");
     });
@@ -106,10 +135,12 @@ describe("ChatWidget behaviors", () => {
   it("sends and closes via escape", async () => {
     render(<ChatWidget />);
 
-    const toggle = screen.getByRole("button", { name: /Chat with Donny/i });
+    const toggle = screen.getByRole("button", { name: /AI assistant/i });
     fireEvent.click(toggle);
 
-    const textarea = await screen.findByLabelText(/ask donny a question/i);
+    const textarea = await screen.findByLabelText(
+      /ask the AI assistant a question/i,
+    );
     fireEvent.change(textarea, { target: { value: "Hello Donny" } });
     fireEvent.submit(textarea.closest("form")!);
 
@@ -122,7 +153,7 @@ describe("ChatWidget behaviors", () => {
   it("opts the open panel out of Lenis wheel capture for nested chat scrolling", async () => {
     render(<ChatWidget />);
 
-    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
 
     const panel = document.getElementById("donny-panel");
     expect(panel).toHaveAttribute("data-lenis-prevent-wheel");

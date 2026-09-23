@@ -24,10 +24,10 @@ const CURIOSITY_SELECTORS = [
 const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
   ({ isOpen, onToggle, controlsId }, ref) => {
     const t = useTranslate();
-    const toggleLabel = t("chatToggleLabel", "Chat");
+    const toggleLabel = t("chatToggleLabel", "AI assistant");
     const ariaLabel = isOpen
       ? `${toggleLabel} — ${t("chatToggleClose", "Hide chat")}`
-      : `${toggleLabel} — ${t("chatToggleOpen", "Chat with Donny")}`;
+      : `${toggleLabel} — ${t("chatToggleOpen", "Open Donny AI assistant")}`;
 
     const [donnyState, setDonnyState] = useState<DonnyState>("idle");
     const [isHovered, setIsHovered] = useState(false);
@@ -50,7 +50,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
           setDonnyState("idle");
         }
       },
-      [isOpen, isHovered]
+      [isOpen, isHovered],
     );
 
     // Handle hover on the toggle itself
@@ -118,7 +118,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
         <span className={styles.toggleLabel}>{toggleLabel}</span>
       </Button>
     );
-  }
+  },
 );
 
 ChatToggle.displayName = "ChatToggle";

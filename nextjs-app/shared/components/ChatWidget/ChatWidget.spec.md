@@ -1,6 +1,7 @@
 # ChatWidget
 
 ## Intent
+
 Provide a persistent, floating AI assistant for site visitors that
 doesn't take up layout space until invoked. ChatWidget is opinionated
 on purpose — it owns its endpoint resolution, its storage, its
@@ -8,12 +9,13 @@ guardrails, and its email-handoff flow — because every consumer of
 "AI chat on a Next.js site" has the same dozen problems to solve.
 
 ## Interaction contract
+
 - Keyboard: Tab reaches the floating toggle. Enter / Space toggles
   the panel. Inside the panel, Tab walks composer → send button →
   message list (which is scrollable but not individually
   tab-stoppable). Escape closes the panel.
 - Pointer: click on the toggle opens / closes. Click outside the
-  panel does *not* close (the panel is non-modal). Click on a
+  panel does _not_ close (the panel is non-modal). Click on a
   message bubble does nothing unless it carries an action; the
   email-workflow bubbles expose explicit buttons.
 - Screen readers: the toggle's `aria-expanded` reflects state. The
@@ -22,20 +24,22 @@ guardrails, and its email-handoff flow — because every consumer of
   the completed response instead of repeated partial-text mutations.
 
 ## Do / don't
+
 - Do: mount once globally in the layout. The widget is designed for
   a single global instance.
 - Do: rely on the env-resolved endpoint for normal use. Override only
   for preview deployments or partner contexts.
 - Don't: gate the widget behind user authentication. The widget is
   for anonymous visitors; auth-gated chat is a different pattern.
-- Don't: store chat history in cookies. The current storage is
-  `localStorage`; cookies have size limits and travel with every
-  request, which is wrong for chat transcripts.
+- Don't: store chat history in cookies or persistent `localStorage`.
+  The current storage is `sessionStorage`, so the browser copy ends with the
+  tab session and never travels with a request.
 - Don't: tamper with the email-workflow reducer state from outside.
   The reducer has invariants (e.g. "review can only follow
   compose") that direct mutation breaks.
 
 ## Design notes
+
 - Tokens: toggle uses `Button variant="primary"` with a custom
   fixed-position wrapper. Panel surface uses
   `--color-surface-elevated`; bubbles use `--color-primary-surface`
@@ -55,8 +59,16 @@ guardrails, and its email-handoff flow — because every consumer of
   Each state has its own UI sub-component (`ComposePrompt`,
   `FieldPrompt`, `ReviewSummary`, `SendStatus`) so the main widget
   stays lean.
-- Storage key is `dt-donny-chat-v2`. The migration from
-  `dt-donny-chat` is one-way on mount.
+- Storage key is `dt-donny-chat-v2` in `sessionStorage`. Persistent
+  `localStorage` values from `dt-donny-chat-v2` and `dt-donny-chat` are
+  deleted on mount rather than migrated.
+- The open panel identifies Donny as an AI assistant before the first user
+  message, keeps a limitations/data notice visible, and links to the AI-use
+  statement and problem-reporting route.
+- Assistant message containers expose `data-ai-generated="true"`,
+  `data-ai-output-type="text"`, and `data-ai-system="donny"`. These are
+  application metadata, not a substitute for validating any standardised
+  provider-level content-marking obligation.
 - Guardrails are applied via `processConversationWithFlags`, which
   runs after every assistant response and can flip flags (e.g.
   "user is angry" or "user asked for human"). Flags drive UI

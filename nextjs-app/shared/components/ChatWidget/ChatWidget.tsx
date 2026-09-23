@@ -27,6 +27,8 @@ import SendStatus from "./emailWorkflow/SendStatus";
 const RESEND_CONTACT_ENDPOINT = "/api/contact";
 import ChatToggle from "./ChatToggle";
 import { useTranslate } from "../../lib/translation";
+import { Link } from "../../lib/linkComponent";
+import Text from "@dt/Text";
 import { resolveChatAvatarState } from "./chatAvatarState";
 import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
 import { useDonnyChatLead } from "./useDonnyChatLead";
@@ -45,7 +47,7 @@ export interface ChatWidgetProps {
 const STORAGE_KEY = "dt-donny-chat-v2";
 const LEGACY_STORAGE_KEY = "dt-donny-chat";
 const DEFAULT_GREETING_TEXT =
-  "Hi! I'm Donny, the Digitaltableteur studio guide. Ask me about our work, or anything you notice on the site.";
+  "Hi! I'm Donny, Digitaltableteur's AI assistant. Ask me about the work or a design system challenge.";
 
 const REMOTE_CHAT_ENDPOINT = "https://www.digitaltableteur.com/api/chat";
 const INTERNAL_SITE_HOST = "digitaltableteur.com";
@@ -135,12 +137,7 @@ export function resolveChatApiEndpoint(options: {
   hostname?: string;
   origin?: string;
 }): string {
-  const {
-    endpoint,
-    envEndpoint,
-    hostname,
-    origin,
-  } = options;
+  const { endpoint, envEndpoint, hostname, origin } = options;
 
   if (endpoint?.trim()) {
     return endpoint.trim();
@@ -289,7 +286,9 @@ export const toStoredMessages = (
   return sanitized;
 };
 
-export const parseStoredMessages = (raw: string | null): StoredMessage[] | null => {
+export const parseStoredMessages = (
+  raw: string | null,
+): StoredMessage[] | null => {
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw);
@@ -320,7 +319,9 @@ export const parseStoredMessages = (raw: string | null): StoredMessage[] | null 
   }
 };
 
-export const parseLegacyMessages = (raw: string | null): StoredMessage[] | null => {
+export const parseLegacyMessages = (
+  raw: string | null,
+): StoredMessage[] | null => {
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw);
@@ -402,23 +403,19 @@ const loadStoredMessages = (
   if (typeof window === "undefined") return null;
 
   try {
-    const storedRaw = localStorage.getItem(STORAGE_KEY);
+    const storedRaw = sessionStorage.getItem(STORAGE_KEY);
     const storedV2 = parseStoredMessages(storedRaw);
     if (storedV2?.length) {
       return fromStoredMessages(storedV2, greetingText);
     }
     if (storedRaw) {
-      localStorage.removeItem(STORAGE_KEY);
+      sessionStorage.removeItem(STORAGE_KEY);
     }
 
-    const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
-    const legacy = parseLegacyMessages(legacyRaw);
-    if (legacy?.length) {
-      return fromStoredMessages(legacy, greetingText);
-    }
-    if (legacyRaw) {
-      localStorage.removeItem(LEGACY_STORAGE_KEY);
-    }
+    // Previous versions retained transcripts across browser sessions. Do not
+    // migrate that personal data into the new session-only store: remove it.
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(LEGACY_STORAGE_KEY);
   } catch {
     // ignore storage errors and fall back to greeting
   }
@@ -440,11 +437,15 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   );
   // || not ??: Storybook's seeded text controls pass "", and an empty
   // dialog title/description is never valid — fall back to the translations.
-  const resolvedTitle = title || t("chatTitle", "Chat with Donny");
+  const resolvedTitle = title || t("chatTitle", "AI assistant Donny");
   const resolvedDescription =
-    description || t("chatDescription", "Brand-specific answers, no fluff.");
+    description ||
+    t(
+      "chatDescription",
+      "AI-generated answers from site content. Replies may be wrong.",
+    );
   const placeholderText = t("chatPlaceholder", "Ask me anything…");
-  const inputLabelText = t("chatInputLabel", "Ask Donny a question");
+  const inputLabelText = t("chatInputLabel", "Ask the AI assistant a question");
   const sendLabelText = t("chatSend", "Send message");
 
   const errorMessages = useMemo(
@@ -496,8 +497,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       (typeof import.meta !== "undefined" &&
         (import.meta as any).env?.VITE_DONNY_CHAT_ENDPOINT?.trim?.()) ||
       process.env.NEXT_PUBLIC_DONNY_CHAT_ENDPOINT?.trim?.();
-    const hostname = typeof window !== "undefined" ? window.location.hostname : undefined;
-    const origin = typeof window !== "undefined" ? window.location.origin : undefined;
+    const hostname =
+      typeof window !== "undefined" ? window.location.hostname : undefined;
+    const origin =
+      typeof window !== "undefined" ? window.location.origin : undefined;
 
     return resolveChatApiEndpoint({
       endpoint,
@@ -562,13 +565,39 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   // Keywords that trigger special Donny reactions when user types them
   const TOOL_KEYWORDS = [
-    "map", "location", "where", "address", "directions", "navigate",
-    "email", "contact", "message", "send", "write",
-    "search", "find", "look", "show me",
-    "help", "how", "what", "why", "explain",
-    "work", "portfolio", "project", "case study",
-    "service", "offer", "price", "cost", "hire",
-    "expression", "mood", "face", "moods",
+    "map",
+    "location",
+    "where",
+    "address",
+    "directions",
+    "navigate",
+    "email",
+    "contact",
+    "message",
+    "send",
+    "write",
+    "search",
+    "find",
+    "look",
+    "show me",
+    "help",
+    "how",
+    "what",
+    "why",
+    "explain",
+    "work",
+    "portfolio",
+    "project",
+    "case study",
+    "service",
+    "offer",
+    "price",
+    "cost",
+    "hire",
+    "expression",
+    "mood",
+    "face",
+    "moods",
   ];
 
   const reactiveAvatarState = useMemo(
@@ -688,7 +717,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     if (typeof window === "undefined") return;
     try {
       const serialized = toStoredMessages(messages, greetingText);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(serialized));
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(serialized));
+      localStorage.removeItem(STORAGE_KEY);
       localStorage.removeItem(LEGACY_STORAGE_KEY);
     } catch {
       // ignore storage errors
@@ -842,10 +872,12 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
     if (typeof window !== "undefined") {
       try {
-        localStorage.setItem(
+        sessionStorage.setItem(
           STORAGE_KEY,
           JSON.stringify(toStoredMessages(resetMessages, greetingText)),
         );
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(LEGACY_STORAGE_KEY);
       } catch {
         // ignore storage errors
       }
@@ -950,6 +982,25 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             isSpeaking={status === "streaming"}
             enableSleepDetection
           />
+          <aside
+            className={styles.transparencyNotice}
+            aria-label={t("chatTransparencyLabel", "AI assistant information")}
+          >
+            <Text as="p" size="xs" className={styles.transparencyCopy}>
+              {t(
+                "chatDisclosure",
+                "AI-generated replies may be wrong. Do not share sensitive personal data.",
+              )}
+            </Text>
+            <div className={styles.transparencyLinks}>
+              <Link href="/ai-use">
+                {t("chatPolicyLink", "AI use and data details")}
+              </Link>
+              <a href="mailto:mail@digitaltableteur.com?subject=AI%20assistant%20report">
+                {t("chatReportLink", "Report a problem")}
+              </a>
+            </div>
+          </aside>
           <ChatMessages
             ref={scrollerRef}
             messages={messages}

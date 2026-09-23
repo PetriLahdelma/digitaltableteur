@@ -8,9 +8,9 @@ import ChatToggle from "./ChatToggle";
 vi.mock("../../lib/translation", () => {
   const t = (key: string, fallback?: string) => {
     const translations: Record<string, string> = {
-      chatToggleLabel: "Chat",
+      chatToggleLabel: "AI assistant",
       chatToggleClose: "Hide chat",
-      chatToggleOpen: "Chat with Donny",
+      chatToggleOpen: "Open Donny AI assistant",
     };
     return translations[key] || fallback || key;
   };
@@ -36,7 +36,7 @@ describe("ChatToggle", () => {
     render(<ChatToggle isOpen={false} onToggle={vi.fn()} />);
     expect(screen.getByRole("button")).toHaveAttribute(
       "aria-label",
-      "Chat — Chat with Donny",
+      "AI assistant — Open Donny AI assistant",
     );
   });
 
@@ -44,7 +44,7 @@ describe("ChatToggle", () => {
     render(<ChatToggle isOpen={true} onToggle={vi.fn()} />);
     expect(screen.getByRole("button")).toHaveAttribute(
       "aria-label",
-      "Chat — Hide chat",
+      "AI assistant — Hide chat",
     );
   });
 
@@ -80,9 +80,9 @@ describe("ChatToggle", () => {
     );
   });
 
-  it("renders 'Chat' text label", () => {
+  it("renders the AI assistant text label", () => {
     render(<ChatToggle isOpen={false} onToggle={vi.fn()} />);
-    expect(screen.getByText("Chat")).toBeInTheDocument();
+    expect(screen.getByText("AI assistant")).toBeInTheDocument();
   });
 
   it("applies data-open attribute when open", () => {

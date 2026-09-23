@@ -17,7 +17,7 @@ describe("AiUsagePage", () => {
   it("renders introduction section", () => {
     renderWithProviders(<AiUsagePage />);
     expect(
-      screen.getByText(/committed to transparency about AI usage/i),
+      screen.getByText(/transparency notice, not a legal certification/i),
     ).toBeInTheDocument();
   });
 
@@ -29,6 +29,18 @@ describe("AiUsagePage", () => {
   it("renders use cases section", () => {
     renderWithProviders(<AiUsagePage />);
     expect(screen.getByText(/Where AI is used/i)).toBeInTheDocument();
+  });
+
+  it("describes the live assistant boundary and temporary browser storage", () => {
+    renderWithProviders(<AiUsagePage />);
+
+    expect(
+      screen.getByRole("heading", { name: /Website AI assistant/i, level: 2 }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/does not rank or profile people/i),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText(/sessionStorage/i).length).toBeGreaterThan(0);
   });
 
   it("renders email contact link", () => {

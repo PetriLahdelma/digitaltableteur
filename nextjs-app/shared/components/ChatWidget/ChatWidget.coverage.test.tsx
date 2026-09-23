@@ -46,6 +46,7 @@ vi.mock("ai", () => ({
 describe("ChatWidget coverage", () => {
   beforeEach(() => {
     localStorage.clear();
+    sessionStorage.clear();
     mockError = null;
     mockStatus = "idle";
     mockMessagesOverride = null;
@@ -56,14 +57,14 @@ describe("ChatWidget coverage", () => {
   it("renders toggle and opens panel", async () => {
     renderWithProviders(<ChatWidget />);
 
-    const toggle = screen.getByRole("button", { name: /Chat with Donny/i });
+    const toggle = screen.getByRole("button", { name: /AI assistant/i });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
 
     fireEvent.click(toggle);
     expect(toggle).toHaveAttribute("aria-expanded", "true");
 
     await waitFor(() => {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = sessionStorage.getItem(STORAGE_KEY);
       expect(stored).toBeTruthy();
       expect(stored).toContain("Donny");
     });
@@ -72,7 +73,7 @@ describe("ChatWidget coverage", () => {
   it("closes panel when toggle clicked again", () => {
     renderWithProviders(<ChatWidget />);
 
-    const toggle = screen.getByRole("button", { name: /Chat with Donny/i });
+    const toggle = screen.getByRole("button", { name: /AI assistant/i });
     fireEvent.click(toggle);
     expect(toggle).toHaveAttribute("aria-expanded", "true");
 
@@ -82,9 +83,14 @@ describe("ChatWidget coverage", () => {
 
   it("renders header with title and minimize button", () => {
     renderWithProviders(<ChatWidget />);
-    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
 
-    expect(screen.getByText(/Chat with Donny/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /AI assistant/i }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText(/replies may be wrong/i).length).toBeGreaterThan(
+      0,
+    );
     expect(
       screen.getByRole("button", { name: /Minimize chat/i }),
     ).toBeInTheDocument();
@@ -92,7 +98,7 @@ describe("ChatWidget coverage", () => {
 
   it("closes panel via header minimize button", () => {
     renderWithProviders(<ChatWidget />);
-    const toggle = screen.getByRole("button", { name: /Chat with Donny/i });
+    const toggle = screen.getByRole("button", { name: /AI assistant/i });
     fireEvent.click(toggle);
 
     fireEvent.click(screen.getByRole("button", { name: /Minimize chat/i }));
@@ -101,10 +107,10 @@ describe("ChatWidget coverage", () => {
 
   it("renders message composer with input and send button", () => {
     renderWithProviders(<ChatWidget />);
-    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
 
     expect(
-      screen.getByLabelText(/Ask Donny a question/i),
+      screen.getByLabelText(/Ask the AI assistant a question/i),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /Send message/i }),
@@ -113,18 +119,16 @@ describe("ChatWidget coverage", () => {
 
   it("renders intro message on mount", () => {
     renderWithProviders(<ChatWidget />);
-    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
 
-    expect(
-      screen.getByText(/design system challenge/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/design system challenge/i)).toBeInTheDocument();
   });
 
   it("disables send while streaming", () => {
     mockStatus = "streaming";
 
     renderWithProviders(<ChatWidget />);
-    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
 
     expect(
       screen.getByRole("button", { name: /Send message/i }),
@@ -144,28 +148,28 @@ describe("ChatWidget coverage", () => {
     renderWithProviders(<ChatWidget />);
     await screen.findByText(/lost the connection/i);
 
-    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
     fireEvent.click(screen.getByRole("button", { name: /Clear/i }));
     expect(mockClearError).toHaveBeenCalled();
   });
 
-  it("persists messages to localStorage on change", async () => {
+  it("persists messages to sessionStorage on change", async () => {
     mockMessagesOverride = [
       { id: "1", role: "user", parts: [{ type: "text", text: "Hello" }] },
       { id: "2", role: "assistant", parts: [{ type: "text", text: "Hi!" }] },
     ];
 
     renderWithProviders(<ChatWidget />);
-    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
 
     await waitFor(() => {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = sessionStorage.getItem(STORAGE_KEY);
       expect(stored).toBeTruthy();
       expect(stored).toContain("Hello");
     });
   });
 
-  it("loads messages from localStorage on mount", () => {
+  it("loads messages from sessionStorage on mount", () => {
     const storedMessages = [
       {
         id: "1",
@@ -174,7 +178,7 @@ describe("ChatWidget coverage", () => {
       },
     ];
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(storedMessages));
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(storedMessages));
 
     renderWithProviders(<ChatWidget />);
 
