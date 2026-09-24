@@ -79,6 +79,21 @@ export const projects: Project[] = [
     duration: "2026–Present",
   },
   {
+    id: "vr-design-system",
+    slug: "vr-design-system",
+    title: "VR Design System",
+    description:
+      "Industrialising VR's live design system into one agent-ready source of truth: DTCG tokens, an enforceable component contract, and accessibility as a CI gate across web and mobile.",
+    thumbnail: "/images/portfolio/vr-design-system/thumbnail.svg",
+    category: "design-systems",
+    tags: ["Design Systems", "Design Tokens", "Accessibility", "Agent-ready"],
+    featured: false,
+    order: 1,
+    client: "VR Group",
+    duration: "2026",
+    comingSoon: true,
+  },
+  {
     id: "helsinki-design-system",
     slug: "helsinki-design-system",
     title: "Helsinki Design System",
