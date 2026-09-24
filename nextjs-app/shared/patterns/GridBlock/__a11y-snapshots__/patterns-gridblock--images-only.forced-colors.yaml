@@ -1,8 +1,8 @@
 - figure "Research and discovery phase":
-  - img "Research findings"
-- figure "Collaborative goal setting":
-  - img "Goal setting workshop"
-- figure "User journey mapping":
-  - img "User journey map"
-- figure "High-fidelity prototype":
-  - img "Prototype detail"
+  - img "Research board with rows of sticky-note findings and yes and no votes from Helsinki Design System user research"
+- figure "Technical conformity and inclusive design":
+  - 'img "Venn diagram: technical conformity to WCAG overlapping with inclusive design for real users"'
+- figure "Persona illustration":
+  - img "Illustration of a persona silhouette filled with blurred Helsinki street photography"
+- figure "Concepting and ideation workshop":
+  - img "Hands arranging sticky notes on a concepting and ideation board with topics such as user needs, component library, accessibility guidelines, colour palette and typography"
