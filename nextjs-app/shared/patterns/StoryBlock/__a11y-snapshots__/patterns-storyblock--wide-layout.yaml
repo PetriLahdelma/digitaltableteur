@@ -1,5 +1,5 @@
 - region "System Infrastructure":
-  - heading "Technical Architecture" [level=4]
+  - paragraph: Technical Architecture
   - heading "System Infrastructure" [level=4]
   - paragraph: The technical foundation was built on modern frameworks and tools that prioritize performance, maintainability, and developer experience.
   - paragraph: Modular architecture allows teams to adopt components incrementally while maintaining consistency across different projects and platforms.

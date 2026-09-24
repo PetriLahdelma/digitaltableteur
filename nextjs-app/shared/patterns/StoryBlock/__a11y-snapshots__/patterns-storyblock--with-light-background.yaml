@@ -1,5 +1,5 @@
 - region "Validation and Refinement":
-  - heading "User Testing" [level=4]
+  - paragraph: User Testing
   - heading "Validation and Refinement" [level=4]
   - paragraph: User testing sessions revealed critical insights about navigation patterns, content hierarchy, and interaction preferences that shaped the final design.
   - paragraph: Iterative refinements based on real user feedback ensured the system met actual user needs rather than assumptions.

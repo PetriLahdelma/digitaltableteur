@@ -1,5 +1,5 @@
 - region "Design Evolution":
-  - heading "Visual Documentation" [level=4]
+  - paragraph: Visual Documentation
   - heading "Design Evolution" [level=4]
   - paragraph: Even with multiple images in a single-column layout, content remains clear and easy to follow.
   - figure "Initial research findings":
