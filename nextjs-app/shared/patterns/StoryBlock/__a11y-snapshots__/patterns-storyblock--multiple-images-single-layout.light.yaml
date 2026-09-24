@@ -3,7 +3,7 @@
   - heading "Design Evolution" [level=4]
   - paragraph: Even with multiple images in a single-column layout, content remains clear and easy to follow.
   - figure "Initial research findings":
-    - img "Research phase"
+    - img "Research board with rows of sticky-note findings and yes and no votes from Helsinki Design System user research"
     - paragraph: Initial research findings
   - figure "Low-fidelity wireframes":
     - img "Wireframe stage"

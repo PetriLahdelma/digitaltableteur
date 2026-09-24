@@ -237,14 +237,14 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         images={[
           {
             src: "/images/portfolio/helsinki-design-system/research.png",
-            alt: "Helsinki Design System journey map",
+            alt: "Research board with rows of sticky-note findings and yes and no votes from Helsinki Design System user research",
             width: 738,
             height: 506,
             caption: "Post-it Findings",
           },
           {
             src: "/images/portfolio/helsinki-design-system/goal-setting.png",
-            alt: "Helsinki Design System prototype detail",
+            alt: "Venn diagram: technical conformity to WCAG overlapping with inclusive design for real users",
             width: 738,
             height: 506,
             caption: "Benchmarking and goal-setting.",
@@ -300,14 +300,14 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         images={[
           {
             src: "/images/portfolio/helsinki-design-system/journey-map.png",
-            alt: "Workshop participants creating user personas with sticky notes on a wall",
+            alt: "Illustration of a persona silhouette filled with blurred Helsinki street photography",
             width: 738,
             height: 506,
             caption: "Persona Creation Illustration",
           },
           {
             src: "/images/portfolio/helsinki-design-system/prototype-detail.png",
-            alt: "Design team collaborating on user journey mapping during a workshop session",
+            alt: "Hands arranging sticky notes on a concepting and ideation board with topics such as user needs, component library, accessibility guidelines, colour palette and typography",
             width: 738,
             height: 506,
             caption: "Journey Mapping at a Design System Workshop.",
@@ -539,7 +539,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={{
           src: "/images/portfolio/helsinki-design-system/components-page.png",
-          alt: "Screenshot of the Helsinki Design System components documentation page showing component library and guidelines",
+          alt: "Person working at a laptop that shows the Helsinki Design System components documentation page",
           width: 1184,
           height: 500,
           caption: "The Helsinki Design System Components Page",
