@@ -1,10 +1,11 @@
 import { createGateway } from "@ai-sdk/gateway";
 import { createOpenAI } from "@ai-sdk/openai";
-import type { LanguageModel } from "ai";
+import { wrapLanguageModel, type LanguageModel } from "ai";
 import {
   resolveGatewayModelId,
   resolveModelId,
 } from "@/app/api/chat-shared";
+import { gatewayFinishCompatMiddleware } from "./gateway-finish-compat";
 
 export type ChatModelBackend = "gateway" | "openai";
 
@@ -63,7 +64,12 @@ export function getChatLanguageModel(backend: ChatModelBackend): LanguageModel {
     baseURL: process.env.AI_GATEWAY_URL?.trim(),
     apiKey: process.env.AI_GATEWAY_API_KEY?.trim(),
   });
-  return gateway(resolveGatewayModelId());
+  // The Gateway currently returns legacy finish data that stops tool calls;
+  // see gateway-finish-compat.ts.
+  return wrapLanguageModel({
+    model: gateway(resolveGatewayModelId()),
+    middleware: gatewayFinishCompatMiddleware,
+  });
 }
 
 export function describeChatBackend(backend: ChatModelBackend): string {
