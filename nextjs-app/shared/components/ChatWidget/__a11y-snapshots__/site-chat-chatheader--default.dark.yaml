@@ -1,9 +1,7 @@
 - status: Work in progress (alpha)
 - banner:
-  - img "Donny is idle":
-    - img
   - paragraph:
-    - text: AI assistant · DT Donny
+    - text: Digitaltableteur
     - status "Available now"
   - heading "Chat with Donny" [level=2]
   - paragraph: DT-specific answers, no fluff.

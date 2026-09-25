@@ -1,0 +1,6 @@
+- status: Work in progress (alpha)
+- text: Ask the AI assistant a question
+- textbox "Ask the AI assistant a question" [disabled]:
+  - /placeholder: Ask about open hours, service, or approach…
+- button "Send message" [disabled]: Send
+- paragraph: Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.

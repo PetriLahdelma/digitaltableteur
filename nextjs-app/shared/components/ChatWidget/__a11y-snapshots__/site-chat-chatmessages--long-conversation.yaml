@@ -1,0 +1,10 @@
+- status: Work in progress (alpha)
+- log "Chat messages":
+  - paragraph: Hi! I'm Donny, the Digitaltableteur studio guide. Feel free to ask about our work or anything you notice on the site.
+  - paragraph: What services do you offer?
+  - paragraph: We blend strategic design, development, and content craft to ship end-to-end brand and digital experiences.
+  - text: Design Development Strategy AI Innovation
+  - paragraph: Can you tell me more about your design process?
+  - paragraph: Our design process is collaborative and iterative. We start with discovery workshops to understand your goals, then move through wireframing, prototyping, and user testing before final implementation.
+  - paragraph: What technologies do you work with?
+  - paragraph: We specialize in modern web technologies including React, TypeScript, Next.js, and cutting-edge CSS. We also work with headless CMS solutions and serverless architectures.

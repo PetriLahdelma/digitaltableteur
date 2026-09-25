@@ -1,0 +1,28 @@
+- status: Work in progress (alpha)
+- 'heading "ChatComposer Compliance: 12/12" [level=2]'
+- text: "Last reviewed: November 24, 2025 1.2 Component Structure"
+- img "Pass"
+- text: "All files present: .tsx, .test.tsx, .stories.tsx, index.ts (shared CSS) 1.3 TypeScript Strictness"
+- img "Pass"
+- text: Exported ChatComposerProps & ChatComposerHandle interfaces with JSDoc 2.1 CSS Modules
+- img "Pass"
+- text: Uses shared ChatWidget.module.css (acceptable for sub-components) 2.2 Design Tokens
+- img "Pass"
+- text: All CSS uses design tokens without forbidden fallbacks 3 Component API
+- img "Pass"
+- text: Clean controlled component API with imperative handle for focus 4 Internationalization
+- img "Pass"
+- text: Uses useTranslation() for all user-facing text (EN/FI/SV) 5 React Best Practices
+- img "Pass"
+- text: forwardRef + useImperativeHandle pattern, minimal re-renders 6 Accessibility
+- img "Pass"
+- text: Proper labels, ARIA attributes, keyboard navigation (Cmd/Ctrl+Enter), jest-axe tests 7 Testing
+- img "Pass"
+- text: 8 unit tests + 3 accessibility tests with jest-axe 8 Code Quality
+- img "Pass"
+- text: Clean TypeScript, no linting issues 9 Storybook
+- img "Pass"
+- text: Interactive & SendingState stories with ComplianceCard 10 Production Ready
+- img "Pass"
+- text: Keyboard shortcuts, disabled states, max length validation
+- separator "Resize table"

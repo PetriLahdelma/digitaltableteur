@@ -1,0 +1,18 @@
+- status: Work in progress (alpha)
+- paragraph: Hello! I'm Donny, your guide to Digitaltableteur. How can I help you today?
+- paragraph: Can you tell me about the services you offer?
+- paragraph:
+  - text: We offer a comprehensive range of services including
+  - strong: design
+  - text: ","
+  - strong: development
+  - text: ", and"
+  - strong: content strategy
+  - text: . Our approach blends strategic thinking with hands-on execution to deliver end-to-end digital experiences.
+- paragraph: "We specialize in:"
+- list:
+  - listitem: Brand identity and visual design
+  - listitem: Web and mobile development
+  - listitem: Content architecture and editorial strategy
+  - listitem: AI-powered innovation
+- status "Thinking…"

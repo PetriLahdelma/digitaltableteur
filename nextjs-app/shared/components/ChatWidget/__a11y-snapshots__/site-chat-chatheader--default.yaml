@@ -1,10 +1,9 @@
 - status: Work in progress (alpha)
 - banner:
-  - img "Donny is idle":
-    - img
   - paragraph:
-    - text: DT Donny
+    - text: Digitaltableteur
     - status "Available now"
   - heading "Chat with Donny" [level=2]
+  - paragraph: DT-specific answers, no fluff.
   - button "Minimize chat":
     - img "Minimize chat"

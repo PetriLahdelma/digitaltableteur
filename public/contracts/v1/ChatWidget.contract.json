@@ -24,28 +24,838 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "2.5.8"
         ],
-        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-analyzing.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.789Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-custom-message.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.613Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-default.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:19.179Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.098Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-default.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:04.186Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-generating.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.546Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-in-chat-context.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.815Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-kitchen-sink.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:49.076Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-moderate-intensity.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.220Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-prominent-intensity.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.418Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-subtle-intensity.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.006Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-thinking.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.326Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-vercel-ai-sdk-integration.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:49.297Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-interactive.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:16.614Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-interactive.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.025Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-interactive.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:09.217Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-sending-state.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.255Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-z-chat-composer-compliance.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.560Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-default.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:21.531Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:55.820Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-default.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:09.077Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-z-chat-header-compliance.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:56.129Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-message.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:16.488Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-message.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:51.890Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-message.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:04.236Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-streaming.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.316Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-kitchen-sink.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.977Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-long-assistant-message.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.556Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-user-message.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.107Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-with-workflow-ui.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.764Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-z-chat-message-bubble-compliance.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:53.251Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-default.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:21.629Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.512Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-default.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:06.701Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-empty-state.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.199Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-long-conversation.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.761Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-streaming.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.981Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-z-chat-messages-compliance.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.266Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-default.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:19.097Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:58.620Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-default.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:11.726Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-open.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:58.837Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-chat-text-area-demo.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:57.264Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-empty-state.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:56.625Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-keyboard-navigation.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:57.061Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          }
+        ]
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-analyzing.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.789Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-custom-message.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.613Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-default.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:19.179Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-default.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:30.916Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.098Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-default.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:04.186Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-generating.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.546Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-in-chat-context.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.815Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-kitchen-sink.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:49.076Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-moderate-intensity.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.220Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-prominent-intensity.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.418Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-subtle-intensity.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.006Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-thinking.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.326Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-vercel-ai-sdk-integration.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:49.297Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-interactive.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:16.614Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-interactive.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:28.613Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-interactive.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.025Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-interactive.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:09.217Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-sending-state.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.255Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-z-chat-composer-compliance.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.560Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-default.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:21.531Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-default.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:33.185Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:55.820Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-default.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:09.077Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-z-chat-header-compliance.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:56.129Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-message.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:16.488Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-message.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:28.455Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-message.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:51.890Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-message.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:04.236Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-streaming.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.316Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-kitchen-sink.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.977Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-long-assistant-message.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.556Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-user-message.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.107Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-with-workflow-ui.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:52.764Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-z-chat-message-bubble-compliance.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:53.251Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-default.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:21.629Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-default.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:33.219Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.512Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-default.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:06.701Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-empty-state.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:48.199Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-long-conversation.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.761Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-streaming.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.981Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-z-chat-messages-compliance.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:47.266Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-default.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:19.097Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-default.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:30.916Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:58.620Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-default.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:11.726Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-open.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:58.837Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-chat-text-area-demo.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:57.264Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-default.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:55.579Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-empty-state.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:56.625Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-example.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:23.761Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-example.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:35.382Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-example.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:57.293Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-example.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:06.374Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-forced-colors.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:23.794Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-forced-colors.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:35.419Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:57.324Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-forced-colors.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:06.406Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-keyboard-navigation.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:57.061Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-playground.dark.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:23.722Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-playground.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:35.345Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-playground.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:53:55.535Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chatwidget-playground.light.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:06.340Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          }
+        ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-14"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-aiprocessingstate-default.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:30.916Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatcomposer-interactive.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:28.613Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatheader-default.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:33.185Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessagebubble-assistant-message.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:28.455Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chatmessages-default.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:33.219Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ChatWidget/__a11y-evidence__/site-chat-chattoggle-default.forced-colors.json",
+            "sourceCommit": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+            "capturedAt": "2026-09-25T21:54:30.916Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",
@@ -64,7 +874,7 @@
         "wcag": [
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
       },
       {
         "id": "human-a11y-review",

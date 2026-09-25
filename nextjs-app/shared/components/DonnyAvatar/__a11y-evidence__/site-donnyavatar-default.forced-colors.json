@@ -1,19 +1,16 @@
 {
   "storyId": "site-donnyavatar-default",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:45:14.180Z",
-  "runner": "backfill",
+  "sourceSHA": "ac4a1afb10dff25a0379ade8017f31467ef87269",
+  "capturedAt": "2026-09-25T21:54:53.707Z",
+  "runner": "local-recapture-2026-09-26",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     },
     "forced-colors-real-browser": {
-      "passed": true
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

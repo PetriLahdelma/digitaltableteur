@@ -1,0 +1,14 @@
+- status: Work in progress (alpha)
+- heading "Modes" [level=3]
+- status "Thinking…"
+- status "Generating…"
+- status "Analyzing…"
+- heading "Intensities" [level=3]
+- text: "Subtle:"
+- status "Thinking…"
+- text: "Moderate:"
+- status "Thinking…"
+- text: "Prominent:"
+- status "Thinking…"
+- heading "Custom Message" [level=3]
+- status "Processing your request..."

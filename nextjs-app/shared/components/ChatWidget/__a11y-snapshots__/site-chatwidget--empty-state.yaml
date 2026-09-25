@@ -3,41 +3,53 @@
 - paragraph: Click the chat bubble in the bottom-right corner to open the demo. You can type a prompt and Donny will answer with a prerecorded reply so you can explore the flow without calling the real API.
 - dialog "Meet Donny":
   - banner:
-    - img "Donny is greeting":
-      - img
     - paragraph:
-      - text: DT Donny
+      - text: Digitaltableteur
       - status "Outside open hours"
       - text: Studio offline
     - heading "Meet Donny" [level=2]
+    - paragraph: This Storybook preview simulates the chat flow.
     - button "Minimize chat":
       - img "Minimize chat"
+  - complementary "AI assistant information":
+    - paragraph: Don't share sensitive personal data. This conversation stays in this tab until you clear or close it.
+    - link "AI use and data details":
+      - /url: /ai-use
+    - link "Report a problem":
+      - /url: mailto:mail@digitaltableteur.com?subject=AI%20assistant%20report
+    - button "Dismiss notice"
   - log "Chat messages":
-    - paragraph: Hi! I’m Donny. Tell me about your design system challenge. Whether it’s tokens, components, DesignOps, or AI workflows and I’ll point you to the right service.
-  - text: Ask Donny a question
-  - textbox "Ask Donny a question":
+    - paragraph: Hi! I’m Donny, Digitaltableteur’s AI assistant. Ask me about the work or a design system challenge.
+  - text: Ask the AI assistant a question
+  - textbox "Ask the AI assistant a question":
     - /placeholder: Describe your design system challenge…
   - button "Send message" [disabled]: Send
   - paragraph: Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.
   - button "Clear conversation": Clear
-- button "Chat — Hide chat" [expanded]:
-  - img "Chat — Hide chat"
-  - text: Chat
+- button "AI assistant — Hide chat" [expanded]:
+  - img "AI assistant — Hide chat"
+  - text: AI assistant
 - dialog "Meet Donny":
   - banner:
-    - img "Donny is greeting":
-      - img
     - paragraph:
-      - text: DT Donny
+      - text: Digitaltableteur
       - status "Outside open hours"
       - text: Studio offline
     - heading "Meet Donny" [level=2]
+    - paragraph: This Storybook preview simulates the chat flow.
     - button "Minimize chat":
       - img "Minimize chat"
+  - complementary "AI assistant information":
+    - paragraph: Don't share sensitive personal data. This conversation stays in this tab until you clear or close it.
+    - link "AI use and data details":
+      - /url: /ai-use
+    - link "Report a problem":
+      - /url: mailto:mail@digitaltableteur.com?subject=AI%20assistant%20report
+    - button "Dismiss notice"
   - log "Chat messages":
-    - paragraph: Hi! I’m Donny. Tell me about your design system challenge. Whether it’s tokens, components, DesignOps, or AI workflows and I’ll point you to the right service.
-  - text: Ask Donny a question
-  - textbox "Ask Donny a question":
+    - paragraph: Hi! I’m Donny, Digitaltableteur’s AI assistant. Ask me about the work or a design system challenge.
+  - text: Ask the AI assistant a question
+  - textbox "Ask the AI assistant a question":
     - /placeholder: Describe your design system challenge…
   - button "Send message" [disabled]: Send
   - paragraph: Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.
