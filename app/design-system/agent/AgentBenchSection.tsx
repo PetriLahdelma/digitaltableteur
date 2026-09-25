@@ -113,9 +113,7 @@ export function AgentBenchSection({
       </Text>
 
       <List
-        items={arms.map(
-          (arm) => `${ARM_SHORT[arm]}: ${artifact.armLabels[arm] ?? arm}`,
-        )}
+        items={arms.map((arm) => artifact.armLabels[arm] ?? ARM_SHORT[arm])}
         listStyleType="disc"
         size="xs"
         lineHeight="relaxed"
