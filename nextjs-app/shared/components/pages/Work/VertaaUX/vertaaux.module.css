@@ -514,12 +514,21 @@
   }
 }
 
+/*
+ * The sizes below scale with the viewport (vi), but each column is only
+ * about 40% of it. Between 640px and 900px the root font is 18px, the clamps
+ * hit their maximum, and nowrap lines were cut mid-word ("The quick browr").
+ * The column is a size container, and each size is also capped in cqi at the
+ * width its longest nowrap line needs, so wide layouts keep their sizes and
+ * narrow columns shrink instead of clipping.
+ */
 .waterfallColumn {
   display: flex;
   min-inline-size: 0;
   flex-direction: column;
   gap: 0;
   overflow: hidden;
+  container-type: inline-size;
 }
 
 .waterfallLabel {
@@ -556,15 +565,15 @@
 }
 
 .waterfallSize2xl {
-  font-size: clamp(1.375rem, 7vi, 2.5rem);
+  font-size: min(clamp(1.375rem, 7vi, 2.5rem), 11cqi);
 }
 
 .waterfallSizeXl {
-  font-size: clamp(1.125rem, 5vi, 1.75rem);
+  font-size: min(clamp(1.125rem, 5vi, 1.75rem), 9cqi);
 }
 
 .waterfallSizeLg {
-  font-size: clamp(1rem, 4vi, 1.25rem);
+  font-size: min(clamp(1rem, 4vi, 1.25rem), 6.4cqi);
 }
 
 .waterfallSizeMd {
