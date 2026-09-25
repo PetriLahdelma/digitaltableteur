@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.10.2 - 2026-09-25
+
+- `dt-breadcrumb`: the collapsed-trail ellipsis trigger ("Show N hidden
+  breadcrumbs") now has a 24x24 CSS px minimum target with the glyph
+  centered (it measured 20x16.7). Fixes a WCAG 2.2 SC 2.5.8 Target Size
+  (Minimum) failure found by a target-size scan of every story; the row
+  height is unchanged within a pixel.
+- `dt-icon`: the native icon data includes the curated `TreeView` glyph,
+  matching `@digitaltableteur/react` 0.1.25.
+
 ## 0.10.1 - 2026-08-08
 
 - Rendered-parity drift repairs, porting the React source of truth to three
