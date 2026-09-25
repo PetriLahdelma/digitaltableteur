@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- **Breaking (publish as 0.2.0):** `./dtcg` is now DTCG 2025.10. Values are
+  structured (color objects, `{ value, unit }` dimensions, aliases as
+  `{a.b}`), the extension key is `com.digitaltableteur` (was
+  `digitaltableteur`) and also carries the original CSS, groups that are also
+  tokens use `$root` (was `DEFAULT`), and categories are merged at the root
+  instead of nested under a category key. 37 tokens with no DTCG form are
+  listed under the root extension's `nonDtcg` instead of exported as invalid
+  tokens. Token names, values, the CSS package and the manifest are unchanged.
+
 ## 0.1.4 - 2026-07-24
 
 - Adds the radius scale extension and elevation ramp shipped in the token

@@ -34,7 +34,7 @@ Current package-boundary work exports *from* `variables.css` into DTCG JSON and 
 | Artifact | Purpose |
 |----------|---------|
 | `foundations/token-catalog.json` | Storybook foundations + search |
-| `tokens/production/*.json` | DTCG export for review / tooling |
+| `tokens/production/*.json` | DTCG 2025.10 export (validated against the official schema); `themes/` and `digitaltableteur.resolver.json` add the theme modifier |
 | `foundations/dist/tokens.css` | Reference snapshot (not imported at runtime) |
 | `foundations/dist/tailwind.tokens.ts` | TS token names + Tailwind ref map |
 | `foundations/dist/tokens-manifest.json` | Compact manifest for agents |

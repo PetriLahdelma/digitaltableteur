@@ -7,6 +7,9 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import Ajv from "ajv";
+import addFormats from "ajv-formats";
+
 import { assertTokenCssProjection, collectTokenCssEntries } from "./build-token-css.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -24,7 +27,8 @@ function collectDtcgLeaves(node, leaves = []) {
     leaves.push(node);
   }
   for (const [key, value] of Object.entries(node ?? {})) {
-    if (key.startsWith("$") || !value || typeof value !== "object") continue;
+    // "$root" is the DTCG 2025.10 key for a group's own token.
+    if ((key.startsWith("$") && key !== "$root") || !value || typeof value !== "object") continue;
     collectDtcgLeaves(value, leaves);
   }
   return leaves;
@@ -68,13 +72,31 @@ async function main() {
   if (!dtcgExport.default?.$schema) {
     throw new Error("Local DTCG JSON export did not resolve with an import attribute");
   }
-  const leaves = collectDtcgLeaves(dtcg);
-  const dtcgNames = new Set(
-    leaves.map((leaf) => leaf.$extensions?.digitaltableteur?.cssVar).filter((name) => typeof name === "string"),
+  // The published document must validate against the official 2025.10 schema.
+  const ajv = new Ajv({ strict: false, allErrors: true });
+  addFormats(ajv);
+  const validateFormat = ajv.compile(
+    readJson(join(ROOT, "scripts/design-system/schemas/dtcg-2025.10-format.json")),
   );
-  if (leaves.length !== catalog.tokenCount || dtcgNames.size !== catalog.tokenCount) {
+  if (!validateFormat(dtcg)) {
     throw new Error(
-      `DTCG package is incomplete: leaves=${leaves.length}, cssVarNames=${dtcgNames.size}, catalog=${catalog.tokenCount}`,
+      `DTCG package does not validate against DTCG 2025.10: ${JSON.stringify(validateFormat.errors?.[0])}`,
+    );
+  }
+
+  // Every catalog token is either a DTCG 2025.10 leaf or listed (with a reason)
+  // as having no DTCG form, never silently dropped.
+  const leaves = collectDtcgLeaves(dtcg);
+  const nonDtcg = dtcg.$extensions?.["com.digitaltableteur"]?.nonDtcg ?? [];
+  const dtcgNames = new Set(
+    [
+      ...leaves.map((leaf) => leaf.$extensions?.["com.digitaltableteur"]?.cssVar),
+      ...nonDtcg.map((entry) => entry.cssVar),
+    ].filter((name) => typeof name === "string"),
+  );
+  if (leaves.length + nonDtcg.length !== catalog.tokenCount || dtcgNames.size !== catalog.tokenCount) {
+    throw new Error(
+      `DTCG package is incomplete: leaves=${leaves.length}, nonDtcg=${nonDtcg.length}, cssVarNames=${dtcgNames.size}, catalog=${catalog.tokenCount}`,
     );
   }
   const missingFromDtcg = [...catalogNames].filter((name) => !dtcgNames.has(name));

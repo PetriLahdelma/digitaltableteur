@@ -7,7 +7,7 @@ This package is published as a restricted private npm package for the Digitaltab
 ## Exports
 
 - `@digitaltableteur/tokens` - ESM token names, values, categories, and count.
-- `@digitaltableteur/tokens/dtcg` - merged, complete DTCG-shaped JSON with original CSS variable names in `$extensions.digitaltableteur.cssVar`. In Node ESM, import with JSON attributes: `await import("@digitaltableteur/tokens/dtcg", { with: { type: "json" } })`.
+- `@digitaltableteur/tokens/dtcg` - one DTCG 2025.10 document with every base (light) token, merged at the root so `{a.b}` aliases resolve inside it. Each token keeps its CSS variable name and original CSS in `$extensions["com.digitaltableteur"]` (`cssVar`, `css`). In Node ESM, import with JSON attributes: `await import("@digitaltableteur/tokens/dtcg", { with: { type: "json" } })`.
 - `@digitaltableteur/tokens/tailwind` - Tailwind reference map for `var(--token)` usage.
 - `@digitaltableteur/tokens/manifest` - generated token manifest. In Node ESM, import with JSON attributes.
 
@@ -18,4 +18,4 @@ guards that boundary.
 
 ## DTCG portability note
 
-The `./dtcg` export is complete and collision-free, but it deliberately preserves CSS-native values such as `var()`, `clamp()`, `color-mix()`, gradients, and timing functions so the package remains 1:1 with the current runtime system. Treat it as a CSS-sourced exchange format for this extraction step, not yet as a fully normalized cross-platform primitive token file.
+The `./dtcg` export follows the DTCG 2025.10 format and validates against the official schema: structured colors, `{ value, unit }` dimensions and durations, cubic-bezier arrays, shadow objects, gradient stops, and font-family arrays. Static `color-mix(in srgb, …)` values are computed. Values DTCG 2025.10 cannot express (fluid `clamp()` sizes, `em` tracking, percentages, a data-URI mask, font stacks whose family `next/font` sets at runtime) are not forced into an invalid token; they are listed with a reason under the root `$extensions["com.digitaltableteur"].nonDtcg`, so exported plus listed always equals the full catalog. Theme overrides and a DTCG Resolver document live in the repository under `nextjs-app/shared/foundations/tokens/production/`.

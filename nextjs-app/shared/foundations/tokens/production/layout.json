@@ -1,125 +1,160 @@
 {
-  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$extensions": {
+    "com.digitaltableteur": {
+      "nonDtcg": [
+        {
+          "cssVar": "--container-full",
+          "css": "100%",
+          "reason": "\"100%\" is not a px/rem dimension"
+        }
+      ]
+    }
+  },
   "breakpoint": {
     "mobile": {
-      "$value": "480px",
-      "$description": "Responsive breakpoint reference for media queries.",
+      "$value": {
+        "value": 480,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Responsive breakpoint reference for media queries.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--breakpoint-mobile",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "480px"
         }
       }
     },
     "tablet": {
-      "$value": "768px",
-      "$description": "Responsive breakpoint reference for media queries.",
+      "$value": {
+        "value": 768,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Responsive breakpoint reference for media queries.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--breakpoint-tablet",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "768px"
         }
       }
     },
     "desktop": {
-      "$value": "1024px",
-      "$description": "Responsive breakpoint reference for media queries.",
+      "$value": {
+        "value": 1024,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Responsive breakpoint reference for media queries.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--breakpoint-desktop",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "1024px"
         }
       }
     },
     "wide": {
-      "$value": "1440px",
-      "$description": "Responsive breakpoint reference for media queries.",
+      "$value": {
+        "value": 1440,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Responsive breakpoint reference for media queries.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--breakpoint-wide",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "1440px"
         }
       }
     },
     "ultra": {
-      "$value": "1920px",
-      "$description": "Responsive breakpoint reference for media queries.",
+      "$value": {
+        "value": 1920,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Responsive breakpoint reference for media queries.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--breakpoint-ultra",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "1920px"
         }
       }
     }
   },
   "container": {
     "sm": {
-      "$value": "640px",
-      "$description": "Max inline size for content containers.",
+      "$value": {
+        "value": 640,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Max inline size for content containers.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--container-sm",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "640px"
         }
       }
     },
     "md": {
-      "$value": "960px",
-      "$description": "Max inline size for content containers.",
+      "$value": {
+        "value": 960,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Max inline size for content containers.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--container-md",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "960px"
         }
       }
     },
     "lg": {
-      "$value": "1200px",
-      "$description": "Max inline size for content containers.",
+      "$value": {
+        "value": 1200,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Max inline size for content containers.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--container-lg",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "1200px"
         }
       }
     },
     "xl": {
-      "$value": "1440px",
-      "$description": "Max inline size for content containers.",
+      "$value": {
+        "value": 1440,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Max inline size for content containers.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--container-xl",
           "category": "layout",
-          "subgroup": "General"
-        }
-      }
-    },
-    "full": {
-      "$value": "100%",
-      "$description": "Max inline size for content containers.",
-      "$type": "dimension",
-      "$extensions": {
-        "digitaltableteur": {
-          "cssVar": "--container-full",
-          "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "1440px"
         }
       }
     }
@@ -127,76 +162,82 @@
   "grid": {
     "columns": {
       "mobile": {
-        "$value": "4",
-        "$description": "Grid system token (columns or gap).",
+        "$value": 4,
         "$type": "number",
+        "$description": "Grid system token (columns or gap).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--grid-columns-mobile",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "4"
           }
         }
       },
       "tablet": {
-        "$value": "8",
-        "$description": "Grid system token (columns or gap).",
+        "$value": 8,
         "$type": "number",
+        "$description": "Grid system token (columns or gap).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--grid-columns-tablet",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "8"
           }
         }
       },
       "desktop": {
-        "$value": "12",
-        "$description": "Grid system token (columns or gap).",
+        "$value": 12,
         "$type": "number",
+        "$description": "Grid system token (columns or gap).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--grid-columns-desktop",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "12"
           }
         }
       }
     },
     "gap": {
       "mobile": {
-        "$value": "var(--space-layout-16)",
-        "$description": "Grid system token (columns or gap).",
+        "$value": "{space.layout.16}",
         "$type": "dimension",
+        "$description": "Grid system token (columns or gap).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--grid-gap-mobile",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "var(--space-layout-16)"
           }
         }
       },
       "tablet": {
-        "$value": "var(--space-layout-24)",
-        "$description": "Grid system token (columns or gap).",
+        "$value": "{space.layout.24}",
         "$type": "dimension",
+        "$description": "Grid system token (columns or gap).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--grid-gap-tablet",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "var(--space-layout-24)"
           }
         }
       },
       "desktop": {
-        "$value": "var(--space-layout-32)",
-        "$description": "Grid system token (columns or gap).",
+        "$value": "{space.layout.32}",
         "$type": "dimension",
+        "$description": "Grid system token (columns or gap).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--grid-gap-desktop",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "var(--space-layout-32)"
           }
         }
       }
@@ -205,50 +246,54 @@
   "page": {
     "margin": {
       "mobile": {
-        "$value": "var(--space-layout-16)",
-        "$description": "Horizontal page margin at a viewport tier.",
+        "$value": "{space.layout.16}",
         "$type": "dimension",
+        "$description": "Horizontal page margin at a viewport tier.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--page-margin-mobile",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "var(--space-layout-16)"
           }
         }
       },
       "tablet": {
-        "$value": "var(--space-layout-32)",
-        "$description": "Horizontal page margin at a viewport tier.",
+        "$value": "{space.layout.32}",
         "$type": "dimension",
+        "$description": "Horizontal page margin at a viewport tier.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--page-margin-tablet",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "var(--space-layout-32)"
           }
         }
       },
       "desktop": {
-        "$value": "var(--space-layout-48)",
-        "$description": "Horizontal page margin at a viewport tier.",
+        "$value": "{space.layout.48}",
         "$type": "dimension",
+        "$description": "Horizontal page margin at a viewport tier.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--page-margin-desktop",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "var(--space-layout-48)"
           }
         }
       },
       "wide": {
-        "$value": "var(--space-layout-64)",
-        "$description": "Horizontal page margin at a viewport tier.",
+        "$value": "{space.layout.64}",
         "$type": "dimension",
+        "$description": "Horizontal page margin at a viewport tier.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--page-margin-wide",
             "category": "layout",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "var(--space-layout-64)"
           }
         }
       }
@@ -256,14 +301,18 @@
   },
   "rhythm": {
     "base": {
-      "$value": "0.5rem",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      },
+      "$type": "dimension",
       "$description": "Production token --rhythm-base",
-      "$type": "number",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--rhythm-base",
           "category": "layout",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "0.5rem"
         }
       }
     }

@@ -1,0 +1,1326 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "accent": {
+    "pink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--accent-pink",
+          "css": "#fff"
+        }
+      }
+    },
+    "purple": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--accent-purple",
+          "css": "#fff"
+        }
+      }
+    },
+    "teal": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--accent-teal",
+          "css": "#fff"
+        }
+      }
+    },
+    "violet": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--accent-violet",
+          "css": "#fff"
+        }
+      }
+    },
+    "cyan": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--accent-cyan",
+          "css": "#fff"
+        }
+      }
+    },
+    "yellow": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--accent-yellow",
+          "css": "#fff"
+        }
+      }
+    }
+  },
+  "color": {
+    "black": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--color-black",
+          "css": "#fff"
+        }
+      }
+    },
+    "white": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "hex": "#000000"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--color-white",
+          "css": "#000"
+        }
+      }
+    },
+    "gray": {
+      "dark": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1216,
+            0.1216,
+            0.1216
+          ],
+          "hex": "#1f1f1f"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-gray-dark",
+            "css": "#1f1f1f"
+          }
+        }
+      },
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6667,
+            0.6667,
+            0.6667
+          ],
+          "hex": "#aaaaaa"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-gray",
+            "css": "#aaa"
+          }
+        }
+      },
+      "medium": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5333,
+            0.5333,
+            0.5333
+          ],
+          "hex": "#888888"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-gray-medium",
+            "css": "#888"
+          }
+        }
+      }
+    },
+    "muted": {
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5333,
+            0.5333,
+            0.5333
+          ],
+          "hex": "#888888"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-muted",
+            "css": "#888"
+          }
+        }
+      },
+      "light": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3333,
+            0.3333,
+            0.3333
+          ],
+          "hex": "#555555"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-muted-light",
+            "css": "#555"
+          }
+        }
+      }
+    },
+    "disabled": {
+      "bg": {
+        "$root": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1922,
+              0.1922,
+              0.1922
+            ],
+            "hex": "#313131"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--color-disabled-bg",
+              "css": "#313131"
+            }
+          }
+        },
+        "light": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1922,
+              0.1922,
+              0.1922
+            ],
+            "hex": "#313131"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--color-disabled-bg-light",
+              "css": "#313131"
+            }
+          }
+        }
+      },
+      "placeholder": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6196,
+            0.6196,
+            0.6196
+          ],
+          "hex": "#9e9e9e"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-disabled-placeholder",
+            "css": "#9e9e9e"
+          }
+        }
+      }
+    },
+    "primary": {
+      "disabled": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6,
+            0.6,
+            0.6
+          ],
+          "hex": "#999999"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-primary-disabled",
+            "css": "color-mix(in srgb, #fff 60%, #000)"
+          }
+        }
+      },
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-primary",
+            "css": "#fff"
+          }
+        }
+      },
+      "dark": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-primary-dark",
+            "css": "#fff"
+          }
+        }
+      }
+    },
+    "title": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--color-title",
+          "css": "#fff"
+        }
+      }
+    },
+    "text": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--color-text",
+          "css": "#fff"
+        }
+      }
+    },
+    "dark": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--color-dark",
+          "css": "#fff"
+        }
+      }
+    },
+    "border": {
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.2,
+            0.2,
+            0.2
+          ],
+          "hex": "#333333"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-border",
+            "css": "#333"
+          }
+        }
+      },
+      "light": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.2667,
+            0.2667,
+            0.2667
+          ],
+          "hex": "#444444"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-border-light",
+            "css": "#444"
+          }
+        }
+      }
+    },
+    "switch": {
+      "track": {
+        "off": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2667,
+              0.2667,
+              0.2667
+            ],
+            "hex": "#444444"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--color-switch-track-off",
+              "css": "#444"
+            }
+          }
+        }
+      }
+    },
+    "light": {
+      "bg": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0627,
+            0.0627,
+            0.0627
+          ],
+          "hex": "#101010"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-light-bg",
+            "css": "#101010"
+          }
+        }
+      }
+    },
+    "placeholder": {
+      "dark": {
+        "$root": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1647,
+              0.1647,
+              0.1647
+            ],
+            "hex": "#2a2a2a"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--color-placeholder-dark",
+              "css": "#2a2a2a"
+            }
+          }
+        }
+      }
+    },
+    "react": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--color-react",
+          "css": "#fff"
+        }
+      }
+    },
+    "header": {
+      "bg": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "hex": "#000000"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-header-bg",
+            "css": "#000"
+          }
+        }
+      }
+    },
+    "success": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--color-success",
+          "css": "#fff"
+        }
+      }
+    },
+    "info": {
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-info",
+            "css": "#fff"
+          }
+        }
+      },
+      "bg": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "hex": "#000000"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-info-bg",
+            "css": "#000"
+          }
+        }
+      },
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-info-text",
+            "css": "#fff"
+          }
+        }
+      }
+    },
+    "error": {
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-error",
+            "css": "#fff"
+          }
+        }
+      },
+      "bg": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "hex": "#000000"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-error-bg",
+            "css": "#000"
+          }
+        }
+      },
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-error-text",
+            "css": "#fff"
+          }
+        }
+      }
+    },
+    "warning": {
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-warning",
+            "css": "#fff"
+          }
+        }
+      },
+      "contrast": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-warning-contrast",
+            "css": "#fff"
+          }
+        }
+      },
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "hex": "#000000"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-warning-text",
+            "css": "#000"
+          }
+        }
+      }
+    },
+    "neutral": {
+      "bg": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "hex": "#000000"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-neutral-bg",
+            "css": "#000"
+          }
+        }
+      },
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-neutral-text",
+            "css": "#fff"
+          }
+        }
+      }
+    }
+  },
+  "selection": {
+    "color": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "hex": "#000000"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--selection-color",
+          "css": "#000"
+        }
+      }
+    },
+    "background": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--selection-background",
+          "css": "#fff"
+        }
+      }
+    }
+  },
+  "link": {
+    "color": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--link-color",
+          "css": "#fff"
+        }
+      }
+    }
+  },
+  "logo": {
+    "text": {
+      "color": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--logo-text-color",
+            "css": "#fff"
+          }
+        }
+      }
+    },
+    "background": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--logo-background",
+          "css": "#fff"
+        }
+      }
+    }
+  },
+  "home": {
+    "gradient": {
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "hex": "#000000"
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.5255,
+              0.5255,
+              0.5255
+            ],
+            "hex": "#868686"
+          },
+          "position": 0.5
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "hex": "#ffffff"
+          },
+          "position": 1
+        }
+      ],
+      "$type": "gradient",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--home-gradient",
+          "css": "linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%)"
+        }
+      }
+    }
+  },
+  "main": {
+    "body": {
+      "copy": {
+        "color": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "hex": "#ffffff"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--main-body-copy-color",
+              "css": "#fff"
+            }
+          }
+        }
+      },
+      "background": {
+        "color": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "hex": "#000000"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--main-body-background-color",
+              "css": "#000"
+            }
+          }
+        }
+      }
+    }
+  },
+  "focus": {
+    "ring": {
+      "color": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--focus-ring-color",
+            "css": "#fff"
+          }
+        }
+      },
+      "width": {
+        "$value": {
+          "value": 3,
+          "unit": "px"
+        },
+        "$type": "dimension",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--focus-ring-width",
+            "css": "3px"
+          }
+        }
+      },
+      "offset": {
+        "$value": {
+          "value": 3,
+          "unit": "px"
+        },
+        "$type": "dimension",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--focus-ring-offset",
+            "css": "3px"
+          }
+        }
+      }
+    }
+  },
+  "primary": {
+    "text": {
+      "color": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--primary-text-color",
+            "css": "#fff"
+          }
+        }
+      }
+    }
+  },
+  "secondary": {
+    "text": {
+      "color": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--secondary-text-color",
+            "css": "#fff"
+          }
+        }
+      }
+    }
+  },
+  "inverted": {
+    "text": {
+      "color": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "hex": "#000000"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--inverted-text-color",
+            "css": "#000"
+          }
+        }
+      }
+    }
+  },
+  "code": {
+    "toolbar": {
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-toolbar-text",
+            "css": "#fff"
+          }
+        }
+      }
+    }
+  },
+  "shortcut": {
+    "hint": {
+      "color": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--shortcut-hint-color",
+            "css": "#fff"
+          }
+        }
+      }
+    }
+  },
+  "switch": {
+    "handle": {
+      "ring": {
+        "color": {
+          "$value": {
+            "$ref": "#/color/border/$root/$value"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--switch-handle-ring-color",
+              "css": "var(--color-border)"
+            }
+          }
+        }
+      }
+    }
+  },
+  "storybook": {
+    "blue": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.2784,
+          0.502,
+          0.8392
+        ],
+        "hex": "#4780d6"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-blue",
+          "css": "#4780d6"
+        }
+      }
+    },
+    "cyan": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5882,
+          0.9137,
+          0.9294
+        ],
+        "hex": "#96e9ed"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-cyan",
+          "css": "#96e9ed"
+        }
+      }
+    },
+    "pink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.3725,
+          0.7608
+        ],
+        "hex": "#ff5fc2"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-pink",
+          "css": "#ff5fc2"
+        }
+      }
+    },
+    "purple": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6588,
+          0.5176,
+          0.8431
+        ],
+        "hex": "#a884d7"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-purple",
+          "css": "#a884d7"
+        }
+      }
+    },
+    "violet": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7373,
+          0.6157,
+          0.8784
+        ],
+        "hex": "#bc9de0"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-violet",
+          "css": "#bc9de0"
+        }
+      }
+    },
+    "bg": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.1373,
+          0.1529,
+          0.1647
+        ],
+        "hex": "#23272a"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-bg",
+          "css": "#23272a"
+        }
+      }
+    },
+    "dark": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8784,
+          0.8784,
+          0.8784
+        ],
+        "hex": "#e0e0e0"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-dark",
+          "css": "#e0e0e0"
+        }
+      }
+    },
+    "yellow": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9961,
+          0.9216,
+          0.4314
+        ],
+        "hex": "#feeb6e"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-yellow",
+          "css": "#feeb6e"
+        }
+      }
+    },
+    "white": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0941,
+          0.102,
+          0.1059
+        ],
+        "hex": "#181a1b"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-white",
+          "css": "#181a1b"
+        }
+      }
+    },
+    "gray": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7686,
+          0.7686,
+          0.7686
+        ],
+        "hex": "#c4c4c4"
+      },
+      "$type": "color",
+      "$extensions": {
+        "com.digitaltableteur": {
+          "cssVar": "--storybook-gray",
+          "css": "#c4c4c4"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/resolver.json",
+  "name": "Digitaltableteur",
+  "version": "2025.10",
+  "description": "Production tokens from variables.css. The theme modifier mirrors the .themeDark, .themeHCB, and .themeHCW classes; light is the base.",
+  "sets": {
+    "foundation": {
+      "description": "Base (light) token values, one file per category.",
+      "sources": [
+        {
+          "$ref": "color.json"
+        },
+        {
+          "$ref": "elevation.json"
+        },
+        {
+          "$ref": "focus.json"
+        },
+        {
+          "$ref": "layout.json"
+        },
+        {
+          "$ref": "motion.json"
+        },
+        {
+          "$ref": "other.json"
+        },
+        {
+          "$ref": "radius.json"
+        },
+        {
+          "$ref": "size.json"
+        },
+        {
+          "$ref": "space.json"
+        },
+        {
+          "$ref": "typography.json"
+        }
+      ]
+    }
+  },
+  "modifiers": {
+    "theme": {
+      "description": "Colour theme.",
+      "contexts": {
+        "light": [
+          {
+            "$ref": "themes/light.json"
+          }
+        ],
+        "dark": [
+          {
+            "$ref": "themes/dark.json"
+          }
+        ],
+        "hcb": [
+          {
+            "$ref": "themes/hcb.json"
+          }
+        ],
+        "hcw": [
+          {
+            "$ref": "themes/hcw.json"
+          }
+        ]
+      },
+      "default": "light"
+    }
+  },
+  "resolutionOrder": [
+    {
+      "$ref": "#/sets/foundation"
+    },
+    {
+      "$ref": "#/modifiers/theme"
+    }
+  ]
+}

@@ -18,7 +18,20 @@ const VARIABLES_CSS = join(ROOT, "nextjs-app/shared/styles/variables.css");
 const ACME_BRAND = join(ROOT, "scripts/design-system/themes/acme.brand.json");
 const TOKENS_DIST = join(ROOT, "packages/tokens/dist");
 const TOKENS_CSS_DIST = join(ROOT, "packages/tokens-css/dist");
-const SCHEMA = "https://design-tokens.github.io/community-group/format/";
+const SCHEMA = "https://www.designtokens.org/schemas/2025.10/format.json";
+const EXT = "com.digitaltableteur";
+
+/** Deep-merge DTCG groups; the files partition the token paths, so leaves never collide. */
+function mergeGroups(target, source) {
+  for (const [key, value] of Object.entries(source)) {
+    if (value && typeof value === "object" && !("$value" in value) && target[key]) {
+      mergeGroups(target[key], value);
+    } else {
+      target[key] = value;
+    }
+  }
+  return target;
+}
 
 function resetDir(dir) {
   rmSync(dir, { recursive: true, force: true });
@@ -57,18 +70,23 @@ function buildCategories(catalog) {
   return Object.fromEntries(Object.entries(categories).sort(([a], [b]) => a.localeCompare(b)));
 }
 
+/**
+ * One DTCG 2025.10 document with every base token, merged at the root the way
+ * the resolver merges its sources, so "{a.b}" aliases resolve inside it.
+ * Catalog tokens with no DTCG form stay listed under the root extension.
+ */
 function mergeDtcgFiles() {
   const merged = { $schema: SCHEMA };
-  const files = ["color", "elevation", "focus", "layout", "motion", "other", "radius", "size", "space", "typography"];
-  for (const category of files) {
-    const path = join(DTCG_DIR, `${category}.json`);
-    try {
-      const { $schema: _schema, ...body } = readJson(path);
-      merged[category] = body;
-    } catch {
-      // Some categories may not exist if the token taxonomy changes.
-    }
+  const nonDtcg = [];
+  const files = readdirSync(DTCG_DIR)
+    .filter((file) => file.endsWith(".json") && !file.endsWith(".resolver.json"))
+    .sort();
+  for (const file of files) {
+    const { $schema: _schema, $extensions, ...body } = readJson(join(DTCG_DIR, file));
+    nonDtcg.push(...($extensions?.[EXT]?.nonDtcg ?? []));
+    mergeGroups(merged, body);
   }
+  if (nonDtcg.length) merged.$extensions = { [EXT]: { nonDtcg } };
   return merged;
 }
 

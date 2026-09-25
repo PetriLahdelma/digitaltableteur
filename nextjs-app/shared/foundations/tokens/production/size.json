@@ -1,40 +1,52 @@
 {
-  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "size": {
     "width": {
       "md": {
-        "$value": "320px",
-        "$description": "Production token --size-width-md",
+        "$value": {
+          "value": 320,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Production token --size-width-md",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--size-width-md",
             "category": "size",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "320px"
           }
         }
       },
       "lg": {
-        "$value": "900px",
-        "$description": "Production token --size-width-lg",
+        "$value": {
+          "value": 900,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Production token --size-width-lg",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--size-width-lg",
             "category": "size",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "900px"
           }
         }
       },
       "form": {
-        "$value": "600px",
-        "$description": "Production token --size-width-form",
+        "$value": {
+          "value": 600,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Production token --size-width-form",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--size-width-form",
             "category": "size",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "600px"
           }
         }
       }

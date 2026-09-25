@@ -1,242 +1,414 @@
 {
-  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "accent": {
     "pink": {
-      "$value": "#f205c5",
-      "$description": "Brand/marketing accent — not default UI chrome.",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.949,
+          0.0196,
+          0.7725
+        ],
+        "hex": "#f205c5"
+      },
       "$type": "color",
+      "$description": "Brand/marketing accent — not default UI chrome.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--accent-pink",
           "category": "color",
-          "subgroup": "Brand accents"
+          "subgroup": "Brand accents",
+          "css": "#f205c5"
         }
       }
     },
     "purple": {
-      "$value": "#812eff",
-      "$description": "Brand/marketing accent — not default UI chrome.",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5059,
+          0.1804,
+          1
+        ],
+        "hex": "#812eff"
+      },
       "$type": "color",
+      "$description": "Brand/marketing accent — not default UI chrome.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--accent-purple",
           "category": "color",
-          "subgroup": "Brand accents"
+          "subgroup": "Brand accents",
+          "css": "#812eff"
         }
       }
     },
     "teal": {
-      "$value": "#85b5bd",
-      "$description": "Brand/marketing accent — not default UI chrome.",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5216,
+          0.7098,
+          0.7412
+        ],
+        "hex": "#85b5bd"
+      },
       "$type": "color",
+      "$description": "Brand/marketing accent — not default UI chrome.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--accent-teal",
           "category": "color",
-          "subgroup": "Brand accents"
+          "subgroup": "Brand accents",
+          "css": "#85b5bd"
         }
       }
     },
     "violet": {
-      "$value": "#bc6dff",
-      "$description": "Brand/marketing accent — not default UI chrome.",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7373,
+          0.4275,
+          1
+        ],
+        "hex": "#bc6dff"
+      },
       "$type": "color",
+      "$description": "Brand/marketing accent — not default UI chrome.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--accent-violet",
           "category": "color",
-          "subgroup": "Brand accents"
+          "subgroup": "Brand accents",
+          "css": "#bc6dff"
         }
       }
     },
     "cyan": {
-      "$value": "#71efff",
-      "$description": "Brand/marketing accent — not default UI chrome.",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4431,
+          0.9373,
+          1
+        ],
+        "hex": "#71efff"
+      },
       "$type": "color",
+      "$description": "Brand/marketing accent — not default UI chrome.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--accent-cyan",
           "category": "color",
-          "subgroup": "Brand accents"
+          "subgroup": "Brand accents",
+          "css": "#71efff"
         }
       }
     },
     "yellow": {
-      "$value": "#f2e274",
-      "$description": "Brand/marketing accent — not default UI chrome.",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.949,
+          0.8863,
+          0.4549
+        ],
+        "hex": "#f2e274"
+      },
       "$type": "color",
+      "$description": "Brand/marketing accent — not default UI chrome.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--accent-yellow",
           "category": "color",
-          "subgroup": "Brand accents"
+          "subgroup": "Brand accents",
+          "css": "#f2e274"
         }
       }
     }
   },
   "color": {
     "black": {
-      "$value": "#000",
-      "$description": "Color token (black).",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "hex": "#000000"
+      },
       "$type": "color",
+      "$description": "Color token (black).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--color-black",
           "category": "color",
-          "subgroup": "Greyscale & borders"
+          "subgroup": "Greyscale & borders",
+          "css": "#000"
         }
       }
     },
     "white": {
-      "$value": "#fff",
-      "$description": "Color token (white).",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
       "$type": "color",
+      "$description": "Color token (white).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--color-white",
           "category": "color",
-          "subgroup": "Greyscale & borders"
+          "subgroup": "Greyscale & borders",
+          "css": "#fff"
         }
       }
     },
     "gray": {
       "dark": {
-        "$value": "#333",
-        "$description": "Color token (gray-dark).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.2,
+            0.2,
+            0.2
+          ],
+          "hex": "#333333"
+        },
         "$type": "color",
+        "$description": "Color token (gray-dark).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-gray-dark",
             "category": "color",
-            "subgroup": "Greyscale & borders"
+            "subgroup": "Greyscale & borders",
+            "css": "#333"
           }
         }
       },
-      "DEFAULT": {
-        "$value": "#5e5e5e",
-        "$description": "Color token (gray).",
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3686,
+            0.3686,
+            0.3686
+          ],
+          "hex": "#5e5e5e"
+        },
         "$type": "color",
+        "$description": "Color token (gray).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-gray",
             "category": "color",
-            "subgroup": "Greyscale & borders"
+            "subgroup": "Greyscale & borders",
+            "css": "#5e5e5e"
           }
         }
       },
       "medium": {
-        "$value": "#666",
-        "$description": "Color token (gray-medium).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4,
+            0.4,
+            0.4
+          ],
+          "hex": "#666666"
+        },
         "$type": "color",
+        "$description": "Color token (gray-medium).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-gray-medium",
             "category": "color",
-            "subgroup": "Greyscale & borders"
+            "subgroup": "Greyscale & borders",
+            "css": "#666"
           }
         }
       }
     },
     "muted": {
-      "DEFAULT": {
-        "$value": "#626a72",
-        "$description": "Color token (muted).",
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3843,
+            0.4157,
+            0.4471
+          ],
+          "hex": "#626a72"
+        },
         "$type": "color",
+        "$description": "Color token (muted).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-muted",
             "category": "color",
-            "subgroup": "Greyscale & borders"
+            "subgroup": "Greyscale & borders",
+            "css": "#626a72"
           }
         }
       },
       "light": {
-        "$value": "#909090",
-        "$description": "Color token (muted-light).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5647,
+            0.5647,
+            0.5647
+          ],
+          "hex": "#909090"
+        },
         "$type": "color",
+        "$description": "Color token (muted-light).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-muted-light",
             "category": "color",
-            "subgroup": "Greyscale & borders"
+            "subgroup": "Greyscale & borders",
+            "css": "#909090"
           }
         }
       }
     },
     "disabled": {
       "bg": {
-        "DEFAULT": {
-          "$value": "#e8e8e8",
-          "$description": "Color token (disabled-bg).",
+        "$root": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9098,
+              0.9098,
+              0.9098
+            ],
+            "hex": "#e8e8e8"
+          },
           "$type": "color",
+          "$description": "Color token (disabled-bg).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--color-disabled-bg",
               "category": "color",
-              "subgroup": "Greyscale & borders"
+              "subgroup": "Greyscale & borders",
+              "css": "#e8e8e8"
             }
           }
         },
         "light": {
-          "$value": "#efefef",
-          "$description": "Color token (disabled-bg-light).",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9373,
+              0.9373,
+              0.9373
+            ],
+            "hex": "#efefef"
+          },
           "$type": "color",
+          "$description": "Color token (disabled-bg-light).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--color-disabled-bg-light",
               "category": "color",
-              "subgroup": "Greyscale & borders"
+              "subgroup": "Greyscale & borders",
+              "css": "#efefef"
             }
           }
         }
       },
       "placeholder": {
-        "$value": "#858585",
-        "$description": "Color token (disabled-placeholder).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5216,
+            0.5216,
+            0.5216
+          ],
+          "hex": "#858585"
+        },
         "$type": "color",
+        "$description": "Color token (disabled-placeholder).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-disabled-placeholder",
             "category": "color",
-            "subgroup": "Greyscale & borders"
+            "subgroup": "Greyscale & borders",
+            "css": "#858585"
           }
         }
       }
     },
     "primary": {
       "disabled": {
-        "$value": "#041b2350",
-        "$description": "Color token (primary-disabled).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0157,
+            0.1059,
+            0.1373
+          ],
+          "alpha": 0.3137,
+          "hex": "#041b23"
+        },
         "$type": "color",
+        "$description": "Color token (primary-disabled).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-primary-disabled",
             "category": "color",
-            "subgroup": "Greyscale & borders"
+            "subgroup": "Greyscale & borders",
+            "css": "#041b2350"
           }
         }
       },
-      "DEFAULT": {
-        "$value": "#041b23",
-        "$description": "Primary actions, links, focus rings, and key UI chrome.",
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0157,
+            0.1059,
+            0.1373
+          ],
+          "hex": "#041b23"
+        },
         "$type": "color",
+        "$description": "Primary actions, links, focus rings, and key UI chrome.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-primary",
             "category": "color",
-            "subgroup": "Semantic"
+            "subgroup": "Semantic",
+            "css": "#041b23"
           }
         }
       },
       "dark": {
-        "$value": "#0046b8",
-        "$description": "Color token (primary-dark).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.2745,
+            0.7216
+          ],
+          "hex": "#0046b8"
+        },
         "$type": "color",
+        "$description": "Color token (primary-dark).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-primary-dark",
             "category": "color",
-            "subgroup": "Semantic"
+            "subgroup": "Semantic",
+            "css": "#0046b8"
           }
         }
       }
@@ -244,103 +416,154 @@
     "on": {
       "media": {
         "scrim": {
-          "$value": "rgb(0 0 0 / 62%)",
-          "$description": "Color token (on-media-scrim).",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.62,
+            "hex": "#000000"
+          },
           "$type": "color",
+          "$description": "Color token (on-media-scrim).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--color-on-media-scrim",
               "category": "color",
-              "subgroup": "Semantic"
+              "subgroup": "Semantic",
+              "css": "rgb(0 0 0 / 62%)"
             }
           }
         },
         "text": {
-          "$value": "#fff",
-          "$description": "Color token (on-media-text).",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "hex": "#ffffff"
+          },
           "$type": "color",
+          "$description": "Color token (on-media-text).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--color-on-media-text",
               "category": "color",
-              "subgroup": "Semantic"
+              "subgroup": "Semantic",
+              "css": "#fff"
             }
           }
         }
       }
     },
     "title": {
-      "$value": "var(--primary-text-color, #041b23)",
-      "$description": "Heading color; usually aligned with primary text.",
+      "$value": "{primary.text.color}",
       "$type": "color",
+      "$description": "Heading color; usually aligned with primary text.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--color-title",
           "category": "color",
-          "subgroup": "Semantic"
+          "subgroup": "Semantic",
+          "css": "var(--primary-text-color, #041b23)"
         }
       }
     },
     "text": {
-      "$value": "var(--primary-text-color, #041b23)",
-      "$description": "Default body copy color.",
+      "$value": "{primary.text.color}",
       "$type": "color",
+      "$description": "Default body copy color.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--color-text",
           "category": "color",
-          "subgroup": "Semantic"
+          "subgroup": "Semantic",
+          "css": "var(--primary-text-color, #041b23)"
         }
       }
     },
     "focus": {
       "ring": {
-        "$value": "var(--color-primary)",
-        "$description": "Color token (focus-ring).",
+        "$value": {
+          "$ref": "#/color/primary/$root/$value"
+        },
         "$type": "color",
+        "$description": "Color token (focus-ring).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-focus-ring",
             "category": "color",
-            "subgroup": "Semantic"
+            "subgroup": "Semantic",
+            "css": "var(--color-primary)"
           }
         }
       }
     },
     "dark": {
-      "$value": "#222",
-      "$description": "Color token (dark).",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.1333,
+          0.1333,
+          0.1333
+        ],
+        "hex": "#222222"
+      },
       "$type": "color",
+      "$description": "Color token (dark).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--color-dark",
           "category": "color",
-          "subgroup": "Semantic"
+          "subgroup": "Semantic",
+          "css": "#222"
         }
       }
     },
     "border": {
-      "DEFAULT": {
-        "$value": "#c0c0c0",
-        "$description": "Default 1px borders on inputs, cards, and dividers.",
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7529,
+            0.7529,
+            0.7529
+          ],
+          "hex": "#c0c0c0"
+        },
         "$type": "color",
+        "$description": "Default 1px borders on inputs, cards, and dividers.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-border",
             "category": "color",
-            "subgroup": "Semantic"
+            "subgroup": "Semantic",
+            "css": "#c0c0c0"
           }
         }
       },
       "light": {
-        "$value": "#ccc",
-        "$description": "Color token (border-light).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8,
+            0.8,
+            0.8
+          ],
+          "hex": "#cccccc"
+        },
         "$type": "color",
+        "$description": "Color token (border-light).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-border-light",
             "category": "color",
-            "subgroup": "Semantic"
+            "subgroup": "Semantic",
+            "css": "#ccc"
           }
         }
       }
@@ -348,14 +571,23 @@
     "switch": {
       "track": {
         "off": {
-          "$value": "#ccc",
-          "$description": "Color token (switch-track-off).",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8,
+              0.8,
+              0.8
+            ],
+            "hex": "#cccccc"
+          },
           "$type": "color",
+          "$description": "Color token (switch-track-off).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--color-switch-track-off",
               "category": "color",
-              "subgroup": "Semantic"
+              "subgroup": "Semantic",
+              "css": "#ccc"
             }
           }
         }
@@ -363,273 +595,440 @@
     },
     "light": {
       "bg": {
-        "$value": "#f9f9f9",
-        "$description": "Color token (light-bg).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9765,
+            0.9765,
+            0.9765
+          ],
+          "hex": "#f9f9f9"
+        },
         "$type": "color",
+        "$description": "Color token (light-bg).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-light-bg",
             "category": "color",
-            "subgroup": "Semantic"
+            "subgroup": "Semantic",
+            "css": "#f9f9f9"
           }
         }
       }
     },
     "placeholder": {
       "dark": {
-        "DEFAULT": {
-          "$value": "#222",
-          "$description": "Color token (placeholder-dark).",
+        "$root": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1333,
+              0.1333,
+              0.1333
+            ],
+            "hex": "#222222"
+          },
           "$type": "color",
+          "$description": "Color token (placeholder-dark).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--color-placeholder-dark",
               "category": "color",
-              "subgroup": "Semantic"
+              "subgroup": "Semantic",
+              "css": "#222"
             }
           }
         },
         "fg": {
-          "$value": "#fff",
-          "$description": "Color token (placeholder-dark-fg).",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "hex": "#ffffff"
+          },
           "$type": "color",
+          "$description": "Color token (placeholder-dark-fg).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--color-placeholder-dark-fg",
               "category": "color",
-              "subgroup": "Semantic"
+              "subgroup": "Semantic",
+              "css": "#fff"
             }
           }
         }
       }
     },
     "react": {
-      "$value": "#61dafb",
-      "$description": "Color token (react).",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3804,
+          0.8549,
+          0.9843
+        ],
+        "hex": "#61dafb"
+      },
       "$type": "color",
+      "$description": "Color token (react).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--color-react",
           "category": "color",
-          "subgroup": "Semantic"
+          "subgroup": "Semantic",
+          "css": "#61dafb"
         }
       }
     },
     "header": {
       "bg": {
-        "$value": "#282c34",
-        "$description": "Color token (header-bg).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1569,
+            0.1725,
+            0.2039
+          ],
+          "hex": "#282c34"
+        },
         "$type": "color",
+        "$description": "Color token (header-bg).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-header-bg",
             "category": "color",
-            "subgroup": "Semantic"
+            "subgroup": "Semantic",
+            "css": "#282c34"
           }
         }
       }
     },
     "success": {
-      "$value": "#068338",
-      "$description": "Success feedback, positive badges, and confirmations.",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0235,
+          0.5137,
+          0.2196
+        ],
+        "hex": "#068338"
+      },
       "$type": "color",
+      "$description": "Success feedback, positive badges, and confirmations.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--color-success",
           "category": "color",
-          "subgroup": "Status & feedback"
+          "subgroup": "Status & feedback",
+          "css": "#068338"
         }
       }
     },
     "info": {
-      "DEFAULT": {
-        "$value": "#0c7a8b",
-        "$description": "Informational alerts and neutral-positive emphasis.",
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0471,
+            0.4784,
+            0.5451
+          ],
+          "hex": "#0c7a8b"
+        },
         "$type": "color",
+        "$description": "Informational alerts and neutral-positive emphasis.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-info",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#0c7a8b"
           }
         }
       },
       "bg": {
-        "$value": "#e6f4ff",
-        "$description": "Color token (info-bg).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.902,
+            0.9569,
+            1
+          ],
+          "hex": "#e6f4ff"
+        },
         "$type": "color",
+        "$description": "Color token (info-bg).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-info-bg",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#e6f4ff"
           }
         }
       },
       "text": {
-        "$value": "#0c5460",
-        "$description": "Color token (info-text).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0471,
+            0.3294,
+            0.3765
+          ],
+          "hex": "#0c5460"
+        },
         "$type": "color",
+        "$description": "Color token (info-text).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-info-text",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#0c5460"
           }
         }
       }
     },
     "error": {
-      "DEFAULT": {
-        "$value": "#dc3545",
-        "$description": "Errors, destructive actions, and critical alerts.",
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8627,
+            0.2078,
+            0.2706
+          ],
+          "hex": "#dc3545"
+        },
         "$type": "color",
+        "$description": "Errors, destructive actions, and critical alerts.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-error",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#dc3545"
           }
         }
       },
       "bg": {
-        "$value": "#dfbdbc",
-        "$description": "Color token (error-bg).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8745,
+            0.7412,
+            0.7373
+          ],
+          "hex": "#dfbdbc"
+        },
         "$type": "color",
+        "$description": "Color token (error-bg).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-error-bg",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#dfbdbc"
           }
         }
       },
       "text": {
-        "$value": "#7a1f1f",
-        "$description": "Color token (error-text).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4784,
+            0.1216,
+            0.1216
+          ],
+          "hex": "#7a1f1f"
+        },
         "$type": "color",
+        "$description": "Color token (error-text).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-error-text",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#7a1f1f"
           }
         }
       }
     },
     "warning": {
-      "DEFAULT": {
-        "$value": "#ffc107",
-        "$description": "Warning surfaces; pair with --color-warning-text.",
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.7569,
+            0.0275
+          ],
+          "hex": "#ffc107"
+        },
         "$type": "color",
+        "$description": "Warning surfaces; pair with --color-warning-text.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-warning",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#ffc107"
           }
         }
       },
       "contrast": {
-        "$value": "#8d5a00",
-        "$description": "Color token (warning-contrast).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5529,
+            0.3529,
+            0
+          ],
+          "hex": "#8d5a00"
+        },
         "$type": "color",
+        "$description": "Color token (warning-contrast).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-warning-contrast",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#8d5a00"
           }
         }
       },
       "text": {
-        "$value": "#041b23",
-        "$description": "Color token (warning-text).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0157,
+            0.1059,
+            0.1373
+          ],
+          "hex": "#041b23"
+        },
         "$type": "color",
+        "$description": "Color token (warning-text).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-warning-text",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#041b23"
           }
         }
       }
     },
     "neutral": {
       "bg": {
-        "$value": "#e2e8f0",
-        "$description": "Color token (neutral-bg).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8863,
+            0.9098,
+            0.9412
+          ],
+          "hex": "#e2e8f0"
+        },
         "$type": "color",
+        "$description": "Color token (neutral-bg).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-neutral-bg",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#e2e8f0"
           }
         }
       },
       "text": {
-        "$value": "#1a1d26",
-        "$description": "Color token (neutral-text).",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.102,
+            0.1137,
+            0.149
+          ],
+          "hex": "#1a1d26"
+        },
         "$type": "color",
+        "$description": "Color token (neutral-text).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--color-neutral-text",
             "category": "color",
-            "subgroup": "Status & feedback"
+            "subgroup": "Status & feedback",
+            "css": "#1a1d26"
           }
         }
       }
     },
     "surface": {
-      "$value": "var(--main-body-background-color)",
-      "$description": "Color token (surface).",
+      "$value": "{main.body.background.color}",
       "$type": "color",
+      "$description": "Color token (surface).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--color-surface",
           "category": "color",
-          "subgroup": "Surfaces"
+          "subgroup": "Surfaces",
+          "css": "var(--main-body-background-color)"
         }
       }
     }
   },
   "selection": {
     "color": {
-      "$value": "var(--color-white)",
-      "$description": "Text selection foreground.",
+      "$value": "{color.white}",
       "$type": "color",
+      "$description": "Text selection foreground.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--selection-color",
           "category": "color",
-          "subgroup": "Semantic"
+          "subgroup": "Semantic",
+          "css": "var(--color-white)"
         }
       }
     },
     "background": {
-      "$value": "var(--color-primary)",
-      "$description": "Text selection highlight background.",
+      "$value": {
+        "$ref": "#/color/primary/$root/$value"
+      },
       "$type": "color",
+      "$description": "Text selection highlight background.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--selection-background",
           "category": "color",
-          "subgroup": "Surfaces"
+          "subgroup": "Surfaces",
+          "css": "var(--color-primary)"
         }
       }
     }
   },
   "link": {
     "color": {
-      "$value": "#041b23",
-      "$description": "Hyperlink color in prose and inline links.",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0157,
+          0.1059,
+          0.1373
+        ],
+        "hex": "#041b23"
+      },
       "$type": "color",
+      "$description": "Hyperlink color in prose and inline links.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--link-color",
           "category": "color",
-          "subgroup": "Semantic"
+          "subgroup": "Semantic",
+          "css": "#041b23"
         }
       }
     }
@@ -637,53 +1036,110 @@
   "logo": {
     "text": {
       "color": {
-        "$value": "var(--color-text)",
-        "$description": "Production token --logo-text-color",
+        "$value": "{color.text}",
         "$type": "color",
+        "$description": "Production token --logo-text-color",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--logo-text-color",
             "category": "color",
-            "subgroup": "Semantic"
+            "subgroup": "Semantic",
+            "css": "var(--color-text)"
           }
         }
       }
     },
     "color": {
-      "$value": "#000",
-      "$description": "Production token --logo-color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "hex": "#000000"
+      },
       "$type": "color",
+      "$description": "Production token --logo-color",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--logo-color",
           "category": "color",
-          "subgroup": "Semantic"
+          "subgroup": "Semantic",
+          "css": "#000"
         }
       }
     },
     "background": {
-      "$value": "#dfff00",
-      "$description": "Production token --logo-background",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8745,
+          1,
+          0
+        ],
+        "hex": "#dfff00"
+      },
       "$type": "color",
+      "$description": "Production token --logo-background",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--logo-background",
           "category": "color",
-          "subgroup": "Surfaces"
+          "subgroup": "Surfaces",
+          "css": "#dfff00"
         }
       }
     }
   },
   "home": {
     "gradient": {
-      "$value": "linear-gradient(\n    120deg,\n    #007cf0 0%,\n    #ff0080 50%,\n    #fff200 100%\n  )",
-      "$description": "Brand gradient used for expressive homepage and marketing treatments.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0.4863,
+              0.9412
+            ],
+            "hex": "#007cf0"
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              0,
+              0.502
+            ],
+            "hex": "#ff0080"
+          },
+          "position": 0.5
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              0.949,
+              0
+            ],
+            "hex": "#fff200"
+          },
+          "position": 1
+        }
+      ],
       "$type": "gradient",
+      "$description": "Brand gradient used for expressive homepage and marketing treatments.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--home-gradient",
           "category": "color",
-          "subgroup": "Semantic"
+          "subgroup": "Semantic",
+          "css": "linear-gradient(\n    120deg,\n    #007cf0 0%,\n    #ff0080 50%,\n    #fff200 100%\n  )"
         }
       }
     }
@@ -692,28 +1148,46 @@
     "body": {
       "copy": {
         "color": {
-          "$value": "#041b23",
-          "$description": "Production token --main-body-copy-color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0157,
+              0.1059,
+              0.1373
+            ],
+            "hex": "#041b23"
+          },
           "$type": "color",
+          "$description": "Production token --main-body-copy-color",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--main-body-copy-color",
               "category": "color",
-              "subgroup": "Surfaces"
+              "subgroup": "Surfaces",
+              "css": "#041b23"
             }
           }
         }
       },
       "background": {
         "color": {
-          "$value": "#fff",
-          "$description": "Page canvas / body background.",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "hex": "#ffffff"
+          },
           "$type": "color",
+          "$description": "Page canvas / body background.",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--main-body-background-color",
               "category": "color",
-              "subgroup": "Surfaces"
+              "subgroup": "Surfaces",
+              "css": "#fff"
             }
           }
         }

@@ -14,24 +14,43 @@ const HEADER = `/* AUTO-GENERATED — NOT IMPORTED AT RUNTIME
  * See foundations/tokens/README.md
  */`;
 
+/** Vendor key in DTCG 2025.10 $extensions (see dtcg-2025-lib.mjs). */
+const EXT = "com.digitaltableteur";
+
+/**
+ * Tokens of one DTCG 2025.10 file. `value` is the original CSS (kept in the
+ * vendor extension), because this manifest describes the CSS variables, not
+ * the structured DTCG values. `$root` is a token key, not a group, and
+ * catalog tokens with no DTCG form come from the root nonDtcg list.
+ */
 function flatten(obj, path = []) {
   const out = [];
   for (const [k, v] of Object.entries(obj)) {
-    if (k.startsWith("$")) continue;
+    if (k.startsWith("$") && k !== "$root") continue;
     const next = [...path, k];
     if (v && typeof v === "object" && "$value" in v) {
-      const metadata = v.$extensions?.digitaltableteur ?? {};
+      const metadata = v.$extensions?.[EXT] ?? {};
       const cssVar = metadata.cssVar ?? "--" + next.join("-").replace(/_/g, "-");
       out.push({
         cssVar,
-        value: v.$value,
+        value: metadata.css ?? v.$value,
         path: next.join("."),
         description: v.$description ?? "",
         category: metadata.category ?? path[0] ?? "other",
       });
-      out.push(...flatten(Object.fromEntries(Object.entries(v).filter(([key]) => !key.startsWith("$"))), next));
     } else if (v && typeof v === "object") {
       out.push(...flatten(v, next));
+    }
+  }
+  if (path.length === 0) {
+    for (const listed of obj.$extensions?.[EXT]?.nonDtcg ?? []) {
+      out.push({
+        cssVar: listed.cssVar,
+        value: listed.css,
+        path: `(non-DTCG) ${listed.cssVar}`,
+        description: listed.reason,
+        category: "other",
+      });
     }
   }
   return out;
@@ -64,7 +83,8 @@ function main() {
   mkdirSync(OUT_DIR, { recursive: true });
   let files = [];
   try {
-    files = readdirSync(TOKEN_DIR).filter((x) => x.endsWith(".json"));
+    // Token files only: themes/ holds overrides and *.resolver.json wires them.
+    files = readdirSync(TOKEN_DIR).filter((x) => x.endsWith(".json") && !x.endsWith(".resolver.json"));
   } catch {
     files = [];
   }
@@ -118,6 +138,7 @@ function main() {
     tokenCount: catalog.tokenCount,
     usageCoverage: catalog.usageCoverage,
     dtcgFiles: files.map((f) => `tokens/production/${f}`),
+    dtcgResolver: "tokens/production/digitaltableteur.resolver.json",
     categories: Object.keys(byCategory).sort(),
     tokenNames,
   };

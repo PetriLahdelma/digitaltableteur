@@ -1,40 +1,58 @@
 {
-  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "ease": {
     "out": {
       "expo": {
-        "$value": "cubic-bezier(\n    0.16,\n    1,\n    0.3,\n    1\n  )",
-        "$description": "Cubic-bezier easing curve (out-expo).",
+        "$value": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
         "$type": "cubicBezier",
+        "$description": "Cubic-bezier easing curve (out-expo).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--ease-out-expo",
             "category": "motion",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "cubic-bezier(\n    0.16,\n    1,\n    0.3,\n    1\n  )"
           }
         }
       },
       "quart": {
-        "$value": "cubic-bezier(\n    0.25,\n    1,\n    0.5,\n    1\n  )",
-        "$description": "Cubic-bezier easing curve (out-quart).",
+        "$value": [
+          0.25,
+          1,
+          0.5,
+          1
+        ],
         "$type": "cubicBezier",
+        "$description": "Cubic-bezier easing curve (out-quart).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--ease-out-quart",
             "category": "motion",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "cubic-bezier(\n    0.25,\n    1,\n    0.5,\n    1\n  )"
           }
         }
       },
       "cubic": {
-        "$value": "cubic-bezier(\n    0.33,\n    1,\n    0.68,\n    1\n  )",
-        "$description": "Cubic-bezier easing curve (out-cubic).",
+        "$value": [
+          0.33,
+          1,
+          0.68,
+          1
+        ],
         "$type": "cubicBezier",
+        "$description": "Cubic-bezier easing curve (out-cubic).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--ease-out-cubic",
             "category": "motion",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "cubic-bezier(\n    0.33,\n    1,\n    0.68,\n    1\n  )"
           }
         }
       }
@@ -42,152 +60,206 @@
     "in": {
       "out": {
         "quart": {
-          "$value": "cubic-bezier(\n    0.76,\n    0,\n    0.24,\n    1\n  )",
-          "$description": "Cubic-bezier easing curve (in-out-quart).",
+          "$value": [
+            0.76,
+            0,
+            0.24,
+            1
+          ],
           "$type": "cubicBezier",
+          "$description": "Cubic-bezier easing curve (in-out-quart).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--ease-in-out-quart",
               "category": "motion",
-              "subgroup": "General"
+              "subgroup": "General",
+              "css": "cubic-bezier(\n    0.76,\n    0,\n    0.24,\n    1\n  )"
             }
           }
         },
         "expo": {
-          "$value": "cubic-bezier(\n    0.87,\n    0,\n    0.13,\n    1\n  )",
-          "$description": "Cubic-bezier easing curve (in-out-expo).",
+          "$value": [
+            0.87,
+            0,
+            0.13,
+            1
+          ],
           "$type": "cubicBezier",
+          "$description": "Cubic-bezier easing curve (in-out-expo).",
           "$extensions": {
-            "digitaltableteur": {
+            "com.digitaltableteur": {
               "cssVar": "--ease-in-out-expo",
               "category": "motion",
-              "subgroup": "General"
+              "subgroup": "General",
+              "css": "cubic-bezier(\n    0.87,\n    0,\n    0.13,\n    1\n  )"
             }
           }
         }
       }
     },
     "spring": {
-      "$value": "cubic-bezier(\n    0.34,\n    1.56,\n    0.64,\n    1\n  )",
-      "$description": "Cubic-bezier easing curve (spring).",
+      "$value": [
+        0.34,
+        1.56,
+        0.64,
+        1
+      ],
       "$type": "cubicBezier",
+      "$description": "Cubic-bezier easing curve (spring).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--ease-spring",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "cubic-bezier(\n    0.34,\n    1.56,\n    0.64,\n    1\n  )"
         }
       }
     }
   },
   "duration": {
     "instant": {
-      "$value": "100ms",
-      "$description": "Motion duration for instant transitions.",
+      "$value": {
+        "value": 100,
+        "unit": "ms"
+      },
       "$type": "duration",
+      "$description": "Motion duration for instant transitions.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--duration-instant",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "100ms"
         }
       }
     },
     "fast": {
-      "$value": "200ms",
-      "$description": "Motion duration for fast transitions.",
+      "$value": {
+        "value": 200,
+        "unit": "ms"
+      },
       "$type": "duration",
+      "$description": "Motion duration for fast transitions.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--duration-fast",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "200ms"
         }
       }
     },
     "normal": {
-      "$value": "350ms",
-      "$description": "Motion duration for normal transitions.",
+      "$value": {
+        "value": 350,
+        "unit": "ms"
+      },
       "$type": "duration",
+      "$description": "Motion duration for normal transitions.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--duration-normal",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "350ms"
         }
       }
     },
     "slow": {
-      "$value": "500ms",
-      "$description": "Motion duration for slow transitions.",
+      "$value": {
+        "value": 500,
+        "unit": "ms"
+      },
       "$type": "duration",
+      "$description": "Motion duration for slow transitions.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--duration-slow",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "500ms"
         }
       }
     },
     "slower": {
-      "$value": "800ms",
-      "$description": "Motion duration for slower transitions.",
+      "$value": {
+        "value": 800,
+        "unit": "ms"
+      },
       "$type": "duration",
+      "$description": "Motion duration for slower transitions.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--duration-slower",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "800ms"
         }
       }
     },
     "slowest": {
-      "$value": "1200ms",
-      "$description": "Motion duration for slowest transitions.",
+      "$value": {
+        "value": 1200,
+        "unit": "ms"
+      },
       "$type": "duration",
+      "$description": "Motion duration for slowest transitions.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--duration-slowest",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "1200ms"
         }
       }
     }
   },
   "stagger": {
     "fast": {
-      "$value": "0.03s",
-      "$description": "Animation stagger delay between siblings.",
+      "$value": {
+        "value": 0.03,
+        "unit": "s"
+      },
       "$type": "duration",
+      "$description": "Animation stagger delay between siblings.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--stagger-fast",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "0.03s"
         }
       }
     },
     "normal": {
-      "$value": "0.08s",
-      "$description": "Animation stagger delay between siblings.",
+      "$value": {
+        "value": 0.08,
+        "unit": "s"
+      },
       "$type": "duration",
+      "$description": "Animation stagger delay between siblings.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--stagger-normal",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "0.08s"
         }
       }
     },
     "slow": {
-      "$value": "0.15s",
-      "$description": "Animation stagger delay between siblings.",
+      "$value": {
+        "value": 0.15,
+        "unit": "s"
+      },
       "$type": "duration",
+      "$description": "Animation stagger delay between siblings.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--stagger-slow",
           "category": "motion",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "0.15s"
         }
       }
     }
@@ -195,50 +267,66 @@
   "motion": {
     "distance": {
       "sm": {
-        "$value": "12px",
-        "$description": "Translate distance for entrance animations.",
+        "$value": {
+          "value": 12,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Translate distance for entrance animations.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--motion-distance-sm",
             "category": "motion",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "12px"
           }
         }
       },
       "md": {
-        "$value": "24px",
-        "$description": "Translate distance for entrance animations.",
+        "$value": {
+          "value": 24,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Translate distance for entrance animations.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--motion-distance-md",
             "category": "motion",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "24px"
           }
         }
       },
       "lg": {
-        "$value": "48px",
-        "$description": "Translate distance for entrance animations.",
+        "$value": {
+          "value": 48,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Translate distance for entrance animations.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--motion-distance-lg",
             "category": "motion",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "48px"
           }
         }
       },
       "xl": {
-        "$value": "80px",
-        "$description": "Translate distance for entrance animations.",
+        "$value": {
+          "value": 80,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Translate distance for entrance animations.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--motion-distance-xl",
             "category": "motion",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "80px"
           }
         }
       }

@@ -1,29 +1,40 @@
 {
-  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "modal": {
     "overlay": {
       "bg": {
-        "$value": "rgb(0 0 0 / 50%)",
-        "$description": "Overlay or elevation token.",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.5,
+          "hex": "#000000"
+        },
         "$type": "color",
+        "$description": "Overlay or elevation token.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--modal-overlay-bg",
             "category": "elevation",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "rgb(0 0 0 / 50%)"
           }
         }
       }
     },
     "shadow": {
-      "$value": "var(--shadow-xl)",
-      "$description": "Overlay or elevation token.",
+      "$value": "{shadow.xl}",
       "$type": "shadow",
+      "$description": "Overlay or elevation token.",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--modal-shadow",
           "category": "elevation",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "var(--shadow-xl)"
         }
       }
     }
@@ -31,14 +42,24 @@
   "gallery": {
     "caption": {
       "bg": {
-        "$value": "rgb(0 0 0 / 55%)",
-        "$description": "Overlay or elevation token.",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.55,
+          "hex": "#000000"
+        },
         "$type": "color",
+        "$description": "Overlay or elevation token.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--gallery-caption-bg",
             "category": "elevation",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "rgb(0 0 0 / 55%)"
           }
         }
       }
@@ -46,50 +67,162 @@
   },
   "shadow": {
     "sm": {
-      "$value": "0 1px 2px rgb(0 0 0 / 6%)",
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.06,
+          "hex": "#000000"
+        },
+        "offsetX": {
+          "value": 0,
+          "unit": "px"
+        },
+        "offsetY": {
+          "value": 1,
+          "unit": "px"
+        },
+        "blur": {
+          "value": 2,
+          "unit": "px"
+        },
+        "spread": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$type": "shadow",
       "$description": "Elevation shadow (sm) — resting through modal.",
-      "$type": "string",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--shadow-sm",
           "category": "elevation",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "0 1px 2px rgb(0 0 0 / 6%)"
         }
       }
     },
     "md": {
-      "$value": "0 4px 12px rgb(0 0 0 / 10%)",
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.1,
+          "hex": "#000000"
+        },
+        "offsetX": {
+          "value": 0,
+          "unit": "px"
+        },
+        "offsetY": {
+          "value": 4,
+          "unit": "px"
+        },
+        "blur": {
+          "value": 12,
+          "unit": "px"
+        },
+        "spread": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$type": "shadow",
       "$description": "Elevation shadow (md) — resting through modal.",
-      "$type": "string",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--shadow-md",
           "category": "elevation",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "0 4px 12px rgb(0 0 0 / 10%)"
         }
       }
     },
     "lg": {
-      "$value": "0 12px 32px rgb(0 0 0 / 12%)",
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.12,
+          "hex": "#000000"
+        },
+        "offsetX": {
+          "value": 0,
+          "unit": "px"
+        },
+        "offsetY": {
+          "value": 12,
+          "unit": "px"
+        },
+        "blur": {
+          "value": 32,
+          "unit": "px"
+        },
+        "spread": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$type": "shadow",
       "$description": "Elevation shadow (lg) — resting through modal.",
-      "$type": "string",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--shadow-lg",
           "category": "elevation",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "0 12px 32px rgb(0 0 0 / 12%)"
         }
       }
     },
     "xl": {
-      "$value": "0 24px 60px rgb(0 0 0 / 16%)",
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.16,
+          "hex": "#000000"
+        },
+        "offsetX": {
+          "value": 0,
+          "unit": "px"
+        },
+        "offsetY": {
+          "value": 24,
+          "unit": "px"
+        },
+        "blur": {
+          "value": 60,
+          "unit": "px"
+        },
+        "spread": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$type": "shadow",
       "$description": "Elevation shadow (xl) — resting through modal.",
-      "$type": "string",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--shadow-xl",
           "category": "elevation",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "0 24px 60px rgb(0 0 0 / 16%)"
         }
       }
     }

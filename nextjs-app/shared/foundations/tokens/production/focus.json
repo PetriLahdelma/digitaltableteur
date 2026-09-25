@@ -1,40 +1,51 @@
 {
-  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "focus": {
     "ring": {
       "color": {
-        "$value": "var(--color-primary)",
-        "$description": "Keyboard focus outline color (WCAG focus appearance).",
+        "$value": {
+          "$ref": "#/color/primary/$root/$value"
+        },
         "$type": "color",
+        "$description": "Keyboard focus outline color (WCAG focus appearance).",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--focus-ring-color",
             "category": "focus",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "var(--color-primary)"
           }
         }
       },
       "width": {
-        "$value": "2px",
-        "$description": "Focus ring token for keyboard accessibility.",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Focus ring token for keyboard accessibility.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--focus-ring-width",
             "category": "focus",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "2px"
           }
         }
       },
       "offset": {
-        "$value": "2px",
-        "$description": "Focus ring token for keyboard accessibility.",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        },
         "$type": "dimension",
+        "$description": "Focus ring token for keyboard accessibility.",
         "$extensions": {
-          "digitaltableteur": {
+          "com.digitaltableteur": {
             "cssVar": "--focus-ring-offset",
             "category": "focus",
-            "subgroup": "General"
+            "subgroup": "General",
+            "css": "2px"
           }
         }
       }

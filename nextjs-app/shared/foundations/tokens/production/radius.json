@@ -1,75 +1,94 @@
 {
-  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$extensions": {
+    "com.digitaltableteur": {
+      "nonDtcg": [
+        {
+          "cssVar": "--radius-circle",
+          "css": "50%",
+          "reason": "\"50%\" is not a px/rem dimension"
+        }
+      ]
+    }
+  },
   "radius": {
     "sm": {
-      "$value": "2px",
-      "$description": "Border radius (sm).",
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Border radius (sm).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--radius-sm",
           "category": "radius",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "2px"
         }
       }
     },
     "md": {
-      "$value": "4px",
-      "$description": "Border radius (md).",
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Border radius (md).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--radius-md",
           "category": "radius",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "4px"
         }
       }
     },
     "lg": {
-      "$value": "8px",
-      "$description": "Border radius (lg).",
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Border radius (lg).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--radius-lg",
           "category": "radius",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "8px"
         }
       }
     },
     "xl": {
-      "$value": "16px",
-      "$description": "Border radius (xl).",
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Border radius (xl).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--radius-xl",
           "category": "radius",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "16px"
         }
       }
     },
     "full": {
-      "$value": "9999px",
-      "$description": "Border radius (full).",
+      "$value": {
+        "value": 9999,
+        "unit": "px"
+      },
       "$type": "dimension",
+      "$description": "Border radius (full).",
       "$extensions": {
-        "digitaltableteur": {
+        "com.digitaltableteur": {
           "cssVar": "--radius-full",
           "category": "radius",
-          "subgroup": "General"
-        }
-      }
-    },
-    "circle": {
-      "$value": "50%",
-      "$description": "Border radius (circle).",
-      "$type": "dimension",
-      "$extensions": {
-        "digitaltableteur": {
-          "cssVar": "--radius-circle",
-          "category": "radius",
-          "subgroup": "General"
+          "subgroup": "General",
+          "css": "9999px"
         }
       }
     }
