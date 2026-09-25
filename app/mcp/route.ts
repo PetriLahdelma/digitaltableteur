@@ -3,6 +3,13 @@ import { createConsultingMcpHandler } from "@/nextjs-app/shared/lib/mcp/create-c
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-const { handleMcpRequest } = createConsultingMcpHandler({ basePath: "" });
+const { handleMcpRequest, handleHeadRequest } = createConsultingMcpHandler({
+  basePath: "",
+});
 
-export { handleMcpRequest as GET, handleMcpRequest as POST, handleMcpRequest as DELETE };
+export {
+  handleMcpRequest as GET,
+  handleMcpRequest as POST,
+  handleMcpRequest as DELETE,
+  handleHeadRequest as HEAD,
+};

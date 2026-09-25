@@ -84,6 +84,9 @@ export async function GET() {
   body += `- MCP endpoint (Streamable HTTP): ${baseUrl}/mcp\n`;
   body +=
     "- Design system docs tools: search (budgeted component briefs by name/keyword/intent) and get (full usage, props, example story source) over the docs registry\n";
+  body +=
+    "- Design system usage validator: validate_component_usage checks a JSX snippet against the component contracts (prop relationships, forbidden combinations, deprecated props)\n";
+  body += `- Design system component index (one line per component): ${baseUrl}/design-system/llms.txt\n`;
   body += `- Agent auth policy: ${baseUrl}/auth.md\n\n`;
 
   body += "## Services and capabilities\n\n";

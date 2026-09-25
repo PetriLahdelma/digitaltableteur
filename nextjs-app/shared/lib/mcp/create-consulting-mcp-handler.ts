@@ -74,5 +74,14 @@ export function createConsultingMcpHandler(options: { basePath: string }) {
     return mcpHandler(request);
   }
 
-  return { handleMcpRequest };
+  /**
+   * Next.js answers HEAD with the GET handler when no HEAD export exists, and
+   * the MCP handler then waits for a stream that never opens until
+   * maxDuration (a 60 s 504 for uptime probes and link checkers).
+   */
+  function handleHeadRequest(): Response {
+    return new Response(null, { status: 405, headers: { Allow: "GET, POST, DELETE" } });
+  }
+
+  return { handleMcpRequest, handleHeadRequest };
 }

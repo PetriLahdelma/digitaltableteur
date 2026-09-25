@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.digitaltableteur/mcp",
+  "title": "Digitaltableteur",
+  "description": "Design system contracts, docs search, and usage validation for @digitaltableteur components.",
+  "version": "1.1.0",
+  "websiteUrl": "https://www.digitaltableteur.com/design-system/agent",
+  "repository": {
+    "url": "https://github.com/PetriLahdelma/digitaltableteur",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.digitaltableteur.com/mcp"
+    }
+  ]
+}
