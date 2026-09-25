@@ -52,6 +52,74 @@ describe("DonnyAvatar", () => {
     });
   });
 
+  describe("Expression changes", () => {
+    it("morphs same-shaped eyes at once but swaps different shapes behind a blink", async () => {
+      vi.useFakeTimers();
+      // Full motion (the shared setup reports reduced motion, which swaps instantly).
+      const originalMatchMedia = window.matchMedia;
+      window.matchMedia = ((query: string) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: () => {},
+        removeListener: () => {},
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        dispatchEvent: () => false,
+      })) as typeof window.matchMedia;
+      const { rerender } = render(<DonnyAvatar state="idle" />);
+      const img = () => screen.getByRole("img");
+
+      // circle -> circle: the d transition morphs, so no wait
+      rerender(<DonnyAvatar state="listening" />);
+      await act(async () => {
+        vi.advanceTimersByTime(1);
+      });
+      expect(img()).toHaveAttribute("data-state", "listening");
+
+      // circle -> dash cannot morph: swap lands at the bottom of the blink
+      rerender(<DonnyAvatar state="thinking" />);
+      await act(async () => {
+        vi.advanceTimersByTime(40);
+      });
+      expect(img()).toHaveAttribute("data-state", "listening");
+      await act(async () => {
+        vi.advanceTimersByTime(60);
+      });
+      expect(img()).toHaveAttribute("data-state", "thinking");
+      await act(async () => {
+        vi.advanceTimersByTime(150);
+      });
+      expect(img()).toHaveAttribute("data-transitioning", "false");
+      window.matchMedia = originalMatchMedia;
+      vi.useRealTimers();
+    });
+
+    it("swaps instantly under reduced motion", async () => {
+      vi.useFakeTimers();
+      const { rerender } = render(<DonnyAvatar state="idle" />);
+      rerender(<DonnyAvatar state="thinking" />);
+      await act(async () => {
+        vi.advanceTimersByTime(1);
+      });
+      expect(screen.getByRole("img")).toHaveAttribute("data-state", "thinking");
+      vi.useRealTimers();
+    });
+
+    it("clears the transition when the target flips back before the swap", async () => {
+      vi.useFakeTimers();
+      const { rerender } = render(<DonnyAvatar state="idle" />);
+      rerender(<DonnyAvatar state="thinking" />);
+      rerender(<DonnyAvatar state="idle" />);
+      await act(async () => {
+        vi.advanceTimersByTime(10);
+      });
+      expect(screen.getByRole("img")).toHaveAttribute("data-state", "idle");
+      expect(screen.getByRole("img")).toHaveAttribute("data-transitioning", "false");
+      vi.useRealTimers();
+    });
+  });
+
   describe("State Transitions", () => {
     it("transitions between states", async () => {
       vi.useFakeTimers();

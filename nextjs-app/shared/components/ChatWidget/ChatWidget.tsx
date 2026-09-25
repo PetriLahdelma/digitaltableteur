@@ -36,6 +36,7 @@ import { resolveChatAvatarState } from "./chatAvatarState";
 import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
 import { useDonnyChatLead } from "./useDonnyChatLead";
 import { useDonnyChatExpression } from "./useDonnyChatExpression";
+import { BEAT_MS, useDonnyChatBeats } from "./useDonnyChatBeats";
 
 export interface ChatWidgetProps {
   title?: string;
@@ -502,6 +503,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   const [isOpen, setIsOpen] = useState(false);
   const [draft, setDraft] = useState("");
+  const [inputFocused, setInputFocused] = useState(false);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -626,6 +628,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         toolKeywords: TOOL_KEYWORDS,
         emailWorkflowStep: emailWorkflow.step,
         messages,
+        inputFocused,
       }),
     [
       status,
@@ -634,13 +637,22 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       draft,
       emailWorkflow.step,
       messages,
+      inputFocused,
     ],
   );
 
+  const { beat, playBeat } = useDonnyChatBeats({
+    status,
+    isOpen,
+    hasConversation: messages.length > 1,
+  });
+
+  // Live activity (thinking, speaking, tools) and errors always win; one-off
+  // beats and tool-requested expressions only play over a resting state.
   const avatarState =
-    status === "submitted" || status === "streaming"
+    status === "submitted" || status === "streaming" || errorMessage
       ? reactiveAvatarState
-      : (forcedExpression ?? reactiveAvatarState);
+      : (forcedExpression ?? beat ?? reactiveAvatarState);
 
   useEffect(() => {
     const hydrated = loadStoredMessages(greetingText);
@@ -892,6 +904,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   const handleReset = useCallback(() => {
     stop();
+    playBeat("acknowledging", BEAT_MS.acknowledging);
     const resetMessages = [createGreetingMessage(greetingText)];
     setMessages(resetMessages);
     setDraft("");
@@ -909,7 +922,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         // ignore storage errors
       }
     }
-  }, [stop, setMessages, clearError, greetingText]);
+  }, [stop, setMessages, clearError, greetingText, playBeat]);
 
   // Derive processed parts for trigger detection (non-render injection for now)
   // Email workflow trigger detection + assistant phrase injection
@@ -998,6 +1011,12 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           aria-label={resolvedTitle}
           tabIndex={isOpen ? 0 : -1}
           data-lenis-prevent-wheel=""
+          onFocusCapture={(event) => {
+            if (event.target instanceof HTMLTextAreaElement) setInputFocused(true);
+          }}
+          onBlurCapture={(event) => {
+            if (event.target instanceof HTMLTextAreaElement) setInputFocused(false);
+          }}
         >
           <ChatHeader
             title={resolvedTitle}

@@ -209,6 +209,8 @@ export interface ResolveChatAvatarStateInput {
   toolKeywords: readonly string[];
   emailWorkflowStep: string;
   messages: UIMessage[];
+  /** The message input has focus (Donny listens even before typing starts). */
+  inputFocused?: boolean;
 }
 
 /** Map chat lifecycle, tools, drafts, and errors to DonnyAvatar state. */
@@ -223,6 +225,7 @@ export function resolveChatAvatarState(
     toolKeywords,
     emailWorkflowStep,
     messages,
+    inputFocused = false,
   } = input;
 
   if (resolvedErrorCopy) {
@@ -250,13 +253,17 @@ export function resolveChatAvatarState(
     return resolveToolAvatarState(lastToolActivity, expressionFromTool);
   }
 
-  if (status === "submitted") return "loading";
+  // Waiting on the model is thinking, not a network spinner ("loading" is
+  // kept for the email send, which really is a transfer).
+  if (status === "submitted") return "thinking";
   if (status === "streaming") return "typing";
 
   if (messageHasVertaauxOffer(messages)) return "suggesting";
   if (messageHasProjectShowcase(messages)) return "impressed";
 
   if (messages.length <= 1 && !draft.trim()) return "greeting";
+
+  if (inputFocused && !draft.trim()) return "listening";
 
   return resolveDraftAvatarState(draft, [...toolKeywords]);
 }

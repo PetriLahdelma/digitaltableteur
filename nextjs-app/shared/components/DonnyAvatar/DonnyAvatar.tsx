@@ -61,7 +61,7 @@ export interface DonnyAvatarProps {
   proximityThreshold?: number;
   /** Enables randomized idle expressions. */
   enableIdleExpressions?: boolean;
-  /** Base idle-expression interval in milliseconds (default 8000), randomized by 50 percent. */
+  /** Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent. */
   idleExpressionInterval?: number;
   /** Animates the mouth during streaming responses. */
   isSpeaking?: boolean;
@@ -305,6 +305,70 @@ const SIZE_MAP = {
   xl: 96,
 };
 
+// Strong ease-out: responsive reactions without the limp start of CSS "ease".
+const EASE_OUT = "cubic-bezier(0.23, 1, 0.32, 1)";
+
+/** Command letters of an SVG path, e.g. "MAA" for a circle, "MH" for a dash. */
+function pathShape(d: string): string {
+  return d.replace(/[^A-Za-z]/g, "");
+}
+
+/**
+ * Whether the browser can morph `from` into `to` with a `d` transition.
+ * Paths with different command structures snap instead, so those changes
+ * are hidden inside a blink.
+ */
+function canMorph(from: DonnyState, to: DonnyState): boolean {
+  const a = EYE_CONFIGS[from];
+  const b = EYE_CONFIGS[to];
+  return (
+    pathShape(a.leftEye) === pathShape(b.leftEye) &&
+    pathShape(a.rightEye) === pathShape(b.rightEye)
+  );
+}
+
+/** Eyes are open (a blink reads as natural) rather than closed or crossed. */
+const OPEN_EYE_STATES = new Set<DonnyState>([
+  "idle",
+  "listening",
+  "searching",
+  "confused",
+  "handoff",
+  "suggesting",
+  "confident",
+  "curious",
+  "remembering",
+  "focused",
+  "impressed",
+  "skeptical",
+  "typing",
+]);
+
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+/** Squash the eyes shut and open again. No-op where WAAPI is unavailable. */
+function playBlink(
+  element: SVGGElement | null,
+  { closeMs = 70, openMs = 110 }: { closeMs?: number; openMs?: number } = {},
+): Animation | null {
+  if (!element || typeof element.animate !== "function") return null;
+  const total = closeMs + openMs;
+  return element.animate(
+    [
+      { transform: "scaleY(1)" },
+      { transform: "scaleY(0.08)", offset: closeMs / total },
+      { transform: "scaleY(1)" },
+    ],
+    { duration: total, easing: EASE_OUT },
+  );
+}
+
 /**
  * DonnyAvatar
  *
@@ -323,7 +387,7 @@ export function DonnyAvatar({
   onProximityChange,
   proximityThreshold = 150,
   enableIdleExpressions = false,
-  idleExpressionInterval = 8000,
+  idleExpressionInterval = 12000,
   isSpeaking = false,
   enableSleepDetection = false,
   sleepyDelay = 120000,  // 2 minutes
@@ -332,12 +396,19 @@ export function DonnyAvatar({
 }: DonnyAvatarProps) {
   const [currentState, setCurrentState] = useState<DonnyState>(state);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [eyeOffset, setEyeOffset] = useState({ x: 0, y: 0 });
   const [isNearTarget, setIsNearTarget] = useState(false);
   const [idleExpression, setIdleExpression] = useState<DonnyState | null>(null);
   const [sleepState, setSleepState] = useState<"awake" | "sleepy" | "sleeping">("awake");
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
+  // Gaze: target set by the pointer, current eased toward it every frame and
+  // written straight to the eye group (no React render per mousemove).
+  const trackRef = useRef<SVGGElement>(null);
+  const blinkRef = useRef<SVGGElement>(null);
+  const gazeTargetRef = useRef({ x: 0, y: 0 });
+  const gazeCurrentRef = useRef({ x: 0, y: 0 });
+  const gazeRafRef = useRef<number | null>(null);
+  const currentStateRef = useRef<DonnyState>(state);
   const idleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const chainedTimeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const sleepyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -346,18 +417,40 @@ export function DonnyAvatar({
   const isNearTargetRef = useRef(isNearTarget);
   const onProximityChangeRef = useRef(onProximityChange);
 
-  // State transition effect
+  // State transition: shapes that morph (circle to circle) swap at once and
+  // let the CSS `d` transition carry them; shapes that cannot morph (dash to
+  // circle) swap at the bottom of a blink, the way a face changes expression.
   useEffect(() => {
-    if (state !== currentState) {
-      setIsTransitioning(true);
-      const timer = setTimeout(() => {
-        setCurrentState(state);
-        setIsTransitioning(false);
-        onTransitionEnd?.();
-      }, 200);
-      return () => clearTimeout(timer);
+    currentStateRef.current = currentState;
+  }, [currentState]);
+
+  const onTransitionEndRef = useRef(onTransitionEnd);
+  useEffect(() => {
+    onTransitionEndRef.current = onTransitionEnd;
+  }, [onTransitionEnd]);
+
+  // Keyed on the target only: swapping currentState must not re-run (and
+  // cancel) the transition that caused it.
+  useEffect(() => {
+    const from = currentStateRef.current;
+    if (state === from) {
+      // Target flipped back before the swap: nothing left to transition.
+      setIsTransitioning(false);
+      return;
     }
-  }, [state, currentState, onTransitionEnd]);
+    const throughBlink = !prefersReducedMotion() && !canMorph(from, state);
+    setIsTransitioning(true);
+    if (throughBlink) playBlink(blinkRef.current, { closeMs: 80, openMs: 120 });
+    const swap = setTimeout(() => setCurrentState(state), throughBlink ? 80 : 0);
+    const settle = setTimeout(() => {
+      setIsTransitioning(false);
+      onTransitionEndRef.current?.();
+    }, 200);
+    return () => {
+      clearTimeout(swap);
+      clearTimeout(settle);
+    };
+  }, [state]);
 
   // Keep refs in sync with state/props
   useEffect(() => {
@@ -387,19 +480,20 @@ export function DonnyAvatar({
       return;
     }
 
-    // Pool of subtle expressions for idle state
+    // Idle quirks are small and rare: glancing around reads as alive, while
+    // strong expressions (skeptical, remembering) popping up mid-read read as
+    // erratic. Blinks are handled separately. Weighted by repetition.
     const idleExpressions: DonnyState[] = [
-      "curious",      // Raise one eyebrow
-      "playful",      // Wink
-      "acknowledging", // Blink/nod
-      "thinking",     // Brief thinking look
-      "remembering",  // Look up-left briefly
-      "skeptical",    // Raised eyebrow
+      "searching",    // Glance around
+      "searching",
+      "curious",      // One eye widens
+      "curious",
+      "playful",      // Rare wink
     ];
 
     // Function to schedule the next random expression
     const scheduleNextExpression = () => {
-      // Randomize interval: base ± 50% (so 8s becomes 4-12s range)
+      // Randomize interval: base ± 50% (so 12s becomes 6-18s)
       const variance = idleExpressionInterval * 0.5;
       const randomizedDelay = idleExpressionInterval + (Math.random() * 2 - 1) * variance;
       
@@ -408,27 +502,9 @@ export function DonnyAvatar({
         const expression = idleExpressions[Math.floor(Math.random() * idleExpressions.length)];
         setIdleExpression(expression);
         
-        // Chance for consecutive expressions (20% chance for 2nd, 10% for 3rd)
-        const consecutiveRolls = [Math.random(), Math.random()];
-        const consecutiveCount = consecutiveRolls[0] < 0.2 ? (consecutiveRolls[1] < 0.5 ? 2 : 1) : 0;
-        
-        // Reset after expression duration, possibly chain more
-        let resetDelay = 600; // Single expression duration
-        
-        if (consecutiveCount > 0) {
-          // Schedule chained expressions
-          let chainDelay = resetDelay;
-          for (let i = 0; i < consecutiveCount; i++) {
-            const chainTimerId = setTimeout(() => {
-              const chainExpression = idleExpressions[Math.floor(Math.random() * idleExpressions.length)];
-              setIdleExpression(chainExpression);
-            }, chainDelay);
-            chainedTimeoutsRef.current.push(chainTimerId);
-            chainDelay += 400 + Math.random() * 300; // 400-700ms between chained expressions
-          }
-          resetDelay = chainDelay + 400;
-        }
-        
+        // Hold the quirk long enough to read (a 600ms flash reads as a glitch).
+        const resetDelay = expression === "searching" ? 1500 : 900;
+
         const resetTimerId = setTimeout(() => {
           setIdleExpression(null);
           scheduleNextExpression();
@@ -509,6 +585,58 @@ export function DonnyAvatar({
     };
   }, [enableSleepDetection, sleepyDelay, sleepDelay]);
 
+  // Natural blinks while the eyes are open: every 2.5 to 6 s, sometimes a
+  // double blink. Skipped under reduced motion and while asleep.
+  const eyesOpen =
+    OPEN_EYE_STATES.has(currentState) && sleepState === "awake" && !idleExpression;
+  useEffect(() => {
+    if (!eyesOpen || prefersReducedMotion()) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const schedule = () => {
+      timer = setTimeout(() => {
+        const blink = playBlink(blinkRef.current);
+        if (blink && Math.random() < 0.18) {
+          blink.onfinish = () => {
+            timer = setTimeout(() => playBlink(blinkRef.current), 90);
+          };
+        }
+        schedule();
+      }, 2500 + Math.random() * 3500);
+    };
+    schedule();
+    return () => clearTimeout(timer);
+  }, [eyesOpen]);
+
+  // Gaze spring: ease the eyes toward the pointer each frame, writing the
+  // transform directly. Stops once settled, restarts on the next move.
+  const runGaze = useCallback(() => {
+    if (gazeRafRef.current != null) return;
+    const step = () => {
+      const target = gazeTargetRef.current;
+      const current = gazeCurrentRef.current;
+      current.x += (target.x - current.x) * 0.2;
+      current.y += (target.y - current.y) * 0.2;
+      const settled =
+        Math.abs(target.x - current.x) < 0.01 && Math.abs(target.y - current.y) < 0.01;
+      if (settled) {
+        current.x = target.x;
+        current.y = target.y;
+      }
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translate(${current.x.toFixed(2)}px, ${current.y.toFixed(2)}px)`;
+      }
+      gazeRafRef.current = settled ? null : requestAnimationFrame(step);
+    };
+    gazeRafRef.current = requestAnimationFrame(step);
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (gazeRafRef.current != null) cancelAnimationFrame(gazeRafRef.current);
+    },
+    [],
+  );
+
   // Mouse tracking for eyes
   const handleMouseMove = useCallback(
     (event: MouseEvent) => {
@@ -540,7 +668,10 @@ export function DonnyAvatar({
         const offsetX = Math.cos(angle) * maxOffset * normalizedDistance;
         const offsetY = Math.sin(angle) * maxOffset * normalizedDistance;
 
-        setEyeOffset({ x: offsetX, y: offsetY });
+        gazeTargetRef.current = prefersReducedMotion()
+          ? { x: 0, y: 0 }
+          : { x: offsetX, y: offsetY };
+        runGaze();
 
         // Check proximity to tracked elements
         if (proximitySelectors.length > 0) {
@@ -580,7 +711,7 @@ export function DonnyAvatar({
         }
       });
     },
-    [trackMouse, proximitySelectors, proximityThreshold]
+    [trackMouse, proximitySelectors, proximityThreshold, runGaze]
   );
 
   // Setup mouse tracking
@@ -601,12 +732,13 @@ export function DonnyAvatar({
     if (!trackMouse) return;
 
     const handleMouseLeave = () => {
-      setEyeOffset({ x: 0, y: 0 });
+      gazeTargetRef.current = { x: 0, y: 0 };
+      runGaze();
     };
 
     document.addEventListener("mouseleave", handleMouseLeave);
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
-  }, [trackMouse]);
+  }, [trackMouse, runGaze]);
 
   // Use idle expression if active, otherwise use current state
   // Sleep states take priority over idle expressions
@@ -619,18 +751,6 @@ export function DonnyAvatar({
   const displayState = getDisplayState();
   const config = EYE_CONFIGS[displayState];
   const dimension = SIZE_MAP[size];
-
-  // Calculate eye transforms with tracking offset
-  const getEyeTransform = (baseTransform?: string) => {
-    const trackingTransform = trackMouse
-      ? `translate(${eyeOffset.x}px, ${eyeOffset.y}px)`
-      : "";
-    
-    if (baseTransform && trackingTransform) {
-      return `${baseTransform} ${trackingTransform}`;
-    }
-    return baseTransform || trackingTransform || undefined;
-  };
 
   return (
     <div
@@ -662,29 +782,33 @@ export function DonnyAvatar({
           className={styles.body}
         />
 
-        {/* Left eye */}
-        <path
-          d={config.leftEye}
-          fill="none"
-          stroke="var(--donny-eyes, white)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={styles.eye}
-          style={{ transform: getEyeTransform(config.leftTransform) }}
-        />
-
-        {/* Right eye */}
-        <path
-          d={config.rightEye}
-          fill="none"
-          stroke="var(--donny-eyes, white)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={styles.eye}
-          style={{ transform: getEyeTransform(config.rightTransform) }}
-        />
+        {/* Eyes: the outer group carries gaze (pointer tracking), the inner
+            one carries blinks, so neither overrides the per-state transforms
+            and animations on the paths themselves. */}
+        <g ref={trackRef}>
+          <g ref={blinkRef} className={styles.blinkGroup}>
+            <path
+              d={config.leftEye}
+              fill="none"
+              stroke="var(--donny-eyes, white)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={styles.eye}
+              style={config.leftTransform ? { transform: config.leftTransform } : undefined}
+            />
+            <path
+              d={config.rightEye}
+              fill="none"
+              stroke="var(--donny-eyes, white)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={styles.eye}
+              style={config.rightTransform ? { transform: config.rightTransform } : undefined}
+            />
+          </g>
+        </g>
 
         {/* Mouth - visible when speaking or for expressive states */}
         {(isSpeaking || MOUTH_CONFIGS[displayState] !== "none") && (

@@ -4450,7 +4450,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 604,
+      "line": 608,
       "column": 22,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4459,7 +4459,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 605,
+      "line": 609,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4468,7 +4468,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 628,
+      "line": 632,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4477,7 +4477,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 632,
+      "line": 636,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4486,7 +4486,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 633,
+      "line": 637,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4504,7 +4504,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 85,
+      "line": 92,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -4513,7 +4513,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 149,
+      "line": 156,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4522,7 +4522,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 165,
+      "line": 172,
       "column": 39,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4531,7 +4531,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 202,
+      "line": 209,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4540,7 +4540,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 442,
+      "line": 449,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4549,7 +4549,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 533,
+      "line": 540,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4558,7 +4558,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 194,
+      "line": 201,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4567,7 +4567,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 145,
+      "line": 152,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4576,7 +4576,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 276,
+      "line": 283,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4585,7 +4585,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 198,
+      "line": 205,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4594,7 +4594,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 83,
+      "line": 90,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4603,7 +4603,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 149,
+      "line": 156,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4612,7 +4612,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 165,
+      "line": 172,
       "column": 39,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4621,7 +4621,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 202,
+      "line": 209,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4630,7 +4630,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 442,
+      "line": 449,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4639,7 +4639,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 533,
+      "line": 540,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4648,7 +4648,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 194,
+      "line": 201,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4657,7 +4657,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 426,
+      "line": 433,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4666,7 +4666,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 512,
+      "line": 519,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4675,7 +4675,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 75,
+      "line": 82,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4684,7 +4684,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 512,
+      "line": 519,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4693,7 +4693,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 145,
+      "line": 152,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4702,7 +4702,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 276,
+      "line": 283,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4711,7 +4711,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 198,
+      "line": 205,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4720,7 +4720,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 235,
+      "line": 242,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4729,7 +4729,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 240,
+      "line": 247,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4738,7 +4738,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 83,
+      "line": 90,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4747,7 +4747,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 194,
+      "line": 201,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4756,7 +4756,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 512,
+      "line": 519,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4765,7 +4765,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 79,
+      "line": 86,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4774,7 +4774,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 198,
+      "line": 205,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",

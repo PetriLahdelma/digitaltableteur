@@ -103,7 +103,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
               proximitySelectors={CURIOSITY_SELECTORS}
               onProximityChange={handleProximityChange}
               enableIdleExpressions={!isOpen}
-              idleExpressionInterval={8000}
+              idleExpressionInterval={12000}
               enableSleepDetection={!isOpen}
               className={styles.toggleAvatar}
             />

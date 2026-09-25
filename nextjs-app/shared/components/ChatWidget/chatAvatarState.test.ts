@@ -162,7 +162,7 @@ describe("chatAvatarState", () => {
       },
     ];
 
-    it("uses loading while waiting for the first stream chunk", () => {
+    it("thinks while waiting for the first stream chunk", () => {
       expect(
         resolveChatAvatarState({
           status: "submitted",
@@ -173,7 +173,32 @@ describe("chatAvatarState", () => {
           emailWorkflowStep: "idle",
           messages: greetingOnly,
         }),
-      ).toBe("loading");
+      ).toBe("thinking");
+    });
+
+    it("listens when the input is focused mid-conversation, greets on a fresh one", () => {
+      const conversation: UIMessage[] = [
+        ...greetingOnly,
+        { id: "u1", role: "user", parts: [{ type: "text", text: "Hello" }] },
+        { id: "a1", role: "assistant", parts: [{ type: "text", text: "Hi!" }] },
+      ];
+      const base = {
+        status: "ready" as const,
+        resolvedErrorCopy: null,
+        fallbackErrorCopy: ERROR_COPY.fallback,
+        draft: "",
+        toolKeywords: TOOL_KEYWORDS,
+        emailWorkflowStep: "idle",
+      };
+      expect(
+        resolveChatAvatarState({ ...base, messages: conversation, inputFocused: true }),
+      ).toBe("listening");
+      expect(
+        resolveChatAvatarState({ ...base, messages: conversation, inputFocused: false }),
+      ).toBe("idle");
+      expect(
+        resolveChatAvatarState({ ...base, messages: greetingOnly, inputFocused: true }),
+      ).toBe("greeting");
     });
 
     it("uses tool states during submitted and streaming", () => {
