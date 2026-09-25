@@ -1,7 +1,10 @@
-export interface DesignSystemToolTextResult {
+// A type alias (not an interface) so it satisfies the SDK's index-signature result type.
+export type DesignSystemToolTextResult = {
   content: [{ type: "text"; text: string }];
+  /** Same payload as the text block, validated against the tool outputSchema. */
+  structuredContent?: Record<string, unknown>;
   isError?: boolean;
-}
+};
 
 export interface ManifestComponentEntry {
   name: string;

@@ -12,6 +12,8 @@ import { z } from "zod";
 // Relative (not @/-aliased) so the tsx-run stdio server resolves it too.
 import registryJson from "../../foundations/dist/docs-registry.json";
 
+import { docsGetOutput, docsSearchOutput } from "./tool-schemas";
+
 export type RegistryExample = {
   story: string;
   description: string | null;
@@ -102,25 +104,16 @@ export function executeSearch(args: { query: string; limit?: number }) {
     .slice(0, limit);
 
   if (scored.length === 0) {
-    return textResult(
-      JSON.stringify(
-        {
-          query,
-          results: [],
-          hint: "No match. Try a UI-intent keyword (e.g. \"toggle\", \"banner\", \"pagination\") or list broad terms one at a time.",
-        },
-        null,
-        2,
-      ),
-    );
+    return jsonResult({
+      query,
+      results: [],
+      hint: "No match. Try a UI-intent keyword (e.g. \"toggle\", \"banner\", \"pagination\") or list broad terms one at a time.",
+    });
   }
-  return textResult(
-    JSON.stringify(
-      { query, results: scored.map(({ entry, score }) => ({ score, ...brief(entry) })) },
-      null,
-      2,
-    ),
-  );
+  return jsonResult({
+    query,
+    results: scored.map(({ entry, score }) => ({ score, ...brief(entry) })),
+  });
 }
 
 export function executeGet(args: { name: string; section?: string }) {
@@ -166,11 +159,14 @@ export function executeGet(args: { name: string; section?: string }) {
     section === "all"
       ? { ...base, ...sections.usage, ...sections.props, ...sections.examples, ...sections.theming }
       : { ...base, ...(sections[section] as Record<string, unknown>) };
-  return textResult(JSON.stringify(payload, null, 2));
+  return jsonResult(payload);
 }
 
-function textResult(text: string) {
-  return { content: [{ type: "text" as const, text }] };
+function jsonResult(data: Record<string, unknown>) {
+  return {
+    content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }],
+    structuredContent: data,
+  };
 }
 function errorResult(text: string) {
   return { content: [{ type: "text" as const, text }], isError: true };
@@ -181,33 +177,43 @@ const READ_ONLY = { readOnlyHint: true } as const;
 /**
  * Register the two-tool Astryx docs surface (search + get).
  *
- * Real zod shapes, not the empty-schema pattern the discovery tools use: the
- * SDK parses arguments against the shape and an empty shape STRIPS every
- * argument before the handler sees it.
+ * Real zod shapes on both sides: the SDK parses arguments against the input
+ * shape (an empty shape strips every argument), and structuredContent is
+ * validated against the output shape.
  */
 export function registerDocsRegistryMcpTools(server: McpServer): number {
-  server.tool(
+  server.registerTool(
     "search",
-    "Search the @dt design-system docs registry by name, keyword, or UI intent. Returns budgeted briefs (import line, key props, related components) with a hint for the follow-up get call.",
     {
-      query: z.string().describe("Component name, keyword, or UI intent (e.g. \"toggle\")"),
-      limit: z.number().int().min(1).max(20).optional().describe("Max results, default 8"),
+      title: "Search design-system docs",
+      description:
+        "Search the @dt design-system docs registry by name, keyword, or UI intent. Returns budgeted briefs (import line, key props, related components) with a hint for the follow-up get call.",
+      inputSchema: {
+        query: z.string().describe("Component name, keyword, or UI intent (e.g. \"toggle\")"),
+        limit: z.number().int().min(1).max(20).optional().describe("Max results, default 8"),
+      },
+      outputSchema: docsSearchOutput,
+      annotations: READ_ONLY,
     },
-    READ_ONLY,
     async (args) => executeSearch(args),
   );
 
-  server.tool(
+  server.registerTool(
     "get",
-    "Get the full docs-registry entry for one component: usage guidance, props, example story source, and theming tokens.",
     {
-      name: z.string().describe("Component name, e.g. \"Button\""),
-      section: z
-        .enum(GET_SECTIONS)
-        .optional()
-        .describe('Narrow the payload; default "all"'),
+      title: "Get component docs",
+      description:
+        "Get the full docs-registry entry for one component: usage guidance, props, example story source, and theming tokens.",
+      inputSchema: {
+        name: z.string().describe("Component name, e.g. \"Button\""),
+        section: z
+          .enum(GET_SECTIONS)
+          .optional()
+          .describe('Narrow the payload; default "all"'),
+      },
+      outputSchema: docsGetOutput,
+      annotations: READ_ONLY,
     },
-    READ_ONLY,
     async (args) => executeGet(args),
   );
 

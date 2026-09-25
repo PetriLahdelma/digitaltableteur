@@ -8,98 +8,99 @@ import {
   executeSuggestPatternForLayout,
   executeValidateComponentUsage,
 } from "./executors";
+import {
+  findComponentForIntentInput,
+  findComponentForIntentOutput,
+  getComponentContractInput,
+  getComponentContractOutput,
+  getTokensOutput,
+  listComponentsInput,
+  listComponentsOutput,
+  suggestPatternForLayoutInput,
+  suggestPatternForLayoutOutput,
+  validateComponentUsageInput,
+  validateComponentUsageOutput,
+} from "./tool-schemas";
 
 const READ_ONLY = { readOnlyHint: true } as const;
 
-type UntypedToolServer = {
-  tool: (
-    name: string,
-    description: string,
-    schema: Record<string, never>,
-    annotations: typeof READ_ONLY,
-    handler: (args: Record<string, unknown>) => {
-      content: [{ type: "text"; text: string }];
-      isError?: boolean;
-    },
-  ) => void;
-};
-
-function bindToolServer(server: McpServer): UntypedToolServer {
-  return server as unknown as UntypedToolServer;
-}
-
 /** Register design-system discovery tools on an MCP server instance. */
 export function registerDesignSystemMcpTools(server: McpServer): number {
-  const tools = bindToolServer(server);
-  const emptySchema = {} as Record<string, never>;
-
-  tools.tool(
+  server.registerTool(
     "list_components",
-    "List cataloged @dt components with status, import path, usage counts, and composesWith neighbors. Filter by status (stable|beta|alpha|all).",
-    emptySchema,
-    READ_ONLY,
-    (args) =>
-      executeListComponents({
-        status: args.status != null ? String(args.status) : undefined,
-        limit: args.limit != null ? Number(args.limit) : undefined,
-      }),
+    {
+      title: "List components",
+      description:
+        "List cataloged @dt components with status, import path, usage counts, and composesWith neighbors. Filter by status (stable|beta|alpha|deprecated|all).",
+      inputSchema: listComponentsInput,
+      outputSchema: listComponentsOutput,
+      annotations: READ_ONLY,
+    },
+    async (args) => executeListComponents(args),
   );
 
-  tools.tool(
+  server.registerTool(
     "find_component_for_intent",
-    "Rank @dt components for a free-text UI task (e.g. dismissible warning banner with action). Returns import, variants, composesWith, and validation commands.",
-    emptySchema,
-    READ_ONLY,
-    (args) =>
-      executeFindComponentForIntent({
-        query: String(args.query ?? ""),
-        limit: args.limit != null ? Number(args.limit) : undefined,
-      }),
+    {
+      title: "Find component for intent",
+      description:
+        "Rank @dt components for a free-text UI task (e.g. dismissible warning banner with action). Returns import, variants, composesWith, and validation commands.",
+      inputSchema: findComponentForIntentInput,
+      outputSchema: findComponentForIntentOutput,
+      annotations: READ_ONLY,
+    },
+    async (args) => executeFindComponentForIntent(args),
   );
 
-  tools.tool(
+  server.registerTool(
     "suggest_pattern_for_layout",
-    "Rank @dt layout patterns (CTASection, Header, HeroSection, …) for a page-level intent. Returns useWhen, avoidWhen, composesWith, and variantNotes — not a license to replace pattern chrome.",
-    emptySchema,
-    READ_ONLY,
-    (args) =>
-      executeSuggestPatternForLayout({
-        query: String(args.query ?? ""),
-        limit: args.limit != null ? Number(args.limit) : undefined,
-      }),
+    {
+      title: "Suggest layout pattern",
+      description:
+        "Rank @dt layout patterns (CTASection, Header, HeroSection, …) for a page-level intent. Returns useWhen, avoidWhen, composesWith, and variantNotes — not a license to replace pattern chrome.",
+      inputSchema: suggestPatternForLayoutInput,
+      outputSchema: suggestPatternForLayoutOutput,
+      annotations: READ_ONLY,
+    },
+    async (args) => executeSuggestPatternForLayout(args),
   );
 
-  tools.tool(
+  server.registerTool(
     "get_component_contract",
-    "Get full contract + agent block + usage evidence for one cataloged component by name.",
-    emptySchema,
-    READ_ONLY,
-    (args) => executeGetComponentContract({ name: String(args.name ?? "") }),
+    {
+      title: "Get component contract",
+      description:
+        "Get full contract + agent block + usage evidence for one cataloged component by name. The contract is typed against contract.schema.v2.json.",
+      inputSchema: getComponentContractInput,
+      outputSchema: getComponentContractOutput,
+      annotations: READ_ONLY,
+    },
+    async (args) => executeGetComponentContract(args),
   );
 
-  tools.tool(
+  server.registerTool(
     "get_tokens",
-    "Get design token catalog summary and manifest token metadata (source: variables.css via build:tokens).",
-    emptySchema,
-    READ_ONLY,
-    () => executeGetTokens(),
+    {
+      title: "Get design tokens",
+      description:
+        "Get design token catalog summary and manifest token metadata (source: variables.css via build:tokens).",
+      outputSchema: getTokensOutput,
+      annotations: READ_ONLY,
+    },
+    async () => executeGetTokens(),
   );
 
-  tools.tool(
+  server.registerTool(
     "validate_component_usage",
-    "Check a file/snippet for raw UI and optionally validate structured component props against inferred API relationships.",
-    emptySchema,
-    READ_ONLY,
-    (args) =>
-      executeValidateComponentUsage({
-        filePath: args.filePath != null ? String(args.filePath) : undefined,
-        snippet: args.snippet != null ? String(args.snippet) : undefined,
-        component: args.component != null ? String(args.component) : undefined,
-        props:
-          args.props && typeof args.props === "object" && !Array.isArray(args.props)
-            ? (args.props as Record<string, unknown>)
-            : undefined,
-      }),
+    {
+      title: "Validate component usage",
+      description:
+        "Check a file/snippet for raw UI and optionally validate structured component props against inferred API relationships.",
+      inputSchema: validateComponentUsageInput,
+      outputSchema: validateComponentUsageOutput,
+      annotations: READ_ONLY,
+    },
+    async (args) => executeValidateComponentUsage(args),
   );
 
   return 6;

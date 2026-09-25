@@ -33,9 +33,13 @@ export const DESIGN_SYSTEM_RESOURCE_URIS = [
   "digitaltableteur://design-system/pattern-recipes",
 ] as const;
 
-export function dsJsonResult(data: unknown): DesignSystemToolTextResult {
+export function dsJsonResult(
+  data: Record<string, unknown>,
+): DesignSystemToolTextResult {
   return {
+    // Text mirror for clients that predate structured tool output.
     content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+    structuredContent: data,
   };
 }
 
