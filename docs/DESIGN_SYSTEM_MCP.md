@@ -96,7 +96,8 @@ Optional: `DT_REPO_ROOT` if the process cwd is not the repo root.
   adds the six discovery tools; its `filePath` is confined to the repository.
 - Protocol tests: `register-mcp-tools.test.ts` calls every tool through a real client
   over an in-memory transport. Registry metadata: `server.json` (MCP Registry,
-  `com.digitaltableteur/mcp`).
+  `com.digitaltableteur/mcp`); publish with `scripts/design-system/publish-mcp-registry.sh`
+  (DNS-verified; the private key is in the macOS Keychain).
 
 ## Evaluation
 
