@@ -5,7 +5,7 @@
  */
 import { execFile } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { dirname, join, relative } from "node:path";
 import { promisify } from "node:util";
 import { validate } from "../../../packages/cli/src/api.mjs";
 import {
@@ -40,11 +40,57 @@ async function walkFiles(root) {
   return files.sort();
 }
 
+const CONSUMER_SKIP = new Set(["node_modules", "dist", ".next", "storybook-static"]);
+
+/**
+ * Every repo file that passes `prop` to `component`, found by parsing
+ * imports and JSX (the same extractor the checks use). Task preps call this
+ * on the pristine worktree so acceptance tracks the repo as it is at run
+ * time: a hardcoded list drifted when a consumer was rebuilt (#1456) and
+ * made the migration task impossible in every arm.
+ */
+export async function findPropConsumers(worktree, { component, prop, roots, skipDirs = [] }) {
+  const { docsRegistry } = await loadRegistry({ cwd: worktree });
+  const registry = docsRegistry.components ?? {};
+  const found = [];
+  for (const root of roots) {
+    for (const file of await walkFiles(join(worktree, root))) {
+      const path = relative(worktree, file);
+      if (!/\.(tsx|ts|jsx)$/.test(file)) continue;
+      if (path.split("/").some((part) => CONSUMER_SKIP.has(part))) continue;
+      if (skipDirs.some((dir) => path.startsWith(dir))) continue;
+      const source = await readFile(file, "utf8");
+      if (!source.includes(component)) continue;
+      const { locals } = extractImports(source, registry);
+      const names = new Set(
+        [...locals].filter(([, name]) => name === component).map(([local]) => local),
+      );
+      if (names.size === 0) continue;
+      const usages = extractUsages(source, names);
+      if (usages.some((usage) => usage.attributes.some(({ name }) => name === prop))) {
+        found.push(path);
+      }
+    }
+  }
+  return found.sort();
+}
+
+/** Where a prep step records run-time facts, outside the agent's worktree. */
+export function benchSidecar(worktree, name) {
+  return join(dirname(worktree), `${name}.json`);
+}
+
 async function usageScan(worktree, check) {
   const { docsRegistry } = await loadRegistry({ cwd: worktree });
   const registry = docsRegistry.components ?? {};
   const problems = [];
-  for (const relativePath of check.files) {
+  const files = check.filesFrom
+    ? JSON.parse(await readFile(benchSidecar(worktree, check.filesFrom), "utf8"))
+    : check.files;
+  if (files.length === 0) {
+    return { pass: false, detail: "no consumer files recorded at prep time" };
+  }
+  for (const relativePath of files) {
     let source;
     try {
       source = await readFile(join(worktree, relativePath), "utf8");
@@ -244,10 +290,13 @@ async function tokenDiscipline(worktree, check) {
     }
     const lines = source.split("\n");
     lines.forEach((line, index) => {
+      // Token names can contain colour words (var(--color-white) is a real
+      // token), so scan for named colours only outside custom properties.
+      const withoutTokens = line.replace(/--[A-Za-z0-9_-]+/g, "--token");
       const literal =
         HEX_COLOR.test(line) ||
         COLOR_FUNCTION.test(line) ||
-        (isCss && NAMED_COLOR_VALUE.test(line));
+        (isCss && NAMED_COLOR_VALUE.test(withoutTokens));
       if (literal) {
         problems.push(`${relativePath}:${index + 1} color literal: ${line.trim().slice(0, 60)}`);
       }

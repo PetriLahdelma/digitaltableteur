@@ -27,6 +27,7 @@
   padding: var(--space-internal-8) var(--space-internal-16);
   border-radius: var(--radius-md);
   background: var(--color-primary);
-  color: var(--inverted-text-color);
+  /* A token name containing a colour word must not trip the literal scan. */
+  color: var(--color-white);
   border: 0;
 }

@@ -14,6 +14,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+import { benchSidecar, findPropConsumers } from "./grade.mjs";
 
 const execFileAsync = promisify(execFile);
 const FIXTURES = resolve(
@@ -57,6 +58,17 @@ Do not modify the Badge component itself
 Only Badge usages are in scope; leave other components (for example
 Button, which also has a variant prop) untouched.`,
     async prep(worktree) {
+      // Record the real consumers before the rename, outside the worktree.
+      const consumers = await findPropConsumers(worktree, {
+        component: "Badge",
+        prop: "variant",
+        roots: ["app", "nextjs-app/shared"],
+        skipDirs: ["nextjs-app/shared/components/Badge/"],
+      });
+      await writeFile(
+        benchSidecar(worktree, "migration-consumers"),
+        JSON.stringify(consumers),
+      );
       await renameInFile(
         join(worktree, "nextjs-app/shared/components/Badge/Badge.tsx"),
         "variant",
@@ -92,19 +104,10 @@ Button, which also has a variant prop) untouched.`,
         component: "Badge",
         forbidProp: "variant",
         requireProp: "emphasis",
-        // Every repo file with a formerly-variant Badge usage; acceptance
-        // scope now matches the brief's "all consumers" exactly.
-        files: [
-          "app/dev/tailwind-test/TailwindTest.tsx",
-          "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
-          "nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx",
-          "nextjs-app/shared/components/OpenHours/OpenHours.tsx",
-          "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
-          "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
-          "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-          "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
-          "nextjs-app/shared/stories/TestHealth.stories.tsx",
-        ],
+        // Every file that passed variant to Badge when the run started
+        // (recorded by prep), so acceptance matches the brief's "all
+        // consumers" exactly and cannot drift as the repo changes.
+        filesFrom: "migration-consumers",
       },
       {
         id: "no-stale-variant-findings-shared",
