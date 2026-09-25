@@ -61,6 +61,7 @@ export async function runOnce({ task, arm, agent, options }) {
     await prepareWorkspace(worktree, task, arm);
     const metering = await runAgent(worktree, task, agent, armOptions);
     let grade = await gradeTask(worktree, task);
+    const firstAcceptance = grade.acceptance;
     let repair = null;
     if (options.repairLoop && agent === "claude" && !grade.pass) {
       repair = await repairLoop(worktree, task, grade, armOptions);
@@ -73,6 +74,7 @@ export async function runOnce({ task, arm, agent, options }) {
       agent,
       pass: grade.pass,
       acceptance: grade.acceptance,
+      firstAcceptance,
       metrics: grade.metrics,
       metering,
       repairRounds: repair?.rounds ?? [],

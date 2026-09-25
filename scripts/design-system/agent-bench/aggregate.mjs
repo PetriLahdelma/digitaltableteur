@@ -70,7 +70,43 @@ function runCost(run) {
   );
 }
 
+const ARM_ORDER = ["with", "mcp", "without"];
+const ARM_LABELS = {
+  with: "WITH (dt CLI documented in workspace)",
+  mcp: "MCP (design-system MCP attached, generic workspace)",
+  without: "WITHOUT (generic workspace)",
+};
+
+function mean(values) {
+  return values.length ? values.reduce((a, b) => a + b, 0) / values.length : null;
+}
+
 function armSummary(runs) {
+  const toolCalls = runs.map((run) => run.metering.toolCalls ?? null);
+  const telemetered = toolCalls.filter(Boolean);
+  const mcpCalls = telemetered.map((calls) =>
+    Object.entries(calls)
+      .filter(([name]) => name.startsWith("mcp__"))
+      .reduce((total, [, count]) => total + count, 0),
+  );
+  const cliCalls = telemetered.map((calls) => calls["Bash(dt-cli)"] ?? 0);
+  // Which acceptance checks failed on the first attempt: repair rounds
+  // overwrite the final acceptance, so this is read from runs that needed
+  // repair (their pre-repair state failed) and runs that never passed.
+  const failedChecks = {};
+  for (const run of runs) {
+    if (run.pass && run.repairRounds.length === 0) continue;
+    for (const check of run.firstAcceptance ?? run.acceptance) {
+      if (!check.pass) failedChecks[check.id] = (failedChecks[check.id] ?? 0) + 1;
+    }
+  }
+  const phantom = runs
+    .map((run) =>
+      (run.firstAcceptance ?? run.acceptance).find(
+        (check) => check.kind === "token-discipline",
+      )?.phantomCount,
+    )
+    .filter((value) => typeof value === "number");
   return {
     runs: runs.length,
     firstTryPass: runs.filter((run) => run.pass && run.repairRounds.length === 0)
@@ -89,7 +125,30 @@ function armSummary(runs) {
         run.metrics.some((metric) => metric.id === "ds-reuse"),
       ).length,
     },
+    ...(telemetered.length > 0
+      ? {
+          affordanceUse: {
+            telemeteredRuns: telemetered.length,
+            runsCallingMcp: mcpCalls.filter((count) => count > 0).length,
+            meanMcpCalls: Number(mean(mcpCalls).toFixed(2)),
+            runsCallingDtCli: cliCalls.filter((count) => count > 0).length,
+          },
+        }
+      : {}),
+    ...(Object.keys(failedChecks).length > 0 ? { failedChecks } : {}),
+    ...(phantom.length > 0
+      ? { phantomTokenRefs: stats(phantom) }
+      : {}),
   };
+}
+
+function byArm(runs) {
+  const arms = {};
+  for (const arm of ARM_ORDER) {
+    const scoped = runs.filter((run) => run.arm === arm);
+    if (scoped.length > 0) arms[arm] = armSummary(scoped);
+  }
+  return arms;
 }
 
 const { out, notes, files } = parseArgs(process.argv.slice(2));
@@ -98,8 +157,11 @@ const runs = [];
 const runtimes = new Set();
 for (const file of files) {
   const data = JSON.parse(await readFile(file, "utf8"));
+  const isolation = data.runs[0]?.metering?.isolation;
   runtimes.add(
-    `${data.options.model} maxTurns=${data.options.maxTurns} repairLoop=${data.options.repairLoop}`,
+    `${data.options.model} maxTurns=${data.options.maxTurns} repairLoop=${data.options.repairLoop}${
+      isolation ? ` isolation=${isolation}` : ""
+    }`,
   );
   runs.push(...data.runs);
 }
@@ -107,12 +169,7 @@ for (const file of files) {
 const taskIds = [...new Set(runs.map((run) => run.task))].sort();
 const tasks = taskIds.map((task) => {
   const scoped = runs.filter((run) => run.task === task);
-  return {
-    id: task,
-    category: scoped[0].category,
-    with: armSummary(scoped.filter((run) => run.arm === "with")),
-    without: armSummary(scoped.filter((run) => run.arm === "without")),
-  };
+  return { id: task, category: scoped[0].category, arms: byArm(scoped) };
 });
 
 const sourceCommit = (
@@ -133,16 +190,20 @@ const artifact = {
     runs.reduce((total, run) => total + runCost(run), 0).toFixed(2),
   ),
   notes,
-  arms: {
-    with: armSummary(runs.filter((run) => run.arm === "with")),
-    without: armSummary(runs.filter((run) => run.arm === "without")),
-  },
+  armLabels: Object.fromEntries(
+    ARM_ORDER.filter((arm) => runs.some((run) => run.arm === arm)).map((arm) => [
+      arm,
+      ARM_LABELS[arm],
+    ]),
+  ),
+  arms: byArm(runs),
   tasks,
 };
 
 await writeFile(out, `${JSON.stringify(artifact, null, 2)}\n`);
 console.log(
   `Wrote ${out}: ${artifact.totalRuns} runs, $${artifact.totalCostUsd}, ` +
-    `WITH ${artifact.arms.with.finalPass}/${artifact.arms.with.runs} vs ` +
-    `WITHOUT ${artifact.arms.without.finalPass}/${artifact.arms.without.runs}`,
+    Object.entries(artifact.arms)
+      .map(([arm, summary]) => `${arm} ${summary.firstTryPass}/${summary.runs} first-try`)
+      .join(", "),
 );
