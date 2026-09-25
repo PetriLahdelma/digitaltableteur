@@ -91,7 +91,7 @@
     "idleExpressionInterval": {
       "type": "number",
       "optional": true,
-      "description": "Base idle-expression interval in milliseconds (default 8000), randomized by 50 percent."
+      "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
     },
     "isSpeaking": {
       "type": "boolean",
