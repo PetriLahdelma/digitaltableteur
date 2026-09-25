@@ -21,12 +21,19 @@ const execFileAsync = promisify(execFile);
 function parseArgs(argv) {
   const files = [];
   const notes = [];
+  // --superseded <result-file-basename>:<task,task> drops those tasks' runs
+  // from that file (for example after a grader fix and re-run). Every drop
+  // is recorded in the artifact, so exclusions are visible, not silent.
+  const superseded = [];
   let out = null;
   for (let index = 0; index < argv.length; index += 1) {
     const value = argv[index];
     if (value === "--out") out = argv[++index];
     else if (value === "--note") notes.push(argv[++index]);
-    else files.push(value);
+    else if (value === "--superseded") {
+      const [file, tasks] = argv[++index].split(":");
+      superseded.push({ file, tasks: tasks.split(",") });
+    } else files.push(value);
   }
   if (!out || files.length === 0) {
     console.error(
@@ -34,7 +41,7 @@ function parseArgs(argv) {
     );
     process.exit(1);
   }
-  return { out, notes, files };
+  return { out, notes, files, superseded };
 }
 
 function stats(values) {
@@ -151,7 +158,7 @@ function byArm(runs) {
   return arms;
 }
 
-const { out, notes, files } = parseArgs(process.argv.slice(2));
+const { out, notes, files, superseded } = parseArgs(process.argv.slice(2));
 
 const runs = [];
 const runtimes = new Set();
@@ -163,7 +170,12 @@ for (const file of files) {
       isolation ? ` isolation=${isolation}` : ""
     }`,
   );
-  runs.push(...data.runs);
+  const dropped = new Set(
+    superseded
+      .filter((entry) => entry.file === basename(file))
+      .flatMap((entry) => entry.tasks),
+  );
+  runs.push(...data.runs.filter((run) => !dropped.has(run.task)));
 }
 
 const taskIds = [...new Set(runs.map((run) => run.task))].sort();
@@ -185,6 +197,7 @@ const artifact = {
   methodology: "docs/AGENT_BENCH_METHODOLOGY.md",
   runtime: [...runtimes],
   resultFiles: files.map((file) => basename(file)),
+  ...(superseded.length > 0 ? { supersededRuns: superseded } : {}),
   totalRuns: runs.length,
   totalCostUsd: Number(
     runs.reduce((total, run) => total + runCost(run), 0).toFixed(2),

@@ -9,19 +9,32 @@ import {
 import { Link as DtLink, List } from "@digitaltableteur/react";
 import styles from "./agent.module.css";
 
+type Stats = {
+  mean: number;
+  sd?: number | null;
+  n?: number;
+  min: number;
+  max: number;
+};
+
 type ArmSummary = {
   runs: number;
   firstTryPass: number;
   finalPass: number;
   passViaRepairLoop: number;
-  costUsdPerRun: {
-    mean: number;
-    sd?: number | null;
-    min: number;
-    max: number;
-  } | null;
+  costUsdPerRun: Stats | null;
   dsReuse: { hits: number; eligible: number };
+  affordanceUse?: {
+    telemeteredRuns: number;
+    runsCallingMcp: number;
+    meanMcpCalls: number;
+    runsCallingDtCli: number;
+  };
+  failedChecks?: Record<string, number>;
+  phantomTokenRefs?: Stats;
 };
+
+type ArmId = "with" | "mcp" | "without";
 
 export type AgentBenchArtifact = {
   generatedAt: string;
@@ -30,48 +43,84 @@ export type AgentBenchArtifact = {
   totalRuns: number;
   totalCostUsd: number;
   notes: string[];
-  arms: { with: ArmSummary; without: ArmSummary };
+  armLabels: Partial<Record<ArmId, string>>;
+  arms: Partial<Record<ArmId, ArmSummary>>;
   tasks: {
     id: string;
     category: string;
-    with: ArmSummary;
-    without: ArmSummary;
+    arms: Partial<Record<ArmId, ArmSummary>>;
   }[];
 };
 
-const passRate = (arm: ArmSummary) => `${arm.finalPass}/${arm.runs}`;
-const reuse = (arm: ArmSummary) =>
-  arm.dsReuse.eligible > 0
+const ARM_ORDER: ArmId[] = ["with", "mcp", "without"];
+const ARM_SHORT: Record<ArmId, string> = {
+  with: "WITH",
+  mcp: "MCP",
+  without: "WITHOUT",
+};
+
+const firstTry = (arm?: ArmSummary) =>
+  arm ? `${arm.firstTryPass}/${arm.runs}` : "n/a";
+const finalPass = (arm?: ArmSummary) =>
+  arm
+    ? `${arm.finalPass}/${arm.runs}${
+        arm.passViaRepairLoop > 0 ? ` (${arm.passViaRepairLoop} via repair)` : ""
+      }`
+    : "n/a";
+const reuse = (arm?: ArmSummary) =>
+  arm && arm.dsReuse.eligible > 0
     ? `${arm.dsReuse.hits}/${arm.dsReuse.eligible}`
-    : "—";
-const repairNote = (arm: ArmSummary) =>
-  arm.passViaRepairLoop > 0 ? ` (${arm.passViaRepairLoop} via repair)` : "";
+    : "n/a";
+const cost = (arm?: ArmSummary) =>
+  arm?.costUsdPerRun
+    ? `$${arm.costUsdPerRun.mean.toFixed(2)}${
+        arm.costUsdPerRun.sd != null ? ` ± ${arm.costUsdPerRun.sd.toFixed(2)}` : ""
+      }`
+    : "n/a";
+const affordance = (arm?: ArmSummary) => {
+  const use = arm?.affordanceUse;
+  if (!use) return "n/a";
+  return `MCP ${use.runsCallingMcp}/${use.telemeteredRuns}, dt CLI ${use.runsCallingDtCli}/${use.telemeteredRuns}`;
+};
 
 /**
- * Measured A/B benchmark distributions, rendered verbatim from the
- * generated public/ds-health/agent-bench.json artifact — numbers on this
- * page are never hand-written.
+ * Measured benchmark distributions, rendered verbatim from the generated
+ * public/ds-health/agent-bench.json artifact. Numbers on this page are never
+ * hand-written.
  */
 export function AgentBenchSection({
   artifact,
 }: {
   artifact: AgentBenchArtifact;
 }) {
-  const { arms, tasks } = artifact;
+  const arms = ARM_ORDER.filter((arm) => artifact.arms[arm]);
+  const perArmRuns = artifact.tasks[0]?.arms[arms[0]]?.runs ?? "?";
   return (
     <section className="mt-12">
       <Title level={2} size="s">
-        Agent benchmark (A/B)
+        Agent benchmark
       </Title>
       <Text as="p" size="s" lineHeight="relaxed" className={styles.lede}>
-        The same coding agent, twice per task: WITH the design-system
-        affordances documented in its workspace vs WITHOUT (identical
-        repository access). {artifact.totalRuns} runs, {artifact.runtime[0]},{" "}
-        total spend ${artifact.totalCostUsd.toFixed(2)}. Acceptance tests
-        semantics, not implementation — reuse of <code className="text-xs">@dt/*</code>{" "}
-        is reported separately. Methodology:{" "}
+        The same coding agent on the same tasks, in {arms.length} arms that
+        differ in one thing only: how the design system is offered to it.{" "}
+        {artifact.totalRuns} published runs on {artifact.runtime[0]}, costing $
+        {artifact.totalCostUsd.toFixed(2)} (spend on superseded runs is in the
+        notes). Acceptance tests user-visible
+        semantics and contract conformance, not implementation; reuse of{" "}
+        <code className="text-xs">@dt/*</code> is reported separately and
+        never gates a pass. Methodology:{" "}
         <code className="text-xs">{artifact.methodology}</code>.
       </Text>
+
+      <List
+        items={arms.map(
+          (arm) => `${ARM_SHORT[arm]}: ${artifact.armLabels[arm] ?? arm}`,
+        )}
+        listStyleType="disc"
+        size="xs"
+        lineHeight="relaxed"
+        className={styles.notes}
+      />
 
       <div className={styles.tableScroll}>
         <Table caption="Agent benchmark arm summary" size="sm">
@@ -81,30 +130,19 @@ export function AgentBenchSection({
               <TableHeaderCell>First-try pass</TableHeaderCell>
               <TableHeaderCell>Final pass (repair loop)</TableHeaderCell>
               <TableHeaderCell>Mean cost / run</TableHeaderCell>
+              <TableHeaderCell>Affordance used</TableHeaderCell>
               <TableHeaderCell>DS reuse (build tasks)</TableHeaderCell>
             </TableRow>
           </thead>
           <tbody>
-            {(["with", "without"] as const).map((arm) => (
+            {arms.map((arm) => (
               <TableRow key={arm}>
-                <TableCell>{arm === "with" ? "WITH" : "WITHOUT"}</TableCell>
-                <TableCell>
-                  {arms[arm].firstTryPass}/{arms[arm].runs}
-                </TableCell>
-                <TableCell>
-                  {passRate(arms[arm])}
-                  {repairNote(arms[arm])}
-                </TableCell>
-                <TableCell>
-                  {arms[arm].costUsdPerRun
-                    ? `$${arms[arm].costUsdPerRun.mean.toFixed(2)}${
-                        arms[arm].costUsdPerRun.sd != null
-                          ? ` ± ${arms[arm].costUsdPerRun.sd.toFixed(2)}`
-                          : ""
-                      }`
-                    : "—"}
-                </TableCell>
-                <TableCell>{reuse(arms[arm])}</TableCell>
+                <TableCell>{ARM_SHORT[arm]}</TableCell>
+                <TableCell>{firstTry(artifact.arms[arm])}</TableCell>
+                <TableCell>{finalPass(artifact.arms[arm])}</TableCell>
+                <TableCell>{cost(artifact.arms[arm])}</TableCell>
+                <TableCell>{affordance(artifact.arms[arm])}</TableCell>
+                <TableCell>{reuse(artifact.arms[arm])}</TableCell>
               </TableRow>
             ))}
           </tbody>
@@ -112,29 +150,27 @@ export function AgentBenchSection({
       </div>
 
       <div className={styles.tableScroll}>
-        <Table caption="Agent benchmark per task" size="sm">
+        <Table caption="Agent benchmark first-try pass per task" size="sm">
           <thead>
             <TableRow>
               <TableHeaderCell>Task</TableHeaderCell>
-              <TableHeaderCell>WITH</TableHeaderCell>
-              <TableHeaderCell>WITHOUT</TableHeaderCell>
-              <TableHeaderCell>DS reuse (with / without)</TableHeaderCell>
+              {arms.map((arm) => (
+                <TableHeaderCell key={arm}>{ARM_SHORT[arm]}</TableHeaderCell>
+              ))}
+              <TableHeaderCell>
+                DS reuse ({arms.map((arm) => ARM_SHORT[arm]).join(" / ")})
+              </TableHeaderCell>
             </TableRow>
           </thead>
           <tbody>
-            {tasks.map((task) => (
+            {artifact.tasks.map((task) => (
               <TableRow key={task.id}>
                 <TableCell>{task.category}</TableCell>
+                {arms.map((arm) => (
+                  <TableCell key={arm}>{firstTry(task.arms[arm])}</TableCell>
+                ))}
                 <TableCell>
-                  {passRate(task.with)}
-                  {repairNote(task.with)}
-                </TableCell>
-                <TableCell>
-                  {passRate(task.without)}
-                  {repairNote(task.without)}
-                </TableCell>
-                <TableCell>
-                  {reuse(task.with)} / {reuse(task.without)}
+                  {arms.map((arm) => reuse(task.arms[arm])).join(" / ")}
                 </TableCell>
               </TableRow>
             ))}
@@ -153,10 +189,15 @@ export function AgentBenchSection({
         Raw artifact:{" "}
         <DtLink href="/ds-health/agent-bench.json" size="sm">
           /ds-health/agent-bench.json
-        </DtLink>{" "}
-        · n={tasks[0]?.with.runs ?? "?"} per arm per task; cost is mean ±
-        sample sd. Runs are nondeterministic, so treat single deltas as noise
-        and distributions as the signal.
+        </DtLink>
+        . n={perArmRuns} per arm per task; cost is mean ± sample sd. Runs are
+        nondeterministic, so treat single deltas as noise and distributions
+        as the signal. The earlier two-arm batch (August 2026, 90 runs,
+        different isolation) is archived at{" "}
+        <DtLink href="/ds-health/agent-bench-2026-08.json" size="sm">
+          /ds-health/agent-bench-2026-08.json
+        </DtLink>
+        .
       </Text>
     </section>
   );

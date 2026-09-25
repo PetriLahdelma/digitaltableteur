@@ -17,6 +17,30 @@
   discriminating tasks), isolated runs, per-run tool telemetry, and a
   naive-solution integrity check. Numbers from v1 and v2 are not pooled.
 
+## Results, v2 (2026-09-25)
+
+72 published runs (8 tasks, 3 arms, n=3), claude-sonnet-5, isolated.
+Artifact: `public/ds-health/agent-bench.json`.
+
+- **Reuse is the signal.** Design-system reuse on build tasks: WITH 14/18,
+  MCP 4/18, WITHOUT 6/18.
+- **An MCP server alone changed nothing measurable.** Connected in every
+  MCP-arm run, called in 3 of 24. The client defers MCP tools; agents use
+  what their instructions point at. For a design system this means the
+  pointer (workspace guidance, rules files, skill text) matters more than the
+  server's existence.
+- **Pass rates saturated.** First-try pass 23 to 24 of 24 in every arm; the
+  v2 tasks did not separate the arms for this model, and no run in any arm
+  used an undefined token.
+- **Two grader bugs were caught mid-batch** (a stale hardcoded consumer
+  list; a colour scan that flagged `var(--color-white)`), fixed, guarded in
+  the selftest, and the affected tasks re-run in all arms. The superseded
+  runs are recorded in the artifact, not dropped silently.
+
+Next increments worth running: harder tasks (multi-component composition,
+cross-file refactors), an MCP arm with a one-line pointer to the server, and
+a second model family.
+
 ## What is measured
 
 Eight task categories, chosen to cover the system's claims: **table**,
