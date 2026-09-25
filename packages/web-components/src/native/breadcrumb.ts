@@ -76,7 +76,11 @@ const styles = `
   }
   .ellipsis {
     display: inline-flex;
+    /* WCAG 2.2 SC 2.5.8: at least a 24x24 CSS px target (was 20x16.7). */
+    min-inline-size: var(--space-internal-24, 1.5rem);
+    min-block-size: var(--space-internal-24, 1.5rem);
     padding: 0;
+    justify-content: center;
     align-items: center;
     border: none;
     background: none;
