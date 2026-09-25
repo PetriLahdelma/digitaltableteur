@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-16);
+  padding: var(--space-internal-24);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.highlighted {
+  border-color: var(--color-primary);
+}
+
+.name,
+.price {
+  margin: 0;
+}
+
+.features {
+  margin: 0;
+  padding-inline-start: var(--space-internal-16);
+}
+
+.action {
+  padding: var(--space-internal-8) var(--space-internal-16);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--inverted-text-color);
+  border: 0;
+}

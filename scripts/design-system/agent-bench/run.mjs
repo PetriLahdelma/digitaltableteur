@@ -6,9 +6,12 @@
  *     --task all --arm both --agent claude --reps 3 \
  *     --model claude-sonnet-5 --max-turns 30 --repair-loop
  *
+ * Arms: --arm with | mcp | without | both (with+without) | all (all three).
+ *
  * Stub agents for harness integrity (no model spend):
  *   --agent null    every task must FAIL acceptance
  *   --agent oracle  every task must PASS acceptance
+ *   --agent naive   v2 tasks' plausible-but-wrong solutions must FAIL
  *
  * Results land in scripts/design-system/agent-bench/results/<stamp>.json.
  * Publishing to public/ds-health is deliberately manual until real
@@ -53,13 +56,14 @@ function parseArgs(argv) {
 
 export async function runOnce({ task, arm, agent, options }) {
   const { worktree, destroy } = await createWorktree(REPO_ROOT);
+  const armOptions = { ...options, arm };
   try {
     await prepareWorkspace(worktree, task, arm);
-    const metering = await runAgent(worktree, task, agent, options);
+    const metering = await runAgent(worktree, task, agent, armOptions);
     let grade = await gradeTask(worktree, task);
     let repair = null;
     if (options.repairLoop && agent === "claude" && !grade.pass) {
-      repair = await repairLoop(worktree, task, grade, options);
+      repair = await repairLoop(worktree, task, grade, armOptions);
       grade = repair.grade;
     }
     return {
@@ -90,11 +94,13 @@ async function main() {
     );
     process.exit(1);
   }
+  const ARM_SETS = {
+    both: ["with", "without"],
+    all: ["with", "mcp", "without"],
+  };
   const arms =
     options.agent === "claude"
-      ? options.arm === "both"
-        ? ["with", "without"]
-        : [options.arm]
+      ? ARM_SETS[options.arm] ?? [options.arm]
       : ["with"]; // stub agents ignore affordances; one arm is enough
 
   const runs = [];

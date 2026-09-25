@@ -1,0 +1,24 @@
+/* Plausible invented token names with safety fallbacks: renders, but none
+   of these names exist in the design system. */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 16px);
+  padding: var(--spacing-lg, 24px);
+  background: var(--color-bg-surface, var(--color-surface));
+  color: var(--color-text);
+  border: 1px solid var(--color-border-default, var(--color-border));
+  border-radius: var(--radius-card, var(--radius-lg));
+}
+
+.highlighted {
+  border-color: var(--color-brand-primary, var(--color-primary));
+}
+
+.action {
+  padding: var(--spacing-sm, 8px) var(--spacing-md, 16px);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-on-primary, var(--color-surface));
+  border: 0;
+}

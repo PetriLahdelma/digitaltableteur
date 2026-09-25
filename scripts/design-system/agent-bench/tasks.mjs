@@ -364,6 +364,196 @@ Only edit files under tests/bench-work/forced-colors/.`,
       );
     },
   },
+
+  // --- v2 tasks (2026-09): discriminating contract-rule tasks. The v1 suite
+  // saturated (both arms ~100% pass), so these target failure modes coding
+  // agents actually exhibit: invented token names, modal focus management,
+  // and error-to-field wiring. Each ships a "naive" plausible-but-wrong
+  // solution that the selftest proves acceptance rejects.
+
+  {
+    id: "tokens-plan-card",
+    category: "tokens",
+    title: "Style a pricing plan card with the design tokens",
+    workspace: "tests/bench-work/tokens",
+    brief: `Create tests/bench-work/tokens/PlanCard.tsx (default export) and
+tests/bench-work/tokens/PlanCard.module.css.
+
+PlanCard takes { name: string; price: string; features: string[];
+highlighted?: boolean } and renders the plan name as a heading, the price,
+the features as a list, and a "Choose <name>" action.
+
+Style it in PlanCard.module.css using this repository's design tokens:
+surface background, text colour, border, border radius, internal padding
+and gap. A highlighted card uses the primary brand colour for its border.
+
+Constraints:
+- no hardcoded colour values anywhere (hex, rgb()/hsl()/oklch(), or named
+  colours)
+- every CSS custom property you reference must be defined by the design
+  system (or defined by you in the same files)
+- colour, spacing and radius must all come from design-system tokens
+
+The acceptance test at tests/bench-work/tokens/PlanCard.assert.test.tsx
+must pass unmodified. Only add files under tests/bench-work/tokens/.`,
+    async prep(worktree) {
+      await copyFixture(
+        "tokens",
+        ["PlanCard.assert.test-template.tsx"],
+        join(worktree, "tests/bench-work/tokens"),
+      );
+    },
+    acceptance: [
+      { id: "card-semantics", kind: "vitest", paths: ["tests/bench-work/tokens"] },
+      {
+        id: "token-discipline",
+        kind: "token-discipline",
+        dir: "tests/bench-work/tokens",
+        requireTokenFamilies: ["--color-", "--space-", "--radius-"],
+      },
+      { id: "usage-clean", kind: "validate-clean", path: "tests/bench-work/tokens" },
+    ],
+    metrics: [
+      {
+        id: "ds-reuse",
+        kind: "source-scan",
+        dir: "tests/bench-work/tokens",
+        requireAnyPattern: ["@dt/Card", "@dt/Button", "@digitaltableteur/react"],
+      },
+    ],
+    async oracle(worktree) {
+      for (const name of ["PlanCard.tsx", "PlanCard.module.css"]) {
+        await copyFile(
+          join(FIXTURES, "tokens/oracle", name),
+          join(worktree, "tests/bench-work/tokens", name),
+        );
+      }
+    },
+    async naive(worktree) {
+      for (const name of ["PlanCard.tsx", "PlanCard.module.css"]) {
+        await copyFile(
+          join(FIXTURES, "tokens/naive", name),
+          join(worktree, "tests/bench-work/tokens", name),
+        );
+      }
+    },
+  },
+
+  {
+    id: "dialog-confirm-delete",
+    category: "dialog",
+    title: "Build an accessible delete-confirmation dialog",
+    workspace: "tests/bench-work/dialog",
+    brief: `Create tests/bench-work/dialog/DeleteProjectDialog.tsx, default-exporting a
+React component that takes { projectName: string; onConfirm: () => void }.
+
+It renders a "Delete project" button. Activating it opens a modal
+confirmation dialog:
+- the dialog's accessible name is "Delete <projectName>?" and its
+  accessible description includes "This cannot be undone."
+- focus moves into the dialog when it opens, and keyboard focus cannot
+  reach the page content behind it while it is open
+- Escape closes it and returns focus to the "Delete project" button
+- a "Cancel" button closes it (focus returns to the trigger) without
+  confirming
+- a "Delete" button calls onConfirm exactly once and closes it
+
+Use this repository's design-system components correctly if you use them.
+The acceptance test at tests/bench-work/dialog/DeleteProjectDialog.assert.test.tsx
+must pass unmodified. Only add files under tests/bench-work/dialog/.`,
+    async prep(worktree) {
+      await copyFixture(
+        "dialog",
+        ["DeleteProjectDialog.assert.test-template.tsx"],
+        join(worktree, "tests/bench-work/dialog"),
+      );
+    },
+    acceptance: [
+      { id: "dialog-behaviour", kind: "vitest", paths: ["tests/bench-work/dialog"] },
+      { id: "usage-clean", kind: "validate-clean", path: "tests/bench-work/dialog" },
+      {
+        id: "no-hardcoded-hex",
+        kind: "source-scan",
+        dir: "tests/bench-work/dialog",
+        forbidPattern: "#[0-9a-fA-F]{3,8}\\b",
+      },
+    ],
+    metrics: [
+      {
+        id: "ds-reuse",
+        kind: "source-scan",
+        dir: "tests/bench-work/dialog",
+        requireAnyPattern: ["@dt/Modal", "@digitaltableteur/react"],
+      },
+    ],
+    async oracle(worktree) {
+      await copyFile(
+        join(FIXTURES, "dialog/oracle/DeleteProjectDialog.tsx"),
+        join(worktree, "tests/bench-work/dialog/DeleteProjectDialog.tsx"),
+      );
+    },
+    async naive(worktree) {
+      await copyFile(
+        join(FIXTURES, "dialog/naive/DeleteProjectDialog.tsx"),
+        join(worktree, "tests/bench-work/dialog/DeleteProjectDialog.tsx"),
+      );
+    },
+  },
+
+  {
+    id: "form-signup-errors",
+    category: "form",
+    title: "Build a sign-up form with accessible validation errors",
+    workspace: "tests/bench-work/form",
+    brief: `Create tests/bench-work/form/SignupForm.tsx, default-exporting a React
+component that takes { onSubmit: (values: { name: string; email: string })
+=> void }.
+
+It renders a form with a "Name" field, an "Email" field, and a
+"Create account" submit button. On submit:
+- an empty name shows the error "Enter your name"; an email without a valid
+  address shows "Enter a valid email address"
+- each invalid field is marked invalid for assistive technology and its
+  error message is exposed as that field's accessible description
+- focus moves to the first invalid field, and onSubmit is not called
+- when both fields are valid, onSubmit is called once with the trimmed
+  values and no field is marked invalid
+
+Use this repository's design-system components correctly if you use them.
+The acceptance test at tests/bench-work/form/SignupForm.assert.test.tsx
+must pass unmodified. Only add files under tests/bench-work/form/.`,
+    async prep(worktree) {
+      await copyFixture(
+        "form",
+        ["SignupForm.assert.test-template.tsx"],
+        join(worktree, "tests/bench-work/form"),
+      );
+    },
+    acceptance: [
+      { id: "form-semantics", kind: "vitest", paths: ["tests/bench-work/form"] },
+      { id: "usage-clean", kind: "validate-clean", path: "tests/bench-work/form" },
+    ],
+    metrics: [
+      {
+        id: "ds-reuse",
+        kind: "source-scan",
+        dir: "tests/bench-work/form",
+        requireAnyPattern: ["@dt/TextInput", "@digitaltableteur/react"],
+      },
+    ],
+    async oracle(worktree) {
+      await copyFile(
+        join(FIXTURES, "form/oracle/SignupForm.tsx"),
+        join(worktree, "tests/bench-work/form/SignupForm.tsx"),
+      );
+    },
+    async naive(worktree) {
+      await copyFile(
+        join(FIXTURES, "form/naive/SignupForm.tsx"),
+        join(worktree, "tests/bench-work/form/SignupForm.tsx"),
+      );
+    },
+  },
 ];
 
 export function taskById(id) {

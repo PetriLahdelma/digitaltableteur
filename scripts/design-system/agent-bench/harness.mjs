@@ -4,17 +4,29 @@
  * Arms (the fairness design — see docs/AGENT_BENCH_METHODOLOGY.md):
  * - "with":    the workspace CLAUDE.md points the agent at the design-system
  *              affordances (dt CLI, contracts, agent registry).
+ * - "mcp":     the workspace CLAUDE.md is the generic control text; the only
+ *              difference is the design-system MCP server attached over
+ *              stdio. Its tool descriptions and server instructions ARE the
+ *              affordance, which is what any design system can ship.
  * - "without": the workspace CLAUDE.md is generic. Same repository, same
  *              task, same budget — only the affordance POINTER differs; the
  *              artifacts themselves are not hidden, because deleting them
  *              would change the codebase under test.
  *
+ * Isolation (v2, 2026-09): every paid run passes --strict-mcp-config and
+ * --setting-sources project,local, so the operator's user-level CLAUDE.md,
+ * skills, plugins, hooks and MCP servers never reach the agent. v1 runs
+ * (2026-08) loaded them in both arms: symmetric, but not reproducible by a
+ * third party.
+ *
  * Agents:
  * - "null":   does nothing (graders must fail — discrimination floor)
  * - "oracle": applies the reference solution (graders must pass — ceiling)
+ * - "naive":  applies a plausible-but-wrong solution (graders must fail —
+ *             proves a task discriminates beyond "did nothing")
  * - "claude": pinned headless Claude Code runtime with token metering
  */
-import { execFile } from "node:child_process";
+import { execFile, spawn } from "node:child_process";
 import { mkdtemp, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -83,14 +95,88 @@ export async function prepareWorkspace(worktree, task, arm) {
   );
 }
 
+/** MCP config for the "mcp" arm: the repo's own stdio design-system server. */
+async function writeMcpConfig(worktree) {
+  const dir = await mkdtemp(join(tmpdir(), "dt-bench-mcp-"));
+  const path = join(dir, "mcp.json");
+  await writeFile(
+    path,
+    JSON.stringify({
+      mcpServers: {
+        "design-system": {
+          command: join(worktree, "node_modules/.bin/tsx"),
+          args: [join(worktree, "scripts/design-system/ds-mcp-stdio.ts")],
+          env: { DT_REPO_ROOT: worktree },
+        },
+      },
+    }),
+  );
+  return path;
+}
+
+/**
+ * Run the CLI with stream-json so tool use is observable per run, and keep
+ * the final result envelope for metering. Never rejects: non-zero exits
+ * (e.g. error_max_turns) still carry valid benchmark data.
+ */
+function runClaude(args, { cwd, timeoutMs }) {
+  return new Promise((resolvePromise) => {
+    const child = spawn("claude", args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
+    const toolCalls = {};
+    let result = null;
+    let mcpServers = [];
+    let buffer = "";
+    const consume = (line) => {
+      if (!line.trim()) return;
+      let event;
+      try {
+        event = JSON.parse(line);
+      } catch {
+        return;
+      }
+      if (event.type === "result") result = event;
+      if (event.type === "system" && event.subtype === "init") {
+        mcpServers = event.mcp_servers ?? [];
+      }
+      if (event.type === "assistant") {
+        for (const block of event.message?.content ?? []) {
+          if (block.type !== "tool_use") continue;
+          const name =
+            block.name === "Bash" &&
+            /packages\/cli\/src\/cli\.mjs|\bdt\s/.test(block.input?.command ?? "")
+              ? "Bash(dt-cli)"
+              : block.name;
+          toolCalls[name] = (toolCalls[name] ?? 0) + 1;
+        }
+      }
+    };
+    child.stdout.on("data", (chunk) => {
+      buffer += chunk;
+      let index;
+      while ((index = buffer.indexOf("\n")) >= 0) {
+        consume(buffer.slice(0, index));
+        buffer = buffer.slice(index + 1);
+      }
+    });
+    const timer = setTimeout(() => child.kill("SIGTERM"), timeoutMs);
+    child.on("close", () => {
+      clearTimeout(timer);
+      consume(buffer);
+      resolvePromise({ result, toolCalls, mcpServers });
+    });
+  });
+}
+
 /** Drive one agent over a prepared workspace. Returns metering info. */
 export async function runAgent(worktree, task, agent, options = {}) {
   if (agent === "null") {
     return { agent, turns: 0, costUsd: 0, durationMs: 0 };
   }
-  if (agent === "oracle") {
+  if (agent === "oracle" || agent === "naive") {
+    const apply = agent === "oracle" ? task.oracle : task.naive;
+    if (!apply) throw new Error(`Task ${task.id} has no ${agent} solution`);
     const startedAt = Date.now();
-    await task.oracle(worktree);
+    await apply(worktree);
     return { agent, turns: 0, costUsd: 0, durationMs: Date.now() - startedAt };
   }
   if (agent !== "claude") {
@@ -99,41 +185,36 @@ export async function runAgent(worktree, task, agent, options = {}) {
   const prompt =
     options.prompt ??
     "Complete the task described in TASK.md at the repository root.";
+  const model = options.model ?? "claude-sonnet-5";
   const args = [
     "-p",
     prompt,
     "--output-format",
-    "json",
+    "stream-json",
+    "--verbose",
     "--max-turns",
     String(options.maxTurns ?? 30),
     "--model",
-    options.model ?? "claude-sonnet-5",
+    model,
     "--dangerously-skip-permissions",
+    "--strict-mcp-config",
+    "--setting-sources",
+    "project,local",
   ];
+  if (options.arm === "mcp") {
+    args.push("--mcp-config", await writeMcpConfig(worktree));
+  }
   const startedAt = Date.now();
-  // The runtime exits non-zero on outcomes that are still valid benchmark
-  // data (error_max_turns ships a full result envelope on stdout). Never
-  // crash the run: capture stdout either way and grade whatever state the
-  // agent left behind.
-  let stdout = "";
-  try {
-    ({ stdout } = await execFileAsync("claude", args, {
-      cwd: worktree,
-      maxBuffer: 64 * 1024 * 1024,
-      timeout: options.timeoutMs ?? 20 * 60 * 1000,
-    }));
-  } catch (error) {
-    stdout = error.stdout ?? "";
-  }
-  let parsed = null;
-  try {
-    parsed = JSON.parse(stdout);
-  } catch {
-    // fall through with raw output preserved
-  }
+  const { result: parsed, toolCalls, mcpServers } = await runClaude(args, {
+    cwd: worktree,
+    timeoutMs: options.timeoutMs ?? 20 * 60 * 1000,
+  });
   return {
     agent,
-    model: options.model ?? "claude-sonnet-5",
+    model,
+    isolation: "strict-mcp-config;setting-sources=project,local",
+    toolCalls,
+    mcpServers,
     turns: parsed?.num_turns ?? null,
     costUsd: parsed?.total_cost_usd ?? null,
     usage: parsed?.usage ?? null,

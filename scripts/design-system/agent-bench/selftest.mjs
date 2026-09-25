@@ -1,6 +1,7 @@
 /**
  * Harness integrity proof (no model spend): for every task the null agent
- * must FAIL acceptance and the oracle agent must PASS it. A grader that
+ * must FAIL acceptance and the oracle agent must PASS it. Tasks that ship a
+ * plausible-but-wrong "naive" solution must also FAIL it. A grader that
  * cannot discriminate between "did nothing" and "reference solution" would
  * make any benchmark number meaningless, so this runs before any paid run.
  *
@@ -25,6 +26,17 @@ for (const task of TASKS) {
       `null agent unexpectedly passed: ${JSON.stringify(run.acceptance)}`,
     );
   });
+
+  if (task.naive) {
+    test(`${task.id}: naive (plausible-but-wrong) agent fails acceptance`, async () => {
+      const run = await runOnce({ task, arm: "with", agent: "naive", options });
+      assert.equal(
+        run.pass,
+        false,
+        `naive solution unexpectedly passed: ${JSON.stringify(run.acceptance)}`,
+      );
+    });
+  }
 
   test(`${task.id}: oracle agent passes acceptance`, async () => {
     const run = await runOnce({ task, arm: "with", agent: "oracle", options });

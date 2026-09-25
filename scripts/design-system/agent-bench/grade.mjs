@@ -13,6 +13,11 @@ import {
   extractUsages,
 } from "../../../packages/cli/src/validate.mjs";
 import { loadRegistry } from "../../../packages/cli/src/data.mjs";
+import {
+  extractCssDefinitions,
+  extractCssReferences,
+  extractTsxDefinitions,
+} from "../phantom-tokens-lib.mjs";
 
 const execFileAsync = promisify(execFile);
 
@@ -165,6 +170,110 @@ async function sourceScan(worktree, check) {
   };
 }
 
+// Roots whose custom-property definitions count as the design system's
+// token vocabulary (mirrors check-phantom-tokens.mjs DEFINITION_ROOTS).
+const TOKEN_DEFINITION_ROOTS = ["app", "nextjs-app"];
+const SKIP_DIRECTORIES = new Set([".next", "dist", "node_modules", "storybook-static"]);
+const COLOR_FUNCTION = /\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(/;
+const HEX_COLOR = /#[0-9a-fA-F]{3,8}\b/;
+const NAMED_COLOR_VALUE =
+  /:\s*[^;{}]*\b(?:white|black|red|green|blue|gray|grey|silver|navy|orange|yellow|purple|pink|teal|maroon|olive|lime|aqua|fuchsia|gold|crimson|tomato|coral|indigo|violet|beige|ivory|khaki|salmon|tan|brown|cyan|magenta|whitesmoke|gainsboro|lightgray|lightgrey|darkgray|darkgrey)\b/i;
+
+const tokenVocabularyCache = new Map();
+
+async function designSystemTokens(worktree) {
+  if (tokenVocabularyCache.has(worktree)) {
+    return tokenVocabularyCache.get(worktree);
+  }
+  const defined = new Set();
+  async function walk(directory) {
+    let entries;
+    try {
+      entries = await readdir(directory, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const entry of entries) {
+      const full = join(directory, entry.name);
+      if (entry.isDirectory()) {
+        if (!SKIP_DIRECTORIES.has(entry.name)) await walk(full);
+      } else if (entry.name.endsWith(".css") && !entry.name.endsWith(".min.css")) {
+        for (const token of extractCssDefinitions(await readFile(full, "utf8"))) {
+          defined.add(token);
+        }
+      } else if (/\.tsx?$/.test(entry.name)) {
+        for (const token of extractTsxDefinitions(await readFile(full, "utf8"))) {
+          defined.add(token);
+        }
+      }
+    }
+  }
+  for (const root of TOKEN_DEFINITION_ROOTS) await walk(join(worktree, root));
+  tokenVocabularyCache.set(worktree, defined);
+  return defined;
+}
+
+/**
+ * Token discipline: no color literals anywhere in the workspace, every
+ * referenced custom property resolves (to a design-system token or a
+ * workspace-local definition), and each required token family is used via a
+ * real design-system token. A phantom reference with a fallback still fails:
+ * the brief asks for the system's tokens, and the fallback hides the miss.
+ */
+async function tokenDiscipline(worktree, check) {
+  const files = await walkFiles(join(worktree, check.dir));
+  const styled = files.filter((file) => /\.(css|tsx?)$/.test(file));
+  if (styled.length === 0) {
+    return { pass: false, detail: `${check.dir} is empty or missing` };
+  }
+  const vocabulary = await designSystemTokens(worktree);
+  const local = new Set();
+  const references = [];
+  const problems = [];
+  for (const file of styled) {
+    const source = await readFile(file, "utf8");
+    const relativePath = file.slice(worktree.length + 1);
+    const isCss = file.endsWith(".css");
+    for (const token of isCss
+      ? extractCssDefinitions(source)
+      : extractTsxDefinitions(source)) {
+      local.add(token);
+    }
+    for (const reference of extractCssReferences(source)) {
+      references.push({ ...reference, file: relativePath });
+    }
+    const lines = source.split("\n");
+    lines.forEach((line, index) => {
+      const literal =
+        HEX_COLOR.test(line) ||
+        COLOR_FUNCTION.test(line) ||
+        (isCss && NAMED_COLOR_VALUE.test(line));
+      if (literal) {
+        problems.push(`${relativePath}:${index + 1} color literal: ${line.trim().slice(0, 60)}`);
+      }
+    });
+  }
+  const phantoms = references.filter(
+    ({ token }) => !vocabulary.has(token) && !local.has(token),
+  );
+  for (const { file, line, token } of phantoms) {
+    problems.push(`${file}:${line} ${token} is not defined by the design system`);
+  }
+  for (const family of check.requireTokenFamilies ?? []) {
+    const used = references.some(
+      ({ token }) => token.startsWith(family) && vocabulary.has(token),
+    );
+    if (!used) problems.push(`no design-system ${family}* token referenced`);
+  }
+  return {
+    pass: problems.length === 0,
+    detail: problems.length
+      ? problems.slice(0, 8).join(" | ")
+      : `${references.length} token reference(s), 0 phantom, 0 color literals`,
+    phantomCount: phantoms.length,
+  };
+}
+
 export async function runCheck(worktree, check) {
   try {
     let outcome;
@@ -181,6 +290,9 @@ export async function runCheck(worktree, check) {
         break;
       case "source-scan":
         outcome = await sourceScan(worktree, check);
+        break;
+      case "token-discipline":
+        outcome = await tokenDiscipline(worktree, check);
         break;
       default:
         outcome = { pass: false, detail: `unknown check kind ${check.kind}` };
