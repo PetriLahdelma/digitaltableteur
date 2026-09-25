@@ -68,11 +68,21 @@ components over hand-rolling markup, and validate your work before finishing.
 export async function createWorktree(repoRoot) {
   const dir = await mkdtemp(join(tmpdir(), "dt-bench-"));
   const worktree = join(dir, "wt");
-  await execFileAsync(
-    "git",
-    ["worktree", "add", "--detach", worktree, "HEAD"],
-    { cwd: repoRoot },
-  );
+  // Arms may run as parallel processes; git serialises worktree metadata
+  // with lock files, so retry briefly on lock contention.
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      await execFileAsync(
+        "git",
+        ["worktree", "add", "--detach", worktree, "HEAD"],
+        { cwd: repoRoot },
+      );
+      break;
+    } catch (error) {
+      if (attempt >= 6 || !/lock/i.test(String(error.stderr ?? error))) throw error;
+      await new Promise((resolveDelay) => setTimeout(resolveDelay, 1500 * attempt));
+    }
+  }
   await symlink(join(repoRoot, "node_modules"), join(worktree, "node_modules"));
   return {
     worktree,
