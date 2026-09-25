@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.26 - 2026-09-25
+
+- `NavLink` accepts an optional `onClick`, fired only when the navigable
+  anchor is activated (the current-page indicator is a non-interactive span
+  and never calls it). Lets containers such as a mobile drawer close as soon
+  as a destination is tapped instead of waiting for the route change.
+  Additive; no other API changes (checked by `check:contract-surface`).
+
 ## 0.1.25 - 2026-09-09
 
 - Adds the Phosphor `TreeView` icon to the curated icon registry. Consumers
