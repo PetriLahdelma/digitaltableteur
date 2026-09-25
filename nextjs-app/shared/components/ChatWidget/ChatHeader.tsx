@@ -112,7 +112,11 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
 
   return (
     <header className={styles.header}>
+      {/* Decorative: the heading already names the assistant, and the face
+          changes every few seconds (blinks, beats); announcing each change
+          would be noise and would make the AT snapshot timing-dependent. */}
       <DonnyAvatar
+        decorative
         state={avatarState}
         size="md"
         className={styles.headerAvatar}
