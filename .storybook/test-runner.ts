@@ -380,6 +380,7 @@ type StoryA11yParams = {
   test?: string;
   context?: { exclude?: string[] };
   options?: { rules?: Array<{ id?: string; enabled?: boolean }> };
+  config?: { rules?: Array<{ id?: string; enabled?: boolean }> };
 };
 
 async function captureA11yEvidence(
@@ -414,15 +415,30 @@ async function captureA11yEvidence(
       // excludes and disabled rules axe actually ran with. Under forced-colors the
       // UA overrides author colors, so color-contrast is not author-meaningful.
       const excludes = ["[data-axe-ignore]", ...(a11yParams?.context?.exclude ?? [])];
+      const configRules = (a11yParams?.config?.rules ?? []).filter((r) => r?.id);
       const disabledRules = [
         ...(forced ? ["color-contrast"] : []),
         ...(a11yParams?.options?.rules ?? [])
           .filter((r) => r?.enabled === false && r.id)
           .map((r) => r.id as string),
+        ...configRules.filter((r) => r.enabled === false).map((r) => r.id as string),
       ];
+      // Rules axe ships disabled that the preview turns on via a11y.config
+      // (target-size, WCAG 2.2 SC 2.5.8). One rules object: AxeBuilder's
+      // disableRules() resets option.rules, so it cannot be combined.
+      const enabledRules = configRules
+        .filter((r) => r.enabled === true && !disabledRules.includes(r.id as string))
+        .map((r) => r.id as string);
       let axe = new AxeBuilder({ page }).include("#storybook-root");
       for (const sel of excludes) axe = axe.exclude(sel);
-      if (disabledRules.length) axe = axe.disableRules(disabledRules);
+      if (disabledRules.length || enabledRules.length) {
+        axe = axe.options({
+          rules: Object.fromEntries([
+            ...disabledRules.map((id) => [id, { enabled: false }]),
+            ...enabledRules.map((id) => [id, { enabled: true }]),
+          ]),
+        });
+      }
       const results = await axe.analyze();
       const axeViolations = results.violations.length;
       if (forced) {

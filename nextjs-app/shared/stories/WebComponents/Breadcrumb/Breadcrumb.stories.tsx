@@ -145,8 +145,22 @@ export const HomeIcon: Story = {
   },
 };
 
+/**
+ * Known WCAG 2.2 SC 2.5.8 gap: the ellipsis trigger renders 20x16.7px (min
+ * 24x24). Found by the 2026-09-25 target-size scan of every story; the React
+ * Breadcrumb passes. Exempted here so the new target-size rule can gate every
+ * other story; remove once dt-breadcrumb's trigger is resized.
+ */
+const targetSizeKnownGap = {
+  a11y: {
+    ...nativeStoryParameters.a11y,
+    config: { rules: [{ id: "target-size", enabled: false }] },
+  },
+};
+
 export const Collapsed: Story = {
   tags: ["example"],
+  parameters: targetSizeKnownGap,
   args: {
     items: longTrail,
     maxItems: 4,
@@ -155,6 +169,7 @@ export const Collapsed: Story = {
 
 export const Responsive: Story = {
   tags: ["example"],
+  parameters: targetSizeKnownGap,
   render: (args) => (
     <Stage width="340px">
       <div

@@ -551,6 +551,13 @@ const preview: Preview = {
         context: {
           exclude: ["[data-axe-ignore]"],
         },
+        // WCAG 2.2 SC 2.5.8 Target Size (Minimum, AA). axe-core ships the rule
+        // disabled; EN 301 549 v4.1.1 (the EAA standard) adopts WCAG 2.2, so it
+        // is enforced here. A full scan of every story on 2026-09-25 found one
+        // failure (dt-breadcrumb's ellipsis trigger, exempted in its stories).
+        config: {
+          rules: [{ id: "target-size", enabled: true }],
+        },
       };
 
       return {

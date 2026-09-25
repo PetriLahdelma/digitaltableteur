@@ -68,6 +68,43 @@ function evidenceBackedMode(ctx, checkId, opts = {}) {
  * `mode(a11y, contract, ctx)` decides automated / manual / unverified. `ctx.verdicts`
  * holds the component's fresh evidence tally, keyed by check id.
  */
+/**
+ * WCAG 2.2 success criteria each derived criterion exercises. EN 301 549
+ * v4.1.1 (2026-09, the EAA harmonised standard) adopts WCAG 2.2 and numbers
+ * web requirements as clause 9.<sc>, so the EN reference is derived, not
+ * authored. `coverage: "partial"` means the check tests part of the success
+ * criterion, never that the criterion is met: automated checks cannot prove
+ * conformance on their own. Criteria that go beyond WCAG (forced colors,
+ * human review) carry no mapping rather than a stretched one.
+ */
+const SC = {
+  "1.3.1": { name: "Info and Relationships", level: "A" },
+  "2.1.1": { name: "Keyboard", level: "A" },
+  "2.1.2": { name: "No Keyboard Trap", level: "A" },
+  "2.2.2": { name: "Pause, Stop, Hide", level: "A" },
+  "2.3.3": { name: "Animation from Interactions", level: "AAA" },
+  "2.5.8": { name: "Target Size (Minimum)", level: "AA" },
+  "4.1.2": { name: "Name, Role, Value", level: "A" },
+  "4.1.3": { name: "Status Messages", level: "AA" },
+};
+
+function wcag(coverage, ...ids) {
+  return ids.map((sc) => ({ sc, ...SC[sc], en301549: `9.${sc}`, coverage }));
+}
+
+const WCAG_BY_CRITERION = {
+  // The axe run covers axe's automatable subset across many success criteria;
+  // listing them would overclaim. target-size (2.5.8) is named because it is
+  // enabled explicitly (axe ships it disabled).
+  "axe-no-violations": wcag("partial", "2.5.8"),
+  "accessibility-tree": wcag("partial", "1.3.1", "4.1.2"),
+  "reduced-motion": wcag("partial", "2.2.2", "2.3.3"),
+  "keyboard-contract": wcag("partial", "2.1.1", "2.1.2"),
+  "aria-requirements": wcag("partial", "4.1.2"),
+  "screen-reader": wcag("partial", "1.3.1", "4.1.2"),
+  "live-region": wcag("partial", "4.1.3"),
+};
+
 const RULES = [
   {
     id: "axe-no-violations",
@@ -188,7 +225,7 @@ const RULES = [
  * @param {Record<string, any>} contract A parsed component contract (v2).
  * @param {{ componentDir?: string, now?: number, staleDays?: number }} [options]
  *   `componentDir` enables evidence-backed resolution (reads __a11y-evidence__/).
- * @returns {Array<{id: string, statement: string, verificationMode: string, check?: string, note?: string}>}
+ * @returns {Array<{id: string, statement: string, verificationMode: string, check?: string, note?: string, wcag?: Array<{sc: string, name: string, level: string, en301549: string, coverage: string}>}>}
  */
 export function deriveA11yCriteria(contract, options = {}) {
   const a11y = contract?.a11y ?? {};
@@ -209,6 +246,7 @@ export function deriveA11yCriteria(contract, options = {}) {
     };
     if (resolved.check) criterion.check = resolved.check;
     if (resolved.note) criterion.note = resolved.note;
+    if (WCAG_BY_CRITERION[rule.id]) criterion.wcag = WCAG_BY_CRITERION[rule.id];
     derived.push(criterion);
   }
 
