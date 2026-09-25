@@ -1,0 +1,292 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Radio",
+  "status": "beta",
+  "description": "Single radio option; compose with RadioGroup for sets.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Radio } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "label": {
+      "type": "string",
+      "optional": false,
+      "description": "Option label"
+    },
+    "value": {
+      "type": "string",
+      "optional": false,
+      "description": "Submitted value when selected"
+    },
+    "name": {
+      "type": "string",
+      "optional": false,
+      "description": "Group name; must match siblings to form the exclusive set"
+    },
+    "checked": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Checked state (controlled); use inside RadioGroup for sets."
+    },
+    "defaultChecked": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Initial checked state (uncontrolled mode only)"
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Disables interaction and dims the control."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "S",
+        "M",
+        "L"
+      ],
+      "optional": true,
+      "description": "Control hit area."
+    },
+    "onCheckedChange": {
+      "type": "(checked: boolean) => void",
+      "optional": true,
+      "description": "Fired with the next checked value when selection changes"
+    },
+    "showLabel": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Render the visible label."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:22.813Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.664Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:26.621Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:23.052Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.874Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:26.982Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:23.302Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:47.094Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:27.375Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:22.587Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.438Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:26.210Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:22.813Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.664Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:26.621Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:23.052Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.874Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:26.982Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:23.302Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:47.094Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:27.375Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:22.587Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.438Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:26.210Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.664Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.874Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:47.094Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.438Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Radio/Radio.module.css",
+    "../../../nextjs-app/shared/components/Radio/Radio.tsx"
+  ]
+}

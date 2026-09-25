@@ -1,0 +1,711 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ProcessBlock",
+  "status": "stable",
+  "description": "Case-study process section that arranges titled phase cards in a grid under an optional title and description.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { ProcessBlock } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "phases": {
+      "type": "ProcessPhase[]",
+      "optional": false,
+      "description": "Array of process phases to display"
+    },
+    "sectionTitle": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional main title for the process section"
+    },
+    "description": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Optional description or introduction text"
+    },
+    "backgroundColor": {
+      "type": "union",
+      "values": [
+        "transparent",
+        "light",
+        "white"
+      ],
+      "optional": true,
+      "description": "Background color variant"
+    },
+    "maxWidth": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "full"
+      ],
+      "optional": true,
+      "description": "Maximum width constraint"
+    },
+    "spacing": {
+      "type": "union",
+      "values": [
+        "default",
+        "compact",
+        "comfortable",
+        "spacious"
+      ],
+      "optional": true,
+      "description": "Spacing variant"
+    },
+    "columns": {
+      "type": "2 | 3 | 4",
+      "optional": true,
+      "description": "Number of columns (2, 3, or 4)"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class"
+    },
+    "as": {
+      "type": "union",
+      "values": [
+        "article",
+        "div",
+        "section"
+      ],
+      "optional": true,
+      "description": "Semantic HTML element to use"
+    },
+    "ariaLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible label for the section"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-agile-sprint.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:12.449Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-agile-sprint.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:57.155Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-agile-sprint.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:04.901Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-article-variant.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:12.225Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-article-variant.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:56.932Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-article-variant.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:04.647Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-compact-spacing.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.753Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-compact-spacing.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:56.428Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-compact-spacing.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:04.169Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-content-strategy.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:12.987Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-content-strategy.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:57.596Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-content-strategy.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:05.353Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:32.069Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:55.173Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:58.558Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-development-process.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:10.808Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-development-process.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:55.440Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-development-process.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:03.077Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:32.947Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:58.094Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:59.109Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:33.431Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:58.336Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:59.494Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-minimal-process.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:12.707Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-minimal-process.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:57.378Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-minimal-process.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:05.127Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-no-title.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.269Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-no-title.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:55.928Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-no-title.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:03.560Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:32.466Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:57.852Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:58.838Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-two-column-layout.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.024Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-two-column-layout.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:55.654Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-two-column-layout.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:03.296Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-wide-layout.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.987Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-wide-layout.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:56.674Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-wide-layout.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:04.405Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-with-description.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.524Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-with-description.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:56.183Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-with-description.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:03.843Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-agile-sprint.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:12.449Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-agile-sprint.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:57.155Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-agile-sprint.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:04.901Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-article-variant.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:12.225Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-article-variant.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:56.932Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-article-variant.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:04.647Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-compact-spacing.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.753Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-compact-spacing.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:56.428Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-compact-spacing.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:04.169Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-content-strategy.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:12.987Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-content-strategy.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:57.596Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-content-strategy.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:05.353Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:32.069Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:55.173Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:58.558Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-development-process.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:10.808Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-development-process.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:55.440Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-development-process.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:03.077Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:32.947Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:58.094Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:59.109Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:33.431Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:58.336Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:59.494Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-minimal-process.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:12.707Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-minimal-process.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:57.378Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-minimal-process.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:05.127Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-no-title.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.269Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-no-title.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:55.928Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-no-title.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:03.560Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:32.466Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:57.852Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:58.838Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-two-column-layout.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.024Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-two-column-layout.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:55.654Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-two-column-layout.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:03.296Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-wide-layout.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.987Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-wide-layout.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:56.674Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-wide-layout.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:04.405Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-with-description.dark.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:11.524Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-with-description.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:33:56.183Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-with-description.light.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:34:03.843Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css",
+    "../../../nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx"
+  ]
+}

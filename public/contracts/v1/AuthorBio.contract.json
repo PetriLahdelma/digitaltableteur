@@ -1,0 +1,254 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "AuthorBio",
+  "status": "stable",
+  "description": "Author biography card: avatar, name, role, and markdown bio. Fully input-driven — pass the details directly, or pass slug to resolve them from the site's author registry (direct props override registry fields).",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { AuthorBio } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "slug": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional author slug resolved from the site's authors registry; direct\nprops below override the registry fields."
+    },
+    "name": {
+      "type": "string",
+      "optional": true,
+      "description": "Author name. Required unless `slug` resolves it."
+    },
+    "imageUrl": {
+      "type": "string | { default: string } | StaticImageData",
+      "optional": true,
+      "description": "Avatar image source: a URL, an imported asset path, or static image data."
+    },
+    "role": {
+      "type": "string",
+      "optional": true,
+      "description": "Role/title shown under the name (e.g. \"Founder, CEO\")."
+    },
+    "bio": {
+      "type": "string",
+      "optional": true,
+      "description": "Biography text; markdown after the first paragraph. The first paragraph\nrenders as the lead/tagline."
+    },
+    "email": {
+      "type": "string",
+      "optional": true,
+      "description": "Contact email rendered as a mailto link when `showContact` is set."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional CSS class for styling extension"
+    },
+    "heading": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional custom heading text (defaults to the author name)"
+    },
+    "showContact": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Render the author's contact email (mailto) after the bio, if the author has one."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:34.940Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.415Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:11.061Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:35.231Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.661Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:11.327Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:35.531Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.874Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:11.640Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:34.940Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.415Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:11.061Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:35.231Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.661Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:11.327Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:35.531Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.874Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:11.640Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.415Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.661Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AuthorBio/__a11y-evidence__/content-authorbio-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:14.874Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 — beta→stable: AT snapshots bootstrapped across base/light/dark/forced-colors (all beta-matrix stories green, deterministic); axe color-contrast passed in light+dark+forced for the bordered color surface; stale compliance story removed. Tagline renders as plain Text; the author-data `[@](url)` was a content error (the `@` is a handle mention, not a link) corrected in content/authors to `@digitaltableteur`, so no markdown link renders in the byline.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
+    "../../../nextjs-app/shared/components/AuthorBio/AuthorBio.tsx"
+  ]
+}

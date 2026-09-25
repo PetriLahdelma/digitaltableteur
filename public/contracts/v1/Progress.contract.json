@@ -1,0 +1,311 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Progress",
+  "status": "stable",
+  "description": "Linear progress indicator with determinate and indeterminate modes.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Progress } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "value": {
+      "type": "number",
+      "optional": true,
+      "description": "Current progress value, scaled against max."
+    },
+    "max": {
+      "type": "number",
+      "optional": true,
+      "description": "Maximum value."
+    },
+    "label": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name for the progressbar."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Track height token."
+    },
+    "state": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "neutral"
+      ],
+      "optional": true,
+      "description": "Semantic fill color."
+    },
+    "indeterminate": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Unknown duration: animates a sweeping bar and drops aria-valuenow."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional utility classes on the root."
+    }
+  },
+  "rules": [
+    {
+      "id": "progress-indeterminate-ignores-value",
+      "when": {
+        "indeterminate": {
+          "equals": true
+        }
+      },
+      "forbid": [
+        "value"
+      ],
+      "reason": "An indeterminate bar drops aria-valuenow and ignores `value`. Pass `value` only for determinate progress.",
+      "severity": "warning",
+      "evidence": "Progress.tsx: aria-valuenow and scale are skipped when indeterminate"
+    }
+  ],
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:47.694Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.161Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:24.091Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:47.900Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.372Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:24.354Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:48.151Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.578Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:24.585Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:47.475Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:14.948Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:23.863Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:47.694Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.161Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:24.091Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:47.900Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.372Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:24.354Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:48.151Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.578Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:24.585Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:47.475Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:14.948Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:23.863Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.161Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.372Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:15.578Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Progress/__a11y-evidence__/feedback-progress-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:14.948Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-03 (batch 4) — indeterminate mode added: sweeping bar, aria-valuenow dropped, reduced motion slows the sweep instead of freezing it. 2026-07-08 — promoted after ContactInquiryPanel adopted Progress as the indeterminate booking-calendar loading fallback; check:beta-promotion-readiness verifies production consumers, snapshots, forced colors, and real Figma evidence.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Progress/Progress.module.css",
+    "../../../nextjs-app/shared/components/Progress/Progress.tsx"
+  ]
+}

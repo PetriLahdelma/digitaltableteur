@@ -1,0 +1,274 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Spacer",
+  "status": "beta",
+  "description": "Empty layout element that injects a fixed gap on a single axis. Used inside flex/grid containers where adding a token-sized gap as a sibling reads cleaner than the gap utility.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Spacer } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xs",
+        "2xl"
+      ],
+      "optional": true,
+      "description": "Tokenized gap size."
+    },
+    "axis": {
+      "type": "union",
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
+      "optional": true,
+      "description": "Block (vertical) or inline (horizontal) axis."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class names."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:17.525Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.116Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:57.622Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:18.008Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.520Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:58.061Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:18.290Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.747Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:58.268Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:17.766Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.292Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:57.852Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:17.525Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.116Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:57.622Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:18.008Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.520Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:58.061Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:18.290Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.747Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:58.268Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:17.766Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.292Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:57.852Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.116Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.520Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.747Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Spacer/__a11y-evidence__/layout-spacer-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:19.292Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Spacer/Spacer.tsx"
+  ]
+}

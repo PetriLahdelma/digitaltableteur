@@ -1,0 +1,208 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ProjectNav",
+  "status": "stable",
+  "description": "Previous/next navigation between case studies, with a back-to-work action, for the foot of work detail pages.",
+  "props": {
+    "currentSlug": {
+      "type": "string",
+      "optional": false,
+      "description": "Current project slug"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:12.328Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:16.863Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:01.781Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:12.619Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:17.083Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:02.039Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:12.852Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:17.304Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:02.277Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:12.328Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:16.863Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:01.781Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:12.619Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:17.083Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:02.039Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:12.852Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:17.304Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:02.277Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:16.863Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:17.083Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectNav/__a11y-evidence__/site-projectnav-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:17.304Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories; 4-mode AT snapshots captured and compare-clean. nav landmark labelled via projectNavLabel; prev/next targets from getProjectNavigation, disabled edges use aria-disabled. Tailwind className styling retained as an intentional per-surface owner call (same as NavLink/Pagination). No own animation. 2026-07-06 beta->stable: independently re-verified light/dark + forced-colors in a real browser (prev/next + back-to-work links and the disabled edge state track the theme; forced-colors keeps LinkText/GrayText distinction between active and disabled controls). Only transitions are hover text-color (no motion), so reducedMotion holds. realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ProjectNav/ProjectNav.tsx"
+  ]
+}

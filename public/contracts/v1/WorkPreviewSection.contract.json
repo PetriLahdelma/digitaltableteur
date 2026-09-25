@@ -1,0 +1,184 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "WorkPreviewSection",
+  "status": "stable",
+  "description": "Work index preview grid of project cards.",
+  "props": {
+    "title": {
+      "type": "string",
+      "optional": true,
+      "description": "Section title"
+    },
+    "projects": {
+      "type": "ProjectItem[]",
+      "optional": false,
+      "description": "Array of projects to display"
+    },
+    "layout": {
+      "type": "union",
+      "values": [
+        "grid",
+        "asymmetric",
+        "featured"
+      ],
+      "optional": true,
+      "description": "Grid layout style"
+    },
+    "showViewAll": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show \"View all work\" link"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    },
+    "id": {
+      "type": "string",
+      "optional": true,
+      "description": "Section ID for navigation"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:51.494Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:27.854Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:51.978Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.361Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:52.285Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.632Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:51.741Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.102Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:51.494Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:27.854Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:51.978Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.361Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:52.285Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.632Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:51.741Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.102Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/WorkPreviewSection/WorkPreviewSection.tsx"
+  ]
+}

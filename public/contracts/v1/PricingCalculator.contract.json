@@ -1,0 +1,259 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "PricingCalculator",
+  "status": "stable",
+  "description": "Interactive duration × workload pricing calculator for the pricing page.",
+  "props": {
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional wrapper class."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:04.705Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:57.633Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:08.035Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:05.279Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:58.056Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:08.632Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:05.573Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:58.271Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:08.963Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:04.992Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:57.843Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:08.349Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:04.705Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:57.633Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:08.035Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:05.279Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:58.056Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:08.632Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:05.573Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:58.271Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:08.963Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:04.992Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:57.843Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:08.349Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:57.633Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:58.056Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:58.271Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:57.843Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-18 — Initial beta: native radio groups via SelectableCardGroup (keyboard + AT from the platform), axe assertion in unit tests, ForcedColors story added. 2026-07-18 — Promoted to stable: 4-mode AT snapshots recaptured via the story runner, forced-colors compare pass and controls audit green, 6 production consumers on the pricing page chain.",
+        "reviewedAt": "2026-07-18"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
+    "../../../nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx"
+  ]
+}

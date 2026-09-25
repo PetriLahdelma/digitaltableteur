@@ -1,0 +1,57 @@
+{
+  "name": "@digitaltableteur/contract-spec",
+  "version": "1.0.0",
+  "description": "Design System Contract 1.0: an open spec, JSON Schema and conformance checker for machine-readable, evidence-backed design-system component contracts.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Petri Lahdelma <petri.lahdelma@gmail.com> (https://www.digitaltableteur.com)",
+  "homepage": "https://github.com/PetriLahdelma/digitaltableteur/tree/main/packages/contract-spec#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetriLahdelma/digitaltableteur.git",
+    "directory": "packages/contract-spec"
+  },
+  "bugs": "https://github.com/PetriLahdelma/digitaltableteur/issues",
+  "keywords": [
+    "design-system",
+    "design-systems",
+    "component-contract",
+    "conformance",
+    "accessibility",
+    "wcag",
+    "ai-agents",
+    "mcp",
+    "json-schema",
+    "governance"
+  ],
+  "bin": {
+    "contract-check": "./src/cli.mjs"
+  },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./schema": "./schema/contract.schema.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "schema",
+    "examples",
+    "SPEC.md",
+    "README.md",
+    "LICENSE",
+    "LICENSE-SPEC.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.18.0",
+    "ajv-formats": "^3.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

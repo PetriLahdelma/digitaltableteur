@@ -1,0 +1,252 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "CommandPalette",
+  "status": "beta",
+  "description": "Modal, keyboard-driven command launcher: a search input filters a listbox of commands (matched on label + keywords); Arrow keys move the active option, Enter runs it, Escape closes. Focus is trapped and background scroll locked while open.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { CommandPalette } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "open": {
+      "type": "boolean",
+      "optional": false,
+      "description": "Whether the palette is open (controlled)."
+    },
+    "onClose": {
+      "type": "() => void",
+      "optional": false,
+      "description": "Called to request close (Escape, overlay click, or after a selection)."
+    },
+    "items": {
+      "type": "CommandPaletteItem[]",
+      "optional": false,
+      "description": "Commands to show, in order."
+    },
+    "label": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name for the dialog + listbox."
+    },
+    "placeholder": {
+      "type": "string",
+      "optional": true,
+      "description": "Search input placeholder."
+    },
+    "emptyText": {
+      "type": "string",
+      "optional": true,
+      "description": "Shown when nothing matches."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class names for the dialog."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:57.827Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:36:48.723Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:36.645Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:58.313Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:36:49.264Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:37.141Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:58.076Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:36:48.981Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:36.912Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:57.827Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:36:48.723Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:36.645Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:58.313Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:36:49.264Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:37.141Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:58.366Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-forced-colors.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:36:49.290Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:37.180Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:58.076Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.json",
+            "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
+            "capturedAt": "2026-08-07T12:36:48.981Z",
+            "passed": true,
+            "runner": "react-0.1.23-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:36.912Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-12"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-12 — alpha→beta: code-level a11y review. Overlay dialog is role=dialog aria-modal with an accessible label; the search input is role=combobox with aria-expanded, aria-controls and aria-activedescendant onto the role=listbox; each command is role=option with aria-selected reflecting the active item. Focus is trapped (useFocusTrap) and background scroll locked (useScrollLock) while open; Arrow Up/Down wrap the active option, Enter runs it and closes, Escape closes, overlay mousedown closes. User-facing strings are props so the component carries no i18n dependency. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook. Known limitation: virtualization is not implemented, so very long command lists render in full.",
+        "reviewedAt": "2026-07-12"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/CommandPalette/CommandPalette.module.css",
+    "../../../nextjs-app/shared/components/CommandPalette/CommandPalette.tsx"
+  ]
+}

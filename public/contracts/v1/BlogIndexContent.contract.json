@@ -1,0 +1,98 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "BlogIndexContent",
+  "status": "alpha",
+  "description": "Blog index main content assembly.",
+  "props": {
+    "postsPerPage": {
+      "type": "number",
+      "optional": true,
+      "description": "Number of posts per page"
+    },
+    "showHero": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show hero section"
+    },
+    "heroVariant": {
+      "type": "union",
+      "values": [
+        "full",
+        "compact"
+      ],
+      "optional": true,
+      "description": "Hero variant"
+    },
+    "showFilter": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show filter"
+    },
+    "filterVariant": {
+      "type": "union",
+      "values": [
+        "pills",
+        "underline",
+        "minimal"
+      ],
+      "optional": true,
+      "description": "Filter variant"
+    },
+    "showPagination": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show pagination"
+    },
+    "gridLayout": {
+      "type": "union",
+      "values": [
+        "standard",
+        "featured-first"
+      ],
+      "optional": true,
+      "description": "Grid layout"
+    },
+    "hideImages": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Hide images in article cards"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx"
+  ]
+}

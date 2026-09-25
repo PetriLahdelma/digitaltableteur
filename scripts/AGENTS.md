@@ -122,18 +122,40 @@
 **`scripts/design-system/agent-bench/`**
 
 - A/B benchmark: does the DS affordance layer (dt CLI + contracts) change
-  what a coding agent builds? Five task categories (table, tree, migration,
-  repair, forced-colors) with affordance-neutral machine acceptance.
-- `npm run agent:bench:selftest` — null/oracle grader integrity, no model
-  spend. Run before any paid run.
-- `npm run agent:bench -- --task all --arm both --agent claude --reps 3`
-  — a real benchmark run (spends tokens; pinned model + turn budget).
+  what a coding agent builds? Eight task categories (table, tree, migration,
+  repair, forced-colors, and since v2 tokens, dialog, form) with
+  affordance-neutral machine acceptance. Three arms: `with` (dt CLI
+  documented), `mcp` (stdio DS MCP attached, generic workspace), `without`.
+- `npm run agent:bench:selftest`: null/oracle/naive grader integrity, no
+  model spend. Run before any paid run.
+- `npm run agent:bench -- --task all --arm all --agent claude --reps 3
+  --repair-loop`: a real run (spends tokens; pinned model and turn budget,
+  isolated from user-level Claude config). Arms can run as parallel
+  processes (`--arm with`, `--arm mcp`, `--arm without`); worktree creation
+  retries on git lock contention.
 - Methodology and fairness design: `docs/AGENT_BENCH_METHODOLOGY.md`.
 - Results land in `scripts/design-system/agent-bench/results/` (gitignored).
   Publish with `aggregate.mjs --out public/ds-health/agent-bench.json
-  [--note ...] <result files>` — the agent page renders that artifact
+  [--note ...] <result files>`: the agent page renders that artifact
   verbatim (numbers are generated, never hand-written); commit the
-  regenerated artifact with the run's caveats as notes.
+  regenerated artifact with the run's caveats as notes. Never pool v1
+  (archived `agent-bench-2026-08.json`) and v2 result files.
+
+### Open contracts (Design System Contract 1.0)
+
+- `packages/contract-spec/`: the open spec (`SPEC.md`, CC BY 4.0), JSON
+  Schema, and `contract-check` conformance CLI (Apache-2.0). Published
+  publicly to npm as `@digitaltableteur/contract-spec` (unlike the other
+  `@digitaltableteur/*` packages, which are restricted).
+- `npm run export:contract-spec`: exports every DT contract to
+  `public/contracts/v1/<Name>.contract.json` plus the schema copy at
+  `public/schemas/contract-spec/1.0/`. Criteria come from
+  `deriveA11yCriteria`; evidence refs point at fresh `__a11y-evidence__`
+  records. Never invent governance or review dates to raise a level.
+- `npm run check:contract-spec` (pre-push): export drift check, then
+  `contract-check --level 1`, then the spec's own tests. Evidence freshness
+  is git-aware, so a component source change or an evidence recapture
+  changes the export: re-run `npm run export:contract-spec` and commit.
 
 ### Compat/perf evidence (design-system, Astryx-gap Phase 4)
 

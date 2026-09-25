@@ -1,0 +1,111 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "NextLayout",
+  "status": "beta",
+  "description": "Production app shell: header, main landmark, footer, chat, consent.",
+  "props": {
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional class names on the layout wrapper."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:12.591Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:13.314Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:13.645Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:12.941Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:12.591Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:13.314Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:13.645Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:12.941Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/NextLayout/NextLayout.module.css",
+    "../../../nextjs-app/shared/components/NextLayout/NextLayout.tsx"
+  ]
+}

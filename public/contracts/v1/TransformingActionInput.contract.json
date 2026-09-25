@@ -1,0 +1,238 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "TransformingActionInput",
+  "status": "beta",
+  "description": "Marketing entry-point input that morphs between surface modes, from a prompt bar into a chat handoff; pairs with ChatWidget.",
+  "props": {
+    "initialMode": {
+      "type": "union",
+      "values": [
+        "button",
+        "input"
+      ],
+      "optional": true,
+      "description": "Initial surface mode before transformation"
+    },
+    "value": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional controlled value"
+    },
+    "defaultValue": {
+      "type": "string",
+      "optional": true,
+      "description": "Default value when uncontrolled"
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Disabled state for both button and input"
+    },
+    "actionLabelKey": {
+      "type": "string",
+      "optional": true,
+      "description": "Translation key for the trigger label"
+    },
+    "inputLabelKey": {
+      "type": "string",
+      "optional": true,
+      "description": "Translation key for the input label"
+    },
+    "helperTextKey": {
+      "type": "string",
+      "optional": true,
+      "description": "Translation key for helper text below the input"
+    },
+    "placeholderKey": {
+      "type": "string",
+      "optional": true,
+      "description": "Translation key for the placeholder"
+    },
+    "onChange": {
+      "type": "(value: string) => void",
+      "optional": true,
+      "description": "Triggered when value changes"
+    },
+    "onSubmit": {
+      "type": "(value: string) => void",
+      "optional": true,
+      "description": "Triggered on submit in input mode"
+    },
+    "stayInInputMode": {
+      "type": "boolean",
+      "optional": true,
+      "description": "When true, retains the input after submit instead of returning to button mode"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional className passthrough"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:51.854Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:14.755Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:52.336Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:15.230Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:52.663Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:15.470Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:52.097Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:15.015Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:51.854Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-default.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:41:29.887Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:14.755Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:52.336Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-example.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:41:29.963Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:15.230Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:52.663Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-forced-colors.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:41:29.997Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:15.470Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:52.097Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-playground.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:41:29.933Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TransformingActionInput/__a11y-evidence__/site-transformingactioninput-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:15.015Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.module.css",
+    "../../../nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.tsx"
+  ]
+}

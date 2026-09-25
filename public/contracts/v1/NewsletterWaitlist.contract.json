@@ -1,0 +1,259 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "NewsletterWaitlist",
+  "status": "beta",
+  "description": "Newsletter waitlist signup with inline email capture.",
+  "props": {
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional class name for styling extension"
+    },
+    "onSuccess": {
+      "type": "(email: string) => void",
+      "optional": true,
+      "description": "Callback when email is successfully submitted"
+    },
+    "onError": {
+      "type": "(error: Error) => void",
+      "optional": true,
+      "description": "Callback when submission fails"
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Disable the component"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-disabled.dark.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:55:58.170Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-disabled.light.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:54:24.810Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-kitchen-sink.dark.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:55:58.625Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-kitchen-sink.light.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:54:25.318Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-with-callbacks.dark.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:55:58.410Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-with-callbacks.light.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:54:25.086Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:58.067Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-default.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:56:02.364Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:54.345Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-disabled.dark.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:55:58.170Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-disabled.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:56:02.413Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-disabled.light.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:54:24.810Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:58.219Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-example.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:56:02.550Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:54.510Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:58.282Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-forced-colors.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:56:02.575Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:54.532Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-kitchen-sink.dark.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:55:58.625Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-kitchen-sink.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:56:02.498Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-kitchen-sink.light.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:54:25.318Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:58.155Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-playground.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:56:02.525Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:54.442Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-with-callbacks.dark.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:55:58.410Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-with-callbacks.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:56:02.470Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NewsletterWaitlist/__a11y-evidence__/site-newsletterwaitlist-with-callbacks.light.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:54:25.086Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-26"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "reviewedAt": "2026-05-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/NewsletterWaitlist/NewsletterWaitlist.module.css",
+    "../../../nextjs-app/shared/components/NewsletterWaitlist/NewsletterWaitlist.tsx"
+  ]
+}

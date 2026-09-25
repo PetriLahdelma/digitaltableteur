@@ -1,0 +1,252 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ImagePlaceholder",
+  "status": "beta",
+  "description": "Dimension-labelled placeholder for imagery in layouts, demos, and drafts; swap for real media before shipping.",
+  "props": {
+    "width": {
+      "type": "number",
+      "optional": false,
+      "description": "Width in pixels"
+    },
+    "height": {
+      "type": "number",
+      "optional": false,
+      "description": "Height in pixels"
+    },
+    "alt": {
+      "type": "string",
+      "optional": true,
+      "description": "Alt text for accessibility"
+    },
+    "caption": {
+      "type": "string",
+      "optional": true,
+      "description": "Caption text displayed below the image"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "light",
+        "medium",
+        "dark",
+        "gradient"
+      ],
+      "optional": true,
+      "description": "Background color variant"
+    },
+    "showDimensions": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Display the dimensions on the placeholder"
+    },
+    "showIcon": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Display an icon on the placeholder"
+    },
+    "text": {
+      "type": "string",
+      "optional": true,
+      "description": "Text to display on the placeholder"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class"
+    },
+    "style": {
+      "type": "React.CSSProperties",
+      "optional": true,
+      "description": "Inline styles"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:47.779Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.499Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:11.193Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:48.013Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.717Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:11.422Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:48.269Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.916Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:11.636Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:47.779Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.499Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:11.193Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:48.013Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.717Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:11.422Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:48.269Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.916Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:11.636Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.499Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.717Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ImagePlaceholder/__a11y-evidence__/site-imageplaceholder-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:37.916Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.module.css",
+    "../../../nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.tsx"
+  ]
+}

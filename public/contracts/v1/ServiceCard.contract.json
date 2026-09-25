@@ -1,0 +1,292 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ServiceCard",
+  "status": "stable",
+  "description": "Service tile with icon, title, description, and optional link.",
+  "props": {
+    "icon": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Icon element displayed at the top"
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Card title"
+    },
+    "description": {
+      "type": "string",
+      "optional": false,
+      "description": "Card description"
+    },
+    "href": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional link URL"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "minimal",
+        "default",
+        "bordered",
+        "elevated"
+      ],
+      "optional": true,
+      "description": "Card style variant"
+    },
+    "iconPosition": {
+      "type": "union",
+      "values": [
+        "left",
+        "top"
+      ],
+      "optional": true,
+      "description": "Icon position"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    },
+    "donnyTarget": {
+      "type": "string",
+      "optional": true,
+      "description": "Donny site action target id when this card is a spotlight anchor"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:27.411Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.498Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:06.351Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:28.084Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.958Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:06.779Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:28.422Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:47.175Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:07.056Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:27.757Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.719Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:06.580Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:27.411Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.498Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:06.351Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:28.084Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.958Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:06.779Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:28.422Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:47.175Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:07.056Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:27.757Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.719Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:06.580Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.498Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.958Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:47.175Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ServiceCard/__a11y-evidence__/site-servicecard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:46.719Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean all four modes; AT snapshots bootstrapped (had none — snapshot dir only resolved after the #872 resolver fix) compare-clean; Controls 8/8 operable + 0 inert; eyeballed the card surface light + dark. Fixed the same reduced-motion gap as ValueCard: the hover scale/lift transforms (icon group-hover:scale-105/-translate-y-0.5, card hover:-translate-y-2/scale-[1.02]) ran on transition-all with no motion-reduce guard while reducedMotion claimed true — added motion-reduce:transition-none to both transition sites. Also added the missing unit test (axe + link/div render + variant surface + reduced-motion guard).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ServiceCard/ServiceCard.tsx"
+  ]
+}

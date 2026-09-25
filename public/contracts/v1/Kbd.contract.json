@@ -1,0 +1,205 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Kbd",
+  "status": "stable",
+  "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Kbd } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Size token."
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "primary",
+        "secondary"
+      ],
+      "optional": true,
+      "description": "Visual style. `primary` is a filled light-gray keycap with a bottom edge\nthat reads like a physical key; `secondary` is the flatter outlined chip."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:36.988Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:22.589Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:37.576Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:23.113Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:37.278Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:22.861Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:36.988Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.forced-colors.json",
+            "sourceCommit": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
+            "capturedAt": "2026-07-26T18:01:39.440Z",
+            "passed": true,
+            "runner": "promote-kbd-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:22.589Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:37.576Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.forced-colors.json",
+            "sourceCommit": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
+            "capturedAt": "2026-07-26T18:01:39.493Z",
+            "passed": true,
+            "runner": "promote-kbd-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:23.113Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:37.624Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-forced-colors.forced-colors.json",
+            "sourceCommit": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
+            "capturedAt": "2026-07-26T18:01:39.613Z",
+            "passed": true,
+            "runner": "promote-kbd-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:23.158Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:37.278Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.forced-colors.json",
+            "sourceCommit": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
+            "capturedAt": "2026-07-26T18:01:39.468Z",
+            "passed": true,
+            "runner": "promote-kbd-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:22.861Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-06"
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified. 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; primary/secondary variant axis and sm/md/lg size ladder verified distinct; keycap remains static inline text with no interactive semantics.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Kbd/Kbd.module.css",
+    "../../../nextjs-app/shared/components/Kbd/Kbd.tsx"
+  ]
+}

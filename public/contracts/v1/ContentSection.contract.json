@@ -1,0 +1,96 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ContentSection",
+  "status": "alpha",
+  "description": "Generic content section wrapper for marketing pages.",
+  "props": {
+    "subtitle": {
+      "type": "string",
+      "optional": true,
+      "description": "Subtitle/eyebrow text"
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Section title"
+    },
+    "content": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Rich text content (optional)"
+    },
+    "images": {
+      "type": "ContentImage | ContentImage[]",
+      "optional": true,
+      "description": "Single image or array of images"
+    },
+    "imageLayout": {
+      "type": "union",
+      "values": [
+        "single",
+        "none",
+        "grid",
+        "side-by-side"
+      ],
+      "optional": true,
+      "description": "Image layout"
+    },
+    "background": {
+      "type": "union",
+      "values": [
+        "default",
+        "muted",
+        "accent"
+      ],
+      "optional": true,
+      "description": "Background variant"
+    },
+    "centered": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Center align text"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    },
+    "donnyTarget": {
+      "type": "string",
+      "optional": true,
+      "description": "Donny site action target id for this content block"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/ContentSection/ContentSection.tsx"
+  ]
+}

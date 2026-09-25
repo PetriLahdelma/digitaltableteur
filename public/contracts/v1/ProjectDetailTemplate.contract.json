@@ -1,0 +1,80 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ProjectDetailTemplate",
+  "status": "alpha",
+  "description": "Full case study page template.",
+  "props": {
+    "project": {
+      "type": "Project",
+      "optional": false,
+      "description": "Project data from projects.ts"
+    },
+    "hero": {
+      "type": "{\n    image: ProjectHeroImage;\n    variant?: \"full-width\" | \"contained\" | \"split\";\n  }",
+      "optional": false,
+      "description": "Hero configuration"
+    },
+    "meta": {
+      "type": "{\n    services: string[];\n    duration?: string;\n    tools?: ToolItem[];\n    team?: TeamMember[];\n    client?: ClientInf",
+      "optional": false,
+      "description": "Metadata configuration"
+    },
+    "sections": {
+      "type": "ContentSectionProps[]",
+      "optional": false,
+      "description": "Content sections"
+    },
+    "gallery": {
+      "type": "GalleryImage[]",
+      "optional": true,
+      "description": "Gallery images"
+    },
+    "relatedEnabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Enable related projects section"
+    },
+    "nav": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Custom navigation element (overrides default ProjectNav)"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/ProjectDetailTemplate/ProjectDetailTemplate.tsx"
+  ]
+}

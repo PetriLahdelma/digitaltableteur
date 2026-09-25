@@ -1,0 +1,223 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "NavLink",
+  "status": "stable",
+  "description": "Navigation anchor primitive used inside `SiteHeader`, `Footer`, and in-page navs. Renders an underlying `next/link` and applies the `aria-current='page'` token when the active route matches.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { NavLink } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "href": {
+      "type": "string",
+      "optional": false,
+      "description": "Route path for next/link."
+    },
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Navigation link label."
+    },
+    "exact": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Match href exactly for the active state instead of by prefix."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Base class names applied in every state."
+    },
+    "activeClassName": {
+      "type": "string",
+      "optional": true,
+      "description": "Class names applied when the route is active."
+    },
+    "inactiveClassName": {
+      "type": "string",
+      "optional": true,
+      "description": "Class names applied when the route is inactive."
+    },
+    "onClick": {
+      "type": "() => void",
+      "optional": true,
+      "description": "Called when the link is activated. Fires only for the navigable anchor;\nthe current-page indicator is a non-interactive span and never calls it.\nLets containers (the mobile drawer) close as soon as the visitor taps a\ndestination instead of waiting for the route change to land."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-default.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:17.397Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-default.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:12.265Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-example.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:17.827Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-example.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:12.742Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-forced-colors.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:18.042Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-forced-colors.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:12.953Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-playground.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:17.607Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-playground.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:12.490Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-default.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:17.397Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-default.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:12.265Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-example.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:17.827Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-example.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:12.742Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-forced-colors.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:18.042Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-forced-colors.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:12.953Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-playground.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:17.607Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-playground.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:12.490Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-05"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-05 — beta→stable (fleet #13): renders a real next/link <a>, aria-current='page' on the active route. Fixed a reduced-motion gap — the transition-colors fade now carries motion-reduce:transition-none so a11y.reducedMotion is literally honest (matches Pagination / ValueCard); unit-tested. Styling is a deliberate className contract (active/inactiveClassName), so exact + activeClassName are EFFECT_EXEMPT in audit:controls with unit tests covering the active/inactive class swap. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Bucket-1 beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate. 2026-07-10 — Figma link wired to the existing NavLink component set (Patterns page, node 516-3146); parity uplift tracked in docs/design-system/figma-parity-audit.md B5.",
+        "reviewedAt": "2026-07-05"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/NavLink/NavLink.tsx"
+  ]
+}

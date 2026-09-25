@@ -1,0 +1,124 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "WipBadge",
+  "status": "beta",
+  "description": "Storybook-only maturity badge for non-stable components.",
+  "props": {
+    "status": {
+      "type": "union",
+      "values": [
+        "alpha",
+        "beta",
+        "stable",
+        "deprecated"
+      ],
+      "optional": true
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "canvas",
+        "docs"
+      ],
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:56.431Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-example.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:46:38.125Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:16.751Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:56.646Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-forced-colors.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:46:38.160Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:17.043Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:56.189Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-playground.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:46:38.080Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/WipBadge/__a11y-evidence__/site-wipbadge-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:16.420Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Beta promotion: Storybook-only chrome (carries data-axe-ignore + axeTestExempt so it never gates host component contrast). role=status announcement is non-disruptive and stable lifecycle hides it entirely. Forced-colors + light/dark verified via dedicated stories.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/WipBadge/WipBadge.module.css",
+    "../../../nextjs-app/shared/components/WipBadge/WipBadge.tsx"
+  ]
+}

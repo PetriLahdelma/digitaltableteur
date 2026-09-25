@@ -1,0 +1,227 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Tabs",
+  "status": "stable",
+  "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Tabs } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "activeTab": {
+      "type": "string",
+      "optional": true,
+      "description": "Active tab key (controlled mode); \"\" is treated as absent."
+    },
+    "defaultActiveTab": {
+      "type": "string",
+      "optional": true,
+      "description": "Initially active tab key (uncontrolled mode)."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Size."
+    },
+    "tabs": {
+      "type": "TabItem[]",
+      "optional": false,
+      "description": "Array of tab items with key, label, optional disabled/icon/count."
+    },
+    "onTabChange": {
+      "type": "(key: string) => void",
+      "optional": true,
+      "description": "Called with the clicked tab's key."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional utility classes on the tablist."
+    },
+    "ariaLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible label for the tablist."
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "pills",
+        "underline",
+        "default"
+      ],
+      "optional": true,
+      "description": "Visual style variant."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.602Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.840Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.357Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:06.789Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.602Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:30.859Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:06.818Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.840Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:30.890Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:06.749Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.357Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:30.810Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.602Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.840Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:32.357Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-26 — arrow-key navigation and selection verified in Storybook. 2026-07-08 — promoted after ContactInquiryPanel adopted Tabs for the production contact message/book switcher; check:beta-promotion-readiness verifies production consumers, snapshots, forced colors, and real Figma evidence.",
+        "reviewedAt": "2026-05-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Tabs/Tabs.module.css",
+    "../../../nextjs-app/shared/components/Tabs/Tabs.tsx"
+  ]
+}

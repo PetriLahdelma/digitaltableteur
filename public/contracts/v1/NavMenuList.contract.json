@@ -1,0 +1,259 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "NavMenuList",
+  "status": "beta",
+  "description": "Navigation list for drawer and mobile menus that renders link items and marks the active one from the current route.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { NavMenuList } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "items": {
+      "type": "NavMenuItem[]",
+      "optional": false
+    },
+    "onNavigate": {
+      "type": "() => void",
+      "optional": true
+    },
+    "activeClassName": {
+      "type": "string",
+      "optional": true
+    },
+    "listClassName": {
+      "type": "string",
+      "optional": true
+    },
+    "itemClassName": {
+      "type": "string",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:11.977Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:35.663Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:00.738Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:12.391Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:36.092Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.204Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:12.659Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:36.311Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.412Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:12.192Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:35.892Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:00.995Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:11.977Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:35.663Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:00.738Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:12.391Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:36.092Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.204Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:12.659Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:36.311Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.412Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:12.192Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:35.892Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:00.995Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:35.663Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:36.092Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:36.311Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavMenuList/__a11y-evidence__/site-navmenulist-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:35.892Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/NavMenuList/NavMenuList.module.css",
+    "../../../nextjs-app/shared/components/NavMenuList/NavMenuList.tsx"
+  ]
+}

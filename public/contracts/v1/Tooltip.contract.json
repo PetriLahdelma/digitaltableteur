@@ -1,0 +1,279 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Tooltip",
+  "status": "beta",
+  "description": "Radix tooltip primitive set (Provider, Trigger, Content) for icon hints.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Tooltip } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Extra class on the content bubble."
+    },
+    "side": {
+      "type": "union",
+      "values": [
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "optional": true,
+      "description": "Preferred placement relative to the trigger; flips when out of room."
+    },
+    "sideOffset": {
+      "type": "number",
+      "optional": true,
+      "description": "Gap in px between the trigger and the bubble."
+    },
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Hint content — a short phrase, never interactive."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:54.532Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.554Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:34.879Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:55.012Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.974Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:35.359Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:53.197Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:54.757Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.748Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:35.120Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:54.532Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.554Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:34.879Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:55.012Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.974Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:35.359Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:55.048Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:53.197Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:35.397Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:54.757Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.748Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:35.120Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.554Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.974Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:53.197Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:52.748Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-03 (batch 4) — hover+focus trigger, Escape dismiss, and aria-describedby wiring asserted in the play function and unit tests; axe clean on Default/Placements/WithIconButton. 2026-07-05 (alpha→beta) — the pending light/dark + forced-colors verification is now done: axe-clean on Default/Example/ForcedColors via test-storybook; light + dark eyeballed (bubble uses --color-primary and inverts correctly, arrow tracks the bubble); emulated forced-colors shows a CanvasText-bordered Canvas bubble with readable CanvasText, no reliance on a background that disappears; enter/exit animation drops under reduced-motion (CSS @media).",
+        "reviewedAt": "2026-07-03"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Tooltip/Tooltip.module.css",
+    "../../../nextjs-app/shared/components/Tooltip/Tooltip.tsx"
+  ]
+}

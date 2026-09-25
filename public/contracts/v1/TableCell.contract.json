@@ -1,0 +1,213 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "TableCell",
+  "status": "beta",
+  "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { TableCell } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "align": {
+      "type": "union",
+      "values": [
+        "center",
+        "end",
+        "start"
+      ],
+      "optional": true,
+      "description": "Cell content alignment."
+    },
+    "numeric": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Right-align and tabular-figure numeric values."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:33.844Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:40.192Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:34.332Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:40.672Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:34.570Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:40.897Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:34.088Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:40.448Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:33.844Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-default.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:17.899Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:40.192Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:34.332Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-example.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:17.949Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:40.672Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:34.570Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-forced-colors.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:17.990Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:40.897Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:34.088Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-playground.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:17.928Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TableCell/__a11y-evidence__/data-display-tablecell-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:40.448Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-27"
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+        "reviewedAt": "2026-07-27"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/TableCell/TableCell.tsx"
+  ]
+}

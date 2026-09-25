@@ -1,0 +1,281 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Menu",
+  "status": "stable",
+  "description": "Radix dropdown-menu primitive set (Menu, Trigger, Content, Item, Sub) shared by Avatar and SplitButton.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Menu } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Extra class on the content surface."
+    },
+    "side": {
+      "type": "union",
+      "values": [
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "optional": true,
+      "description": "Preferred side relative to the trigger; flips when out of room."
+    },
+    "align": {
+      "type": "union",
+      "values": [
+        "center",
+        "end",
+        "start"
+      ],
+      "optional": true,
+      "description": "Alignment along the trigger edge."
+    },
+    "sideOffset": {
+      "type": "number",
+      "optional": true,
+      "description": "Gap in px between the trigger and the content."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:42.589Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.455Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:31.653Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:43.327Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.927Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:32.164Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:20.159Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:42.924Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.682Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:31.897Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:42.589Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.455Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:31.653Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:43.327Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.927Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:32.164Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:43.454Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:20.159Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:32.200Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:42.924Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.682Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:31.897Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.455Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.927Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:20.159Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Menu/__a11y-evidence__/actions-menu-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:19.682Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-05 (alpha) — keyboard open/arrow/Home/End/typeahead/Escape/focus-return and item select are provided by Radix DropdownMenu and asserted end to end in the Storybook Example play (real browser via test-storybook); item select + disabled + href-as-anchor + axe-clean-while-open covered in unit tests. Light + dark eyeballed in Storybook (white/near-black surface tracks the theme, --color-neutral-bg highlight reads in both); emulated forced-colors shows a CanvasText-bordered Canvas surface with Highlight/HighlightText selection and GrayText disabled items; open/close animation drops under prefers-reduced-motion. 2026-07-06 (beta→stable) — independently re-verified the OPEN menu (Default + WithSubmenu) in a real browser via Playwright: light/dark flip both the trigger and the portaled surface, and forced-colors draws a visible CanvasText border with a real separator (not shadow-only). 4-mode AT snapshots refreshed and compare-clean; realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "reviewedAt": "2026-07-05"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Menu/Menu.module.css",
+    "../../../nextjs-app/shared/components/Menu/Menu.tsx"
+  ]
+}

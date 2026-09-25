@@ -1,0 +1,91 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Lightbox",
+  "status": "alpha",
+  "description": "Modal image viewer with keyboard navigation across a gallery of images.",
+  "props": {
+    "images": {
+      "type": "LightboxImage[]",
+      "optional": false
+    },
+    "initialIndex": {
+      "type": "number",
+      "optional": true
+    },
+    "open": {
+      "type": "boolean",
+      "optional": true
+    },
+    "onOpenChange": {
+      "type": "(open: boolean) => void",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      },
+      {
+        "id": "reduced-motion",
+        "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+        "verification": "manual",
+        "wcag": [
+          "2.2.2",
+          "2.3.3"
+        ],
+        "reviewedAt": "2026-07-21"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "manual",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "reviewedAt": "2026-07-21"
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      }
+    ]
+  },
+  "governance": {
+    "owner": "design-system",
+    "lastReviewed": "2026-07-21",
+    "note": "Promoted out of the bespoke/infrastructure exemption: a generic image viewer consumed by ProjectGallery and others, not app infrastructure. Already DS-shaped (CSS module, @dt/Icon, portal, focus restore). Alpha because forced-colors and light/dark are unverified."
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Lightbox/Lightbox.module.css",
+    "../../../nextjs-app/shared/components/Lightbox/Lightbox.tsx"
+  ]
+}

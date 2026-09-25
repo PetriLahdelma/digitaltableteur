@@ -1,0 +1,241 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "VirtualListItem",
+  "status": "beta",
+  "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { VirtualListItem } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "posInSet": {
+      "type": "number",
+      "optional": false,
+      "description": "1-based position within the full collection (`aria-posinset`)."
+    },
+    "setSize": {
+      "type": "number",
+      "optional": false,
+      "description": "Total item count in the full collection (`aria-setsize`)."
+    },
+    "style": {
+      "type": "React.CSSProperties",
+      "optional": true,
+      "description": "Positioning style supplied by VirtualList (transform + block-size)."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:20.317Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:52.177Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:20.763Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:52.673Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:21.050Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:52.941Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:20.542Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:52.433Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-with-status.dark.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:59.705Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-with-status.light.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:29.312Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:20.317Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-default.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:15.764Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:52.177Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:20.763Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-example.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:15.815Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:52.673Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:21.050Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-forced-colors.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:15.895Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:52.941Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:20.542Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-playground.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:15.786Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:52.433Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-with-status.dark.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:59.705Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-with-status.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:15.841Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-with-status.light.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:29.312Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-27"
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; composed and position-stamped by VirtualList.",
+        "reviewedAt": "2026-07-27"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/VirtualListItem/VirtualListItem.module.css",
+    "../../../nextjs-app/shared/components/VirtualListItem/VirtualListItem.tsx"
+  ]
+}

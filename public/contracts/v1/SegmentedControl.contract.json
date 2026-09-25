@@ -1,0 +1,281 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SegmentedControl",
+  "status": "beta",
+  "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { SegmentedControl } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "items": {
+      "type": "SegmentedControlItem[]",
+      "optional": false,
+      "description": "Segments to render, in order."
+    },
+    "value": {
+      "type": "string",
+      "optional": false,
+      "description": "Currently selected value (controlled)."
+    },
+    "onValueChange": {
+      "type": "(value: string) => void",
+      "optional": false,
+      "description": "Called with the new value when a segment is selected."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Size token."
+    },
+    "ariaLabel": {
+      "type": "string",
+      "optional": false,
+      "description": "Accessible name for the group (required; announced by screen readers)."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class names."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:10.753Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.120Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:31.653Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:11.209Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.514Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:32.117Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.734Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:10.986Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.310Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:31.898Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:10.753Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.120Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:31.653Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:11.209Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.514Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:32.117Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:11.241Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.734Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:32.150Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:10.986Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.310Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:31.898Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.120Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.514Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.734Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:50.310Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-12 — alpha→beta: code-level a11y review. Container is role=radiogroup with a required aria-label; each segment is role=radio with aria-checked reflecting selection. Roving tabindex keeps exactly one segment tabbable (the selection, else the first enabled); Arrow keys move selection wrapping and skip disabled segments; Home/End jump to first/last enabled. Selection shown by a raised neutral surface (not brand fill) so it reads across light/dark; forced-colors maps the selected segment to a Highlight outline. Motion respects prefers-reduced-motion. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook.",
+        "reviewedAt": "2026-07-12"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl.module.css",
+    "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl.tsx"
+  ]
+}

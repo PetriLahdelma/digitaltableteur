@@ -1,0 +1,323 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Timestamp",
+  "status": "stable",
+  "description": "Formats an ISO calendar date, instant, Unix timestamp, or Date into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Date-only values retain their calendar date across runtime timezones.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Timestamp } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "value": {
+      "type": "string | number | Date",
+      "optional": false,
+      "description": "The date/time to display: ISO 8601 calendar date or instant, Unix seconds, or Date."
+    },
+    "format": {
+      "type": "union",
+      "values": [
+        "auto",
+        "date",
+        "time",
+        "relative",
+        "date_time",
+        "system_date",
+        "system_date_time",
+        "system_time"
+      ],
+      "optional": true,
+      "description": "Display format."
+    },
+    "autoThreshold": {
+      "type": "number",
+      "optional": true,
+      "description": "Seconds after which `auto` switches from relative to date_time."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "xs",
+        "s",
+        "xxs",
+        "m"
+      ],
+      "optional": true,
+      "description": "Text-ladder size."
+    },
+    "tone": {
+      "type": "union",
+      "values": [
+        "default",
+        "muted"
+      ],
+      "optional": true,
+      "description": "Color role: body text or muted metadata."
+    },
+    "showTimezone": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Append the timezone abbreviation (date_time/time/system equivalents)."
+    },
+    "tooltip": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Native tooltip with the full date when showing relative time."
+    },
+    "live": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Keep relative output ticking while mounted."
+    },
+    "now": {
+      "type": "string | number | Date",
+      "optional": true,
+      "description": "Reference \"now\" for relative/auto output. Defaults to render time; pass a\nfixed value in stories/tests for deterministic output."
+    },
+    "locale": {
+      "type": "string",
+      "optional": true,
+      "description": "Locale override; defaults to the active site language."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional className passthrough."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:37.910Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.417Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:25.092Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:38.331Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.825Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:25.787Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:38.540Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:07.017Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:26.190Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:38.131Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.618Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:25.437Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:37.910Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.417Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:25.092Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:38.331Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.825Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:25.787Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:38.540Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:07.017Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:26.190Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:38.131Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.618Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:25.437Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.417Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.825Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:07.017Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Timestamp/__a11y-evidence__/content-timestamp-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:06.618Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-12 (Claude): verified in Storybook 6010 — light + dark render all 8 formats readable in both tones; relative ladder correct (30s->now, minutes/hours/days/weeks/months); forced-colors safe by construction (pure <time> text, no bg/border/opacity) and confirmed via DT_FORCED_COLORS=active pass; console clean; axe green (10 tests); AT snapshots captured for all 8 stories.",
+        "reviewedAt": "2026-07-12"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Timestamp/Timestamp.module.css",
+    "../../../nextjs-app/shared/components/Timestamp/Timestamp.tsx"
+  ]
+}

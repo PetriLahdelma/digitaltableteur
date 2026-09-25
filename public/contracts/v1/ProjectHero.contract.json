@@ -1,0 +1,100 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ProjectHero",
+  "status": "alpha",
+  "description": "Case study hero with project title and summary.",
+  "props": {
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Project title"
+    },
+    "description": {
+      "type": "string",
+      "optional": true,
+      "description": "Project description/tagline"
+    },
+    "image": {
+      "type": "ProjectHeroImage",
+      "optional": true,
+      "description": "Hero image"
+    },
+    "video": {
+      "type": "ProjectHeroVideo",
+      "optional": true,
+      "description": "Hero video (takes precedence over image when provided)"
+    },
+    "category": {
+      "type": "string",
+      "optional": true,
+      "description": "Project category"
+    },
+    "tags": {
+      "type": "string[]",
+      "optional": true,
+      "description": "Project tags"
+    },
+    "date": {
+      "type": "string",
+      "optional": true,
+      "description": "Project date/duration"
+    },
+    "liveUrl": {
+      "type": "string",
+      "optional": true,
+      "description": "Live project URL"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "contained",
+        "full-width",
+        "split"
+      ],
+      "optional": true,
+      "description": "Hero layout variant"
+    },
+    "showScrollIndicator": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show scroll indicator"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/ProjectHero/ProjectHero.tsx"
+  ]
+}

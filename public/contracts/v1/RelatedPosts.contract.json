@@ -1,0 +1,60 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "RelatedPosts",
+  "status": "alpha",
+  "description": "Related blog posts grid at article footer.",
+  "props": {
+    "currentSlug": {
+      "type": "string",
+      "optional": false,
+      "description": "Current article slug to exclude"
+    },
+    "maxPosts": {
+      "type": "number",
+      "optional": true,
+      "description": "Maximum number of related posts"
+    },
+    "title": {
+      "type": "string",
+      "optional": true,
+      "description": "Section title"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/RelatedPosts/RelatedPosts.tsx"
+  ]
+}

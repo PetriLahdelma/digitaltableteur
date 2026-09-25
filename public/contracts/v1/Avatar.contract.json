@@ -1,0 +1,227 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Avatar",
+  "status": "stable",
+  "description": "Profile image, initials, link, or menu trigger.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Avatar } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "name": {
+      "type": "string",
+      "optional": true
+    },
+    "imageUrl": {
+      "type": "string | { default: string } | StaticImageData",
+      "optional": true
+    },
+    "clickable": {
+      "type": "boolean",
+      "optional": true
+    },
+    "destinationUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "size": {
+      "type": "AvatarSize",
+      "optional": true,
+      "description": "Avatar size: token sizes `sm`/`md`/`lg`/`xl` (2/2.5/3/4rem) are\ncanonical; any CSS length is accepted as an escape hatch. Default `md`."
+    },
+    "srcSet": {
+      "type": "string",
+      "optional": true
+    },
+    "sizes": {
+      "type": "string",
+      "optional": true
+    },
+    "loading": {
+      "type": "union",
+      "values": [
+        "lazy",
+        "eager"
+      ],
+      "optional": true
+    },
+    "decoding": {
+      "type": "union",
+      "values": [
+        "auto",
+        "sync",
+        "async"
+      ],
+      "optional": true
+    },
+    "menuItems": {
+      "type": "AvatarMenuItem[]",
+      "optional": true,
+      "description": "When provided, renders an in-place dropdown menu triggered by the avatar"
+    },
+    "menuLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible label announced for the avatar menu trigger"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "image",
+        "initials"
+      ],
+      "optional": true,
+      "description": "Controls whether the avatar prefers an image or initials"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.269Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:44.412Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:18.187Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.812Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:44.635Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:18.460Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.269Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:44.412Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:18.187Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.812Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:44.635Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:18.460Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:44.412Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:44.635Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook. 2026-07-05 (beta→stable) — re-verified independently: axe-clean, light + dark eyeballed, AT snapshots refreshed and compare-clean in all four modes, Controls 100% operable + 0 inert; removed the dead avatarVariants cva stub and fixed the invalid \"md\" playground size default. 2026-07-05 (menu on shared Menu) — the account menu now consumes the Menu primitive (Radix dropdown-menu) instead of hand-rolled markup: public API (menuItems/menuLabel) unchanged, obsolete placementRefreshKey removed (Radix owns collision). Re-verified: open-menu axe-clean + keyboard select via test-storybook play, aligned ~40px rows eyeballed open in light/dark/forced-colors, Controls 100% + 0 inert, AT snapshots refreshed compare-clean.",
+        "reviewedAt": "2026-05-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Avatar/Avatar.tsx",
+    "../../../nextjs-app/shared/components/Avatar/avatar.module.css"
+  ]
+}

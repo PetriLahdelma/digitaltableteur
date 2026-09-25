@@ -1,0 +1,325 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SlideButton",
+  "status": "stable",
+  "description": "Pill call-to-action whose icon disc slides across the button on hover while the label shifts and the disc rolls a full turn.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { SlideButton } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "label": {
+      "type": "string",
+      "optional": false,
+      "description": "Visible, i18n-resolved label. Names the destination, not the gesture."
+    },
+    "href": {
+      "type": "string",
+      "optional": false,
+      "description": "Destination. Rendered as a real `<a>`, so it is focusable and keyboard-activated."
+    },
+    "icon": {
+      "type": "string",
+      "optional": true,
+      "description": "Phosphor icon name for the sliding disc."
+    },
+    "iconSide": {
+      "type": "union",
+      "values": [
+        "left",
+        "right"
+      ],
+      "optional": true,
+      "description": "Side the icon rests on before it slides across on hover. \"left\" starts at the\nleading edge and travels to the trailing edge; \"right\" is the mirror."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.248Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:41.916Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icon-right.dark.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:12.815Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icon-right.light.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:01:53.312Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icons.dark.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:13.009Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icons.light.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:01:53.520Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-in-context.dark.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:13.427Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-in-context.light.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:01:53.912Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-long-label.dark.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:13.203Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-long-label.light.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:01:53.728Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.248Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-default.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:19.868Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:41.916Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.332Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-example.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:20.013Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:41.963Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.367Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-forced-colors.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:20.032Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:42.030Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icon-right.dark.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:12.815Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icon-right.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:19.890Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icon-right.light.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:01:53.312Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icons.dark.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:13.009Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icons.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:19.929Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-icons.light.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:01:53.520Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-in-context.dark.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:13.427Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-in-context.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:19.973Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-in-context.light.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:01:53.912Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-long-label.dark.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:13.203Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-long-label.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:19.954Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-long-label.light.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:01:53.728Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:51.302Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-playground.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:19.992Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:41.940Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-24"
+      },
+      {
+        "id": "reduced-motion",
+        "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+        "verification": "manual",
+        "wcag": [
+          "2.2.2",
+          "2.3.3"
+        ],
+        "reviewedAt": "2026-07-24"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-24 — promotion pass: real <a href> semantics, hover slide/roll gated behind prefers-reduced-motion, forced-colors border/disc/icon fallback, light and dark legibility confirmed in a real browser. AT snapshots captured across base/light/dark/forced-colors.",
+        "reviewedAt": "2026-07-24"
+      }
+    ]
+  },
+  "governance": {
+    "owner": "design-system",
+    "lastReviewed": "2026-07-24",
+    "note": "Extracted from DesignSprintsSection's bespoke SprintButton and promoted to stable on first shared use (home DesignSprintsSection + about AboutPageContent). The iconSide axis is geometry-only (mirrored rest/hover positions), modelled as a variant."
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+    "../../../nextjs-app/shared/components/SlideButton/SlideButton.tsx"
+  ]
+}

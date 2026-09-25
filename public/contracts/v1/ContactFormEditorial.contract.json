@@ -1,0 +1,254 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ContactFormEditorial",
+  "status": "stable",
+  "description": "Editorial contact form used on the live contact page.",
+  "props": {
+    "onSuccess": {
+      "type": "() => void",
+      "optional": true
+    },
+    "onError": {
+      "type": "(error: Error) => void",
+      "optional": true
+    },
+    "className": {
+      "type": "string",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.383Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:35.620Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:38.252Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:02.151Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:36.084Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:38.807Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:02.590Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:36.306Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:39.059Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.727Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:35.860Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:38.551Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.383Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:39:03.994Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:35.620Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:38.252Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:02.151Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:39:04.060Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:36.084Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:38.807Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:02.590Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:39:04.085Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:36.306Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:39.059Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.727Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:39:04.035Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:35.860Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:38.551Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
+    "../../../nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.tsx"
+  ]
+}

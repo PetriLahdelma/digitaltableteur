@@ -1,0 +1,254 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "StoryBlock",
+  "status": "stable",
+  "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
+  "props": {
+    "subtitle": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional subtitle/category label"
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Main title of the story section"
+    },
+    "content": {
+      "type": "React.ReactNode[]",
+      "optional": false,
+      "description": "Body content as array of paragraphs or React nodes"
+    },
+    "images": {
+      "type": "StoryImage | StoryImage[]",
+      "optional": true,
+      "description": "Optional image or images to display"
+    },
+    "imageLayout": {
+      "type": "union",
+      "values": [
+        "single",
+        "none",
+        "grid"
+      ],
+      "optional": true,
+      "description": "Image layout: \"single\" (1 col), \"grid\" (2 col), or \"none\""
+    },
+    "backgroundColor": {
+      "type": "union",
+      "values": [
+        "transparent",
+        "light",
+        "white"
+      ],
+      "optional": true,
+      "description": "Background color variant"
+    },
+    "maxWidth": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "full"
+      ],
+      "optional": true,
+      "description": "Maximum width constraint"
+    },
+    "spacing": {
+      "type": "union",
+      "values": [
+        "default",
+        "compact",
+        "comfortable",
+        "spacious"
+      ],
+      "optional": true,
+      "description": "Spacing variant"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class"
+    },
+    "as": {
+      "type": "union",
+      "values": [
+        "article",
+        "div",
+        "section"
+      ],
+      "optional": true,
+      "description": "Semantic HTML element to use"
+    },
+    "ariaLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible label for the section"
+    },
+    "headingLevel": {
+      "type": "2 | 3 | 4",
+      "optional": true,
+      "description": "Heading level for the section title; visual size is unchanged. Pages whose outline places StoryBlock sections directly under the h1 should pass 2."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:33.596Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:29.155Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:34.060Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:29.591Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:34.317Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:29.820Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:33.824Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:29.376Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:33.596Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:29.155Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:34.060Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:29.591Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:34.317Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:29.820Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:33.824Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:29.376Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/StoryBlock/StoryBlock.module.css",
+    "../../../nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx"
+  ]
+}

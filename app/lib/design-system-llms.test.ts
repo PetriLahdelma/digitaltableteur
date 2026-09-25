@@ -8,6 +8,7 @@ describe("design-system llms.txt", () => {
   it("points agents at the MCP tools, including the validator", () => {
     expect(body).toContain("https://example.test/mcp");
     expect(body).toContain("`validate_component_usage`");
+    expect(body).toContain("/contracts/v1/index.json");
   });
 
   it("shows the npm import for exported components and never the internal alias", () => {

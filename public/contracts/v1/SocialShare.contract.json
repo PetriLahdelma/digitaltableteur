@@ -1,0 +1,292 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SocialShare",
+  "status": "stable",
+  "description": "Row of social share targets: per-network deep links plus a native-share or copy-link button, with an optional labelled article-footer variant.",
+  "props": {
+    "url": {
+      "type": "string",
+      "optional": false
+    },
+    "title": {
+      "type": "string",
+      "optional": false
+    },
+    "channels": {
+      "type": "SocialShareChannel[]",
+      "optional": true,
+      "description": "Ordered list of network share targets. Defaults to all supported channels."
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "article",
+        "inline"
+      ],
+      "optional": true,
+      "description": "`article` adds a labelled section suited to blog post footers."
+    },
+    "showHeading": {
+      "type": "boolean",
+      "optional": true
+    },
+    "heading": {
+      "type": "string",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:26.718Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:21.837Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:24.175Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:27.478Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.283Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:24.721Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:27.782Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.526Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:25.070Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:27.202Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.054Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:24.418Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:26.718Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:21.837Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:24.175Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:27.478Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.283Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:24.721Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:27.782Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.526Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:25.070Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:27.202Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.054Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:24.418Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:21.837Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.283Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.526Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialShare/__a11y-evidence__/site-socialshare-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:22.054Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-05 — beta→stable (fleet #17): renders a real <section> (contract element corrected div→section). Root-caused + fixed a PRE-EXISTING BlogPost story failure: the section label used `heading ?? t('shareHeading')`, and the controls-autogen args-enhancer seeds `heading=''` for the free-string prop, so `??` passed the empty string through and dropped the section's accessible name (and the region role). Switched to `||` at the use site (the #852 seeded-'' leak class). Also added a prefers-reduced-motion guard to the .channelLink colour transition and removed a stale hardcoded '11/11' compliance story. Re-verified: axe + plays green in light/dark/forced-colors (incl. BlogPost), 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: promoted from alpha with Example + ForcedColors stories and the Storybook axe gate.",
+        "reviewedAt": "2026-07-05"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/SocialShare/SocialShare.module.css",
+    "../../../nextjs-app/shared/components/SocialShare/SocialShare.tsx"
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Toast",
+  "status": "stable",
+  "description": "Transient status message with tone, position, and auto-dismiss.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Toast } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "open": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Controls visibility."
+    },
+    "tone": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "neutral"
+      ],
+      "optional": true,
+      "description": "Semantic colour."
+    },
+    "position": {
+      "type": "union",
+      "values": [
+        "top-left",
+        "top-center",
+        "top-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right"
+      ],
+      "optional": true,
+      "description": "Position on screen."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Size."
+    },
+    "message": {
+      "type": "string",
+      "optional": false,
+      "description": "Message text displayed in the toast."
+    },
+    "duration": {
+      "type": "number",
+      "optional": true,
+      "description": "Auto-dismiss delay in ms."
+    },
+    "onClose": {
+      "type": "() => void",
+      "optional": true,
+      "description": "Called when the auto-dismiss timer fires."
+    },
+    "inline": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Render in normal document flow instead of fixed-positioning itself; a\nparent (ToastStack) owns placement. `position` is ignored when set."
+    }
+  },
+  "rules": [
+    {
+      "id": "toast-inline-ignores-position",
+      "when": {
+        "inline": {
+          "equals": true
+        }
+      },
+      "forbid": [
+        "position"
+      ],
+      "reason": "An inline toast is placed by its parent (ToastStack); `position` is ignored.",
+      "severity": "warning",
+      "evidence": "Toast.tsx: inline selects toast--inline instead of the position class"
+    }
+  ],
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:39.104Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:53.760Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:29.607Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:54.203Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:54.412Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:53.981Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:39.104Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:53.760Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:29.607Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:39.239Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:54.203Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:29.699Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:39.271Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:54.412Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:29.721Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:39.156Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:53.981Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:29.672Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:53.760Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:54.203Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:54.412Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Toast/__a11y-evidence__/feedback-toast-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:53.981Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-05 — beta→stable (fleet #16): renders a real <div role=status|alert> with aria-live/aria-atomic; role/politeness derive from tone (error/warning=assertive, else polite). Slide-in animation is guarded by @media (prefers-reduced-motion:reduce){ transition:none }, so reducedMotion is honest. tone is optional at runtime (untinted, polite when omitted); the enum default 'info' is the nominal semantic default. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert (duration EFFECT_EXEMPT — timing prop), AT snapshots refreshed 4 modes. 2026-05-26 origin: production behavior verified; required stories aligned with validate:components. 2026-07-03 (batch 4): Toaster (Tailwind duplicate host) deleted; providers/ToastProvider is the single imperative host forwarding tone/position.",
+        "reviewedAt": "2026-07-05"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Toast/Toast.module.css",
+    "../../../nextjs-app/shared/components/Toast/Toast.tsx"
+  ]
+}

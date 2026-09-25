@@ -109,6 +109,11 @@ These are small, high-trust corrections the audit surfaced. They cost little and
 
 **Goal.** Public, reproducible numbers: agent build correctness, token cost, and a11y pass, with vs without our MCP.
 
+**Progress (2026-09-25).** Shipped, in two versions; the "current reality" below is the July starting point.
+- v1 (2026-08, #1404 to #1425): two arms (dt CLI documented vs generic), five tasks, 90 runs, $78.57. Both arms passed about 100%, so the tasks saturated. Archived at `public/ds-health/agent-bench-2026-08.json`.
+- v2 (2026-09): adds the MCP arm (the stdio DS MCP attached to a generic workspace), three discriminating tasks (phantom tokens, modal focus, form error wiring) each with a naive-solution integrity check, isolation from user-level Claude config, and per-run tool telemetry. Methodology: `docs/AGENT_BENCH_METHODOLOGY.md`.
+- Portable half of the proof: the contract format itself is now an open spec with a conformance CLI (`packages/contract-spec`, Design System Contract 1.0), and DT's own contracts are exported and checked with it (`npm run check:contract-spec`).
+
 **Current reality (grounded).**
 - `agent:eval` is deterministic metadata scoring; the A/B agent harness is net-new.
 - Reusable scorers already exist: `validate_component_usage` (Track B), the automated a11y criteria (Track A), `typecheck`/`lint`/`build`, `canonicalExamples` and story sources as reference outputs, and the `golden-intents.json` / `golden-patterns.json` fixtures.

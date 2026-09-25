@@ -1,0 +1,521 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "HeroSection",
+  "status": "stable",
+  "description": "Full-bleed hero shell with min-height, alignment, and background variants.",
+  "props": {
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Hero content"
+    },
+    "background": {
+      "type": "union",
+      "values": [
+        "image",
+        "transparent",
+        "solid",
+        "gradient"
+      ],
+      "optional": true,
+      "description": "Background style variant"
+    },
+    "backgroundImage": {
+      "type": "string",
+      "optional": true,
+      "description": "Background image URL (only used when background=\"image\")"
+    },
+    "minHeight": {
+      "type": "union",
+      "values": [
+        "auto",
+        "hero",
+        "screen",
+        "half"
+      ],
+      "optional": true,
+      "description": "Minimum height of the hero section"
+    },
+    "align": {
+      "type": "union",
+      "values": [
+        "center",
+        "end",
+        "start"
+      ],
+      "optional": true,
+      "description": "Content vertical alignment"
+    },
+    "justify": {
+      "type": "union",
+      "values": [
+        "center",
+        "end",
+        "start"
+      ],
+      "optional": true,
+      "description": "Content horizontal alignment"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className for styling extensions"
+    },
+    "as": {
+      "type": "union",
+      "values": [
+        "symbol",
+        "object",
+        "image",
+        "form",
+        "slot",
+        "style",
+        "title",
+        "button",
+        "search",
+        "article",
+        "dialog",
+        "figure",
+        "img",
+        "link",
+        "main",
+        "menu",
+        "menuitem",
+        "option",
+        "switch",
+        "table",
+        "text",
+        "time",
+        "div",
+        "section",
+        "aside",
+        "li",
+        "a",
+        "abbr",
+        "address",
+        "area",
+        "audio",
+        "b",
+        "base",
+        "bdi",
+        "bdo",
+        "big",
+        "blockquote",
+        "body",
+        "br",
+        "canvas",
+        "caption",
+        "center",
+        "cite",
+        "code",
+        "col",
+        "colgroup",
+        "data",
+        "datalist",
+        "dd",
+        "del",
+        "details",
+        "dfn",
+        "dl",
+        "dt",
+        "em",
+        "embed",
+        "fieldset",
+        "figcaption",
+        "footer",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "head",
+        "header",
+        "hgroup",
+        "hr",
+        "html",
+        "i",
+        "iframe",
+        "input",
+        "ins",
+        "kbd",
+        "keygen",
+        "label",
+        "legend",
+        "map",
+        "mark",
+        "meta",
+        "meter",
+        "nav",
+        "noindex",
+        "noscript",
+        "ol",
+        "optgroup",
+        "output",
+        "p",
+        "param",
+        "picture",
+        "pre",
+        "progress",
+        "q",
+        "rp",
+        "rt",
+        "ruby",
+        "s",
+        "samp",
+        "script",
+        "select",
+        "small",
+        "source",
+        "span",
+        "strong",
+        "sub",
+        "summary",
+        "sup",
+        "template",
+        "tbody",
+        "td",
+        "textarea",
+        "tfoot",
+        "th",
+        "thead",
+        "tr",
+        "track",
+        "u",
+        "ul",
+        "var",
+        "video",
+        "wbr",
+        "webview",
+        "svg",
+        "animate",
+        "animateMotion",
+        "animateTransform",
+        "circle",
+        "clipPath",
+        "defs",
+        "desc",
+        "ellipse",
+        "feBlend",
+        "feColorMatrix",
+        "feComponentTransfer",
+        "feComposite",
+        "feConvolveMatrix",
+        "feDiffuseLighting",
+        "feDisplacementMap",
+        "feDistantLight",
+        "feDropShadow",
+        "feFlood",
+        "feFuncA",
+        "feFuncB",
+        "feFuncG",
+        "feFuncR",
+        "feGaussianBlur",
+        "feImage",
+        "feMerge",
+        "feMergeNode",
+        "feMorphology",
+        "feOffset",
+        "fePointLight",
+        "feSpecularLighting",
+        "feSpotLight",
+        "feTile",
+        "feTurbulence",
+        "filter",
+        "foreignObject",
+        "g",
+        "line",
+        "linearGradient",
+        "marker",
+        "mask",
+        "metadata",
+        "mpath",
+        "path",
+        "pattern",
+        "polygon",
+        "polyline",
+        "radialGradient",
+        "rect",
+        "set",
+        "stop",
+        "textPath",
+        "tspan",
+        "use",
+        "view"
+      ],
+      "optional": true,
+      "description": "Semantic HTML element to render as"
+    },
+    "ariaLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "ARIA label for accessibility"
+    }
+  },
+  "rules": [
+    {
+      "id": "hero-background-image-needs-image-mode",
+      "when": {
+        "backgroundImage": {
+          "present": true
+        },
+        "background": {
+          "oneOf": [
+            "gradient",
+            "solid",
+            "transparent"
+          ]
+        }
+      },
+      "forbid": [
+        "backgroundImage"
+      ],
+      "reason": "`backgroundImage` only renders when background=\"image\"; with any other background it is silently dropped.",
+      "severity": "error",
+      "evidence": "HeroSection.tsx: hasBackgroundImage = background === \"image\" && backgroundImage"
+    },
+    {
+      "id": "hero-background-image-default-mode",
+      "when": {
+        "backgroundImage": {
+          "present": true
+        },
+        "background": {
+          "absent": true
+        }
+      },
+      "requireAllOf": [
+        "background"
+      ],
+      "reason": "`background` defaults to \"transparent\", which drops `backgroundImage`. Set background=\"image\".",
+      "severity": "error",
+      "evidence": "HeroSection.tsx: background defaults to \"transparent\""
+    }
+  ],
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:25.044Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.268Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:46.739Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:25.492Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.675Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:47.187Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:25.778Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.871Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:47.414Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:25.285Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.467Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:46.973Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:25.044Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.268Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:46.739Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:25.492Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.675Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:47.187Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:25.778Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.871Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:47.414Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:25.285Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.467Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:46.973Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.268Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.675Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.871Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/HeroSection/__a11y-evidence__/patterns-herosection-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:30.467Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/HeroSection/HeroSection.tsx"
+  ]
+}

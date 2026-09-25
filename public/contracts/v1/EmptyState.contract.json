@@ -1,0 +1,286 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "EmptyState",
+  "status": "stable",
+  "description": "Placeholder block for empty lists, zero search results, and first-run screens.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { EmptyState } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "icon": {
+      "type": "string",
+      "optional": true,
+      "description": "Phosphor icon name rendered decoratively above the title."
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Short headline stating what is empty."
+    },
+    "description": {
+      "type": "string",
+      "optional": true,
+      "description": "One or two sentences explaining why, or what to do next."
+    },
+    "headingLevel": {
+      "type": "union",
+      "values": [
+        "h2",
+        "h3",
+        "h4"
+      ],
+      "optional": true,
+      "description": "Heading tag for the title."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Size token."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Action slot — typically one primary Button, optionally a secondary."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:41.454Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.224Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:04.112Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:41.919Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.672Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:04.582Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.905Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:41.668Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.456Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:04.373Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:41.454Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.224Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:04.112Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:41.919Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.672Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:04.582Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:41.942Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.905Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:04.622Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:41.668Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.456Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:04.373Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.224Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.672Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.905Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmptyState/__a11y-evidence__/content-emptystate-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:55.456Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-03 — static block; heading semantics + decorative icon asserted in unit tests; axe clean.",
+        "reviewedAt": "2026-07-03"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/EmptyState/EmptyState.module.css",
+    "../../../nextjs-app/shared/components/EmptyState/EmptyState.tsx"
+  ]
+}

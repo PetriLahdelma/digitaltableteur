@@ -1,0 +1,492 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "CodeSnippet",
+  "status": "stable",
+  "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { CodeSnippet } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "code": {
+      "type": "string",
+      "optional": false,
+      "description": "The code string to highlight."
+    },
+    "language": {
+      "type": "union",
+      "values": [
+        "go",
+        "html",
+        "javascript",
+        "typescript",
+        "xml",
+        "python",
+        "rust",
+        "json",
+        "bash",
+        "markdown"
+      ],
+      "optional": true,
+      "description": "Highlighting grammar."
+    },
+    "showLineNumbers": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Render a line-number gutter."
+    },
+    "aria-label": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name for the snippet region."
+    },
+    "allowCopy": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show the copy button; keep on for reusable code."
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "single",
+        "inline",
+        "multi"
+      ],
+      "optional": true,
+      "description": "Layout variant: inline token, single line, or multi-line window."
+    },
+    "maxLines": {
+      "type": "number",
+      "optional": true,
+      "description": "Clamp height to this many lines; longer code scrolls. 0 disables the clamp."
+    },
+    "onCopy": {
+      "type": "() => void",
+      "optional": true,
+      "description": "Fires after the code is copied to the clipboard."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.040Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:19.924Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.928Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:20.561Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.443Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:20.932Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-inline.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:45.366Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-inline.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:39.123Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-minimal.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:46.833Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-minimal.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:40.604Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-multi.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:45.846Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-multi.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:39.608Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.450Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:20.228Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-python.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:46.324Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-python.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:40.091Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-single.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:45.585Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-single.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:39.344Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-typescript.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:46.103Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-typescript.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:39.859Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-with-max-lines.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:46.630Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-with-max-lines.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:40.405Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.040Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-default.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.372Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:19.924Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.928Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-example.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.460Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:20.561Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.443Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-forced-colors.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.484Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:20.932Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-inline.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:45.366Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-inline.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.144Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-inline.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:39.123Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-minimal.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:46.833Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-minimal.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.347Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-minimal.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:40.604Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-multi.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:45.846Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-multi.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.207Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-multi.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:39.608Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.450Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-playground.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.408Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:20.228Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-python.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:46.324Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-python.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.259Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-python.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:40.091Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-single.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:45.585Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-single.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.173Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-single.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:39.344Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-typescript.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:46.103Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-typescript.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.234Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-typescript.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:39.859Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-with-max-lines.dark.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:46.630Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-with-max-lines.forced-colors.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:51.322Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-with-max-lines.light.json",
+            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+            "capturedAt": "2026-08-03T16:53:40.405Z",
+            "passed": true,
+            "runner": "fix-hcb-code-comment"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-08 — captured Default and Example accessibility-tree snapshots plus a real Playwright forced-colors snapshot; stable remains blocked until the Figma URL points at a real numeric node id. 2026-07-10 — Figma component set built (Molecules, node 1161-2809: Inline/Single/Multi variants, DT token bindings); promoted to stable with RhythmguardPage as production consumer.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css",
+    "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet.tsx"
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Button",
+  "status": "stable",
+  "description": "Primary action control with an orthogonal variant (visual weight) and tone (semantic color) model, loading state, and polymorphic button/link rendering.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Button } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "submits": {
+      "type": "boolean",
+      "optional": true,
+      "description": "When true, sets `type=\"submit\"`."
+    },
+    "clickAction": {
+      "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>",
+      "optional": true,
+      "description": "Async click handler. `onClick` still fires first if both are provided.\nWhile the returned promise is pending, the button shows its `loading`\nstate, sets `aria-busy`, and disables itself (deduping repeat clicks).\nRejections are swallowed after clearing the pending state; callers own\nerror UX (e.g. surface a toast from within `clickAction` itself)."
+    },
+    "href": {
+      "type": "string",
+      "optional": true,
+      "description": "Destination URL. When provided, the button renders as an anchor."
+    },
+    "target": {
+      "type": "union",
+      "values": [
+        "_self",
+        "_blank",
+        "_parent",
+        "_top"
+      ],
+      "optional": true
+    },
+    "rel": {
+      "type": "string | undefined",
+      "optional": true
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "primary",
+        "secondary",
+        "tertiary"
+      ],
+      "optional": true,
+      "description": "Visual weight."
+    },
+    "tone": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "neutral"
+      ],
+      "optional": true,
+      "description": "Semantic color, orthogonal to `variant`."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Size."
+    },
+    "surface": {
+      "type": "union",
+      "values": [
+        "default",
+        "onDark",
+        "onBrand"
+      ],
+      "optional": true,
+      "description": "Surface the button renders on; prefer this over absolute colors on tinted bands."
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Disables interaction and dims the control."
+    },
+    "loading": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Shows a loading state and blocks interaction; sets `aria-busy`."
+    },
+    "rounded": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Fully rounded (pill) corners."
+    },
+    "icon": {
+      "type": "React.ReactNode | string",
+      "optional": true,
+      "description": "Leading icon: a React node, a component, or a Phosphor icon name (e.g. `\"arrow-left\"`)."
+    },
+    "endIcon": {
+      "type": "React.ReactNode | string",
+      "optional": true,
+      "description": "Trailing icon: a React node, a component, or a Phosphor icon name."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Button label."
+    },
+    "accessibleName": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name; required for icon-only buttons. Maps to `aria-label`."
+    },
+    "accessibleNameRef": {
+      "type": "string",
+      "optional": true,
+      "description": "id of an element that labels this button. Maps to `aria-labelledby`."
+    },
+    "accessibleDescription": {
+      "type": "string",
+      "optional": true,
+      "description": "Extra context for assistive tech. Maps to `aria-describedby`."
+    },
+    "tooltip": {
+      "type": "string",
+      "optional": true,
+      "description": "Native tooltip text; also used as an accessible-name fallback for icon-only buttons."
+    }
+  },
+  "rules": [
+    {
+      "id": "button-icon-only-needs-name",
+      "when": {
+        "icon": {
+          "present": true
+        },
+        "children": {
+          "absent": true
+        }
+      },
+      "requireAnyOf": [
+        "accessibleName",
+        "accessibleNameRef",
+        "tooltip",
+        "aria-label"
+      ],
+      "reason": "An icon-only button has no accessible name. Add accessibleName, accessibleNameRef, or tooltip, e.g. <Button icon=\"search\" accessibleName=\"Search\" />.",
+      "severity": "error",
+      "evidence": "Button.tsx development warning (isIconOnly && !hasAccessibleName)"
+    }
+  ],
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:08:59.502Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:08:49.995Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:08:59.525Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:08:50.023Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:08:59.475Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:08:49.965Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-21"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-06-18 — platinum pass: variant/tone API, scale(0.97) press feedback, tokenized motion, forced-colors + reduced-motion handled. AT snapshots refreshed.",
+        "reviewedAt": "2026-07-21"
+      }
+    ]
+  },
+  "governance": {
+    "owner": "design-system",
+    "lastReviewed": "2026-07-21",
+    "note": "Contract, spec.md and props re-read against implementation during the DSDS doc-semantics pass. Hard rules promoted to must/must-not with rationale."
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Button/Button.module.css",
+    "../../../nextjs-app/shared/components/Button/Button.tsx"
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "GridBlock",
+  "status": "stable",
+  "description": "Responsive grid of case-study content cells with column, gap, spacing, and background knobs, used across Work project pages.",
+  "props": {
+    "cells": {
+      "type": "GridCell[]",
+      "optional": false,
+      "description": "Array of grid cells to render"
+    },
+    "columns": {
+      "type": "1 | 2 | 3 | 4",
+      "optional": true,
+      "description": "Number of columns in the grid"
+    },
+    "gap": {
+      "type": "union",
+      "values": [
+        "none",
+        "small",
+        "medium",
+        "large"
+      ],
+      "optional": true,
+      "description": "Gap between cells"
+    },
+    "backgroundColor": {
+      "type": "union",
+      "values": [
+        "transparent",
+        "light",
+        "white"
+      ],
+      "optional": true,
+      "description": "Background color variant"
+    },
+    "maxWidth": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "full"
+      ],
+      "optional": true,
+      "description": "Maximum width constraint"
+    },
+    "spacing": {
+      "type": "union",
+      "values": [
+        "default",
+        "compact",
+        "comfortable",
+        "spacious"
+      ],
+      "optional": true,
+      "description": "Spacing variant"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class"
+    },
+    "as": {
+      "type": "union",
+      "values": [
+        "article",
+        "div",
+        "section"
+      ],
+      "optional": true,
+      "description": "Semantic HTML element to use"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:07.304Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:03.146Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:07.737Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:03.565Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:07.947Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:03.772Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:07.517Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:03.357Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:07.304Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:03.146Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:07.737Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:03.565Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:07.947Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:03.772Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:07.517Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:03.357Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/GridBlock/GridBlock.module.css",
+    "../../../nextjs-app/shared/patterns/GridBlock/GridBlock.tsx"
+  ]
+}

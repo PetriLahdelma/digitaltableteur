@@ -1,0 +1,254 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "TextInput",
+  "status": "stable",
+  "description": "Labeled text input with validation, helper text, and size tokens.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { TextInput } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "label": {
+      "type": "string",
+      "optional": false,
+      "description": "Visible field label; also feeds the input name"
+    },
+    "type": {
+      "type": "union",
+      "values": [
+        "number",
+        "search",
+        "text",
+        "tel",
+        "email",
+        "password",
+        "date",
+        "datetime-local",
+        "time",
+        "month",
+        "week"
+      ],
+      "optional": false,
+      "description": "Native HTML input type; tel formats, email validates, and date/time variants retain the browser's localized picker and ISO-compatible value"
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "S",
+        "M",
+        "L"
+      ],
+      "optional": true,
+      "description": "Size variant for input"
+    },
+    "onValueChange": {
+      "type": "(value: string | number) => void",
+      "optional": true,
+      "description": "Value change handler (recommended)"
+    },
+    "defaultValue": {
+      "type": "string | number",
+      "optional": true,
+      "description": "Initial value for uncontrolled component"
+    },
+    "value": {
+      "type": "string | number",
+      "optional": true,
+      "description": "Controlled value; an initial \"\" is treated as absent (uncontrolled), later changes always sync in"
+    },
+    "error": {
+      "type": "string",
+      "optional": true,
+      "description": "Validation error message; renders above the helper line and sets aria-invalid"
+    },
+    "helperText": {
+      "type": "string",
+      "optional": true,
+      "description": "Helper copy below the field"
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Disables the input. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it."
+    },
+    "clearable": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Shows a labelled ×-button inside the field chrome while the field has a value; clearing returns focus to the input"
+    },
+    "onClear": {
+      "type": "() => void",
+      "optional": true,
+      "description": "Called after the clear button empties the field (onValueChange also fires with \"\")"
+    },
+    "hideLabel": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance"
+    },
+    "onChange": {
+      "type": "(value: string | number) => void",
+      "optional": true,
+      "deprecated": {
+        "reason": "Renamed to onValueChange; a development warning fires on use.",
+        "replacement": "onValueChange"
+      }
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:48.319Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:32.637Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:48.319Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.forced-colors.json",
+            "sourceCommit": "b7ca85a33df1343202006569dc6680dee1c20a8b",
+            "capturedAt": "2026-07-26T19:41:37.500Z",
+            "passed": true,
+            "runner": "fix-textinput-evidence"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:32.637Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:48.380Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.forced-colors.json",
+            "sourceCommit": "b7ca85a33df1343202006569dc6680dee1c20a8b",
+            "capturedAt": "2026-07-26T19:41:37.598Z",
+            "passed": true,
+            "runner": "fix-textinput-evidence"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:32.699Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:48.405Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.forced-colors.json",
+            "sourceCommit": "b7ca85a33df1343202006569dc6680dee1c20a8b",
+            "capturedAt": "2026-07-26T19:41:37.621Z",
+            "passed": true,
+            "runner": "fix-textinput-evidence"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:32.725Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:48.346Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.forced-colors.json",
+            "sourceCommit": "b7ca85a33df1343202006569dc6680dee1c20a8b",
+            "capturedAt": "2026-07-26T19:41:37.576Z",
+            "passed": true,
+            "runner": "fix-textinput-evidence"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:32.669Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-26"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "reviewedAt": "2026-05-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/TextInput/TextInput.module.css",
+    "../../../nextjs-app/shared/components/TextInput/TextInput.tsx"
+  ]
+}

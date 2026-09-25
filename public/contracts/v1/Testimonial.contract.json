@@ -1,0 +1,225 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Testimonial",
+  "status": "beta",
+  "description": "Attributed quote block for social-proof sections, pairing a quote with the person and their role.",
+  "props": {
+    "quote": {
+      "type": "string",
+      "optional": false,
+      "description": "The testimonial quote text"
+    },
+    "name": {
+      "type": "string",
+      "optional": false,
+      "description": "Name of the person giving the testimonial"
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Title/position of the person"
+    },
+    "company": {
+      "type": "string",
+      "optional": false,
+      "description": "Company name"
+    },
+    "linkedinUrl": {
+      "type": "string",
+      "optional": true,
+      "description": "LinkedIn URL (optional)"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS classes"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "optional": true,
+      "description": "Avatar image URL (optional)"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:37.714Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.873Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:01.479Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:37.991Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:09.093Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:01.698Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:37.488Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.652Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:01.245Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:37.714Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.873Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:01.479Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:37.991Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:09.093Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:01.698Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:37.488Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.652Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:01.245Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.873Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:09.093Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.652Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Testimonial/Testimonial.module.css",
+    "../../../nextjs-app/shared/components/Testimonial/Testimonial.tsx"
+  ]
+}

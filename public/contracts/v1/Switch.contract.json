@@ -1,0 +1,270 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Switch",
+  "status": "stable",
+  "description": "Toggle control with label placement, loading, and helper text.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Switch } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Disables interaction and dims the control."
+    },
+    "loading": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Shows a loading spinner and blocks interaction; sets `aria-busy`."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Control size."
+    },
+    "onCheckedChange": {
+      "type": "(checked: boolean) => void",
+      "optional": true,
+      "description": "Called with the next checked value when the switch is toggled."
+    },
+    "label": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Visible label."
+    },
+    "labelPlacement": {
+      "type": "union",
+      "values": [
+        "left",
+        "right",
+        "top"
+      ],
+      "optional": true,
+      "description": "Where the label sits relative to the control."
+    },
+    "helperText": {
+      "type": "string",
+      "optional": true,
+      "description": "Supporting text rendered beneath the control; always rendered, below `error` when both are set."
+    },
+    "error": {
+      "type": "string",
+      "optional": true,
+      "description": "Error message beneath the control; sets aria-invalid and aria-describedby."
+    },
+    "defaultChecked": {
+      "type": "boolean | undefined",
+      "optional": true,
+      "description": "Initial checked state for uncontrolled use. Mutually exclusive with `checked`."
+    },
+    "checked": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Checked state for controlled use. Mutually exclusive with `defaultChecked`."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.236Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.701Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.902Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.468Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:12.154Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.236Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:08.523Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:12.258Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.701Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:08.605Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:12.285Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.902Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:08.659Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:12.207Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.468Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:08.578Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.236Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.701Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.902Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:03.468Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-16 beta->stable: Switch replaced the bespoke GDPR category toggle in CookieConsent; controlled/uncontrolled exclusivity is executable in SwitchProps, and required-story AT plus Chromium forced-colors evidence was recaptured.",
+        "reviewedAt": "2026-07-16"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Switch/Switch.module.css",
+    "../../../nextjs-app/shared/components/Switch/Switch.tsx"
+  ]
+}

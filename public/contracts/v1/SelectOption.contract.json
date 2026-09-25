@@ -1,0 +1,257 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SelectOption",
+  "status": "stable",
+  "description": "Native option primitive for composing Select choices.",
+  "props": {
+    "value": {
+      "type": "string",
+      "optional": false
+    },
+    "label": {
+      "type": "string",
+      "optional": false
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true
+    },
+    "children": {
+      "type": "ReactNode",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:46.850Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:32.961Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:47.256Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:33.238Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:58.163Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-example.forced-colors.json",
+            "sourceCommit": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
+            "capturedAt": "2026-07-26T14:20:21.431Z",
+            "passed": true,
+            "runner": "recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:00.690Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:58.241Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-forced-colors.forced-colors.json",
+            "sourceCommit": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
+            "capturedAt": "2026-07-26T14:20:21.465Z",
+            "passed": true,
+            "runner": "recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:00.743Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:58.062Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-playground.forced-colors.json",
+            "sourceCommit": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
+            "capturedAt": "2026-07-26T14:20:21.404Z",
+            "passed": true,
+            "runner": "recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-select-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:00.654Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:46.850Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-default.forced-colors.json",
+            "sourceCommit": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
+            "capturedAt": "2026-07-26T14:20:19.367Z",
+            "passed": true,
+            "runner": "recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:32.961Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:47.256Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-example.forced-colors.json",
+            "sourceCommit": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
+            "capturedAt": "2026-07-26T14:20:19.415Z",
+            "passed": true,
+            "runner": "recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:33.238Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:47.294Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-forced-colors.forced-colors.json",
+            "sourceCommit": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
+            "capturedAt": "2026-07-26T14:20:19.441Z",
+            "passed": true,
+            "runner": "recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:33.260Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:46.891Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-playground.forced-colors.json",
+            "sourceCommit": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
+            "capturedAt": "2026-07-26T14:20:19.389Z",
+            "passed": true,
+            "runner": "recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Select/__a11y-evidence__/forms-selectoption-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:32.985Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-15"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-15 - native option semantics and disabled state verified through Select.",
+        "reviewedAt": "2026-07-15"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Select/Select.module.css",
+    "../../../nextjs-app/shared/components/Select/Select.tsx",
+    "../../../nextjs-app/shared/components/Select/SelectOption.module.css",
+    "../../../nextjs-app/shared/components/Select/SelectOption.tsx"
+  ]
+}

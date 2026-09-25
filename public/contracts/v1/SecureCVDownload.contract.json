@@ -1,0 +1,214 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SecureCVDownload",
+  "status": "stable",
+  "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
+  "props": {
+    "buttonText": {
+      "type": "string",
+      "optional": true,
+      "description": "Button text to trigger the modal"
+    },
+    "buttonVariant": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "primary",
+        "secondary",
+        "tertiary"
+      ],
+      "optional": true,
+      "description": "Button variant"
+    },
+    "inverse": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Make the trigger button use inverse styling (white text/border)"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:28.740Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:22.252Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.423Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:28.955Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:22.475Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.666Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:28.463Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:21.968Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.135Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:28.740Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:22.252Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.423Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:28.955Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:22.475Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.666Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:28.463Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:21.968Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.135Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:22.252Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:22.475Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:21.968Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css",
+    "../../../nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.tsx"
+  ]
+}

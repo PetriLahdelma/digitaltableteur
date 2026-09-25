@@ -1,0 +1,299 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SocialIconLink",
+  "status": "alpha",
+  "description": "Icon-only social or profile link with enforced accessible name and external-safety (target=_blank + rel) by default.",
+  "props": {
+    "href": {
+      "type": "string",
+      "optional": false,
+      "description": "Destination URL."
+    },
+    "label": {
+      "type": "string",
+      "optional": false,
+      "description": "Accessible name — required, the control is icon-only."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "The icon. Rendered inside an aria-hidden wrapper so only `label` names the link."
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "plain",
+        "chip"
+      ],
+      "optional": true,
+      "description": "Visual treatment: bare glyph (footers) or bordered circular chip (share rows)."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Hit-target size token."
+    },
+    "external": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Open in a new tab with rel=\"noopener noreferrer\"."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class names."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:08.801Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.486Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:07.455Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:09.243Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.944Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:07.931Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:09.552Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:48.160Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:08.148Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:09.015Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.681Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:07.703Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:08.801Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.486Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:07.455Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:09.243Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.944Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:07.931Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:09.552Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:48.160Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:08.148Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:09.015Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.681Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:07.703Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.486Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.944Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:48.160Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SocialIconLink/__a11y-evidence__/navigation-socialiconlink-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:47.681Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "Marked reviewed, but no review date was recorded."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/SocialIconLink/SocialIconLink.module.css",
+    "../../../nextjs-app/shared/components/SocialIconLink/SocialIconLink.tsx"
+  ]
+}

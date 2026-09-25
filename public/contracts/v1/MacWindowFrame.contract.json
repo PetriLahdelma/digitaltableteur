@@ -1,0 +1,281 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "MacWindowFrame",
+  "status": "beta",
+  "description": "Decorative macOS-style window chrome that wraps showcase content such as code demos, screenshots, and portfolio pieces.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { MacWindowFrame } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "titleKey": {
+      "type": "string",
+      "optional": true,
+      "description": "Translation key for the window title"
+    },
+    "actionLabelKey": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional label for the action button"
+    },
+    "onAction": {
+      "type": "() => void",
+      "optional": true,
+      "description": "Called when the action button is pressed"
+    },
+    "density": {
+      "type": "union",
+      "values": [
+        "compact",
+        "comfortable"
+      ],
+      "optional": true,
+      "description": "Density variant"
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "Content to render inside the frame"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional className passthrough"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:41.348Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.376Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:51.588Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:41.925Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.813Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:52.066Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:42.358Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:37.022Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:52.302Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:41.621Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.597Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:51.845Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:41.348Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.376Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:51.588Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:41.925Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.813Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:52.066Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:42.358Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:37.022Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:52.302Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:41.621Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.597Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:51.845Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.376Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.813Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:37.022Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:36.597Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/MacWindowFrame/MacWindowFrame.module.css",
+    "../../../nextjs-app/shared/components/MacWindowFrame/MacWindowFrame.tsx"
+  ]
+}

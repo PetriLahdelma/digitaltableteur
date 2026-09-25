@@ -1,0 +1,231 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "NextLayoutShell",
+  "status": "beta",
+  "description": "Production app chrome from NextLayout, wrapping page content with the header, main landmark, footer, and chat widget; mirrors app/layout.tsx.",
+  "props": {},
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:52.543Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.049Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:04.599Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:53.236Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.577Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:05.276Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:53.575Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.817Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:05.578Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:52.900Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.299Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:04.953Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:52.543Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.049Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:04.599Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:53.236Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.577Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:05.276Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:53.575Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.817Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:05.578Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:52.900Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.299Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:04.953Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.049Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.577Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.817Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/templates/NextLayoutShell/__a11y-evidence__/templates-nextlayoutshell-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:39.299Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": []
+}

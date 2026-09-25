@@ -1,0 +1,516 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Grid",
+  "status": "stable",
+  "description": "CSS grid layout primitive with scalar and token-breakpoint responsive columns and gaps.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Grid } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Grid cells (supports span on child props)."
+    },
+    "columns": {
+      "type": "number | string",
+      "optional": true,
+      "description": "Column count or grid-template-columns string."
+    },
+    "tabletColumns": {
+      "type": "number | string",
+      "optional": true,
+      "description": "Columns from the tablet breakpoint (768px) up. Numeric counts render as\n`repeat(n, minmax(0, 1fr))` so cells can shrink below content width."
+    },
+    "desktopColumns": {
+      "type": "number | string",
+      "optional": true,
+      "description": "Columns from the desktop breakpoint (1024px) up. Falls back to\ntabletColumns, then columns."
+    },
+    "wideColumns": {
+      "type": "number | string",
+      "optional": true,
+      "description": "Columns from the wide breakpoint (1440px) up. Falls back through\ndesktopColumns, tabletColumns, columns."
+    },
+    "ultraColumns": {
+      "type": "number | string",
+      "optional": true,
+      "description": "Columns from the ultra breakpoint (1920px) up. Falls back through\nwideColumns, desktopColumns, tabletColumns, columns."
+    },
+    "rows": {
+      "type": "number | string",
+      "optional": true,
+      "description": "Row count or grid-template-rows string."
+    },
+    "gap": {
+      "type": "string",
+      "optional": true,
+      "description": "Grid gap."
+    },
+    "tabletGap": {
+      "type": "string",
+      "optional": true,
+      "description": "Gap from the tablet breakpoint (768px) up."
+    },
+    "desktopGap": {
+      "type": "string",
+      "optional": true,
+      "description": "Gap from the desktop breakpoint (1024px) up. Falls back to tabletGap,\nthen gap."
+    },
+    "wideGap": {
+      "type": "string",
+      "optional": true,
+      "description": "Gap from the wide breakpoint (1440px) up. Falls back through desktopGap,\ntabletGap, gap."
+    },
+    "ultraGap": {
+      "type": "string",
+      "optional": true,
+      "description": "Gap from the ultra breakpoint (1920px) up. Falls back through wideGap,\ndesktopGap, tabletGap, gap."
+    },
+    "rowGap": {
+      "type": "string",
+      "optional": true,
+      "description": "Row gap override."
+    },
+    "colGap": {
+      "type": "string",
+      "optional": true,
+      "description": "Column gap override."
+    },
+    "align": {
+      "type": "union",
+      "values": [
+        "inherit",
+        "center",
+        "flex-start",
+        "flex-end",
+        "stretch",
+        "baseline",
+        "-moz-initial",
+        "initial",
+        "revert",
+        "revert-layer",
+        "unset",
+        "end",
+        "self-end",
+        "self-start",
+        "start",
+        "anchor-center",
+        "normal"
+      ],
+      "optional": true,
+      "description": "align-items."
+    },
+    "justify": {
+      "type": "union",
+      "values": [
+        "inherit",
+        "center",
+        "flex-start",
+        "flex-end",
+        "stretch",
+        "baseline",
+        "-moz-initial",
+        "initial",
+        "revert",
+        "revert-layer",
+        "unset",
+        "end",
+        "self-end",
+        "self-start",
+        "start",
+        "anchor-center",
+        "normal",
+        "left",
+        "legacy",
+        "right"
+      ],
+      "optional": true,
+      "description": "justify-items."
+    },
+    "style": {
+      "type": "CSSProperties",
+      "optional": true
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Grid class names."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-custom-template.dark.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:33.510Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-custom-template.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:22.146Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-custom-template.light.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:27.724Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:06.611Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-default.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:20.690Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:44.244Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-equal-tracks.dark.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:32.912Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-equal-tracks.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.544Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-equal-tracks.light.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:27.117Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:07.320Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-example.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.114Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:44.733Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:07.698Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-forced-colors.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.339Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:45.012Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:06.955Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-playground.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:20.902Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:44.509Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-responsive-columns.dark.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:33.315Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-responsive-columns.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.950Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-responsive-columns.light.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:27.522Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-spanned-feature.dark.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:33.114Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-spanned-feature.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.749Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-spanned-feature.light.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:27.318Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-custom-template.dark.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:33.510Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-custom-template.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:22.146Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-custom-template.light.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:27.724Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:06.611Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-default.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:20.690Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:44.244Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-equal-tracks.dark.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:32.912Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-equal-tracks.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.544Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-equal-tracks.light.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:27.117Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:07.320Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-example.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.114Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:44.733Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:07.698Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-forced-colors.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.339Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:45.012Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:06.955Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-playground.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:20.902Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:44.509Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-responsive-columns.dark.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:33.315Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-responsive-columns.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.950Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-responsive-columns.light.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:27.522Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-spanned-feature.dark.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:33.114Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-spanned-feature.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:21.749Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Grid/__a11y-evidence__/layout-grid-spanned-feature.light.json",
+            "sourceCommit": "d9b31b8aff066337012c39e00a9f1a2626861d49",
+            "capturedAt": "2026-08-07T16:16:27.318Z",
+            "passed": true,
+            "runner": "react-0.1.24-publish"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed compare-clean in all four modes (plain/light/dark/forced-colors); Controls 9/9 operable + 0 inert. Pure two-dimensional layout primitive with no color surface of its own (tokens.colors empty), so light/dark is a structural no-op. The GridProps `[key: string]: any` passthrough is the intentional, documented escape hatch for arbitrary grid CSS props — kept as-is. 2026-07-10 — Figma component built (Atoms, node 1177-1654, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Grid/Grid.module.css",
+    "../../../nextjs-app/shared/components/Grid/Grid.tsx"
+  ]
+}

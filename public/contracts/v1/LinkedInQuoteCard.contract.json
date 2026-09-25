@@ -1,0 +1,245 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "LinkedInQuoteCard",
+  "status": "beta",
+  "description": "Quote card styled like a LinkedIn post for embedding social content in articles without an external embed.",
+  "props": {
+    "quote": {
+      "type": "string",
+      "optional": false,
+      "description": "The quote/post text"
+    },
+    "name": {
+      "type": "string",
+      "optional": false,
+      "description": "Name of the person"
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Title/position of the person"
+    },
+    "company": {
+      "type": "string",
+      "optional": false,
+      "description": "Company name"
+    },
+    "connectionDegree": {
+      "type": "string",
+      "optional": true,
+      "description": "Connection degree (e.g., \"1st\", \"2nd\", \"3rd\")"
+    },
+    "linkedinUrl": {
+      "type": "string",
+      "optional": true,
+      "description": "LinkedIn profile URL (optional)"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "optional": true,
+      "description": "Avatar image URL (optional)"
+    },
+    "companyLogoUrl": {
+      "type": "string",
+      "optional": true,
+      "description": "Company logo URL (optional, displayed at bottom)"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS classes"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "muted",
+        "light",
+        "dark"
+      ],
+      "optional": true,
+      "description": "Background color variant"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:31.389Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:11.902Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:46.474Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:31.580Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:12.124Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:46.678Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:31.178Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:11.516Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:46.219Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:31.389Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:11.902Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:46.474Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:31.580Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:12.124Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:46.678Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:31.178Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:11.516Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:46.219Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:11.902Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:12.124Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LinkedInQuoteCard/__a11y-evidence__/site-linkedinquotecard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:11.516Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css",
+    "../../../nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.tsx"
+  ]
+}

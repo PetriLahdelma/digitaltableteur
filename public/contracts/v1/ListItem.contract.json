@@ -1,0 +1,247 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ListItem",
+  "status": "stable",
+  "description": "Presentational row for menus, selects, palettes, and lists: leading icon, truncating label, end-aligned meta (text, Badge, Kbd, StatusDot, value), trailing icon, selection check, and a destructive tone. Consumers own semantics.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { ListItem } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "Primary label. Truncates with an ellipsis; never wraps."
+    },
+    "icon": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Leading icon node; rendered in a fixed gutter so labels column-align."
+    },
+    "meta": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "End-aligned secondary content: muted small text, Badge, Kbd, StatusDot, or a value. Exposed to AT."
+    },
+    "trailingIcon": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Trailing icon after meta (chevron, external-link). Decorative."
+    },
+    "selected": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Renders the check indicator in the trailing position. Visual only; semantic selection belongs to the consumer."
+    },
+    "tone": {
+      "type": "union",
+      "values": [
+        "neutral",
+        "destructive"
+      ],
+      "optional": true,
+      "description": "Destructive rows (deletions) use the error color treatment."
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Visual disabled treatment via the canonical disabled tokens. The consumer carries aria-disabled."
+    },
+    "highlighted": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Parent-driven active row (combobox/palette). Radix menus work without it via [data-highlighted]."
+    },
+    "className": {
+      "type": "string",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:15.987Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:11.220Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:16.427Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:11.750Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:16.687Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:12.033Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:16.193Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:11.473Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:15.987Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-default.forced-colors.json",
+            "sourceCommit": "f71a2fef898d45c691d877f96d43b34db356b3cb",
+            "capturedAt": "2026-07-26T19:33:35.442Z",
+            "passed": true,
+            "runner": "promote-listitem-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:11.220Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:16.427Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-example.forced-colors.json",
+            "sourceCommit": "f71a2fef898d45c691d877f96d43b34db356b3cb",
+            "capturedAt": "2026-07-26T19:33:35.556Z",
+            "passed": true,
+            "runner": "promote-listitem-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:11.750Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:16.687Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-forced-colors.forced-colors.json",
+            "sourceCommit": "f71a2fef898d45c691d877f96d43b34db356b3cb",
+            "capturedAt": "2026-07-26T19:33:35.579Z",
+            "passed": true,
+            "runner": "promote-listitem-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:12.033Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:16.193Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-playground.forced-colors.json",
+            "sourceCommit": "f71a2fef898d45c691d877f96d43b34db356b3cb",
+            "capturedAt": "2026-07-26T19:33:35.463Z",
+            "passed": true,
+            "runner": "promote-listitem-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ListItem/__a11y-evidence__/content-listitem-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:11.473Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-17"
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-17 — axe asserted in ListItem.test.tsx and the Storybook a11y gate (parameters.a11y.test: error); consumer-owned semantics reviewed (role/focus/events belong to the interactive wrapper, ListItem itself carries no interactive ARIA); ForcedColors story verifies the forced-colors treatment (CanvasText/GrayText/Highlight/HighlightText mapping). 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed across the required stories; consumed on the blog article surfaces.",
+        "reviewedAt": "2026-07-17"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ListItem/ListItem.module.css",
+    "../../../nextjs-app/shared/components/ListItem/ListItem.tsx"
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Accordion",
+  "status": "beta",
+  "description": "Coordinated disclosure group: single or multiple open sections, animated reveal, keyboard-operable triggers.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Accordion } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "items": {
+      "type": "AccordionItem[]",
+      "optional": false,
+      "description": "Accordion sections (id, title, content, optional disabled)."
+    },
+    "type": {
+      "type": "union",
+      "values": [
+        "single",
+        "multiple"
+      ],
+      "optional": true,
+      "description": "\"single\" (default) keeps at most one section open — opening another closes\nthe previous. \"multiple\" lets any number stay open for side-by-side reading."
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "contained",
+        "enclosed",
+        "divided"
+      ],
+      "optional": true,
+      "description": "\"contained\" (default) is a bordered card group with dividers between rows;\n\"enclosed\" is the same outer border but seamless inside (no dividers);\n\"divided\" is flush with hairline separators only, for inline disclosure."
+    },
+    "defaultOpenId": {
+      "type": "string",
+      "optional": true,
+      "description": "Initially open id (uncontrolled, single)."
+    },
+    "defaultOpenIds": {
+      "type": "string[]",
+      "optional": true,
+      "description": "Initially open ids (uncontrolled); wins over defaultOpenId when set."
+    },
+    "openIds": {
+      "type": "string[]",
+      "optional": true,
+      "description": "Controlled open ids. When set, the parent owns open state."
+    },
+    "onOpenChange": {
+      "type": "(openIds: string[]) => void",
+      "optional": true,
+      "description": "Called with the full set of open ids whenever it changes."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional utility classes on the container."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:57.956Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.454Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.702Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:57.229Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.195Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:52.537Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:56.227Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:57.956Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:51.558Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:57.293Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.454Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:52.574Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:57.347Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.702Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:52.626Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:57.229Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.195Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:52.537Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:57.956Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.454Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.702Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Accordion/__a11y-evidence__/layout-accordion-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:58.195Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "reviewedAt": "2026-05-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Accordion/Accordion.module.css",
+    "../../../nextjs-app/shared/components/Accordion/Accordion.tsx"
+  ]
+}

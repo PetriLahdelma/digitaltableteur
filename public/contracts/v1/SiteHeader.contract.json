@@ -1,0 +1,154 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SiteHeader",
+  "status": "stable",
+  "description": "Production site header with nav, theme toggle, and mobile drawer.",
+  "props": {
+    "navItems": {
+      "type": "NavItem[]",
+      "optional": true,
+      "description": "Navigation items (href, label, exact); the site default when unset."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional wrapper class."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-default.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:25.485Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-default.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:21.791Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-default.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:25.485Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-default.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:21.791Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-example.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:25.539Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-example.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:21.846Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-forced-colors.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:25.562Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-forced-colors.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:21.873Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-playground.dark.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:25.513Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-playground.light.json",
+            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+            "capturedAt": "2026-09-25T16:09:21.819Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-25"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-26"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "reviewedAt": "2026-05-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+    "../../../nextjs-app/shared/patterns/SiteHeader/SiteHeader.module.css",
+    "../../../nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx"
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ReadingProgress",
+  "status": "stable",
+  "description": "Scroll-linked reading progress indicator for long content.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { ReadingProgress } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "targetRef": {
+      "type": "RefObject<HTMLElement | null>",
+      "optional": false,
+      "description": "Ref to the content container to track"
+    },
+    "showPercentage": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show percentage text"
+    },
+    "className": {
+      "type": "string",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:13.496Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.787Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:57.297Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:13.835Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.009Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:57.515Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:14.225Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.229Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:57.772Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:13.225Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.561Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:57.061Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:13.496Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.787Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:57.297Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:13.835Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.009Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:57.515Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:14.225Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.229Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:57.772Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:13.225Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.561Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:57.061Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.787Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.009Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.229Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ReadingProgress/__a11y-evidence__/site-readingprogress-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.561Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 — beta→stable: progressbar role with aria-valuenow/min/max + aria-label; passive scroll listener avoids jank. Added the missing prefers-reduced-motion guard (the bar-fill + root-fade transitions now actually drop under reduced motion, matching the prior claim). AT snapshots bootstrapped across base/light/dark/forced-colors; percentage uses --secondary-text-color (theme-aware, CanvasText in forced-colors).",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ReadingProgress/ReadingProgress.module.css",
+    "../../../nextjs-app/shared/components/ReadingProgress/ReadingProgress.tsx"
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ButtonGroup",
+  "status": "beta",
+  "description": "Groups related Buttons into one attached (segmented) or spaced row.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { ButtonGroup } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "ariaLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name for the group (announced by screen readers)."
+    },
+    "attached": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Fuse the children into one segmented control surface."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "Buttons / IconButtons of the same variant and size."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:56.586Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.255Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:27.749Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:57.055Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.687Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.216Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.918Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:56.832Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.471Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:27.985Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:56.586Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.255Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:27.749Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:57.055Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.687Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.216Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:57.099Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.918Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:28.242Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:56.832Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.471Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:27.985Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.255Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.687Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.918Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:14.471Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-03 — group semantics + labelled-group asserted in unit tests; axe clean; focus ring lift verified in Storybook.",
+        "reviewedAt": "2026-07-03"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css",
+    "../../../nextjs-app/shared/components/ButtonGroup/ButtonGroup.tsx"
+  ]
+}

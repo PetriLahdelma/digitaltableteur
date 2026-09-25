@@ -1,0 +1,231 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "LocationCard",
+  "status": "stable",
+  "description": "Card variant for displaying a single office or service location (address, hours, map link). Visual sibling of `Card` with the location-specific slot order baked in.",
+  "props": {
+    "officeName": {
+      "type": "string",
+      "optional": false,
+      "description": "Office name heading"
+    },
+    "address": {
+      "type": "string[]",
+      "optional": false,
+      "description": "Address lines"
+    },
+    "email": {
+      "type": "string",
+      "optional": true,
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "optional": true,
+      "description": "Contact phone"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "default",
+        "bordered",
+        "elevated"
+      ],
+      "optional": true,
+      "description": "Card variant"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:15.225Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:57.768Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:15.808Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:58.211Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:16.058Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:58.477Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:15.495Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:57.982Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:15.225Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.forced-colors.json",
+            "sourceCommit": "63c2fd02ac4617d4e01650175b1e3da8f88dd0d4",
+            "capturedAt": "2026-07-26T19:57:33.141Z",
+            "passed": true,
+            "runner": "promote-locationcard-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:57.768Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:15.808Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.forced-colors.json",
+            "sourceCommit": "63c2fd02ac4617d4e01650175b1e3da8f88dd0d4",
+            "capturedAt": "2026-07-26T19:57:33.196Z",
+            "passed": true,
+            "runner": "promote-locationcard-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:58.211Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:16.058Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.forced-colors.json",
+            "sourceCommit": "63c2fd02ac4617d4e01650175b1e3da8f88dd0d4",
+            "capturedAt": "2026-07-26T19:57:33.219Z",
+            "passed": true,
+            "runner": "promote-locationcard-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:58.477Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:15.495Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.forced-colors.json",
+            "sourceCommit": "63c2fd02ac4617d4e01650175b1e3da8f88dd0d4",
+            "capturedAt": "2026-07-26T19:57:33.172Z",
+            "passed": true,
+            "runner": "promote-locationcard-stable"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:57.982Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; consumed in the tailwind-test dev harness.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/LocationCard/LocationCard.tsx"
+  ]
+}

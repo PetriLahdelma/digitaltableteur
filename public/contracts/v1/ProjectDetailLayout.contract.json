@@ -1,0 +1,80 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ProjectDetailLayout",
+  "status": "alpha",
+  "description": "Case study detail layout shell.",
+  "props": {
+    "nav": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Navigation slot (top)"
+    },
+    "hero": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Hero section slot"
+    },
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Main content sections"
+    },
+    "cta": {
+      "type": "ReactNode | null",
+      "optional": true,
+      "description": "Call-to-action section slot (between content and related projects). Renders WorkCTA by default. Pass null to suppress."
+    },
+    "relatedProjects": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Related projects section slot"
+    },
+    "showScrollProgress": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show scroll progress indicator"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    },
+    "donnyTarget": {
+      "type": "string",
+      "optional": true,
+      "description": "Donny site action target id for the project main landmark"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/ProjectDetailLayout/ProjectDetailLayout.tsx"
+  ]
+}

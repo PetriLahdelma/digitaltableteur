@@ -1,0 +1,85 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ArticleLayout",
+  "status": "alpha",
+  "description": "Blog article page layout shell.",
+  "props": {
+    "nav": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Navigation slot (back link, etc.)"
+    },
+    "hero": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Hero section"
+    },
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Main content area"
+    },
+    "sidebar": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Sidebar content (TOC, etc.)"
+    },
+    "relatedPosts": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Related posts section"
+    },
+    "showReadingProgress": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show reading progress indicator"
+    },
+    "contentRef": {
+      "type": "RefObject<HTMLElement | null>",
+      "optional": true,
+      "description": "Ref for reading progress tracking"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    },
+    "lang": {
+      "type": "string",
+      "optional": true,
+      "description": "Document language for the article root"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/ArticleLayout/ArticleLayout.tsx"
+  ]
+}

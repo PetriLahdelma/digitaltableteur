@@ -1,0 +1,259 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SiteTree",
+  "status": "stable",
+  "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
+  "props": {
+    "nodes": {
+      "type": "SiteTreeNode[]",
+      "optional": false
+    },
+    "aria-label": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name for the navigation landmark"
+    },
+    "defaultExpandAll": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Expand all branch nodes by default"
+    },
+    "className": {
+      "type": "string",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:51.469Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.133Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:24:59.709Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:52.084Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.626Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:00.276Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.863Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:51.785Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.360Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:24:59.999Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:51.469Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.133Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:24:59.709Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:52.084Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.626Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:00.276Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:52.116Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.863Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:00.307Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:51.785Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.360Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:24:59.999Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.133Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.626Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.863Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SiteTree/__a11y-evidence__/site-sitetree-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:43.360Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "unverified",
+        "note": "Marked reviewed, but no review date was recorded."
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/SiteTree/SiteTree.module.css",
+    "../../../nextjs-app/shared/components/SiteTree/SiteTree.tsx"
+  ]
+}

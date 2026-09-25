@@ -1,0 +1,193 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "HelperText",
+  "status": "stable",
+  "description": "Semantic helper or validation copy below form controls.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { HelperText } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "The helper text content to display"
+    },
+    "id": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional ID for aria-describedby association"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class name"
+    },
+    "state": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error"
+      ],
+      "optional": true,
+      "description": "Semantic state of the helper text (error, warning, success, info)\nDefault is neutral/no state"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.004Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.218Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.420Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:51.580Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.004Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:09.423Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:51.609Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.218Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:09.472Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:51.643Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.420Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:09.506Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.004Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.218Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/HelperText/__a11y-evidence__/forms-helpertext-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:35.420Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook. 2026-07-06 beta->stable: independently re-verified all four semantic states (error/warning/success/info) in light/dark + forced-colors in a real browser (state color + fill icon track the theme; forced-colors keeps the icon + CanvasText copy legible); error state carries role=alert. Removed a dead helperTextVariants cva scaffolder stub (empty size axis, never used). realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "reviewedAt": "2026-05-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/HelperText/HelperText.module.css",
+    "../../../nextjs-app/shared/components/HelperText/HelperText.tsx"
+  ]
+}

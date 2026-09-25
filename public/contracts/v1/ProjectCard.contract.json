@@ -1,0 +1,205 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ProjectCard",
+  "status": "stable",
+  "description": "Basic portfolio project card for the work grid: a clickable thumbnail with title, optional category eyebrow and up to three tags.",
+  "props": {
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Project title"
+    },
+    "slug": {
+      "type": "string",
+      "optional": false,
+      "description": "URL slug for project detail page"
+    },
+    "thumbnail": {
+      "type": "string",
+      "optional": false,
+      "description": "Thumbnail image URL"
+    },
+    "category": {
+      "type": "string",
+      "optional": true,
+      "description": "Project category"
+    },
+    "tags": {
+      "type": "string[]",
+      "optional": true,
+      "description": "Project tags"
+    },
+    "aspectRatio": {
+      "type": "union",
+      "values": [
+        "video",
+        "square",
+        "portrait",
+        "landscape"
+      ],
+      "optional": true,
+      "description": "Image aspect ratio"
+    },
+    "titlePosition": {
+      "type": "union",
+      "values": [
+        "overlay",
+        "below"
+      ],
+      "optional": true,
+      "description": "Title overlay position"
+    },
+    "comingSoon": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+    },
+    "comingSoonLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:39.968Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:18.780Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:40.183Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:18.993Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:40.379Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:19.196Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:39.968Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:18.780Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:40.183Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:18.993Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:40.379Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:19.196Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-06"
+      },
+      {
+        "id": "reduced-motion",
+        "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+        "verification": "manual",
+        "wcag": [
+          "2.2.2",
+          "2.3.3"
+        ],
+        "reviewedAt": "2026-07-06"
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories, both overlay and below title positions; 4-mode AT snapshots captured and compare-clean. Card is one Link with the title as image alt. Hover scale/translate/opacity transitions are decorative and now gated behind motion-reduce: utilities (the global reset only covers focus rings). Tailwind className styling retained as an intentional per-surface owner call. 2026-07-06 beta->stable: independently re-verified light/dark + forced-colors of both title positions in a real browser; closed the last reduced-motion gap (the below-title hover color transition now carries motion-reduce:transition-none, matching the ValueCard/ServiceCard family). realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ProjectCard/ProjectCard.module.css",
+    "../../../nextjs-app/shared/components/ProjectCard/ProjectCard.tsx"
+  ]
+}

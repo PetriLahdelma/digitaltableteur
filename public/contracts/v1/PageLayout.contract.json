@@ -1,0 +1,345 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "PageLayout",
+  "status": "stable",
+  "description": "Page-body wrapper with a max-width container, default page margins, an optional grid mode, and a spacing scale.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { PageLayout } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "Content to be displayed within the layout"
+    },
+    "maxWidth": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "full"
+      ],
+      "optional": true,
+      "description": "Maximum width constraint for the content"
+    },
+    "grid": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to use the 12-column grid system"
+    },
+    "columns": {
+      "type": "number",
+      "optional": true,
+      "description": "Number of columns for grid layout (only applies when grid=true)\nAutomatically responsive: 4 cols mobile, 8 cols tablet, 12 cols desktop"
+    },
+    "spacing": {
+      "type": "union",
+      "values": [
+        "default",
+        "compact",
+        "comfortable",
+        "spacious"
+      ],
+      "optional": true,
+      "description": "Vertical spacing between sections"
+    },
+    "withMargins": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Apply consistent page margins"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS class name"
+    },
+    "as": {
+      "type": "union",
+      "values": [
+        "article",
+        "main",
+        "div",
+        "section"
+      ],
+      "optional": true,
+      "description": "Semantic HTML element to use for the container"
+    },
+    "role": {
+      "type": "string",
+      "optional": true,
+      "description": "ARIA role for accessibility"
+    },
+    "ariaLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "ARIA label for accessibility"
+    },
+    "style": {
+      "type": "React.CSSProperties",
+      "optional": true
+    }
+  },
+  "rules": [
+    {
+      "id": "pagelayout-columns-need-grid",
+      "when": {
+        "columns": {
+          "present": true
+        },
+        "grid": {
+          "absent": true
+        }
+      },
+      "requireAllOf": [
+        "grid"
+      ],
+      "reason": "`columns` only applies when `grid` is true; `grid` defaults to false, so the column count is dropped.",
+      "severity": "error",
+      "evidence": "PageLayout.tsx gridStyle: returns {} when !grid"
+    },
+    {
+      "id": "pagelayout-columns-with-grid-off",
+      "when": {
+        "grid": {
+          "equals": false
+        }
+      },
+      "forbid": [
+        "columns"
+      ],
+      "reason": "`columns` only applies when `grid` is true.",
+      "severity": "error",
+      "evidence": "PageLayout.tsx gridStyle: returns {} when !grid"
+    }
+  ],
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:44.992Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.147Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:19.607Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.447Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.586Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:20.257Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.659Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.802Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:20.632Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.229Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.369Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:19.918Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:44.992Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.147Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:19.607Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.447Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.586Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:20.257Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.659Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.802Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:20.632Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.229Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.369Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:29:19.918Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.147Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.586Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.802Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PageLayout/__a11y-evidence__/patterns-pagelayout-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:20.369Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/PageLayout/PageLayout.module.css",
+    "../../../nextjs-app/shared/patterns/PageLayout/PageLayout.tsx"
+  ]
+}

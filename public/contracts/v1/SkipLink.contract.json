@@ -1,0 +1,273 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SkipLink",
+  "status": "stable",
+  "description": "Skip-to-main link shown on keyboard focus.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { SkipLink } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "href": {
+      "type": "string",
+      "optional": true,
+      "description": "Target fragment for the main content region."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Visible link text on focus."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional utility classes on the link."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:21.724Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.280Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:00.814Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:22.182Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.721Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.254Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:22.403Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.931Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.440Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:21.971Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.515Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.041Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:21.724Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.280Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:00.814Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:22.182Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.721Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.254Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:22.403Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.931Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.440Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:21.971Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.515Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:01.041Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.280Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.721Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.931Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SkipLink/__a11y-evidence__/navigation-skiplink-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:00.515Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-05 — beta→stable (fleet #15): renders a real <a> (contract element corrected div→a). The reveal slide (transition: inset-block-start) is already guarded by a prefers-reduced-motion:reduce { transition:none } block, so reducedMotion is honest. --color-primary/--color-white token pairing holds contrast across all 4 themes. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Breadth beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate. 2026-07-10 — Figma component built (Atoms, node 1177-1644, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
+        "reviewedAt": "2026-07-05"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/SkipLink/SkipLink.module.css",
+    "../../../nextjs-app/shared/components/SkipLink/SkipLink.tsx"
+  ]
+}

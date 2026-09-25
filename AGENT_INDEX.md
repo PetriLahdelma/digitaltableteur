@@ -30,6 +30,7 @@ Principles (Apple-style + [Agent Skills](https://agentskills.io)):
 | Documentation | `docs/` | [`docs/AGENTS.md`](docs/AGENTS.md) | — |
 | Legacy serverless | `api-legacy-vercel-functions/` | [`api-legacy-vercel-functions/AGENTS.md`](api-legacy-vercel-functions/AGENTS.md) | [`dt-api-routes`](.claude/skills/dt-api-routes/SKILL.md) |
 | Sanity CMS / blog | `digitaltableteur-blog/` | [`digitaltableteur-blog/AGENTS.md`](digitaltableteur-blog/AGENTS.md) | [`dt-sanity-cms`](.claude/skills/dt-sanity-cms/SKILL.md) |
+| Open contract spec + agent benchmark | `packages/contract-spec/`, `scripts/design-system/agent-bench/` | [`scripts/AGENTS.md`](scripts/AGENTS.md) (Agent Benchmark, Open contracts) | [`dt-scripts`](.claude/skills/dt-scripts/SKILL.md) |
 ---
 
 ## Workflow skills (`.claude/skills/`)

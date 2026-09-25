@@ -1,0 +1,237 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "FlexBox",
+  "status": "beta",
+  "description": "Flexbox layout primitive for stacks and rows.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { FlexBox } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "direction": {
+      "type": "union",
+      "values": [
+        "row",
+        "row-reverse",
+        "column",
+        "column-reverse"
+      ],
+      "optional": true,
+      "description": "flex-direction."
+    },
+    "wrap": {
+      "type": "union",
+      "values": [
+        "nowrap",
+        "wrap",
+        "wrap-reverse"
+      ],
+      "optional": true,
+      "description": "flex-wrap."
+    },
+    "justify": {
+      "type": "union",
+      "values": [
+        "center",
+        "flex-start",
+        "flex-end",
+        "space-between",
+        "space-around",
+        "space-evenly"
+      ],
+      "optional": true,
+      "description": "Main-axis distribution."
+    },
+    "align": {
+      "type": "union",
+      "values": [
+        "center",
+        "flex-start",
+        "flex-end",
+        "stretch",
+        "baseline"
+      ],
+      "optional": true,
+      "description": "Cross-axis item alignment."
+    },
+    "alignContent": {
+      "type": "union",
+      "values": [
+        "center",
+        "flex-start",
+        "flex-end",
+        "space-between",
+        "space-around",
+        "stretch"
+      ],
+      "optional": true,
+      "description": "Cross-axis line distribution when wrapping."
+    },
+    "gap": {
+      "type": "string | number",
+      "optional": true,
+      "description": "Shorthand gap (CSS length or number of px)."
+    },
+    "rowGap": {
+      "type": "string | number",
+      "optional": true,
+      "description": "Row gap override."
+    },
+    "columnGap": {
+      "type": "string | number",
+      "optional": true,
+      "description": "Column gap override."
+    },
+    "style": {
+      "type": "React.CSSProperties",
+      "optional": true,
+      "description": "Inline style overrides applied after generated flex declarations."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "Flex items rendered inside the container."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:40.129Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:08.805Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:40.563Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:09.257Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:40.798Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:09.531Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:40.349Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:09.041Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:40.129Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:08.805Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:40.563Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:09.257Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:40.798Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:09.531Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:40.349Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:09.041Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes; AT snapshots bootstrapped (the component had none — snapshot-backfill debt) and compare-clean in plain/light/dark/forced-colors; Controls 9/9 operable + 0 inert. Pure css-less flex passthrough with no color surface (tokens.colors empty), so light/dark is a structural no-op. Fixed a contract defect: variants.align.default was \"center\" but the component default is \"stretch\" (align-items initial). 2026-07-10 — Figma component built (Atoms, node 1176-1698, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/FlexBox/FlexBox.tsx"
+  ]
+}

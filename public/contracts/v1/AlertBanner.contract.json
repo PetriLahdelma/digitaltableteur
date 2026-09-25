@@ -1,0 +1,231 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "AlertBanner",
+  "status": "stable",
+  "description": "Inline alert for info, warning, success, and error feedback.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { AlertBanner } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "tone": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error"
+      ],
+      "optional": true,
+      "description": "Semantic tone controlling icon and surface colors."
+    },
+    "title": {
+      "type": "string",
+      "optional": true,
+      "description": "Alert heading text."
+    },
+    "description": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Supporting body copy."
+    },
+    "action": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Optional action slot rendered under the description (e.g. a tertiary Button)."
+    },
+    "showIcon": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show the semantic tone icon. The icon is derived from `tone`; set false for a text-only banner."
+    },
+    "dismissible": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Shows a localized dismiss control when true."
+    },
+    "onDismiss": {
+      "type": "() => void",
+      "optional": true,
+      "description": "Called when the user dismisses the banner."
+    },
+    "aria-live": {
+      "type": "union",
+      "values": [
+        "polite",
+        "assertive",
+        "off"
+      ],
+      "optional": true,
+      "description": "Live region politeness for assistive tech (an explicit value wins over the tone default)."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:46.833Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.036Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:46.629Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:01.550Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:46.833Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:26.271Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:01.621Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.036Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:26.320Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:01.512Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:46.629Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:26.227Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:46.833Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.036Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:46.629Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-26 — tones and dismiss control reviewed in Storybook. 2026-07-03 (batch 4) — action slot + icon override added; dismiss strings moved to i18next (en/fi/sv, EN output unchanged). 2026-07-08 — promoted after Mermaid adopted AlertBanner for persistent diagram errors; check:beta-promotion-readiness verifies production consumers, snapshots, forced colors, and real Figma evidence.",
+        "reviewedAt": "2026-05-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/AlertBanner/AlertBanner.module.css",
+    "../../../nextjs-app/shared/components/AlertBanner/AlertBanner.tsx"
+  ]
+}

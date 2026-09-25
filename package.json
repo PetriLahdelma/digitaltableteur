@@ -92,6 +92,8 @@
     "validate:components": "tsx scripts/design-system/validate-components.ts",
     "validate:agent-usage": "tsx scripts/design-system/validate-agent-usage.ts",
     "check:contract-surface": "node scripts/design-system/check-contract-surface.mjs",
+    "export:contract-spec": "node scripts/design-system/export-contract-spec.mjs",
+    "check:contract-spec": "node scripts/design-system/export-contract-spec.mjs --check && node packages/contract-spec/src/cli.mjs public/contracts/v1 --level 1 --quiet && node --test packages/contract-spec/test/*.test.mjs",
     "validate:agent-docs": "node scripts/validate-agent-docs.mjs",
     "report:doc-coverage": "node scripts/design-system/report-doc-coverage.mjs",
     "report:component-usage": "node scripts/design-system/report-component-usage.mjs",

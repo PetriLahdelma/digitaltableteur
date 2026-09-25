@@ -1,0 +1,210 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "EmailSignatureGenerator",
+  "status": "beta",
+  "description": "Interactive tool that turns form inputs into a copyable, email-client-safe HTML signature.",
+  "props": {
+    "companyName": {
+      "type": "string",
+      "optional": true,
+      "description": "Company name for the signature"
+    },
+    "companyUrl": {
+      "type": "string",
+      "optional": true,
+      "description": "Company website URL"
+    },
+    "logoUrl": {
+      "type": "string",
+      "optional": true,
+      "description": "Company logo URL for preview (relative path works)"
+    },
+    "logoUrlFull": {
+      "type": "string",
+      "optional": true,
+      "description": "Full URL for the logo in generated HTML signature"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:33.603Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.480Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:25.770Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:33.954Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.709Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:26.018Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:34.271Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.960Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:26.273Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:33.603Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.480Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:25.770Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:33.954Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.709Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:26.018Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:38:34.271Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.960Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:26.273Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.480Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.709Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:08.960Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
+    "../../../nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.tsx"
+  ]
+}

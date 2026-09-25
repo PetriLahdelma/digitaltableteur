@@ -1,0 +1,252 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "BlogMediaImage",
+  "status": "stable",
+  "description": "Blog-optimized responsive image: renders raster sources through next/image and SVG sources as a plain img, with fill, cover/contain fit and a fluid full-bleed mode.",
+  "props": {
+    "src": {
+      "type": "string",
+      "optional": false
+    },
+    "alt": {
+      "type": "string",
+      "optional": false
+    },
+    "fill": {
+      "type": "boolean",
+      "optional": true
+    },
+    "width": {
+      "type": "number",
+      "optional": true
+    },
+    "height": {
+      "type": "number",
+      "optional": true
+    },
+    "className": {
+      "type": "string",
+      "optional": true
+    },
+    "priority": {
+      "type": "boolean",
+      "optional": true
+    },
+    "sizes": {
+      "type": "string",
+      "optional": true
+    },
+    "onLoad": {
+      "type": "() => void",
+      "optional": true
+    },
+    "onError": {
+      "type": "() => void",
+      "optional": true
+    },
+    "fit": {
+      "type": "union",
+      "values": [
+        "cover",
+        "contain"
+      ],
+      "optional": true,
+      "description": "Diagram heroes should use contain; photos use cover."
+    },
+    "fluid": {
+      "type": "boolean",
+      "optional": true,
+      "description": "When true, image spans its container (no max-width cap from width prop)."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:44.976Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.498Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:31.782Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.229Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.704Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:32.146Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.432Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.931Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:32.506Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:44.976Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.498Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:31.782Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.229Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.704Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:32.146Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:34:45.432Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.931Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:32.506Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.498Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.704Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogMediaImage/__a11y-evidence__/site-blogmediaimage-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:24.931Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (inline, fluid, fill+contain); 4-mode AT snapshots captured and compare-clean. Alt text is a required prop; SVG sources render as a plain img with lazy loading, raster through next/image. No own animation. 2026-07-08 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/BlogMediaImage/BlogMediaImage.tsx"
+  ]
+}

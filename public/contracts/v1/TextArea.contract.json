@@ -1,0 +1,220 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "TextArea",
+  "status": "stable",
+  "description": "Multi-line text field with label, error/helper text, and optional animated auto-grow.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { TextArea } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "label": {
+      "type": "string",
+      "optional": false,
+      "description": "Visible field label"
+    },
+    "value": {
+      "type": "string",
+      "optional": true,
+      "description": "Value synced into the field; typing still works after it is set"
+    },
+    "error": {
+      "type": "string",
+      "optional": true,
+      "description": "Validation error message; renders above the helper line"
+    },
+    "helperText": {
+      "type": "string",
+      "optional": true,
+      "description": "Helper copy below the field"
+    },
+    "onChange": {
+      "type": "(value: string) => void",
+      "optional": true,
+      "description": "Change handler receiving the raw string value"
+    },
+    "animateResize": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Enable smooth animated auto-growing (default: false)"
+    },
+    "minRows": {
+      "type": "number",
+      "optional": true,
+      "description": "Minimum number of rows when animateResize is enabled"
+    },
+    "maxRows": {
+      "type": "number",
+      "optional": true,
+      "description": "Maximum number of rows when animateResize is enabled"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.783Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.966Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.579Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:10.235Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.783Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:06.707Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:10.267Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.966Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:06.729Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:10.184Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.579Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:32:06.667Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.783Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.966Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:47.579Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-05 — alpha→beta a11y review (Petri/Claude). Brought to TextInput/PhoneInput parity: label association now uses useId() (was the raw label string → duplicate-id + broke on spaces); error wired through aria-invalid + aria-describedby to a role=alert HelperText (was unassociated, and the story falsely claimed aria-invalid); required marker now driven by the required prop, not the error state; error no longer leaks into the label title tooltip. Keyboard = native textarea Tab/Shift+Tab. Verified axe-clean on Default/WithHelperCopy/WithError via test-storybook; light + dark + emulated forced-colors eyeballed in a real browser (visible CanvasText border, readable label/placeholder/error). reduced-motion drops the auto-grow height transition (CSS @media). Unit tests assert the aria wiring, required-from-prop, and unique-id behavior.",
+        "reviewedAt": "2026-07-05"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/TextArea/TextArea.module.css",
+    "../../../nextjs-app/shared/components/TextArea/TextArea.tsx"
+  ]
+}

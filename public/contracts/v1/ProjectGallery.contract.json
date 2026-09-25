@@ -1,0 +1,264 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ProjectGallery",
+  "status": "stable",
+  "description": "Responsive case-study image gallery: a labelled grid of figures where each thumbnail opens a shared lightbox.",
+  "props": {
+    "images": {
+      "type": "GalleryImage[]",
+      "optional": false,
+      "description": "Array of images to display"
+    },
+    "columns": {
+      "type": "2 | 3 | 4",
+      "optional": true,
+      "description": "Number of columns"
+    },
+    "gap": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Gap size between images"
+    },
+    "aspectRatio": {
+      "type": "union",
+      "values": [
+        "mixed",
+        "video",
+        "square"
+      ],
+      "optional": true,
+      "description": "Aspect ratio for thumbnails"
+    },
+    "enableLightbox": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Enable lightbox on click"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:45.821Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.164Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:28.493Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:46.113Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.384Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:28.789Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:46.466Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.622Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:29.081Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:45.821Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.164Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:28.493Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:46.113Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.384Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:28.789Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:13:46.466Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.622Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:29.081Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.164Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.384Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectGallery/__a11y-evidence__/site-projectgallery-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.622Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "reduced-motion",
+        "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+        "verification": "manual",
+        "wcag": [
+          "2.2.2",
+          "2.3.3"
+        ],
+        "reviewedAt": "2026-07-06"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (3/4 columns, mixed/square, lightbox on/off); 4-mode AT snapshots captured and compare-clean. Grid is role=list; thumbnails are keyboard-activatable buttons naming the fullscreen action. GSAP scroll-stagger is already gated behind a prefers-reduced-motion check in the component. Tailwind className styling retained as an intentional per-surface owner call. 2026-07-07 beta->stable: independently re-verified light/dark + forced-colors of the grid (with and without lightbox) in a real browser. Closed a reduced-motion gap the alpha note missed: the thumbnail hover scale + overlay transitions now carry motion-reduce guards (the GSAP stagger was already gated, but the CSS hover transforms were not). realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ProjectGallery/ProjectGallery.tsx"
+  ]
+}

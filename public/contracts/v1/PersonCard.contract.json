@@ -1,0 +1,308 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "PersonCard",
+  "status": "beta",
+  "description": "Profile card for a person with avatar, name, role, and links, plus a skeleton loading state for rosters.",
+  "props": {
+    "imageSrc": {
+      "type": "string",
+      "optional": false
+    },
+    "imageAlt": {
+      "type": "string",
+      "optional": false
+    },
+    "imageSrcSet": {
+      "type": "string",
+      "optional": true
+    },
+    "imageSizes": {
+      "type": "string",
+      "optional": true
+    },
+    "name": {
+      "type": "string",
+      "optional": false
+    },
+    "title": {
+      "type": "string",
+      "optional": false
+    },
+    "email": {
+      "type": "string",
+      "optional": false
+    },
+    "linkedinUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "linkedinLabel": {
+      "type": "string",
+      "optional": true
+    },
+    "githubUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "githubLabel": {
+      "type": "string",
+      "optional": true
+    },
+    "facebookUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "facebookLabel": {
+      "type": "string",
+      "optional": true
+    },
+    "twitterUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "twitterLabel": {
+      "type": "string",
+      "optional": true
+    },
+    "dribbbleUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "dribbbleLabel": {
+      "type": "string",
+      "optional": true
+    },
+    "mediumUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "mediumLabel": {
+      "type": "string",
+      "optional": true
+    },
+    "instagramUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "instagramLabel": {
+      "type": "string",
+      "optional": true
+    },
+    "substackUrl": {
+      "type": "string",
+      "optional": true
+    },
+    "substackLabel": {
+      "type": "string",
+      "optional": true
+    },
+    "className": {
+      "type": "string",
+      "optional": true
+    },
+    "imageLoading": {
+      "type": "union",
+      "values": [
+        "lazy",
+        "eager"
+      ],
+      "optional": true
+    },
+    "imageDecoding": {
+      "type": "union",
+      "values": [
+        "auto",
+        "sync",
+        "async"
+      ],
+      "optional": true
+    },
+    "loading": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show skeleton placeholders while content is loading"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:33.077Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.502Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:29.503Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:33.575Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.834Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:29.867Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:32.621Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.192Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:29.090Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:33.077Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.502Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:29.503Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:33.575Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.834Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:29.867Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:32.621Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.192Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:29.090Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.502Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.834Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:55.192Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/PersonCard/PersonCard.module.css",
+    "../../../nextjs-app/shared/components/PersonCard/PersonCard.tsx"
+  ]
+}

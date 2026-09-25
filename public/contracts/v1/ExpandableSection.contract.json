@@ -1,0 +1,311 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ExpandableSection",
+  "status": "stable",
+  "description": "Collapsible content region with a trigger header. Lighter than `Accordion` (which manages a group of expandables) — used standalone for a single 'show more' or detail-disclosure section.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { ExpandableSection } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "collapsedLabel": {
+      "type": "string",
+      "optional": false,
+      "description": "Trigger label when collapsed"
+    },
+    "expandedLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Trigger label when expanded (optional, defaults to collapsedLabel)"
+    },
+    "defaultExpanded": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether the section is initially expanded"
+    },
+    "expanded": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Controlled expanded state"
+    },
+    "onExpandedChange": {
+      "type": "(expanded: boolean) => void",
+      "optional": true,
+      "description": "Callback when expansion state changes"
+    },
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Content to reveal"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional className for the container"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:15.670Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.048Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:52.248Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:16.809Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.449Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:52.735Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:17.338Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.643Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:53.004Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:16.320Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.246Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:52.468Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:15.670Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.048Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:52.248Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:16.809Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.449Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:52.735Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:17.338Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.643Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:53.004Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:16.320Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.246Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:52.468Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.048Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.449Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.643Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ExpandableSection/__a11y-evidence__/layout-expandablesection-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:42:07.246Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "reduced-motion",
+        "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+        "verification": "manual",
+        "wcag": [
+          "2.2.2",
+          "2.3.3"
+        ],
+        "reviewedAt": "2026-07-06"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 — beta→stable: element corrected section→div; aria contract corrected to the real button+aria-expanded disclosure (the panel unmounts on collapse, so no aria-controls to dangle); reduced-motion CSS guard added for the trigger colour + icon-rotation transitions (the framer-motion morph was already duration-zeroed). AT snapshots bootstrapped across base/light/dark/forced-colors; axe green in light + dark + forced-colors.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ExpandableSection/ExpandableSection.module.css",
+    "../../../nextjs-app/shared/components/ExpandableSection/ExpandableSection.tsx"
+  ]
+}

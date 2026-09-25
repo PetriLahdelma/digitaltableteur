@@ -1,0 +1,368 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "TreeView",
+  "status": "beta",
+  "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { TreeView } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "nodes": {
+      "type": "TreeViewNode[]",
+      "optional": false,
+      "description": "Hierarchical nodes."
+    },
+    "aria-label": {
+      "type": "string",
+      "optional": false,
+      "description": "Accessible name for the tree."
+    },
+    "selectedId": {
+      "type": "string | null",
+      "optional": true,
+      "description": "Controlled selected node identifier."
+    },
+    "defaultSelectedId": {
+      "type": "string | null",
+      "optional": true,
+      "description": "Initial uncontrolled selected node identifier."
+    },
+    "onSelectedIdChange": {
+      "type": "(id: string) => void",
+      "optional": true,
+      "description": "Receives selection changes."
+    },
+    "expandedIds": {
+      "type": "string[]",
+      "optional": true,
+      "description": "Controlled expanded node identifiers."
+    },
+    "defaultExpandedIds": {
+      "type": "string[]",
+      "optional": true,
+      "description": "Initial uncontrolled expanded node identifiers."
+    },
+    "onExpandedIdsChange": {
+      "type": "(ids: string[]) => void",
+      "optional": true,
+      "description": "Receives expansion changes."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Density scale."
+    },
+    "className": {
+      "type": "string",
+      "optional": true
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:51.207Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:40.130Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-disabled-node.dark.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:51.038Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-disabled-node.light.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:25.347Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:51.764Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:40.649Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:52.022Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:40.945Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-keyboard-interaction.dark.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:51.680Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-keyboard-interaction.light.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:26.006Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-large-tree.dark.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:51.352Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-large-tree.light.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:25.682Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:51.490Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:40.399Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:51.207Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:13.148Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:40.130Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-disabled-node.dark.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:51.038Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-disabled-node.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:13.231Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-disabled-node.light.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:25.347Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:51.764Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:13.207Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:40.649Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:52.022Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:13.398Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:40.945Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-keyboard-interaction.dark.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:51.680Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-keyboard-interaction.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:13.373Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-keyboard-interaction.light.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:26.006Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-large-tree.dark.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:51.352Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-large-tree.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:13.265Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-large-tree.light.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:37:25.682Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:51.490Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.forced-colors.json",
+            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
+            "capturedAt": "2026-08-05T09:38:13.179Z",
+            "passed": true,
+            "runner": "beta-flip-dt1412"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:40.399Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-26"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-26 — tree semantics, roving focus, expansion and selection keyboard behavior, and axe result reviewed in unit tests. 2026-08-03 — Phase 1 pass: light/dark/forced-colors verified in a real browser; full keyboard model (arrows, Home/End, Enter/Space) driven by a play story; axe caught and we fixed selected-row description contrast; AT-tree and real-browser forced-colors evidence captured.",
+        "reviewedAt": "2026-07-26"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/TreeView/TreeView.module.css",
+    "../../../nextjs-app/shared/components/TreeView/TreeView.tsx"
+  ]
+}

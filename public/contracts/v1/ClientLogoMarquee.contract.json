@@ -1,0 +1,244 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ClientLogoMarquee",
+  "status": "beta",
+  "description": "Animated client logo marquee on the homepage.",
+  "props": {
+    "ariaLabel": {
+      "type": "string",
+      "optional": false,
+      "description": "Accessible name for the marquee section."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional CSS classes on the marquee section."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:47.335Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.108Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:39.183Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:47.823Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.610Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:39.667Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:48.087Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.851Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:39.960Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:47.581Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.372Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:39.433Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:47.335Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.108Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:39.183Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:47.823Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.610Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:39.667Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:48.087Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.851Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:39.960Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:47.581Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.372Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:25:39.433Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.108Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.610Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.851Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:59.372Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.tsx"
+  ]
+}

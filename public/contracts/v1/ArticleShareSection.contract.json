@@ -1,0 +1,237 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ArticleShareSection",
+  "status": "stable",
+  "description": "End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading.",
+  "props": {
+    "url": {
+      "type": "string",
+      "optional": false,
+      "description": "Article URL to share"
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Article title for share text"
+    },
+    "layout": {
+      "type": "union",
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
+      "optional": true,
+      "description": "Layout direction"
+    },
+    "showTitle": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show section title"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:08.997Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.402Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:34.356Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:09.256Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.627Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:34.577Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:09.493Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.859Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:34.818Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:08.997Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.402Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:34.356Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:09.256Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.627Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:34.577Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:09.493Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.859Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:34.818Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.402Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.627Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleShareSection/__a11y-evidence__/site-articlesharesection-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:19.859Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (horizontal + vertical, with/without heading); 4-mode AT snapshots captured and compare-clean. Every icon-only control carries an aria-label; the copied-state confirmation uses green-800 ink (green-600 is only ~3:1 on white, below AA). Figma composes cloned on-page Phosphor icon instances. Tailwind className styling retained as an intentional per-surface owner call. 2026-07-08 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ArticleShareSection/ArticleShareSection.tsx"
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Card",
+  "status": "stable",
+  "description": "Quiet bordered card surface for discrete, self-contained content, including cards with actions composed into footer slots.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Card } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "variant": {
+      "type": "union",
+      "values": [
+        "default",
+        "muted",
+        "transparent"
+      ],
+      "optional": true,
+      "description": "Background variant. All variants keep a transparent border so\nswitching never causes layout jitter.\n- default: surface background with a hairline border\n- muted: recessed light background, no visible border\n- transparent: no background, no border — grouping without weight"
+    },
+    "padding": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "none"
+      ],
+      "optional": true,
+      "description": "Internal padding step on the space scale (12/16/24px)"
+    },
+    "as": {
+      "type": "union",
+      "values": [
+        "article",
+        "div",
+        "section",
+        "aside",
+        "li"
+      ],
+      "optional": true,
+      "description": "Semantic element for the card surface"
+    },
+    "title": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional heading rendered at the top of the card"
+    },
+    "titleProps": {
+      "type": "CardTitleProps",
+      "optional": true,
+      "description": "Heading configuration"
+    },
+    "description": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional supporting line under the title"
+    },
+    "descriptionProps": {
+      "type": "CardDescriptionProps",
+      "optional": true,
+      "description": "Description configuration"
+    },
+    "headerStart": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Leading header region. Defaults to the `title` heading block when omitted."
+    },
+    "headerEnd": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Trailing header region (badge, metadata, menu). Canonical replacement for `extra`."
+    },
+    "extra": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "deprecated": {
+        "reason": "Marked @deprecated in the TypeScript source."
+      }
+    },
+    "footerStart": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Leading footer region — the special/destructive action, pinned left."
+    },
+    "footerEnd": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Trailing footer region — 1–2 action buttons, pinned right."
+    },
+    "link": {
+      "type": "string",
+      "optional": true,
+      "description": "Makes the whole card one link to this href"
+    },
+    "linkLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name for the link when title alone is ambiguous"
+    },
+    "loading": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Skeleton loading state (role=status, aria-busy)"
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": true
+    }
+  },
+  "rules": [
+    {
+      "id": "card-link-with-footer",
+      "when": {
+        "link": {
+          "present": true
+        }
+      },
+      "forbid": [
+        "footerStart",
+        "footerEnd"
+      ],
+      "reason": "`link` is ignored when `footerStart`/`footerEnd` are set: a stretched anchor cannot wrap interactive footer controls. Use a plain card with buttons instead.",
+      "severity": "error",
+      "evidence": "Card.tsx development warning (linkSuppressed)"
+    }
+  ],
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:25.322Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-default.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:45:38.033Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.057Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:26.892Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-example.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:45:38.134Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.552Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:26.945Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-forced-colors.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:45:38.175Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.615Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:15:26.284Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-playground.forced-colors.json",
+            "sourceCommit": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+            "capturedAt": "2026-07-30T08:45:38.088Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Card/__a11y-evidence__/layout-card-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.301Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-04"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-04 — Astryx-shaped simplification: hairline surface, stretched-anchor link mode (no nested interactives), loading via Skeleton; axe on Default/AsLink/Loading; forced-colors keeps the physical border.",
+        "reviewedAt": "2026-07-04"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Card/Card.module.css",
+    "../../../nextjs-app/shared/components/Card/Card.tsx"
+  ]
+}

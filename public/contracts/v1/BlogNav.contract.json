@@ -1,0 +1,219 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "BlogNav",
+  "status": "stable",
+  "description": "Blog article sub-navigation: a back-to-articles action plus previous/next controls for stepping through the article sequence.",
+  "props": {
+    "currentPath": {
+      "type": "string",
+      "optional": true,
+      "description": "Active route used to compute the prev/next disabled state. Defaults to the\ncurrent pathname from the router; stories and tests override it to show a\ngiven position in the article sequence."
+    },
+    "pages": {
+      "type": "readonly BlogNavPage[]",
+      "optional": true,
+      "description": "Ordered article paths. Defaults to the bundled legacy sequence."
+    },
+    "onNavigate": {
+      "type": "(path: string) => void",
+      "optional": true,
+      "description": "Host navigation callback. Defaults to the configured navigation runtime."
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Disables every action while host navigation is pending."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:28.639Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:26.935Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:11.106Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:28.871Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:27.207Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:11.391Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:29.139Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:27.445Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:11.663Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:28.639Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:26.935Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:11.106Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:28.871Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:27.207Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:11.391Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:35:29.139Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:27.445Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:28:11.663Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:26.935Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:27.207Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogNav/__a11y-evidence__/site-blognav-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:27.445Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-16 beta->stable: production NextBlogNav now composes BlogNav with live post metadata; required-story AT snapshots and Chromium forced-colors were recaptured after the host-driven pages/navigation API landed.",
+        "reviewedAt": "2026-07-16"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/BlogNav/BlogNav.tsx",
+    "../../../nextjs-app/shared/components/BlogNav/blognav.module.css"
+  ]
+}

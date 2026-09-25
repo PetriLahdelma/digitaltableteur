@@ -1,0 +1,339 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "List",
+  "status": "stable",
+  "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size matches the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { List } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "items": {
+      "type": "React.ReactNode[]",
+      "optional": false,
+      "description": "Ordered content rendered as one list item per entry."
+    },
+    "as": {
+      "type": "union",
+      "values": [
+        "ol",
+        "ul"
+      ],
+      "optional": true,
+      "description": "Semantic list element."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional class name applied to the list element."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "xl",
+        "xs",
+        "s",
+        "xxs",
+        "m",
+        "l",
+        "xxl"
+      ],
+      "optional": true,
+      "description": "Tokenized text size."
+    },
+    "lineHeight": {
+      "type": "union",
+      "values": [
+        "normal",
+        "tight",
+        "snug",
+        "relaxed",
+        "loose"
+      ],
+      "optional": true,
+      "description": "Optional tokenized line height."
+    },
+    "style": {
+      "type": "React.CSSProperties",
+      "optional": true,
+      "description": "Inline style overrides applied after component defaults."
+    },
+    "listStyleType": {
+      "type": "union",
+      "values": [
+        "none",
+        "decimal",
+        "circle",
+        "square",
+        "disc",
+        "decimal-leading-zero",
+        "lower-alpha",
+        "upper-alpha",
+        "lower-roman",
+        "upper-roman",
+        "dash"
+      ],
+      "optional": true,
+      "description": "Native marker style or the custom dash treatment."
+    },
+    "spacing": {
+      "type": "union",
+      "values": [
+        "normal",
+        "relaxed",
+        "compact"
+      ],
+      "optional": true,
+      "description": "Vertical spacing between items."
+    },
+    "role": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional ARIA role override for specialized list semantics."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.338Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.552Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.049Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.939Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.967Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.545Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:02.378Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.177Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.808Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.642Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.744Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.298Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.338Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.552Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.049Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.939Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.967Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.545Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:02.378Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.177Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.808Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:01.642Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.744Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:42.298Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.552Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.967Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:37.177Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/List/__a11y-evidence__/content-list-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:36.744Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots refreshed compare-clean; Controls operable + 0 inert; no motion in the CSS so reducedMotion is trivially honest. Fixed real defects: `element` was \"div\" but the root render is a `<ul>`/`<ol>`; the placeholder description was replaced with an honest one; `variants.terminals.default` said \"serif\" but the component defaults to \"sans\"; and the docs overclaimed `dl` support (the `as` prop is only ul|ol and children are always `<li>`).",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/List/List.module.css",
+    "../../../nextjs-app/shared/components/List/List.tsx"
+  ]
+}

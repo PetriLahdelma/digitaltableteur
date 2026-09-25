@@ -1,0 +1,287 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "CodeBlockWindow",
+  "status": "stable",
+  "description": "Framed code block with a title bar, language label, optional line numbers, and copy button; renders pre-highlighted Shiki output with theme-aware syntax colors.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { CodeBlockWindow } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "title": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional title or filename shown in the header"
+    },
+    "caption": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional caption rendered below the code"
+    },
+    "language": {
+      "type": "string",
+      "optional": true,
+      "description": "Language label shown in the header"
+    },
+    "showLineNumbers": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Force line numbers on/off (defaults to presence in Shiki output)"
+    },
+    "context": {
+      "type": "union",
+      "values": [
+        "article",
+        "default"
+      ],
+      "optional": true,
+      "description": "Article prose layout — 80% width, 35vh max height, wrap + vertical scroll"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional className passthrough"
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "Code block content (expected Shiki <pre><code>)"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:46.597Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:45.875Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:44.302Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:47.374Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.306Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:44.876Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:47.822Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.533Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:45.141Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:46.974Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.095Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:44.604Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:46.597Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:45.875Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:44.302Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:47.374Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.306Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:44.876Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:47.822Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.533Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:45.141Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:46.974Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.095Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:44.604Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:45.875Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.306Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.533Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:41:46.095Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 — beta→stable: AT snapshots bootstrapped across base/light/dark/forced-colors (all beta-matrix stories green, deterministic); shiki dual-theme (--shiki-light/--shiki-dark) syntax colors + forced-colors CanvasText mapping verified. 2026-07-10 — Figma component built (Molecules, node 1164-257): traffic-light chrome on DT tokens, Shiki body bound to the new code/shiki/* per-theme variables (values extracted from codeBlockFixtures.ts), header/caption on code/toolbar-text.",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockFixtureRenderer.tsx",
+    "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
+    "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.tsx"
+  ]
+}

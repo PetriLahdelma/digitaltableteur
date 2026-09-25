@@ -1,0 +1,297 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "CategoryFilter",
+  "status": "stable",
+  "description": "Filter pill row for list pages (blog archive, work index). Multiple visual treatments (pills, underline, minimal) for different surface densities.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { CategoryFilter } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "categories": {
+      "type": "CategoryOption[]",
+      "optional": false,
+      "description": "Array of category options"
+    },
+    "activeCategory": {
+      "type": "string",
+      "optional": false,
+      "description": "Currently active category value"
+    },
+    "onCategoryChange": {
+      "type": "(category: string) => void",
+      "optional": false,
+      "description": "Callback when category changes"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Size variant"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "pills",
+        "underline",
+        "minimal"
+      ],
+      "optional": true,
+      "description": "Style variant"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:18.860Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.238Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.153Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:19.505Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.687Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.623Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:19.806Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.917Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.884Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:19.214Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.478Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.409Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:18.860Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.238Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.153Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:19.505Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.687Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.623Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:19.806Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.917Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.884Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:19.214Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.478Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:46.409Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.238Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.687Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.917Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CategoryFilter/__a11y-evidence__/site-categoryfilter-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:39.478Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-07 beta->stable: fixed the code/contract a11y mismatch — the component had drifted to role=tablist + role=tab + aria-selected (a tablist without tab panels), contradicting this contract's stated toggle-button intent. Reconciled BOTH this and BlogCategoryFilter to role=group + aria-pressed toggle buttons (a filter is a UI control, not a set of tab panels). Also fixed element nav->div and variants.size default sm->md. Added a unit test (group/aria-pressed/axe across all three variants). Independently re-verified light/dark + forced-colors in a real browser.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/CategoryFilter/CategoryFilter.tsx"
+  ]
+}

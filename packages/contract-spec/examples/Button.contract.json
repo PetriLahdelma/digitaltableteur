@@ -1,0 +1,80 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Button",
+  "status": "stable",
+  "description": "Triggers an action. Use a link for navigation.",
+  "package": {
+    "name": "@acme/ui",
+    "import": "import { Button } from \"@acme/ui\";"
+  },
+  "props": {
+    "variant": {
+      "type": "union",
+      "values": ["primary", "secondary", "tertiary"],
+      "optional": true,
+      "default": "secondary",
+      "description": "Visual weight."
+    },
+    "icon": { "type": "string", "optional": true, "description": "Icon name." },
+    "accessibleName": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name when the button has no visible text."
+    },
+    "kind": {
+      "type": "string",
+      "optional": true,
+      "deprecated": {
+        "since": "2.0.0",
+        "reason": "Split into variant and tone.",
+        "replacement": "variant",
+        "removeIn": "3.0.0"
+      }
+    }
+  },
+  "rules": [
+    {
+      "id": "icon-only-needs-name",
+      "when": { "icon": { "present": true }, "children": { "absent": true } },
+      "requireAnyOf": ["accessibleName", "aria-label"],
+      "reason": "An icon-only button has no accessible name.",
+      "severity": "error"
+    }
+  ],
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Every documented example renders with no axe violations.",
+        "verification": "automated",
+        "wcag": ["2.5.8"],
+        "check": "npm run test:a11y",
+        "evidence": [
+          {
+            "artifact": "evidence/button-default.axe.json",
+            "sourceCommit": "4f2a9c1e7b3d5a6c8e0f1a2b3c4d5e6f7a8b9c0d",
+            "capturedAt": "2026-09-20T08:30:00.000Z",
+            "passed": true,
+            "runner": "ci"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Enter and Space activate the button.",
+        "verification": "manual",
+        "wcag": ["2.1.1"],
+        "reviewedAt": "2026-09-01"
+      },
+      {
+        "id": "screen-reader",
+        "statement": "Announced correctly by VoiceOver and NVDA.",
+        "verification": "unverified",
+        "note": "Declared gap: no screen-reader pass yet."
+      }
+    ]
+  },
+  "governance": { "owner": "design-system-team", "lastReviewed": "2026-09-01" },
+  "source": ["src/Button.tsx"]
+}

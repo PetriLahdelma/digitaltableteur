@@ -1,0 +1,273 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "StatusDot",
+  "status": "stable",
+  "description": "Tiny semantic status indicator: colored dot with visible or sr-only label.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { StatusDot } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "tone": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "neutral"
+      ],
+      "optional": true,
+      "description": "Semantic tone of the status."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Size token."
+    },
+    "pulse": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Animates a soft pulse for live/ongoing states (respects reduced motion)."
+    },
+    "label": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible label when no visible children are given (e.g. \"Online\")."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Visible label text rendered next to the dot."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:36.869Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.183Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:44.344Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:37.275Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.603Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:44.785Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.809Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:37.080Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.372Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:44.565Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:36.869Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.183Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:44.344Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:37.275Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.603Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:44.785Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:37.298Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.809Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:44.820Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:36:37.080Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.372Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:44.565Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.183Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.603Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.809Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:44:28.372Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 — alpha→beta: created the Figma component (tone×size variant set, dot fill bound to DT/Color tone tokens) at node 1004-1677, the only remaining beta blocker. Pulse animation disabled under prefers-reduced-motion (CSS guard verified); axe asserted in unit test; forced-colors + light/dark re-verified. 2026-07-08 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; each tone's dot background-color verified distinct via computed style (color axis).",
+        "reviewedAt": "2026-07-06"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/StatusDot/StatusDot.module.css",
+    "../../../nextjs-app/shared/components/StatusDot/StatusDot.tsx"
+  ]
+}

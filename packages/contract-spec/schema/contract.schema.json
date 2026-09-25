@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "title": "Design System Contract 1.0",
+  "description": "A machine-readable contract for one design-system component: its public API, the usage rules an agent or linter can check, and accessibility claims backed by evidence. Normative text: SPEC.md in @digitaltableteur/contract-spec.",
+  "type": "object",
+  "required": ["specVersion", "name", "status", "description", "props"],
+  "additionalProperties": false,
+  "patternProperties": {
+    "^x-": {}
+  },
+  "properties": {
+    "$schema": { "type": "string" },
+    "specVersion": { "const": "1.0" },
+    "name": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$",
+      "description": "Component name as consumers import it. Dotted names address compound sub-parts (Tabs.Trigger)."
+    },
+    "status": {
+      "enum": ["experimental", "alpha", "beta", "stable", "deprecated"],
+      "description": "Lifecycle stage. stable is a promise: conformance tooling holds stable contracts to the level a system claims."
+    },
+    "description": { "type": "string", "minLength": 1 },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "import": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The exact import statement consumers should write."
+        }
+      }
+    },
+    "props": {
+      "type": "object",
+      "description": "Public props API. Keys are prop names.",
+      "additionalProperties": { "$ref": "#/$defs/prop" }
+    },
+    "rules": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Machine-checkable usage rules. A rule fires when every `when` condition holds, then reports each present `forbid` prop and each missing `requireAnyOf` / `requireAllOf` prop. `children` is a pseudo-prop for element children.",
+      "items": { "$ref": "#/$defs/rule" }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["criteria"],
+      "properties": {
+        "criteria": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/criterion" }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["owner", "lastReviewed"],
+      "properties": {
+        "owner": { "type": "string", "minLength": 1 },
+        "lastReviewed": { "type": "string", "format": "date" },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "deprecation": { "$ref": "#/$defs/deprecation" },
+    "source": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Repository paths of the implementation, used for commit-based evidence freshness."
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "deprecated" } } },
+      "then": { "required": ["deprecation"] }
+    }
+  ],
+  "$defs": {
+    "literal": { "type": ["string", "number", "boolean"] },
+    "prop": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": { "^x-": {} },
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/literal" },
+          "description": "Allowed literal values. Required when type is union."
+        },
+        "optional": { "type": "boolean" },
+        "default": {},
+        "description": { "type": "string", "minLength": 1 },
+        "deprecated": { "$ref": "#/$defs/deprecation" }
+      },
+      "if": { "properties": { "type": { "const": "union" } } },
+      "then": { "required": ["values"] }
+    },
+    "deprecation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reason"],
+      "properties": {
+        "since": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "replacement": { "type": "string", "minLength": 1 },
+        "removeIn": { "type": "string", "minLength": 1 }
+      }
+    },
+    "propMatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "present": { "const": true },
+        "absent": { "const": true },
+        "equals": { "$ref": "#/$defs/literal" },
+        "oneOf": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/literal" }
+        }
+      }
+    },
+    "propNames": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "when", "reason", "severity"],
+      "anyOf": [
+        { "required": ["forbid"] },
+        { "required": ["requireAnyOf"] },
+        { "required": ["requireAllOf"] }
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "when": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "$ref": "#/$defs/propMatch" }
+        },
+        "forbid": { "$ref": "#/$defs/propNames" },
+        "requireAnyOf": { "$ref": "#/$defs/propNames" },
+        "requireAllOf": { "$ref": "#/$defs/propNames" },
+        "reason": { "type": "string", "minLength": 1 },
+        "severity": { "enum": ["error", "warning"] },
+        "evidence": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact", "sourceCommit", "capturedAt", "passed"],
+      "properties": {
+        "artifact": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path relative to the contract root, or an absolute https URL, of the machine-written record that proves the check ran."
+        },
+        "sourceCommit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{7,64}$",
+          "description": "The commit the check ran against."
+        },
+        "capturedAt": { "type": "string", "format": "date-time" },
+        "passed": { "type": "boolean" },
+        "runner": { "type": "string", "minLength": 1 }
+      }
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": { "^x-": {} },
+      "required": ["id", "statement", "verification"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "statement": { "type": "string", "minLength": 1 },
+        "verification": {
+          "enum": ["automated", "manual", "unverified"],
+          "description": "automated: a machine re-proves it and evidence is attached. manual: a person checked it (reviewedAt required). unverified: a declared gap, never a claim."
+        },
+        "wcag": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[1-4]\\.[0-9]+\\.[0-9]+$" },
+          "description": "WCAG 2.x success criteria the check exercises. Listing one is not a claim that the criterion is met."
+        },
+        "check": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The command that re-proves an automated criterion."
+        },
+        "evidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidenceRef" }
+        },
+        "reviewedAt": { "type": "string", "format": "date" },
+        "note": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "verification": { "const": "automated" } } },
+          "then": { "required": ["check", "evidence"] }
+        },
+        {
+          "if": { "properties": { "verification": { "const": "manual" } } },
+          "then": { "required": ["reviewedAt"] }
+        }
+      ]
+    }
+  }
+}

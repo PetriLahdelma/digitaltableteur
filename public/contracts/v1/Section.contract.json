@@ -1,0 +1,283 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Section",
+  "status": "stable",
+  "description": "Semantic section wrapper with spacing and background tokens.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Section } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Section content."
+    },
+    "spacing": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "none",
+        "hero",
+        "follow"
+      ],
+      "optional": true,
+      "description": "Block padding scale."
+    },
+    "background": {
+      "type": "union",
+      "values": [
+        "default",
+        "muted",
+        "accent",
+        "inverse"
+      ],
+      "optional": true,
+      "description": "Surface background token."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Section class names."
+    },
+    "id": {
+      "type": "string",
+      "optional": true,
+      "description": "Section id (anchor target)."
+    },
+    "spotlightTarget": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional stable selector target for host-app guided navigation."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:18.635Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:11.870Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:42.320Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:19.063Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.277Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:42.785Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:19.300Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.466Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:43.056Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:18.857Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.079Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:42.575Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:18.635Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:11.870Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:42.320Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:19.063Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.277Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:42.785Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:19.300Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.466Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:43.056Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:18.857Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.079Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:26:42.575Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:11.870Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.277Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.466Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Section/__a11y-evidence__/layout-section-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:12.079Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes (plain/light/dark/forced-colors); AT snapshots refreshed compare-clean; Controls 100% operable + 0 inert. Unlike a pure wrapper, Section owns a real surface (background=inverse flips bg-foreground/text-background) — eyeballed the Backgrounds story in light and dark: default/muted/inverse track the theme and inverse contrast holds both ways. Fixed two contract defects: element was \"div\" (renders <section>) and variants was empty (spacing + background are the styling axes). 2026-07-10 — Figma component built (Atoms, node 1178-1712, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Section/Section.tsx"
+  ]
+}

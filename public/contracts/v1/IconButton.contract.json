@@ -1,0 +1,211 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "IconButton",
+  "status": "stable",
+  "description": "Icon-only action button. Wraps @dt/Button in its rounded icon-only form with an enforced accessible label, sharing Button's variant (weight) x tone (semantic) matrix and surface awareness.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { IconButton } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "icon": {
+      "type": "ReactNode | string",
+      "optional": false,
+      "description": "Icon glyph: a rendered element (e.g. <CaretRight />) or a Phosphor icon name (e.g. \"x\")."
+    },
+    "label": {
+      "type": "string",
+      "optional": false,
+      "description": "Accessible name when `aria-labelledby` is not set"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "primary",
+        "secondary",
+        "tertiary"
+      ],
+      "optional": true,
+      "description": "Visual weight."
+    },
+    "tone": {
+      "type": "ButtonProps[\"tone\"]",
+      "optional": true,
+      "description": "Semantic colour, orthogonal to `variant`."
+    },
+    "surface": {
+      "type": "ButtonProps[\"surface\"]",
+      "optional": true,
+      "description": "Surface the control sits on; prefer over color overrides on tinted bands."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true
+    },
+    "tooltip": {
+      "type": "string",
+      "optional": true,
+      "description": "Native tooltip text shown on hover; the `label` stays the accessible name."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:22.890Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:48.642Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:23.194Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:48.906Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:23.561Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:49.102Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:22.890Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:48.642Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:23.194Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:48.906Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:23.561Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:49.102Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:22.920Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:30:48.667Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-05"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-05 — beta→stable (fleet #11): re-verified independently. Delegates all styling to stable @dt/Button, so reduced-motion (Button.module.css prefers-reduced-motion guard), variant/tone/surface matrix, and forced-colors inherit from Button. axe + plays green on all 9 stories in light/dark/forced-colors; 100% controls operable, 0 inert; AT snapshots captured for the four beta-matrix stories in all four modes. 2026-07-03 origin: API aligned to platinum variant x tone conventions (ghost/outline/default removed), keyboard/ARIA contract reviewed, axe unit tests added.",
+        "reviewedAt": "2026-07-05"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/IconButton/IconButton.tsx"
+  ]
+}

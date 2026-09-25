@@ -1,0 +1,590 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Modal",
+  "status": "stable",
+  "description": "Modal dialog for confirmations, forms, and focused tasks.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Modal } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "severity": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error"
+      ],
+      "optional": true,
+      "description": "Semantic severity level"
+    },
+    "isLoading": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Shows loading state with spinner"
+    },
+    "titleSize": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xs",
+        "xxs",
+        "xxl",
+        "XXS",
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "optional": true,
+      "description": "Title size - supports both modern (sm/md/lg) and legacy (S/M/L) formats"
+    },
+    "iconSize": {
+      "type": "IconProps[\"size\"]",
+      "optional": true,
+      "description": "Header icon size — Icon token scale (default lg for severity dialogs)"
+    },
+    "isOpen": {
+      "type": "boolean",
+      "optional": false,
+      "description": "Controls visibility"
+    },
+    "title": {
+      "type": "string",
+      "optional": true,
+      "description": "Title shown in header"
+    },
+    "description": {
+      "type": "string",
+      "optional": true,
+      "description": "Supporting text — wired to aria-describedby (DialogDescription parity)"
+    },
+    "menu": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Optional contextual menu or extra controls"
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Modal content"
+    },
+    "footer": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Footer content, e.g. actions"
+    },
+    "onClose": {
+      "type": "() => void",
+      "optional": true,
+      "description": "Close callback"
+    },
+    "icon": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Optional icon to display in the header"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional className for additional styling on the panel"
+    },
+    "showFooter": {
+      "type": "boolean",
+      "optional": true,
+      "description": "When false, omit the footer region (e.g. composable dialog bodies)"
+    },
+    "panelRef": {
+      "type": "React.Ref<HTMLDivElement>",
+      "optional": true,
+      "description": "Ref on the dialog panel for animation hooks"
+    },
+    "animation": {
+      "type": "union",
+      "values": [
+        "none",
+        "scale",
+        "slide",
+        "fade"
+      ],
+      "optional": true,
+      "description": "Entrance animation applied to the panel on open (respects prefers-reduced-motion)"
+    },
+    "showCloseIcon": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Show close icon button in header"
+    },
+    "closeIconName": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom close icon name (defaults to \"x\")"
+    },
+    "closeButtonLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom close button aria-label"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:11.963Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.222Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:33.427Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.590Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.608Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:33.998Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.584Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.773Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.848Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.194Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.838Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.262Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.413Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:33.721Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.379Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.013Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.798Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.309Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.456Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.988Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.563Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:11.963Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.222Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:33.427Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.590Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.608Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:33.998Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.984Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.584Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.913Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:14.061Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.773Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.946Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.848Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.194Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.838Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:12.262Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.413Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:33.721Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.934Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.379Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.880Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.013Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.798Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.309Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:12:13.456Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.988Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:34.563Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.222Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.608Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.584Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.773Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.194Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.413Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:32.379Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.798Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:40:31.988Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-06 — beta→stable: portal-aware AT snapshots regenerated across base/light/dark/forced-colors (all 9 beta-matrix stories green), severity color axis verified per value via getComputedStyle, footer default fixed; focus trap + Escape reviewed in plays.",
+        "reviewedAt": "2026-07-21"
+      }
+    ]
+  },
+  "governance": {
+    "owner": "design-system",
+    "lastReviewed": "2026-07-21",
+    "note": "Re-read after the #1280 content-reset fix. Nesting and aria-live rules promoted to must-not."
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Modal/Modal.module.css",
+    "../../../nextjs-app/shared/components/Modal/Modal.tsx"
+  ]
+}

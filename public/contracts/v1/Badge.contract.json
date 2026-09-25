@@ -1,0 +1,240 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Badge",
+  "status": "stable",
+  "description": "Compact status label with an orthogonal variant (visual weight) and tone (semantic colour), a size, and an optional icon.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Badge } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "primary",
+        "secondary"
+      ],
+      "optional": true,
+      "description": "Visual weight."
+    },
+    "tone": {
+      "type": "union",
+      "values": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "neutral"
+      ],
+      "optional": true,
+      "description": "Semantic colour, orthogonal to `variant`."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xs"
+      ],
+      "optional": true,
+      "description": "Size."
+    },
+    "className": {
+      "type": "string",
+      "optional": true
+    },
+    "removable": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Renders a dismiss control that removes the badge."
+    },
+    "onRemove": {
+      "type": "() => void",
+      "optional": true,
+      "description": "Called after the badge is dismissed."
+    },
+    "icon": {
+      "type": "React.ReactNode",
+      "optional": true,
+      "description": "Leading icon; a semantic icon is supplied automatically for non-neutral tones."
+    },
+    "dot": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Render a leading color-coded {@link StatusDot} (from `tone`) instead of the\nsemantic icon — e.g. lifecycle badges (alpha/beta/stable/deprecated). An\nexplicit `icon` still wins."
+    },
+    "square": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Square (non-pill) corners."
+    },
+    "role": {
+      "type": "\"status\"",
+      "optional": true,
+      "description": "ARIA role. `\"status\"` makes dynamic updates announce via `aria-live=\"polite\"`\n(e.g. a live notification count). Omit for static decorative badges."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.554Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.758Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.285Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:10.601Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.554Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:59.256Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:10.642Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.758Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:59.288Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:16:10.550Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.285Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:33:59.208Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.554Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.758Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:45:01.285Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-06-18 — platinum pass: variant/tone API, sm/md/lg sizes, contrast and forced-colors verified.",
+        "reviewedAt": "2026-06-18"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Badge/Badge.module.css",
+    "../../../nextjs-app/shared/components/Badge/Badge.tsx"
+  ]
+}

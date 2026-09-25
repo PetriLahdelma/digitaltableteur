@@ -32,6 +32,7 @@ npm run check:token-packages
 npm run check:published-tokens-freshness -- --max-age-days 7
 npm run check:contract-props
 npm run check:contract-surface
+npm run check:contract-spec
 npm run check:consumers
 # Keyboard delegation: a component whose keyboard contract is proven by another
 # component's test (ContactInquiryPanel -> Tabs, SiteHeader -> MobileDrawer) records

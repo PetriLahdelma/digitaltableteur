@@ -1,0 +1,275 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ScrollIndicator",
+  "status": "stable",
+  "description": "Animated affordance at the base of a hero that scrolls to the next section.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { ScrollIndicator } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "targetId": {
+      "type": "string",
+      "optional": true,
+      "description": "ID of the target element to scroll to"
+    },
+    "label": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional text label"
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "arrow",
+        "mouse",
+        "chevron"
+      ],
+      "optional": true,
+      "description": "Icon variant"
+    },
+    "position": {
+      "type": "union",
+      "values": [
+        "center",
+        "left",
+        "right"
+      ],
+      "optional": true,
+      "description": "Horizontal position"
+    },
+    "motion": {
+      "type": "union",
+      "values": [
+        "none",
+        "fade",
+        "bounce",
+        "pulse"
+      ],
+      "optional": true,
+      "description": "Looping motion applied to the icon as a hint to scroll."
+    },
+    "speed": {
+      "type": "number",
+      "optional": true,
+      "description": "Duration of one motion half-cycle, in seconds."
+    },
+    "distance": {
+      "type": "number",
+      "optional": true,
+      "description": "Vertical travel of the bounce motion, in pixels (bounce only)."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className for styling"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:37.511Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:03.672Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:37.987Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:04.158Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:38.238Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:04.453Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:37.755Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:03.938Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:37.511Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:21.966Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:03.672Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:37.987Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:22.024Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:04.158Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:38.238Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:22.067Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:04.453Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.dark.json",
+            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
+            "capturedAt": "2026-09-01T10:14:37.755Z",
+            "passed": true,
+            "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.forced-colors.json",
+            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
+            "capturedAt": "2026-07-30T09:02:21.987Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:31:03.938Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-24"
+      },
+      {
+        "id": "reduced-motion",
+        "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+        "verification": "manual",
+        "wcag": [
+          "2.2.2",
+          "2.3.3"
+        ],
+        "reviewedAt": "2026-07-24"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-07-24 — promotion pass: real <button> with Enter/Space activation and a focus-visible ring; every motion preset (bounce/pulse/fade) is gated behind prefers-reduced-motion (falls back to a static, fully-opaque icon); forced-colors keeps the icon and focus ring visible; light and dark legibility confirmed in a real browser. AT snapshots captured across base/light/dark/forced-colors.",
+        "reviewedAt": "2026-07-24"
+      }
+    ]
+  },
+  "governance": {
+    "owner": "design-system",
+    "lastReviewed": "2026-07-24",
+    "note": "Promoted to stable: consumed by HomeHero, ProjectHero, BlogHero and AboutHero. The variant/position/motion axes are prop-sourced (Tailwind conditional classes + a GSAP motion preset), not root CVA."
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ScrollIndicator/ScrollIndicator.tsx"
+  ]
+}

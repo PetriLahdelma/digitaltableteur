@@ -1,0 +1,60 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "WorkHero",
+  "status": "alpha",
+  "description": "Work index hero with portfolio positioning copy.",
+  "props": {
+    "title": {
+      "type": "string",
+      "optional": true,
+      "description": "Hero title - uses i18n key \"workTitle\" if not provided"
+    },
+    "description": {
+      "type": "string",
+      "optional": true,
+      "description": "Hero description - uses i18n key \"workDescription\" if not provided"
+    },
+    "id": {
+      "type": "string",
+      "optional": true,
+      "description": "Section ID for anchor navigation"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Custom className"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/patterns/WorkHero/WorkHero.tsx"
+  ]
+}

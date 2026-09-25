@@ -1,0 +1,451 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Container",
+  "status": "stable",
+  "description": "Max-width content wrapper with responsive horizontal padding.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { Container } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "children": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Page content inside the width constraint."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "full"
+      ],
+      "optional": true,
+      "description": "Max-width token."
+    },
+    "center": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Center the container horizontally."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Wrapper class names."
+    },
+    "as": {
+      "type": "union",
+      "values": [
+        "symbol",
+        "object",
+        "image",
+        "form",
+        "slot",
+        "style",
+        "title",
+        "button",
+        "search",
+        "article",
+        "dialog",
+        "figure",
+        "img",
+        "link",
+        "main",
+        "menu",
+        "menuitem",
+        "option",
+        "switch",
+        "table",
+        "text",
+        "time",
+        "div",
+        "section",
+        "aside",
+        "li",
+        "a",
+        "abbr",
+        "address",
+        "area",
+        "audio",
+        "b",
+        "base",
+        "bdi",
+        "bdo",
+        "big",
+        "blockquote",
+        "body",
+        "br",
+        "canvas",
+        "caption",
+        "center",
+        "cite",
+        "code",
+        "col",
+        "colgroup",
+        "data",
+        "datalist",
+        "dd",
+        "del",
+        "details",
+        "dfn",
+        "dl",
+        "dt",
+        "em",
+        "embed",
+        "fieldset",
+        "figcaption",
+        "footer",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "head",
+        "header",
+        "hgroup",
+        "hr",
+        "html",
+        "i",
+        "iframe",
+        "input",
+        "ins",
+        "kbd",
+        "keygen",
+        "label",
+        "legend",
+        "map",
+        "mark",
+        "meta",
+        "meter",
+        "nav",
+        "noindex",
+        "noscript",
+        "ol",
+        "optgroup",
+        "output",
+        "p",
+        "param",
+        "picture",
+        "pre",
+        "progress",
+        "q",
+        "rp",
+        "rt",
+        "ruby",
+        "s",
+        "samp",
+        "script",
+        "select",
+        "small",
+        "source",
+        "span",
+        "strong",
+        "sub",
+        "summary",
+        "sup",
+        "template",
+        "tbody",
+        "td",
+        "textarea",
+        "tfoot",
+        "th",
+        "thead",
+        "tr",
+        "track",
+        "u",
+        "ul",
+        "var",
+        "video",
+        "wbr",
+        "webview",
+        "svg",
+        "animate",
+        "animateMotion",
+        "animateTransform",
+        "circle",
+        "clipPath",
+        "defs",
+        "desc",
+        "ellipse",
+        "feBlend",
+        "feColorMatrix",
+        "feComponentTransfer",
+        "feComposite",
+        "feConvolveMatrix",
+        "feDiffuseLighting",
+        "feDisplacementMap",
+        "feDistantLight",
+        "feDropShadow",
+        "feFlood",
+        "feFuncA",
+        "feFuncB",
+        "feFuncG",
+        "feFuncR",
+        "feGaussianBlur",
+        "feImage",
+        "feMerge",
+        "feMergeNode",
+        "feMorphology",
+        "feOffset",
+        "fePointLight",
+        "feSpecularLighting",
+        "feSpotLight",
+        "feTile",
+        "feTurbulence",
+        "filter",
+        "foreignObject",
+        "g",
+        "line",
+        "linearGradient",
+        "marker",
+        "mask",
+        "metadata",
+        "mpath",
+        "path",
+        "pattern",
+        "polygon",
+        "polyline",
+        "radialGradient",
+        "rect",
+        "set",
+        "stop",
+        "textPath",
+        "tspan",
+        "use",
+        "view"
+      ],
+      "optional": true,
+      "description": "Polymorphic element."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:45.264Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:03.333Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:11.296Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:45.746Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:04.010Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:11.744Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:46.051Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:04.206Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:11.954Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:45.509Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:03.791Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:11.537Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-default.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:45.264Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:03.333Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-default.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:11.296Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-example.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:45.746Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:04.010Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-example.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:11.744Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-forced-colors.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:46.051Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:04.206Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-forced-colors.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:11.954Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-playground.dark.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:37:45.509Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:03.791Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-playground.light.json",
+            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
+            "capturedAt": "2026-09-10T06:27:11.537Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-default.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:03.333Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-example.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:04.010Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-forced-colors.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:04.206Z",
+            "passed": true,
+            "runner": "backfill"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Container/__a11y-evidence__/layout-container-playground.forced-colors.json",
+            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+            "capturedAt": "2026-07-26T13:43:03.791Z",
+            "passed": true,
+            "runner": "backfill"
+          }
+        ]
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed and compare-clean in all four modes (plain/light/dark/forced-colors); Controls 100% operable + 0 inert. Container carries no color surface of its own (tokens.colors empty; transparent wrapper), so light/dark is a structural no-op. Fixed the stale variants.size.default (\"sm\" → \"lg\") to match the component default and docs. 2026-07-10 — Figma component built (Atoms, node 1178-1654, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
+        "reviewedAt": "2026-05-28"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Container/Container.module.css",
+    "../../../nextjs-app/shared/components/Container/Container.tsx"
+  ]
+}
