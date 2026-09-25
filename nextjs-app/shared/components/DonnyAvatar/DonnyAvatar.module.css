@@ -25,6 +25,7 @@
   transition:
     transform 0.2s var(--ease-out, ease-out),
     opacity 0.15s ease;
+  overflow: visible;
 }
 
 .body {
@@ -205,17 +206,16 @@
 /* Confused tilt */
 
 .tilt {
-  animation: tilt 2s ease-in-out infinite;
+  animation: tilt 0.4s var(--ease-out, ease-out) forwards;
 }
 
 @keyframes tilt {
-  0%,
-  100% {
+  0% {
     transform: rotate(0deg);
   }
 
-  50% {
-    transform: rotate(8deg);
+  100% {
+    transform: rotate(-5deg);
   }
 }
 
@@ -364,8 +364,10 @@
 
 /* Loading spin */
 
-.spin {
-  animation: spin 1s linear infinite;
+.spinEyes .eye {
+  animation: spin 0.9s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 @keyframes spin {
@@ -508,17 +510,17 @@
   position: absolute;
   z-index: 1;
   padding: 0.125rem 0.375rem;
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  background: var(--donny-primary, var(--color-text));
   box-shadow: var(--shadow-sm);
   font-family: var(--font-mono, monospace);
-  font-size: 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
   white-space: nowrap;
-  color: var(--color-gray);
+  color: var(--donny-eyes, var(--color-surface));
   animation: bubbleFloat 2s ease-in-out infinite;
-  inset-block-start: -0.625rem;
-  inset-inline-end: -1.25rem;
+  inset-block-start: calc(-1 * var(--space-internal-8));
+  inset-inline-end: calc(-1 * var(--space-internal-12));
 }
 
 @keyframes bubbleFloat {
@@ -616,7 +618,10 @@
   .celebrate,
   .shrink,
   .blink,
-  .spin,
+  .spinEyes .eye,
+  .sparkles,
+  .questionMark,
+  .thoughtBubble,
   .wave,
   .drowsy,
   .snooze {

@@ -204,7 +204,7 @@ describe("DonnyAvatar", () => {
 
     it("renders thought bubbles for remembering state", () => {
       const { container } = render(<DonnyAvatar state="remembering" />);
-      const bubbles = container.querySelectorAll("circle[fill='white']");
+      const bubbles = container.querySelectorAll(`.${styles.thoughtBubble} circle`);
       expect(bubbles.length).toBeGreaterThan(0);
     });
   });

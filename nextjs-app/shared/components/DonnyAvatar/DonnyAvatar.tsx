@@ -124,9 +124,11 @@ const EYE_CONFIGS: Record<
     animation: "shake",
   },
   confused: {
+    // Uneven eyes: one normal, one smaller and raised. Both are true
+    // circles (arc chord = diameter); a chord shorter than the diameter
+    // draws a figure-eight.
     leftEye: "M12 16 A3 3 0 1 1 12 10 A3 3 0 1 1 12 16",
-    rightEye: "M28 14 A4 4 0 1 1 28 8 A4 4 0 1 1 28 14", // Larger
-    leftTransform: "translateY(1px)",
+    rightEye: "M28 13.5 A2 2 0 1 1 28 9.5 A2 2 0 1 1 28 13.5",
     animation: "tilt",
   },
   handoff: {
@@ -168,21 +170,21 @@ const EYE_CONFIGS: Record<
     animation: "celebrate",
   },
   apologetic: {
-    leftEye: "M9 16 Q12 14 15 16", // Sad curve
-    rightEye: "M25 16 Q28 14 31 16", // Sad curve
-    leftTransform: "translateY(2px)",
-    rightTransform: "translateY(2px)",
+    // Worried slant: inner ends raised. Arches (^ ^) read as content.
+    leftEye: "M9 15 L15 13",
+    rightEye: "M25 13 L31 15",
     animation: "shrink",
   },
   typing: {
-    leftEye: "M11 13 H13", // Cursor
-    rightEye: "M27 13 H29", // Cursor
-    animation: "blink",
+    // Eyes glance down at the keys; the mouth is a blinking text cursor.
+    leftEye: "M12 17 A3 3 0 1 1 12 11 A3 3 0 1 1 12 17",
+    rightEye: "M28 17 A3 3 0 1 1 28 11 A3 3 0 1 1 28 17",
   },
   loading: {
-    leftEye: "M12 13 A5 5 0 0 1 12 13", // Spinner segment
-    rightEye: "M28 13 A5 5 0 0 1 28 13", // Spinner segment
-    animation: "spin",
+    // Three-quarter rings that spin in place; the head stays still.
+    leftEye: "M15 13 A3 3 0 1 1 12 10",
+    rightEye: "M31 13 A3 3 0 1 1 28 10",
+    animation: "spinEyes",
   },
   waving: {
     leftEye: "M9 14 Q12 17 15 14",
@@ -210,9 +212,13 @@ const EYE_CONFIGS: Record<
     rightTransform: "translateY(-1px)",
   },
   skeptical: {
-    leftEye: "M12 16 A3 3 0 1 1 12 10 A3 3 0 1 1 12 16",
-    rightEye: "M28 14 A2.5 2 0 1 1 28 10 A2.5 2 0 1 1 28 14", // Raised brow
-    rightTransform: "translateY(-2px)",
+    // Skepticism lives in the brows (each eye path carries its brow as a
+    // second subpath): one pressed low and flat, the other arched high.
+    // An open eye beside a closed one reads as a wink instead.
+    leftEye:
+      "M12 17 A2.5 2.5 0 1 1 12 12 A2.5 2.5 0 1 1 12 17 M8.5 9.5 L15 10.5",
+    rightEye:
+      "M28 17 A2.5 2.5 0 1 1 28 12 A2.5 2.5 0 1 1 28 17 M25 7.5 Q28 5 31 7",
   },
   sleepy: {
     leftEye: "M9 14 Q12 12 15 14",  // Droopy half-closed
@@ -232,7 +238,16 @@ const EYE_CONFIGS: Record<
  * Mouth configurations for expressive states
  * Most states have no visible mouth - it only appears for strong emotions
  */
-type MouthType = "none" | "wide-smile" | "small-smile" | "puckered" | "round" | "slight";
+type MouthType =
+  | "none"
+  | "wide-smile"
+  | "small-smile"
+  | "puckered"
+  | "round"
+  | "slight"
+  | "wavy"
+  | "frown"
+  | "cursor";
 
 const MOUTH_CONFIGS: Record<DonnyState, MouthType> = {
   // Core states - mostly no mouth
@@ -242,7 +257,7 @@ const MOUTH_CONFIGS: Record<DonnyState, MouthType> = {
   searching: "none",
   success: "wide-smile",      // Really happy!
   error: "round",             // Scared/appalled "O" mouth
-  confused: "puckered",       // Bewildered pucker
+  confused: "wavy",           // Unsure squiggle
   handoff: "slight",
 
   // Extended states
@@ -252,15 +267,15 @@ const MOUTH_CONFIGS: Record<DonnyState, MouthType> = {
   confident: "slight",
   curious: "none",
   celebrating: "wide-smile",  // Really really happy!
-  apologetic: "puckered",     // Sad pucker
-  typing: "none",
+  apologetic: "frown",        // Sorry
+  typing: "cursor",           // Blinking text cursor
   loading: "none",
   waving: "small-smile",
   remembering: "none",
   focused: "none",
   playful: "small-smile",
   impressed: "round",         // Surprised "O" mouth
-  skeptical: "puckered",      // Hmm...
+  skeptical: "slight",        // Flat, unimpressed
   sleepy: "slight",           // Slightly open, relaxed
   sleeping: "round",          // Slightly open "o" while sleeping
 };
@@ -275,6 +290,9 @@ const MOUTH_PATHS: Record<Exclude<MouthType, "none">, string> = {
   "puckered": "M18 24 Q20 22 22 24 Q20 26 18 24", // Small puckered "~"
   "round": "M18 22 A2 2.5 0 1 0 22 22 A2 2.5 0 1 0 18 22", // Round "O"
   "slight": "M17 24 H23",                       // Slight neutral line
+  "wavy": "M15 24 Q17.5 22 20 24 Q22.5 26 25 24", // Unsure squiggle
+  "frown": "M16 25 Q20 22.5 24 25",             // Downturned
+  "cursor": "M20 21.5 V25.5",                   // Text cursor
 };
 
 // Speaking mouth path - small rounded opening
@@ -677,26 +695,31 @@ export function DonnyAvatar({
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={clsx(styles.mouth, isSpeaking && styles.speaking)}
+            className={clsx(
+              styles.mouth,
+              isSpeaking && styles.speaking,
+              !isSpeaking && MOUTH_CONFIGS[displayState] === "cursor" && styles.blink,
+            )}
           />
         )}
 
-        {/* Success sparkles */}
+        {/* Decorations sit OUTSIDE the head (the svg overflows) and use the
+            head colour: it is chosen to contrast with the page, whereas
+            anything drawn over the head in that colour disappears. */}
         {currentState === "celebrating" && (
-          <g className={styles.sparkles}>
-            <circle cx="6" cy="6" r="1.5" fill="var(--color-text)" />
-            <circle cx="34" cy="6" r="1.5" fill="var(--color-text)" />
-            <circle cx="20" cy="2" r="1" fill="var(--color-text)" />
+          <g className={styles.sparkles} fill="var(--donny-primary, var(--color-text))">
+            <path d="M-1 3 L0 5 L2 6 L0 7 L-1 9 L-2 7 L-4 6 L-2 5 Z" />
+            <path d="M41 3 L42 5 L44 6 L42 7 L41 9 L40 7 L38 6 L40 5 Z" />
+            <circle cx="20" cy="-2" r="1" />
           </g>
         )}
 
-        {/* Confused question mark */}
         {currentState === "confused" && (
           <text
-            x="35"
-            y="8"
-            fill="var(--donny-warning, var(--color-text))"
-            fontSize="8"
+            x="36.5"
+            y="4"
+            fill="var(--donny-primary, var(--color-text))"
+            fontSize="9"
             fontWeight="bold"
             className={styles.questionMark}
           >
@@ -704,11 +727,11 @@ export function DonnyAvatar({
           </text>
         )}
 
-        {/* Remembering thought bubble */}
+        {/* Thought dots rise from the upper-left, where the eyes look */}
         {currentState === "remembering" && (
-          <g className={styles.thoughtBubble}>
-            <circle cx="36" cy="4" r="2" fill="white" opacity="0.6" />
-            <circle cx="38" cy="8" r="1.5" fill="white" opacity="0.4" />
+          <g className={styles.thoughtBubble} fill="var(--donny-primary, var(--color-text))">
+            <circle cx="3" cy="-1" r="1.2" />
+            <circle cx="-0.5" cy="-4" r="1.8" />
           </g>
         )}
       </svg>

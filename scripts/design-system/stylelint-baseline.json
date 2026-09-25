@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1946,
+  "warningCount": 1941,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -4450,7 +4450,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 602,
+      "line": 604,
       "column": 22,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4459,7 +4459,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 603,
+      "line": 605,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4468,7 +4468,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 623,
+      "line": 628,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4477,7 +4477,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 627,
+      "line": 632,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4486,7 +4486,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 628,
+      "line": 633,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4504,7 +4504,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 84,
+      "line": 85,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -4513,7 +4513,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 148,
+      "line": 149,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4522,7 +4522,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 164,
+      "line": 165,
       "column": 39,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4531,7 +4531,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 201,
+      "line": 202,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4540,7 +4540,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 440,
+      "line": 442,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4549,7 +4549,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 531,
+      "line": 533,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4558,7 +4558,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 193,
+      "line": 194,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4567,7 +4567,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 144,
+      "line": 145,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4585,7 +4585,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 197,
+      "line": 198,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4594,16 +4594,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 520,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-0.625rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-0.625rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 82,
+      "line": 83,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4612,16 +4603,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 521,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 148,
+      "line": 149,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4630,7 +4612,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 164,
+      "line": 165,
       "column": 39,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4639,7 +4621,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 201,
+      "line": 202,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4648,7 +4630,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 440,
+      "line": 442,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4657,7 +4639,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 531,
+      "line": 533,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4666,7 +4648,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 193,
+      "line": 194,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4675,7 +4657,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 424,
+      "line": 426,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4684,7 +4666,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 510,
+      "line": 512,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4693,7 +4675,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 74,
+      "line": 75,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4702,7 +4684,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 510,
+      "line": 512,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4711,7 +4693,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 144,
+      "line": 145,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4729,7 +4711,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 197,
+      "line": 198,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4756,16 +4738,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 520,
-      "column": 22,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 82,
+      "line": 83,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4774,16 +4747,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 521,
-      "column": 21,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 193,
+      "line": 194,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4792,7 +4756,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 510,
+      "line": 512,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4801,7 +4765,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 78,
+      "line": 79,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4810,16 +4774,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 516,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 197,
+      "line": 198,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
