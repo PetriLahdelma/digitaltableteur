@@ -2,6 +2,7 @@ import { createMcpHandler } from "mcp-handler";
 
 import { registerConsultingMcpTools } from "@/nextjs-app/shared/lib/consulting-tools/register-mcp-tools";
 import { registerDocsRegistryMcpTools } from "@/nextjs-app/shared/lib/design-system-mcp/docs-registry-tools";
+import { registerPublicValidatorTool } from "@/nextjs-app/shared/lib/design-system-mcp/register-public-validator";
 import { registerDesignSystemMcpResources } from "@/nextjs-app/shared/lib/design-system-mcp/register-mcp-resources";
 import {
   MCP_SERVER_DESCRIPTION,
@@ -39,10 +40,12 @@ export function createConsultingMcpHandler(options: { basePath: string }) {
   const mcpHandler = createMcpHandler(
     (server) => {
       registerConsultingMcpTools(server);
-      // Astryx roadmap 3.3: the public docs surface is exactly two tools
-      // (search + get) served from docs-registry.json. The six discovery
+      // Astryx roadmap 3.3: the public docs surface is two tools (search +
+      // get) served from docs-registry.json, plus the hardened snippet-only
+      // contract validator (frontier roadmap Phase 2). The other discovery
       // tools remain on the repo-internal stdio server (npm run ds:mcp).
       registerDocsRegistryMcpTools(server);
+      registerPublicValidatorTool(server);
       registerDesignSystemMcpResources(server);
     },
     {

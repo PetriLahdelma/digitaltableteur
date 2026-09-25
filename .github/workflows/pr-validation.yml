@@ -56,6 +56,9 @@ jobs:
       - run: npm run check:contrast
       - run: npm run check:token-descriptions
       - run: npm run validate:components
+      # Contract rules over every @dt JSX usage (--all: the farm checkout is shallow,
+      # so a changed-files diff against origin/main is not available).
+      - run: npm run validate:agent-usage -- --all
       # Doc-semantics ratchet: fails the PR if a beta/stable component gains an a11y claim
       # proven by nothing (unverifiedOnReady over the ceiling in doc-semantics-ratchet.json).
       # Previously enforced only in .husky/pre-push, so the authoritative honesty gate never

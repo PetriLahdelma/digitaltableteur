@@ -110,6 +110,15 @@ Coverage target: >80%. Include axe-core in component tests.
 
 Do not promote to stable without running validation gates in skill `dt-design-system`. Never build on a deprecated component; its `deprecatedReason` names the successor.
 
+## Machine-checkable usage rules
+
+`npm run validate:agent-usage` checks every `@dt` JSX usage against rules the checker can prove from the source (the `validate_component_usage` MCP tool runs the same engine):
+
+- **Derived, no authoring:** discriminated-union prop exclusions, `defaultX`/`X` controlled pairs, and `@deprecated` props (warning; put the replacement in the tag text: `@deprecated Use onValueChange instead.`).
+- **Authored:** `forbiddenCombos` in the contract, for invalid combinations the component already detects at runtime (a dev warning, a silently ignored prop). Each rule has `when` conditions (`present`/`absent`/`equals`/`oneOf`) and `forbid`, `requireAnyOf`, or `requireAllOf`, plus `severity` and `evidence`. `children` is a pseudo-prop.
+
+Semantic guidance a prop check cannot prove ("use it for navigation") stays in `forbiddenUse` prose. Rule coverage is ratcheted in `scripts/design-system/agent-usage-rules.ratchet.json`; after adding rules run `npm run validate:agent-usage -- --all --update-ratchet`.
+
 ---
 
 ## MUST NOT

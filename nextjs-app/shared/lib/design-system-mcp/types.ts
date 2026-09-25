@@ -1,3 +1,5 @@
+import type { ForbiddenCombo, PropRelationship } from "./contract-rules";
+
 // A type alias (not an interface) so it satisfies the SDK's index-signature result type.
 export type DesignSystemToolTextResult = {
   content: [{ type: "text"; text: string }];
@@ -33,20 +35,12 @@ export interface ManifestComponentEntry {
     composesWith?: string[];
     replacementFor?: string[];
     prefersOver?: string[];
-    props?: Record<string, unknown>;
-    propRelationships?: Array<
-      | {
-          kind: "mutuallyExclusive";
-          props: [string, string];
-          reason: string;
-        }
-      | {
-          kind: "requires";
-          prop: string;
-          requires: string[];
-          reason: string;
-        }
+    props?: Record<
+      string,
+      { deprecated?: boolean; deprecation?: string; description?: string; [key: string]: unknown }
     >;
+    propRelationships?: PropRelationship[];
+    forbiddenCombos?: ForbiddenCombo[];
     requiredA11y?: string[];
     keyboard?: string[];
     [key: string]: unknown;

@@ -197,6 +197,22 @@
         "rely on Toast for compliance acknowledgements (cookie consent, legal notices); it auto-dismisses — use AlertBanner or Modal.",
         "use Toast for validation errors on a field; the message detaches from the input — use the field's error prop."
     ],
+    "forbiddenCombos": [
+        {
+            "id": "toast-inline-ignores-position",
+            "when": {
+                "inline": {
+                    "equals": true
+                }
+            },
+            "forbid": [
+                "position"
+            ],
+            "reason": "An inline toast is placed by its parent (ToastStack); `position` is ignored.",
+            "severity": "warning",
+            "evidence": "Toast.tsx: inline selects toast--inline instead of the position class"
+        }
+    ],
     "prefersOver": [
         "AlertBanner for page-level persistent status"
     ],

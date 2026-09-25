@@ -42,6 +42,7 @@ function getGraphRelations(name: string) {
   };
 }
 const OUT = join(ROOT, "nextjs-app/shared/foundations/dist/component-agent-blocks.json");
+const RULES_OUT = join(ROOT, "nextjs-app/shared/foundations/dist/contract-rules.json");
 const roots = [
   join(ROOT, "nextjs-app/shared/components"),
   join(ROOT, "nextjs-app/shared/patterns"),
@@ -90,6 +91,8 @@ type PropSchema = {
   type: string;
   values?: string[];
   deprecated?: boolean;
+  /** The `@deprecated` tag's own text, usually naming the replacement. */
+  deprecation?: string;
   description?: string;
 };
 
@@ -163,6 +166,7 @@ function extractPropSchemasFromFile(
     const declaredTypeTexts: string[] = [];
     const descriptions: string[] = [];
     let deprecated = false;
+    let deprecation: string | undefined;
 
     for (const d of decls) {
       if (
@@ -185,12 +189,15 @@ function extractPropSchemasFromFile(
       descriptions.push(
         ...jsDocs.map((doc) => doc.getDescription().trim()).filter(Boolean),
       );
-      if (
-        jsDocs.some((doc) =>
-          doc.getTags().some((tag) => tag.getTagName() === "deprecated"),
-        )
-      ) {
-        deprecated = true;
+      for (const doc of jsDocs) {
+        for (const tag of doc.getTags()) {
+          if (tag.getTagName() !== "deprecated") continue;
+          deprecated = true;
+          const note = (tag as { getCommentText?: () => string | undefined })
+            .getCommentText?.()
+            ?.trim();
+          if (note && !deprecation) deprecation = note;
+        }
       }
     }
 
@@ -234,6 +241,7 @@ function extractPropSchemasFromFile(
       type: values?.length ? "union" : typeText.slice(0, 120),
       ...(values?.length ? { values } : {}),
       ...(deprecated ? { deprecated: true } : {}),
+      ...(deprecation ? { deprecation } : {}),
       ...(descriptions[0] ? { description: descriptions[0] } : {}),
     };
   }
@@ -328,6 +336,40 @@ function extractPropRelationships(
   }
 
   return [...mutuallyExclusive, ...requires];
+}
+
+/**
+ * React's controlled/uncontrolled convention: `defaultX` seeds uncontrolled
+ * state and `X` controls it. Passing both makes the component ignore one of
+ * them, so any component that declares a `defaultX`/`X` pair gets a
+ * mutuallyExclusive rule without hand-authoring (value/defaultValue,
+ * checked/defaultChecked, sort/defaultSort, activeTab/defaultActiveTab, ...).
+ */
+function controlledPairRelationships(
+  propNames: string[],
+  existing: PropRelationship[],
+): PropRelationship[] {
+  const declared = new Set(propNames);
+  const covered = new Set(
+    existing
+      .filter((rel) => rel.kind === "mutuallyExclusive")
+      .map((rel) => [...rel.props].sort().join("\0")),
+  );
+  return propNames
+    .filter((name) => /^default[A-Z]/.test(name))
+    .map((uncontrolled) => {
+      const base = uncontrolled.slice("default".length);
+      return [base[0].toLowerCase() + base.slice(1), uncontrolled] as [string, string];
+    })
+    .filter(
+      ([controlled, uncontrolled]) =>
+        declared.has(controlled) && !covered.has([controlled, uncontrolled].sort().join("\0")),
+    )
+    .map(([controlled, uncontrolled]) => ({
+      kind: "mutuallyExclusive" as const,
+      props: [controlled, uncontrolled] as [string, string],
+      reason: `\`${controlled}\` makes the component controlled and \`${uncontrolled}\` uncontrolled; pass one, not both.`,
+    }));
 }
 
 function literalUnionValuesFromText(typeText: string): string[] | undefined {
@@ -496,7 +538,12 @@ function main() {
       preferredImport: `@dt/${entry.importName}`,
       intent: intent || "",
       props,
-      propRelationships: extractPropRelationships(propsDecl, Object.keys(props)),
+      propRelationships: (() => {
+        const fromUnions = extractPropRelationships(propsDecl, Object.keys(props));
+        return [...fromUnions, ...controlledPairRelationships(Object.keys(props), fromUnions)];
+      })(),
+      /** Authored machine-checkable usage rules (contract.forbiddenCombos). */
+      forbiddenCombos: contract.forbiddenCombos ?? [],
       variants,
       /** CVA-only axes — safe to sync into contract.json when invoked in source */
       cvaVariants: extracted.variants,
@@ -530,7 +577,12 @@ function main() {
         props: { origin: "generated", authorship: "machine-generated", from: astFrom },
         variants: { origin: "generated", authorship: "machine-generated", from: astFrom },
         cvaVariants: { origin: "generated", authorship: "machine-generated", from: astFrom },
-        propRelationships: { origin: "generated", authorship: "machine-generated", from: astFrom },
+        propRelationships: {
+          origin: "generated",
+          authorship: "machine-generated",
+          from: `${astFrom} + controlled/uncontrolled pairs`,
+        },
+        forbiddenCombos: { origin: "authored", authorship: "human-authored", from: "contract.json" },
         canonicalExamples: { origin: "generated", authorship: "machine-generated", from: "stories.tsx" },
         declaredPropCount: { origin: "generated", authorship: "machine-generated", from: astFrom },
         intent: { origin: "authored", authorship: "human-authored", from: `${entry.name}.spec.md` },
@@ -555,6 +607,28 @@ function main() {
   const payload = { generatedAt: null as string | null, components: blocks };
   payload.generatedAt = resolveGeneratedAt(payload);
   writeFileSync(OUT, `${JSON.stringify(payload, null, 2)}\n`);
+
+  // Compact rule set for the serverless /mcp validator: the full manifest is
+  // megabytes, and the validator only needs the machine-checkable rules.
+  const rules: Record<string, object> = {};
+  for (const [name, block] of Object.entries(blocks) as Array<[string, Record<string, unknown>]>) {
+    const propRelationships = block.propRelationships as unknown[];
+    const forbiddenCombos = block.forbiddenCombos as unknown[];
+    const deprecatedProps = Object.fromEntries(
+      Object.entries(block.props as Record<string, PropSchema>)
+        .filter(([, schema]) => schema.deprecated)
+        .map(([prop, schema]) => [
+          prop,
+          { deprecated: true, ...(schema.deprecation ? { deprecation: schema.deprecation } : {}) },
+        ]),
+    );
+    rules[name] = {
+      ...(propRelationships.length ? { propRelationships } : {}),
+      ...(forbiddenCombos.length ? { forbiddenCombos } : {}),
+      ...(Object.keys(deprecatedProps).length ? { props: deprecatedProps } : {}),
+    };
+  }
+  writeFileSync(RULES_OUT, `${JSON.stringify({ components: rules }, null, 2)}\n`);
   console.log(`✓ component-agent-blocks.json (${Object.keys(blocks).length} components)`);
 }
 

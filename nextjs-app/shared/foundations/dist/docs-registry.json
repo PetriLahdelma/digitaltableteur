@@ -3283,7 +3283,7 @@
       "group": "overlay",
       "tier": 2,
       "status": "beta",
-      "description": "Collapsible site assistant chat widget with streaming replies.",
+      "description": "Collapsible AI assistant with first-interaction transparency, session-only history and streaming replies.",
       "dense": "Collapsible site assistant (Donny) chat widget: streaming replies, tool actions, i18n, mobile sheet behavior",
       "keywords": [
         "chat",
@@ -3334,7 +3334,7 @@
       "prefersOver": [],
       "forbiddenUse": [
         "gate the widget behind user authentication. The widget is",
-        "store chat history in cookies. The current storage is",
+        "store chat history in cookies or persistent localStorage. The current storage is sessionStorage",
         "tamper with the email-workflow reducer state from outside."
       ],
       "usage": {

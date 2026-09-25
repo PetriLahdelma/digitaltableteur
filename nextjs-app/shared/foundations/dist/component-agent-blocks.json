@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T09:26:42.227Z",
+  "generatedAt": "2026-09-25T13:11:20.900Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -55,7 +55,17 @@
           "description": "Optional utility classes on the container."
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "openIds",
+            "defaultOpenIds"
+          ],
+          "reason": "`openIds` makes the component controlled and `defaultOpenIds` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "type": {
           "values": [
@@ -214,7 +224,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -337,6 +352,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "tone": {
           "values": [
@@ -489,7 +505,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -586,6 +607,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -679,7 +701,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -768,6 +795,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -898,7 +926,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -999,6 +1032,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "layout": {
           "values": [
@@ -1136,7 +1170,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -1231,6 +1270,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -1342,7 +1382,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -1439,6 +1484,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -1523,7 +1569,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -1640,6 +1691,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -1739,7 +1791,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -1876,6 +1933,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -2003,7 +2061,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -2099,6 +2162,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -2230,7 +2294,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -2372,6 +2441,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -2538,7 +2608,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -2660,6 +2735,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -2805,7 +2881,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -2931,6 +3012,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -3047,7 +3129,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -3139,6 +3226,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -3252,7 +3340,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -3359,6 +3452,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -3490,7 +3584,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -3716,6 +3815,28 @@
           "reason": "Whenever `rel` is accepted by ButtonProps, `href` must also be present."
         }
       ],
+      "forbiddenCombos": [
+        {
+          "id": "button-icon-only-needs-name",
+          "when": {
+            "icon": {
+              "present": true
+            },
+            "children": {
+              "absent": true
+            }
+          },
+          "requireAnyOf": [
+            "accessibleName",
+            "accessibleNameRef",
+            "tooltip",
+            "aria-label"
+          ],
+          "reason": "An icon-only button has no accessible name. Add accessibleName, accessibleNameRef, or tooltip, e.g. <Button icon=\"search\" accessibleName=\"Search\" />.",
+          "severity": "error",
+          "evidence": "Button.tsx development warning (isIconOnly && !hasAccessibleName)"
+        }
+      ],
       "variants": {
         "variant": {
           "values": [
@@ -3904,7 +4025,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -4023,6 +4149,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -4142,7 +4269,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -4278,7 +4410,8 @@
         "extra": {
           "optional": true,
           "type": "React.ReactNode",
-          "deprecated": true
+          "deprecated": true,
+          "deprecation": "Use `headerEnd`. Legacy alias feeding the trailing header region."
         },
         "footerStart": {
           "optional": true,
@@ -4311,6 +4444,23 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [
+        {
+          "id": "card-link-with-footer",
+          "when": {
+            "link": {
+              "present": true
+            }
+          },
+          "forbid": [
+            "footerStart",
+            "footerEnd"
+          ],
+          "reason": "`link` is ignored when `footerStart`/`footerEnd` are set: a stretched anchor cannot wrap interactive footer controls. Use a plain card with buttons instead.",
+          "severity": "error",
+          "evidence": "Card.tsx development warning (linkSuppressed)"
+        }
+      ],
       "variants": {
         "variant": {
           "values": [
@@ -4475,7 +4625,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -4587,6 +4742,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -4727,7 +4883,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -4994,6 +5155,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -5107,7 +5269,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -5192,6 +5359,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -5201,7 +5369,7 @@
       ],
       "avoidWhen": [
         "gate the widget behind user authentication. The widget is for anonymous visitors; auth-gated chat is a different pattern.",
-        "store chat history in cookies. The current storage is `localStorage`; cookies have size limits and travel with every request, which is wrong for chat transcripts.",
+        "store chat history in cookies or persistent `localStorage`. The current storage is `sessionStorage`, so the browser copy ends with the tab session and never travels with a request.",
         "tamper with the email-workflow reducer state from outside. The reducer has invariants (e.g. \"review can only follow compose\") that direct mutation breaks."
       ],
       "requiredA11y": [
@@ -5222,7 +5390,7 @@
       "replacementFor": [],
       "forbiddenUse": [
         "gate the widget behind user authentication. The widget is for anonymous visitors; auth-gated chat is a different pattern.",
-        "store chat history in cookies. The current storage is `localStorage`; cookies have size limits and travel with every request, which is wrong for chat transcripts.",
+        "store chat history in cookies or persistent `localStorage`. The current storage is `sessionStorage`, so the browser copy ends with the tab session and never travels with a request.",
         "tamper with the email-workflow reducer state from outside. The reducer has invariants (e.g. \"review can only follow compose\") that direct mutation breaks."
       ],
       "composesWith": [
@@ -5257,8 +5425,8 @@
         },
         {
           "level": "should-not",
-          "guidance": "store chat history in cookies",
-          "rationale": "The current storage is `localStorage`; cookies have size limits and travel with every request, which is wrong for chat transcripts.",
+          "guidance": "store chat history in cookies or persistent `localStorage`",
+          "rationale": "The current storage is `sessionStorage`, so the browser copy ends with the tab session and never travels with a request.",
           "rationaleSource": "inferred",
           "source": "spec.md#do-dont"
         },
@@ -5274,14 +5442,14 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "forced-colors-real-browser",
@@ -5298,8 +5466,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "human-a11y-review",
@@ -5327,7 +5495,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -5458,7 +5631,17 @@
           "description": "Supporting text under the control; always rendered, below `error` when both are set."
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "checked",
+            "defaultChecked"
+          ],
+          "reason": "`checked` makes the component controlled and `defaultChecked` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -5592,7 +5775,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -5703,6 +5891,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -5841,7 +6030,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -5923,6 +6117,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -6009,7 +6204,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -6120,6 +6320,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -6204,7 +6405,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -6333,6 +6539,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -6429,7 +6636,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -6556,6 +6768,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -6683,7 +6896,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -6790,6 +7008,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -6916,7 +7135,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -7009,6 +7233,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -7099,7 +7324,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -7170,6 +7400,7 @@
       "intent": "Ship the single, fixed-composition contact form for the marketing site. ContactForm exists at organism tier so consumers stop rebuilding the same form, the same validation, and the same submit pipeline per page. The com…",
       "props": {},
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -7308,7 +7539,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -7392,6 +7628,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -7480,7 +7717,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -7764,6 +8006,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -7870,7 +8113,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -7947,6 +8195,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -8036,7 +8285,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -8201,7 +8455,25 @@
           "type": "string"
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "sort",
+            "defaultSort"
+          ],
+          "reason": "`sort` makes the component controlled and `defaultSort` uncontrolled; pass one, not both."
+        },
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "selectedRowIds",
+            "defaultSelectedRowIds"
+          ],
+          "reason": "`selectedRowIds` makes the component controlled and `defaultSelectedRowIds` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -8339,7 +8611,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -8446,6 +8723,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -8530,7 +8808,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -8619,6 +8902,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -8732,7 +9016,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -8823,6 +9112,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "orientation": {
           "values": [
@@ -8924,7 +9214,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -9109,6 +9404,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -9207,7 +9503,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -9299,6 +9600,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -9382,7 +9684,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -9494,6 +9801,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -9625,7 +9933,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -9773,6 +10086,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -9880,7 +10194,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -9986,7 +10305,17 @@
           "description": "Additional className for the container"
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "expanded",
+            "defaultExpanded"
+          ],
+          "reason": "`expanded` makes the component controlled and `defaultExpanded` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -10113,7 +10442,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -10263,6 +10597,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -10400,7 +10735,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -10513,6 +10853,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -10673,7 +11014,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -10829,6 +11175,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "align": {
           "values": [
@@ -10933,7 +11280,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -11040,6 +11392,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -11167,7 +11520,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -11289,6 +11647,7 @@
           "reason": "Whenever `children` is accepted by FormFieldEditorialProps, `type` must also be present."
         }
       ],
+      "forbiddenCombos": [],
       "variants": {
         "type": {
           "values": [
@@ -11386,7 +11745,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -11470,6 +11834,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -11597,7 +11962,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -11799,6 +12169,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "align": {
           "values": [
@@ -11934,7 +12305,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -12031,6 +12407,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -12142,7 +12519,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -12240,6 +12622,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -12356,7 +12739,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -12518,6 +12906,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -12662,7 +13051,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -12778,6 +13172,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -12924,7 +13319,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -13052,6 +13452,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -13145,7 +13546,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -13236,6 +13642,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -13369,7 +13776,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -13461,6 +13873,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -13579,7 +13992,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -13691,6 +14109,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -13824,7 +14243,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -13912,6 +14336,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -14070,7 +14495,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -14184,6 +14614,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -14325,7 +14756,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -14452,6 +14888,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -14544,7 +14981,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -14699,6 +15141,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -14807,7 +15250,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -14927,6 +15375,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "tone": {
           "values": [
@@ -15057,7 +15506,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -15164,6 +15618,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -15295,7 +15750,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -15402,6 +15862,37 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [
+        {
+          "id": "logo-src-ignores-mark-options",
+          "when": {
+            "src": {
+              "present": true
+            }
+          },
+          "forbid": [
+            "animated",
+            "background"
+          ],
+          "reason": "`animated` and `background` style the built-in mark only; with `src` set they are ignored.",
+          "severity": "warning",
+          "evidence": "Logo.tsx src branch returns before background/animated are applied"
+        },
+        {
+          "id": "logo-decorative-ignores-title",
+          "when": {
+            "decorative": {
+              "equals": true
+            }
+          },
+          "forbid": [
+            "title"
+          ],
+          "reason": "A decorative logo is removed from the accessibility tree, so `title` is never announced. Drop `title` or make the logo non-decorative.",
+          "severity": "warning",
+          "evidence": "Logo.tsx: title is not rendered when decorative"
+        }
+      ],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -15546,7 +16037,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -15648,6 +16144,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -15732,7 +16229,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -15838,6 +16340,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "density": {
           "values": [
@@ -15930,7 +16433,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -16035,6 +16543,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "density": {
           "values": [
@@ -16132,7 +16641,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -16239,6 +16753,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "align": {
           "values": [
@@ -16396,7 +16911,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -16591,6 +17111,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "severity": {
           "values": [
@@ -16761,7 +17282,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -16909,6 +17435,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -17035,7 +17562,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -17142,6 +17674,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -17272,7 +17805,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -17364,6 +17902,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -17448,7 +17987,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -17540,6 +18084,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -17670,7 +18215,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -17751,6 +18301,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -17837,7 +18388,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -17925,6 +18481,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -18014,7 +18571,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -18111,6 +18673,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -18239,7 +18802,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -18429,6 +18997,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -18512,7 +19081,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -18880,6 +19454,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -19015,7 +19590,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -19121,6 +19701,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -19264,7 +19845,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -19387,6 +19973,22 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [
+        {
+          "id": "progress-indeterminate-ignores-value",
+          "when": {
+            "indeterminate": {
+              "equals": true
+            }
+          },
+          "forbid": [
+            "value"
+          ],
+          "reason": "An indeterminate bar drops aria-valuenow and ignores `value`. Pass `value` only for determinate progress.",
+          "severity": "warning",
+          "evidence": "Progress.tsx: aria-valuenow and scale are skipped when indeterminate"
+        }
+      ],
       "variants": {
         "size": {
           "values": [
@@ -19509,7 +20111,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -19641,6 +20248,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -19768,7 +20376,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -19880,6 +20493,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -20011,7 +20625,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -20093,6 +20712,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -20211,7 +20831,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -20335,7 +20960,17 @@
           "description": "Render the visible label."
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "checked",
+            "defaultChecked"
+          ],
+          "reason": "`checked` makes the component controlled and `defaultChecked` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -20437,7 +21072,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -20580,7 +21220,17 @@
           "description": "Merged onto the fieldset"
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "orientation": {
           "values": [
@@ -20686,7 +21336,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -20772,6 +21427,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -20866,7 +21522,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -20957,6 +21618,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -21048,7 +21710,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -21148,6 +21815,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "orientation": {
           "values": [
@@ -21286,7 +21954,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -21414,6 +22087,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -21590,7 +22264,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -21728,6 +22407,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -21821,7 +22501,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -21917,6 +22602,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -22003,7 +22689,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -22110,6 +22801,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -22251,7 +22943,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -22367,10 +23064,12 @@
         "onChange": {
           "optional": true,
           "type": "(value: string) => void",
-          "deprecated": true
+          "deprecated": true,
+          "deprecation": "Use onValueChange instead. Will be removed in v2.0.0"
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -22521,7 +23220,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -22609,6 +23313,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -22689,7 +23394,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -22781,6 +23491,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -22906,7 +23617,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -23045,7 +23761,17 @@
           "description": "SelectableCard children."
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "type": {
           "values": [
@@ -23146,7 +23872,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST (SelectableCard.tsx)"
+          "from": "TypeScript AST (SelectableCard.tsx) + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -23222,6 +23953,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -23305,7 +24037,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -23427,6 +24164,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -23523,7 +24261,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -23599,6 +24342,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -23688,7 +24432,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -23778,6 +24527,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -23904,7 +24654,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -24018,6 +24773,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -24142,7 +24898,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -24229,6 +24990,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -24335,7 +25097,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -24431,6 +25198,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -24588,7 +25356,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -24725,6 +25498,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -24863,7 +25637,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -24965,6 +25744,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -25076,7 +25856,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -25175,6 +25960,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -25300,7 +26086,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -25392,6 +26183,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -25519,7 +26311,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -25630,6 +26427,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -25668,11 +26466,7 @@
         "use for unrelated actions; prefer separate Buttons.",
         "promote past alpha without a11y review, forced-colors verification, and light/dark verification (see roadmap below)."
       ],
-      "composesWith": [
-        "Text",
-        "Button",
-        "Toast"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 7,
       "guidelines": [
@@ -25762,7 +26556,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -26079,6 +26878,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "align": {
           "values": [
@@ -26194,7 +26994,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -26303,6 +27108,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "tone": {
           "values": [
@@ -26438,7 +27244,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -26579,6 +27390,7 @@
           "reason": "`checked` and `defaultChecked` never coexist in a valid SwitchProps branch."
         }
       ],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -26716,7 +27528,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -26823,6 +27640,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -26981,7 +27799,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -27068,6 +27891,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "align": {
           "values": [
@@ -27195,7 +28019,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -27306,6 +28135,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "align": {
           "values": [
@@ -27453,7 +28283,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -27550,6 +28385,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -27673,7 +28509,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -27750,6 +28591,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -27868,7 +28710,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -27989,7 +28836,17 @@
           "description": "Visual style variant."
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "activeTab",
+            "defaultActiveTab"
+          ],
+          "reason": "`activeTab` makes the component controlled and `defaultActiveTab` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -28141,7 +28998,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -28248,6 +29110,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -28331,7 +29194,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -28449,6 +29317,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -28579,7 +29448,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -28691,6 +29565,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -28820,7 +29695,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -28974,10 +29854,21 @@
         "onChange": {
           "optional": true,
           "type": "(value: string | number) => void",
-          "deprecated": true
+          "deprecated": true,
+          "deprecation": "Use onValueChange instead. Will be removed in v2.0.0"
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "type": {
           "values": [
@@ -29167,7 +30058,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -29255,6 +30151,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -29347,7 +30244,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -29494,6 +30396,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -29631,7 +30534,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -29762,6 +30670,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -29897,7 +30806,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -30029,6 +30943,22 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [
+        {
+          "id": "toast-inline-ignores-position",
+          "when": {
+            "inline": {
+              "equals": true
+            }
+          },
+          "forbid": [
+            "position"
+          ],
+          "reason": "An inline toast is placed by its parent (ToastStack); `position` is ignored.",
+          "severity": "warning",
+          "evidence": "Toast.tsx: inline selects toast--inline instead of the position class"
+        }
+      ],
       "variants": {
         "tone": {
           "values": [
@@ -30185,7 +31115,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -30290,6 +31225,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "position": {
           "values": [
@@ -30428,7 +31364,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -30526,6 +31467,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -30660,7 +31602,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -30795,7 +31742,17 @@
           "description": "Optional className passthrough"
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -30880,7 +31837,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -31005,7 +31967,25 @@
           "type": "string"
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "selectedId",
+            "defaultSelectedId"
+          ],
+          "reason": "`selectedId` makes the component controlled and `defaultSelectedId` uncontrolled; pass one, not both."
+        },
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "expandedIds",
+            "defaultExpandedIds"
+          ],
+          "reason": "`expandedIds` makes the component controlled and `defaultExpandedIds` uncontrolled; pass one, not both."
+        }
+      ],
+      "forbiddenCombos": [],
       "variants": {
         "size": {
           "values": [
@@ -31149,7 +32129,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -31256,6 +32241,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -31377,7 +32363,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -31498,6 +32489,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -31626,7 +32618,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -31713,6 +32710,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -31835,7 +32833,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -31926,6 +32929,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -32015,7 +33019,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -32105,6 +33114,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -32200,7 +33210,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -32292,6 +33307,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -32408,7 +33424,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -32699,6 +33720,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -32764,7 +33786,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -32871,6 +33898,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -32964,7 +33992,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -33046,6 +34079,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -33132,7 +34166,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -33249,6 +34288,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -33351,7 +34391,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -33468,6 +34513,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -33561,7 +34607,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -33668,6 +34719,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -33761,7 +34813,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -33872,6 +34929,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -33973,7 +35031,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -34103,6 +35166,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -34196,7 +35260,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -34324,6 +35393,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "align": {
           "values": [
@@ -34424,7 +35494,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -34526,6 +35601,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -34619,7 +35695,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -34720,6 +35801,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -34806,7 +35888,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -34902,6 +35989,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -35029,7 +36117,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -35125,6 +36218,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -35211,7 +36305,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -35339,6 +36438,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -35432,7 +36532,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -35519,6 +36624,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -35611,7 +36717,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -35688,6 +36799,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -35772,7 +36884,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -35913,6 +37030,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -35963,14 +37081,14 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "forced-colors-real-browser",
@@ -36004,7 +37122,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -36188,6 +37311,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -36291,7 +37415,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -36610,6 +37739,46 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [
+        {
+          "id": "hero-background-image-needs-image-mode",
+          "when": {
+            "backgroundImage": {
+              "present": true
+            },
+            "background": {
+              "oneOf": [
+                "gradient",
+                "solid",
+                "transparent"
+              ]
+            }
+          },
+          "forbid": [
+            "backgroundImage"
+          ],
+          "reason": "`backgroundImage` only renders when background=\"image\"; with any other background it is silently dropped.",
+          "severity": "error",
+          "evidence": "HeroSection.tsx: hasBackgroundImage = background === \"image\" && backgroundImage"
+        },
+        {
+          "id": "hero-background-image-default-mode",
+          "when": {
+            "backgroundImage": {
+              "present": true
+            },
+            "background": {
+              "absent": true
+            }
+          },
+          "requireAllOf": [
+            "background"
+          ],
+          "reason": "`background` defaults to \"transparent\", which drops `backgroundImage`. Set background=\"image\".",
+          "severity": "error",
+          "evidence": "HeroSection.tsx: background defaults to \"transparent\""
+        }
+      ],
       "variants": {
         "align": {
           "values": [
@@ -36705,7 +37874,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -36838,6 +38012,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -36942,7 +38117,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -37024,6 +38204,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -37116,7 +38297,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -37223,6 +38409,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -37316,7 +38503,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -37398,6 +38590,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -37529,7 +38722,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -37674,6 +38872,39 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [
+        {
+          "id": "pagelayout-columns-need-grid",
+          "when": {
+            "columns": {
+              "present": true
+            },
+            "grid": {
+              "absent": true
+            }
+          },
+          "requireAllOf": [
+            "grid"
+          ],
+          "reason": "`columns` only applies when `grid` is true; `grid` defaults to false, so the column count is dropped.",
+          "severity": "error",
+          "evidence": "PageLayout.tsx gridStyle: returns {} when !grid"
+        },
+        {
+          "id": "pagelayout-columns-with-grid-off",
+          "when": {
+            "grid": {
+              "equals": false
+            }
+          },
+          "forbid": [
+            "columns"
+          ],
+          "reason": "`columns` only applies when `grid` is true.",
+          "severity": "error",
+          "evidence": "PageLayout.tsx gridStyle: returns {} when !grid"
+        }
+      ],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -37758,7 +38989,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -37835,6 +39071,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -37963,7 +39200,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -38040,6 +39282,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -38163,7 +39406,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -38308,6 +39556,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -38392,7 +39641,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -38504,6 +39758,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -38604,7 +39859,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -38716,6 +39976,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -38809,7 +40070,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -38941,6 +40207,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "variant": {
           "values": [
@@ -39053,7 +40320,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -39187,6 +40459,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -39287,7 +40560,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -39399,6 +40677,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -39483,7 +40762,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -39575,6 +40859,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -39668,7 +40953,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -39760,6 +41050,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -39860,7 +41151,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -40015,6 +41311,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -40099,7 +41396,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -40217,6 +41519,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -40309,7 +41612,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -40386,6 +41694,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -40516,7 +41825,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -40598,6 +41912,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -40732,7 +42047,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -40826,6 +42146,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -40923,7 +42244,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -41083,6 +42409,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -41135,14 +42462,14 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "forced-colors-real-browser",
@@ -41176,7 +42503,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -41326,6 +42658,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -41417,7 +42750,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -41538,6 +42876,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -41631,7 +42970,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -41718,6 +43062,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -41811,7 +43156,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -41903,6 +43253,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -41996,7 +43347,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -42098,6 +43454,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
@@ -42190,7 +43547,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",
@@ -42297,6 +43659,7 @@
         }
       },
       "propRelationships": [],
+      "forbiddenCombos": [],
       "variants": {
         "layout": {
           "values": [
@@ -42392,7 +43755,12 @@
         "propRelationships": {
           "origin": "generated",
           "authorship": "machine-generated",
-          "from": "TypeScript AST"
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         },
         "canonicalExamples": {
           "origin": "generated",

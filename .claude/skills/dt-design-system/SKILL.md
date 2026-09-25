@@ -62,6 +62,8 @@ If validation fails, halt and fix reported contract/spec/MDX issues before proce
 npm run build:tokens && npm run check:contract-props && npm run check:consumers
 ```
 
+When a component detects an invalid prop combination at runtime (a dev warning, a prop that is silently ignored), encode it as a `forbiddenCombos` rule in the contract and run `npm run validate:agent-usage -- --all --update-ratchet`; see "Machine-checkable usage rules" in `nextjs-app/shared/components/AGENTS.md`.
+
 `check:contract-props` compares contracts against freshly built agent blocks. Contracts with authored `usage` (doc-adopted) own their `composesWith`/`prefersOver`/`forbiddenUse`; only props are machine-checked for them. Props must be declared locally on the `<Name>Props` interface — a prop that only arrives via a native attribute extension (e.g. `disabled`) is invisible to the extractor and will be flagged stale.
 
 ### Step 4: Promote (remove WIP badge)

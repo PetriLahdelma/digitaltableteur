@@ -224,11 +224,14 @@ export const validateComponentUsageOutput = {
   contractFindings: z.array(
     z.object({
       component: z.string(),
+      line: z.number().nullable(),
       rule: z.string(),
+      severity: z.enum(["error", "warning"]),
       props: stringList,
       message: z.string(),
     }),
   ),
+  warningCount: z.number(),
   fleetLint: z.string(),
   note: z.string(),
 };

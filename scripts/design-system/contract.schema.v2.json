@@ -583,6 +583,93 @@
             "maxItems": 8,
             "description": "Agent-facing anti-patterns from spec Do/Don't and curated policy (v2 semantic)."
         },
+        "forbiddenCombos": {
+            "type": "array",
+            "uniqueItems": true,
+            "description": "Machine-checkable usage rules, checked against JSX props by validate:agent-usage and the validate_component_usage MCP tool. A rule fires when every `when` condition holds, then reports any `forbid` prop that is present and any missing `requireAnyOf`/`requireAllOf` props. `children` is a pseudo-prop for JSX children. Prose that cannot be expressed this way stays in forbiddenUse.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "when",
+                    "reason",
+                    "severity"
+                ],
+                "anyOf": [
+                    {
+                        "required": [
+                            "forbid"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "requireAnyOf"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "requireAllOf"
+                        ]
+                    }
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                    },
+                    "when": {
+                        "type": "object",
+                        "minProperties": 1,
+                        "additionalProperties": {
+                            "$ref": "#/$defs/propMatch"
+                        }
+                    },
+                    "forbid": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "items": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    "requireAnyOf": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "items": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    "requireAllOf": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "items": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    "reason": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "severity": {
+                        "enum": [
+                            "error",
+                            "warning"
+                        ]
+                    },
+                    "evidence": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Where the rule comes from, for example the runtime warning in the component source."
+                    }
+                }
+            }
+        },
         "displayName": {
             "type": "string",
             "minLength": 1
@@ -778,6 +865,42 @@
                 "notes": {
                     "type": "string",
                     "minLength": 1
+                }
+            }
+        }
+    },
+    "$defs": {
+        "propMatch": {
+            "type": "object",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "description": "How a prop is matched. present/absent test whether the prop is passed at all; equals/oneOf compare a statically known literal. A non-literal expression never matches equals/oneOf, so a rule cannot fire on a value the checker cannot prove.",
+            "properties": {
+                "present": {
+                    "const": true
+                },
+                "absent": {
+                    "const": true
+                },
+                "equals": {
+                    "type": [
+                        "string",
+                        "number",
+                        "boolean"
+                    ]
+                },
+                "oneOf": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "type": [
+                            "string",
+                            "number",
+                            "boolean"
+                        ]
+                    }
                 }
             }
         }

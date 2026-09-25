@@ -335,5 +335,22 @@
         "Button",
         "Grid",
         "Skeleton"
+    ],
+    "forbiddenCombos": [
+        {
+            "id": "card-link-with-footer",
+            "when": {
+                "link": {
+                    "present": true
+                }
+            },
+            "forbid": [
+                "footerStart",
+                "footerEnd"
+            ],
+            "reason": "`link` is ignored when `footerStart`/`footerEnd` are set: a stretched anchor cannot wrap interactive footer controls. Use a plain card with buttons instead.",
+            "severity": "error",
+            "evidence": "Card.tsx development warning (linkSuppressed)"
+        }
     ]
 }

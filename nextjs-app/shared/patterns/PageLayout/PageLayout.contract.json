@@ -185,6 +185,39 @@
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
+    "forbiddenCombos": [
+        {
+            "id": "pagelayout-columns-need-grid",
+            "when": {
+                "columns": {
+                    "present": true
+                },
+                "grid": {
+                    "absent": true
+                }
+            },
+            "requireAllOf": [
+                "grid"
+            ],
+            "reason": "`columns` only applies when `grid` is true; `grid` defaults to false, so the column count is dropped.",
+            "severity": "error",
+            "evidence": "PageLayout.tsx gridStyle: returns {} when !grid"
+        },
+        {
+            "id": "pagelayout-columns-with-grid-off",
+            "when": {
+                "grid": {
+                    "equals": false
+                }
+            },
+            "forbid": [
+                "columns"
+            ],
+            "reason": "`columns` only applies when `grid` is true.",
+            "severity": "error",
+            "evidence": "PageLayout.tsx gridStyle: returns {} when !grid"
+        }
+    ],
     "composesWith": [
         "Title",
         "Card",

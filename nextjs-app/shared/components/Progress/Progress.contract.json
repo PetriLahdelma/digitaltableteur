@@ -136,6 +136,22 @@
         "use Progress as a skeleton or layout placeholder; Skeleton owns loading layouts.",
         "leave the default \"Progress\" aria-label on user-facing bars; name the work being done."
     ],
+    "forbiddenCombos": [
+        {
+            "id": "progress-indeterminate-ignores-value",
+            "when": {
+                "indeterminate": {
+                    "equals": true
+                }
+            },
+            "forbid": [
+                "value"
+            ],
+            "reason": "An indeterminate bar drops aria-valuenow and ignores `value`. Pass `value` only for determinate progress.",
+            "severity": "warning",
+            "evidence": "Progress.tsx: aria-valuenow and scale are skipped when indeterminate"
+        }
+    ],
     "prefersOver": [
         "Spinner when completion percentage is known or the wait is long enough to show movement"
     ],

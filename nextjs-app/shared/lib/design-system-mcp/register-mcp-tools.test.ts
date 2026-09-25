@@ -13,6 +13,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import agentManifest from "../../foundations/dist/agent-manifest.json";
 import { registerDocsRegistryMcpTools } from "./docs-registry-tools";
 import { registerDesignSystemMcpTools } from "./register-mcp-tools";
+import { registerPublicValidatorTool, SNIPPET_MAX_CHARS } from "./register-public-validator";
 import { CONTRACT_REQUIRED_FIELDS, contractEnvelopeSchema } from "./tool-schemas";
 
 const CALLS: Record<string, Record<string, unknown>> = {
@@ -104,5 +105,53 @@ describe("contract envelope schema", () => {
         return parsed.success ? [] : [`${name}: ${parsed.error.issues[0]?.path.join(".")}`];
       });
     expect(failures).toEqual([]);
+  });
+});
+
+describe("public validate_component_usage (snippet-only)", () => {
+  let publicClient: Client;
+
+  beforeAll(async () => {
+    const server = new McpServer({ name: "public", version: "0.0.0" });
+    registerPublicValidatorTool(server);
+    const [serverTransport, clientTransport] = InMemoryTransport.createLinkedPair();
+    await server.connect(serverTransport);
+    publicClient = new Client({ name: "public-client", version: "0.0.0" });
+    await publicClient.connect(clientTransport);
+  });
+
+  afterAll(async () => {
+    await publicClient.close();
+  });
+
+  it("never accepts a filePath argument", async () => {
+    const { tools } = await publicClient.listTools();
+    const [tool] = tools;
+    expect(Object.keys(tool.inputSchema.properties ?? {}).sort()).toEqual([
+      "component",
+      "props",
+      "snippet",
+    ]);
+  });
+
+  it("finds contract violations in a snippet from the compact rule set", async () => {
+    const result = await publicClient.callTool({
+      name: "validate_component_usage",
+      arguments: { snippet: '<Card title="Case" link="/work" footerEnd={<span />} />' },
+    });
+    const payload = result.structuredContent as {
+      ok: boolean;
+      contractFindings: Array<{ rule: string }>;
+    };
+    expect(payload.ok).toBe(false);
+    expect(payload.contractFindings.map((f) => f.rule)).toEqual(["card-link-with-footer"]);
+  });
+
+  it("rejects snippets over the size cap", async () => {
+    const result = await publicClient.callTool({
+      name: "validate_component_usage",
+      arguments: { snippet: "x".repeat(SNIPPET_MAX_CHARS + 1) },
+    });
+    expect(result.isError).toBe(true);
   });
 });

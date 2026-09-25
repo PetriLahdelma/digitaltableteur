@@ -48,6 +48,7 @@ const steps = [
   },
   { name: "bundle-budgets", cmd: "npm", args: ["run", "check:bundle-budgets"] },
   { name: "validate:components", cmd: "npm", args: ["run", "validate:components"] },
+  { name: "validate:agent-usage", cmd: "npm", args: ["run", "validate:agent-usage", "--", "--all"] },
   { name: "check:consumers", cmd: "npm", args: ["run", "check:consumers"] },
   { name: "check:tokens", cmd: "npm", args: ["run", "check:tokens"] },
   {

@@ -1,7 +1,8 @@
 import { existsSync, readFileSync } from "node:fs";
-import { relative } from "node:path";
+import { isAbsolute, relative, resolve } from "node:path";
 
 import { designSystemMcpRoot } from "./paths";
+import { validateUsage } from "./validate-usage";
 import { loadAgentManifest, manifestMissingMessage } from "./manifest-loader";
 import { rankComponentsForIntent } from "./rank-intent";
 import type {
@@ -52,28 +53,6 @@ export function dsTextResult(
     ...(isError ? { isError: true } : {}),
   };
 }
-
-const RAW_UI_RULES = [
-  {
-    id: "raw-button",
-    // Lowercase only — avoids false positives on <Button> (@dt component).
-    pattern: /<button\b/,
-    message: "Use @dt/Button instead of raw <button>.",
-    suggest: "@dt/Button",
-  },
-  {
-    id: "raw-heading",
-    pattern: /<h([1-6])\b/,
-    message: "Use @dt/Title instead of raw heading elements.",
-    suggest: "@dt/Title",
-  },
-  {
-    id: "shadcn-import",
-    pattern: /from\s+["']@\/components\/ui\//,
-    message: "Prefer @dt/* over @/components/ui/*.",
-    suggest: "@dt/<Component>",
-  },
-] as const;
 
 function getManifestOrError():
   | { ok: true; manifest: AgentManifest }
@@ -281,52 +260,6 @@ export function executeGetTokens(): DesignSystemToolTextResult {
   });
 }
 
-function scanSourceForDtViolations(
-  source: string,
-  fileLabel: string,
-): Array<{
-  file: string;
-  line: number;
-  rule: string;
-  message: string;
-  suggest: string;
-  snippet: string;
-}> {
-  const findings: Array<{
-    file: string;
-    line: number;
-    rule: string;
-    message: string;
-    suggest: string;
-    snippet: string;
-  }> = [];
-
-  const lines = source.split("\n");
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    const trimmed = line.trim();
-    if (
-      trimmed.startsWith("//") ||
-      trimmed.startsWith("*") ||
-      trimmed.startsWith("/*")
-    ) {
-      continue;
-    }
-    for (const rule of RAW_UI_RULES) {
-      if (!rule.pattern.test(line)) continue;
-      findings.push({
-        file: fileLabel,
-        line: i + 1,
-        rule: rule.id,
-        message: rule.message,
-        suggest: rule.suggest,
-        snippet: line.trim().slice(0, 120),
-      });
-    }
-  }
-  return findings;
-}
-
 export function executeValidateComponentUsage(args?: {
   filePath?: string;
   snippet?: string;
@@ -350,9 +283,11 @@ export function executeValidateComponentUsage(args?: {
   let label = "(snippet)";
 
   if (filePath) {
-    const abs = filePath.startsWith("/")
-      ? filePath
-      : `${root}/${filePath.replace(/^\.\//, "")}`;
+    const abs = resolve(root, filePath);
+    // Local tool, but still never read outside the repository.
+    if (relative(root, abs).startsWith("..") || isAbsolute(relative(root, abs))) {
+      return dsTextResult(`filePath must be inside the repository: ${filePath}`, true);
+    }
     if (!existsSync(abs)) {
       return dsTextResult(`File not found: ${filePath}`, true);
     }
@@ -360,21 +295,18 @@ export function executeValidateComponentUsage(args?: {
     label = relative(root, abs).replace(/\\/g, "/");
   }
 
-  const findings = filePath || snippet ? scanSourceForDtViolations(source, label) : [];
-  const contractFindings: Array<{
-    component: string;
-    rule: string;
-    props: string[];
-    message: string;
-  }> = [];
+  const loaded = getManifestOrError();
+  if (!loaded.ok) return loaded.result;
+  const byName = new Map(
+    (loaded.manifest.components ?? []).map((entry) => [entry.name, entry.agent ?? {}]),
+  );
 
+  let canonical: string | undefined;
   if (component) {
-    const loaded = getManifestOrError();
-    if (!loaded.ok) return loaded.result;
-    const entry = loaded.manifest.components?.find(
-      (candidate) => candidate.name.toLowerCase() === component.toLowerCase(),
+    canonical = [...byName.keys()].find(
+      (name) => name.toLowerCase() === component.toLowerCase(),
     );
-    if (!entry) {
+    if (!canonical) {
       return dsTextResult(`No cataloged component named ${component}.`, true);
     }
     if (!suppliedProps || Array.isArray(suppliedProps)) {
@@ -383,55 +315,21 @@ export function executeValidateComponentUsage(args?: {
         true,
       );
     }
-
-    const isPresent = (name: string) =>
-      Object.prototype.hasOwnProperty.call(suppliedProps, name) &&
-      suppliedProps[name] !== undefined &&
-      suppliedProps[name] !== null;
-
-    for (const relationship of entry.agent?.propRelationships ?? []) {
-      if (relationship.kind === "mutuallyExclusive") {
-        const present = relationship.props.filter(isPresent);
-        if (present.length > 1) {
-          contractFindings.push({
-            component: entry.name,
-            rule: relationship.kind,
-            props: present,
-            message: relationship.reason,
-          });
-        }
-        continue;
-      }
-
-      if (relationship.kind === "requires" && isPresent(relationship.prop)) {
-        const missing = relationship.requires.filter((name) => !isPresent(name));
-        if (missing.length) {
-          contractFindings.push({
-            component: entry.name,
-            rule: relationship.kind,
-            props: [relationship.prop, ...missing],
-            message: relationship.reason,
-          });
-        }
-      }
-    }
   }
 
-  const violationCount = findings.length + contractFindings.length;
-
-  return dsJsonResult({
-    file: label,
-    component: component || null,
-    violationCount,
-    ok: violationCount === 0,
-    findings,
-    contractFindings,
-    fleetLint: "npm run lint:dt-usage",
-    note:
-      violationCount > 0
-        ? "Resolve raw-UI findings and machine-readable component contract violations."
-        : "No raw-UI or component contract violations detected in this input.",
-  });
+  return dsJsonResult(
+    validateUsage(
+      {
+        source: filePath || snippet ? source : undefined,
+        label,
+        // Snippets often omit imports; match bare catalog tag names in that case.
+        matchBareTags: !filePath,
+        component: canonical,
+        props: suppliedProps,
+      },
+      byName,
+    ),
+  );
 }
 
 export function readManifestSummaryResource(): string {

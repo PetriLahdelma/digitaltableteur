@@ -54,5 +54,8 @@ if echo "$changed" | grep -qE '\.contract\.json$|figma-component-index\.json|fig
   npm run check:figma-links
 fi
 npm run validate:components
+# Contract rules (propRelationships, forbiddenCombos, deprecated props) over the
+# @dt JSX in files changed vs origin/main.
+npm run validate:agent-usage
 npm run typecheck
 npm run lint

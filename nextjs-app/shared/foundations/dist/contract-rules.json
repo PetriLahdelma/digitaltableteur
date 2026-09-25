@@ -1,0 +1,579 @@
+{
+  "components": {
+    "Accordion": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "openIds",
+            "defaultOpenIds"
+          ],
+          "reason": "`openIds` makes the component controlled and `defaultOpenIds` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "AlertBanner": {},
+    "ArticleCard": {},
+    "ArticleContent": {},
+    "ArticleShareSection": {},
+    "AspectRatio": {},
+    "Author": {},
+    "AuthorBio": {},
+    "Avatar": {},
+    "AvatarGroup": {},
+    "Badge": {},
+    "BlogCategoryFilter": {},
+    "BlogMediaImage": {},
+    "BlogNav": {},
+    "Breadcrumb": {},
+    "Button": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "href",
+            "submits"
+          ],
+          "reason": "`href` and `submits` never coexist in a valid ButtonProps branch."
+        },
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "clickAction",
+            "href"
+          ],
+          "reason": "`clickAction` and `href` never coexist in a valid ButtonProps branch."
+        },
+        {
+          "kind": "requires",
+          "prop": "target",
+          "requires": [
+            "href"
+          ],
+          "reason": "Whenever `target` is accepted by ButtonProps, `href` must also be present."
+        },
+        {
+          "kind": "requires",
+          "prop": "rel",
+          "requires": [
+            "href"
+          ],
+          "reason": "Whenever `rel` is accepted by ButtonProps, `href` must also be present."
+        }
+      ],
+      "forbiddenCombos": [
+        {
+          "id": "button-icon-only-needs-name",
+          "when": {
+            "icon": {
+              "present": true
+            },
+            "children": {
+              "absent": true
+            }
+          },
+          "requireAnyOf": [
+            "accessibleName",
+            "accessibleNameRef",
+            "tooltip",
+            "aria-label"
+          ],
+          "reason": "An icon-only button has no accessible name. Add accessibleName, accessibleNameRef, or tooltip, e.g. <Button icon=\"search\" accessibleName=\"Search\" />.",
+          "severity": "error",
+          "evidence": "Button.tsx development warning (isIconOnly && !hasAccessibleName)"
+        }
+      ]
+    },
+    "ButtonGroup": {},
+    "Card": {
+      "forbiddenCombos": [
+        {
+          "id": "card-link-with-footer",
+          "when": {
+            "link": {
+              "present": true
+            }
+          },
+          "forbid": [
+            "footerStart",
+            "footerEnd"
+          ],
+          "reason": "`link` is ignored when `footerStart`/`footerEnd` are set: a stretched anchor cannot wrap interactive footer controls. Use a plain card with buttons instead.",
+          "severity": "error",
+          "evidence": "Card.tsx development warning (linkSuppressed)"
+        }
+      ],
+      "props": {
+        "extra": {
+          "deprecated": true,
+          "deprecation": "Use `headerEnd`. Legacy alias feeding the trailing header region."
+        }
+      }
+    },
+    "CategoryFilter": {},
+    "Center": {},
+    "ChatWidget": {},
+    "Checkbox": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "checked",
+            "defaultChecked"
+          ],
+          "reason": "`checked` makes the component controlled and `defaultChecked` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "CheckboxGroup": {},
+    "ClientLogoMarquee": {},
+    "CodeBlockWindow": {},
+    "CodeSnippet": {},
+    "Combobox": {},
+    "CommandPalette": {},
+    "ComplianceCard": {},
+    "ContactForm": {},
+    "ContactFormEditorial": {},
+    "Container": {},
+    "CookieConsent": {},
+    "DataTable": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "sort",
+            "defaultSort"
+          ],
+          "reason": "`sort` makes the component controlled and `defaultSort` uncontrolled; pass one, not both."
+        },
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "selectedRowIds",
+            "defaultSelectedRowIds"
+          ],
+          "reason": "`selectedRowIds` makes the component controlled and `defaultSelectedRowIds` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "Designerman": {},
+    "Display": {},
+    "Divider": {},
+    "DonnyAvatar": {},
+    "EmailSignatureGenerator": {},
+    "EmptyState": {},
+    "EnhancedProjectCard": {},
+    "ExpandableSection": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "expanded",
+            "defaultExpanded"
+          ],
+          "reason": "`expanded` makes the component controlled and `defaultExpanded` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "FileUpload": {},
+    "FilterChip": {},
+    "FlexBox": {},
+    "FormField": {},
+    "FormFieldEditorial": {
+      "propRelationships": [
+        {
+          "kind": "requires",
+          "prop": "children",
+          "requires": [
+            "type"
+          ],
+          "reason": "Whenever `children` is accepted by FormFieldEditorialProps, `type` must also be present."
+        }
+      ]
+    },
+    "Gallery": {},
+    "Grid": {},
+    "GroupLabel": {},
+    "HelperText": {},
+    "Icon": {},
+    "IconButton": {},
+    "ImagePlaceholder": {},
+    "Kbd": {},
+    "Label": {},
+    "LanguageSwitcher": {},
+    "Lightbox": {},
+    "Link": {},
+    "LinkedInQuoteCard": {},
+    "List": {},
+    "ListItem": {},
+    "LocationCard": {},
+    "Logo": {
+      "forbiddenCombos": [
+        {
+          "id": "logo-src-ignores-mark-options",
+          "when": {
+            "src": {
+              "present": true
+            }
+          },
+          "forbid": [
+            "animated",
+            "background"
+          ],
+          "reason": "`animated` and `background` style the built-in mark only; with `src` set they are ignored.",
+          "severity": "warning",
+          "evidence": "Logo.tsx src branch returns before background/animated are applied"
+        },
+        {
+          "id": "logo-decorative-ignores-title",
+          "when": {
+            "decorative": {
+              "equals": true
+            }
+          },
+          "forbid": [
+            "title"
+          ],
+          "reason": "A decorative logo is removed from the accessibility tree, so `title` is never announced. Drop `title` or make the logo non-decorative.",
+          "severity": "warning",
+          "evidence": "Logo.tsx: title is not rendered when decorative"
+        }
+      ]
+    },
+    "MCPActionButton": {},
+    "MacWindowFrame": {},
+    "MarkdownMessage": {},
+    "Menu": {},
+    "Modal": {},
+    "MultiCombobox": {},
+    "NavLink": {},
+    "NavMenuList": {},
+    "NewsletterWaitlist": {},
+    "NextLayout": {},
+    "OpenHours": {},
+    "Pagination": {},
+    "PersonCard": {},
+    "PhoneInput": {},
+    "PixelLoop": {},
+    "Progress": {
+      "forbiddenCombos": [
+        {
+          "id": "progress-indeterminate-ignores-value",
+          "when": {
+            "indeterminate": {
+              "equals": true
+            }
+          },
+          "forbid": [
+            "value"
+          ],
+          "reason": "An indeterminate bar drops aria-valuenow and ignores `value`. Pass `value` only for determinate progress.",
+          "severity": "warning",
+          "evidence": "Progress.tsx: aria-valuenow and scale are skipped when indeterminate"
+        }
+      ]
+    },
+    "ProjectCard": {},
+    "ProjectGallery": {},
+    "ProjectNav": {},
+    "Radio": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "checked",
+            "defaultChecked"
+          ],
+          "reason": "`checked` makes the component controlled and `defaultChecked` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "RadioGroup": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "ReadingProgress": {},
+    "ReliablePartnerBadge": {},
+    "ResizablePanelGroup": {},
+    "ScrollIndicator": {},
+    "Section": {},
+    "SecureCVDownload": {},
+    "SegmentedControl": {},
+    "Select": {
+      "props": {
+        "onChange": {
+          "deprecated": true,
+          "deprecation": "Use onValueChange instead. Will be removed in v2.0.0"
+        }
+      }
+    },
+    "SelectOption": {},
+    "SelectableCard": {},
+    "SelectableCardGroup": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "SentrySummaryCard": {},
+    "ServiceCard": {},
+    "ServicesGrid": {},
+    "SiteTree": {},
+    "Skeleton": {},
+    "SkipLink": {},
+    "SlideButton": {},
+    "SocialIconLink": {},
+    "SocialShare": {},
+    "Spacer": {},
+    "Spinner": {},
+    "SplitButton": {},
+    "Stack": {},
+    "StatusDot": {},
+    "Switch": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "checked",
+            "defaultChecked"
+          ],
+          "reason": "`checked` and `defaultChecked` never coexist in a valid SwitchProps branch."
+        }
+      ]
+    },
+    "Table": {},
+    "TableCell": {},
+    "TableHeaderCell": {},
+    "TableOfContents": {},
+    "TableRow": {},
+    "Tabs": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "activeTab",
+            "defaultActiveTab"
+          ],
+          "reason": "`activeTab` makes the component controlled and `defaultActiveTab` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "Testimonial": {},
+    "Text": {},
+    "TextArea": {},
+    "TextInput": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ],
+      "props": {
+        "onChange": {
+          "deprecated": true,
+          "deprecation": "Use onValueChange instead. Will be removed in v2.0.0"
+        }
+      }
+    },
+    "ThemeProvider": {},
+    "Timestamp": {},
+    "Title": {},
+    "Toast": {
+      "forbiddenCombos": [
+        {
+          "id": "toast-inline-ignores-position",
+          "when": {
+            "inline": {
+              "equals": true
+            }
+          },
+          "forbid": [
+            "position"
+          ],
+          "reason": "An inline toast is placed by its parent (ToastStack); `position` is ignored.",
+          "severity": "warning",
+          "evidence": "Toast.tsx: inline selects toast--inline instead of the position class"
+        }
+      ]
+    },
+    "ToastStack": {},
+    "Tooltip": {},
+    "TransformingActionInput": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "TreeView": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "selectedId",
+            "defaultSelectedId"
+          ],
+          "reason": "`selectedId` makes the component controlled and `defaultSelectedId` uncontrolled; pass one, not both."
+        },
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "expandedIds",
+            "defaultExpandedIds"
+          ],
+          "reason": "`expandedIds` makes the component controlled and `defaultExpandedIds` uncontrolled; pass one, not both."
+        }
+      ]
+    },
+    "ValueCard": {},
+    "VirtualList": {},
+    "VirtualListItem": {},
+    "VisuallyHidden": {},
+    "WipBadge": {},
+    "WorkNav": {},
+    "FadeIn": {},
+    "AboutHero": {},
+    "AboutPageContent": {},
+    "ArticleHero": {},
+    "ArticleLayout": {},
+    "ArticlePageTemplate": {},
+    "BlogHero": {},
+    "BlogIndexContent": {},
+    "CTASection": {},
+    "CVDownloadSection": {},
+    "ContactHero": {},
+    "ContactInquiryPanel": {},
+    "ContactPageContentEditorial": {},
+    "ContentSection": {},
+    "DesignSprintsSection": {},
+    "Footer": {},
+    "GridBlock": {},
+    "Hero": {},
+    "HeroSection": {
+      "forbiddenCombos": [
+        {
+          "id": "hero-background-image-needs-image-mode",
+          "when": {
+            "backgroundImage": {
+              "present": true
+            },
+            "background": {
+              "oneOf": [
+                "gradient",
+                "solid",
+                "transparent"
+              ]
+            }
+          },
+          "forbid": [
+            "backgroundImage"
+          ],
+          "reason": "`backgroundImage` only renders when background=\"image\"; with any other background it is silently dropped.",
+          "severity": "error",
+          "evidence": "HeroSection.tsx: hasBackgroundImage = background === \"image\" && backgroundImage"
+        },
+        {
+          "id": "hero-background-image-default-mode",
+          "when": {
+            "backgroundImage": {
+              "present": true
+            },
+            "background": {
+              "absent": true
+            }
+          },
+          "requireAllOf": [
+            "background"
+          ],
+          "reason": "`background` defaults to \"transparent\", which drops `backgroundImage`. Set background=\"image\".",
+          "severity": "error",
+          "evidence": "HeroSection.tsx: background defaults to \"transparent\""
+        }
+      ]
+    },
+    "HighlightSection": {},
+    "HomeHero": {},
+    "ManifestoSection": {},
+    "NewsBulletin": {},
+    "PageLayout": {
+      "forbiddenCombos": [
+        {
+          "id": "pagelayout-columns-need-grid",
+          "when": {
+            "columns": {
+              "present": true
+            },
+            "grid": {
+              "absent": true
+            }
+          },
+          "requireAllOf": [
+            "grid"
+          ],
+          "reason": "`columns` only applies when `grid` is true; `grid` defaults to false, so the column count is dropped.",
+          "severity": "error",
+          "evidence": "PageLayout.tsx gridStyle: returns {} when !grid"
+        },
+        {
+          "id": "pagelayout-columns-with-grid-off",
+          "when": {
+            "grid": {
+              "equals": false
+            }
+          },
+          "forbid": [
+            "columns"
+          ],
+          "reason": "`columns` only applies when `grid` is true.",
+          "severity": "error",
+          "evidence": "PageLayout.tsx gridStyle: returns {} when !grid"
+        }
+      ]
+    },
+    "PricingCalculator": {},
+    "PricingPageContent": {},
+    "ProcessBlock": {},
+    "ProjectDetailLayout": {},
+    "ProjectDetailTemplate": {},
+    "ProjectHero": {},
+    "ProjectMetaSection": {},
+    "ProofBlock": {},
+    "RelatedPosts": {},
+    "RelatedProjects": {},
+    "ServicesBlock": {},
+    "ServicesSection": {},
+    "SiteFooter": {},
+    "SiteHeader": {},
+    "StatsSection": {},
+    "StoryBlock": {},
+    "TeamBlock": {},
+    "ValuesSection": {},
+    "WorkCTA": {},
+    "WorkHero": {},
+    "WorkMagneticField": {},
+    "WorkPreviewSection": {}
+  }
+}

@@ -80,6 +80,13 @@ These are small, high-trust corrections the audit surfaced. They cost little and
 
 **Goal.** An agent's proposed component usage is validated against the contract, publicly and in CI, and violating code cannot merge.
 
+**Progress (2026-09-25).** Steps 2 to 4 shipped; step 1 is under way.
+- Rule engine `nextjs-app/shared/lib/design-system-mcp/contract-rules.ts` plus a TypeScript-parser JSX extractor (`jsx-usage.ts`, no ts-morph type-check needed). Conservative: a non-literal never matches `equals`/`oneOf`, and a JSX spread skips absence-based rules.
+- Rules: union-derived `propRelationships`, derived `defaultX`/`X` controlled pairs, `@deprecated` props (warning, with the tag's replacement text), and authored contract `forbiddenCombos` (10 rules on 7 components, each tied to a runtime warning or a silently ignored prop). Coverage 3 → 20 of 178 components, ratcheted in `agent-usage-rules.ratchet.json`.
+- `npm run validate:agent-usage` runs on pre-push (changed files), farm PR validation and `release:gate` (`--all`, 1,542 usages in under a second). It also fails when a rule names a prop the component does not declare.
+- Public `/mcp` now serves a hardened `validate_component_usage`: snippet-only (no `filePath`), 20,000-character cap, rules from the compact `contract-rules.json` artifact. The stdio `filePath` branch is confined to the repo root.
+- Open: rule coverage (step 1) is still the long pole; durable rate limiting and `authentication.required` stay open decisions.
+
 **Current reality (grounded).**
 - The public HTTP handler (`create-consulting-mcp-handler.ts`) **deliberately omits** `registerDesignSystemMcpTools`; the public surface is consulting tools + `search`/`get` only. `validate_component_usage` is stdio-only.
 - `executeValidateComponentUsage` (`executors.ts:326-431`) has two modes: a raw-UI **regex** scan and a structured `propRelationships` check that needs a **pre-structured props object** (no JSX parsing).

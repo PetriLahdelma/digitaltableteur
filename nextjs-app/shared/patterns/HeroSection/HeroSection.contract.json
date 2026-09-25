@@ -333,5 +333,45 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
+    ],
+    "forbiddenCombos": [
+        {
+            "id": "hero-background-image-needs-image-mode",
+            "when": {
+                "backgroundImage": {
+                    "present": true
+                },
+                "background": {
+                    "oneOf": [
+                        "gradient",
+                        "solid",
+                        "transparent"
+                    ]
+                }
+            },
+            "forbid": [
+                "backgroundImage"
+            ],
+            "reason": "`backgroundImage` only renders when background=\"image\"; with any other background it is silently dropped.",
+            "severity": "error",
+            "evidence": "HeroSection.tsx: hasBackgroundImage = background === \"image\" && backgroundImage"
+        },
+        {
+            "id": "hero-background-image-default-mode",
+            "when": {
+                "backgroundImage": {
+                    "present": true
+                },
+                "background": {
+                    "absent": true
+                }
+            },
+            "requireAllOf": [
+                "background"
+            ],
+            "reason": "`background` defaults to \"transparent\", which drops `backgroundImage`. Set background=\"image\".",
+            "severity": "error",
+            "evidence": "HeroSection.tsx: background defaults to \"transparent\""
+        }
     ]
 }
