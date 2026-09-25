@@ -124,21 +124,67 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "2.5.8"
         ],
-        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.json",
+            "sourceCommit": "e193905207f9d22c2db77faf8fd5aaba9464b5dd",
+            "capturedAt": "2026-09-25T21:50:41.754Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.json",
+            "sourceCommit": "e193905207f9d22c2db77faf8fd5aaba9464b5dd",
+            "capturedAt": "2026-09-25T21:50:41.947Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.json",
+            "sourceCommit": "e193905207f9d22c2db77faf8fd5aaba9464b5dd",
+            "capturedAt": "2026-09-25T21:50:42.135Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          }
+        ]
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.json",
+            "sourceCommit": "e193905207f9d22c2db77faf8fd5aaba9464b5dd",
+            "capturedAt": "2026-09-25T21:50:41.754Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.json",
+            "sourceCommit": "e193905207f9d22c2db77faf8fd5aaba9464b5dd",
+            "capturedAt": "2026-09-25T21:50:41.947Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.json",
+            "sourceCommit": "e193905207f9d22c2db77faf8fd5aaba9464b5dd",
+            "capturedAt": "2026-09-25T21:50:42.135Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-26"
+          }
+        ]
       },
       {
         "id": "forced-colors-real-browser",
