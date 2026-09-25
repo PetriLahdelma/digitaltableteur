@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2140,
+  "warningCount": 1947,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -157,15 +157,6 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 213,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
       "line": 211,
       "column": 38,
       "rule": "rhythmguard/use-scale",
@@ -181,15 +172,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"120px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
       "id": ".storybook/blocks/ComponentsGallery.module.css::rhythmguard/use-scale::Unexpected off-scale value \"120px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 205,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
@@ -265,30 +247,12 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 57,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": ".storybook/blocks/DocHeader.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": ".storybook/blocks/DocHeader.module.css",
       "line": 72,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": ".storybook/blocks/DocHeader.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 57,
-      "column": 21,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": ".storybook/blocks/DocHeader.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
@@ -562,15 +526,6 @@
     },
     {
       "file": ".storybook/blocks/StatusPill.module.css",
-      "line": 7,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": ".storybook/blocks/StatusPill.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": ".storybook/blocks/StatusPill.module.css",
       "line": 5,
       "column": 1,
       "rule": "rule-empty-line-before",
@@ -715,24 +670,6 @@
     },
     {
       "file": "app/globals.css",
-      "line": 131,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "app/globals.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "app/globals.css",
-      "line": 160,
-      "column": 13,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "app/globals.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "app/globals.css",
       "line": 70,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
@@ -760,24 +697,6 @@
     },
     {
       "file": "app/globals.css",
-      "line": 131,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "app/globals.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "app/globals.css",
-      "line": 160,
-      "column": 13,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "app/globals.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "app/globals.css",
       "line": 70,
       "column": 25,
       "rule": "rhythmguard/use-scale",
@@ -793,42 +712,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "app/globals.css::rhythmguard/use-scale::Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "app/globals.css",
-      "line": 133,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "app/globals.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "app/globals.css",
-      "line": 134,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "app/globals.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "app/globals.css",
-      "line": 162,
-      "column": 18,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "app/globals.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::3"
-    },
-    {
-      "file": "app/globals.css",
-      "line": 163,
-      "column": 17,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "app/globals.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::4"
     },
     {
       "file": "app/globals.css",
@@ -892,15 +775,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/AlertBanner/AlertBanner.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css",
-      "line": 21,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css",
@@ -1144,42 +1018,6 @@
       "severity": "warning",
       "text": "Expected \"z-index\" to come before \"inset-inline-end\" (order/properties-order)",
       "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::order/properties-order::Expected \"z-index\" to come before \"inset-inline-end\" (order/properties-order)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
-      "line": 17,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
-      "line": 205,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
-      "line": 91,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
-      "line": 191,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
     },
     {
       "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
@@ -1434,42 +1272,6 @@
       "id": "nextjs-app/shared/components/Avatar/avatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
-      "file": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css",
-      "line": 43,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css",
-      "line": 43,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css",
-      "line": 45,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css",
-      "line": 46,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
       "line": 9,
       "column": 3,
@@ -1495,24 +1297,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.25em\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.25em\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 173,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 18,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
@@ -1567,15 +1351,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 173,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
@@ -1696,15 +1471,6 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 349,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Button/Button.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
       "line": 358,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
@@ -1741,15 +1507,6 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 349,
-      "column": 22,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Button/Button.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
       "line": 246,
       "column": 39,
       "rule": "rhythmguard/use-scale",
@@ -1765,15 +1522,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/Button/Button.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 372,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Button/Button.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
@@ -1830,24 +1578,6 @@
       "id": "nextjs-app/shared/components/Button/Button.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
     },
     {
-      "file": "nextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css",
-      "line": 14,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css",
-      "line": 14,
-      "column": 24,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/Card/Card.module.css",
       "line": 101,
       "column": 19,
@@ -1885,7 +1615,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 503,
+      "line": 529,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -1894,7 +1624,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 504,
+      "line": 530,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -1903,106 +1633,106 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 576,
+      "line": 603,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeDark) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 557 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeDark) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 584 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeDark) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 770,
+      "line": 838,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeDark) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 627 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeDark) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 695 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeDark) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 781,
+      "line": 849,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeDark) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 508 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeDark) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 535 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeDark) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 701,
+      "line": 769,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 557 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCB) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 584 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 686,
+      "line": 754,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\", at line 412 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCB) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\", at line 438 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 789,
+      "line": 857,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 627 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCB) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 695 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 803,
+      "line": 871,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 508 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCB) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 535 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 759,
+      "line": 827,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCW) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 557 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCW) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 584 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 744,
+      "line": 812,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCW) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\", at line 412 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCW) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\", at line 438 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 810,
+      "line": 878,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCW) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 627 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCW) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 695 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 824,
+      "line": 892,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCW) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 508 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCW) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 535 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 284,
+      "line": 310,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
@@ -2011,38 +1741,38 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 567,
+      "line": 594,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".resetInline:disabled\" to come before selector \".resetInline:hover:not(:disabled)\", at line 557 (no-descending-specificity)",
+      "text": "Expected selector \".resetInline:disabled\" to come before selector \".resetInline:hover:not(:disabled)\", at line 584 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".resetInline:disabled\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 561,
+      "line": 588,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".resetInline:focus-visible\" to come before selector \".resetInline:hover:not(:disabled)\", at line 557 (no-descending-specificity)",
+      "text": "Expected selector \".resetInline:focus-visible\" to come before selector \".resetInline:hover:not(:disabled)\", at line 584 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".resetInline:focus-visible\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 421,
+      "line": 447,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".sendButton:disabled\" to come before selector \".sendButton:hover:not(:disabled)\", at line 412 (no-descending-specificity)",
+      "text": "Expected selector \".sendButton:disabled\" to come before selector \".sendButton:hover:not(:disabled)\", at line 438 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".sendButton:disabled\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 416,
+      "line": 442,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".sendButton:focus-visible\" to come before selector \".sendButton:hover:not(:disabled)\", at line 412 (no-descending-specificity)",
+      "text": "Expected selector \".sendButton:focus-visible\" to come before selector \".sendButton:hover:not(:disabled)\", at line 438 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".sendButton:focus-visible\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
@@ -2065,7 +1795,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 397,
+      "line": 423,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -2074,7 +1804,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 494,
+      "line": 520,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -2083,7 +1813,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 504,
+      "line": 530,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -2092,7 +1822,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 921,
+      "line": 991,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -2101,7 +1831,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 596,
+      "line": 623,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -2128,7 +1858,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 193,
+      "line": 219,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -2137,7 +1867,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1003,
+      "line": 1073,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -2146,7 +1876,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 395,
+      "line": 421,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -2155,7 +1885,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 638,
+      "line": 706,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -2164,7 +1894,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 644,
+      "line": 712,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -2173,7 +1903,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 638,
+      "line": 706,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2182,7 +1912,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 644,
+      "line": 712,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2191,21 +1921,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 500,
+      "line": 526,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"-4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 409,
-      "column": 16,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2236,7 +1957,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 464,
+      "line": 490,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2245,7 +1966,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 475,
+      "line": 501,
       "column": 26,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2254,8 +1975,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 857,
-      "column": 8,
+      "line": 665,
+      "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2263,7 +1984,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 877,
+      "line": 925,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2272,7 +1993,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 933,
+      "line": 945,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2281,8 +2002,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 967,
-      "column": 23,
+      "line": 1003,
+      "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2290,7 +2011,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 391,
+      "line": 417,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2299,7 +2020,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 845,
+      "line": 913,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2308,16 +2029,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1021,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 547,
+      "line": 574,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2326,7 +2038,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 341,
+      "line": 367,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2353,7 +2065,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 212,
+      "line": 238,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2362,7 +2074,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 279,
+      "line": 305,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2371,7 +2083,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 295,
+      "line": 321,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2380,8 +2092,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 875,
-      "column": 12,
+      "line": 667,
+      "column": 10,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2389,8 +2101,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 904,
-      "column": 8,
+      "line": 943,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2398,7 +2110,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 314,
+      "line": 340,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2407,7 +2119,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 395,
+      "line": 421,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2434,8 +2146,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 191,
-      "column": 8,
+      "line": 173,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2443,8 +2155,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 207,
-      "column": 25,
+      "line": 217,
+      "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2452,8 +2164,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 299,
-      "column": 21,
+      "line": 233,
+      "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2461,8 +2173,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 300,
-      "column": 12,
+      "line": 325,
+      "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2470,8 +2182,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 330,
-      "column": 8,
+      "line": 326,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2479,7 +2191,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 526,
+      "line": 356,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2488,8 +2200,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 909,
-      "column": 12,
+      "line": 553,
+      "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2497,8 +2209,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 911,
-      "column": 8,
+      "line": 977,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2506,8 +2218,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1021,
-      "column": 21,
+      "line": 979,
+      "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2515,7 +2227,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 352,
+      "line": 378,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2524,7 +2236,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1035,
+      "line": 1105,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2533,7 +2245,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 352,
+      "line": 378,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2542,7 +2254,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1035,
+      "line": 1105,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2551,7 +2263,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 312,
+      "line": 338,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2560,7 +2272,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 605,
+      "line": 632,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2569,7 +2281,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 312,
+      "line": 338,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2587,8 +2299,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 187,
-      "column": 17,
+      "line": 173,
+      "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2596,8 +2308,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 299,
-      "column": 13,
+      "line": 213,
+      "column": 17,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -2605,12 +2317,21 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 312,
-      "column": 19,
+      "line": 325,
+      "column": 13,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 338,
+      "column": 19,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::5"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2632,7 +2353,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 429,
+      "line": 455,
       "column": 15,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2641,30 +2362,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 429,
+      "line": 455,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 15,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"10%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"10%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 644,
-      "column": 46,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"10%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"10%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2677,7 +2380,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 174,
+      "line": 200,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2686,7 +2389,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 181,
+      "line": 207,
       "column": 26,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2695,7 +2398,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 187,
+      "line": 213,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2704,7 +2407,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 212,
+      "line": 238,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2713,7 +2416,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 300,
+      "line": 326,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2722,7 +2425,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 523,
+      "line": 550,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2731,7 +2434,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 600,
+      "line": 627,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2740,7 +2443,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 604,
+      "line": 631,
       "column": 17,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2749,7 +2452,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 604,
+      "line": 631,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2758,7 +2461,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 875,
+      "line": 943,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2767,16 +2470,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 457,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"20%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"20%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 418,
+      "line": 444,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2785,7 +2479,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 564,
+      "line": 591,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2794,7 +2488,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1064,
+      "line": 1135,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2803,7 +2497,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1073,
+      "line": 1144,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2812,7 +2506,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 451,
+      "line": 477,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2821,7 +2515,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 356,
+      "line": 382,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2830,7 +2524,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 638,
+      "line": 706,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2839,39 +2533,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 644,
+      "line": 712,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"-277px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-277px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 468,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 849,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 138,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.05em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.05em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2893,7 +2560,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 391,
+      "line": 417,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2902,7 +2569,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 845,
+      "line": 913,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2911,7 +2578,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 996,
+      "line": 1066,
       "column": 35,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2920,8 +2587,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1021,
-      "column": 12,
+      "line": 1093,
+      "column": 35,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
@@ -2929,16 +2596,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1023,
-      "column": 35,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::5"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 547,
+      "line": 574,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2947,7 +2605,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 341,
+      "line": 367,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2956,7 +2614,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 314,
+      "line": 340,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2965,7 +2623,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 395,
+      "line": 421,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2974,7 +2632,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 847,
+      "line": 915,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2983,7 +2641,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 352,
+      "line": 378,
       "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2992,7 +2650,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1035,
+      "line": 1105,
       "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3001,7 +2659,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 863,
+      "line": 931,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3010,7 +2668,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 958,
+      "line": 1028,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3019,7 +2677,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 969,
+      "line": 1039,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3028,7 +2686,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1026,
+      "line": 1096,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3037,7 +2695,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 305,
+      "line": 331,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3046,7 +2704,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 319,
+      "line": 345,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3055,7 +2713,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 352,
+      "line": 378,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3064,7 +2722,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 535,
+      "line": 562,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3073,7 +2731,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 551,
+      "line": 578,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3082,7 +2740,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1035,
+      "line": 1105,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3091,7 +2749,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 167,
+      "line": 949,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3100,7 +2758,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 881,
+      "line": 1058,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3109,16 +2767,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 988,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 943,
+      "line": 1013,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3127,7 +2776,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 438,
+      "line": 464,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3136,7 +2785,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 217,
+      "line": 243,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3145,7 +2794,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 312,
+      "line": 338,
       "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3154,7 +2803,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 605,
+      "line": 632,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3181,7 +2830,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 312,
+      "line": 338,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3208,8 +2857,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 187,
-      "column": 17,
+      "line": 173,
+      "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
@@ -3217,8 +2866,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 299,
-      "column": 13,
+      "line": 213,
+      "column": 17,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
@@ -3226,8 +2875,8 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 312,
-      "column": 19,
+      "line": 325,
+      "column": 13,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
@@ -3235,7 +2884,16 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 397,
+      "line": 338,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::6"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 423,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3262,7 +2920,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 503,
+      "line": 529,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3271,7 +2929,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 504,
+      "line": 530,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3289,7 +2947,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 356,
+      "line": 382,
       "column": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3322,114 +2980,6 @@
       "severity": "warning",
       "text": "Expected selector \":global(.themeHCB) input.checkbox:checked::after\" to come before selector \".checkboxContainer input.checkbox:disabled:checked::after\", at line 294 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) input.checkbox:checked::after\" to come before selector \".checkboxContainer input.checkbox:disabled:checked::after\" (no-descending-specificity)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 138,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 160,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 183,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 209,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 229,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::5"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 229,
-      "column": 30,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::6"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 251,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::7"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 251,
-      "column": 30,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::8"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 138,
-      "column": 30,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-60%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-60%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 160,
-      "column": 30,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-60%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-60%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 183,
-      "column": 30,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-60%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-60%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 209,
-      "column": 30,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-60%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-60%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
@@ -4423,24 +3973,6 @@
     },
     {
       "file": "nextjs-app/shared/components/ContactForm/ContactForm.module.css",
-      "line": 19,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactForm/ContactForm.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ContactForm/ContactForm.module.css",
-      "line": 20,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactForm/ContactForm.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/ContactForm/ContactForm.module.css",
       "line": 5,
       "column": 20,
       "rule": "rhythmguard/use-scale",
@@ -4521,24 +4053,6 @@
       "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
     },
     {
-      "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 11,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 12,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
       "file": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css",
       "line": 49,
       "column": 3,
@@ -4576,24 +4090,6 @@
     },
     {
       "file": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css",
-      "line": 33,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css",
-      "line": 15,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css",
       "line": 48,
       "column": 20,
       "rule": "rhythmguard/use-scale",
@@ -4609,15 +4105,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"13px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"13px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css",
-      "line": 49,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css",
@@ -4690,15 +4177,6 @@
       "severity": "warning",
       "text": "Expected \"inline-size\" to come before \"min-block-size\" (order/properties-order)",
       "id": "nextjs-app/shared/components/CookieConsent/CookieConsentBanner.module.css::order/properties-order::Expected \"inline-size\" to come before \"min-block-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/CookieConsent/CookieConsentBanner.module.css",
-      "line": 174,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/CookieConsent/CookieConsentBanner.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/components/DashLeadList/DashLeadList.module.css",
@@ -4890,24 +4368,6 @@
       "id": "nextjs-app/shared/components/Designerman/Designerman.module.css::rhythmguard/use-scale::Unexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
     },
     {
-      "file": "nextjs-app/shared/components/Divider/Divider.module.css",
-      "line": 17,
-      "column": 17,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Divider/Divider.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Divider/Divider.module.css",
-      "line": 22,
-      "column": 18,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Divider/Divider.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
       "file": "nextjs-app/shared/components/DonnyActionProvider/donny-target-highlights.css",
       "line": 9,
       "column": 3,
@@ -4990,42 +4450,6 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css",
-      "line": 40,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css",
-      "line": 40,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css",
-      "line": 42,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css",
-      "line": 43,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyActionProvider/DonnyActionProvider.module.css",
       "line": 2,
       "column": 1,
       "rule": "rule-empty-line-before",
@@ -5098,24 +4522,6 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 123,
-      "column": 41,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 456,
-      "column": 27,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
       "line": 148,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
@@ -5170,51 +4576,6 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 483,
-      "column": 27,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"0.5px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"0.5px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 500,
-      "column": 39,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"0.5px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"0.5px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 127,
-      "column": 40,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 284,
-      "column": 27,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 479,
-      "column": 27,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
       "line": 144,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
@@ -5266,24 +4627,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"-1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 123,
-      "column": 41,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 456,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
@@ -5350,15 +4693,6 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 81,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
       "line": 510,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
@@ -5383,51 +4717,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 483,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 500,
-      "column": 39,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 127,
-      "column": 40,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 284,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 479,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
@@ -5503,24 +4792,6 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 123,
-      "column": 41,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 456,
-      "column": 27,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
       "line": 193,
       "column": 27,
       "rule": "rhythmguard/use-scale",
@@ -5539,24 +4810,6 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 483,
-      "column": 27,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.5px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.5px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 500,
-      "column": 39,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.5px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.5px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
       "line": 78,
       "column": 14,
       "rule": "rhythmguard/use-scale",
@@ -5572,33 +4825,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 127,
-      "column": 40,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 284,
-      "column": 27,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 479,
-      "column": 27,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
@@ -6250,30 +5476,12 @@
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 83,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/FilterChip/FilterChip.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
       "line": 23,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/FilterChip/FilterChip.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 83,
-      "column": 21,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/FilterChip/FilterChip.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
@@ -6346,24 +5554,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/FinnishTransportAgency/ColorPalette.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/FinnishTransportAgency/ColorPalette.module.css",
-      "line": 95,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/FinnishTransportAgency/ColorPalette.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/FinnishTransportAgency/ColorPalette.module.css",
-      "line": 88,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/FinnishTransportAgency/ColorPalette.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/FinnishTransportAgency/ColorPalette.module.css",
@@ -6673,15 +5863,6 @@
     },
     {
       "file": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css",
-      "line": 17,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css",
       "line": 10,
       "column": 14,
       "rule": "rhythmguard/use-scale",
@@ -6925,48 +6106,12 @@
     },
     {
       "file": "nextjs-app/shared/components/Label/Label.module.css",
-      "line": 21,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Label/Label.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Label/Label.module.css",
       "line": 4,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Label/Label.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Label/Label.module.css",
-      "line": 21,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Label/Label.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Label/Label.module.css",
-      "line": 23,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Label/Label.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Label/Label.module.css",
-      "line": 24,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Label/Label.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
@@ -7087,33 +6232,6 @@
     },
     {
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 60,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 16,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 13,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
       "line": 52,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
@@ -7129,33 +6247,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 60,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 57,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 58,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
@@ -7276,24 +6367,6 @@
     },
     {
       "file": "nextjs-app/shared/components/Lightbox/Lightbox.module.css",
-      "line": 34,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Lightbox/Lightbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Lightbox/Lightbox.module.css",
-      "line": 74,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Lightbox/Lightbox.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Lightbox/Lightbox.module.css",
       "line": 81,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
@@ -7402,30 +6475,12 @@
     },
     {
       "file": "nextjs-app/shared/components/Link/Link.module.css",
-      "line": 32,
-      "column": 16,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/Link/Link.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Link/Link.module.css",
       "line": 28,
       "column": 16,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
       "text": "Unexpected transform translation value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
       "id": "nextjs-app/shared/components/Link/Link.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Link/Link.module.css",
-      "line": 32,
-      "column": 16,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Link/Link.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/components/Link/Link.module.css",
@@ -7480,15 +6535,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Link/Link.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Link/Link.module.css",
-      "line": 32,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Link/Link.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Link/Link.module.css",
@@ -7678,15 +6724,6 @@
       "severity": "warning",
       "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
       "id": "nextjs-app/shared/components/MacWindowFrame/MacWindowFrame.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/MacWindowFrame/MacWindowFrame.module.css",
-      "line": 79,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/MacWindowFrame/MacWindowFrame.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
@@ -7923,15 +6960,6 @@
       "id": "nextjs-app/shared/components/MCPActionButton/MCPActionButton.module.css::order/properties-order::Expected \"margin-block-end\" to come before \"color\" (order/properties-order)::1"
     },
     {
-      "file": "nextjs-app/shared/components/MCPActionButton/MCPActionButton.module.css",
-      "line": 18,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/MCPActionButton/MCPActionButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/Menu/Menu.module.css",
       "line": 5,
       "column": 20,
@@ -7939,15 +6967,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/Menu/Menu.module.css::rhythmguard/use-scale::Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Menu/Menu.module.css",
-      "line": 83,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Menu/Menu.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
@@ -8488,15 +7507,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/NavMenuList/NavMenuList.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/NavMenuList/NavMenuList.module.css",
-      "line": 24,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.015em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/NavMenuList/NavMenuList.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.015em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/NewsletterWaitlist/NewsletterWaitlist.module.css",
@@ -9091,15 +8101,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css",
-      "line": 197,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"56.25%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"56.25%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css",
@@ -10192,15 +9193,6 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 445,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
       "line": 340,
       "column": 19,
       "rule": "rhythmguard/use-scale",
@@ -10471,24 +9463,6 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/helsinkiDesignSystem.module.css",
-      "line": 100,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/helsinkiDesignSystem.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/helsinkiDesignSystem.module.css",
-      "line": 106,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.06em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/helsinkiDesignSystem.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.06em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/helsinkiDesignSystem.module.css",
       "line": 67,
       "column": 20,
       "rule": "rhythmguard/use-scale",
@@ -10603,33 +9577,6 @@
       "severity": "warning",
       "text": "Expected \"block-size\" to come before \"max-inline-size\" (order/properties-order)",
       "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::order/properties-order::Expected \"block-size\" to come before \"max-inline-size\" (order/properties-order)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 400,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 388,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 435,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
@@ -10912,15 +9859,6 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/RawView/rawView.module.css",
-      "line": 50,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.05em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/RawView/rawView.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.05em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/RawView/rawView.module.css",
       "line": 42,
       "column": 19,
       "rule": "rhythmguard/use-scale",
@@ -10957,7 +9895,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 606,
+      "line": 615,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11047,7 +9985,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 538,
+      "line": 547,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11074,16 +10012,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 26,
-      "column": 21,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 530,
+      "line": 539,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11092,7 +10021,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 538,
+      "line": 547,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11389,7 +10318,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 641,
+      "line": 650,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11398,7 +10327,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 642,
+      "line": 651,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11407,7 +10336,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 670,
+      "line": 679,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11416,7 +10345,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 690,
+      "line": 699,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11748,24 +10677,6 @@
       "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.stories.module.css::rhythmguard/use-scale::Unexpected off-scale value \"28rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
     },
     {
-      "file": "nextjs-app/shared/components/Progress/Progress.module.css",
-      "line": 40,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Progress/Progress.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Progress/Progress.module.css",
-      "line": 44,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"250%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Progress/Progress.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"250%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/Radio/Radio.module.css",
       "line": 46,
       "column": 15,
@@ -11793,15 +10704,6 @@
       "id": "nextjs-app/shared/components/Radio/Radio.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
     },
     {
-      "file": "nextjs-app/shared/components/ReadingProgress/ReadingProgress.module.css",
-      "line": 37,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/ReadingProgress/ReadingProgress.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css",
       "line": 29,
       "column": 3,
@@ -11809,15 +10711,6 @@
       "severity": "warning",
       "text": "Expected \"z-index\" to come before \"inset-inline-end\" (order/properties-order)",
       "id": "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css::order/properties-order::Expected \"z-index\" to come before \"inset-inline-end\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css",
-      "line": 31,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css",
@@ -12253,48 +11146,12 @@
     },
     {
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 57,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
       "line": 96,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 57,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 59,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 60,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.module.css",
@@ -12358,15 +11215,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.module.css",
-      "line": 59,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.module.css",
@@ -12460,15 +11308,6 @@
     },
     {
       "file": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css",
-      "line": 74,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css",
       "line": 28,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
@@ -12496,39 +11335,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css",
-      "line": 74,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css",
       "line": 24,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"110px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css::rhythmguard/use-scale::Unexpected off-scale value \"110px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css",
-      "line": 76,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css",
-      "line": 77,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ServicesGrid/ServicesGrid.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/SiteTree/SiteTree.module.css",
@@ -13153,15 +11965,6 @@
     },
     {
       "file": "nextjs-app/shared/components/SocialShare/SocialShare.module.css",
-      "line": 18,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SocialShare/SocialShare.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SocialShare/SocialShare.module.css",
       "line": 16,
       "column": 38,
       "rule": "rhythmguard/use-scale",
@@ -13243,30 +12046,12 @@
     },
     {
       "file": "nextjs-app/shared/components/Spacer/Spacer.stories.module.css",
-      "line": 26,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Spacer/Spacer.stories.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Spacer/Spacer.stories.module.css",
       "line": 7,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Spacer/Spacer.stories.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Spacer/Spacer.stories.module.css",
-      "line": 26,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Spacer/Spacer.stories.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Spacer/Spacer.stories.module.css",
@@ -13321,42 +12106,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.75rem\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/Spinner/Spinner.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.75rem\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/StatusDot/StatusDot.module.css",
-      "line": 73,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/StatusDot/StatusDot.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/StatusDot/StatusDot.module.css",
-      "line": 73,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/StatusDot/StatusDot.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/StatusDot/StatusDot.module.css",
-      "line": 75,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/StatusDot/StatusDot.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/StatusDot/StatusDot.module.css",
-      "line": 76,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/StatusDot/StatusDot.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/Switch/Switch.module.css",
@@ -13549,15 +12298,6 @@
     },
     {
       "file": "nextjs-app/shared/components/Tabs/Tabs.module.css",
-      "line": 159,
-      "column": 20,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Tabs/Tabs.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Tabs/Tabs.module.css",
       "line": 84,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
@@ -13573,24 +12313,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.4em\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Tabs/Tabs.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.4em\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Tabs/Tabs.module.css",
-      "line": 159,
-      "column": 20,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Tabs/Tabs.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Tabs/Tabs.module.css",
-      "line": 229,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Tabs/Tabs.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Tabs/Tabs.module.css",
@@ -13837,15 +12559,6 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 159,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
       "line": 29,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
@@ -13972,15 +12685,6 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 159,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
       "line": 29,
       "column": 12,
       "rule": "rhythmguard/use-scale",
@@ -14014,24 +12718,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 161,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 162,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/Toast/Toast.module.css",
@@ -14086,33 +12772,6 @@
       "severity": "warning",
       "text": "Expected \"transform\" to come before \"inset-inline-start\" (order/properties-order)",
       "id": "nextjs-app/shared/components/Toast/Toast.module.css::order/properties-order::Expected \"transform\" to come before \"inset-inline-start\" (order/properties-order)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Toast/Toast.module.css",
-      "line": 19,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Toast/Toast.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Toast/Toast.module.css",
-      "line": 100,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Toast/Toast.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Toast/Toast.module.css",
-      "line": 118,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Toast/Toast.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
     },
     {
       "file": "nextjs-app/shared/components/Toast/Toast.module.css",
@@ -14248,51 +12907,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.module.css",
-      "line": 21,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/VisuallyHidden/VisuallyHidden.module.css",
-      "line": 3,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/VisuallyHidden/VisuallyHidden.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/VisuallyHidden/VisuallyHidden.module.css",
-      "line": 3,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/VisuallyHidden/VisuallyHidden.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/VisuallyHidden/VisuallyHidden.module.css",
-      "line": 5,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/VisuallyHidden/VisuallyHidden.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/VisuallyHidden/VisuallyHidden.module.css",
-      "line": 6,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/VisuallyHidden/VisuallyHidden.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/WorkNav/worknav.module.css",
@@ -14449,15 +13063,6 @@
     },
     {
       "file": "nextjs-app/shared/index.css",
-      "line": 97,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/index.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/index.css",
       "line": 65,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
@@ -14485,15 +13090,6 @@
     },
     {
       "file": "nextjs-app/shared/index.css",
-      "line": 97,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/index.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/index.css",
       "line": 65,
       "column": 25,
       "rule": "rhythmguard/use-scale",
@@ -14509,24 +13105,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/index.css::rhythmguard/use-scale::Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/index.css",
-      "line": 99,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/index.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/index.css",
-      "line": 100,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/index.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
@@ -14566,39 +13144,12 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 78,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
       "line": 77,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 86,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 87,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
@@ -15067,15 +13618,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.6em\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.6em\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 74,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
@@ -15592,15 +14134,6 @@
     },
     {
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 170,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
       "line": 250,
       "column": 20,
       "rule": "rhythmguard/use-scale",
@@ -15679,15 +14212,6 @@
       "severity": "warning",
       "text": "Expected selector \":global(.themeHCW) .backgroundBase\" to come before selector \":global(.themeDark) .gradient .backgroundBase\", at line 249 (no-descending-specificity)",
       "id": "nextjs-app/shared/patterns/HighlightSection/HighlightSection.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .backgroundBase\" to come before selector \":global(.themeDark) .gradient .backgroundBase\" (no-descending-specificity)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/HighlightSection/HighlightSection.module.css",
-      "line": 141,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.05em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/HighlightSection/HighlightSection.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.05em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/HighlightSection/HighlightSection.module.css",
@@ -15808,24 +14332,6 @@
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 262,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.05em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.05em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 323,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.06em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.06em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
       "line": 308,
       "column": 19,
       "rule": "rhythmguard/use-scale",
@@ -15940,15 +14446,6 @@
       "severity": "warning",
       "text": "Expected selector \".calculator .priceValue\" to come before selector \".priceCard.priceCardDiscounted .priceValue\", at line 210 (no-descending-specificity)",
       "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::no-descending-specificity::Expected selector \".calculator .priceValue\" to come before selector \".priceCard.priceCardDiscounted .priceValue\" (no-descending-specificity)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
-      "line": 90,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
@@ -16471,24 +14968,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/patterns/ProjectMetaSection/ProjectMetaSection.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/ProofBlock/ProofBlock.module.css",
-      "line": 60,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/ProofBlock/ProofBlock.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/ProofBlock/ProofBlock.module.css",
-      "line": 67,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.06em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/ProofBlock/ProofBlock.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.06em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/ProofBlock/ProofBlock.module.css",
@@ -17050,33 +15529,6 @@
     },
     {
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 324,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 361,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 517,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
       "line": 141,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
@@ -17146,15 +15598,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 99,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
@@ -17380,33 +15823,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/stories/Docs/Icons.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Icons.module.css",
-      "line": 190,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/Docs/Icons.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Icons.module.css",
-      "line": 225,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/Docs/Icons.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Icons.module.css",
-      "line": 329,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/Docs/Icons.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
     },
     {
       "file": "nextjs-app/shared/stories/Docs/Icons.module.css",
@@ -17905,15 +16321,6 @@
     },
     {
       "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 100,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
       "line": 52,
       "column": 11,
       "rule": "rhythmguard/use-scale",
@@ -18040,30 +16447,12 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 157,
-      "column": 25,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
       "line": 153,
       "column": 16,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"-0.28rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-0.28rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 157,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -18406,33 +16795,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"-0.28rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.28rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 157,
-      "column": 25,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 52,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 183,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -19038,69 +17400,6 @@
       "id": "nextjs-app/shared/stories/WipBadge.module.css::order/properties-order::Expected \"z-index\" to come before \"inset-block-end\" (order/properties-order)::2"
     },
     {
-      "file": "nextjs-app/shared/styles/brand-chip.module.css",
-      "line": 18,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/styles/brand-chip.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/styles/grain.css",
-      "line": 46,
-      "column": 30,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/styles/grain.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/styles/grain.css",
-      "line": 50,
-      "column": 26,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/styles/grain.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/styles/grain.css",
-      "line": 42,
-      "column": 26,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-2%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/styles/grain.css::rhythmguard/prefer-token::Unexpected raw scale value \"-2%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/styles/grain.css",
-      "line": 50,
-      "column": 31,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-2%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/styles/grain.css::rhythmguard/prefer-token::Unexpected raw scale value \"-2%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/styles/grain.css",
-      "line": 42,
-      "column": 31,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/styles/grain.css::rhythmguard/prefer-token::Unexpected raw scale value \"1%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/styles/grain.css",
-      "line": 46,
-      "column": 26,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/styles/grain.css::rhythmguard/prefer-token::Unexpected raw scale value \"1%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
       "file": "nextjs-app/shared/styles/typography.css",
       "line": 109,
       "column": 14,
@@ -19129,15 +17428,6 @@
     },
     {
       "file": "nextjs-app/shared/styles/utilities.css",
-      "line": 90,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/styles/utilities.css::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/styles/utilities.css",
       "line": 23,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
@@ -19153,33 +17443,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/styles/utilities.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/styles/utilities.css",
-      "line": 90,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/styles/utilities.css::rhythmguard/use-scale::Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/styles/utilities.css",
-      "line": 92,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/styles/utilities.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/styles/utilities.css",
-      "line": 93,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/styles/utilities.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/styles/utilities.css",

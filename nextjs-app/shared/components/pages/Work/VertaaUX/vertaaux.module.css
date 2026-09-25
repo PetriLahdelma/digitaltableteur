@@ -514,21 +514,21 @@
   }
 }
 
-/*
- * The sizes below scale with the viewport (vi), but each column is only
- * about 40% of it. Between 640px and 900px the root font is 18px, the clamps
- * hit their maximum, and nowrap lines were cut mid-word ("The quick browr").
- * The column is a size container, and each size is also capped in cqi at the
- * width its longest nowrap line needs, so wide layouts keep their sizes and
- * narrow columns shrink instead of clipping.
- */
 .waterfallColumn {
+  /*
+   * The sizes below scale with the viewport (vi), but each column is only
+   * about 40% of it. Between 640px and 900px the root font is 18px, the clamps
+   * hit their maximum, and nowrap lines were cut mid-word ("The quick browr").
+   * The column is a size container, and each size is also capped in cqi at the
+   * width its longest nowrap line needs, so wide layouts keep their sizes and
+   * narrow columns shrink instead of clipping.
+   */
   display: flex;
   min-inline-size: 0;
   flex-direction: column;
   gap: 0;
-  overflow: hidden;
   container-type: inline-size;
+  overflow: hidden;
 }
 
 .waterfallLabel {
