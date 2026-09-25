@@ -1,4 +1,5 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { McpServer } from "@modelcontextprotocol/server";
+import { z } from "zod";
 
 import {
   executeFindComponentForIntent,
@@ -32,8 +33,8 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
       title: "List components",
       description:
         "List cataloged @dt components with status, import path, usage counts, and composesWith neighbors. Filter by status (stable|beta|alpha|deprecated|all).",
-      inputSchema: listComponentsInput,
-      outputSchema: listComponentsOutput,
+      inputSchema: z.object(listComponentsInput),
+      outputSchema: z.object(listComponentsOutput),
       annotations: READ_ONLY,
     },
     async (args) => executeListComponents(args),
@@ -45,8 +46,8 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
       title: "Find component for intent",
       description:
         "Rank @dt components for a free-text UI task (e.g. dismissible warning banner with action). Returns import, variants, composesWith, and validation commands.",
-      inputSchema: findComponentForIntentInput,
-      outputSchema: findComponentForIntentOutput,
+      inputSchema: z.object(findComponentForIntentInput),
+      outputSchema: z.object(findComponentForIntentOutput),
       annotations: READ_ONLY,
     },
     async (args) => executeFindComponentForIntent(args),
@@ -58,8 +59,8 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
       title: "Suggest layout pattern",
       description:
         "Rank @dt layout patterns (CTASection, Header, HeroSection, …) for a page-level intent. Returns useWhen, avoidWhen, composesWith, and variantNotes — not a license to replace pattern chrome.",
-      inputSchema: suggestPatternForLayoutInput,
-      outputSchema: suggestPatternForLayoutOutput,
+      inputSchema: z.object(suggestPatternForLayoutInput),
+      outputSchema: z.object(suggestPatternForLayoutOutput),
       annotations: READ_ONLY,
     },
     async (args) => executeSuggestPatternForLayout(args),
@@ -71,8 +72,8 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
       title: "Get component contract",
       description:
         "Get full contract + agent block + usage evidence for one cataloged component by name. The contract is typed against contract.schema.v2.json.",
-      inputSchema: getComponentContractInput,
-      outputSchema: getComponentContractOutput,
+      inputSchema: z.object(getComponentContractInput),
+      outputSchema: z.object(getComponentContractOutput),
       annotations: READ_ONLY,
     },
     async (args) => executeGetComponentContract(args),
@@ -84,7 +85,7 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
       title: "Get design tokens",
       description:
         "Get design token catalog summary and manifest token metadata (source: variables.css via build:tokens).",
-      outputSchema: getTokensOutput,
+      outputSchema: z.object(getTokensOutput),
       annotations: READ_ONLY,
     },
     async () => executeGetTokens(),
@@ -96,8 +97,8 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
       title: "Validate component usage",
       description:
         "Check a file/snippet for raw UI and optionally validate structured component props against inferred API relationships.",
-      inputSchema: validateComponentUsageInput,
-      outputSchema: validateComponentUsageOutput,
+      inputSchema: z.object(validateComponentUsageInput),
+      outputSchema: z.object(validateComponentUsageOutput),
       annotations: READ_ONLY,
     },
     async (args) => executeValidateComponentUsage(args),

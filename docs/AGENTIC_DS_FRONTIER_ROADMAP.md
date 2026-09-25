@@ -88,7 +88,7 @@ These are small, high-trust corrections the audit surfaced. They cost little and
 - Open: rule coverage (step 1) is still the long pole; durable rate limiting and `authentication.required` stay open decisions.
 
 **Current reality (grounded).**
-- The public HTTP handler (`create-consulting-mcp-handler.ts`) **deliberately omits** `registerDesignSystemMcpTools`; the public surface is consulting tools + `search`/`get` only. `validate_component_usage` is stdio-only.
+- (Superseded 2026-09-25, see Progress above.) The public HTTP handler (`create-consulting-mcp-handler.ts`) omitted `registerDesignSystemMcpTools`; the public surface was consulting tools + `search`/`get` only and `validate_component_usage` was stdio-only.
 - `executeValidateComponentUsage` (`executors.ts:326-431`) has two modes: a raw-UI **regex** scan and a structured `propRelationships` check that needs a **pre-structured props object** (no JSX parsing).
 - **The blocker is coverage, not plumbing:** `propRelationships` exist for 3/168 components; `forbiddenUse` is prose; no gate anywhere parses JSX props of DS components (`lint:dt-usage` was reduced to a single import-policy rule).
 - **Security:** the `filePath` branch honors absolute paths (arbitrary server-side file read if exposed); rate limiting is weak in-memory; `authentication.required` is `false`; `Access-Control-Allow-Origin: *`.

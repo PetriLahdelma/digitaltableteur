@@ -3,9 +3,7 @@ import { createConsultingMcpHandler } from "@/nextjs-app/shared/lib/mcp/create-c
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-const { handleMcpRequest, handleHeadRequest } = createConsultingMcpHandler({
-  basePath: "/api",
-});
+const { handleMcpRequest, handleHeadRequest } = createConsultingMcpHandler();
 
 export {
   handleMcpRequest as GET,

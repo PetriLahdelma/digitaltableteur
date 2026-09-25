@@ -6,8 +6,8 @@
  *
  * Set DT_REPO_ROOT if cwd is not the repo root.
  */
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { McpServer } from "@modelcontextprotocol/server";
+import { StdioServerTransport } from "@modelcontextprotocol/server/stdio";
 
 import { registerDocsRegistryMcpTools } from "../../nextjs-app/shared/lib/design-system-mcp/docs-registry-tools";
 import { registerDesignSystemMcpResources } from "../../nextjs-app/shared/lib/design-system-mcp/register-mcp-resources";
@@ -16,7 +16,7 @@ import { registerDesignSystemMcpTools } from "../../nextjs-app/shared/lib/design
 const server = new McpServer(
   {
     name: "digitaltableteur-design-system",
-    version: "1.0.0",
+    version: "2.0.0",
   },
   {
     instructions:

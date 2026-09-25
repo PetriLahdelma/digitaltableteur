@@ -8,7 +8,7 @@
  *   import, no filesystem tracing on Vercel);
  * - the TypeScript parser loads on first call, not on every cold start.
  */
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 // Relative (not @/-aliased) so the tsx-run stdio server resolves it too.
@@ -34,7 +34,7 @@ export function registerPublicValidatorTool(server: McpServer): number {
       title: "Validate component usage",
       description:
         "Check proposed @dt JSX against the component contracts: prop relationships, forbidden prop combinations, deprecated props, and raw-UI replacements. Pass a TSX snippet, or a component name with props.",
-      inputSchema: {
+      inputSchema: z.object({
         snippet: z
           .string()
           .max(SNIPPET_MAX_CHARS)
@@ -48,8 +48,8 @@ export function registerPublicValidatorTool(server: McpServer): number {
           .record(z.string(), z.unknown())
           .optional()
           .describe("Props as a JSON object, checked when component is set"),
-      },
-      outputSchema: validateComponentUsageOutput,
+      }),
+      outputSchema: z.object(validateComponentUsageOutput),
       annotations: { readOnlyHint: true, openWorldHint: false },
     },
     async ({ snippet, component, props }) => {

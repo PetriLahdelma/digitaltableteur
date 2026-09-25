@@ -5,6 +5,7 @@ import { registerDocsRegistryMcpTools } from "@/nextjs-app/shared/lib/design-sys
 import { registerPublicValidatorTool } from "@/nextjs-app/shared/lib/design-system-mcp/register-public-validator";
 import { registerDesignSystemMcpResources } from "@/nextjs-app/shared/lib/design-system-mcp/register-mcp-resources";
 import {
+  MCP_CACHE_HINTS,
   MCP_SERVER_DESCRIPTION,
   MCP_SERVER_NAME,
   MCP_SERVER_VERSION,
@@ -36,7 +37,13 @@ function clientKey(request: Request): string {
   );
 }
 
-export function createConsultingMcpHandler(options: { basePath: string }) {
+/**
+ * One handler serves both protocol eras: 2026-07-28 natively (stateless,
+ * per-request _meta envelope, server/discover, cache hints) and 2025-era
+ * Streamable HTTP through the SDK's stateless fallback. Route paths are the
+ * mount points themselves (mcp-handler 2 has no basePath).
+ */
+export function createConsultingMcpHandler() {
   const mcpHandler = createMcpHandler(
     (server) => {
       registerConsultingMcpTools(server);
@@ -54,11 +61,7 @@ export function createConsultingMcpHandler(options: { basePath: string }) {
         version: MCP_SERVER_VERSION,
       },
       instructions: MCP_SERVER_DESCRIPTION,
-    },
-    {
-      basePath: options.basePath,
-      disableSse: true,
-      maxDuration: 60,
+      cacheHints: MCP_CACHE_HINTS,
       verboseLogs: process.env.NODE_ENV === "development",
     },
   );

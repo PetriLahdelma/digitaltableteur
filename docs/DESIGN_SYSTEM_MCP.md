@@ -80,6 +80,24 @@ Optional: `DT_REPO_ROOT` if the process cwd is not the repo root.
 - HTTP registration: `create-consulting-mcp-handler.ts` (same `/mcp` route as consulting)
 - Stdio entry: `scripts/design-system/ds-mcp-stdio.ts`
 
+### Protocol and SDK
+
+- `@modelcontextprotocol/server` 2.x with `mcp-handler` 2.x. One handler serves MCP
+  **2026-07-28** natively (stateless, per-request `_meta` envelope, `server/discover`) and
+  2025-era Streamable HTTP clients through the SDK's stateless fallback. `GET`, `DELETE`
+  and `HEAD` answer `405`.
+- Every tool declares a zod input object (an empty schema strips all arguments) and an
+  output schema; results carry `structuredContent`. `get_component_contract` types the
+  contract against `contract.schema.v2.json`'s status, tier, and group enums.
+- 2026-07-28 cache hints (`MCP_CACHE_HINTS`): tool lists, discovery, and resource reads
+  are `public` for one hour, because they are built from committed contracts.
+- Public `/mcp` tools: consulting tools, `search`, `get`, and a snippet-only
+  `validate_component_usage` (no `filePath`, 20,000-character cap). The stdio server
+  adds the six discovery tools; its `filePath` is confined to the repository.
+- Protocol tests: `register-mcp-tools.test.ts` calls every tool through a real client
+  over an in-memory transport. Registry metadata: `server.json` (MCP Registry,
+  `com.digitaltableteur/mcp`).
+
 ## Evaluation
 
 `npm run agent:eval` validates manifest, MCP tool registration, **intent retrieval** against `scripts/design-system/agent-eval/golden-intents.json` (≥85% pass rate), and the Agent Experience complexity/coverage ratchet.

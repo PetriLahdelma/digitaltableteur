@@ -142,5 +142,5 @@ curl -sS https://www.digitaltableteur.com/auth.md | head
 # MCP endpoint (expect MCP protocol response, not HTML)
 curl -sSI -X POST https://www.digitaltableteur.com/mcp \
   -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"curl","version":"1.0"}},"id":1}'
+  -d '{"jsonrpc":"2.0","method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"curl","version":"1.0"}},"id":1}'
 ```

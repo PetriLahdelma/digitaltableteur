@@ -1,4 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 import {
@@ -19,98 +19,110 @@ const READ_ONLY = { readOnlyHint: true } as const;
 /**
  * Register read-only consulting tools on an MCP server instance.
  *
- * Tools that take arguments MUST declare real zod shapes: the SDK parses
- * arguments against the shape, and an empty shape STRIPS every argument
- * before the handler sees it (see docs-registry-tools.ts, which learned
- * this the hard way). Argument-less tools keep an empty shape.
+ * Tools that take arguments MUST declare a real zod object: the SDK parses
+ * arguments against it, and an empty shape STRIPS every argument before the
+ * handler sees it (see docs-registry-tools.ts, which learned this the hard
+ * way). Argument-less tools declare no input schema.
  */
 export function registerConsultingMcpTools(server: McpServer): number {
-  server.tool(
+  server.registerTool(
     "list_case_studies",
-    "List Digitaltableteur portfolio case studies with slug, title, category, tags, and URLs.",
     {
-      featuredOnly: z
-        .boolean()
-        .optional()
-        .describe("Only return featured case studies (default false)"),
+      description: "List Digitaltableteur portfolio case studies with slug, title, category, tags, and URLs.",
+      inputSchema: z.object({
+        featuredOnly: z
+          .boolean()
+          .optional()
+          .describe("Only return featured case studies (default false)"),
+      }),
+      annotations: READ_ONLY,
     },
-    READ_ONLY,
     async (args) => executeListCaseStudies(args),
   );
 
-  server.tool(
+  server.registerTool(
     "get_case_study",
-    "Get one case study by URL slug (e.g. dsharp-design-system, helsinki-design-system).",
     {
-      slug: z
-        .string()
-        .describe(
-          "Case study URL slug from list_case_studies, e.g. \"dsharp-design-system\"",
-        ),
+      description: "Get one case study by URL slug (e.g. dsharp-design-system, helsinki-design-system).",
+      inputSchema: z.object({
+        slug: z
+          .string()
+          .describe(
+            "Case study URL slug from list_case_studies, e.g. \"dsharp-design-system\"",
+          ),
+      }),
+      annotations: READ_ONLY,
     },
-    READ_ONLY,
     async (args) => executeGetCaseStudy(args),
   );
 
-  server.tool(
+  server.registerTool(
     "list_pricing_packages",
-    "List fixed consulting packages with EUR price ranges and duration (preferred over hourly for defined outcomes).",
-    {},
-    READ_ONLY,
+    {
+      description: "List fixed consulting packages with EUR price ranges and duration (preferred over hourly for defined outcomes).",
+      annotations: READ_ONLY,
+    },
     async () => executeListPricingPackages(),
   );
 
-  server.tool(
+  server.registerTool(
     "get_hourly_rate",
-    "Get typical and range hourly consulting rates in EUR (€90/h typical, €90–150/h depending on scope).",
-    {},
-    READ_ONLY,
+    {
+      description: "Get typical and range hourly consulting rates in EUR (€90/h typical, €90–150/h depending on scope).",
+      annotations: READ_ONLY,
+    },
     async () => executeGetHourlyRate(),
   );
 
-  server.tool(
+  server.registerTool(
     "list_services",
-    "List core consulting services (design system audit, component library, tokens, AI DesignOps).",
-    {},
-    READ_ONLY,
+    {
+      description: "List core consulting services (design system audit, component library, tokens, AI DesignOps).",
+      annotations: READ_ONLY,
+    },
     async () => executeListServices(),
   );
 
-  server.tool(
+  server.registerTool(
     "list_expertise_stacks",
-    "List technology and practice areas (React, Next.js, Storybook, Figma, TypeScript, etc.).",
-    {},
-    READ_ONLY,
+    {
+      description: "List technology and practice areas (React, Next.js, Storybook, Figma, TypeScript, etc.).",
+      annotations: READ_ONLY,
+    },
     async () => executeListExpertiseStacks(),
   );
 
-  server.tool(
+  server.registerTool(
     "list_audiences",
-    "List client audiences Digitaltableteur serves (startups, scaleups, enterprise, etc.).",
-    {},
-    READ_ONLY,
+    {
+      description: "List client audiences Digitaltableteur serves (startups, scaleups, enterprise, etc.).",
+      annotations: READ_ONLY,
+    },
     async () => executeListAudiences(),
   );
 
-  server.tool(
+  server.registerTool(
     "get_open_hours",
-    "Get Digitaltableteur office hours in Europe/Helsinki timezone.",
-    {},
-    READ_ONLY,
+    {
+      description: "Get Digitaltableteur office hours in Europe/Helsinki timezone.",
+      annotations: READ_ONLY,
+    },
     async () => executeGetOpenHours(),
   );
 
-  server.tool(
+  server.registerTool(
     "get_consulting_fit",
-    "Map a visitor problem statement to the best-matching consulting service.",
     {
-      problem: z
-        .string()
-        .describe(
-          "The visitor's problem statement, e.g. \"our design system has drifted from the product\"",
-        ),
+      description: "Map a visitor problem statement to the best-matching consulting service.",
+      inputSchema: z.object({
+        problem: z
+          .string()
+          .describe(
+            "The visitor's problem statement, e.g. \"our design system has drifted from the product\"",
+          ),
+      }),
+      annotations: READ_ONLY,
     },
-    READ_ONLY,
     async (args) => executeGetConsultingFit(args),
   );
 

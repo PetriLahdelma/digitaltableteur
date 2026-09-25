@@ -6,7 +6,7 @@
  * bundle needs no filesystem tracing — the same registries feed the human
  * Storybook docs, so this surface cannot drift from the pages.
  */
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 // Relative (not @/-aliased) so the tsx-run stdio server resolves it too.
@@ -188,11 +188,11 @@ export function registerDocsRegistryMcpTools(server: McpServer): number {
       title: "Search design-system docs",
       description:
         "Search the @dt design-system docs registry by name, keyword, or UI intent. Returns budgeted briefs (import line, key props, related components) with a hint for the follow-up get call.",
-      inputSchema: {
+      inputSchema: z.object({
         query: z.string().describe("Component name, keyword, or UI intent (e.g. \"toggle\")"),
         limit: z.number().int().min(1).max(20).optional().describe("Max results, default 8"),
-      },
-      outputSchema: docsSearchOutput,
+      }),
+      outputSchema: z.object(docsSearchOutput),
       annotations: READ_ONLY,
     },
     async (args) => executeSearch(args),
@@ -204,13 +204,13 @@ export function registerDocsRegistryMcpTools(server: McpServer): number {
       title: "Get component docs",
       description:
         "Get the full docs-registry entry for one component: usage guidance, props, example story source, and theming tokens.",
-      inputSchema: {
+      inputSchema: z.object({
         name: z.string().describe("Component name, e.g. \"Button\""),
         section: z
           .enum(GET_SECTIONS)
           .optional()
           .describe('Narrow the payload; default "all"'),
-      },
+      }),
       outputSchema: docsGetOutput,
       annotations: READ_ONLY,
     },

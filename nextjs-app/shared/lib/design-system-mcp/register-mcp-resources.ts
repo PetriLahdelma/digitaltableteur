@@ -1,4 +1,4 @@
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { McpServer } from "@modelcontextprotocol/server";
 
 import {
   readImportPolicyResource,
@@ -7,26 +7,9 @@ import {
   readTokenSummaryResource,
 } from "./executors";
 
-type UntypedResourceServer = {
-  resource: (
-    name: string,
-    uri: string,
-    metadata: { description?: string; mimeType?: string },
-    handler: () => Promise<{
-      contents: Array<{ uri: string; mimeType: string; text: string }>;
-    }>,
-  ) => void;
-};
-
-function bindResourceServer(server: McpServer): UntypedResourceServer {
-  return server as unknown as UntypedResourceServer;
-}
-
 /** Register static MCP resources for agent-manifest and tokens. */
 export function registerDesignSystemMcpResources(server: McpServer): number {
-  const resources = bindResourceServer(server);
-
-  resources.resource(
+  server.registerResource(
     "agent-manifest-summary",
     "digitaltableteur://design-system/manifest/summary",
     {
@@ -45,7 +28,7 @@ export function registerDesignSystemMcpResources(server: McpServer): number {
     }),
   );
 
-  resources.resource(
+  server.registerResource(
     "token-catalog-summary",
     "digitaltableteur://design-system/tokens/summary",
     {
@@ -63,7 +46,7 @@ export function registerDesignSystemMcpResources(server: McpServer): number {
     }),
   );
 
-  resources.resource(
+  server.registerResource(
     "import-policy",
     "digitaltableteur://design-system/import-policy",
     {
@@ -81,7 +64,7 @@ export function registerDesignSystemMcpResources(server: McpServer): number {
     }),
   );
 
-  resources.resource(
+  server.registerResource(
     "pattern-recipes",
     "digitaltableteur://design-system/pattern-recipes",
     {

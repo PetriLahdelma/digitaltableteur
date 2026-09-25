@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
-import { Client } from "@modelcontextprotocol/sdk/client/index.js";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
+import { Client } from "@modelcontextprotocol/client";
+import { McpServer } from "@modelcontextprotocol/server";
+import { InMemoryTransport } from "@modelcontextprotocol/server";
 import { CONSULTING_TOOL_NAMES, executeGetHourlyRate } from "./executors";
 import { registerConsultingMcpTools } from "./register-mcp-tools";
 
@@ -39,32 +39,34 @@ describe("consulting-tool executors", () => {
 
 describe("registerConsultingMcpTools", () => {
   it("registers nine read-only tools", () => {
-    const tool = vi.fn();
-    const server = { tool } as unknown as Parameters<
+    const registerTool = vi.fn();
+    const server = { registerTool } as unknown as Parameters<
       typeof registerConsultingMcpTools
     >[0];
 
     const count = registerConsultingMcpTools(server);
     expect(count).toBe(9);
-    expect(tool).toHaveBeenCalledTimes(9);
-    expect(tool.mock.calls[0]?.[3]?.readOnlyHint).toBe(true);
+    expect(registerTool).toHaveBeenCalledTimes(9);
+    for (const call of registerTool.mock.calls) {
+      expect(call[1]?.annotations?.readOnlyHint).toBe(true);
+    }
   });
 
   it("declares real schemas for every argument-taking tool", () => {
     // Regression guard: an empty schema makes the SDK strip every argument
     // before the handler sees it, silently breaking the tool.
-    const tool = vi.fn();
-    const server = { tool } as unknown as Parameters<
+    const registerTool = vi.fn();
+    const server = { registerTool } as unknown as Parameters<
       typeof registerConsultingMcpTools
     >[0];
     registerConsultingMcpTools(server);
 
-    const schemas = Object.fromEntries(
-      tool.mock.calls.map((call) => [call[0], call[2]]),
+    const shapes = Object.fromEntries(
+      registerTool.mock.calls.map((call) => [call[0], call[1]?.inputSchema?.shape ?? {}]),
     );
-    expect(Object.keys(schemas.get_case_study)).toContain("slug");
-    expect(Object.keys(schemas.get_consulting_fit)).toContain("problem");
-    expect(Object.keys(schemas.list_case_studies)).toContain("featuredOnly");
+    expect(Object.keys(shapes.get_case_study)).toContain("slug");
+    expect(Object.keys(shapes.get_consulting_fit)).toContain("problem");
+    expect(Object.keys(shapes.list_case_studies)).toContain("featuredOnly");
   });
 
   it("passes arguments through the real SDK to the handlers", async () => {
