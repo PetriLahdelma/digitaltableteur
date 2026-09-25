@@ -34,6 +34,11 @@ import {
 } from "../../lib/chat-stream-fallback";
 import { selectDonnyToolsForChat } from "../../lib/chat-tool-selection";
 import { checkRateLimit } from "../../lib/rate-limit";
+import { logChatFailure } from "../../lib/chat-errors";
+import {
+  createChatErrorRef,
+  type ChatErrorCode,
+} from "@/nextjs-app/shared/lib/chat-error-codes";
 import { getClientIp } from "../../lib/security-logger";
 
 const MAX_TOKENS = 4000;
@@ -192,6 +197,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Too many chat requests. Please retry shortly.",
+          code: "visitor_rate_limited" satisfies ChatErrorCode,
         },
         {
           status: 429,
@@ -209,6 +215,7 @@ export async function POST(request: NextRequest) {
         {
           error:
             guardrailCheck.reason || "Your message could not be processed.",
+          code: "message_blocked" satisfies ChatErrorCode,
         },
         { status: 400, headers: corsHeaders },
       );
@@ -240,8 +247,33 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     const normalized = normalizeError(error);
+    const code: ChatErrorCode =
+      normalized.status === 429
+        ? "ai_busy"
+        : normalized.status === 400
+          ? "bad_request"
+          : normalized.status >= 500
+            ? "ai_unavailable"
+            : "unknown";
+    const ref = createChatErrorRef();
+    logChatFailure({
+      ref,
+      detail: { code, providerStatus: normalized.status, message: normalized.message },
+      level: "error",
+      error,
+    });
+    // The body is visible in devtools: send a neutral text, keep the
+    // specific cause (auth, config, provider) in the log under `ref`.
+    const publicMessage: Record<ChatErrorCode, string> = {
+      ai_unavailable: "The assistant is temporarily unavailable.",
+      ai_busy: "The assistant is busy. Please retry shortly.",
+      visitor_rate_limited: "Too many chat requests. Please retry shortly.",
+      message_blocked: "Your message could not be processed.",
+      bad_request: "The chat request could not be processed.",
+      unknown: "Something went wrong.",
+    };
     return NextResponse.json(
-      { error: normalized.message },
+      { error: publicMessage[code], code, ref },
       {
         status: normalized.status,
         headers: corsHeaders,

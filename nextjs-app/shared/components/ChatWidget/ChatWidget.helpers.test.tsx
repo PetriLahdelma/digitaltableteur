@@ -11,11 +11,13 @@ import {
 
 const ERROR_COPY = {
   network: "network",
-  auth: "auth",
   notFound: "notFound",
-  rateLimit: "rateLimit",
-  server: "server",
+  unavailable: "unavailable",
+  busy: "busy",
+  visitorLimit: "visitorLimit",
+  blocked: "blocked",
   fallback: "fallback",
+  reference: "(Reference: {{ref}})",
 } as const;
 
 describe("ChatWidget helpers", () => {
@@ -75,30 +77,44 @@ describe("ChatWidget helpers", () => {
     expect(id.startsWith("id-")).toBe(true);
   });
 
-  it("maps insufficient quota to rateLimit copy", () => {
+  it("maps protocol stream errors to category copy with the reference", () => {
     expect(
-      resolveChatErrorMessage(
-        new Error(
-          '{"type":"error","error":{"code":"insufficient_quota","message":"You exceeded your current quota"}}',
-        ),
-        ERROR_COPY,
-      ),
-    ).toBe("rateLimit");
+      resolveChatErrorMessage(new Error("DONNY_ERROR:ai_unavailable:K7F2QX"), ERROR_COPY),
+    ).toBe("unavailable (Reference: K7F2QX)");
+    expect(
+      resolveChatErrorMessage(new Error("DONNY_ERROR:ai_busy:ABCD23"), ERROR_COPY),
+    ).toBe("busy (Reference: ABCD23)");
   });
 
-  it("maps gateway rate-limit stream failures to rateLimit copy", () => {
+  it("maps protocol JSON bodies, with or without a reference", () => {
     expect(
       resolveChatErrorMessage(
-        new Error("No output generated. Check the stream for errors."),
+        new Error('{"error":"Too many chat requests.","code":"visitor_rate_limited"}'),
         ERROR_COPY,
       ),
-    ).toBe("rateLimit");
+    ).toBe("visitorLimit");
     expect(
       resolveChatErrorMessage(
-        new Error("Free tier requests on this model are rate-limited."),
+        new Error('{"error":"Something went wrong.","code":"unknown","ref":"ZZ99AA"}'),
         ERROR_COPY,
       ),
-    ).toBe("rateLimit");
+    ).toBe("fallback (Reference: ZZ99AA)");
+  });
+
+  it("never turns provider or quota text into a visible message", () => {
+    // A raw provider error that somehow reached the client gets the neutral
+    // fallback, not a "request limit" or billing explanation.
+    expect(
+      resolveChatErrorMessage(
+        new Error('{"error":{"code":"insufficient_quota","message":"You exceeded your current quota"}}'),
+        ERROR_COPY,
+      ),
+    ).toBe("fallback");
+  });
+
+  it("keeps client-side heuristics for errors that never reached the server", () => {
+    expect(resolveChatErrorMessage(new Error("Failed to fetch"), ERROR_COPY)).toBe("network");
+    expect(resolveChatErrorMessage(new Error("AbortError: aborted"), ERROR_COPY)).toBeNull();
   });
 
   it("serializes and normalizes stored messages with a greeting", () => {

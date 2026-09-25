@@ -6,8 +6,13 @@ import {
   type LanguageModel,
   type ToolSet,
 } from "ai";
+import {
+  createChatErrorRef,
+  formatStreamErrorText,
+} from "@/nextjs-app/shared/lib/chat-error-codes";
 import type { ChatModelBackend } from "./chat-model";
 import { describeChatBackend, getChatLanguageModel } from "./chat-model";
+import { classifyProviderError, logChatFailure } from "./chat-errors";
 
 type StreamTextParams = {
   system: string;
@@ -140,13 +145,14 @@ export function createChatStreamResponse(options: {
         onUsage?.(result, { modelId: describeChatBackend(backend) });
 
         let providerError: unknown;
+        const ref = createChatErrorRef();
         const outcome = await pumpStreamWithFallback(
           result.toUIMessageStream({
-            // Keep the raw error for classification; the client still only
-            // sees a generic message (no provider or billing detail leaks).
+            // Keep the raw error for classification and logs; the visitor
+            // only gets a category and a reference (chat-error-codes.ts).
             onError: (error) => {
               providerError = error;
-              return "An error occurred.";
+              return formatStreamErrorText(classifyProviderError(error).code, ref);
             },
           }),
           writer,
@@ -154,10 +160,26 @@ export function createChatStreamResponse(options: {
         );
 
         if (outcome === "retry") {
-          console.warn(
-            `[chat] ${backend} unavailable in stream (rate limit or quota), trying ${backends[index + 1]}`,
-          );
+          // The visitor is served by the next backend, but the owner still
+          // needs to know the primary provider is failing (e.g. no credits).
+          logChatFailure({
+            ref,
+            detail: classifyProviderError(providerError),
+            backend: describeChatBackend(backend),
+            level: "warning",
+            error: providerError,
+          });
           continue;
+        }
+
+        if (providerError !== undefined) {
+          logChatFailure({
+            ref,
+            detail: classifyProviderError(providerError),
+            backend: describeChatBackend(backend),
+            level: "error",
+            error: providerError,
+          });
         }
 
         return;

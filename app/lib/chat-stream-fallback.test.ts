@@ -101,10 +101,11 @@ describe("chat-stream-fallback", () => {
     expect(body).not.toContain("credit");
   });
 
-  it("surfaces a generic error when every backend fails", async () => {
+  it("surfaces a category and reference, never billing detail, when every backend fails", async () => {
     const body = await runChat({ openai: failingModel(), gateway: failingModel() });
-    expect(body).toContain('"type":"error"');
+    expect(body).toMatch(/"errorText":"DONNY_ERROR:ai_unavailable:[A-Z2-9]{6}"/);
     expect(body).not.toContain("credit");
+    expect(body).not.toContain("quota");
   });
 
   it("trims chat history to the latest messages", () => {

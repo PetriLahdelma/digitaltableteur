@@ -12,6 +12,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
+import { parseChatError } from "../../lib/chat-error-codes";
 import ChatComposer, { ChatComposerHandle } from "./ChatComposer";
 import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
@@ -71,14 +72,27 @@ export function isLocalLikeHost(hostname: string): boolean {
 
 export type ChatErrorMessages = {
   network: string;
-  auth: string;
   notFound: string;
-  rateLimit: string;
-  server: string;
+  /** Every AI backend failed; the owner has the cause under the reference. */
+  unavailable: string;
+  /** The AI provider is throttling, not this visitor. */
+  busy: string;
+  /** This visitor sent too many messages in a short window. */
+  visitorLimit: string;
+  blocked: string;
   fallback: string;
+  /** Template with a {{ref}} placeholder, appended when a reference exists. */
+  reference: string;
 };
 
-/** Map useChat / transport errors to user-facing copy. */
+/**
+ * Map useChat / transport errors to user-facing copy.
+ *
+ * Server errors follow the protocol in chat-error-codes.ts: a category and
+ * an opaque reference, never provider or billing detail. Only errors that
+ * never reached the server (offline, missing endpoint) fall back to message
+ * heuristics.
+ */
 export function resolveChatErrorMessage(
   error: Error | undefined | null,
   messages: ChatErrorMessages,
@@ -90,43 +104,27 @@ export function resolveChatErrorMessage(
   if (normalized.includes("abort")) {
     return null;
   }
-  if (normalized.includes("failed to fetch")) {
-    return messages.network;
+
+  const parsed = parseChatError(message);
+  if (parsed) {
+    const base = {
+      ai_unavailable: messages.unavailable,
+      ai_busy: messages.busy,
+      visitor_rate_limited: messages.visitorLimit,
+      message_blocked: messages.blocked,
+      bad_request: messages.fallback,
+      unknown: messages.fallback,
+    }[parsed.code];
+    return parsed.ref
+      ? `${base} ${messages.reference.replace("{{ref}}", parsed.ref)}`
+      : base;
   }
-  if (
-    normalized.includes("authentication") ||
-    normalized.includes("unauthorized")
-  ) {
-    return messages.auth;
+
+  if (normalized.includes("failed to fetch") || normalized.includes("network")) {
+    return messages.network;
   }
   if (normalized.includes("404") || normalized.includes("not found")) {
     return messages.notFound;
-  }
-  if (
-    normalized.includes("429") ||
-    normalized.includes("rate limit") ||
-    normalized.includes("rate_limit") ||
-    normalized.includes("rate-limit") ||
-    normalized.includes("quota") ||
-    normalized.includes("insufficient_quota") ||
-    normalized.includes("too many requests")
-  ) {
-    return messages.rateLimit;
-  }
-  if (
-    normalized.includes("invalid 'tools") ||
-    normalized.includes('invalid "tools')
-  ) {
-    return messages.server;
-  }
-  if (normalized.match(/5\d{2}/)) {
-    return messages.server;
-  }
-  if (
-    normalized.includes("no output generated") ||
-    normalized.includes("gateway")
-  ) {
-    return messages.rateLimit;
   }
   return messages.fallback;
 }
@@ -454,26 +452,31 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         "chatErrorNetwork",
         "Looks like we lost the connection. Check your network and try again.",
       ),
-      auth: t(
-        "chatErrorAuth",
-        "Chat is offline while we finalize our AI Gateway configuration.",
-      ),
       notFound: t(
         "chatErrorNotFound",
         "Chat endpoint not found right now; we’re updating the deployment.",
       ),
-      rateLimit: t(
-        "chatErrorRateLimit",
-        "We just hit a request limit. Give it a moment and we’ll be back.",
+      unavailable: t(
+        "chatErrorUnavailable",
+        "Donny is temporarily unavailable. Please try again later, or email mail@digitaltableteur.com.",
       ),
-      server: t(
-        "chatErrorServer",
-        "Donny’s brain is taking a quick nap (server hiccup). Let’s retry soon.",
+      busy: t(
+        "chatErrorBusy",
+        "Donny is getting a lot of requests right now. Please try again in a minute.",
+      ),
+      visitorLimit: t(
+        "chatErrorVisitorLimit",
+        "You’ve sent several messages in a short time. Please wait a minute and try again.",
+      ),
+      blocked: t(
+        "chatErrorBlocked",
+        "That message couldn’t be processed. Try rephrasing it.",
       ),
       fallback: t(
         "chatErrorFallback",
-        "I couldn’t reach our studio brain right now. Please retry in a moment.",
+        "Something went wrong on our side. Please try again in a moment.",
       ),
+      reference: t("chatErrorReference", "(Reference: {{ref}})", { ref: "{{ref}}" }),
     }),
     [t],
   );
