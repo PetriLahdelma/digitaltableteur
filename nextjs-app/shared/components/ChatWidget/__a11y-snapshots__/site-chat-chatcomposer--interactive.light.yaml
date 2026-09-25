@@ -1,6 +1,6 @@
 - status: Work in progress (alpha)
-- text: Ask Donny a question
-- textbox "Ask Donny a question":
+- text: Ask the AI assistant a question
+- textbox "Ask the AI assistant a question":
   - /placeholder: Ask about open hours, service, or approach…
   - text: Hello, how can I help?
 - button "Send message": Send

@@ -3,8 +3,9 @@
   - img "Donny is idle":
     - img
   - paragraph:
-    - text: DT Donny
+    - text: AI assistant · DT Donny
     - status "Available now"
   - heading "Chat with Donny" [level=2]
+  - paragraph: DT-specific answers, no fluff.
   - button "Minimize chat":
     - img "Minimize chat"

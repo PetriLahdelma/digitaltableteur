@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-gridblock-default",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:14:12.324Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
+  "capturedAt": "2026-09-25T16:09:07.304Z",
+  "runner": "local-recapture-2026-09-25",
   "checks": {
     "accessibility-tree": {
       "passed": true
