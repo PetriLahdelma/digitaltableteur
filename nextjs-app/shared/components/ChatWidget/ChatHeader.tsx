@@ -21,6 +21,8 @@ import Icon from "@dt/Icon";
 export interface ChatHeaderProps {
   title: string;
   description: string;
+  /** Optional inline action after the description, e.g. a link to the AI-use policy. */
+  descriptionAction?: React.ReactNode;
   onMinimize: () => void;
   /**
    * Current state for Donny avatar animation.
@@ -53,6 +55,7 @@ export interface ChatHeaderProps {
 const ChatHeader: React.FC<ChatHeaderProps> = ({
   title,
   description,
+  descriptionAction,
   onMinimize,
   avatarState = "idle",
   enableIdleExpressions = false,
@@ -62,7 +65,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   currentDate,
 }) => {
   const t = useTranslate();
-  const tagline = t("chatTagline", "AI assistant · DT Donny");
+  const tagline = t("chatTagline", "Digitaltableteur");
   const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
 
   // Finnish (Europe/Helsinki) business hours: Mon–Fri 09:00–17:00 local time (inclusive start, exclusive end)
@@ -147,6 +150,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         </Title>
         <Text as="p" size="xs" className={styles.subtitle}>
           {description}
+          {descriptionAction ? <> {descriptionAction}</> : null}
         </Text>
       </div>
       <div className={styles.headerActions}>

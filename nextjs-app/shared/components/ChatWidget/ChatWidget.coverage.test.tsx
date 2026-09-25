@@ -88,7 +88,7 @@ describe("ChatWidget coverage", () => {
     expect(
       screen.getByRole("heading", { name: /AI assistant/i }),
     ).toBeInTheDocument();
-    expect(screen.getAllByText(/replies may be wrong/i).length).toBeGreaterThan(
+    expect(screen.getAllByText(/may be wrong/i).length).toBeGreaterThan(
       0,
     );
     expect(

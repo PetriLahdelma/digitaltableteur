@@ -170,9 +170,27 @@
 }
 
 .transparencyNotice {
-  padding: 0.75rem 1.25rem;
+  display: flex;
+  padding: var(--space-internal-8) var(--space-internal-8) var(--space-internal-8) 1.25rem;
+  align-items: flex-start;
+  gap: var(--space-internal-8);
   border-block: 1px solid var(--color-border);
   background: var(--color-light-bg);
+}
+
+.transparencyBody {
+  min-inline-size: 0;
+  flex: 1 1 auto;
+}
+
+.transparencyDismiss {
+  flex: 0 0 auto;
+}
+
+.aboutAiLink {
+  text-decoration: underline;
+  white-space: nowrap;
+  text-underline-offset: 0.15em;
 }
 
 .transparencyCopy {

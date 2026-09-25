@@ -30,6 +30,8 @@ import ChatToggle from "./ChatToggle";
 import { useTranslate } from "../../lib/translation";
 import { Link } from "../../lib/linkComponent";
 import Text from "@dt/Text";
+import Button from "@dt/Button";
+import Icon from "@dt/Icon";
 import { resolveChatAvatarState } from "./chatAvatarState";
 import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
 import { useDonnyChatLead } from "./useDonnyChatLead";
@@ -47,6 +49,9 @@ export interface ChatWidgetProps {
 
 const STORAGE_KEY = "dt-donny-chat-v2";
 const LEGACY_STORAGE_KEY = "dt-donny-chat";
+// Session-scoped like the transcript: the notice returns in a new browser
+// session, so every first interaction still meets it before input.
+const NOTICE_DISMISSED_KEY = "dt-donny-notice-dismissed";
 const DEFAULT_GREETING_TEXT =
   "Hi! I'm Donny, Digitaltableteur's AI assistant. Ask me about the work or a design system challenge.";
 
@@ -440,8 +445,16 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     description ||
     t(
       "chatDescription",
-      "AI-generated answers from site content. Replies may be wrong.",
+      "Answers draw on site content and may be wrong.",
     );
+  const [noticeDismissed, setNoticeDismissed] = useState(false);
+  useEffect(() => {
+    try {
+      setNoticeDismissed(sessionStorage.getItem(NOTICE_DISMISSED_KEY) === "1");
+    } catch {
+      // storage blocked: keep the notice visible
+    }
+  }, []);
   const placeholderText = t("chatPlaceholder", "Ask me anything…");
   const inputLabelText = t("chatInputLabel", "Ask the AI assistant a question");
   const sendLabelText = t("chatSend", "Send message");
@@ -765,6 +778,17 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   }, [isOpen, stop]);
 
   const composerRef = useRef<ChatComposerHandle | null>(null);
+  const dismissNotice = useCallback(() => {
+    setNoticeDismissed(true);
+    try {
+      sessionStorage.setItem(NOTICE_DISMISSED_KEY, "1");
+    } catch {
+      // storage blocked: dismissal lasts for this render only
+    }
+    // The dismiss button unmounts with the notice; hand focus to the input
+    // rather than letting it fall back to the document body.
+    composerRef.current?.focusInput();
+  }, []);
   const handleToggle = useCallback(() => {
     if (isOpen) {
       closeChat();
@@ -978,6 +1002,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           <ChatHeader
             title={resolvedTitle}
             description={resolvedDescription}
+            descriptionAction={
+              noticeDismissed ? (
+                <Link href="/ai-use" className={styles.aboutAiLink}>
+                  {t("chatAboutAiLink", "About this AI")}
+                </Link>
+              ) : undefined
+            }
             onMinimize={closeChat}
             avatarState={avatarState}
             enableIdleExpressions={avatarState === "idle"}
@@ -985,25 +1016,38 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             isSpeaking={status === "streaming"}
             enableSleepDetection
           />
-          <aside
-            className={styles.transparencyNotice}
-            aria-label={t("chatTransparencyLabel", "AI assistant information")}
-          >
-            <Text as="p" size="xs" className={styles.transparencyCopy}>
-              {t(
-                "chatDisclosure",
-                "AI-generated replies may be wrong. Do not share sensitive personal data.",
-              )}
-            </Text>
-            <div className={styles.transparencyLinks}>
-              <Link href="/ai-use">
-                {t("chatPolicyLink", "AI use and data details")}
-              </Link>
-              <a href="mailto:mail@digitaltableteur.com?subject=AI%20assistant%20report">
-                {t("chatReportLink", "Report a problem")}
-              </a>
-            </div>
-          </aside>
+          {!noticeDismissed && (
+            <aside
+              className={styles.transparencyNotice}
+              aria-label={t("chatTransparencyLabel", "AI assistant information")}
+            >
+              <div className={styles.transparencyBody}>
+                <Text as="p" size="xs" className={styles.transparencyCopy}>
+                  {t(
+                    "chatDisclosure",
+                    "Don't share sensitive personal data. This conversation stays in this tab until you clear or close it.",
+                  )}
+                </Text>
+                <div className={styles.transparencyLinks}>
+                  <Link href="/ai-use">
+                    {t("chatPolicyLink", "AI use and data details")}
+                  </Link>
+                  <a href="mailto:mail@digitaltableteur.com?subject=AI%20assistant%20report">
+                    {t("chatReportLink", "Report a problem")}
+                  </a>
+                </div>
+              </div>
+              <Button
+                type="button"
+                variant="tertiary"
+                size="sm"
+                onClick={dismissNotice}
+                accessibleName={t("chatNoticeDismiss", "Dismiss notice")}
+                icon={<Icon name="x" />}
+                className={styles.transparencyDismiss}
+              />
+            </aside>
+          )}
           <ChatMessages
             ref={scrollerRef}
             messages={messages}

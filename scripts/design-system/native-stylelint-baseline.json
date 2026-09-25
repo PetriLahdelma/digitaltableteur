@@ -258,7 +258,7 @@
     {
       "column": 21,
       "file": "packages/web-components/src/native/breadcrumb.ts",
-      "line": 91,
+      "line": 95,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -267,7 +267,7 @@
     {
       "column": 37,
       "file": "packages/web-components/src/native/breadcrumb.ts",
-      "line": 89,
+      "line": 93,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
@@ -276,7 +276,7 @@
     {
       "column": 37,
       "file": "packages/web-components/src/native/breadcrumb.ts",
-      "line": 111,
+      "line": 115,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
@@ -285,7 +285,7 @@
     {
       "column": 40,
       "file": "packages/web-components/src/native/breadcrumb.ts",
-      "line": 115,
+      "line": 119,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
@@ -312,7 +312,7 @@
     {
       "column": 30,
       "file": "packages/web-components/src/native/breadcrumb.ts",
-      "line": 99,
+      "line": 103,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.1em\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
@@ -321,7 +321,7 @@
     {
       "column": 18,
       "file": "packages/web-components/src/native/breadcrumb.ts",
-      "line": 96,
+      "line": 100,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",

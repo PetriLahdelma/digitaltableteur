@@ -86,6 +86,25 @@ describe("ChatWidget behaviors", () => {
     expect(sessionStorage.getItem(STORAGE_KEY)).toBeTruthy();
   });
 
+  it("lets the notice be dismissed while identity, limits and policy stay reachable", () => {
+    render(<ChatWidget />);
+    fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
+
+    fireEvent.click(screen.getByRole("button", { name: /dismiss notice/i }));
+
+    expect(
+      screen.queryByRole("complementary", { name: /AI assistant information/i }),
+    ).not.toBeInTheDocument();
+    expect(sessionStorage.getItem("dt-donny-notice-dismissed")).toBe("1");
+    expect(
+      screen.getByRole("heading", { name: /AI assistant/i }),
+    ).toBeVisible();
+    expect(screen.getAllByText(/may be wrong/i).length).toBeGreaterThan(0);
+    expect(
+      screen.getByRole("link", { name: /about this AI/i }),
+    ).toHaveAttribute("href", "/ai-use");
+  });
+
   it("shows AI identity, limitations, policy, and reporting before input", () => {
     render(<ChatWidget />);
 
@@ -94,7 +113,7 @@ describe("ChatWidget behaviors", () => {
     expect(
       screen.getByRole("heading", { name: /AI assistant/i }),
     ).toBeVisible();
-    expect(screen.getAllByText(/replies may be wrong/i).length).toBeGreaterThan(
+    expect(screen.getAllByText(/may be wrong/i).length).toBeGreaterThan(
       0,
     );
     expect(
