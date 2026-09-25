@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 - 2026-09-25
 
-- **Breaking (publish as 0.2.0):** `./dtcg` is now DTCG 2025.10. Values are
+- **Breaking:** `./dtcg` is now DTCG 2025.10. Values are
   structured (color objects, `{ value, unit }` dimensions, aliases as
   `{a.b}`), the extension key is `com.digitaltableteur` (was
   `digitaltableteur`) and also carries the original CSS, groups that are also
