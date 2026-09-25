@@ -42,6 +42,9 @@ jobs:
       - run: npm run build:tokens
       - run: npm run check:contract-drift -- --strict
       - run: npm run check:contract-props
+      # Public contract surface of @digitaltableteur/react vs the committed report
+      # (packages/react/contract-surface.json): API changes must land with the report.
+      - run: npm run check:contract-surface
       - run: npm run check:story-lifecycle-tags
       - run: npm run build:zod-catalog
       - run: npm run check:generated

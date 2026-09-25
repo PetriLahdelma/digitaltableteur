@@ -91,6 +91,7 @@
     "prose:fix-em-dashes": "node scripts/prose/fix-em-dashes.mjs --write",
     "validate:components": "tsx scripts/design-system/validate-components.ts",
     "validate:agent-usage": "tsx scripts/design-system/validate-agent-usage.ts",
+    "check:contract-surface": "node scripts/design-system/check-contract-surface.mjs",
     "validate:agent-docs": "node scripts/validate-agent-docs.mjs",
     "report:doc-coverage": "node scripts/design-system/report-doc-coverage.mjs",
     "report:component-usage": "node scripts/design-system/report-component-usage.mjs",

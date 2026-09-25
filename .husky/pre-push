@@ -31,6 +31,7 @@ npm run check:token-packages
 # drift is older than 7 days (forgotten republish). Offline-safe skip.
 npm run check:published-tokens-freshness -- --max-age-days 7
 npm run check:contract-props
+npm run check:contract-surface
 npm run check:consumers
 # Keyboard delegation: a component whose keyboard contract is proven by another
 # component's test (ContactInquiryPanel -> Tabs, SiteHeader -> MobileDrawer) records

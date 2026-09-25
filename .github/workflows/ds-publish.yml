@@ -104,6 +104,10 @@ jobs:
         if: ${{ inputs.package == 'react' || inputs.package == 'all' }}
         run: npm run check:react-publish-clearance
 
+      - name: Verify React contract semver
+        if: ${{ inputs.package == 'react' || inputs.package == 'all' }}
+        run: npm run check:contract-surface -- --release
+
       - name: Verify React publishable public surface
         if: ${{ inputs.package == 'react' || inputs.package == 'all' }}
         run: npm run check:react-public-surface -- --require-publishable

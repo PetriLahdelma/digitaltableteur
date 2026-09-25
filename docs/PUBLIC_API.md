@@ -72,6 +72,32 @@ for package eligibility.
 alpha exposure at zero. `check:react-public-api` freezes the runtime exports and
 package subpath entrypoints in `packages/react/public-api.manifest.json`.
 
+## Contract Semver
+
+`packages/react/contract-surface.json` is a committed report of every exported
+component's contract surface: props (optionality, literal values, type),
+variants, keyboard contract, slots, root element, and sub-parts. It works like
+an api-extractor report: `npm run check:contract-surface` fails whenever the
+surface differs, so an API change has to land together with the report diff,
+where review sees it.
+
+```bash
+npm run check:contract-surface                   # PR validation, pre-push, release:gate
+npm run check:contract-surface -- --update       # accept an intentional change
+npm run check:contract-surface -- --release      # ds-publish, on the bumped version
+npm run check:contract-surface -- --mark-released  # commit after a successful publish
+```
+
+`--update` classifies each change and accumulates the strongest one since the
+last release as `pendingBump`. Removing a component, prop, variant value,
+keyboard key, slot, or sub-part, making a prop required, adding a required
+prop, or changing a prop type or root element is breaking. Anything new and
+optional is additive. Under 0.x, npm's caret range (`^0.1.25`) accepts every
+0.1.x, so a breaking change needs a minor bump (0.2.0) to stay out of existing
+installs; additive changes need a patch. From 1.0 they need major and minor.
+`--release` fails the publish when the new version does not cover
+`pendingBump`.
+
 ## Registry Guards
 
 Use these before claiming the app or Storybook is consuming registry packages:
@@ -98,7 +124,8 @@ The React package publish path is intentionally split:
 3. `.github/workflows/ds-publish.yml` is the GitHub Actions OIDC transport for
    npm Trusted Publisher publishing.
 4. A successful non-dry-run React publish must be followed by
-   `npm run check:react-registry-install` and package-boundary dogfood checks.
+   `npm run check:react-registry-install` and package-boundary dogfood checks,
+   and by a commit of `npm run check:contract-surface -- --mark-released`.
 
 The workflow must stay OIDC-only. Do not add `NPM_TOKEN` or `NODE_AUTH_TOKEN` to
 publish steps. The read-only `NPM_READ_TOKEN` secret is only for installing
