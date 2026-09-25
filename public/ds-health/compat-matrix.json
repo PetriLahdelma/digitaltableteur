@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-08-08T08:34:36.330Z",
+  "generatedAt": "2026-09-25T18:22:02.188Z",
   "package": {
     "name": "@digitaltableteur/react",
-    "version": "0.1.24"
+    "version": "0.1.26"
   },
   "dimensions": {
     "react": {
       "declaredRange": ">=19.0.0",
       "combosExercised": [
         "19.0.0",
-        "19.2.8"
+        "19.3.0"
       ],
       "note": "range endpoints: declared floor + resolved current; versions between the endpoints remain untested claims"
     },
@@ -130,9 +130,9 @@
       }
     },
     {
-      "label": "react-current-19.2.8",
-      "react": "19.2.8",
-      "reactDom": "19.2.8",
+      "label": "react-current-19.3.0",
+      "react": "19.3.0",
+      "reactDom": "19.3.0",
       "framerMotion": "12.43.0",
       "reactMarkdown": "10.1.0",
       "outcomes": {
@@ -232,9 +232,9 @@
     }
   ],
   "provenance": {
-    "sourceCommit": "12cabe9a72e3711110622ec69466086520244c72",
+    "sourceCommit": "0b8ff4381b6f3809ead4d6f1ec0792bd0bda440c",
     "workingTreeClean": false,
-    "dirtyPathCount": 3,
+    "dirtyPathCount": 5,
     "generator": {
       "name": "measure-compat-matrix",
       "version": 1,

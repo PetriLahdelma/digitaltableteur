@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-08T08:50:13.140Z",
+  "generatedAt": "2026-09-25T18:38:12.843Z",
   "package": {
     "name": "@digitaltableteur/web-components",
-    "version": "0.10.1",
-    "reactPackageVersion": "0.1.24"
+    "version": "0.10.2",
+    "reactPackageVersion": "0.1.26"
   },
   "coverage": {
     "nativeTags": 87,
@@ -255,7 +255,7 @@
       "exceptedStories": [],
       "maxGeometryDelta": {
         "width": 264,
-        "height": 529
+        "height": 636
       }
     },
     "Combobox": {
@@ -1036,10 +1036,10 @@
         "Example (desktop-forced-colors)": 0
       },
       "Spinner": {
-        "Default (desktop-light)": 0.0394,
-        "Example (desktop-light)": 0.0522,
-        "Example (mobile-light)": 0.0787,
-        "Example (desktop-dark)": 0.3692,
+        "Default (desktop-light)": 0.0185,
+        "Example (desktop-light)": 0.0563,
+        "Example (mobile-light)": 0.0845,
+        "Example (desktop-dark)": 0.3528,
         "Example (desktop-forced-colors)": 0.0907
       },
       "Progress": {
@@ -1184,9 +1184,9 @@
       },
       "TextArea": {
         "Default (desktop-light)": 0.0058,
-        "Example (desktop-light)": 0.5605,
+        "Example (desktop-light)": 0.5604,
         "Example (mobile-light)": 0.5387,
-        "Example (desktop-dark)": 0.2042,
+        "Example (desktop-dark)": 0.2041,
         "Example (desktop-forced-colors)": 0.022
       },
       "Checkbox": {
@@ -1417,9 +1417,9 @@
         "Example (desktop-forced-colors)": 0
       },
       "CodeSnippet": {
-        "Default (desktop-light)": 0.0237,
-        "Example (desktop-light)": 0.0182,
-        "Example (mobile-light)": 0.0462,
+        "Default (desktop-light)": 0.0182,
+        "Example (desktop-light)": 0.0237,
+        "Example (mobile-light)": 0.0301,
         "Example (desktop-dark)": 0.1571,
         "Example (desktop-forced-colors)": 0.0187
       },
@@ -1480,11 +1480,11 @@
         "Example (desktop-forced-colors)": 0.129
       },
       "Gallery": {
-        "Default (desktop-light)": 0.5021,
-        "Example (desktop-light)": 0.4951,
-        "Example (mobile-light)": 0.8183,
-        "Example (desktop-dark)": 0.7844,
-        "Example (desktop-forced-colors)": 0.5478
+        "Default (desktop-light)": 0.4916,
+        "Example (desktop-light)": 0.5652,
+        "Example (mobile-light)": 0.751,
+        "Example (desktop-dark)": 0.7938,
+        "Example (desktop-forced-colors)": 0.5207
       },
       "ReadingProgress": {
         "Default (desktop-light)": 0.0341,
@@ -1571,12 +1571,12 @@
         "Example (desktop-forced-colors)": 0.0347
       }
     },
-    "sweepGeneratedAt": "2026-08-08T08:50:12.770Z"
+    "sweepGeneratedAt": "2026-09-25T18:38:12.448Z"
   },
   "provenance": {
-    "sourceCommit": "12cabe9a72e3711110622ec69466086520244c72",
+    "sourceCommit": "0b8ff4381b6f3809ead4d6f1ec0792bd0bda440c",
     "workingTreeClean": false,
-    "dirtyPathCount": 4,
+    "dirtyPathCount": 10,
     "generator": {
       "name": "generate-wc-parity-evidence",
       "version": 1,

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-08T08:34:27.206Z",
+  "generatedAt": "2026-09-25T18:22:04.267Z",
   "package": {
     "name": "@digitaltableteur/react",
-    "version": "0.1.24"
+    "version": "0.1.26"
   },
   "environment": {
-    "chromium": "151.0.7922.34",
-    "playwright": "1.62.1",
+    "chromium": "153.0.8010.12",
+    "playwright": "1.63.0",
     "reducedMotion": true
   },
   "methodology": {
@@ -631,7 +631,7 @@
   "informational": {
     "timings": {
       "Button": {
-        "mountMs": 0.3,
+        "mountMs": 0.2,
         "rerenderMs": 0.2
       },
       "ButtonGroup": {
@@ -651,8 +651,8 @@
         "rerenderMs": 0.4
       },
       "SplitButton": {
-        "mountMs": 2.7,
-        "rerenderMs": 2.1
+        "mountMs": 2.9,
+        "rerenderMs": 2.3
       },
       "AuthorBio": {
         "mountMs": 0.1,
@@ -660,16 +660,16 @@
       },
       "CodeBlockWindow": {
         "mountMs": 0.8,
-        "rerenderMs": 0.8
+        "rerenderMs": 0.9
       },
       "CodeSnippet": {
-        "mountMs": 4.4,
-        "rerenderMs": 2.2
+        "mountMs": 5.4,
+        "rerenderMs": 2.7
       },
       "DataTable": {
-        "mountMs": 1.5,
-        "rerenderMs": 1.5,
-        "recipeMs": 18.4
+        "mountMs": 1.8,
+        "rerenderMs": 1.7,
+        "recipeMs": 18.1
       },
       "ExpandableSection": {
         "mountMs": 0,
@@ -689,7 +689,7 @@
       },
       "Logo": {
         "mountMs": 0,
-        "rerenderMs": 0.1
+        "rerenderMs": 0
       },
       "ReadingProgress": {
         "mountMs": 0,
@@ -716,20 +716,20 @@
         "rerenderMs": 0
       },
       "ValueCard": {
-        "mountMs": 0.1,
+        "mountMs": 0,
         "rerenderMs": 0
       },
       "VirtualList": {
         "mountMs": 0.1,
-        "rerenderMs": 0.1,
-        "recipeMs": 16.3
+        "rerenderMs": 0,
+        "recipeMs": 33.2
       },
       "VirtualListItem": {
         "mountMs": 0,
         "rerenderMs": 0
       },
       "AlertBanner": {
-        "mountMs": 0.1,
+        "mountMs": 0,
         "rerenderMs": 0
       },
       "EmptyState": {
@@ -766,11 +766,11 @@
       },
       "Combobox": {
         "mountMs": 0.1,
-        "rerenderMs": 0
+        "rerenderMs": 0.1
       },
       "FileUpload": {
         "mountMs": 0.1,
-        "rerenderMs": 0.1
+        "rerenderMs": 0
       },
       "FormField": {
         "mountMs": 0,
@@ -793,8 +793,8 @@
         "rerenderMs": 0.1
       },
       "PhoneInput": {
-        "mountMs": 1.2,
-        "rerenderMs": 0.9
+        "mountMs": 1.5,
+        "rerenderMs": 0.8
       },
       "Radio": {
         "mountMs": 0,
@@ -813,7 +813,7 @@
         "rerenderMs": 0
       },
       "Switch": {
-        "mountMs": 0,
+        "mountMs": 0.1,
         "rerenderMs": 0
       },
       "TextArea": {
@@ -821,11 +821,11 @@
         "rerenderMs": 0
       },
       "TextInput": {
-        "mountMs": 0.1,
+        "mountMs": 0,
         "rerenderMs": 0
       },
       "Author": {
-        "mountMs": 0,
+        "mountMs": 0.1,
         "rerenderMs": 0
       },
       "Avatar": {
@@ -837,7 +837,7 @@
         "rerenderMs": 0
       },
       "Badge": {
-        "mountMs": 0.1,
+        "mountMs": 0,
         "rerenderMs": 0
       },
       "Icon": {
@@ -885,7 +885,7 @@
         "rerenderMs": 0
       },
       "ResizablePanelGroup": {
-        "mountMs": 0,
+        "mountMs": 0.1,
         "rerenderMs": 0
       },
       "Section": {
@@ -902,15 +902,15 @@
       },
       "Breadcrumb": {
         "mountMs": 0.1,
-        "rerenderMs": 0
+        "rerenderMs": 0.1
       },
       "CommandPalette": {
         "mountMs": 0,
         "rerenderMs": 0.1,
-        "recipeMs": 0.8
+        "recipeMs": 0.9
       },
       "LanguageSwitcher": {
-        "mountMs": 0,
+        "mountMs": 0.1,
         "rerenderMs": 0
       },
       "Link": {
@@ -931,7 +931,7 @@
       },
       "Pagination": {
         "mountMs": 0.1,
-        "rerenderMs": 0.1
+        "rerenderMs": 0
       },
       "ScrollIndicator": {
         "mountMs": 0.1,
@@ -947,27 +947,27 @@
       },
       "Tabs": {
         "mountMs": 0.1,
-        "rerenderMs": 0
+        "rerenderMs": 0.1
       },
       "TreeView": {
-        "mountMs": 0.1,
-        "rerenderMs": 0.2,
+        "mountMs": 0.2,
+        "rerenderMs": 0.1,
         "recipeMs": 1.7
       },
       "CategoryFilter": {
-        "mountMs": 0.1,
+        "mountMs": 0,
         "rerenderMs": 0
       },
       "Modal": {
         "mountMs": 0,
-        "rerenderMs": 0
+        "rerenderMs": 0.1
       },
       "PageLayout": {
         "mountMs": 0,
         "rerenderMs": 0
       },
       "ProcessBlock": {
-        "mountMs": 0,
+        "mountMs": 0.1,
         "rerenderMs": 0
       },
       "ThemeProvider": {
@@ -997,9 +997,9 @@
     }
   },
   "provenance": {
-    "sourceCommit": "12cabe9a72e3711110622ec69466086520244c72",
+    "sourceCommit": "0b8ff4381b6f3809ead4d6f1ec0792bd0bda440c",
     "workingTreeClean": false,
-    "dirtyPathCount": 2,
+    "dirtyPathCount": 7,
     "generator": {
       "name": "measure-interaction-evidence",
       "version": 1,
