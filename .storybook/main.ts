@@ -106,6 +106,10 @@ const config: StorybookConfig = {
   },
   features: {
     onboarding: false,
+    // Components manifest for @storybook/addon-mcp's docs toolset (docs-list,
+    // docs-show). The contracts stay the source of truth: agents read them
+    // over the site's /mcp; this manifest serves the Storybook MCP endpoint.
+    componentsManifest: true,
   },
   framework: {
     name: "@storybook/react-vite",

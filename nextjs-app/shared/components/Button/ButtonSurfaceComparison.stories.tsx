@@ -13,6 +13,10 @@ import board from "../../stories/MigrationDecisionBoard/MigrationDecisionBoard.m
 
 const meta = {
   title: "Actions/Button",
+  // Without an explicit component, Storybook's components manifest (read by
+  // @storybook/addon-mcp) inferred the first imported "Button", the shadcn
+  // one, and served its props as the design-system Button's.
+  component: DtButton,
   // Shares the "Actions/Button" node with Button.stories.tsx. The sidebar dot
   // is the intersection of all the node's story tags, so this secondary CSF
   // must also carry the lifecycle tag or it strips Button's dot (enforced by
