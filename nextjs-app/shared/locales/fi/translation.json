@@ -168,15 +168,15 @@
   "pricingHeroTitle": "Läpinäkyvä hinnoittelu.",
   "pricingHeroImageAlt": "Design system -komponenttikirjaston esikatselu",
   "pricingComparisonUsTitle": "Digitaltableteur",
-  "pricingComparisonThemTitle": "Perinteinen toimisto",
-  "pricingCompareUs1": "Kiinteät paketit alkaen 7k €",
-  "pricingCompareUs2": "2–4 viikkoa ensimmäiseen toimitettavaan tuotteeseen",
-  "pricingCompareUs3": "Yksi toimeksianto kerrallaan",
-  "pricingCompareUs4": "Senior Design Lead",
-  "pricingCompareThem1": "80k–300k €+ kokonaisuudet",
-  "pricingCompareThem2": "3–9 kuukautta (tai enemmän)",
-  "pricingCompareThem3": "Monta rinnakkaista työvirtaa",
-  "pricingCompareThem4": "Junior-painotteiset tiimit",
+  "pricingComparisonThemTitle": "Laaja toimitustiimi",
+  "pricingCompareUs1": "Kokenut tekijä suoraan työn äärellä",
+  "pricingCompareUs2": "Vähän koordinointia",
+  "pricingCompareUs3": "Joustava asiantuntijaverkosto",
+  "pricingCompareUs4": "Paras rajattuihin, järjestelmätason ongelmiin",
+  "pricingCompareThem1": "Moniroolinen tiimi",
+  "pricingCompareThem2": "Enemmän koordinointikapasiteettia",
+  "pricingCompareThem3": "Dedikoitu henkilöstö",
+  "pricingCompareThem4": "Paras suuriin rinnakkaisiin ohjelmiin",
   "pricingTestimonialLabel": "Asiakkaan näkökulma",
   "pricingTestimonialQuote": "Miksi maksaa paisuneista toimistosopimuksista, kun saat käytettävän design systemin sopimuksineen, komponentteineen, tokeneineen ja käyttöönottosuunnitelmineen viikoissa?",
   "pricingDeliverablesTitle": "Ei arvailua. Ei paisuvaa laajuutta. Huippuluokan designia, salamannopeasti, alkaen 7k €.",
@@ -348,17 +348,31 @@
   "headerThemeAnnouncement": "Teema vaihdettu: {{theme}}",
   "themeChanged": "Teema vaihdettu: {{theme}}",
   "languageChanged": "Kieli vaihdettu {{language}}",
-  "homeDesignSprintsTitle": "Poikkeuksellista designia ilman odottelua",
-  "homeDesignSprintsDescription": "Uskomme, että maailmanluokan design ei vaadi kuukausia. Siksi loimme Design Sprintit. Viimeisteltyä, ajatonta designia kahdessa viikossa.",
-  "homeDesignSprintsBenefits": [
-    "Näytä 10× isommalta kuin olet",
-    "Pääse markkinoille nopeammin",
-    "Kerää seuraava rahoituskierros",
-    "Voita asiakkaiden luottamus ensisilmäyksellä",
-    "Erotu ruuhkaisilla markkinoilla",
-    "Säästä pääomaa tärkeimpään"
+  "homeDesignSprintsTitle": "Rajatut toimeksiannot, kokeneet tekijät",
+  "homeDesignSprintsDescription": "Aloita siitä ongelmasta, joka on edessäsi. Jokaista toimeksiantoa vetää käytännössä Petri, ja verkostomme asiantuntijat tulevat mukaan työn niin vaatiessa. Jokainen toimeksianto voi kasvaa seuraavaksi.",
+  "homeEngagementModels": [
+    {
+      "title": "UX Sprint",
+      "duration": "2 viikkoa",
+      "detail": "Testattu prototyyppi, arviointisuunnitelma ja luovutus, jonka tiimisi voi viedä tuotantoon."
+    },
+    {
+      "title": "AI-Ready Ops",
+      "duration": "3 viikkoa",
+      "detail": "Suunnittelun työnkulut, komponenttien hallintamalli ja tekoälytyökalut, joita tiimisi pystyy itse pyörittämään."
+    },
+    {
+      "title": "Design System Lift-Off",
+      "duration": "4 viikkoa",
+      "detail": "Auditointi, tokenit, peruskomponentit, Storybook ja käyttöönoton pelikirja."
+    },
+    {
+      "title": "Upotettu kumppanuus",
+      "duration": "Jatkuva",
+      "detail": "Kokenut design systemien ja tuotesuunnittelun vetäjä osana tiimiäsi."
+    }
   ],
-  "homeDesignSprintsCta": "Aloita sprintti",
+  "homeDesignSprintsCta": "Katso toimeksiannot ja hinnat",
   "homeCtaTitle": "Oletko valmis luomaan jotain poikkeuksellista?",
   "homeCtaLink": "Ota yhteyttä",
   "homeHeroTitle": "Design Systemit, jotka skaalautuvat kunnianhimosi mukaan",

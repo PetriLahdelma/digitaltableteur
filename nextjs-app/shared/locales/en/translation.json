@@ -168,15 +168,15 @@
   "pricingHeroTitle": "Transparent price tags.",
   "pricingHeroImageAlt": "Design system component library preview",
   "pricingComparisonUsTitle": "Digitaltableteur",
-  "pricingComparisonThemTitle": "Traditional agency",
-  "pricingCompareUs1": "Fixed packages from €7k",
-  "pricingCompareUs2": "2–4 weeks to first shippable product",
-  "pricingCompareUs3": "One focused engagement at a time",
-  "pricingCompareUs4": "Senior Design Lead",
-  "pricingCompareThem1": "€80k–€300k+ scopes",
-  "pricingCompareThem2": "3–9 months (or more)",
-  "pricingCompareThem3": "Many parallel workstreams",
-  "pricingCompareThem4": "Junior-heavy delivery teams",
+  "pricingComparisonThemTitle": "Large delivery team",
+  "pricingCompareUs1": "A senior practitioner directly on the work",
+  "pricingCompareUs2": "Low coordination overhead",
+  "pricingCompareUs3": "A flexible specialist network",
+  "pricingCompareUs4": "Best for focused, systemic problems",
+  "pricingCompareThem1": "A multi-role team",
+  "pricingCompareThem2": "More coordination capacity",
+  "pricingCompareThem3": "Dedicated staffing",
+  "pricingCompareThem4": "Best for large parallel programs",
   "pricingTestimonialLabel": "Client perspective",
   "pricingTestimonialQuote": "Why wrestle with bloated agency retainers when you can get a usable design system including contracts, components, tokens and an adoption plan in weeks?",
   "pricingDeliverablesTitle": "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k.",
@@ -351,17 +351,31 @@
   "headerThemeAnnouncement": "Theme switched to {{theme}}",
   "themeChanged": "Theme changed to {{theme}}",
   "languageChanged": "Language changed to {{language}}",
-  "homeDesignSprintsTitle": "Exceptional design, without the wait",
-  "homeDesignSprintsDescription": "We believe world-class design shouldn't take months. That's why we created Design Sprints. Polished, timeless design delivered in just two weeks.",
-  "homeDesignSprintsBenefits": [
-    "Look 10× bigger than you are",
-    "Get to market faster",
-    "Raise your next round",
-    "Earn customer trust on sight",
-    "Stand out in a crowded market",
-    "Save capital for what matters"
+  "homeDesignSprintsTitle": "Focused engagements, senior delivery",
+  "homeDesignSprintsDescription": "Start with the problem in front of you. Every engagement is led hands-on by Petri, with specialists from our network added as the work needs them, and each one can grow into the next.",
+  "homeEngagementModels": [
+    {
+      "title": "UX Sprint",
+      "duration": "2 weeks",
+      "detail": "A tested prototype, an evaluation plan and a handoff your team can ship."
+    },
+    {
+      "title": "AI-Ready Ops",
+      "duration": "3 weeks",
+      "detail": "Design workflows, component governance and AI tooling your team can run."
+    },
+    {
+      "title": "Design System Lift-Off",
+      "duration": "4 weeks",
+      "detail": "Audit, tokens, core components, Storybook and an adoption playbook."
+    },
+    {
+      "title": "Embedded partnership",
+      "duration": "Ongoing",
+      "detail": "A senior design systems and product lead working inside your team."
+    }
   ],
-  "homeDesignSprintsCta": "Start your sprint",
+  "homeDesignSprintsCta": "See engagements and pricing",
   "homeCtaTitle": "Ready to create something extraordinary?",
   "homeCtaLink": "Let's talk",
   "homeHeroTitle": "Design systems that scale with your ambition",

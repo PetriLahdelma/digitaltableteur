@@ -32,8 +32,11 @@
 
 .benefitsGrid {
   display: grid;
+  margin: 0;
+  padding: 0;
   grid-template-columns: 1fr;
   gap: var(--space-layout-16);
+  list-style: none;
 }
 
 @media (width >= 768px) {
@@ -44,8 +47,8 @@
 
 .benefitCard {
   display: flex;
-  align-items: center;
-  gap: var(--space-layout-16);
+  flex-direction: column;
+  gap: var(--space-internal-8);
   padding: var(--space-layout-16);
   border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
   border-radius: var(--radius-lg);
@@ -61,22 +64,31 @@
   background-color: color-mix(in srgb, var(--color-background) 80%, transparent);
 }
 
-.benefitIcon {
-  display: flex;
-  flex-shrink: 0;
-  inline-size: 2rem;
-  block-size: 2rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--radius-full);
-  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
-  color: var(--color-primary);
-}
-
 .benefitLabel {
   font-family: var(--font-body);
   font-size: var(--font-size-text-m);
   font-weight: 500;
+  color: var(--color-foreground);
+}
+
+.engagementHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-internal-8);
+}
+
+.engagementDuration {
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted-foreground);
+}
+
+.engagementDetail {
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-s);
+  line-height: 1.5;
   color: var(--color-foreground);
 }
 

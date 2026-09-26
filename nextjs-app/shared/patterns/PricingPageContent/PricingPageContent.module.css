@@ -167,18 +167,18 @@
 }
 
 .comparisonIconThem {
-  color: var(--color-white);
-  background-color: var(--color-error);
+  /* Neutral, not negative: the second column is another operating model
+     with its own strengths, so it gets an outlined marker, not an error
+     colour. */
+  border: 1px solid currentcolor;
+  color: var(--color-text);
+  background-color: transparent;
 }
 
 .comparisonItem .comparisonTextUs,
 .comparisonItem .comparisonTextThem {
   margin: 0;
   line-height: var(--line-height-normal);
-}
-
-.comparisonItem .comparisonTextThem {
-  color: var(--color-muted);
 }
 
 /* Testimonial band — full-bleed inverse surface (matches Hero.background-dark) */

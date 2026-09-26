@@ -5,7 +5,6 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { SlideButton } from "../../components/SlideButton";
-import { Check } from "lucide-react";
 import styles from "./DesignSprintsSection.module.css";
 
 export interface DesignSprintsSectionProps {
@@ -17,8 +16,17 @@ export interface DesignSprintsSectionProps {
   className?: string;
 }
 
+interface EngagementModel {
+  title: string;
+  duration: string;
+  detail: string;
+}
+
 /**
- * DesignSprintsSection - Showcases the rapid brand design sprint offering
+ * DesignSprintsSection - Homepage band presenting the engagement models (UX
+ * Sprint, AI-Ready Ops, Design System Lift-Off, embedded partnership), each
+ * matching a package on the pricing page. Keeps its historical name and
+ * #design-sprints anchor because links and Donny targets point at them.
  */
 export function DesignSprintsSection({
   id = "design-sprints",
@@ -27,10 +35,10 @@ export function DesignSprintsSection({
 }: DesignSprintsSectionProps) {
   const { t } = useTranslation();
 
-  const benefits = t("homeDesignSprintsBenefits", {
+  const models = t("homeEngagementModels", {
     returnObjects: true,
     defaultValue: [],
-  }) as string[];
+  }) as EngagementModel[];
 
   return (
     <Section
@@ -45,7 +53,7 @@ export function DesignSprintsSection({
           <div className={styles.intro}>
             <FadeIn direction="up" delay={0} distance={20}>
               <h2 className={styles.title}>
-                {t("homeDesignSprintsTitle", "Exceptional design, without the wait")}
+                {t("homeDesignSprintsTitle", "Focused engagements, senior delivery")}
               </h2>
             </FadeIn>
 
@@ -53,35 +61,36 @@ export function DesignSprintsSection({
               <p className={styles.description}>
                 {t(
                   "homeDesignSprintsDescription",
-                  "We believe world-class design shouldn't take months. That's why we created Design Sprints—polished, timeless branding delivered in just two weeks."
+                  "Start with the problem in front of you. Every engagement is led hands-on by Petri, with specialists from our network added as the work needs them, and each one can grow into the next.",
                 )}
               </p>
             </FadeIn>
           </div>
 
-          <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, index) => (
+          <ul className={styles.benefitsGrid}>
+            {models.map((model, index) => (
               <FadeIn
-                key={benefit}
+                key={model.title}
+                as="li"
                 direction="left"
                 delay={0.1 + index * 0.08}
                 distance={30}
+                className={styles.benefitCard}
               >
-                <div className={styles.benefitCard}>
-                  <div className={styles.benefitIcon}>
-                    <Check className="w-4 h-4" />
-                  </div>
-                  <span className={styles.benefitLabel}>{benefit}</span>
-                </div>
+                <span className={styles.engagementHeader}>
+                  <span className={styles.benefitLabel}>{model.title}</span>
+                  <span className={styles.engagementDuration}>{model.duration}</span>
+                </span>
+                <span className={styles.engagementDetail}>{model.detail}</span>
               </FadeIn>
             ))}
-          </div>
+          </ul>
 
           <FadeIn direction="up" delay={0.4} distance={20}>
             <div className={styles.ctaRow}>
               <SlideButton
-                label={t("homeDesignSprintsCta", "Start your sprint")}
-                href="/contact?mode=book&package=ux-sprint"
+                label={t("homeDesignSprintsCta", "See engagements and pricing")}
+                href="/pricing"
                 icon="Lightning"
                 data-donny-interest="design-sprint"
               />

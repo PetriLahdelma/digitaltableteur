@@ -168,15 +168,15 @@
   "pricingHeroTitle": "Transparent prissättning.",
   "pricingHeroImageAlt": "Förhandsvisning av designsystemets komponentbibliotek",
   "pricingComparisonUsTitle": "Digitaltableteur",
-  "pricingComparisonThemTitle": "Traditionell byrå",
-  "pricingCompareUs1": "Fasta paket från 7k €",
-  "pricingCompareUs2": "2–4 veckor till första levererbara produkten",
-  "pricingCompareUs3": "Ett fokuserat uppdrag i taget",
-  "pricingCompareUs4": "Senior Design Lead",
-  "pricingCompareThem1": "80k–300k €+ scope",
-  "pricingCompareThem2": "3–9 månader (eller mer)",
-  "pricingCompareThem3": "Många parallella arbetsströmmar",
-  "pricingCompareThem4": "Junior-tunga leveransteam",
+  "pricingComparisonThemTitle": "Stort leveransteam",
+  "pricingCompareUs1": "En senior praktiker direkt i arbetet",
+  "pricingCompareUs2": "Låg samordningskostnad",
+  "pricingCompareUs3": "Ett flexibelt specialistnätverk",
+  "pricingCompareUs4": "Bäst för fokuserade, systemiska problem",
+  "pricingCompareThem1": "Ett team med många roller",
+  "pricingCompareThem2": "Mer samordningskapacitet",
+  "pricingCompareThem3": "Dedikerad bemanning",
+  "pricingCompareThem4": "Bäst för stora parallella program",
   "pricingTestimonialLabel": "Kundperspektiv",
   "pricingTestimonialQuote": "Varför kämpa med uppblåsta byråretainers när du kan få ett användbart designsystem med kontrakt, komponenter, tokens och en adoptionsplan på veckor?",
   "pricingDeliverablesTitle": "Inga gissningar. Ingen scope creep. Enastående designarbete, blixtsnabbt, från 7k €.",
@@ -348,17 +348,31 @@
   "headerThemeAnnouncement": "Tema ändrat till {{theme}}",
   "themeChanged": "Tema ändrat till {{theme}}",
   "languageChanged": "Språk ändrat till {{language}}",
-  "homeDesignSprintsTitle": "Exceptionell design, utan väntan",
-  "homeDesignSprintsDescription": "Vi tror att design i världsklass inte behöver ta månader. Därför skapade vi Design Sprints. Polerad, tidlös design på bara två veckor.",
-  "homeDesignSprintsBenefits": [
-    "Se 10× större ut än du är",
-    "Kom till marknaden snabbare",
-    "Res din nästa runda",
-    "Vinn kundernas förtroende direkt",
-    "Stic ut på en trång marknad",
-    "Spara kapital till det som verkligen räknas"
+  "homeDesignSprintsTitle": "Fokuserade uppdrag, senior leverans",
+  "homeDesignSprintsDescription": "Börja med problemet framför dig. Varje uppdrag leds praktiskt av Petri, med specialister från vårt nätverk när arbetet kräver det, och varje uppdrag kan växa till nästa.",
+  "homeEngagementModels": [
+    {
+      "title": "UX Sprint",
+      "duration": "2 veckor",
+      "detail": "En testad prototyp, en utvärderingsplan och en överlämning som ditt team kan leverera."
+    },
+    {
+      "title": "AI-Ready Ops",
+      "duration": "3 veckor",
+      "detail": "Designflöden, komponentstyrning och AI-verktyg som ditt team kan driva själv."
+    },
+    {
+      "title": "Design System Lift-Off",
+      "duration": "4 veckor",
+      "detail": "Granskning, tokens, kärnkomponenter, Storybook och en plan för införande."
+    },
+    {
+      "title": "Inbäddat partnerskap",
+      "duration": "Löpande",
+      "detail": "En senior ledare för designsystem och produktdesign inne i ditt team."
+    }
   ],
-  "homeDesignSprintsCta": "Starta din sprint",
+  "homeDesignSprintsCta": "Se uppdrag och priser",
   "homeCtaTitle": "Redo att skapa något extraordinärt?",
   "homeCtaLink": "Kontakta oss",
   "homeHeroTitle": "Designsystem som skalas med din ambition",

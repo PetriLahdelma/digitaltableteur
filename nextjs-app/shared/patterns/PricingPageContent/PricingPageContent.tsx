@@ -25,26 +25,26 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   {
     usKey: "pricingCompareUs1",
     themKey: "pricingCompareThem1",
-    usDefault: "Fixed packages from €7k",
-    themDefault: "€80k–€300k+ scopes",
+    usDefault: "A senior practitioner directly on the work",
+    themDefault: "A multi-role team",
   },
   {
     usKey: "pricingCompareUs2",
     themKey: "pricingCompareThem2",
-    usDefault: "2–4 weeks to first shippable product",
-    themDefault: "3–9 months (or more)",
+    usDefault: "Low coordination overhead",
+    themDefault: "More coordination capacity",
   },
   {
     usKey: "pricingCompareUs3",
     themKey: "pricingCompareThem3",
-    usDefault: "One focused engagement at a time",
-    themDefault: "Many parallel workstreams",
+    usDefault: "A flexible specialist network",
+    themDefault: "Dedicated staffing",
   },
   {
     usKey: "pricingCompareUs4",
     themKey: "pricingCompareThem4",
-    usDefault: "Senior Design Lead",
-    themDefault: "Junior-heavy delivery teams",
+    usDefault: "Best for focused, systemic problems",
+    themDefault: "Best for large parallel programs",
   },
 ];
 
@@ -257,11 +257,13 @@ function ComparisonList({
                 )}
                 aria-hidden
               >
+                {/* Two operating models, each with its strengths: the same
+                    neutral marker on both sides, not a tick versus a cross. */}
                 <Icon
-                  name={isUs ? "Plus" : "X"}
+                  name="Plus"
                   size="sm"
                   weight="bold"
-                  color="var(--color-white)"
+                  color="currentColor"
                   decorative
                 />
               </span>
@@ -374,7 +376,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
         <section
           className={styles.value}
           data-donny-target="pricing.comparison"
-          aria-label={`${t("pricingComparisonUsTitle", "Digitaltableteur")} / ${t("pricingComparisonThemTitle", "Traditional agency")}`}
+          aria-label={`${t("pricingComparisonUsTitle", "Digitaltableteur")} / ${t("pricingComparisonThemTitle", "Large delivery team")}`}
         >
           <div className={styles.comparisonGrid}>
             <ComparisonList
@@ -384,7 +386,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
             />
             <ComparisonList
               variant="them"
-              title={t("pricingComparisonThemTitle", "Traditional agency")}
+              title={t("pricingComparisonThemTitle", "Large delivery team")}
               rows={COMPARISON_ROWS}
             />
           </div>

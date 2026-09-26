@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1941,
+  "warningCount": 1939,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -13819,24 +13819,6 @@
     },
     {
       "file": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css",
-      "line": 68,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css",
-      "line": 67,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"inline-size\" to come before \"flex-shrink\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css::order/properties-order::Expected \"inline-size\" to come before \"flex-shrink\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css",
       "line": 12,
       "column": 3,
       "rule": "order/properties-order",
@@ -13846,7 +13828,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css",
-      "line": 86,
+      "line": 98,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13855,7 +13837,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css",
-      "line": 49,
+      "line": 52,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14413,7 +14395,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 171,
+      "line": 175,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
