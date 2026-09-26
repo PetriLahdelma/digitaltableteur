@@ -43,9 +43,7 @@ const ClientLogoMarquee = dynamic(() =>
 // Service icons
 import {
   UxInterfacesIcon,
-  CreativeDevelopmentIcon,
   BrandingStrategyIcon,
-  EditorialIllustrationIcon,
   AiSolutionsIcon,
   DesignSystemsIcon,
 } from "../../icons/service-icons";
@@ -78,39 +76,33 @@ const FEATURED_PROJECTS: ProjectItem[] = [
 export function HomePage() {
   const { t } = useTranslation();
 
-  // Services data with icons
+  // Four offers framed as problems, each linking to its strongest proof.
   const services: ServiceItem[] = useMemo(
     () => [
       {
-        icon: <UxInterfacesIcon />,
-        title: t("homeUxInterfacesTitle"),
-        description: t("homeUxInterfacesDescription"),
-      },
-      {
-        icon: <CreativeDevelopmentIcon />,
-        title: t("homeCreativeDevelopment"),
-        description: t("homeCreativeDescription"),
-      },
-      {
-        icon: <BrandingStrategyIcon />,
-        title: t("homeStrategyBranding"),
-        description: t("homeStrategyDescription"),
-      },
-      {
-        icon: <EditorialIllustrationIcon />,
-        title: t("homeIllustrationEditorial"),
-        description: t("homeIllustrationDescription"),
+        icon: <DesignSystemsIcon />,
+        title: t("homeOfferSystemTitle"),
+        description: t("homeOfferSystemDescription"),
+        href: "/work/sap-build-apps",
+        donnyTarget: "home.services.designSystems",
       },
       {
         icon: <AiSolutionsIcon />,
-        title: t("homeAiSolutionsTitle"),
-        description: t("homeAiSolutionsDescription"),
+        title: t("homeOfferShipTitle"),
+        description: t("homeOfferShipDescription"),
+        href: "/work/project-spine",
       },
       {
-        icon: <DesignSystemsIcon />,
-        title: t("homeDesignSystemsTitle"),
-        description: t("homeDesignSystemsDescription"),
-        donnyTarget: "home.services.designSystems",
+        icon: <UxInterfacesIcon />,
+        title: t("homeOfferProductTitle"),
+        description: t("homeOfferProductDescription"),
+        href: "/work/vertaaux",
+      },
+      {
+        icon: <BrandingStrategyIcon />,
+        title: t("homeOfferIdentityTitle"),
+        description: t("homeOfferIdentityDescription"),
+        href: "/work/new-things-co",
       },
     ],
     [t],
@@ -152,7 +144,7 @@ export function HomePage() {
         id="services"
         title={t("homeExpertiseTitle", "What we do")}
         services={services}
-        columns={3}
+        columns={2}
         cardVariant="bordered"
       />
 
