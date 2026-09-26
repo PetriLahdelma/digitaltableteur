@@ -149,6 +149,7 @@
     "BlogIndexContent.contract.json",
     "CTASection.contract.json",
     "CVDownloadSection.contract.json",
+    "CaseStudySummary.contract.json",
     "ContactHero.contract.json",
     "ContactInquiryPanel.contract.json",
     "ContactPageContentEditorial.contract.json",
