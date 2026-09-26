@@ -1,18 +1,18 @@
 - region "Transparent price tags.":
   - heading "Transparent price tags." [level=1]
-- region "Digitaltableteur / Traditional agency":
+- region "Digitaltableteur / Large delivery team":
   - heading "Digitaltableteur" [level=2]
   - list:
-    - listitem: Fixed packages from €7k
-    - listitem: 2–4 weeks to first shippable product
-    - listitem: One focused engagement at a time
-    - listitem: Senior Design Lead
-  - heading "Traditional agency" [level=2]
+    - listitem: A senior practitioner directly on the work
+    - listitem: Low coordination overhead
+    - listitem: A flexible specialist network
+    - listitem: Best for focused, systemic problems
+  - heading "Large delivery team" [level=2]
   - list:
-    - listitem: €80k–€300k+ scopes
-    - listitem: 3–9 months (or more)
-    - listitem: Many parallel workstreams
-    - listitem: Junior-heavy delivery teams
+    - listitem: A multi-role team
+    - listitem: More coordination capacity
+    - listitem: Dedicated staffing
+    - listitem: Best for large parallel programs
 - region "Client perspective":
   - blockquote:
     - paragraph: “ Why wrestle with bloated agency retainers when you can get a usable design system including contracts, components, tokens and an adoption plan in weeks?”

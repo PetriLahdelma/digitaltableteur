@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-designsprintssection-example",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:12:42.530Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "8ee3b88ca103e7126bb5080ba8759cf68c92b09c",
+  "capturedAt": "2026-09-26T04:35:50.195Z",
+  "runner": "local-recapture-2026-09-26",
   "checks": {
     "accessibility-tree": {
       "passed": true

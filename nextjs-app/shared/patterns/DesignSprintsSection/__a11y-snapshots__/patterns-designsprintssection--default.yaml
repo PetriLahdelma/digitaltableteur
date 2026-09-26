@@ -1,5 +1,9 @@
-- heading "Exceptional design, without the wait" [level=2]
-- paragraph: We believe world-class design shouldn't take months. That's why we created Design Sprints. Polished, timeless design delivered in just two weeks.
-- text: Look 10× bigger than you are Get to market faster Raise your next round Earn customer trust on sight Stand out in a crowded market Save capital for what matters
-- link "Start your sprint":
-  - /url: /contact?service=design-sprint
+- heading "Focused engagements, senior delivery" [level=2]
+- paragraph: Start with the problem in front of you. Every engagement is led hands-on by Petri, with specialists from our network added as the work needs them, and each one can grow into the next.
+- list:
+  - listitem: UX Sprint 2 weeks A tested prototype, an evaluation plan and a handoff your team can ship.
+  - listitem: AI-Ready Ops 3 weeks Design workflows, component governance and AI tooling your team can run.
+  - listitem: Design System Lift-Off 4 weeks Audit, tokens, core components, Storybook and an adoption playbook.
+  - listitem: Embedded partnership Ongoing A senior design systems and product lead working inside your team.
+- link "See engagements and pricing":
+  - /url: /pricing
