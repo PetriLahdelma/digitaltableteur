@@ -26,157 +26,21 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "2.5.8"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:41.740Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:22.182Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:42.530Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:22.688Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:43.019Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:22.952Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:42.076Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:22.456Z",
-            "passed": true
-          }
-        ]
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:41.740Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-default.forced-colors.json",
-            "sourceCommit": "b8f02be88a28c82d4541d0360ac7901a0f323c2f",
-            "capturedAt": "2026-08-03T16:13:42.043Z",
-            "passed": true,
-            "runner": "fix-sprint-cta-href"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:22.182Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:42.530Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-example.forced-colors.json",
-            "sourceCommit": "b8f02be88a28c82d4541d0360ac7901a0f323c2f",
-            "capturedAt": "2026-08-03T16:13:42.140Z",
-            "passed": true,
-            "runner": "fix-sprint-cta-href"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:22.688Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:43.019Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-forced-colors.forced-colors.json",
-            "sourceCommit": "b8f02be88a28c82d4541d0360ac7901a0f323c2f",
-            "capturedAt": "2026-08-03T16:13:42.164Z",
-            "passed": true,
-            "runner": "fix-sprint-cta-href"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:22.952Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:42.076Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-playground.forced-colors.json",
-            "sourceCommit": "b8f02be88a28c82d4541d0360ac7901a0f323c2f",
-            "capturedAt": "2026-08-03T16:13:42.068Z",
-            "passed": true,
-            "runner": "fix-sprint-cta-href"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/patterns/DesignSprintsSection/__a11y-evidence__/patterns-designsprintssection-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:22.456Z",
-            "passed": true
-          }
-        ]
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "forced-colors-real-browser",
