@@ -27,7 +27,7 @@ export function WorkHero({
   const t = useTranslate();
 
   const displayTitle = title || t("workTitle", "Work");
-  const displayDescription = description || t("workDescription", "Explore our portfolio of design systems, UX design and creative projects.");
+  const displayDescription = description || t("workDescription", "Explore a portfolio of design systems, UX design and creative projects.");
 
   return (
     <Section

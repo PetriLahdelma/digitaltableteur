@@ -1,0 +1,45 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "CaseStudySummary",
+    "tier": "pattern",
+    "group": "content",
+    "status": "alpha",
+    "description": "Decision-first case study summary: outcome, role, constraints, key decisions and evidence with source labels.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-case-study-summary",
+    "radixPrimitive": null,
+    "element": "section",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "section is labelled by its h2 via aria-labelledby",
+            "key decisions render as an ordered list"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "props": {},
+    "forbiddenUse": [
+        "present a claim without a source label",
+        "invent metrics that are not on record"
+    ],
+    "composesWith": [
+        "ProjectHero",
+        "ProjectMetaSection",
+        "ProjectDetailLayout",
+        "StoryBlock"
+    ]
+}

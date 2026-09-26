@@ -78,7 +78,7 @@ const PACKAGES: PackageItem[] = [
       "Prototype, eval plan and handoff your team can ship.",
     proofKey: "pricingPackageProofUxSprint",
     proofDefault:
-      "2-week prototype with eval plan — see UX Sprint patterns in our work.",
+      "2-week prototype with eval plan; see the UX Sprint patterns in the work.",
     ctaKey: "pricingPackageCtaUxSprint",
     ctaDefault: "Book UX Sprint",
     contactPackageId: "ux-sprint",
@@ -525,7 +525,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
               {t("pricingCtaPrimary", "Book a call")}
             </Button>
             <Button href="/work" variant="secondary" size="lg">
-              {t("pricingCtaSecondary", "See our work")}
+              {t("pricingCtaSecondary", "See the work")}
             </Button>
           </div>
 

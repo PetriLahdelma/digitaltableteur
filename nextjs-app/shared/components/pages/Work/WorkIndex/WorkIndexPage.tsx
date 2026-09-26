@@ -135,7 +135,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
                 title={t("workNoResultsTitle", "No projects found")}
                 description={t(
                   "workNoResultsDescription",
-                  "Try selecting a different category or browse all projects to explore our work."
+                  "Try selecting a different category or browse all projects to explore the work."
                 )}
                 headingLevel="h3"
                 size="lg"

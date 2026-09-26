@@ -27,6 +27,6 @@ describe("AboutPage", () => {
 
   it("renders values section", () => {
     renderWithProviders(<AboutPage />);
-    expect(screen.getByText(/What we bring/i)).toBeInTheDocument();
+    expect(screen.getByText(/The promise/i)).toBeInTheDocument();
   });
 });

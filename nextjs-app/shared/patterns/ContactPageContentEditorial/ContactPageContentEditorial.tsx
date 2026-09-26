@@ -121,7 +121,7 @@ export function ContactPageContentEditorial({
             >
               {t(
                 "contactIntro",
-                "We'd love to hear about your project, idea or you can just say hello."
+                "Would love to hear about your project, idea or you can just say hello."
               )}
             </motion.p>
 
@@ -302,7 +302,7 @@ export function ContactPageContentEditorial({
               >
                 {t(
                   "contactPullQuote",
-                  "We help ambitious teams turn what they do into products with clarity and conviction. Bring us your vision and we'll shape how it shows up in the world."
+                  "DT helps ambitious teams turn what they do into products with clarity and conviction. Bring your vision and DT'll shape how it shows up in the world."
                 )}
               </Text>
             </motion.blockquote>

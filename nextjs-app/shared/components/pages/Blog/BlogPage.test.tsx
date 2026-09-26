@@ -48,7 +48,7 @@ describe("Blog pages", () => {
     renderWithProviders(<BlogPage />);
 
     expect(
-      screen.getByRole("heading", { name: /Our thoughts/i }),
+      screen.getByRole("heading", { name: /^Thoughts$/i }),
     ).toBeInTheDocument();
     expect(
       screen.getAllByRole("link", { name: /first post|second post/i }),

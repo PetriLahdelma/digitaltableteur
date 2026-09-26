@@ -15,6 +15,7 @@ import {
 // New patterns from Phase 08-2
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
+import { CaseStudySummary } from "../../../../patterns/CaseStudySummary";
 import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
@@ -50,6 +51,50 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
       }
       relatedProjects={<RelatedProjects currentSlug={project.slug} />}
     >
+      <CaseStudySummary
+        outcome="A shared toolbox and design foundation for the City of Helsinki, so that services built by many vendors share one visual identity, accessible UI and predictable behavior, released as versioned design, code and documentation."
+        role="Senior UX Designer in a team of five (Jan 2020 to Mar 2022): UX, UI and service design, component design, frontend work and documentation."
+        constraints={[
+          "A multivendor environment with many separate city services",
+          "Residents of every age, language background and functional ability",
+          "Departments that each maintained their own design variations",
+          "Consistency over the long term without blocking new ideas",
+        ]}
+        decisions={[
+          {
+            title: "Research before components",
+            detail:
+              "Stakeholder interviews, service audits, accessibility-focused user studies and benchmarking against public sector systems such as GOV.UK set the principles first.",
+          },
+          {
+            title: "Design and code released together",
+            detail:
+              "Each version bump shipped code, designs, assets and documentation, synchronized through versioned npm packages so the libraries could not drift apart.",
+          },
+          {
+            title: "Co-governance instead of mandates",
+            detail:
+              "Contribution guidelines and structured onboarding brought teams with their own variations into the system as contributors.",
+          },
+          {
+            title: "Experimental phases and deprecation paths",
+            detail:
+              "New components could be tested before full integration, and old ones retired without disrupting live services.",
+          },
+        ]}
+        evidence={[
+          {
+            claim: "The Helsinki Design System is public and still maintained",
+            source: "hds.hel.fi",
+            href: project.liveUrl,
+          },
+          {
+            claim: "Regular reviews by third-party accessibility experts",
+            source: "Self-reported, from project records",
+          },
+        ]}
+      />
+
       {/* Project metadata */}
       <ProjectMetaSection
         services={[

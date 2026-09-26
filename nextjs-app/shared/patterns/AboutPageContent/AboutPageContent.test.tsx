@@ -37,7 +37,7 @@ describe("AboutPageContent", () => {
     await i18n.changeLanguage("en");
     renderWithProviders(<AboutPageContent />);
     expect(
-      screen.getByRole("heading", { name: /How we deliver at scale/i }),
+      screen.getByRole("heading", { name: /How delivery scales/i }),
     ).toBeInTheDocument();
   });
 

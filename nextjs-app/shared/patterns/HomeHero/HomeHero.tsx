@@ -89,7 +89,7 @@ export function HomeHero({
       return subtextOptions[randomSubtextIndex];
     }
     // Fallback for SSR or if no options available
-    return t("homeHeroSubtext", "From concept to code, we craft human-centered GenAI experiences.");
+    return t("homeHeroSubtext", "From concept to code, human-centered GenAI experiences.");
   }, [isClient, subtextOptions, randomSubtextIndex, t]);
 
   return (

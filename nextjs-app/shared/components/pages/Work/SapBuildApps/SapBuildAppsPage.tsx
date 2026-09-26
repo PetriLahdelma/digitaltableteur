@@ -8,6 +8,7 @@ import { SiFigma, SiReact, SiTypescript, SiStorybook } from "react-icons/si";
 
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
+import { CaseStudySummary } from "../../../../patterns/CaseStudySummary";
 import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
@@ -42,6 +43,50 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
       }
       relatedProjects={<RelatedProjects currentSlug={project.slug} />}
     >
+      <CaseStudySummary
+        outcome="Components that were being recreated with slight variations across teams became one library of 100+ production components, with 1:1 parity between Figma and React and documentation in Storybook, serving 300+ developers and designers."
+        role="Design System Lead in a team of four (Mar 2022 to Feb 2026): system architecture, component design, documentation and design-to-code translation, with the lead specification of the data table."
+        constraints={[
+          "A distributed team across multiple time zones",
+          "Integration after the 2021 AppGyver acquisition into SAP Horizon and SAP BTP",
+          "Enterprise datasets of thousands of rows from S/4HANA and OData services",
+          "WCAG 2.1 AA in both light and dark themes",
+        ]}
+        decisions={[
+          {
+            title: "A Design System Guild with a defined lifecycle",
+            detail:
+              "Designers, developers and product managers reviewed proposals every two weeks, and every component moved through proposal, design, development, documentation and versioned release.",
+          },
+          {
+            title: "Tokens on SAP Horizon semantics as the shared language",
+            detail:
+              "Colors, spacing and typography were defined once and consumed by both Figma and React, so light and dark themes stayed consistent.",
+          },
+          {
+            title: "Accessibility built into every component",
+            detail:
+              "States, keyboard navigation and screen reader support were part of the component definition, not a later audit.",
+          },
+          {
+            title: "A data table designed for enterprise scale",
+            detail:
+              "Sorting, filtering, pagination, row selection and column configuration were specified for thousands of rows with full keyboard support.",
+          },
+        ]}
+        evidence={[
+          {
+            claim: "100+ production components and 300+ developers and designers served",
+            source: "Self-reported, from project records",
+          },
+          {
+            claim: "SAP Build Apps is a publicly available SAP product",
+            source: "SAP product page",
+            href: project.liveUrl,
+          },
+        ]}
+      />
+
       <ProjectMetaSection
         services={[
           "Design System Architecture",

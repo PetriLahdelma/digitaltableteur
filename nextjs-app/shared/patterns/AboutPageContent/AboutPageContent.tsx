@@ -107,7 +107,7 @@ export function AboutPageContent({
     [t, i18n.language],
   );
 
-  // "How we deliver at scale" — addresses enterprise-buyer concerns
+  // "How delivery scales" — addresses enterprise-buyer concerns
   // (continuity, governance, ownership) beyond a single-person dependency.
   const deliveryValues: ValueItem[] = useMemo(
     () => [
@@ -283,7 +283,7 @@ export function AboutPageContent({
         background="primary"
       />
 
-      {/* How we deliver at scale */}
+      {/* How delivery scales */}
       <ValuesSection
         title={t("aboutDeliveryTitle")}
         subtitle={t("aboutDeliverySubtitle")}

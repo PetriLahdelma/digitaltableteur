@@ -142,7 +142,7 @@ export function HomePage() {
       {/* Services Section */}
       <ServicesSection
         id="services"
-        title={t("homeExpertiseTitle", "What we do")}
+        title={t("homeExpertiseTitle", "Services")}
         services={services}
         columns={2}
         cardVariant="bordered"
