@@ -6,7 +6,7 @@
  *     --task all --arm both --agent claude --reps 3 \
  *     --model claude-sonnet-5 --max-turns 30 --repair-loop
  *
- * Arms: --arm with | mcp | without | both (with+without) | all (all three).
+ * Arms: --arm with | mcp | mcp-pointer | without | both (with+without) | all.
  *
  * Stub agents for harness integrity (no model spend):
  *   --agent null    every task must FAIL acceptance
@@ -98,7 +98,7 @@ async function main() {
   }
   const ARM_SETS = {
     both: ["with", "without"],
-    all: ["with", "mcp", "without"],
+    all: ["with", "mcp", "mcp-pointer", "without"],
   };
   const arms =
     options.agent === "claude"

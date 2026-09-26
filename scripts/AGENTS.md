@@ -124,8 +124,9 @@
 - A/B benchmark: does the DS affordance layer (dt CLI + contracts) change
   what a coding agent builds? Eight task categories (table, tree, migration,
   repair, forced-colors, and since v2 tokens, dialog, form) with
-  affordance-neutral machine acceptance. Three arms: `with` (dt CLI
-  documented), `mcp` (stdio DS MCP attached, generic workspace), `without`.
+  affordance-neutral machine acceptance. Four arms: `with` (dt CLI
+  documented), `mcp` (stdio DS MCP attached, generic workspace),
+  `mcp-pointer` (mcp plus one line naming the server), `without`.
 - `npm run agent:bench:selftest`: null/oracle/naive grader integrity, no
   model spend. Run before any paid run.
 - `npm run agent:bench -- --task all --arm all --agent claude --reps 3

@@ -8,6 +8,8 @@
  *              difference is the design-system MCP server attached over
  *              stdio. Its tool descriptions and server instructions ARE the
  *              affordance, which is what any design system can ship.
+ * - "mcp-pointer": the mcp arm plus ONE line in the workspace CLAUDE.md
+ *              naming the server. Isolates "does the agent know it exists?"
  * - "without": the workspace CLAUDE.md is generic. Same repository, same
  *              task, same budget — only the affordance POINTER differs; the
  *              artifacts themselves are not hidden, because deleting them
@@ -42,6 +44,11 @@ Rules:
 - Only modify the files the task puts in scope.
 - Do not run git commands that change history (commit, push, rebase).
 - Do not start dev servers or Storybook.
+`;
+
+// The mcp-pointer arm's whole difference from the mcp arm: one line.
+const MCP_POINTER = `
+This repository's design system is available through the \`design-system\` MCP server; use its tools to find components and validate usage before finishing.
 `;
 
 const WITH_AFFORDANCES = `
@@ -101,7 +108,11 @@ export async function prepareWorkspace(worktree, task, arm) {
   await writeFile(join(worktree, "TASK.md"), `# ${task.title}\n\n${task.brief}\n`);
   await writeFile(
     join(worktree, "CLAUDE.md"),
-    arm === "with" ? BASE_RULES + WITH_AFFORDANCES : BASE_RULES,
+    arm === "with"
+      ? BASE_RULES + WITH_AFFORDANCES
+      : arm === "mcp-pointer"
+        ? BASE_RULES + MCP_POINTER
+        : BASE_RULES,
   );
 }
 
@@ -211,7 +222,7 @@ export async function runAgent(worktree, task, agent, options = {}) {
     "--setting-sources",
     "project,local",
   ];
-  if (options.arm === "mcp") {
+  if (options.arm === "mcp" || options.arm === "mcp-pointer") {
     args.push("--mcp-config", await writeMcpConfig(worktree));
   }
   const startedAt = Date.now();

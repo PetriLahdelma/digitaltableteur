@@ -34,7 +34,7 @@ type ArmSummary = {
   phantomTokenRefs?: Stats;
 };
 
-type ArmId = "with" | "mcp" | "without";
+type ArmId = "with" | "mcp" | "mcp-pointer" | "without";
 
 export type AgentBenchArtifact = {
   generatedAt: string;
@@ -52,10 +52,11 @@ export type AgentBenchArtifact = {
   }[];
 };
 
-const ARM_ORDER: ArmId[] = ["with", "mcp", "without"];
+const ARM_ORDER: ArmId[] = ["with", "mcp", "mcp-pointer", "without"];
 const ARM_SHORT: Record<ArmId, string> = {
   with: "WITH",
   mcp: "MCP",
+  "mcp-pointer": "MCP + POINTER",
   without: "WITHOUT",
 };
 

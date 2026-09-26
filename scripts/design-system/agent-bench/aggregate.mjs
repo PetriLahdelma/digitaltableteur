@@ -77,10 +77,11 @@ function runCost(run) {
   );
 }
 
-const ARM_ORDER = ["with", "mcp", "without"];
+const ARM_ORDER = ["with", "mcp", "mcp-pointer", "without"];
 const ARM_LABELS = {
   with: "WITH (dt CLI documented in workspace)",
   mcp: "MCP (design-system MCP attached, generic workspace)",
+  "mcp-pointer": "MCP + POINTER (same server, plus one line in the workspace naming it)",
   without: "WITHOUT (generic workspace)",
 };
 

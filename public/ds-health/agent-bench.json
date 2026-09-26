@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-25T21:44:50.137Z",
+  "generatedAt": "2026-09-26T02:14:18.814Z",
   "generator": {
     "name": "agent-bench/aggregate.mjs",
-    "sourceCommit": "b60ed9564b641fa76958fbbed2c4462f3a223e8d"
+    "sourceCommit": "d7dbb0e3377b1d430a07111319ed47510fecfc59"
   },
   "methodology": "docs/AGENT_BENCH_METHODOLOGY.md",
   "runtime": [
@@ -17,7 +17,15 @@
     "2026-09-25T21-38-24-claude.json",
     "2026-09-25T21-43-00-claude.json",
     "2026-09-25T21-43-06-claude.json",
-    "2026-09-25T21-43-37-claude.json"
+    "2026-09-25T21-43-37-claude.json",
+    "2026-09-26T01-57-01-claude.json",
+    "2026-09-26T01-57-26-claude.json",
+    "2026-09-26T02-03-20-claude.json",
+    "2026-09-26T02-04-36-claude.json",
+    "2026-09-26T02-04-41-claude.json",
+    "2026-09-26T02-05-53-claude.json",
+    "2026-09-26T02-09-47-claude.json",
+    "2026-09-26T02-11-17-claude.json"
   ],
   "supersededRuns": [
     {
@@ -42,20 +50,21 @@
       ]
     }
   ],
-  "totalRuns": 72,
-  "totalCostUsd": 33.01,
+  "totalRuns": 96,
+  "totalCostUsd": 45.88,
   "notes": [
-    "Arms differ in one thing only. WITH: the workspace CLAUDE.md documents the dt CLI. MCP: the generic workspace text plus the repository's stdio design-system MCP server attached. WITHOUT: the generic workspace text. Every arm has identical repository access, task, model, turn budget and permissions.",
+    "Arms differ in one thing only. WITH: the workspace CLAUDE.md documents the dt CLI. MCP: the generic workspace text plus the repository's stdio design-system MCP server attached. MCP + POINTER: the MCP arm plus one line in the workspace naming the server. WITHOUT: the generic workspace text. Every arm has identical repository access, task, model, turn budget and permissions.",
+    "Headline: an MCP server is only as good as the pointer to it. Attached alone, agents called it in 3 of 24 runs and reused DS components in 4 of 18 build runs, no better than the control (6 of 18). Add one line naming the server and agents called it in 22 of 24 runs (4.7 calls each on average) and reused DS components in 15 of 18, level with documenting the CLI (14 of 18). The client defers MCP tools behind a tool search, so an agent that is not told the server exists rarely looks.",
+    "The pointer line, verbatim: \"This repository's design system is available through the `design-system` MCP server; use its tools to find components and validate usage before finishing.\" Cost of the pointer: about $0.10 more per run than the MCP arm, from the extra tool calls.",
+    "Pass rates saturated. First-try pass is 23 or 24 of 24 in every arm. The three v2 tasks (phantom tokens, modal focus, form error wiring) did not separate the arms for this model, and no run in any arm referenced an undefined token. Reuse is reported and never gates a pass.",
     "Isolation: runs pass --strict-mcp-config and --setting-sources project,local, so the operator's user-level Claude configuration never reaches the agent. The August batch (archived) loaded it in both arms and is not pooled with these numbers.",
-    "Headline: design-system reuse, not pass rate. With the affordance documented in the workspace, agents reused DS components in 14 of 18 build runs; with only the MCP server attached, 4 of 18; with neither, 6 of 18. Reuse is reported and never gates a pass.",
-    "Shipping an MCP server alone changed nothing measurable. The server connected in every MCP-arm run and exposed 8 tools, but the client lists MCP tools as deferred, and agents called them in only 3 of 24 runs (all on the repair task). The MCP arm tracks the control on every metric. Agents use what their instructions point them at.",
-    "Pass rates saturated. The three v2 tasks (phantom tokens, modal focus, form error wiring) were built to separate the arms and did not: once grader bugs were fixed, every arm passed them first try, and no run in any arm referenced an undefined token. For this model, those failure modes did not appear. First-try pass: WITH 23/24, MCP 24/24, WITHOUT 23/24.",
-    "Grader fixes during the batch: the migration acceptance hardcoded a consumer file that no longer uses Badge (made the check impossible in every arm), and the colour scan flagged the real token var(--color-white). Both were fixed, guarded in the selftest, and those two tasks were re-run in all arms. The superseded runs are listed in supersededRuns and excluded. Total spend including them: $61.20 ($28.19 superseded).",
-    "n=3 per arm per task, claude-sonnet-5, 30-turn budget, automatic repair loop. With n=3, treat per-task differences as anecdotes; the reuse gap is the only difference large and consistent enough to read."
+    "Grader fixes during the batch: the migration acceptance hardcoded a consumer file that no longer uses Badge, and the colour scan flagged the real token var(--color-white). Both were fixed, guarded in the selftest, and those tasks re-run in the first three arms; superseded runs are listed in supersededRuns and excluded. The MCP + POINTER arm ran the next day against the same source commit with the fixed graders. Total spend including superseded runs: $74.07 ($28.19 superseded).",
+    "n=3 per arm per task, claude-sonnet-5, 30-turn budget, automatic repair loop. With n=3, treat per-task differences as anecdotes; the MCP call rate and the reuse gap are the differences large and consistent enough to read."
   ],
   "armLabels": {
     "with": "WITH (dt CLI documented in workspace)",
     "mcp": "MCP (design-system MCP attached, generic workspace)",
+    "mcp-pointer": "MCP + POINTER (same server, plus one line in the workspace naming it)",
     "without": "WITHOUT (generic workspace)"
   },
   "arms": {
@@ -129,6 +138,47 @@
         "runsCallingMcp": 3,
         "meanMcpCalls": 0.42,
         "runsCallingDtCli": 0
+      },
+      "phantomTokenRefs": {
+        "mean": 0,
+        "sd": 0,
+        "n": 3,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "mcp-pointer": {
+      "runs": 24,
+      "firstTryPass": 23,
+      "finalPass": 24,
+      "passViaRepairLoop": 1,
+      "costUsdPerRun": {
+        "mean": 0.5363,
+        "sd": 0.2086,
+        "n": 24,
+        "min": 0.2319,
+        "max": 1.0583
+      },
+      "initialTurns": {
+        "mean": 20.7083,
+        "sd": 5.9962,
+        "n": 24,
+        "min": 9,
+        "max": 31
+      },
+      "dsReuse": {
+        "hits": 15,
+        "eligible": 18
+      },
+      "affordanceUse": {
+        "telemeteredRuns": 24,
+        "runsCallingMcp": 22,
+        "meanMcpCalls": 4.67,
+        "runsCallingDtCli": 0
+      },
+      "failedChecks": {
+        "consumers-migrated": 1,
+        "no-stale-variant-findings-app": 1
       },
       "phantomTokenRefs": {
         "mean": 0,
@@ -245,6 +295,36 @@
             "runsCallingDtCli": 0
           }
         },
+        "mcp-pointer": {
+          "runs": 3,
+          "firstTryPass": 3,
+          "finalPass": 3,
+          "passViaRepairLoop": 0,
+          "costUsdPerRun": {
+            "mean": 0.5326,
+            "sd": 0.0092,
+            "n": 3,
+            "min": 0.5243,
+            "max": 0.5425
+          },
+          "initialTurns": {
+            "mean": 20,
+            "sd": 1,
+            "n": 3,
+            "min": 19,
+            "max": 21
+          },
+          "dsReuse": {
+            "hits": 3,
+            "eligible": 3
+          },
+          "affordanceUse": {
+            "telemeteredRuns": 3,
+            "runsCallingMcp": 3,
+            "meanMcpCalls": 5.33,
+            "runsCallingDtCli": 0
+          }
+        },
         "without": {
           "runs": 3,
           "firstTryPass": 3,
@@ -341,6 +421,36 @@
             "runsCallingDtCli": 0
           }
         },
+        "mcp-pointer": {
+          "runs": 3,
+          "firstTryPass": 3,
+          "finalPass": 3,
+          "passViaRepairLoop": 0,
+          "costUsdPerRun": {
+            "mean": 0.4516,
+            "sd": 0.0685,
+            "n": 3,
+            "min": 0.4018,
+            "max": 0.5297
+          },
+          "initialTurns": {
+            "mean": 21.6667,
+            "sd": 4.1633,
+            "n": 3,
+            "min": 17,
+            "max": 25
+          },
+          "dsReuse": {
+            "hits": 1,
+            "eligible": 3
+          },
+          "affordanceUse": {
+            "telemeteredRuns": 3,
+            "runsCallingMcp": 3,
+            "meanMcpCalls": 4.67,
+            "runsCallingDtCli": 0
+          }
+        },
         "without": {
           "runs": 3,
           "firstTryPass": 3,
@@ -434,6 +544,36 @@
             "telemeteredRuns": 3,
             "runsCallingMcp": 0,
             "meanMcpCalls": 0,
+            "runsCallingDtCli": 0
+          }
+        },
+        "mcp-pointer": {
+          "runs": 3,
+          "firstTryPass": 3,
+          "finalPass": 3,
+          "passViaRepairLoop": 0,
+          "costUsdPerRun": {
+            "mean": 0.6476,
+            "sd": 0.086,
+            "n": 3,
+            "min": 0.5504,
+            "max": 0.714
+          },
+          "initialTurns": {
+            "mean": 21.6667,
+            "sd": 4.7258,
+            "n": 3,
+            "min": 18,
+            "max": 27
+          },
+          "dsReuse": {
+            "hits": 3,
+            "eligible": 3
+          },
+          "affordanceUse": {
+            "telemeteredRuns": 3,
+            "runsCallingMcp": 3,
+            "meanMcpCalls": 6.67,
             "runsCallingDtCli": 0
           }
         },
@@ -538,6 +678,40 @@
             "runsCallingDtCli": 0
           }
         },
+        "mcp-pointer": {
+          "runs": 3,
+          "firstTryPass": 2,
+          "finalPass": 3,
+          "passViaRepairLoop": 1,
+          "costUsdPerRun": {
+            "mean": 0.9808,
+            "sd": 0.0966,
+            "n": 3,
+            "min": 0.8726,
+            "max": 1.0583
+          },
+          "initialTurns": {
+            "mean": 31,
+            "sd": 0,
+            "n": 3,
+            "min": 31,
+            "max": 31
+          },
+          "dsReuse": {
+            "hits": 0,
+            "eligible": 0
+          },
+          "affordanceUse": {
+            "telemeteredRuns": 3,
+            "runsCallingMcp": 1,
+            "meanMcpCalls": 4,
+            "runsCallingDtCli": 0
+          },
+          "failedChecks": {
+            "consumers-migrated": 1,
+            "no-stale-variant-findings-app": 1
+          }
+        },
         "without": {
           "runs": 3,
           "firstTryPass": 2,
@@ -638,6 +812,36 @@
             "runsCallingDtCli": 0
           }
         },
+        "mcp-pointer": {
+          "runs": 3,
+          "firstTryPass": 3,
+          "finalPass": 3,
+          "passViaRepairLoop": 0,
+          "costUsdPerRun": {
+            "mean": 0.2532,
+            "sd": 0.0185,
+            "n": 3,
+            "min": 0.2319,
+            "max": 0.2657
+          },
+          "initialTurns": {
+            "mean": 10,
+            "sd": 1.7321,
+            "n": 3,
+            "min": 9,
+            "max": 12
+          },
+          "dsReuse": {
+            "hits": 0,
+            "eligible": 0
+          },
+          "affordanceUse": {
+            "telemeteredRuns": 3,
+            "runsCallingMcp": 3,
+            "meanMcpCalls": 4.33,
+            "runsCallingDtCli": 0
+          }
+        },
         "without": {
           "runs": 3,
           "firstTryPass": 3,
@@ -731,6 +935,36 @@
             "telemeteredRuns": 3,
             "runsCallingMcp": 0,
             "meanMcpCalls": 0,
+            "runsCallingDtCli": 0
+          }
+        },
+        "mcp-pointer": {
+          "runs": 3,
+          "firstTryPass": 3,
+          "finalPass": 3,
+          "passViaRepairLoop": 0,
+          "costUsdPerRun": {
+            "mean": 0.4733,
+            "sd": 0.0469,
+            "n": 3,
+            "min": 0.4309,
+            "max": 0.5237
+          },
+          "initialTurns": {
+            "mean": 20.3333,
+            "sd": 2.0817,
+            "n": 3,
+            "min": 18,
+            "max": 22
+          },
+          "dsReuse": {
+            "hits": 3,
+            "eligible": 3
+          },
+          "affordanceUse": {
+            "telemeteredRuns": 3,
+            "runsCallingMcp": 3,
+            "meanMcpCalls": 4,
             "runsCallingDtCli": 0
           }
         },
@@ -844,6 +1078,43 @@
             "max": 0
           }
         },
+        "mcp-pointer": {
+          "runs": 3,
+          "firstTryPass": 3,
+          "finalPass": 3,
+          "passViaRepairLoop": 0,
+          "costUsdPerRun": {
+            "mean": 0.5092,
+            "sd": 0.0931,
+            "n": 3,
+            "min": 0.4031,
+            "max": 0.5771
+          },
+          "initialTurns": {
+            "mean": 22.3333,
+            "sd": 3.7859,
+            "n": 3,
+            "min": 18,
+            "max": 25
+          },
+          "dsReuse": {
+            "hits": 2,
+            "eligible": 3
+          },
+          "affordanceUse": {
+            "telemeteredRuns": 3,
+            "runsCallingMcp": 3,
+            "meanMcpCalls": 4.67,
+            "runsCallingDtCli": 0
+          },
+          "phantomTokenRefs": {
+            "mean": 0,
+            "sd": 0,
+            "n": 3,
+            "min": 0,
+            "max": 0
+          }
+        },
         "without": {
           "runs": 3,
           "firstTryPass": 3,
@@ -944,6 +1215,36 @@
             "telemeteredRuns": 3,
             "runsCallingMcp": 0,
             "meanMcpCalls": 0,
+            "runsCallingDtCli": 0
+          }
+        },
+        "mcp-pointer": {
+          "runs": 3,
+          "firstTryPass": 3,
+          "finalPass": 3,
+          "passViaRepairLoop": 0,
+          "costUsdPerRun": {
+            "mean": 0.4421,
+            "sd": 0.037,
+            "n": 3,
+            "min": 0.4035,
+            "max": 0.4772
+          },
+          "initialTurns": {
+            "mean": 18.6667,
+            "sd": 2.5166,
+            "n": 3,
+            "min": 16,
+            "max": 21
+          },
+          "dsReuse": {
+            "hits": 3,
+            "eligible": 3
+          },
+          "affordanceUse": {
+            "telemeteredRuns": 3,
+            "runsCallingMcp": 3,
+            "meanMcpCalls": 3.67,
             "runsCallingDtCli": 0
           }
         },

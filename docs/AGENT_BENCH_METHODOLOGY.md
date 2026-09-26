@@ -19,16 +19,15 @@
 
 ## Results, v2 (2026-09-25)
 
-72 published runs (8 tasks, 3 arms, n=3), claude-sonnet-5, isolated.
+96 published runs (8 tasks, 4 arms, n=3), claude-sonnet-5, isolated.
 Artifact: `public/ds-health/agent-bench.json`.
 
-- **Reuse is the signal.** Design-system reuse on build tasks: WITH 14/18,
-  MCP 4/18, WITHOUT 6/18.
-- **An MCP server alone changed nothing measurable.** Connected in every
-  MCP-arm run, called in 3 of 24. The client defers MCP tools; agents use
-  what their instructions point at. For a design system this means the
-  pointer (workspace guidance, rules files, skill text) matters more than the
-  server's existence.
+- **An MCP server is only as good as the pointer to it.** Attached alone:
+  called in 3 of 24 runs, DS reuse 4/18 (control: 6/18). Plus one line
+  naming it: called in 22 of 24 runs (4.7 calls each), DS reuse 15/18, level
+  with documenting the CLI (WITH 14/18). The client defers MCP tools behind
+  a tool search; an agent not told the server exists rarely looks. Cost of
+  the pointer: about $0.10 more per run.
 - **Pass rates saturated.** First-try pass 23 to 24 of 24 in every arm; the
   v2 tasks did not separate the arms for this model, and no run in any arm
   used an undefined token.
@@ -38,8 +37,7 @@ Artifact: `public/ds-health/agent-bench.json`.
   runs are recorded in the artifact, not dropped silently.
 
 Next increments worth running: harder tasks (multi-component composition,
-cross-file refactors), an MCP arm with a one-line pointer to the server, and
-a second model family.
+cross-file refactors) so pass rates separate, and a second model family.
 
 ## What is measured
 
@@ -89,6 +87,11 @@ permissions. Exactly one thing differs, how the design system is offered:
   descriptions and instructions are the whole affordance. This is the arm
   any design system can reproduce: it measures what shipping an MCP server
   buys, with no workspace prompt engineering.
+- **MCP + POINTER** (v2): the MCP arm plus one line in the workspace
+  `CLAUDE.md`: "This repository's design system is available through the
+  `design-system` MCP server; use its tools to find components and validate
+  usage before finishing." Isolates whether the agent knows the server
+  exists.
 - **WITHOUT**: generic task rules only.
 
 Note on the MCP arm: the runtime lists MCP tools as deferred (loaded on
