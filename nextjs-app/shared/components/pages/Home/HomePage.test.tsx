@@ -38,7 +38,7 @@ describe("HomePage", () => {
     expect(
       screen.getByRole("link", { name: /Get in touch/i }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /About us/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /^About$/i })).toBeInTheDocument();
   });
 
   it("renders services section", () => {

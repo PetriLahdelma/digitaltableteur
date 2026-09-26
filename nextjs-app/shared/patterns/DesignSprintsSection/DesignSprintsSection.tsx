@@ -61,7 +61,7 @@ export function DesignSprintsSection({
               <p className={styles.description}>
                 {t(
                   "homeDesignSprintsDescription",
-                  "Start with the problem in front of you. Every engagement is led hands-on by Petri, with specialists from our network added as the work needs them, and each one can grow into the next.",
+                  "Start with the problem in front of you. Every engagement is led hands-on, with a network of specialists added as the work needs them.",
                 )}
               </p>
             </FadeIn>

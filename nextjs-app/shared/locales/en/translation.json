@@ -348,7 +348,7 @@
   "themeChanged": "Theme changed to {{theme}}",
   "languageChanged": "Language changed to {{language}}",
   "homeDesignSprintsTitle": "Focused engagements, senior delivery",
-  "homeDesignSprintsDescription": "Start with the problem in front of you. Every engagement is led hands-on by Petri, with specialists from our network added as the work needs them, and each one can grow into the next.",
+  "homeDesignSprintsDescription": "Start with the problem in front of you. Every engagement is led hands-on, with a network of specialists added as the work needs them.",
   "homeEngagementModels": [
     {
       "title": "UX Sprint",
@@ -378,7 +378,7 @@
   "homeHeroAriaLabel": "Homepage hero section",
   "homeHeroScrollLabel": "Scroll",
   "homeHeroContactCta": "Get in touch",
-  "homeHeroAboutCta": "About us",
+  "homeHeroAboutCta": "About",
   "newsBulletinAriaLabel": "Current highlights",
   "newsBulletinScrollPrev": "Show previous highlights",
   "newsBulletinScrollNext": "Show more highlights",
@@ -1431,9 +1431,5 @@
   "pricingBillingCopied": "Copied",
   "notFoundTitle": "Page not found",
   "notFoundBody": "That page does not exist, or it has moved. Here is where to look next.",
-  "notFoundViewSitemap": "View Sitemap",
-  "homeFounderSectionTitle": "Who you work with",
-  "homeFounderHeading": "Led by Petri Lahdelma",
-  "homeFounderRole": "Founder, Digitaltableteur",
-  "homeFounderBio": "Designer, systems thinker and builder with 20+ years across product, brand and enterprise design. Former design system lead for SAP Build Apps, now working on how AI changes the way teams design and ship.\n\n[More about Petri at petrilahdelma.com](https://www.petrilahdelma.com)"
+  "notFoundViewSitemap": "View Sitemap"
 }

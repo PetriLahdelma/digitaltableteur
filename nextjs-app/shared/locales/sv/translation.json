@@ -345,7 +345,7 @@
   "themeChanged": "Tema ändrat till {{theme}}",
   "languageChanged": "Språk ändrat till {{language}}",
   "homeDesignSprintsTitle": "Fokuserade uppdrag, senior leverans",
-  "homeDesignSprintsDescription": "Börja med problemet framför dig. Varje uppdrag leds praktiskt av Petri, med specialister från vårt nätverk när arbetet kräver det, och varje uppdrag kan växa till nästa.",
+  "homeDesignSprintsDescription": "Börja med problemet framför dig. Varje uppdrag leds praktiskt, med ett nätverk av specialister som tillkommer när arbetet kräver det.",
   "homeEngagementModels": [
     {
       "title": "UX Sprint",
@@ -375,7 +375,7 @@
   "homeHeroAriaLabel": "Startsidans hero-sektion",
   "homeHeroScrollLabel": "Scrolla",
   "homeHeroContactCta": "Kontakta oss",
-  "homeHeroAboutCta": "Om oss",
+  "homeHeroAboutCta": "Om",
   "newsBulletinAriaLabel": "Aktuellt",
   "newsBulletinScrollPrev": "Visa tidigare höjdpunkter",
   "newsBulletinScrollNext": "Visa fler höjdpunkter",
@@ -1431,9 +1431,5 @@
   "pricingBillingCopied": "Kopierad",
   "notFoundTitle": "Sidan hittades inte",
   "notFoundBody": "Sidan finns inte eller har flyttats. Fortsätt härifrån.",
-  "notFoundViewSitemap": "Visa webbplatskarta",
-  "homeFounderSectionTitle": "Vem du arbetar med",
-  "homeFounderHeading": "Leds av Petri Lahdelma",
-  "homeFounderRole": "Grundare, Digitaltableteur",
-  "homeFounderBio": "Designer, systemtänkare och byggare med över 20 års erfarenhet av produkt-, varumärkes- och företagsdesign. Tidigare ansvarig för designsystemet i SAP Build Apps, arbetar nu med hur AI förändrar sättet team designar och levererar.\n\n[Mer om Petri på petrilahdelma.com](https://www.petrilahdelma.com)"
+  "notFoundViewSitemap": "Visa webbplatskarta"
 }

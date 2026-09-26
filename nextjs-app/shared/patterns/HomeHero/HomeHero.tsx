@@ -168,7 +168,7 @@ export function HomeHero({
                 className="min-w-[160px]"
                 data-donny-interest="about-cta"
               >
-                {t("homeHeroAboutCta", "About us")}
+                {t("homeHeroAboutCta", "About")}
               </Button>
             </Stack>
           </FadeIn>

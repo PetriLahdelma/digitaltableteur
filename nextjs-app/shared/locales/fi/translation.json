@@ -345,7 +345,7 @@
   "themeChanged": "Teema vaihdettu: {{theme}}",
   "languageChanged": "Kieli vaihdettu {{language}}",
   "homeDesignSprintsTitle": "Rajatut toimeksiannot, kokeneet tekijät",
-  "homeDesignSprintsDescription": "Aloita siitä ongelmasta, joka on edessäsi. Jokaista toimeksiantoa vetää käytännössä Petri, ja verkostomme asiantuntijat tulevat mukaan työn niin vaatiessa. Jokainen toimeksianto voi kasvaa seuraavaksi.",
+  "homeDesignSprintsDescription": "Aloita siitä ongelmasta, joka on edessäsi. Jokaista toimeksiantoa vedetään käytännössä, ja asiantuntijaverkosto tulee mukaan työn niin vaatiessa.",
   "homeEngagementModels": [
     {
       "title": "UX Sprint",
@@ -375,7 +375,7 @@
   "homeHeroAriaLabel": "Etusivun hero-osio",
   "homeHeroScrollLabel": "Vieritä",
   "homeHeroContactCta": "Ota yhteyttä",
-  "homeHeroAboutCta": "Tietoa meistä",
+  "homeHeroAboutCta": "Tietoa",
   "newsBulletinAriaLabel": "Ajankohtaista",
   "newsBulletinScrollPrev": "Näytä edelliset kohokohdat",
   "newsBulletinScrollNext": "Näytä lisää kohokohtia",
@@ -1431,9 +1431,5 @@
   "pricingBillingCopied": "Kopioitu",
   "notFoundTitle": "Sivua ei löytynyt",
   "notFoundBody": "Sivua ei ole olemassa tai se on siirretty. Jatka tästä.",
-  "notFoundViewSitemap": "Katso sivukartta",
-  "homeFounderSectionTitle": "Kenen kanssa työskentelet",
-  "homeFounderHeading": "Vetäjänä Petri Lahdelma",
-  "homeFounderRole": "Perustaja, Digitaltableteur",
-  "homeFounderBio": "Suunnittelija, järjestelmäajattelija ja tekijä, jolla on yli 20 vuoden kokemus tuote-, brändi- ja yrityssuunnittelusta. Aiemmin SAP Build Appsin design systemin vetäjä, nyt työn alla se, miten tekoäly muuttaa tapaa, jolla tiimit suunnittelevat ja julkaisevat.\n\n[Lisää Petristä: petrilahdelma.com](https://www.petrilahdelma.com)"
+  "notFoundViewSitemap": "Katso sivukartta"
 }
