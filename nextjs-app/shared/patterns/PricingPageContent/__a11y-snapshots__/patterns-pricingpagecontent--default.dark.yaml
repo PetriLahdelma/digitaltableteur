@@ -13,9 +13,8 @@
     - listitem: More coordination capacity
     - listitem: Dedicated staffing
     - listitem: Best for large parallel programs
-- region "Client perspective":
-  - blockquote:
-    - paragraph: “ Why wrestle with bloated agency retainers when you can get a usable design system including contracts, components, tokens and an adoption plan in weeks?”
+- region "In short":
+  - paragraph: A usable design system, with contracts, components, tokens and an adoption plan, in weeks rather than quarters.
 - region "Adjust duration and workload to see your total investment.":
   - status: 75 hours at 5 days/week, 120€/hour, total 9,000 €
   - heading "Adjust duration and workload to see your total investment." [level=2]
@@ -87,7 +86,7 @@
       - paragraph: Storybook + adoption playbook — see design system deliveries.
       - link "Book Design System Lift-Off":
         - /url: /contact?mode=book&package=design-system-lift-off
-  - button "AaaS (Agents as a Service)"
+  - button "AI agents and automation"
   - link "Book a call":
     - /url: /contact?mode=book
   - link "See our work":

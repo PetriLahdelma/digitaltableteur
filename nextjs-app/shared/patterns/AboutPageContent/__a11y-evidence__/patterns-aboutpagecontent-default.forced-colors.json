@@ -1,19 +1,16 @@
 {
   "storyId": "patterns-aboutpagecontent-default",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:40:32.957Z",
-  "runner": "backfill",
+  "sourceSHA": "026edbfcb137055022327807685150ec94e7bffc",
+  "capturedAt": "2026-09-26T09:40:24.304Z",
+  "runner": "local-recapture-2026-09-26",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     },
     "forced-colors-real-browser": {
-      "passed": true
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

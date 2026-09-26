@@ -2,30 +2,24 @@
 - paragraph: Design and AI consultancy helping organizations create and scale digital products and systems
 - button "Scroll to content"
 - heading "What we bring" [level=2]
-- paragraph: Expertise shaped by years of building products that matter
+- paragraph: "Proof over promises: each of these is visible in the work."
 - article:
-  - heading "Design Excellence" [level=3]
-  - paragraph: From strategy to identity and interface, we focus on clarity and expression so every product has personality.
+  - heading "Design systems in production" [level=3]
+  - paragraph: Systems that serve hundreds of people who build with them, from SAP Build Apps to the Helsinki Design System and this site's own contract-driven library.
 - article:
-  - heading "Technical Craft" [level=3]
-  - paragraph: We build websites and digital tools with care, combining modern technology and a deep attention to craft.
+  - heading "Tools, not just advice" [level=3]
+  - paragraph: "We build the tooling we recommend: Rhythmguard, Project Spine and machine-readable component contracts that agents and CI can check."
 - article:
-  - heading "True Partnership" [level=3]
-  - paragraph: Working closely with clients, we turn ideas into memorable products that shape culture and create impact.
+  - heading "Accessibility, proven" [level=3]
+  - paragraph: Automated checks cover every component, including forced colors and target size, so accessibility is demonstrated rather than promised.
 - article:
-  - heading "AI Integration" [level=3]
-  - paragraph: We craft bespoke AI solutions that responsibly accelerate innovation and deliver long-term value.
-- article:
-  - heading "Design Systems" [level=3]
-  - paragraph: We build scalable design systems that ensure consistency, speed up development and grow with your product.
-- article:
-  - heading "Attention to Detail" [level=3]
-  - paragraph: Every pixel, every interaction matters. We obsess over the details that make products feel effortless.
-- term: Years of experience
+  - heading "One team from brand to code" [level=3]
+  - paragraph: Identity, product design and engineering in the same hands, so nothing is lost between the concept and the shipped interface.
+- term: Years designing digital products
 - definition: 20+
-- term: Design system components built
-- definition: 8K+
-- term: Projects delivered
+- term: Production components in one enterprise design system
+- definition: 100+
+- term: Developers and designers served by that system
 - definition: 300+
 - heading "How we deliver at scale" [level=2]
 - paragraph: Senior-led, networked and built to outlast the engagement.
@@ -82,11 +76,11 @@
     - listitem "Storybook 10"
     - listitem "npm"
   - term: react
-  - definition: 0.1.25
+  - definition: 0.1.26
   - term: web-components
-  - definition: 0.10.1
+  - definition: 0.10.2
   - term: tokens
-  - definition: 0.1.4
+  - definition: 0.2.0
   - term: tokens-css
   - definition: 0.1.5
 - region "Ready to build something great?":
