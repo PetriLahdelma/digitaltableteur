@@ -123,7 +123,19 @@ function armSummary(runs) {
     passViaRepairLoop: runs.filter(
       (run) => run.pass && run.repairRounds.length > 0,
     ).length,
-    costUsdPerRun: stats(runs.map(runCost)),
+    costUsdPerRun: stats(runs.map(runCost).filter((cost, index) => runs[index].metering.costUsd != null)),
+    // Comparable across runtimes where dollar cost is not (subscription runs).
+    outputTokensPerRun: stats(
+      runs.map((run) =>
+        run.metering.usage?.output_tokens == null
+          ? null
+          : run.metering.usage.output_tokens +
+            run.repairRounds.reduce(
+              (total, round) => total + (round.metering.usage?.output_tokens ?? 0),
+              0,
+            ),
+      ),
+    ),
     initialTurns: stats(runs.map((run) => run.metering.turns)),
     dsReuse: {
       hits: runs.filter((run) =>
@@ -163,14 +175,16 @@ const { out, notes, files, superseded } = parseArgs(process.argv.slice(2));
 
 const runs = [];
 const runtimes = new Set();
+const runtimeByFamily = new Map();
 for (const file of files) {
   const data = JSON.parse(await readFile(file, "utf8"));
   const isolation = data.runs[0]?.metering?.isolation;
-  runtimes.add(
-    `${data.options.model} maxTurns=${data.options.maxTurns} repairLoop=${data.options.repairLoop}${
-      isolation ? ` isolation=${isolation}` : ""
-    }`,
-  );
+  const runtimeLabel = `${data.options.model}${data.options.effort ? ` effort=${data.options.effort}` : ""} ${
+    data.options.agent === "codex" ? "timeout=20min" : `maxTurns=${data.options.maxTurns}`
+  } repairLoop=${data.options.repairLoop}${isolation ? ` isolation=${isolation}` : ""}`;
+  runtimes.add(runtimeLabel);
+  if (!runtimeByFamily.has(data.options.agent)) runtimeByFamily.set(data.options.agent, new Set());
+  runtimeByFamily.get(data.options.agent).add(runtimeLabel);
   const dropped = new Set(
     superseded
       .filter((entry) => entry.file === basename(file))
@@ -179,11 +193,29 @@ for (const file of files) {
   runs.push(...data.runs.filter((run) => !dropped.has(run.task)));
 }
 
-const taskIds = [...new Set(runs.map((run) => run.task))].sort();
-const tasks = taskIds.map((task) => {
-  const scoped = runs.filter((run) => run.task === task);
-  return { id: task, category: scoped[0].category, arms: byArm(scoped) };
+function tasksFor(scope) {
+  return [...new Set(scope.map((run) => run.task))].sort().map((task) => {
+    const scoped = scope.filter((run) => run.task === task);
+    return { id: task, category: scoped[0].category, arms: byArm(scoped) };
+  });
+}
+
+const FAMILY_LABELS = { claude: "Claude Code", codex: "OpenAI Codex CLI" };
+const familyIds = ["claude", "codex"].filter((id) => runs.some((run) => run.agent === id));
+const families = familyIds.map((id) => {
+  const scope = runs.filter((run) => run.agent === id);
+  return {
+    id,
+    label: FAMILY_LABELS[id],
+    runtime: [...runtimeByFamily.get(id)],
+    runs: scope.length,
+    arms: byArm(scope),
+    tasks: tasksFor(scope),
+  };
 });
+// Top-level arms/tasks stay the Claude family for existing readers.
+const primary = runs.filter((run) => run.agent === "claude");
+const tasks = tasksFor(primary.length > 0 ? primary : runs);
 
 const sourceCommit = (
   await execFileAsync("git", ["rev-parse", "HEAD"]).then(
@@ -210,8 +242,9 @@ const artifact = {
       ARM_LABELS[arm],
     ]),
   ),
-  arms: byArm(runs),
+  arms: byArm(primary.length > 0 ? primary : runs),
   tasks,
+  families,
 };
 
 await writeFile(out, `${JSON.stringify(artifact, null, 2)}\n`);

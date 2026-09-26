@@ -59,7 +59,7 @@ export async function repairLoop(worktree, task, initialGrade, options = {}) {
   let grade = initialGrade;
   for (let round = 1; round <= maxRounds && !grade.pass; round += 1) {
     const guidance = await guidanceFor(worktree, task, grade);
-    const metering = await runAgent(worktree, task, "claude", {
+    const metering = await runAgent(worktree, task, options.agent ?? "claude", {
       ...options,
       prompt: guidance,
     });

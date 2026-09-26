@@ -126,7 +126,9 @@
   repair, forced-colors, and since v2 tokens, dialog, form) with
   affordance-neutral machine acceptance. Four arms: `with` (dt CLI
   documented), `mcp` (stdio DS MCP attached, generic workspace),
-  `mcp-pointer` (mcp plus one line naming the server), `without`.
+  `mcp-pointer` (mcp plus one line naming the server), `without`. Two
+  families: `--agent claude` (Claude Code, CLAUDE.md) and `--agent codex`
+  (Codex CLI, AGENTS.md, isolated CODEX_HOME, tokens not dollars).
 - `npm run agent:bench:selftest`: null/oracle/naive grader integrity, no
   model spend. Run before any paid run.
 - `npm run agent:bench -- --task all --arm all --agent claude --reps 3

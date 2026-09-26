@@ -30,13 +30,24 @@ type ArmSummary = {
     meanMcpCalls: number;
     runsCallingDtCli: number;
   };
+  outputTokensPerRun?: Stats | null;
   failedChecks?: Record<string, number>;
   phantomTokenRefs?: Stats;
 };
 
 type ArmId = "with" | "mcp" | "mcp-pointer" | "without";
 
+type FamilySummary = {
+  id: string;
+  label: string;
+  runtime: string[];
+  runs: number;
+  arms: Partial<Record<ArmId, ArmSummary>>;
+  tasks: AgentBenchArtifact["tasks"];
+};
+
 export type AgentBenchArtifact = {
+  families?: FamilySummary[];
   generatedAt: string;
   methodology: string;
   runtime: string[];
@@ -77,7 +88,9 @@ const cost = (arm?: ArmSummary) =>
     ? `$${arm.costUsdPerRun.mean.toFixed(2)}${
         arm.costUsdPerRun.sd != null ? ` ± ${arm.costUsdPerRun.sd.toFixed(2)}` : ""
       }`
-    : "n/a";
+    : arm?.outputTokensPerRun
+      ? `subscription, ${Math.round(arm.outputTokensPerRun.mean / 100) / 10}k output tokens`
+      : "n/a";
 const affordance = (arm?: ArmSummary) => {
   const use = arm?.affordanceUse;
   if (!use) return "n/a";
@@ -95,6 +108,17 @@ export function AgentBenchSection({
   artifact: AgentBenchArtifact;
 }) {
   const arms = ARM_ORDER.filter((arm) => artifact.arms[arm]);
+  // Older artifacts have one family; present them the same way.
+  const families: FamilySummary[] = artifact.families ?? [
+    {
+      id: "claude",
+      label: "Claude Code",
+      runtime: artifact.runtime,
+      runs: artifact.totalRuns,
+      arms: artifact.arms,
+      tasks: artifact.tasks,
+    },
+  ];
   const perArmRuns = artifact.tasks[0]?.arms[arms[0]]?.runs ?? "?";
   return (
     <section className="mt-12">
@@ -104,9 +128,11 @@ export function AgentBenchSection({
       <Text as="p" size="s" lineHeight="relaxed" className={styles.lede}>
         The same coding agent on the same tasks, in {arms.length} arms that
         differ in one thing only: how the design system is offered to it.{" "}
-        {artifact.totalRuns} published runs on {artifact.runtime[0]}, costing $
-        {artifact.totalCostUsd.toFixed(2)} (spend on superseded runs is in the
-        notes). Acceptance tests user-visible
+        {artifact.totalRuns} published runs across{" "}
+        {families.map((family) => family.label).join(" and ")}. Metered spend
+        on these runs: ${artifact.totalCostUsd.toFixed(2)}; subscription runs
+        report output tokens instead, and spend on superseded runs is in the
+        notes. Acceptance tests user-visible
         semantics and contract conformance, not implementation; reuse of{" "}
         <code className="text-xs">@dt/*</code> is reported separately and
         never gates a pass. Methodology:{" "}
@@ -121,35 +147,40 @@ export function AgentBenchSection({
         className={styles.notes}
       />
 
-      <div className={styles.tableScroll}>
-        <Table caption="Agent benchmark arm summary" size="sm">
-          <thead>
-            <TableRow>
-              <TableHeaderCell>Arm</TableHeaderCell>
-              <TableHeaderCell>First-try pass</TableHeaderCell>
-              <TableHeaderCell>Final pass (repair loop)</TableHeaderCell>
-              <TableHeaderCell>Mean cost / run</TableHeaderCell>
-              <TableHeaderCell>Affordance used</TableHeaderCell>
-              <TableHeaderCell>DS reuse (build tasks)</TableHeaderCell>
-            </TableRow>
-          </thead>
-          <tbody>
-            {arms.map((arm) => (
-              <TableRow key={arm}>
-                <TableCell>{ARM_SHORT[arm]}</TableCell>
-                <TableCell>{firstTry(artifact.arms[arm])}</TableCell>
-                <TableCell>{finalPass(artifact.arms[arm])}</TableCell>
-                <TableCell>{cost(artifact.arms[arm])}</TableCell>
-                <TableCell>{affordance(artifact.arms[arm])}</TableCell>
-                <TableCell>{reuse(artifact.arms[arm])}</TableCell>
+      {families.map((family) => (
+        <div key={family.id} className={styles.tableScroll}>
+          <Table
+            caption={`${family.label}: ${family.runtime[0] ?? ""} (${family.runs} runs)`}
+            size="sm"
+          >
+            <thead>
+              <TableRow>
+                <TableHeaderCell>Arm</TableHeaderCell>
+                <TableHeaderCell>First-try pass</TableHeaderCell>
+                <TableHeaderCell>Final pass (repair loop)</TableHeaderCell>
+                <TableHeaderCell>Mean cost / run</TableHeaderCell>
+                <TableHeaderCell>Affordance used</TableHeaderCell>
+                <TableHeaderCell>DS reuse (build tasks)</TableHeaderCell>
               </TableRow>
-            ))}
-          </tbody>
-        </Table>
-      </div>
+            </thead>
+            <tbody>
+              {ARM_ORDER.filter((arm) => family.arms[arm]).map((arm) => (
+                <TableRow key={arm}>
+                  <TableCell>{ARM_SHORT[arm]}</TableCell>
+                  <TableCell>{firstTry(family.arms[arm])}</TableCell>
+                  <TableCell>{finalPass(family.arms[arm])}</TableCell>
+                  <TableCell>{cost(family.arms[arm])}</TableCell>
+                  <TableCell>{affordance(family.arms[arm])}</TableCell>
+                  <TableCell>{reuse(family.arms[arm])}</TableCell>
+                </TableRow>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      ))}
 
       <div className={styles.tableScroll}>
-        <Table caption="Agent benchmark first-try pass per task" size="sm">
+        <Table caption="Agent benchmark first-try pass per task (Claude Code)" size="sm">
           <thead>
             <TableRow>
               <TableHeaderCell>Task</TableHeaderCell>

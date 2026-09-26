@@ -29,7 +29,8 @@
  * - "claude": pinned headless Claude Code runtime with token metering
  */
 import { execFile, spawn } from "node:child_process";
-import { mkdtemp, symlink, writeFile } from "node:fs/promises";
+import { mkdtemp, rm, symlink, writeFile } from "node:fs/promises";
+import { homedir } from "node:os";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { promisify } from "node:util";
@@ -103,17 +104,105 @@ export async function createWorktree(repoRoot) {
   };
 }
 
-export async function prepareWorkspace(worktree, task, arm) {
+export function workspaceGuidance(arm) {
+  return arm === "with"
+    ? BASE_RULES + WITH_AFFORDANCES
+    : arm === "mcp-pointer"
+      ? BASE_RULES + MCP_POINTER
+      : BASE_RULES;
+}
+
+/**
+ * Each runtime gets the arm text in the file it reads natively: Claude Code
+ * reads CLAUDE.md, Codex reads AGENTS.md. Only that file is replaced, so
+ * Claude runs keep exactly the environment of earlier batches.
+ */
+export async function prepareWorkspace(worktree, task, arm, agent = "claude") {
   await task.prep(worktree);
   await writeFile(join(worktree, "TASK.md"), `# ${task.title}\n\n${task.brief}\n`);
   await writeFile(
-    join(worktree, "CLAUDE.md"),
-    arm === "with"
-      ? BASE_RULES + WITH_AFFORDANCES
-      : arm === "mcp-pointer"
-        ? BASE_RULES + MCP_POINTER
-        : BASE_RULES,
+    join(worktree, agent === "codex" ? "AGENTS.md" : "CLAUDE.md"),
+    workspaceGuidance(arm),
   );
+}
+
+/**
+ * A throwaway CODEX_HOME: the operator's login (symlinked, never copied) and
+ * a minimal config pinning model and effort. The operator's own config,
+ * global AGENTS.md, MCP servers and skills never reach the agent.
+ */
+async function isolatedCodexHome(model, effort) {
+  const home = await mkdtemp(join(tmpdir(), "dt-bench-codex-"));
+  await symlink(join(homedir(), ".codex", "auth.json"), join(home, "auth.json"));
+  await writeFile(
+    join(home, "config.toml"),
+    `model = "${model}"\nmodel_reasoning_effort = "${effort}"\n`,
+  );
+  return home;
+}
+
+/** Drive `codex exec --json`; collect the tool histogram and token usage. */
+function runCodex(args, { cwd, timeoutMs, env }) {
+  return new Promise((resolvePromise) => {
+    const child = spawn("codex", args, {
+      cwd,
+      env: { ...process.env, ...env },
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+    const toolCalls = {};
+    const usage = { input_tokens: 0, cached_input_tokens: 0, output_tokens: 0, reasoning_output_tokens: 0 };
+    let items = 0;
+    let lastMessage = null;
+    let failed = null;
+    let buffer = "";
+    const count = (name) => {
+      toolCalls[name] = (toolCalls[name] ?? 0) + 1;
+    };
+    const consume = (line) => {
+      if (!line.trim()) return;
+      let event;
+      try {
+        event = JSON.parse(line);
+      } catch {
+        return;
+      }
+      if (event.type === "item.completed" && event.item) {
+        const item = event.item;
+        items += 1;
+        if (item.type === "command_execution") {
+          count(/packages\/cli\/src\/cli\.mjs|\bdt\s/.test(item.command ?? "") ? "Bash(dt-cli)" : "Bash");
+        } else if (item.type === "mcp_tool_call") {
+          count(`mcp__${item.server ?? "unknown"}__${item.tool ?? "unknown"}`);
+        } else if (item.type === "file_change") {
+          count("FileChange");
+        } else if (item.type === "agent_message") {
+          lastMessage = item.text ?? lastMessage;
+        } else {
+          count(item.type);
+        }
+      }
+      if (event.type === "turn.completed" && event.usage) {
+        for (const key of Object.keys(usage)) usage[key] += event.usage[key] ?? 0;
+      }
+      if (event.type === "turn.failed" || event.type === "error") {
+        failed = event.error?.message ?? event.message ?? "failed";
+      }
+    };
+    child.stdout.on("data", (chunk) => {
+      buffer += chunk;
+      let index;
+      while ((index = buffer.indexOf("\n")) >= 0) {
+        consume(buffer.slice(0, index));
+        buffer = buffer.slice(index + 1);
+      }
+    });
+    const timer = setTimeout(() => child.kill("SIGTERM"), timeoutMs);
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      consume(buffer);
+      resolvePromise({ toolCalls, usage, items, lastMessage, failed, code });
+    });
+  });
 }
 
 /** MCP config for the "mcp" arm: the repo's own stdio design-system server. */
@@ -199,6 +288,51 @@ export async function runAgent(worktree, task, agent, options = {}) {
     const startedAt = Date.now();
     await apply(worktree);
     return { agent, turns: 0, costUsd: 0, durationMs: Date.now() - startedAt };
+  }
+  if (agent === "codex") {
+    const model = options.model ?? "gpt-5.6-sol";
+    const effort = options.effort ?? "high";
+    const prompt =
+      options.prompt ??
+      "Complete the task described in TASK.md at the repository root.";
+    const home = await isolatedCodexHome(model, effort);
+    const args = [
+      "exec",
+      "--json",
+      "--skip-git-repo-check",
+      "--ephemeral",
+      "--dangerously-bypass-approvals-and-sandbox",
+    ];
+    if (options.arm === "mcp" || options.arm === "mcp-pointer") {
+      const toml = (value) => JSON.stringify(value);
+      args.push(
+        "-c", `mcp_servers.design-system.command=${toml(join(worktree, "node_modules/.bin/tsx"))}`,
+        "-c", `mcp_servers.design-system.args=[${toml(join(worktree, "scripts/design-system/ds-mcp-stdio.ts"))}]`,
+        "-c", `mcp_servers.design-system.env={ DT_REPO_ROOT = ${toml(worktree)} }`,
+      );
+    }
+    args.push(prompt);
+    const startedAt = Date.now();
+    const result = await runCodex(args, {
+      cwd: worktree,
+      timeoutMs: options.timeoutMs ?? 20 * 60 * 1000,
+      env: { CODEX_HOME: home },
+    });
+    await rm(home, { recursive: true, force: true }).catch(() => {});
+    return {
+      agent,
+      model: `${model} (${effort})`,
+      isolation: "CODEX_HOME=temp (auth only)",
+      toolCalls: result.toolCalls,
+      mcpServers: null,
+      turns: result.items,
+      costUsd: null,
+      usage: result.usage,
+      durationMs: Date.now() - startedAt,
+      isError: Boolean(result.failed) || result.code !== 0,
+      terminalReason: result.failed ?? (result.code === 0 ? "completed" : `exit ${result.code}`),
+      resultTail: result.lastMessage ? result.lastMessage.slice(-400) : null,
+    };
   }
   if (agent !== "claude") {
     throw new Error(`Unknown agent "${agent}"`);

@@ -19,15 +19,18 @@
 
 ## Results, v2 (2026-09-25)
 
-96 published runs (8 tasks, 4 arms, n=3), claude-sonnet-5, isolated.
+264 published runs: 11 tasks, 4 arms, n=3, two families (claude-sonnet-5
+via Claude Code, gpt-5.6-sol via the Codex CLI), isolated.
 Artifact: `public/ds-health/agent-bench.json`.
 
-- **An MCP server is only as good as the pointer to it.** Attached alone:
-  called in 3 of 24 runs, DS reuse 4/18 (control: 6/18). Plus one line
-  naming it: called in 22 of 24 runs (4.7 calls each), DS reuse 15/18, level
-  with documenting the CLI (WITH 14/18). The client defers MCP tools behind
-  a tool search; an agent not told the server exists rarely looks. Cost of
-  the pointer: about $0.10 more per run.
+- **An MCP server is only as good as the pointer to it, in both
+  families.** Attached alone: Claude called it in 4 of 33 runs, Codex in 0
+  of 33, and reuse stayed at the control's level. Plus one line naming it:
+  Claude 31 of 33, Codex 33 of 33, reuse 21 of 24 in both, level with
+  documenting the CLI. Clients defer MCP tools behind a tool search; an
+  agent not told the server exists rarely or never looks.
+- **Harder tasks did not separate the arms either.** The v3 composition and
+  cross-file tasks passed first try in every arm of both families.
 - **Pass rates saturated.** First-try pass 23 to 24 of 24 in every arm; the
   v2 tasks did not separate the arms for this model, and no run in any arm
   used an undefined token.
@@ -36,8 +39,10 @@ Artifact: `public/ds-health/agent-bench.json`.
   the selftest, and the affected tasks re-run in all arms. The superseded
   runs are recorded in the artifact, not dropped silently.
 
-Next increments worth running: harder tasks (multi-component composition,
-cross-file refactors) so pass rates separate, and a second model family.
+Next increments worth running: tasks that exercise contract rules agents
+cannot infer from types (forbidden combinations, deprecations mid-migration),
+and a weaker or faster model tier, where the affordances may change pass
+rates rather than only reuse.
 
 ## What is measured
 
@@ -99,6 +104,20 @@ demand through its tool search) when many tools are present. An agent that
 is not told the server exists has to decide to look. That is the default
 client behaviour and it is what the arm measures; the tool telemetry shows
 how often the agent looked.
+
+## Second model family: OpenAI Codex CLI
+
+`--agent codex` drives `codex exec --json` (default model `gpt-5.6-sol`,
+`--effort high`) with the same tasks, graders and arms. Codex reads
+`AGENTS.md`, so the arm text is written there (Claude runs keep writing only
+`CLAUDE.md`, so their environment is unchanged). The MCP arms attach the
+same stdio server through `-c mcp_servers.design-system...`. Isolation is a
+throwaway `CODEX_HOME` holding a symlink to the operator's login and a
+two-line config; the operator's own instructions, MCP servers and skills
+never load. Codex has no turn cap, so a 20-minute timeout bounds each run.
+It runs on a subscription: metering reports tokens, not dollars, and token
+counts are not compared across families. Each Codex run used the same
+source commit as the Claude runs of that task.
 
 ## Isolation (v2)
 

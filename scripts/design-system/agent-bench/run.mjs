@@ -34,7 +34,7 @@ function parseArgs(argv) {
     arm: "both",
     agent: "claude",
     reps: 1,
-    model: "claude-sonnet-5",
+    model: null, // per runtime: claude-sonnet-5 or gpt-5.6-sol
     maxTurns: 30,
     repairLoop: false,
     keep: false,
@@ -46,11 +46,14 @@ function parseArgs(argv) {
     else if (value === "--agent") options.agent = argv[++index];
     else if (value === "--reps") options.reps = Number(argv[++index]);
     else if (value === "--model") options.model = argv[++index];
+    else if (value === "--effort") options.effort = argv[++index];
     else if (value === "--max-turns") options.maxTurns = Number(argv[++index]);
     else if (value === "--repair-loop") options.repairLoop = true;
     else if (value === "--keep") options.keep = true;
     else throw new Error(`Unknown option ${value}`);
   }
+  options.model ??= options.agent === "codex" ? "gpt-5.6-sol" : "claude-sonnet-5";
+  if (options.agent === "codex") options.effort ??= "high";
   return options;
 }
 
@@ -58,12 +61,12 @@ export async function runOnce({ task, arm, agent, options }) {
   const { worktree, destroy } = await createWorktree(REPO_ROOT);
   const armOptions = { ...options, arm };
   try {
-    await prepareWorkspace(worktree, task, arm);
+    await prepareWorkspace(worktree, task, arm, agent);
     const metering = await runAgent(worktree, task, agent, armOptions);
     let grade = await gradeTask(worktree, task);
     const firstAcceptance = grade.acceptance;
     let repair = null;
-    if (options.repairLoop && agent === "claude" && !grade.pass) {
+    if (options.repairLoop && (agent === "claude" || agent === "codex") && !grade.pass) {
       repair = await repairLoop(worktree, task, grade, armOptions);
       grade = repair.grade;
     }
@@ -101,7 +104,7 @@ async function main() {
     all: ["with", "mcp", "mcp-pointer", "without"],
   };
   const arms =
-    options.agent === "claude"
+    options.agent === "claude" || options.agent === "codex"
       ? ARM_SETS[options.arm] ?? [options.arm]
       : ["with"]; // stub agents ignore affordances; one arm is enough
 
@@ -133,7 +136,12 @@ async function main() {
     .slice(0, 19);
   const resultsDir = join(HERE, "results");
   await mkdir(resultsDir, { recursive: true });
-  const outPath = join(resultsDir, `${stamp}-${options.agent}.json`);
+  // Parallel arm processes can finish in the same second: include the arm,
+  // task and a random suffix so result files never overwrite each other.
+  const outPath = join(
+    resultsDir,
+    `${stamp}-${options.agent}-${options.arm}-${options.task}-${Math.random().toString(36).slice(2, 7)}.json`,
+  );
   await writeFile(
     outPath,
     `${JSON.stringify(
