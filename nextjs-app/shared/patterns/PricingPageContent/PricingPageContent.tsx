@@ -395,10 +395,12 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
 
       <section
         className={styles.testimonial}
-        aria-label={t("pricingTestimonialLabel", "Client perspective")}
+        aria-label={t("pricingTestimonialLabel", "In short")}
       >
         <div className={styles.testimonialContainer}>
-          <blockquote className={styles.testimonialInner}>
+          {/* A statement of the offer, not a client quote: no attribution
+              exists, so it is not presented as one. */}
+          <div className={styles.testimonialInner}>
             <Text
               as="p"
               size="l"
@@ -407,10 +409,10 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
             >
               {t(
                 "pricingTestimonialQuote",
-                "Why wrestle with bloated agency retainers when you can get a usable design system including contracts, components, tokens and an adoption plan in weeks?",
+                "A usable design system, with contracts, components, tokens and an adoption plan, in weeks rather than quarters.",
               )}
             </Text>
-          </blockquote>
+          </div>
         </div>
       </section>
 
@@ -489,7 +491,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
               </span>
               <span className={styles.aaasTriggerHeading}>
                 <span id={aaasHeadingId} className={styles.aaasTriggerTitle}>
-                  {t("pricingAaasTitle", "AaaS (Agents as a Service)")}
+                  {t("pricingAaasTitle", "AI agents and automation")}
                 </span>
                 <span className={styles.newBadge} aria-hidden="true">
                   {t("contactInquiryBookTabNew", "NEW!")}

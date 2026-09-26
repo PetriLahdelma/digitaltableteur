@@ -33,7 +33,7 @@ describe("PricingPageContent", () => {
       screen.getByRole("link", { name: /book design system lift-off/i }),
     ).toHaveAttribute("href", "/contact?mode=book&package=design-system-lift-off");
     expect(
-      screen.getByRole("button", { name: /aaas \(agents as a service\)/i }),
+      screen.getByRole("button", { name: /ai agents and automation/i }),
     ).toHaveAttribute("aria-expanded", "false");
   });
 

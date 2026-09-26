@@ -82,105 +82,28 @@ export function AboutPageContent({
   const { t, i18n } = useTranslation();
 
   // Value items for the expertise section
+  // Four claims, each visible in the work: systems in production, tools
+  // we built, accessibility proven by checks, one team from brand to code.
   const values: ValueItem[] = useMemo(
-    () => [
-      {
-        icon: (
-          <span
-            aria-hidden="true"
-            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
-          >
-            01
-          </span>
-        ),
-        iconClassName: cn(
-          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
-          "text-foreground group-hover:bg-transparent",
-        ),
-        title: t("aboutValueDesignTitle"),
-        description: t("aboutValueDesignDescription"),
-      },
-      {
-        icon: (
-          <span
-            aria-hidden="true"
-            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
-          >
-            02
-          </span>
-        ),
-        iconClassName: cn(
-          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
-          "text-foreground group-hover:bg-transparent",
-        ),
-        title: t("aboutValueDevelopmentTitle"),
-        description: t("aboutValueDevelopmentDescription"),
-      },
-      {
-        icon: (
-          <span
-            aria-hidden="true"
-            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
-          >
-            03
-          </span>
-        ),
-        iconClassName: cn(
-          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
-          "text-foreground group-hover:bg-transparent",
-        ),
-        title: t("aboutValueCollaborationTitle"),
-        description: t("aboutValueCollaborationDescription"),
-      },
-      {
-        icon: (
-          <span
-            aria-hidden="true"
-            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
-          >
-            04
-          </span>
-        ),
-        iconClassName: cn(
-          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
-          "text-foreground group-hover:bg-transparent",
-        ),
-        title: t("aboutValueAITitle"),
-        description: t("aboutValueAIDescription"),
-      },
-      {
-        icon: (
-          <span
-            aria-hidden="true"
-            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
-          >
-            05
-          </span>
-        ),
-        iconClassName: cn(
-          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
-          "text-foreground group-hover:bg-transparent",
-        ),
-        title: t("aboutValueSystemsTitle"),
-        description: t("aboutValueSystemsDescription"),
-      },
-      {
-        icon: (
-          <span
-            aria-hidden="true"
-            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
-          >
-            06
-          </span>
-        ),
-        iconClassName: cn(
-          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
-          "text-foreground group-hover:bg-transparent",
-        ),
-        title: t("aboutValueCraftTitle"),
-        description: t("aboutValueCraftDescription"),
-      },
-    ],
+    () =>
+      (["Systems", "Tools", "Accessibility", "BrandToCode"] as const).map(
+        (key, index) => ({
+          icon: (
+            <span
+              aria-hidden="true"
+              className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          ),
+          iconClassName: cn(
+            "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+            "text-foreground group-hover:bg-transparent",
+          ),
+          title: t(`aboutBring${key}Title`),
+          description: t(`aboutBring${key}Description`),
+        }),
+      ),
     [t, i18n.language],
   );
 
@@ -331,22 +254,29 @@ export function AboutPageContent({
       {/* Stats Section */}
       <StatsSection
         stats={[
+          // Each figure is published on the SAP Build Apps case study.
           {
             value: 20,
             suffix: "+",
-            label: t("statsYearsExperience", "Years of experience"),
+            label: t("statsYearsExperience", "Years designing digital products"),
             duration: 2,
           },
           {
-            value: 8,
-            suffix: "K+",
-            label: t("statsComponentsBuilt", "Design system components built"),
+            value: 100,
+            suffix: "+",
+            label: t(
+              "statsComponentsBuilt",
+              "Production components in one enterprise design system",
+            ),
             duration: 2.5,
           },
           {
             value: 300,
             suffix: "+",
-            label: t("statsProjectsDelivered", "Projects delivered"),
+            label: t(
+              "statsProjectsDelivered",
+              "Developers and designers served by that system",
+            ),
             duration: 2,
           },
         ]}

@@ -14,6 +14,9 @@ import {
 
 // Below-fold patterns (lazy)
 import { type ProjectItem } from "../../../patterns/WorkMagneticField";
+import AuthorBio from "@dt/AuthorBio";
+import { Container } from "../../Container";
+import { Section } from "../../Section";
 const WorkMagneticField = dynamic(() =>
   import("../../../patterns/WorkMagneticField").then((m) => ({
     default: m.WorkMagneticField,
@@ -150,6 +153,19 @@ export function HomePage() {
 
       {/* Design Sprints Section */}
       <DesignSprintsSection id="design-sprints" />
+
+      {/* Founder: a founder-led consultancy should show the founder. */}
+      <Section id="founder" spacing="lg" data-donny-target="home.founder">
+        <Container size="lg">
+          <AuthorBio
+            heading={t("homeFounderHeading", "Led by Petri Lahdelma")}
+            name="Petri Lahdelma"
+            role={t("homeFounderRole", "Founder, Digitaltableteur")}
+            imageUrl="/images/authors/petri-lahdelma.jpg"
+            bio={t("homeFounderBio")}
+          />
+        </Container>
+      </Section>
 
       {/* Contact CTA Section */}
       <CTASection
