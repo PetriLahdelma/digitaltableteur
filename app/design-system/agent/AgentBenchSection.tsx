@@ -126,8 +126,8 @@ export function AgentBenchSection({
         Agent benchmark
       </Title>
       <Text as="p" size="s" lineHeight="relaxed" className={styles.lede}>
-        The same coding agent on the same tasks, in {arms.length} arms that
-        differ in one thing only: how the design system is offered to it.{" "}
+        Coding agents on the same tasks, in {arms.length} arms that differ in
+        one thing only: how the design system is offered to them.{" "}
         {artifact.totalRuns} published runs across{" "}
         {families.map((family) => family.label).join(" and ")}. Metered spend
         on these runs: ${artifact.totalCostUsd.toFixed(2)}; subscription runs
