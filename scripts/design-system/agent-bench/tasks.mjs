@@ -557,6 +557,190 @@ must pass unmodified. Only add files under tests/bench-work/form/.`,
       );
     },
   },
+
+  // --- v3 tasks (2026-09): multi-component and cross-file work. v2 tasks
+  // saturated (every arm passed first try), so these require several
+  // components to cooperate: shared state across tab panels, filters that
+  // must reset paging, and a migration across three consumers.
+
+  {
+    id: "settings-panel",
+    category: "composition",
+    title: "Build a tabbed settings panel with switches and a save status",
+    workspace: "tests/bench-work/settings",
+    brief: `Create tests/bench-work/settings/SettingsPanel.tsx, default-exporting a React
+component that takes { onSave: (settings: { emailNotifications: boolean;
+weeklyDigest: boolean; darkMode: boolean }) => void }.
+
+- Two tabs, "Notifications" and "Appearance", in a tablist labelled
+  "Settings sections". Arrow keys move between tabs; Enter or Space selects.
+  Only the selected tab's panel is shown, and each panel is labelled by its
+  tab.
+- Notifications panel: switches "Email notifications" (on by default) and
+  "Weekly digest" (off by default). Appearance panel: switch "Dark mode"
+  (off by default).
+- Switch values persist when the user moves between tabs.
+- A "Save settings" button calls onSave once with the current values and
+  then shows "Settings saved" in a status message.
+
+Use this repository's design-system components correctly if you use them.
+The acceptance test at tests/bench-work/settings/SettingsPanel.assert.test.tsx
+must pass unmodified. Only add files under tests/bench-work/settings/.`,
+    async prep(worktree) {
+      await copyFixture(
+        "settings",
+        ["SettingsPanel.assert.test-template.tsx"],
+        join(worktree, "tests/bench-work/settings"),
+      );
+    },
+    acceptance: [
+      { id: "settings-behaviour", kind: "vitest", paths: ["tests/bench-work/settings"] },
+      { id: "usage-clean", kind: "validate-clean", path: "tests/bench-work/settings" },
+      {
+        id: "no-hardcoded-hex",
+        kind: "source-scan",
+        dir: "tests/bench-work/settings",
+        forbidPattern: "#[0-9a-fA-F]{3,8}\\b",
+      },
+    ],
+    metrics: [
+      {
+        id: "ds-reuse",
+        kind: "source-scan",
+        dir: "tests/bench-work/settings",
+        requireAnyPattern: ["@dt/Tabs", "@dt/Switch", "@digitaltableteur/react"],
+      },
+    ],
+    async oracle(worktree) {
+      await copyFile(
+        join(FIXTURES, "settings/oracle/SettingsPanel.tsx"),
+        join(worktree, "tests/bench-work/settings/SettingsPanel.tsx"),
+      );
+    },
+    async naive(worktree) {
+      await copyFile(
+        join(FIXTURES, "settings/naive/SettingsPanel.tsx"),
+        join(worktree, "tests/bench-work/settings/SettingsPanel.tsx"),
+      );
+    },
+  },
+
+  {
+    id: "directory-filters",
+    category: "composition",
+    title: "Build a searchable, filterable, paginated project directory",
+    workspace: "tests/bench-work/directory",
+    brief: `Create tests/bench-work/directory/ProjectDirectory.tsx, default-exporting a
+React component that lists the projects from ./projects.
+
+- A search field labelled "Search projects" filters by name,
+  case-insensitively.
+- Category filter buttons "All", "Design", "Engineering", "Research": single
+  select, each exposing whether it is pressed; "All" is pressed initially.
+- Results in a list labelled "Projects", 5 per page, with page navigation
+  whose page buttons are named "Page 1", "Page 2", ... and mark the current
+  page with aria-current="page".
+- Any change to the search or the category returns to page 1.
+- A status message always states the result count: "23 projects",
+  "1 project", "0 projects".
+- With no results, show "No projects match your filters" and no page
+  navigation.
+
+Use this repository's design-system components correctly if you use them.
+The acceptance test at tests/bench-work/directory/ProjectDirectory.assert.test.tsx
+must pass unmodified. Only add files under tests/bench-work/directory/.`,
+    async prep(worktree) {
+      await copyFixture(
+        "directory",
+        ["projects.ts", "ProjectDirectory.assert.test-template.tsx"],
+        join(worktree, "tests/bench-work/directory"),
+      );
+    },
+    acceptance: [
+      { id: "directory-behaviour", kind: "vitest", paths: ["tests/bench-work/directory"] },
+      { id: "usage-clean", kind: "validate-clean", path: "tests/bench-work/directory" },
+    ],
+    metrics: [
+      {
+        id: "ds-reuse",
+        kind: "source-scan",
+        dir: "tests/bench-work/directory",
+        requireAnyPattern: ["@dt/Pagination", "@dt/FilterChip", "@digitaltableteur/react"],
+      },
+    ],
+    async oracle(worktree) {
+      await copyFile(
+        join(FIXTURES, "directory/oracle/ProjectDirectory.tsx"),
+        join(worktree, "tests/bench-work/directory/ProjectDirectory.tsx"),
+      );
+    },
+    async naive(worktree) {
+      await copyFile(
+        join(FIXTURES, "directory/naive/ProjectDirectory.tsx"),
+        join(worktree, "tests/bench-work/directory/ProjectDirectory.tsx"),
+      );
+    },
+  },
+
+  {
+    id: "tabs-refactor",
+    category: "refactor",
+    title: "Migrate three pages from hand-rolled tabs to the design-system Tabs",
+    workspace: "tests/bench-work/refactor",
+    brief: `tests/bench-work/refactor/ contains ProfilePage.tsx, BillingPage.tsx and
+TeamPage.tsx, which all render LegacyTabs.tsx: hand-rolled tabs built from
+clickable divs with no keyboard support or ARIA.
+
+Migrate all three pages to this repository's design-system Tabs component,
+then delete LegacyTabs.tsx. Every page must keep its tab labels, its panel
+content, and its default export. The result must be accessible: a labelled
+tablist (the old label prop), tabs that switch from the keyboard, and panels
+labelled by their tabs.
+
+The acceptance test at tests/bench-work/refactor/Pages.assert.test.tsx must
+pass unmodified. Only edit files under tests/bench-work/refactor/.`,
+    async prep(worktree) {
+      await copyFixture(
+        "refactor",
+        [
+          "LegacyTabs.tsx",
+          "ProfilePage.tsx",
+          "BillingPage.tsx",
+          "TeamPage.tsx",
+          "Pages.assert.test-template.tsx",
+        ],
+        join(worktree, "tests/bench-work/refactor"),
+      );
+    },
+    acceptance: [
+      { id: "pages-behaviour", kind: "vitest", paths: ["tests/bench-work/refactor"] },
+      {
+        // The brief is a migration TO the design system, so using it is the
+        // task itself (as in migration-badge-rename), not a reuse metric.
+        id: "legacy-removed-ds-used",
+        kind: "source-scan",
+        dir: "tests/bench-work/refactor",
+        forbidPattern: "LegacyTabs",
+        requireAnyPattern: ["@dt/Tabs", "@digitaltableteur/react"],
+      },
+      { id: "usage-clean", kind: "validate-clean", path: "tests/bench-work/refactor" },
+    ],
+    metrics: [],
+    async oracle(worktree) {
+      const dir = join(worktree, "tests/bench-work/refactor");
+      for (const name of ["SectionTabs.tsx", "ProfilePage.tsx", "BillingPage.tsx", "TeamPage.tsx"]) {
+        await copyFile(join(FIXTURES, "refactor/oracle", name), join(dir, name));
+      }
+      await rm(join(dir, "LegacyTabs.tsx"));
+    },
+    async naive(worktree) {
+      const dir = join(worktree, "tests/bench-work/refactor");
+      for (const name of ["SectionTabs.tsx", "ProfilePage.tsx", "BillingPage.tsx", "TeamPage.tsx"]) {
+        await copyFile(join(FIXTURES, "refactor/naive", name), join(dir, name));
+      }
+      await rm(join(dir, "LegacyTabs.tsx"));
+    },
+  },
 ];
 
 export function taskById(id) {
