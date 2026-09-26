@@ -13,6 +13,7 @@ on:
           - tokens-css
           - react
           - web-components
+          - contract-spec
           - all
       dry_run:
         description: Run npm publish --dry-run instead of publishing
@@ -148,6 +149,17 @@ jobs:
             NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
           else
             NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react --publish
+          fi
+
+      - name: Publish @digitaltableteur/contract-spec
+        if: ${{ inputs.package == 'contract-spec' || inputs.package == 'all' }}
+        working-directory: packages/contract-spec
+        run: |
+          node --test test/*.test.mjs
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access public
+          else
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/contract-spec --publish
           fi
 
       - name: Publish @digitaltableteur/web-components

@@ -7,7 +7,7 @@
  * explicit before the real publish step.
  */
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -18,6 +18,7 @@ const PACKAGE_DIRS = new Map([
   ["@digitaltableteur/tokens-css", "packages/tokens-css"],
   ["@digitaltableteur/react", "packages/react"],
   ["@digitaltableteur/web-components", "packages/web-components"],
+  ["@digitaltableteur/contract-spec", "packages/contract-spec"],
 ]);
 
 const args = process.argv.slice(2);
@@ -183,7 +184,14 @@ function runNpmPublishWithToken(token, dryRun) {
     "utf8",
   );
 
-  const publishArgs = ["publish", "--access", "restricted", "--loglevel", "silly"];
+  // Private design-system packages stay restricted; an open-source package
+  // (contract-spec) declares publishConfig.access "public" in its own manifest.
+  const access =
+    JSON.parse(readFileSync(join(ROOT, packageDir, "package.json"), "utf8"))
+      .publishConfig?.access === "public"
+      ? "public"
+      : "restricted";
+  const publishArgs = ["publish", "--access", access, "--loglevel", "silly"];
   if (dryRun) publishArgs.splice(1, 0, "--dry-run");
 
   try {

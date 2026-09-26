@@ -30,6 +30,8 @@ const PACKAGES = [
     dir: "packages/web-components",
     name: "@digitaltableteur/web-components",
   },
+  // Open source (Apache-2.0), published with --access public.
+  { dir: "packages/contract-spec", name: "@digitaltableteur/contract-spec" },
 ];
 const WORKFLOW_RELATIVE = ".github/workflows/ds-publish.yml";
 const REQUIRED_REPOSITORY_PATHS = [
@@ -635,6 +637,7 @@ if (!existsSync(WORKFLOW)) {
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/tokens-css --publish",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react --publish",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/web-components --publish",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/contract-spec --publish",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm run check:react-registry-install",
     "packages/tokens",
     "packages/tokens-css",
