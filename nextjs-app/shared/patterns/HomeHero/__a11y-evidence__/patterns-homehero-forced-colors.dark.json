@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-homehero-forced-colors",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:11:57.780Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "a4dd297670b6a2f8c55f50ce5611c3115755c8fb",
+  "capturedAt": "2026-09-27T05:13:23.291Z",
+  "runner": "local-recapture-2026-09-27",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -67,7 +67,7 @@
       - paragraph: €7–14k
       - paragraph: 2 weeks
       - paragraph: Prototype, eval plan and handoff your team can ship.
-      - paragraph: 2-week prototype with eval plan — see UX Sprint patterns in our work.
+      - paragraph: 2-week prototype with eval plan; see the UX Sprint patterns in the work.
       - link "Book UX Sprint":
         - /url: /contact?mode=book&package=ux-sprint
     - listitem:
@@ -89,7 +89,7 @@
   - button "AI agents and automation"
   - link "Book a call":
     - /url: /contact?mode=book
-  - link "See our work":
+  - link "See the work":
     - /url: /work
   - heading "Billing details" [level=3]
   - term: e-invoice address

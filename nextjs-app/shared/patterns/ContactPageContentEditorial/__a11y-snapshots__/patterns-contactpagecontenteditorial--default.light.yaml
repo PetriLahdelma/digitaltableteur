@@ -1,6 +1,6 @@
 - heading "Let's talk." [level=1]
 - separator
-- paragraph: We'd love to hear about your project, idea or you can just say hello.
+- paragraph: Would love to hear about your project, idea or you can just say hello.
 - text: HKI HQ Hämeentie 8 C 00530 Helsinki
 - link "mail@digitaltableteur.com":
   - /url: mailto:mail@digitaltableteur.com
@@ -29,4 +29,4 @@
 - link "Book a call":
   - /url: "#contact-form"
 - blockquote:
-  - paragraph: “ We help ambitious teams turn what they do into products with clarity and conviction. Bring us your vision and we'll shape how it shows up in the world.”
+  - paragraph: “ DT helps ambitious teams turn what they do into products with clarity and conviction. Bring your vision and DT'll shape how it shows up in the world.”

@@ -1,14 +1,14 @@
-- heading "Our approach" [level=1]
+- heading "The approach" [level=1]
 - paragraph: Design and AI consultancy helping organizations create and scale digital products and systems
 - button "Scroll to content"
-- heading "What we bring" [level=2]
+- heading "The promise" [level=2]
 - paragraph: "Proof over promises: each of these is visible in the work."
 - article:
   - heading "Design systems in production" [level=3]
   - paragraph: Systems that serve hundreds of people who build with them, from SAP Build Apps to the Helsinki Design System and this site's own contract-driven library.
 - article:
   - heading "Tools, not just advice" [level=3]
-  - paragraph: "We build the tooling we recommend: Rhythmguard, Project Spine and machine-readable component contracts that agents and CI can check."
+  - paragraph: "Tooling to support your team: Rhythmguard, Project Spine and machine-readable component contracts that agents and CI can check."
 - article:
   - heading "Accessibility, proven" [level=3]
   - paragraph: Automated checks cover every component, including forced colors and target size, so accessibility is demonstrated rather than promised.
@@ -21,7 +21,7 @@
 - definition: 100+
 - term: Developers and designers served by that system
 - definition: 300+
-- heading "How we deliver at scale" [level=2]
+- heading "How delivery scales" [level=2]
 - paragraph: Senior-led, networked and built to outlast the engagement.
 - article:
   - heading "Senior-led Delivery" [level=3]
@@ -37,7 +37,7 @@
   - paragraph: Documentation, versioning and clean handover mean delivery never depends on a single person being available.
 - article:
   - heading "You Own the IP" [level=3]
-  - paragraph: You keep full ownership of the code, design and tokens we build together. No lock-in, no licensing games.
+  - paragraph: You keep full ownership of the code, design and tokens built together. No lock-in, no licensing games.
 - region "A Vastuu Group Reliable Partner":
   - link "Reliable Partner — verified by Vastuu Group":
     - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
@@ -85,8 +85,8 @@
   - definition: 0.1.5
 - region "Ready to build something great?":
   - heading "Ready to build something great?" [level=2]
-  - paragraph: Let's discuss your next project and explore how we can help bring your vision to life.
+  - paragraph: Let's discuss your next project and explore how to bring your vision to life.
   - link "Get in touch":
     - /url: /contact
-  - link "See our work":
+  - link "See the work":
     - /url: /work
