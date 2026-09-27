@@ -1,12 +1,16 @@
 {
-  "storyId": "patterns-sitefooter-example",
+  "storyId": "patterns-sitefooter-default",
   "mode": "light",
   "sourceSHA": "6793a2c451390dd0ed74020fe2ce1d7e2aa65354",
-  "capturedAt": "2026-09-27T11:32:01.387Z",
+  "capturedAt": "2026-09-27T11:31:57.434Z",
   "runner": "local-recapture-2026-09-27",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }
