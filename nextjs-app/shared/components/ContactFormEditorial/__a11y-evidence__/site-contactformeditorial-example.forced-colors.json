@@ -1,12 +1,16 @@
 {
   "storyId": "site-contactformeditorial-example",
   "mode": "forced-colors",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:39:04.060Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "281114d1103e13e685fb4a98574f5198f5a42250",
+  "capturedAt": "2026-09-27T05:56:03.763Z",
+  "runner": "local-recapture-2026-09-27",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

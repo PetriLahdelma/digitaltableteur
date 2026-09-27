@@ -1,12 +1,16 @@
 {
   "storyId": "patterns-contactinquirypanel-example",
   "mode": "forced-colors",
-  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
-  "capturedAt": "2026-07-30T08:45:51.265Z",
-  "runner": null,
+  "sourceSHA": "281114d1103e13e685fb4a98574f5198f5a42250",
+  "capturedAt": "2026-09-27T05:56:28.688Z",
+  "runner": "local-recapture-2026-09-27",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

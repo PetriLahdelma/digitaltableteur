@@ -11,7 +11,7 @@
     - /placeholder: Enter your message
   - button "Add project details"
   - paragraph:
-    - text: By pressing submit you agree for your information to be processed according to our
+    - text: By pressing submit you agree for your information to be processed according to the
     - link "privacy policy":
       - /url: /privacy-policy
     - text: .

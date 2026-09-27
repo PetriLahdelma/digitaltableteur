@@ -17,7 +17,7 @@
     - /placeholder: Enter your message
   - button "Add project details"
   - paragraph:
-    - text: By pressing submit you agree for your information to be processed according to our
+    - text: By pressing submit you agree for your information to be processed according to the
     - link "privacy policy":
       - /url: /privacy-policy
     - text: .
@@ -29,4 +29,4 @@
 - link "Book a call":
   - /url: "#contact-form"
 - blockquote:
-  - paragraph: “ DT helps ambitious teams turn what they do into products with clarity and conviction. Bring your vision and DT'll shape how it shows up in the world.”
+  - paragraph: “ DT helps ambitious teams turn what they do into products with clarity and conviction. Bring your vision and together we'll shape how it shows up in the world.”
