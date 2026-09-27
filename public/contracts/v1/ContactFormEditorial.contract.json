@@ -31,83 +31,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:01.383Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:58.172Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.620Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:45.471Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:38.252Z",
-            "passed": true
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:52.566Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:02.151Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:58.691Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:36.084Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:46.033Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:38.807Z",
-            "passed": true
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:53.377Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:02.590Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:58.964Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:36.306Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:46.400Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:39.059Z",
-            "passed": true
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:53.742Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:01.727Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:58.424Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.860Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:45.751Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:38.551Z",
-            "passed": true
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:52.984Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
           }
         ]
       },
@@ -123,120 +127,153 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:01.383Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:58.172Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:39:03.994Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:56:03.331Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.620Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:45.471Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:38.252Z",
-            "passed": true
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:52.566Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:02.151Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:58.691Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:39:04.060Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:56:03.763Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:36.084Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:46.033Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:38.807Z",
-            "passed": true
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:53.377Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:02.590Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:58.964Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:39:04.085Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:56:04.012Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:36.306Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:46.400Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:39.059Z",
-            "passed": true
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:53.742Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:01.727Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:58.424Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:39:04.035Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:56:03.555Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.860Z",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:45.751Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local-recapture-2026-09-27"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:38.551Z",
-            "passed": true
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:55:52.984Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
           }
         ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-default.forced-colors.json",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:56:03.331Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-example.forced-colors.json",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:56:03.763Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-forced-colors.forced-colors.json",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:56:04.012Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ContactFormEditorial/__a11y-evidence__/site-contactformeditorial-playground.forced-colors.json",
+            "sourceCommit": "281114d1103e13e685fb4a98574f5198f5a42250",
+            "capturedAt": "2026-09-27T05:56:03.555Z",
+            "passed": true,
+            "runner": "local-recapture-2026-09-27"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",
