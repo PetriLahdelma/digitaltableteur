@@ -103,7 +103,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
             <address className="font-body text-text-m text-muted-foreground not-italic leading-relaxed">
               <RouterLink
                 href="/"
-                className="font-medium text-foreground hover:underline rounded-sm"
+                className={cn(styles.wavyHover, "font-medium text-foreground rounded-sm")}
               >
                 Digitaltableteur
               </RouterLink>
@@ -114,7 +114,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
               <br />
               <a
                 href="mailto:mail@digitaltableteur.com"
-                className="text-foreground hover:underline rounded-sm"
+                className={cn(styles.wavyHover, "text-foreground rounded-sm")}
               >
                 mail@digitaltableteur.com
               </a>
@@ -182,7 +182,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
                 <button
                   type="button"
                   onClick={consent.openBanner}
-                  className="font-body text-base text-[color:var(--link-color)] bg-transparent border-0 p-0 cursor-pointer text-left hover:underline rounded-sm"
+                  className={cn(styles.wavyHover, "font-body text-base text-[color:var(--link-color)] bg-transparent border-0 p-0 cursor-pointer text-left rounded-sm")}
                 >
                   {t("footerCookiePreferences")}
                 </button>

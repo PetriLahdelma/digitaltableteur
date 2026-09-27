@@ -19,3 +19,44 @@
     display: none;
   }
 }
+
+/* The address links and the "Cookie preferences" button are not DtLinks
+   (RouterLink, mailto anchor, real <button>), so they get the same
+   hover-revealed wavy underline as Link's underline="hover" here instead of
+   a straight text-decoration underline. */
+
+.wavyHover {
+  position: relative;
+  padding-block-end: var(--space-layout-6);
+  text-decoration: none;
+}
+
+.wavyHover::after {
+  position: absolute;
+  inset-inline: 0;
+  block-size: var(--space-layout-6);
+  background-color: var(--underline-accent-color, currentcolor);
+  transition: opacity var(--duration-fast) var(--ease-out-cubic);
+  opacity: 0;
+  content: "";
+  inset-block-end: 0;
+  mask-image: var(--wavy-underline-mask);
+  mask-repeat: repeat-x;
+  mask-size: 16px 6px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wavyHover:hover::after {
+    opacity: 0.9;
+  }
+}
+
+.wavyHover:focus-visible::after {
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wavyHover::after {
+    transition: none;
+  }
+}
