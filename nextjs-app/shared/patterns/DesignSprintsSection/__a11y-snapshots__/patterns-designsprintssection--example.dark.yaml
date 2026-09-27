@@ -1,9 +1,21 @@
 - heading "Focused engagements, senior delivery" [level=2]
 - paragraph: Start with the problem in front of you. Every engagement is led hands-on, with a network of specialists added as the work needs them.
 - list:
-  - listitem: UX Sprint 2 weeks A tested prototype, an evaluation plan and a handoff your team can ship.
-  - listitem: AI-Ready Ops 3 weeks Design workflows, component governance and AI tooling your team can run.
-  - listitem: Design System Lift-Off 4 weeks Audit, tokens, core components, Storybook and an adoption playbook.
-  - listitem: Embedded partnership Ongoing A senior design systems and product lead working inside your team.
+  - listitem:
+    - link "UX Sprint":
+      - /url: /pricing#ux-sprint
+    - text: 2 weeks A tested prototype, an evaluation plan and a handoff your team can ship.
+  - listitem:
+    - link "AI-Ready Ops":
+      - /url: /pricing#ai-ready-designops
+    - text: 3 weeks Design workflows, component governance and AI tooling your team can run.
+  - listitem:
+    - link "Design System Lift-Off":
+      - /url: /pricing#design-system-lift-off
+    - text: 4 weeks Audit, tokens, core components, Storybook and an adoption playbook.
+  - listitem:
+    - link "Embedded partnership":
+      - /url: /pricing?duration=6m&days=4#calculator
+    - text: 6 or 12 months A senior design systems and product lead working inside your team, 4 or more days a week.
 - link "See engagements and pricing":
   - /url: /pricing

@@ -1,19 +1,16 @@
 {
   "storyId": "patterns-pricingcalculator-playground",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:40:57.843Z",
-  "runner": "backfill",
+  "sourceSHA": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
+  "capturedAt": "2026-09-27T17:09:58.816Z",
+  "runner": "local-recapture-2026-09-27",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     },
     "forced-colors-real-browser": {
-      "passed": true
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }
