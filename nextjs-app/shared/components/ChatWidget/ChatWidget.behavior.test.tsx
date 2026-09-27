@@ -132,7 +132,7 @@ describe("ChatWidget behaviors", () => {
 
     render(<ChatWidget />);
 
-    await screen.findByText(/lost the connection/i);
+    await screen.findByText(/The connection dropped/i);
 
     fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
     fireEvent.click(screen.getByRole("button", { name: /Clear/i }));

@@ -464,11 +464,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     () => ({
       network: t(
         "chatErrorNetwork",
-        "Looks like we lost the connection. Check your network and try again.",
+        "The connection dropped. Check your network and try again.",
       ),
       notFound: t(
         "chatErrorNotFound",
-        "Chat endpoint not found right now; we’re updating the deployment.",
+        "The chat endpoint is not available right now; a deployment update is in progress.",
       ),
       unavailable: t(
         "chatErrorUnavailable",
@@ -488,7 +488,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       ),
       fallback: t(
         "chatErrorFallback",
-        "Something went wrong on our side. Please try again in a moment.",
+        "Something went wrong on the server. Please try again in a moment.",
       ),
       reference: t("chatErrorReference", "(Reference: {{ref}})", { ref: "{{ref}}" }),
     }),
@@ -943,7 +943,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       );
       const phraseSimple = t(
         "chatEmailSimplePhrase",
-        "Our email is mail@digitaltableteur.com. Would you like to send an email now?",
+        "The email address is mail@digitaltableteur.com. Would you like to send an email now?",
       );
       const synthetic: UIMessage = {
         id: generateId(),

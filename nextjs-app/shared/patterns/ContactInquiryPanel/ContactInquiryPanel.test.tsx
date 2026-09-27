@@ -23,9 +23,9 @@ const translations = {
     contactInquiryBookTab: "Book a call",
     contactInquiryBookTabNew: "NEW!",
     contactBookingComingSoon:
-      "Online scheduling is not live yet. Send a message and we will reply with times — usually within one business day.",
+      "Online scheduling is not live yet. Send a message and a reply with times will follow, usually within one business day.",
     contactBookingUseForm: "Use the contact form",
-    contactBookingEmail: "Email us instead",
+    contactBookingEmail: "Send an email instead",
     donnyBookingLoading: "Loading booking calendar",
   },
   fi: {

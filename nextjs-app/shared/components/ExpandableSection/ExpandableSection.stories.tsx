@@ -117,7 +117,7 @@ export const Example: Story = {
               <option>Under €10k</option>
             </select>
             <ExpandableSection
-              collapsedLabel="+ Tell us more"
+              collapsedLabel="+ Add more details"
               expandedLabel="− Hide"
               expanded={tier3}
               onExpandedChange={setTier3}

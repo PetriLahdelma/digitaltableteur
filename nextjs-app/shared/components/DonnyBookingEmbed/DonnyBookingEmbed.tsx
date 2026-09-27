@@ -125,7 +125,7 @@ export function DonnyBookingEmbed({
         <p className={styles.subtitle}>
           {t(
             "donnyBookingNotConfigured",
-            "Scheduling is not wired yet. Use the contact form and we will reply with times.",
+            "Scheduling is not wired yet. Use the contact form and a reply with times will follow.",
           )}
         </p>
         <div className={styles.fallbackActions}>
@@ -154,7 +154,7 @@ export function DonnyBookingEmbed({
           {prefillApplied
             ? t(
                 "donnyBookingPrefillHint",
-                "We prefilled your details when possible. Pick a time that works for you.",
+                "Your details are prefilled where possible. Pick a time that works for you.",
               )
             : t(
                 "donnyBookingHint",

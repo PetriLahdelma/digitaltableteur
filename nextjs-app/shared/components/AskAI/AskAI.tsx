@@ -149,7 +149,7 @@ export function AskAI({ className }: AskAIProps) {
   if (!mounted) return null;
 
   return createPortal(
-    <aside className={cn(styles.container, className)} aria-label={t("askAIAriaLabel", "Ask AI about us")}>
+    <aside className={cn(styles.container, className)} aria-label={t("askAIAriaLabel", "Ask AI about Digitaltableteur")}>
       <div className={styles.header}>
         <h2 className={styles.title}>{t("askAITitle", "Ask AI about")}</h2>
         <div className={styles.splitButton} ref={dropdownRef}>

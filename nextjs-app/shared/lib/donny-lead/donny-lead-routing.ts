@@ -267,7 +267,7 @@ export function draftLeadFollowUp(input: {
         : null,
       caseTitles.length ? `Proof to review: ${caseTitles.join(", ")}.` : null,
       "",
-      "If this direction fits, reply with your timeline and team context and we can schedule a short intro call.",
+      "If this direction fits, reply with your timeline and team context to schedule a short intro call.",
       "",
       "Best,",
       "Petri / Digitaltableteur",

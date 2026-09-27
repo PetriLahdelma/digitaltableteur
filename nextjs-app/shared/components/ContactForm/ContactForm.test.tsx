@@ -185,7 +185,7 @@ describe("ContactForm integration", () => {
     fireEvent.change(fileInput, { target: { files: [badFile] } });
 
     expect(
-      await screen.findByText(/We couldn't read that file/i),
+      await screen.findByText(/That file could not be read/i),
     ).toBeInTheDocument();
     global.FileReader = originalFileReader;
   });

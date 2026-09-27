@@ -139,14 +139,14 @@ describe("ChatWidget coverage", () => {
     mockError = new Error("Failed to fetch");
 
     renderWithProviders(<ChatWidget />);
-    expect(await screen.findByText(/lost the connection/i)).toBeInTheDocument();
+    expect(await screen.findByText(/The connection dropped/i)).toBeInTheDocument();
   });
 
   it("clears error when conversation is reset", async () => {
     mockError = new Error("Failed to fetch");
 
     renderWithProviders(<ChatWidget />);
-    await screen.findByText(/lost the connection/i);
+    await screen.findByText(/The connection dropped/i);
 
     fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
     fireEvent.click(screen.getByRole("button", { name: /Clear/i }));

@@ -180,7 +180,7 @@ export function ContactPageContentEditorial({
                           title={t("contactSuccessTitle", "Message sent.")}
                           message={t(
                             "contactSuccessSubtitle",
-                            "We'll be in touch shortly."
+                            "Expect a reply shortly."
                           )}
                           onSendAnother={handleSendAnother}
                           sendAnotherLabel={t(

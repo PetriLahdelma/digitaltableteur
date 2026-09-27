@@ -166,7 +166,7 @@ export const ContactInquiryPanel = forwardRef<
                 <p className={styles.unconfiguredText}>
                   {t(
                     "contactBookingComingSoon",
-                    "Online scheduling is not live yet. Send a message and we will reply with times — usually within one business day.",
+                    "Online scheduling is not live yet. Send a message and a reply with times will follow, usually within one business day.",
                   )}
                 </p>
                 <div className={styles.unconfiguredActions}>
@@ -184,7 +184,7 @@ export const ContactInquiryPanel = forwardRef<
                     size="lg"
                     className={styles.actionButton}
                   >
-                    {t("contactBookingEmail", "Email us instead")}
+                    {t("contactBookingEmail", "Send an email instead")}
                   </Button>
                 </div>
               </div>

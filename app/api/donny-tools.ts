@@ -200,8 +200,8 @@ const staticTools: ToolMap = {
       const message = isOpen
         ? "The studio is currently open in Helsinki (09:00–17:00 local, Monday–Friday)."
         : todaysConfig.open == null
-          ? "The studio is closed today. We operate Monday through Friday, 09:00–17:00 Helsinki time."
-          : `We're currently closed. Today's window is ${localizedToday.open}–${localizedToday.close} Helsinki time.`;
+          ? "The studio is closed today. Opening hours are Monday through Friday, 09:00–17:00 Helsinki time."
+          : `The studio is currently closed. Today's window is ${localizedToday.open}–${localizedToday.close} Helsinki time.`;
       return {
         timezone: HELSINKI_TZ,
         timestamp: now.toISOString(),

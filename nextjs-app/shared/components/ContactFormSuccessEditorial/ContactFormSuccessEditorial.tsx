@@ -9,7 +9,7 @@ import styles from "./ContactFormSuccessEditorial.module.css";
 export interface ContactFormSuccessEditorialProps {
   /** Success title - e.g., "Message sent." */
   title: string;
-  /** Success message - e.g., "We'll be in touch shortly." */
+  /** Success message - e.g., "Expect a reply shortly." */
   message: string;
   /** Callback to send another message */
   onSendAnother?: () => void;
