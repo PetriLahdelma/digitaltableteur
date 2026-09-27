@@ -281,6 +281,15 @@
   gap: var(--space-layout-16);
   border: 1px solid var(--color-border);
   border-radius: var(--space-layout-16);
+  scroll-margin-block-start: var(--space-layout-120);
+}
+
+/* Arriving from a homepage engagement card (/pricing#ux-sprint): the linked
+   package is outlined in the primary color so the eye lands on it. */
+
+.packageCard:target {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
 }
 
 .packageHeader {
@@ -414,6 +423,7 @@
 
 .calculatorSection {
   padding-block-start: var(--space-layout-48);
+  scroll-margin-block-start: var(--space-layout-64);
 }
 
 /* CTAs */

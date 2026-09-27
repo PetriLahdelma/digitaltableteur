@@ -5,6 +5,7 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { SlideButton } from "../../components/SlideButton";
+import { Link as RouterLink } from "../../lib/linkComponent";
 import styles from "./DesignSprintsSection.module.css";
 
 export interface DesignSprintsSectionProps {
@@ -17,10 +18,25 @@ export interface DesignSprintsSectionProps {
 }
 
 interface EngagementModel {
+  /** Stable id (not translated); picks the pricing-page destination. */
+  id: string;
   title: string;
   duration: string;
   detail: string;
 }
+
+/**
+ * Where each engagement card leads on /pricing. The three fixed-scope offers
+ * land on their own package card; the embedded partnership is the calculator's
+ * partnership tier (6 or 12 months at 4+ days/week), so it arrives with that
+ * selection already made.
+ */
+export const ENGAGEMENT_HREFS: Record<string, string> = {
+  "ux-sprint": "/pricing#ux-sprint",
+  "ai-ready-ops": "/pricing#ai-ready-designops",
+  "design-system-lift-off": "/pricing#design-system-lift-off",
+  "embedded-partnership": "/pricing?duration=6m&days=4#calculator",
+};
 
 /**
  * DesignSprintsSection - Homepage band presenting the engagement models (UX
@@ -70,7 +86,7 @@ export function DesignSprintsSection({
           <ul className={styles.benefitsGrid}>
             {models.map((model, index) => (
               <FadeIn
-                key={model.title}
+                key={model.id ?? model.title}
                 as="li"
                 direction="left"
                 delay={0.1 + index * 0.08}
@@ -78,7 +94,18 @@ export function DesignSprintsSection({
                 className={styles.benefitCard}
               >
                 <span className={styles.engagementHeader}>
-                  <span className={styles.benefitLabel}>{model.title}</span>
+                  {ENGAGEMENT_HREFS[model.id] ? (
+                    // Stretched link: the title is the accessible name and the
+                    // ::after overlay makes the whole card the hit area.
+                    <RouterLink
+                      href={ENGAGEMENT_HREFS[model.id]}
+                      className={`${styles.benefitLabel} ${styles.cardLink}`}
+                    >
+                      {model.title}
+                    </RouterLink>
+                  ) : (
+                    <span className={styles.benefitLabel}>{model.title}</span>
+                  )}
                   <span className={styles.engagementDuration}>{model.duration}</span>
                 </span>
                 <span className={styles.engagementDetail}>{model.detail}</span>

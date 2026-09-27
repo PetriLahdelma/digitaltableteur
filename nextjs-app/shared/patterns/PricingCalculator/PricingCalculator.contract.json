@@ -99,6 +99,11 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+        },
+        "selectionFromUrl": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Start from the ?duration=&days= selection in the page URL, so a link can arrive with a tier already chosen. Invalid or missing values keep the defaults."
         }
     },
     "composesWith": [

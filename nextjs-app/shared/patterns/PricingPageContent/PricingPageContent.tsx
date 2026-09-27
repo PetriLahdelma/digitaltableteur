@@ -297,6 +297,9 @@ function PackageCard({
 
   return (
     <li
+      // The package id doubles as the deep-link anchor (/pricing#ux-sprint)
+      // used by the homepage engagement cards.
+      id={pkg.contactPackageId}
       className={cn(styles.packageCard, className)}
       {...(donnyTarget ? { "data-donny-target": donnyTarget } : {})}
     >
@@ -418,10 +421,11 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
 
       <div className={styles.container}>
         <div
+          id="calculator"
           className={styles.calculatorSection}
           data-donny-target="pricing.calculator"
         >
-          <PricingCalculator />
+          <PricingCalculator selectionFromUrl />
         </div>
 
         <section

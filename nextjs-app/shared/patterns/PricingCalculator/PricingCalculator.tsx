@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import {
   Badge,
   Button,
@@ -109,6 +109,28 @@ const WORKLOAD_FIT: { advisory: FitItem; delivery: FitItem } = {
 export interface PricingCalculatorProps {
   /** Optional wrapper class. */
   className?: string;
+  /**
+   * Start from the `?duration=6m&days=4` selection in the page URL (the same
+   * parameters the calculator's own CTA emits), so a link can arrive with a
+   * tier already chosen. Invalid or missing values keep the defaults.
+   */
+  selectionFromUrl?: boolean;
+}
+
+/** Reads a valid duration/workload pair from a query string, or null. */
+export function parseCalculatorSelection(
+  search: string,
+): { durationId: DurationId; daysPerWeek: number } | null {
+  const params = new URLSearchParams(search);
+  const durationParam = params.get("duration");
+  const option = DURATION_OPTIONS.find((item) => item.id === durationParam);
+  if (!option) return null;
+  const options = getWorkloadOptions(option.id);
+  const days = Number(params.get("days"));
+  return {
+    durationId: option.id,
+    daysPerWeek: options.includes(days) ? days : Math.max(...options),
+  };
 }
 
 /**
@@ -116,12 +138,26 @@ export interface PricingCalculatorProps {
  * two single-select SelectableCardGroups; the summary column recomputes the
  * effective hourly rate, total hours, and total investment on every change.
  */
-export function PricingCalculator({ className }: PricingCalculatorProps) {
+export function PricingCalculator({
+  className,
+  selectionFromUrl = false,
+}: PricingCalculatorProps) {
   const { translate: t, resolvedLanguage } = useLocalization();
   const titleId = useId();
   const workloadGroupRef = useRef<HTMLDivElement>(null);
   const [durationId, setDurationId] = useState<DurationId>("2w");
   const [daysPerWeek, setDaysPerWeek] = useState(5);
+
+  // Applied after mount rather than in the initial state: the page is
+  // statically rendered, so the server never sees the query string and the
+  // first client render must match it.
+  useEffect(() => {
+    if (!selectionFromUrl) return;
+    const selection = parseCalculatorSelection(window.location.search);
+    if (!selection) return;
+    setDurationId(selection.durationId);
+    setDaysPerWeek(selection.daysPerWeek);
+  }, [selectionFromUrl]);
 
   const duration = getDurationOption(durationId);
   const workloadOptions = getWorkloadOptions(durationId);

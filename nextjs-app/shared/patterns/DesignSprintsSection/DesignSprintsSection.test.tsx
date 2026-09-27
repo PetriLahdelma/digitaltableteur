@@ -36,6 +36,25 @@ describe("DesignSprintsSection", () => {
     expect(container.querySelector(".custom-class")).toBeInTheDocument();
   });
 
+  it("links each engagement card to its pricing destination", async () => {
+    await i18n.changeLanguage("en");
+    renderWithProviders(<DesignSprintsSection />);
+    expect(screen.getByRole("link", { name: "UX Sprint" })).toHaveAttribute(
+      "href",
+      "/pricing#ux-sprint",
+    );
+    expect(screen.getByRole("link", { name: "AI-Ready Ops" })).toHaveAttribute(
+      "href",
+      "/pricing#ai-ready-designops",
+    );
+    expect(
+      screen.getByRole("link", { name: "Design System Lift-Off" }),
+    ).toHaveAttribute("href", "/pricing#design-system-lift-off");
+    expect(
+      screen.getByRole("link", { name: "Embedded partnership" }),
+    ).toHaveAttribute("href", "/pricing?duration=6m&days=4#calculator");
+  });
+
   it("has no axe violations", async () => {
     await i18n.changeLanguage("en");
     const { container } = renderWithProviders(<DesignSprintsSection />);

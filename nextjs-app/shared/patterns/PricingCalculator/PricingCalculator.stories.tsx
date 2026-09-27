@@ -20,6 +20,16 @@ const meta = {
       description: "Optional wrapper class.",
       table: { category: "Advanced", type: { summary: "string" } },
     },
+    selectionFromUrl: {
+      control: "boolean",
+      description:
+        "Start from the ?duration=&days= selection in the page URL, so a link can arrive with a tier already chosen.",
+      table: {
+        category: "Behavior",
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
   },
 } satisfies Meta<typeof PricingCalculator>;
 

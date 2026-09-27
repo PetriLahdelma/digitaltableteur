@@ -351,24 +351,28 @@
   "homeDesignSprintsDescription": "Start with the problem in front of you. Every engagement is led hands-on, with a network of specialists added as the work needs them.",
   "homeEngagementModels": [
     {
+      "id": "ux-sprint",
       "title": "UX Sprint",
       "duration": "2 weeks",
       "detail": "A tested prototype, an evaluation plan and a handoff your team can ship."
     },
     {
+      "id": "ai-ready-ops",
       "title": "AI-Ready Ops",
       "duration": "3 weeks",
       "detail": "Design workflows, component governance and AI tooling your team can run."
     },
     {
+      "id": "design-system-lift-off",
       "title": "Design System Lift-Off",
       "duration": "4 weeks",
       "detail": "Audit, tokens, core components, Storybook and an adoption playbook."
     },
     {
+      "id": "embedded-partnership",
       "title": "Embedded partnership",
-      "duration": "Ongoing",
-      "detail": "A senior design systems and product lead working inside your team."
+      "duration": "6 or 12 months",
+      "detail": "A senior design systems and product lead working inside your team, 4 or more days a week."
     }
   ],
   "homeDesignSprintsCta": "See engagements and pricing",

@@ -47,6 +47,7 @@
 
 .benefitCard {
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: var(--space-internal-8);
   padding: var(--space-layout-16);
@@ -69,6 +70,26 @@
   font-size: var(--font-size-text-m);
   font-weight: 500;
   color: var(--color-foreground);
+}
+
+.cardLink {
+  text-decoration: none;
+}
+
+.cardLink::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.cardLink:focus-visible {
+  outline: none;
+}
+
+.benefitCard:has(.cardLink:focus-visible) {
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--space-internal-2);
 }
 
 .engagementHeader {

@@ -348,24 +348,28 @@
   "homeDesignSprintsDescription": "Börja med problemet framför dig. Varje uppdrag leds praktiskt, med ett nätverk av specialister som tillkommer när arbetet kräver det.",
   "homeEngagementModels": [
     {
+      "id": "ux-sprint",
       "title": "UX Sprint",
       "duration": "2 veckor",
       "detail": "En testad prototyp, en utvärderingsplan och en överlämning som ditt team kan leverera."
     },
     {
+      "id": "ai-ready-ops",
       "title": "AI-Ready Ops",
       "duration": "3 veckor",
       "detail": "Designflöden, komponentstyrning och AI-verktyg som ditt team kan driva själv."
     },
     {
+      "id": "design-system-lift-off",
       "title": "Design System Lift-Off",
       "duration": "4 veckor",
       "detail": "Granskning, tokens, kärnkomponenter, Storybook och en plan för införande."
     },
     {
+      "id": "embedded-partnership",
       "title": "Inbäddat partnerskap",
-      "duration": "Löpande",
-      "detail": "En senior ledare för designsystem och produktdesign inne i ditt team."
+      "duration": "6 eller 12 månader",
+      "detail": "En senior ledare för designsystem och produktdesign inne i ditt team, minst 4 dagar i veckan."
     }
   ],
   "homeDesignSprintsCta": "Se uppdrag och priser",

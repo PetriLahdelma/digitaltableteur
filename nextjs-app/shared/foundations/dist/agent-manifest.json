@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-25T16:16:12.225Z",
+  "generatedAt": "2026-09-27T17:01:59.360Z",
   "summary": {
-    "componentCount": 178,
+    "componentCount": 179,
     "statusCounts": {
       "beta": 50,
       "stable": 103,
-      "alpha": 24,
+      "alpha": 25,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 90.8,
-    "codebaseComponentCount": 196,
+    "catalogCompletenessPercent": 90.9,
+    "codebaseComponentCount": 197,
     "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 39,
+    "componentsWithProductionUsage": 40,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 196,
-    "inCatalog": 178,
+    "totalComponentsInCodebase": 197,
+    "inCatalog": 179,
     "outOfCatalog": 18,
-    "catalogCompletenessPercent": 90.8,
+    "catalogCompletenessPercent": 90.9,
     "artifactCoverage": {
-      "stories": 162,
-      "tests": 164,
+      "stories": 163,
+      "tests": 165,
       "mdx": 4,
-      "spec": 178
+      "spec": 179
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 178,
-    "withAnyUsage": 166,
-    "withProductionUsage": 39,
-    "uniqueImportedComponents": 166,
-    "totalEvidenceRows": 842,
-    "aliasImportFiles": 434,
-    "relativeImportFiles": 441,
+    "catalogedComponents": 179,
+    "withAnyUsage": 167,
+    "withProductionUsage": 40,
+    "uniqueImportedComponents": 167,
+    "totalEvidenceRows": 851,
+    "aliasImportFiles": 440,
+    "relativeImportFiles": 444,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-09-25T13:06:43.786Z",
+    "generatedAt": "2026-09-27T17:01:33.505Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 93,
+    "nodesWithComposesWith": 94,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 178,
+      "digitaltableteur": 179,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 50,
         "stable": 103,
-        "alpha": 24,
+        "alpha": 25,
         "deprecated": 1
       },
       "dsharp": {
@@ -7850,10 +7850,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 58,
+        "importCount": 59,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 32,
+        "componentImportCount": 33,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
@@ -7898,6 +7898,12 @@
             "context": "component"
           },
           {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatWidget.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/ComposePrompt.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
@@ -7917,12 +7923,6 @@
           },
           {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/SendStatus.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
             "context": "component"
@@ -8186,8 +8186,8 @@
         ],
         "composesWith": [
           "Text",
-          "TextInput",
           "Icon",
+          "TextInput",
           "CheckboxGroup",
           "Title",
           "Modal"
@@ -11053,7 +11053,8 @@
           "Button",
           "Text",
           "TextInput",
-          "DonnyAvatar"
+          "DonnyAvatar",
+          "Icon"
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
@@ -11098,8 +11099,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -11113,8 +11114,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -11163,8 +11164,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -15702,8 +15703,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -18936,7 +18937,7 @@
           "idleExpressionInterval": {
             "optional": true,
             "type": "number",
-            "description": "Base idle-expression interval in milliseconds (default 8000), randomized by 50 percent."
+            "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
           },
           "isSpeaking": {
             "optional": true,
@@ -19027,10 +19028,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/DonnyAvatar",
-        "importCount": 7,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 6,
+        "componentImportCount": 7,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/ChatWidget/chatAvatarState.ts",
@@ -19052,6 +19053,12 @@
           },
           {
             "path": "nextjs-app/shared/components/ChatWidget/chatToolExpression.ts",
+            "importKind": "alias",
+            "importPath": "@dt/DonnyAvatar",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/useDonnyChatBeats.ts",
             "importKind": "alias",
             "importPath": "@dt/DonnyAvatar",
             "context": "component"
@@ -19166,7 +19173,7 @@
           "idleExpressionInterval": {
             "optional": true,
             "type": "number",
-            "description": "Base idle-expression interval in milliseconds (default 8000), randomized by 50 percent."
+            "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
           },
           "isSpeaking": {
             "optional": true,
@@ -26286,10 +26293,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 74,
+        "importCount": 75,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 37,
+        "componentImportCount": 38,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
@@ -26525,9 +26532,9 @@
           "Button",
           "Text",
           "Badge",
-          "Title",
           "ComplianceCard",
-          "Card"
+          "Title",
+          "HelperText"
         ],
         "prefersOver": [],
         "declaredPropCount": 12,
@@ -29952,9 +29959,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 15,
+        "importCount": 16,
         "productionImportCount": 1,
-        "patternImportCount": 2,
+        "patternImportCount": 3,
         "componentImportCount": 11,
         "evidence": [
           {
@@ -29967,6 +29974,12 @@
             "path": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx",
             "importKind": "relative",
             "importPath": "../../components/Link",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
             "context": "pattern"
           },
           {
@@ -30021,12 +30034,6 @@
             "path": "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/ReliablePartnerBadge/ReliablePartnerBadge.tsx",
-            "importKind": "relative",
-            "importPath": "../Link",
             "context": "component"
           }
         ]
@@ -30103,8 +30110,8 @@
         ],
         "composesWith": [
           "Text",
-          "Button",
           "Title",
+          "Button",
           "Avatar",
           "Badge",
           "ReliablePartnerBadge"
@@ -58159,11 +58166,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 57,
+        "importCount": 58,
         "productionImportCount": 0,
-        "patternImportCount": 1,
+        "patternImportCount": 2,
         "componentImportCount": 28,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Text",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
             "importKind": "alias",
@@ -58226,12 +58239,6 @@
           },
           {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/SendStatus.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Text",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "component"
@@ -58340,7 +58347,7 @@
           "TextInput",
           "Icon",
           "CheckboxGroup",
-          "Badge"
+          "Link"
         ],
         "prefersOver": [
           "raw paragraph elements"
@@ -61030,11 +61037,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 31,
+        "importCount": 32,
         "productionImportCount": 0,
-        "patternImportCount": 4,
+        "patternImportCount": 5,
         "componentImportCount": 15,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Title",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx",
             "importKind": "relative",
@@ -61097,12 +61110,6 @@
           },
           {
             "path": "nextjs-app/shared/components/ChunkErrorBoundary/ChunkErrorBoundary.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Title",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
             "context": "component"
@@ -61227,8 +61234,8 @@
           "Text",
           "Button",
           "TextInput",
-          "Icon",
           "Link",
+          "Icon",
           "Badge"
         ],
         "prefersOver": [
@@ -67004,8 +67011,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -69693,6 +69700,352 @@
       }
     },
     {
+      "name": "CaseStudySummary",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "CaseStudySummary",
+        "tier": "pattern",
+        "group": "content",
+        "status": "alpha",
+        "description": "Decision-first case study summary: outcome, role, constraints, key decisions and evidence with source labels.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-case-study-summary",
+        "radixPrimitive": null,
+        "element": "section",
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "section is labelled by its h2 via aria-labelledby",
+            "key decisions render as an ordered list"
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [],
+          "spacing": []
+        },
+        "lightDarkVerified": false,
+        "schemaVersion": 2,
+        "props": {},
+        "forbiddenUse": [
+          "present a claim without a source label",
+          "invent metrics that are not on record"
+        ],
+        "composesWith": [
+          "ProjectHero",
+          "ProjectMetaSection",
+          "ProjectDetailLayout",
+          "StoryBlock"
+        ]
+      },
+      "spec": "# CaseStudySummary\n\n## Intent\nLeads a case study with the decision-maker's questions answered first: what changed, who did what, what made it hard, which decisions shaped it, and how each claim can be checked. The process narrative follows below it.\n\n## Interaction contract\n- Keyboard: no interactive parts except evidence links, which are standard `@dt/Link` targets\n- Pointer: evidence links only\n- Screen readers: the section is a region labelled by its h2; groups use h3; key decisions are an ordered list\n\n## Do / don't\n- Do: give every evidence item a source label; self-reported figures say so (\"Self-reported, from project records\")\n- Do: take figures from records already published on the page\n- Do: link an evidence item only when a public source exists\n- Don't: present an unsourced metric\n- Don't: write \"what we'd do differently\" unless it is on record\n\n## Design notes\n- Tokens: `--space-layout-*`, `--color-foreground`, `--color-muted-foreground`, `--color-border`, `--container-md`\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-case-study-summary\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/CaseStudySummary",
+        "importCount": 2,
+        "productionImportCount": 2,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/CaseStudySummary",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/CaseStudySummary",
+            "context": "production"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/CaseStudySummary",
+        "intent": "Leads a case study with the decision-maker's questions answered first: what changed, who did what, what made it hard, which decisions shaped it, and how each claim can be checked. The process narrative follows below it.",
+        "props": {
+          "outcome": {
+            "optional": false,
+            "type": "string",
+            "description": "What changed because of the work, in one or two sentences."
+          },
+          "role": {
+            "optional": false,
+            "type": "string",
+            "description": "Role and scope of the engagement."
+          },
+          "constraints": {
+            "optional": false,
+            "type": "string[]",
+            "description": "What made the problem hard."
+          },
+          "decisions": {
+            "optional": false,
+            "type": "CaseStudyDecision[]",
+            "description": "The decisions that shaped the result."
+          },
+          "evidence": {
+            "optional": false,
+            "type": "CaseStudyEvidence[]",
+            "description": "Claims with an explicit source label; nothing is presented unsourced."
+          },
+          "title": {
+            "optional": true,
+            "type": "string",
+            "description": "Section heading. Defaults to the translated \"At a glance\"."
+          },
+          "maxWidth": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg",
+              "xl",
+              "full"
+            ],
+            "description": "Maximum content width."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "give every evidence item a source label; self-reported figures say so (\"Self-reported, from project records\")",
+          "take figures from records already published on the page",
+          "link an evidence item only when a public source exists"
+        ],
+        "avoidWhen": [
+          "present an unsourced metric",
+          "write \"what we'd do differently\" unless it is on record"
+        ],
+        "requiredA11y": [
+          "section is labelled by its h2 via aria-labelledby",
+          "key decisions render as an ordered list"
+        ],
+        "keyboard": [],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "present an unsourced metric",
+          "write \"what we'd do differently\" unless it is on record"
+        ],
+        "composesWith": [
+          "StoryBlock",
+          "GridBlock",
+          "ProjectDetailLayout",
+          "ProjectHero",
+          "ProjectMetaSection",
+          "RelatedProjects"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 8,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "give every evidence item a source label; self-reported figures say so (\"Self-reported, from project records\")",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "take figures from records already published on the page",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "link an evidence item only when a public source exists",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "present an unsourced metric",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "write \"what we'd do differently\" unless it is on record",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CaseStudySummary.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CaseStudySummary.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CaseStudySummary.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CaseStudySummary.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
       "name": "ContactHero",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -70342,8 +70695,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -71401,8 +71754,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -72146,7 +72499,7 @@
           "ProjectHero",
           "RelatedProjects",
           "ProjectMetaSection",
-          "TeamBlock"
+          "CaseStudySummary"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -75447,11 +75800,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PageLayout",
-        "importCount": 10,
+        "importCount": 11,
         "productionImportCount": 0,
-        "patternImportCount": 9,
+        "patternImportCount": 10,
         "componentImportCount": 0,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
+            "importKind": "relative",
+            "importPath": "../PageLayout",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/patterns/GridBlock/GridBlock.tsx",
             "importKind": "relative",
@@ -75910,6 +76269,11 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+          },
+          "selectionFromUrl": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Start from the ?duration=&days= selection in the page URL, so a link can arrive with a tier already chosen. Invalid or missing values keep the defaults."
           }
         },
         "composesWith": [
@@ -75978,6 +76342,11 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+          },
+          "selectionFromUrl": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Start from the `?duration=6m&days=4` selection in the page URL (the same\nparameters the calculator's own CTA emits), so a link can arrive with a\ntier already chosen. Invalid or missing values keep the defaults."
           }
         },
         "propRelationships": [],
@@ -76022,7 +76391,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 1,
+        "declaredPropCount": 2,
         "guidelines": [
           {
             "level": "should",
@@ -76475,8 +76844,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -77360,7 +77729,7 @@
           "RelatedProjects",
           "GridBlock",
           "ProjectMetaSection",
-          "TeamBlock"
+          "CaseStudySummary"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -78172,7 +78541,7 @@
           "RelatedProjects",
           "GridBlock",
           "ProjectMetaSection",
-          "TeamBlock"
+          "CaseStudySummary"
         ],
         "prefersOver": [],
         "declaredPropCount": 11,
@@ -78600,7 +78969,7 @@
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
-          "TeamBlock"
+          "CaseStudySummary"
         ],
         "prefersOver": [],
         "declaredPropCount": 10,
@@ -79631,7 +80000,7 @@
           "ProjectHero",
           "GridBlock",
           "ProjectMetaSection",
-          "TeamBlock"
+          "CaseStudySummary"
         ],
         "prefersOver": [],
         "declaredPropCount": 4,
@@ -80874,8 +81243,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -82160,7 +82529,7 @@
           "RelatedProjects",
           "GridBlock",
           "ProjectMetaSection",
-          "TeamBlock"
+          "CaseStudySummary"
         ],
         "prefersOver": [],
         "declaredPropCount": 12,
@@ -82623,8 +82992,8 @@
           "GridBlock",
           "ProjectDetailLayout",
           "ProjectHero",
-          "ProjectMetaSection",
-          "RelatedProjects"
+          "CaseStudySummary",
+          "ProjectMetaSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 11,

@@ -216,3 +216,39 @@ describe("PricingCalculator", () => {
     expect(await axe(container)).toHaveNoViolations();
   });
 });
+
+describe("PricingCalculator URL selection", () => {
+  it("parses a valid duration and workload", async () => {
+    const { parseCalculatorSelection } = await import("./PricingCalculator");
+    expect(parseCalculatorSelection("?duration=6m&days=4")).toEqual({
+      durationId: "6m",
+      daysPerWeek: 4,
+    });
+  });
+
+  it("rejects an unknown duration and clamps an invalid workload", async () => {
+    const { parseCalculatorSelection } = await import("./PricingCalculator");
+    expect(parseCalculatorSelection("?duration=9y&days=4")).toBeNull();
+    expect(parseCalculatorSelection("")).toBeNull();
+    expect(parseCalculatorSelection("?duration=12m&days=9")).toEqual({
+      durationId: "12m",
+      daysPerWeek: 5,
+    });
+  });
+
+  it("arrives with the partnership tier selected when selectionFromUrl is set", async () => {
+    window.history.replaceState(null, "", "/pricing?duration=12m&days=4");
+    render(<PricingCalculator selectionFromUrl />);
+    const twelve = await screen.findByRole("radio", { name: /12/ });
+    expect(twelve).toBeChecked();
+    expect(screen.getByRole("radio", { name: /^4/ })).toBeChecked();
+    window.history.replaceState(null, "", "/");
+  });
+
+  it("ignores the URL without selectionFromUrl", () => {
+    window.history.replaceState(null, "", "/pricing?duration=12m&days=4");
+    render(<PricingCalculator />);
+    expect(screen.getByRole("radio", { name: /12/ })).not.toBeChecked();
+    window.history.replaceState(null, "", "/");
+  });
+});

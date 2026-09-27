@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T16:16:11.996Z",
+  "generatedAt": "2026-09-27T17:01:59.048Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -4500,8 +4500,8 @@
       ],
       "composesWith": [
         "Text",
-        "TextInput",
         "Icon",
+        "TextInput",
         "CheckboxGroup",
         "Title",
         "Modal"
@@ -6201,7 +6201,8 @@
         "Button",
         "Text",
         "TextInput",
-        "DonnyAvatar"
+        "DonnyAvatar",
+        "Icon"
       ],
       "prefersOver": [],
       "declaredPropCount": 3,
@@ -6246,8 +6247,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -6261,8 +6262,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -6311,8 +6312,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "4.1.2",
@@ -8917,8 +8918,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -10788,7 +10789,7 @@
         "idleExpressionInterval": {
           "optional": true,
           "type": "number",
-          "description": "Base idle-expression interval in milliseconds (default 8000), randomized by 50 percent."
+          "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
         },
         "isSpeaking": {
           "optional": true,
@@ -14958,9 +14959,9 @@
         "Button",
         "Text",
         "Badge",
-        "Title",
         "ComplianceCard",
-        "Card"
+        "Title",
+        "HelperText"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,
@@ -16931,8 +16932,8 @@
       ],
       "composesWith": [
         "Text",
-        "Button",
         "Title",
+        "Button",
         "Avatar",
         "Badge",
         "ReliablePartnerBadge"
@@ -34079,7 +34080,7 @@
         "TextInput",
         "Icon",
         "CheckboxGroup",
-        "Badge"
+        "Link"
       ],
       "prefersOver": [
         "raw paragraph elements"
@@ -35619,8 +35620,8 @@
         "Text",
         "Button",
         "TextInput",
-        "Icon",
         "Link",
+        "Icon",
         "Badge"
       ],
       "prefersOver": [
@@ -39528,8 +39529,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -41332,6 +41333,281 @@
       "governance": null,
       "content": null
     },
+    "CaseStudySummary": {
+      "preferredImport": "@dt/CaseStudySummary",
+      "intent": "Leads a case study with the decision-maker's questions answered first: what changed, who did what, what made it hard, which decisions shaped it, and how each claim can be checked. The process narrative follows below it.",
+      "props": {
+        "outcome": {
+          "optional": false,
+          "type": "string",
+          "description": "What changed because of the work, in one or two sentences."
+        },
+        "role": {
+          "optional": false,
+          "type": "string",
+          "description": "Role and scope of the engagement."
+        },
+        "constraints": {
+          "optional": false,
+          "type": "string[]",
+          "description": "What made the problem hard."
+        },
+        "decisions": {
+          "optional": false,
+          "type": "CaseStudyDecision[]",
+          "description": "The decisions that shaped the result."
+        },
+        "evidence": {
+          "optional": false,
+          "type": "CaseStudyEvidence[]",
+          "description": "Claims with an explicit source label; nothing is presented unsourced."
+        },
+        "title": {
+          "optional": true,
+          "type": "string",
+          "description": "Section heading. Defaults to the translated \"At a glance\"."
+        },
+        "maxWidth": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg",
+            "xl",
+            "full"
+          ],
+          "description": "Maximum content width."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "give every evidence item a source label; self-reported figures say so (\"Self-reported, from project records\")",
+        "take figures from records already published on the page",
+        "link an evidence item only when a public source exists"
+      ],
+      "avoidWhen": [
+        "present an unsourced metric",
+        "write \"what we'd do differently\" unless it is on record"
+      ],
+      "requiredA11y": [
+        "section is labelled by its h2 via aria-labelledby",
+        "key decisions render as an ordered list"
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "present an unsourced metric",
+        "write \"what we'd do differently\" unless it is on record"
+      ],
+      "composesWith": [
+        "StoryBlock",
+        "GridBlock",
+        "ProjectDetailLayout",
+        "ProjectHero",
+        "ProjectMetaSection",
+        "RelatedProjects"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 8,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "give every evidence item a source label; self-reported figures say so (\"Self-reported, from project records\")",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "take figures from records already published on the page",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "link an evidence item only when a public source exists",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "present an unsourced metric",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "write \"what we'd do differently\" unless it is on record",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CaseStudySummary.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CaseStudySummary.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CaseStudySummary.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CaseStudySummary.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
     "ContactHero": {
       "preferredImport": "@dt/ContactHero",
       "intent": "Documents how **ContactHero** is used in production layouts and Storybook examples.",
@@ -41691,8 +41967,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -42404,8 +42680,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -42798,7 +43074,7 @@
         "ProjectHero",
         "RelatedProjects",
         "ProjectMetaSection",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "declaredPropCount": 8,
@@ -45034,6 +45310,11 @@
           "optional": true,
           "type": "string",
           "description": "Optional wrapper class."
+        },
+        "selectionFromUrl": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Start from the `?duration=6m&days=4` selection in the page URL (the same\nparameters the calculator's own CTA emits), so a link can arrive with a\ntier already chosen. Invalid or missing values keep the defaults."
         }
       },
       "propRelationships": [],
@@ -45078,7 +45359,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 1,
+      "declaredPropCount": 2,
       "guidelines": [
         {
           "level": "should",
@@ -45405,8 +45686,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -45878,7 +46159,7 @@
         "RelatedProjects",
         "GridBlock",
         "ProjectMetaSection",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "declaredPropCount": 8,
@@ -46389,7 +46670,7 @@
         "RelatedProjects",
         "GridBlock",
         "ProjectMetaSection",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "declaredPropCount": 11,
@@ -46654,7 +46935,7 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "declaredPropCount": 10,
@@ -47320,7 +47601,7 @@
         "ProjectHero",
         "GridBlock",
         "ProjectMetaSection",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "declaredPropCount": 4,
@@ -48124,8 +48405,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -48879,7 +49160,7 @@
         "RelatedProjects",
         "GridBlock",
         "ProjectMetaSection",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,
@@ -49150,8 +49431,8 @@
         "GridBlock",
         "ProjectDetailLayout",
         "ProjectHero",
-        "ProjectMetaSection",
-        "RelatedProjects"
+        "CaseStudySummary",
+        "ProjectMetaSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 11,

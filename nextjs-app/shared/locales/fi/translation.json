@@ -348,24 +348,28 @@
   "homeDesignSprintsDescription": "Aloita siitä ongelmasta, joka on edessäsi. Jokaista toimeksiantoa vedetään käytännössä, ja asiantuntijaverkosto tulee mukaan työn niin vaatiessa.",
   "homeEngagementModels": [
     {
+      "id": "ux-sprint",
       "title": "UX Sprint",
       "duration": "2 viikkoa",
       "detail": "Testattu prototyyppi, arviointisuunnitelma ja luovutus, jonka tiimisi voi viedä tuotantoon."
     },
     {
+      "id": "ai-ready-ops",
       "title": "AI-Ready Ops",
       "duration": "3 viikkoa",
       "detail": "Suunnittelun työnkulut, komponenttien hallintamalli ja tekoälytyökalut, joita tiimisi pystyy itse pyörittämään."
     },
     {
+      "id": "design-system-lift-off",
       "title": "Design System Lift-Off",
       "duration": "4 viikkoa",
       "detail": "Auditointi, tokenit, peruskomponentit, Storybook ja käyttöönoton pelikirja."
     },
     {
+      "id": "embedded-partnership",
       "title": "Upotettu kumppanuus",
-      "duration": "Jatkuva",
-      "detail": "Kokenut design systemien ja tuotesuunnittelun vetäjä osana tiimiäsi."
+      "duration": "6 tai 12 kuukautta",
+      "detail": "Kokenut design systemien ja tuotesuunnittelun vetäjä osana tiimiäsi, vähintään 4 päivää viikossa."
     }
   ],
   "homeDesignSprintsCta": "Katso toimeksiannot ja hinnat",

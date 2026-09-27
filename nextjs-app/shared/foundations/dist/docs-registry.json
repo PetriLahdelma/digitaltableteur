@@ -5686,7 +5686,7 @@
         "idleExpressionInterval": {
           "optional": true,
           "type": "number",
-          "description": "Base idle-expression interval in milliseconds (default 8000), randomized by 50 percent."
+          "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
         },
         "isSpeaking": {
           "optional": true,
@@ -19938,6 +19938,35 @@
       },
       "examples": []
     },
+    "CaseStudySummary": {
+      "name": "CaseStudySummary",
+      "group": "content",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Decision-first case study summary: outcome, role, constraints, key decisions and evidence with source labels.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { CaseStudySummary } from \"@dt/CaseStudySummary\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [
+        "ProjectHero",
+        "ProjectMetaSection",
+        "ProjectDetailLayout",
+        "StoryBlock"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "present a claim without a source label",
+        "invent metrics that are not on record"
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [],
+        "spacing": []
+      },
+      "examples": []
+    },
     "ContactHero": {
       "name": "ContactHero",
       "group": "marketing",
@@ -21568,6 +21597,11 @@
           "name": "className",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "selectionFromUrl",
+          "type": "boolean",
+          "required": false
         }
       ],
       "props": {
@@ -21575,6 +21609,11 @@
           "optional": true,
           "type": "string",
           "description": "Optional wrapper class."
+        },
+        "selectionFromUrl": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Start from the ?duration=&days= selection in the page URL, so a link can arrive with a tier already chosen. Invalid or missing values keep the defaults."
         }
       },
       "composesWith": [
