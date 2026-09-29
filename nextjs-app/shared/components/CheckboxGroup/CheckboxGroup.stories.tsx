@@ -172,6 +172,8 @@ Default.args = {
   ],
 };
 Default.parameters = {};
+// Axe-checked matrix story; the lifecycle stories stay opted out.
+Default.tags = ["beta-matrix"];
 
 export const WithMasterCheckbox = Template.bind({});
 WithMasterCheckbox.args = {
@@ -224,7 +226,8 @@ WithoutMasterCheckbox.tags = ["example"];
 WithoutMasterCheckbox.parameters = {
   docs: {
     description: {
-      story: "Small sets usually skip the master checkbox; the legend still names every option.",
+      story:
+        "Small sets usually skip the master checkbox; the legend still names every option.",
     },
   },
 };
@@ -280,7 +283,8 @@ export const Playground: Story = {
     masterLabel: "storyCheckboxGroupMasterLabel",
     showMasterCheckbox: true,
     options: "five" as unknown as CheckboxGroupProps["options"],
-    defaultSelected: "firstTwo" as unknown as CheckboxGroupProps["defaultSelected"],
+    defaultSelected:
+      "firstTwo" as unknown as CheckboxGroupProps["defaultSelected"],
   },
   render: (args) => <CheckboxGroupStory {...args} />,
 };

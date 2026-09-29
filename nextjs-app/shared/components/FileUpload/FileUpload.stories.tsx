@@ -73,7 +73,7 @@ Default.args = {
   maxSizeInBytes: 5 * 1024 * 1024,
   sizeErrorMessage: "File exceeds the 5 MB limit.",
 };
-Default.tags = ["example"];
+Default.tags = ["example", "beta-matrix"];
 Default.parameters = {
   docs: {
     description: {

@@ -160,7 +160,8 @@ const ControlledTemplate = (args: SwitchProps) => {
 };
 
 export const Default: Story = {
-  parameters: { a11y: { disable: true } },
+  // Axe runs on this story (meta a11y.test "error"); the other matrix stories
+  // render the same component and stay opted out.
   tags: ["beta-matrix"],
   render: (args) => <ControlledTemplate {...args} />,
   play: async ({ canvasElement }) => {

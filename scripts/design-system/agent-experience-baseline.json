@@ -267,7 +267,7 @@
     },
     "DonnyAvatar": {
       "maxPropCount": 16,
-      "maxFiniteStateBits": 12.644,
+      "maxFiniteStateBits": 12.966,
       "maxSlotCount": 0
     },
     "EmailSignatureGenerator": {

@@ -26,7 +26,8 @@ export default meta;
 type Story = StoryObj<typeof HelperText>;
 
 export const Default: Story = {
-  parameters: { a11y: { disable: true } },
+  // Axe runs on this story (meta a11y.test "error"); the other matrix stories
+  // render the same component and stay opted out.
   tags: ["beta-matrix"],
   args: { children: "This is helper text providing additional context." },
 };
@@ -152,7 +153,14 @@ export const ErrorTakesOver: Story = {
     },
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", maxWidth: 360 }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.5rem",
+        maxWidth: 360,
+      }}
+    >
       <HelperText id="pw-hint">At least 8 characters.</HelperText>
       <HelperText id="pw-error" state="error">
         Password is too short.
