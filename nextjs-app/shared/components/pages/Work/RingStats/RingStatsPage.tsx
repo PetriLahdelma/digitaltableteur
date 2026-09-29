@@ -169,7 +169,7 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
             width: 1360,
             height: 522,
             caption:
-              "Landscape, same moment: icons over an original Nordic photograph. Same labels, same states, same order.",
+              "Landscape theme, same moment: icons over an original Nordic photograph. Same labels, same states, same order.",
           },
         ]}
       />
