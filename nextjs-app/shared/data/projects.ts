@@ -182,6 +182,20 @@ export const projects: Project[] = [
     duration: "Aug 2026",
   },
   {
+    id: "ring-stats",
+    slug: "ring-stats",
+    title: "Ring Stats",
+    description:
+      "A calm macOS menu-bar glance at today's ring scores and battery: private by default, honest about freshness.",
+    thumbnail: "/images/portfolio/ring-stats/thumbnail.webp",
+    category: "ux-design",
+    secondaryCategories: ["tools"],
+    tags: ["Product Design", "macOS App", "Health Data", "Accessibility"],
+    featured: false,
+    order: 13,
+    duration: "Sep 2026",
+  },
+  {
     id: "precedent",
     slug: "precedent",
     title: "Precedent",
