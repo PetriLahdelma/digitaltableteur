@@ -178,18 +178,18 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         columns={1}
         gap="medium"
         backgroundColor="transparent"
-        maxWidth="md"
+        maxWidth="sm"
         spacing="comfortable"
         className={styles.imageGrid}
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/context-menu.webp",
-            alt: "Native context menu open below the Ring Stats menu-bar icon: Appearance, Connection, About & Credits, Diagnostics, Refresh Now, Reauthorize Permissions and Quit Ring Stats",
-            width: 1680,
-            height: 586,
+            src: "/images/portfolio/ring-stats/context-menu-v2.webp",
+            alt: "Ring Stats menu with icons: Appearance, Connection, About & Credits, Diagnostics, Refresh Now, Reauthorize Permissions and Quit Ring Stats",
+            width: 720,
+            height: 670,
             caption:
-              "Right-click the menu-bar icon for the native menu: settings, refresh, reauthorize and quit.",
+              "One native menu for everything that is not a stat: settings, refresh, reauthorize and quit.",
           },
         ]}
       />
