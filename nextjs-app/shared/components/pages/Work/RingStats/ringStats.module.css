@@ -97,12 +97,28 @@
   justify-content: flex-end;
 }
 
-/* The app icon is a small square object; full column width would make it
-   louder than the product screenshots around it. */
+/* Logo variants: three square renders in one row down to tablet, stacked
+   and capped below it so a lone icon never fills a phone screen. The bare
+   mark is near-black on transparent; in the dark theme it is inverted to
+   near-white, which is the same monochrome mark, not a new color. */
 
-.iconGrid img {
-  margin-inline: auto;
-  max-inline-size: min(100%, 16rem);
+.logoGrid.logoGrid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (width < 768px) {
+  .logoGrid.logoGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .logoGrid.logoGrid img {
+    max-inline-size: min(100%, 16rem);
+  }
+}
+
+:global([data-theme="dark"]) .logoGrid > figure:first-child img {
+  filter: invert(1);
 }
 
 /* Force captions to always show in image grids; the extra element selector

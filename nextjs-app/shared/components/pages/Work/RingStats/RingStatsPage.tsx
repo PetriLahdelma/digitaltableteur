@@ -492,20 +492,36 @@ flowchart LR
       />
 
       <GridBlock
-        columns={1}
+        columns={3}
         gap="medium"
         backgroundColor="transparent"
-        maxWidth="sm"
+        maxWidth="lg"
         spacing="comfortable"
-        className={`${styles.imageGrid} ${styles.iconGrid}`}
+        className={`${styles.imageGrid} ${styles.logoGrid}`}
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/thumbnail.webp",
-            alt: "Ring Stats app icon: a white split ring seen at an angle on a near-black rounded square",
-            width: 800,
-            height: 800,
-            caption: "The Ring Stats app icon.",
+            src: "/images/portfolio/ring-stats/logo-mark.webp",
+            alt: "The Ring Stats mark on its own: a split ring seen at an angle",
+            width: 1024,
+            height: 1024,
+            caption: "The mark.",
+          },
+          {
+            type: "image",
+            src: "/images/portfolio/ring-stats/logo-icon-black.webp",
+            alt: "Ring Stats app icon: a white split ring on a black rounded square",
+            width: 1024,
+            height: 1024,
+            caption: "The app icon.",
+          },
+          {
+            type: "image",
+            src: "/images/portfolio/ring-stats/logo-icon-holographic.webp",
+            alt: "Ring Stats app icon variant: a dark split ring on a pastel holographic gradient",
+            width: 1024,
+            height: 1024,
+            caption: "A holographic edition.",
           },
         ]}
       />
