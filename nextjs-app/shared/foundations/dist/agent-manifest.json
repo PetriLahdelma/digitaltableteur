@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-29T16:54:53.639Z",
+  "generatedAt": "2026-09-29T17:01:43.747Z",
   "summary": {
     "componentCount": 179,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 167,
     "withProductionUsage": 40,
     "uniqueImportedComponents": 167,
-    "totalEvidenceRows": 857,
-    "aliasImportFiles": 440,
-    "relativeImportFiles": 450,
+    "totalEvidenceRows": 859,
+    "aliasImportFiles": 441,
+    "relativeImportFiles": 451,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -16535,8 +16535,8 @@
         "composesWith": [
           "Section",
           "ScrollIndicator",
-          "Stack",
           "Title",
+          "Stack",
           "EnhancedProjectCard",
           "BlogCategoryFilter"
         ],
@@ -31004,11 +31004,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 0,
-        "patternImportCount": 1,
+        "patternImportCount": 2,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
             "importKind": "alias",
@@ -31150,7 +31156,8 @@
         ],
         "composesWith": [
           "Text",
-          "Title"
+          "Title",
+          "Link"
         ],
         "prefersOver": [],
         "declaredPropCount": 9,
@@ -43666,7 +43673,7 @@
           "className": {
             "optional": true,
             "type": "string",
-            "description": "Optional wrapper class."
+            "description": "Additional class name applied to the badge root."
           }
         },
         "displayName": "ReliablePartnerBadge",
@@ -43685,9 +43692,12 @@
           "SiteFooter",
           "AboutPageContent",
           "PricingPageContent"
-        ]
+        ],
+        "usage": {
+          "description": "Trust mark for the Vastuu Group Reliable Partner certification: small in the site footer, medium or large beside pricing and About copy where the certification supports a claim."
+        }
       },
-      "spec": "# ReliablePartnerBadge\n\n## Intent\n\nShows that Digitaltableteur is a Vastuu Group **Luotettava Kumppani** (Reliable\nPartner): a Finnish certification confirming that tax, pension and employer\nobligations required by the Contractor's Obligations Act (tilaajavastuulaki)\nare verified and in order.\n\nThe badge is third-party proof, not decoration. It earns its place where a\nbuyer is deciding whether to trust the business: the site footer, the About\npage's delivery/governance story, and next to the pricing packages. Each badge\nopens that language's report PDF so the claim is checkable rather than asserted.\n\n## Interaction contract\n\n- Renders the official green badge matched to the active UI language:\n  `fi` → luotettava kumppani, `sv` → pålitlig partner, anything else → reliable\n  partner. Language comes from `useLocalization().resolvedLanguage`; with no\n  TranslationProvider it falls back to English.\n- Links, by default, to the matching report PDF under\n  `/docs/reliable-partner/reliable-partner-report-{fi,sv,en}.pdf`, opened in a\n  new tab (`target=\"_blank\"` with `rel=\"noopener noreferrer\"`) so the PDF\n  hands off to the viewer's own reader.\n- `href` overrides the target; `href={null}` renders the badge unlinked, for\n  contexts that already provide their own link to the report.\n- `size` controls height only: `sm` 32px, `md` 48px, `lg` 64px. Width is always\n  derived from the asset's aspect ratio.\n- The badge is a static image. It has no hover, active, or loading state, and\n  no motion, so `prefers-reduced-motion` needs no special handling.\n\n## Do / don't\n\n- **Do** let the badge link to the report. The certification's value is that it\n  is verifiable; a badge that links nowhere reads as a sticker.\n- **Do** keep the language of the badge and the language of the page the same.\n  A Finnish mark on an English page looks like a stray asset.\n- **Do** use `sm` in dense chrome (footer) and `md`/`lg` where the badge is\n  making an argument alongside body copy.\n- **Don't** recolor, crop, redraw, or add effects to the mark. The asset as\n  delivered by Vastuu Group is the brand; only whitespace has been trimmed.\n- **Don't** stretch it. Set height via `size`; never set width.\n- **Don't** use it as a generic \"verified\" or \"certified\" icon. It means one\n  specific Finnish certification and misusing it misrepresents the business.\n- **Don't** hardcode a report path at the call site. Use the default, or\n  `getReliablePartnerReportHref(language)` so a language stays in sync.\n\n## Design notes\n\n- Three assets, one per language. The Finnish PNG and the English/Swedish JPGs\n  ship from Vastuu Group with a white plate around the green field; only that\n  whitespace is trimmed. `border-radius` on the image clips the residual white\n  corner notches so the green plate sits cleanly on dark backgrounds without\n  touching the artwork itself.\n- The mark's own green is fixed by the brand and is deliberately **not**\n  themed. It is the same in light, dark, and high-contrast themes, which is\n  why the contract lists no color tokens. Only the focus ring is themed.\n- `max-width: none` and `flex-shrink: 0` guard against the global\n  `img { max-width: 100% }` reset squeezing the badge inside flex rows — that\n  squeeze was the first defect found when the badge shipped into the About\n  band.\n- Report PDFs expire roughly quarterly (the current set is valid until\n  2026-11-13). The filenames are language-stable on purpose: refreshing the\n  certification is a drop-in replacement of three files, with no code change.\n- Only the Finnish mark carries a ® symbol; that asymmetry is Vastuu Group's,\n  reproduced as delivered.\n",
+      "spec": "# ReliablePartnerBadge\n\n## Intent\n\nShows that Digitaltableteur is a Vastuu Group **Luotettava Kumppani** (Reliable\nPartner): a Finnish certification confirming that tax, pension and employer\nobligations required by the Contractor's Obligations Act (tilaajavastuulaki)\nare verified and in order.\n\nThe badge is third-party proof, not decoration. It earns its place where a\nbuyer is deciding whether to trust the business: the site footer, the About\npage's delivery/governance story, and next to the pricing packages. Each badge\nopens that language's report PDF so the claim is checkable rather than asserted.\n\n## Interaction contract\n\n- Renders the official green badge matched to the active UI language:\n  `fi` → luotettava kumppani, `sv` → pålitlig partner, anything else → reliable\n  partner. Language comes from `useLocalization().resolvedLanguage`; with no\n  TranslationProvider it falls back to English.\n- Links, by default, to the matching report PDF under\n  `/docs/reliable-partner/reliable-partner-report-{fi,sv,en}.pdf`, opened in a\n  new tab (`target=\"_blank\"` with `rel=\"noopener noreferrer\"`) so the PDF\n  hands off to the viewer's own reader.\n- `href` overrides the target; `href={null}` renders the badge unlinked, for\n  contexts that already provide their own link to the report.\n- `size` controls height only: `sm` 32px, `md` 48px, `lg` 64px. Width is always\n  derived from the asset's aspect ratio.\n- The badge is a static image. It has no hover, active, or loading state, and\n  no motion, so `prefers-reduced-motion` needs no special handling.\n\n## Do / don't\n\n- Do: let the badge link to the report. The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.\n- Do: keep the language of the badge and the language of the page the same. A Finnish mark on an English page looks like a stray asset.\n- Do: use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy.\n- Don't: recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.\n- Don't: stretch it. Set height via `size`; never set width.\n- Don't: use it as a generic \"verified\" or \"certified\" icon. It means one specific Finnish certification and misusing it misrepresents the business.\n- Don't: hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync.\n\n## Design notes\n\n- Three assets, one per language. The Finnish PNG and the English/Swedish JPGs\n  ship from Vastuu Group with a white plate around the green field; only that\n  whitespace is trimmed. `border-radius` on the image clips the residual white\n  corner notches so the green plate sits cleanly on dark backgrounds without\n  touching the artwork itself.\n- The mark's own green is fixed by the brand and is deliberately **not**\n  themed. It is the same in light, dark, and high-contrast themes, which is\n  why the contract lists no color tokens. Only the focus ring is themed.\n- `max-width: none` and `flex-shrink: 0` guard against the global\n  `img { max-width: 100% }` reset squeezing the badge inside flex rows — that\n  squeeze was the first defect found when the badge shipped into the About\n  band.\n- Report PDFs expire roughly quarterly (the current set is valid until\n  2026-11-13). The filenames are language-stable on purpose: refreshing the\n  certification is a drop-in replacement of three files, with no code change.\n- Only the Finnish mark carries a ® symbol; that asymmetry is Vastuu Group's,\n  reproduced as delivered.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ReliablePartnerBadge",
@@ -43728,7 +43738,7 @@
               "md",
               "lg"
             ],
-            "description": "Badge height: sm 28px (footer), md 48px, lg 64px."
+            "description": "Badge height: sm 32px (footer), md 48px, lg 64px."
           },
           "href": {
             "optional": true,
@@ -43737,7 +43747,8 @@
           },
           "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional class name applied to the badge root."
           }
         },
         "propRelationships": [],
@@ -43754,8 +43765,17 @@
         },
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "let the badge link to the report. The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.",
+          "keep the language of the badge and the language of the page the same. A Finnish mark on an English page looks like a stray asset.",
+          "use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy."
+        ],
+        "avoidWhen": [
+          "recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+          "stretch it. Set height via `size`; never set width.",
+          "use it as a generic \"verified\" or \"certified\" icon. It means one specific Finnish certification and misusing it misrepresents the business.",
+          "hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync."
+        ],
         "requiredA11y": [
           "the badge image carries a translated alt describing the certification, never an empty alt, because the link has no other accessible name",
           "the link opens a PDF in a new tab and says so in its title/alt so the context change is not a surprise",
@@ -43772,7 +43792,12 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+          "stretch it. Set height via `size`; never set width.",
+          "use it as a generic \"verified\" or \"certified\" icon. It means one specific Finnish certification and misusing it misrepresents the business.",
+          "hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync."
+        ],
         "composesWith": [
           "Link",
           "StatsSection",
@@ -43783,7 +43808,57 @@
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
-        "guidelines": [],
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "let the badge link to the report",
+            "rationale": "The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "keep the language of the badge and the language of the page the same",
+            "rationale": "A Finnish mark on an English page looks like a stray asset.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "recolor, crop, redraw, or add effects to the mark",
+            "rationale": "The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "stretch it. Set height via `size`; never set width.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it as a generic \"verified\" or \"certified\" icon",
+            "rationale": "It means one specific Finnish certification and misusing it misrepresents the business.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "hardcode a report path at the call site",
+            "rationale": "Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          }
+        ],
         "a11yCriteria": [
           {
             "id": "axe-no-violations",
@@ -45567,8 +45642,8 @@
         ],
         "composesWith": [
           "Container",
-          "ScrollIndicator",
           "Title",
+          "ScrollIndicator",
           "EnhancedProjectCard",
           "BlogCategoryFilter",
           "Pagination"
@@ -50122,7 +50197,8 @@
           "ReliablePartnerBadge",
           "Link",
           "Section",
-          "Container"
+          "Container",
+          "Title"
         ],
         "prefersOver": [],
         "declaredPropCount": 4,
@@ -61047,9 +61123,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 32,
+        "importCount": 33,
         "productionImportCount": 0,
-        "patternImportCount": 5,
+        "patternImportCount": 6,
         "componentImportCount": 15,
         "evidence": [
           {
@@ -61060,6 +61136,12 @@
           },
           {
             "path": "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Title",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Title",
             "context": "pattern"
@@ -61114,12 +61196,6 @@
           },
           {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/SendStatus.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Title",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/ChunkErrorBoundary/ChunkErrorBoundary.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
             "context": "component"
@@ -69754,7 +69830,21 @@
           "ProjectMetaSection",
           "ProjectDetailLayout",
           "StoryBlock"
-        ]
+        ],
+        "keywords": [
+          "case study",
+          "summary",
+          "at a glance",
+          "outcome",
+          "decisions",
+          "evidence",
+          "constraints",
+          "role"
+        ],
+        "dense": "decision-first case study lead: outcome, role, constraints, ordered key decisions, evidence with source labels",
+        "usage": {
+          "description": "Opens a work case study before the process narrative, answering what changed, who did what, what made it hard, which decisions shaped it and where each claim comes from."
+        }
       },
       "spec": "# CaseStudySummary\n\n## Intent\nLeads a case study with the decision-maker's questions answered first: what changed, who did what, what made it hard, which decisions shaped it, and how each claim can be checked. The process narrative follows below it.\n\n## Interaction contract\n- Keyboard: no interactive parts except evidence links, which are standard `@dt/Link` targets\n- Pointer: evidence links only\n- Screen readers: the section is a region labelled by its h2; groups use h3; key decisions are an ordered list\n\n## Do / don't\n- Do: give every evidence item a source label; self-reported figures say so (\"Self-reported, from project records\")\n- Do: take figures from records already published on the page\n- Do: link an evidence item only when a public source exists\n- Don't: present an unsourced metric\n- Don't: write \"what we'd do differently\" unless it is on record\n\n## Design notes\n- Tokens: `--space-layout-*`, `--color-foreground`, `--color-muted-foreground`, `--color-border`, `--container-md`\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-case-study-summary\n",
       "documentationDebt": false,
@@ -69827,7 +69917,8 @@
           },
           "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional class name applied to the section root."
           }
         },
         "propRelationships": [],

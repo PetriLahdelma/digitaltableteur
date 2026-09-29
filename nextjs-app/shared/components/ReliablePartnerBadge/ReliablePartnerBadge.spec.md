@@ -31,19 +31,13 @@ opens that language's report PDF so the claim is checkable rather than asserted.
 
 ## Do / don't
 
-- **Do** let the badge link to the report. The certification's value is that it
-  is verifiable; a badge that links nowhere reads as a sticker.
-- **Do** keep the language of the badge and the language of the page the same.
-  A Finnish mark on an English page looks like a stray asset.
-- **Do** use `sm` in dense chrome (footer) and `md`/`lg` where the badge is
-  making an argument alongside body copy.
-- **Don't** recolor, crop, redraw, or add effects to the mark. The asset as
-  delivered by Vastuu Group is the brand; only whitespace has been trimmed.
-- **Don't** stretch it. Set height via `size`; never set width.
-- **Don't** use it as a generic "verified" or "certified" icon. It means one
-  specific Finnish certification and misusing it misrepresents the business.
-- **Don't** hardcode a report path at the call site. Use the default, or
-  `getReliablePartnerReportHref(language)` so a language stays in sync.
+- Do: let the badge link to the report. The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.
+- Do: keep the language of the badge and the language of the page the same. A Finnish mark on an English page looks like a stray asset.
+- Do: use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy.
+- Don't: recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.
+- Don't: stretch it. Set height via `size`; never set width.
+- Don't: use it as a generic "verified" or "certified" icon. It means one specific Finnish certification and misusing it misrepresents the business.
+- Don't: hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync.
 
 ## Design notes
 

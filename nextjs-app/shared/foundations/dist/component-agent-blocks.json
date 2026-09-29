@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T17:01:59.048Z",
+  "generatedAt": "2026-09-29T17:01:43.463Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -9275,8 +9275,8 @@
       "composesWith": [
         "Section",
         "ScrollIndicator",
-        "Stack",
         "Title",
+        "Stack",
         "EnhancedProjectCard",
         "BlogCategoryFilter"
       ],
@@ -17527,7 +17527,8 @@
       ],
       "composesWith": [
         "Text",
-        "Title"
+        "Title",
+        "Link"
       ],
       "prefersOver": [],
       "declaredPropCount": 9,
@@ -24948,7 +24949,7 @@
             "md",
             "lg"
           ],
-          "description": "Badge height: sm 28px (footer), md 48px, lg 64px."
+          "description": "Badge height: sm 32px (footer), md 48px, lg 64px."
         },
         "href": {
           "optional": true,
@@ -24957,7 +24958,8 @@
         },
         "className": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Additional class name applied to the badge root."
         }
       },
       "propRelationships": [],
@@ -24974,8 +24976,17 @@
       },
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "let the badge link to the report. The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.",
+        "keep the language of the badge and the language of the page the same. A Finnish mark on an English page looks like a stray asset.",
+        "use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy."
+      ],
+      "avoidWhen": [
+        "recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+        "stretch it. Set height via `size`; never set width.",
+        "use it as a generic \"verified\" or \"certified\" icon. It means one specific Finnish certification and misusing it misrepresents the business.",
+        "hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync."
+      ],
       "requiredA11y": [
         "the badge image carries a translated alt describing the certification, never an empty alt, because the link has no other accessible name",
         "the link opens a PDF in a new tab and says so in its title/alt so the context change is not a surprise",
@@ -24992,7 +25003,12 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+        "stretch it. Set height via `size`; never set width.",
+        "use it as a generic \"verified\" or \"certified\" icon. It means one specific Finnish certification and misusing it misrepresents the business.",
+        "hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync."
+      ],
       "composesWith": [
         "Link",
         "StatsSection",
@@ -25003,7 +25019,57 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 3,
-      "guidelines": [],
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "let the badge link to the report",
+          "rationale": "The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.",
+          "rationaleSource": "inferred",
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "keep the language of the badge and the language of the page the same",
+          "rationale": "A Finnish mark on an English page looks like a stray asset.",
+          "rationaleSource": "inferred",
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "recolor, crop, redraw, or add effects to the mark",
+          "rationale": "The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+          "rationaleSource": "inferred",
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "stretch it. Set height via `size`; never set width.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it as a generic \"verified\" or \"certified\" icon",
+          "rationale": "It means one specific Finnish certification and misusing it misrepresents the business.",
+          "rationaleSource": "inferred",
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "hardcode a report path at the call site",
+          "rationale": "Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync.",
+          "rationaleSource": "inferred",
+          "source": "spec.md#do-dont"
+        }
+      ],
       "a11yCriteria": [
         {
           "id": "axe-no-violations",
@@ -25941,8 +26007,8 @@
       ],
       "composesWith": [
         "Container",
-        "ScrollIndicator",
         "Title",
+        "ScrollIndicator",
         "EnhancedProjectCard",
         "BlogCategoryFilter",
         "Pagination"
@@ -29257,7 +29323,8 @@
         "ReliablePartnerBadge",
         "Link",
         "Section",
-        "Container"
+        "Container",
+        "Title"
       ],
       "prefersOver": [],
       "declaredPropCount": 4,
@@ -41381,7 +41448,8 @@
         },
         "className": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Additional class name applied to the section root."
         }
       },
       "propRelationships": [],

@@ -66,7 +66,7 @@
         "className": {
             "optional": true,
             "type": "string",
-            "description": "Optional wrapper class."
+            "description": "Additional class name applied to the badge root."
         }
     },
     "displayName": "ReliablePartnerBadge",
@@ -85,5 +85,8 @@
         "SiteFooter",
         "AboutPageContent",
         "PricingPageContent"
-    ]
+    ],
+    "usage": {
+        "description": "Trust mark for the Vastuu Group Reliable Partner certification: small in the site footer, medium or large beside pricing and About copy where the certification supports a claim."
+    }
 }

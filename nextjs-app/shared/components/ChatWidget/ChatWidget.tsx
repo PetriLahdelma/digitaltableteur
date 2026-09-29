@@ -126,7 +126,10 @@ export function resolveChatErrorMessage(
       : base;
   }
 
-  if (normalized.includes("failed to fetch") || normalized.includes("network")) {
+  if (
+    normalized.includes("failed to fetch") ||
+    normalized.includes("network")
+  ) {
     return messages.network;
   }
   if (normalized.includes("404") || normalized.includes("not found")) {
@@ -444,10 +447,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const resolvedTitle = title || t("chatTitle", "AI assistant Donny");
   const resolvedDescription =
     description ||
-    t(
-      "chatDescription",
-      "Answers draw on site content and may be wrong.",
-    );
+    t("chatDescription", "Answers draw on site content and may be wrong.");
   const [noticeDismissed, setNoticeDismissed] = useState(false);
   useEffect(() => {
     try {
@@ -490,7 +490,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         "chatErrorFallback",
         "Something went wrong on the server. Please try again in a moment.",
       ),
-      reference: t("chatErrorReference", "(Reference: {{ref}})", { ref: "{{ref}}" }),
+      reference: t("chatErrorReference", "(Reference: {{ref}})", {
+        ref: "{{ref}}",
+      }),
     }),
     [t],
   );
@@ -1012,10 +1014,12 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           tabIndex={isOpen ? 0 : -1}
           data-lenis-prevent-wheel=""
           onFocusCapture={(event) => {
-            if (event.target instanceof HTMLTextAreaElement) setInputFocused(true);
+            if (event.target instanceof HTMLTextAreaElement)
+              setInputFocused(true);
           }}
           onBlurCapture={(event) => {
-            if (event.target instanceof HTMLTextAreaElement) setInputFocused(false);
+            if (event.target instanceof HTMLTextAreaElement)
+              setInputFocused(false);
           }}
         >
           <ChatHeader
@@ -1038,7 +1042,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           {!noticeDismissed && (
             <aside
               className={styles.transparencyNotice}
-              aria-label={t("chatTransparencyLabel", "AI assistant information")}
+              aria-label={t(
+                "chatTransparencyLabel",
+                "AI assistant information",
+              )}
             >
               <div className={styles.transparencyBody}>
                 <Text as="p" size="xs" className={styles.transparencyCopy}>
@@ -1051,9 +1058,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
                   <Link href="/ai-use">
                     {t("chatPolicyLink", "AI use and data details")}
                   </Link>
-                  <a href="mailto:mail@digitaltableteur.com?subject=AI%20assistant%20report">
+                  <Link href="mailto:mail@digitaltableteur.com?subject=AI%20assistant%20report">
                     {t("chatReportLink", "Report a problem")}
-                  </a>
+                  </Link>
                 </div>
               </div>
               <Button

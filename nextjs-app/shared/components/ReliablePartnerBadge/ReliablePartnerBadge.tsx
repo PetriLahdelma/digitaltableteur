@@ -47,13 +47,14 @@ export function getReliablePartnerReportHref(language: string): string {
 }
 
 export interface ReliablePartnerBadgeProps {
-  /** Badge height: sm 28px (footer), md 48px, lg 64px. */
+  /** Badge height: sm 32px (footer), md 48px, lg 64px. */
   size?: "sm" | "md" | "lg";
   /**
    * Link target. Defaults to the language-matched Reliable Partner report
    * PDF. Pass null to render unlinked.
    */
   href?: string | null;
+  /** Additional class name applied to the badge root. */
   className?: string;
 }
 
