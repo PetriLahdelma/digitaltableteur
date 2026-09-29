@@ -61,8 +61,8 @@ const meta = {
     striped: false,
     stickyHeader: false,
     hideCaption: false,
-    // Same as leaving it unset: one page holding every row.
-    pageSize: rows.length,
+    // "all" maps to unset: no pagination bar, every row on one page.
+    pageSize: "all",
     defaultSort: "none",
     className: "",
   },
@@ -84,7 +84,9 @@ const meta = {
       table: { defaultValue: { summary: "false" } },
     },
     pageSize: {
-      control: "number",
+      control: "select",
+      options: ["all", "2", "5"],
+      mapping: { all: undefined, "2": 2, "5": 5 },
       description: "Rows per page; enables pagination when set.",
     },
     caption: {
