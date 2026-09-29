@@ -1426,7 +1426,7 @@
   "pricingCalcPartnershipHint": "Kumppanuushinta 90 €/tunti koskee 6 ja 12 kuukauden toimeksiantoja, joissa työmäärä on vähintään 4 päivää viikossa.",
   "pricingCalcAllocationValue": "{{percent}} %",
   "reliablePartnerAlt": "Luotettava Kumppani — Vastuu Groupin todentama",
-  "reliablePartnerTitle": "Avaa Luotettava Kumppani -raportti (PDF)",
+  "reliablePartnerTitle": "Avaa Luotettava Kumppani -raportti (PDF, avautuu uuteen välilehteen)",
   "reliablePartnerHeading": "Vastuu Groupin Luotettava Kumppani",
   "reliablePartnerBody": "Tilaajavastuulain edellyttämät vero-, eläke- ja työnantajavelvoitteet todennetaan jatkuvasti Vastuu Groupin Luotettava Kumppani -ohjelmassa.",
   "reliablePartnerVerify": "Avaa Luotettava Kumppani -raportti (PDF)",

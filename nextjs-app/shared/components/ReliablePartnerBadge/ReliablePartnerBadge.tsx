@@ -103,7 +103,7 @@ export function ReliablePartnerBadge({
       className={cn(styles.root, styles.link, className)}
       title={t(
         "reliablePartnerTitle",
-        "Open the Reliable Partner report (PDF)",
+        "Open the Reliable Partner report (PDF, opens in a new tab)",
       )}
     >
       {image}

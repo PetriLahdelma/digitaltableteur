@@ -38,7 +38,7 @@
             "when rendered unlinked (href={null}) the alt still carries the meaning"
         ],
         "reducedMotion": true,
-        "reviewed": false,
+        "reviewed": true,
         "forcedColorsVerified": false
     },
     "tokens": {
