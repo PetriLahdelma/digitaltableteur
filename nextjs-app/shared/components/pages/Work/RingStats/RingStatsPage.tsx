@@ -448,11 +448,10 @@ flowchart LR
         content={[
           <Text key="p1" size="s">
             Ring Stats is an independent project, not affiliated with or
-            endorsed by Oura. The first internal build did not look that way: it
-            used the data provider&apos;s published palette and a circle-and-bar
-            glyph. Before the public release both were replaced with a
+            endorsed by Oura, and the identity makes that clear at a glance: a
             warm-neutral palette, native system type and icons, and an original
-            mark.
+            mark. No borrowed logo, product silhouette, proprietary fonts or
+            copied app chrome.
           </Text>,
           <Text key="p2" size="s">
             The mark is a ring seen at an angle, with a gap where the band turns
