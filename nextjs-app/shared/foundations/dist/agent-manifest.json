@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-29T19:32:02.555Z",
+  "generatedAt": "2026-09-29T19:58:54.697Z",
   "summary": {
     "componentCount": 179,
     "statusCounts": {
-      "beta": 50,
-      "stable": 103,
+      "beta": 53,
+      "stable": 100,
       "alpha": 25,
       "deprecated": 1
     },
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 103,
+    "stableCount": 100,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 50,
-        "stable": 103,
+        "beta": 53,
+        "stable": 100,
         "alpha": 25,
         "deprecated": 1
       },
@@ -1144,8 +1144,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -1194,8 +1194,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -4854,16 +4854,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -4910,6 +4900,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -5289,6 +5289,7 @@
         ],
         "canonicalExamples": [
           "Playground",
+          "Default",
           "Example",
           "ForcedColors"
         ],
@@ -5363,8 +5364,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -5391,8 +5392,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -7244,8 +7245,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -7295,8 +7296,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -7564,12 +7565,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
+            "path": "app/error.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -9755,16 +9756,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
             "since": "2026-06-04"
           },
@@ -11358,16 +11349,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -12300,8 +12281,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -12350,8 +12331,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -15906,22 +15887,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -18424,16 +18405,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -20311,16 +20282,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
             "since": "2026-06-04"
           },
@@ -20367,6 +20328,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -21800,8 +21771,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -21850,8 +21821,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -22045,16 +22016,6 @@
           "pressed"
         ],
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
@@ -23040,7 +23001,7 @@
         "name": "FormField",
         "tier": "molecule",
         "group": "form",
-        "status": "stable",
+        "status": "beta",
         "description": "Fieldset/legend wrapper for a group of controls (radio sets, checkbox clusters, composite fields), with a group description and a group-level error. Individual controls own their own label, error, and helper text.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1427-2118",
         "radixPrimitive": null,
@@ -23086,18 +23047,7 @@
           ]
         },
         "lightDarkVerified": true,
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          }
-        ],
+        "consumers": [],
         "schemaVersion": 2,
         "props": {
           "legend": {
@@ -25549,16 +25499,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -25595,6 +25535,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -25883,8 +25833,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -25911,8 +25861,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -26831,16 +26781,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -26877,6 +26817,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -27804,7 +27754,7 @@
         "name": "Kbd",
         "tier": "atom",
         "group": "display",
-        "status": "stable",
+        "status": "beta",
         "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1005-1638",
         "radixPrimitive": null,
@@ -27943,18 +27893,7 @@
           "Tooltip",
           "CodeSnippet"
         ],
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          }
-        ]
+        "consumers": []
       },
       "spec": "# Kbd\n\n## Intent\nInline keyboard-key indicator for docs, tooltips, and command hints. Renders\na semantic `<kbd>` styled as a keycap with the mono font token.\n\n## Interaction contract\n- Static, non-interactive; no keyboard or pointer behavior of its own.\n- Screen readers: announced as regular text; `<kbd>` conveys the semantic.\n\n## Do / don't\n- Do: compose combos as sibling Kbds with a literal separator (`⌘ + K`).\n- Do: match `size` to the surrounding text scale.\n- Don't: use Kbd as a button; it never receives focus or handles clicks.\n- Don't: put whole phrases inside one Kbd; one key (or chord symbol) per cap.\n\n## Design notes\n- Tokens: `--font-mono`, `--color-border`, `--color-surface`, `--color-text`,\n  `--radius-sm`, `--space-internal-2/6`.\n- The thicker bottom border gives the keycap depth without shadows.\n- Forced colors: border maps to `ButtonText`.\n",
       "documentationDebt": false,
@@ -28297,16 +28236,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -28343,6 +28272,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -29854,16 +29793,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -29875,6 +29804,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -31888,7 +31827,7 @@
         "name": "LocationCard",
         "tier": "molecule",
         "group": "display",
-        "status": "stable",
+        "status": "beta",
         "description": "Card variant for displaying a single office or service location (address, hours, map link). Visual sibling of `Card` with the location-specific slot order baked in.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1441-2250",
         "radixPrimitive": null,
@@ -31944,18 +31883,7 @@
           ]
         },
         "lightDarkVerified": true,
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          }
-        ],
+        "consumers": [],
         "schemaVersion": 2,
         "props": {
           "officeName": {
@@ -36048,16 +35976,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -41434,16 +41352,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -41872,16 +41780,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
             "since": "2026-06-04"
           },
@@ -41928,6 +41826,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
             "since": "2026-06-04"
           }
         ]
@@ -52873,16 +52781,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -53916,16 +53814,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -53972,6 +53860,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -54712,8 +54610,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -54762,8 +54660,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -58671,16 +58569,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -59185,16 +59073,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -59241,6 +59119,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -64915,8 +64798,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -64930,8 +64813,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -64952,8 +64835,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -64980,8 +64863,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",

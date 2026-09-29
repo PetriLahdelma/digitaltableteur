@@ -3,7 +3,7 @@
     "name": "Kbd",
     "tier": "atom",
     "group": "display",
-    "status": "stable",
+    "status": "beta",
     "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1005-1638",
     "radixPrimitive": null,
