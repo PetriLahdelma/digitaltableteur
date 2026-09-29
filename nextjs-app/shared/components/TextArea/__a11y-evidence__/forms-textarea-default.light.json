@@ -1,8 +1,8 @@
 {
-  "storyId": "web-components-forms-textarea-forced-colors",
-  "mode": "dark",
+  "storyId": "forms-textarea-default",
+  "mode": "light",
   "sourceSHA": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-  "capturedAt": "2026-09-29T20:12:32.622Z",
+  "capturedAt": "2026-09-29T20:12:28.070Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

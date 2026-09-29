@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-navigation-tabs-playground",
   "mode": "dark",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:36:56.084Z",
-  "runner": null,
+  "sourceSHA": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+  "capturedAt": "2026-09-29T20:12:10.712Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

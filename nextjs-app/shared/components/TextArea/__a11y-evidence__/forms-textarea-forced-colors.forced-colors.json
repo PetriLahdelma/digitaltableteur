@@ -1,8 +1,8 @@
 {
   "storyId": "forms-textarea-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "06f80505bd742c36c333e795f4cbe9be6753e7f4",
-  "capturedAt": "2026-09-29T19:13:42.119Z",
+  "sourceSHA": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+  "capturedAt": "2026-09-29T20:12:41.624Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
