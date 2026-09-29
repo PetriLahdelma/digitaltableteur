@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Text, Title } from "@digitaltableteur/react";
+import { Link, Text, Title } from "@digitaltableteur/react";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
@@ -72,6 +72,20 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
                 <SiSwift size={24} title="Swift / SwiftUI" />
                 <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
               </div>
+            </div>
+            <div className={styles.metaBlock}>
+              <Title as="h2" unstyled className={styles.metaLabel}>
+                Links
+              </Title>
+              <p className={styles.metaText}>
+                <Link
+                  href="https://github.com/PetriLahdelma/ring-stats"
+                  target="_blank"
+                  size="inherit"
+                >
+                  GitHub
+                </Link>
+              </p>
             </div>
           </div>
           <div className={styles.metaRight}>
