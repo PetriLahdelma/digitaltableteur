@@ -30,7 +30,7 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/ring-stats/hero-v3.webp",
+            src: "/images/portfolio/ring-stats/hero-v4.webp",
             alt: "Ring Stats popover with Readiness, Sleep and Activity score rings, Heart rate, Stress, Resilience and ring battery",
             width: 1360,
             height: 522,
@@ -155,7 +155,7 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/theme-ring-stats-v3.webp",
+            src: "/images/portfolio/ring-stats/theme-ring-stats-v4.webp",
             alt: "Ring Stats theme: warm canvas, signal-blue score rings, Resilience enabled and battery at 76%",
             width: 1360,
             height: 522,
@@ -164,7 +164,7 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/theme-landscape-v3.webp",
+            src: "/images/portfolio/ring-stats/theme-landscape-v4.webp",
             alt: "Landscape theme: the same stats in white over a dusky Nordic hillside photograph, with Resilience enabled",
             width: 1360,
             height: 522,
@@ -235,12 +235,12 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/spec-board.webp",
-            alt: "Figma Application Views board: connected, loading and disconnected popovers, the About window, connection step 3 of 3 and the menu-bar context menu",
-            width: 3120,
-            height: 2546,
+            src: "/images/portfolio/ring-stats/spec-annotated-v2.webp",
+            alt: "Figma Application Views board with popover states, the About window, connection step 3 of 3 and the context menu, surrounded by blue Behavior and pink Accessibility notes linked to specific controls",
+            width: 4720,
+            height: 3380,
             caption:
-              "The Figma spec, kept in step with the shipped app: popover states, windows and the context menu.",
+              "The annotated spec: behavior in blue, accessibility in pink, each pinned to the control it describes.",
           },
         ]}
       />
@@ -336,7 +336,7 @@ flowchart LR
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/state-partial-failure-v2.webp",
+            src: "/images/portfolio/ring-stats/state-partial-failure-v3.webp",
             alt: "Partial refresh: Sleep dimmed and marked Not updated, battery marked Not updated, status reads Some stats not updated",
             width: 840,
             height: 522,
@@ -345,7 +345,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/state-refreshing.webp",
+            src: "/images/portfolio/ring-stats/state-refreshing-v2.webp",
             alt: "Narrow popover while refreshing, with a small spinner in the status line",
             width: 840,
             height: 522,
@@ -353,7 +353,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/state-failed.webp",
+            src: "/images/portfolio/ring-stats/state-failed-v2.webp",
             alt: "Failed refresh: status reads Update failed one hour ago, with a timeout explanation above the battery row",
             width: 840,
             height: 588,
@@ -361,7 +361,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/state-permission-required.webp",
+            src: "/images/portfolio/ring-stats/state-permission-required-v2.webp",
             alt: "Missing permission: an Enable Stress Access button below the metric strip",
             width: 840,
             height: 610,
@@ -406,7 +406,7 @@ flowchart LR
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/connection-create-application.webp",
+            src: "/images/portfolio/ring-stats/connection-create-application-v2.webp",
             alt: "Connection step 1 of 3: create an application in the developer portal",
             width: 920,
             height: 880,
@@ -414,7 +414,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/connection-register-callback.webp",
+            src: "/images/portfolio/ring-stats/connection-register-callback-v2.webp",
             alt: "Connection step 2 of 3: add the loopback callback URL, with a Copy button",
             width: 920,
             height: 880,
@@ -422,7 +422,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/connection-enter-credentials.webp",
+            src: "/images/portfolio/ring-stats/connection-enter-credentials-v2.webp",
             alt: "Connection step 3 of 3: Client ID and Client Secret fields with a Keychain storage note",
             width: 920,
             height: 880,
@@ -430,7 +430,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/connection-connected.webp",
+            src: "/images/portfolio/ring-stats/connection-connected-v2.webp",
             alt: "Connected securely confirmation with a shield icon and a Show My Stats button",
             width: 920,
             height: 880,
@@ -476,7 +476,7 @@ flowchart LR
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/text-size-extra-large.webp",
+            src: "/images/portfolio/ring-stats/text-size-extra-large-v2.webp",
             alt: "Narrow popover at Extra Large text size, with larger rings and labels and no clipped text",
             width: 840,
             height: 612,
@@ -559,11 +559,13 @@ flowchart LR
             signed provenance attestation.
           </Text>,
           <Text key="p2" size="s">
-            121 automated tests cover the app, including a state gallery that
+            146 automated tests cover the app, including a state gallery that
             renders every popover state in both themes and at three widths.
-            Next: a moderated usability study with five to eight ring owners,
-            manual VoiceOver and keyboard verification, and battery-first
-            features such as an optional low-battery notification.
+            Version 1.2 added Shortcuts actions for any stat or the battery, so
+            the numbers also work in automations. Next: a moderated usability
+            study with five to eight ring owners, manual VoiceOver and keyboard
+            verification, and battery-first features such as an optional
+            low-battery notification.
           </Text>,
         ]}
         imageLayout="none"
