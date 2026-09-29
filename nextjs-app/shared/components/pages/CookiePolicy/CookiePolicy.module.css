@@ -23,10 +23,10 @@
 
 .backRow {
   display: flex;
-  margin-block-end: 1.5rem;
+  margin-block-end: var(--space-layout-24);
   align-items: center;
 }
 
 .backIcon {
-  margin-inline-end: 8px;
+  margin-inline-end: var(--space-internal-8);
 }

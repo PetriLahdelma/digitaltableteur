@@ -131,12 +131,12 @@ export const TenThousandRows: Story = {
     viewport.scrollTop = 9000 * 48;
     await waitFor(() => {
       expect(
-        canvas.getByText("Row 9001").closest('[role="listitem"]'),
+        canvas.getByText("Row 9001").closest("[role=\"listitem\"]"),
       ).toHaveAttribute("aria-posinset", "9001");
     });
     await expect(mounted()).toBeLessThanOrEqual(7 + 2 * 3);
     await expect(
-      canvas.getByText("Row 9001").closest('[role="listitem"]'),
+      canvas.getByText("Row 9001").closest("[role=\"listitem\"]"),
     ).toHaveAttribute("aria-setsize", "10000");
   },
 };
@@ -161,7 +161,7 @@ export const KeyboardScroll: Story = {
     viewport.scrollTop = viewport.scrollHeight;
     await waitFor(() => {
       expect(
-        canvas.getByText("Component result 1000").closest('[role="listitem"]'),
+        canvas.getByText("Component result 1000").closest("[role=\"listitem\"]"),
       ).toHaveAttribute("aria-posinset", "1000");
     });
   },

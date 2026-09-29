@@ -446,6 +446,7 @@
 }
 
 /* Two classes outrank Button's one-class base radius. */
+
 .inputShell .sendButton {
   border-radius: var(--radius-lg);
 }
@@ -570,15 +571,15 @@
   gap: 0.75rem;
 }
 
-.hintRow .shortcutHint {
-  margin: 0;
-}
-
 .shortcutHint {
   background-color: transparent;
   font-family: var(--font-body, sans-serif);
   font-size: 0.85rem;
   color: var(--shortcut-hint-color, #4b5563);
+}
+
+.hintRow .shortcutHint {
+  margin: 0;
 }
 
 /* Inline reset action: matches the shortcut hint typography but sits one
@@ -773,8 +774,10 @@
   background: transparent;
 }
 
-:global(.themeHCB) .inputShell .sendButton,
-:global(.themeHCB) .inputShell .sendButton:disabled {
+/* :is(:enabled, :disabled) weighs one pseudo-class, so this single
+   selector outranks .button.tertiary and its :disabled rule. */
+
+:global(.themeHCB) .inputShell .sendButton:is(:enabled, :disabled) {
   color: #fff;
 }
 
@@ -834,8 +837,10 @@
   background: transparent;
 }
 
-:global(.themeHCW) .inputShell .sendButton,
-:global(.themeHCW) .inputShell .sendButton:disabled {
+/* :is(:enabled, :disabled) weighs one pseudo-class, so this single
+   selector outranks .button.tertiary and its :disabled rule. */
+
+:global(.themeHCW) .inputShell .sendButton:is(:enabled, :disabled) {
   color: #000;
 }
 

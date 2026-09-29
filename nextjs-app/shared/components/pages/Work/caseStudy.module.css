@@ -10,7 +10,7 @@
 /* Full-width inline figure image inside a StoryBlock paragraph. */
 
 .inlineFigureImage {
-  margin-block: 2rem 0;
+  margin-block: var(--space-layout-32) 0;
   block-size: auto;
   inline-size: 100%;
 }
@@ -19,7 +19,7 @@
    class here would tie and depend on stylesheet order. */
 
 .inlineFigureCaption.inlineFigureCaption {
-  margin-block: 2rem;
-  font-style: italic;
+  margin-block: var(--space-layout-32);
   text-align: center;
+  font-style: italic;
 }
