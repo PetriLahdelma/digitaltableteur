@@ -192,12 +192,37 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
             the build if the two themes ever show different lines or labels for
             the same state.
           </Text>,
+          <Text key="p3" size="s">
+            In Figma, every view carries paired behavior and accessibility
+            notes, so the spec says how each control works and how it is
+            announced, not only how it looks.
+          </Text>,
         ]}
         imageLayout="none"
         backgroundColor="transparent"
         maxWidth="md"
         spacing="comfortable"
         className={styles.storySection}
+      />
+
+      <GridBlock
+        columns={1}
+        gap="medium"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.imageGrid}
+        cells={[
+          {
+            type: "image",
+            src: "/images/portfolio/ring-stats/spec-annotated.webp",
+            alt: "Figma Application Views board with popover and settings states, surrounded by blue Behavior and pink Accessibility annotations linked to specific controls",
+            width: 1390,
+            height: 906,
+            caption:
+              "The annotated spec: behavior in blue, accessibility in pink, each pinned to the control it describes.",
+          },
+        ]}
       />
 
       <StoryBlock
