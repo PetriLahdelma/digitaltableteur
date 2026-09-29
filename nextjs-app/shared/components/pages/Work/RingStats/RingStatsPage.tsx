@@ -174,6 +174,26 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         ]}
       />
 
+      <GridBlock
+        columns={1}
+        gap="medium"
+        backgroundColor="transparent"
+        maxWidth="md"
+        spacing="comfortable"
+        className={styles.imageGrid}
+        cells={[
+          {
+            type: "image",
+            src: "/images/portfolio/ring-stats/context-menu.webp",
+            alt: "Native context menu open below the Ring Stats menu-bar icon: Appearance, Connection, About & Credits, Diagnostics, Refresh Now, Reauthorize Permissions and Quit Ring Stats",
+            width: 1680,
+            height: 586,
+            caption:
+              "Right-click the menu-bar icon for the native menu: settings, refresh, reauthorize and quit.",
+          },
+        ]}
+      />
+
       <StoryBlock
         headingLevel={2}
         subtitle="Design System"
@@ -215,12 +235,12 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/spec-annotated.webp",
-            alt: "Figma Application Views board with popover and settings states, surrounded by blue Behavior and pink Accessibility annotations linked to specific controls",
-            width: 1390,
-            height: 906,
+            src: "/images/portfolio/ring-stats/spec-board.webp",
+            alt: "Figma Application Views board: connected, loading and disconnected popovers, the About window, connection step 3 of 3 and the menu-bar context menu",
+            width: 3120,
+            height: 2546,
             caption:
-              "The annotated spec: behavior in blue, accessibility in pink, each pinned to the control it describes.",
+              "The Figma spec, kept in step with the shipped app: popover states, windows and the context menu.",
           },
         ]}
       />
