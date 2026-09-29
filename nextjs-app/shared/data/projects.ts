@@ -192,7 +192,7 @@ export const projects: Project[] = [
     secondaryCategories: ["tools"],
     tags: ["Product Design", "macOS App", "Health Data", "Accessibility"],
     featured: false,
-    order: 13,
+    order: -1,
     duration: "Sep 2026",
   },
   {
