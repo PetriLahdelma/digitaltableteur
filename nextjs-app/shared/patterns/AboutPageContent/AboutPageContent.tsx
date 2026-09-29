@@ -322,7 +322,7 @@ export function AboutPageContent({
               >
                 {t(
                   "reliablePartnerVerify",
-                  "Open the Reliable Partner report (PDF)",
+                  "Open the Reliable Partner report (PDF, opens in a new tab)",
                 )}
               </DtLink>
             </p>
