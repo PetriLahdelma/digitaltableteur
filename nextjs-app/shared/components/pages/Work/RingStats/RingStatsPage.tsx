@@ -397,7 +397,7 @@ flowchart LR
       <StoryBlock
         headingLevel={2}
         subtitle="Accessibility"
-        title="Evidence, Not Intent"
+        title="Evidence, not Intent"
         content={[
           <Text key="p1" size="s">
             Accessibility is tracked as a matrix where an item only counts as
