@@ -445,7 +445,7 @@ flowchart LR
       <StoryBlock
         headingLevel={2}
         subtitle="Brand Identity"
-        title="Ten Directions, One Ring"
+        title="Respectful of the Ring It Reads"
         content={[
           <Text key="p1" size="s">
             Ring Stats is an independent project, not affiliated with or
@@ -456,17 +456,9 @@ flowchart LR
             icons, and an original mark.
           </Text>,
           <Text key="p2" size="s">
-            The mark came from ten directions around circular measurement,
-            wearable wellness and glanceable status, each kept deliberately
-            clear of the provider&apos;s own circle-plus-overbar construction.
-            The wearable halo direction won and went through ten more
-            refinements of segmentation, asymmetry, negative space and data
-            cues.
-          </Text>,
-          <Text key="p3" size="s">
-            The quietest variation shipped: a ring seen at an angle, split
-            where the band turns away. It reads as an object at 17 points in
-            the menu bar and still holds up as the app icon.
+            The mark is a ring seen at an angle, split where the band turns
+            away. It reads as an object at 17 points in the menu bar and still
+            holds up as the app icon.
           </Text>,
         ]}
         imageLayout="none"
@@ -474,35 +466,6 @@ flowchart LR
         maxWidth="md"
         spacing="comfortable"
         className={styles.storySection}
-      />
-
-      <GridBlock
-        columns={1}
-        gap="medium"
-        backgroundColor="transparent"
-        maxWidth="lg"
-        spacing="comfortable"
-        className={styles.imageGrid}
-        cells={[
-          {
-            type: "image",
-            src: "/images/portfolio/ring-stats/logo-directions.webp",
-            alt: "Ten numbered logo directions in black on cream tiles: rings, arcs, a heartbeat notch, linked loops, a moon, a band and a segmented spinner",
-            width: 1881,
-            height: 836,
-            caption:
-              "Ten directions: circular measurement, wearable wellness and glanceable status.",
-          },
-          {
-            type: "image",
-            src: "/images/portfolio/ring-stats/logo-halo-variations.webp",
-            alt: "Ten refinements of direction 09, a horizontal band with a halo, labelled 09A to 09J",
-            width: 1881,
-            height: 836,
-            caption:
-              "Direction 09, refined ten ways. 09J, the plainest, became the mark.",
-          },
-        ]}
       />
 
       <GridBlock
