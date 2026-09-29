@@ -1,8 +1,8 @@
 {
-  "storyId": "site-chat-chattoggle-default",
+  "storyId": "marketing-reliablepartnerbadge-playground",
   "mode": "dark",
-  "sourceSHA": "5df99159d4456476c937bca9e10c6fad79f789d9",
-  "capturedAt": "2026-09-29T17:08:40.998Z",
+  "sourceSHA": "14d5669f75eceec2df3b8f075c60cb8481c457fa",
+  "capturedAt": "2026-09-29T17:12:40.665Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
