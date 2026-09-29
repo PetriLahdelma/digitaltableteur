@@ -94,6 +94,8 @@ Default.args = {
   variant: "default",
   size: "md",
 };
+// Axe-checked matrix story; the lifecycle stories stay opted out.
+Default.tags = ["beta-matrix"];
 Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const tabs = canvas.getAllByRole("tab");
