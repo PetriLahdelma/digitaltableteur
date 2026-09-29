@@ -278,3 +278,23 @@
   font-size: 0.65rem;
   text-align: center;
 }
+
+/* Page title: the section-title face at the page-title size. */
+
+.sectionTitle.pageTitle {
+  font-size: var(--font-size-title-m);
+}
+
+.replayButton {
+  padding: var(--space-internal-8) var(--space-internal-12);
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s);
+}
+
+.themePanel.themePanelSpaced {
+  margin-block-end: var(--space-layout-24);
+}
+
+.pairCode {
+  font-size: 0.65rem;
+}

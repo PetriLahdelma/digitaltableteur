@@ -1,0 +1,7 @@
+/* Fallback shown while a stale deployment reloads its code chunks. */
+
+.fallback {
+  padding: 2rem;
+  font-family: var(--font-body, sans-serif);
+  text-align: center;
+}

@@ -1,4 +1,3 @@
-
 .page {
   /* KnobSmith brand magenta; 7.09:1 on white. Dark surfaces get a lighter
      tint below because the brand value is only 2.46:1 on #181a1b. */
@@ -530,4 +529,20 @@
 .ogImageCaption {
   text-align: center;
   color: var(--color-muted);
+}
+
+/* Brand swatch fills. These are KnobSmith's palette values shown as
+   content, not site tokens. Doubled class so they outrank .swatchColor. */
+
+.swatchColor.swatchSignaturePink {
+  background-color: #ed4b9b;
+}
+
+.swatchColor.swatchStudioDark {
+  background-color: #2b2f33;
+}
+
+.swatchColor.swatchPureWhite {
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
 }

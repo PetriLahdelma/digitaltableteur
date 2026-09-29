@@ -18,3 +18,15 @@
     margin-block-start: 1.5rem;
   }
 }
+
+/* Back button row above the policy text. */
+
+.backRow {
+  display: flex;
+  margin-block-end: 1.5rem;
+  align-items: center;
+}
+
+.backIcon {
+  margin-inline-end: 8px;
+}

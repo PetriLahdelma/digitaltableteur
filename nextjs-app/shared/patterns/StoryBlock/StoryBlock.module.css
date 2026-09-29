@@ -78,3 +78,18 @@
     border: 1px solid currentcolor;
   }
 }
+
+/* Image row below the story text. */
+
+.imagesRow {
+  margin-block-start: 2rem;
+}
+
+/* Caption text. Doubled class: Text's base margin is one class, so a single
+   class here would tie and depend on stylesheet order. */
+
+.captionText.captionText {
+  margin-block-start: 1rem;
+  font-style: italic;
+  text-align: center;
+}

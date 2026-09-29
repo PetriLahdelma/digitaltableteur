@@ -1,6 +1,5 @@
 /* VertaaUX unique styling - modern AI startup feel */
 
-
 .page {
   background-color: var(--main-body-background-color);
   overflow-x: clip;
@@ -116,7 +115,7 @@
 /* Hero accent — VertaaUX brand: dark base + neon teal */
 
 .heroAccent {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
 }
 
 /* Process section with enhanced spacing for AI methodology */
@@ -265,7 +264,7 @@
 }
 
 .logoCardDark {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
 }
 
 .logoCardLight {
@@ -393,44 +392,44 @@
 /* Palette card variants */
 
 .paletteCardTeal {
-  background-color: #0FC;
-  color: #0D0D0D;
+  background-color: #0fc;
+  color: #0d0d0d;
 }
 
 .paletteCardNearBlack {
-  background-color: #0D0D0D;
-  color: #F2F2F2;
+  background-color: #0d0d0d;
+  color: #f2f2f2;
 }
 
 .paletteCardSurface {
   background-color: #141414;
-  color: #F2F2F2;
+  color: #f2f2f2;
 }
 
 .paletteCardWhite {
-  background-color: #F2F2F2;
-  color: #0D0D0D;
+  background-color: #f2f2f2;
+  color: #0d0d0d;
 }
 
 /* Score state variants */
 
 .paletteCardExcellent {
-  background-color: #10B981;
-  color: #0D0D0D;
+  background-color: #10b981;
+  color: #0d0d0d;
 }
 
 .paletteCardGood {
-  background-color: #3B82F6;
+  background-color: #3b82f6;
   color: #fff;
 }
 
 .paletteCardFair {
-  background-color: #F59E0B;
-  color: #0D0D0D;
+  background-color: #f59e0b;
+  color: #0d0d0d;
 }
 
 .paletteCardPoor {
-  background-color: #EF4444;
+  background-color: #ef4444;
   color: #fff;
 }
 
@@ -438,23 +437,23 @@
 
 .paletteCardPureWhite {
   border: 1px solid var(--color-border);
-  background-color: #FFF;
-  color: #1A1A1A;
+  background-color: #fff;
+  color: #1a1a1a;
 }
 
 .paletteCardWarmWhite {
-  background-color: #F7F5F0;
-  color: #1A1A1A;
+  background-color: #f7f5f0;
+  color: #1a1a1a;
 }
 
 .paletteCardWarmInk {
-  background-color: #1A1A1A;
-  color: #F2F2F2;
+  background-color: #1a1a1a;
+  color: #f2f2f2;
 }
 
 .paletteCardMutedTeal {
-  background-color: #0CA;
-  color: #0D0D0D;
+  background-color: #0ca;
+  color: #0d0d0d;
 }
 
 /* Palette section with title */
@@ -647,8 +646,8 @@
 .metricsSection {
   padding-block: var(--space-layout-64);
   padding-inline: var(--cs-page-inset);
-  background-color: #0D0D0D;
-  color: #F2F2F2;
+  background-color: #0d0d0d;
+  color: #f2f2f2;
 }
 
 /* Sit flush: zero only the edge touching the band, so each neighbour keeps
@@ -696,7 +695,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.1;
-  color: #0FC;
+  color: #0fc;
 }
 
 .metricLabel {
@@ -722,4 +721,12 @@
   .metricsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Palette sheet images scale to the column. */
+
+.paletteImage {
+  display: block;
+  block-size: auto;
+  inline-size: 100%;
 }

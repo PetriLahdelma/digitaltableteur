@@ -1,5 +1,7 @@
 import React, { Component, ReactNode } from "react";
+import Button from "@dt/Button";
 import Title from "@dt/Title";
+import styles from "./ChunkErrorBoundary.module.css";
 
 interface Props {
   children: ReactNode;
@@ -42,28 +44,16 @@ class ChunkErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         this.props.fallback || (
-          <div
-            style={{
-              padding: "2rem",
-              textAlign: "center",
-              fontFamily: "var(--font-body, sans-serif)",
-            }}
-          >
+          <div className={styles.fallback}>
             <Title level={2}>Loading Error</Title>
             <p>The page is being updated. Refreshing automatically...</p>
-            <button
+            <Button
+              type="button"
+              variant="primary"
               onClick={() => window.location.reload()}
-              style={{
-                padding: "0.5rem 1rem",
-                background: "#007bff",
-                color: "var(--color-white)",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
             >
               Refresh Now
-            </button>
+            </Button>
           </div>
         )
       );

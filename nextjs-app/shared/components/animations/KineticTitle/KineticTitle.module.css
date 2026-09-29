@@ -1,0 +1,5 @@
+/* Depth for the per-item 3D reveal. */
+
+.item {
+  perspective: 1000px;
+}

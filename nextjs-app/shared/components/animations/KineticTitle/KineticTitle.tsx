@@ -4,6 +4,7 @@ import { useRef, useMemo, type ElementType } from "react";
 import { gsap, useGSAP } from "../../../lib/gsap";
 import { useAnimationContext } from "../../../lib/animation";
 import { cn } from "../../../lib/cn";
+import styles from "./KineticTitle.module.css";
 
 type SplitType = "chars" | "words" | "lines";
 type AnimationType = "fade" | "slide" | "wave" | "scramble";
@@ -33,7 +34,8 @@ export interface KineticTitleProps {
 
 // Scramble text effect helper
 const scrambleText = (el: HTMLElement, finalText: string, duration: number) => {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let iteration = 0;
   const totalIterations = duration * 30; // ~30fps for scramble
 
@@ -208,7 +210,7 @@ export function KineticTitle({
         stagger,
         threshold,
       ],
-    }
+    },
   );
 
   return (
@@ -217,7 +219,7 @@ export function KineticTitle({
       className={cn(
         "font-display font-bold tracking-tight",
         splitBy === "lines" ? "flex flex-col" : "flex flex-wrap justify-center",
-        className
+        className,
       )}
     >
       {elements.map((el, index) => (
@@ -226,10 +228,10 @@ export function KineticTitle({
           data-kinetic-item
           className={cn(
             "inline-block",
+            styles.item,
             splitBy === "chars" && "whitespace-pre",
-            splitBy === "words" && index < elements.length - 1 && "mr-[0.25em]"
+            splitBy === "words" && index < elements.length - 1 && "mr-[0.25em]",
           )}
-          style={{ perspective: "1000px" }}
         >
           {el.content}
         </span>

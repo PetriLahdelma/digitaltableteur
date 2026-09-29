@@ -145,7 +145,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
         </div>
 
         {hasImages && (
-          <div className={gridClass} style={{ marginBlockStart: "2rem" }}>
+          <div className={`${gridClass} ${styles.imagesRow}`}>
             {imagesArray.map((image, index) => (
               <figure key={index} className={`${styles.col} ${styles.figure}`}>
                 <Image
@@ -164,14 +164,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
                 />
                 {image.caption && (
                   <figcaption>
-                    <Text
-                      size="xs"
-                      style={{
-                        fontStyle: "italic",
-                        textAlign: "center",
-                        marginBlockStart: "1rem",
-                      }}
-                    >
+                    <Text size="xs" className={styles.captionText}>
                       {image.caption}
                     </Text>
                   </figcaption>

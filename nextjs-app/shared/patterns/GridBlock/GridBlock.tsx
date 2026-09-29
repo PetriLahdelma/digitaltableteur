@@ -152,14 +152,7 @@ function GridBlock({
                   />
                   {cell.caption && (
                     <figcaption className={styles.caption}>
-                      <Text
-                        size="xs"
-                        style={{
-                          fontStyle: "italic",
-                          textAlign: "center",
-                          marginBlockStart: "1rem",
-                        }}
-                      >
+                      <Text size="xs" className={styles.captionText}>
                         {cell.caption}
                       </Text>
                     </figcaption>

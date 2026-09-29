@@ -1,0 +1,9 @@
+/* Sticky nav bar in the page's brand colours; links and focus rings pick
+   up --color-primary from here. */
+
+.brandNav {
+  --color-primary: var(--logo-color);
+
+  background-color: var(--logo-background);
+  color: var(--logo-color);
+}
