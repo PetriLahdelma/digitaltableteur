@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-27T17:01:59.360Z",
+  "generatedAt": "2026-09-29T16:47:50.765Z",
   "summary": {
     "componentCount": 179,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 167,
     "withProductionUsage": 40,
     "uniqueImportedComponents": 167,
-    "totalEvidenceRows": 851,
+    "totalEvidenceRows": 857,
     "aliasImportFiles": 440,
-    "relativeImportFiles": 444,
+    "relativeImportFiles": 450,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -41921,8 +41921,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectNav",
-        "importCount": 17,
-        "productionImportCount": 15,
+        "importCount": 18,
+        "productionImportCount": 16,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
@@ -72318,8 +72318,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/GridBlock",
-        "importCount": 13,
-        "productionImportCount": 12,
+        "importCount": 14,
+        "productionImportCount": 13,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
@@ -72384,13 +72384,13 @@
             "context": "production"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/RingStats/RingStatsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/GridBlock",
             "context": "production"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Work/Tulli/TulliPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/GridBlock",
             "context": "production"
@@ -77575,8 +77575,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectDetailLayout",
-        "importCount": 18,
-        "productionImportCount": 16,
+        "importCount": 19,
+        "productionImportCount": 17,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -78355,8 +78355,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectHero",
-        "importCount": 17,
-        "productionImportCount": 15,
+        "importCount": 18,
+        "productionImportCount": 16,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -79866,8 +79866,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/RelatedProjects",
-        "importCount": 17,
-        "productionImportCount": 15,
+        "importCount": 18,
+        "productionImportCount": 16,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -82327,8 +82327,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/StoryBlock",
-        "importCount": 16,
-        "productionImportCount": 15,
+        "importCount": 17,
+        "productionImportCount": 16,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
