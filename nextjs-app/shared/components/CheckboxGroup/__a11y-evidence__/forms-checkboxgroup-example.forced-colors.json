@@ -1,18 +1,11 @@
 {
   "storyId": "forms-checkboxgroup-example",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:45:38.099Z",
-  "runner": "backfill",
+  "sourceSHA": "06f80505bd742c36c333e795f4cbe9be6753e7f4",
+  "capturedAt": "2026-09-29T19:13:39.769Z",
+  "runner": "local",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
-      "passed": true
-    },
-    "forced-colors-real-browser": {
       "passed": true
     }
   }

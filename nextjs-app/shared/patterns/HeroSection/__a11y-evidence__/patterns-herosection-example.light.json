@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-herosection-example",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:25:47.187Z",
-  "runner": null,
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T18:44:47.470Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

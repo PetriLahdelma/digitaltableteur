@@ -1,12 +1,16 @@
 {
   "storyId": "site-locationcard-playground",
   "mode": "forced-colors",
-  "sourceSHA": "63c2fd02ac4617d4e01650175b1e3da8f88dd0d4",
-  "capturedAt": "2026-07-26T19:57:33.172Z",
-  "runner": "promote-locationcard-stable",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:07:48.904Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

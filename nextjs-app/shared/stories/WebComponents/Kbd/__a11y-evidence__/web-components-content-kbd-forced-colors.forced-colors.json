@@ -1,12 +1,16 @@
 {
   "storyId": "web-components-content-kbd-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
-  "capturedAt": "2026-07-26T18:01:37.454Z",
-  "runner": "promote-kbd-stable",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:07:28.679Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

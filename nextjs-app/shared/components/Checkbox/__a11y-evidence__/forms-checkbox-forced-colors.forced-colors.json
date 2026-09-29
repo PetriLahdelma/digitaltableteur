@@ -1,12 +1,16 @@
 {
   "storyId": "forms-checkbox-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "c380345d06d3d3a681e1cee3fa6264f6c5491c5d",
-  "capturedAt": "2026-07-26T21:54:16.464Z",
-  "runner": "fix-hcb-checkbox",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:06:49.058Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

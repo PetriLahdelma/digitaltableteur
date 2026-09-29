@@ -1,8 +1,8 @@
 {
   "storyId": "site-contactform-playground",
   "mode": "forced-colors",
-  "sourceSHA": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-  "capturedAt": "2026-09-29T17:38:25.624Z",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:05:29.864Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

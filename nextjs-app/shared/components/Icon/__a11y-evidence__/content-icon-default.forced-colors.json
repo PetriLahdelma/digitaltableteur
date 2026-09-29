@@ -1,9 +1,9 @@
 {
   "storyId": "content-icon-default",
   "mode": "forced-colors",
-  "sourceSHA": "d14b56331362c888c62bab010b88217a3b7ab6ce",
-  "capturedAt": "2026-07-26T22:00:41.900Z",
-  "runner": "table-icons",
+  "sourceSHA": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+  "capturedAt": "2026-09-29T19:12:08.204Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
