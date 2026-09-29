@@ -81,8 +81,8 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
             <p className={styles.metaOverview}>
               <strong>Ring Stats</strong> is an independent, open-source macOS
               menu-bar app for Oura Ring owners. One click shows today&apos;s
-              Readiness, Sleep and Activity scores, heart rate, stress and
-              ring battery. One more click and it is gone.
+              Readiness, Sleep and Activity scores, heart rate, stress and ring
+              battery. One more click and it is gone.
             </p>
             <p className={styles.metaOverview}>
               <strong>The design challenge:</strong> answer &ldquo;how am I
@@ -107,9 +107,9 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p2" size="s">
             A solo project end to end: product definition, interaction and
             visual design, identity, SwiftUI and AppKit development, security
-            review and release engineering. The scope was set by one rule
-            from the start: smaller than a dashboard. No history, no coaching,
-            no navigation and no health database on disk.
+            review and release engineering. The scope was set by one rule from
+            the start: smaller than a dashboard. No history, no coaching, no
+            navigation and no health database on disk.
           </Text>,
         ]}
         imageLayout="none"
@@ -126,11 +126,10 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             The popover is a single horizontal strip of metric tiles, a slim
-            battery row and a compact options menu. No cards, tabs or
-            headings compete with the numbers. Readiness, Sleep and Activity
-            appear as score rings; Heart rate and Stress are not scores, so
-            they get an icon and a value instead of a fabricated progress
-            ring.
+            battery row and a compact options menu. No cards, tabs or headings
+            compete with the numbers. Readiness, Sleep and Activity appear as
+            score rings; Heart rate and Stress are not scores, so they get an
+            icon and a value instead of a fabricated progress ring.
           </Text>,
           <Text key="p2" size="s">
             Every normal score shares one signal blue. Giving each metric its
@@ -181,17 +180,17 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         title="The Quiet Signal Strip"
         content={[
           <Text key="p1" size="s">
-            A small system with strict rules. Every tile has the same four
-            zones in the same order: an 84-point visual, a value on a shared
-            baseline, a title and one line of detail. Themes and metrics
-            change the content of those zones, never the layout, so a
-            Resilience level and a heart-rate number still line up.
+            A small system with strict rules. Every tile has the same four zones
+            in the same order: an 84-point visual, a value on a shared baseline,
+            a title and one line of detail. Themes and metrics change the
+            content of those zones, never the layout, so a Resilience level and
+            a heart-rate number still line up.
           </Text>,
           <Text key="p2" size="s">
             Seven color tokens, three type roles and a four-step spacing scale
             cover the whole app. Themes change presentation only: a test fails
-            the build if the two themes ever show different lines or labels
-            for the same state.
+            the build if the two themes ever show different lines or labels for
+            the same state.
           </Text>,
         ]}
         imageLayout="none"
@@ -210,20 +209,20 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
             <strong>A status strip over a dashboard.</strong> Trends, history
             and recommendations already live in the phone app, where they are
             done well. Repeating them on the Mac would have made a slower copy
-            of something better. The strip answers one question and gets out
-            of the way.
+            of something better. The strip answers one question and gets out of
+            the way.
           </Text>,
           <Text key="p2" size="s">
             <strong>Your own credentials over a shared secret.</strong> Each
-            person registers their own developer application and enters its
-            keys once. It adds a setup step, but no shared secret ships inside
-            the app and no server sits between the ring and the Mac.
+            person registers their own developer application and enters its keys
+            once. It adds a setup step, but no shared secret ships inside the
+            app and no server sits between the ring and the Mac.
           </Text>,
           <Text key="p3" size="s">
             <strong>Hidden means not fetched.</strong> Turning a metric off in
-            Appearance also removes it from the request and from the
-            permissions asked for. Customization is a privacy control, not
-            just a layout preference.
+            Appearance also removes it from the request and from the permissions
+            asked for. Customization is a privacy control, not just a layout
+            preference.
           </Text>,
           <Mermaid
             key="data-flow"
@@ -263,16 +262,16 @@ flowchart LR
           <Text key="p1" size="s">
             A wellness number shown as current when it is hours old is worse
             than no number at all. So a stat that fails to refresh keeps its
-            last known value, dims and reads &ldquo;Not updated&rdquo; in
-            text, not just in color. The status line says when data last
-            arrived, confirms a successful refresh for three seconds and then
-            fades away so the strip stays quiet.
+            last known value, dims and reads &ldquo;Not updated&rdquo; in text,
+            not just in color. The status line says when data last arrived,
+            confirms a successful refresh for three seconds and then fades away
+            so the strip stays quiet.
           </Text>,
           <Text key="p2" size="s">
-            Missing permissions get their own state and a direct fix instead
-            of an endless partial refresh. Every one of these states is
-            rendered by the test suite in both themes and at every supported
-            width, so none of them is designed once and forgotten.
+            Missing permissions get their own state and a direct fix instead of
+            an endless partial refresh. Every one of these states is rendered by
+            the test suite in both themes and at every supported width, so none
+            of them is designed once and forgotten.
           </Text>,
         ]}
         imageLayout="none"
@@ -333,11 +332,11 @@ flowchart LR
         content={[
           <Text key="p1" size="s">
             Bring-your-own credentials is the least friendly part of the
-            product, so it got the most design attention. Setup is three
-            steps with a step indicator: create the application and learn why
-            it is needed, add the callback address with a one-click copy, then
-            enter the keys with a plain note that they stay in this
-            Mac&apos;s Keychain.
+            product, so it got the most design attention. Setup is three steps
+            with a step indicator: create the application and learn why it is
+            needed, add the callback address with a one-click copy, then enter
+            the keys with a plain note that they stay in this Mac&apos;s
+            Keychain.
           </Text>,
           <Text key="p2" size="s">
             The flow ends on a confirmation rather than a dialog dismissal:
@@ -410,9 +409,9 @@ flowchart LR
           <Text key="p2" size="s">
             macOS does not apply Dynamic Type to SwiftUI on the Mac, so Ring
             Stats has its own text size setting that scales type and tile
-            geometry together. The stats row is fully keyboard operable: Tab
-            to reach it, arrow keys to move and Option-arrow to reorder, with
-            each move announced to VoiceOver.
+            geometry together. The stats row is fully keyboard operable: Tab to
+            reach it, arrow keys to move and Option-arrow to reorder, with each
+            move announced to VoiceOver.
           </Text>,
         ]}
         imageLayout="none"
@@ -449,11 +448,11 @@ flowchart LR
         content={[
           <Text key="p1" size="s">
             Ring Stats is an independent project, not affiliated with or
-            endorsed by Oura. The first internal build did not look that way:
-            it used the data provider&apos;s published palette and a
-            circle-and-bar glyph. Before the public release both were
-            replaced with a warm-neutral palette, native system type and
-            icons, and an original mark.
+            endorsed by Oura. The first internal build did not look that way: it
+            used the data provider&apos;s published palette and a circle-and-bar
+            glyph. Before the public release both were replaced with a
+            warm-neutral palette, native system type and icons, and an original
+            mark.
           </Text>,
           <Text key="p2" size="s">
             The mark is a ring seen at an angle, split where the band turns
@@ -482,7 +481,8 @@ flowchart LR
             alt: "Ring Stats app icon: a white split ring seen at an angle on a near-black rounded square",
             width: 800,
             height: 800,
-            caption: "The split ring holds up from a 17-point menu-bar glyph to a full app icon.",
+            caption:
+              "The split ring holds up from a 17-point menu-bar glyph to a full app icon.",
           },
         ]}
       />
@@ -493,11 +493,11 @@ flowchart LR
         title="Signed, Notarized, Sandboxed"
         content={[
           <Text key="p1" size="s">
-            Ring Stats ships as a Developer ID-signed, Apple-notarized
-            universal disk image with a published checksum. It runs in the
-            App Sandbox with four entitlements, has no third-party runtime
-            dependencies and no analytics. Releases carry a software bill of
-            materials and a signed provenance attestation.
+            Ring Stats ships as a Developer ID-signed, Apple-notarized universal
+            disk image with a published checksum. It runs in the App Sandbox
+            with four entitlements, has no third-party runtime dependencies and
+            no analytics. Releases carry a software bill of materials and a
+            signed provenance attestation.
           </Text>,
           <Text key="p2" size="s">
             121 automated tests cover the app, including a state gallery that
