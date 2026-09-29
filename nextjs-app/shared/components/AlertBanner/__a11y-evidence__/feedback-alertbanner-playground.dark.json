@@ -1,8 +1,8 @@
 {
   "storyId": "feedback-alertbanner-playground",
   "mode": "dark",
-  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-  "capturedAt": "2026-09-29T19:01:37.791Z",
+  "sourceSHA": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+  "capturedAt": "2026-09-29T20:04:25.180Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

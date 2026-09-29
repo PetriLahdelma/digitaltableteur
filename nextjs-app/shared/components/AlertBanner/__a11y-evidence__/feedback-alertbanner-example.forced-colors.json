@@ -1,8 +1,8 @@
 {
   "storyId": "feedback-alertbanner-example",
   "mode": "forced-colors",
-  "sourceSHA": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-  "capturedAt": "2026-09-29T19:13:28.272Z",
+  "sourceSHA": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+  "capturedAt": "2026-09-29T20:00:57.208Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

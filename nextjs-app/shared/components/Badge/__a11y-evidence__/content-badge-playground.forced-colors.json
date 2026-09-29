@@ -1,8 +1,8 @@
 {
   "storyId": "content-badge-playground",
   "mode": "forced-colors",
-  "sourceSHA": "06f80505bd742c36c333e795f4cbe9be6753e7f4",
-  "capturedAt": "2026-09-29T19:13:33.329Z",
+  "sourceSHA": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+  "capturedAt": "2026-09-29T20:01:21.051Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
