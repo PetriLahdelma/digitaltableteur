@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T18:21:32.710Z",
+  "generatedAt": "2026-09-29T19:31:43.354Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -502,8 +502,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -539,8 +539,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -2947,8 +2947,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -2984,8 +2984,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "aria-requirements",
@@ -4068,8 +4068,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -4105,8 +4105,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -5279,8 +5279,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -6284,8 +6284,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -6614,8 +6614,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -6882,8 +6882,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -6919,8 +6919,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -7637,8 +7637,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -7910,8 +7910,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -8199,8 +8199,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -8641,8 +8641,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -8656,8 +8656,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -8678,8 +8678,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -8706,8 +8706,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "4.1.2",
@@ -9875,8 +9875,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -12314,8 +12314,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -12351,8 +12351,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -13773,8 +13773,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "reduced-motion",
@@ -14199,8 +14199,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -14649,8 +14649,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -14686,8 +14686,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "aria-requirements",
@@ -15023,8 +15023,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "aria-requirements",
@@ -15319,8 +15319,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -15857,8 +15857,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "aria-requirements",
@@ -17881,8 +17881,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "aria-requirements",
@@ -18153,8 +18153,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -19190,8 +19190,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -20517,8 +20517,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -23473,8 +23473,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "reduced-motion",
@@ -25076,8 +25076,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -25091,8 +25091,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -25139,8 +25139,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "4.1.2",
@@ -25404,8 +25404,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -25759,8 +25759,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "reduced-motion",
@@ -26886,8 +26886,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -27110,8 +27110,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -29427,8 +29427,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "reduced-motion",
@@ -31919,8 +31919,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -31956,8 +31956,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -32277,8 +32277,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -32553,8 +32553,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "aria-requirements",
@@ -32845,8 +32845,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -33378,8 +33378,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "aria-requirements",
@@ -33657,8 +33657,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -33694,8 +33694,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -34216,8 +34216,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "aria-requirements",
@@ -34454,8 +34454,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -34491,8 +34491,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -34904,8 +34904,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -35758,8 +35758,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "aria-requirements",
@@ -37252,8 +37252,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -37825,8 +37825,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -38096,8 +38096,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "aria-requirements",
@@ -42760,8 +42760,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -43215,8 +43215,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -46064,8 +46064,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -48757,8 +48757,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -49301,8 +49301,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -50470,8 +50470,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -50703,8 +50703,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
