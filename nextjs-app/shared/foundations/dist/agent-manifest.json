@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-29T17:13:53.396Z",
+  "generatedAt": "2026-09-29T18:21:53.943Z",
   "summary": {
     "componentCount": 179,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 90.9,
     "codebaseComponentCount": 197,
     "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 40,
+    "componentsWithProductionUsage": 39,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,11 +79,11 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 179,
     "withAnyUsage": 167,
-    "withProductionUsage": 40,
+    "withProductionUsage": 39,
     "uniqueImportedComponents": 167,
-    "totalEvidenceRows": 859,
+    "totalEvidenceRows": 858,
     "aliasImportFiles": 441,
-    "relativeImportFiles": 451,
+    "relativeImportFiles": 450,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -15311,8 +15311,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -15326,8 +15326,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -15348,8 +15348,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -15376,8 +15376,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -18812,6 +18812,7 @@
         "variants": {
           "size": {
             "values": [
+              "xs",
               "sm",
               "md",
               "lg",
@@ -18897,12 +18898,13 @@
             "optional": true,
             "type": "union",
             "values": [
+              "xs",
               "sm",
               "md",
               "lg",
               "xl"
             ],
-            "description": "Rendered avatar size."
+            "description": "Rendered avatar size: xs 28px (chat toggle), sm 32px, md 48px, lg 64px, xl 96px."
           },
           "className": {
             "optional": true,
@@ -19136,7 +19138,8 @@
               "sm",
               "md",
               "lg",
-              "xl"
+              "xl",
+              "xs"
             ],
             "description": "Rendered avatar size."
           },
@@ -19219,7 +19222,8 @@
               "sm",
               "md",
               "lg",
-              "xl"
+              "xl",
+              "xs"
             ],
             "default": "sm"
           }
@@ -22928,8 +22932,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -29391,17 +29395,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Lightbox",
-        "importCount": 3,
-        "productionImportCount": 1,
+        "importCount": 2,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/Lightbox",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/interactive/index.ts",
             "importKind": "relative",
@@ -37397,8 +37395,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -47752,8 +47750,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -59663,8 +59661,8 @@
           "Text",
           "Button",
           "CheckboxGroup",
-          "TextArea",
           "Badge",
+          "TextArea",
           "Title"
         ],
         "prefersOver": [],
@@ -75537,8 +75535,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",

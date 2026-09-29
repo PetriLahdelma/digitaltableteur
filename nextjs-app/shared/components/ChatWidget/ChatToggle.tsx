@@ -98,7 +98,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
             <DonnyAvatar
               decorative
               state={donnyState}
-              size="sm"
+              size="xs"
               trackMouse={!isOpen}
               proximitySelectors={CURIOSITY_SELECTORS}
               onProximityChange={handleProximityChange}

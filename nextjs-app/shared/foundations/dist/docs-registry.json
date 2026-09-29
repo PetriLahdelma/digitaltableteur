@@ -5575,7 +5575,7 @@
         },
         {
           "name": "size",
-          "type": "sm | md | lg | xl",
+          "type": "xs | sm | md | lg | xl",
           "required": false
         },
         {
@@ -5636,12 +5636,13 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xs",
             "sm",
             "md",
             "lg",
             "xl"
           ],
-          "description": "Rendered avatar size."
+          "description": "Rendered avatar size: xs 28px (chat toggle), sm 32px, md 48px, lg 64px, xl 96px."
         },
         "className": {
           "optional": true,

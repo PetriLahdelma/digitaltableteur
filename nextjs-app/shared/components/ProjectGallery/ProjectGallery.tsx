@@ -42,7 +42,10 @@ const gapClasses: Record<NonNullable<ProjectGalleryProps["gap"]>, string> = {
   lg: "gap-6",
 };
 
-const columnClasses: Record<NonNullable<ProjectGalleryProps["columns"]>, string> = {
+const columnClasses: Record<
+  NonNullable<ProjectGalleryProps["columns"]>,
+  string
+> = {
   2: "grid-cols-1 tablet:grid-cols-2",
   3: "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3",
   4: "grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-4",
@@ -78,7 +81,7 @@ export function ProjectGallery({
         setLightboxOpen(true);
       }
     },
-    [enableLightbox]
+    [enableLightbox],
   );
 
   const handleKeyDown = useCallback(
@@ -88,7 +91,7 @@ export function ProjectGallery({
         handleImageClick(index);
       }
     },
-    [enableLightbox, handleImageClick]
+    [enableLightbox, handleImageClick],
   );
 
   // Staggered animation for gallery items
@@ -100,7 +103,9 @@ export function ProjectGallery({
       if (!items.length) return;
 
       // Check for reduced motion preference
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
       if (prefersReducedMotion) return;
 
       gsap.set(items, { opacity: 0, y: 30 });
@@ -120,7 +125,7 @@ export function ProjectGallery({
         },
       });
     },
-    { scope: galleryRef, dependencies: [images] }
+    { scope: galleryRef, dependencies: [images] },
   );
 
   // Convert to lightbox format
@@ -140,61 +145,67 @@ export function ProjectGallery({
           "grid",
           columnClasses[columns],
           gapClasses[gap],
-          className
+          className,
         )}
         role="list"
         aria-label="Project gallery"
       >
         {images.map((image, index) => (
-          <figure
+          // role="listitem" lives on a wrapper: axe (aria-allowed-role) does
+          // not allow it on <figure>, which keeps its own figure semantics.
+          <div
             key={`${image.src}-${index}`}
             data-gallery-item
             className="relative group"
             role="listitem"
           >
-            <button
-              type="button"
-              onClick={() => handleImageClick(index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              disabled={!enableLightbox}
-              className={cn(
-                "relative w-full overflow-hidden rounded-lg bg-muted",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                enableLightbox && "cursor-zoom-in",
-                aspectRatio !== "mixed" && aspectClasses[aspectRatio]
-              )}
-              aria-label={enableLightbox ? `View ${image.alt} in fullscreen` : undefined}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
+            <figure>
+              <button
+                type="button"
+                onClick={() => handleImageClick(index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                disabled={!enableLightbox}
                 className={cn(
-                  "object-cover transition-transform duration-300 motion-reduce:transition-none",
-                  enableLightbox &&
-                    "group-hover:scale-105 motion-reduce:group-hover:scale-100",
-                  aspectRatio === "mixed" ? "w-full h-auto" : "w-full h-full"
+                  "relative w-full overflow-hidden rounded-lg bg-muted",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                  enableLightbox && "cursor-zoom-in",
+                  aspectRatio !== "mixed" && aspectClasses[aspectRatio],
                 )}
-                sizes={`(max-width: 768px) 100vw, (max-width: 1200px) ${100 / (columns === 4 ? 3 : columns === 3 ? 2 : 2)}vw, ${100 / columns}vw`}
-              />
-              {/* Hover overlay */}
-              {enableLightbox && (
-                <div
+                aria-label={
+                  enableLightbox ? `View ${image.alt} in fullscreen` : undefined
+                }
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
                   className={cn(
-                    "absolute inset-0 bg-black/0 transition-colors duration-300 motion-reduce:transition-none",
-                    "group-hover:bg-black/20"
+                    "object-cover transition-transform duration-300 motion-reduce:transition-none",
+                    enableLightbox &&
+                      "group-hover:scale-105 motion-reduce:group-hover:scale-100",
+                    aspectRatio === "mixed" ? "w-full h-auto" : "w-full h-full",
                   )}
+                  sizes={`(max-width: 768px) 100vw, (max-width: 1200px) ${100 / (columns === 4 ? 3 : columns === 3 ? 2 : 2)}vw, ${100 / columns}vw`}
                 />
+                {/* Hover overlay */}
+                {enableLightbox && (
+                  <div
+                    className={cn(
+                      "absolute inset-0 bg-black/0 transition-colors duration-300 motion-reduce:transition-none",
+                      "group-hover:bg-black/20",
+                    )}
+                  />
+                )}
+              </button>
+              {/* Caption */}
+              {image.caption && (
+                <figcaption className="mt-2 text-sm text-muted-foreground text-center">
+                  {image.caption}
+                </figcaption>
               )}
-            </button>
-            {/* Caption */}
-            {image.caption && (
-              <figcaption className="mt-2 text-sm text-muted-foreground text-center">
-                {image.caption}
-              </figcaption>
-            )}
-          </figure>
+            </figure>
+          </div>
         ))}
       </div>
 
