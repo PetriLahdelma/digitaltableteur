@@ -235,7 +235,7 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/spec-annotated-v3.webp",
+            src: "/images/portfolio/ring-stats/spec-annotated-v4.webp",
             alt: "Figma Application Views board with popover states, the About window, connection step 3 of 3 and the context menu, surrounded by blue Behavior and pink Accessibility notes linked to specific controls",
             width: 4720,
             height: 3380,
