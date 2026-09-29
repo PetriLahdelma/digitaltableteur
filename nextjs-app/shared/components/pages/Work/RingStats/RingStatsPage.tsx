@@ -30,9 +30,9 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/ring-stats/hero.webp",
-            alt: "Ring Stats popover with Readiness, Sleep and Activity score rings, Heart rate, Stress and ring battery",
-            width: 1680,
+            src: "/images/portfolio/ring-stats/hero-v2.webp",
+            alt: "Ring Stats popover with Readiness, Sleep and Activity score rings, Heart rate, Stress, Resilience and ring battery",
+            width: 1360,
             height: 522,
           }}
           category={project.category.replace("-", " ")}
@@ -156,12 +156,12 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/theme-ring-stats.webp",
-            alt: "Ring Stats theme: warm canvas, signal-blue score rings, battery row and options menu",
+            src: "/images/portfolio/ring-stats/theme-ring-stats-v2.webp",
+            alt: "Ring Stats theme: warm canvas, signal-blue score rings, Resilience enabled and a low battery in alert red",
             width: 1360,
             height: 522,
             caption:
-              "The default theme: warm canvas, dark ink and one signal blue for every score.",
+              "The default theme: warm canvas, dark ink and one signal blue for every score. Red is kept for a battery that needs charging.",
           },
           {
             type: "image",
@@ -170,7 +170,7 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
             width: 1360,
             height: 522,
             caption:
-              "Landscape swaps rings for icons over an original Nordic photograph. Same labels, same states, same order.",
+              "Landscape, same moment: icons over an original Nordic photograph. Same labels, same states, same order.",
           },
         ]}
       />
@@ -231,14 +231,14 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
 flowchart LR
     ring("Ring")
     phone("Phone app\\nsyncs the ring")
-    api("Oura API V2\\nHTTPS")
+    api("Oura API V2\\nenabled stats only")
     subgraph mac["Mac, App Sandbox"]
       app("Ring Stats\\nvalues in memory only")
       kc("Keychain\\ncredentials + tokens")
     end
     ring --> phone
     phone --> api
-    api -- "enabled stats only" --> app
+    api --> app
     app --- kc
     style mac stroke-dasharray:6 4`}
             themeColors={{
@@ -283,33 +283,22 @@ flowchart LR
       />
 
       <GridBlock
-        columns={1}
+        columns={2}
         gap="medium"
         backgroundColor="transparent"
-        maxWidth="md"
+        maxWidth="lg"
         spacing="comfortable"
         className={styles.imageGrid}
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/state-partial-failure.webp",
+            src: "/images/portfolio/ring-stats/state-partial-failure-v2.webp",
             alt: "Partial refresh: Sleep dimmed and marked Not updated, battery marked Not updated, status reads Some stats not updated",
-            width: 1360,
+            width: 840,
             height: 522,
             caption:
               "A partial refresh: Sleep and battery keep their last values and say so.",
           },
-        ]}
-      />
-
-      <GridBlock
-        columns={3}
-        gap="medium"
-        backgroundColor="transparent"
-        maxWidth="lg"
-        spacing="comfortable"
-        className={`${styles.imageGrid} ${styles.statesGrid}`}
-        cells={[
           {
             type: "image",
             src: "/images/portfolio/ring-stats/state-refreshing.webp",

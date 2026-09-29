@@ -97,21 +97,6 @@
   justify-content: flex-end;
 }
 
-/* Popover states: three narrow (420pt) renders read as one row on desktop.
-   GridBlock's grid3Col collapses to 2-col below 1024px, which would orphan
-   the third state, so the doubled class holds three columns down to tablet
-   and stacks below it. */
-
-.statesGrid.statesGrid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@media (width < 768px) {
-  .statesGrid.statesGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* The app icon is a small square object; full column width would make it
    louder than the product screenshots around it. */
 
