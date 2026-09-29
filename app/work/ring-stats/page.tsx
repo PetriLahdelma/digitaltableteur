@@ -4,7 +4,7 @@ import { RingStatsPage } from "@dt-pages/Work/RingStats";
 import { NextWorkNav } from "../NextWorkNav";
 
 const description =
-  "A calm macOS menu-bar glance at today's ring scores and battery: private by default, honest about freshness.";
+  "A weekend project: a calm macOS menu-bar glance at today's ring scores and battery, private by default and honest about freshness.";
 
 export const metadata: Metadata = {
   title: "Ring Stats Case Study | Digitaltableteur",
