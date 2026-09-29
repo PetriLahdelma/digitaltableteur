@@ -53,6 +53,7 @@ const meta = {
     orientation: "horizontal",
     keyboardStep: 5,
     panels,
+    className: "",
   },
   argTypes: {
     orientation: {

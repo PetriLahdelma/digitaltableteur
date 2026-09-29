@@ -38,6 +38,7 @@ const meta = {
     defaultSelectedId: "button",
     nodes,
     size: "md",
+    className: "",
   },
   argTypes: {
     size: {
@@ -48,7 +49,10 @@ const meta = {
     },
     nodes: { table: { disable: true } },
     defaultExpandedIds: { table: { disable: true } },
-    defaultSelectedId: { table: { disable: true } },
+    defaultSelectedId: {
+      control: "text",
+      description: "Node id selected on mount (uncontrolled).",
+    },
     selectedId: { table: { disable: true } },
     expandedIds: { table: { disable: true } },
     "aria-label": {
@@ -87,7 +91,12 @@ export const DisabledNode: Story = {
         label: "Components",
         children: [
           { id: "button", label: "Button" },
-          { id: "legacy", label: "LegacyWidget", disabled: true, description: "retired" },
+          {
+            id: "legacy",
+            label: "LegacyWidget",
+            disabled: true,
+            description: "retired",
+          },
         ],
       },
     ],

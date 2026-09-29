@@ -43,10 +43,15 @@ const meta = {
     // Each visible row renders a VirtualListItem (which composes ListItem);
     // only the ~7 in view (+ overscan) of the 1000 are ever mounted.
     getItemProps: (item) => ({ children: item.label }),
+    initialScrollOffset: 0,
+    className: "",
   },
   argTypes: {
     height: { control: "number", description: "Viewport height in pixels." },
-    itemHeight: { control: "number", description: "Fixed row height in pixels." },
+    itemHeight: {
+      control: "number",
+      description: "Fixed row height in pixels.",
+    },
     overscan: {
       control: "number",
       description: "Extra rows around the viewport.",
@@ -91,7 +96,10 @@ export const Example: Story = {
           New
         </Badge>
       ) : (
-        <StatusDot tone={item.online ? "success" : "neutral"} label={item.online ? "Online" : "Offline"} />
+        <StatusDot
+          tone={item.online ? "success" : "neutral"}
+          label={item.online ? "Online" : "Offline"}
+        />
       ),
     }),
   },
@@ -123,12 +131,12 @@ export const TenThousandRows: Story = {
     viewport.scrollTop = 9000 * 48;
     await waitFor(() => {
       expect(
-        canvas.getByText("Row 9001").closest("[role=\"listitem\"]"),
+        canvas.getByText("Row 9001").closest('[role="listitem"]'),
       ).toHaveAttribute("aria-posinset", "9001");
     });
     await expect(mounted()).toBeLessThanOrEqual(7 + 2 * 3);
     await expect(
-      canvas.getByText("Row 9001").closest("[role=\"listitem\"]"),
+      canvas.getByText("Row 9001").closest('[role="listitem"]'),
     ).toHaveAttribute("aria-setsize", "10000");
   },
 };
@@ -153,7 +161,7 @@ export const KeyboardScroll: Story = {
     viewport.scrollTop = viewport.scrollHeight;
     await waitFor(() => {
       expect(
-        canvas.getByText("Component result 1000").closest("[role=\"listitem\"]"),
+        canvas.getByText("Component result 1000").closest('[role="listitem"]'),
       ).toHaveAttribute("aria-posinset", "1000");
     });
   },
