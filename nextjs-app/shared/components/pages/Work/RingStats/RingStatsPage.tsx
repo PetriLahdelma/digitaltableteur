@@ -406,7 +406,7 @@ flowchart LR
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/connection-create-application-v2.webp",
+            src: "/images/portfolio/ring-stats/connection-create-application-v3.webp",
             alt: "Connection step 1 of 3: create an application in the developer portal",
             width: 920,
             height: 880,
@@ -414,7 +414,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/connection-register-callback-v2.webp",
+            src: "/images/portfolio/ring-stats/connection-register-callback-v3.webp",
             alt: "Connection step 2 of 3: add the loopback callback URL, with a Copy button",
             width: 920,
             height: 880,
@@ -422,7 +422,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/connection-enter-credentials-v2.webp",
+            src: "/images/portfolio/ring-stats/connection-enter-credentials-v3.webp",
             alt: "Connection step 3 of 3: Client ID and Client Secret fields with a Keychain storage note",
             width: 920,
             height: 880,
@@ -430,7 +430,7 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/connection-connected-v2.webp",
+            src: "/images/portfolio/ring-stats/connection-connected-v3.webp",
             alt: "Connected securely confirmation with a shield icon and a Show My Stats button",
             width: 920,
             height: 880,
