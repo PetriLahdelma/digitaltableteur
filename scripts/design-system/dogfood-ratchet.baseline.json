@@ -125,10 +125,6 @@
       "rawElements": 1,
       "utilityLines": 0
     },
-    "nextjs-app/shared/components/ChunkErrorBoundary/ChunkErrorBoundary.tsx": {
-      "rawElements": 1,
-      "utilityLines": 0
-    },
     "nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.tsx": {
       "rawElements": 2,
       "utilityLines": 7
