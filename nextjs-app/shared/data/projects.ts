@@ -67,7 +67,13 @@ export const projects: Project[] = [
     thumbnail:
       "/images/portfolio/dsharp-design-system/dsharp-thumbnail-logo.svg",
     category: "design-systems",
-    tags: ["Design Systems", "AI Architecture", "Data Science", "MCP", "React"],
+    tags: [
+      "Design Systems",
+      "AI Architecture",
+      "Data Science",
+      "MCP",
+      "React",
+    ],
     featured: true,
     order: 1,
     duration: "2026–Present",
@@ -320,9 +326,7 @@ export const categories: CategoryOption[] = [
   { value: "tools", labelKey: "workFilterTools" },
 ];
 
-function projectCategories(
-  project: Project,
-): Exclude<ProjectCategory, "all">[] {
+function projectCategories(project: Project): Exclude<ProjectCategory, "all">[] {
   return [project.category, ...(project.secondaryCategories ?? [])];
 }
 
@@ -372,9 +376,7 @@ export function getRelatedProjects(
   const otherProjects = projects.filter(
     (project) =>
       project.slug !== currentSlug &&
-      !projectCategories(project).some((cat) =>
-        currentCategories.includes(cat),
-      ),
+      !projectCategories(project).some((cat) => currentCategories.includes(cat)),
   );
 
   return [...sameCategory, ...otherProjects].slice(0, maxItems);
@@ -503,10 +505,7 @@ export function resolveProjectNavigationPath(input: string): string | null {
 
   const scored = projects
     .filter((project) => isRoutableProject(project))
-    .map((project) => ({
-      project,
-      score: scoreProjectMatch(project, normalized),
-    }))
+    .map((project) => ({ project, score: scoreProjectMatch(project, normalized) }))
     .filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score);
 
@@ -530,11 +529,9 @@ export function getProjectNavigationCatalog(): Array<{
   title: string;
   url: string;
 }> {
-  return sortedProjects
-    .filter((p) => !p.comingSoon)
-    .map((project) => ({
-      slug: project.slug,
-      title: project.title,
-      url: `/work/${project.slug}`,
-    }));
+  return sortedProjects.filter((p) => !p.comingSoon).map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    url: `/work/${project.slug}`,
+  }));
 }
