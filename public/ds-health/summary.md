@@ -1,6 +1,6 @@
 # Design system health
 
-Generated: 2026-07-16T16:17:55.388Z
+Generated: 2026-09-29T17:14:45.310Z
 
 ## Governance checks
 
@@ -10,8 +10,8 @@ Generated: 2026-07-16T16:17:55.388Z
 
 ## shadcn import inventory (informational)
 
-- `app`: 0 import line(s)
-- `nextjs-app/shared/components`: 7 import line(s)
+- `app`: 7 import line(s)
+- `nextjs-app/shared/components`: 0 import line(s)
 - `nextjs-app/shared/patterns`: 0 import line(s)
 - **Total:** 7 (see report.json for paths)
 
@@ -31,10 +31,10 @@ Generated: 2026-07-16T16:17:55.388Z
 ## Agent Experience
 
 - **Ratchet:** pass
-- **Prop documentation:** 924/1065 (86.8%)
-- **Complete contract evidence:** 134/161
-- **Machine-readable prop relationships:** 2 component(s)
-- **Golden intent retrieval:** 18/20
+- **Prop documentation:** 1066/1188 (89.7%)
+- **Complete contract evidence:** 153/178
+- **Machine-readable prop relationships:** 13 component(s)
+- **Golden intent retrieval:** 19/20
 
 ## Before merging DS changes
 
