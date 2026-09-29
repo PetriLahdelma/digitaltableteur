@@ -30,7 +30,7 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/ring-stats/hero-v2.webp",
+            src: "/images/portfolio/ring-stats/hero-v3.webp",
             alt: "Ring Stats popover with Readiness, Sleep and Activity score rings, Heart rate, Stress, Resilience and ring battery",
             width: 1360,
             height: 522,
@@ -155,16 +155,16 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/theme-ring-stats-v2.webp",
-            alt: "Ring Stats theme: warm canvas, signal-blue score rings, Resilience enabled and a low battery in alert red",
+            src: "/images/portfolio/ring-stats/theme-ring-stats-v3.webp",
+            alt: "Ring Stats theme: warm canvas, signal-blue score rings, Resilience enabled and battery at 76%",
             width: 1360,
             height: 522,
             caption:
-              "The default theme: warm canvas, dark ink and one signal blue for every score. Red is kept for a battery that needs charging.",
+              "The default theme: warm canvas, dark ink and one signal blue for every score.",
           },
           {
             type: "image",
-            src: "/images/portfolio/ring-stats/theme-landscape.webp",
+            src: "/images/portfolio/ring-stats/theme-landscape-v3.webp",
             alt: "Landscape theme: the same stats in white over a dusky Nordic hillside photograph, with Resilience enabled",
             width: 1360,
             height: 522,
