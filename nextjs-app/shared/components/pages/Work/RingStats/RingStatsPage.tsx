@@ -455,9 +455,9 @@ flowchart LR
             mark.
           </Text>,
           <Text key="p2" size="s">
-            The mark is a ring seen at an angle, split where the band turns
-            away. It reads as an object at 17 points in the menu bar and still
-            holds up as the app icon.
+            The mark is a ring seen at an angle, with a gap where the band turns
+            away. The same mark works as the small icon in the menu bar and as
+            the app icon.
           </Text>,
         ]}
         imageLayout="none"
@@ -481,8 +481,7 @@ flowchart LR
             alt: "Ring Stats app icon: a white split ring seen at an angle on a near-black rounded square",
             width: 800,
             height: 800,
-            caption:
-              "The split ring holds up from a 17-point menu-bar glyph to a full app icon.",
+            caption: "The Ring Stats app icon.",
           },
         ]}
       />
