@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-29T16:47:50.765Z",
+  "generatedAt": "2026-09-29T16:54:53.639Z",
   "summary": {
     "componentCount": 179,
     "statusCounts": {
@@ -779,6 +779,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/RingStats/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/RingStats/RingStatsPage.tsx",
             "since": "2026-06-04"
           },
           {
