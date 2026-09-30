@@ -55,13 +55,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.554Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:31:34.879Z",
@@ -75,24 +68,10 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.974Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:31:35.359Z",
             "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:53.197Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.dark.json",
@@ -100,13 +79,6 @@
             "capturedAt": "2026-09-01T10:14:54.757Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.748Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.light.json",
@@ -135,10 +107,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.554Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:20.800Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.light.json",
@@ -155,10 +127,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.974Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:21.362Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.light.json",
@@ -175,10 +147,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:53.197Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:21.409Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.light.json",
@@ -195,10 +167,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.748Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:21.078Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.light.json",
@@ -216,31 +188,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.554Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:20.800Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.974Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:21.362Z",
             "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:53.197Z",
-            "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tooltip/__a11y-evidence__/feedback-tooltip-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:52.748Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:21.078Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

@@ -173,6 +173,13 @@
             "runner": "local-recapture-2026-09-25"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:17.510Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.light.json",
             "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
             "capturedAt": "2026-09-25T16:08:49.995Z",
@@ -187,6 +194,13 @@
             "runner": "local-recapture-2026-09-25"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:17.566Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.light.json",
             "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
             "capturedAt": "2026-09-25T16:08:50.023Z",
@@ -199,6 +213,13 @@
             "capturedAt": "2026-09-25T16:08:59.475Z",
             "passed": true,
             "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:17.427Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.light.json",

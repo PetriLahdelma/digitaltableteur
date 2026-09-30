@@ -488,6 +488,13 @@
             "runner": "local-farm-parity"
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:10:44.223Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.json",
             "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
             "capturedAt": "2026-08-07T12:33:55.173Z",
@@ -529,6 +536,13 @@
             "runner": "local-farm-parity"
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:10:44.913Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.json",
             "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
             "capturedAt": "2026-08-07T12:33:58.094Z",
@@ -547,6 +561,13 @@
             "capturedAt": "2026-09-01T10:12:33.431Z",
             "passed": true,
             "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:10:45.276Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.json",
@@ -609,6 +630,13 @@
             "capturedAt": "2026-09-01T10:12:32.466Z",
             "passed": true,
             "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:10:44.568Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.json",
@@ -691,9 +719,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:10:44.223Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:10:44.913Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:10:45.276Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ProcessBlock/__a11y-evidence__/patterns-processblock-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:10:44.568Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

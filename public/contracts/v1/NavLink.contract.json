@@ -132,6 +132,13 @@
             "runner": "local-recapture-2026-09-25"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:53.353Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-default.light.json",
             "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
             "capturedAt": "2026-09-25T16:09:12.265Z",
@@ -144,6 +151,13 @@
             "capturedAt": "2026-09-25T16:09:17.827Z",
             "passed": true,
             "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:54.143Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-example.light.json",
@@ -160,6 +174,13 @@
             "runner": "local-recapture-2026-09-25"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:54.644Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-forced-colors.light.json",
             "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
             "capturedAt": "2026-09-25T16:09:12.953Z",
@@ -174,6 +195,13 @@
             "runner": "local-recapture-2026-09-25"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:53.710Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-playground.light.json",
             "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
             "capturedAt": "2026-09-25T16:09:12.490Z",
@@ -185,9 +213,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-05"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:53.353Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:54.143Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:54.644Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NavLink/__a11y-evidence__/navigation-navlink-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:53.710Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

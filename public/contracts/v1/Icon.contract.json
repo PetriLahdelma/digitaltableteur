@@ -119,6 +119,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-default.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:08.204Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:25:02.771Z",
@@ -129,6 +136,13 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:36:26.672Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-example.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:08.245Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-example.light.json",
@@ -143,6 +157,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-forced-colors.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:08.597Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:25:04.101Z",
@@ -155,6 +176,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-playground.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:08.163Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-playground.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:25:02.745Z",
@@ -165,9 +193,17 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-26"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Icon/__a11y-evidence__/content-icon-forced-colors.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:08.597Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "aria-requirements",

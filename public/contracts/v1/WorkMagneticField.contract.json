@@ -114,6 +114,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.477Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:57.314Z",
@@ -124,6 +131,13 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:35:56.432Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:52.415Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.light.json",
@@ -138,6 +152,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:52.847Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:58.089Z",
@@ -150,6 +171,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.990Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:57.582Z",
@@ -160,9 +188,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.477Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:52.415Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:52.847Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.990Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

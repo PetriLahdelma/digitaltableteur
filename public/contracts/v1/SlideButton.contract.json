@@ -127,9 +127,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-default.forced-colors.json",
-            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
-            "capturedAt": "2026-07-30T09:02:19.868Z",
-            "passed": true
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:11.088Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-default.light.json",
@@ -146,9 +147,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-example.forced-colors.json",
-            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
-            "capturedAt": "2026-07-30T09:02:20.013Z",
-            "passed": true
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:11.179Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-example.light.json",
@@ -165,9 +167,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-forced-colors.forced-colors.json",
-            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
-            "capturedAt": "2026-07-30T09:02:20.032Z",
-            "passed": true
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:11.227Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-forced-colors.light.json",
@@ -256,9 +259,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-playground.forced-colors.json",
-            "sourceCommit": "603bb8cb8dc731534156897e8607a5851e99b148",
-            "capturedAt": "2026-07-30T09:02:19.992Z",
-            "passed": true
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:11.136Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-playground.light.json",
@@ -271,9 +275,17 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-24"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/SlideButton/__a11y-evidence__/actions-slidebutton-default.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:11.088Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "reduced-motion",

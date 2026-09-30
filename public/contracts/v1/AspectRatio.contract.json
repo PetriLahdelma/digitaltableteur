@@ -52,13 +52,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.524Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:30:06.640Z",
@@ -70,13 +63,6 @@
             "capturedAt": "2026-09-01T10:14:51.630Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.951Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-example.light.json",
@@ -92,13 +78,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:56.171Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:30:07.531Z",
@@ -110,13 +89,6 @@
             "capturedAt": "2026-09-01T10:14:51.422Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.712Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-playground.light.json",
@@ -145,10 +117,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.524Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:52.939Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-default.light.json",
@@ -165,10 +137,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.951Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:53.493Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-example.light.json",
@@ -185,10 +157,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:56.171Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:53.812Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-forced-colors.light.json",
@@ -205,10 +177,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.712Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:53.208Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-playground.light.json",
@@ -226,31 +198,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.524Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:52.939Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.951Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:53.493Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:56.171Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:53.812Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/AspectRatio/__a11y-evidence__/layout-aspectratio-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:55.712Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:53.208Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

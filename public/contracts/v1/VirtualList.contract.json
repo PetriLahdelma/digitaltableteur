@@ -72,83 +72,59 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:06.744Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:50.359Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:40.185Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:45.571Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:07.856Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:50.950Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:40.857Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:46.162Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:08.365Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:51.281Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:41.193Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-keyboard-scroll.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:46.424Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:46.446Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-keyboard-scroll.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:12.826Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:07.242Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:50.643Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:40.511Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-ten-thousand-rows.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:46.120Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:45.860Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-ten-thousand-rows.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:12.539Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           }
         ]
       },
@@ -164,134 +140,125 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:06.744Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:50.359Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-default.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:07.741Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:55.075Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:40.185Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:45.571Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:07.856Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:50.950Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-example.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:07.886Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:55.634Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:40.857Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:46.162Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:08.365Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:51.281Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-forced-colors.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:08.327Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:55.890Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:41.193Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-keyboard-scroll.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:46.424Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:46.446Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-keyboard-scroll.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:08.278Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-keyboard-scroll.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:12.826Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:07.242Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:50.643Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-playground.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:07.801Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:55.341Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:40.511Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-ten-thousand-rows.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:46.120Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:45.860Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-ten-thousand-rows.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:08.207Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-ten-thousand-rows.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:12.539Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           }
         ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-26"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-default.forced-colors.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:55.075Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-example.forced-colors.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:55.634Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-forced-colors.forced-colors.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:55.890Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualList/__a11y-evidence__/data-display-virtuallist-playground.forced-colors.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:55.341Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

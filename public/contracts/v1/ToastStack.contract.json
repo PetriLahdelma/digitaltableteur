@@ -61,13 +61,6 @@
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.473Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:27:47.927Z",
@@ -80,37 +73,16 @@
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.876Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-example.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:27:48.413Z",
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:57.092Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-playground.dark.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:37:22.262Z",
             "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.680Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-playground.light.json",
@@ -138,10 +110,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.473Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:01.610Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-default.light.json",
@@ -157,10 +129,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.876Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:02.150Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-example.light.json",
@@ -176,10 +148,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:57.092Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:02.187Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-forced-colors.light.json",
@@ -195,10 +167,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.680Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:01.851Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-playground.light.json",
@@ -216,31 +188,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.473Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:01.610Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.876Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:02.150Z",
             "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:57.092Z",
-            "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ToastStack/__a11y-evidence__/feedback-toaststack-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:56.680Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:01.851Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

@@ -94,6 +94,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:39:12.449Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:27:30.188Z",
@@ -104,6 +111,13 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:37:35.732Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:39:12.915Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.light.json",
@@ -118,6 +132,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:39:13.144Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:27:30.917Z",
@@ -130,6 +151,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:39:12.689Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:27:30.426Z",
@@ -140,9 +168,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-06-06"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:39:12.449Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:39:12.915Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:39:13.144Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:39:12.689Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

@@ -117,125 +117,59 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:00.144Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:11.880Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:32.766Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-empty.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:46.062Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:07.158Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-empty.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:12.510Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:00.938Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:12.411Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:33.429Z",
-            "passed": true
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:07.695Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:01.535Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:12.698Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:33.727Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-keyboard-interaction.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:47.352Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:07.990Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-keyboard-interaction.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:13.758Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-large-dataset.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:46.749Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-large-dataset.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:13.171Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-overflow.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:47.048Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-overflow.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:13.471Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-paginated.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:45.789Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-paginated.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:12.266Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:00.526Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:12.143Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:33.051Z",
-            "passed": true
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:07.429Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -251,197 +185,125 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:00.144Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:11.880Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-default.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:07.743Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:16.436Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:32.766Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-empty.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:46.062Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:07.158Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-empty.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:07.917Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-empty.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:12.510Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:00.938Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:12.411Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-example.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:07.824Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:16.922Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:33.429Z",
-            "passed": true
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:07.695Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:01.535Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:12.698Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-forced-colors.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:08.342Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:17.173Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:33.727Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-keyboard-interaction.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:47.352Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:07.990Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-keyboard-interaction.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:08.307Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-keyboard-interaction.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:13.758Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-large-dataset.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:46.749Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-large-dataset.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:08.105Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-large-dataset.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:13.171Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-overflow.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:47.048Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-overflow.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:08.218Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-overflow.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:13.471Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-paginated.dark.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:45.789Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-paginated.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:07.886Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-paginated.light.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:37:12.266Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:00.526Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:12.143Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-playground.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:07.780Z",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:16.681Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:33.051Z",
-            "passed": true
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:07.429Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-26"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-default.forced-colors.json",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:16.436Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-example.forced-colors.json",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:16.922Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-forced-colors.forced-colors.json",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:17.173Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/DataTable/__a11y-evidence__/data-display-datatable-playground.forced-colors.json",
+            "sourceCommit": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+            "capturedAt": "2026-09-29T19:25:16.681Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

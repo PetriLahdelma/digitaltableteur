@@ -80,6 +80,7 @@
     ]
   },
   "source": [
+    "../../../nextjs-app/shared/patterns/ArticleLayout/ArticleLayout.module.css",
     "../../../nextjs-app/shared/patterns/ArticleLayout/ArticleLayout.tsx"
   ]
 }

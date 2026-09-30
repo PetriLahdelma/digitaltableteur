@@ -67,10 +67,10 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:22.890Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:59:32.776Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.light.json",
@@ -80,10 +80,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:23.194Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:59:33.151Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.light.json",
@@ -93,10 +93,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:23.561Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:59:33.480Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.light.json",
@@ -118,10 +118,17 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:22.890Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:59:32.776Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:48.007Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.light.json",
@@ -131,10 +138,17 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:23.194Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:59:33.151Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:48.336Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.light.json",
@@ -144,10 +158,17 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:23.561Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:59:33.480Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:48.644Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.light.json",
@@ -157,10 +178,17 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:22.920Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:59:32.841Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:48.072Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-playground.light.json",
@@ -173,9 +201,31 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-05"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:48.007Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:48.336Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/IconButton/__a11y-evidence__/actions-iconbutton-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:48.644Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

@@ -75,6 +75,7 @@
     ]
   },
   "source": [
+    "../../../nextjs-app/shared/patterns/ProjectDetailLayout/ProjectDetailLayout.module.css",
     "../../../nextjs-app/shared/patterns/ProjectDetailLayout/ProjectDetailLayout.tsx"
   ]
 }

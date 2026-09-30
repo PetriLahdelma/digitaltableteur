@@ -113,10 +113,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-example.forced-colors.json",
-            "sourceCommit": "c380345d06d3d3a681e1cee3fa6264f6c5491c5d",
-            "capturedAt": "2026-07-26T21:54:16.444Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:48.753Z",
             "passed": true,
-            "runner": "fix-hcb-checkbox"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-example.light.json",
@@ -132,10 +132,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.forced-colors.json",
-            "sourceCommit": "c380345d06d3d3a681e1cee3fa6264f6c5491c5d",
-            "capturedAt": "2026-07-26T21:54:16.464Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:49.058Z",
             "passed": true,
-            "runner": "fix-hcb-checkbox"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.light.json",
@@ -148,9 +148,17 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-26"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:49.058Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

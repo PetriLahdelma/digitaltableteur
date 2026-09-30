@@ -132,6 +132,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:45.349Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:27:18.780Z",
@@ -142,6 +149,13 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:36:40.183Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:45.612Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.light.json",
@@ -156,6 +170,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:45.885Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:27:19.196Z",
@@ -166,9 +187,31 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-06"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:45.349Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:45.612Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:45.885Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "reduced-motion",

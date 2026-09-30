@@ -136,6 +136,13 @@
             "runner": "local-farm-parity"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.000Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.json",
             "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
             "capturedAt": "2026-08-07T12:36:48.723Z",
@@ -154,6 +161,13 @@
             "capturedAt": "2026-09-01T10:14:58.313Z",
             "passed": true,
             "runner": "local-farm-parity"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.846Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.json",
@@ -176,6 +190,13 @@
             "runner": "local-farm-parity"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-forced-colors.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.909Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-forced-colors.json",
             "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
             "capturedAt": "2026-08-07T12:36:49.290Z",
@@ -196,6 +217,13 @@
             "runner": "local-farm-parity"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.409Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.json",
             "sourceCommit": "d856f95afca735a7c9aee3e70996749f3181aa8f",
             "capturedAt": "2026-08-07T12:36:48.981Z",
@@ -213,9 +241,31 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-12"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-default.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.000Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-example.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.846Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CommandPalette/__a11y-evidence__/navigation-commandpalette-playground.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:11:51.409Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

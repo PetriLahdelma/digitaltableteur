@@ -23,7 +23,7 @@
     "className": {
       "type": "string",
       "optional": true,
-      "description": "Optional wrapper class."
+      "description": "Additional class name applied to the badge root."
     }
   },
   "accessibility": {
@@ -70,6 +70,12 @@
           "4.1.2"
         ],
         "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "unverified",
+        "note": "Marked reviewed, but no review date was recorded."
       }
     ]
   },

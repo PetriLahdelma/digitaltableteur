@@ -55,13 +55,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.281Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:33:14.724Z",
@@ -73,13 +66,6 @@
             "capturedAt": "2026-09-01T10:11:57.052Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.728Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-example.light.json",
@@ -95,13 +81,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.943Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:33:15.420Z",
@@ -113,13 +92,6 @@
             "capturedAt": "2026-09-01T10:11:56.736Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.512Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-playground.light.json",
@@ -148,10 +120,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.281Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:57.745Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-default.light.json",
@@ -168,10 +140,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.728Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:58.278Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-example.light.json",
@@ -188,10 +160,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.943Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:58.578Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-forced-colors.light.json",
@@ -208,10 +180,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.512Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:58.007Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-playground.light.json",
@@ -229,31 +201,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.281Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:57.745Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.728Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:58.278Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.943Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:58.578Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MCPActionButton/__a11y-evidence__/site-mcpactionbutton-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:58.512Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:58.007Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

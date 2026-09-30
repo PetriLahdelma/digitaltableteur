@@ -92,13 +92,6 @@
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.455Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:28:41.596Z",
@@ -109,13 +102,6 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:34:30.912Z",
             "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.883Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-example.light.json",
@@ -130,13 +116,6 @@
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:29.081Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:28:43.258Z",
@@ -147,13 +126,6 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:34:30.679Z",
             "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.681Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-playground.light.json",
@@ -169,13 +141,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.242Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:32:28.865Z",
@@ -187,13 +152,6 @@
             "capturedAt": "2026-09-01T10:12:37.662Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.626Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-example.light.json",
@@ -209,13 +167,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.835Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:32:29.568Z",
@@ -227,13 +178,6 @@
             "capturedAt": "2026-09-01T10:12:37.317Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.427Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-playground.light.json",
@@ -261,10 +205,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.455Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:44.213Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-default.light.json",
@@ -280,10 +224,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.883Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:44.741Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-example.light.json",
@@ -299,10 +243,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:29.081Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:45.015Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-forced-colors.light.json",
@@ -318,10 +262,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.681Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:44.460Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-playground.light.json",
@@ -338,10 +282,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.242Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.063Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-default.light.json",
@@ -358,10 +302,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.626Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.578Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-example.light.json",
@@ -378,10 +322,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.835Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.856Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-forced-colors.light.json",
@@ -398,10 +342,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.427Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.320Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-playground.light.json",
@@ -419,59 +363,59 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.455Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:44.213Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.883Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:44.741Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:29.081Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:45.015Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecard-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:28.681Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:44.460Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.242Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.063Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.626Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.578Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.835Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.856Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SelectableCard/__a11y-evidence__/layout-selectablecardgroup-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:00.427Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.320Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

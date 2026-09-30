@@ -68,13 +68,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:09.822Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:33:45.724Z",
@@ -86,13 +79,6 @@
             "capturedAt": "2026-09-01T10:14:30.711Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.054Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.light.json",
@@ -108,24 +94,10 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.249Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:33:46.193Z",
             "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.433Z",
-            "passed": true,
-            "runner": "backfill"
           }
         ]
       },
@@ -148,10 +120,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:09.822Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:03:49.015Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.light.json",
@@ -168,10 +140,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.054Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:03:49.276Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.light.json",
@@ -188,10 +160,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.249Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:03:49.581Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.light.json",
@@ -208,10 +180,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.433Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:03:49.612Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-playground.light.json",
@@ -229,31 +201,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:09.822Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:03:49.015Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.054Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:03:49.276Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.249Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:03:49.581Z",
             "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:10.433Z",
-            "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },
