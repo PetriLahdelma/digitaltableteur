@@ -1,12 +1,16 @@
 {
   "storyId": "data-display-datatable-playground",
   "mode": "forced-colors",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:38:07.780Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+  "capturedAt": "2026-09-29T19:25:16.681Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

@@ -3,6 +3,7 @@
 import { type ReactNode, type RefObject } from "react";
 import { cn } from "../../lib/cn";
 import { ReadingProgress } from "../../components/ReadingProgress";
+import styles from "./ArticleLayout.module.css";
 
 export interface ArticleLayoutProps {
   /** Navigation slot (back link, etc.) */
@@ -56,12 +57,10 @@ export function ArticleLayout({
       {/* Navigation - sticky below header with yellow background */}
       {nav && (
         <div
-          className="sticky top-20 z-30 flex w-full items-center border-b border-border"
-          style={{
-            backgroundColor: "var(--logo-background)",
-            color: "var(--logo-color)",
-            ["--color-primary" as string]: "var(--logo-color)",
-          }}
+          className={cn(
+            "sticky top-20 z-30 flex w-full items-center border-b border-border",
+            styles.brandNav,
+          )}
         >
           {nav}
         </div>

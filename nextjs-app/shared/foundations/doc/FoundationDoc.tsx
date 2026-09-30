@@ -20,14 +20,14 @@ export function FoundationPage({
   return (
     <article className={styles.page}>
       <header className={styles.section}>
-        <h1 className={styles.sectionTitle} style={{ fontSize: "var(--font-size-title-m)" }}>
+        <h1 className={`${styles.sectionTitle} ${styles.pageTitle}`}>
           {title}
         </h1>
         <p className={styles.lead}>{lead}</p>
         <p className={styles.callout}>
-          Source of truth: <code>{catalog.source}</code> — {catalog.tokenCount} tokens in the
-          light-theme <code>:root</code> block. Storybook themes mirror production (
-          <code>ThemeProvider</code>: light, dark, HCB, HCW).
+          Source of truth: <code>{catalog.source}</code> — {catalog.tokenCount}{" "}
+          tokens in the light-theme <code>:root</code> block. Storybook themes
+          mirror production (<code>ThemeProvider</code>: light, dark, HCB, HCW).
         </p>
       </header>
       {children}
@@ -90,7 +90,9 @@ export function ColorSwatch({
       <figcaption className={styles.swatchMeta}>
         <strong>{label}</strong>
         <code>{token}</code>
-        {resolved ? <span className={styles.swatchResolved}>{resolved}</span> : null}
+        {resolved ? (
+          <span className={styles.swatchResolved}>{resolved}</span>
+        ) : null}
       </figcaption>
     </figure>
   );
@@ -129,7 +131,13 @@ export function TokenTable({ tokens }: { tokens: TokenRef[] }) {
   );
 }
 
-export function SpaceScale({ prefix, keys }: { prefix: string; keys: readonly string[] }) {
+export function SpaceScale({
+  prefix,
+  keys,
+}: {
+  prefix: string;
+  keys: readonly string[];
+}) {
   return (
     <div>
       {keys.map((k) => {
@@ -208,11 +216,7 @@ export function MotionDemo({
           setActive(false);
           requestAnimationFrame(() => setActive(true));
         }}
-        style={{
-          fontFamily: "var(--font-text)",
-          fontSize: "var(--font-size-text-s)",
-          padding: "var(--space-internal-8) var(--space-internal-12)",
-        }}
+        className={styles.replayButton}
       >
         Replay
       </button>
@@ -237,8 +241,6 @@ export function getCatalogGroups(category: string, subgroup?: string) {
   );
 }
 
-
-
 export type ContrastResult = {
   id: string;
   label: string;
@@ -262,7 +264,9 @@ export function ContrastMatrix({
   themeClass?: string;
 }) {
   return (
-    <div className={`${styles.themePanel} ${themeClass}`.trim()} style={{ marginBlockEnd: "var(--space-layout-24)" }}>
+    <div
+      className={`${styles.themePanel} ${styles.themePanelSpaced} ${themeClass}`.trim()}
+    >
       <div className={styles.themeLabel}>{themeLabel}</div>
       <div className={styles.tableWrap}>
         <table className={styles.contrastTable}>
@@ -279,14 +283,17 @@ export function ContrastMatrix({
               <tr key={row.id}>
                 <td>
                   <div>{row.label}</div>
-                  <code style={{ fontSize: "0.65rem" }}>
+                  <code className={styles.pairCode}>
                     {row.fg} / {row.bg}
                   </code>
                 </td>
                 <td>
                   <span
                     className={styles.contrastSample}
-                    style={{ color: `var(${row.fg})`, background: `var(${row.bg})` }}
+                    style={{
+                      color: `var(${row.fg})`,
+                      background: `var(${row.bg})`,
+                    }}
                   >
                     Aa
                   </span>
@@ -296,7 +303,11 @@ export function ContrastMatrix({
                   {row.pass === null ? (
                     "N/A"
                   ) : (
-                    <span className={row.pass ? styles.contrastPass : styles.contrastFail}>
+                    <span
+                      className={
+                        row.pass ? styles.contrastPass : styles.contrastFail
+                      }
+                    >
                       {row.level}
                     </span>
                   )}
@@ -356,4 +367,3 @@ export function TokenCatalogSearch() {
 
 export const FOUNDATION_THEMES = catalog.themes;
 export const FOUNDATION_CONTRAST = catalog.contrastByTheme;
-

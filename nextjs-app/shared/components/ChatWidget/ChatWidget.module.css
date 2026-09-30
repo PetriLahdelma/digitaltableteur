@@ -107,59 +107,53 @@
   color: var(--color-success);
 }
 
-/* stylelint-disable declaration-no-important -- Overriding Text component styles */
+/* Header copy: `.header .x` (two classes) already outranks the Text and
+   Title base classes (one class each), so no !important is needed. */
 
 .header .tagline {
-  margin: 0 !important;
-  font-family: var(--font-body), var(--font-sans), sans-serif !important;
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
+  margin: 0;
+  font-family: var(--font-body), var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--secondary-text-color) !important;
+  color: var(--secondary-text-color);
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
 
 .header .tagline,
 .header .tagline * {
-  font-family: var(--font-body, sans-serif) !important;
+  font-family: var(--font-body, sans-serif);
 }
-/* stylelint-enable declaration-no-important */
-
-/* stylelint-disable declaration-no-important -- Overriding Text component styles */
 
 .offlineText {
   display: inline-block;
   margin-inline-start: 0.5rem;
-  font-family: var(--font-body), var(--font-sans), sans-serif !important;
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
+  font-family: var(--font-body), var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-error);
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
-/* stylelint-enable declaration-no-important */
-
-/* stylelint-disable declaration-no-important -- Overriding Title component styles */
 
 .header .title {
-  margin: 0 !important;
-  font-family: var(--font-body), var(--font-sans), sans-serif !important;
-  font-size: 1.25rem !important;
-  font-weight: 700 !important;
-  color: var(--color-title) !important;
+  margin: 0;
+  font-family: var(--font-body), var(--font-sans), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-title);
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
 
 .header .title,
 .header .title * {
-  font-family: var(--font-body, sans-serif) !important;
+  font-family: var(--font-body, sans-serif);
 }
-/* stylelint-enable declaration-no-important */
 
 .subtitle {
   margin: 0;
@@ -442,8 +436,6 @@
   justify-content: center;
   align-items: center;
   border: none;
-  /* stylelint-disable-next-line declaration-no-important -- Override Button component styles */
-  border-radius: var(--radius-lg) !important;
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -451,6 +443,12 @@
     background-color 0.2s ease;
   appearance: none;
   translate: 0 -50%;
+}
+
+/* Two classes outrank Button's one-class base radius. */
+
+.inputShell .sendButton {
+  border-radius: var(--radius-lg);
 }
 
 .sendButton:hover:not(:disabled) {
@@ -475,13 +473,9 @@
   justify-content: center;
   align-items: center;
   border: none;
-  /* stylelint-disable-next-line declaration-no-important -- Override Button variant styles */
-  background: var(--logo-background) !important;
   box-shadow: var(--shadow-xl);
   font-family: inherit;
   font-size: 0.95rem;
-  /* stylelint-disable-next-line declaration-no-important -- Override Button variant styles */
-  color: var(--primary-text-color) !important;
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -520,6 +514,16 @@
   }
 }
 
+/* Button's primary variant paints background-color: var(--btn-accent) and
+   color: var(--btn-on-accent), both declared on .button (one class). Setting
+   the variables one class higher keeps the brand fill in every Button state
+   without !important; the theme blocks below go one class higher again. */
+
+.toggle.toggle {
+  --btn-accent: var(--logo-background);
+  --btn-on-accent: var(--primary-text-color);
+}
+
 /* Override default Button internal spacing for chat toggle specifically */
 
 /* Increased specificity via parent state removes need for previous !important overrides */
@@ -542,10 +546,6 @@
 
 .toggleAvatar {
   margin: -4px;
-
-  /* Override size to match icon size in button */
-  inline-size: 28px !important;
-  block-size: 28px !important;
   transition: transform 0.2s
     var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
@@ -572,13 +572,14 @@
 }
 
 .shortcutHint {
-  margin: 0;
-  /* stylelint-disable-next-line declaration-no-important -- Ensure spacing consistency */
-  margin-block-end: 0 !important;
   background-color: transparent;
   font-family: var(--font-body, sans-serif);
   font-size: 0.85rem;
   color: var(--shortcut-hint-color, #4b5563);
+}
+
+.hintRow .shortcutHint {
+  margin: 0;
 }
 
 /* Inline reset action: matches the shortcut hint typography but sits one
@@ -771,8 +772,13 @@
 
 :global(.themeHCB) .sendButton {
   background: transparent;
-  /* stylelint-disable-next-line declaration-no-important -- Outrank .button.tertiary variant color */
-  color: #fff !important;
+}
+
+/* :is(:enabled, :disabled) weighs one pseudo-class, so this single
+   selector outranks .button.tertiary and its :disabled rule. */
+
+:global(.themeHCB) .inputShell .sendButton:is(:enabled, :disabled) {
+  color: #fff;
 }
 
 :global(.themeHCB) .header {
@@ -829,8 +835,13 @@
 
 :global(.themeHCW) .sendButton {
   background: transparent;
-  /* stylelint-disable-next-line declaration-no-important -- Outrank .button.tertiary variant color */
-  color: #000 !important;
+}
+
+/* :is(:enabled, :disabled) weighs one pseudo-class, so this single
+   selector outranks .button.tertiary and its :disabled rule. */
+
+:global(.themeHCW) .inputShell .sendButton:is(:enabled, :disabled) {
+  color: #000;
 }
 
 :global(.themeHCW) .header {
@@ -853,9 +864,8 @@
 
 /* Chat Toggle - Dark theme: white text on purple toggle for contrast */
 
-:global(.themeDark) .toggle {
-  /* stylelint-disable-next-line declaration-no-important -- Override for dark theme contrast */
-  color: #fff !important;
+:global(.themeDark) .toggle.toggle {
+  --btn-on-accent: #fff;
 }
 
 :global(.themeDark) .toggleLabel {
@@ -874,10 +884,11 @@
 
 :global(.themeHCB) .toggle {
   border: 2px solid #000;
-  /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
-  background: #fff !important;
-  /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
-  color: #000 !important;
+}
+
+:global(.themeHCB) .toggle.toggle {
+  --btn-accent: #fff;
+  --btn-on-accent: #000;
 }
 
 :global(.themeHCB) .toggleLabel {
@@ -895,10 +906,11 @@
 
 :global(.themeHCW) .toggle {
   border: 2px solid #fff;
-  /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
-  background: #000 !important;
-  /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
-  color: #fff !important;
+}
+
+:global(.themeHCW) .toggle.toggle {
+  --btn-accent: #000;
+  --btn-on-accent: #fff;
 }
 
 :global(.themeHCW) .toggleLabel {

@@ -274,8 +274,8 @@
   - /placeholder: No file selected
 - button "Choose file"
 - paragraph: "Max 2 MB. Accepted formats: PDF, PNG, JPG."
-- text: How did you hear about us?
-- combobox "How did you hear about us?":
+- text: How did you hear about Digitaltableteur?
+- combobox "How did you hear about Digitaltableteur?":
   - option "Select an option" [selected]
   - option "Social media"
   - option "Search engine"
@@ -285,7 +285,7 @@
   - option "Other"
 - img "Toggle options"
 - paragraph:
-  - text: "*By pressing submit you agree for your information to be processed according to our"
+  - text: "*By pressing submit you agree for your information to be processed according to the"
   - link "privacy policy":
     - /url: /privacy-policy
   - text: .

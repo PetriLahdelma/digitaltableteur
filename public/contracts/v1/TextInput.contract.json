@@ -142,10 +142,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.forced-colors.json",
-            "sourceCommit": "b7ca85a33df1343202006569dc6680dee1c20a8b",
-            "capturedAt": "2026-07-26T19:41:37.500Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:00.355Z",
             "passed": true,
-            "runner": "fix-textinput-evidence"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.light.json",
@@ -161,10 +161,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.forced-colors.json",
-            "sourceCommit": "b7ca85a33df1343202006569dc6680dee1c20a8b",
-            "capturedAt": "2026-07-26T19:41:37.598Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:00.445Z",
             "passed": true,
-            "runner": "fix-textinput-evidence"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.light.json",
@@ -180,10 +180,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.forced-colors.json",
-            "sourceCommit": "b7ca85a33df1343202006569dc6680dee1c20a8b",
-            "capturedAt": "2026-07-26T19:41:37.621Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:00.486Z",
             "passed": true,
-            "runner": "fix-textinput-evidence"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.light.json",
@@ -199,10 +199,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.forced-colors.json",
-            "sourceCommit": "b7ca85a33df1343202006569dc6680dee1c20a8b",
-            "capturedAt": "2026-07-26T19:41:37.576Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:00.403Z",
             "passed": true,
-            "runner": "fix-textinput-evidence"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.light.json",
@@ -215,9 +215,17 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-26"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.forced-colors.json",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:12:00.355Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

@@ -100,13 +100,6 @@
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.542Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:12.738Z",
@@ -117,13 +110,6 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:37:09.256Z",
             "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.741Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-example.light.json",
@@ -138,13 +124,6 @@
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.928Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:13.177Z",
@@ -155,13 +134,6 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:37:08.826Z",
             "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.321Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-playground.light.json",
@@ -189,10 +161,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.542Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:45.950Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-default.light.json",
@@ -208,10 +180,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.741Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:46.233Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-example.light.json",
@@ -227,10 +199,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.928Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:46.504Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-forced-colors.light.json",
@@ -246,10 +218,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.321Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:45.698Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-playground.light.json",
@@ -267,31 +239,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.542Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:45.950Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.741Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:46.233Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.928Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:46.504Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/RadioGroup/__a11y-evidence__/forms-radiogroup-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:43:14.321Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:45.698Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

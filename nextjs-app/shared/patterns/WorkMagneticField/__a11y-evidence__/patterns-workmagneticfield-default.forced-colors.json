@@ -1,19 +1,16 @@
 {
   "storyId": "patterns-workmagneticfield-default",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:42:49.833Z",
-  "runner": "backfill",
+  "sourceSHA": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+  "capturedAt": "2026-09-29T19:11:51.477Z",
+  "runner": "local",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     },
     "forced-colors-real-browser": {
-      "passed": true
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

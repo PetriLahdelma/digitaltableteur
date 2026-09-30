@@ -1,12 +1,16 @@
 {
   "storyId": "forms-combobox-playground",
   "mode": "forced-colors",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:39:01.337Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:05:08.609Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

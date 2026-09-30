@@ -44,7 +44,9 @@ export default meta;
 type Story = StoryObj<typeof AlertBanner>;
 
 export const Info: Story = {
-  tags: ["example"],
+  // Default aliases Info; tagging it puts one axe-checked story in the
+  // matrix (the others opt out).
+  tags: ["example", "beta-matrix"],
   parameters: {
     docs: {
       description: {

@@ -118,7 +118,8 @@ export const Z_ContactFormCompliance: Story = {
 };
 
 export const Default: Story = {
-  parameters: { a11y: { disable: true } },
+  // Axe runs here (meta a11y.test "error"); the other matrix stories render
+  // the same form and stay opted out, as in SiteFooter.
   tags: ["beta-matrix"],
 };
 Default.play = async ({ canvasElement }) => {

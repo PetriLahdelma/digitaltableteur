@@ -13,7 +13,13 @@ const meta = {
     a11y: { test: "error" },
     contractStatus: contract.status,
   },
-  args: { size: "md" },
+  // Seeded so href/className render operable text controls, not "Set string".
+  // The href is the English report the default story already links to.
+  args: {
+    size: "md",
+    href: "/docs/reliable-partner/reliable-partner-report-en.pdf",
+    className: "",
+  },
 } satisfies Meta<typeof ReliablePartnerBadge>;
 
 export default meta;
@@ -58,7 +64,14 @@ export const Languages: Story = {
     },
   },
   render: () => (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "2rem",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <InLanguage language="fi">
         <ReliablePartnerBadge size="md" />
       </InLanguage>
@@ -83,7 +96,14 @@ export const Sizes: Story = {
     },
   },
   render: () => (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "2rem",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <ReliablePartnerBadge size="sm" />
       <ReliablePartnerBadge size="md" />
       <ReliablePartnerBadge size="lg" />
@@ -128,11 +148,13 @@ export const Example: Story = {
     >
       <ReliablePartnerBadge size="lg" />
       <div style={{ display: "grid", gap: "0.5rem" }}>
-        <p style={{ margin: 0, fontWeight: 600 }}>A Vastuu Group Reliable Partner</p>
+        <p style={{ margin: 0, fontWeight: 600 }}>
+          A Vastuu Group Reliable Partner
+        </p>
         <p style={{ margin: 0, fontSize: "0.875rem", lineHeight: 1.5 }}>
-          Tax, pension and employer obligations are continuously verified through
-          Vastuu Group&apos;s Reliable Partner programme, as required by the Finnish
-          Contractor&apos;s Obligations Act.
+          Tax, pension and employer obligations are continuously verified
+          through Vastuu Group&apos;s Reliable Partner programme, as required by
+          the Finnish Contractor&apos;s Obligations Act.
         </p>
       </div>
     </div>

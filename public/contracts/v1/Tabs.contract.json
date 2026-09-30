@@ -72,25 +72,18 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
-            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.602Z",
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-default.dark.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:13.754Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.840Z",
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-default.light.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:03.064Z",
             "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.357Z",
-            "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },
@@ -105,61 +98,88 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-default.dark.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:13.754Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-default.forced-colors.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:20.946Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-default.light.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:03.064Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:06.789Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:13.815Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.602Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:21.008Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:30.859Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:03.121Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:06.818Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:13.837Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.840Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:21.033Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:30.890Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:03.145Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:06.749Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:13.786Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.357Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:20.978Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:30.810Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:03.093Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -170,25 +190,11 @@
         "check": "npm run test:stories:hc",
         "evidence": [
           {
-            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.602Z",
+            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-default.forced-colors.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:20.946Z",
             "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.840Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Tabs/__a11y-evidence__/navigation-tabs-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.357Z",
-            "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

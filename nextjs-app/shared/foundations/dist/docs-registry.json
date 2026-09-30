@@ -393,7 +393,7 @@
         {
           "story": "Info",
           "description": "The default tone: a polite status with the info icon announced by name, so color is never the only signal.",
-          "source": "export const Info: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The default tone: a polite status with the info icon announced by name, so color is never the only signal.\",\n      },\n    },\n  },\n  args: {\n    tone: \"info\",\n    title: \"Heads up\",\n    description: \"This is an informational message.\",\n  },\n};"
+          "source": "export const Info: Story = {\n  // Default aliases Info; tagging it puts one axe-checked story in the\n  // matrix (the others opt out).\n  tags: [\"example\", \"beta-matrix\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The default tone: a polite status with the info icon announced by name, so color is never the only signal.\",\n      },\n    },\n  },\n  args: {\n    tone: \"info\",\n    title: \"Heads up\",\n    description: \"This is an informational message.\",\n  },\n};"
         },
         {
           "story": "Warning",
@@ -1552,32 +1552,32 @@
         {
           "story": "Tones",
           "description": "Filled tones; a status icon is auto-resolved for every non-neutral tone.",
-          "source": "export const Tones: Story = {\n  tags: [\"example\"],\n  parameters: { docs: { description: { story: \"Filled tones; a status icon is auto-resolved for every non-neutral tone.\" } } }, render: () => <TonesContent /> };\n\nconst SecondaryContent: React.FC = () => {\n  const { t } = useTranslation();\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", flexWrap: \"wrap\" }}>\n      <Badge variant=\"secondary\">{t(\"badgeSecondary\")}</Badge>\n      <Badge variant=\"secondary\" tone=\"success\">\n        {t(\"badgeSuccess\")}\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"error\">\n        {t(\"badgeError\")}\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"warning\">\n        {t(\"badgeWarning\")}\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"info\">\n        {t(\"badgeInfo\")}\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"neutral\">\n        {t(\"badgeNeutral\")}\n      </Badge>\n    </div>\n  );\n};"
+          "source": "export const Tones: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Filled tones; a status icon is auto-resolved for every non-neutral tone.\",\n      },\n    },\n  },\n  render: () => <TonesContent />,\n};\n\nconst SecondaryContent: React.FC = () => {\n  const { t } = useTranslation();\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", flexWrap: \"wrap\" }}>\n      <Badge variant=\"secondary\">{t(\"badgeSecondary\")}</Badge>\n      <Badge variant=\"secondary\" tone=\"success\">\n        {t(\"badgeSuccess\")}\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"error\">\n        {t(\"badgeError\")}\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"warning\">\n        {t(\"badgeWarning\")}\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"info\">\n        {t(\"badgeInfo\")}\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"neutral\">\n        {t(\"badgeNeutral\")}\n      </Badge>\n    </div>\n  );\n};"
         },
         {
           "story": "SecondaryVariants",
           "description": "Outlined weight across the tone matrix, for surfaces where a filled badge would compete.",
-          "source": "export const SecondaryVariants: Story = {\n  tags: [\"example\"],\n  parameters: { docs: { description: { story: \"Outlined weight across the tone matrix, for surfaces where a filled badge would compete.\" } } }, render: () => <SecondaryContent /> };"
+          "source": "export const SecondaryVariants: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Outlined weight across the tone matrix, for surfaces where a filled badge would compete.\",\n      },\n    },\n  },\n  render: () => <SecondaryContent />,\n};"
         },
         {
           "story": "Removable",
           "description": "Filter-chip mode; the dismiss affordance is an internal Button with a translated accessible name.",
-          "source": "export const Removable: Story = {\n  tags: [\"example\"],\n  parameters: { docs: { description: { story: \"Filter-chip mode; the dismiss affordance is an internal Button with a translated accessible name.\" } } },\n  render: Template,\n  args: { removable: true, children: \"badgeRemovable\", variant: \"primary\" },\n};"
+          "source": "export const Removable: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Filter-chip mode; the dismiss affordance is an internal Button with a translated accessible name.\",\n      },\n    },\n  },\n  render: Template,\n  args: { removable: true, children: \"badgeRemovable\", variant: \"primary\" },\n};"
         },
         {
           "story": "WithIcon",
           "description": "Custom icon next to the label via the icon slot.",
-          "source": "export const WithIcon: Story = {\n  tags: [\"example\"],\n  parameters: { docs: { description: { story: \"Custom icon next to the label via the icon slot.\" } } },\n  render: Template,\n  args: { variant: \"primary\", tone: \"info\", children: \"badgeInfo\", iconName: \"info\" },\n};\n\n/** `dot` swaps the semantic icon for a color-coded StatusDot — lifecycle labels. */"
+          "source": "export const WithIcon: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"Custom icon next to the label via the icon slot.\",\n      },\n    },\n  },\n  render: Template,\n  args: {\n    variant: \"primary\",\n    tone: \"info\",\n    children: \"badgeInfo\",\n    iconName: \"info\",\n  },\n};\n\n/** `dot` swaps the semantic icon for a color-coded StatusDot — lifecycle labels. */"
         },
         {
           "story": "LifecycleDots",
           "description": "dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).",
-          "source": "export const LifecycleDots: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).\",\n      },\n    },\n  },\n  render: () => (\n    <div style={{ display: \"flex\", gap: \"0.75rem\", alignItems: \"center\", flexWrap: \"wrap\" }}>\n      <Badge variant=\"secondary\" tone=\"warning\" size=\"sm\" dot>\n        alpha\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"info\" size=\"sm\" dot>\n        beta\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"success\" size=\"sm\" dot>\n        stable\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"error\" size=\"sm\" dot>\n        deprecated\n      </Badge>\n    </div>\n  ),\n};\n\nconst SizesContent: React.FC = () => {\n  const { t } = useTranslation();\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", alignItems: \"center\" }}>\n      <Badge size=\"xs\">{t(\"badgeExtraSmall\")}</Badge>\n      <Badge size=\"sm\">{t(\"badgeSmall\")}</Badge>\n      <Badge size=\"md\">{t(\"badgeMedium\")}</Badge>\n      <Badge size=\"lg\">{t(\"badgeLarge\")}</Badge>\n    </div>\n  );\n};"
+          "source": "export const LifecycleDots: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).\",\n      },\n    },\n  },\n  render: () => (\n    <div\n      style={{\n        display: \"flex\",\n        gap: \"0.75rem\",\n        alignItems: \"center\",\n        flexWrap: \"wrap\",\n      }}\n    >\n      <Badge variant=\"secondary\" tone=\"warning\" size=\"sm\" dot>\n        alpha\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"info\" size=\"sm\" dot>\n        beta\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"success\" size=\"sm\" dot>\n        stable\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"error\" size=\"sm\" dot>\n        deprecated\n      </Badge>\n    </div>\n  ),\n};\n\nconst SizesContent: React.FC = () => {\n  const { t } = useTranslation();\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", alignItems: \"center\" }}>\n      <Badge size=\"xs\">{t(\"badgeExtraSmall\")}</Badge>\n      <Badge size=\"sm\">{t(\"badgeSmall\")}</Badge>\n      <Badge size=\"md\">{t(\"badgeMedium\")}</Badge>\n      <Badge size=\"lg\">{t(\"badgeLarge\")}</Badge>\n    </div>\n  );\n};"
         },
         {
           "story": "Sizes",
           "description": "xs, sm, md and lg badge sizes.",
-          "source": "export const Sizes: Story = {\n  tags: [\"example\"],\n  parameters: { docs: { description: { story: \"xs, sm, md and lg badge sizes.\" } } }, render: () => <SizesContent /> };\n\nconst AsCountContent: React.FC = () => {\n  const [count, setCount] = React.useState(3);\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", alignItems: \"center\" }}>\n      <Badge role=\"status\" tone=\"info\" size=\"sm\">\n        {count} unread\n      </Badge>\n      <Button variant=\"secondary\" size=\"sm\" onClick={() => setCount((c) => c + 1)}>\n        Add message\n      </Button>\n    </div>\n  );\n};"
+          "source": "export const Sizes: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: { description: { story: \"xs, sm, md and lg badge sizes.\" } },\n  },\n  render: () => <SizesContent />,\n};\n\nconst AsCountContent: React.FC = () => {\n  const [count, setCount] = React.useState(3);\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", alignItems: \"center\" }}>\n      <Badge role=\"status\" tone=\"info\" size=\"sm\">\n        {count} unread\n      </Badge>\n      <Button\n        variant=\"secondary\"\n        size=\"sm\"\n        onClick={() => setCount((c) => c + 1)}\n      >\n        Add message\n      </Button>\n    </div>\n  );\n};"
         },
         {
           "story": "AsCount",
@@ -2100,7 +2100,7 @@
         {
           "story": "Responsive",
           "description": "With no maxItems, the trail measures itself against its container and collapses only when it cannot fit, keeping as many leading items as possible plus the current page, and re-expands on resize. Shown in a narrow 340px container so the overflow collapses; widen it and the hidden levels return.",
-          "source": "export const Responsive: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"With no maxItems, the trail measures itself against its container and collapses only when it cannot fit, keeping as many leading items as possible plus the current page, and re-expands on resize. Shown in a narrow 340px container so the overflow collapses; widen it and the hidden levels return.\",\n      },\n    },\n  },\n  render: (args) => (\n    <div style={{ maxWidth: 340, border: \"1px dashed var(--color-border)\", padding: \"0.75rem\", resize: \"horizontal\", overflow: \"auto\" }}>\n      <Breadcrumb {...args} items={longTrail} />\n    </div>\n  ),\n};\n\n/** A four-level trail: every level except the current one is a link. */"
+          "source": "export const Responsive: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"With no maxItems, the trail measures itself against its container and collapses only when it cannot fit, keeping as many leading items as possible plus the current page, and re-expands on resize. Shown in a narrow 340px container so the overflow collapses; widen it and the hidden levels return.\",\n      },\n    },\n  },\n  render: (args) => (\n    <div\n      style={{\n        maxWidth: 340,\n        border: \"1px dashed var(--color-border)\",\n        padding: \"0.75rem\",\n        resize: \"horizontal\",\n        overflow: \"auto\",\n      }}\n    >\n      <Breadcrumb {...args} items={longTrail} />\n    </div>\n  ),\n};\n\n/** A four-level trail: every level except the current one is a link. */"
         },
         {
           "story": "DeepTrail",
@@ -3677,7 +3677,7 @@
         {
           "story": "WithoutMasterCheckbox",
           "description": "Small sets usually skip the master checkbox; the legend still names every option.",
-          "source": "export const WithoutMasterCheckbox = Template.bind({});\nWithoutMasterCheckbox.args = {\n  label: \"storyCheckboxGroupLabel\",\n  showMasterCheckbox: false,\n  options: [\n    { label: \"storyCheckboxOption1\", value: \"option1\" },\n    { label: \"storyCheckboxOption2\", value: \"option2\" },\n    { label: \"storyCheckboxOption3\", value: \"option3\" },\n    { label: \"storyCheckboxOption4\", value: \"option4\" },\n    { label: \"storyCheckboxOption5\", value: \"option5\" },\n  ],\n};\nWithoutMasterCheckbox.play = async ({\n  canvasElement,\n}: {\n  canvasElement: HTMLElement;\n}) => {\n  const canvas = within(canvasElement);\n  const checkboxes = await canvas.findAllByRole(\"checkbox\");\n  // Click first two checkboxes\n  if (checkboxes[0]) await userEvent.click(checkboxes[0]);\n  if (checkboxes[1]) await userEvent.click(checkboxes[1]);\n};\n\nWithoutMasterCheckbox.tags = [\"example\"];\nWithoutMasterCheckbox.parameters = {\n  docs: {\n    description: {\n      story: \"Small sets usually skip the master checkbox; the legend still names every option.\",\n    },\n  },\n};"
+          "source": "export const WithoutMasterCheckbox = Template.bind({});\nWithoutMasterCheckbox.args = {\n  label: \"storyCheckboxGroupLabel\",\n  showMasterCheckbox: false,\n  options: [\n    { label: \"storyCheckboxOption1\", value: \"option1\" },\n    { label: \"storyCheckboxOption2\", value: \"option2\" },\n    { label: \"storyCheckboxOption3\", value: \"option3\" },\n    { label: \"storyCheckboxOption4\", value: \"option4\" },\n    { label: \"storyCheckboxOption5\", value: \"option5\" },\n  ],\n};\nWithoutMasterCheckbox.play = async ({\n  canvasElement,\n}: {\n  canvasElement: HTMLElement;\n}) => {\n  const canvas = within(canvasElement);\n  const checkboxes = await canvas.findAllByRole(\"checkbox\");\n  // Click first two checkboxes\n  if (checkboxes[0]) await userEvent.click(checkboxes[0]);\n  if (checkboxes[1]) await userEvent.click(checkboxes[1]);\n};\n\nWithoutMasterCheckbox.tags = [\"example\"];\nWithoutMasterCheckbox.parameters = {\n  docs: {\n    description: {\n      story:\n        \"Small sets usually skip the master checkbox; the legend still names every option.\",\n    },\n  },\n};"
         },
         {
           "story": "WithIndeterminateState",
@@ -5207,7 +5207,7 @@
         {
           "story": "Paginated",
           "description": "Set `pageSize` to page the table; the pager reads via IconButtons.",
-          "source": "export const Paginated: Story = {\n  tags: [\"example\"],\n  args: {\n    pageSize: 3,\n    data: Array.from({ length: 8 }, (_, i) => ({\n      id: `p${i}`,\n      name: `Contributor ${i + 1}`,\n      role: i % 2 ? \"Designer\" : \"Engineer\",\n      projects: (i * 3) % 13,\n    })),\n  },\n  parameters: {\n    docs: {\n      description: {\n        story: \"Set `pageSize` to page the table; the pager reads via IconButtons.\",\n      },\n    },\n  },\n};"
+          "source": "export const Paginated: Story = {\n  tags: [\"example\"],\n  args: {\n    pageSize: 3,\n    data: Array.from({ length: 8 }, (_, i) => ({\n      id: `p${i}`,\n      name: `Contributor ${i + 1}`,\n      role: i % 2 ? \"Designer\" : \"Engineer\",\n      projects: (i * 3) % 13,\n    })),\n  },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Set `pageSize` to page the table; the pager reads via IconButtons.\",\n      },\n    },\n  },\n};"
         },
         {
           "story": "LargeDataset",
@@ -5575,7 +5575,7 @@
         },
         {
           "name": "size",
-          "type": "sm | md | lg | xl",
+          "type": "xs | sm | md | lg | xl",
           "required": false
         },
         {
@@ -5636,12 +5636,13 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xs",
             "sm",
             "md",
             "lg",
             "xl"
           ],
-          "description": "Rendered avatar size."
+          "description": "Rendered avatar size: xs 28px (chat toggle), sm 32px, md 48px, lg 64px, xl 96px."
         },
         "className": {
           "optional": true,
@@ -6546,7 +6547,7 @@
         {
           "story": "Default",
           "description": "The full recipe: accept filter, size cap, helper stating both, and a clear label so a wrong pick is undoable.",
-          "source": "export const Default = Template.bind({});\nDefault.args = {\n  label: \"Attachment (optional)\",\n  placeholder: \"No file selected\",\n  helperText: \"Optional. Max 5 MB. Accepted formats: PDF, PNG, JPG.\",\n  uploadButtonLabel: \"Choose file\",\n  clearButtonLabel: \"Remove file\",\n  accept: \".pdf,.png,.jpg,.jpeg\",\n  maxSizeInBytes: 5 * 1024 * 1024,\n  sizeErrorMessage: \"File exceeds the 5 MB limit.\",\n};\nDefault.tags = [\"example\"];\nDefault.parameters = {\n  docs: {\n    description: {\n      story:\n        \"The full recipe: accept filter, size cap, helper stating both, and a clear label so a wrong pick is undoable.\",\n    },\n  },\n};\nDefault.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n\n  // Test that upload button is present and clickable\n  const uploadButton = canvas.getByRole(\"button\", { name: /choose file/i });\n  await userEvent.click(uploadButton);\n};\n\n/** Picks a file through the hidden input, then clears it. */"
+          "source": "export const Default = Template.bind({});\nDefault.args = {\n  label: \"Attachment (optional)\",\n  placeholder: \"No file selected\",\n  helperText: \"Optional. Max 5 MB. Accepted formats: PDF, PNG, JPG.\",\n  uploadButtonLabel: \"Choose file\",\n  clearButtonLabel: \"Remove file\",\n  accept: \".pdf,.png,.jpg,.jpeg\",\n  maxSizeInBytes: 5 * 1024 * 1024,\n  sizeErrorMessage: \"File exceeds the 5 MB limit.\",\n};\nDefault.tags = [\"example\", \"beta-matrix\"];\nDefault.parameters = {\n  docs: {\n    description: {\n      story:\n        \"The full recipe: accept filter, size cap, helper stating both, and a clear label so a wrong pick is undoable.\",\n    },\n  },\n};\nDefault.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n\n  // Test that upload button is present and clickable\n  const uploadButton = canvas.getByRole(\"button\", { name: /choose file/i });\n  await userEvent.click(uploadButton);\n};\n\n/** Picks a file through the hidden input, then clears it. */"
         },
         {
           "story": "SelectAndClear",
@@ -6899,7 +6900,7 @@
       "name": "FormField",
       "group": "form",
       "tier": 1,
-      "status": "stable",
+      "status": "beta",
       "description": "Fieldset/legend wrapper for a group of controls (radio sets, checkbox clusters, composite fields), with a group description and a group-level error. Individual controls own their own label, error, and helper text.",
       "dense": "fieldset/legend wrapper for a GROUP of controls with groupDescription + group-level error; single controls own their own label/error/helperText chrome",
       "keywords": [
@@ -7782,7 +7783,7 @@
         {
           "story": "ErrorTakesOver",
           "description": "Hint versus failure: the same field shows one line at a time; when error is set it replaces the hint and announces immediately.",
-          "source": "export const ErrorTakesOver: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Hint versus failure: the same field shows one line at a time; when error is set it replaces the hint and announces immediately.\",\n      },\n    },\n  },\n  render: () => (\n    <div style={{ display: \"flex\", flexDirection: \"column\", gap: \"1.5rem\", maxWidth: 360 }}>\n      <HelperText id=\"pw-hint\">At least 8 characters.</HelperText>\n      <HelperText id=\"pw-error\" state=\"error\">\n        Password is too short.\n      </HelperText>\n    </div>\n  ),\n};"
+          "source": "export const ErrorTakesOver: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Hint versus failure: the same field shows one line at a time; when error is set it replaces the hint and announces immediately.\",\n      },\n    },\n  },\n  render: () => (\n    <div\n      style={{\n        display: \"flex\",\n        flexDirection: \"column\",\n        gap: \"1.5rem\",\n        maxWidth: 360,\n      }}\n    >\n      <HelperText id=\"pw-hint\">At least 8 characters.</HelperText>\n      <HelperText id=\"pw-error\" state=\"error\">\n        Password is too short.\n      </HelperText>\n    </div>\n  ),\n};"
         }
       ]
     },
@@ -8341,7 +8342,7 @@
       "name": "Kbd",
       "group": "display",
       "tier": 2,
-      "status": "stable",
+      "status": "beta",
       "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
       "dense": "semantic <kbd> keycap; sm/md/lg mono sizes; compose combos as sibling Kbds with literal separators",
       "keywords": [
@@ -9417,7 +9418,7 @@
       "name": "LocationCard",
       "group": "display",
       "tier": 2,
-      "status": "stable",
+      "status": "beta",
       "description": "Card variant for displaying a single office or service location (address, hours, map link). Visual sibling of `Card` with the location-specific slot order baked in.",
       "dense": "Office/location card: address, hours (OpenHours), contact links; contact-page module",
       "keywords": [
@@ -12843,7 +12844,7 @@
         "className": {
           "optional": true,
           "type": "string",
-          "description": "Optional wrapper class."
+          "description": "Additional class name applied to the badge root."
         }
       },
       "composesWith": [
@@ -12853,7 +12854,9 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [],
-      "usage": null,
+      "usage": {
+        "description": "Trust mark for the Vastuu Group Reliable Partner certification: small in the site footer, medium or large beside pricing and About copy where the certification supports a claim."
+      },
       "tokens": {
         "colors": [],
         "spacing": [],
@@ -16063,7 +16066,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] =\n    React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] = React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
         },
         {
           "story": "KeyboardInteraction",
@@ -18747,7 +18750,7 @@
         {
           "story": "Example",
           "description": "Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.",
-          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.\",\n      },\n    },\n  },\n  args: {\n    getItemProps: (item) => ({\n      children: item.label,\n      icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n      meta: item.isNew ? (\n        <Badge size=\"sm\" tone=\"info\">\n          New\n        </Badge>\n      ) : (\n        <StatusDot tone={item.online ? \"success\" : \"neutral\"} label={item.online ? \"Online\" : \"Offline\"} />\n      ),\n    }),\n  },\n};\n\n/**\n * 10,000 rows behind a ~7-row window: the DOM stays at viewport + overscan\n * regardless of collection size, and every mounted row carries its true\n * aria-posinset/aria-setsize. Used as the scroll-stability performance case\n * (see spec Design notes).\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.\",\n      },\n    },\n  },\n  args: {\n    getItemProps: (item) => ({\n      children: item.label,\n      icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n      meta: item.isNew ? (\n        <Badge size=\"sm\" tone=\"info\">\n          New\n        </Badge>\n      ) : (\n        <StatusDot\n          tone={item.online ? \"success\" : \"neutral\"}\n          label={item.online ? \"Online\" : \"Offline\"}\n        />\n      ),\n    }),\n  },\n};\n\n/**\n * 10,000 rows behind a ~7-row window: the DOM stays at viewport + overscan\n * regardless of collection size, and every mounted row carries its true\n * aria-posinset/aria-setsize. Used as the scroll-stability performance case\n * (see spec Design notes).\n */"
         },
         {
           "story": "TenThousandRows",
@@ -19944,8 +19947,17 @@
       "tier": 2,
       "status": "alpha",
       "description": "Decision-first case study summary: outcome, role, constraints, key decisions and evidence with source labels.",
-      "dense": "",
-      "keywords": [],
+      "dense": "decision-first case study lead: outcome, role, constraints, ordered key decisions, evidence with source labels",
+      "keywords": [
+        "case study",
+        "summary",
+        "at a glance",
+        "outcome",
+        "decisions",
+        "evidence",
+        "constraints",
+        "role"
+      ],
       "importLine": "import { CaseStudySummary } from \"@dt/CaseStudySummary\";",
       "keyProps": [],
       "props": {},
@@ -19960,7 +19972,9 @@
         "present a claim without a source label",
         "invent metrics that are not on record"
       ],
-      "usage": null,
+      "usage": {
+        "description": "Opens a work case study before the process narrative, answering what changed, who did what, what made it hard, which decisions shaped it and where each claim comes from."
+      },
       "tokens": {
         "colors": [],
         "spacing": []

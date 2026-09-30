@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-storyblock-default",
   "mode": "dark",
-  "sourceSHA": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-  "capturedAt": "2026-09-25T16:09:33.596Z",
-  "runner": "local-recapture-2026-09-25",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T18:56:04.561Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

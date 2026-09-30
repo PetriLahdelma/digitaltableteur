@@ -155,6 +155,7 @@ export const componentCatalog = {
   "BlogIndexContent": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "CTASection": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "CVDownloadSection": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
+  "CaseStudySummary": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "ContactHero": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "ContactInquiryPanel": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "ContactPageContentEditorial": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),

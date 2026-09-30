@@ -27,10 +27,24 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-default.dark.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:57:56.400Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:32:12.591Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-example.dark.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:58:07.174Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-example.light.json",
@@ -39,10 +53,24 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-forced-colors.dark.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:58:12.553Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:32:13.645Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-playground.dark.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:58:01.788Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-playground.light.json",
@@ -63,10 +91,38 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-default.dark.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:57:56.400Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-default.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:37.771Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:32:12.591Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-example.dark.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:58:07.174Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-example.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:48.504Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-example.light.json",
@@ -75,10 +131,38 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-forced-colors.dark.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:58:12.553Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-forced-colors.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:53.819Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:32:13.645Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-playground.dark.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:58:01.788Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-playground.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:43.124Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-playground.light.json",
@@ -91,9 +175,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-default.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:37.771Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-example.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:48.504Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-forced-colors.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:53.819Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/NextLayout/__a11y-evidence__/templates-nextlayout-playground.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:43.124Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

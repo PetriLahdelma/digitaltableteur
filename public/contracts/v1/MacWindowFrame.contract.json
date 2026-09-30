@@ -63,13 +63,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.376Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:31:51.588Z",
@@ -81,13 +74,6 @@
             "capturedAt": "2026-09-01T10:13:41.925Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.813Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.light.json",
@@ -103,13 +89,6 @@
             "runner": "local-farm-parity"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:37.022Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:31:52.302Z",
@@ -121,13 +100,6 @@
             "capturedAt": "2026-09-01T10:13:41.621Z",
             "passed": true,
             "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.597Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.light.json",
@@ -156,10 +128,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.376Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:53.469Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.light.json",
@@ -176,10 +148,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.813Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:54.299Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.light.json",
@@ -196,10 +168,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:37.022Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:54.833Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.light.json",
@@ -216,10 +188,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.597Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:53.816Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.light.json",
@@ -237,31 +209,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.376Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:53.469Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.813Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:54.299Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:37.022Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:54.833Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:42:36.597Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:09:53.816Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

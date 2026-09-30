@@ -1,19 +1,16 @@
 {
   "storyId": "web-components-forms-formfield-playground",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:43:35.912Z",
-  "runner": "backfill",
+  "sourceSHA": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+  "capturedAt": "2026-09-29T20:03:24.075Z",
+  "runner": "local",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     },
     "forced-colors-real-browser": {
-      "passed": true
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

@@ -172,6 +172,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:16.747Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:08.805Z",
@@ -182,6 +189,13 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:37:40.563Z",
             "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:17.224Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.light.json",
@@ -196,6 +210,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:17.445Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:09.531Z",
@@ -208,6 +229,13 @@
             "passed": true
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:17.009Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:09.041Z",
@@ -218,9 +246,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:16.747Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:17.224Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:17.445Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.forced-colors.json",
+            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
+            "capturedAt": "2026-09-29T17:38:17.009Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

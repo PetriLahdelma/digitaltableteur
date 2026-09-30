@@ -13,6 +13,7 @@ import { SiFigma } from "react-icons/si";
 import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./garageJunction.module.css";
+import caseStudy from "../caseStudy.module.css";
 
 export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("garage-junction");
@@ -49,17 +50,24 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Services</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Services
+              </Title>
               <p className={styles.metaText}>
-                Brand Identity, Event Visuals, Sound Design and Social Media Assets
+                Brand Identity, Event Visuals, Sound Design and Social Media
+                Assets
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Duration
+              </Title>
               <p className={styles.metaText}>2018</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Tools used
+              </Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <AdobeToolIcon tool="illustrator" />
@@ -68,18 +76,21 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title as="h3" unstyled className={styles.metaLabel}>Overview</Title>
+            <Title as="h3" unstyled className={styles.metaLabel}>
+              Overview
+            </Title>
             <p className={styles.metaOverview}>
               <strong>Garage Junction</strong> was a collaborative event series
-              launched at Merikerho, Helsinki, in 2018. The project brought together
-              music lovers, artists, and creative professionals for club nights
-              celebrating underground music and visual arts.
+              launched at Merikerho, Helsinki, in 2018. The project brought
+              together music lovers, artists, and creative professionals for
+              club nights celebrating underground music and visual arts.
             </p>
             <p className={styles.metaOverview}>
-              <strong>The vision:</strong> Create an inclusive platform capturing
-              the raw energy and diversity of Helsinki&apos;s nightlife with a UK
-              garage twist. The brand identity needed to be bold, memorable, and
-              flexible for both digital and print promotion.
+              <strong>The vision:</strong> Create an inclusive platform
+              capturing the raw energy and diversity of Helsinki&apos;s
+              nightlife with a UK garage twist. The brand identity needed to be
+              bold, memorable, and flexible for both digital and print
+              promotion.
             </p>
           </div>
         </div>
@@ -142,9 +153,9 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="s">
             The name "Garage Junction" references both UK garage music and the
             idea of a meeting point for diverse sounds and people. The visual
-            identity uses bold typography and a checkerboard pattern inspired
-            by the Helsinki Underground/Subway, or as Finns call it, the metro
-            and its high-contrast two-tone aesthetics.
+            identity uses bold typography and a checkerboard pattern inspired by
+            the Helsinki Underground/Subway, or as Finns call it, the metro and
+            its high-contrast two-tone aesthetics.
           </Text>,
           <Text key="p2" size="s">
             The color palette combines high-energy orange with soft blue and
@@ -190,7 +201,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         title="Bold and Flexible"
         content={[
           <Text key="p1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               The logo system was designed for maximum impact
             </span>{" "}
             in both horizontal and vertical formats. The checkerboard pattern
@@ -226,7 +237,8 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.colorContent}>
           <Title level={3}>Color Palette</Title>
           <Text size="s">
-            High contrast colors optimized for club environments and social media.
+            High contrast colors optimized for club environments and social
+            media.
           </Text>
           <div className={styles.colorComposition}>
             <div className={styles.colorBlack}>
@@ -239,7 +251,9 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.colorLabel}>Garage Blue #1976D2</span>
             </div>
             <div className={styles.colorWhite}>
-              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>Pure White #FFFFFF</span>
+              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>
+                Pure White #FFFFFF
+              </span>
             </div>
             <div className={styles.colorOrange}>
               <span className={styles.colorLabel}>Junction Orange #F57C00</span>
@@ -350,9 +364,9 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Garage Junction quickly gained recognition as a fresh and authentic
-            addition to Helsinki&apos;s nightlife. The brand identity helped attract
-            a loyal following and fostered a collaborative community around music
-            and art.
+            addition to Helsinki&apos;s nightlife. The brand identity helped
+            attract a loyal following and fostered a collaborative community
+            around music and art.
           </Text>,
           <Text key="p2" size="s">
             The flexible design system allowed for easy event-to-event variation

@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import Link from "@dt/Link";
+import List from "@dt/List";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import { useTranslate } from "../../lib/translation";
@@ -40,6 +41,7 @@ export interface CaseStudySummaryProps {
   title?: string;
   /** Maximum content width. */
   maxWidth?: "sm" | "md" | "lg" | "xl" | "full";
+  /** Additional class name applied to the section root. */
   className?: string;
 }
 
@@ -64,82 +66,87 @@ export function CaseStudySummary({
   return (
     <section aria-labelledby={headingId} className={cn(styles.root, className)}>
       <PageLayout maxWidth={maxWidth} spacing="comfortable">
-      <Title level={2} size="s" id={headingId} className={styles.eyebrow}>
-        {title ?? t("caseStudySummaryTitle", "At a glance")}
-      </Title>
+        <Title level={2} size="s" id={headingId} className={styles.eyebrow}>
+          {title ?? t("caseStudySummaryTitle", "At a glance")}
+        </Title>
 
-      <Text as="p" size="l" lineHeight="snug" className={styles.outcome}>
-        {outcome}
-      </Text>
+        <Text as="p" size="l" lineHeight="snug" className={styles.outcome}>
+          {outcome}
+        </Text>
 
-      <div className={styles.grid}>
-        <div className={styles.block}>
-          <Title level={3} size="xs" className={styles.label}>
-            {t("caseStudySummaryRole", "Role and scope")}
-          </Title>
-          <Text as="p" size="s" lineHeight="relaxed">
-            {role}
-          </Text>
-        </div>
+        <div className={styles.grid}>
+          <div className={styles.block}>
+            <Title level={3} size="xs" className={styles.label}>
+              {t("caseStudySummaryRole", "Role and scope")}
+            </Title>
+            <Text as="p" size="s" lineHeight="relaxed">
+              {role}
+            </Text>
+          </div>
 
-        <div className={styles.block}>
-          <Title level={3} size="xs" className={styles.label}>
-            {t("caseStudySummaryConstraints", "Constraints")}
-          </Title>
-          <ul className={styles.list}>
-            {constraints.map((constraint) => (
-              <li key={constraint}>
-                <Text as="span" size="s" lineHeight="relaxed">
+          <div className={styles.block}>
+            <Title level={3} size="xs" className={styles.label}>
+              {t("caseStudySummaryConstraints", "Constraints")}
+            </Title>
+            <List
+              className={styles.list}
+              size="s"
+              items={constraints.map((constraint) => (
+                <Text key={constraint} as="span" size="s" lineHeight="relaxed">
                   {constraint}
                 </Text>
-              </li>
-            ))}
-          </ul>
+              ))}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.block}>
-        <Title level={3} size="xs" className={styles.label}>
-          {t("caseStudySummaryDecisions", "Key decisions")}
-        </Title>
-        <ol className={styles.decisions}>
-          {decisions.map((decision) => (
-            <li key={decision.title} className={styles.decision}>
-              <Text as="strong" size="s" className={styles.decisionTitle}>
-                {decision.title}
-              </Text>
-              <Text as="span" size="s" lineHeight="relaxed">
-                {decision.detail}
-              </Text>
-            </li>
-          ))}
-        </ol>
-      </div>
+        <div className={styles.block}>
+          <Title level={3} size="xs" className={styles.label}>
+            {t("caseStudySummaryDecisions", "Key decisions")}
+          </Title>
+          <List
+            as="ol"
+            className={styles.decisions}
+            size="s"
+            items={decisions.map((decision) => (
+              <div key={decision.title} className={styles.decision}>
+                <Text as="strong" size="s" className={styles.decisionTitle}>
+                  {decision.title}
+                </Text>
+                <Text as="span" size="s" lineHeight="relaxed">
+                  {decision.detail}
+                </Text>
+              </div>
+            ))}
+          />
+        </div>
 
-      <div className={styles.block}>
-        <Title level={3} size="xs" className={styles.label}>
-          {t("caseStudySummaryEvidence", "Evidence")}
-        </Title>
-        <ul className={styles.list}>
-          {evidence.map((item) => (
-            <li key={item.claim} className={styles.evidence}>
-              <Text as="span" size="s" lineHeight="relaxed">
-                {item.claim}
-              </Text>
-              <Text as="span" size="xs" className={styles.source}>
-                {t("caseStudySummarySource", "Source")}:{" "}
-                {item.href ? (
-                  <Link href={item.href} size="inherit">
-                    {item.source}
-                  </Link>
-                ) : (
-                  item.source
-                )}
-              </Text>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <div className={styles.block}>
+          <Title level={3} size="xs" className={styles.label}>
+            {t("caseStudySummaryEvidence", "Evidence")}
+          </Title>
+          <List
+            className={styles.list}
+            size="s"
+            items={evidence.map((item) => (
+              <div key={item.claim} className={styles.evidence}>
+                <Text as="span" size="s" lineHeight="relaxed">
+                  {item.claim}
+                </Text>
+                <Text as="span" size="xs" className={styles.source}>
+                  {t("caseStudySummarySource", "Source")}:{" "}
+                  {item.href ? (
+                    <Link href={item.href} size="inherit">
+                      {item.source}
+                    </Link>
+                  ) : (
+                    item.source
+                  )}
+                </Text>
+              </div>
+            ))}
+          />
+        </div>
       </PageLayout>
     </section>
   );

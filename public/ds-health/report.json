@@ -1,60 +1,60 @@
 {
-  "generatedAt": "2026-07-16T16:17:55.388Z",
+  "generatedAt": "2026-09-29T17:14:45.310Z",
   "checks": [
     {
       "name": "audit:agent-experience",
       "ok": true,
       "status": 0,
-      "stdout": "> nextjs-app@2.0.0 audit:agent-experience\n> node scripts/design-system/audit-agent-experience.mjs\n\nAgent Experience audit: PASS\n  prop docs: 924/1065 (86.8%)\n  complete contracts: 134/161\n  machine relationships: 2 component(s)\n  intent retrieval: 18/20\n  report: /Users/petrilahdelma/SAPDevelop/digitaltableteur/public/ds-health/agent-experience.json",
+      "stdout": "Agent Experience audit: PASS\n  prop docs: 1066/1188 (89.7%)\n  complete contracts: 153/178\n  machine relationships: 13 component(s)\n  intent retrieval: 19/20\n  report: /Users/petrilahdelma/SAPDevelop/digitaltableteur/.claude/worktrees/contract-design-systems-research-20d0d0/public/ds-health/agent-experience.json",
       "stderr": ""
     },
     {
       "name": "lint:dt-usage",
       "ok": true,
       "status": 0,
-      "stdout": "> nextjs-app@2.0.0 lint:dt-usage\n> node scripts/design-system/lint-dt-usage.mjs --strict --strict\n\n✓ lint:dt-usage — no violations in app, nextjs-app/shared/patterns, nextjs-app/shared/components/pages, nextjs-app/shared/components",
+      "stdout": "✓ lint:dt-usage — no violations in app, nextjs-app/shared/patterns, nextjs-app/shared/components/pages, nextjs-app/shared/components",
       "stderr": ""
     },
     {
       "name": "lint:dt-responsive-visibility",
       "ok": true,
       "status": 0,
-      "stdout": "> nextjs-app@2.0.0 lint:dt-responsive-visibility\n> node scripts/lint-dt-responsive-visibility.mjs --strict\n\n✓ lint:dt-responsive-visibility — no responsive display classes on <Button>",
+      "stdout": "✓ lint:dt-responsive-visibility — no responsive display classes on <Button>",
       "stderr": ""
     }
   ],
   "shadcnByArea": {
-    "app": [],
-    "nextjs-app/shared/components": [
+    "app": [
       {
-        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "file": "app/dev/tailwind-test/TailwindTest.tsx",
         "line": 4
       },
       {
-        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "file": "app/dev/tailwind-test/TailwindTest.tsx",
         "line": 12
       },
       {
-        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "file": "app/dev/tailwind-test/TailwindTest.tsx",
         "line": 13
       },
       {
-        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "file": "app/dev/tailwind-test/TailwindTest.tsx",
         "line": 14
       },
       {
-        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "file": "app/dev/tailwind-test/TailwindTest.tsx",
         "line": 20
       },
       {
-        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "file": "app/dev/tailwind-test/TailwindTest.tsx",
         "line": 25
       },
       {
-        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "file": "app/dev/tailwind-test/TailwindTest.tsx",
         "line": 30
       }
     ],
+    "nextjs-app/shared/components": [],
     "nextjs-app/shared/patterns": []
   },
   "shadcnTotal": 7,
@@ -76,23 +76,23 @@
   "agentExperience": {
     "present": true,
     "ok": true,
-    "generatedAt": "2026-07-16T16:17:45.470Z",
+    "generatedAt": "2026-09-29T17:14:44.656Z",
     "propDocumentation": {
-      "numerator": 924,
-      "denominator": 1065,
-      "rate": 0.8676
+      "numerator": 1066,
+      "denominator": 1188,
+      "rate": 0.8973
     },
     "completeContractEvidence": {
-      "numerator": 134,
-      "denominator": 161,
-      "rate": 0.8323
+      "numerator": 153,
+      "denominator": 178,
+      "rate": 0.8596
     },
-    "machineRelationshipComponents": 2,
+    "machineRelationshipComponents": 13,
     "promptability": {
       "description": "Golden intent queries resolved by the production ranker.",
-      "passed": 18,
+      "passed": 19,
       "total": 20,
-      "rate": 0.9,
+      "rate": 0.95,
       "minimumRate": 0.9
     },
     "violations": []

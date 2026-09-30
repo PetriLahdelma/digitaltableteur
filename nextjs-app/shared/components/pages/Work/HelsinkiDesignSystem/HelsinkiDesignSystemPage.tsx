@@ -6,11 +6,7 @@ import TeamBlock from "../../../../patterns/TeamBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
 import Image from "next/image";
-import {
-  SiSlack,
-  SiFigma,
-  SiSketch,
-} from "react-icons/si";
+import { SiSlack, SiFigma, SiSketch } from "react-icons/si";
 
 // New patterns from Phase 08-2
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
@@ -21,6 +17,7 @@ import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
 import { AdobeToolIcon } from "../AdobeToolIcon";
+import caseStudy from "../caseStudy.module.css";
 
 export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("helsinki-design-system");
@@ -162,14 +159,14 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         overview={
           <Text size="s">
-            <span style={{ fontWeight: 600 }}>The city of Helsinki</span> offers
-            hundreds or thousands of disparate digital services, from daycare
-            applications to cultural services, public health booking to job
-            services. Without a unified design system, each service risked
+            <span className={caseStudy.leadIn}>The city of Helsinki</span>{" "}
+            offers hundreds or thousands of disparate digital services, from
+            daycare applications to cultural services, public health booking to
+            job services. Without a unified design system, each service risked
             looking, behaving, and functioning completely differently, leading
             to user confusion and inconsistent experience.
             <br /> <br />
-            <span style={{ fontWeight: 600 }}>The goal:</span> In a multivendor
+            <span className={caseStudy.leadIn}>The goal:</span> In a multivendor
             environment, to provide a shared toolbox and design foundation so
             that all services offered by the city share a consistent visual
             identity, accessible UI, and predictable, high-quality user
@@ -244,7 +241,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         title="Research and Analysis"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               The initial phase of the Helsinki Design System
             </span>{" "}
             focused on establishing a deep understanding of the city&apos;s
@@ -307,7 +304,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         title="Personas and Journey Mapping"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               Building on the insights gathered during the research phase
             </span>
             , the Helsinki Design System Team developed a set of representative
@@ -370,7 +367,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         title="Ideation and Concept Development"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               During the ideation and concept development phase
             </span>
             , multidisciplinary workshops and collaborative sessions were
@@ -426,7 +423,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         title="Low-Fidelity Wireframing"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               Leveraging the insights from research{" "}
             </span>
             personas, and concept development, the Helsinki Design System team
@@ -477,7 +474,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         title="Iterative Prototyping and User Testing"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               High-fidelity prototypes for communicating design decisions{" "}
             </span>
             were developed using design tools like Figma and Sketch. The
@@ -502,7 +499,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         title="Continuous Delivery & Design Deliverables"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               The iterative component creation process{" "}
             </span>
             within the Helsinki Design System was built on a close feedback loop
@@ -539,27 +536,17 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             alt="Diagram showing HDS development deliverables structure including code, design, and documentation layers"
             width={677}
             height={282}
-            style={{
-              width: "100%",
-              height: "auto",
-              marginBlock: "2rem",
-              marginBlockEnd: "0",
-            }}
+            className={caseStudy.inlineFigureImage}
           />,
           <Text
             key="caption"
             size="xs"
-            style={{
-              fontStyle: "italic",
-              textAlign: "center",
-              marginBlockStart: "2rem",
-              marginBlockEnd: "2rem",
-            }}
+            className={caseStudy.inlineFigureCaption}
           >
             HDS Dev Deliverables
           </Text>,
           <Text key="3" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               Several obstacles had to be addressed{" "}
             </span>
             to make this approach successful. One key challenge was aligning
@@ -667,7 +654,9 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         title="Conclusion"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>The Helsinki Design System </span>
+            <span className={caseStudy.leadIn}>
+              The Helsinki Design System{" "}
+            </span>
             represents a comprehensive, user-centred effort to unify and elevate
             the quality of digital services across the City of Helsinki. Through
             rigorous research, collaborative ideation, wireframing and an

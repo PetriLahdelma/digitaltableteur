@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-27T17:01:59.360Z",
+  "generatedAt": "2026-09-29T20:13:40.640Z",
   "summary": {
     "componentCount": 179,
     "statusCounts": {
-      "beta": 50,
-      "stable": 103,
+      "beta": 53,
+      "stable": 100,
       "alpha": 25,
       "deprecated": 1
     },
@@ -13,14 +13,14 @@
     "catalogCompletenessPercent": 90.9,
     "codebaseComponentCount": 197,
     "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 40,
+    "componentsWithProductionUsage": 39,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 103,
+    "stableCount": 100,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -79,11 +79,11 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 179,
     "withAnyUsage": 167,
-    "withProductionUsage": 40,
+    "withProductionUsage": 39,
     "uniqueImportedComponents": 167,
-    "totalEvidenceRows": 851,
-    "aliasImportFiles": 440,
-    "relativeImportFiles": 444,
+    "totalEvidenceRows": 859,
+    "aliasImportFiles": 442,
+    "relativeImportFiles": 450,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 50,
-        "stable": 103,
+        "beta": 53,
+        "stable": 100,
         "alpha": 25,
         "deprecated": 1
       },
@@ -779,6 +779,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/RingStats/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/RingStats/RingStatsPage.tsx",
             "since": "2026-06-04"
           },
           {
@@ -4844,16 +4854,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -4900,6 +4900,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -5279,6 +5289,7 @@
         ],
         "canonicalExamples": [
           "Playground",
+          "Default",
           "Example",
           "ForcedColors"
         ],
@@ -7554,12 +7565,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
+            "path": "app/error.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -7850,10 +7861,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 59,
+        "importCount": 60,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 33,
+        "componentImportCount": 34,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
@@ -9531,8 +9542,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -9743,16 +9754,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
@@ -11099,8 +11100,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -11114,8 +11115,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -11136,8 +11137,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -11164,8 +11165,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -11344,16 +11345,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           },
           {
@@ -11775,8 +11766,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -13589,8 +13580,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -14142,8 +14133,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -14592,8 +14583,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -15896,22 +15887,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -16525,8 +16516,8 @@
         "composesWith": [
           "Section",
           "ScrollIndicator",
-          "Stack",
           "Title",
+          "Stack",
           "EnhancedProjectCard",
           "BlogCategoryFilter"
         ],
@@ -17519,8 +17510,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -18414,16 +18405,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -18802,6 +18783,7 @@
         "variants": {
           "size": {
             "values": [
+              "xs",
               "sm",
               "md",
               "lg",
@@ -18887,12 +18869,13 @@
             "optional": true,
             "type": "union",
             "values": [
+              "xs",
               "sm",
               "md",
               "lg",
               "xl"
             ],
-            "description": "Rendered avatar size."
+            "description": "Rendered avatar size: xs 28px (chat toggle), sm 32px, md 48px, lg 64px, xl 96px."
           },
           "className": {
             "optional": true,
@@ -19126,7 +19109,8 @@
               "sm",
               "md",
               "lg",
-              "xl"
+              "xl",
+              "xs"
             ],
             "description": "Rendered avatar size."
           },
@@ -19209,7 +19193,8 @@
               "sm",
               "md",
               "lg",
-              "xl"
+              "xl",
+              "xs"
             ],
             "default": "sm"
           }
@@ -20297,16 +20282,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
             "since": "2026-06-04"
           },
@@ -20353,6 +20328,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -22033,16 +22018,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
             "since": "2026-06-04"
           },
@@ -22918,8 +22893,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -23026,7 +23001,7 @@
         "name": "FormField",
         "tier": "molecule",
         "group": "form",
-        "status": "stable",
+        "status": "beta",
         "description": "Fieldset/legend wrapper for a group of controls (radio sets, checkbox clusters, composite fields), with a group description and a group-level error. Individual controls own their own label, error, and helper text.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1427-2118",
         "radixPrimitive": null,
@@ -23072,18 +23047,7 @@
           ]
         },
         "lightDarkVerified": true,
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          }
-        ],
+        "consumers": [],
         "schemaVersion": 2,
         "props": {
           "legend": {
@@ -24155,8 +24119,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "reduced-motion",
@@ -24950,8 +24914,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -25535,16 +25499,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -25581,6 +25535,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -26594,8 +26558,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "aria-requirements",
@@ -26817,16 +26781,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -26863,6 +26817,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -27253,8 +27217,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -27790,7 +27754,7 @@
         "name": "Kbd",
         "tier": "atom",
         "group": "display",
-        "status": "stable",
+        "status": "beta",
         "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1005-1638",
         "radixPrimitive": null,
@@ -27929,18 +27893,7 @@
           "Tooltip",
           "CodeSnippet"
         ],
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          }
-        ]
+        "consumers": []
       },
       "spec": "# Kbd\n\n## Intent\nInline keyboard-key indicator for docs, tooltips, and command hints. Renders\na semantic `<kbd>` styled as a keycap with the mono font token.\n\n## Interaction contract\n- Static, non-interactive; no keyboard or pointer behavior of its own.\n- Screen readers: announced as regular text; `<kbd>` conveys the semantic.\n\n## Do / don't\n- Do: compose combos as sibling Kbds with a literal separator (`⌘ + K`).\n- Do: match `size` to the surrounding text scale.\n- Don't: use Kbd as a button; it never receives focus or handles clicks.\n- Don't: put whole phrases inside one Kbd; one key (or chord symbol) per cap.\n\n## Design notes\n- Tokens: `--font-mono`, `--color-border`, `--color-surface`, `--color-text`,\n  `--radius-sm`, `--space-internal-2/6`.\n- The thicker bottom border gives the keycap depth without shadows.\n- Forced colors: border maps to `ButtonText`.\n",
       "documentationDebt": false,
@@ -28114,8 +28067,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "aria-requirements",
@@ -28283,16 +28236,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -28329,6 +28272,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -29381,17 +29334,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Lightbox",
-        "importCount": 3,
-        "productionImportCount": 1,
+        "importCount": 2,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/Lightbox",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/interactive/index.ts",
             "importKind": "relative",
@@ -29846,16 +29793,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -29867,6 +29804,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -30994,11 +30941,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 0,
-        "patternImportCount": 1,
+        "patternImportCount": 2,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
             "importKind": "alias",
@@ -31140,7 +31093,8 @@
         ],
         "composesWith": [
           "Text",
-          "Title"
+          "Title",
+          "Link"
         ],
         "prefersOver": [],
         "declaredPropCount": 9,
@@ -31750,8 +31704,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "aria-requirements",
@@ -31873,7 +31827,7 @@
         "name": "LocationCard",
         "tier": "molecule",
         "group": "display",
-        "status": "stable",
+        "status": "beta",
         "description": "Card variant for displaying a single office or service location (address, hours, map link). Visual sibling of `Card` with the location-specific slot order baked in.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1441-2250",
         "radixPrimitive": null,
@@ -31929,18 +31883,7 @@
           ]
         },
         "lightDarkVerified": true,
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          }
-        ],
+        "consumers": [],
         "schemaVersion": 2,
         "props": {
           "officeName": {
@@ -32170,8 +32113,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -33796,8 +33739,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -36035,16 +35978,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -36357,8 +36290,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -37380,8 +37313,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -41146,8 +41079,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "reduced-motion",
@@ -41417,16 +41350,6 @@
           "description": "Case-study gallery for project imagery inside work articles. For lightbox behavior see Gallery."
         },
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
@@ -41857,16 +41780,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
             "since": "2026-06-04"
           },
@@ -41914,6 +41827,16 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
             "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+            "since": "2026-06-04"
           }
         ]
       },
@@ -41921,8 +41844,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectNav",
-        "importCount": 17,
-        "productionImportCount": 15,
+        "importCount": 18,
+        "productionImportCount": 16,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
@@ -43628,7 +43551,7 @@
             "when rendered unlinked (href={null}) the alt still carries the meaning"
           ],
           "reducedMotion": true,
-          "reviewed": false,
+          "reviewed": true,
           "forcedColorsVerified": false
         },
         "tokens": {
@@ -43656,7 +43579,7 @@
           "className": {
             "optional": true,
             "type": "string",
-            "description": "Optional wrapper class."
+            "description": "Additional class name applied to the badge root."
           }
         },
         "displayName": "ReliablePartnerBadge",
@@ -43675,9 +43598,12 @@
           "SiteFooter",
           "AboutPageContent",
           "PricingPageContent"
-        ]
+        ],
+        "usage": {
+          "description": "Trust mark for the Vastuu Group Reliable Partner certification: small in the site footer, medium or large beside pricing and About copy where the certification supports a claim."
+        }
       },
-      "spec": "# ReliablePartnerBadge\n\n## Intent\n\nShows that Digitaltableteur is a Vastuu Group **Luotettava Kumppani** (Reliable\nPartner): a Finnish certification confirming that tax, pension and employer\nobligations required by the Contractor's Obligations Act (tilaajavastuulaki)\nare verified and in order.\n\nThe badge is third-party proof, not decoration. It earns its place where a\nbuyer is deciding whether to trust the business: the site footer, the About\npage's delivery/governance story, and next to the pricing packages. Each badge\nopens that language's report PDF so the claim is checkable rather than asserted.\n\n## Interaction contract\n\n- Renders the official green badge matched to the active UI language:\n  `fi` → luotettava kumppani, `sv` → pålitlig partner, anything else → reliable\n  partner. Language comes from `useLocalization().resolvedLanguage`; with no\n  TranslationProvider it falls back to English.\n- Links, by default, to the matching report PDF under\n  `/docs/reliable-partner/reliable-partner-report-{fi,sv,en}.pdf`, opened in a\n  new tab (`target=\"_blank\"` with `rel=\"noopener noreferrer\"`) so the PDF\n  hands off to the viewer's own reader.\n- `href` overrides the target; `href={null}` renders the badge unlinked, for\n  contexts that already provide their own link to the report.\n- `size` controls height only: `sm` 32px, `md` 48px, `lg` 64px. Width is always\n  derived from the asset's aspect ratio.\n- The badge is a static image. It has no hover, active, or loading state, and\n  no motion, so `prefers-reduced-motion` needs no special handling.\n\n## Do / don't\n\n- **Do** let the badge link to the report. The certification's value is that it\n  is verifiable; a badge that links nowhere reads as a sticker.\n- **Do** keep the language of the badge and the language of the page the same.\n  A Finnish mark on an English page looks like a stray asset.\n- **Do** use `sm` in dense chrome (footer) and `md`/`lg` where the badge is\n  making an argument alongside body copy.\n- **Don't** recolor, crop, redraw, or add effects to the mark. The asset as\n  delivered by Vastuu Group is the brand; only whitespace has been trimmed.\n- **Don't** stretch it. Set height via `size`; never set width.\n- **Don't** use it as a generic \"verified\" or \"certified\" icon. It means one\n  specific Finnish certification and misusing it misrepresents the business.\n- **Don't** hardcode a report path at the call site. Use the default, or\n  `getReliablePartnerReportHref(language)` so a language stays in sync.\n\n## Design notes\n\n- Three assets, one per language. The Finnish PNG and the English/Swedish JPGs\n  ship from Vastuu Group with a white plate around the green field; only that\n  whitespace is trimmed. `border-radius` on the image clips the residual white\n  corner notches so the green plate sits cleanly on dark backgrounds without\n  touching the artwork itself.\n- The mark's own green is fixed by the brand and is deliberately **not**\n  themed. It is the same in light, dark, and high-contrast themes, which is\n  why the contract lists no color tokens. Only the focus ring is themed.\n- `max-width: none` and `flex-shrink: 0` guard against the global\n  `img { max-width: 100% }` reset squeezing the badge inside flex rows — that\n  squeeze was the first defect found when the badge shipped into the About\n  band.\n- Report PDFs expire roughly quarterly (the current set is valid until\n  2026-11-13). The filenames are language-stable on purpose: refreshing the\n  certification is a drop-in replacement of three files, with no code change.\n- Only the Finnish mark carries a ® symbol; that asymmetry is Vastuu Group's,\n  reproduced as delivered.\n",
+      "spec": "# ReliablePartnerBadge\n\n## Intent\n\nShows that Digitaltableteur is a Vastuu Group **Luotettava Kumppani** (Reliable\nPartner): a Finnish certification confirming that tax, pension and employer\nobligations required by the Contractor's Obligations Act (tilaajavastuulaki)\nare verified and in order.\n\nThe badge is third-party proof, not decoration. It earns its place where a\nbuyer is deciding whether to trust the business: the site footer, the About\npage's delivery/governance story, and next to the pricing packages. Each badge\nopens that language's report PDF so the claim is checkable rather than asserted.\n\n## Interaction contract\n\n- Renders the official green badge matched to the active UI language:\n  `fi` → luotettava kumppani, `sv` → pålitlig partner, anything else → reliable\n  partner. Language comes from `useLocalization().resolvedLanguage`; with no\n  TranslationProvider it falls back to English.\n- Links, by default, to the matching report PDF under\n  `/docs/reliable-partner/reliable-partner-report-{fi,sv,en}.pdf`, opened in a\n  new tab (`target=\"_blank\"` with `rel=\"noopener noreferrer\"`) so the PDF\n  hands off to the viewer's own reader.\n- `href` overrides the target; `href={null}` renders the badge unlinked, for\n  contexts that already provide their own link to the report.\n- `size` controls height only: `sm` 32px, `md` 48px, `lg` 64px. Width is always\n  derived from the asset's aspect ratio.\n- The badge is a static image. It has no hover, active, or loading state, and\n  no motion, so `prefers-reduced-motion` needs no special handling.\n\n## Do / don't\n\n- Do: let the badge link to the report. The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.\n- Do: keep the language of the badge and the language of the page the same. A Finnish mark on an English page looks like a stray asset.\n- Do: use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy.\n- Don't: recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.\n- Don't: stretch it. Set height via `size`; never set width.\n- Don't: use it as a generic \"verified\" or \"certified\" icon. It means one specific Finnish certification and misusing it misrepresents the business.\n- Don't: hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync.\n\n## Design notes\n\n- Three assets, one per language. The Finnish PNG and the English/Swedish JPGs\n  ship from Vastuu Group with a white plate around the green field; only that\n  whitespace is trimmed. `border-radius` on the image clips the residual white\n  corner notches so the green plate sits cleanly on dark backgrounds without\n  touching the artwork itself.\n- The mark's own green is fixed by the brand and is deliberately **not**\n  themed. It is the same in light, dark, and high-contrast themes, which is\n  why the contract lists no color tokens. Only the focus ring is themed.\n- `max-width: none` and `flex-shrink: 0` guard against the global\n  `img { max-width: 100% }` reset squeezing the badge inside flex rows — that\n  squeeze was the first defect found when the badge shipped into the About\n  band.\n- Report PDFs expire roughly quarterly (the current set is valid until\n  2026-11-13). The filenames are language-stable on purpose: refreshing the\n  certification is a drop-in replacement of three files, with no code change.\n- Only the Finnish mark carries a ® symbol; that asymmetry is Vastuu Group's,\n  reproduced as delivered.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ReliablePartnerBadge",
@@ -43718,7 +43644,7 @@
               "md",
               "lg"
             ],
-            "description": "Badge height: sm 28px (footer), md 48px, lg 64px."
+            "description": "Badge height: sm 32px (footer), md 48px, lg 64px."
           },
           "href": {
             "optional": true,
@@ -43727,7 +43653,8 @@
           },
           "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional class name applied to the badge root."
           }
         },
         "propRelationships": [],
@@ -43744,8 +43671,17 @@
         },
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "let the badge link to the report. The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.",
+          "keep the language of the badge and the language of the page the same. A Finnish mark on an English page looks like a stray asset.",
+          "use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy."
+        ],
+        "avoidWhen": [
+          "recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+          "stretch it. Set height via `size`; never set width.",
+          "use it as a generic \"verified\" or \"certified\" icon. It means one specific Finnish certification and misusing it misrepresents the business.",
+          "hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync."
+        ],
         "requiredA11y": [
           "the badge image carries a translated alt describing the certification, never an empty alt, because the link has no other accessible name",
           "the link opens a PDF in a new tab and says so in its title/alt so the context change is not a surprise",
@@ -43762,7 +43698,12 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "recolor, crop, redraw, or add effects to the mark. The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+          "stretch it. Set height via `size`; never set width.",
+          "use it as a generic \"verified\" or \"certified\" icon. It means one specific Finnish certification and misusing it misrepresents the business.",
+          "hardcode a report path at the call site. Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync."
+        ],
         "composesWith": [
           "Link",
           "StatsSection",
@@ -43773,7 +43714,57 @@
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
-        "guidelines": [],
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "let the badge link to the report",
+            "rationale": "The certification's value is that it is verifiable; a badge that links nowhere reads as a sticker.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "keep the language of the badge and the language of the page the same",
+            "rationale": "A Finnish mark on an English page looks like a stray asset.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "use `sm` in dense chrome (footer) and `md`/`lg` where the badge is making an argument alongside body copy.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "recolor, crop, redraw, or add effects to the mark",
+            "rationale": "The asset as delivered by Vastuu Group is the brand; only whitespace has been trimmed.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "stretch it. Set height via `size`; never set width.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it as a generic \"verified\" or \"certified\" icon",
+            "rationale": "It means one specific Finnish certification and misusing it misrepresents the business.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "hardcode a report path at the call site",
+            "rationale": "Use the default, or `getReliablePartnerReportHref(language)` so a language stays in sync.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          }
+        ],
         "a11yCriteria": [
           {
             "id": "axe-no-violations",
@@ -43852,6 +43843,11 @@
                 "coverage": "partial"
               }
             ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual"
           }
         ],
         "docOrigin": {
@@ -44315,8 +44311,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -44991,8 +44987,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "reduced-motion",
@@ -45557,8 +45553,8 @@
         ],
         "composesWith": [
           "Container",
-          "ScrollIndicator",
           "Title",
+          "ScrollIndicator",
           "EnhancedProjectCard",
           "BlogCategoryFilter",
           "Pagination"
@@ -46952,8 +46948,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -47662,8 +47658,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -50112,7 +50108,8 @@
           "ReliablePartnerBadge",
           "Link",
           "Section",
-          "Container"
+          "Container",
+          "Title"
         ],
         "prefersOver": [],
         "declaredPropCount": 4,
@@ -50208,8 +50205,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "reduced-motion",
@@ -52784,16 +52781,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -53827,16 +53814,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -53883,6 +53860,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -55185,8 +55172,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -55611,8 +55598,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "aria-requirements",
@@ -56095,8 +56082,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -56877,8 +56864,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "aria-requirements",
@@ -58409,8 +58396,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
@@ -58580,16 +58567,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -59096,16 +59073,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -59152,6 +59119,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -59572,8 +59544,8 @@
           "Text",
           "Button",
           "CheckboxGroup",
-          "TextArea",
           "Badge",
+          "TextArea",
           "Title"
         ],
         "prefersOver": [],
@@ -59670,8 +59642,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -61037,9 +61009,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 32,
+        "importCount": 33,
         "productionImportCount": 0,
-        "patternImportCount": 5,
+        "patternImportCount": 6,
         "componentImportCount": 15,
         "evidence": [
           {
@@ -61050,6 +61022,12 @@
           },
           {
             "path": "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Title",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Title",
             "context": "pattern"
@@ -61104,12 +61082,6 @@
           },
           {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/SendStatus.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Title",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/ChunkErrorBoundary/ChunkErrorBoundary.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
             "context": "component"
@@ -61298,8 +61270,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
@@ -63892,8 +63864,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -64863,8 +64835,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -65259,8 +65231,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "aria-requirements",
@@ -69725,7 +69697,7 @@
             "key decisions render as an ordered list"
           ],
           "reducedMotion": true,
-          "reviewed": false,
+          "reviewed": true,
           "forcedColorsVerified": false
         },
         "tokens": {
@@ -69744,7 +69716,21 @@
           "ProjectMetaSection",
           "ProjectDetailLayout",
           "StoryBlock"
-        ]
+        ],
+        "keywords": [
+          "case study",
+          "summary",
+          "at a glance",
+          "outcome",
+          "decisions",
+          "evidence",
+          "constraints",
+          "role"
+        ],
+        "dense": "decision-first case study lead: outcome, role, constraints, ordered key decisions, evidence with source labels",
+        "usage": {
+          "description": "Opens a work case study before the process narrative, answering what changed, who did what, what made it hard, which decisions shaped it and where each claim comes from."
+        }
       },
       "spec": "# CaseStudySummary\n\n## Intent\nLeads a case study with the decision-maker's questions answered first: what changed, who did what, what made it hard, which decisions shaped it, and how each claim can be checked. The process narrative follows below it.\n\n## Interaction contract\n- Keyboard: no interactive parts except evidence links, which are standard `@dt/Link` targets\n- Pointer: evidence links only\n- Screen readers: the section is a region labelled by its h2; groups use h3; key decisions are an ordered list\n\n## Do / don't\n- Do: give every evidence item a source label; self-reported figures say so (\"Self-reported, from project records\")\n- Do: take figures from records already published on the page\n- Do: link an evidence item only when a public source exists\n- Don't: present an unsourced metric\n- Don't: write \"what we'd do differently\" unless it is on record\n\n## Design notes\n- Tokens: `--space-layout-*`, `--color-foreground`, `--color-muted-foreground`, `--color-border`, `--container-md`\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-case-study-summary\n",
       "documentationDebt": false,
@@ -69817,7 +69803,8 @@
           },
           "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional class name applied to the section root."
           }
         },
         "propRelationships": [],
@@ -69899,8 +69886,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -69914,8 +69901,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -69941,8 +69928,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -69952,6 +69939,11 @@
                 "coverage": "partial"
               }
             ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual"
           }
         ],
         "docOrigin": {
@@ -72318,8 +72310,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/GridBlock",
-        "importCount": 13,
-        "productionImportCount": 12,
+        "importCount": 14,
+        "productionImportCount": 13,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
@@ -72384,13 +72376,13 @@
             "context": "production"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/RingStats/RingStatsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/GridBlock",
             "context": "production"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Work/Tulli/TulliPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/GridBlock",
             "context": "production"
@@ -72560,8 +72552,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -75426,8 +75418,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -77383,8 +77375,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -77575,8 +77567,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectDetailLayout",
-        "importCount": 18,
-        "productionImportCount": 16,
+        "importCount": 19,
+        "productionImportCount": 17,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -78355,8 +78347,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectHero",
-        "importCount": 17,
-        "productionImportCount": 15,
+        "importCount": 18,
+        "productionImportCount": 16,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -79866,8 +79858,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/RelatedProjects",
-        "importCount": 17,
-        "productionImportCount": 15,
+        "importCount": 18,
+        "productionImportCount": 16,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -81661,8 +81653,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -82327,8 +82319,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/StoryBlock",
-        "importCount": 16,
-        "productionImportCount": 15,
+        "importCount": 17,
+        "productionImportCount": 16,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
@@ -82590,8 +82582,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -84350,8 +84342,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -84740,8 +84732,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",

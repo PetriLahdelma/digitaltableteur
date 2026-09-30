@@ -120,12 +120,12 @@ const meta: Meta<typeof Badge> = {
       description: "Additional CSS classes on the badge.",
       table: { category: "Advanced" },
     },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+    as: { table: { disable: true } },
+    asChild: { table: { disable: true } },
+    id: { table: { disable: true } },
+    ref: { table: { disable: true } },
+    style: { table: { disable: true } },
+  },
   args: {
     variant: "primary",
     children: "Badge",
@@ -143,7 +143,9 @@ export default meta;
 type Story = StoryObj<typeof Badge>;
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
-const BadgeStoryTemplate: React.FC<BadgeProps & { iconName?: string }> = (args) => {
+const BadgeStoryTemplate: React.FC<BadgeProps & { iconName?: string }> = (
+  args,
+) => {
   const { t } = useTranslation();
   const { iconName, children, tone, icon, ...rest } = args;
   let content = children;
@@ -179,7 +181,11 @@ export const Playground: Story = {
   },
 };
 
-export const Default = Playground;
+/** Axe-checked matrix story; Playground stays opted out for its keyboard play. */
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  render: Template,
+};
 
 const TonesContent: React.FC = () => {
   const { t } = useTranslation();
@@ -208,7 +214,16 @@ const TonesContent: React.FC = () => {
 
 export const Tones: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "Filled tones; a status icon is auto-resolved for every non-neutral tone." } } }, render: () => <TonesContent /> };
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Filled tones; a status icon is auto-resolved for every non-neutral tone.",
+      },
+    },
+  },
+  render: () => <TonesContent />,
+};
 
 const SecondaryContent: React.FC = () => {
   const { t } = useTranslation();
@@ -236,20 +251,47 @@ const SecondaryContent: React.FC = () => {
 
 export const SecondaryVariants: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "Outlined weight across the tone matrix, for surfaces where a filled badge would compete." } } }, render: () => <SecondaryContent /> };
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Outlined weight across the tone matrix, for surfaces where a filled badge would compete.",
+      },
+    },
+  },
+  render: () => <SecondaryContent />,
+};
 
 export const Removable: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "Filter-chip mode; the dismiss affordance is an internal Button with a translated accessible name." } } },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Filter-chip mode; the dismiss affordance is an internal Button with a translated accessible name.",
+      },
+    },
+  },
   render: Template,
   args: { removable: true, children: "badgeRemovable", variant: "primary" },
 };
 
 export const WithIcon: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "Custom icon next to the label via the icon slot." } } },
+  parameters: {
+    docs: {
+      description: {
+        story: "Custom icon next to the label via the icon slot.",
+      },
+    },
+  },
   render: Template,
-  args: { variant: "primary", tone: "info", children: "badgeInfo", iconName: "info" },
+  args: {
+    variant: "primary",
+    tone: "info",
+    children: "badgeInfo",
+    iconName: "info",
+  },
 };
 
 /** `dot` swaps the semantic icon for a color-coded StatusDot — lifecycle labels. */
@@ -264,7 +306,14 @@ export const LifecycleDots: Story = {
     },
   },
   render: () => (
-    <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "0.75rem",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <Badge variant="secondary" tone="warning" size="sm" dot>
         alpha
       </Badge>
@@ -295,7 +344,11 @@ const SizesContent: React.FC = () => {
 
 export const Sizes: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "xs, sm, md and lg badge sizes." } } }, render: () => <SizesContent /> };
+  parameters: {
+    docs: { description: { story: "xs, sm, md and lg badge sizes." } },
+  },
+  render: () => <SizesContent />,
+};
 
 const AsCountContent: React.FC = () => {
   const [count, setCount] = React.useState(3);
@@ -304,7 +357,11 @@ const AsCountContent: React.FC = () => {
       <Badge role="status" tone="info" size="sm">
         {count} unread
       </Badge>
-      <Button variant="secondary" size="sm" onClick={() => setCount((c) => c + 1)}>
+      <Button
+        variant="secondary"
+        size="sm"
+        onClick={() => setCount((c) => c + 1)}
+      >
         Add message
       </Button>
     </div>

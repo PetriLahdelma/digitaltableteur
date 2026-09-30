@@ -30,6 +30,8 @@ const meta = {
     size: "md",
     striped: false,
     stickyHeader: false,
+    hideCaption: false,
+    wrapperClassName: "",
   },
   argTypes: {
     size: {
@@ -48,7 +50,10 @@ const meta = {
       description: "Pin the header row while the body scrolls.",
       table: { defaultValue: { summary: "false" } },
     },
-    wrapperClassName: { table: { disable: true } },
+    wrapperClassName: {
+      control: "text",
+      description: "Class on the scroll wrapper around the table.",
+    },
     hideCaption: {
       control: "boolean",
       description: "Visually hide the caption (kept for assistive tech).",
@@ -93,7 +98,9 @@ export const Default: Story = {
 };
 
 export const Playground: Story = {
-  tags: ["beta-matrix"], ...Default };
+  tags: ["beta-matrix"],
+  ...Default,
+};
 
 export const Sortable: Story = {
   tags: ["example"],
@@ -218,8 +225,7 @@ export const Example: Story = {
 };
 
 function KeyboardSortTable(args: React.ComponentProps<typeof Table>) {
-  const [direction, setDirection] =
-    React.useState<TableSortDirection>("none");
+  const [direction, setDirection] = React.useState<TableSortDirection>("none");
   const cycle = () =>
     setDirection((current) =>
       current === "none"

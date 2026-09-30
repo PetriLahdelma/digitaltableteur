@@ -5,6 +5,7 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { SlideButton } from "../../components/SlideButton";
+import Title from "../../components/Title";
 import { Link as RouterLink } from "../../lib/linkComponent";
 import styles from "./DesignSprintsSection.module.css";
 
@@ -68,9 +69,12 @@ export function DesignSprintsSection({
         <div className={styles.layout}>
           <div className={styles.intro}>
             <FadeIn direction="up" delay={0} distance={20}>
-              <h2 className={styles.title}>
-                {t("homeDesignSprintsTitle", "Focused engagements, senior delivery")}
-              </h2>
+              <Title level={2} unstyled className={styles.title}>
+                {t(
+                  "homeDesignSprintsTitle",
+                  "Focused engagements, senior delivery",
+                )}
+              </Title>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.1} distance={20}>
@@ -106,7 +110,9 @@ export function DesignSprintsSection({
                   ) : (
                     <span className={styles.benefitLabel}>{model.title}</span>
                   )}
-                  <span className={styles.engagementDuration}>{model.duration}</span>
+                  <span className={styles.engagementDuration}>
+                    {model.duration}
+                  </span>
                 </span>
                 <span className={styles.engagementDetail}>{model.detail}</span>
               </FadeIn>

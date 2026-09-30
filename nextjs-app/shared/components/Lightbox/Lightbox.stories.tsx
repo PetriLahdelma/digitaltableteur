@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Lightbox } from "./Lightbox";
 import contract from "./Lightbox.contract.json";
 
@@ -43,16 +43,19 @@ const meta = {
     },
     initialIndex: {
       control: "number",
-      description: "Index opened first, so the viewer starts on the clicked thumbnail.",
+      description:
+        "Index opened first, so the viewer starts on the clicked thumbnail.",
       table: { defaultValue: { summary: "0" }, category: "Behavior" },
     },
     open: {
       control: "boolean",
-      description: "Controlled open state. Keep the component mounted and drive this.",
+      description:
+        "Controlled open state. Keep the component mounted and drive this.",
       table: { category: "Behavior" },
     },
     onOpenChange: {
-      description: "Called with the next open state on Escape, backdrop click, or close.",
+      description:
+        "Called with the next open state on Escape, backdrop click, or close.",
       table: { category: "Behavior" },
     },
   },
@@ -63,7 +66,9 @@ type Story = StoryObj<typeof meta>;
 
 /** Trigger + viewer, wired the way a consumer should wire it: always mounted. */
 function LightboxHarness(args: React.ComponentProps<typeof Lightbox>) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(Boolean(args.open));
+  // The open control drives the harness as well as the trigger button.
+  useEffect(() => setOpen(Boolean(args.open)), [args.open]);
   return (
     <div style={{ padding: "2rem", minBlockSize: "50vh" }}>
       <button type="button" onClick={() => setOpen(true)}>
@@ -75,12 +80,12 @@ function LightboxHarness(args: React.ComponentProps<typeof Lightbox>) {
 }
 
 export const Default: Story = {
-  args: { images: IMAGES },
+  args: { images: IMAGES, open: false },
   render: (args) => <LightboxHarness {...args} />,
 };
 
 export const Playground: Story = {
-  args: { images: IMAGES, initialIndex: 0 },
+  args: { images: IMAGES, initialIndex: 0, open: false },
   render: (args) => <LightboxHarness {...args} />,
 };
 
@@ -110,7 +115,12 @@ export const Example: Story = {
                     setIndex(i);
                     setOpen(true);
                   }}
-                  style={{ padding: 0, border: 0, background: "none", cursor: "pointer" }}
+                  style={{
+                    padding: 0,
+                    border: 0,
+                    background: "none",
+                    cursor: "pointer",
+                  }}
                 >
                   <img src={img.src} alt={img.alt} width={160} height={107} />
                 </button>

@@ -63,6 +63,8 @@ Default.args = {
   placeholder: "storyTextAreaPlaceholder",
   rows: 4,
 };
+// Axe-checked matrix story; the lifecycle stories stay opted out.
+Default.tags = ["beta-matrix"];
 
 export const WithHelperCopy = Template.bind({});
 WithHelperCopy.args = {

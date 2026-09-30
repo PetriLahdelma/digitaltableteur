@@ -13,6 +13,7 @@ import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
+import caseStudy from "../caseStudy.module.css";
 
 export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("sap-build-apps");
@@ -76,7 +77,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         evidence={[
           {
-            claim: "100+ production components and 300+ developers and designers served",
+            claim:
+              "100+ production components and 300+ developers and designers served",
             source: "Self-reported, from project records",
           },
           {
@@ -98,8 +100,16 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         tools={[
           { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
           { key: "react", icon: <SiReact size={24} />, name: "ReactTS" },
-          { key: "typescript", icon: <SiTypescript size={24} />, name: "TypeScript" },
-          { key: "storybook", icon: <SiStorybook size={24} />, name: "Storybook" },
+          {
+            key: "typescript",
+            icon: <SiTypescript size={24} />,
+            name: "TypeScript",
+          },
+          {
+            key: "storybook",
+            icon: <SiStorybook size={24} />,
+            name: "Storybook",
+          },
         ]}
         team={[
           {
@@ -126,18 +136,20 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         overview={
           <>
             <Text size="s">
-              <span style={{ fontWeight: 600 }}>SAP Build Apps</span> is SAP&apos;s
-              flagship low-code platform, evolved from AppGyver following its 2021
-              acquisition. It enables business users and developers to create
-              enterprise-grade applications with drag-and-drop UI, 400+ formula
-              functions, and deep SAP BTP integration.
+              <span className={caseStudy.leadIn}>SAP Build Apps</span> is
+              SAP&apos;s flagship low-code platform, evolved from AppGyver
+              following its 2021 acquisition. It enables business users and
+              developers to create enterprise-grade applications with
+              drag-and-drop UI, 400+ formula functions, and deep SAP BTP
+              integration.
             </Text>
             <Text size="s">
-              <span style={{ fontWeight: 600 }}>The challenge:</span> Create a
+              <span className={caseStudy.leadIn}>The challenge:</span> Create a
               unified design language that bridges the gap between design and
-              development, enabling seamless handoff and consistent implementation
-              across a distributed team serving 300+ developers and designers
-              building applications for the platform used by enterprises worldwide.
+              development, enabling seamless handoff and consistent
+              implementation across a distributed team serving 300+ developers
+              and designers building applications for the platform used by
+              enterprises worldwide.
             </Text>
           </>
         }
@@ -195,7 +207,9 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         title="Scaling Design Consistency"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>Serving 300+ developers and designers</span>{" "}
+            <span className={caseStudy.leadIn}>
+              Serving 300+ developers and designers
+            </span>{" "}
             working across multiple teams and time zones, maintaining visual
             consistency was becoming increasingly difficult. Components were
             being recreated with slight variations, leading to fragmented user
@@ -219,7 +233,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         title="Centralized Component Lifecycle"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               We established the Design System Guild
             </span>
             , a cross-functional team responsible for maintaining and evolving
@@ -251,7 +265,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         title="Design Tokens & Visual Language"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               The foundation of the system was built on design tokens
             </span>{" "}
             as a shared language between design and code. Colors, spacing,
@@ -261,8 +275,9 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="2" size="s">
             The SAP Horizon theme provided the base color system, with semantic
-            tokens for consistent theming across light and dark modes. Typography
-            followed a modular scale optimized for enterprise applications.
+            tokens for consistent theming across light and dark modes.
+            Typography followed a modular scale optimized for enterprise
+            applications.
           </Text>,
         ]}
         images={[
@@ -292,7 +307,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             alt: "Typography scale showing font families, sizes, and weights for enterprise readability",
             width: 738,
             height: 506,
-            caption: "Modular typography scale optimized for enterprise applications",
+            caption:
+              "Modular typography scale optimized for enterprise applications",
           },
         ]}
         imageLayout="grid"
@@ -306,7 +322,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         title="Building the Library"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               Core components were designed with accessibility-first principles.
             </span>{" "}
             Each component included comprehensive states, variants, and detailed
@@ -317,7 +333,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             The button system alone covered primary, secondary, ghost, and
             destructive variants, each with hover, active, focus, and disabled
             states across multiple sizes. The library grew to 100+ components
-            covering form controls, data display, navigation, and feedback patterns.
+            covering form controls, data display, navigation, and feedback
+            patterns.
           </Text>,
         ]}
         images={[
@@ -361,23 +378,24 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         title="Tables & Data Visualization"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
-              I led the design and specification of a comprehensive table component
+            <span className={caseStudy.leadIn}>
+              I led the design and specification of a comprehensive table
+              component
             </span>{" "}
             supporting sorting, filtering, pagination, row selection, and column
-            configuration. Optimized for large enterprise datasets with thousands
-            of rows, the table includes full keyboard navigation and screen reader
-            support, built for seamless integration with SAP data sources including
-            S/4HANA and OData services.
+            configuration. Optimized for large enterprise datasets with
+            thousands of rows, the table includes full keyboard navigation and
+            screen reader support, built for seamless integration with SAP data
+            sources including S/4HANA and OData services.
           </Text>,
           <Text key="2" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               Data visualization components for analytics dashboards
             </span>{" "}
             included bar, line, pie, donut, and area chart variants. All charts
-            were designed to be responsive and accessible with proper color contrast
-            and pattern alternatives for colorblind users, consistent with SAP
-            Horizon theme tokens.
+            were designed to be responsive and accessible with proper color
+            contrast and pattern alternatives for colorblind users, consistent
+            with SAP Horizon theme tokens.
           </Text>,
         ]}
         images={[
@@ -407,13 +425,13 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         title="SAP BTP Integration"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               Deployment on SAP Business Technology Platform (BTP)
             </span>{" "}
             required components optimized for enterprise-grade performance. The
-            design system integrated with SAP backend services including S/4HANA,
-            SuccessFactors, and third-party systems via REST and OData, supporting
-            real-time data flows common in low-code applications.
+            design system integrated with SAP backend services including
+            S/4HANA, SuccessFactors, and third-party systems via REST and OData,
+            supporting real-time data flows common in low-code applications.
           </Text>,
           <Text key="2" size="s">
             Each component was built to handle large datasets while maintaining
@@ -494,7 +512,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         title="Impact & Outcomes"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               Over nearly four years, the design system transformed how the team
               builds UI
             </span>{" "}

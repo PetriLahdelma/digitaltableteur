@@ -1,3 +1,4 @@
+- status: Work in progress (beta)
 - group "Notification channels":
   - text: Notification channels
   - paragraph: Pick at least one

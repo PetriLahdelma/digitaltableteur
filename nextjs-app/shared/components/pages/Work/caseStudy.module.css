@@ -1,0 +1,25 @@
+/* Shared case-study body styles: the few rules every case study repeats.
+   Pages keep their own modules for layout. */
+
+/* Run-in lead phrase at the start of a paragraph. */
+
+.leadIn {
+  font-weight: 600;
+}
+
+/* Full-width inline figure image inside a StoryBlock paragraph. */
+
+.inlineFigureImage {
+  margin-block: var(--space-layout-32) 0;
+  block-size: auto;
+  inline-size: 100%;
+}
+
+/* Its caption. Doubled class: Text's base margin is one class, so a single
+   class here would tie and depend on stylesheet order. */
+
+.inlineFigureCaption.inlineFigureCaption {
+  margin-block: var(--space-layout-32);
+  text-align: center;
+  font-style: italic;
+}

@@ -1,9 +1,9 @@
 {
   "storyId": "feedback-spinner-playground",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:12:17.444Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:01:09.152Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

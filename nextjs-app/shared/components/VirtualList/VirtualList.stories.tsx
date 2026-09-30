@@ -43,10 +43,15 @@ const meta = {
     // Each visible row renders a VirtualListItem (which composes ListItem);
     // only the ~7 in view (+ overscan) of the 1000 are ever mounted.
     getItemProps: (item) => ({ children: item.label }),
+    initialScrollOffset: 0,
+    className: "",
   },
   argTypes: {
     height: { control: "number", description: "Viewport height in pixels." },
-    itemHeight: { control: "number", description: "Fixed row height in pixels." },
+    itemHeight: {
+      control: "number",
+      description: "Fixed row height in pixels.",
+    },
     overscan: {
       control: "number",
       description: "Extra rows around the viewport.",
@@ -91,7 +96,10 @@ export const Example: Story = {
           New
         </Badge>
       ) : (
-        <StatusDot tone={item.online ? "success" : "neutral"} label={item.online ? "Online" : "Offline"} />
+        <StatusDot
+          tone={item.online ? "success" : "neutral"}
+          label={item.online ? "Online" : "Offline"}
+        />
       ),
     }),
   },

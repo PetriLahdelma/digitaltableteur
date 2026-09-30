@@ -2,7 +2,7 @@
   "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
   "specVersion": "1.0",
   "name": "Kbd",
-  "status": "stable",
+  "status": "beta",
   "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
   "package": {
     "name": "@digitaltableteur/react",
@@ -42,42 +42,45 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:36.988Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:41.261Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:22.589Z",
-            "passed": true
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:31.057Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:37.576Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:41.718Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:23.113Z",
-            "passed": true
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:31.519Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:37.278Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:41.501Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:22.861Z",
-            "passed": true
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:31.294Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -93,92 +96,118 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:36.988Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:41.261Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.forced-colors.json",
-            "sourceCommit": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
-            "capturedAt": "2026-07-26T18:01:39.440Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:48.231Z",
             "passed": true,
-            "runner": "promote-kbd-stable"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:22.589Z",
-            "passed": true
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:31.057Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:37.576Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:41.718Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.forced-colors.json",
-            "sourceCommit": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
-            "capturedAt": "2026-07-26T18:01:39.493Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:48.675Z",
             "passed": true,
-            "runner": "promote-kbd-stable"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:23.113Z",
-            "passed": true
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:31.519Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:37.624Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:41.743Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-forced-colors.forced-colors.json",
-            "sourceCommit": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
-            "capturedAt": "2026-07-26T18:01:39.613Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:48.705Z",
             "passed": true,
-            "runner": "promote-kbd-stable"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:23.158Z",
-            "passed": true
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:31.545Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:12:37.278Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:41.501Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.forced-colors.json",
-            "sourceCommit": "5a91e4d2c98e83555e5d676704b9a93f2434e784",
-            "capturedAt": "2026-07-26T18:01:39.468Z",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:48.455Z",
             "passed": true,
-            "runner": "promote-kbd-stable"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:22.861Z",
-            "passed": true
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:31.294Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-06"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-default.forced-colors.json",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:48.231Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-example.forced-colors.json",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:48.675Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Kbd/__a11y-evidence__/content-kbd-playground.forced-colors.json",
+            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
+            "capturedAt": "2026-09-29T20:03:48.455Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "aria-requirements",

@@ -31,7 +31,7 @@ const textPair = (
 const meta = {
   title: "Forms/FormField",
   component: FormField,
-  tags: ["stable", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

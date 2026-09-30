@@ -62,25 +62,18 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
-            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.783Z",
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.dark.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:35.042Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.966Z",
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.light.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:28.070Z",
             "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.579Z",
-            "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },
@@ -95,64 +88,88 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
-            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:16:10.235Z",
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.dark.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:35.042Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.forced-colors.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:41.541Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.light.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:28.070Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.dark.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:35.092Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.783Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:41.601Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:32:06.707Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:28.120Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:16:10.267Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:35.112Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.966Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:41.624Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:32:06.729Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:28.140Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:16:10.184Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:35.068Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.579Z",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:41.571Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:32:06.667Z",
-            "passed": true
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:28.093Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -163,25 +180,11 @@
         "check": "npm run test:stories:hc",
         "evidence": [
           {
-            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.783Z",
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.forced-colors.json",
+            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
+            "capturedAt": "2026-09-29T20:12:41.541Z",
             "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.966Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:47.579Z",
-            "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

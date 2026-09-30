@@ -89,10 +89,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:42.990Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:29.581Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-example.light.json",
@@ -108,10 +108,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:43.188Z",
+            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
+            "capturedAt": "2026-09-29T19:13:29.628Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-forced-colors.light.json",
@@ -124,24 +124,9 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "automated",
-        "check": "npm run test:stories:hc",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:42.990Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:43.188Z",
-            "passed": true,
-            "runner": "backfill"
-          }
-        ]
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-26"
       },
       {
         "id": "aria-requirements",

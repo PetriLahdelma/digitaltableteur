@@ -1,12 +1,16 @@
 {
   "storyId": "site-chat-markdownmessage-playground",
   "mode": "forced-colors",
-  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
-  "capturedAt": "2026-07-30T08:42:45.628Z",
-  "runner": null,
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:08:43.133Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

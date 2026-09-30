@@ -44,7 +44,7 @@ export interface DonnyAvatarProps {
   /** Current expression or assistant lifecycle state. */
   state?: DonnyState;
   /** Rendered avatar size. */
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   /** Additional CSS class. */
   className?: string;
   /** Called when the state transition animation ends. */
@@ -221,14 +221,14 @@ const EYE_CONFIGS: Record<
       "M28 17 A2.5 2.5 0 1 1 28 12 A2.5 2.5 0 1 1 28 17 M25 7.5 Q28 5 31 7",
   },
   sleepy: {
-    leftEye: "M9 14 Q12 12 15 14",  // Droopy half-closed
+    leftEye: "M9 14 Q12 12 15 14", // Droopy half-closed
     rightEye: "M25 14 Q28 12 31 14", // Droopy half-closed
     leftTransform: "translateY(1px)",
     rightTransform: "translateY(1px)",
     animation: "drowsy",
   },
   sleeping: {
-    leftEye: "M9 13 H15",  // Closed line
+    leftEye: "M9 13 H15", // Closed line
     rightEye: "M25 13 H31", // Closed line
     animation: "snooze",
   },
@@ -255,9 +255,9 @@ const MOUTH_CONFIGS: Record<DonnyState, MouthType> = {
   listening: "none",
   thinking: "none",
   searching: "none",
-  success: "wide-smile",      // Really happy!
-  error: "round",             // Scared/appalled "O" mouth
-  confused: "wavy",           // Unsure squiggle
+  success: "wide-smile", // Really happy!
+  error: "round", // Scared/appalled "O" mouth
+  confused: "wavy", // Unsure squiggle
   handoff: "slight",
 
   // Extended states
@@ -266,18 +266,18 @@ const MOUTH_CONFIGS: Record<DonnyState, MouthType> = {
   suggesting: "none",
   confident: "slight",
   curious: "none",
-  celebrating: "wide-smile",  // Really really happy!
-  apologetic: "frown",        // Sorry
-  typing: "cursor",           // Blinking text cursor
+  celebrating: "wide-smile", // Really really happy!
+  apologetic: "frown", // Sorry
+  typing: "cursor", // Blinking text cursor
   loading: "none",
   waving: "small-smile",
   remembering: "none",
   focused: "none",
   playful: "small-smile",
-  impressed: "round",         // Surprised "O" mouth
-  skeptical: "slight",        // Flat, unimpressed
-  sleepy: "slight",           // Slightly open, relaxed
-  sleeping: "round",          // Slightly open "o" while sleeping
+  impressed: "round", // Surprised "O" mouth
+  skeptical: "slight", // Flat, unimpressed
+  sleepy: "slight", // Slightly open, relaxed
+  sleeping: "round", // Slightly open "o" while sleeping
 };
 
 /**
@@ -285,20 +285,21 @@ const MOUTH_CONFIGS: Record<DonnyState, MouthType> = {
  * Positioned at bottom center of the face (y ~22-24)
  */
 const MOUTH_PATHS: Record<Exclude<MouthType, "none">, string> = {
-  "wide-smile": "M14 23 Q20 28 26 23",         // Big happy curve
-  "small-smile": "M16 23 Q20 25 24 23",        // Gentle smile
-  "puckered": "M18 24 Q20 22 22 24 Q20 26 18 24", // Small puckered "~"
-  "round": "M18 22 A2 2.5 0 1 0 22 22 A2 2.5 0 1 0 18 22", // Round "O"
-  "slight": "M17 24 H23",                       // Slight neutral line
-  "wavy": "M15 24 Q17.5 22 20 24 Q22.5 26 25 24", // Unsure squiggle
-  "frown": "M16 25 Q20 22.5 24 25",             // Downturned
-  "cursor": "M20 21.5 V25.5",                   // Text cursor
+  "wide-smile": "M14 23 Q20 28 26 23", // Big happy curve
+  "small-smile": "M16 23 Q20 25 24 23", // Gentle smile
+  puckered: "M18 24 Q20 22 22 24 Q20 26 18 24", // Small puckered "~"
+  round: "M18 22 A2 2.5 0 1 0 22 22 A2 2.5 0 1 0 18 22", // Round "O"
+  slight: "M17 24 H23", // Slight neutral line
+  wavy: "M15 24 Q17.5 22 20 24 Q22.5 26 25 24", // Unsure squiggle
+  frown: "M16 25 Q20 22.5 24 25", // Downturned
+  cursor: "M20 21.5 V25.5", // Text cursor
 };
 
 // Speaking mouth path - small rounded opening
-const SPEAKING_MOUTH = "M17 23 Q20 26 23 23";  // Open mouth for speaking animation
+const SPEAKING_MOUTH = "M17 23 Q20 26 23 23"; // Open mouth for speaking animation
 
 const SIZE_MAP = {
+  xs: 28,
   sm: 32,
   md: 48,
   lg: 64,
@@ -390,15 +391,17 @@ export function DonnyAvatar({
   idleExpressionInterval = 12000,
   isSpeaking = false,
   enableSleepDetection = false,
-  sleepyDelay = 120000,  // 2 minutes
-  sleepDelay = 150000,   // 2.5 minutes
+  sleepyDelay = 120000, // 2 minutes
+  sleepDelay = 150000, // 2.5 minutes
   decorative = false,
 }: DonnyAvatarProps) {
   const [currentState, setCurrentState] = useState<DonnyState>(state);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isNearTarget, setIsNearTarget] = useState(false);
   const [idleExpression, setIdleExpression] = useState<DonnyState | null>(null);
-  const [sleepState, setSleepState] = useState<"awake" | "sleepy" | "sleeping">("awake");
+  const [sleepState, setSleepState] = useState<"awake" | "sleepy" | "sleeping">(
+    "awake",
+  );
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
   // Gaze: target set by the pointer, current eased toward it every frame and
@@ -441,7 +444,10 @@ export function DonnyAvatar({
     const throughBlink = !prefersReducedMotion() && !canMorph(from, state);
     setIsTransitioning(true);
     if (throughBlink) playBlink(blinkRef.current, { closeMs: 80, openMs: 120 });
-    const swap = setTimeout(() => setCurrentState(state), throughBlink ? 80 : 0);
+    const swap = setTimeout(
+      () => setCurrentState(state),
+      throughBlink ? 80 : 0,
+    );
     const settle = setTimeout(() => {
       setIsTransitioning(false);
       onTransitionEndRef.current?.();
@@ -484,24 +490,26 @@ export function DonnyAvatar({
     // strong expressions (skeptical, remembering) popping up mid-read read as
     // erratic. Blinks are handled separately. Weighted by repetition.
     const idleExpressions: DonnyState[] = [
-      "searching",    // Glance around
+      "searching", // Glance around
       "searching",
-      "curious",      // One eye widens
+      "curious", // One eye widens
       "curious",
-      "playful",      // Rare wink
+      "playful", // Rare wink
     ];
 
     // Function to schedule the next random expression
     const scheduleNextExpression = () => {
       // Randomize interval: base ± 50% (so 12s becomes 6-18s)
       const variance = idleExpressionInterval * 0.5;
-      const randomizedDelay = idleExpressionInterval + (Math.random() * 2 - 1) * variance;
-      
+      const randomizedDelay =
+        idleExpressionInterval + (Math.random() * 2 - 1) * variance;
+
       idleTimeoutRef.current = setTimeout(() => {
         // Pick a random expression
-        const expression = idleExpressions[Math.floor(Math.random() * idleExpressions.length)];
+        const expression =
+          idleExpressions[Math.floor(Math.random() * idleExpressions.length)];
         setIdleExpression(expression);
-        
+
         // Hold the quirk long enough to read (a 600ms flash reads as a glitch).
         const resetDelay = expression === "searching" ? 1500 : 900;
 
@@ -534,7 +542,7 @@ export function DonnyAvatar({
     const resetSleepTimers = () => {
       lastActivityRef.current = Date.now();
       setSleepState("awake");
-      
+
       // Clear existing timers
       if (sleepyTimeoutRef.current) {
         clearTimeout(sleepyTimeoutRef.current);
@@ -588,20 +596,25 @@ export function DonnyAvatar({
   // Natural blinks while the eyes are open: every 2.5 to 6 s, sometimes a
   // double blink. Skipped under reduced motion and while asleep.
   const eyesOpen =
-    OPEN_EYE_STATES.has(currentState) && sleepState === "awake" && !idleExpression;
+    OPEN_EYE_STATES.has(currentState) &&
+    sleepState === "awake" &&
+    !idleExpression;
   useEffect(() => {
     if (!eyesOpen || prefersReducedMotion()) return;
     let timer: ReturnType<typeof setTimeout>;
     const schedule = () => {
-      timer = setTimeout(() => {
-        const blink = playBlink(blinkRef.current);
-        if (blink && Math.random() < 0.18) {
-          blink.onfinish = () => {
-            timer = setTimeout(() => playBlink(blinkRef.current), 90);
-          };
-        }
-        schedule();
-      }, 2500 + Math.random() * 3500);
+      timer = setTimeout(
+        () => {
+          const blink = playBlink(blinkRef.current);
+          if (blink && Math.random() < 0.18) {
+            blink.onfinish = () => {
+              timer = setTimeout(() => playBlink(blinkRef.current), 90);
+            };
+          }
+          schedule();
+        },
+        2500 + Math.random() * 3500,
+      );
     };
     schedule();
     return () => clearTimeout(timer);
@@ -617,7 +630,8 @@ export function DonnyAvatar({
       current.x += (target.x - current.x) * 0.2;
       current.y += (target.y - current.y) * 0.2;
       const settled =
-        Math.abs(target.x - current.x) < 0.01 && Math.abs(target.y - current.y) < 0.01;
+        Math.abs(target.x - current.x) < 0.01 &&
+        Math.abs(target.y - current.y) < 0.01;
       if (settled) {
         current.x = target.x;
         current.y = target.y;
@@ -687,7 +701,7 @@ export function DonnyAvatar({
                 const elCenterY = elRect.top + elRect.height / 2;
                 const distToEl = Math.sqrt(
                   Math.pow(event.clientX - elCenterX, 2) +
-                    Math.pow(event.clientY - elCenterY, 2)
+                    Math.pow(event.clientY - elCenterY, 2),
                 );
 
                 if (distToEl < proximityThreshold) {
@@ -711,7 +725,7 @@ export function DonnyAvatar({
         }
       });
     },
-    [trackMouse, proximitySelectors, proximityThreshold, runGaze]
+    [trackMouse, proximitySelectors, proximityThreshold, runGaze],
   );
 
   // Setup mouse tracking
@@ -769,7 +783,10 @@ export function DonnyAvatar({
         viewBox="0 0 40 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={clsx(styles.avatar, config.animation && styles[config.animation])}
+        className={clsx(
+          styles.avatar,
+          config.animation && styles[config.animation],
+        )}
       >
         {/* Body - rounded rectangle */}
         <rect
@@ -795,7 +812,11 @@ export function DonnyAvatar({
               strokeLinecap="round"
               strokeLinejoin="round"
               className={styles.eye}
-              style={config.leftTransform ? { transform: config.leftTransform } : undefined}
+              style={
+                config.leftTransform
+                  ? { transform: config.leftTransform }
+                  : undefined
+              }
             />
             <path
               d={config.rightEye}
@@ -805,7 +826,11 @@ export function DonnyAvatar({
               strokeLinecap="round"
               strokeLinejoin="round"
               className={styles.eye}
-              style={config.rightTransform ? { transform: config.rightTransform } : undefined}
+              style={
+                config.rightTransform
+                  ? { transform: config.rightTransform }
+                  : undefined
+              }
             />
           </g>
         </g>
@@ -813,7 +838,13 @@ export function DonnyAvatar({
         {/* Mouth - visible when speaking or for expressive states */}
         {(isSpeaking || MOUTH_CONFIGS[displayState] !== "none") && (
           <path
-            d={isSpeaking ? SPEAKING_MOUTH : MOUTH_PATHS[MOUTH_CONFIGS[displayState] as Exclude<MouthType, "none">]}
+            d={
+              isSpeaking
+                ? SPEAKING_MOUTH
+                : MOUTH_PATHS[
+                    MOUTH_CONFIGS[displayState] as Exclude<MouthType, "none">
+                  ]
+            }
             fill="none"
             stroke="var(--donny-eyes, white)"
             strokeWidth="1.5"
@@ -822,7 +853,9 @@ export function DonnyAvatar({
             className={clsx(
               styles.mouth,
               isSpeaking && styles.speaking,
-              !isSpeaking && MOUTH_CONFIGS[displayState] === "cursor" && styles.blink,
+              !isSpeaking &&
+                MOUTH_CONFIGS[displayState] === "cursor" &&
+                styles.blink,
             )}
           />
         )}
@@ -831,7 +864,10 @@ export function DonnyAvatar({
             head colour: it is chosen to contrast with the page, whereas
             anything drawn over the head in that colour disappears. */}
         {currentState === "celebrating" && (
-          <g className={styles.sparkles} fill="var(--donny-primary, var(--color-text))">
+          <g
+            className={styles.sparkles}
+            fill="var(--donny-primary, var(--color-text))"
+          >
             <path d="M-1 3 L0 5 L2 6 L0 7 L-1 9 L-2 7 L-4 6 L-2 5 Z" />
             <path d="M41 3 L42 5 L44 6 L42 7 L41 9 L40 7 L38 6 L40 5 Z" />
             <circle cx="20" cy="-2" r="1" />
@@ -853,7 +889,10 @@ export function DonnyAvatar({
 
         {/* Thought dots rise from the upper-left, where the eyes look */}
         {currentState === "remembering" && (
-          <g className={styles.thoughtBubble} fill="var(--donny-primary, var(--color-text))">
+          <g
+            className={styles.thoughtBubble}
+            fill="var(--donny-primary, var(--color-text))"
+          >
             <circle cx="3" cy="-1" r="1.2" />
             <circle cx="-0.5" cy="-4" r="1.8" />
           </g>
@@ -872,9 +911,7 @@ export function DonnyAvatar({
         </div>
       )}
 
-      {showLabel && (
-        <span className={styles.label}>{currentState}</span>
-      )}
+      {showLabel && <span className={styles.label}>{currentState}</span>}
     </div>
   );
 }

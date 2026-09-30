@@ -125,10 +125,6 @@
       "rawElements": 1,
       "utilityLines": 0
     },
-    "nextjs-app/shared/components/ChunkErrorBoundary/ChunkErrorBoundary.tsx": {
-      "rawElements": 1,
-      "utilityLines": 0
-    },
     "nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.tsx": {
       "rawElements": 2,
       "utilityLines": 7
@@ -475,7 +471,7 @@
     },
     "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx": {
       "rawElements": 2,
-      "utilityLines": 35
+      "utilityLines": 20
     },
     "nextjs-app/shared/patterns/ArticleHero/ArticleHero.tsx": {
       "rawElements": 0,
@@ -519,7 +515,7 @@
     },
     "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx": {
       "rawElements": 1,
-      "utilityLines": 1
+      "utilityLines": 0
     },
     "nextjs-app/shared/patterns/Footer/Footer.tsx": {
       "rawElements": 16,

@@ -54,7 +54,8 @@ export default meta;
 type Story = StoryObj<typeof Breadcrumb>;
 
 export const Default: Story = {
-  parameters: { a11y: { disable: true } },
+  // Axe runs on this story (meta a11y.test "error"); the other matrix stories
+  // render the same component and stay opted out.
   tags: ["beta-matrix"],
   args: {
     items: [
@@ -191,7 +192,15 @@ export const Responsive: Story = {
     },
   },
   render: (args) => (
-    <div style={{ maxWidth: 340, border: "1px dashed var(--color-border)", padding: "0.75rem", resize: "horizontal", overflow: "auto" }}>
+    <div
+      style={{
+        maxWidth: 340,
+        border: "1px dashed var(--color-border)",
+        padding: "0.75rem",
+        resize: "horizontal",
+        overflow: "auto",
+      }}
+    >
       <Breadcrumb {...args} items={longTrail} />
     </div>
   ),

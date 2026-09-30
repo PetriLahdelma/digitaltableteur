@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-storyblock-playground",
   "mode": "light",
-  "sourceSHA": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-  "capturedAt": "2026-09-25T16:09:29.376Z",
-  "runner": "local-recapture-2026-09-25",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T18:43:06.055Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

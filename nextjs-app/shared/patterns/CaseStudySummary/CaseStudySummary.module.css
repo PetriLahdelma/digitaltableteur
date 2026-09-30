@@ -87,6 +87,24 @@
   color: var(--color-muted-foreground);
 }
 
+/* List (DS) owns the ul/ol; these keep the section's own rhythm: the
+   container gap spaces items, so List's per-item margin is zeroed, and the
+   decisions grid keeps no inline padding or markers. */
+
+.root .list > li,
+.root .decisions > li {
+  margin-block-end: 0;
+}
+
+.root .decisions {
+  padding: 0;
+  list-style: none;
+}
+
+.root .evidence > span:first-child {
+  color: var(--color-muted-foreground);
+}
+
 .root .decision > span:last-child,
 .root .list > li > span:first-child {
   color: var(--color-muted-foreground);

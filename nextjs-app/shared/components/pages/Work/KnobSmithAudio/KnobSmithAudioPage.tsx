@@ -44,9 +44,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           showScrollIndicator={true}
         />
       }
-      relatedProjects={
-        <RelatedProjects currentSlug={project.slug} />
-      }
+      relatedProjects={<RelatedProjects currentSlug={project.slug} />}
       className={styles.page}
     >
       {/* Project Meta - Custom 2-column layout like VertaaUX */}
@@ -54,17 +52,24 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Services</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Services
+              </Title>
               <p className={styles.metaText}>
-                Product Design, Interaction Design, Visual Design, Brand Identity
+                Product Design, Interaction Design, Visual Design, Brand
+                Identity
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Duration
+              </Title>
               <p className={styles.metaText}>Dec 2025 – Present</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Tools used
+              </Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
@@ -73,12 +78,14 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title as="h3" unstyled className={styles.metaLabel}>Overview</Title>
+            <Title as="h3" unstyled className={styles.metaLabel}>
+              Overview
+            </Title>
             <p className={styles.metaOverview}>
               <strong>KnobSmith Audio</strong> is a personal venture developing
-              professional audio plugins for music producers and sound designers.
-              The focus is on creating tools that feel intuitive and inspiring
-              while honoring the tactile cues of analog hardware.
+              professional audio plugins for music producers and sound
+              designers. The focus is on creating tools that feel intuitive and
+              inspiring while honoring the tactile cues of analog hardware.
             </p>
             <p className={styles.metaOverview}>
               <strong>The design challenge:</strong> Modernize skeuomorphic
@@ -443,8 +450,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.colorSwatches}>
           <div className={styles.colorSwatch}>
             <div
-              className={styles.swatchColor}
-              style={{ backgroundColor: "#ED4B9B" }}
+              className={`${styles.swatchColor} ${styles.swatchSignaturePink}`}
             />
             <div className={styles.swatchInfo}>
               <span className={styles.swatchName}>Signature Pink</span>
@@ -459,8 +465,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
 
           <div className={styles.colorSwatch}>
             <div
-              className={styles.swatchColor}
-              style={{ backgroundColor: "#2B2F33" }}
+              className={`${styles.swatchColor} ${styles.swatchStudioDark}`}
             />
             <div className={styles.swatchInfo}>
               <span className={styles.swatchName}>Studio Dark</span>
@@ -475,11 +480,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
 
           <div className={styles.colorSwatch}>
             <div
-              className={styles.swatchColor}
-              style={{
-                backgroundColor: "#FFFFFF",
-                border: "1px solid #E0E0E0",
-              }}
+              className={`${styles.swatchColor} ${styles.swatchPureWhite}`}
             />
             <div className={styles.swatchInfo}>
               <span className={styles.swatchName}>Pure White</span>

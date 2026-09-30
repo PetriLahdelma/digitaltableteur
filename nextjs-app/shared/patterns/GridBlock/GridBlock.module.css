@@ -129,3 +129,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Caption text. Doubled class: Text's base margin is one class, so a single
+   class here would tie and depend on stylesheet order. */
+
+.captionText.captionText {
+  margin-block-start: var(--space-layout-16);
+  text-align: center;
+  font-style: italic;
+}

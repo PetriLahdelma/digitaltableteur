@@ -101,10 +101,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-default.forced-colors.json",
-            "sourceCommit": "59e827e5f36058ccb93e304bdc6ddeffd9f69fc8",
-            "capturedAt": "2026-07-26T19:51:50.477Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:25.035Z",
             "passed": true,
-            "runner": "promote-gallery-stable"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-default.light.json",
@@ -120,10 +120,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-example.forced-colors.json",
-            "sourceCommit": "59e827e5f36058ccb93e304bdc6ddeffd9f69fc8",
-            "capturedAt": "2026-07-26T19:51:50.534Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:25.565Z",
             "passed": true,
-            "runner": "promote-gallery-stable"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-example.light.json",
@@ -139,10 +139,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-forced-colors.forced-colors.json",
-            "sourceCommit": "59e827e5f36058ccb93e304bdc6ddeffd9f69fc8",
-            "capturedAt": "2026-07-26T19:51:50.556Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:25.872Z",
             "passed": true,
-            "runner": "promote-gallery-stable"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-forced-colors.light.json",
@@ -158,10 +158,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-playground.forced-colors.json",
-            "sourceCommit": "59e827e5f36058ccb93e304bdc6ddeffd9f69fc8",
-            "capturedAt": "2026-07-26T19:51:50.512Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:25.279Z",
             "passed": true,
-            "runner": "promote-gallery-stable"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-playground.light.json",
@@ -174,9 +174,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:25.035Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:25.565Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:25.872Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Gallery/__a11y-evidence__/site-gallery-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:25.279Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "reduced-motion",

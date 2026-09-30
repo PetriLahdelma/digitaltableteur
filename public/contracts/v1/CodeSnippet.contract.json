@@ -249,10 +249,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-default.forced-colors.json",
-            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-            "capturedAt": "2026-08-03T16:53:51.372Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.206Z",
             "passed": true,
-            "runner": "fix-hcb-code-comment"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-default.light.json",
@@ -269,10 +269,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-example.forced-colors.json",
-            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-            "capturedAt": "2026-08-03T16:53:51.460Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.802Z",
             "passed": true,
-            "runner": "fix-hcb-code-comment"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-example.light.json",
@@ -289,10 +289,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-forced-colors.forced-colors.json",
-            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-            "capturedAt": "2026-08-03T16:53:51.484Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:42.106Z",
             "passed": true,
-            "runner": "fix-hcb-code-comment"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-forced-colors.light.json",
@@ -372,10 +372,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-playground.forced-colors.json",
-            "sourceCommit": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-            "capturedAt": "2026-08-03T16:53:51.408Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.500Z",
             "passed": true,
-            "runner": "fix-hcb-code-comment"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-playground.light.json",
@@ -472,9 +472,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.206Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.802Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:42.106Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeSnippet/__a11y-evidence__/content-codesnippet-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:06:41.500Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

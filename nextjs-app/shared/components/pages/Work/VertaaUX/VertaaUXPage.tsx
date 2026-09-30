@@ -14,6 +14,7 @@ import { ClaudeIcon } from "../../../AskAI/ai-icons";
 import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./vertaaux.module.css";
+import caseStudy from "../caseStudy.module.css";
 
 export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("vertaaux");
@@ -51,17 +52,24 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Services</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Services
+              </Title>
               <p className={styles.metaText}>
-                Product Strategy, UX Intelligence, Accessibility and Brand Identity
+                Product Strategy, UX Intelligence, Accessibility and Brand
+                Identity
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Duration
+              </Title>
               <p className={styles.metaText}>2025–Present</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Tools used
+              </Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
@@ -70,13 +78,15 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title as="h3" unstyled className={styles.metaLabel}>Overview</Title>
+            <Title as="h3" unstyled className={styles.metaLabel}>
+              Overview
+            </Title>
             <p className={styles.metaOverview}>
-              <strong>VertaaUX.ai</strong> is an automated UX intelligence platform
-              that delivers comprehensive a11y- and UX-audits. Using 15+
-              specialized AI agents and 91+ automated checks, it analyzes usability,
-              clarity, information architecture, and WCAG 2.2 accessibility compliance
-              without requiring deep UX expertise.
+              <strong>VertaaUX.ai</strong> is an automated UX intelligence
+              platform that delivers comprehensive a11y- and UX-audits. Using
+              15+ specialized AI agents and 91+ automated checks, it analyzes
+              usability, clarity, information architecture, and WCAG 2.2
+              accessibility compliance without requiring deep UX expertise.
             </p>
             <p className={styles.metaOverview}>
               <strong>The goal:</strong> Establish a UX Score the industry can
@@ -176,7 +186,11 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
       Unclear ROI
       Implementation friction`}
             className={styles.problemMindmap}
-            themeColors={{ color: "#00FFCC", nodeBg: "#111111", lineColor: "#111111" }}
+            themeColors={{
+              color: "#00FFCC",
+              nodeBg: "#111111",
+              lineColor: "#111111",
+            }}
           />,
         ]}
         imageLayout="none"
@@ -193,9 +207,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           title="AI-Driven UX Analysis"
           content={[
             <Text key="p1" size="s">
-              <span style={{ fontWeight: 600 }}>
+              <span className={caseStudy.leadIn}>
                 The technical foundation combines predictive modeling with
-                real-time analysis, running 90+ automated checks in under 30 seconds.
+                real-time analysis, running 90+ automated checks in under 30
+                seconds.
               </span>{" "}
               This is 25x faster than initial performance targets, with simple
               sites completing in just seconds.
@@ -212,7 +227,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             alt: "VertaaUX audit results interface showing scores across usability, clarity, and accessibility dimensions",
             width: 1920,
             height: 1080,
-            caption: "Audit results with severity-weighted findings across seven dimensions.",
+            caption:
+              "Audit results with severity-weighted findings across seven dimensions.",
           }}
           imageLayout="single"
           backgroundColor="transparent"
@@ -228,14 +244,15 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               The engine analyzes pages across seven key dimensions: usability
               scoring based on Nielsen heuristics and cognitive load, clarity
               analysis including visual hierarchy and CTA effectiveness,
-              information architecture assessment, and full WCAG 2.2 accessibility
-              compliance checking.
+              information architecture assessment, and full WCAG 2.2
+              accessibility compliance checking.
             </Text>,
             <Text key="p2" size="s">
-              Each dimension produces a 0-100 score with severity-weighted findings,
-              enabling teams to prioritize fixes by impact. The hierarchical AI
-              system coordinates 15+ specialized agents to deliver comprehensive
-              coverage that would take human reviewers days to complete.
+              Each dimension produces a 0-100 score with severity-weighted
+              findings, enabling teams to prioritize fixes by impact. The
+              hierarchical AI system coordinates 15+ specialized agents to
+              deliver comprehensive coverage that would take human reviewers
+              days to complete.
             </Text>,
           ]}
           images={{
@@ -243,7 +260,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             alt: "VertaaUX detailed analysis view showing individual findings with severity, selectors, and fix recommendations",
             width: 1920,
             height: 1080,
-            caption: "Detailed analysis — severity-weighted findings with inspectable evidence.",
+            caption:
+              "Detailed analysis — severity-weighted findings with inspectable evidence.",
           }}
           imageLayout="single"
           backgroundColor="transparent"
@@ -258,18 +276,18 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         title="Visual Language for UX Intelligence"
         content={[
           <Text key="p1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               For dev teams who treat accessibility as craft, not compliance.
             </span>{" "}
-            The brand identity is built on three pillars: Evidence-First
-            (every finding backed by inspectable data), Quiet Confidence
-            (the product speaks through clarity and measured output), and
-            Craft Over Compliance (accessibility as a discipline, not a checklist).
+            The brand identity is built on three pillars: Evidence-First (every
+            finding backed by inspectable data), Quiet Confidence (the product
+            speaks through clarity and measured output), and Craft Over
+            Compliance (accessibility as a discipline, not a checklist).
           </Text>,
           <Text key="p2" size="s">
-            Typography pairs Geist Sans for everything human with Geist Mono
-            for everything data — scores, selectors, code references. The neon
-            teal (#00FFCC) accent is used as a signal color, never decorative.
+            Typography pairs Geist Sans for everything human with Geist Mono for
+            everything data — scores, selectors, code references. The neon teal
+            (#00FFCC) accent is used as a signal color, never decorative.
             Dark-biased surfaces let the data breathe.
           </Text>,
         ]}
@@ -295,7 +313,9 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 decoding="async"
               />
             </div>
-            <figcaption className={styles.logoCaption}>Primary — dark background</figcaption>
+            <figcaption className={styles.logoCaption}>
+              Primary — dark background
+            </figcaption>
           </figure>
           <figure className={styles.logoCard}>
             <div className={`${styles.logoCardLight} ${styles.logoCardMark}`}>
@@ -309,7 +329,9 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 decoding="async"
               />
             </div>
-            <figcaption className={styles.logoCaption}>Primary — light background</figcaption>
+            <figcaption className={styles.logoCaption}>
+              Primary — light background
+            </figcaption>
           </figure>
           <figure className={styles.logoCard}>
             <div className={`${styles.logoCardDark} ${styles.logoCardMark}`}>
@@ -323,7 +345,9 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 decoding="async"
               />
             </div>
-            <figcaption className={styles.logoCaption}>Mono — On black</figcaption>
+            <figcaption className={styles.logoCaption}>
+              Mono — On black
+            </figcaption>
           </figure>
           <figure className={styles.logoCard}>
             <div className={`${styles.logoCardLight} ${styles.logoCardMark}`}>
@@ -337,12 +361,16 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 decoding="async"
               />
             </div>
-            <figcaption className={styles.logoCaption}>Mono — On white</figcaption>
+            <figcaption className={styles.logoCaption}>
+              Mono — On white
+            </figcaption>
           </figure>
         </div>
         <div className={`${styles.logoGrid} ${styles.logoGridWordmarks}`}>
           <figure className={styles.logoCard}>
-            <div className={`${styles.logoCardDark} ${styles.logoCardWordmark}`}>
+            <div
+              className={`${styles.logoCardDark} ${styles.logoCardWordmark}`}
+            >
               <img
                 src="/images/portfolio/vertaaux/wordmark-on-black.svg"
                 alt="VertaaUX wordmark with mint logo on black"
@@ -353,10 +381,14 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 decoding="async"
               />
             </div>
-            <figcaption className={styles.logoCaption}>Wordmark — On black</figcaption>
+            <figcaption className={styles.logoCaption}>
+              Wordmark — On black
+            </figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={`${styles.logoCardLight} ${styles.logoCardWordmark}`}>
+            <div
+              className={`${styles.logoCardLight} ${styles.logoCardWordmark}`}
+            >
               <img
                 src="/images/portfolio/vertaaux/wordmark-on-white.svg"
                 alt="VertaaUX wordmark with mint logo on white"
@@ -367,10 +399,14 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 decoding="async"
               />
             </div>
-            <figcaption className={styles.logoCaption}>Wordmark — On white</figcaption>
+            <figcaption className={styles.logoCaption}>
+              Wordmark — On white
+            </figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={`${styles.logoCardDark} ${styles.logoCardWordmark}`}>
+            <div
+              className={`${styles.logoCardDark} ${styles.logoCardWordmark}`}
+            >
               <img
                 src="/images/portfolio/vertaaux/wordmark-white-on-black.svg"
                 alt="VertaaUX wordmark white on black"
@@ -381,10 +417,14 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 decoding="async"
               />
             </div>
-            <figcaption className={styles.logoCaption}>Wordmark mono — On black</figcaption>
+            <figcaption className={styles.logoCaption}>
+              Wordmark mono — On black
+            </figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={`${styles.logoCardLight} ${styles.logoCardWordmark}`}>
+            <div
+              className={`${styles.logoCardLight} ${styles.logoCardWordmark}`}
+            >
               <img
                 src="/images/portfolio/vertaaux/wordmark-black-on-white.svg"
                 alt="VertaaUX wordmark black on white"
@@ -395,7 +435,9 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 decoding="async"
               />
             </div>
-            <figcaption className={styles.logoCaption}>Wordmark mono — On white</figcaption>
+            <figcaption className={styles.logoCaption}>
+              Wordmark mono — On white
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -406,10 +448,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         title="The Palette"
         content={[
           <Text key="p1" size="s">
-            Dark-biased surfaces with neon teal (#00FFCC) as a signal color — used
-            sparingly for CTAs, scores, and key data. Never decorative. Semantic
-            score states map to Excellent, Good, Fair, and Poor with WCAG AA
-            contrast on all surfaces.
+            Dark-biased surfaces with neon teal (#00FFCC) as a signal color —
+            used sparingly for CTAs, scores, and key data. Never decorative.
+            Semantic score states map to Excellent, Good, Fair, and Poor with
+            WCAG AA contrast on all surfaces.
           </Text>,
         ]}
         imageLayout="none"
@@ -425,7 +467,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           alt="VertaaUX dark theme palette — Neon Teal #00FFCC, Near Black #0D0D0D, Card Surface #141414, Near White #F2F2F2"
           width={956}
           height={181}
-          style={{ width: "100%", height: "auto" }}
+          className={styles.paletteImage}
         />
       </div>
 
@@ -436,7 +478,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           alt="VertaaUX light theme palette — Muted Teal #00CCAA, Warm Ink #1A1A1A, White #FFFFFF, Warm White #F7F5F0"
           width={956}
           height={181}
-          style={{ width: "100%", height: "auto" }}
+          className={styles.paletteImage}
         />
       </div>
 
@@ -447,7 +489,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           alt="VertaaUX score state colors — Excellent #10B981, Good #3B82F6, Fair #F59E0B, Poor #EF4444"
           width={956}
           height={181}
-          style={{ width: "100%", height: "auto" }}
+          className={styles.paletteImage}
         />
       </div>
 
@@ -457,8 +499,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         title="The Type System"
         content={[
           <Text key="p1" size="s">
-            Geist Sans for everything human. Geist Mono for everything data.
-            The font pairing has clear semantic roles — Sans for prose, headings,
+            Geist Sans for everything human. Geist Mono for everything data. The
+            font pairing has clear semantic roles — Sans for prose, headings,
             and UI labels; Mono for scores, selectors, code references, and
             technical metadata.
           </Text>,
@@ -483,8 +525,14 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           {[
             { sizeClass: styles.waterfallSize4xl, text: "Aa" },
             { sizeClass: styles.waterfallSize2xl, text: "The quick brown fox" },
-            { sizeClass: styles.waterfallSizeXl, text: "Jumps over the lazy dog" },
-            { sizeClass: styles.waterfallSizeLg, text: "Score 76 / 100 — Solid foundation" },
+            {
+              sizeClass: styles.waterfallSizeXl,
+              text: "Jumps over the lazy dog",
+            },
+            {
+              sizeClass: styles.waterfallSizeLg,
+              text: "Score 76 / 100 — Solid foundation",
+            },
             {
               sizeClass: styles.waterfallSizeMd,
               text: "Audit completed in 2.7 s · 91 checks passed · 4 dimensions analyzed",
@@ -509,7 +557,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             { sizeClass: styles.waterfallSize4xl, text: "Aa" },
             { sizeClass: styles.waterfallSize2xl, text: "76 / 100" },
             { sizeClass: styles.waterfallSizeXl, text: "wcag-2.2-aa" },
-            { sizeClass: styles.waterfallSizeLg, text: 'aria-label="navigation"' },
+            {
+              sizeClass: styles.waterfallSizeLg,
+              text: 'aria-label="navigation"',
+            },
             {
               sizeClass: styles.waterfallSizeMd,
               text: "div.hero > section.cta > button.primary { color: #00E5A0 }",
@@ -537,8 +588,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Neon glow as a signature effect on primary CTAs — used sparingly,
-            max one per screen. Score badges, metric cards, and issue rows follow
-            a consistent 8px card radius, 4px input radius system.
+            max one per screen. Score badges, metric cards, and issue rows
+            follow a consistent 8px card radius, 4px input radius system.
           </Text>,
         ]}
         imageLayout="none"
@@ -649,7 +700,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         title="Building the Future of AI driven UX Assessment"
         content={[
           <Text key="p1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               VertaaUX.ai launched in 2025 and is now in production.
             </span>{" "}
             The platform combines comprehensive brand identity design with an
@@ -659,10 +710,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="s">
             With 91+ automated checks across seven audit dimensions and WCAG 2.2
-            compliance testing with less than 5% false positive rate, the platform
-            democratizes UX expertise for teams without dedicated specialists.
-            Enterprise customers benefit from SAML SSO, API access, and GDPR-
-            compliant data handling.
+            compliance testing with less than 5% false positive rate, the
+            platform democratizes UX expertise for teams without dedicated
+            specialists. Enterprise customers benefit from SAML SSO, API access,
+            and GDPR- compliant data handling.
           </Text>,
         ]}
         imageLayout="none"

@@ -61,6 +61,13 @@
             "runner": "local-recapture-2026-09-25"
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:08:08.018Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-default.light.json",
             "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
             "capturedAt": "2026-09-25T16:09:21.791Z",
@@ -73,6 +80,13 @@
             "capturedAt": "2026-09-25T16:09:25.539Z",
             "passed": true,
             "runner": "local-recapture-2026-09-25"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:08:08.170Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-example.light.json",
@@ -89,6 +103,13 @@
             "runner": "local-recapture-2026-09-25"
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:08:08.234Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-forced-colors.light.json",
             "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
             "capturedAt": "2026-09-25T16:09:21.873Z",
@@ -103,6 +124,13 @@
             "runner": "local-recapture-2026-09-25"
           },
           {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:08:08.088Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-playground.light.json",
             "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
             "capturedAt": "2026-09-25T16:09:21.819Z",
@@ -114,9 +142,17 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-26"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/SiteHeader/__a11y-evidence__/patterns-siteheader-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:08:08.018Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",

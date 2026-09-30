@@ -1,0 +1,16 @@
+{
+  "storyId": "marketing-reliablepartnerbadge-default",
+  "mode": "light",
+  "sourceSHA": "14d5669f75eceec2df3b8f075c60cb8481c457fa",
+  "capturedAt": "2026-09-29T17:12:34.998Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

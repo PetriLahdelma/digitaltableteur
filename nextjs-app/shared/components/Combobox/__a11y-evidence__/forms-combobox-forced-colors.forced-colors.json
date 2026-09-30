@@ -1,9 +1,9 @@
 {
   "storyId": "forms-combobox-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:39:01.524Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:05:09.292Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

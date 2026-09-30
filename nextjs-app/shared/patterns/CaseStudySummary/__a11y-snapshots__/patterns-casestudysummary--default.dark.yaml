@@ -1,0 +1,28 @@
+- status: Work in progress (alpha)
+- region "At a glance":
+  - heading "At a glance" [level=2]
+  - paragraph: Fragmented component recreation became one library of 100+ production components with 1:1 Figma-to-React parity.
+  - heading "Role and scope" [level=3]
+  - paragraph: Design System Lead, with a team of four.
+  - heading "Constraints" [level=3]
+  - list:
+    - listitem: Distributed team across time zones
+    - listitem: Integration into an existing enterprise design language
+    - listitem: WCAG 2.1 AA in light and dark themes
+  - heading "Key decisions" [level=3]
+  - list:
+    - listitem:
+      - strong: A guild with a defined lifecycle
+      - text: Bi-weekly reviews decided what entered the library and when it left.
+    - listitem:
+      - strong: Tokens as the shared language
+      - text: Design and code referred to the same semantic names.
+  - heading "Evidence" [level=3]
+  - list:
+    - listitem: "100+ production components Source: Self-reported, from project records"
+    - listitem:
+      - text: "The product is publicly available Source:"
+      - link "Live product External link":
+        - /url: https://example.com
+        - text: Live product
+        - img "External link"

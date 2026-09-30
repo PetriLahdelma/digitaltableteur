@@ -1,12 +1,16 @@
 {
   "storyId": "content-codesnippet-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-  "capturedAt": "2026-08-03T16:53:51.484Z",
-  "runner": "fix-hcb-code-comment",
+  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+  "capturedAt": "2026-09-29T19:06:42.106Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

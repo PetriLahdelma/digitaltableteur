@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-navigation-languageswitcher-forced-colors",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:31:39.000Z",
-  "runner": null,
+  "sourceSHA": "f1d43333cc19b23b2c54e1ceb19a73bf75e326a1",
+  "capturedAt": "2026-09-29T19:27:38.750Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

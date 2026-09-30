@@ -1,22 +1,28 @@
 - list "Project gallery":
-  - listitem "Early exploration":
-    - button "View Concept frame one in fullscreen":
-      - img "Concept frame one"
-    - text: Early exploration
   - listitem:
-    - button "View Concept frame two in fullscreen":
-      - img "Concept frame two"
-  - listitem "Colour study":
-    - button "View Concept frame three in fullscreen":
-      - img "Concept frame three"
-    - text: Colour study
+    - figure "Early exploration":
+      - button "View Concept frame one in fullscreen":
+        - img "Concept frame one"
+      - text: Early exploration
   - listitem:
-    - button "View Concept frame four in fullscreen":
-      - img "Concept frame four"
+    - figure:
+      - button "View Concept frame two in fullscreen":
+        - img "Concept frame two"
   - listitem:
-    - button "View Concept frame five in fullscreen":
-      - img "Concept frame five"
-  - listitem "Final render":
-    - button "View Studio shot in fullscreen":
-      - img "Studio shot"
-    - text: Final render
+    - figure "Colour study":
+      - button "View Concept frame three in fullscreen":
+        - img "Concept frame three"
+      - text: Colour study
+  - listitem:
+    - figure:
+      - button "View Concept frame four in fullscreen":
+        - img "Concept frame four"
+  - listitem:
+    - figure:
+      - button "View Concept frame five in fullscreen":
+        - img "Concept frame five"
+  - listitem:
+    - figure "Final render":
+      - button "View Studio shot in fullscreen":
+        - img "Studio shot"
+      - text: Final render

@@ -59,13 +59,6 @@
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.873Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:01.479Z",
@@ -78,13 +71,6 @@
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:09.093Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.light.json",
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:26:01.698Z",
@@ -95,13 +81,6 @@
             "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
             "capturedAt": "2026-09-10T06:38:37.488Z",
             "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.652Z",
-            "passed": true,
-            "runner": "backfill"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.light.json",
@@ -129,10 +108,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.873Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:21.310Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.light.json",
@@ -148,10 +127,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:09.093Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:21.632Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.light.json",
@@ -167,10 +146,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.652Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:21.056Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.light.json",
@@ -188,24 +167,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.873Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:21.310Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:09.093Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:21.632Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Testimonial/__a11y-evidence__/site-testimonial-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.652Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:21.056Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local"
           }
         ]
       },

@@ -107,59 +107,59 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.dark.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:33.596Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:56:04.561Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.light.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:29.155Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:43:05.812Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.dark.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:34.060Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:56:05.096Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.light.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:29.591Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:43:06.331Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.dark.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:34.317Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:56:05.339Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.light.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:29.820Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:43:06.595Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.dark.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:33.824Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:56:04.829Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.light.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:29.376Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:43:06.055Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           }
         ]
       },
@@ -175,68 +175,125 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.dark.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:33.596Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:56:04.561Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:12.121Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.light.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:29.155Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:43:05.812Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.dark.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:34.060Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:56:05.096Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:12.768Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.light.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:29.591Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:43:06.331Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.dark.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:34.317Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:56:05.339Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:13.098Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.light.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:29.820Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:43:06.595Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.dark.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:33.824Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:56:04.829Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:12.416Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.light.json",
-            "sourceCommit": "c8abd7f6d0a1d994f208297dc35054da04bedd20",
-            "capturedAt": "2026-09-25T16:09:29.376Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T18:43:06.055Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-25"
+            "runner": "local"
           }
         ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:12.121Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:12.768Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:13.098Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/StoryBlock/__a11y-evidence__/patterns-storyblock-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:04:12.416Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

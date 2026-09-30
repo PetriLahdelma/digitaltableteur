@@ -44,7 +44,8 @@ const meta = {
     },
     distance: {
       control: { type: "range", min: 2, max: 20, step: 1 },
-      description: "Vertical travel of the bounce motion, in pixels (bounce only).",
+      description:
+        "Vertical travel of the bounce motion, in pixels (bounce only).",
       table: { defaultValue: { summary: "8" }, category: "Motion" },
     },
     label: {
@@ -59,10 +60,13 @@ const meta = {
         "Element id scrolled into view on activation. Without it the control does nothing.",
       table: { category: "Behavior" },
     },
-    className: { table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Additional class name on the indicator.",
+    },
   },
   // Seeded so the text controls render operable widgets instead of "Set string" buttons.
-  args: { label: "", targetId: "" },
+  args: { label: "", targetId: "", className: "" },
 } satisfies Meta<typeof ScrollIndicator>;
 
 export default meta;

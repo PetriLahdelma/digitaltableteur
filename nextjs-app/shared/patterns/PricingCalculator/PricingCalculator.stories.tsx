@@ -14,6 +14,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  args: { className: "", selectionFromUrl: false },
   argTypes: {
     className: {
       control: "text",

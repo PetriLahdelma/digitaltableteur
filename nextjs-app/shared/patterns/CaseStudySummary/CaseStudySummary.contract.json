@@ -22,7 +22,7 @@
             "key decisions render as an ordered list"
         ],
         "reducedMotion": true,
-        "reviewed": false,
+        "reviewed": true,
         "forcedColorsVerified": false
     },
     "tokens": {
@@ -41,5 +41,19 @@
         "ProjectMetaSection",
         "ProjectDetailLayout",
         "StoryBlock"
-    ]
+    ],
+    "keywords": [
+        "case study",
+        "summary",
+        "at a glance",
+        "outcome",
+        "decisions",
+        "evidence",
+        "constraints",
+        "role"
+    ],
+    "dense": "decision-first case study lead: outcome, role, constraints, ordered key decisions, evidence with source labels",
+    "usage": {
+        "description": "Opens a work case study before the process narrative, answering what changed, who did what, what made it hard, which decisions shaped it and where each claim comes from."
+    }
 }

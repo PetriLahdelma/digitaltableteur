@@ -59,6 +59,12 @@ const meta = {
     onSelectionChange: () => undefined,
     size: "md",
     striped: false,
+    stickyHeader: false,
+    hideCaption: false,
+    // "all" maps to unset: no pagination bar, every row on one page.
+    pageSize: "all",
+    defaultSort: "none",
+    className: "",
   },
   argTypes: {
     size: {
@@ -78,7 +84,9 @@ const meta = {
       table: { defaultValue: { summary: "false" } },
     },
     pageSize: {
-      control: "number",
+      control: "select",
+      options: ["all", "2", "5"],
+      mapping: { all: undefined, "2": 2, "5": 5 },
       description: "Rows per page; enables pagination when set.",
     },
     caption: {
@@ -87,7 +95,8 @@ const meta = {
     },
     hideCaption: {
       control: "boolean",
-      description: "Visually hides the caption while retaining the accessible name.",
+      description:
+        "Visually hides the caption while retaining the accessible name.",
       table: { defaultValue: { summary: "false" } },
     },
     data: { table: { disable: true } },
@@ -96,7 +105,16 @@ const meta = {
     getRowLabel: { table: { disable: true } },
     onSelectionChange: { table: { disable: true } },
     sort: { table: { disable: true } },
-    defaultSort: { table: { disable: true } },
+    defaultSort: {
+      control: "select",
+      options: ["none", "name-ascending", "name-descending"],
+      mapping: {
+        none: null,
+        "name-ascending": { columnId: "name", direction: "ascending" },
+        "name-descending": { columnId: "name", direction: "descending" },
+      },
+      description: "Initial sort (uncontrolled).",
+    },
     selectedRowIds: { table: { disable: true } },
     defaultSelectedRowIds: { table: { disable: true } },
     emptyState: { table: { disable: true } },
@@ -133,7 +151,8 @@ export const Paginated: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Set `pageSize` to page the table; the pager reads via IconButtons.",
+        story:
+          "Set `pageSize` to page the table; the pager reads via IconButtons.",
       },
     },
   },
@@ -185,7 +204,8 @@ export const Overflow: Story = {
       ...Array.from({ length: 6 }, (_, i) => ({
         id: `metric-${i}`,
         header: `Quarterly metric ${i + 1}`,
-        accessor: (row: Person) => `${row.name.replaceAll(" ", "")}-metric-${i + 1}-0000${row.projects}`,
+        accessor: (row: Person) =>
+          `${row.name.replaceAll(" ", "")}-metric-${i + 1}-0000${row.projects}`,
       })),
     ],
   },

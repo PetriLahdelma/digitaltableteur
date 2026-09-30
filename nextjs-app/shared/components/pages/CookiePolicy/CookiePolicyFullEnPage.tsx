@@ -16,18 +16,12 @@ export function CookiePolicyFullEnPage({
   return (
     <div className={styles.policyPage}>
       {onBack ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "1.5rem",
-          }}
-        >
+        <div className={styles.backRow}>
           <Button variant="secondary" size="md" onClick={onBack}>
             <Icon
               name="arrow-left"
               ariaLabel={backLabel}
-              style={{ marginInlineEnd: 8 }}
+              className={styles.backIcon}
             />
             {backLabel}
           </Button>

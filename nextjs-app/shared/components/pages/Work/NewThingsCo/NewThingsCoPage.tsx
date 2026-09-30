@@ -13,6 +13,7 @@ import { SiFigma, SiReact } from "react-icons/si";
 import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./newThingsCo.module.css";
+import caseStudy from "../caseStudy.module.css";
 
 export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("new-things-co");
@@ -49,17 +50,24 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Services</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Services
+              </Title>
               <p className={styles.metaText}>
-                Brand Strategy, Visual Identity, Design System and Digital Presence
+                Brand Strategy, Visual Identity, Design System and Digital
+                Presence
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Duration
+              </Title>
               <p className={styles.metaText}>2017–2018</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
+              <Title as="h3" unstyled className={styles.metaLabel}>
+                Tools used
+              </Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <AdobeToolIcon tool="illustrator" />
@@ -68,12 +76,15 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title as="h3" unstyled className={styles.metaLabel}>Overview</Title>
+            <Title as="h3" unstyled className={styles.metaLabel}>
+              Overview
+            </Title>
             <p className={styles.metaOverview}>
-              <strong>New Things Co</strong> (originally Lab of New) approached us
-              in September 2017 seeking to establish a cohesive brand identity that
-              reflected their innovative approach to software development. The
-              company was founded by Reaktor alumni and owned jointly with Talented.
+              <strong>New Things Co</strong> (originally Lab of New) approached
+              us in September 2017 seeking to establish a cohesive brand
+              identity that reflected their innovative approach to software
+              development. The company was founded by Reaktor alumni and owned
+              jointly with Talented.
             </p>
             <p className={styles.metaOverview}>
               <strong>The challenge:</strong> Create a complete rebrand from
@@ -147,9 +158,9 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="s">
             The task was comprehensive: rename the company, establish strategic
-            pillars and purpose, create the complete visual identity, and deliver
-            all assets needed for marketing, events, recruitment, and internal
-            culture over a 16-month period.
+            pillars and purpose, create the complete visual identity, and
+            deliver all assets needed for marketing, events, recruitment, and
+            internal culture over a 16-month period.
           </Text>,
         ]}
         imageLayout="none"
@@ -165,16 +176,17 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         title="A Fresh Start for Innovation"
         content={[
           <Text key="p1" size="s">
-            <span style={{ fontWeight: 600 }}>
+            <span className={caseStudy.leadIn}>
               The name "New Things Co" captured their experimental spirit
             </span>{" "}
-            while being memorable and approachable. The visual identity uses bold
-            typography and a vibrant green palette that signals energy and growth.
+            while being memorable and approachable. The visual identity uses
+            bold typography and a vibrant green palette that signals energy and
+            growth.
           </Text>,
           <Text key="p2" size="s">
-            The logo system was designed for flexibility across digital and print
-            applications, from business cards to office signage and social media
-            profiles.
+            The logo system was designed for flexibility across digital and
+            print applications, from business cards to office signage and social
+            media profiles.
           </Text>,
         ]}
         images={[
@@ -242,8 +254,8 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="s">
             The stationery system uses recycled paper stock to align with the
             company&apos;s environmental values. Business cards feature a bold,
-            minimal design with the logo on one side and contact details on
-            the other.
+            minimal design with the logo on one side and contact details on the
+            other.
           </Text>,
         ]}
         images={[
@@ -345,8 +357,8 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.galleryHeader}>
           <Title level={3}>Culture & Merch</Title>
           <Text size="s">
-            Internal culture assets including apparel, event materials, and office
-            decorations helped build team identity and employer brand.
+            Internal culture assets including apparel, event materials, and
+            office decorations helped build team identity and employer brand.
           </Text>
         </div>
         <div className={styles.galleryContent}>
@@ -397,15 +409,15 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         title="Establishing the Brand"
         content={[
           <Text key="p1" size="s">
-            The branding work helped establish New Things Co as a fresh player in
-            the Finnish IT market. The cohesive identity made recruitment easier
-            and helped communicate their developer-first culture to potential
-            clients and employees.
+            The branding work helped establish New Things Co as a fresh player
+            in the Finnish IT market. The cohesive identity made recruitment
+            easier and helped communicate their developer-first culture to
+            potential clients and employees.
           </Text>,
           <Text key="p2" size="s">
             The company grew from the founding team to over 100 employees, with
-            the brand system scaling across all touchpoints from digital presence
-            to office environment and company events.
+            the brand system scaling across all touchpoints from digital
+            presence to office environment and company events.
           </Text>,
         ]}
         imageLayout="none"

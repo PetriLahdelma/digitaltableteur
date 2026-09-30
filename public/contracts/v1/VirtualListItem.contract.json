@@ -118,10 +118,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-default.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:15.764Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:33.007Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-default.light.json",
@@ -137,10 +137,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-example.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:15.815Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:33.849Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-example.light.json",
@@ -156,10 +156,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-forced-colors.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:15.895Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:34.222Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-forced-colors.light.json",
@@ -175,10 +175,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-playground.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:15.786Z",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:33.361Z",
             "passed": true,
-            "runner": "beta-flip-dt1412"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-playground.light.json",
@@ -212,9 +212,38 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-27"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-default.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:33.007Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-example.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:33.849Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-forced-colors.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:34.222Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/VirtualListItem/__a11y-evidence__/data-display-virtuallistitem-playground.forced-colors.json",
+            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
+            "capturedAt": "2026-09-29T19:05:33.361Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "aria-requirements",
