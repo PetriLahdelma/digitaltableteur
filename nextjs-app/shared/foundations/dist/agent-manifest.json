@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-30T06:13:14.125Z",
+  "generatedAt": "2026-09-30T12:51:52.975Z",
   "summary": {
     "componentCount": 180,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 168,
     "withProductionUsage": 40,
     "uniqueImportedComponents": 168,
-    "totalEvidenceRows": 868,
-    "aliasImportFiles": 448,
+    "totalEvidenceRows": 869,
+    "aliasImportFiles": 449,
     "relativeImportFiles": 453,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -11102,8 +11102,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "Latest a11y evidence for 'axe-no-violations' is failing; re-run npm run test:stories:matrix:ci.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -58609,7 +58609,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 59,
+        "importCount": 60,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 29,

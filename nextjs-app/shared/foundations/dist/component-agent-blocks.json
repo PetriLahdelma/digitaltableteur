@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T06:13:13.832Z",
+  "generatedAt": "2026-09-30T12:51:52.613Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -6249,8 +6249,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "Latest a11y evidence for 'axe-no-violations' is failing; re-run npm run test:stories:matrix:ci.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "2.5.8",
