@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useMemo, useCallback } from "react";
+import { useRef, useEffect, useMemo, useCallback } from "react";
 import { cn } from "../../lib/cn";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
@@ -20,7 +20,7 @@ export interface ManifestoSectionProps {
   title: string;
   /** Array of manifesto tokens */
   tokens: ManifestoToken[];
-  /** Cycling interval in milliseconds */
+  /** Timing input used to bound the one-time emphasis pulse */
   interval?: number;
   /** Separator character between highlightable tokens */
   separator?: string;
@@ -40,7 +40,7 @@ const backgroundClasses: Record<
     "before:absolute before:inset-0",
     "before:bg-[radial-gradient(circle_at_20%_25%,rgba(255,255,255,0.22),transparent_45%)]",
     "after:absolute after:inset-0",
-    "after:bg-[radial-gradient(circle_at_80%_75%,rgba(113,239,255,0.18),transparent_50%)]"
+    "after:bg-[radial-gradient(circle_at_80%_75%,rgba(113,239,255,0.18),transparent_50%)]",
   ),
   muted: "bg-muted/30",
   transparent: "bg-transparent",
@@ -62,13 +62,10 @@ export function ManifestoSection({
   const pulseRef = useRef<gsap.core.Tween | null>(null);
 
   // Set ref for each token element
-  const setTokenRef = useCallback(
-    (idx: number, el: HTMLSpanElement | null) => {
-      if (el) tokenRefs.current.set(idx, el);
-      else tokenRefs.current.delete(idx);
-    },
-    []
-  );
+  const setTokenRef = useCallback((idx: number, el: HTMLSpanElement | null) => {
+    if (el) tokenRefs.current.set(idx, el);
+    else tokenRefs.current.delete(idx);
+  }, []);
 
   // Get indices of highlightable tokens
   const highlightableIndices = useMemo(
@@ -76,35 +73,13 @@ export function ManifestoSection({
       tokens
         .map((token, idx) => (token.highlightable ? idx : -1))
         .filter((idx) => idx >= 0),
-    [tokens]
+    [tokens],
   );
 
-  // Track the currently active highlight index
-  const [activeIdx, setActiveIdx] = useState<number | null>(
-    highlightableIndices[0] ?? null
-  );
-
-  // Cycle through highlights randomly
-  useEffect(() => {
-    if (!highlightableIndices.length || motionPreference === "reduced") return;
-
-    let current = highlightableIndices[0];
-    const id = window.setInterval(() => {
-      let next = current;
-      if (highlightableIndices.length > 1) {
-        while (next === current) {
-          next =
-            highlightableIndices[
-              Math.floor(Math.random() * highlightableIndices.length)
-            ];
-        }
-      }
-      current = next;
-      setActiveIdx(next);
-    }, interval);
-
-    return () => window.clearInterval(id);
-  }, [highlightableIndices, interval, motionPreference]);
+  // Keep one highlighted token as a stable visual anchor. Its entrance and
+  // pulse are finite, so the section settles within five seconds.
+  const activeIdx = highlightableIndices[0] ?? null;
+  const pulseDuration = Math.min(1.2, Math.max(0.2, interval / 2000));
 
   // GSAP animation for token transitions
   useEffect(() => {
@@ -134,11 +109,8 @@ export function ManifestoSection({
 
     // Animate in new active token
     const activeEl = tokenRefs.current.get(activeIdx);
-    // The pulse spawns at the END of an async onComplete chain (~0.8s in). A
-    // plain pulseRef cleanup misses it: when the reduced-motion preference
-    // flips right after mount, cleanup runs while pulseRef is still null and
-    // the pending chain creates the infinite pulse afterwards. Guard the chain
-    // with a cancelled flag and kill in-flight tweens in cleanup.
+    // The finite pulse spawns at the end of an async onComplete chain. Guard
+    // the chain so a reduced-motion change cannot create it after cleanup.
     let cancelled = false;
     if (activeEl) {
       gsap.fromTo(
@@ -159,18 +131,18 @@ export function ManifestoSection({
               ease: "power2.out",
               onComplete: () => {
                 if (cancelled) return;
-                // Continuous gentle pulse on active token
+                // Two gentle phases, then settle.
                 pulseRef.current = gsap.to(activeEl, {
                   scale: 1.02,
-                  duration: 1.2,
+                  duration: pulseDuration,
                   ease: "sine.inOut",
                   yoyo: true,
-                  repeat: -1,
+                  repeat: 1,
                 });
               },
             });
           },
-        }
+        },
       );
     }
 
@@ -185,14 +157,14 @@ export function ManifestoSection({
         pulseRef.current = null;
       }
     };
-  }, [activeIdx, motionPreference]);
+  }, [activeIdx, motionPreference, pulseDuration]);
 
   // Check if there are more highlightable tokens after current index
   const hasNextHighlightable = useCallback(
     (currentIdx: number) => {
       return tokens.slice(currentIdx + 1).some((t) => t.highlightable);
     },
-    [tokens]
+    [tokens],
   );
 
   const isGradient = background === "gradient";
@@ -211,7 +183,7 @@ export function ManifestoSection({
               "font-display font-bold",
               "text-xl tablet:text-2xl",
               "mb-6",
-              isGradient ? "text-white" : "text-foreground"
+              isGradient ? "text-white" : "text-foreground",
             )}
           >
             {title}
@@ -226,7 +198,7 @@ export function ManifestoSection({
               "font-body",
               "text-base tablet:text-lg desktop:text-xl",
               "leading-relaxed",
-              isGradient ? "text-white" : "text-foreground"
+              isGradient ? "text-white" : "text-foreground",
             )}
           >
             {tokens.map((token, idx) => {
@@ -248,7 +220,7 @@ export function ManifestoSection({
                           ? "bg-white text-purple-700"
                           : "bg-primary text-primary-foreground",
                         "shadow-sm",
-                      ]
+                      ],
                     )}
                     aria-live="off"
                   >
@@ -260,9 +232,7 @@ export function ManifestoSection({
                         "inline-flex items-center",
                         "px-1",
                         "font-semibold",
-                        isGradient
-                          ? "text-white/80"
-                          : "text-foreground/60"
+                        isGradient ? "text-white/80" : "text-foreground/60",
                       )}
                       aria-hidden="true"
                     >

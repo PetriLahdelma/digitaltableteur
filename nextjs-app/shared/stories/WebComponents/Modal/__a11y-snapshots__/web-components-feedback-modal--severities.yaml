@@ -1,0 +1,10 @@
+- status: Work in progress (beta)
+- button "Open success dialog"
+- button "Open error dialog"
+- button "Open warning dialog"
+- button "Open info dialog"
+- dialog "Success dialog":
+  - heading "Success dialog" [level=2]
+  - button "Close dialog"
+  - paragraph: success state
+  - button "OK"

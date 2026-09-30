@@ -1,9 +1,9 @@
 {
   "storyId": "site-enhancedprojectcard-coming-soon",
   "mode": "dark",
-  "sourceSHA": "94806aa863799a717d9cd8928b0de9493c0cd13d",
-  "capturedAt": "2026-08-06T07:43:32.856Z",
-  "runner": "badge-translucency",
+  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+  "capturedAt": "2026-09-27T06:08:08.028Z",
+  "runner": null,
   "checks": {
     "accessibility-tree": {
       "passed": true

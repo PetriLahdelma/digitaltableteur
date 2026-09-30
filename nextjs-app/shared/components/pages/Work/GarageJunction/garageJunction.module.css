@@ -118,8 +118,10 @@
   border-radius: var(--radius-lg);
 }
 
-.videoCaption {
+.videoSection .videoCaption {
   margin-block-start: var(--space-layout-16);
+  margin-inline: auto;
+  max-inline-size: 65ch;
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   text-align: center;

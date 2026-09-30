@@ -19,6 +19,12 @@ const SendStatus: React.FC<SendStatusProps> = ({
   errorCode,
 }) => {
   const t = useTranslate();
+  const headingRef = React.useRef<HTMLHeadingElement>(null);
+
+  React.useEffect(() => {
+    headingRef.current?.focus();
+  }, [step]);
+
   if (step === "sending") {
     return (
       <div className={styles.sending} role="status" aria-busy="true">
@@ -33,7 +39,9 @@ const SendStatus: React.FC<SendStatusProps> = ({
         data-step={step}
         data-testid="email-workflow-success"
       >
-        <Title level={4}>{t("emailWorkflow.success.title")}</Title>
+        <Title ref={headingRef} tabIndex={-1} level={4}>
+          {t("emailWorkflow.success.title")}
+        </Title>
         <p>{t("emailWorkflow.success.body")}</p>
         <Button variant="primary" onClick={() => dispatch({ type: "CANCEL" })}>
           {t("emailWorkflow.done")}
@@ -43,7 +51,9 @@ const SendStatus: React.FC<SendStatusProps> = ({
   }
   return (
     <div className={styles.workflowBlock} data-step={step}>
-      <Title level={4}>{t("emailWorkflow.error.title")}</Title>
+      <Title ref={headingRef} tabIndex={-1} level={4}>
+        {t("emailWorkflow.error.title")}
+      </Title>
       <p>
         {errorCode
           ? t(`emailWorkflow.error.${errorCode}`, {

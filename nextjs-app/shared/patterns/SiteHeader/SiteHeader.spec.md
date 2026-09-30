@@ -8,10 +8,10 @@ Container) and external hooks (i18n, theme, toast) into one shipping
 unit so consumers don't reinvent the global header per route.
 
 ## Interaction contract
-- Keyboard: Tab walks logo → each desktop nav link → each language
-  button (skipping the currently active one) → theme toggle →
-  hamburger (mobile only). Enter / Space activates buttons; Enter
-  on the logo / nav links navigates.
+- Keyboard: Tab walks the visible logo, desktop navigation, language
+  disclosure, theme control and mobile menu control. Enter / Space opens
+  disclosures; language selection or Escape returns focus to the trigger.
+  Enter on the logo or navigation links navigates.
 - Pointer: hovering the logo triggers the pulse animation; clicking
   navigates. Clicking the hamburger opens MobileDrawer (which has
   its own focus trap). Click on a disabled language button does
@@ -37,10 +37,13 @@ unit so consumers don't reinvent the global header per route.
   i18n keys.
 
 ## Design notes
+- The header is sticky in ordinary viewports. At heights of 480 CSS pixels
+  or less it scrolls in normal flow, leaving space for focused page controls
+  when the nonmodal cookie banner is also visible.
 - Tokens: scrolled state uses `--color-background-90` (background
   with 90% opacity) plus `backdrop-blur(...)`. Border is
   `--color-border` on scroll, transparent otherwise. Height is
-  20rem (h-20). Container is `size="lg"`.
+  5rem (h-20). Container is `size="lg"`.
 - Figma: https://www.figma.com/design/digitaltableteur/site-header —
   default and scrolled states; mobile drawer is a separate file.
 - Theme cycle order is `light → dark → hcb → hcw → light` (defined

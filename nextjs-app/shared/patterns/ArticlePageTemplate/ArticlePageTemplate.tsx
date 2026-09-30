@@ -15,7 +15,7 @@ import type { BlogPostEntry } from "../../data/blogPosts";
 
 // MDX component imports preserved from original
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
-import { CodeBlockWindow } from "@digitaltableteur/react";
+import { CodeBlockWindow, Link, Text } from "@digitaltableteur/react";
 import { DashLeadList } from "@dt/DashLeadList";
 import { MdxImage } from "../../components/MdxImage";
 import { cn } from "../../lib/cn";
@@ -49,7 +49,9 @@ const getFigureLayout = (
 const isFigcaptionElement = (child: React.ReactNode): boolean => {
   if (!React.isValidElement(child)) return false;
   if (child.type === MdxFigcaption) return true;
-  return typeof child.type === "string" && child.type.toLowerCase() === "figcaption";
+  return (
+    typeof child.type === "string" && child.type.toLowerCase() === "figcaption"
+  );
 };
 
 const isParagraphElement = (
@@ -61,7 +63,8 @@ const isParagraphElement = (
 
 const renderFigureCaption = (child: React.ReactNode, key: number) => {
   if (isFigcaptionElement(child) && React.isValidElement(child)) {
-    const captionProps = child.props as React.ComponentPropsWithoutRef<"figcaption">;
+    const captionProps =
+      child.props as React.ComponentPropsWithoutRef<"figcaption">;
     return (
       <figcaption
         key={key}
@@ -85,14 +88,73 @@ type EmbedProps = {
   title?: string;
 };
 
+const YOUTUBE_HOSTS = new Set([
+  "youtube.com",
+  "m.youtube.com",
+  "youtube-nocookie.com",
+  "youtu.be",
+]);
+
+const parseHttpUrl = (value: string): URL | null => {
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === "https:" || parsed.protocol === "http:"
+      ? parsed
+      : null;
+  } catch {
+    return null;
+  }
+};
+
+const getYouTubeWatchUrl = (url: URL): string | null => {
+  const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
+  if (!YOUTUBE_HOSTS.has(hostname)) return null;
+
+  const pathSegments = url.pathname.split("/").filter(Boolean);
+  const videoId =
+    hostname === "youtu.be"
+      ? pathSegments[0]
+      : pathSegments[0] === "embed" || pathSegments[0] === "shorts"
+        ? pathSegments[1]
+        : url.searchParams.get("v");
+
+  if (!videoId || !/^[A-Za-z0-9_-]{6,64}$/.test(videoId)) return null;
+  return `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;
+};
+
 const Embed = ({ provider = "embed", url, title }: EmbedProps) => {
   if (!url) return null;
-  const iframeProviders = new Set(["youtube", "vimeo"]);
+  const parsedUrl = parseHttpUrl(url);
+  if (!parsedUrl) return null;
+
+  // The third-party YouTube iframe currently exposes unnamed controls and
+  // invalid ARIA. Keep the supplementary video available at its source
+  // without inserting that inaccessible player into the article's focus order.
+  if (provider.toLowerCase() === "youtube") {
+    const watchUrl = getYouTubeWatchUrl(parsedUrl);
+    if (!watchUrl) return null;
+    const linkTitle = title?.trim() || "Supplementary article video";
+    const linkLabel = `${linkTitle} (watch on YouTube, opens in a new tab)`;
+
+    return (
+      <Text as="p" lang="en">
+        <Link
+          href={watchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={linkLabel}
+        >
+          {linkLabel}
+        </Link>
+      </Text>
+    );
+  }
+  const iframeProviders = new Set(["vimeo"]);
   if (iframeProviders.has(provider.toLowerCase())) {
     return (
       <div className="relative w-full aspect-video my-8 rounded-lg overflow-hidden bg-muted">
         <iframe
-          src={url}
+          src={parsedUrl.toString()}
           title={title ?? "Embedded media"}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -102,16 +164,15 @@ const Embed = ({ provider = "embed", url, title }: EmbedProps) => {
     );
   }
   return (
-    <p className="my-4">
-      <a
-        href={url}
+    <Text as="p">
+      <Link
+        href={parsedUrl.toString()}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-primary underline"
       >
-        {url}
-      </a>
-    </p>
+        {parsedUrl.toString()}
+      </Link>
+    </Text>
   );
 };
 
@@ -160,10 +221,7 @@ const MdxFigcaption = ({
 
   if (figureLayout !== null) {
     return (
-      <figcaption
-        {...props}
-        className={cn(figureStyles.caption, className)}
-      >
+      <figcaption {...props} className={cn(figureStyles.caption, className)}>
         {children}
       </figcaption>
     );
@@ -215,8 +273,7 @@ const MdxFigure = ({
   );
 
   if (!isPrettyCodeFigure) {
-    const layout =
-      layoutProp ?? getFigureLayout(props as DataProps, className);
+    const layout = layoutProp ?? getFigureLayout(props as DataProps, className);
     const childArray = React.Children.toArray(children);
     const media: React.ReactNode[] = [];
     const captions: React.ReactNode[] = [];
@@ -245,7 +302,9 @@ const MdxFigure = ({
           className={cn(
             "not-prose",
             figureStyles.figure,
-            layout === "full" ? figureStyles.figureFull : figureStyles.figureCenter,
+            layout === "full"
+              ? figureStyles.figureFull
+              : figureStyles.figureCenter,
             className,
           )}
           {...props}
@@ -253,7 +312,9 @@ const MdxFigure = ({
           {media.length > 0 ? (
             <div className={figureStyles.media}>{media}</div>
           ) : null}
-          {captions.map((caption, index) => renderFigureCaption(caption, index))}
+          {captions.map((caption, index) =>
+            renderFigureCaption(caption, index),
+          )}
         </figure>
       </FigureLayoutContext.Provider>
     );

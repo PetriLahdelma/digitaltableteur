@@ -33,6 +33,19 @@ const mockDraft = {
 };
 
 describe("FieldPrompt", () => {
+  it.each([
+    ["collectingFullName", "name", "text"],
+    ["collectingEmail", "email", "email"],
+    ["collectingPhone", "tel", "tel"],
+  ])("identifies the purpose of %s", (step, autocomplete, type) => {
+    render(<FieldPrompt step={step} draft={mockDraft} dispatch={vi.fn()} />);
+    expect(screen.getByRole("textbox")).toHaveAttribute(
+      "autocomplete",
+      autocomplete,
+    );
+    expect(screen.getByRole("textbox")).toHaveAttribute("type", type);
+  });
+
   it("renders collecting full name step", () => {
     render(
       <FieldPrompt
@@ -94,6 +107,36 @@ describe("FieldPrompt", () => {
       />,
     );
     expect(screen.getByRole("textbox")).toHaveValue("Jane Smith");
+  });
+
+  it("focuses the current field and restores its draft when the step changes", () => {
+    const { rerender } = render(
+      <FieldPrompt
+        step="collectingFullName"
+        draft={{
+          ...mockDraft,
+          fullName: "Jane Smith",
+          email: "jane@example.com",
+        }}
+        dispatch={vi.fn()}
+      />,
+    );
+    expect(screen.getByRole("textbox")).toHaveFocus();
+
+    rerender(
+      <FieldPrompt
+        step="collectingEmail"
+        draft={{
+          ...mockDraft,
+          fullName: "Jane Smith",
+          email: "jane@example.com",
+        }}
+        dispatch={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByRole("textbox")).toHaveValue("jane@example.com");
+    expect(screen.getByRole("textbox")).toHaveFocus();
   });
 
   it("dispatches NEXT when next is clicked with valid data", async () => {

@@ -15,7 +15,7 @@ export interface ScrollIndicatorProps {
   variant?: "arrow" | "mouse" | "chevron";
   /** Horizontal position */
   position?: "center" | "left" | "right";
-  /** Looping motion applied to the icon as a hint to scroll. */
+  /** Brief motion applied to the icon as a hint to scroll. */
   motion?: "bounce" | "pulse" | "fade" | "none";
   /** Duration of one motion half-cycle, in seconds. */
   speed?: number;
@@ -25,7 +25,10 @@ export interface ScrollIndicatorProps {
   className?: string;
 }
 
-const positionClasses: Record<NonNullable<ScrollIndicatorProps["position"]>, string> = {
+const positionClasses: Record<
+  NonNullable<ScrollIndicatorProps["position"]>,
+  string
+> = {
   center: "left-1/2 -translate-x-1/2",
   left: "left-8",
   right: "right-8",
@@ -51,9 +54,12 @@ export function ScrollIndicator({
 
     const target = document.getElementById(targetId);
     if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.scrollIntoView({
+        behavior: motionPreference === "reduced" ? "auto" : "smooth",
+        block: "start",
+      });
     }
-  }, [targetId]);
+  }, [motionPreference, targetId]);
 
   useGSAP(
     () => {
@@ -78,15 +84,15 @@ export function ScrollIndicator({
         gsap.fromTo(
           el,
           { opacity: 0 },
-          { opacity: 1, duration: 0.5, delay: 1.5, ease: "power2.out" }
+          { opacity: 1, duration: 0.5, delay: 1.5, ease: "power2.out" },
         );
       }
 
-      // Looping motion hint for the current preset.
+      // A short motion hint that stops automatically within five seconds.
       const loop = {
         duration: speed,
         ease: "power2.inOut",
-        repeat: -1,
+        repeat: 1,
         yoyo: true,
       } as const;
       if (motion === "pulse") gsap.to(el, { ...loop, scale: 1.12 });
@@ -102,10 +108,10 @@ export function ScrollIndicator({
       scope: ref,
       dependencies: [motionPreference, motion, speed, distance],
       revertOnUpdate: true,
-    }
+    },
   );
 
-  // Pause the loop on hover, settling the icon to its resting transform.
+  // Settle the hint on hover.
   const handleMouseEnter = useCallback(() => {
     const el = iconRef.current;
     if (!el || motionPreference === "reduced") return;
@@ -113,20 +119,22 @@ export function ScrollIndicator({
     gsap.to(el, { y: 0, scale: 1, opacity: 1, duration: 0.2 });
   }, [motionPreference]);
 
-  // Restart the loop for the current preset when the pointer leaves.
+  // Replay the brief hint when the pointer leaves.
   const handleMouseLeave = useCallback(() => {
     const el = iconRef.current;
     if (!el || motionPreference === "reduced" || motion === "none") return;
     const loop = {
       duration: speed,
       ease: "power2.inOut",
-      repeat: -1,
+      repeat: 1,
       yoyo: true,
     } as const;
     if (motion === "pulse") gsap.to(el, { ...loop, scale: 1.12 });
     else if (motion === "fade") gsap.to(el, { ...loop, opacity: 0.35 });
     else gsap.to(el, { ...loop, y: distance });
   }, [motion, speed, distance, motionPreference]);
+
+  if (!targetId) return null;
 
   const renderIcon = () => {
     const iconProps = {
@@ -138,13 +146,23 @@ export function ScrollIndicator({
     switch (variant) {
       case "arrow":
         return (
-          <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg
+            {...iconProps}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
         );
       case "mouse":
         return (
-          <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg
+            {...iconProps}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
             <rect x="6" y="3" width="12" height="18" rx="6" />
             <line x1="12" y1="7" x2="12" y2="11" />
           </svg>
@@ -168,7 +186,7 @@ export function ScrollIndicator({
         "transition-colors duration-200",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
         positionClasses[position],
-        className
+        className,
       )}
       aria-label={label || "Scroll to content"}
     >

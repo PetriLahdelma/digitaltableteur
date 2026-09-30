@@ -254,6 +254,14 @@
   color: var(--selected-clients-label-color);
 }
 
+:global(.themeHCB) .selectedClientsPanel {
+  background: var(--main-body-background-color);
+}
+
+:global(.themeHCB) .selectedClientsLabel {
+  color: var(--color-text);
+}
+
 .selectedClientsDivider {
   --selected-clients-divider-color: var(--color-border-light);
 

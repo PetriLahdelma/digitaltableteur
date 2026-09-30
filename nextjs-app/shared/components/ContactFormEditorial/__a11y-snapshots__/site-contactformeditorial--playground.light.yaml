@@ -1,5 +1,6 @@
 - text: Full Name*
-- textbox "Full Name*"
+- textbox "Full Name*" [invalid]
+- alert: Full name is required
 - text: Email Address*
 - textbox "Email Address*"
 - text: Your Message*
@@ -11,4 +12,4 @@
   - link "privacy policy":
     - /url: /privacy-policy
   - text: .
-- button "Submit" [disabled]
+- button "Submit"

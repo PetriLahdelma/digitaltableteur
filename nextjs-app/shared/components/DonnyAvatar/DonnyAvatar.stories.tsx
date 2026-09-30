@@ -2,6 +2,7 @@ import contract from "./DonnyAvatar.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState, useEffect } from "react";
 import { DonnyAvatar, DonnyState } from "./DonnyAvatar";
+import Button from "@dt/Button";
 
 const meta: Meta<typeof DonnyAvatar> = {
   title: "Site/DonnyAvatar",
@@ -310,25 +311,15 @@ function InteractiveDemo() {
         }}
       >
         {ALL_STATES.map((s) => (
-          <button
+          <Button
             key={s}
             onClick={() => setState(s)}
-            style={{
-              padding: "0.25rem 0.5rem",
-              fontSize: "0.625rem",
-              fontFamily: "monospace",
-              border:
-                state === s
-                  ? "2px solid var(--color-primary)"
-                  : "1px solid var(--color-border)",
-              borderRadius: "4px",
-              background: state === s ? "var(--color-primary)" : "transparent",
-              color: state === s ? "white" : "inherit",
-              cursor: "pointer",
-            }}
+            variant={state === s ? "primary" : "secondary"}
+            size="sm"
+            aria-pressed={state === s}
           >
             {s}
-          </button>
+          </Button>
         ))}
       </div>
     </div>
@@ -394,35 +385,20 @@ function EyeTrackingDemo() {
           flexWrap: "wrap",
         }}
       >
-        <button
+        <Button
           data-contact-cta
-          style={{
-            padding: "1rem 2rem",
-            fontSize: "1rem",
-            background: "var(--color-primary)",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
+          variant="primary"
         >
           Contact Us
-        </button>
+        </Button>
 
-        <button
+        <Button
           data-submit-btn
-          style={{
-            padding: "1rem 2rem",
-            fontSize: "1rem",
-            background: "var(--color-success)",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
+          variant="primary"
+          tone="success"
         >
           Submit Form
-        </button>
+        </Button>
       </div>
 
       <div style={{ marginTop: "2rem", textAlign: "center" }}>

@@ -1,0 +1,7 @@
+.controls {
+  display: flex;
+  margin-block-start: var(--space-internal-8);
+  padding-block-end: var(--space-internal-4);
+  padding-inline: var(--space-internal-4);
+  justify-content: flex-end;
+}

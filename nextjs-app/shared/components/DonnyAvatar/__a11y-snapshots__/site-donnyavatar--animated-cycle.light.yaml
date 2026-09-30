@@ -1,0 +1,4 @@
+- img "Donny is idle":
+  - img
+- paragraph: idle
+- paragraph: Cycles through states every 2 seconds

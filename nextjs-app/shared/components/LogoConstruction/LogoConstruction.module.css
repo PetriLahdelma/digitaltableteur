@@ -4,6 +4,10 @@
 
   inline-size: 100%;
   max-inline-size: 100%;
+}
+
+.canvas {
+  inline-size: 100%;
   border-radius: var(--radius-lg, 12px);
   background-color: var(--logo-canvas-bg);
   aspect-ratio: 1848 / 621;
@@ -12,6 +16,12 @@
 
 .svg {
   display: block;
-  inline-size: 100%;
   block-size: 100%;
+  inline-size: 100%;
+}
+
+.controls {
+  display: flex;
+  margin-block-start: var(--space-layout-16);
+  justify-content: center;
 }

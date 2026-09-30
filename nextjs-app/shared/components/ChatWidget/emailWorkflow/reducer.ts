@@ -46,7 +46,7 @@ export const emailWorkflowReducer = (
       return { step: nextStep, draft: state.draft } as EmailWorkflowState;
     }
     case "EDIT":
-      if (state.step !== "review") return state;
+      if (state.step !== "review" && state.step !== "error") return state;
       return {
         step: `collecting${capitalize(action.field)}` as any,
         draft: state.draft,

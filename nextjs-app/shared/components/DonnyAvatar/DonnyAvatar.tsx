@@ -59,9 +59,9 @@ export interface DonnyAvatarProps {
   onProximityChange?: (isNearTarget: boolean, targetSelector?: string) => void;
   /** Pointer proximity threshold in pixels (default 150). */
   proximityThreshold?: number;
-  /** Enables randomized idle expressions. */
+  /** Enables one randomized idle expression before the avatar settles. */
   enableIdleExpressions?: boolean;
-  /** Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent. */
+  /** Delay before the one idle expression, in milliseconds (default 12000), randomized by 50 percent. */
   idleExpressionInterval?: number;
   /** Animates the mouth during streaming responses. */
   isSpeaking?: boolean;
@@ -497,31 +497,23 @@ export function DonnyAvatar({
       "playful", // Rare wink
     ];
 
-    // Function to schedule the next random expression
-    const scheduleNextExpression = () => {
-      // Randomize interval: base ± 50% (so 12s becomes 6-18s)
-      const variance = idleExpressionInterval * 0.5;
-      const randomizedDelay =
-        idleExpressionInterval + (Math.random() * 2 - 1) * variance;
+    // Play one idle quirk, then settle. Re-entering the idle state can schedule
+    // another, but a stationary avatar never changes indefinitely.
+    const variance = idleExpressionInterval * 0.5;
+    const randomizedDelay =
+      idleExpressionInterval + (Math.random() * 2 - 1) * variance;
 
-      idleTimeoutRef.current = setTimeout(() => {
-        // Pick a random expression
-        const expression =
-          idleExpressions[Math.floor(Math.random() * idleExpressions.length)];
-        setIdleExpression(expression);
+    idleTimeoutRef.current = setTimeout(() => {
+      const expression =
+        idleExpressions[Math.floor(Math.random() * idleExpressions.length)];
+      setIdleExpression(expression);
 
-        // Hold the quirk long enough to read (a 600ms flash reads as a glitch).
-        const resetDelay = expression === "searching" ? 1500 : 900;
-
-        const resetTimerId = setTimeout(() => {
-          setIdleExpression(null);
-          scheduleNextExpression();
-        }, resetDelay);
-        chainedTimeoutsRef.current.push(resetTimerId);
-      }, randomizedDelay);
-    };
-
-    scheduleNextExpression();
+      const resetDelay = expression === "searching" ? 1500 : 900;
+      const resetTimerId = setTimeout(() => {
+        setIdleExpression(null);
+      }, resetDelay);
+      chainedTimeoutsRef.current.push(resetTimerId);
+    }, randomizedDelay);
 
     return () => {
       if (idleTimeoutRef.current) {
@@ -593,31 +585,34 @@ export function DonnyAvatar({
     };
   }, [enableSleepDetection, sleepyDelay, sleepDelay]);
 
-  // Natural blinks while the eyes are open: every 2.5 to 6 s, sometimes a
-  // double blink. Skipped under reduced motion and while asleep.
+  // One natural blink after the eyes open, sometimes doubled. It does not
+  // recursively reschedule, so a stationary avatar settles.
   const eyesOpen =
     OPEN_EYE_STATES.has(currentState) &&
     sleepState === "awake" &&
     !idleExpression;
   useEffect(() => {
     if (!eyesOpen || prefersReducedMotion()) return;
-    let timer: ReturnType<typeof setTimeout>;
-    const schedule = () => {
-      timer = setTimeout(
-        () => {
-          const blink = playBlink(blinkRef.current);
-          if (blink && Math.random() < 0.18) {
-            blink.onfinish = () => {
-              timer = setTimeout(() => playBlink(blinkRef.current), 90);
-            };
-          }
-          schedule();
-        },
-        2500 + Math.random() * 3500,
-      );
+    let secondBlinkTimer: ReturnType<typeof setTimeout> | null = null;
+    const blinkTimer = setTimeout(
+      () => {
+        const blink = playBlink(blinkRef.current);
+        if (blink && Math.random() < 0.18) {
+          blink.onfinish = () => {
+            secondBlinkTimer = setTimeout(
+              () => playBlink(blinkRef.current),
+              90,
+            );
+          };
+        }
+      },
+      2500 + Math.random() * 3500,
+    );
+
+    return () => {
+      clearTimeout(blinkTimer);
+      if (secondBlinkTimer) clearTimeout(secondBlinkTimer);
     };
-    schedule();
-    return () => clearTimeout(timer);
   }, [eyesOpen]);
 
   // Gaze spring: ease the eyes toward the pointer each frame, writing the

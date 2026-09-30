@@ -43,7 +43,12 @@
     "donnyTarget": {
       "type": "string",
       "optional": true,
-      "description": "Donny site action target id for the project main landmark"
+      "description": "Donny site action target id for the project article"
+    },
+    "lang": {
+      "type": "string",
+      "optional": true,
+      "description": "Language applied to the project hero and authored case-study body (defaults to English); navigation, CTA, and related-project chrome keep the UI language"
     }
   },
   "accessibility": {

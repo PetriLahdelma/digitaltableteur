@@ -48,7 +48,7 @@
     "lang": {
       "type": "string",
       "optional": true,
-      "description": "Document language for the article root"
+      "description": "Language applied to the article hero and body (defaults to English); navigation and related-post chrome keep the UI language"
     }
   },
   "accessibility": {

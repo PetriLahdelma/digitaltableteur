@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
+import Title from "@dt/Title";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
@@ -69,7 +70,7 @@ export function DesignSprintsSection({
         <div className={styles.layout}>
           <div className={styles.intro}>
             <FadeIn direction="up" delay={0} distance={20}>
-              <Title level={2} unstyled className={styles.title}>
+              <Title as="h2" unstyled className={styles.title}>
                 {t(
                   "homeDesignSprintsTitle",
                   "Focused engagements, senior delivery",

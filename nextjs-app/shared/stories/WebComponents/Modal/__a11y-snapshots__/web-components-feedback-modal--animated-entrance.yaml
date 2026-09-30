@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- button "scale"
+- button "slide"
+- button "fade"
+- dialog "Scale entrance":
+  - heading "Scale entrance" [level=2]
+  - paragraph: Opened with the scale entrance. Motion is removed under reduced motion.
+  - button "OK"

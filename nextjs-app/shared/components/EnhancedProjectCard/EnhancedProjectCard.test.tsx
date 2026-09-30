@@ -13,7 +13,8 @@ const baseProps = {
   slug: "sap-build-apps",
   thumbnail: "/images/portfolio/sap-build-apps/icon.png",
   category: "Design Systems",
-  description: "Tokens, components, and governance that scale with your product.",
+  description:
+    "Tokens, components, and governance that scale with your product.",
   tags: ["Enterprise", "Low-Code"],
 };
 
@@ -31,14 +32,40 @@ describe("EnhancedProjectCard", () => {
     expect(link).toHaveAttribute("href", "/work/sap-build-apps");
   });
 
-  it("exposes category, description, and tags to assistive tech via aria-describedby", () => {
+  it("uses the visible title and one visible description for the link semantics", () => {
     render(<EnhancedProjectCard {...baseProps} />);
-    const link = screen.getByRole("link");
+    const link = screen.getByRole("link", { name: baseProps.title });
+    const labelledBy = link.getAttribute("aria-labelledby");
     const describedBy = link.getAttribute("aria-describedby");
-    expect(describedBy).toBe(`${baseProps.slug}-desc`);
+    expect(labelledBy).toBeTruthy();
+    expect(describedBy).toBeTruthy();
+    expect(document.getElementById(labelledBy as string)).toHaveTextContent(
+      baseProps.title,
+    );
     const description = document.getElementById(describedBy as string);
-    expect(description).toHaveTextContent(/Category: Design Systems/);
-    expect(description).toHaveTextContent(/Tags: Enterprise, Low-Code/);
+    expect(description).toHaveTextContent(baseProps.description);
+    expect(screen.getAllByText(baseProps.description)).toHaveLength(1);
+    expect(link).toHaveAccessibleDescription(baseProps.description);
+  });
+
+  it("marks English project copy without overriding a localized status label", () => {
+    render(
+      <EnhancedProjectCard
+        {...baseProps}
+        comingSoon
+        comingSoonLabel="Tulossa pian"
+        contentLanguage="en"
+      />,
+    );
+
+    expect(
+      screen.getByRole("heading", { name: baseProps.title }),
+    ).toHaveAttribute("lang", "en");
+    expect(screen.getByText(baseProps.description)).toHaveAttribute(
+      "lang",
+      "en",
+    );
+    expect(screen.getByText("Tulossa pian")).not.toHaveAttribute("lang", "en");
   });
 
   it("marks the thumbnail image as decorative (empty alt)", () => {
@@ -46,6 +73,23 @@ describe("EnhancedProjectCard", () => {
     const img = container.querySelector("img");
     expect(img).not.toBeNull();
     expect(img).toHaveAttribute("alt", "");
+  });
+
+  it("keeps video previews paused even when legacy autoplay is requested", () => {
+    const { container } = render(
+      <EnhancedProjectCard
+        {...baseProps}
+        thumbnail="/images/poster.webp"
+        videoThumbnail="/images/preview.webm"
+        autoPlayVideo
+      />,
+    );
+    const video = container.querySelector("video");
+
+    expect(video).toHaveAttribute("preload", "metadata");
+    expect(video).toHaveAttribute("poster", "/images/poster.webp");
+    expect(video).not.toHaveAttribute("autoplay");
+    expect(video).not.toHaveAttribute("loop");
   });
 
   it("does not hide image assets behind load-state opacity", () => {

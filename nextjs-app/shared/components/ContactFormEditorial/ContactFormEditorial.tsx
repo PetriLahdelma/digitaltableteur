@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { useNavigationSearchParams } from "../../lib/navigation";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
@@ -24,6 +24,7 @@ import {
   reportContactHoneypot,
   validateContactEmail,
 } from "../contactFormUtils";
+import { suggestEmailCorrection } from "../../utils/emailSuggestion";
 import {
   DONNY_PREFILL_CONTACT_EVENT,
   type DonnyContactPrefillDetail,
@@ -57,6 +58,7 @@ const getInitialErrorState = () => ({
 
 type FormState = ReturnType<typeof getInitialFormState>;
 type ErrorState = ReturnType<typeof getInitialErrorState>;
+type ValidatedField = keyof ErrorState;
 
 type FormAction =
   | {
@@ -245,7 +247,11 @@ export function ContactFormEditorial({
   );
   const [formErrors, setFormErrors] =
     useState<ErrorState>(getInitialErrorState);
+  const [emailSuggestion, setEmailSuggestion] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   // Attachment state
   const [attachmentFile, setAttachmentFile] = useState<File | null>(null);
@@ -275,12 +281,35 @@ export function ContactFormEditorial({
       })
     : "";
 
-  const isFormValid =
-    formData.name.trim() !== "" &&
-    formData.email.trim() !== "" &&
-    validateEmail(formData.email) &&
-    formData.message.trim() !== "" &&
-    !attachmentError;
+  const getFieldError = (field: ValidatedField, value: string): string => {
+    if (!value.trim()) {
+      if (field === "name") return t("contactValidationFullNameRequired");
+      if (field === "email") return t("contactValidationEmailRequired");
+      return t("contactValidationMessageRequired");
+    }
+
+    if (field === "email" && !validateEmail(value)) {
+      return t("contactValidationEmailInvalid");
+    }
+
+    return "";
+  };
+
+  const getEmailSuggestion = (value: string): string => {
+    if (!validateEmail(value)) return "";
+    const suggestion = suggestEmailCorrection(value);
+    return suggestion
+      ? t("contactValidationEmailSuggestion", { suggestion })
+      : "";
+  };
+
+  const validateField = (field: ValidatedField, value: string) => {
+    setFormErrors((current) => ({
+      ...current,
+      [field]: getFieldError(field, value),
+    }));
+    if (field === "email") setEmailSuggestion(getEmailSuggestion(value));
+  };
 
   // === HANDLERS ===
   const updateField =
@@ -294,6 +323,13 @@ export function ContactFormEditorial({
         type: "UPDATE_FIELD",
         payload: { field, value: e.target.value },
       });
+
+      if (
+        (field === "name" || field === "email" || field === "message") &&
+        (formErrors[field] || (field === "email" && emailSuggestion))
+      ) {
+        validateField(field, e.target.value);
+      }
     };
 
   const updateSelectField =
@@ -339,6 +375,7 @@ export function ContactFormEditorial({
     setAttachmentDataUrl(null);
     setAttachmentError("");
     setFormErrors(getInitialErrorState());
+    setEmailSuggestion("");
     setTier2Expanded(false);
     setTier3Expanded(false);
   };
@@ -347,44 +384,44 @@ export function ContactFormEditorial({
   const logHoneypotHit = () => reportContactHoneypot(formData.honeypot);
 
   // === VALIDATION ===
-  const validateForm = (): boolean => {
-    const errors = getInitialErrorState();
-
-    if (!formData.name.trim()) {
-      errors.name = t("contactValidationFullNameRequired");
-    }
-
-    if (!formData.email.trim()) {
-      errors.email = t("contactValidationEmailRequired");
-    } else if (!validateEmail(formData.email)) {
-      errors.email = t("contactValidationEmailInvalid");
-    }
-
-    if (!formData.message.trim()) {
-      errors.message = t("contactValidationMessageRequired");
-    }
+  const validateForm = (): ErrorState => {
+    const errors: ErrorState = {
+      name: getFieldError("name", formData.name),
+      email: getFieldError("email", formData.email),
+      message: getFieldError("message", formData.message),
+    };
 
     setFormErrors(errors);
-    return !errors.name && !errors.email && !errors.message && !attachmentError;
+    setEmailSuggestion(getEmailSuggestion(formData.email));
+    return errors;
+  };
+
+  const focusFirstInvalidField = (errors: ErrorState) => {
+    requestAnimationFrame(() => {
+      if (errors.name) nameRef.current?.focus();
+      else if (errors.email) emailRef.current?.focus();
+      else if (errors.message) messageRef.current?.focus();
+    });
   };
 
   // === SUBMIT ===
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
-    setIsSubmitting(true);
 
     // Honeypot check
     if (formData.honeypot.trim()) {
       logHoneypotHit();
-      setIsSubmitting(false);
       return;
     }
 
-    if (!validateForm()) {
-      setIsSubmitting(false);
+    const errors = validateForm();
+    if (errors.name || errors.email || errors.message || attachmentError) {
+      focusFirstInvalidField(errors);
       return;
     }
+
+    setIsSubmitting(true);
 
     const now = new Date();
     const time = now.toLocaleString();
@@ -447,6 +484,7 @@ export function ContactFormEditorial({
   return (
     <motion.form
       onSubmit={handleSubmit}
+      noValidate
       className={cn(styles.form, className)}
       initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -477,32 +515,59 @@ export function ContactFormEditorial({
       {/* === TIER 1: Core Fields === */}
       <div className={styles.fields}>
         <FormFieldEditorial
+          ref={nameRef}
+          id="contact-name"
           label={t("contactFullName")}
           type="text"
           required
           value={formData.name}
           onChange={updateField("name")}
+          onBlur={(event) => validateField("name", event.currentTarget.value)}
           error={formErrors.name}
           autoComplete="name"
           autoFocus
         />
 
-        <FormFieldEditorial
-          label={t("contactEmail")}
-          type="email"
-          required
-          value={formData.email}
-          onChange={updateField("email")}
-          error={formErrors.email}
-          autoComplete="email"
-        />
+        <div className={styles.fieldWithSuggestion}>
+          <FormFieldEditorial
+            ref={emailRef}
+            id="contact-email"
+            label={t("contactEmail")}
+            type="email"
+            required
+            value={formData.email}
+            onChange={updateField("email")}
+            onBlur={(event) =>
+              validateField("email", event.currentTarget.value)
+            }
+            error={formErrors.email}
+            aria-describedby={
+              emailSuggestion ? "contact-email-suggestion" : undefined
+            }
+            autoComplete="email"
+          />
+          {emailSuggestion && (
+            <p
+              id="contact-email-suggestion"
+              className={styles.emailSuggestion}
+              role="status"
+            >
+              {emailSuggestion}
+            </p>
+          )}
+        </div>
 
         <FormFieldEditorial
+          ref={messageRef}
+          id="contact-message"
           label={t("contactMessage")}
           type="textarea"
           required
           value={formData.message}
           onChange={updateField("message")}
+          onBlur={(event) =>
+            validateField("message", event.currentTarget.value)
+          }
           error={formErrors.message}
           placeholder={t("contactMessagePlaceholder")}
           rows={5}
@@ -679,7 +744,7 @@ export function ContactFormEditorial({
         variant="primary"
         size="lg"
         loading={isSubmitting}
-        disabled={!isFormValid}
+        disabled={isSubmitting}
         className={styles.submitButton}
       >
         {isSubmitting

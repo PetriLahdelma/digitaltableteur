@@ -14,7 +14,6 @@
 }
 
 .cardLink:hover {
-  background-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-card));
   border-color: color-mix(in srgb, var(--color-foreground) 25%, var(--color-border));
   box-shadow: 0 0.5rem 1.25rem color-mix(in srgb, var(--color-foreground) 8%, transparent);
 }

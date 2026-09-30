@@ -507,6 +507,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const [draft, setDraft] = useState("");
   const [inputFocused, setInputFocused] = useState(false);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const followTranscriptRef = useRef(true);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
   const focusReturnRef = useRef<number | null>(null);
@@ -674,10 +675,22 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     if (!isOpen) return;
     const container = scrollerRef.current;
     if (!container) return;
+    const updateFollow = () => {
+      followTranscriptRef.current =
+        container.scrollHeight - container.scrollTop - container.clientHeight < 32;
+    };
+    container.addEventListener("scroll", updateFollow, { passive: true });
+    return () => container.removeEventListener("scroll", updateFollow);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen || !followTranscriptRef.current) return;
+    const container = scrollerRef.current;
+    if (!container) return;
     // jsdom may not implement scrollTo; feature detect and fallback
     if (typeof container.scrollTo === "function") {
       try {
-        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+        container.scrollTo({ top: container.scrollHeight, behavior: "auto" });
       } catch {
         // fallback if options unsupported
         container.scrollTop = container.scrollHeight;
@@ -809,6 +822,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       return;
     }
     setIsOpen(true);
+    followTranscriptRef.current = true;
     // Defer focus to next animation frame after open state renders composer.
     requestAnimationFrame(() => composerRef.current?.focusInput());
   }, [closeChat, isOpen]);
@@ -837,6 +851,20 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     return () => document.removeEventListener("pointerdown", handlePointerDown);
   }, [isOpen, closeChat]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleFocusOutside = (event: FocusEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node) || panelRef.current?.contains(target)) return;
+      // This is a nonmodal panel. Keyboard users may leave it, but it must
+      // not cover the next page control or steal focus back to the launcher.
+      stop();
+      setIsOpen(false);
+    };
+    document.addEventListener("focusin", handleFocusOutside);
+    return () => document.removeEventListener("focusin", handleFocusOutside);
+  }, [isOpen, stop]);
+
   const handleSubmit = useCallback(
     (event: React.FormEvent) => {
       event.preventDefault();
@@ -850,6 +878,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       }
 
       lastUserMessageRef.current = trimmed;
+      followTranscriptRef.current = true;
       sendMessage({ text: trimmed });
       setDraft("");
     },
@@ -906,6 +935,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   const handleReset = useCallback(() => {
     stop();
+    dispatchEmailWorkflow({ type: "CANCEL" });
     playBeat("acknowledging", BEAT_MS.acknowledging);
     const resetMessages = [createGreetingMessage(greetingText)];
     setMessages(resetMessages);
@@ -1100,6 +1130,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             onValueChange={setDraft}
             onSubmit={handleSubmit}
             onReset={handleReset}
+            onStop={stop}
             isSending={isStreaming}
             maxLength={1_000}
           />

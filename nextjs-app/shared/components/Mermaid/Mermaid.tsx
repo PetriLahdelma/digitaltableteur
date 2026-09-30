@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, useMemo, useId } from "react";
+import React, {
+  useEffect,
+  useState,
+  useMemo,
+  useId,
+  type ReactNode,
+} from "react";
 import AlertBanner from "@dt/AlertBanner";
 import { useTranslate } from "../../lib/translation";
 import styles from "./Mermaid.module.css";
@@ -64,6 +70,14 @@ const loadMermaid = async (colors: MermaidThemeColors = DEFAULT_COLORS) => {
 export interface MermaidProps {
   /** Mermaid diagram code */
   chart: string;
+  /** Concise, meaningful name for the diagram */
+  title: string;
+  /** Short prose summary of the diagram's purpose and relationships */
+  description: string;
+  /** Structured or prose equivalent of every material relationship in the diagram */
+  accessibleDetails: ReactNode;
+  /** Label for the visible text-alternative disclosure */
+  detailsLabel?: string;
   /** Optional caption for the diagram */
   caption?: string;
   /** Optional className for styling */
@@ -74,6 +88,10 @@ export interface MermaidProps {
 
 export const Mermaid: React.FC<MermaidProps> = ({
   chart,
+  title,
+  description,
+  accessibleDetails,
+  detailsLabel,
   caption,
   className,
   themeColors,
@@ -85,6 +103,9 @@ export const Mermaid: React.FC<MermaidProps> = ({
     [rawId],
   );
   const containerId = `${renderId}-container`;
+  const titleId = `${renderId}-title`;
+  const descriptionId = `${renderId}-description`;
+  const detailsId = `${renderId}-details`;
   const [svg, setSvg] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -128,9 +149,18 @@ export const Mermaid: React.FC<MermaidProps> = ({
 
   return (
     <figure className={`${styles.mermaidFigure} ${className ?? ""}`}>
+      <span id={titleId} className="sr-only">
+        {title}
+      </span>
+      <span id={descriptionId} className="sr-only">
+        {description}
+      </span>
       {isLoading && (
-        <div className={styles.loading} aria-label="Loading diagram">
-          <span className={styles.loadingSpinner} />
+        <div className={styles.loading} role="status">
+          <span className="sr-only">
+            {t("mermaidLoadingLabel", "Loading diagram")}
+          </span>
+          <span className={styles.loadingSpinner} aria-hidden="true" />
         </div>
       )}
       {error && (
@@ -142,16 +172,36 @@ export const Mermaid: React.FC<MermaidProps> = ({
       )}
       {svg && (
         <div
-          id={containerId}
-          className={styles.diagram}
-          style={{
-            "--mermaid-color": (themeColors ?? DEFAULT_COLORS).color,
-            "--mermaid-node-bg": (themeColors ?? DEFAULT_COLORS).nodeBg,
-            "--mermaid-line-color": (themeColors?.lineColor ?? (themeColors ?? DEFAULT_COLORS).color),
-          } as React.CSSProperties}
-          dangerouslySetInnerHTML={{ __html: svg }}
-        />
+          className={styles.diagramFrame}
+          role="img"
+          aria-labelledby={titleId}
+          aria-describedby={descriptionId}
+          aria-details={detailsId}
+        >
+          <div
+            id={containerId}
+            className={styles.diagram}
+            aria-hidden="true"
+            style={
+              {
+                "--mermaid-color": (themeColors ?? DEFAULT_COLORS).color,
+                "--mermaid-node-bg": (themeColors ?? DEFAULT_COLORS).nodeBg,
+                "--mermaid-line-color":
+                  themeColors?.lineColor ??
+                  (themeColors ?? DEFAULT_COLORS).color,
+              } as React.CSSProperties
+            }
+            dangerouslySetInnerHTML={{ __html: svg }}
+          />
+        </div>
       )}
+      <details id={detailsId} className={styles.textAlternative}>
+        <summary className={styles.textAlternativeSummary}>
+          {detailsLabel ??
+            t("mermaidTextAlternativeLabel", "Diagram text alternative")}
+        </summary>
+        <div className={styles.textAlternativeContent}>{accessibleDetails}</div>
+      </details>
       {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
     </figure>
   );

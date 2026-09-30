@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Text, Title } from "@digitaltableteur/react";
+import { List, Text, Title } from "@digitaltableteur/react";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
@@ -81,18 +81,18 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
               Overview
             </Title>
             <p className={styles.metaOverview}>
-              <strong>Home Remote</strong> is a native macOS menu-bar remote
-              for TVs, monitors and other audio/video equipment. A local
-              daemon manages independently paired connections for each
-              supported device. The macOS app, CLI and MCP server use the
-              same restricted local API, while device-control traffic remains
-              on the trusted network.
+              <strong>Home Remote</strong> is a native macOS menu-bar remote for
+              TVs, monitors and other audio/video equipment. A local daemon
+              manages independently paired connections for each supported
+              device. The macOS app, CLI and MCP server use the same restricted
+              local API, while device-control traffic remains on the trusted
+              network.
             </p>
             <p className={styles.metaOverview}>
               <strong>The design challenge:</strong> make a remote control feel
               trustworthy and tactile at couch distance. Every control is
-              modelled in a warm clay material where raised means pressable
-              and recessed means state.
+              modelled in a warm clay material where raised means pressable and
+              recessed means state.
             </p>
           </div>
         </div>
@@ -105,17 +105,17 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             A weekend solo project end to end: product design, brand, SwiftUI
-            development and release engineering by one person. The
-            constraints were self-imposed and strict: local-first privacy
-            with no cloud account, vendor protocol quirks handled without
-            vendor apps and a visual system that survives both a Dock window
-            and a menu-bar popover.
+            development and release engineering by one person. The constraints
+            were self-imposed and strict: local-first privacy with no cloud
+            account, vendor protocol quirks handled without vendor apps and a
+            visual system that survives both a Dock window and a menu-bar
+            popover.
           </Text>,
           <Text key="p2" size="s">
-            The user is whoever is across the room from the screen. The jobs
-            are short and impatient: pause or resume, nudge or mute volume,
-            launch a streaming app, switch inputs, wake or power off and
-            confirm what is actually playing.
+            The user is whoever is across the room from the screen. The jobs are
+            short and impatient: pause or resume, nudge or mute volume, launch a
+            streaming app, switch inputs, wake or power off and confirm what is
+            actually playing.
           </Text>,
         ]}
         imageLayout="none"
@@ -143,6 +143,41 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Mermaid
             key="architecture"
+            title="Home Remote local device-control architecture"
+            description="The macOS app, command-line interface, and MCP server all use one local daemon, which controls displays over the trusted local network."
+            accessibleDetails={
+              <>
+                <Text as="p" size="s">
+                  The architecture has two groups connected by the local daemon:
+                </Text>
+                <List
+                  size="s"
+                  items={[
+                    <React.Fragment key="clients">
+                      Clients on the Mac
+                      <List
+                        size="s"
+                        items={[
+                          "The macOS app connects to the local daemon.",
+                          "The HomeTV command-line interface connects to the local daemon.",
+                          "The MCP server connects to the local daemon.",
+                        ]}
+                      />
+                    </React.Fragment>,
+                    <React.Fragment key="devices">
+                      Devices on the trusted local network
+                      <List
+                        size="s"
+                        items={[
+                          "The local daemon controls TVs.",
+                          "The local daemon controls monitors and AV displays.",
+                        ]}
+                      />
+                    </React.Fragment>,
+                  ]}
+                />
+              </>
+            }
             chart={`%%{init: {"flowchart": {"subGraphTitleMargin": {"top": 12, "bottom": 12}}}}%%
 flowchart LR
     subgraph mac["Mac · trusted LAN"]
@@ -190,9 +225,9 @@ flowchart LR
           </Text>,
           <Text key="p2" size="s">
             Capability honesty drives the layout: panels omit any state or
-            action the selected device cannot prove. A desktop monitor
-            declares itself a monitor, reports no tuner and refuses to
-            pretend to change channels.
+            action the selected device cannot prove. A desktop monitor declares
+            itself a monitor, reports no tuner and refuses to pretend to change
+            channels.
           </Text>,
         ]}
         imageLayout="none"
@@ -234,8 +269,8 @@ flowchart LR
         ]}
       />
       <Text size="xs" className={styles.gridCaption}>
-        The three tabs: Remote, Devices, Settings. Availability first,
-        pairing as inline maintenance, preferences on plain rows.
+        The three tabs: Remote, Devices, Settings. Availability first, pairing
+        as inline maintenance, preferences on plain rows.
       </Text>
 
       <StoryBlock
@@ -247,14 +282,14 @@ flowchart LR
             The interface is built from a bespoke warm-clay material with named
             tokens, each carrying a light and a dark value. The relief language
             does the explaining: embossed surfaces are pressable, debossed
-            surfaces are state and a single light source sits at the top-left
-            of every surface. Blocks sit on one 18-point rhythm.
+            surfaces are state and a single light source sits at the top-left of
+            every surface. Blocks sit on one 18-point rhythm.
           </Text>,
           <Text key="p2" size="s">
-            Availability still reads as green, amber, or red, but never by
-            color alone. Motion is a defined system for press, release, hover
-            and state, and the panel ORs the system Reduce Motion setting with
-            its own preference.
+            Availability still reads as green, amber, or red, but never by color
+            alone. Motion is a defined system for press, release, hover and
+            state, and the panel ORs the system Reduce Motion setting with its
+            own preference.
           </Text>,
         ]}
         imageLayout="none"
@@ -287,7 +322,8 @@ flowchart LR
             alt: "Relief specimen showing embossed, pressed, inert and recessed clay surfaces",
             width: 680,
             height: 264,
-            caption: "The relief vocabulary: embossed, pressed, inert and recess.",
+            caption:
+              "The relief vocabulary: embossed, pressed, inert and recess.",
           },
           {
             type: "image",
@@ -336,24 +372,24 @@ flowchart LR
         title="Three Calls That Shaped It"
         content={[
           <Text key="p1" size="s">
-            <strong>Thin client over direct connections.</strong> The app
-            never touches credentials or sockets; it invokes the CLI against
-            the daemon&apos;s restricted API. The rejected alternative, an app
-            that owns its own pairings, would have duplicated trust in two
-            places and made every surface a security boundary.
+            <strong>Thin client over direct connections.</strong> The app never
+            touches credentials or sockets; it invokes the CLI against the
+            daemon&apos;s restricted API. The rejected alternative, an app that
+            owns its own pairings, would have duplicated trust in two places and
+            made every surface a security boundary.
           </Text>,
           <Text key="p2" size="s">
-            <strong>Capability-honest panels over a universal layout.</strong>{" "}
-            A control that cannot be proven for the selected device is not
+            <strong>Capability-honest panels over a universal layout.</strong> A
+            control that cannot be proven for the selected device is not
             rendered. The rejected alternative was the familiar universal
-            remote: one static layout where half the buttons are dead
-            depending on what you point it at.
+            remote: one static layout where half the buttons are dead depending
+            on what you point it at.
           </Text>,
           <Text key="p3" size="s">
             <strong>Clay relief over native flat controls.</strong> Standard
-            system controls read poorly from across a room. The relief
-            language makes pressable versus state legible at couch distance,
-            at the cost of maintaining a bespoke material system.
+            system controls read poorly from across a room. The relief language
+            makes pressable versus state legible at couch distance, at the cost
+            of maintaining a bespoke material system.
           </Text>,
         ]}
         imageLayout="none"
@@ -373,8 +409,8 @@ flowchart LR
             green when the screen is provably active, amber while something is
             in flight, red when trust or reachability fails. Pair This TV
             appears prominently only on an authorization failure; deliberate
-            re-pairing stays tucked in the header menu where it cannot be hit
-            by accident.
+            re-pairing stays tucked in the header menu where it cannot be hit by
+            accident.
           </Text>,
           <Text key="p2" size="s">
             The thin client never touches credentials. The app invokes the CLI
@@ -432,10 +468,9 @@ flowchart LR
           <Text key="p1" size="s">
             The identity was explored with AI image generation and refined by
             hand: a little clay television and its remote, developed through
-            retrospective construction studies, form iterations from angular
-            to soft and material studies that picked the violet accent now
-            running through the app, the icon and the installer as one
-            palette.
+            retrospective construction studies, form iterations from angular to
+            soft and material studies that picked the violet accent now running
+            through the app, the icon and the installer as one palette.
           </Text>,
           <Text key="p2" size="s">
             The wordmark got the same treatment: clay letters generated in the
@@ -483,12 +518,12 @@ flowchart LR
         title="Couch Companions"
         content={[
           <Text key="p1" size="s">
-            A small illustration series carries the clay world into empty
-            states and the settings pane: someone sinking into an armchair,
-            remote in hand. The X-ray variant is the loading state and it
-            earns its place functionally: it gives the pairing wait a face,
-            makes progress feel shorter than a bare spinner would and keeps
-            the brand present in the app&apos;s least glamorous moment.
+            A small illustration series carries the clay world into empty states
+            and the settings pane: someone sinking into an armchair, remote in
+            hand. The X-ray variant is the loading state and it earns its place
+            functionally: it gives the pairing wait a face, makes progress feel
+            shorter than a bare spinner would and keeps the brand present in the
+            app&apos;s least glamorous moment.
           </Text>,
         ]}
         imageLayout="none"
@@ -541,23 +576,22 @@ flowchart LR
           <Text key="p1" size="s">
             Home Remote 0.2.0, a release-candidate build, is a Developer
             ID-signed, notarized, stapled disk image with a live update feed.
-            The installer carries the same palette as the icon and the app:
-            one violet, three surfaces, no separate marketing skin.
+            The installer carries the same palette as the icon and the app: one
+            violet, three surfaces, no separate marketing skin.
           </Text>,
           <Text key="p2" size="s">
-            Acceptance is hardware-in-the-loop: a release matrix run in front
-            of both configured displays, covering pairing cycles, cold boots,
+            Acceptance is hardware-in-the-loop: a release matrix run in front of
+            both configured displays, covering pairing cycles, cold boots,
             eight-hour standby checks, a ten-cycle endurance row and
-            network-loss behaviour, retained as sanitized evidence. A
-            transport acknowledgement is never recorded as proof that a panel
-            changed.
+            network-loss behaviour, retained as sanitized evidence. A transport
+            acknowledgement is never recorded as proof that a panel changed.
           </Text>,
           <Text key="p3" size="s">
             Verified so far: two device classes, a television and a desktop
             monitor, controlled daily. Voice control and the generic remote
             gateway remain experimental. Next: broaden the verified device
-            matrix and move pairing for more vendors from the terminal into
-            the app.
+            matrix and move pairing for more vendors from the terminal into the
+            app.
           </Text>,
         ]}
         imageLayout="none"

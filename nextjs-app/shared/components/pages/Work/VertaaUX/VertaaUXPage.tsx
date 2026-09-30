@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ProcessBlock, Text, Title } from "@digitaltableteur/react";
+import { List, ProcessBlock, Text, Title } from "@digitaltableteur/react";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
@@ -163,6 +163,56 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Mermaid
             key="mindmap"
+            title="Traditional UX audit problem map"
+            description="Traditional UX audits have four connected problem areas: time and cost, inconsistent judgement, limited scope, and recommendations that are difficult to act on."
+            accessibleDetails={
+              <List
+                size="s"
+                items={[
+                  <React.Fragment key="time-cost">
+                    Time and cost
+                    <List
+                      size="s"
+                      items={[
+                        "Audits take two to four weeks.",
+                        "Audits cost between 5,000 and 50,000 US dollars.",
+                        "They require UX specialists and create scheduling bottlenecks.",
+                      ]}
+                    />
+                  </React.Fragment>,
+                  <React.Fragment key="inconsistency">
+                    Inconsistency
+                    <List
+                      size="s"
+                      items={[
+                        "Results depend on subjective opinions and reviewer bias.",
+                        "Scoring is not standardized, which makes comparisons difficult.",
+                      ]}
+                    />
+                  </React.Fragment>,
+                  <React.Fragment key="scope">
+                    Limited scope
+                    <List
+                      size="s"
+                      items={[
+                        "Manual reviews sample rather than cover the whole product.",
+                        "They can miss edge cases and do not update in real time.",
+                      ]}
+                    />
+                  </React.Fragment>,
+                  <React.Fragment key="actionability">
+                    Actionability gap
+                    <List
+                      size="s"
+                      items={[
+                        "Recommendations can be vague and unprioritized.",
+                        "Return on investment and implementation steps remain unclear.",
+                      ]}
+                    />
+                  </React.Fragment>,
+                ]}
+              />
+            }
             chart={`mindmap
   root((Traditional UX Audits))
     Time & Cost

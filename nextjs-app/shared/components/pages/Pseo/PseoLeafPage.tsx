@@ -5,7 +5,14 @@ import type {
   PseoRelatedLinkCopy,
 } from "@/lib/pseo/types";
 
-import { Breadcrumb, Button, Card, PageLayout, Text, Title } from "@digitaltableteur/react";
+import {
+  Breadcrumb,
+  Button,
+  Card,
+  PageLayout,
+  Text,
+  Title,
+} from "@digitaltableteur/react";
 import MarkdownMessage from "@dt/MarkdownMessage";
 import { PseoClusterBadges } from "./PseoClusterBadges";
 import styles from "./PseoLeafPage.module.css";
@@ -71,8 +78,8 @@ export function PseoLeafPageView({
   const related = mergeRelated(page, relatedPages, copy?.related);
 
   return (
-    <PageLayout as="main" maxWidth="md" spacing="comfortable">
-      <div className={styles.root}>
+    <PageLayout as="div" maxWidth="md" spacing="comfortable">
+      <div className={styles.root} lang="en">
         <div className={styles.breadcrumbs}>
           <Breadcrumb
             items={[
@@ -93,9 +100,7 @@ export function PseoLeafPageView({
         <Title level={1} size="l">
           {page.title}
         </Title>
-        <Text size="l">
-          {page.description}
-        </Text>
+        <Text size="l">{page.description}</Text>
 
         <PseoClusterBadges
           className={styles.badgeRow}

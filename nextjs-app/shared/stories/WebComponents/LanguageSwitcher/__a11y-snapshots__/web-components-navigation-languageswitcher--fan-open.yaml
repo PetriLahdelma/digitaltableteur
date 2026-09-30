@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- group "Language":
+  - button "Hide language options" [expanded]: EN
+  - button "Byt språk till svenska": SV
+  - button "Vaihda kieli suomeksi": FI
+  - text: Hide language options

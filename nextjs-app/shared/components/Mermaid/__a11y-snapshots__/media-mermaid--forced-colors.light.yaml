@@ -1,0 +1,5 @@
+- status: Work in progress (alpha)
+- figure:
+  - text: Application request flow The browser sends a request to the application server, which reads from the database.
+  - img "Application request flow"
+  - group: Diagram text alternative

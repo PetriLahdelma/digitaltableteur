@@ -1,0 +1,12 @@
+{
+  "storyId": "site-chatwidget-default",
+  "mode": "light",
+  "sourceSHA": "b6fdf69106dfde043c347ab17440ddf20fbcca56",
+  "capturedAt": "2026-09-27T06:28:11.386Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

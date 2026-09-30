@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Text, Title } from "@digitaltableteur/react";
+import { List, Text, Title } from "@digitaltableteur/react";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
@@ -113,6 +113,60 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Mermaid
             key="mindmap"
+            title="Audio plugin usability problem map"
+            description="Four groups of problems make many audio plugins difficult to perceive and operate: skeuomorphism, decoration over function, workflow friction, and accessibility gaps."
+            accessibleDetails={
+              <List
+                size="s"
+                items={[
+                  <React.Fragment key="skeuomorphism">
+                    Skeuomorphism trap
+                    <List
+                      size="s"
+                      items={[
+                        "Tiny knobs",
+                        "Low contrast",
+                        "Hidden parameters",
+                        "No keyboard navigation",
+                      ]}
+                    />
+                  </React.Fragment>,
+                  <React.Fragment key="visuals">
+                    Visuals over function
+                    <List
+                      size="s"
+                      items={[
+                        "Decoration takes priority over clarity",
+                        "Graphics do not adapt well to high-density screens",
+                        "Labels are illegible",
+                      ]}
+                    />
+                  </React.Fragment>,
+                  <React.Fragment key="workflow">
+                    Workflow friction
+                    <List
+                      size="s"
+                      items={[
+                        "Slow parameter access",
+                        "No presets overview",
+                        "Poor undo and redo support",
+                      ]}
+                    />
+                  </React.Fragment>,
+                  <React.Fragment key="accessibility">
+                    Accessibility gaps
+                    <List
+                      size="s"
+                      items={[
+                        "No screen-reader support",
+                        "Feedback conveyed by color alone",
+                        "Mouse-only control",
+                      ]}
+                    />
+                  </React.Fragment>,
+                ]}
+              />
+            }
             chart={`mindmap
   root((Audio Plugin UX))
     Skeuomorphism Trap
@@ -151,9 +205,8 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           <div className={styles.knobsVideoContainer}>
             <video
               aria-label="KnobSmith Audio knob interaction animation"
-              autoPlay
-              loop
-              muted
+              controls
+              preload="metadata"
               playsInline
               className={styles.knobsVideo}
             >
@@ -221,9 +274,8 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           <div className={styles.meterVideoWrapper}>
             <video
               aria-label="KnobSmith Audio VU meter animation"
-              autoPlay
-              loop
-              muted
+              controls
+              preload="metadata"
               playsInline
               className={styles.meterVideo}
             >

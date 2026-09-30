@@ -6,7 +6,9 @@ Blog article page layout shell.
 ## Interaction contract
 - Keyboard: inherit from composed @dt/* primitives
 - Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Screen readers: the app shell contributes the page's sole `main`; this layout
+  uses one `article` without nested main landmarks, scopes the content language
+  to the hero and body, and leaves localized chrome in the selected UI language
 
 ## Do / don't
 - Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface

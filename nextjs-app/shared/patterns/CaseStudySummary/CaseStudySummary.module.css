@@ -48,6 +48,15 @@
   color: var(--color-muted-foreground);
 }
 
+.list > li,
+.decisions > li {
+  margin-block-end: 0;
+}
+
+.listItem {
+  display: block;
+}
+
 .decisions {
   display: grid;
   margin: 0;
@@ -106,6 +115,6 @@
 }
 
 .root .decision > span:last-child,
-.root .list > li > span:first-child {
+.root .listItem > span:first-child {
   color: var(--color-muted-foreground);
 }

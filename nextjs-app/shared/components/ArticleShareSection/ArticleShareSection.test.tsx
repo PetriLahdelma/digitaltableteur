@@ -38,7 +38,10 @@ describe("ArticleShareSection", () => {
     const x = screen.getByRole("link", { name: "Share on X" });
     const linkedin = screen.getByRole("link", { name: "Share on LinkedIn" });
     const facebook = screen.getByRole("link", { name: "Share on Facebook" });
-    expect(x).toHaveAttribute("href", expect.stringContaining(encodeURIComponent(props.url)));
+    expect(x).toHaveAttribute(
+      "href",
+      expect.stringContaining(encodeURIComponent(props.url)),
+    );
     expect(linkedin).toHaveAttribute("target", "_blank");
     expect(facebook).toHaveAttribute("rel", "noopener noreferrer");
   });
@@ -61,9 +64,11 @@ describe("ArticleShareSection", () => {
 
   it("renders the section title by default", () => {
     render(<ArticleShareSection {...props} />);
-    expect(
-      screen.getByRole("heading", { name: /share this article/i }),
-    ).toBeInTheDocument();
+    const heading = screen.getByRole("heading", {
+      name: /share this article/i,
+    });
+    expect(heading).toBeInTheDocument();
+    expect(heading.closest("[lang]")).toHaveAttribute("lang", "en");
   });
 
   it("has no axe violations", async () => {
@@ -72,7 +77,9 @@ describe("ArticleShareSection", () => {
   });
 
   it("has no axe violations in the vertical layout", async () => {
-    const { container } = render(<ArticleShareSection {...props} layout="vertical" />);
+    const { container } = render(
+      <ArticleShareSection {...props} layout="vertical" />,
+    );
     expect(await axe(container)).toHaveNoViolations();
   });
 });

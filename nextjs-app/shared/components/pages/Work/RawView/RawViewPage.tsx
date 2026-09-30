@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ProcessBlock, Text } from "@digitaltableteur/react";
+import { ProcessBlock, Text, Title } from "@digitaltableteur/react";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
@@ -18,7 +18,11 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("raw-view");
 
   if (!project) {
-    return <div>Project not found</div>;
+    return (
+      <Title as="h1" size="xxs" lang="en">
+        Project not found
+      </Title>
+    );
   }
 
   return (
@@ -44,7 +48,12 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
       className={styles.page}
     >
       <ProjectMetaSection
-        services={["Editorial Design", "Art Direction", "Publication Design", "Print Production"]}
+        services={[
+          "Editorial Design",
+          "Art Direction",
+          "Publication Design",
+          "Print Production",
+        ]}
         tools={[
           {
             key: "indesign",
@@ -65,17 +74,17 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
         client={{ name: "Raw View" }}
         overview={
           <Text size="s">
-            Raw View marks a new beginning for the former Photo Raw magazine. The
-            relaunch shifted the publication into a bookazine format, expanded the
-            page count to 160 pages, and introduced both English and Finnish
-            editions alongside a new e-magazine and website.
+            Raw View marks a new beginning for the former Photo Raw magazine.
+            The relaunch shifted the publication into a bookazine format,
+            expanded the page count to 160 pages, and introduced both English
+            and Finnish editions alongside a new e-magazine and website.
             <br />
             <br />
             The editorial direction focuses on documentary photography that
-            tackles complex social subjects. The visual system needed to be clear
-            and dynamic so long-form photo essays remain immersive, while still
-            supporting a non-commercial publication that keeps print culture
-            alive.
+            tackles complex social subjects. The visual system needed to be
+            clear and dynamic so long-form photo essays remain immersive, while
+            still supporting a non-commercial publication that keeps print
+            culture alive.
           </Text>
         }
         background="muted"
@@ -170,8 +179,8 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="s">
             The magazine is intentionally non-commercial, supporting the
-            photography community and preserving the tactile experience of
-            print through thoughtful material and layout choices.
+            photography community and preserving the tactile experience of print
+            through thoughtful material and layout choices.
           </Text>,
         ]}
         images={{
@@ -225,17 +234,19 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
         title="A Platform for Documentary Photography"
         content={[
           <Text key="p1" size="s">
-            The relaunch successfully transformed a photography magazine into a premium
-            bookazine format, expanding from its original scope to 160 thoughtfully
-            designed pages. Publishing in both English and Finnish editions opened the
-            publication to international audiences while maintaining its Finnish roots.
+            The relaunch successfully transformed a photography magazine into a
+            premium bookazine format, expanding from its original scope to 160
+            thoughtfully designed pages. Publishing in both English and Finnish
+            editions opened the publication to international audiences while
+            maintaining its Finnish roots.
           </Text>,
           <Text key="p2" size="s">
-            Complementing print with an e-magazine and website ensures the documentary
-            photography stories reach readers beyond traditional distribution. The visual
-            system—designed to support immersive long-form photo essays—gives photographers
-            a non-commercial platform that keeps print culture alive while adapting to
-            how audiences consume visual journalism today.
+            Complementing print with an e-magazine and website ensures the
+            documentary photography stories reach readers beyond traditional
+            distribution. The visual system—designed to support immersive
+            long-form photo essays—gives photographers a non-commercial platform
+            that keeps print culture alive while adapting to how audiences
+            consume visual journalism today.
           </Text>,
         ]}
         imageLayout="none"

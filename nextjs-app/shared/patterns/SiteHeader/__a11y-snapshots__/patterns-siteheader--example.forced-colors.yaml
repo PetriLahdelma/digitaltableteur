@@ -15,6 +15,5 @@
     - link "Contact":
       - /url: /contact
   - group "Language":
-    - button "EN — Switch to English. Show language options": EN
-    - text: Show language options
+    - button "EN, EN — Switch to English. Show language options": EN
   - button "Toggle dark mode"

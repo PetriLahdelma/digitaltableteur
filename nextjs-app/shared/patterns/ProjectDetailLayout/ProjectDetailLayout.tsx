@@ -20,8 +20,10 @@ export interface ProjectDetailLayoutProps {
   showScrollProgress?: boolean;
   /** Custom className */
   className?: string;
-  /** Donny site action target id for the project main landmark */
+  /** Donny site action target id for the project article */
   donnyTarget?: string;
+  /** Language of the case-study content */
+  lang?: string;
 }
 
 function ScrollProgress() {
@@ -68,13 +70,14 @@ export function ProjectDetailLayout({
   showScrollProgress = true,
   className,
   donnyTarget,
+  lang = "en",
 }: ProjectDetailLayoutProps) {
   const mainRef = useRef<HTMLElement>(null);
 
   return (
     <>
       {showScrollProgress && <ScrollProgress />}
-      <main
+      <article
         ref={mainRef}
         className={cn("min-h-screen", className)}
         data-donny-target={donnyTarget}
@@ -92,10 +95,14 @@ export function ProjectDetailLayout({
         )}
 
         {/* Hero */}
-        <header className="relative">{hero}</header>
+        <header className="relative" lang={lang}>
+          {hero}
+        </header>
 
         {/* Main content sections */}
-        <div className="relative">{children}</div>
+        <div className="relative" lang={lang}>
+          {children}
+        </div>
 
         {/* CTA - render WorkCTA by default, or custom cta prop */}
         {cta !== null && <div>{cta || <WorkCTA />}</div>}
@@ -104,7 +111,7 @@ export function ProjectDetailLayout({
         {relatedProjects && (
           <aside className="border-t border-border">{relatedProjects}</aside>
         )}
-      </main>
+      </article>
     </>
   );
 }

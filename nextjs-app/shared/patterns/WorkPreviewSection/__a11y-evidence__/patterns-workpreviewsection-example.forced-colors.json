@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-workpreviewsection-example",
   "mode": "forced-colors",
-  "sourceSHA": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-  "capturedAt": "2026-09-29T19:11:56.659Z",
-  "runner": "local",
+  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+  "capturedAt": "2026-09-27T06:08:33.864Z",
+  "runner": null,
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -17,7 +17,7 @@
 }
 
 .spotlightFrame {
-  animation: donny-spotlight-pulse 2.4s ease-in-out infinite;
+  animation: donny-spotlight-pulse 2.4s ease-in-out 2;
 }
 
 @keyframes donny-spotlight-pulse {

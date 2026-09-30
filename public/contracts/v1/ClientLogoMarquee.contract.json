@@ -10,6 +10,16 @@
       "optional": false,
       "description": "Accessible name for the marquee section."
     },
+    "pauseLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Label for the control that pauses the marquee."
+    },
+    "resumeLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Label for the control that resumes the marquee."
+    },
     "className": {
       "type": "string",
       "optional": true,
@@ -29,78 +39,50 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:47.335Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:14.631Z",
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.108Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:39.183Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:35.243Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:47.823Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:15.108Z",
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.610Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:39.667Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:35.682Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:48.087Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:15.353Z",
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.851Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:39.960Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:35.924Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:47.581Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:14.868Z",
             "passed": true
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.372Z",
-            "passed": true,
-            "runner": "backfill"
-          },
-          {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:39.433Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:35.464Z",
             "passed": true
           }
         ]
@@ -117,78 +99,74 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:47.335Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:14.631Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.108Z",
-            "passed": true,
-            "runner": "backfill"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:44.116Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:39.183Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:35.243Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:47.823Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:15.108Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.610Z",
-            "passed": true,
-            "runner": "backfill"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:44.554Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:39.667Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:35.682Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:48.087Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:15.353Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.851Z",
-            "passed": true,
-            "runner": "backfill"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:44.793Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:39.960Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:35.924Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:47.581Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:14.868Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.372Z",
-            "passed": true,
-            "runner": "backfill"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:44.333Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:39.433Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:35.464Z",
             "passed": true
           }
         ]
@@ -201,31 +179,27 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.108Z",
-            "passed": true,
-            "runner": "backfill"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:44.116Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.610Z",
-            "passed": true,
-            "runner": "backfill"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:44.554Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.851Z",
-            "passed": true,
-            "runner": "backfill"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:44.793Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ClientLogoMarquee/__a11y-evidence__/site-clientlogomarquee-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:59.372Z",
-            "passed": true,
-            "runner": "backfill"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:44.333Z",
+            "passed": true
           }
         ]
       },
@@ -239,6 +213,7 @@
     ]
   },
   "source": [
+    "../../../nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.module.css",
     "../../../nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.tsx"
   ]
 }

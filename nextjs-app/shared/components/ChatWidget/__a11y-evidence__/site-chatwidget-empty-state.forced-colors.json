@@ -1,0 +1,16 @@
+{
+  "storyId": "site-chatwidget-empty-state",
+  "mode": "forced-colors",
+  "sourceSHA": "b6fdf69106dfde043c347ab17440ddf20fbcca56",
+  "capturedAt": "2026-09-27T06:28:24.068Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

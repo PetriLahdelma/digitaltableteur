@@ -143,12 +143,12 @@
         "enableIdleExpressions": {
             "optional": true,
             "type": "boolean",
-            "description": "Enables randomized idle expressions."
+            "description": "Enables one randomized idle expression before the avatar settles."
         },
         "idleExpressionInterval": {
             "optional": true,
             "type": "number",
-            "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
+            "description": "Delay before the one idle expression, in milliseconds (default 12000), randomized by 50 percent."
         },
         "isSpeaking": {
             "optional": true,

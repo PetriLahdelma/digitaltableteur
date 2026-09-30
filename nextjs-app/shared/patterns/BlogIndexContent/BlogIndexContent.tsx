@@ -66,6 +66,7 @@ function transformToCardProps(post: BlogPostEntry): EnhancedArticleCardProps {
         : undefined,
     publishedAt: post.publishedAt,
     readTime: post.readTime,
+    contentLanguage: "en",
   };
 }
 

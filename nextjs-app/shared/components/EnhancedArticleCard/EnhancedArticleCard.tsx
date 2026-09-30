@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Link } from "../../lib/linkComponent";
 import { Image } from "../../lib/imageComponent";
 import { useLocalization } from "../../lib/translation";
@@ -41,6 +41,8 @@ export interface EnhancedArticleCardProps {
   showAuthor?: boolean;
   /** Show “Read article” affordance in the footer */
   showReadMore?: boolean;
+  /** BCP 47 language tag for article-authored title, excerpt, and tags */
+  contentLanguage?: string;
   /** Custom className */
   className?: string;
 }
@@ -70,8 +72,10 @@ export function EnhancedArticleCard({
   hideImage = false,
   showAuthor = true,
   showReadMore = true,
+  contentLanguage,
   className,
 }: EnhancedArticleCardProps) {
+  const rawId = useId().replace(/:/g, "");
   const { translate: t, language } = useLocalization();
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -79,24 +83,26 @@ export function EnhancedArticleCard({
   const isCompact = variant === "compact";
   const showImage = image && !hideImage;
 
-  const formattedDate = publishedAt
-    ? formatDate(publishedAt, language)
-    : "";
+  const formattedDate = publishedAt ? formatDate(publishedAt, language) : "";
 
   // Default avatar fallback
   const authorAvatar = author?.imageUrl || "/images/default-avatar.png";
+  const titleId = `${slug}-${rawId}-title`;
+  const excerptId = `${slug}-${rawId}-excerpt`;
+  const readMoreId = `${slug}-${rawId}-read-more`;
 
   if (isCompact) {
     return (
       <Link
         href={`/blog/${slug}`}
+        aria-labelledby={titleId}
         className={cn(
           "group flex gap-4 p-4 rounded-lg",
           "bg-card hover:bg-accent/50",
           "border border-border hover:border-foreground/20",
           "transition-all duration-200",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-          className
+          className,
         )}
         data-donny-interest="blog-article"
       >
@@ -116,10 +122,12 @@ export function EnhancedArticleCard({
         {/* Compact content */}
         <div className="flex-1 min-w-0">
           <h3
+            id={titleId}
+            lang={contentLanguage}
             className={cn(
               "font-display font-semibold text-sm text-foreground",
               "line-clamp-2 mb-1",
-              "group-hover:text-primary transition-colors"
+              "group-hover:text-primary transition-colors",
             )}
           >
             {title}
@@ -136,7 +144,8 @@ export function EnhancedArticleCard({
   return (
     <Link
       href={`/blog/${slug}`}
-      aria-label={`${t("blogReadMore", "Read article")}: ${title}`}
+      aria-labelledby={showReadMore ? `${titleId} ${readMoreId}` : titleId}
+      aria-describedby={excerpt ? excerptId : undefined}
       className={cn(
         styles.cardLink,
         "group flex h-full min-h-0 w-full flex-col rounded-lg overflow-hidden",
@@ -154,7 +163,7 @@ export function EnhancedArticleCard({
             "relative overflow-hidden bg-muted",
             isFeatured
               ? "aspect-video tablet:aspect-auto tablet:w-1/2"
-              : "aspect-video"
+              : "aspect-video",
           )}
         >
           {/* Loading skeleton */}
@@ -185,11 +194,12 @@ export function EnhancedArticleCard({
           {tags && tags.length > 0 && (
             <div className="absolute top-3 left-3">
               <span
+                lang={contentLanguage}
                 className={cn(
                   "inline-block px-2.5 py-1",
                   "text-xs font-body uppercase tracking-wider",
                   "bg-background/90 backdrop-blur-sm rounded-full",
-                  "text-foreground"
+                  "text-foreground",
                 )}
               >
                 {tags[0]}
@@ -203,7 +213,7 @@ export function EnhancedArticleCard({
       <div
         className={cn(
           "flex flex-col flex-1 p-5",
-          isFeatured && "tablet:p-8 tablet:justify-center"
+          isFeatured && "tablet:p-8 tablet:justify-center",
         )}
       >
         {/* Tags (if no image) */}
@@ -212,6 +222,7 @@ export function EnhancedArticleCard({
             {tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
+                lang={contentLanguage}
                 className="text-xs font-body text-muted-foreground bg-muted px-2 py-0.5 rounded"
               >
                 {tag}
@@ -222,13 +233,13 @@ export function EnhancedArticleCard({
 
         {/* Title */}
         <h3
+          id={titleId}
+          lang={contentLanguage}
           className={cn(
             "font-display font-semibold text-foreground",
             "line-clamp-2 mb-2",
             "group-hover:text-primary transition-colors",
-            isFeatured
-              ? "text-xl tablet:text-2xl"
-              : "text-lg"
+            isFeatured ? "text-xl tablet:text-2xl" : "text-lg",
           )}
         >
           {title}
@@ -237,10 +248,12 @@ export function EnhancedArticleCard({
         {/* Excerpt */}
         {excerpt && (
           <p
+            id={excerptId}
+            lang={contentLanguage}
             className={cn(
               "font-body text-muted-foreground",
               "line-clamp-2 mb-4",
-              isFeatured ? "text-base" : "text-sm"
+              isFeatured ? "text-base" : "text-sm",
             )}
           >
             {excerpt}
@@ -275,13 +288,16 @@ export function EnhancedArticleCard({
               {showAuthor && author && formattedDate && (
                 <span aria-hidden="true">·</span>
               )}
-              {formattedDate && <time dateTime={publishedAt}>{formattedDate}</time>}
+              {formattedDate && (
+                <time dateTime={publishedAt}>{formattedDate}</time>
+              )}
               {formattedDate && readTime && <span aria-hidden="true">·</span>}
               {readTime && <span>{readTime}</span>}
             </div>
 
             {showReadMore && (
               <span
+                id={readMoreId}
                 className={cn(
                   styles.readMore,
                   "inline-flex shrink-0 items-center gap-1 text-sm font-body font-medium text-primary",

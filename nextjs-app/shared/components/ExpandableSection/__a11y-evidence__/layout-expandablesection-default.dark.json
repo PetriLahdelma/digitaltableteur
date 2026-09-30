@@ -1,9 +1,9 @@
 {
   "storyId": "layout-expandablesection-default",
   "mode": "dark",
-  "sourceSHA": "281114d1103e13e685fb4a98574f5198f5a42250",
-  "capturedAt": "2026-09-27T05:57:26.749Z",
-  "runner": "local-recapture-2026-09-27",
+  "sourceSHA": "57c7412ec1eae166b4c7b7bb5a3c873c6d57302d",
+  "capturedAt": "2026-09-27T06:17:23.808Z",
+  "runner": null,
   "checks": {
     "accessibility-tree": {
       "passed": true

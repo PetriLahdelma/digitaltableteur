@@ -6,6 +6,11 @@ import PhoneInput from "./PhoneInput";
 import styles from "./PhoneInput.module.css";
 
 describe("PhoneInput", () => {
+  it("identifies the phone purpose through the underlying library control", () => {
+    render(<PhoneInput label="Phone Number" />);
+    expect(screen.getByRole("textbox")).toHaveAttribute("autocomplete", "tel");
+  });
+
   it("renders with label", () => {
     render(<PhoneInput label="Phone Number" />);
     expect(screen.getByText("Phone Number")).toBeInTheDocument();

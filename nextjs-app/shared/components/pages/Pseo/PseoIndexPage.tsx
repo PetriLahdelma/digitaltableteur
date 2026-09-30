@@ -14,8 +14,8 @@ export function PseoIndexPage({
   samplePages: PseoLeafPage[];
 }) {
   return (
-    <PageLayout as="main" maxWidth="lg" spacing="comfortable">
-      <div className={styles.root}>
+    <PageLayout as="div" maxWidth="lg" spacing="comfortable">
+      <div className={styles.root} lang="en">
         <Title level={1} size="l">
           Design system playbooks
         </Title>

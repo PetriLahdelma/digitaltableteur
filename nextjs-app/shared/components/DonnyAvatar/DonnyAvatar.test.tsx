@@ -1,4 +1,7 @@
 import React from "react";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, act, waitFor } from "@testing-library/react";
 // Import directly from file to avoid React version mismatch through alias resolution
@@ -11,6 +14,16 @@ import {
 import styles from "./DonnyAvatar.module.css";
 
 describe("DonnyAvatar", () => {
+  it("has no default infinite CSS animation for full-motion visitors", () => {
+    const here = dirname(fileURLToPath(import.meta.url));
+    const css = readFileSync(join(here, "DonnyAvatar.module.css"), "utf8");
+    const source = readFileSync(join(here, "DonnyAvatar.tsx"), "utf8");
+
+    expect(css).not.toMatch(/animation:[^;]*\binfinite\b/);
+    expect(source).not.toContain("scheduleNextExpression");
+    expect(source).not.toContain("schedule();");
+  });
+
   describe("Rendering", () => {
     it("renders with default idle state", () => {
       render(<DonnyAvatar />);
@@ -115,7 +128,10 @@ describe("DonnyAvatar", () => {
         vi.advanceTimersByTime(10);
       });
       expect(screen.getByRole("img")).toHaveAttribute("data-state", "idle");
-      expect(screen.getByRole("img")).toHaveAttribute("data-transitioning", "false");
+      expect(screen.getByRole("img")).toHaveAttribute(
+        "data-transitioning",
+        "false",
+      );
       vi.useRealTimers();
     });
   });
@@ -272,7 +288,9 @@ describe("DonnyAvatar", () => {
 
     it("renders thought bubbles for remembering state", () => {
       const { container } = render(<DonnyAvatar state="remembering" />);
-      const bubbles = container.querySelectorAll(`.${styles.thoughtBubble} circle`);
+      const bubbles = container.querySelectorAll(
+        `.${styles.thoughtBubble} circle`,
+      );
       expect(bubbles.length).toBeGreaterThan(0);
     });
   });

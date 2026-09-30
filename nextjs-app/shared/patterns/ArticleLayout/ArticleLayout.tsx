@@ -45,10 +45,10 @@ export function ArticleLayout({
   showReadingProgress = true,
   contentRef,
   className,
-  lang,
+  lang = "en",
 }: ArticleLayoutProps) {
   return (
-    <article lang={lang} className={cn("relative", className)}>
+    <article className={cn("relative", className)}>
       {/* Reading progress */}
       {showReadingProgress && contentRef && (
         <ReadingProgress targetRef={contentRef} />
@@ -67,7 +67,7 @@ export function ArticleLayout({
       )}
 
       {/* Hero */}
-      <header>{hero}</header>
+      <header lang={lang}>{hero}</header>
 
       {/* Main content area */}
       {sidebar ? (
@@ -76,7 +76,9 @@ export function ArticleLayout({
           <div className="max-w-7xl mx-auto px-4 tablet:px-6 desktop:px-8">
             <div className="grid grid-cols-1 desktop:grid-cols-12 gap-8 desktop:gap-12">
               {/* Main content */}
-              <main className="desktop:col-span-8 min-w-0">{children}</main>
+              <div className="desktop:col-span-8 min-w-0" lang={lang}>
+                {children}
+              </div>
 
               {/* Sidebar */}
               <aside className="hidden desktop:block desktop:col-span-4">
@@ -87,7 +89,7 @@ export function ArticleLayout({
         </div>
       ) : (
         /* Full-width content (no sidebar) */
-        <main>{children}</main>
+        <div lang={lang}>{children}</div>
       )}
 
       {/* Related posts */}

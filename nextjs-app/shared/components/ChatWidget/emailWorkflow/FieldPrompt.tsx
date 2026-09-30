@@ -19,6 +19,16 @@ type EmailWorkflowState = any; // avoid circular import complexity for this scaf
 
 const FieldPrompt: React.FC<FieldPromptProps> = ({ step, draft, dispatch }) => {
   const t = useTranslate();
+  const stepRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    stepRef.current
+      ?.querySelector<HTMLElement>(
+        "input:not(:disabled), textarea, button:not(:disabled)",
+      )
+      ?.focus();
+  }, [step]);
+
   const [localValue, setLocalValue] = useState("");
   const [errors, setErrors] = useState<{
     fullName?: string;
@@ -82,7 +92,7 @@ const FieldPrompt: React.FC<FieldPromptProps> = ({ step, draft, dispatch }) => {
 
   if (step === "collectingInterest") {
     return (
-      <div className={styles.workflowBlock} data-step={step}>
+      <div ref={stepRef} className={styles.workflowBlock} data-step={step}>
         <Text>{t("emailWorkflow.field.interest.choose")}</Text>
         <CheckboxGroup
           label={t("emailWorkflow.field.interest")}
@@ -138,7 +148,7 @@ const FieldPrompt: React.FC<FieldPromptProps> = ({ step, draft, dispatch }) => {
     "";
 
   return (
-    <div className={styles.workflowBlock} data-step={step}>
+    <div ref={stepRef} className={styles.workflowBlock} data-step={step}>
       {step === "collectingMessage" ? (
         <TextArea
           label={labelMap[step]}
@@ -151,7 +161,20 @@ const FieldPrompt: React.FC<FieldPromptProps> = ({ step, draft, dispatch }) => {
       ) : (
         <TextInput
           label={labelMap[step]}
-          type={step === "collectingEmail" ? "email" : "text"}
+          type={
+            step === "collectingEmail"
+              ? "email"
+              : step === "collectingPhone"
+                ? "tel"
+                : "text"
+          }
+          autoComplete={
+            step === "collectingEmail"
+              ? "email"
+              : step === "collectingPhone"
+                ? "tel"
+                : "name"
+          }
           value={localValue}
           onChange={(val) => setLocalValue(String(val))}
           error={errorForStep}

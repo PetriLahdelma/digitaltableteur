@@ -1,0 +1,16 @@
+{
+  "storyId": "layout-expandablesection-versus-accordion",
+  "mode": "dark",
+  "sourceSHA": "57c7412ec1eae166b4c7b7bb5a3c873c6d57302d",
+  "capturedAt": "2026-09-27T06:17:25.171Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

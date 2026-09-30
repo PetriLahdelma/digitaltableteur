@@ -7,7 +7,7 @@
     "description": "Case study detail layout shell.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-layout",
     "radixPrimitive": null,
-    "element": "main",
+    "element": "article",
     "variants": {},
     "slots": [],
     "asChild": false,
@@ -67,7 +67,12 @@
         "donnyTarget": {
             "optional": true,
             "type": "string",
-            "description": "Donny site action target id for the project main landmark"
+            "description": "Donny site action target id for the project article"
+        },
+        "lang": {
+            "optional": true,
+            "type": "string",
+            "description": "Language applied to the project hero and authored case-study body (defaults to English); navigation, CTA, and related-project chrome keep the UI language"
         }
     },
     "forbiddenUse": [

@@ -21,10 +21,6 @@
       "rawElements": 2,
       "utilityLines": 6
     },
-    "app/blog/page.tsx": {
-      "rawElements": 3,
-      "utilityLines": 0
-    },
     "app/design-system/agent/page.tsx": {
       "rawElements": 11,
       "utilityLines": 23
@@ -427,7 +423,7 @@
     },
     "nextjs-app/shared/components/pages/Home/HomePage.tsx": {
       "rawElements": 0,
-      "utilityLines": 4
+      "utilityLines": 3
     },
     "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx": {
       "rawElements": 1,
@@ -482,8 +478,8 @@
       "utilityLines": 6
     },
     "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx": {
-      "rawElements": 2,
-      "utilityLines": 5
+      "rawElements": 1,
+      "utilityLines": 4
     },
     "nextjs-app/shared/patterns/BlogHero/BlogHero.tsx": {
       "rawElements": 0,

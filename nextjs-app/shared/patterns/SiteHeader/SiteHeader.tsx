@@ -160,7 +160,8 @@ export function SiteHeader({
     <>
       <header
         className={cn(
-          "sticky top-0 z-40 w-full transition-all duration-300",
+          styles.header,
+          "z-40 w-full transition-all duration-300",
           isScrolled
             ? "border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
             : "border-b border-transparent bg-transparent",

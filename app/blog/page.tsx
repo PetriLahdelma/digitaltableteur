@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { BlogPage } from "@dt-pages/Blog";
 import {
   getCollectionPageSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
-import { toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
 import { getVisiblePosts } from "./postMetadata";
 
 const blogDescription =
@@ -59,21 +57,6 @@ export default function Blog() {
           ),
         }}
       />
-      <section aria-labelledby="blog-index-heading" className="sr-only">
-        <h2 id="blog-index-heading">Blog articles</h2>
-        <ul>
-          {posts.map((post) => (
-            <li key={post.slug}>
-              <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-              {post.excerpt ? <p>{post.excerpt}</p> : null}
-            </li>
-          ))}
-        </ul>
-        <p>
-          RSS feed:{" "}
-          <a href={toAbsoluteSiteUrl("/blog/feed.xml")}>Subscribe</a>
-        </p>
-      </section>
       <BlogPage />
     </>
   );

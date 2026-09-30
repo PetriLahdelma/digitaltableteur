@@ -64,6 +64,19 @@ describe("ChatComposer keyboard submit", () => {
     fireEvent.keyDown(textarea, { key: "Enter" });
     expect(onSubmit).not.toHaveBeenCalled();
   });
+
+  it("keeps input focusable and interrupts generation without submitting", () => {
+    const onStop = vi.fn();
+    const { onSubmit } = setup({ isSending: true, onStop });
+    const input = screen.getByRole("textbox", { name: "Label" });
+    expect(input).toHaveAttribute("readonly");
+    expect(input).not.toBeDisabled();
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.click(screen.getByRole("button", { name: "Stop response" }));
+    expect(onStop).toHaveBeenCalledOnce();
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
 });
 
 describe("ChatComposer inline reset", () => {

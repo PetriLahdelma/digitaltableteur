@@ -100,7 +100,7 @@
         "targetId": {
             "optional": true,
             "type": "string",
-            "description": "ID of the target element to scroll to"
+            "description": "ID of the target element to scroll to; the control is omitted when absent"
         },
         "label": {
             "optional": true,
@@ -136,7 +136,7 @@
                 "bounce",
                 "pulse"
             ],
-            "description": "Looping motion applied to the icon as a hint to scroll."
+            "description": "Brief motion applied to the icon as a hint to scroll."
         },
         "speed": {
             "optional": true,
@@ -178,11 +178,11 @@
     ],
     "dense": "hero-footer scroll cue; animated icon (chevron/arrow/mouse) with optional label; motion bounce/pulse/fade/none gated by prefers-reduced-motion; real <button> that scrolls targetId into view",
     "usage": {
-        "description": "ScrollIndicator is a hero-footer affordance that signals there is more page below and scrolls to it when activated. It renders a real button that scrolls a named target into view, with a looping motion hint on the icon that is suppressed under prefers-reduced-motion.",
+        "description": "ScrollIndicator is a hero-footer affordance that signals there is more page below and scrolls to it when activated. It renders a real button only when a target exists, with a brief motion hint that stops automatically and is suppressed under prefers-reduced-motion.",
         "bestPractices": [
             {
                 "guidance": true,
-                "description": "Give it a targetId matching a real element on the page so activation scrolls somewhere; without it the control renders but does nothing."
+                "description": "Give it a targetId matching a real element on the page so activation scrolls somewhere; without it the control is omitted."
             },
             {
                 "guidance": true,
@@ -209,7 +209,7 @@
             {
                 "name": "Icon",
                 "required": true,
-                "description": "The scroll cue glyph (chevron, arrow, or mouse) that carries the looping motion hint."
+                "description": "The scroll cue glyph (chevron, arrow, or mouse) that carries the brief motion hint."
             },
             {
                 "name": "Label",
