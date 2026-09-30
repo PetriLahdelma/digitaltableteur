@@ -145,81 +145,201 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-animated-entrance.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.751Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-animated-entrance.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:37.413Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-animated-entrance.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.482Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-close-via-icon.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:49.763Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-close-via-icon.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:34.018Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-close-via-icon.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:22.605Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-confirmation.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.071Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-confirmation.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:36.145Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-confirmation.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.874Z",
+            "passed": true
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:51.015Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:49.507Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:33.630Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:33.427Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:22.356Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:51.597Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:50.206Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:34.693Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:33.998Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.012Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-form-in-modal.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.294Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-form-in-modal.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:36.550Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-form-in-modal.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.079Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:52.375Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:50.842Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:35.717Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.838Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.664Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:51.302Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:49.989Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:34.358Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:33.721Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:22.810Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-scrollable.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.499Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-scrollable.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:36.989Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-scrollable.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.282Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:51.899Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:50.414Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:35.026Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.309Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.241Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:52.145Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:50.621Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:35.369Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.563Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.453Z",
             "passed": true
           }
         ]
@@ -235,183 +355,339 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-animated-entrance.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.751Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-animated-entrance.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:26.245Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-animated-entrance.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:37.413Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-animated-entrance.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.482Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-close-via-icon.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:49.763Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-close-via-icon.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.359Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-close-via-icon.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:34.018Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-close-via-icon.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:22.605Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-confirmation.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.071Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-confirmation.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:25.616Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-confirmation.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:36.145Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-confirmation.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.874Z",
+            "passed": true
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:51.015Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:49.507Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:31.880Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.130Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:33.630Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:33.427Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:22.356Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:51.597Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:50.206Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:32.466Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.761Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:34.693Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:33.998Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.012Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:52.450Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.815Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:33.613Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:26.314Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:37.538Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.913Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.536Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:52.490Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.844Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:33.662Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:26.341Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:37.588Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.946Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.571Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-form-in-modal.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.294Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-form-in-modal.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:25.834Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-form-in-modal.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:36.550Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-form-in-modal.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.079Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:52.375Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:50.842Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:33.505Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:25.406Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:35.717Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.838Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.664Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:51.302Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:49.989Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:32.172Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.564Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:34.358Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:33.721Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:22.810Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:52.414Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.788Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:33.564Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:26.273Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:37.471Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.880Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.509Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-scrollable.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:51.499Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-scrollable.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:26.041Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-scrollable.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:36.989Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-scrollable.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:24.282Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:51.899Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:50.414Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:32.792Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.990Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:35.026Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.309Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.241Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:52.145Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:50.621Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:33.135Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:25.203Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.json",
+            "sourceCommit": "8187e69ddf8f738917a8fa10204b62800553147a",
+            "capturedAt": "2026-09-27T05:44:35.369Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:34.563Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:23.453Z",
             "passed": true
           }
         ]
@@ -423,46 +699,70 @@
         "check": "npm run test:stories:hc",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-animated-entrance.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:26.245Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-close-via-icon.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.359Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-confirmation.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:25.616Z",
+            "passed": true
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:31.880Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.130Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-error-dialog.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:32.466Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.761Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-form-in-modal.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:25.834Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-info-dialog.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:33.505Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:25.406Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-loading.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:32.172Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.564Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-scrollable.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:26.041Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-success-dialog.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:32.792Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:24.990Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Modal/__a11y-evidence__/feedback-modal-warning-dialog.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:33.135Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:25.203Z",
+            "passed": true
           }
         ]
       },

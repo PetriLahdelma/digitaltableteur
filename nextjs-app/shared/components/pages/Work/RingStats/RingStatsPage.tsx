@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Link, Text, Title } from "@digitaltableteur/react";
+import { Link, List, Text, Title } from "@digitaltableteur/react";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
@@ -288,6 +288,20 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Mermaid
             key="data-flow"
+            title="Ring Stats data flow"
+            description="Scores travel from the ring through the phone app and the Oura API to Ring Stats on the Mac, with credentials kept in the Keychain."
+            accessibleDetails={
+              <List
+                as="ol"
+                size="s"
+                items={[
+                  "The ring syncs to the phone app.",
+                  "The phone app uploads to the Oura API V2, which returns enabled stats only.",
+                  "Ring Stats on the Mac, inside the App Sandbox, fetches those stats and keeps values in memory only.",
+                  "Ring Stats stores credentials and tokens in the macOS Keychain.",
+                ]}
+              />
+            }
             chart={`%%{init: {"flowchart": {"subGraphTitleMargin": {"top": 12, "bottom": 12}}}}%%
 flowchart LR
     ring("Ring")

@@ -54,50 +54,50 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:51.494Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.395Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:27.854Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:14.323Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:51.978Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.859Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.361Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:14.819Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:52.285Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:00.093Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.632Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:15.087Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:51.741Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.632Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.102Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:14.580Z",
             "passed": true
           }
         ]
@@ -114,78 +114,74 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:51.494Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.395Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:56.090Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:33.413Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:27.854Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:14.323Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:51.978Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.859Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:56.659Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:33.864Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.361Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:14.819Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:52.285Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:00.093Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:56.983Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:34.116Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.632Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:15.087Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:51.741Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.632Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:56.365Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:33.645Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.102Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:14.580Z",
             "passed": true
           }
         ]
@@ -198,31 +194,27 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-default.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:56.090Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:33.413Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-example.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:56.659Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:33.864Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-forced-colors.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:56.983Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:34.116Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkPreviewSection/__a11y-evidence__/patterns-workpreviewsection-playground.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:56.365Z",
-            "passed": true,
-            "runner": "local"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:33.645Z",
+            "passed": true
           }
         ]
       },

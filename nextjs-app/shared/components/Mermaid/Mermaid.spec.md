@@ -22,8 +22,10 @@ Loading and error states must leave the text alternative available.
 
 ## Do / don't
 
-- Do describe every branch, connection, sequence, and grouping that carries
+- Do: describe every branch, connection, sequence, and grouping that carries
   meaning in `accessibleDetails`.
-- Do keep `title` concise and `description` to one or two sentences.
-- Don't repeat the Mermaid source as the alternative; translate the visual
+- Do: keep `title` concise and `description` to one or two sentences.
+- Don't: repeat the Mermaid source as the alternative; translate the visual
   grammar into ordinary prose and semantic lists.
+- Don't: use a diagram for content that is a simple list or sequence; write
+  the list with List instead.

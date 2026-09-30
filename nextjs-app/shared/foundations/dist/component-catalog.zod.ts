@@ -81,6 +81,7 @@ export const componentCatalog = {
   "MacWindowFrame": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "MarkdownMessage": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "Menu": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
+  "Mermaid": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "Modal": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "MultiCombobox": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "NavLink": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),

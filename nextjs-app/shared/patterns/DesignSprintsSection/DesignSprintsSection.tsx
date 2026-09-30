@@ -6,7 +6,6 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { SlideButton } from "../../components/SlideButton";
-import Title from "../../components/Title";
 import { Link as RouterLink } from "../../lib/linkComponent";
 import styles from "./DesignSprintsSection.module.css";
 
