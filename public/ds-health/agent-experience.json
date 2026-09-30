@@ -5372,11 +5372,11 @@
   ],
   "ok": true,
   "violations": [],
-  "generatedAt": "2026-09-30T06:07:16.458Z",
+  "generatedAt": "2026-09-30T06:16:36.191Z",
   "provenance": {
-    "sourceCommit": "a1b0e3b9b146f29ce4915dafd671db94f7a6c01b",
+    "sourceCommit": "55cc6f69ab3c874a137dc5a3d1ccc37d262ef7e1",
     "workingTreeClean": false,
-    "dirtyPathCount": 23,
+    "dirtyPathCount": 6,
     "generator": {
       "name": "audit-agent-experience",
       "version": 2,
