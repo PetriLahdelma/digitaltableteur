@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- group "Language":
+  - button "English. Show language options": EN
+  - text: Show language options

@@ -3,7 +3,7 @@
   position: fixed;
   inset: auto 1.5rem 1.5rem auto;
   z-index: 1000;
-  min-block-size: 24rem;
+  min-block-size: 0;
   place-items: end;
   pointer-events: none;
   transition:
@@ -20,30 +20,31 @@
   display: flex;
   inline-size: min(32.5rem, 90vi);
   max-inline-size: 32.5rem;
-  min-block-size: 24rem;
-  max-block-size: min(84vb, 720px);
+  min-block-size: 0;
+  max-block-size: min(calc(100dvb - 3rem), 720px);
   flex-direction: column;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   background-color: var(--main-body-background-color);
   box-shadow: var(--shadow-xl);
   pointer-events: auto;
-  overflow: hidden;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: var(--space-layout-16);
 }
 
-/* Enhanced backdrop blur where supported (solid fallback above) */
-@supports (backdrop-filter: blur(12px)) {
-  .panel {
-    background: color-mix(in srgb, var(--color-white) 85%, transparent);
-    backdrop-filter: blur(12px);
-  }
+.panel > header,
+.panel > aside,
+.panel > form {
+  flex-shrink: 0;
+}
 
-  @supports (background: color-mix(in srgb, white 85%, transparent)) {
-    .panel {
-      /* Progressive enhancement: mix 85% white with transparency for consistent rendering */
-      background: color-mix(in srgb, var(--color-white) 85%, transparent);
-    }
-  }
+.speaker {
+  display: block;
+  margin-block-end: var(--space-internal-4);
+  font-size: var(--font-size-text-xxs);
+  font-weight: 600;
+  color: inherit;
 }
 
 .header {
@@ -223,19 +224,13 @@
 .messages {
   display: flex;
   padding: 1rem 1.25rem;
-  min-block-size: 0;
+  min-block-size: var(--space-layout-96);
   flex: 1 1 auto;
   flex-direction: column;
   gap: 0.75rem;
   overflow-y: auto;
   overflow-block: auto;
   overscroll-behavior: contain;
-}
-
-@supports (scroll-behavior: smooth) {
-  .messages {
-    scroll-behavior: smooth;
-  }
 }
 
 @supports not (gap: 0.75rem) {
@@ -393,6 +388,7 @@
      the widest locale label (FI "Lähetä" / SV "Skicka"). */
   padding-inline-end: 6.5rem;
   min-block-size: 3rem;
+  min-inline-size: 0;
   flex: 1;
   border: 1px solid var(--color-border-light);
   background: transparent;
@@ -412,8 +408,8 @@
 
 .input::placeholder {
   font-family: var(--font-sans);
-  color: var(--primary-text-color);
-  opacity: 0.4;
+  color: var(--secondary-text-color);
+  opacity: 1;
   font-style: italic;
 }
 
@@ -636,7 +632,7 @@
 
   .panel {
     inline-size: 100%;
-    max-block-size: 85vb;
+    max-block-size: calc(100dvb - var(--space-internal-8));
     border-inline: none;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     border-block-end: none;
@@ -651,15 +647,14 @@
     padding-inline: 0.9rem;
   }
 
-  :global(body[data-cookie-banner-open="true"]) .container[data-open="true"] {
-    inset-block-end: calc(var(--cookie-banner-height, 8rem) + 0.5rem);
-  }
+}
 
-  :global(:where(body[data-cookie-banner-open="true"]))
-    .container[data-open="true"]
-    .panel {
-    /* :where() keeps the body hook out of the specificity count (max 0,4,0). */
-    max-block-size: calc(100vb - var(--cookie-banner-height, 8rem) - 0.75rem);
+/* A short viewport (zoom, landscape, or a software keyboard) needs one
+   scrollable surface so the header, history, and composer all stay reachable. */
+@media (height <= 600px) {
+  .messages {
+    flex: 0 0 auto;
+    overflow: visible;
   }
 }
 
@@ -715,6 +710,19 @@
   transform: translateY(
     calc(-1 * (var(--cookie-banner-height, 8rem) + 0.75rem))
   );
+}
+
+/* Keep chat available without floating it over navigation when consent and
+   browser zoom leave little vertical space. Native focus scrolls this entry
+   into view in the document, and accepting/rejecting cookies restores it. */
+
+@media (height <= 480px) {
+  :global(body[data-cookie-banner-open="true"]) .toggle:not([data-open="true"]) {
+    position: relative;
+    inset: auto;
+    margin: var(--space-layout-16);
+    transform: none;
+  }
 }
 
 /* Slide chat to the left when mobile menu is open */
@@ -1152,9 +1160,20 @@
 
 .chatTextArea::placeholder {
   font-family: var(--font-text);
-  color: var(--color-primary);
-  opacity: 0.4;
+  color: var(--secondary-text-color);
+  opacity: 1;
   font-style: italic;
+}
+
+.chatTextArea.input {
+  padding-inline-end: calc(var(--space-layout-96) + var(--space-internal-8));
+  color: var(--color-text);
+}
+
+@media (width <= 480px) {
+  .chatTextArea.input {
+    padding-inline-end: calc(var(--space-layout-48) + var(--space-internal-8));
+  }
 }
 
 .chatTextArea:focus,

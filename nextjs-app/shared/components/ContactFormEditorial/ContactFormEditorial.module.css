@@ -22,6 +22,19 @@
   gap: var(--space-layout-24);
 }
 
+.fieldWithSuggestion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+}
+
+.emailSuggestion {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
 /*
  * The editorial name/email/message fields set the form's resting control
  * height (0.75rem block padding -> 56px at the 18px root). The embedded DS

@@ -1,0 +1,16 @@
+{
+  "storyId": "web-components-feedback-modal-animated-entrance",
+  "mode": "light",
+  "sourceSHA": "8187e69ddf8f738917a8fa10204b62800553147a",
+  "capturedAt": "2026-09-27T05:44:39.165Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

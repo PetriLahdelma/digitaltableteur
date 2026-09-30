@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Text } from "@digitaltableteur/react";
+import { Text, Title } from "@digitaltableteur/react";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
@@ -18,7 +18,11 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("intrum");
 
   if (!project) {
-    return <div>Project not found</div>;
+    return (
+      <Title as="h1" size="xxs" lang="en">
+        Project not found
+      </Title>
+    );
   }
 
   return (
@@ -44,7 +48,12 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
       className={styles.page}
     >
       <ProjectMetaSection
-        services={["UX Research", "Service Design", "Interaction Design", "Product Strategy"]}
+        services={[
+          "UX Research",
+          "Service Design",
+          "Interaction Design",
+          "Product Strategy",
+        ]}
         duration="2017"
         tools={[
           { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },

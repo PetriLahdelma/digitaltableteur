@@ -1,0 +1,11 @@
+- status: Work in progress (beta)
+- button "Rename workspace…"
+- dialog "Rename workspace":
+  - heading "Rename workspace" [level=2]
+  - text: Workspace name
+  - textbox "Workspace name":
+    - /placeholder: ""
+    - text: Digitaltableteur
+  - paragraph: Shown in the sidebar and invitations.
+  - button "Cancel"
+  - button "Save"

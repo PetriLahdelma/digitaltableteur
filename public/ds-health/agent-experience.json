@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "scoringModel": "Evidence scorecard only. No weighted aggregate or model-authored quality score is produced.",
-  "componentCount": 178,
+  "componentCount": 179,
   "dimensions": {
     "apiEntropy": {
       "description": "Raw API surface and finite-choice state-space indicators; lower is not automatically better.",
-      "totalProps": 1188,
+      "totalProps": 1200,
       "maximumPropCount": 27,
       "maximumFiniteStateBits": 16.383,
       "largestSurfaces": [
@@ -65,7 +65,7 @@
           "documentedPropCount": 16,
           "booleanAxisCount": 6,
           "finiteChoiceAxisCount": 2,
-          "finiteStateBits": 12.644,
+          "finiteStateBits": 12.966,
           "slotCount": 0,
           "relationshipCount": 0
         },
@@ -165,8 +165,8 @@
     "recoverability": {
       "description": "Components with negative guidance, replacement guidance, or executable prop relationships.",
       "coverage": {
-        "numerator": 178,
-        "denominator": 178,
+        "numerator": 179,
+        "denominator": 179,
         "rate": 1
       },
       "machineRelationshipComponents": 13
@@ -175,8 +175,8 @@
       "description": "Components connected to the relationship graph plus golden pattern retrieval evidence.",
       "componentCoverage": {
         "numerator": 94,
-        "denominator": 178,
-        "rate": 0.5281
+        "denominator": 179,
+        "rate": 0.5251
       },
       "patternRetrieval": {
         "passed": 11,
@@ -188,14 +188,14 @@
     "contractClarity": {
       "description": "Source-backed prop documentation and complete intent/guidance/a11y/example/rationale evidence.",
       "propDocumentation": {
-        "numerator": 1066,
-        "denominator": 1188,
-        "rate": 0.8973
+        "numerator": 1077,
+        "denominator": 1200,
+        "rate": 0.8975
       },
       "completeContractEvidence": {
         "numerator": 153,
-        "denominator": 178,
-        "rate": 0.8596
+        "denominator": 179,
+        "rate": 0.8547
       }
     }
   },
@@ -900,9 +900,9 @@
       "status": "beta",
       "tier": "organism",
       "api": {
-        "propCount": 2,
+        "propCount": 4,
         "requiredPropCount": 1,
-        "documentedPropCount": 2,
+        "documentedPropCount": 4,
         "booleanAxisCount": 0,
         "finiteChoiceAxisCount": 0,
         "finiteStateBits": 0,
@@ -1314,7 +1314,7 @@
         "documentedPropCount": 16,
         "booleanAxisCount": 6,
         "finiteChoiceAxisCount": 2,
-        "finiteStateBits": 12.644,
+        "finiteStateBits": 12.966,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -1393,7 +1393,7 @@
       "status": "stable",
       "tier": "molecule",
       "api": {
-        "propCount": 14,
+        "propCount": 15,
         "requiredPropCount": 3,
         "documentedPropCount": 14,
         "booleanAxisCount": 4,
@@ -1539,7 +1539,7 @@
     },
     {
       "name": "FormField",
-      "status": "stable",
+      "status": "beta",
       "tier": "molecule",
       "api": {
         "propCount": 7,
@@ -1800,7 +1800,7 @@
     },
     {
       "name": "Kbd",
-      "status": "stable",
+      "status": "beta",
       "tier": "atom",
       "api": {
         "propCount": 2,
@@ -2024,7 +2024,7 @@
     },
     {
       "name": "LocationCard",
-      "status": "stable",
+      "status": "beta",
       "tier": "molecule",
       "api": {
         "propCount": 6,
@@ -2188,6 +2188,34 @@
       },
       "recoverability": true,
       "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Mermaid",
+      "status": "alpha",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 4,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": true,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
       "machineRelationships": []
     },
     {
@@ -4814,9 +4842,9 @@
       "status": "alpha",
       "tier": "template",
       "api": {
-        "propCount": 8,
+        "propCount": 9,
         "requiredPropCount": 2,
-        "documentedPropCount": 8,
+        "documentedPropCount": 9,
         "booleanAxisCount": 1,
         "finiteChoiceAxisCount": 0,
         "finiteStateBits": 1,
@@ -5344,9 +5372,9 @@
   ],
   "ok": true,
   "violations": [],
-  "generatedAt": "2026-09-29T17:14:44.656Z",
+  "generatedAt": "2026-09-30T06:16:36.191Z",
   "provenance": {
-    "sourceCommit": "98e5fde2aab6c813fe00f393ff66586686c4487b",
+    "sourceCommit": "55cc6f69ab3c874a137dc5a3d1ccc37d262ef7e1",
     "workingTreeClean": false,
     "dirtyPathCount": 6,
     "generator": {

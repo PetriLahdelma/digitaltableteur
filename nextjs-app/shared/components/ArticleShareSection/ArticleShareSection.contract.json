@@ -32,7 +32,8 @@
         ],
         "ariaRequirements": [
             "Each share control is labelled (aria-label): Share on X/LinkedIn/Facebook and Copy link",
-            "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success"
+            "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success",
+            "The section root carries the resolved UI language so localized labels override an English article-body boundary."
         ],
         "reducedMotion": true,
         "reviewed": true,

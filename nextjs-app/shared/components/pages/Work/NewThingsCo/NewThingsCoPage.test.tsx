@@ -17,4 +17,16 @@ describe("NewThingsCoPage", () => {
       screen.getByRole("link", { name: /Back to work/i }),
     ).toBeInTheDocument();
   });
+
+  it("requires user action to play the brand guidelines video", () => {
+    const { container } = renderWithProviders(<NewThingsCoPage />);
+    const video = container.querySelector(
+      'video[aria-label="New Things Co Brand Guidelines video walkthrough"]',
+    );
+
+    expect(video).toHaveAttribute("controls");
+    expect(video).toHaveAttribute("preload", "metadata");
+    expect(video).not.toHaveAttribute("autoplay");
+    expect(video).not.toHaveAttribute("loop");
+  });
 });

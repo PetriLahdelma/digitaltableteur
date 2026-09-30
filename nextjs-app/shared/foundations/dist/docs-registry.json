@@ -3692,7 +3692,7 @@
       "tier": 2,
       "status": "beta",
       "description": "Animated client logo marquee on the homepage.",
-      "dense": "Animated client-logo marquee for the homepage; pauses under reduced motion; logos are linked images with alt text",
+      "dense": "Animated client-logo marquee for the homepage with pause/resume controls and one semantic client list",
       "keywords": [
         "logos",
         "marquee",
@@ -3708,6 +3708,16 @@
           "required": true
         },
         {
+          "name": "pauseLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "resumeLabel",
+          "type": "string",
+          "required": false
+        },
+        {
           "name": "className",
           "type": "string",
           "required": false
@@ -3718,6 +3728,16 @@
           "optional": false,
           "type": "string",
           "description": "Accessible name for the marquee section."
+        },
+        "pauseLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Label for the control that pauses the marquee."
+        },
+        "resumeLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Label for the control that resumes the marquee."
         },
         "className": {
           "optional": true,
@@ -3731,7 +3751,7 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "usage": {
-        "description": "Homepage social-proof marquee of client logos; animation drops under prefers-reduced-motion. Keep logos monochrome and alt-texted."
+        "description": "Homepage social-proof marquee of client logos; visitors can pause it and reduced-motion users receive a static grid. The visual logos are decorative because one semantic list names every client."
       },
       "tokens": {
         "colors": [],
@@ -5682,12 +5702,12 @@
         "enableIdleExpressions": {
           "optional": true,
           "type": "boolean",
-          "description": "Enables randomized idle expressions."
+          "description": "Enables one randomized idle expression before the avatar settles."
         },
         "idleExpressionInterval": {
           "optional": true,
           "type": "number",
-          "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
+          "description": "Delay before the one idle expression, in milliseconds (default 12000), randomized by 50 percent."
         },
         "isSpeaking": {
           "optional": true,
@@ -6039,13 +6059,13 @@
       "group": "marketing",
       "tier": 2,
       "status": "stable",
-      "description": "Portfolio project card with image, video hover, and metadata.",
-      "dense": "Portfolio project card w/ image, hover video preview, and metadata; the work-index upgrade of ProjectCard",
+      "description": "Portfolio project card with static image or video-poster media and metadata.",
+      "dense": "Portfolio project card with static image or paused video preview and metadata; the work-index upgrade of ProjectCard",
       "keywords": [
         "portfolio",
         "project",
         "card",
-        "video hover",
+        "video preview",
         "work"
       ],
       "importLine": "import { EnhancedProjectCard } from \"@dt/EnhancedProjectCard\";",
@@ -6100,7 +6120,7 @@
         "videoThumbnail": {
           "optional": true,
           "type": "string",
-          "description": "Video thumbnail URL (for hover autoplay)"
+          "description": "Video thumbnail URL rendered as a paused decorative preview"
         },
         "description": {
           "optional": true,
@@ -6141,7 +6161,7 @@
         "autoPlayVideo": {
           "optional": true,
           "type": "boolean",
-          "description": "Autoplay video thumbnail continuously (not just on hover)"
+          "description": "Deprecated compatibility prop; card previews never autoplay"
         },
         "comingSoon": {
           "optional": true,
@@ -6152,6 +6172,11 @@
           "optional": true,
           "type": "string",
           "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+        },
+        "contentLanguage": {
+          "optional": true,
+          "type": "string",
+          "description": "BCP 47 language tag for project-authored title and metadata"
         },
         "className": {
           "optional": true,
@@ -6169,7 +6194,7 @@
         "Pass a non-decorative thumbnail without also passing a description (the sr-only span is the only accessible name)."
       ],
       "usage": {
-        "description": "Work-index project card with image, hover video preview, and metadata. The richer sibling of ProjectCard; use one per index, not both."
+        "description": "Work-index project card with image or paused video preview and metadata. The richer sibling of ProjectCard; use one per index, not both."
       },
       "tokens": {
         "colors": [],
@@ -10145,6 +10170,110 @@
         }
       ]
     },
+    "Mermaid": {
+      "name": "Mermaid",
+      "group": "media",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Renders a Mermaid diagram with a concise accessible name, prose summary, and visible structured text alternative.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { Mermaid } from \"@dt/Mermaid\";",
+      "keyProps": [
+        {
+          "name": "chart",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "accessibleDetails",
+          "type": "ReactNode",
+          "required": true
+        },
+        {
+          "name": "detailsLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "caption",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "chart": {
+          "optional": false,
+          "type": "string",
+          "description": "Mermaid diagram source"
+        },
+        "title": {
+          "optional": false,
+          "type": "string",
+          "description": "Concise meaningful name for the diagram"
+        },
+        "description": {
+          "optional": false,
+          "type": "string",
+          "description": "Short prose summary of the diagram purpose and relationships"
+        },
+        "accessibleDetails": {
+          "optional": false,
+          "type": "ReactNode",
+          "description": "Structured or prose equivalent of every material relationship in the diagram"
+        },
+        "detailsLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Label for the visible text-alternative disclosure"
+        },
+        "caption": {
+          "optional": true,
+          "type": "string",
+          "description": "Optional visible figure caption"
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Additional className for the figure"
+        },
+        "themeColors": {
+          "optional": true,
+          "type": "MermaidThemeColors",
+          "description": "Diagram color overrides"
+        }
+      },
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "Render a diagram without a complete accessibleDetails equivalent.",
+        "Use title alone as the text alternative for a diagram with meaningful relationships."
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-focus-ring"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-24"
+        ]
+      },
+      "examples": []
+    },
     "Modal": {
       "name": "Modal",
       "group": "overlay",
@@ -13067,7 +13196,7 @@
         "targetId": {
           "optional": true,
           "type": "string",
-          "description": "ID of the target element to scroll to"
+          "description": "ID of the target element to scroll to; the control is omitted when absent"
         },
         "label": {
           "optional": true,
@@ -13103,7 +13232,7 @@
             "bounce",
             "pulse"
           ],
-          "description": "Looping motion applied to the icon as a hint to scroll."
+          "description": "Brief motion applied to the icon as a hint to scroll."
         },
         "speed": {
           "optional": true,
@@ -13135,11 +13264,11 @@
         "rely on the animation to carry meaning. It is suppressed under reduced motion, so the label and accessible name must stand alone."
       ],
       "usage": {
-        "description": "ScrollIndicator is a hero-footer affordance that signals there is more page below and scrolls to it when activated. It renders a real button that scrolls a named target into view, with a looping motion hint on the icon that is suppressed under prefers-reduced-motion.",
+        "description": "ScrollIndicator is a hero-footer affordance that signals there is more page below and scrolls to it when activated. It renders a real button only when a target exists, with a brief motion hint that stops automatically and is suppressed under prefers-reduced-motion.",
         "bestPractices": [
           {
             "guidance": true,
-            "description": "Give it a targetId matching a real element on the page so activation scrolls somewhere; without it the control renders but does nothing."
+            "description": "Give it a targetId matching a real element on the page so activation scrolls somewhere; without it the control is omitted."
           },
           {
             "guidance": true,
@@ -13166,7 +13295,7 @@
           {
             "name": "Icon",
             "required": true,
-            "description": "The scroll cue glyph (chevron, arrow, or mouse) that carries the looping motion hint."
+            "description": "The scroll cue glyph (chevron, arrow, or mouse) that carries the brief motion hint."
           },
           {
             "name": "Label",
@@ -19416,7 +19545,7 @@
         "lang": {
           "optional": true,
           "type": "string",
-          "description": "Document language for the article root"
+          "description": "Language applied to the article hero and body (defaults to English); navigation and related-post chrome keep the UI language"
         }
       },
       "composesWith": [],
@@ -21337,7 +21466,7 @@
         "interval": {
           "optional": true,
           "type": "number",
-          "description": "Cycling interval in milliseconds"
+          "description": "Timing input used to bound the one-time emphasis pulse"
         },
         "separator": {
           "optional": true,
@@ -21968,7 +22097,12 @@
         "donnyTarget": {
           "optional": true,
           "type": "string",
-          "description": "Donny site action target id for the project main landmark"
+          "description": "Donny site action target id for the project article"
+        },
+        "lang": {
+          "optional": true,
+          "type": "string",
+          "description": "Language applied to the project hero and authored case-study body (defaults to English); navigation, CTA, and related-project chrome keep the UI language"
         }
       },
       "composesWith": [

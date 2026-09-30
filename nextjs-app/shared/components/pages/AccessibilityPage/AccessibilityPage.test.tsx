@@ -28,6 +28,13 @@ describe("AccessibilityPage", () => {
     ).toBeInTheDocument();
   });
 
+  it("states the WCAG 2.2 AA target without claiming automated certification", () => {
+    renderWithProviders(<AccessibilityPage />);
+    expect(screen.getByText(/Our target is.*WCAG.*2\.2 Level AA/)).toBeInTheDocument();
+    expect(screen.getByText(/Full conformance has not yet been verified/)).toBeInTheDocument();
+    expect(screen.queryByText(/100% pass rate|Substantially conformant/)).not.toBeInTheDocument();
+  });
+
   it("renders measures section", () => {
     renderWithProviders(<AccessibilityPage />);
     expect(

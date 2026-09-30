@@ -18,7 +18,7 @@
 [data-donny-active="true"][data-donny-highlight="pulse"] {
   outline: 2px solid var(--color-primary);
   outline-offset: 4px;
-  animation: donny-target-pulse 1.8s ease-in-out infinite;
+  animation: donny-target-pulse 1.8s ease-in-out 2;
 }
 
 @keyframes donny-target-pulse {

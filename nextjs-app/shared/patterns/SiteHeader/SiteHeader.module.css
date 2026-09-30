@@ -1,3 +1,17 @@
+.header {
+  position: sticky;
+  inset-block-start: 0;
+}
+
+/* At high zoom or short landscape heights, a persistent header and consent
+   banner can occupy the entire viewport. Keep the header in normal flow. */
+
+@media (height <= 480px) {
+  .header {
+    position: relative;
+  }
+}
+
 .themeIcon {
   display: inline-flex;
   transform-origin: center;

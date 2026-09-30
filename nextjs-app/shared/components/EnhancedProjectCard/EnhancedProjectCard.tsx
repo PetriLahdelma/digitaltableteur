@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useId } from "react";
 import { Link } from "../../lib/linkComponent";
 import { Image } from "../../lib/imageComponent";
 import { cn } from "../../lib/cn";
@@ -13,7 +13,7 @@ export interface EnhancedProjectCardProps {
   slug: string;
   /** Thumbnail image URL */
   thumbnail: string;
-  /** Video thumbnail URL (for hover autoplay) */
+  /** Video thumbnail URL. The preview stays paused until the project is opened. */
   videoThumbnail?: string;
   /** Short description */
   description?: string;
@@ -27,12 +27,14 @@ export interface EnhancedProjectCardProps {
   showCategory?: boolean;
   /** Show description on hover */
   showDescription?: boolean;
-  /** Autoplay video thumbnail continuously (not just on hover) */
+  /** @deprecated Card previews no longer autoplay. Retained for API compatibility. */
   autoPlayVideo?: boolean;
   /** Render as a non-interactive teaser with a "coming soon" badge over the media */
   comingSoon?: boolean;
   /** Visible badge label for the coming-soon overlay (pass a translated string) */
   comingSoonLabel?: string;
+  /** BCP 47 language tag for project-authored title and metadata */
+  contentLanguage?: string;
   /** Custom className */
   className?: string;
 }
@@ -61,46 +63,12 @@ export function EnhancedProjectCard({
   aspectRatio = "video",
   showCategory = true,
   showDescription = true,
-  autoPlayVideo = false,
   comingSoon = false,
   comingSoonLabel = "Coming soon",
+  contentLanguage,
   className,
 }: EnhancedProjectCardProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  // Check for reduced motion preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
-  const handleMouseEnter = () => {
-    // Skip if autoplay is enabled (already playing)
-    if (autoPlayVideo) return;
-    // Respect reduced motion preference for video autoplay
-    if (videoRef.current && !prefersReducedMotion) {
-      videoRef.current.play().catch(() => {
-        // Autoplay may be blocked, ignore error
-      });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    // Skip if autoplay is enabled (should keep playing)
-    if (autoPlayVideo) return;
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
+  const rawId = useId();
 
   const isVideoThumbnail =
     Boolean(videoThumbnail) ||
@@ -109,37 +77,25 @@ export function EnhancedProjectCard({
     thumbnail.endsWith(".webm");
   const videoSrc = videoThumbnail || (isVideoThumbnail ? thumbnail : undefined);
 
-  // Generate unique ID for aria relationships
-  const descriptionId = `${slug}-desc`;
+  const idBase = `${slug}-${rawId.replace(/:/g, "")}`;
+  const titleId = `${idBase}-title`;
+  const descriptionId = `${idBase}-description`;
 
   const content = (
     <>
-      {/* Screen reader accessible description */}
-      {description && (
-        <span id={descriptionId} className="sr-only">
-          {category && `Category: ${category}. `}
-          {description}
-          {tags?.length && `. Tags: ${tags.join(", ")}`}
-        </span>
-      )}
-
       {/* Media Container - Clean, no overlays (coming-soon badge excepted) */}
       <div
-        className={cn(
-          styles.media,
-          aspectRatioClasses[aspectRatio],
-        )}
+        className={cn(styles.media, aspectRatioClasses[aspectRatio])}
         data-project-card-media=""
       >
         {/* Video thumbnail */}
         {isVideoThumbnail && videoSrc ? (
           <video
-            ref={videoRef}
             src={videoSrc}
             muted
-            loop
             playsInline
-            autoPlay={autoPlayVideo && !prefersReducedMotion}
+            preload="metadata"
+            poster={videoThumbnail ? thumbnail : undefined}
             aria-hidden="true"
             className={styles.asset}
             data-project-card-asset=""
@@ -148,7 +104,7 @@ export function EnhancedProjectCard({
           /* Static image thumbnail */
           <Image
             src={thumbnail}
-            alt="" // Decorative - full description in sr-only span
+            alt="" // Decorative; the adjacent title and description provide the equivalent.
             fill
             className={styles.asset}
             data-project-card-asset=""
@@ -158,7 +114,10 @@ export function EnhancedProjectCard({
 
         {/* Coming-soon overlay badge */}
         {comingSoon && (
-          <span className={styles.comingSoonBadge} data-project-card-coming-soon="">
+          <span
+            className={styles.comingSoonBadge}
+            data-project-card-coming-soon=""
+          >
             {comingSoonLabel}
           </span>
         )}
@@ -168,26 +127,34 @@ export function EnhancedProjectCard({
       <div className={styles.caption}>
         {/* Category label */}
         {showCategory && category && (
-          <span className={styles.category}>
+          <span className={styles.category} lang={contentLanguage}>
             {category}
           </span>
         )}
 
         {/* Title */}
-        <h3 className={styles.title}>
+        <h3 id={titleId} className={styles.title} lang={contentLanguage}>
           {title}
         </h3>
 
         {/* Description - visible on hover for desktop, always for mobile */}
-        {showDescription && description && (
-          <p className={styles.description}>
+        {description && (
+          <p
+            id={descriptionId}
+            className={showDescription ? styles.description : "sr-only"}
+            lang={contentLanguage}
+          >
             {description}
           </p>
         )}
 
         {/* Tags */}
         {tags && tags.length > 0 && (
-          <div className={styles.tags} data-project-card-tags="">
+          <div
+            className={styles.tags}
+            data-project-card-tags=""
+            lang={contentLanguage}
+          >
             {tags.slice(0, 3).map((tag) => (
               <span key={tag} className={styles.tag}>
                 {tag}
@@ -203,7 +170,6 @@ export function EnhancedProjectCard({
     return (
       <div
         className={cn(styles.card, styles.comingSoon, className)}
-        aria-describedby={description ? descriptionId : undefined}
         data-enhanced-project-card=""
       >
         {content}
@@ -215,8 +181,7 @@ export function EnhancedProjectCard({
     <Link
       href={`/work/${slug}`}
       className={cn(styles.card, className)}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      aria-labelledby={titleId}
       aria-describedby={description ? descriptionId : undefined}
       data-enhanced-project-card=""
       data-donny-interest="portfolio-project"

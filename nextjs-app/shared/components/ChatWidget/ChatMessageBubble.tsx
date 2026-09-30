@@ -8,6 +8,7 @@ import OpenHours from "@dt/OpenHours/OpenHours";
 import ServicesGrid from "@dt/ServicesGrid/ServicesGrid";
 import StudioMap from "@dt/StudioMap/StudioMap";
 import AIProcessingState from "./AIProcessingState";
+import Text from "@dt/Text";
 import ChatToolResultSection from "./ChatToolResultSection";
 import DonnyBookingEmbed from "@dt/DonnyBookingEmbed";
 import type {
@@ -242,6 +243,10 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
 }) => {
   const t = useTranslate();
   const isAssistant = message.role === "assistant";
+  const speakerId = React.useId();
+  const speaker = isAssistant
+    ? t("chatSpeakerAssistant", "Donny · AI assistant")
+    : t("chatSpeakerUser", "You");
   const thinking = t("chatThinking", "Thinking…");
   const fallback = isAssistant ? (isStreaming ? thinking : "") : "";
 
@@ -253,12 +258,17 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
   return (
     <div
       className={styles.message}
+      role="group"
+      aria-labelledby={speakerId}
       data-role={message.role}
       data-ai-generated={isAssistant ? "true" : undefined}
       data-ai-output-type={isAssistant ? "text" : undefined}
       data-ai-system={isAssistant ? "donny" : undefined}
       data-testid={`chat-message-${message.role}`}
     >
+      <Text as="span" id={speakerId} className={styles.speaker}>
+        {speaker}
+      </Text>
       {showProcessingState ? (
         <AIProcessingState mode="thinking" intensity="moderate" />
       ) : (

@@ -125,7 +125,7 @@ export function HomePage() {
         className="mx-auto w-full max-w-6xl px-6 py-12"
         data-donny-target="home.clients"
       >
-        <div className="rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur md:p-8 dark:border-white/10 dark:bg-neutral-950/60 hcb:border-white/30 hcb:bg-black [--selected-clients-label-color:rgb(4_27_35_/_70%)] [--selected-clients-divider-color:rgb(4_27_35_/_12%)] dark:[--selected-clients-label-color:rgb(255_255_255)] dark:[--selected-clients-divider-color:rgb(255_255_255_/_0.15)] hcb:[--selected-clients-label-color:rgb(0_0_0)] hcb:[--selected-clients-divider-color:rgb(0_0_0_/_0.18)] hcw:[--selected-clients-label-color:rgb(0_0_0)] hcw:[--selected-clients-divider-color:rgb(0_0_0_/_0.18)]">
+        <div className={`${styles.selectedClientsPanel} rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur md:p-8 dark:border-white/10 dark:bg-neutral-950/60 hcb:border-white/30 hcb:bg-black [--selected-clients-label-color:rgb(4_27_35_/_70%)] [--selected-clients-divider-color:rgb(4_27_35_/_12%)] dark:[--selected-clients-label-color:rgb(255_255_255)] dark:[--selected-clients-divider-color:rgb(255_255_255_/_0.15)] hcb:[--selected-clients-label-color:rgb(0_0_0)] hcb:[--selected-clients-divider-color:rgb(0_0_0_/_0.18)] hcw:[--selected-clients-label-color:rgb(0_0_0)] hcw:[--selected-clients-divider-color:rgb(0_0_0_/_0.18)]`}>
           <p
             className={`${styles.selectedClientsLabel} text-[var(--selected-clients-label-color)] text-xs font-semibold uppercase tracking-[0.28em]`}
           >
@@ -134,7 +134,17 @@ export function HomePage() {
           <div
             className={`${styles.selectedClientsDivider} mt-4 border-t border-t-[var(--selected-clients-divider-color)] pt-4`}
           >
-            <ClientLogoMarquee ariaLabel={t("homeSelectedClientsAria")} />
+            <ClientLogoMarquee
+              ariaLabel={t("homeSelectedClientsAria")}
+              pauseLabel={t(
+                "homeClientLogosPause",
+                "Pause client logo animation",
+              )}
+              resumeLabel={t(
+                "homeClientLogosResume",
+                "Resume client logo animation",
+              )}
+            />
           </div>
         </div>
       </section>
@@ -150,7 +160,6 @@ export function HomePage() {
 
       {/* Design Sprints Section */}
       <DesignSprintsSection id="design-sprints" />
-
 
       {/* Contact CTA Section */}
       <CTASection

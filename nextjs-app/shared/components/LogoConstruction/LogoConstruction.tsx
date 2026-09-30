@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import Button from "@dt/Button";
+import { useAnimationContext } from "../../lib/animation";
 import styles from "./LogoConstruction.module.css";
 
 // SVG path data for the KnobSmith Audio logo construction animation
@@ -65,6 +67,10 @@ export interface LogoConstructionProps {
   ariaLabel?: string;
   /** Optional className */
   className?: string;
+  /** Visible label for starting the construction animation. */
+  playLabel?: string;
+  /** Visible label for stopping the construction animation. */
+  stopLabel?: string;
 }
 
 export const LogoConstruction: React.FC<LogoConstructionProps> = ({
@@ -74,10 +80,18 @@ export const LogoConstruction: React.FC<LogoConstructionProps> = ({
   drawSpeed = 1,
   ariaLabel = "KnobSmith Audio logo construction animation",
   className,
+  playLabel = "Play logo construction animation",
+  stopLabel = "Stop logo construction animation",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const { motionPreference } = useAnimationContext();
+
+  useEffect(() => {
+    if (motionPreference === "reduced") setIsPlaying(false);
+  }, [motionPreference]);
 
   // Refs for each path element
   const ellipse1Ref = useRef<SVGPathElement>(null);
@@ -166,6 +180,18 @@ export const LogoConstruction: React.FC<LogoConstructionProps> = ({
       textO2Ref.current,
     ];
 
+    if (!isPlaying || motionPreference === "reduced") {
+      allPaths.forEach((path) => {
+        if (!path) return;
+        gsap.set(path, {
+          strokeDasharray: "none",
+          strokeDashoffset: 0,
+          opacity: 1,
+        });
+      });
+      return;
+    }
+
     const ctx = gsap.context(() => {
       // Set up all paths for drawing
       allPaths.forEach(setupPathForDrawing);
@@ -174,6 +200,7 @@ export const LogoConstruction: React.FC<LogoConstructionProps> = ({
       const tl = gsap.timeline({
         repeat: loop ? -1 : 0,
         repeatDelay: loopPause,
+        onComplete: loop ? undefined : () => setIsPlaying(false),
         onRepeat: () => {
           // Reset all paths on repeat
           allPaths.forEach(setupPathForDrawing);
@@ -303,21 +330,21 @@ export const LogoConstruction: React.FC<LogoConstructionProps> = ({
     return () => {
       ctx.revert();
     };
-  }, [stageDuration, loop, loopPause, drawSpeed]);
+  }, [drawSpeed, isPlaying, loop, loopPause, motionPreference, stageDuration]);
 
   return (
     <div
       ref={containerRef}
       className={`${styles.container} ${className ?? ""}`}
-      role="img"
-      aria-label={ariaLabel}
     >
       <svg
         ref={svgRef}
-        className={styles.svg}
+        className={`${styles.canvas} ${styles.svg}`}
         fill="none"
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 1848 621"
+        role="img"
+        aria-label={ariaLabel}
       >
         <rect fill="#2B2F33" height="621" width="1848" />
 
@@ -487,6 +514,18 @@ export const LogoConstruction: React.FC<LogoConstructionProps> = ({
           opacity="0"
         />
       </svg>
+      {motionPreference !== "reduced" && (
+        <div className={styles.controls}>
+          <Button
+            variant="secondary"
+            size="sm"
+            aria-pressed={isPlaying}
+            onClick={() => setIsPlaying((playing) => !playing)}
+          >
+            {isPlaying ? stopLabel : playLabel}
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

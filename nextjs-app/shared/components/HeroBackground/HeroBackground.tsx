@@ -45,9 +45,9 @@ export function HeroBackground({
     kind: "continuous",
     userInitiated: false,
     essential: false,
-    durationMs: 8000,
+    durationMs: 1800,
     distancePx: 100,
-    iterations: -1,
+    iterations: 2,
   });
   const shouldAnimate = animate && motion.animate;
 
@@ -62,14 +62,12 @@ export function HeroBackground({
         backgroundPosition: "100% 50%",
         duration: motion.durationMs / 1000,
         ease: "sine.inOut",
-        repeat: -1,
+        repeat: Math.max(0, motion.iterations - 1),
         yoyo: true,
       });
     },
-    // revertOnUpdate matters: the provider resolves prefers-reduced-motion in
-    // a post-mount effect, so the gate flips AFTER this tween starts — without
-    // revert, the early return leaves the infinite loop running for
-    // reduced-motion users.
+    // Revert when the runtime preference resolves after mount so reduced-motion
+    // users never inherit an in-flight decorative hint.
     {
       scope: ref,
       dependencies: [shouldAnimate, variant],
@@ -90,7 +88,7 @@ export function HeroBackground({
         opacity: 0.03,
         duration: 0.1,
         ease: "none",
-        repeat: -1,
+        repeat: Math.max(0, motion.iterations - 1),
         yoyo: true,
       });
     },

@@ -1,0 +1,16 @@
+{
+  "storyId": "media-mermaid-forced-colors",
+  "mode": "forced-colors",
+  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+  "capturedAt": "2026-09-27T06:08:51.896Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

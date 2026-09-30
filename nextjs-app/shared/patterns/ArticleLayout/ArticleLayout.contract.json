@@ -7,7 +7,7 @@
     "description": "Blog article page layout shell.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-layout",
     "radixPrimitive": null,
-    "element": "main",
+    "element": "article",
     "variants": {},
     "slots": [],
     "asChild": false,
@@ -72,7 +72,7 @@
         "lang": {
             "optional": true,
             "type": "string",
-            "description": "Document language for the article root"
+            "description": "Language applied to the article hero and body (defaults to English); navigation and related-post chrome keep the UI language"
         }
     },
     "forbiddenUse": [

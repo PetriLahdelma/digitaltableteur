@@ -20,7 +20,7 @@
 
 .required {
   margin-inline-start: var(--space-internal-4);
-  color: var(--color-error);
+  color: var(--color-error-text);
 }
 
 /* Bordered input */
@@ -42,7 +42,7 @@
 
 .input::placeholder {
   color: var(--color-muted);
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .input:focus {
@@ -78,7 +78,7 @@
 
 .textarea::placeholder {
   color: var(--color-muted);
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .textarea:focus {
@@ -162,18 +162,5 @@
   margin: 0;
   font-family: var(--font-body);
   font-size: 12px;
-  color: var(--color-error);
-  animation: fadeIn var(--duration-fast) var(--ease-out-cubic);
-}
-
-@keyframes fadeIn {
-  from {
-    transform: translateY(-4px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  color: var(--color-error-text);
 }

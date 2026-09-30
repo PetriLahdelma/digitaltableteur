@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T20:13:21.842Z",
+  "generatedAt": "2026-09-30T06:13:13.832Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1213,7 +1213,8 @@
       ],
       "requiredA11y": [
         "Each share control is labelled (aria-label): Share on X/LinkedIn/Facebook and Copy link",
-        "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success"
+        "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success",
+        "The section root carries the resolved UI language so localized labels override an English article-body boundary."
       ],
       "keyboard": [
         "Tab reaches each share link and the copy-link button; Enter/Space activates them"
@@ -6248,8 +6249,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "Latest a11y evidence for 'axe-no-violations' is failing; re-run npm run test:stories:matrix:ci.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -7066,6 +7067,16 @@
           "type": "string",
           "description": "Accessible name for the marquee section."
         },
+        "pauseLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Label for the control that pauses the marquee."
+        },
+        "resumeLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Label for the control that resumes the marquee."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -7098,7 +7109,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 2,
+      "declaredPropCount": 4,
       "guidelines": [
         {
           "level": "should",
@@ -10786,12 +10797,12 @@
         "enableIdleExpressions": {
           "optional": true,
           "type": "boolean",
-          "description": "Enables randomized idle expressions."
+          "description": "Enables one randomized idle expression before the avatar settles."
         },
         "idleExpressionInterval": {
           "optional": true,
           "type": "number",
-          "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
+          "description": "Delay before the one idle expression, in milliseconds (default 12000), randomized by 50 percent."
         },
         "isSpeaking": {
           "optional": true,
@@ -11543,7 +11554,7 @@
         "videoThumbnail": {
           "optional": true,
           "type": "string",
-          "description": "Video thumbnail URL (for hover autoplay)"
+          "description": "Video thumbnail URL. The preview stays paused until the project is opened."
         },
         "description": {
           "optional": true,
@@ -11584,7 +11595,8 @@
         "autoPlayVideo": {
           "optional": true,
           "type": "boolean",
-          "description": "Autoplay video thumbnail continuously (not just on hover)"
+          "deprecated": true,
+          "deprecation": "Card previews no longer autoplay. Retained for API compatibility."
         },
         "comingSoon": {
           "optional": true,
@@ -11595,6 +11607,11 @@
           "optional": true,
           "type": "string",
           "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+        },
+        "contentLanguage": {
+          "optional": true,
+          "type": "string",
+          "description": "BCP 47 language tag for project-authored title and metadata"
         },
         "className": {
           "optional": true,
@@ -11614,12 +11631,13 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "requiredA11y": [
-        "Root is a stretched `<a>`; a visually-hidden `<span>` carries category + description + tags as the accessible name via `aria-describedby`.",
-        "The thumbnail image `alt` is empty and the hover `<video>` is `aria-hidden` (decorative; the sr-only span is the source of truth)."
+        "Root is a stretched `<a>` whose accessible name comes from the visible title and whose accessible description comes from the single rendered description.",
+        "The thumbnail image `alt` is empty and the paused `<video>` is `aria-hidden` because the adjacent project copy provides the equivalent.",
+        "Project-authored copy can carry an explicit BCP 47 language without overriding localized status text."
       ],
       "keyboard": [
         "The whole card is a single link (`<a>` via next/link); Tab focuses it, Enter activates it.",
-        "Hover-only affordances (video preview, revealed tags) also fire on `:focus-visible` so keyboard users get parity."
+        "Hover-only metadata affordances also fire on `:focus-visible` so keyboard users get parity."
       ],
       "compositionRules": [],
       "canonicalExamples": [
@@ -11637,7 +11655,7 @@
         "Section"
       ],
       "prefersOver": [],
-      "declaredPropCount": 14,
+      "declaredPropCount": 15,
       "guidelines": [
         {
           "level": "should",
@@ -11739,7 +11757,7 @@
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. Reduced-motion is already fully guarded (a `@media (prefers-reduced-motion: reduce)` block neutralises every transition/animation/transform, and the hover-video autoplay is JS-gated on the reduced-motion media query). Added the missing unit test (axe + link semantics + aspect-ratio class + reduced-motion guard)."
+          "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. 2026-09-27 — video media changed to a static paused preview so project cards never introduce automatic motion."
         }
       ],
       "docOrigin": {
@@ -13549,8 +13567,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -19130,6 +19148,7 @@
         "OpenHours",
         "ServicesGrid",
         "StudioMap",
+        "Text",
         "DonnyBookingEmbed"
       ],
       "prefersOver": [],
@@ -19576,6 +19595,289 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "Menu.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "Mermaid": {
+      "preferredImport": "@dt/Mermaid",
+      "intent": "Render Mermaid diagrams without making sight or visual parsing a prerequisite for understanding their information and relationships.",
+      "props": {
+        "chart": {
+          "optional": false,
+          "type": "string",
+          "description": "Mermaid diagram code"
+        },
+        "title": {
+          "optional": false,
+          "type": "string",
+          "description": "Concise, meaningful name for the diagram"
+        },
+        "description": {
+          "optional": false,
+          "type": "string",
+          "description": "Short prose summary of the diagram's purpose and relationships"
+        },
+        "accessibleDetails": {
+          "optional": false,
+          "type": "ReactNode",
+          "description": "Structured or prose equivalent of every material relationship in the diagram"
+        },
+        "detailsLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Label for the visible text-alternative disclosure"
+        },
+        "caption": {
+          "optional": true,
+          "type": "string",
+          "description": "Optional caption for the diagram"
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Optional className for styling"
+        },
+        "themeColors": {
+          "optional": true,
+          "type": "MermaidThemeColors",
+          "description": "Custom theme colors"
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "describe every branch, connection, sequence, and grouping that carries meaning in `accessibleDetails`.",
+        "keep `title` concise and `description` to one or two sentences."
+      ],
+      "avoidWhen": [
+        "repeat the Mermaid source as the alternative; translate the visual grammar into ordinary prose and semantic lists.",
+        "use a diagram for content that is a simple list or sequence; write the list with List instead."
+      ],
+      "requiredA11y": [
+        "The rendered diagram has role img and is named by title.",
+        "description supplies a concise accessible description.",
+        "aria-details points to a visible disclosure containing a complete structured or prose equivalent of the diagram relationships.",
+        "The generated SVG is hidden from assistive technology to prevent duplicate, unstructured narration."
+      ],
+      "keyboard": [
+        "Tab focuses the native disclosure summary; Enter or Space toggles the text alternative."
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "repeat the Mermaid source as the alternative; translate the visual grammar into ordinary prose and semantic lists.",
+        "use a diagram for content that is a simple list or sequence; write the list with List instead."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 8,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "describe every branch, connection, sequence, and grouping that carries meaning in `accessibleDetails`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "keep `title` concise and `description` to one or two sentences.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "repeat the Mermaid source as the alternative; translate the visual grammar into ordinary prose and semantic lists.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use a diagram for content that is a simple list or sequence; write the list with List instead.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual",
+          "wcag": [
+            {
+              "sc": "2.1.1",
+              "name": "Keyboard",
+              "level": "A",
+              "en301549": "9.2.1.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "2.1.2",
+              "name": "No Keyboard Trap",
+              "level": "A",
+              "en301549": "9.2.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Mermaid.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Mermaid.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Mermaid.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Mermaid.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",
@@ -21385,6 +21687,7 @@
         "MarkdownMessage",
         "ServicesGrid",
         "StudioMap",
+        "Text",
         "DonnyBookingEmbed"
       ],
       "prefersOver": [],
@@ -25544,7 +25847,7 @@
     },
     "ScrollIndicator": {
       "preferredImport": "@dt/ScrollIndicator",
-      "intent": "A hero-footer affordance that tells the reader there is more page below and takes them there when activated. It renders a real `<button>` that scrolls a named target into view, with a looping motion hint that stops unde…",
+      "intent": "A hero-footer affordance that tells the reader there is more page below and takes them there when activated. It renders a real `<button>` that scrolls a named target into view, with a brief motion hint that stops automa…",
       "props": {
         "targetId": {
           "optional": true,
@@ -25585,7 +25888,7 @@
             "bounce",
             "pulse"
           ],
-          "description": "Looping motion applied to the icon as a hint to scroll."
+          "description": "Brief motion applied to the icon as a hint to scroll."
         },
         "speed": {
           "optional": true,
@@ -28300,6 +28603,7 @@
         "MarkdownMessage",
         "OpenHours",
         "StudioMap",
+        "Text",
         "DonnyBookingEmbed"
       ],
       "prefersOver": [],
@@ -29330,9 +29634,9 @@
         "StatsSection",
         "ReliablePartnerBadge",
         "Link",
+        "Title",
         "Section",
-        "Container",
-        "Title"
+        "Container"
       ],
       "prefersOver": [],
       "declaredPropCount": 4,
@@ -41539,8 +41843,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -41554,8 +41858,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -41581,8 +41885,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "4.1.2",
@@ -44608,7 +44912,7 @@
         "interval": {
           "optional": true,
           "type": "number",
-          "description": "Cycling interval in milliseconds"
+          "description": "Timing input used to bound the one-time emphasis pulse"
         },
         "separator": {
           "optional": true,
@@ -46207,7 +46511,12 @@
         "donnyTarget": {
           "optional": true,
           "type": "string",
-          "description": "Donny site action target id for the project main landmark"
+          "description": "Donny site action target id for the project article"
+        },
+        "lang": {
+          "optional": true,
+          "type": "string",
+          "description": "Language of the case-study content"
         }
       },
       "propRelationships": [],
@@ -46243,7 +46552,7 @@
         "CaseStudySummary"
       ],
       "prefersOver": [],
-      "declaredPropCount": 8,
+      "declaredPropCount": 9,
       "guidelines": [
         {
           "level": "should",

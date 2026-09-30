@@ -12,9 +12,17 @@ interface ReviewSummaryProps {
 
 const ReviewSummary: React.FC<ReviewSummaryProps> = ({ draft, dispatch }) => {
   const t = useTranslate();
+  const headingRef = React.useRef<HTMLHeadingElement>(null);
+
+  React.useEffect(() => {
+    headingRef.current?.focus();
+  }, []);
+
   return (
     <div className={styles.summary}>
-      <Title level={4}>{t("emailWorkflow.review.title")}</Title>
+      <Title ref={headingRef} tabIndex={-1} level={4}>
+        {t("emailWorkflow.review.title")}
+      </Title>
       <dl className={styles.fields}>
         <dt>{t("emailWorkflow.field.fullName")}</dt>
         <dd>{draft.fullName || "—"}</dd>

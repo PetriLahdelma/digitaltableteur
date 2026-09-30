@@ -6,6 +6,8 @@ import { IntrumPage } from "./IntrumPage";
 describe("IntrumPage", () => {
   it("shows missing-project state until intrum is restored to projects data", () => {
     renderWithProviders(<IntrumPage />);
-    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /Project not found/i }),
+    ).toHaveAttribute("lang", "en");
   });
 });

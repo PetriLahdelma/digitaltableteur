@@ -1,9 +1,9 @@
 {
   "storyId": "feedback-modal-info-dialog",
   "mode": "dark",
-  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-  "capturedAt": "2026-09-29T18:59:52.375Z",
-  "runner": "local",
+  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+  "capturedAt": "2026-09-27T06:07:50.842Z",
+  "runner": null,
   "checks": {
     "accessibility-tree": {
       "passed": true

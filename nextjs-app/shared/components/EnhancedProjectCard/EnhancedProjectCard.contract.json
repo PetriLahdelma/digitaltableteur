@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "marketing",
     "status": "stable",
-    "description": "Portfolio project card with image, video hover, and metadata.",
+    "description": "Portfolio project card with static image or video-poster media and metadata.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1433-2257",
     "radixPrimitive": null,
     "element": "a",
@@ -31,18 +31,19 @@
     "a11y": {
         "keyboard": [
             "The whole card is a single link (`<a>` via next/link); Tab focuses it, Enter activates it.",
-            "Hover-only affordances (video preview, revealed tags) also fire on `:focus-visible` so keyboard users get parity."
+            "Hover-only metadata affordances also fire on `:focus-visible` so keyboard users get parity."
         ],
         "ariaRequirements": [
-            "Root is a stretched `<a>`; a visually-hidden `<span>` carries category + description + tags as the accessible name via `aria-describedby`.",
-            "The thumbnail image `alt` is empty and the hover `<video>` is `aria-hidden` (decorative; the sr-only span is the source of truth)."
+            "Root is a stretched `<a>` whose accessible name comes from the visible title and whose accessible description comes from the single rendered description.",
+            "The thumbnail image `alt` is empty and the paused `<video>` is `aria-hidden` because the adjacent project copy provides the equivalent.",
+            "Project-authored copy can carry an explicit BCP 47 language without overriding localized status text."
         ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. Reduced-motion is already fully guarded (a `@media (prefers-reduced-motion: reduce)` block neutralises every transition/animation/transform, and the hover-video autoplay is JS-gated on the reduced-motion media query). Added the missing unit test (axe + link semantics + aspect-ratio class + reduced-motion guard)."
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. 2026-09-27 — video media changed to a static paused preview so project cards never introduce automatic motion."
     },
     "tokens": {
         "colors": [],
@@ -132,7 +133,7 @@
         "videoThumbnail": {
             "optional": true,
             "type": "string",
-            "description": "Video thumbnail URL (for hover autoplay)"
+            "description": "Video thumbnail URL rendered as a paused decorative preview"
         },
         "description": {
             "optional": true,
@@ -173,7 +174,7 @@
         "autoPlayVideo": {
             "optional": true,
             "type": "boolean",
-            "description": "Autoplay video thumbnail continuously (not just on hover)"
+            "description": "Deprecated compatibility prop; card previews never autoplay"
         },
         "comingSoon": {
             "optional": true,
@@ -184,6 +185,11 @@
             "optional": true,
             "type": "string",
             "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+        },
+        "contentLanguage": {
+            "optional": true,
+            "type": "string",
+            "description": "BCP 47 language tag for project-authored title and metadata"
         },
         "className": {
             "optional": true,
@@ -204,11 +210,11 @@
         "portfolio",
         "project",
         "card",
-        "video hover",
+        "video preview",
         "work"
     ],
-    "dense": "Portfolio project card w/ image, hover video preview, and metadata; the work-index upgrade of ProjectCard",
+    "dense": "Portfolio project card with static image or paused video preview and metadata; the work-index upgrade of ProjectCard",
     "usage": {
-        "description": "Work-index project card with image, hover video preview, and metadata. The richer sibling of ProjectCard; use one per index, not both."
+        "description": "Work-index project card with image or paused video preview and metadata. The richer sibling of ProjectCard; use one per index, not both."
     }
 }

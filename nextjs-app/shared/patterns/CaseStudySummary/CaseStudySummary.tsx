@@ -91,10 +91,13 @@ export function CaseStudySummary({
             <List
               className={styles.list}
               size="s"
+              lineHeight="relaxed"
               items={constraints.map((constraint) => (
-                <Text key={constraint} as="span" size="s" lineHeight="relaxed">
-                  {constraint}
-                </Text>
+                <span key={constraint} className={styles.listItem}>
+                  <Text as="span" size="s" lineHeight="relaxed">
+                    {constraint}
+                  </Text>
+                </span>
               ))}
             />
           </div>
@@ -107,16 +110,16 @@ export function CaseStudySummary({
           <List
             as="ol"
             className={styles.decisions}
-            size="s"
+            listStyleType="none"
             items={decisions.map((decision) => (
-              <div key={decision.title} className={styles.decision}>
+              <span key={decision.title} className={styles.decision}>
                 <Text as="strong" size="s" className={styles.decisionTitle}>
                   {decision.title}
                 </Text>
                 <Text as="span" size="s" lineHeight="relaxed">
                   {decision.detail}
                 </Text>
-              </div>
+              </span>
             ))}
           />
         </div>
@@ -128,8 +131,9 @@ export function CaseStudySummary({
           <List
             className={styles.list}
             size="s"
+            lineHeight="relaxed"
             items={evidence.map((item) => (
-              <div key={item.claim} className={styles.evidence}>
+              <span key={item.claim} className={styles.evidence}>
                 <Text as="span" size="s" lineHeight="relaxed">
                   {item.claim}
                 </Text>
@@ -143,7 +147,7 @@ export function CaseStudySummary({
                     item.source
                   )}
                 </Text>
-              </div>
+              </span>
             ))}
           />
         </div>

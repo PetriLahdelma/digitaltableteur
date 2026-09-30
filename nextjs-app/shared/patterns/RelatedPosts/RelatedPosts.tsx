@@ -118,6 +118,7 @@ export function RelatedPosts({
                 variant="default"
                 hideImage
                 showAuthor={false}
+                contentLanguage="en"
                 className="h-full"
               />
             </FadeIn>

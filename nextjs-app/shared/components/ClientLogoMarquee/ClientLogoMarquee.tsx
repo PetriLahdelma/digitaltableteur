@@ -1,6 +1,8 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
+import Button from "@dt/Button";
+import styles from "./ClientLogoMarquee.module.css";
 import { useAnimationContext } from "../../lib/animation";
 
 type ClientLogo = {
@@ -98,13 +100,7 @@ function ClientLogoSemanticList() {
   );
 }
 
-function LogoItem({
-  logo,
-  duplicate = false,
-}: {
-  logo: ClientLogo;
-  duplicate?: boolean;
-}) {
+function LogoItem({ logo }: { logo: ClientLogo }) {
   const hasCustomWidth = Boolean(logo.mobileWidth && logo.desktopWidth);
 
   const sizeClasses = [
@@ -122,11 +118,11 @@ function LogoItem({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={logo.src}
-        alt={logo.alt}
-        aria-hidden={duplicate ? "true" : undefined}
-        role={duplicate ? "presentation" : undefined}
+        alt=""
+        aria-hidden="true"
+        role="presentation"
         className="client-logo-marquee-image block"
-        loading={duplicate ? "lazy" : "eager"}
+        loading="lazy"
         decoding="async"
         style={
           hasCustomWidth
@@ -162,11 +158,7 @@ function LogoMarqueeTrack({ laneLogos }: { laneLogos: ClientLogo[] }) {
             aria-hidden={duplicateIndex > 0 ? "true" : undefined}
           >
             {laneLogos.map((logo) => (
-              <LogoItem
-                key={`${logo.src}-${duplicateIndex}`}
-                logo={logo}
-                duplicate={duplicateIndex > 0}
-              />
+              <LogoItem key={`${logo.src}-${duplicateIndex}`} logo={logo} />
             ))}
           </div>
         ))}
@@ -179,6 +171,10 @@ function LogoMarqueeTrack({ laneLogos }: { laneLogos: ClientLogo[] }) {
 export interface ClientLogoMarqueeProps {
   /** Accessible name for the marquee section. */
   ariaLabel: string;
+  /** Label for the control that pauses the marquee. */
+  pauseLabel?: string;
+  /** Label for the control that resumes the marquee. */
+  resumeLabel?: string;
   /** Additional CSS classes on the marquee section. */
   className?: string;
 }
@@ -186,8 +182,14 @@ export interface ClientLogoMarqueeProps {
 /**
  * ClientLogoMarquee component.
  */
-export function ClientLogoMarquee({ ariaLabel, className }: ClientLogoMarqueeProps) {
+export function ClientLogoMarquee({
+  ariaLabel,
+  pauseLabel = "Pause client logo animation",
+  resumeLabel = "Resume client logo animation",
+  className,
+}: ClientLogoMarqueeProps) {
   const { motionPreference, isReady } = useAnimationContext();
+  const [isPaused, setIsPaused] = useState(false);
 
   // Render the animated marquee by DEFAULT. The animation is pure CSS
   // (no JS required to run) and reduced-motion is honoured by the CSS
@@ -221,9 +223,20 @@ export function ClientLogoMarquee({ ariaLabel, className }: ClientLogoMarqueePro
           ? `client-logo-marquee-container relative overflow-hidden ${className}`
           : "client-logo-marquee-container relative overflow-hidden"
       }
+      data-paused={isPaused ? "true" : undefined}
     >
       <ClientLogoSemanticList />
       <LogoMarqueeTrack laneLogos={logos} />
+      <div className={styles.controls}>
+        <Button
+          variant="tertiary"
+          size="sm"
+          aria-pressed={isPaused}
+          onClick={() => setIsPaused((paused) => !paused)}
+        >
+          {isPaused ? resumeLabel : pauseLabel}
+        </Button>
+      </div>
     </section>
   );
 }

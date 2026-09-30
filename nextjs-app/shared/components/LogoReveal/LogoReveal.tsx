@@ -1,9 +1,11 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useCallback, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import Button from "@dt/Button";
 import { Image } from "../../lib/imageComponent";
+import { useAnimationContext } from "../../lib/animation";
 import { cn } from "../../../../lib/utils";
 import styles from "./LogoReveal.module.css";
 
@@ -34,13 +36,13 @@ export interface LogoRevealProps {
   className?: string;
   /** Callback when animation completes */
   onAnimationComplete?: () => void;
+  /** Visible label for the user-initiated reveal control. */
+  playLabel?: string;
 }
 
 export function LogoReveal({
   logoSrc,
-  logoAlt = "Logo icon",
   wordmarkSrc,
-  wordmarkAlt = "Wordmark",
   ariaLabel = "Logo",
   logoWidth = 140,
   logoHeight = 140,
@@ -49,158 +51,91 @@ export function LogoReveal({
   enableHover = true,
   className,
   onAnimationComplete,
+  playLabel = "Play logo reveal animation",
 }: LogoRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const logoWrapRef = useRef<HTMLDivElement>(null);
   const wordmarkMaskRef = useRef<HTMLSpanElement>(null);
   const lockupRef = useRef<HTMLDivElement>(null);
   const hoverTweenRef = useRef<gsap.core.Tween | null>(null);
+  const revealTimelineRef = useRef<gsap.core.Timeline | null>(null);
+  const { motionPreference } = useAnimationContext();
 
   useGSAP(
     () => {
       const logoWrap = logoWrapRef.current;
       const wordmarkMask = wordmarkMaskRef.current;
-      const lockup = lockupRef.current;
+      if (!logoWrap || !wordmarkMask) return;
 
-      if (!logoWrap || !wordmarkMask || !lockup) return;
-
-      const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-
-      if (reduceMotion) {
-        gsap.set(logoWrap, { opacity: 1, y: 0, scale: 1, rotate: 0 });
-        gsap.set(wordmarkMask, {
-          clipPath: "inset(0 0% 0 0)",
-          opacity: 1,
-          x: 0,
-        });
-        onAnimationComplete?.();
-        return;
-      }
-
-      // Reset function for cycling animations
-      const resetElements = () => {
-        gsap.set(logoWrap, { opacity: 0, y: 0, x: 0, scale: 1, rotate: 0 });
-        gsap.set(wordmarkMask, {
-          opacity: 0,
-          x: 0,
-          clipPath: "inset(0 100% 0 0)",
-        });
-      };
-
-      // Reveal 1: Rise up with rotation
-      const reveal1 = () => {
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        gsap.set(logoWrap, { opacity: 0, y: 18, scale: 0.97, rotate: -2 });
-        gsap.set(wordmarkMask, {
-          opacity: 0,
-          x: -6,
-          clipPath: "inset(0 100% 0 0)",
-        });
-
-        tl.to(logoWrap, { opacity: 1, duration: 0.35 }, 0.2)
-          .to(logoWrap, { y: 0, duration: 0.7 }, 0.2)
-          .to(logoWrap, { scale: 1, duration: 0.85 }, 0.2)
-          .to(logoWrap, { rotate: 0, duration: 0.7, ease: "power2.out" }, 0.3)
-          .to(wordmarkMask, { opacity: 1, duration: 0.2 }, 1.05)
-          .to(wordmarkMask, { x: 0, duration: 0.45 }, 1.05)
-          .to(
-            wordmarkMask,
-            { clipPath: "inset(0 0% 0 0)", duration: 0.75, ease: "power2.out" },
-            1.05,
-          );
-        return tl;
-      };
-
-      // Reveal 2: Scale pop with fade
-      const reveal2 = () => {
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        gsap.set(logoWrap, { opacity: 0, scale: 0.5, rotate: 0 });
-        gsap.set(wordmarkMask, { opacity: 0, clipPath: "inset(0 0 100% 0)" });
-
-        tl.to(logoWrap, { opacity: 1, scale: 1.05, duration: 0.4 }, 0.1)
-          .to(logoWrap, { scale: 1, duration: 0.3, ease: "power2.out" }, 0.5)
-          .to(wordmarkMask, { opacity: 1, duration: 0.3 }, 0.7)
-          .to(
-            wordmarkMask,
-            { clipPath: "inset(0 0 0% 0)", duration: 0.6, ease: "power2.out" },
-            0.7,
-          );
-        return tl;
-      };
-
-      // Reveal 3: Slide in from left
-      const reveal3 = () => {
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        gsap.set(logoWrap, { opacity: 0, x: -30, rotate: -5 });
-        gsap.set(wordmarkMask, {
-          opacity: 0,
-          x: -20,
-          clipPath: "inset(0 100% 0 0)",
-        });
-
-        tl.to(logoWrap, { opacity: 1, x: 0, duration: 0.5 }, 0.1)
-          .to(logoWrap, { rotate: 0, duration: 0.4, ease: "power2.out" }, 0.2)
-          .to(wordmarkMask, { opacity: 1, x: 0, duration: 0.4 }, 0.5)
-          .to(
-            wordmarkMask,
-            { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power2.out" },
-            0.5,
-          );
-        return tl;
-      };
-
-      // Reveal 4: Spin in with blur effect simulation
-      const reveal4 = () => {
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        gsap.set(logoWrap, { opacity: 0, scale: 0.8, rotate: -180 });
-        gsap.set(wordmarkMask, {
-          opacity: 0,
-          clipPath: "inset(50% 50% 50% 50%)",
-        });
-
-        tl.to(
-          logoWrap,
-          {
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            duration: 0.8,
-            ease: "power2.out",
-          },
-          0.1,
-        )
-          .to(wordmarkMask, { opacity: 1, duration: 0.3 }, 0.6)
-          .to(
-            wordmarkMask,
-            {
-              clipPath: "inset(0% 0% 0% 0%)",
-              duration: 0.5,
-              ease: "power2.out",
-            },
-            0.6,
-          );
-        return tl;
-      };
-
-      const reveals = [reveal1, reveal2, reveal3, reveal4];
-      let currentIndex = 0;
-
-      const playNextReveal = () => {
-        resetElements();
-        const tl = reveals[currentIndex]();
-        currentIndex = (currentIndex + 1) % reveals.length;
-        tl.eventCallback("onComplete", () => {
-          gsap.delayedCall(5, playNextReveal);
-        });
-      };
-
-      // Start the cycle
-      playNextReveal();
+      gsap.set(logoWrap, { opacity: 1, y: 0, x: 0, scale: 1, rotate: 0 });
+      gsap.set(wordmarkMask, {
+        clipPath: "inset(0 0% 0 0)",
+        opacity: 1,
+        x: 0,
+      });
     },
     { scope: containerRef },
   );
+
+  const playReveal = useCallback(() => {
+    const logoWrap = logoWrapRef.current;
+    const wordmarkMask = wordmarkMaskRef.current;
+    if (!logoWrap || !wordmarkMask || motionPreference === "reduced") return;
+
+    revealTimelineRef.current?.kill();
+    gsap.set(logoWrap, { opacity: 0, y: 18, x: 0, scale: 0.97, rotate: -2 });
+    gsap.set(wordmarkMask, {
+      opacity: 0,
+      x: -6,
+      clipPath: "inset(0 100% 0 0)",
+    });
+
+    revealTimelineRef.current = gsap
+      .timeline({
+        defaults: { ease: "power3.out" },
+        onComplete: onAnimationComplete,
+      })
+      .to(logoWrap, { opacity: 1, duration: 0.35 }, 0.2)
+      .to(logoWrap, { y: 0, duration: 0.7 }, 0.2)
+      .to(logoWrap, { scale: 1, duration: 0.85 }, 0.2)
+      .to(logoWrap, { rotate: 0, duration: 0.7, ease: "power2.out" }, 0.3)
+      .to(wordmarkMask, { opacity: 1, duration: 0.2 }, 1.05)
+      .to(wordmarkMask, { x: 0, duration: 0.45 }, 1.05)
+      .to(
+        wordmarkMask,
+        { clipPath: "inset(0 0% 0 0)", duration: 0.75, ease: "power2.out" },
+        1.05,
+      );
+  }, [motionPreference, onAnimationComplete]);
+
+  useEffect(
+    () => () => {
+      revealTimelineRef.current?.kill();
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (motionPreference !== "reduced") return;
+
+    revealTimelineRef.current?.kill();
+    if (logoWrapRef.current) {
+      gsap.set(logoWrapRef.current, {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        scale: 1,
+        rotate: 0,
+      });
+    }
+    if (wordmarkMaskRef.current) {
+      gsap.set(wordmarkMaskRef.current, {
+        clipPath: "inset(0 0% 0 0)",
+        opacity: 1,
+        x: 0,
+      });
+    }
+  }, [motionPreference]);
 
   useEffect(() => {
     if (!enableHover) return;
@@ -208,10 +143,7 @@ export function LogoReveal({
     const logoWrap = logoWrapRef.current;
     if (!logoWrap) return;
 
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduceMotion) return;
+    if (motionPreference === "reduced") return;
 
     const handleMouseEnter = () => {
       hoverTweenRef.current?.kill();
@@ -239,7 +171,7 @@ export function LogoReveal({
       logoWrap.removeEventListener("mouseleave", handleMouseLeave);
       hoverTweenRef.current?.kill();
     };
-  }, [enableHover]);
+  }, [enableHover, motionPreference]);
 
   return (
     <div ref={containerRef} className={cn(styles.stage, className)}>
@@ -252,7 +184,7 @@ export function LogoReveal({
         <div ref={logoWrapRef} className={styles.logoWrap}>
           <Image
             src={logoSrc}
-            alt={logoAlt}
+            alt=""
             width={logoWidth}
             height={logoHeight}
             className={styles.logoImg}
@@ -263,7 +195,7 @@ export function LogoReveal({
         <span ref={wordmarkMaskRef} className={styles.wordmarkMask}>
           <Image
             src={wordmarkSrc}
-            alt={wordmarkAlt}
+            alt=""
             width={wordmarkWidth}
             height={wordmarkHeight}
             className={styles.wordmarkImg}
@@ -271,6 +203,11 @@ export function LogoReveal({
           />
         </span>
       </div>
+      {motionPreference !== "reduced" && (
+        <Button variant="secondary" size="sm" onClick={playReveal}>
+          {playLabel}
+        </Button>
+      )}
     </div>
   );
 }

@@ -40,6 +40,16 @@
             "type": "string",
             "description": "Accessible name for the marquee section."
         },
+        "pauseLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label for the control that pauses the marquee."
+        },
+        "resumeLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label for the control that resumes the marquee."
+        },
         "className": {
             "optional": true,
             "type": "string",
@@ -57,8 +67,8 @@
         "social proof",
         "animation"
     ],
-    "dense": "Animated client-logo marquee for the homepage; pauses under reduced motion; logos are linked images with alt text",
+    "dense": "Animated client-logo marquee for the homepage with pause/resume controls and one semantic client list",
     "usage": {
-        "description": "Homepage social-proof marquee of client logos; animation drops under prefers-reduced-motion. Keep logos monochrome and alt-texted."
+        "description": "Homepage social-proof marquee of client logos; visitors can pause it and reduced-motion users receive a static grid. The visual logos are decorative because one semantic list names every client."
     }
 }

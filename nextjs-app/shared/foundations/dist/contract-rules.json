@@ -162,7 +162,14 @@
     "DonnyAvatar": {},
     "EmailSignatureGenerator": {},
     "EmptyState": {},
-    "EnhancedProjectCard": {},
+    "EnhancedProjectCard": {
+      "props": {
+        "autoPlayVideo": {
+          "deprecated": true,
+          "deprecation": "Card previews no longer autoplay. Retained for API compatibility."
+        }
+      }
+    },
     "ExpandableSection": {
       "propRelationships": [
         {
@@ -244,6 +251,7 @@
     "MacWindowFrame": {},
     "MarkdownMessage": {},
     "Menu": {},
+    "Mermaid": {},
     "Modal": {},
     "MultiCombobox": {},
     "NavLink": {},

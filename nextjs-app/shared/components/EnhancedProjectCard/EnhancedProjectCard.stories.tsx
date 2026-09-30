@@ -38,11 +38,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
 };
-// description seeded so showDescription has something to toggle. videoThumbnail
-// is left unset so the static thumbnail image (thumbnail prop) stays visible
-// and probeable; autoPlayVideo only sets the <video> autoPlay attribute, which
-// is gated by !prefers-reduced-motion (the audit emulates reduced-motion) —
-// effect-exempt.
+// Description is seeded so showDescription has something to toggle.
+// videoThumbnail stays unset so the static thumbnail image remains probeable;
+// the deprecated autoPlayVideo prop is retained only for API compatibility.
 export const Playground: Story = {
   tags: ["beta-matrix"],
   args: {

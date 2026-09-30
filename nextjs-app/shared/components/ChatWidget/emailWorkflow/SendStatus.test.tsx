@@ -1,14 +1,13 @@
-import type { ComponentProps } from "react";
+import React, { type ComponentProps } from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../../i18n";
 import SendStatus from "./SendStatus";
+import FieldPrompt from "./FieldPrompt";
 
-function renderStatus(
-  props: ComponentProps<typeof SendStatus>,
-) {
+function renderStatus(props: ComponentProps<typeof SendStatus>) {
   return render(
     <I18nextProvider i18n={i18n}>
       <SendStatus {...props} />
@@ -31,6 +30,9 @@ describe("SendStatus", () => {
 
     expect(screen.getByText(/Email sent/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Done/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Email sent/i, level: 4 }),
+    ).toHaveFocus();
   });
 
   it("renders error state", () => {
@@ -38,6 +40,9 @@ describe("SendStatus", () => {
     renderStatus({ step: "error", dispatch });
 
     expect(screen.getByText(/Unable to send/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Unable to send/i, level: 4 }),
+    ).toHaveFocus();
   });
 
   it("renders edit button on error", () => {
@@ -70,5 +75,44 @@ describe("SendStatus", () => {
 
     await user.click(screen.getByRole("button", { name: /Edit/i }));
     expect(dispatch).toHaveBeenCalledWith({ type: "EDIT", field: "message" });
+  });
+
+  it("restores the message draft and field focus after editing an error", async () => {
+    const user = userEvent.setup();
+
+    function RecoveryHarness() {
+      const [editing, setEditing] = React.useState(false);
+      return editing ? (
+        <FieldPrompt
+          step="collectingMessage"
+          draft={{
+            fullName: "Test Person",
+            email: "test@example.com",
+            phone: "",
+            interest: [],
+            message: "Preserved draft",
+          }}
+          dispatch={vi.fn()}
+        />
+      ) : (
+        <SendStatus
+          step="error"
+          dispatch={(action) => {
+            if (action.type === "EDIT") setEditing(true);
+          }}
+        />
+      );
+    }
+
+    render(
+      <I18nextProvider i18n={i18n}>
+        <RecoveryHarness />
+      </I18nextProvider>,
+    );
+    await user.click(screen.getByRole("button", { name: /Edit/i }));
+
+    const message = screen.getByRole("textbox");
+    expect(message).toHaveValue("Preserved draft");
+    expect(message).toHaveFocus();
   });
 });

@@ -50,6 +50,23 @@ describe("FormFieldEditorial", () => {
     expect(screen.getByText("Email is required")).toBeInTheDocument();
   });
 
+  it("merges an error with a caller-provided accessible description", () => {
+    render(
+      <>
+        <FormFieldEditorial
+          label="Email"
+          id="email"
+          error="Enter a valid email"
+          aria-describedby="email-suggestion"
+        />
+        <p id="email-suggestion">Did you mean person@gmail.com?</p>
+      </>,
+    );
+    expect(screen.getByLabelText(/Email/)).toHaveAccessibleDescription(
+      "Enter a valid email Did you mean person@gmail.com?",
+    );
+  });
+
   it("marks required fields", () => {
     render(<FormFieldEditorial label="Email" id="email" required />);
     expect(screen.getByLabelText(/Email/)).toBeRequired();

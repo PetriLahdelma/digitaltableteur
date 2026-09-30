@@ -8,7 +8,8 @@ vi.mock("../../lib/translation", () => {
   const t = (key: string) => {
     const translations: Record<string, string> = {
       "cookieConsent.bannerLabel": "Cookie preferences",
-      "cookieConsent.bannerSummary": "We use cookies to improve your experience.",
+      "cookieConsent.bannerSummary":
+        "We use cookies to improve your experience.",
       "cookieConsent.policyLinkText": "cookie policy",
       "cookieConsent.customizeButton": "Customize settings",
       "cookieConsent.acceptEssentialButton": "Only essential",
@@ -76,7 +77,83 @@ describe("CookieConsentBanner", () => {
     const onCustomize = vi.fn();
     render(<CookieConsentBanner onCustomize={onCustomize} />);
 
-    await user.click(screen.getByRole("button", { name: "Customize settings" }));
+    await user.click(
+      screen.getByRole("button", { name: "Customize settings" }),
+    );
     expect(onCustomize).toHaveBeenCalledTimes(1);
+  });
+
+  it("reserves measured document space without double-counting existing padding", () => {
+    const offsetHeight = Object.getOwnPropertyDescriptor(
+      HTMLElement.prototype,
+      "offsetHeight",
+    );
+    Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
+      configurable: true,
+      get: () => 220,
+    });
+    document.body.style.paddingBlockEnd = "12px";
+
+    const { unmount } = render(<CookieConsentBanner onCustomize={vi.fn()} />);
+
+    expect(document.body.style.getPropertyValue("--cookie-banner-height")).toBe(
+      "220px",
+    );
+    expect(
+      Number.parseFloat(getComputedStyle(document.body).paddingBlockEnd),
+    ).toBe(232);
+
+    unmount();
+    expect(document.body.style.paddingBlockEnd).toBe("12px");
+    document.body.style.removeProperty("padding-block-end");
+    if (offsetHeight) {
+      Object.defineProperty(
+        HTMLElement.prototype,
+        "offsetHeight",
+        offsetHeight,
+      );
+    } else {
+      Reflect.deleteProperty(HTMLElement.prototype, "offsetHeight");
+    }
+  });
+
+  it("scrolls an underlying focused control clear when the banner overlaps it", () => {
+    const outside = document.createElement("button");
+    outside.textContent = "Underlying action";
+    outside.scrollIntoView = vi.fn();
+    document.body.appendChild(outside);
+
+    render(<CookieConsentBanner onCustomize={vi.fn()} />);
+    const banner = screen.getByRole("region", { name: "Cookie preferences" });
+    vi.spyOn(banner, "getBoundingClientRect").mockReturnValue({
+      top: 620,
+      bottom: 844,
+      left: 0,
+      right: 390,
+      width: 390,
+      height: 224,
+      x: 0,
+      y: 620,
+      toJSON: () => ({}),
+    });
+    vi.spyOn(outside, "getBoundingClientRect").mockReturnValue({
+      top: 759,
+      bottom: 813,
+      left: 20,
+      right: 180,
+      width: 160,
+      height: 54,
+      x: 20,
+      y: 759,
+      toJSON: () => ({}),
+    });
+
+    outside.focus();
+
+    expect(outside.scrollIntoView).toHaveBeenCalledWith({
+      behavior: "auto",
+      block: "center",
+      inline: "nearest",
+    });
   });
 });

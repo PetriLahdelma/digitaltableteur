@@ -6,8 +6,8 @@
  * in Tab/Shift+Tab containment and Escape-to-close.
  */
 
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import React, { useState } from "react";
+import { act, render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 vi.mock("gsap", () => ({
@@ -80,9 +80,7 @@ function renderDrawer(overrides: Record<string, unknown> = {}) {
 function panelFocusables() {
   const panel = screen.getByRole("dialog");
   return Array.from(
-    panel.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled])',
-    ),
+    panel.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"),
   );
 }
 
@@ -105,7 +103,7 @@ describe("MobileDrawer focus trap (#6)", () => {
     last.focus();
     expect(document.activeElement).toBe(last);
 
-    fireEvent.keyDown(window, { key: "Tab" });
+    fireEvent.keyDown(document, { key: "Tab" });
     expect(document.activeElement).toBe(first);
   });
 
@@ -118,7 +116,7 @@ describe("MobileDrawer focus trap (#6)", () => {
     first.focus();
     expect(document.activeElement).toBe(first);
 
-    fireEvent.keyDown(window, { key: "Tab", shiftKey: true });
+    fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
     expect(document.activeElement).toBe(last);
   });
 
@@ -128,9 +126,6 @@ describe("MobileDrawer focus trap (#6)", () => {
     outside.textContent = "outside";
     document.body.appendChild(outside);
     outside.focus();
-    expect(document.activeElement).toBe(outside);
-
-    fireEvent.keyDown(window, { key: "Tab" });
     const panel = screen.getByRole("dialog");
     expect(panel.contains(document.activeElement)).toBe(true);
   });
@@ -138,8 +133,91 @@ describe("MobileDrawer focus trap (#6)", () => {
   it("closes on Escape", () => {
     const onClose = vi.fn();
     renderDrawer({ onClose });
-    fireEvent.keyDown(window, { key: "Escape" });
+    fireEvent.keyDown(document, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("keeps the close control fixed while navigation and footer controls scroll", () => {
+    renderDrawer();
+    const panel = screen.getByRole("dialog");
+    const closeButton = screen.getByRole("button", { name: /close/i });
+    const scrollRegion = panel.querySelector(
+      "[data-mobile-drawer-scroll-region]",
+    );
+
+    expect(panel.className).toContain("max-h-dvh");
+    expect(scrollRegion).toHaveClass("min-h-0", "overflow-y-auto");
+    expect(scrollRegion).not.toContainElement(closeButton);
+  });
+
+  it("exposes the currently selected language", () => {
+    renderDrawer({ currentLang: "fi" });
+
+    expect(screen.getByRole("button", { name: /^FI/ })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(screen.getByRole("button", { name: /^EN/ })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    );
+  });
+
+  it("closes and releases modal isolation when the desktop breakpoint matches", () => {
+    let desktopListener: ((event: MediaQueryListEvent) => void) | undefined;
+    const originalMatchMedia = window.matchMedia;
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: vi.fn((query: string) =>
+        ({
+          matches: query.includes("prefers-reduced-motion"),
+          media: query,
+          onchange: null,
+          addListener: vi.fn(),
+          removeListener: vi.fn(),
+          addEventListener: vi.fn((_type, listener) => {
+            if (query === "(min-width: 1024px)") {
+              desktopListener = listener as (
+                event: MediaQueryListEvent,
+              ) => void;
+            }
+          }),
+          removeEventListener: vi.fn(),
+          dispatchEvent: vi.fn(),
+        }) as MediaQueryList,
+      ),
+    });
+
+    function ResponsiveDrawer() {
+      const [open, setOpen] = useState(true);
+      return (
+        <>
+          <main data-background>Page content</main>
+          <MobileDrawer
+            isOpen={open}
+            onClose={() => setOpen(false)}
+            navItems={navItems}
+            currentLang="en"
+            onLanguageChange={vi.fn()}
+            onThemeToggle={vi.fn()}
+            theme="light"
+          />
+        </>
+      );
+    }
+
+    render(<ResponsiveDrawer />);
+    const background = document.querySelector("[data-background]");
+    expect(background).toHaveAttribute("inert");
+
+    act(() => desktopListener?.({ matches: true } as MediaQueryListEvent));
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(background).not.toHaveAttribute("inert");
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: originalMatchMedia,
+    });
   });
 
   // Regression guard. Button sizes its glyphs from --btn-icon-size, but the
@@ -164,9 +242,7 @@ describe("MobileDrawer focus trap (#6)", () => {
       expect(svg).not.toBeNull();
 
       const classes = (svg!.getAttribute("class") ?? "").split(/\s+/);
-      const sizeUtilities = classes.filter((c) =>
-        /^(size|[wh])-\d/.test(c),
-      );
+      const sizeUtilities = classes.filter((c) => /^(size|[wh])-\d/.test(c));
       expect(sizeUtilities).toEqual([]);
     });
   });

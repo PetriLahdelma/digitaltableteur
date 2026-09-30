@@ -64,6 +64,7 @@ export function LanguageSwitcher({
   const t = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const optionsId = useId();
   const prefersReducedMotion = useReducedMotion();
 
@@ -73,12 +74,15 @@ export function LanguageSwitcher({
     .filter((lang) => lang.code !== currentLang)
     .reverse();
 
-  const close = useCallback(() => setIsOpen(false), []);
+  const close = useCallback((restoreTriggerFocus = false) => {
+    setIsOpen(false);
+    if (restoreTriggerFocus) triggerRef.current?.focus();
+  }, []);
 
   const handleSelect = useCallback(
     (code: string) => {
       onLanguageChange(code);
-      close();
+      close(true);
     },
     [close, onLanguageChange],
   );
@@ -87,17 +91,15 @@ export function LanguageSwitcher({
     if (!isOpen) return;
 
     const handlePointerDown = (event: MouseEvent) => {
-      if (
-        rootRef.current &&
-        !rootRef.current.contains(event.target as Node)
-      ) {
+      if (rootRef.current && !rootRef.current.contains(event.target as Node)) {
         close();
       }
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        close();
+        event.preventDefault();
+        close(true);
       }
     };
 
@@ -121,6 +123,7 @@ export function LanguageSwitcher({
           its DOM order is decoupled from the visual left-fan — keeping it
           after the trigger fixes the focus order without moving the fan. */}
       <button
+        ref={triggerRef}
         type="button"
         className={cn(
           styles.trigger,
@@ -133,8 +136,8 @@ export function LanguageSwitcher({
         aria-controls={optionsId}
         aria-label={
           isOpen
-            ? t("languageSwitcherCollapse", "Hide language options")
-            : `${current.ariaLabel}. ${t("languageSwitcherExpand", "Show language options")}`
+            ? `${current.label}, ${current.ariaLabel}. ${t("languageSwitcherCollapse", "Hide language options")}`
+            : `${current.label}, ${current.ariaLabel}. ${t("languageSwitcherExpand", "Show language options")}`
         }
         aria-current="true"
         onClick={() => setIsOpen((open) => !open)}
@@ -143,7 +146,9 @@ export function LanguageSwitcher({
       </button>
 
       <div
+        id={optionsId}
         className={styles.optionsTrayAnchor}
+        data-language-options
         data-open={isOpen ? "true" : "false"}
         aria-hidden={!isOpen}
         /* aria-hidden flips at close while the exit animation still renders
@@ -164,9 +169,7 @@ export function LanguageSwitcher({
               exit={
                 prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x: 8 }
               }
-              transition={
-                prefersReducedMotion ? { duration: 0.12 } : fanSpring
-              }
+              transition={prefersReducedMotion ? { duration: 0.12 } : fanSpring}
             >
               {otherLanguages.map((lang) => (
                 <button
@@ -187,11 +190,6 @@ export function LanguageSwitcher({
           )}
         </AnimatePresence>
       </div>
-      <span id={optionsId} className={styles.srOnly}>
-        {isOpen
-          ? t("languageSwitcherCollapse", "Hide language options")
-          : t("languageSwitcherExpand", "Show language options")}
-      </span>
     </div>
   );
 }

@@ -43,10 +43,8 @@ export function SitemapPage() {
   );
 
   return (
-    <main className={styles.page}>
-      <Title level={1}>
-        {t("sitemapPageTitle")}
-      </Title>
+    <div className={styles.page}>
+      <Title level={1}>{t("sitemapPageTitle")}</Title>
       <Text as="p" className={styles.intro}>
         {t("sitemapPageIntro")}
       </Text>
@@ -55,6 +53,6 @@ export function SitemapPage() {
         aria-label={t("sitemapTreeLabel")}
         className={styles.tree}
       />
-    </main>
+    </div>
   );
 }

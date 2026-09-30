@@ -17,7 +17,12 @@ describe("DesignSprintsSection", () => {
   it("renders the sprint heading", async () => {
     await i18n.changeLanguage("en");
     renderWithProviders(<DesignSprintsSection />);
-    expect(screen.getAllByRole("heading").length).toBeGreaterThan(0);
+    expect(
+      screen.getByRole("heading", {
+        level: 2,
+        name: "Focused engagements, senior delivery",
+      }),
+    ).toBeInTheDocument();
   });
 
   it("uses the custom section id for anchor linking", async () => {

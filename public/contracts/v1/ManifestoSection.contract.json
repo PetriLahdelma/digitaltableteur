@@ -18,7 +18,7 @@
     "interval": {
       "type": "number",
       "optional": true,
-      "description": "Cycling interval in milliseconds"
+      "description": "Timing input used to bound the one-time emphasis pulse"
     },
     "separator": {
       "type": "string",

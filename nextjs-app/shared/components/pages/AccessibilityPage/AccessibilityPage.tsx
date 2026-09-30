@@ -101,7 +101,7 @@ export function AccessibilityPage() {
       <Text as="p" size="xs">{t("accessibilityIntro")}</Text>
       <Text as="p" size="xs">
         {t("accessibilityLastUpdatedLabel")}{" "}
-        <Timestamp value="2026-02-04" format="date" size="xs" />
+        <Timestamp value="2026-09-27" format="date" size="xs" />
       </Text>
 
       <Section spacing="none">

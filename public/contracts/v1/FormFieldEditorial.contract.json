@@ -60,82 +60,50 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.334Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:34.845Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:14.631Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:59.393Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:38.718Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.908Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.302Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:15.091Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:59.853Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:39.183Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:42.277Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.525Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:15.320Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:32:00.120Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:39.408Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.615Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.081Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:14.873Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:59.635Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:38.962Z",
             "passed": true
           }
         ]
@@ -152,110 +120,74 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.334Z",
-            "passed": true,
-            "runner": "local-farm-parity"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:14.631Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:39:03.986Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:34.845Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:47.836Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:59.393Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:38.718Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.908Z",
-            "passed": true,
-            "runner": "local-farm-parity"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:15.091Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:39:04.057Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.302Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:48.277Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:59.853Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:39.183Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:42.277Z",
-            "passed": true,
-            "runner": "local-farm-parity"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:15.320Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:39:04.077Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.525Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:48.489Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:32:00.120Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:39.408Z",
             "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.615Z",
-            "passed": true,
-            "runner": "local-farm-parity"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:14.873Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.forced-colors.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:39:04.027Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.json",
-            "sourceCommit": "fe396819e62c487b08704d773ddf396d6ef737da",
-            "capturedAt": "2026-08-05T09:38:35.081Z",
-            "passed": true,
-            "runner": "beta-flip-dt1412"
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:48.062Z",
+            "passed": true
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:59.635Z",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:38.962Z",
             "passed": true
           }
         ]
@@ -263,9 +195,34 @@
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:47.836Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:48.277Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:48.489Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:48.062Z",
+            "passed": true
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

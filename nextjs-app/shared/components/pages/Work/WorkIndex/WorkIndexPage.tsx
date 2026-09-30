@@ -55,10 +55,10 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
       if (!items.length) return;
 
       const featuredItems = gridRef.current.querySelectorAll(
-        "[data-grid-item][data-featured]"
+        "[data-grid-item][data-featured]",
       );
       const standardItems = gridRef.current.querySelectorAll(
-        "[data-grid-item]:not([data-featured])"
+        "[data-grid-item]:not([data-featured])",
       );
 
       gsap.set(featuredItems, { opacity: 0, y: 50, scale: 0.92 });
@@ -86,7 +86,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
         },
       });
     },
-    { scope: gridRef, dependencies: [motionPreference, filteredProjects] }
+    { scope: gridRef, dependencies: [motionPreference, filteredProjects] },
   );
 
   // Map categories to include translated labels
@@ -103,7 +103,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
   };
 
   return (
-    <main className="min-h-screen" data-donny-target="work.index">
+    <div className="min-h-screen" data-donny-target="work.index">
       {/* Navigation (if provided) */}
       {nav}
 
@@ -114,7 +114,12 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
       <Section spacing="follow" background="default">
         <Container size="lg">
           {/* Filter Bar with entrance animation */}
-          <FadeIn delay={0.3} direction="up" distance={20} className="mb-12 tablet:mb-16">
+          <FadeIn
+            delay={0.3}
+            direction="up"
+            distance={20}
+            className="mb-12 tablet:mb-16"
+          >
             <CategoryFilter
               categories={translatedCategories}
               activeCategory={activeCategory}
@@ -135,7 +140,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
                 title={t("workNoResultsTitle", "No projects found")}
                 description={t(
                   "workNoResultsDescription",
-                  "Try selecting a different category or browse all projects to explore the work."
+                  "Try selecting a different category or browse all projects to explore the work.",
                 )}
                 headingLevel="h3"
                 size="lg"
@@ -177,6 +182,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
                         showCategory={true}
                         comingSoon={project.comingSoon}
                         comingSoonLabel={t("workComingSoon", "Coming soon")}
+                        contentLanguage="en"
                       />
                     </div>
                   );
@@ -186,6 +192,6 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
           )}
         </Container>
       </Section>
-    </main>
+    </div>
   );
 }

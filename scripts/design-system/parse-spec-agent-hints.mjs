@@ -61,7 +61,7 @@ export function parseSpecAgentHints(specText) {
   const avoidWhen = [];
   if (!specText) return { useWhen, avoidWhen };
 
-  const section = specText.match(/## Do \/ don't([\s\S]*?)(?=^## |\Z)/m);
+  const section = specText.match(/## Do \/ don't([\s\S]*?)(?=^## |(?![\s\S]))/m);
   if (!section) return { useWhen, avoidWhen };
 
   for (const trimmed of unwrapBullets(section[1])) {
@@ -171,7 +171,7 @@ export function parseSpecGuidelines(specText) {
   const guidelines = [];
   if (!specText) return guidelines;
 
-  const section = specText.match(/## Do \/ don't([\s\S]*?)(?=^## |\Z)/m);
+  const section = specText.match(/## Do \/ don't([\s\S]*?)(?=^## |(?![\s\S]))/m);
   if (!section) return guidelines;
 
   for (const trimmed of unwrapBullets(section[1])) {
@@ -230,7 +230,7 @@ export function parseSpecGuidelines(specText) {
  */
 export function extractSpecIntent(specText) {
   if (!specText) return "";
-  const match = specText.match(/## Intent\n([\s\S]*?)(?=^## |\Z)/m);
+  const match = specText.match(/## Intent\n([\s\S]*?)(?=^## |(?![\s\S]))/m);
   if (!match) return "";
 
   const paragraph = match[1]

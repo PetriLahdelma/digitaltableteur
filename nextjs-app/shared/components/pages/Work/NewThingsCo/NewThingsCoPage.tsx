@@ -224,9 +224,8 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.videoContainer}>
           <video
             aria-label="New Things Co Brand Guidelines video walkthrough"
-            autoPlay
-            loop
-            muted
+            controls
+            preload="metadata"
             playsInline
             poster="/images/portfolio/new_things_co/gallery/ntc_guidelines_poster.png"
           >

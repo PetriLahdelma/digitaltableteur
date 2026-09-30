@@ -32,23 +32,73 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
     const el = bannerRef.current;
     if (!el || typeof document === "undefined") return;
 
-    document.body.dataset.cookieBannerOpen = "true";
+    const { body, documentElement } = document;
+    const originalBodyPadding = body.style.paddingBlockEnd;
+    const originalScrollPadding = documentElement.style.scrollPaddingBlockEnd;
+    const baseBodyPadding = getComputedStyle(body).paddingBlockEnd || "0px";
+
+    body.dataset.cookieBannerOpen = "true";
 
     const publishHeight = () => {
-      document.body.style.setProperty(
-        "--cookie-banner-height",
-        `${el.offsetHeight}px`,
-      );
+      const height = el.offsetHeight;
+      body.style.setProperty("--cookie-banner-height", `${height}px`);
+      body.style.paddingBlockEnd = `calc(${baseBodyPadding} + ${height}px)`;
+      documentElement.style.scrollPaddingBlockEnd = `calc(${height}px + var(--space-layout-16))`;
     };
+
+    const keepFocusedControlVisible = (event: FocusEvent) => {
+      const target = event.target;
+      if (
+        !(target instanceof HTMLElement) ||
+        el.contains(target) ||
+        target.closest('[role="dialog"][aria-modal="true"]')
+      ) {
+        return;
+      }
+
+      const targetRect = target.getBoundingClientRect();
+      const bannerRect = el.getBoundingClientRect();
+      const overlapsBanner =
+        targetRect.bottom > bannerRect.top &&
+        targetRect.top < bannerRect.bottom;
+
+      if (overlapsBanner) {
+        target.scrollIntoView({
+          behavior: "auto",
+          block: "center",
+          inline: "nearest",
+        });
+        requestAnimationFrame(() => {
+          const refreshedTarget = target.getBoundingClientRect();
+          const refreshedBanner = el.getBoundingClientRect();
+          const clearance = 16;
+          const coveredBy =
+            refreshedTarget.bottom - (refreshedBanner.top - clearance);
+          if (coveredBy > 0) {
+            window.scrollBy({ top: coveredBy, behavior: "auto" });
+          }
+        });
+      }
+    };
+
     publishHeight();
 
     const observer = new ResizeObserver(publishHeight);
     observer.observe(el);
+    document.addEventListener("focusin", keepFocusedControlVisible);
 
     return () => {
       observer.disconnect();
-      delete document.body.dataset.cookieBannerOpen;
-      document.body.style.removeProperty("--cookie-banner-height");
+      document.removeEventListener("focusin", keepFocusedControlVisible);
+      delete body.dataset.cookieBannerOpen;
+      body.style.removeProperty("--cookie-banner-height");
+      if (originalBodyPadding) body.style.paddingBlockEnd = originalBodyPadding;
+      else body.style.removeProperty("padding-block-end");
+      if (originalScrollPadding) {
+        documentElement.style.scrollPaddingBlockEnd = originalScrollPadding;
+      } else {
+        documentElement.style.removeProperty("scroll-padding-block-end");
+      }
     };
   }, []);
 
@@ -62,8 +112,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
       <div className={styles.bar}>
         <div className={styles.copy}>
           <p className={styles.copyText}>
-            {t("cookieConsent.bannerSummary")}{" "}
-            {t("cookieConsent.readOur")}{" "}
+            {t("cookieConsent.bannerSummary")} {t("cookieConsent.readOur")}{" "}
             <Link href="/privacy-policy" size="md">
               {t("cookieConsent.policyLinkText")}
             </Link>

@@ -86,6 +86,13 @@ export const FormFieldEditorial = forwardRef<
 
   if (type === "textarea") {
     const { children, rows = 5, ...textareaProps } = restProps as Omit<TextareaProps, keyof BaseProps | "type">;
+    const {
+      "aria-describedby": externalDescribedBy,
+      ...forwardedTextareaProps
+    } = textareaProps;
+    const describedBy =
+      [error && errorId, externalDescribedBy].filter(Boolean).join(" ") ||
+      undefined;
     return (
       <div className={cn(styles.field, className)}>
         {labelElement}
@@ -96,8 +103,8 @@ export const FormFieldEditorial = forwardRef<
           className={cn(styles.textarea, error && styles.hasError)}
           aria-invalid={!!error}
           aria-required={required || undefined}
-          aria-describedby={error ? errorId : undefined}
-          {...textareaProps}
+          aria-describedby={describedBy}
+          {...forwardedTextareaProps}
         />
         {errorElement}
       </div>
@@ -140,6 +147,13 @@ export const FormFieldEditorial = forwardRef<
 
   // Default: text, email, tel inputs
   const inputProps = restProps as Omit<TextInputProps, keyof BaseProps | "type">;
+  const {
+    "aria-describedby": externalDescribedBy,
+    ...forwardedInputProps
+  } = inputProps;
+  const describedBy =
+    [error && errorId, externalDescribedBy].filter(Boolean).join(" ") ||
+    undefined;
   return (
     <div className={cn(styles.field, className)}>
       {labelElement}
@@ -150,8 +164,8 @@ export const FormFieldEditorial = forwardRef<
         className={cn(styles.input, error && styles.hasError)}
         aria-invalid={!!error}
         aria-required={required || undefined}
-        aria-describedby={error ? errorId : undefined}
-        {...inputProps}
+        aria-describedby={describedBy}
+        {...forwardedInputProps}
       />
       {errorElement}
     </div>

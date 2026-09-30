@@ -73,13 +73,23 @@ describe("WorkPreviewSection", () => {
     }
   });
 
+  it("marks EnhancedProjectCard copy as English in the featured layout", () => {
+    render(<WorkPreviewSection projects={projects} layout="featured" />);
+    expect(screen.getByText("SAP Build Apps Design System")).toHaveAttribute(
+      "lang",
+      "en",
+    );
+  });
+
   it("caps the asymmetric layout at three projects (1 featured + 2)", () => {
     const four = [
       ...projects,
       { title: "Fourth", slug: "fourth", thumbnail: "/4.jpg" },
     ];
     render(<WorkPreviewSection projects={four} layout="asymmetric" />);
-    expect(screen.getByText("SAP Build Apps Design System")).toBeInTheDocument();
+    expect(
+      screen.getByText("SAP Build Apps Design System"),
+    ).toBeInTheDocument();
     expect(screen.getByText("Helsinki Design System")).toBeInTheDocument();
     expect(screen.getByText("Illustrations")).toBeInTheDocument();
     expect(screen.queryByText("Fourth")).not.toBeInTheDocument();

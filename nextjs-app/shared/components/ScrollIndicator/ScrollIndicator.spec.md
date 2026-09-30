@@ -4,20 +4,20 @@
 
 A hero-footer affordance that tells the reader there is more page below and takes them
 there when activated. It renders a real `<button>` that scrolls a named target into view,
-with a looping motion hint that stops under `prefers-reduced-motion`. Used by
+with a brief motion hint that stops automatically and is suppressed under `prefers-reduced-motion`. Used by
 `ProjectHero`, `BlogHero`, and `AboutHero`; it exists so those three do not each grow
 their own scroll cue.
 
 ## Interaction contract
 
-| Input | Result |
-|-------|--------|
-| Click | Scrolls `targetId` into view with `behavior: "smooth"`, aligned to `block: "start"` |
-| Enter | Same as click (native `<button>` activation) |
-| Space | Same as click (native `<button>` activation) |
-| Tab | Receives focus in DOM order; the focus ring must remain visible over the hero |
-| No `targetId` | Renders and focuses normally, but activation is a no-op |
-| `prefers-reduced-motion: reduce` | The looping hint stops; hit area, label, and scroll behaviour are unchanged |
+| Input                            | Result                                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------------------- |
+| Click                            | Scrolls `targetId` into view with `behavior: "smooth"`, aligned to `block: "start"`         |
+| Enter                            | Same as click (native `<button>` activation)                                                |
+| Space                            | Same as click (native `<button>` activation)                                                |
+| Tab                              | Receives focus in DOM order; the focus ring must remain visible over the hero               |
+| No `targetId`                    | Renders and focuses normally, but activation is a no-op                                     |
+| `prefers-reduced-motion: reduce` | The motion hint is omitted; hit area and label are unchanged, and scrolling becomes instant |
 
 The scroll itself is delegated to `Element.scrollIntoView`, so it inherits the platform's
 smooth-scroll behaviour and any `scroll-behavior` set by the page.
@@ -42,7 +42,7 @@ smooth-scroll behaviour and any `scroll-behavior` set by the page.
 
 ## Design notes
 
-The motion is a short vertical loop driven by GSAP and gated on the animation context's
+The motion is a short, finite vertical hint driven by GSAP and gated on the animation context's
 `motionPreference`. When motion is suppressed the control keeps its full hit area and
 label, losing only the loop.
 

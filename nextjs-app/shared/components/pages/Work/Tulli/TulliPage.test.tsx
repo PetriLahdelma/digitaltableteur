@@ -6,6 +6,8 @@ import { TulliPage } from "./TulliPage";
 describe("TulliPage", () => {
   it("shows missing-project state until tulli is restored to projects data", () => {
     renderWithProviders(<TulliPage />);
-    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /Project not found/i }),
+    ).toHaveAttribute("lang", "en");
   });
 });

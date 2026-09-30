@@ -67,15 +67,23 @@ export default function DesignSystemAgentPage() {
   );
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16 font-body text-foreground">
-      <p className="font-body text-sm text-muted-foreground">Agent-native design system</p>
+    <article
+      className="mx-auto max-w-3xl px-6 py-16 font-body text-foreground"
+      lang="en"
+    >
+      <p className="font-body text-sm text-muted-foreground">
+        Agent-native design system
+      </p>
       <h1 className="mt-2 font-display text-3xl font-semibold tracking-tight">
         Design system agent demo
       </h1>
       <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-        Machine-readable contracts, intent benchmarks, and MCP tools so agents reuse{" "}
-        <code className="text-xs">@dt/*</code> before inventing markup.{" "}
-        <Link href="/colophon" className="text-foreground underline underline-offset-2">
+        Machine-readable contracts, intent benchmarks, and MCP tools so agents
+        reuse <code className="text-xs">@dt/*</code> before inventing markup.{" "}
+        <Link
+          href="/colophon"
+          className="text-foreground underline underline-offset-2"
+        >
           Colophon
         </Link>{" "}
         covers the full stack.
@@ -101,7 +109,10 @@ export default function DesignSystemAgentPage() {
           </li>
           <li>
             Agent card:{" "}
-            <a href="/.well-known/agent.json" className="underline underline-offset-2">
+            <a
+              href="/.well-known/agent.json"
+              className="underline underline-offset-2"
+            >
               /.well-known/agent.json
             </a>
           </li>
@@ -117,7 +128,9 @@ export default function DesignSystemAgentPage() {
       </section>
 
       <section className="mt-12">
-        <h2 className="font-display text-xl font-semibold">Intent golden set</h2>
+        <h2 className="font-display text-xl font-semibold">
+          Intent golden set
+        </h2>
         <p className="mt-2 text-sm text-muted-foreground">
           {goldenIntents.cases.length} queries verified by{" "}
           <code className="text-xs">npm run agent:eval</code>.
@@ -132,9 +145,9 @@ export default function DesignSystemAgentPage() {
           Component taxonomy
         </h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          {taxonomy.length} components from the generated docs registry.
-          Expand a group and select a component to see the dense contract line
-          agents retrieve.
+          {taxonomy.length} components from the generated docs registry. Expand
+          a group and select a component to see the dense contract line agents
+          retrieve.
         </p>
         <div className="mt-4">
           <ComponentTaxonomyTree entries={taxonomy} />
@@ -169,7 +182,9 @@ export default function DesignSystemAgentPage() {
             <li key={p.name} className="rounded-md border border-border p-4">
               <p className="font-display font-semibold">{p.publicImport}</p>
               {p.useWhen?.[0] ? (
-                <p className="mt-1 text-sm text-muted-foreground">{p.useWhen[0]}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {p.useWhen[0]}
+                </p>
               ) : null}
               {p.avoidWhen?.[0] ? (
                 <p className="mt-1 text-xs text-muted-foreground">
@@ -182,7 +197,9 @@ export default function DesignSystemAgentPage() {
       </section>
 
       <section className="mt-12">
-        <h2 className="font-display text-xl font-semibold">Local verification</h2>
+        <h2 className="font-display text-xl font-semibold">
+          Local verification
+        </h2>
         <pre className="mt-4 overflow-x-auto rounded-md border border-border bg-muted/40 p-4 font-mono text-xs leading-relaxed">
           {`npm run build:tokens
 npm run agent:eval
@@ -190,6 +207,6 @@ npm run agentic-ds-audit
 npm run ds:mcp`}
         </pre>
       </section>
-    </main>
+    </article>
   );
 }

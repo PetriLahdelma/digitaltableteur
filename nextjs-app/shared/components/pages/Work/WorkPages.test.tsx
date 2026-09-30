@@ -57,16 +57,22 @@ describe("Work pages", () => {
 
   it("shows missing-project state for legacy Raw View slug", () => {
     renderWithProviders(<RawViewPage nav={<div>Nav</div>} />);
-    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /Project not found/i }),
+    ).toHaveAttribute("lang", "en");
   });
 
   it("shows missing-project state for legacy Tulli slug", () => {
     renderWithProviders(<TulliPage nav={<div>Nav</div>} />);
-    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /Project not found/i }),
+    ).toHaveAttribute("lang", "en");
   });
 
   it("shows missing-project state for legacy Intrum slug", () => {
     renderWithProviders(<IntrumPage nav={<div>Nav</div>} />);
-    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /Project not found/i }),
+    ).toHaveAttribute("lang", "en");
   });
 });

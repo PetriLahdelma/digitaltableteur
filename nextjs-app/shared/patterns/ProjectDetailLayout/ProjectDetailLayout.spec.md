@@ -6,7 +6,9 @@ Case study detail layout shell.
 ## Interaction contract
 - Keyboard: inherit from composed @dt/* primitives
 - Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Screen readers: the shell contributes the page's sole `main`; the project
+  hero and authored body are English by default, while localized navigation,
+  CTA, and related-project chrome keep the selected UI language
 
 ## Do / don't
 - Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface

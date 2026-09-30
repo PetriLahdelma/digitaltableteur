@@ -9,11 +9,9 @@ import styles from "./colophon.module.css";
 
 export function ColophonPage() {
   return (
-    <main className={styles.page}>
+    <article className={styles.page} lang="en">
       <header className={styles.header}>
-        <Title level={1}>
-          Colophon
-        </Title>
+        <Title level={1}>Colophon</Title>
         <Text as="p" className={styles.intro}>
           This site is its own case study — a production portfolio, content
           platform, and agent-aware design system in one codebase. Twelve case
@@ -178,9 +176,9 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Typography</p>
             <p className={styles.cardValue}>
-              Satoshi throughout, headings and body. Fluid sizing via clamp(), no
-              breakpoint-based font scales. Title and Text components wrap every
-              typographic surface.
+              Satoshi throughout, headings and body. Fluid sizing via clamp(),
+              no breakpoint-based font scales. Title and Text components wrap
+              every typographic surface.
             </p>
           </div>
           <div className={styles.card}>
@@ -344,6 +342,6 @@ export function ColophonPage() {
           three appear as portfolio case studies and ship from this codebase.
         </Text>
       </section>
-    </main>
+    </article>
   );
 }

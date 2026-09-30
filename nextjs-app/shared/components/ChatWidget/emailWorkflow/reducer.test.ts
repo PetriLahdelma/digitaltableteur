@@ -97,4 +97,12 @@ describe("emailWorkflowReducer", () => {
     );
     expect(unchanged.step).toBe("collectingEmail");
   });
+
+  it("lets users recover a failed send without re-entering their details", () => {
+    const draft = { ...createInitialDraft(), fullName: "Test User", message: "Draft" };
+    const error = { step: "error" as const, draft, errorCode: "network" };
+    const edited = emailWorkflowReducer(error, { type: "EDIT", field: "message" });
+    expect(edited).toEqual({ step: "collectingMessage", draft });
+    expect(emailWorkflowReducer(edited, { type: "NEXT" })).toEqual({ step: "review", draft });
+  });
 });

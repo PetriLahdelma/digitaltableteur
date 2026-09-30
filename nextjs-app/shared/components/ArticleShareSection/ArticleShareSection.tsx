@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useTranslate } from "../../lib/translation";
+import { useLocalization } from "../../lib/translation";
 import {
   XLogo,
   LinkedinLogo,
@@ -35,7 +35,7 @@ export function ArticleShareSection({
   showTitle = true,
   className,
 }: ArticleShareSectionProps) {
-  const t = useTranslate();
+  const { translate: t, resolvedLanguage } = useLocalization();
   const [copied, setCopied] = useState(false);
 
   const encodedUrl = encodeURIComponent(url);
@@ -85,6 +85,7 @@ export function ArticleShareSection({
 
   return (
     <div
+      lang={resolvedLanguage}
       className={cn(
         isVertical ? "flex flex-col items-start gap-4" : "space-y-4",
         className,

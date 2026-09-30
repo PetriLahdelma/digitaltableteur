@@ -124,15 +124,16 @@ describe("ChatWidget coverage", () => {
     expect(screen.getByText(/design system challenge/i)).toBeInTheDocument();
   });
 
-  it("disables send while streaming", () => {
+  it("offers an operable stop action while streaming", () => {
     mockStatus = "streaming";
 
     renderWithProviders(<ChatWidget />);
     fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
 
-    expect(
-      screen.getByRole("button", { name: /Send message/i }),
-    ).toBeDisabled();
+    const stopButton = screen.getByRole("button", { name: /Stop response/i });
+    expect(stopButton).toBeEnabled();
+    fireEvent.click(stopButton);
+    expect(mockStop).toHaveBeenCalled();
   });
 
   it("displays error message when error exists", async () => {

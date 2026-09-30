@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1928,
+  "warningCount": 1918,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -616,7 +616,7 @@
     },
     {
       "file": "app/globals.css",
-      "line": 228,
+      "line": 233,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -625,7 +625,7 @@
     },
     {
       "file": "app/globals.css",
-      "line": 229,
+      "line": 234,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -1615,39 +1615,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 622,
+      "line": 618,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeDark) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 603 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeDark) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 599 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeDark) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 877,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \":global(.themeDark) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 553 (no-descending-specificity)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeDark) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\" (no-descending-specificity)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 793,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 603 (no-descending-specificity)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 773,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\", at line 454 (no-descending-specificity)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -1655,102 +1628,129 @@
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 714 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeDark) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 549 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeDark) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\" (no-descending-specificity)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 801,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \":global(.themeHCB) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 599 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 781,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \":global(.themeHCB) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\", at line 450 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 893,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \":global(.themeHCB) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 709 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 900,
+      "line": 908,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 553 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCB) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 549 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 856,
+      "line": 864,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCW) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 603 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCW) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\", at line 599 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .resetInline\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 836,
+      "line": 844,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCW) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\", at line 454 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCW) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\", at line 450 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .sendButton\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 907,
+      "line": 915,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCW) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 714 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCW) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\", at line 709 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .toggle\" to come before selector \":global(body[data-cookie-banner-open=\"true\"]) .toggle:not([data-open=\"true\"])\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 922,
+      "line": 930,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCW) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 553 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCW) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 549 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \":global(.themeHCW) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 322,
+      "line": 317,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".fullWidthComponent > *\" to come before selector \".header .tagline *\", at line 125 (no-descending-specificity)",
+      "text": "Expected selector \".fullWidthComponent > *\" to come before selector \".header .tagline *\", at line 126 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".fullWidthComponent > *\" to come before selector \".header .tagline *\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 613,
+      "line": 609,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".resetInline:disabled\" to come before selector \".resetInline:hover:not(:disabled)\", at line 603 (no-descending-specificity)",
+      "text": "Expected selector \".resetInline:disabled\" to come before selector \".resetInline:hover:not(:disabled)\", at line 599 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".resetInline:disabled\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 607,
+      "line": 603,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".resetInline:focus-visible\" to come before selector \".resetInline:hover:not(:disabled)\", at line 603 (no-descending-specificity)",
+      "text": "Expected selector \".resetInline:focus-visible\" to come before selector \".resetInline:hover:not(:disabled)\", at line 599 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".resetInline:focus-visible\" to come before selector \".resetInline:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 463,
+      "line": 459,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".sendButton:disabled\" to come before selector \".sendButton:hover:not(:disabled)\", at line 454 (no-descending-specificity)",
+      "text": "Expected selector \".sendButton:disabled\" to come before selector \".sendButton:hover:not(:disabled)\", at line 450 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".sendButton:disabled\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 458,
+      "line": 454,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".sendButton:focus-visible\" to come before selector \".sendButton:hover:not(:disabled)\", at line 454 (no-descending-specificity)",
+      "text": "Expected selector \".sendButton:focus-visible\" to come before selector \".sendButton:hover:not(:disabled)\", at line 450 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::no-descending-specificity::Expected selector \".sendButton:focus-visible\" to come before selector \".sendButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 75,
+      "line": 76,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1759,7 +1759,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 98,
+      "line": 99,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1768,7 +1768,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 435,
+      "line": 431,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1777,7 +1777,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 542,
+      "line": 538,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1786,7 +1786,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1021,
+      "line": 1029,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1795,7 +1795,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 642,
+      "line": 638,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1804,7 +1804,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 77,
+      "line": 78,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1822,7 +1822,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 231,
+      "line": 232,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1831,7 +1831,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1103,
+      "line": 1111,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1840,7 +1840,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 433,
+      "line": 429,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1849,7 +1849,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 725,
+      "line": 733,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -1858,7 +1858,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 731,
+      "line": 739,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -1867,7 +1867,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 725,
+      "line": 733,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1876,7 +1876,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 731,
+      "line": 739,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1885,7 +1885,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 548,
+      "line": 544,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1894,7 +1894,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 58,
+      "line": 59,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1903,7 +1903,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 77,
+      "line": 78,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1912,7 +1912,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 67,
+      "line": 68,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1921,7 +1921,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 502,
+      "line": 498,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1930,7 +1930,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 513,
+      "line": 509,
       "column": 26,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1939,7 +1939,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 684,
+      "line": 679,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1948,7 +1948,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 955,
+      "line": 963,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1957,7 +1957,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 975,
+      "line": 983,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1966,7 +1966,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1033,
+      "line": 1041,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1975,7 +1975,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 429,
+      "line": 425,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1984,7 +1984,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 943,
+      "line": 951,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1993,7 +1993,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 593,
+      "line": 589,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2002,7 +2002,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 379,
+      "line": 374,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2011,7 +2011,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 92,
+      "line": 93,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2020,7 +2020,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 132,
+      "line": 133,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2029,7 +2029,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 250,
+      "line": 245,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2038,7 +2038,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 317,
+      "line": 312,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2047,7 +2047,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 333,
+      "line": 328,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2056,7 +2056,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 686,
+      "line": 681,
       "column": 10,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2065,7 +2065,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 973,
+      "line": 981,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2074,7 +2074,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 352,
+      "line": 347,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2083,7 +2083,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 433,
+      "line": 429,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2092,7 +2092,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 51,
+      "line": 52,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2101,7 +2101,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 54,
+      "line": 55,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2110,7 +2110,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 229,
+      "line": 230,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2119,7 +2119,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 245,
+      "line": 240,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2128,7 +2128,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 337,
+      "line": 332,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2137,7 +2137,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 338,
+      "line": 333,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2146,7 +2146,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 368,
+      "line": 363,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2155,7 +2155,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 571,
+      "line": 567,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2164,7 +2164,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1007,
+      "line": 1015,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2173,7 +2173,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1009,
+      "line": 1017,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2182,7 +2182,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 390,
+      "line": 385,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2191,7 +2191,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1135,
+      "line": 1143,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2200,7 +2200,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 390,
+      "line": 385,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2209,7 +2209,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1135,
+      "line": 1143,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2218,7 +2218,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 350,
+      "line": 345,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2227,7 +2227,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 651,
+      "line": 647,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2236,7 +2236,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 350,
+      "line": 345,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2245,7 +2245,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 51,
+      "line": 52,
       "column": 17,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2254,7 +2254,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 168,
+      "line": 169,
       "column": 84,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2263,7 +2263,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 225,
+      "line": 226,
       "column": 17,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2272,7 +2272,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 337,
+      "line": 332,
       "column": 13,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2281,7 +2281,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 350,
+      "line": 345,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2308,7 +2308,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 471,
+      "line": 467,
       "column": 15,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2317,7 +2317,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 471,
+      "line": 467,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2326,7 +2326,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 51,
+      "line": 52,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2335,7 +2335,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 212,
+      "line": 213,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2344,7 +2344,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 219,
+      "line": 220,
       "column": 26,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2353,7 +2353,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 225,
+      "line": 226,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2362,7 +2362,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 250,
+      "line": 245,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2371,7 +2371,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 338,
+      "line": 333,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2380,7 +2380,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 568,
+      "line": 564,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2389,7 +2389,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 646,
+      "line": 642,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2398,7 +2398,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 650,
+      "line": 646,
       "column": 17,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2407,7 +2407,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 650,
+      "line": 646,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2416,7 +2416,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 973,
+      "line": 981,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2425,7 +2425,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 460,
+      "line": 456,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2434,7 +2434,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 610,
+      "line": 606,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2443,7 +2443,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1165,
+      "line": 1184,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2452,7 +2452,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1174,
+      "line": 1193,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2461,7 +2461,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 489,
+      "line": 485,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2470,7 +2470,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 394,
+      "line": 389,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2479,7 +2479,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 725,
+      "line": 733,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2488,7 +2488,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 731,
+      "line": 739,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2497,7 +2497,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 118,
+      "line": 119,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2506,7 +2506,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 77,
+      "line": 78,
       "column": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2515,7 +2515,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 429,
+      "line": 425,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2524,7 +2524,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 943,
+      "line": 951,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2533,7 +2533,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1096,
+      "line": 1104,
       "column": 35,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2542,7 +2542,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1123,
+      "line": 1131,
       "column": 35,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2551,7 +2551,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 593,
+      "line": 589,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2560,7 +2560,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 379,
+      "line": 374,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2569,7 +2569,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 352,
+      "line": 347,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2578,7 +2578,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 433,
+      "line": 429,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2587,7 +2587,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 945,
+      "line": 953,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2596,7 +2596,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 390,
+      "line": 385,
       "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2605,7 +2605,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1135,
+      "line": 1143,
       "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2614,7 +2614,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 961,
+      "line": 969,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2623,7 +2623,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1058,
+      "line": 1066,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2632,7 +2632,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1069,
+      "line": 1077,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2641,7 +2641,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1126,
+      "line": 1134,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2650,7 +2650,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 343,
+      "line": 338,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2659,7 +2659,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 357,
+      "line": 352,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2668,7 +2668,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 390,
+      "line": 385,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2677,7 +2677,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 577,
+      "line": 573,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2686,7 +2686,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 597,
+      "line": 593,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2695,7 +2695,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1135,
+      "line": 1143,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2704,7 +2704,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 979,
+      "line": 987,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2713,7 +2713,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1088,
+      "line": 1096,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2722,7 +2722,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1043,
+      "line": 1051,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2731,7 +2731,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 478,
+      "line": 474,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2740,7 +2740,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 255,
+      "line": 250,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2749,7 +2749,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 350,
+      "line": 345,
       "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2758,7 +2758,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 651,
+      "line": 647,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2767,7 +2767,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 97,
+      "line": 98,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2776,7 +2776,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 98,
+      "line": 99,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2785,7 +2785,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 350,
+      "line": 345,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2794,7 +2794,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 51,
+      "line": 52,
       "column": 17,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2803,7 +2803,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 146,
+      "line": 147,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2812,7 +2812,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 168,
+      "line": 169,
       "column": 84,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2821,7 +2821,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 225,
+      "line": 226,
       "column": 17,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2830,7 +2830,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 337,
+      "line": 332,
       "column": 13,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2839,7 +2839,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 350,
+      "line": 345,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2848,30 +2848,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 435,
+      "line": 431,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"2.25rem\". Use scale values (nearest: 32px or 4px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.25rem\". Use scale values (nearest: 32px or 4px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 6,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"24rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"24rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 23,
-      "column": 19,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"24rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"24rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2884,7 +2866,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 394,
+      "line": 389,
       "column": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2893,7 +2875,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 74,
+      "line": 75,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2902,7 +2884,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 75,
+      "line": 76,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3937,20 +3919,20 @@
     },
     {
       "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 128,
+      "line": 141,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".submitButton:disabled\" to come before selector \".submitButton:hover:not(:disabled)\", at line 119 (no-descending-specificity)",
+      "text": "Expected selector \".submitButton:disabled\" to come before selector \".submitButton:hover:not(:disabled)\", at line 132 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::no-descending-specificity::Expected selector \".submitButton:disabled\" to come before selector \".submitButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 123,
+      "line": 136,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".submitButton:focus-visible\" to come before selector \".submitButton:hover:not(:disabled)\", at line 119 (no-descending-specificity)",
+      "text": "Expected selector \".submitButton:focus-visible\" to come before selector \".submitButton:hover:not(:disabled)\", at line 132 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::no-descending-specificity::Expected selector \".submitButton:focus-visible\" to come before selector \".submitButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
@@ -3973,7 +3955,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 82,
+      "line": 95,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3982,7 +3964,7 @@
     },
     {
       "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 110,
+      "line": 123,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4099,7 +4081,7 @@
     },
     {
       "file": "nextjs-app/shared/components/CookieConsent/CookieConsentBanner.module.css",
-      "line": 83,
+      "line": 82,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -4108,7 +4090,7 @@
     },
     {
       "file": "nextjs-app/shared/components/CookieConsent/CookieConsentBanner.module.css",
-      "line": 33,
+      "line": 30,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -4396,7 +4378,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 608,
+      "line": 614,
       "column": 22,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4405,7 +4387,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 609,
+      "line": 615,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4414,7 +4396,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 632,
+      "line": 638,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4423,7 +4405,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 636,
+      "line": 645,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -4432,12 +4414,21 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 637,
-      "column": 20,
+      "line": 655,
+      "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)",
       "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::declaration-no-important::Disallowed !important (declaration-no-important)::5"
+    },
+    {
+      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
+      "line": 656,
+      "column": 20,
+      "rule": "declaration-no-important",
+      "severity": "warning",
+      "text": "Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::declaration-no-important::Disallowed !important (declaration-no-important)::6"
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
@@ -4450,7 +4441,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 92,
+      "line": 93,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -4459,7 +4450,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 156,
+      "line": 157,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4468,7 +4459,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 172,
+      "line": 173,
       "column": 39,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4477,7 +4468,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 209,
+      "line": 210,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4486,7 +4477,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 449,
+      "line": 451,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4495,7 +4486,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 540,
+      "line": 545,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4504,7 +4495,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 201,
+      "line": 202,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4513,7 +4504,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 152,
+      "line": 153,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4522,7 +4513,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 283,
+      "line": 284,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4531,7 +4522,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 205,
+      "line": 206,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -4540,7 +4531,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 90,
+      "line": 91,
       "column": 20,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4549,7 +4540,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 156,
+      "line": 157,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4558,7 +4549,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 172,
+      "line": 173,
       "column": 39,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4567,7 +4558,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 209,
+      "line": 210,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4576,7 +4567,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 449,
+      "line": 451,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4585,7 +4576,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 540,
+      "line": 545,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4594,7 +4585,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 201,
+      "line": 202,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4603,7 +4594,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 433,
+      "line": 435,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4612,7 +4603,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 519,
+      "line": 523,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4621,7 +4612,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 82,
+      "line": 83,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4630,7 +4621,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 519,
+      "line": 523,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4639,7 +4630,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 152,
+      "line": 153,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4648,7 +4639,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 283,
+      "line": 284,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4657,7 +4648,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 205,
+      "line": 206,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4666,7 +4657,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 242,
+      "line": 243,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4675,7 +4666,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 247,
+      "line": 248,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4684,7 +4675,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 90,
+      "line": 91,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4693,7 +4684,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 201,
+      "line": 202,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4702,7 +4693,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 519,
+      "line": 523,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4711,7 +4702,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 86,
+      "line": 87,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4720,7 +4711,7 @@
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
-      "line": 205,
+      "line": 206,
       "column": 27,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -5089,16 +5080,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 18,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border-color\" to come before \"background-color\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::order/properties-order::Expected \"border-color\" to come before \"background-color\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 35,
+      "line": 34,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -5107,7 +5089,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 44,
+      "line": 43,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -5116,7 +5098,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 54,
+      "line": 53,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -5125,7 +5107,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 36,
+      "line": 35,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -5134,7 +5116,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 29,
+      "line": 28,
       "column": 27,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -5143,7 +5125,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 44,
+      "line": 43,
       "column": 39,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -5152,7 +5134,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 29,
+      "line": 28,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -5161,7 +5143,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 44,
+      "line": 43,
       "column": 39,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -5170,7 +5152,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 35,
+      "line": 34,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -5179,7 +5161,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 24,
+      "line": 23,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -5563,15 +5545,6 @@
       "severity": "warning",
       "text": "Too high specificity in \".chart:hover .outerRing path:hover\", maximum \"0,4,0\" (selector-max-specificity)",
       "id": "nextjs-app/shared/components/FinnishTransportAgency/ColorProportions.module.css::selector-max-specificity::Too high specificity in \".chart:hover .outerRing path:hover\", maximum \"0,4,0\" (selector-max-specificity)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 171,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
@@ -6016,33 +5989,6 @@
     },
     {
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 58,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 64,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border\" to come before \"white-space\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::order/properties-order::Expected \"border\" to come before \"white-space\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 62,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"clip-path\" to come before \"overflow\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::order/properties-order::Expected \"clip-path\" to come before \"overflow\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
       "line": 3,
       "column": 3,
       "rule": "order/properties-order",
@@ -6079,39 +6025,12 @@
     },
     {
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 60,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin\" to come before \"padding\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::order/properties-order::Expected \"margin\" to come before \"padding\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 59,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"block-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::order/properties-order::Expected \"padding\" to come before \"block-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
       "line": 17,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"pointer-events\" to come before \"transform\" (order/properties-order)",
       "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::order/properties-order::Expected \"pointer-events\" to come before \"transform\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 63,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"white-space\" to come before \"clip-path\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::order/properties-order::Expected \"white-space\" to come before \"clip-path\" (order/properties-order)::1"
     },
     {
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
@@ -6133,7 +6052,7 @@
     },
     {
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 70,
+      "line": 58,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6546,15 +6465,6 @@
       "id": "nextjs-app/shared/components/ListItem/ListItem.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
     },
     {
-      "file": "nextjs-app/shared/components/LogoConstruction/LogoConstruction.module.css",
-      "line": 16,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/LogoConstruction/LogoConstruction.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/LogoReveal/LogoReveal.module.css",
       "line": 64,
       "column": 31,
@@ -6862,7 +6772,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 32,
+      "line": 36,
       "column": 37,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6871,7 +6781,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 33,
+      "line": 37,
       "column": 23,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6880,7 +6790,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 42,
+      "line": 46,
       "column": 32,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6889,7 +6799,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 43,
+      "line": 47,
       "column": 37,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6898,7 +6808,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 44,
+      "line": 48,
       "column": 23,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6907,7 +6817,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 53,
+      "line": 57,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6916,7 +6826,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 54,
+      "line": 58,
       "column": 23,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6925,7 +6835,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 55,
+      "line": 59,
       "column": 23,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6934,7 +6844,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 56,
+      "line": 60,
       "column": 31,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6943,7 +6853,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 57,
+      "line": 61,
       "column": 30,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6952,7 +6862,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 58,
+      "line": 62,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6961,7 +6871,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 62,
+      "line": 66,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6970,7 +6880,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 72,
+      "line": 76,
       "column": 32,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6979,7 +6889,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 73,
+      "line": 77,
       "column": 37,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6988,7 +6898,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 74,
+      "line": 78,
       "column": 23,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -6997,7 +6907,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 81,
+      "line": 85,
       "column": 35,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -7006,7 +6916,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 82,
+      "line": 86,
       "column": 37,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -7015,7 +6925,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 90,
+      "line": 94,
       "column": 27,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -7024,7 +6934,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 91,
+      "line": 95,
       "column": 23,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -7033,7 +6943,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 92,
+      "line": 96,
       "column": 31,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -7042,7 +6952,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 93,
+      "line": 97,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -7051,7 +6961,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 100,
+      "line": 104,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -7060,16 +6970,16 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 79,
+      "line": 83,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".diagram :global(marker) path\" to come before selector \".diagram :global(.mindmap-node) path\", at line 67 (no-descending-specificity)",
+      "text": "Expected selector \".diagram :global(marker) path\" to come before selector \".diagram :global(.mindmap-node) path\", at line 71 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/Mermaid/Mermaid.module.css::no-descending-specificity::Expected selector \".diagram :global(marker) path\" to come before selector \".diagram :global(.mindmap-node) path\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 24,
+      "line": 28,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -7087,7 +6997,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 104,
+      "line": 108,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -8455,7 +8365,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 293,
+      "line": 301,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -8527,7 +8437,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 293,
+      "line": 301,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -8545,7 +8455,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 298,
+      "line": 306,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -8599,7 +8509,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 264,
+      "line": 272,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9148,11 +9058,11 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 222,
+      "line": 224,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".colorLabel\" to come before selector \".colorBlack .colorLabel\", at line 180 (no-descending-specificity)",
+      "text": "Expected selector \".colorLabel\" to come before selector \".colorBlack .colorLabel\", at line 182 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::no-descending-specificity::Expected selector \".colorLabel\" to come before selector \".colorBlack .colorLabel\" (no-descending-specificity)::1"
     },
     {
@@ -9166,7 +9076,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 147,
+      "line": 149,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -9175,7 +9085,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 266,
+      "line": 268,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -9184,7 +9094,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 166,
+      "line": 168,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9202,7 +9112,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 175,
+      "line": 177,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9211,7 +9121,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 189,
+      "line": 191,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9220,7 +9130,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 198,
+      "line": 200,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9229,7 +9139,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 208,
+      "line": 210,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9238,7 +9148,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 217,
+      "line": 219,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9247,7 +9157,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 226,
+      "line": 228,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9256,7 +9166,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 230,
+      "line": 232,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9265,7 +9175,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 292,
+      "line": 294,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9274,7 +9184,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 313,
+      "line": 315,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9445,7 +9355,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 524,
+      "line": 527,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -9472,7 +9382,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 454,
+      "line": 457,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9481,7 +9391,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 340,
+      "line": 343,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9490,7 +9400,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 432,
+      "line": 435,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9499,7 +9409,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 420,
+      "line": 423,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9508,7 +9418,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 488,
+      "line": 491,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9535,7 +9445,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 519,
+      "line": 522,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9544,7 +9454,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 397,
+      "line": 400,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9562,7 +9472,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 385,
+      "line": 388,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9589,7 +9499,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 250,
+      "line": 253,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9598,7 +9508,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 538,
+      "line": 541,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9607,7 +9517,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 542,
+      "line": 545,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9616,7 +9526,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 547,
+      "line": 550,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

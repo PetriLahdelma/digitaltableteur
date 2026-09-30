@@ -72,6 +72,7 @@
     "MacWindowFrame.contract.json",
     "MarkdownMessage.contract.json",
     "Menu.contract.json",
+    "Mermaid.contract.json",
     "Modal.contract.json",
     "MultiCombobox.contract.json",
     "NavLink.contract.json",

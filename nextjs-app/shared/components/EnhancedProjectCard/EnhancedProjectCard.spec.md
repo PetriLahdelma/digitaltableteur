@@ -6,7 +6,9 @@ Documents how **EnhancedProjectCard** is used in production layouts and Storyboo
 ## Interaction contract
 - Keyboard: See **Playground** / **Example** stories and component tests.
 - Pointer: Standard click/tap on interactive affordances.
-- Screen readers: Verify labels, roles, and live regions in stories.
+- Screen readers: the link is named by its visible project title and described
+  once by the same description that sighted users read; decorative media stays
+  out of the accessibility tree.
 
 ## Do / don't
 - Do: Match the **Example** story composition on EnhancedProjectCard pages.

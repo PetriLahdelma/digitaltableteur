@@ -40,9 +40,14 @@ describe("ChatToggle", () => {
     );
   });
 
-  it("shows close prompt in aria-label when open", () => {
+  it("removes the visually hidden open-state launcher from keyboard and AT navigation", () => {
     render(<ChatToggle isOpen={true} onToggle={vi.fn()} />);
-    expect(screen.getByRole("button")).toHaveAttribute(
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { hidden: true })).toHaveAttribute(
+      "tabindex",
+      "-1",
+    );
+    expect(screen.getByRole("button", { hidden: true })).toHaveAttribute(
       "aria-label",
       "AI assistant — Hide chat",
     );
@@ -58,7 +63,10 @@ describe("ChatToggle", () => {
 
   it("sets aria-expanded to true when open", () => {
     render(<ChatToggle isOpen={true} onToggle={vi.fn()} />);
-    expect(screen.getByRole("button")).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByRole("button", { hidden: true })).toHaveAttribute(
+      "aria-expanded",
+      "true",
+    );
   });
 
   it("calls onToggle when clicked", async () => {
@@ -87,7 +95,10 @@ describe("ChatToggle", () => {
 
   it("applies data-open attribute when open", () => {
     render(<ChatToggle isOpen={true} onToggle={vi.fn()} />);
-    expect(screen.getByRole("button")).toHaveAttribute("data-open", "true");
+    expect(screen.getByRole("button", { hidden: true })).toHaveAttribute(
+      "data-open",
+      "true",
+    );
   });
 
   it("applies data-open attribute when closed", () => {

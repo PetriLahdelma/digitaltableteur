@@ -210,6 +210,11 @@ code {
   .client-logo-marquee-container:hover .client-logo-marquee-track {
     animation-play-state: paused;
   }
+
+  .client-logo-marquee-container[data-paused="true"]
+    .client-logo-marquee-track {
+    animation-play-state: paused;
+  }
 }
 
 /* Responsive asymmetric grids */

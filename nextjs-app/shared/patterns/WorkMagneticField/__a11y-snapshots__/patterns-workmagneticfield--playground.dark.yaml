@@ -3,20 +3,20 @@
   - link "View all work":
     - /url: /work
   - list:
-    - listitem "SAP Build Apps Design System":
-      - link "Design Systems SAP Build Apps Design System Enterprise Low-Code":
+    - listitem:
+      - link "SAP Build Apps Design System":
         - /url: /work/sap-build-apps
         - text: Design Systems
         - heading "SAP Build Apps Design System" [level=3]
         - text: Enterprise Low-Code
-    - listitem "Helsinki Design System":
-      - link "Design Systems Helsinki Design System Accessibility React":
+    - listitem:
+      - link "Helsinki Design System":
         - /url: /work/helsinki-design-system
         - text: Design Systems
         - heading "Helsinki Design System" [level=3]
         - text: Accessibility React
-    - listitem "New Things Co":
-      - link "Branding New Things Co Branding Web Design":
+    - listitem:
+      - link "New Things Co":
         - /url: /work/new-things-co
         - text: Branding
         - heading "New Things Co" [level=3]

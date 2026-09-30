@@ -11,4 +11,4 @@
   - link "privacy policy":
     - /url: /privacy-policy
   - text: .
-- button "Submit" [disabled]
+- button "Submit"

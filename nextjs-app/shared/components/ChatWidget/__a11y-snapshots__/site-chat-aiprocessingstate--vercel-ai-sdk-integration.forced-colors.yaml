@@ -1,0 +1,12 @@
+- status: Work in progress (alpha)
+- heading "Integration with Vercel AI SDK" [level=3]
+- code: "const { messages, status } = useChat(); // Display while awaiting response {status === \"submitted\" && ( <AIProcessingState mode=\"thinking\" /> )} // Display during streaming {status === \"streaming\" && ( <AIProcessingState mode=\"generating\" /> )} // Display for analysis tasks {status === \"processing\" && ( <AIProcessingState mode=\"analyzing\" /> )}"
+- heading "Status States Demo:" [level=4]
+- text: status === "submitted"
+- status "Thinking…"
+- text: status === "streaming"
+- status "Generating…"
+- text: Custom processing state
+- status "Analyzing…"
+- strong: "SDK Compatibility:"
+- text: Works with @ai-sdk/react v2.x useChat, useCompletion, and useAssistant hooks. Compatible with streaming responses from OpenAI, Anthropic, and other providers supported by Vercel AI SDK.

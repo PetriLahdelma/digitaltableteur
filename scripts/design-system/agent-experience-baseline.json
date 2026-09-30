@@ -129,10 +129,25 @@
       "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
+    "CTASection": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 3.322,
+      "maxSlotCount": 0
+    },
+    "CVDownloadSection": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
     "Card": {
       "maxPropCount": 16,
       "maxFiniteStateBits": 6.907,
       "maxSlotCount": 5
+    },
+    "CaseStudySummary": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 2.322,
+      "maxSlotCount": 0
     },
     "CategoryFilter": {
       "maxPropCount": 6,
@@ -160,7 +175,7 @@
       "maxSlotCount": 0
     },
     "ClientLogoMarquee": {
-      "maxPropCount": 2,
+      "maxPropCount": 4,
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
@@ -229,29 +244,19 @@
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
-    "CTASection": {
-      "maxPropCount": 9,
-      "maxFiniteStateBits": 3.322,
-      "maxSlotCount": 0
-    },
-    "CVDownloadSection": {
-      "maxPropCount": 5,
-      "maxFiniteStateBits": 1.585,
-      "maxSlotCount": 0
-    },
     "DataTable": {
       "maxPropCount": 18,
       "maxFiniteStateBits": 4.585,
       "maxSlotCount": 4,
       "note": "Approved 2026-08-03: #1351 redesign (useTable* hooks, selection, density) grew the surface 16→18 props / 3.585→4.585 bits; accepted as the batteries-included wrapper over the Table primitives."
     },
-    "Designerman": {
-      "maxPropCount": 7,
+    "DesignSprintsSection": {
+      "maxPropCount": 3,
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
-    "DesignSprintsSection": {
-      "maxPropCount": 3,
+    "Designerman": {
+      "maxPropCount": 7,
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
@@ -281,7 +286,7 @@
       "maxSlotCount": 0
     },
     "EnhancedProjectCard": {
-      "maxPropCount": 14,
+      "maxPropCount": 15,
       "maxFiniteStateBits": 6,
       "maxSlotCount": 0
     },
@@ -425,6 +430,11 @@
       "maxFiniteStateBits": 3,
       "maxSlotCount": 0
     },
+    "MCPActionButton": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
     "MacWindowFrame": {
       "maxPropCount": 6,
       "maxFiniteStateBits": 1,
@@ -440,15 +450,15 @@
       "maxFiniteStateBits": 2,
       "maxSlotCount": 0
     },
-    "MCPActionButton": {
-      "maxPropCount": 6,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
     "Menu": {
       "maxPropCount": 5,
       "maxFiniteStateBits": 3.585,
       "maxSlotCount": 0
+    },
+    "Mermaid": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 1
     },
     "Modal": {
       "maxPropCount": 19,
@@ -542,7 +552,7 @@
       "maxSlotCount": 0
     },
     "ProjectDetailLayout": {
-      "maxPropCount": 8,
+      "maxPropCount": 9,
       "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
@@ -599,6 +609,11 @@
     "RelatedProjects": {
       "maxPropCount": 4,
       "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ReliablePartnerBadge": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 1.585,
       "maxSlotCount": 0
     },
     "ResizablePanelGroup": {
@@ -895,16 +910,6 @@
     "WorkPreviewSection": {
       "maxPropCount": 6,
       "maxFiniteStateBits": 2.585,
-      "maxSlotCount": 0
-    },
-    "ReliablePartnerBadge": {
-      "maxPropCount": 3,
-      "maxFiniteStateBits": 1.585,
-      "maxSlotCount": 0
-    },
-    "CaseStudySummary": {
-      "maxPropCount": 8,
-      "maxFiniteStateBits": 2.322,
       "maxSlotCount": 0
     }
   }

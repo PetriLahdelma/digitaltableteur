@@ -6,6 +6,8 @@ import { RawViewPage } from "./RawViewPage";
 describe("RawViewPage", () => {
   it("shows missing-project state until raw-view is restored to projects data", () => {
     renderWithProviders(<RawViewPage />);
-    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /Project not found/i }),
+    ).toHaveAttribute("lang", "en");
   });
 });

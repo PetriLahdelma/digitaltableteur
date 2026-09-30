@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-29T20:13:40.640Z",
+  "generatedAt": "2026-09-30T06:13:14.125Z",
   "summary": {
-    "componentCount": 179,
+    "componentCount": 180,
     "statusCounts": {
       "beta": 53,
       "stable": 100,
-      "alpha": 25,
+      "alpha": 26,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 90.9,
+    "catalogCompletenessPercent": 91.4,
     "codebaseComponentCount": 197,
     "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 39,
+    "componentsWithProductionUsage": 40,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -58,32 +58,32 @@
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
     "totalComponentsInCodebase": 197,
-    "inCatalog": 179,
-    "outOfCatalog": 18,
-    "catalogCompletenessPercent": 90.9,
+    "inCatalog": 180,
+    "outOfCatalog": 17,
+    "catalogCompletenessPercent": 91.4,
     "artifactCoverage": {
-      "stories": 163,
-      "tests": 165,
+      "stories": 164,
+      "tests": 175,
       "mdx": 4,
-      "spec": 179
+      "spec": 180
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
       "page-pattern": 0,
       "enhanced-fork": 4,
-      "exempt": 14
+      "exempt": 13
     },
     "regenerate": "node scripts/design-system/audit-catalog-coverage.mjs (run with --json for machine-readable output)"
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 179,
-    "withAnyUsage": 167,
-    "withProductionUsage": 39,
-    "uniqueImportedComponents": 167,
-    "totalEvidenceRows": 859,
-    "aliasImportFiles": 442,
-    "relativeImportFiles": 450,
+    "catalogedComponents": 180,
+    "withAnyUsage": 168,
+    "withProductionUsage": 40,
+    "uniqueImportedComponents": 168,
+    "totalEvidenceRows": 868,
+    "aliasImportFiles": 448,
+    "relativeImportFiles": 453,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 179,
+      "digitaltableteur": 180,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 53,
         "stable": 100,
-        "alpha": 25,
+        "alpha": 26,
         "deprecated": 1
       },
       "dsharp": {
@@ -2114,7 +2114,8 @@
           ],
           "ariaRequirements": [
             "Each share control is labelled (aria-label): Share on X/LinkedIn/Facebook and Copy link",
-            "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success"
+            "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success",
+            "The section root carries the resolved UI language so localized labels override an English article-body boundary."
           ],
           "reducedMotion": true,
           "reviewed": true,
@@ -2231,7 +2232,7 @@
           }
         ]
       },
-      "spec": "# ArticleShareSection\n\n## Intent\nEnd-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading.\n\n## Interaction contract\n- Keyboard: Tab reaches each share link and the copy-link button; Enter/Space activates them\n- Pointer: social links open the platform share dialog in a new tab; the copy button writes the URL to the clipboard\n- Screen readers: every icon-only control has an aria-label; icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success\n\n## Do / don't\n- Do: pass the article `url` and `title`; choose `layout` (horizontal | vertical)\n- Do: hide the heading with `showTitle={false}` for compact rails\n- Don't: invent parallel primitives inside this folder\n- Don't: use for arbitrary pages — this is the blog article template slot\n\n## Design notes\n- Tokens: Tailwind utilities mapped to theme tokens; the copied confirmation uses green-800 ink for AA\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1043-110\n",
+      "spec": "# ArticleShareSection\n\n## Intent\nEnd-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading.\n\n## Interaction contract\n- Keyboard: Tab reaches each share link and the copy-link button; Enter/Space activates them\n- Pointer: social links open the platform share dialog in a new tab; the copy button writes the URL to the clipboard\n- Screen readers: every icon-only control has an aria-label; icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success; the section restores the resolved UI language when nested inside English article prose\n\n## Do / don't\n- Do: pass the article `url` and `title`; choose `layout` (horizontal | vertical)\n- Do: hide the heading with `showTitle={false}` for compact rails\n- Don't: invent parallel primitives inside this folder\n- Don't: use for arbitrary pages — this is the blog article template slot\n\n## Design notes\n- Tokens: Tailwind utilities mapped to theme tokens; the copied confirmation uses green-800 ink for AA\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1043-110\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ArticleShareSection",
@@ -2311,7 +2312,8 @@
         ],
         "requiredA11y": [
           "Each share control is labelled (aria-label): Share on X/LinkedIn/Facebook and Copy link",
-          "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success"
+          "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success",
+          "The section root carries the resolved UI language so localized labels override an English article-body boundary."
         ],
         "keyboard": [
           "Tab reaches each share link and the copy-link button; Enter/Space activates them"
@@ -7861,10 +7863,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 60,
+        "importCount": 64,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 34,
+        "componentImportCount": 37,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
@@ -10980,7 +10982,7 @@
           "description": "The site's collapsible assistant widget: streaming chat with Donny, grapheme-safe burst smoothing for the active reply, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
         }
       },
-      "spec": "# ChatWidget\n\n## Intent\n\nProvide a persistent, floating AI assistant for site visitors that\ndoesn't take up layout space until invoked. ChatWidget is opinionated\non purpose — it owns its endpoint resolution, its storage, its\nguardrails, and its email-handoff flow — because every consumer of\n\"AI chat on a Next.js site\" has the same dozen problems to solve.\n\n## Interaction contract\n\n- Keyboard: Tab reaches the floating toggle. Enter / Space toggles\n  the panel. Inside the panel, Tab walks composer → send button →\n  message list (which is scrollable but not individually\n  tab-stoppable). Escape closes the panel.\n- Pointer: click on the toggle opens / closes. Click outside the\n  panel does _not_ close (the panel is non-modal). Click on a\n  message bubble does nothing unless it carries an action; the\n  email-workflow bubbles expose explicit buttons.\n- Screen readers: the toggle's `aria-expanded` reflects state. The\n  message log uses `role=\"log\"` with a polite live region and remains\n  `aria-busy` while a reply streams, so assistive technology receives\n  the completed response instead of repeated partial-text mutations.\n\n## Do / don't\n\n- Do: mount once globally in the layout. The widget is designed for\n  a single global instance.\n- Do: rely on the env-resolved endpoint for normal use. Override only\n  for preview deployments or partner contexts.\n- Don't: gate the widget behind user authentication. The widget is\n  for anonymous visitors; auth-gated chat is a different pattern.\n- Don't: store chat history in cookies or persistent `localStorage`.\n  The current storage is `sessionStorage`, so the browser copy ends with the\n  tab session and never travels with a request.\n- Don't: tamper with the email-workflow reducer state from outside.\n  The reducer has invariants (e.g. \"review can only follow\n  compose\") that direct mutation breaks.\n\n## Design notes\n\n- Tokens: toggle uses `Button variant=\"primary\"` with a custom\n  fixed-position wrapper. Panel surface uses\n  `--color-surface-elevated`; bubbles use `--color-primary-surface`\n  (user) and `--color-surface-muted` (assistant). Radius is\n  `--radius-lg` for the panel; bubbles use `--radius-md`.\n- Figma: https://www.figma.com/design/digitaltableteur/chat-widget\n  — closed, open, streaming, and email-workflow frames.\n- Endpoint resolution lives in `resolveChatApiEndpoint`:\n  1. Explicit `endpoint` prop wins.\n  2. `VITE_DONNY_CHAT_ENDPOINT` env var second.\n  3. For trusted hosts (`digitaltableteur.com`, subdomains) or\n     local-like hosts (localhost, 127.0.0.1, RFC1918), use\n     `${origin}/api/chat`.\n  4. Otherwise fall back to the public production endpoint.\n- Email workflow is a separate reducer (`emailWorkflowReducer`)\n  with states `idle | compose | field:<key> | review | send`.\n  Each state has its own UI sub-component (`ComposePrompt`,\n  `FieldPrompt`, `ReviewSummary`, `SendStatus`) so the main widget\n  stays lean.\n- Storage key is `dt-donny-chat-v2` in `sessionStorage`. Persistent\n  `localStorage` values from `dt-donny-chat-v2` and `dt-donny-chat` are\n  deleted on mount rather than migrated.\n- The open panel identifies Donny as an AI assistant before the first user\n  message, keeps a limitations/data notice visible, and links to the AI-use\n  statement and problem-reporting route.\n- Assistant message containers expose `data-ai-generated=\"true\"`,\n  `data-ai-output-type=\"text\"`, and `data-ai-system=\"donny\"`. These are\n  application metadata, not a substitute for validating any standardised\n  provider-level content-marking obligation.\n- Guardrails are applied via `processConversationWithFlags`, which\n  runs after every assistant response and can flip flags (e.g.\n  \"user is angry\" or \"user asked for human\"). Flags drive UI\n  decisions like surfacing the email-handoff prompt.\n- The active assistant text part consumes the public `useStreamingText`\n  utility. It smooths bursty accumulated chunks for sighted users,\n  preserves grapheme clusters, bypasses animation for reduced motion,\n  and snaps to the complete response when streaming ends. Historical\n  assistant messages and user messages never enter the reveal loop.\n",
+      "spec": "# ChatWidget\n\n## Intent\n\nProvide a persistent, floating AI assistant for site visitors that\ndoesn't take up layout space until invoked. ChatWidget is opinionated\non purpose — it owns its endpoint resolution, its storage, its\nguardrails, and its email-handoff flow — because every consumer of\n\"AI chat on a Next.js site\" has the same dozen problems to solve.\n\n## Interaction contract\n\n- Keyboard: Tab reaches the floating toggle. Enter / Space opens the panel\n  and focuses the composer. Tab follows the rendered controls; Shift+Tab\n  reaches the transcript and header. Escape closes and restores launcher focus.\n- The visually hidden open-state launcher is excluded from Tab and the\n  accessibility tree. Moving focus out of the nonmodal panel closes it without\n  stealing focus from the destination, so background controls stay unobscured.\n- Pointer: click on the toggle opens / closes. Click outside the\n  panel closes it (the panel is non-modal). Click on a\n  message bubble does nothing unless it carries an action; the\n  email-workflow bubbles expose explicit buttons.\n- Screen readers: the toggle's `aria-expanded` reflects state. The\n  message log uses `role=\"log\"` with a polite live region and remains\n  `aria-busy` while a reply streams, so assistive technology receives\n  the completed response instead of repeated partial-text mutations.\n- Each conversation turn has a visible speaker label and a named group.\n- While streaming, the composer remains focusable and read-only; Stop response\n  interrupts generation without closing the conversation. Scrolling back through\n  older messages suspends automatic following until the user returns to the end.\n- The panel scrolls as a whole when space is short, including at 320×256 CSS\n  pixels with text-spacing overrides. No minimum panel height exceeds the viewport.\n- When consent is unresolved in a viewport no taller than 480 CSS pixels,\n  the closed launcher participates in document flow instead of floating over\n  navigation. It remains reachable without requiring a cookie choice.\n\n## Do / don't\n\n- Do: mount once globally in the layout. The widget is designed for\n  a single global instance.\n- Do: rely on the env-resolved endpoint for normal use. Override only\n  for preview deployments or partner contexts.\n- Don't: gate the widget behind user authentication. The widget is\n  for anonymous visitors; auth-gated chat is a different pattern.\n- Don't: store chat history in cookies or persistent `localStorage`.\n  The current storage is `sessionStorage`, so the browser copy ends with the\n  tab session and never travels with a request.\n- Don't: tamper with the email-workflow reducer state from outside.\n  The reducer has invariants (e.g. \"review can only follow\n  compose\") that direct mutation breaks.\n\n## Design notes\n\n- Tokens: toggle uses `Button variant=\"primary\"` with a custom\n  fixed-position wrapper. The opaque panel uses\n  `--main-body-background-color` and `--radius-xl`; text and controls use\n  semantic theme tokens so background content cannot bleed through them.\n- Figma: https://www.figma.com/design/digitaltableteur/chat-widget\n  — closed, open, streaming, and email-workflow frames.\n- Endpoint resolution lives in `resolveChatApiEndpoint`:\n  1. Explicit `endpoint` prop wins.\n  2. `VITE_DONNY_CHAT_ENDPOINT` env var second.\n  3. For trusted hosts (`digitaltableteur.com`, subdomains) or\n     local-like hosts (localhost, 127.0.0.1, RFC1918), use\n     `${origin}/api/chat`.\n  4. Otherwise fall back to the public production endpoint.\n- Email workflow is a separate reducer (`emailWorkflowReducer`)\n  with states `idle | compose | field:<key> | review | send`.\n  Each state has its own UI sub-component (`ComposePrompt`,\n  `FieldPrompt`, `ReviewSummary`, `SendStatus`) so the main widget\n  stays lean.\n- Storage key is `dt-donny-chat-v2` in `sessionStorage`. Persistent\n  `localStorage` values from `dt-donny-chat-v2` and `dt-donny-chat` are\n  deleted on mount rather than migrated.\n- The open panel identifies Donny as an AI assistant before the first user\n  message, keeps a limitations/data notice visible, and links to the AI-use\n  statement and problem-reporting route.\n- Assistant message containers expose `data-ai-generated=\"true\"`,\n  `data-ai-output-type=\"text\"`, and `data-ai-system=\"donny\"`. These are\n  application metadata, not a substitute for validating any standardised\n  provider-level content-marking obligation.\n- Guardrails are applied via `processConversationWithFlags`, which\n  runs after every assistant response and can flip flags (e.g.\n  \"user is angry\" or \"user asked for human\"). Flags drive UI\n  decisions like surfacing the email-handoff prompt.\n- The active assistant text part consumes the public `useStreamingText`\n  utility. It smooths bursty accumulated chunks for sighted users,\n  preserves grapheme clusters, bypasses animation for reduced motion,\n  and snaps to the complete response when streaming ends. Historical\n  assistant messages and user messages never enter the reveal loop.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ChatWidget",
@@ -11100,8 +11102,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "Latest a11y evidence for 'axe-no-violations' is failing; re-run npm run test:stories:matrix:ci.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -12485,6 +12487,16 @@
             "type": "string",
             "description": "Accessible name for the marquee section."
           },
+          "pauseLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label for the control that pauses the marquee."
+          },
+          "resumeLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label for the control that resumes the marquee."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -12502,12 +12514,12 @@
           "social proof",
           "animation"
         ],
-        "dense": "Animated client-logo marquee for the homepage; pauses under reduced motion; logos are linked images with alt text",
+        "dense": "Animated client-logo marquee for the homepage with pause/resume controls and one semantic client list",
         "usage": {
-          "description": "Homepage social-proof marquee of client logos; animation drops under prefers-reduced-motion. Keep logos monochrome and alt-texted."
+          "description": "Homepage social-proof marquee of client logos; visitors can pause it and reduced-motion users receive a static grid. The visual logos are decorative because one semantic list names every client."
         }
       },
-      "spec": "# ClientLogoMarquee\n\n## Intent\nDocuments how **ClientLogoMarquee** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on ClientLogoMarquee pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
+      "spec": "# ClientLogoMarquee\n\n## Intent\n\nDocuments how **ClientLogoMarquee** is used in production layouts and Storybook examples.\n\n## Interaction contract\n\n- Keyboard: The pause/resume button is reachable and activates with Enter or Space.\n- Pointer: Pause/resume is available without relying on hover.\n- Screen readers: One hidden list names each client once; visual logo images are decorative.\n- Reduced motion: Render a static logo grid and omit the animation control.\n\n## Do / don't\n\n- Do: Match the **Example** story composition on ClientLogoMarquee pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ClientLogoMarquee",
@@ -12525,6 +12537,16 @@
             "optional": false,
             "type": "string",
             "description": "Accessible name for the marquee section."
+          },
+          "pauseLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label for the control that pauses the marquee."
+          },
+          "resumeLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label for the control that resumes the marquee."
           },
           "className": {
             "optional": true,
@@ -12558,7 +12580,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 2,
+        "declaredPropCount": 4,
         "guidelines": [
           {
             "level": "should",
@@ -18915,12 +18937,12 @@
           "enableIdleExpressions": {
             "optional": true,
             "type": "boolean",
-            "description": "Enables randomized idle expressions."
+            "description": "Enables one randomized idle expression before the avatar settles."
           },
           "idleExpressionInterval": {
             "optional": true,
             "type": "number",
-            "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
+            "description": "Delay before the one idle expression, in milliseconds (default 12000), randomized by 50 percent."
           },
           "isSpeaking": {
             "optional": true,
@@ -19152,12 +19174,12 @@
           "enableIdleExpressions": {
             "optional": true,
             "type": "boolean",
-            "description": "Enables randomized idle expressions."
+            "description": "Enables one randomized idle expression before the avatar settles."
           },
           "idleExpressionInterval": {
             "optional": true,
             "type": "number",
-            "description": "Base idle-expression interval in milliseconds (default 12000), randomized by 50 percent."
+            "description": "Delay before the one idle expression, in milliseconds (default 12000), randomized by 50 percent."
           },
           "isSpeaking": {
             "optional": true,
@@ -20234,7 +20256,7 @@
         "tier": "molecule",
         "group": "marketing",
         "status": "stable",
-        "description": "Portfolio project card with image, video hover, and metadata.",
+        "description": "Portfolio project card with static image or video-poster media and metadata.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1433-2257",
         "radixPrimitive": null,
         "element": "a",
@@ -20261,18 +20283,19 @@
         "a11y": {
           "keyboard": [
             "The whole card is a single link (`<a>` via next/link); Tab focuses it, Enter activates it.",
-            "Hover-only affordances (video preview, revealed tags) also fire on `:focus-visible` so keyboard users get parity."
+            "Hover-only metadata affordances also fire on `:focus-visible` so keyboard users get parity."
           ],
           "ariaRequirements": [
-            "Root is a stretched `<a>`; a visually-hidden `<span>` carries category + description + tags as the accessible name via `aria-describedby`.",
-            "The thumbnail image `alt` is empty and the hover `<video>` is `aria-hidden` (decorative; the sr-only span is the source of truth)."
+            "Root is a stretched `<a>` whose accessible name comes from the visible title and whose accessible description comes from the single rendered description.",
+            "The thumbnail image `alt` is empty and the paused `<video>` is `aria-hidden` because the adjacent project copy provides the equivalent.",
+            "Project-authored copy can carry an explicit BCP 47 language without overriding localized status text."
           ],
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. Reduced-motion is already fully guarded (a `@media (prefers-reduced-motion: reduce)` block neutralises every transition/animation/transform, and the hover-video autoplay is JS-gated on the reduced-motion media query). Added the missing unit test (axe + link semantics + aspect-ratio class + reduced-motion guard)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. 2026-09-27 — video media changed to a static paused preview so project cards never introduce automatic motion."
         },
         "tokens": {
           "colors": [],
@@ -20362,7 +20385,7 @@
           "videoThumbnail": {
             "optional": true,
             "type": "string",
-            "description": "Video thumbnail URL (for hover autoplay)"
+            "description": "Video thumbnail URL rendered as a paused decorative preview"
           },
           "description": {
             "optional": true,
@@ -20403,7 +20426,7 @@
           "autoPlayVideo": {
             "optional": true,
             "type": "boolean",
-            "description": "Autoplay video thumbnail continuously (not just on hover)"
+            "description": "Deprecated compatibility prop; card previews never autoplay"
           },
           "comingSoon": {
             "optional": true,
@@ -20414,6 +20437,11 @@
             "optional": true,
             "type": "string",
             "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+          },
+          "contentLanguage": {
+            "optional": true,
+            "type": "string",
+            "description": "BCP 47 language tag for project-authored title and metadata"
           },
           "className": {
             "optional": true,
@@ -20434,15 +20462,15 @@
           "portfolio",
           "project",
           "card",
-          "video hover",
+          "video preview",
           "work"
         ],
-        "dense": "Portfolio project card w/ image, hover video preview, and metadata; the work-index upgrade of ProjectCard",
+        "dense": "Portfolio project card with static image or paused video preview and metadata; the work-index upgrade of ProjectCard",
         "usage": {
-          "description": "Work-index project card with image, hover video preview, and metadata. The richer sibling of ProjectCard; use one per index, not both."
+          "description": "Work-index project card with image or paused video preview and metadata. The richer sibling of ProjectCard; use one per index, not both."
         }
       },
-      "spec": "# EnhancedProjectCard\n\n## Intent\nDocuments how **EnhancedProjectCard** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on EnhancedProjectCard pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
+      "spec": "# EnhancedProjectCard\n\n## Intent\nDocuments how **EnhancedProjectCard** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: the link is named by its visible project title and described\n  once by the same description that sighted users read; decorative media stays\n  out of the accessibility tree.\n\n## Do / don't\n- Do: Match the **Example** story composition on EnhancedProjectCard pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/EnhancedProjectCard",
@@ -20505,7 +20533,7 @@
           "videoThumbnail": {
             "optional": true,
             "type": "string",
-            "description": "Video thumbnail URL (for hover autoplay)"
+            "description": "Video thumbnail URL. The preview stays paused until the project is opened."
           },
           "description": {
             "optional": true,
@@ -20546,7 +20574,8 @@
           "autoPlayVideo": {
             "optional": true,
             "type": "boolean",
-            "description": "Autoplay video thumbnail continuously (not just on hover)"
+            "deprecated": true,
+            "deprecation": "Card previews no longer autoplay. Retained for API compatibility."
           },
           "comingSoon": {
             "optional": true,
@@ -20557,6 +20586,11 @@
             "optional": true,
             "type": "string",
             "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+          },
+          "contentLanguage": {
+            "optional": true,
+            "type": "string",
+            "description": "BCP 47 language tag for project-authored title and metadata"
           },
           "className": {
             "optional": true,
@@ -20576,12 +20610,13 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "requiredA11y": [
-          "Root is a stretched `<a>`; a visually-hidden `<span>` carries category + description + tags as the accessible name via `aria-describedby`.",
-          "The thumbnail image `alt` is empty and the hover `<video>` is `aria-hidden` (decorative; the sr-only span is the source of truth)."
+          "Root is a stretched `<a>` whose accessible name comes from the visible title and whose accessible description comes from the single rendered description.",
+          "The thumbnail image `alt` is empty and the paused `<video>` is `aria-hidden` because the adjacent project copy provides the equivalent.",
+          "Project-authored copy can carry an explicit BCP 47 language without overriding localized status text."
         ],
         "keyboard": [
           "The whole card is a single link (`<a>` via next/link); Tab focuses it, Enter activates it.",
-          "Hover-only affordances (video preview, revealed tags) also fire on `:focus-visible` so keyboard users get parity."
+          "Hover-only metadata affordances also fire on `:focus-visible` so keyboard users get parity."
         ],
         "compositionRules": [],
         "canonicalExamples": [
@@ -20599,7 +20634,7 @@
           "Section"
         ],
         "prefersOver": [],
-        "declaredPropCount": 14,
+        "declaredPropCount": 15,
         "guidelines": [
           {
             "level": "should",
@@ -20701,7 +20736,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. Reduced-motion is already fully guarded (a `@media (prefers-reduced-motion: reduce)` block neutralises every transition/animation/transform, and the hover-video autoplay is JS-gated on the reduced-motion media query). Added the missing unit test (axe + link semantics + aspect-ratio class + reduced-motion guard)."
+            "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. 2026-09-27 — video media changed to a static paused preview so project cards never introduce automatic motion."
           }
         ],
         "docOrigin": {
@@ -23756,8 +23791,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",
@@ -33678,6 +33713,7 @@
           "OpenHours",
           "ServicesGrid",
           "StudioMap",
+          "Text",
           "DonnyBookingEmbed"
         ],
         "prefersOver": [],
@@ -34463,6 +34499,424 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "Menu.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
+      "name": "Mermaid",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "Mermaid",
+        "tier": "molecule",
+        "group": "media",
+        "status": "alpha",
+        "description": "Renders a Mermaid diagram with a concise accessible name, prose summary, and visible structured text alternative.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "figure",
+        "variants": {},
+        "slots": [
+          "accessibleDetails"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab focuses the native disclosure summary; Enter or Space toggles the text alternative."
+          ],
+          "ariaRequirements": [
+            "The rendered diagram has role img and is named by title.",
+            "description supplies a concise accessible description.",
+            "aria-details points to a visible disclosure containing a complete structured or prose equivalent of the diagram relationships.",
+            "The generated SVG is hidden from assistive technology to prevent duplicate, unstructured narration."
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-focus-ring"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-24"
+          ]
+        },
+        "lightDarkVerified": false,
+        "props": {
+          "chart": {
+            "optional": false,
+            "type": "string",
+            "description": "Mermaid diagram source"
+          },
+          "title": {
+            "optional": false,
+            "type": "string",
+            "description": "Concise meaningful name for the diagram"
+          },
+          "description": {
+            "optional": false,
+            "type": "string",
+            "description": "Short prose summary of the diagram purpose and relationships"
+          },
+          "accessibleDetails": {
+            "optional": false,
+            "type": "ReactNode",
+            "description": "Structured or prose equivalent of every material relationship in the diagram"
+          },
+          "detailsLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label for the visible text-alternative disclosure"
+          },
+          "caption": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional visible figure caption"
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional className for the figure"
+          },
+          "themeColors": {
+            "optional": true,
+            "type": "MermaidThemeColors",
+            "description": "Diagram color overrides"
+          }
+        },
+        "forbiddenUse": [
+          "Render a diagram without a complete accessibleDetails equivalent.",
+          "Use title alone as the text alternative for a diagram with meaningful relationships."
+        ]
+      },
+      "spec": "# Mermaid\n\n## Intent\n\nRender Mermaid diagrams without making sight or visual parsing a prerequisite\nfor understanding their information and relationships.\n\n## Design notes\n\nKeep the visual diagram and its text alternative adjacent. Preserve authored\ndiagram colors, while disclosure spacing and focus indicators use site tokens.\nLoading and error states must leave the text alternative available.\n\n## Interaction contract\n\n- The SVG remains visible and horizontally scrollable when needed.\n- The diagram is exposed as one named image with a concise description.\n- A native disclosure immediately after the image provides the complete text\n  alternative. Use nested lists for hierarchies and ordered lists for flows.\n- Generated SVG internals are hidden from assistive technology so labels are\n  not announced out of order or duplicated.\n\n## Do / don't\n\n- Do: describe every branch, connection, sequence, and grouping that carries\n  meaning in `accessibleDetails`.\n- Do: keep `title` concise and `description` to one or two sentences.\n- Don't: repeat the Mermaid source as the alternative; translate the visual\n  grammar into ordinary prose and semantic lists.\n- Don't: use a diagram for content that is a simple list or sequence; write\n  the list with List instead.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/Mermaid",
+        "importCount": 4,
+        "productionImportCount": 4,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../Mermaid",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../Mermaid",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/RingStats/RingStatsPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../Mermaid",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../Mermaid",
+            "context": "production"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/Mermaid",
+        "intent": "Render Mermaid diagrams without making sight or visual parsing a prerequisite for understanding their information and relationships.",
+        "props": {
+          "chart": {
+            "optional": false,
+            "type": "string",
+            "description": "Mermaid diagram code"
+          },
+          "title": {
+            "optional": false,
+            "type": "string",
+            "description": "Concise, meaningful name for the diagram"
+          },
+          "description": {
+            "optional": false,
+            "type": "string",
+            "description": "Short prose summary of the diagram's purpose and relationships"
+          },
+          "accessibleDetails": {
+            "optional": false,
+            "type": "ReactNode",
+            "description": "Structured or prose equivalent of every material relationship in the diagram"
+          },
+          "detailsLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label for the visible text-alternative disclosure"
+          },
+          "caption": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional caption for the diagram"
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional className for styling"
+          },
+          "themeColors": {
+            "optional": true,
+            "type": "MermaidThemeColors",
+            "description": "Custom theme colors"
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "describe every branch, connection, sequence, and grouping that carries meaning in `accessibleDetails`.",
+          "keep `title` concise and `description` to one or two sentences."
+        ],
+        "avoidWhen": [
+          "repeat the Mermaid source as the alternative; translate the visual grammar into ordinary prose and semantic lists.",
+          "use a diagram for content that is a simple list or sequence; write the list with List instead."
+        ],
+        "requiredA11y": [
+          "The rendered diagram has role img and is named by title.",
+          "description supplies a concise accessible description.",
+          "aria-details points to a visible disclosure containing a complete structured or prose equivalent of the diagram relationships.",
+          "The generated SVG is hidden from assistive technology to prevent duplicate, unstructured narration."
+        ],
+        "keyboard": [
+          "Tab focuses the native disclosure summary; Enter or Space toggles the text alternative."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "repeat the Mermaid source as the alternative; translate the visual grammar into ordinary prose and semantic lists.",
+          "use a diagram for content that is a simple list or sequence; write the list with List instead."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 8,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "describe every branch, connection, sequence, and grouping that carries meaning in `accessibleDetails`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "keep `title` concise and `description` to one or two sentences.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "repeat the Mermaid source as the alternative; translate the visual grammar into ordinary prose and semantic lists.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use a diagram for content that is a simple list or sequence; write the list with List instead.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Mermaid.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Mermaid.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Mermaid.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Mermaid.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
@@ -37561,6 +38015,7 @@
           "MarkdownMessage",
           "ServicesGrid",
           "StudioMap",
+          "Text",
           "DonnyBookingEmbed"
         ],
         "prefersOver": [],
@@ -44553,7 +45008,7 @@
           "targetId": {
             "optional": true,
             "type": "string",
-            "description": "ID of the target element to scroll to"
+            "description": "ID of the target element to scroll to; the control is omitted when absent"
           },
           "label": {
             "optional": true,
@@ -44589,7 +45044,7 @@
               "bounce",
               "pulse"
             ],
-            "description": "Looping motion applied to the icon as a hint to scroll."
+            "description": "Brief motion applied to the icon as a hint to scroll."
           },
           "speed": {
             "optional": true,
@@ -44631,11 +45086,11 @@
         ],
         "dense": "hero-footer scroll cue; animated icon (chevron/arrow/mouse) with optional label; motion bounce/pulse/fade/none gated by prefers-reduced-motion; real <button> that scrolls targetId into view",
         "usage": {
-          "description": "ScrollIndicator is a hero-footer affordance that signals there is more page below and scrolls to it when activated. It renders a real button that scrolls a named target into view, with a looping motion hint on the icon that is suppressed under prefers-reduced-motion.",
+          "description": "ScrollIndicator is a hero-footer affordance that signals there is more page below and scrolls to it when activated. It renders a real button only when a target exists, with a brief motion hint that stops automatically and is suppressed under prefers-reduced-motion.",
           "bestPractices": [
             {
               "guidance": true,
-              "description": "Give it a targetId matching a real element on the page so activation scrolls somewhere; without it the control renders but does nothing."
+              "description": "Give it a targetId matching a real element on the page so activation scrolls somewhere; without it the control is omitted."
             },
             {
               "guidance": true,
@@ -44662,7 +45117,7 @@
             {
               "name": "Icon",
               "required": true,
-              "description": "The scroll cue glyph (chevron, arrow, or mouse) that carries the looping motion hint."
+              "description": "The scroll cue glyph (chevron, arrow, or mouse) that carries the brief motion hint."
             },
             {
               "name": "Label",
@@ -44734,7 +45189,7 @@
           }
         ]
       },
-      "spec": "# ScrollIndicator\n\n## Intent\n\nA hero-footer affordance that tells the reader there is more page below and takes them\nthere when activated. It renders a real `<button>` that scrolls a named target into view,\nwith a looping motion hint that stops under `prefers-reduced-motion`. Used by\n`ProjectHero`, `BlogHero`, and `AboutHero`; it exists so those three do not each grow\ntheir own scroll cue.\n\n## Interaction contract\n\n| Input | Result |\n|-------|--------|\n| Click | Scrolls `targetId` into view with `behavior: \"smooth\"`, aligned to `block: \"start\"` |\n| Enter | Same as click (native `<button>` activation) |\n| Space | Same as click (native `<button>` activation) |\n| Tab | Receives focus in DOM order; the focus ring must remain visible over the hero |\n| No `targetId` | Renders and focuses normally, but activation is a no-op |\n| `prefers-reduced-motion: reduce` | The looping hint stops; hit area, label, and scroll behaviour are unchanged |\n\nThe scroll itself is delegated to `Element.scrollIntoView`, so it inherits the platform's\nsmooth-scroll behaviour and any `scroll-behavior` set by the page.\n\n## Do / don't\n\n- Do (must): give the control an accessible name that names the destination -- an\n  unlabelled icon-only button is announced as \"button\" with no purpose, failing WCAG 4.1.2.\n- Do: pass `targetId` matching a real element id on the page. Without it the control\n  renders but does nothing on activation.\n- Do: place it once per hero, at the bottom of the first viewport, where the reader\n  looks for the fold.\n- Do: prefer `position=\"center\"` unless the hero's copy already occupies the centre.\n- Don't (must): render it as a `<div>` with a click handler -- it must stay a real button\n  so it is reachable by Tab and activates on both Enter and Space.\n- Don't: use it as general in-page navigation. It communicates \"there is more below\",\n  not \"jump to section\". Use a link or `Breadcrumb` for navigation.\n- Don't: stack more than one on a page. Two scroll cues in one viewport contradict each\n  other about where the reader should go next.\n- Don't: rely on the animation to carry meaning. It is suppressed under reduced motion,\n  so the label and accessible name must stand alone.\n\n## Design notes\n\nThe motion is a short vertical loop driven by GSAP and gated on the animation context's\n`motionPreference`. When motion is suppressed the control keeps its full hit area and\nlabel, losing only the loop.\n\nPosition is applied with utility classes rather than a CSS module because the component\nis absolutely positioned against whatever hero contains it, and the hero owns the\nstacking context.\n\n## Status\n\nAlpha. Beta needs `forcedColorsVerified` (the ForcedColors story verified in a real\nbrowser) and `lightDarkVerified`. Neither has been run; the contract records both as\nfalse rather than asserting them.\n",
+      "spec": "# ScrollIndicator\n\n## Intent\n\nA hero-footer affordance that tells the reader there is more page below and takes them\nthere when activated. It renders a real `<button>` that scrolls a named target into view,\nwith a brief motion hint that stops automatically and is suppressed under `prefers-reduced-motion`. Used by\n`ProjectHero`, `BlogHero`, and `AboutHero`; it exists so those three do not each grow\ntheir own scroll cue.\n\n## Interaction contract\n\n| Input                            | Result                                                                                      |\n| -------------------------------- | ------------------------------------------------------------------------------------------- |\n| Click                            | Scrolls `targetId` into view with `behavior: \"smooth\"`, aligned to `block: \"start\"`         |\n| Enter                            | Same as click (native `<button>` activation)                                                |\n| Space                            | Same as click (native `<button>` activation)                                                |\n| Tab                              | Receives focus in DOM order; the focus ring must remain visible over the hero               |\n| No `targetId`                    | Renders and focuses normally, but activation is a no-op                                     |\n| `prefers-reduced-motion: reduce` | The motion hint is omitted; hit area and label are unchanged, and scrolling becomes instant |\n\nThe scroll itself is delegated to `Element.scrollIntoView`, so it inherits the platform's\nsmooth-scroll behaviour and any `scroll-behavior` set by the page.\n\n## Do / don't\n\n- Do (must): give the control an accessible name that names the destination -- an\n  unlabelled icon-only button is announced as \"button\" with no purpose, failing WCAG 4.1.2.\n- Do: pass `targetId` matching a real element id on the page. Without it the control\n  renders but does nothing on activation.\n- Do: place it once per hero, at the bottom of the first viewport, where the reader\n  looks for the fold.\n- Do: prefer `position=\"center\"` unless the hero's copy already occupies the centre.\n- Don't (must): render it as a `<div>` with a click handler -- it must stay a real button\n  so it is reachable by Tab and activates on both Enter and Space.\n- Don't: use it as general in-page navigation. It communicates \"there is more below\",\n  not \"jump to section\". Use a link or `Breadcrumb` for navigation.\n- Don't: stack more than one on a page. Two scroll cues in one viewport contradict each\n  other about where the reader should go next.\n- Don't: rely on the animation to carry meaning. It is suppressed under reduced motion,\n  so the label and accessible name must stand alone.\n\n## Design notes\n\nThe motion is a short, finite vertical hint driven by GSAP and gated on the animation context's\n`motionPreference`. When motion is suppressed the control keeps its full hit area and\nlabel, losing only the loop.\n\nPosition is applied with utility classes rather than a CSS module because the component\nis absolutely positioned against whatever hero contains it, and the hero owns the\nstacking context.\n\n## Status\n\nAlpha. Beta needs `forcedColorsVerified` (the ForcedColors story verified in a real\nbrowser) and `lightDarkVerified`. Neither has been run; the contract records both as\nfalse rather than asserting them.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ScrollIndicator",
@@ -44771,7 +45226,7 @@
       },
       "agent": {
         "preferredImport": "@dt/ScrollIndicator",
-        "intent": "A hero-footer affordance that tells the reader there is more page below and takes them there when activated. It renders a real `<button>` that scrolls a named target into view, with a looping motion hint that stops unde…",
+        "intent": "A hero-footer affordance that tells the reader there is more page below and takes them there when activated. It renders a real `<button>` that scrolls a named target into view, with a brief motion hint that stops automa…",
         "props": {
           "targetId": {
             "optional": true,
@@ -44812,7 +45267,7 @@
               "bounce",
               "pulse"
             ],
-            "description": "Looping motion applied to the icon as a hint to scroll."
+            "description": "Brief motion applied to the icon as a hint to scroll."
           },
           "speed": {
             "optional": true,
@@ -48292,6 +48747,7 @@
           "MarkdownMessage",
           "OpenHours",
           "StudioMap",
+          "Text",
           "DonnyBookingEmbed"
         ],
         "prefersOver": [],
@@ -50107,9 +50563,9 @@
           "StatsSection",
           "ReliablePartnerBadge",
           "Link",
+          "Title",
           "Section",
-          "Container",
-          "Title"
+          "Container"
         ],
         "prefersOver": [],
         "declaredPropCount": 4,
@@ -58153,10 +58609,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 58,
+        "importCount": 59,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 28,
+        "componentImportCount": 29,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
@@ -58201,6 +58657,12 @@
             "context": "component"
           },
           {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatMessageBubble.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Text",
+            "context": "component"
+          },
+          {
             "path": "nextjs-app/shared/components/ChatWidget/ChatMessages.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
@@ -58220,12 +58682,6 @@
           },
           {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/FieldPrompt.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Text",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/SendStatus.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "component"
@@ -61028,8 +61484,8 @@
           },
           {
             "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/Title",
+            "importKind": "alias",
+            "importPath": "@dt/Title",
             "context": "pattern"
           },
           {
@@ -67463,7 +67919,7 @@
         "description": "Blog article page layout shell.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-layout",
         "radixPrimitive": null,
-        "element": "main",
+        "element": "article",
         "variants": {},
         "slots": [],
         "asChild": false,
@@ -67528,7 +67984,7 @@
           "lang": {
             "optional": true,
             "type": "string",
-            "description": "Document language for the article root"
+            "description": "Language applied to the article hero and body (defaults to English); navigation and related-post chrome keep the UI language"
           }
         },
         "forbiddenUse": [
@@ -67536,7 +67992,7 @@
           "promote to stable without production consumer evidence"
         ]
       },
-      "spec": "# ArticleLayout\n\n## Intent\nBlog article page layout shell.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-layout\n",
+      "spec": "# ArticleLayout\n\n## Intent\nBlog article page layout shell.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: the app shell contributes the page's sole `main`; this layout\n  uses one `article` without nested main landmarks, scopes the content language\n  to the hero and body, and leaves localized chrome in the selected UI language\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-layout\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ArticleLayout",
@@ -69886,8 +70342,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -69901,8 +70357,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -69928,8 +70384,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -74871,7 +75327,7 @@
           "interval": {
             "optional": true,
             "type": "number",
-            "description": "Cycling interval in milliseconds"
+            "description": "Timing input used to bound the one-time emphasis pulse"
           },
           "separator": {
             "optional": true,
@@ -74939,7 +75395,7 @@
           "interval": {
             "optional": true,
             "type": "number",
-            "description": "Cycling interval in milliseconds"
+            "description": "Timing input used to bound the one-time emphasis pulse"
           },
           "separator": {
             "optional": true,
@@ -77487,7 +77943,7 @@
         "description": "Case study detail layout shell.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-layout",
         "radixPrimitive": null,
-        "element": "main",
+        "element": "article",
         "variants": {},
         "slots": [],
         "asChild": false,
@@ -77547,7 +78003,12 @@
           "donnyTarget": {
             "optional": true,
             "type": "string",
-            "description": "Donny site action target id for the project main landmark"
+            "description": "Donny site action target id for the project article"
+          },
+          "lang": {
+            "optional": true,
+            "type": "string",
+            "description": "Language applied to the project hero and authored case-study body (defaults to English); navigation, CTA, and related-project chrome keep the UI language"
           }
         },
         "forbiddenUse": [
@@ -77563,7 +78024,7 @@
           "TeamBlock"
         ]
       },
-      "spec": "# ProjectDetailLayout\n\n## Intent\nCase study detail layout shell.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-layout\n",
+      "spec": "# ProjectDetailLayout\n\n## Intent\nCase study detail layout shell.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: the shell contributes the page's sole `main`; the project\n  hero and authored body are English by default, while localized navigation,\n  CTA, and related-project chrome keep the selected UI language\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-layout\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectDetailLayout",
@@ -77688,7 +78149,12 @@
           "donnyTarget": {
             "optional": true,
             "type": "string",
-            "description": "Donny site action target id for the project main landmark"
+            "description": "Donny site action target id for the project article"
+          },
+          "lang": {
+            "optional": true,
+            "type": "string",
+            "description": "Language of the case-study content"
           }
         },
         "propRelationships": [],
@@ -77724,7 +78190,7 @@
           "CaseStudySummary"
         ],
         "prefersOver": [],
-        "declaredPropCount": 8,
+        "declaredPropCount": 9,
         "guidelines": [
           {
             "level": "should",
@@ -81496,7 +81962,7 @@
           "hard-code the language list. The `languages` array is the single source of truth — adding Finnish swedish (lol) means editing the array and adding the `langXX` / `langXX_ariaLabel` i18n keys."
         ]
       },
-      "spec": "# SiteHeader\n\n## Intent\nCarry the brand identity, primary navigation, and the visitor-facing\npreference controls (theme, language) for every page. SiteHeader is\nintentionally a *pattern* — it composes atoms (IconButton, NavLink,\nContainer) and external hooks (i18n, theme, toast) into one shipping\nunit so consumers don't reinvent the global header per route.\n\n## Interaction contract\n- Keyboard: Tab walks logo → each desktop nav link → each language\n  button (skipping the currently active one) → theme toggle →\n  hamburger (mobile only). Enter / Space activates buttons; Enter\n  on the logo / nav links navigates.\n- Pointer: hovering the logo triggers the pulse animation; clicking\n  navigates. Clicking the hamburger opens MobileDrawer (which has\n  its own focus trap). Click on a disabled language button does\n  nothing.\n- Screen readers: the banner landmark announces; the nav inside\n  announces its translated label. Theme / language changes announce\n  via the global Toast live region.\n\n## Do / don't\n- Do: mount once globally. The scroll listener and sticky behaviour\n  assume a single instance.\n- Do: pass `navItems` with translated labels' *keys*, not the\n  resolved strings. The component runs the labels through `t()` so\n  language switching works without a remount.\n- Don't: tamper with the IconButton variants. The header's theme\n  cycle uses `variant=\"ghost\"` to stay transparent at scroll-top;\n  a filled variant would defeat the layered surface treatment.\n- Don't: nest a `<header>` inside SiteHeader. Multiple banner\n  landmarks confuse AT users.\n- Don't: hard-code the language list. The `languages` array is the\n  single source of truth — adding Finnish swedish (lol) means\n  editing the array and adding the `langXX` / `langXX_ariaLabel`\n  i18n keys.\n\n## Design notes\n- Tokens: scrolled state uses `--color-background-90` (background\n  with 90% opacity) plus `backdrop-blur(...)`. Border is\n  `--color-border` on scroll, transparent otherwise. Height is\n  20rem (h-20). Container is `size=\"lg\"`.\n- Figma: https://www.figma.com/design/digitaltableteur/site-header —\n  default and scrolled states; mobile drawer is a separate file.\n- Theme cycle order is `light → dark → hcb → hcw → light` (defined\n  in `usePersistentTheme`). The IconButton's icon swaps based on\n  active theme via the `themeIcons` map; HCB and HCW both use the\n  `CircleHalf` icon since they're paired high-contrast modes.\n- Toast announcements use the *target* language for language changes\n  so the user immediately confirms the switch worked. Theme toasts\n  use the current i18n language (which is unchanged by a theme\n  change).\n- The MobileDrawer is rendered outside the `<header>` element\n  intentionally — otherwise the drawer would inherit the header's\n  transparent backdrop and look broken.\n",
+      "spec": "# SiteHeader\n\n## Intent\nCarry the brand identity, primary navigation, and the visitor-facing\npreference controls (theme, language) for every page. SiteHeader is\nintentionally a *pattern* — it composes atoms (IconButton, NavLink,\nContainer) and external hooks (i18n, theme, toast) into one shipping\nunit so consumers don't reinvent the global header per route.\n\n## Interaction contract\n- Keyboard: Tab walks the visible logo, desktop navigation, language\n  disclosure, theme control and mobile menu control. Enter / Space opens\n  disclosures; language selection or Escape returns focus to the trigger.\n  Enter on the logo or navigation links navigates.\n- Pointer: hovering the logo triggers the pulse animation; clicking\n  navigates. Clicking the hamburger opens MobileDrawer (which has\n  its own focus trap). Click on a disabled language button does\n  nothing.\n- Screen readers: the banner landmark announces; the nav inside\n  announces its translated label. Theme / language changes announce\n  via the global Toast live region.\n\n## Do / don't\n- Do: mount once globally. The scroll listener and sticky behaviour\n  assume a single instance.\n- Do: pass `navItems` with translated labels' *keys*, not the\n  resolved strings. The component runs the labels through `t()` so\n  language switching works without a remount.\n- Don't: tamper with the IconButton variants. The header's theme\n  cycle uses `variant=\"ghost\"` to stay transparent at scroll-top;\n  a filled variant would defeat the layered surface treatment.\n- Don't: nest a `<header>` inside SiteHeader. Multiple banner\n  landmarks confuse AT users.\n- Don't: hard-code the language list. The `languages` array is the\n  single source of truth — adding Finnish swedish (lol) means\n  editing the array and adding the `langXX` / `langXX_ariaLabel`\n  i18n keys.\n\n## Design notes\n- The header is sticky in ordinary viewports. At heights of 480 CSS pixels\n  or less it scrolls in normal flow, leaving space for focused page controls\n  when the nonmodal cookie banner is also visible.\n- Tokens: scrolled state uses `--color-background-90` (background\n  with 90% opacity) plus `backdrop-blur(...)`. Border is\n  `--color-border` on scroll, transparent otherwise. Height is\n  5rem (h-20). Container is `size=\"lg\"`.\n- Figma: https://www.figma.com/design/digitaltableteur/site-header —\n  default and scrolled states; mobile drawer is a separate file.\n- Theme cycle order is `light → dark → hcb → hcw → light` (defined\n  in `usePersistentTheme`). The IconButton's icon swaps based on\n  active theme via the `themeIcons` map; HCB and HCW both use the\n  `CircleHalf` icon since they're paired high-contrast modes.\n- Toast announcements use the *target* language for language changes\n  so the user immediately confirms the switch worked. Theme toasts\n  use the current i18n language (which is unchanged by a theme\n  change).\n- The MobileDrawer is rendered outside the `<header>` element\n  intentionally — otherwise the drawer would inherit the header's\n  transparent backdrop and look broken.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SiteHeader",

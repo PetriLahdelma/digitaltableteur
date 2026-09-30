@@ -21,7 +21,7 @@
     - link "privacy policy":
       - /url: /privacy-policy
     - text: .
-  - button "Submit" [disabled]
+  - button "Submit"
 - img "Portrait of Petri Lahdelma"
 - heading "New Business Inquiries" [level=2]
 - paragraph: Petri Lahdelma

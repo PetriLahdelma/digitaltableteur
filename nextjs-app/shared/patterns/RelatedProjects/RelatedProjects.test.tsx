@@ -46,9 +46,11 @@ describe("RelatedProjects", () => {
   it("links released projects to their case studies", () => {
     render(<RelatedProjects currentSlug="anything" />);
 
+    const link = screen.getByRole("link", { name: /shipped project/i });
+    expect(link).toHaveAttribute("href", "/work/shipped-project");
     expect(
-      screen.getByRole("link", { name: /shipped project/i }),
-    ).toHaveAttribute("href", "/work/shipped-project");
+      screen.getByRole("heading", { name: "Shipped Project" }),
+    ).toHaveAttribute("lang", "en");
   });
 
   it("renders coming-soon projects as non-interactive teasers", () => {
@@ -57,9 +59,8 @@ describe("RelatedProjects", () => {
     expect(
       screen.queryByRole("link", { name: /teaser project/i }),
     ).not.toBeInTheDocument();
-    expect(
-      document.querySelector('a[href="/work/teaser-project"]'),
-    ).toBeNull();
+    expect(document.querySelector('a[href="/work/teaser-project"]')).toBeNull();
     expect(screen.getByText("Coming soon")).toBeInTheDocument();
+    expect(screen.getByText("Coming soon")).not.toHaveAttribute("lang", "en");
   });
 });

@@ -244,7 +244,10 @@
   background-color: #2b2f33;
 }
 
-.logoRevealCaption {
+/* Keep the caption paired with this fixed dark brand surface even when
+   production bundles load the shared Text styles later than page styles. */
+
+.logoRevealSection .logoRevealCaption {
   padding-inline: var(--space-layout-16);
   text-align: center;
   color: #fff;

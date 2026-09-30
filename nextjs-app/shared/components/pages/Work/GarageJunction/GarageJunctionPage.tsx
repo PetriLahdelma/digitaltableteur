@@ -175,6 +175,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.videoContainer}>
           <video
             aria-label="Garage Junction promotional video with original sound design"
+            aria-describedby="garage-junction-video-description"
             controls
             playsInline
             poster="/images/portfolio/garage_junction/gallery/gj_horiz@2x.webp"
@@ -189,9 +190,17 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             />
             Your browser does not support the video tag.
           </video>
-          <p className={styles.videoCaption}>
-            Promotional video with original sound design and motion graphics
-          </p>
+          <Text
+            as="p"
+            size="s"
+            id="garage-junction-video-description"
+            className={styles.videoCaption}
+          >
+            Visual content: a static promotional card shows a white G in an
+            orange square above the blue text Garage Junction and October 13th.
+            A white cross sits in a blue band below. The card stays on screen
+            throughout the video.
+          </Text>
         </div>
       </section>
 

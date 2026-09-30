@@ -35,6 +35,8 @@ export interface ChatComposerProps {
   onValueChange: (value: string) => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onReset?: () => void;
+  /** Interrupts a streaming reply without discarding the conversation. */
+  onStop?: () => void;
   isSending: boolean;
   maxLength?: number;
   minRows?: number; // controls initial height
@@ -63,6 +65,7 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
       onValueChange,
       onSubmit,
       onReset,
+      onStop,
       isSending,
       maxLength = 1_000,
     },
@@ -79,6 +82,8 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
     // Visible label; resolvedSendLabel stays the accessible name and
     // contains it, satisfying WCAG 2.5.3 Label in Name.
     const sendButtonText = t("chatSendLabel", "Send");
+    const canStop = isSending && Boolean(onStop);
+    const stopLabel = t("chatStop", "Stop response");
     const resetLabel = t("chatReset", "Clear");
     const resetAriaLabel = t("chatResetAria", "Clear conversation");
     const resetShortcutTitle = t(
@@ -122,11 +127,10 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
               minRows={1}
               maxRows={6}
               maxLength={maxLength}
-              disabled={isSending}
-              aria-live="polite"
+              readOnly={isSending}
               ref={textAreaRef}
               onKeyDown={(e) => {
-                if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && !isSending) {
                   // Trigger submit programmatically while preserving normal Enter behavior for newlines.
                   const form = e.currentTarget.form;
                   if (form) {
@@ -155,15 +159,16 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
               }}
             />
               <Button
-                type="submit"
+                type={canStop ? "button" : "submit"}
                 className={styles.sendButton}
-                aria-label={resolvedSendLabel}
-                disabled={isSending || !(value ?? "").trim()}
-                icon={<Icon name="paper-plane-tilt" size="sm" />}
+                aria-label={canStop ? stopLabel : resolvedSendLabel}
+                onClick={canStop ? onStop : undefined}
+                disabled={!canStop && (isSending || !(value ?? "").trim())}
+                icon={<Icon name={canStop ? "stop" : "paper-plane-tilt"} size="sm" />}
                 variant="tertiary"
                 size="md"
               >
-                {sendButtonText}
+                {canStop ? t("chatStopLabel", "Stop") : sendButtonText}
               </Button>
             </div>
             <div className={styles.hintRow}>

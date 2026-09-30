@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useId } from "react";
 import Image from "next/image";
 import { cn } from "../../lib/cn";
 import { gsap, useGSAP } from "../../lib/gsap";
@@ -67,6 +67,7 @@ export function ProjectHero({
   const isSplit = variant === "split";
   const hasVideo = Boolean(video?.src);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const scrollTargetId = `project-content-${useId().replaceAll(":", "")}`;
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -118,9 +119,8 @@ export function ProjectHero({
             <video
               ref={videoRef}
               aria-label={video!.alt}
-              autoPlay
-              loop
-              muted
+              controls
+              preload="metadata"
               playsInline
               poster={video!.poster}
               className="absolute inset-0 w-full h-full object-cover"
@@ -261,9 +261,8 @@ export function ProjectHero({
                 <video
                   ref={videoRef}
                   aria-label={video!.alt}
-                  autoPlay
-                  loop
-                  muted
+                  controls
+                  preload="metadata"
                   playsInline
                   poster={video!.poster}
                   className="w-full h-auto object-cover"
@@ -271,9 +270,7 @@ export function ProjectHero({
                   <source
                     src={video!.src}
                     type={
-                      video!.src.endsWith(".webm")
-                        ? "video/webm"
-                        : "video/mp4"
+                      video!.src.endsWith(".webm") ? "video/webm" : "video/mp4"
                     }
                   />
                 </video>
@@ -419,9 +416,8 @@ export function ProjectHero({
                   <video
                     ref={videoRef}
                     aria-label={video!.alt}
-                    autoPlay
-                    loop
-                    muted
+                    controls
+                    preload="metadata"
                     playsInline
                     poster={video!.poster}
                     className="w-full h-auto object-cover"
@@ -453,9 +449,14 @@ export function ProjectHero({
         )}
       </Container>
 
+      <div id={scrollTargetId} className="scroll-mt-24" aria-hidden="true" />
+
       {/* Scroll indicator */}
       {showScrollIndicator && (
-        <ScrollIndicator className={cn("z-20", isFullWidth && "text-white")} />
+        <ScrollIndicator
+          targetId={scrollTargetId}
+          className={cn("z-20", isFullWidth && "text-white")}
+        />
       )}
     </Section>
   );

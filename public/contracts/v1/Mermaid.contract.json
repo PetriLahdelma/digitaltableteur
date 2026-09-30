@@ -1,0 +1,251 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "Mermaid",
+  "status": "alpha",
+  "description": "Renders a Mermaid diagram with a concise accessible name, prose summary, and visible structured text alternative.",
+  "props": {
+    "chart": {
+      "type": "string",
+      "optional": false,
+      "description": "Mermaid diagram source"
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "Concise meaningful name for the diagram"
+    },
+    "description": {
+      "type": "string",
+      "optional": false,
+      "description": "Short prose summary of the diagram purpose and relationships"
+    },
+    "accessibleDetails": {
+      "type": "ReactNode",
+      "optional": false,
+      "description": "Structured or prose equivalent of every material relationship in the diagram"
+    },
+    "detailsLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Label for the visible text-alternative disclosure"
+    },
+    "caption": {
+      "type": "string",
+      "optional": true,
+      "description": "Optional visible figure caption"
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional className for the figure"
+    },
+    "themeColors": {
+      "type": "MermaidThemeColors",
+      "optional": true,
+      "description": "Diagram color overrides"
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-default.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.379Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-default.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:27.474Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-example.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.842Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-example.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:27.955Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-forced-colors.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:00.070Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-forced-colors.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:28.192Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-playground.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.615Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-playground.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:27.720Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-default.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.379Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-default.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:51.221Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-default.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:27.474Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-example.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.842Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-example.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:51.667Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-example.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:27.955Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-forced-colors.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:00.070Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-forced-colors.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:51.896Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-forced-colors.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:28.192Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-playground.dark.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:59.615Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-playground.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:51.450Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-playground.light.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:07:27.720Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-default.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:51.221Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-example.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:51.667Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-forced-colors.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:51.896Z",
+            "passed": true
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Mermaid/__a11y-evidence__/media-mermaid-playground.forced-colors.json",
+            "sourceCommit": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
+            "capturedAt": "2026-09-27T06:08:51.450Z",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "Marked reviewed, but no review date was recorded."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/Mermaid/Mermaid.module.css",
+    "../../../nextjs-app/shared/components/Mermaid/Mermaid.tsx"
+  ]
+}

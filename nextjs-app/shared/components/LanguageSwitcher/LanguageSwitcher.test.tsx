@@ -28,9 +28,15 @@ function renderSwitcher(currentLang = "en") {
 describe("LanguageSwitcher", () => {
   it("shows only the current language by default", () => {
     renderSwitcher("en");
-    expect(screen.getByRole("button", { name: /english/i })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /^finnish$/i })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /^swedish$/i })).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /english/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /^finnish$/i }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /^swedish$/i }),
+    ).not.toBeInTheDocument();
   });
 
   it("fans out other languages on trigger click", async () => {
@@ -53,8 +59,8 @@ describe("LanguageSwitcher", () => {
     expect(trigger).toHaveAttribute("aria-current", "true");
     expect(trigger).toHaveAttribute("aria-expanded", "false");
     expect(controlsId).toBeTruthy();
-    expect(document.getElementById(controlsId as string)).toHaveTextContent(
-      /show language options/i,
+    expect(document.getElementById(controlsId as string)).toHaveAttribute(
+      "data-language-options",
     );
 
     await user.click(trigger);
@@ -62,9 +68,11 @@ describe("LanguageSwitcher", () => {
     expect(trigger).toHaveAttribute("aria-current", "true");
     expect(trigger).toHaveAttribute("aria-expanded", "true");
     expect(trigger).toHaveAttribute("aria-controls", controlsId);
-    expect(document.getElementById(controlsId as string)).toHaveTextContent(
-      /hide language options/i,
+    expect(document.getElementById(controlsId as string)).toHaveAttribute(
+      "aria-hidden",
+      "false",
     );
+    expect(trigger).toHaveAccessibleName(/EN.*English.*Hide language options/i);
   });
 
   // Backs the audit:controls effect exemptions for the open-tray class props:
@@ -101,7 +109,23 @@ describe("LanguageSwitcher", () => {
     await user.click(screen.getByRole("button", { name: /^finnish$/i }));
 
     expect(onLanguageChange).toHaveBeenCalledWith("fi");
-    expect(screen.queryByRole("button", { name: /^swedish$/i })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /^swedish$/i }),
+    ).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /english/i })).toHaveFocus();
+  });
+
+  it("collapses on Escape and restores focus to the visible trigger", async () => {
+    renderSwitcher("en");
+    const user = userEvent.setup();
+    const trigger = screen.getByRole("button", { name: /english/i });
+    await user.click(trigger);
+    screen.getByRole("button", { name: /^finnish$/i }).focus();
+
+    await user.keyboard("{Escape}");
+
+    expect(trigger).toHaveFocus();
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
   });
 
   it("guards the button color transition under prefers-reduced-motion", () => {

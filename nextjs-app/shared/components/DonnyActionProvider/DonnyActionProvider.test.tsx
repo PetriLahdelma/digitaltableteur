@@ -1,4 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   applyDonnyHighlightAttributes,
   clearDonnyHighlightAttributes,
@@ -10,9 +13,28 @@ import {
   resolveHighlightMode,
   waitForDonnyTarget,
 } from "./donnyActionUtils";
-import { dispatchDonnyContactPrefill, DONNY_PREFILL_CONTACT_EVENT } from "./donnyContactPrefill";
+import {
+  dispatchDonnyContactPrefill,
+  DONNY_PREFILL_CONTACT_EVENT,
+} from "./donnyContactPrefill";
 
 describe("donnyActionUtils", () => {
+  it("keeps spotlight and target highlight motion finite", () => {
+    const here = dirname(fileURLToPath(import.meta.url));
+    const moduleCss = readFileSync(
+      join(here, "DonnyActionProvider.module.css"),
+      "utf8",
+    );
+    const targetCss = readFileSync(
+      join(here, "donny-target-highlights.css"),
+      "utf8",
+    );
+
+    expect(`${moduleCss}\n${targetCss}`).not.toMatch(
+      /animation:[^;]*\binfinite\b/,
+    );
+  });
+
   it("normalizes paths without query or hash", () => {
     expect(normalizeDonnyPath("/pricing?pkg=ux")).toBe("/pricing");
     expect(normalizeDonnyPath("/work#proof")).toBe("/work");
@@ -94,7 +116,9 @@ describe("donnyActionUtils", () => {
   });
 
   it("resolves fallback targets from registry", () => {
-    const resolved = resolveDonnyTargetWithFallback("pricing.package.designSystemLiftOff");
+    const resolved = resolveDonnyTargetWithFallback(
+      "pricing.package.designSystemLiftOff",
+    );
     expect(resolved?.route).toBe("/pricing");
     expect(resolved?.selector).toContain("pricing.package.designSystemLiftOff");
   });

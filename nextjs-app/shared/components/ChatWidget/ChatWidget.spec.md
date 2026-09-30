@@ -10,18 +10,29 @@ guardrails, and its email-handoff flow — because every consumer of
 
 ## Interaction contract
 
-- Keyboard: Tab reaches the floating toggle. Enter / Space toggles
-  the panel. Inside the panel, Tab walks composer → send button →
-  message list (which is scrollable but not individually
-  tab-stoppable). Escape closes the panel.
+- Keyboard: Tab reaches the floating toggle. Enter / Space opens the panel
+  and focuses the composer. Tab follows the rendered controls; Shift+Tab
+  reaches the transcript and header. Escape closes and restores launcher focus.
+- The visually hidden open-state launcher is excluded from Tab and the
+  accessibility tree. Moving focus out of the nonmodal panel closes it without
+  stealing focus from the destination, so background controls stay unobscured.
 - Pointer: click on the toggle opens / closes. Click outside the
-  panel does _not_ close (the panel is non-modal). Click on a
+  panel closes it (the panel is non-modal). Click on a
   message bubble does nothing unless it carries an action; the
   email-workflow bubbles expose explicit buttons.
 - Screen readers: the toggle's `aria-expanded` reflects state. The
   message log uses `role="log"` with a polite live region and remains
   `aria-busy` while a reply streams, so assistive technology receives
   the completed response instead of repeated partial-text mutations.
+- Each conversation turn has a visible speaker label and a named group.
+- While streaming, the composer remains focusable and read-only; Stop response
+  interrupts generation without closing the conversation. Scrolling back through
+  older messages suspends automatic following until the user returns to the end.
+- The panel scrolls as a whole when space is short, including at 320×256 CSS
+  pixels with text-spacing overrides. No minimum panel height exceeds the viewport.
+- When consent is unresolved in a viewport no taller than 480 CSS pixels,
+  the closed launcher participates in document flow instead of floating over
+  navigation. It remains reachable without requiring a cookie choice.
 
 ## Do / don't
 
@@ -41,10 +52,9 @@ guardrails, and its email-handoff flow — because every consumer of
 ## Design notes
 
 - Tokens: toggle uses `Button variant="primary"` with a custom
-  fixed-position wrapper. Panel surface uses
-  `--color-surface-elevated`; bubbles use `--color-primary-surface`
-  (user) and `--color-surface-muted` (assistant). Radius is
-  `--radius-lg` for the panel; bubbles use `--radius-md`.
+  fixed-position wrapper. The opaque panel uses
+  `--main-body-background-color` and `--radius-xl`; text and controls use
+  semantic theme tokens so background content cannot bleed through them.
 - Figma: https://www.figma.com/design/digitaltableteur/chat-widget
   — closed, open, streaming, and email-workflow frames.
 - Endpoint resolution lives in `resolveChatApiEndpoint`:

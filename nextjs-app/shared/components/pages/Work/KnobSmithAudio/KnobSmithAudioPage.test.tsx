@@ -21,4 +21,19 @@ describe("KnobSmithAudioPage", () => {
       screen.getByRole("link", { name: /Back to work/i }),
     ).toBeInTheDocument();
   });
+
+  it("requires user action to play its interface demonstrations", () => {
+    const { container } = renderWithProviders(<KnobSmithAudioPage />);
+    const videos = Array.from(container.querySelectorAll("video"));
+    const controlledVideos = Array.from(
+      container.querySelectorAll("video[controls]"),
+    );
+
+    expect(controlledVideos).toHaveLength(3);
+    for (const video of videos) {
+      expect(video).toHaveAttribute("preload", "metadata");
+      expect(video).not.toHaveAttribute("autoplay");
+      expect(video).not.toHaveAttribute("loop");
+    }
+  });
 });

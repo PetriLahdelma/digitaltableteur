@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Text } from "@digitaltableteur/react";
+import { Text, Title } from "@digitaltableteur/react";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
@@ -19,7 +19,11 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("tulli");
 
   if (!project) {
-    return <div>Project not found</div>;
+    return (
+      <Title as="h1" size="xxs" lang="en">
+        Project not found
+      </Title>
+    );
   }
 
   return (
@@ -45,7 +49,12 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
       className={styles.page}
     >
       <ProjectMetaSection
-        services={["UX Design", "Service Design", "Interaction Design", "Design System"]}
+        services={[
+          "UX Design",
+          "Service Design",
+          "Interaction Design",
+          "Design System",
+        ]}
         duration="2016"
         tools={[
           { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
@@ -87,8 +96,8 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
             The service defines clear roles for enterprise users: individual
             users, reporters responsible for Intrastat reporting, and agents
             acting on behalf of companies. Login and role selection are critical
-            entry points into the service, paired with language selection and
-            an anonymous front page for first-time visitors.
+            entry points into the service, paired with language selection and an
+            anonymous front page for first-time visitors.
           </Text>,
           <Text key="p2" size="s">
             Case tracking is anchored by the Ilmoitukset view, where recent

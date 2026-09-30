@@ -89,8 +89,17 @@ describe("ReviewSummary", () => {
 
   it("renders review heading", () => {
     render(<ReviewSummary draft={mockDraft} dispatch={vi.fn()} />);
+    expect(screen.getByText(/emailWorkflow.review.title/i)).toBeInTheDocument();
+  });
+
+  it("moves focus to the review heading on mount", () => {
+    render(<ReviewSummary draft={mockDraft} dispatch={vi.fn()} />);
+
     expect(
-      screen.getByText(/emailWorkflow.review.title/i),
-    ).toBeInTheDocument();
+      screen.getByRole("heading", {
+        name: /emailWorkflow.review.title/i,
+        level: 4,
+      }),
+    ).toHaveFocus();
   });
 });
