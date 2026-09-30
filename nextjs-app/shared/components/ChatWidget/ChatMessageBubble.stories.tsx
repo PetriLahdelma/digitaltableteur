@@ -5,6 +5,8 @@ import type { ProcessedMessage } from "@dt/ChatWidget/messageProcessor";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
+import Text from "@dt/Text";
+import styles from "./ChatMessageBubble.stories.module.css";
 
 const assistantMessage: ProcessedMessage = {
   id: "assistant-1",
@@ -82,17 +84,10 @@ export const WithWorkflowUI: Story = {
   args: {
     message: assistantMessage,
     workflowUI: (
-      <div
-        style={{
-          marginTop: "1rem",
-          padding: "1rem",
-          border: "1px dashed #ccc",
-          borderRadius: "8px",
-        }}
-      >
-        <p style={{ margin: 0, fontSize: "0.9rem", color: "#666" }}>
+      <div className={styles.workflowPlaceholder}>
+        <Text as="p" size="s" className={styles.workflowPlaceholderText}>
           Email workflow UI would appear here
-        </p>
+        </Text>
       </div>
     ),
   },

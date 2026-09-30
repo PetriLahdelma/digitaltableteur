@@ -1,0 +1,11 @@
+.workflowPlaceholder {
+  padding: var(--space-internal-16);
+  margin-block-start: var(--space-internal-16);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.workflowPlaceholderText.workflowPlaceholderText {
+  margin: 0;
+  color: var(--color-muted-foreground);
+}
