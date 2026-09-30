@@ -1,0 +1,26 @@
+- status: Work in progress (alpha)
+- 'heading "Compliance: 11/11" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: All 5 files present TypeScript strict
+- img "Pass"
+- text: Proper typing with ProcessedMessage Translation support
+- img "Pass"
+- text: Uses i18n for thinking state CSS Modules
+- img "Pass"
+- text: No inline styles Design tokens
+- img "Pass"
+- text: Uses CSS custom properties Logical properties
+- img "Pass"
+- text: Uses gap and logical spacing Theme support
+- img "Pass"
+- text: CSS custom properties throughout Component composition
+- img "Pass"
+- text: Uses MarkdownMessage component Accessibility
+- img "Pass"
+- text: Semantic HTML with role attributes Storybook stories
+- img "Pass"
+- text: Multiple variants Tests
+- img "Pass"
+- text: Test file exists
+- separator "Resize table"

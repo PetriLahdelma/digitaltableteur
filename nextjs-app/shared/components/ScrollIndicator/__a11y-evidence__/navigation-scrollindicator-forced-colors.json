@@ -1,8 +1,8 @@
 {
   "storyId": "navigation-scrollindicator-forced-colors",
   "mode": "light",
-  "sourceSHA": "8187e69ddf8f738917a8fa10204b62800553147a",
-  "capturedAt": "2026-09-27T05:44:55.669Z",
+  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
+  "capturedAt": "2026-09-30T06:09:39.229Z",
   "runner": null,
   "checks": {
     "accessibility-tree": {

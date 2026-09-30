@@ -1,16 +1,12 @@
 {
   "storyId": "site-chatwidget-chat-text-area-demo",
   "mode": "light",
-  "sourceSHA": "b6fdf69106dfde043c347ab17440ddf20fbcca56",
-  "capturedAt": "2026-09-27T06:28:06.511Z",
+  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
+  "capturedAt": "2026-09-30T06:10:59.733Z",
   "runner": null,
   "checks": {
     "accessibility-tree": {
       "passed": true
-    },
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
     }
   }
 }

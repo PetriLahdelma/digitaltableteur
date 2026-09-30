@@ -5,8 +5,7 @@
   - banner:
     - paragraph:
       - text: Digitaltableteur
-      - status "Outside open hours"
-      - text: Studio offline
+      - status "Available now"
     - heading "Meet Donny" [level=2]
     - paragraph: This Storybook preview simulates the chat flow.
     - button "Minimize chat":
@@ -32,8 +31,7 @@
   - banner:
     - paragraph:
       - text: Digitaltableteur
-      - status "Outside open hours"
-      - text: Studio offline
+      - status "Available now"
     - heading "Meet Donny" [level=2]
     - paragraph: This Storybook preview simulates the chat flow.
     - button "Minimize chat":

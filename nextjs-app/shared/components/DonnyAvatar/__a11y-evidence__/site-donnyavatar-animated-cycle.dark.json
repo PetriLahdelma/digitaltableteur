@@ -1,8 +1,8 @@
 {
   "storyId": "site-donnyavatar-animated-cycle",
   "mode": "dark",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:07:50.537Z",
+  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
+  "capturedAt": "2026-09-30T06:11:41.928Z",
   "runner": null,
   "checks": {
     "accessibility-tree": {

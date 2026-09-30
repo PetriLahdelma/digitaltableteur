@@ -1,0 +1,16 @@
+{
+  "storyId": "site-chat-aiprocessingstate-vercel-ai-sdk-integration",
+  "mode": "light",
+  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
+  "capturedAt": "2026-09-30T06:11:16.191Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

@@ -1,6 +1,6 @@
 - img "Donny is idle":
   - img
-- button "idle"
+- button "idle" [pressed]
 - button "listening"
 - button "thinking"
 - button "searching"
