@@ -188,6 +188,15 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
             caption:
               "Landscape theme, same moment: icons over an original Nordic photograph. Same labels, same states, same order.",
           },
+          {
+            type: "image",
+            src: "/images/portfolio/ring-stats/theme-holographic-v1.webp",
+            alt: "Holographic theme: dark score rings and labels over a marbled pastel iridescent background, with Resilience enabled and battery at 53%",
+            width: 1360,
+            height: 526,
+            caption:
+              "Holographic theme: the marbled finish from the app icon, with dark ink kept for contrast.",
+          },
         ]}
       />
 
