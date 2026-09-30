@@ -15,6 +15,9 @@ import { ClaudeIcon } from "../../../AskAI/ai-icons";
 
 import styles from "./ringStats.module.css";
 
+// i18n exemption: /work case studies are English-only editorial content,
+// matching every other page under pages/Work (only the work index is
+// translated). Route chrome and nav stay translated via NextLayout.
 export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("ring-stats");
 
