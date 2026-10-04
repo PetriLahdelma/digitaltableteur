@@ -867,6 +867,14 @@
                     "minLength": 1
                 }
             }
+        },
+        "temporal": {
+            "$ref": "https://www.digitaltableteur.com/schemas/contract-spec/extensions/temporal.schema.json",
+            "description": "Temporal UX contract (RFC 0001 draft, packages/contract-spec/rfcs): timed transitions, validity windows and interruption guarantees, each a claim with a verification mode. Exported as x-temporal; the open checker verifies that each automated claim's test exists and names the claim id. Timing values come from nextjs-app/shared/lib/temporal.ts."
+        },
+        "consequence": {
+            "$ref": "https://www.digitaltableteur.com/schemas/contract-spec/extensions/consequence.schema.json",
+            "description": "Consequence contract (RFC 0001 draft): the class of each action (reversible, irreversible, external, financial, privacy, identity) and the confirmation, recovery and authentication it requires. Exported as x-consequence; the open checker holds every policy and action to its class floor."
         }
     },
     "$defs": {

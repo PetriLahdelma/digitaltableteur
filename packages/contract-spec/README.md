@@ -46,7 +46,26 @@ promise, so the weakest stable component sets the score.
 | `--root <dir>` | contract's directory | Base for relative evidence paths. |
 | `--git-freshness` | off | Also treat evidence as stale when the contract's `source` files changed after the evidence commit. |
 | `--suffix <s>` | `.contract.json` | Contract file suffix. |
+| `--strict-extensions` | off | Also exit 1 when a known draft extension (`x-temporal`, `x-consequence`) has findings. |
+| `--test-root <dir>` | cwd | Base for `test` paths in extension claims. |
 | `--json` | off | Full report on stdout. |
+
+## Draft extensions: time and consequence
+
+[RFC 0001](./rfcs/0001-temporal-and-consequence.md) proposes two optional
+blocks, shipped as `x-` extensions so every 1.0 contract stays valid:
+
+- **`x-temporal`**: what a component does on its own over time (after 10 s
+  with no reply, say so), how long a state stays valid (Undo lasts 10 s), and
+  what survives an interruption (a failed send keeps the draft).
+- **`x-consequence`**: what an action does to the world (`reversible`,
+  `irreversible`, `external`, `financial`, `privacy`, `identity`) and the
+  confirmation, recovery and authentication that class needs.
+
+Every entry is a claim with a verification mode. An `automated` claim names a
+test file, and the checker fails it when the file is missing or no longer
+mentions the claim id. Extension findings never change the 1.0 level; use
+`--strict-extensions` to gate on them. Schemas: `schema/extensions/`.
 
 ## Evaluate usage rules
 

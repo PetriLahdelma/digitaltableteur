@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-09-30T12:51:52.975Z",
+  "generatedAt": "2026-10-04T13:56:36.870Z",
   "summary": {
     "componentCount": 180,
     "statusCounts": {
@@ -695,10 +695,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -1298,10 +1310,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -1632,10 +1656,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -2072,10 +2108,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -2545,10 +2593,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -2921,10 +2981,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -3263,10 +3335,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -3713,10 +3797,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -4313,10 +4409,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -4772,10 +4880,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -5498,10 +5618,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -6008,10 +6140,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -6506,10 +6650,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -6900,10 +7056,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -7402,10 +7570,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -7781,6 +7961,19 @@
             "optional": true,
             "type": "string",
             "description": "Native tooltip text; also used as an accessible-name fallback for icon-only buttons."
+          },
+          "consequence": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "reversible",
+              "irreversible",
+              "external",
+              "financial",
+              "privacy",
+              "identity"
+            ],
+            "description": "Class of action this button performs. `irreversible` requires\n`tone=\"error\"` and an explicit confirmation step; `external` (sends\nsomething to someone) requires a review step; `reversible` requires an\nundo. Rendered as `data-consequence` for tests and audits."
           }
         },
         "forbiddenUse": [
@@ -7810,6 +8003,45 @@
             "reason": "An icon-only button has no accessible name. Add accessibleName, accessibleNameRef, or tooltip, e.g. <Button icon=\"search\" accessibleName=\"Search\" />.",
             "severity": "error",
             "evidence": "Button.tsx development warning (isIconOnly && !hasAccessibleName)"
+          },
+          {
+            "id": "button-irreversible-needs-error-tone",
+            "when": {
+              "consequence": {
+                "equals": "irreversible"
+              },
+              "tone": {
+                "oneOf": [
+                  "neutral",
+                  "info",
+                  "success",
+                  "warning"
+                ]
+              }
+            },
+            "forbid": [
+              "tone"
+            ],
+            "reason": "An irreversible action must read as destructive before it is activated. Use tone=\"error\", e.g. <Button consequence=\"irreversible\" tone=\"error\">Delete</Button>.",
+            "severity": "error",
+            "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
+          },
+          {
+            "id": "button-irreversible-tone-missing",
+            "when": {
+              "consequence": {
+                "equals": "irreversible"
+              },
+              "tone": {
+                "absent": true
+              }
+            },
+            "requireAllOf": [
+              "tone"
+            ],
+            "reason": "An irreversible action defaults to the neutral tone, which hides its consequence. Set tone=\"error\".",
+            "severity": "error",
+            "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
           }
         ],
         "prefersOver": [
@@ -7857,6 +8089,71 @@
             "children": 24
           },
           "notes": "FI and SV labels run 20-30% longer than EN. The 24-char ceiling is measured on the longest locale, not on EN."
+        },
+        "temporal": {
+          "transitions": [
+            {
+              "id": "pending-locks-immediately",
+              "statement": "When clickAction returns a promise, the button is disabled and sets aria-busy on the same render, and repeat activations while pending do not call clickAction again.",
+              "from": "pending",
+              "to": "locked",
+              "afterMs": 0,
+              "guarantees": [
+                "no-duplicate-action",
+                "announced"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/Button/Button.temporal.test.tsx"
+            },
+            {
+              "id": "pending-settles",
+              "statement": "When the pending promise resolves or rejects, the button returns to idle; a rejection never leaves it disabled.",
+              "from": "pending",
+              "to": "idle",
+              "on": "settled",
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/Button/Button.temporal.test.tsx"
+            }
+          ]
+        },
+        "consequence": {
+          "prop": "consequence",
+          "policies": {
+            "reversible": {
+              "confirmation": "none",
+              "recovery": "undo",
+              "rationale": "Offer undo instead of asking first. Confirming routine actions trains people to click through the confirmations that matter."
+            },
+            "irreversible": {
+              "confirmation": "explicit",
+              "recovery": "none",
+              "tone": "error",
+              "rule": "button-irreversible-needs-error-tone",
+              "rationale": "A separate confirming action names what will be destroyed; the label says Delete, never Remove (see content.terminology)."
+            },
+            "external": {
+              "confirmation": "review",
+              "recovery": "none",
+              "rationale": "Sending cannot be recalled. Show exactly what will be sent, to whom, next to the button that sends it."
+            },
+            "financial": {
+              "confirmation": "explicit",
+              "recovery": "none",
+              "authentication": "step-up",
+              "rationale": "Restate the amount and the payee in the confirming action."
+            },
+            "privacy": {
+              "confirmation": "review",
+              "recovery": "none",
+              "rationale": "Show which personal data leaves the user's own view, and to whom, before it does."
+            },
+            "identity": {
+              "confirmation": "explicit",
+              "recovery": "none",
+              "authentication": "recent",
+              "rationale": "Credential and ownership changes are the usual target of account takeover; require a recent sign-in."
+            }
+          }
         }
       },
       "spec": "# Button\n\n## Intent\nProvide the canonical \"act\" or \"navigate-as-action\" affordance for the site.\nButton is the primary control consumers reach for when they want a user to do\nsomething: submit a form, open a flow, head somewhere intentional. Two\northogonal axes encode meaning without parallel components: `variant` sets\nvisual weight (primary / secondary / tertiary) and `tone` sets semantic colour\n(neutral / error / warning / success / info).\n\n## Interaction contract\n- Keyboard: Enter and Space activate; tab order follows DOM order. The\n  component never traps or rebinds keys.\n- Pointer: hover feedback is gated to fine pointers; `:active` gives a\n  `scale(0.97)` press confirmation; loading suppresses interaction.\n- Screen readers: accessible name resolves from `accessibleName`,\n  `accessibleNameRef`, or visible `children`; `aria-busy` is announced while\n  loading; `aria-disabled` is announced in link mode (anchor) when disabled.\n  `surface` is purely visual and adds no screen-reader semantics.\n\n## Do / don't\n- Do: use `submits` (not raw `type=\"submit\"`) so form submission is grep-able.\n- Do: pass `href` to render the same visual as an anchor when the destination\n  is a URL, not a handler.\n- Do: compose destructive actions as `variant` + `tone=\"error\"` rather than a\n  bespoke variant.\n- Do (must): provide `accessibleName` on icon-only buttons -- a control with no\n  accessible name is announced as \"button\" with no purpose, which fails WCAG 4.1.2.\n- Don't (must): pair an icon-only button with a tooltip as the *only* accessible\n  name -- tooltips don't fire on touch, so the name does not exist on mobile at all.\n- Don't (must): nest a Button inside another interactive control -- nested\n  interactive elements produce an ambiguous accessibility tree and swallow clicks.\n- Don't: use a Button for inline navigation in body copy. Use **Link**.\n\n## Design notes\n- Colour: a single `--btn-accent` (with `--btn-on-accent`) drives every\n  variant/tone pairing; `tone` only recolours the accent, so the variant x tone\n  matrix stays consistent. Filled `primary` darkens on hover via\n  `filter: brightness`; `secondary` / `tertiary` tint via `color-mix`.\n- Motion: easing and duration come from `--ease-*` / `--duration-*` tokens;\n  transitions name explicit properties (no `transition: all`); the `:active`\n  press and movement are suppressed under `prefers-reduced-motion`.\n- Surface: `surface=\"onDark\" | \"onBrand\"` swaps to contrast-safe colours via\n  static CSS, with no ancestor background sampling.\n- Spacing: `--space-internal-*`; radius `--radius-lg` (pill in rounded mode).\n- Size: `sm | md | lg`; touch targets grow to at least 44px under\n  `(width <= 768px)`.\n- Figma: keep variant/tone naming aligned with the Figma component set so\n  designer handoff is mechanical.\n",
@@ -8066,6 +8363,19 @@
             "optional": true,
             "type": "string",
             "description": "Native tooltip text; also used as an accessible-name fallback for icon-only buttons."
+          },
+          "consequence": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "reversible",
+              "irreversible",
+              "external",
+              "financial",
+              "privacy",
+              "identity"
+            ],
+            "description": "Class of action this button performs. `irreversible` requires\n`tone=\"error\"` and an explicit confirmation step; `external` (sends\nsomething to someone) requires a review step; `reversible` requires an\nundo. Rendered as `data-consequence` for tests and audits."
           }
         },
         "propRelationships": [
@@ -8122,6 +8432,45 @@
             "reason": "An icon-only button has no accessible name. Add accessibleName, accessibleNameRef, or tooltip, e.g. <Button icon=\"search\" accessibleName=\"Search\" />.",
             "severity": "error",
             "evidence": "Button.tsx development warning (isIconOnly && !hasAccessibleName)"
+          },
+          {
+            "id": "button-irreversible-needs-error-tone",
+            "when": {
+              "consequence": {
+                "equals": "irreversible"
+              },
+              "tone": {
+                "oneOf": [
+                  "neutral",
+                  "info",
+                  "success",
+                  "warning"
+                ]
+              }
+            },
+            "forbid": [
+              "tone"
+            ],
+            "reason": "An irreversible action must read as destructive before it is activated. Use tone=\"error\", e.g. <Button consequence=\"irreversible\" tone=\"error\">Delete</Button>.",
+            "severity": "error",
+            "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
+          },
+          {
+            "id": "button-irreversible-tone-missing",
+            "when": {
+              "consequence": {
+                "equals": "irreversible"
+              },
+              "tone": {
+                "absent": true
+              }
+            },
+            "requireAllOf": [
+              "tone"
+            ],
+            "reason": "An irreversible action defaults to the neutral tone, which hides its consequence. Set tone=\"error\".",
+            "severity": "error",
+            "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
           }
         ],
         "variants": {
@@ -8209,7 +8558,7 @@
           "raw button",
           "Link for in-copy navigation"
         ],
-        "declaredPropCount": 19,
+        "declaredPropCount": 20,
         "guidelines": [
           {
             "level": "should",
@@ -8419,6 +8768,16 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": {
@@ -8454,6 +8813,71 @@
             "children": 24
           },
           "notes": "FI and SV labels run 20-30% longer than EN. The 24-char ceiling is measured on the longest locale, not on EN."
+        },
+        "temporal": {
+          "transitions": [
+            {
+              "id": "pending-locks-immediately",
+              "statement": "When clickAction returns a promise, the button is disabled and sets aria-busy on the same render, and repeat activations while pending do not call clickAction again.",
+              "from": "pending",
+              "to": "locked",
+              "afterMs": 0,
+              "guarantees": [
+                "no-duplicate-action",
+                "announced"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/Button/Button.temporal.test.tsx"
+            },
+            {
+              "id": "pending-settles",
+              "statement": "When the pending promise resolves or rejects, the button returns to idle; a rejection never leaves it disabled.",
+              "from": "pending",
+              "to": "idle",
+              "on": "settled",
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/Button/Button.temporal.test.tsx"
+            }
+          ]
+        },
+        "consequence": {
+          "prop": "consequence",
+          "policies": {
+            "reversible": {
+              "confirmation": "none",
+              "recovery": "undo",
+              "rationale": "Offer undo instead of asking first. Confirming routine actions trains people to click through the confirmations that matter."
+            },
+            "irreversible": {
+              "confirmation": "explicit",
+              "recovery": "none",
+              "tone": "error",
+              "rule": "button-irreversible-needs-error-tone",
+              "rationale": "A separate confirming action names what will be destroyed; the label says Delete, never Remove (see content.terminology)."
+            },
+            "external": {
+              "confirmation": "review",
+              "recovery": "none",
+              "rationale": "Sending cannot be recalled. Show exactly what will be sent, to whom, next to the button that sends it."
+            },
+            "financial": {
+              "confirmation": "explicit",
+              "recovery": "none",
+              "authentication": "step-up",
+              "rationale": "Restate the amount and the payee in the confirming action."
+            },
+            "privacy": {
+              "confirmation": "review",
+              "recovery": "none",
+              "rationale": "Show which personal data leaves the user's own view, and to whom, before it does."
+            },
+            "identity": {
+              "confirmation": "explicit",
+              "recovery": "none",
+              "authentication": "recent",
+              "rationale": "Credential and ownership changes are the usual target of account takeover; require a recent sign-in."
+            }
+          }
         }
       }
     },
@@ -8855,10 +9279,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -9676,10 +10112,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -10171,10 +10619,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -10892,10 +11352,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -10980,6 +11452,102 @@
         "dense": "Collapsible site assistant (Donny) chat widget: streaming replies, tool actions, i18n, mobile sheet behavior",
         "usage": {
           "description": "The site's collapsible assistant widget: streaming chat with Donny, grapheme-safe burst smoothing for the active reply, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
+        },
+        "temporal": {
+          "transitions": [
+            {
+              "id": "slow-response-acknowledged",
+              "statement": "A request with no first token after the acknowledge-delay threshold shows a polite status saying it is taking longer than usual, next to the Stop control; the notice clears as soon as the reply starts or the request ends.",
+              "from": "submitted",
+              "to": "slow",
+              "afterMs": 10000,
+              "threshold": "acknowledgeDelayMs",
+              "guarantees": [
+                "announced"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            }
+          ],
+          "validity": [
+            {
+              "id": "clear-undo-window",
+              "statement": "After Clear, the previous transcript can be restored with Undo for the undo-window threshold; sending a new message or the window ending makes the clear final.",
+              "state": "cleared",
+              "staleAfterMs": 10000,
+              "threshold": "undoWindowMs",
+              "then": "finalize",
+              "guarantees": [
+                "announced"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            }
+          ],
+          "interruptions": [
+            {
+              "id": "transcript-survives-navigation",
+              "statement": "The transcript is kept in sessionStorage and restored when the widget mounts again in the same tab, including after a reload, so leaving and returning does not lose the conversation. Nothing is written to storage until the restore has run, so the first render cannot overwrite it.",
+              "event": "navigation",
+              "preserve": [
+                "transcript"
+              ],
+              "then": "resume",
+              "guarantees": [
+                "state-preserved"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            },
+            {
+              "id": "unreachable-endpoint-retries-once",
+              "statement": "When a request fails before reaching a server (failed to fetch or 404), the widget switches to the alternate endpoint and resends the last message once; a request that reached a server is never resent automatically.",
+              "event": "request-failed",
+              "then": "retry-once",
+              "guarantees": [
+                "no-duplicate-action"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            },
+            {
+              "id": "email-draft-kept-on-send-error",
+              "statement": "If sending the email fails, the draft is kept so the person can edit or retry without retyping.",
+              "event": "request-failed",
+              "preserve": [
+                "email draft"
+              ],
+              "then": "resume",
+              "guarantees": [
+                "state-preserved",
+                "user-confirms-retry"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            }
+          ]
+        },
+        "consequence": {
+          "actions": [
+            {
+              "id": "clear-undo-window",
+              "class": "reversible",
+              "statement": "Clear empties the conversation and offers Undo for ten seconds.",
+              "confirmation": "none",
+              "recovery": "undo",
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            },
+            {
+              "id": "email-send-reviewed",
+              "class": "external",
+              "statement": "Donny sends an email to the studio only from the review step, which lists every field that will be sent; a repeated Send while sending does nothing.",
+              "confirmation": "review",
+              "recovery": "none",
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            }
+          ]
         }
       },
       "spec": "# ChatWidget\n\n## Intent\n\nProvide a persistent, floating AI assistant for site visitors that\ndoesn't take up layout space until invoked. ChatWidget is opinionated\non purpose — it owns its endpoint resolution, its storage, its\nguardrails, and its email-handoff flow — because every consumer of\n\"AI chat on a Next.js site\" has the same dozen problems to solve.\n\n## Interaction contract\n\n- Keyboard: Tab reaches the floating toggle. Enter / Space opens the panel\n  and focuses the composer. Tab follows the rendered controls; Shift+Tab\n  reaches the transcript and header. Escape closes and restores launcher focus.\n- The visually hidden open-state launcher is excluded from Tab and the\n  accessibility tree. Moving focus out of the nonmodal panel closes it without\n  stealing focus from the destination, so background controls stay unobscured.\n- Pointer: click on the toggle opens / closes. Click outside the\n  panel closes it (the panel is non-modal). Click on a\n  message bubble does nothing unless it carries an action; the\n  email-workflow bubbles expose explicit buttons.\n- Screen readers: the toggle's `aria-expanded` reflects state. The\n  message log uses `role=\"log\"` with a polite live region and remains\n  `aria-busy` while a reply streams, so assistive technology receives\n  the completed response instead of repeated partial-text mutations.\n- Each conversation turn has a visible speaker label and a named group.\n- While streaming, the composer remains focusable and read-only; Stop response\n  interrupts generation without closing the conversation. Scrolling back through\n  older messages suspends automatic following until the user returns to the end.\n- The panel scrolls as a whole when space is short, including at 320×256 CSS\n  pixels with text-spacing overrides. No minimum panel height exceeds the viewport.\n- When consent is unresolved in a viewport no taller than 480 CSS pixels,\n  the closed launcher participates in document flow instead of floating over\n  navigation. It remains reachable without requiring a cookie choice.\n\n## Do / don't\n\n- Do: mount once globally in the layout. The widget is designed for\n  a single global instance.\n- Do: rely on the env-resolved endpoint for normal use. Override only\n  for preview deployments or partner contexts.\n- Don't: gate the widget behind user authentication. The widget is\n  for anonymous visitors; auth-gated chat is a different pattern.\n- Don't: store chat history in cookies or persistent `localStorage`.\n  The current storage is `sessionStorage`, so the browser copy ends with the\n  tab session and never travels with a request.\n- Don't: tamper with the email-workflow reducer state from outside.\n  The reducer has invariants (e.g. \"review can only follow\n  compose\") that direct mutation breaks.\n\n## Design notes\n\n- Tokens: toggle uses `Button variant=\"primary\"` with a custom\n  fixed-position wrapper. The opaque panel uses\n  `--main-body-background-color` and `--radius-xl`; text and controls use\n  semantic theme tokens so background content cannot bleed through them.\n- Figma: https://www.figma.com/design/digitaltableteur/chat-widget\n  — closed, open, streaming, and email-workflow frames.\n- Endpoint resolution lives in `resolveChatApiEndpoint`:\n  1. Explicit `endpoint` prop wins.\n  2. `VITE_DONNY_CHAT_ENDPOINT` env var second.\n  3. For trusted hosts (`digitaltableteur.com`, subdomains) or\n     local-like hosts (localhost, 127.0.0.1, RFC1918), use\n     `${origin}/api/chat`.\n  4. Otherwise fall back to the public production endpoint.\n- Email workflow is a separate reducer (`emailWorkflowReducer`)\n  with states `idle | compose | field:<key> | review | send`.\n  Each state has its own UI sub-component (`ComposePrompt`,\n  `FieldPrompt`, `ReviewSummary`, `SendStatus`) so the main widget\n  stays lean.\n- Storage key is `dt-donny-chat-v2` in `sessionStorage`. Persistent\n  `localStorage` values from `dt-donny-chat-v2` and `dt-donny-chat` are\n  deleted on mount rather than migrated.\n- The open panel identifies Donny as an AI assistant before the first user\n  message, keeps a limitations/data notice visible, and links to the AI-use\n  statement and problem-reporting route.\n- Assistant message containers expose `data-ai-generated=\"true\"`,\n  `data-ai-output-type=\"text\"`, and `data-ai-system=\"donny\"`. These are\n  application metadata, not a substitute for validating any standardised\n  provider-level content-marking obligation.\n- Guardrails are applied via `processConversationWithFlags`, which\n  runs after every assistant response and can flip flags (e.g.\n  \"user is angry\" or \"user asked for human\"). Flags drive UI\n  decisions like surfacing the email-handoff prompt.\n- The active assistant text part consumes the public `useStreamingText`\n  utility. It smooths bursty accumulated chunks for sighted users,\n  preserves grapheme clusters, bypasses animation for reduced motion,\n  and snaps to the complete response when streaming ends. Historical\n  assistant messages and user messages never enter the reveal loop.\n",
@@ -11271,10 +11839,116 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": {
+          "transitions": [
+            {
+              "id": "slow-response-acknowledged",
+              "statement": "A request with no first token after the acknowledge-delay threshold shows a polite status saying it is taking longer than usual, next to the Stop control; the notice clears as soon as the reply starts or the request ends.",
+              "from": "submitted",
+              "to": "slow",
+              "afterMs": 10000,
+              "threshold": "acknowledgeDelayMs",
+              "guarantees": [
+                "announced"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            }
+          ],
+          "validity": [
+            {
+              "id": "clear-undo-window",
+              "statement": "After Clear, the previous transcript can be restored with Undo for the undo-window threshold; sending a new message or the window ending makes the clear final.",
+              "state": "cleared",
+              "staleAfterMs": 10000,
+              "threshold": "undoWindowMs",
+              "then": "finalize",
+              "guarantees": [
+                "announced"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            }
+          ],
+          "interruptions": [
+            {
+              "id": "transcript-survives-navigation",
+              "statement": "The transcript is kept in sessionStorage and restored when the widget mounts again in the same tab, including after a reload, so leaving and returning does not lose the conversation. Nothing is written to storage until the restore has run, so the first render cannot overwrite it.",
+              "event": "navigation",
+              "preserve": [
+                "transcript"
+              ],
+              "then": "resume",
+              "guarantees": [
+                "state-preserved"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            },
+            {
+              "id": "unreachable-endpoint-retries-once",
+              "statement": "When a request fails before reaching a server (failed to fetch or 404), the widget switches to the alternate endpoint and resends the last message once; a request that reached a server is never resent automatically.",
+              "event": "request-failed",
+              "then": "retry-once",
+              "guarantees": [
+                "no-duplicate-action"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            },
+            {
+              "id": "email-draft-kept-on-send-error",
+              "statement": "If sending the email fails, the draft is kept so the person can edit or retry without retyping.",
+              "event": "request-failed",
+              "preserve": [
+                "email draft"
+              ],
+              "then": "resume",
+              "guarantees": [
+                "state-preserved",
+                "user-confirms-retry"
+              ],
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            }
+          ]
+        },
+        "consequence": {
+          "actions": [
+            {
+              "id": "clear-undo-window",
+              "class": "reversible",
+              "statement": "Clear empties the conversation and offers Undo for ten seconds.",
+              "confirmation": "none",
+              "recovery": "undo",
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            },
+            {
+              "id": "email-send-reviewed",
+              "class": "external",
+              "statement": "Donny sends an email to the studio only from the review step, which lists every field that will be sent; a repeated Send while sending does nothing.",
+              "confirmation": "review",
+              "recovery": "none",
+              "verification": "automated",
+              "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+            }
+          ]
+        }
       }
     },
     {
@@ -11900,10 +12574,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -12437,10 +13123,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -12733,10 +13431,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -13196,10 +13906,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -13697,10 +14419,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -14287,10 +15021,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -14737,10 +15483,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -15122,10 +15880,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -15483,10 +16253,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -15811,10 +16593,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -16697,10 +17491,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -16977,10 +17783,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -17664,10 +18482,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -17987,10 +18817,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -18369,10 +19211,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -18784,10 +19638,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -19399,10 +20265,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -19706,10 +20584,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -20242,10 +21132,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -20824,10 +21726,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -21320,10 +22234,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -21960,10 +22886,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -22509,10 +23447,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -23023,10 +23973,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -23500,10 +24462,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -23886,10 +24860,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -24307,10 +25293,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -25044,10 +26042,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -25470,10 +26480,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -26000,10 +27022,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -26703,10 +27737,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -27384,10 +28430,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -27776,10 +28834,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -28212,10 +29282,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -28729,10 +29811,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -29241,10 +30335,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -29701,6 +30807,16 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": {
@@ -29725,7 +30841,9 @@
             "caption": 120
           },
           "notes": "Every image needs a real alt. A caption does not substitute for one: captions are visible to everyone, alt text carries the description for AT."
-        }
+        },
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -30305,10 +31423,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -30686,10 +31816,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -31300,10 +32442,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -31849,10 +33003,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -32280,10 +33446,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -32796,10 +33974,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -33117,10 +34307,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -33501,10 +34703,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -33870,10 +35084,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -34529,10 +35755,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -34947,10 +36185,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -35767,6 +37017,16 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": {
@@ -35791,7 +37051,9 @@
             "title": 48
           },
           "notes": "Title is the AT announcement. Keep it a noun phrase naming what opened, never a full sentence."
-        }
+        },
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -36373,10 +37635,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -36876,10 +38150,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -37191,10 +38477,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -37563,10 +38861,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -37862,10 +39172,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -38172,10 +39494,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -38642,10 +39976,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -39138,10 +40484,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -40189,10 +41547,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -40624,6 +41994,16 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": {
@@ -40631,7 +42011,9 @@
           "lastReviewed": "2026-07-23",
           "note": "The Primary Studio reference informed the compact modular format, while original 5x5 vector cell-grid artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
         },
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -41162,10 +42544,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -41665,10 +43059,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -42155,10 +43561,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -42613,10 +44031,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -43066,10 +44496,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -43578,10 +45020,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -43958,10 +45412,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -44390,10 +45856,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -44898,10 +46376,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -45595,6 +47085,16 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": {
@@ -45619,7 +47119,9 @@
             "label": 24
           },
           "notes": "The label is optional. When omitted the control still needs an accessible name naming the destination."
-        }
+        },
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -46168,10 +47670,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -46505,10 +48019,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -46975,10 +48501,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -47535,10 +49073,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -47941,10 +49491,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -48208,10 +49770,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -48616,10 +50190,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -48904,10 +50490,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -49317,10 +50915,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -49837,10 +51447,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -50240,10 +51862,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -50814,6 +52448,16 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": {
@@ -50838,7 +52482,9 @@
             "label": 24
           },
           "notes": "The label is required and is the control's accessible name. The icon disc is decorative."
-        }
+        },
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -51305,10 +52951,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -51722,10 +53380,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -52139,10 +53809,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -52609,10 +54291,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -53178,10 +54872,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -54081,10 +55787,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -54650,10 +56368,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -55220,10 +56950,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -55760,10 +57502,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -56164,10 +57918,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -56670,10 +58436,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -57067,10 +58845,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -57430,10 +59220,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -58039,10 +59841,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -58368,10 +60182,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -58962,10 +60788,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -59454,10 +61292,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -60230,10 +62080,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -60602,10 +62464,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -61213,10 +63087,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -61836,10 +63722,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -62538,10 +64436,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -62979,10 +64889,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -63458,10 +65380,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -63855,10 +65789,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -64452,10 +66398,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -64910,10 +66868,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -65423,10 +67393,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -65797,10 +67779,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -66121,10 +68115,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -66447,10 +68453,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -66895,10 +68913,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -67224,10 +69254,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -67534,10 +69576,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -67902,10 +69956,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -68257,10 +70323,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -68592,10 +70670,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -68946,10 +71036,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -69321,10 +71423,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -69808,10 +71922,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -70121,10 +72247,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -70487,10 +72625,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -70818,10 +72968,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -71276,10 +73438,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -71603,10 +73777,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -71974,10 +74160,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -72297,10 +74495,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -72559,10 +74769,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -73103,10 +75325,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -73627,10 +75861,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -74514,10 +76760,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -74956,10 +77214,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -75275,10 +77545,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -75604,10 +77886,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -76007,10 +78301,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -76608,10 +78914,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -77043,10 +79361,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -77425,10 +79755,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -77926,10 +80268,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -78350,10 +80704,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -78683,10 +81049,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -79162,10 +81540,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -79590,10 +81980,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -79942,10 +82344,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -80247,10 +82661,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -80621,10 +83047,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -81061,10 +83499,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -81452,10 +83902,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -81834,10 +84296,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -82252,10 +84726,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -82556,10 +85042,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -83143,10 +85641,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -83607,10 +86117,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -83973,10 +86495,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -84256,10 +86790,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -84555,10 +87101,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -84903,10 +87461,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     },
     {
@@ -85293,10 +87863,22 @@
             "origin": "derived",
             "authorship": "mixed",
             "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
           }
         },
         "governance": null,
-        "content": null
+        "content": null,
+        "temporal": null,
+        "consequence": null
       }
     }
   ]

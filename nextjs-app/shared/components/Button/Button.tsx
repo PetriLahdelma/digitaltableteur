@@ -17,6 +17,20 @@ export type ButtonSurface = "default" | "onDark" | "onBrand";
 /** Control size scale. */
 export type ButtonSize = "sm" | "md" | "lg";
 
+/**
+ * What activating the button does to the world (consequence contract, see
+ * packages/contract-spec/rfcs/0001). Not a visual prop: it declares the class
+ * of action so contracts, agents and reviews can hold the surrounding flow to
+ * that class's policy (undo, review, explicit confirmation).
+ */
+export type ButtonConsequence =
+  | "reversible"
+  | "irreversible"
+  | "external"
+  | "financial"
+  | "privacy"
+  | "identity";
+
 const TONE_TO_STATUS: Partial<Record<ButtonTone, SemanticStatus>> = {
   error: "error",
   warning: "warning",
@@ -54,6 +68,13 @@ interface BaseButtonProps {
   accessibleDescription?: string;
   /** Native tooltip text; also used as an accessible-name fallback for icon-only buttons. */
   tooltip?: string;
+  /**
+   * Class of action this button performs. `irreversible` requires
+   * `tone="error"` and an explicit confirmation step; `external` (sends
+   * something to someone) requires a review step; `reversible` requires an
+   * undo. Rendered as `data-consequence` for tests and audits.
+   */
+  consequence?: ButtonConsequence;
 }
 
 /** Button rendered as a native `<button>`. */
@@ -121,6 +142,7 @@ const Button = React.forwardRef<
       accessibleNameRef,
       accessibleDescription,
       tooltip,
+      consequence,
       className = "",
       ...rest
     },
@@ -143,6 +165,13 @@ const Button = React.forwardRef<
         tooltip ||
         ariaLabelFromRest
       );
+      if (consequence === "irreversible" && tone !== "error") {
+        // eslint-disable-next-line no-console
+        console.warn(
+          '[Button] consequence="irreversible" requires tone="error", so the ' +
+            "action reads as destructive before it is activated.",
+        );
+      }
       if (isIconOnly && !hasAccessibleName) {
         // eslint-disable-next-line no-console
         console.warn(
@@ -216,6 +245,7 @@ const Button = React.forwardRef<
       "aria-describedby": accessibleDescription || undefined,
       "aria-busy": isLoading || undefined,
       title: tooltip || undefined,
+      "data-consequence": consequence,
     };
 
     const content = (

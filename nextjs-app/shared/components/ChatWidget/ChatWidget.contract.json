@@ -55,5 +55,101 @@
   "dense": "Collapsible site assistant (Donny) chat widget: streaming replies, tool actions, i18n, mobile sheet behavior",
   "usage": {
     "description": "The site's collapsible assistant widget: streaming chat with Donny, grapheme-safe burst smoothing for the active reply, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
+  },
+  "temporal": {
+    "transitions": [
+      {
+        "id": "slow-response-acknowledged",
+        "statement": "A request with no first token after the acknowledge-delay threshold shows a polite status saying it is taking longer than usual, next to the Stop control; the notice clears as soon as the reply starts or the request ends.",
+        "from": "submitted",
+        "to": "slow",
+        "afterMs": 10000,
+        "threshold": "acknowledgeDelayMs",
+        "guarantees": [
+          "announced"
+        ],
+        "verification": "automated",
+        "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+      }
+    ],
+    "validity": [
+      {
+        "id": "clear-undo-window",
+        "statement": "After Clear, the previous transcript can be restored with Undo for the undo-window threshold; sending a new message or the window ending makes the clear final.",
+        "state": "cleared",
+        "staleAfterMs": 10000,
+        "threshold": "undoWindowMs",
+        "then": "finalize",
+        "guarantees": [
+          "announced"
+        ],
+        "verification": "automated",
+        "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+      }
+    ],
+    "interruptions": [
+      {
+        "id": "transcript-survives-navigation",
+        "statement": "The transcript is kept in sessionStorage and restored when the widget mounts again in the same tab, including after a reload, so leaving and returning does not lose the conversation. Nothing is written to storage until the restore has run, so the first render cannot overwrite it.",
+        "event": "navigation",
+        "preserve": [
+          "transcript"
+        ],
+        "then": "resume",
+        "guarantees": [
+          "state-preserved"
+        ],
+        "verification": "automated",
+        "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+      },
+      {
+        "id": "unreachable-endpoint-retries-once",
+        "statement": "When a request fails before reaching a server (failed to fetch or 404), the widget switches to the alternate endpoint and resends the last message once; a request that reached a server is never resent automatically.",
+        "event": "request-failed",
+        "then": "retry-once",
+        "guarantees": [
+          "no-duplicate-action"
+        ],
+        "verification": "automated",
+        "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+      },
+      {
+        "id": "email-draft-kept-on-send-error",
+        "statement": "If sending the email fails, the draft is kept so the person can edit or retry without retyping.",
+        "event": "request-failed",
+        "preserve": [
+          "email draft"
+        ],
+        "then": "resume",
+        "guarantees": [
+          "state-preserved",
+          "user-confirms-retry"
+        ],
+        "verification": "automated",
+        "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+      }
+    ]
+  },
+  "consequence": {
+    "actions": [
+      {
+        "id": "clear-undo-window",
+        "class": "reversible",
+        "statement": "Clear empties the conversation and offers Undo for ten seconds.",
+        "confirmation": "none",
+        "recovery": "undo",
+        "verification": "automated",
+        "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+      },
+      {
+        "id": "email-send-reviewed",
+        "class": "external",
+        "statement": "Donny sends an email to the studio only from the review step, which lists every field that will be sent; a repeated Send while sending does nothing.",
+        "confirmation": "review",
+        "recovery": "none",
+        "verification": "automated",
+        "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+      }
+    ]
   }
 }

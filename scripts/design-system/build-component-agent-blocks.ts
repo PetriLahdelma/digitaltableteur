@@ -597,9 +597,15 @@ function main() {
         compositionRules: { origin: "derived", authorship: "mixed", from: "avoidWhen filter" },
         forbiddenUse: { origin: "derived", authorship: "mixed", from: "avoidWhen + replacement policy" },
         replacementFor: { origin: "derived", authorship: "mixed", from: "replacement policy" },
+        temporal: { origin: "authored", authorship: "human-authored", from: "contract.json" },
+        consequence: { origin: "authored", authorship: "human-authored", from: "contract.json" },
       },
       governance: contract.governance ?? null,
       content: contract.content ?? null,
+      /** RFC 0001: timed transitions, validity windows, interruption guarantees. */
+      temporal: contract.temporal ?? null,
+      /** RFC 0001: consequence classes and the treatment each requires. */
+      consequence: contract.consequence ?? null,
     };
   }
 

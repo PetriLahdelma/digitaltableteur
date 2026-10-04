@@ -23,14 +23,44 @@ export const LEVELS = [
 const SCHEMA_PATH = new URL("../schema/contract.schema.json", import.meta.url);
 export const schema = JSON.parse(readFileSync(SCHEMA_PATH, "utf8"));
 
+/**
+ * Extensions this checker understands (RFC 0001, draft). SPEC.md section 3
+ * lets checkers ignore unknown `x-` fields; a known one is validated, but its
+ * findings never change a 1.0 level (section 9), they are reported apart.
+ */
+const readSchema = (name) =>
+  JSON.parse(
+    readFileSync(
+      new URL(`../schema/extensions/${name}`, import.meta.url),
+      "utf8",
+    ),
+  );
+export const extensionSchemas = {
+  "x-temporal": readSchema("temporal.schema.json"),
+  "x-consequence": readSchema("consequence.schema.json"),
+};
+
+let ajvInstance = null;
+function ajv() {
+  if (!ajvInstance) {
+    ajvInstance = new Ajv2020({ allErrors: true, strict: false });
+    addFormats(ajvInstance);
+  }
+  return ajvInstance;
+}
+
 let compiled = null;
 function schemaValidator() {
-  if (!compiled) {
-    const ajv = new Ajv2020({ allErrors: true, strict: false });
-    addFormats(ajv);
-    compiled = ajv.compile(schema);
-  }
+  if (!compiled) compiled = ajv().compile(schema);
   return compiled;
+}
+
+const extensionValidators = {};
+function extensionValidator(key) {
+  if (!extensionValidators[key]) {
+    extensionValidators[key] = ajv().compile(extensionSchemas[key]);
+  }
+  return extensionValidators[key];
 }
 
 const SKIP_DIRECTORIES = new Set([".git", "node_modules", "dist", ".next"]);
@@ -273,7 +303,220 @@ export function checkContract(contract, options = {}) {
     if (criterion.verification in verification)
       verification[criterion.verification] += 1;
   }
-  return { level, findings, warnings, verification };
+  const extensions = checkExtensions(contract, {
+    now,
+    maxAgeDays,
+    testRoot: options.testRoot ?? process.cwd(),
+  });
+  return { level, findings, warnings, verification, extensions };
+}
+
+/** Consequence classes and the weakest treatment SPEC RFC 0001 allows each. */
+export const CONSEQUENCE_FLOORS = {
+  reversible: { recovery: ["undo", "inverse-action"] },
+  irreversible: { confirmation: "explicit" },
+  external: { confirmation: "review" },
+  financial: { confirmation: "explicit", recommendAuthentication: "step-up" },
+  privacy: { confirmation: "review" },
+  identity: { confirmation: "explicit", authentication: "recent" },
+};
+const CONFIRMATION_ORDER = ["none", "review", "explicit", "typed"];
+const AUTHENTICATION_ORDER = ["none", "recent", "step-up"];
+
+function atLeast(order, value, floor) {
+  return order.indexOf(value ?? order[0]) >= order.indexOf(floor);
+}
+
+/** Findings for a treatment (policy or action) weaker than its class floor. */
+function consequenceFloorFindings(label, consequenceClass, treatment) {
+  const floor = CONSEQUENCE_FLOORS[consequenceClass];
+  if (!floor) return { findings: [], warnings: [] };
+  const findings = [];
+  const warnings = [];
+  if (floor.recovery && !floor.recovery.includes(treatment.recovery)) {
+    findings.push(
+      `${label}: class "${consequenceClass}" needs recovery ${floor.recovery.join(" or ")}, has "${treatment.recovery ?? "none"}"`,
+    );
+  }
+  if (
+    floor.confirmation &&
+    !atLeast(CONFIRMATION_ORDER, treatment.confirmation, floor.confirmation)
+  ) {
+    findings.push(
+      `${label}: class "${consequenceClass}" needs confirmation "${floor.confirmation}" or stronger, has "${treatment.confirmation ?? "none"}"`,
+    );
+  }
+  if (
+    floor.authentication &&
+    !atLeast(
+      AUTHENTICATION_ORDER,
+      treatment.authentication,
+      floor.authentication,
+    )
+  ) {
+    findings.push(
+      `${label}: class "${consequenceClass}" needs authentication "${floor.authentication}" or stronger, has "${treatment.authentication ?? "none"}"`,
+    );
+  }
+  if (
+    floor.recommendAuthentication &&
+    !atLeast(
+      AUTHENTICATION_ORDER,
+      treatment.authentication,
+      floor.recommendAuthentication,
+    )
+  ) {
+    warnings.push(
+      `${label}: class "${consequenceClass}" should use authentication "${floor.recommendAuthentication}"`,
+    );
+  }
+  return { findings, warnings };
+}
+
+/**
+ * Check one verifiable extension claim: an automated claim must point at a
+ * test file that exists and names the claim id (so deleting or renaming the
+ * test breaks the claim); a manual claim must be recently reviewed.
+ */
+function claimFindings(label, claim, { now, maxAgeDays, testRoot }) {
+  const findings = [];
+  if (claim.verification === "automated" && typeof claim.test === "string") {
+    const path = isAbsolute(claim.test)
+      ? claim.test
+      : resolve(testRoot, claim.test);
+    if (!existsSync(path)) {
+      findings.push(`${label}: test ${claim.test} does not exist`);
+    } else if (!readFileSync(path, "utf8").includes(claim.id)) {
+      findings.push(
+        `${label}: test ${claim.test} does not name the claim id "${claim.id}"`,
+      );
+    }
+  }
+  if (claim.verification === "manual" && claim.reviewedAt) {
+    const reviewed = new Date(claim.reviewedAt);
+    if (
+      !Number.isNaN(reviewed.getTime()) &&
+      daysBetween(reviewed, now) > maxAgeDays
+    ) {
+      findings.push(
+        `${label}: manual review is ${Math.floor(daysBetween(reviewed, now))} days old (max ${maxAgeDays})`,
+      );
+    }
+  }
+  return findings;
+}
+
+/**
+ * Validate the extensions this checker understands. Returns findings that a
+ * caller may choose to enforce (`--strict-extensions`) and claim counts per
+ * verification mode; never affects the 1.0 conformance level.
+ *
+ * @param {object} contract
+ * @param {{ now?: Date, maxAgeDays?: number, testRoot?: string }} [options]
+ */
+export function checkExtensions(contract, options = {}) {
+  const context = {
+    now: options.now ?? new Date(),
+    maxAgeDays: options.maxAgeDays ?? DEFAULT_MAX_AGE_DAYS,
+    testRoot: options.testRoot ?? process.cwd(),
+  };
+  const present = Object.keys(extensionSchemas).filter(
+    (key) => contract?.[key] !== undefined,
+  );
+  const findings = [];
+  const warnings = [];
+  const claims = { automated: 0, manual: 0, unverified: 0 };
+  const count = (claim) => {
+    if (claim?.verification in claims) claims[claim.verification] += 1;
+  };
+
+  for (const key of present) {
+    const validate = extensionValidator(key);
+    if (!validate(contract[key])) {
+      for (const error of validate.errors ?? []) {
+        findings.push(`${key}${error.instancePath || ""} ${error.message}`);
+      }
+    }
+  }
+
+  const temporal = contract?.["x-temporal"];
+  if (temporal && typeof temporal === "object") {
+    const seen = new Set();
+    for (const group of ["transitions", "validity", "interruptions"]) {
+      for (const claim of temporal[group] ?? []) {
+        if (!claim || typeof claim !== "object") continue;
+        if (seen.has(claim.id))
+          findings.push(`x-temporal: duplicate claim id "${claim.id}"`);
+        seen.add(claim.id);
+        count(claim);
+        findings.push(
+          ...claimFindings(`x-temporal ${group} "${claim.id}"`, claim, context),
+        );
+      }
+    }
+  }
+
+  const consequence = contract?.["x-consequence"];
+  if (consequence && typeof consequence === "object") {
+    const ruleIds = new Set((contract.rules ?? []).map((rule) => rule.id));
+    if (consequence.prop) {
+      const prop = contract.props?.[consequence.prop];
+      if (!prop) {
+        findings.push(
+          `x-consequence: prop "${consequence.prop}" is not in props`,
+        );
+      } else if (prop.type !== "union" || !Array.isArray(prop.values)) {
+        findings.push(
+          `x-consequence: prop "${consequence.prop}" must be a union of consequence classes`,
+        );
+      } else {
+        for (const value of prop.values) {
+          if (!(value in CONSEQUENCE_FLOORS)) {
+            findings.push(
+              `x-consequence: prop value "${value}" is not a consequence class`,
+            );
+          } else if (!consequence.policies?.[value]) {
+            findings.push(
+              `x-consequence: class "${value}" is allowed by the prop but has no policy`,
+            );
+          }
+        }
+      }
+    }
+    for (const [consequenceClass, policy] of Object.entries(
+      consequence.policies ?? {},
+    )) {
+      const label = `x-consequence policy "${consequenceClass}"`;
+      const floor = consequenceFloorFindings(
+        label,
+        consequenceClass,
+        policy ?? {},
+      );
+      findings.push(...floor.findings);
+      warnings.push(...floor.warnings);
+      if (policy?.rule && !ruleIds.has(policy.rule)) {
+        findings.push(`${label}: rule "${policy.rule}" is not in rules`);
+      }
+    }
+    const seen = new Set();
+    for (const action of consequence.actions ?? []) {
+      if (!action || typeof action !== "object") continue;
+      const label = `x-consequence action "${action.id}"`;
+      if (seen.has(action.id))
+        findings.push(`x-consequence: duplicate action id "${action.id}"`);
+      seen.add(action.id);
+      count(action);
+      const floor = consequenceFloorFindings(label, action.class, action);
+      findings.push(...floor.findings);
+      warnings.push(...floor.warnings);
+      findings.push(...claimFindings(label, action, context));
+      if (action.rule && !ruleIds.has(action.rule)) {
+        findings.push(`${label}: rule "${action.rule}" is not in rules`);
+      }
+    }
+  }
+
+  return { present, findings, warnings, claims };
 }
 
 /**
@@ -322,6 +565,19 @@ export function checkSystem(files, options = {}) {
     for (const key of Object.keys(verification))
       verification[key] += entry.verification[key];
   }
+  const extensions = {
+    contracts: contracts.filter((entry) => entry.extensions?.present.length)
+      .length,
+    findings: contracts.reduce(
+      (sum, entry) => sum + (entry.extensions?.findings.length ?? 0),
+      0,
+    ),
+    claims: { automated: 0, manual: 0, unverified: 0 },
+  };
+  for (const entry of contracts) {
+    for (const key of Object.keys(extensions.claims))
+      extensions.claims[key] += entry.extensions?.claims[key] ?? 0;
+  }
   return {
     specVersion: SPEC_VERSION,
     checkedAt: (options.now ?? new Date()).toISOString(),
@@ -334,6 +590,7 @@ export function checkSystem(files, options = {}) {
       stable: stable.length,
       distribution,
       verification,
+      extensions,
     },
   };
 }

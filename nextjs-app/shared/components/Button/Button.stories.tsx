@@ -167,6 +167,16 @@ export default {
       description: "Native tooltip text; also a fallback accessible name for icon-only buttons.",
       table: { category: "Accessibility", type: { summary: "string" } },
     },
+    consequence: {
+      control: "select",
+      options: ["reversible", "irreversible", "external", "financial", "privacy", "identity"],
+      description:
+        "Class of action (RFC 0001 consequence contract). Not visual: declares what activating the button does, so the surrounding flow can be held to that class's policy. irreversible requires tone=\"error\" and an explicit confirmation.",
+      table: {
+        category: "Behavior",
+        type: { summary: "\"reversible\" | \"irreversible\" | \"external\" | \"financial\" | \"privacy\" | \"identity\"" },
+      },
+    },
     className: {
       control: "text",
       description: "Additional CSS classes merged onto the rendered element.",

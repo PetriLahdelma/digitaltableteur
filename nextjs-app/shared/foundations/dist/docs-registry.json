@@ -2164,8 +2164,8 @@
           "required": false
         },
         {
-          "name": "submits",
-          "type": "boolean",
+          "name": "consequence",
+          "type": "reversible | irreversible | external | financial | privacy | identity",
           "required": false
         }
       ],
@@ -2290,6 +2290,19 @@
           "optional": true,
           "type": "string",
           "description": "Native tooltip text; also used as an accessible-name fallback for icon-only buttons."
+        },
+        "consequence": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "reversible",
+            "irreversible",
+            "external",
+            "financial",
+            "privacy",
+            "identity"
+          ],
+          "description": "Class of action this button performs. `irreversible` requires\n`tone=\"error\"` and an explicit confirmation step; `external` (sends\nsomething to someone) requires a review step; `reversible` requires an\nundo. Rendered as `data-consequence` for tests and audits."
         }
       },
       "composesWith": [

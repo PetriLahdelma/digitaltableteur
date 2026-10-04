@@ -37,6 +37,7 @@ import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
 import { useDonnyChatLead } from "./useDonnyChatLead";
 import { useDonnyChatExpression } from "./useDonnyChatExpression";
 import { BEAT_MS, useDonnyChatBeats } from "./useDonnyChatBeats";
+import { TEMPORAL_THRESHOLDS, useElapsed } from "../../lib/temporal";
 
 export interface ChatWidgetProps {
   title?: string;
@@ -579,6 +580,26 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   const isStreaming = status === "submitted" || status === "streaming";
   const errorMessage = resolveErrorMessage(error);
+  // Temporal contract `slow-response-acknowledged`: a request with no first
+  // token after acknowledgeDelayMs is acknowledged in words, next to Stop.
+  const responseSlow = useElapsed(
+    status === "submitted",
+    TEMPORAL_THRESHOLDS.acknowledgeDelayMs,
+  );
+  // Temporal contract `clear-undo-window`: clearing keeps the previous
+  // transcript restorable for undoWindowMs, so Clear is undoable rather than
+  // irreversible (consequence class `reversible`).
+  const [clearedTranscript, setClearedTranscript] = useState<
+    UIMessage[] | null
+  >(null);
+  useEffect(() => {
+    if (!clearedTranscript) return;
+    const timer = setTimeout(
+      () => setClearedTranscript(null),
+      TEMPORAL_THRESHOLDS.undoWindowMs,
+    );
+    return () => clearTimeout(timer);
+  }, [clearedTranscript]);
 
   useDonnyChatNavigation(messages, status);
   useDonnyChatLead(messages, status);
@@ -657,8 +678,14 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       ? reactiveAvatarState
       : (forcedExpression ?? beat ?? reactiveAvatarState);
 
+  // The first render holds only the SSR-safe greeting. Persisting before the
+  // stored transcript is restored would overwrite it with that greeting (Strict
+  // Mode's double effect run makes this deterministic), so persistence waits
+  // for the restore effect to have run once.
+  const [restored, setRestored] = useState(false);
   useEffect(() => {
     const hydrated = loadStoredMessages(greetingText);
+    setRestored(true);
     if (!hydrated) return;
     setMessages((current) => {
       if (
@@ -757,7 +784,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || !restored) return;
     try {
       const serialized = toStoredMessages(messages, greetingText);
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(serialized));
@@ -766,7 +793,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     } catch {
       // ignore storage errors
     }
-  }, [messages, greetingText]);
+  }, [messages, greetingText, restored]);
 
   useEffect(() => {
     setMessages((previous) => {
@@ -879,6 +906,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
       lastUserMessageRef.current = trimmed;
       followTranscriptRef.current = true;
+      // A new message ends the undo window: restoring the old transcript now
+      // would silently discard this one.
+      setClearedTranscript(null);
       sendMessage({ text: trimmed });
       setDraft("");
     },
@@ -938,6 +968,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     dispatchEmailWorkflow({ type: "CANCEL" });
     playBeat("acknowledging", BEAT_MS.acknowledging);
     const resetMessages = [createGreetingMessage(greetingText)];
+    setClearedTranscript(messages.length > 1 ? messages : null);
     setMessages(resetMessages);
     setDraft("");
     clearError();
@@ -954,7 +985,14 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         // ignore storage errors
       }
     }
-  }, [stop, setMessages, clearError, greetingText, playBeat]);
+  }, [stop, setMessages, clearError, greetingText, playBeat, messages]);
+
+  const handleUndoClear = useCallback(() => {
+    if (!clearedTranscript) return;
+    setMessages(clearedTranscript);
+    setClearedTranscript(null);
+    composerRef.current?.focusInput();
+  }, [clearedTranscript, setMessages]);
 
   // Derive processed parts for trigger detection (non-render injection for now)
   // Email workflow trigger detection + assistant phrase injection
@@ -1111,7 +1149,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             emailWorkflow={emailWorkflow}
             dispatchEmailWorkflow={dispatchEmailWorkflow}
           />
-          {errorMessage && (
+          {errorMessage ? (
             <div
               className={styles.statusBanner}
               role="status"
@@ -1119,7 +1157,36 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             >
               {errorMessage}
             </div>
-          )}
+          ) : responseSlow ? (
+            <div
+              className={`${styles.statusBanner} ${styles.statusNeutral}`}
+              role="status"
+              aria-live="polite"
+              data-temporal="slow-response-acknowledged"
+            >
+              {t(
+                "chatSlowResponse",
+                "Still working on it. This is taking longer than usual; you can stop and try again.",
+              )}
+            </div>
+          ) : clearedTranscript ? (
+            <div
+              className={`${styles.statusBanner} ${styles.statusNeutral} ${styles.statusWithAction}`}
+              role="status"
+              aria-live="polite"
+              data-temporal="clear-undo-window"
+            >
+              <span>{t("chatCleared", "Conversation cleared.")}</span>
+              <Button
+                type="button"
+                variant="tertiary"
+                size="sm"
+                onClick={handleUndoClear}
+              >
+                {t("chatUndoClear", "Undo")}
+              </Button>
+            </div>
+          ) : null}
           <ChatComposer
             ref={composerRef}
             inputId="donny-input"

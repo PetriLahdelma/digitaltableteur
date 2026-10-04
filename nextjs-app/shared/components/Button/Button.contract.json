@@ -369,6 +369,19 @@
             "optional": true,
             "type": "string",
             "description": "Native tooltip text; also used as an accessible-name fallback for icon-only buttons."
+        },
+        "consequence": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "reversible",
+                "irreversible",
+                "external",
+                "financial",
+                "privacy",
+                "identity"
+            ],
+            "description": "Class of action this button performs. `irreversible` requires\n`tone=\"error\"` and an explicit confirmation step; `external` (sends\nsomething to someone) requires a review step; `reversible` requires an\nundo. Rendered as `data-consequence` for tests and audits."
         }
     },
     "forbiddenUse": [
@@ -398,6 +411,45 @@
             "reason": "An icon-only button has no accessible name. Add accessibleName, accessibleNameRef, or tooltip, e.g. <Button icon=\"search\" accessibleName=\"Search\" />.",
             "severity": "error",
             "evidence": "Button.tsx development warning (isIconOnly && !hasAccessibleName)"
+        },
+        {
+            "id": "button-irreversible-needs-error-tone",
+            "when": {
+                "consequence": {
+                    "equals": "irreversible"
+                },
+                "tone": {
+                    "oneOf": [
+                        "neutral",
+                        "info",
+                        "success",
+                        "warning"
+                    ]
+                }
+            },
+            "forbid": [
+                "tone"
+            ],
+            "reason": "An irreversible action must read as destructive before it is activated. Use tone=\"error\", e.g. <Button consequence=\"irreversible\" tone=\"error\">Delete</Button>.",
+            "severity": "error",
+            "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
+        },
+        {
+            "id": "button-irreversible-tone-missing",
+            "when": {
+                "consequence": {
+                    "equals": "irreversible"
+                },
+                "tone": {
+                    "absent": true
+                }
+            },
+            "requireAllOf": [
+                "tone"
+            ],
+            "reason": "An irreversible action defaults to the neutral tone, which hides its consequence. Set tone=\"error\".",
+            "severity": "error",
+            "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
         }
     ],
     "prefersOver": [
@@ -445,5 +497,70 @@
             "children": 24
         },
         "notes": "FI and SV labels run 20-30% longer than EN. The 24-char ceiling is measured on the longest locale, not on EN."
+    },
+    "temporal": {
+        "transitions": [
+            {
+                "id": "pending-locks-immediately",
+                "statement": "When clickAction returns a promise, the button is disabled and sets aria-busy on the same render, and repeat activations while pending do not call clickAction again.",
+                "from": "pending",
+                "to": "locked",
+                "afterMs": 0,
+                "guarantees": [
+                    "no-duplicate-action",
+                    "announced"
+                ],
+                "verification": "automated",
+                "test": "nextjs-app/shared/components/Button/Button.temporal.test.tsx"
+            },
+            {
+                "id": "pending-settles",
+                "statement": "When the pending promise resolves or rejects, the button returns to idle; a rejection never leaves it disabled.",
+                "from": "pending",
+                "to": "idle",
+                "on": "settled",
+                "verification": "automated",
+                "test": "nextjs-app/shared/components/Button/Button.temporal.test.tsx"
+            }
+        ]
+    },
+    "consequence": {
+        "prop": "consequence",
+        "policies": {
+            "reversible": {
+                "confirmation": "none",
+                "recovery": "undo",
+                "rationale": "Offer undo instead of asking first. Confirming routine actions trains people to click through the confirmations that matter."
+            },
+            "irreversible": {
+                "confirmation": "explicit",
+                "recovery": "none",
+                "tone": "error",
+                "rule": "button-irreversible-needs-error-tone",
+                "rationale": "A separate confirming action names what will be destroyed; the label says Delete, never Remove (see content.terminology)."
+            },
+            "external": {
+                "confirmation": "review",
+                "recovery": "none",
+                "rationale": "Sending cannot be recalled. Show exactly what will be sent, to whom, next to the button that sends it."
+            },
+            "financial": {
+                "confirmation": "explicit",
+                "recovery": "none",
+                "authentication": "step-up",
+                "rationale": "Restate the amount and the payee in the confirming action."
+            },
+            "privacy": {
+                "confirmation": "review",
+                "recovery": "none",
+                "rationale": "Show which personal data leaves the user's own view, and to whom, before it does."
+            },
+            "identity": {
+                "confirmation": "explicit",
+                "recovery": "none",
+                "authentication": "recent",
+                "rationale": "Credential and ownership changes are the usual target of account takeover; require a recent sign-in."
+            }
+        }
     }
 }

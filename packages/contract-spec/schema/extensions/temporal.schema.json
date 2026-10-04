@@ -1,0 +1,370 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.digitaltableteur.com/schemas/contract-spec/extensions/temporal.schema.json",
+  "title": "x-temporal (RFC 0001, draft)",
+  "description": "Temporal UX contract: when a component changes state on its own, how long a state stays valid, and what survives an interruption. Every entry is a claim with a verification mode, like an accessibility criterion. Normative text: rfcs/0001-temporal-and-consequence.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "minProperties": 1,
+  "properties": {
+    "transitions": {
+      "type": "array",
+      "description": "State changes the component makes without new user input: after a delay (afterMs) or on an event (on).",
+      "items": {
+        "$ref": "#/$defs/transition"
+      }
+    },
+    "validity": {
+      "type": "array",
+      "description": "How long a state or the data it shows stays valid before the component must treat it as stale or final.",
+      "items": {
+        "$ref": "#/$defs/validity"
+      }
+    },
+    "interruptions": {
+      "type": "array",
+      "description": "What happens to in-progress state when the flow is interrupted, and what the component guarantees on recovery.",
+      "items": {
+        "$ref": "#/$defs/interruption"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "state": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "guarantee": {
+      "enum": [
+        "no-duplicate-action",
+        "state-preserved",
+        "user-confirms-retry",
+        "announced"
+      ],
+      "description": "no-duplicate-action: a repeated or retried activation never performs the action twice. state-preserved: user input or progress survives. user-confirms-retry: nothing is resent without the user asking. announced: the change reaches assistive technology through a live region or focus move."
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "verification",
+        "from",
+        "to"
+      ],
+      "oneOf": [
+        {
+          "required": [
+            "afterMs"
+          ]
+        },
+        {
+          "required": [
+            "on"
+          ]
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "guarantees": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/guarantee"
+          }
+        },
+        "verification": {
+          "enum": [
+            "automated",
+            "manual",
+            "unverified"
+          ],
+          "description": "automated: a test re-proves the claim (test required, and the test file must name the claim id). manual: a person checked it (reviewedAt required). unverified: a declared gap."
+        },
+        "test": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repository path of the test that proves an automated claim, relative to the repository root."
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "from": {
+          "$ref": "#/$defs/state"
+        },
+        "to": {
+          "$ref": "#/$defs/state"
+        },
+        "afterMs": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Milliseconds the component must stay in `from` before it moves to `to`. 0 means on entry."
+        },
+        "threshold": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Name of the system-level threshold afterMs comes from, so a system can check every contract against one timing table."
+        },
+        "on": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$",
+          "description": "Event that triggers the transition when it is not time-based, e.g. settled."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "const": "automated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "test"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "const": "manual"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reviewedAt"
+            ]
+          }
+        }
+      ]
+    },
+    "validity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "verification",
+        "state",
+        "staleAfterMs",
+        "then"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "guarantees": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/guarantee"
+          }
+        },
+        "verification": {
+          "enum": [
+            "automated",
+            "manual",
+            "unverified"
+          ],
+          "description": "automated: a test re-proves the claim (test required, and the test file must name the claim id). manual: a person checked it (reviewedAt required). unverified: a declared gap."
+        },
+        "test": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repository path of the test that proves an automated claim, relative to the repository root."
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "$ref": "#/$defs/state"
+        },
+        "staleAfterMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "threshold": {
+          "type": "string",
+          "minLength": 1
+        },
+        "then": {
+          "enum": [
+            "mark-stale",
+            "refresh",
+            "finalize",
+            "discard"
+          ],
+          "description": "mark-stale: keep showing the data, say it may be out of date. refresh: fetch again. finalize: an undoable state becomes permanent. discard: remove it."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "const": "automated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "test"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "const": "manual"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reviewedAt"
+            ]
+          }
+        }
+      ]
+    },
+    "interruption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "verification",
+        "event",
+        "then"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "guarantees": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/guarantee"
+          }
+        },
+        "verification": {
+          "enum": [
+            "automated",
+            "manual",
+            "unverified"
+          ],
+          "description": "automated: a test re-proves the claim (test required, and the test file must name the claim id). manual: a person checked it (reviewedAt required). unverified: a declared gap."
+        },
+        "test": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repository path of the test that proves an automated claim, relative to the repository root."
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event": {
+          "enum": [
+            "connection-lost",
+            "connection-restored",
+            "request-failed",
+            "navigation",
+            "unmount",
+            "visibility-hidden",
+            "user-cancel",
+            "timeout"
+          ]
+        },
+        "preserve": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "What survives the interruption, in the component's own terms (draft, transcript, selection)."
+        },
+        "then": {
+          "enum": [
+            "resume",
+            "reconcile",
+            "retry-once",
+            "restart",
+            "discard"
+          ],
+          "description": "resume: continue where it stopped. reconcile: compare with the server before acting again. retry-once: one automatic retry that cannot duplicate the action. restart: begin again from a clean state. discard: drop in-progress state."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "const": "automated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "test"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "const": "manual"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reviewedAt"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

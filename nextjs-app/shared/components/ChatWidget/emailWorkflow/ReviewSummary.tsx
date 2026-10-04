@@ -38,6 +38,7 @@ const ReviewSummary: React.FC<ReviewSummaryProps> = ({ draft, dispatch }) => {
       <div className={styles.workflowActions}>
         <Button
           variant="primary"
+          consequence="external"
           onClick={() => dispatch({ type: "SEND_REQUEST" })}
         >
           {t("emailWorkflow.review.send")}

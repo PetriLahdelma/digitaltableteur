@@ -30,6 +30,7 @@
   "exports": {
     ".": "./src/index.mjs",
     "./schema": "./schema/contract.schema.json",
+    "./schema/extensions/*": "./schema/extensions/*",
     "./package.json": "./package.json"
   },
   "files": [
@@ -37,6 +38,7 @@
     "schema",
     "examples",
     "SPEC.md",
+    "rfcs",
     "README.md",
     "LICENSE",
     "LICENSE-SPEC.md"

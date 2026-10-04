@@ -18,6 +18,17 @@ function loadValidators() {
   if (validateV1 && validateV2) return { validateV1, validateV2 };
   const ajv = new Ajv2020({ strict: false, allErrors: true });
   addFormats(ajv);
+  // RFC 0001 extension schemas, referenced by $id from the v2 schema.
+  for (const name of ["temporal", "consequence"]) {
+    ajv.addSchema(
+      JSON.parse(
+        readFileSync(
+          resolve(__dirname, `../../packages/contract-spec/schema/extensions/${name}.schema.json`),
+          "utf8",
+        ),
+      ),
+    );
+  }
   const v1Path = resolve(__dirname, "contract.schema.json");
   const v2Path = resolve(__dirname, "contract.schema.v2.json");
   validateV1 = ajv.compile(JSON.parse(readFileSync(v1Path, "utf8")));

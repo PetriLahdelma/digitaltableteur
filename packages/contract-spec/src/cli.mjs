@@ -3,7 +3,8 @@
  * contract-check: conformance checker for Design System Contract 1.0.
  *
  *   contract-check [paths...] [--level 1|2|3] [--max-age-days N]
- *                  [--root dir] [--git-freshness] [--json] [--quiet]
+ *                  [--root dir] [--git-freshness] [--strict-extensions]
+ *                  [--test-root dir] [--json] [--quiet]
  *   contract-check rules <contract.json> '<props as JSON>'
  *
  * Exit codes: 0 the system meets --level (default 1); 1 it does not;
@@ -32,6 +33,8 @@ Options:
   --root <dir>          base for relative evidence paths (default: each contract's directory)
   --git-freshness       also fail evidence older than a change to the contract's source paths
   --suffix <s>          contract file suffix (default .contract.json)
+  --test-root <dir>     base for test paths in x-temporal / x-consequence claims (default: cwd)
+  --strict-extensions   also fail when a known extension (x-temporal, x-consequence) has findings
   --json                machine-readable report on stdout
   --quiet               only print the summary
 
@@ -78,6 +81,8 @@ function parseArgs(argv) {
     else if (value === "--root") options.root = resolve(next());
     else if (value === "--suffix") options.suffix = next();
     else if (value === "--git-freshness") options.gitFreshness = true;
+    else if (value === "--strict-extensions") options.strictExtensions = true;
+    else if (value === "--test-root") options.testRoot = resolve(next());
     else if (value === "--json") options.json = true;
     else if (value === "--quiet") options.quiet = true;
     else if (value.startsWith("--")) fail(`unknown option ${value}`);
@@ -128,8 +133,11 @@ function main() {
     root: options.root,
     maxAgeDays: options.maxAgeDays,
     gitFreshness: options.gitFreshness,
+    testRoot: options.testRoot,
   });
-  const meets = report.systemLevel >= options.level;
+  const extensionFailure =
+    options.strictExtensions && report.summary.extensions.findings > 0;
+  const meets = report.systemLevel >= options.level && !extensionFailure;
 
   if (options.json) {
     process.stdout.write(
@@ -153,16 +161,29 @@ function main() {
           if (blockers.length > 3)
             process.stdout.write(`        - ... ${blockers.length - 3} more\n`);
         }
+        for (const finding of entry.extensions?.findings ?? [])
+          process.stdout.write(`        x ${finding}\n`);
+        for (const warning of entry.extensions?.warnings ?? [])
+          process.stdout.write(`        ! ${warning}\n`);
       }
       process.stdout.write("\n");
     }
-    const { distribution, verification, total, stable } = report.summary;
+    const { distribution, verification, total, stable, extensions } =
+      report.summary;
+    const extensionLine =
+      extensions.contracts > 0
+        ? `  ext      ${extensions.contracts} contract(s) with x-temporal/x-consequence: ` +
+          `${extensions.claims.automated} automated, ${extensions.claims.manual} manual, ` +
+          `${extensions.claims.unverified} unverified claim(s), ${extensions.findings} finding(s)\n`
+        : "";
     process.stdout.write(
       `Design System Contract ${SPEC_VERSION}: ${total} contract(s), ${stable} stable\n` +
         `  levels   L3 ${distribution[3]}  L2 ${distribution[2]}  L1 ${distribution[1]}  none ${distribution[0]}\n` +
         `  a11y     ${verification.automated} automated, ${verification.manual} manual, ${verification.unverified} unverified (declared gaps)\n` +
+        extensionLine +
         `  system   L${report.systemLevel} ${levelName(report.systemLevel)} (lowest ${report.levelScope} contract)\n` +
-        `  result   ${meets ? "PASS" : "FAIL"}: required L${options.level} ${levelName(options.level)}\n`,
+        `  result   ${meets ? "PASS" : "FAIL"}: required L${options.level} ${levelName(options.level)}` +
+        `${extensionFailure ? ", extension findings (--strict-extensions)" : ""}\n`,
     );
   }
   process.exit(meets ? 0 : 1);

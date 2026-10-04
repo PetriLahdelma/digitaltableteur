@@ -340,6 +340,19 @@
   color: var(--color-text);
 }
 
+.statusNeutral {
+  /* Non-error notices (slow response, undo window) share the banner box. */
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+
+.statusWithAction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-12);
+}
+
 .composer {
   display: flex;
   padding: 0.9rem 1.25rem 1.1rem;

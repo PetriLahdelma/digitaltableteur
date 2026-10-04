@@ -81,6 +81,45 @@
           "reason": "An icon-only button has no accessible name. Add accessibleName, accessibleNameRef, or tooltip, e.g. <Button icon=\"search\" accessibleName=\"Search\" />.",
           "severity": "error",
           "evidence": "Button.tsx development warning (isIconOnly && !hasAccessibleName)"
+        },
+        {
+          "id": "button-irreversible-needs-error-tone",
+          "when": {
+            "consequence": {
+              "equals": "irreversible"
+            },
+            "tone": {
+              "oneOf": [
+                "neutral",
+                "info",
+                "success",
+                "warning"
+              ]
+            }
+          },
+          "forbid": [
+            "tone"
+          ],
+          "reason": "An irreversible action must read as destructive before it is activated. Use tone=\"error\", e.g. <Button consequence=\"irreversible\" tone=\"error\">Delete</Button>.",
+          "severity": "error",
+          "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
+        },
+        {
+          "id": "button-irreversible-tone-missing",
+          "when": {
+            "consequence": {
+              "equals": "irreversible"
+            },
+            "tone": {
+              "absent": true
+            }
+          },
+          "requireAllOf": [
+            "tone"
+          ],
+          "reason": "An irreversible action defaults to the neutral tone, which hides its consequence. Set tone=\"error\".",
+          "severity": "error",
+          "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
         }
       ]
     },

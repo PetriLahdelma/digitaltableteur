@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.digitaltableteur.com/schemas/contract-spec/extensions/consequence.schema.json",
+  "title": "x-consequence (RFC 0001, draft)",
+  "description": "Consequence contract: what an action does to the world, and the confirmation, recovery and authentication that class of action requires. Normative text: rfcs/0001-temporal-and-consequence.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "minProperties": 1,
+  "properties": {
+    "prop": {
+      "type": "string",
+      "minLength": 1,
+      "description": "For a generic action component: the prop with which each usage declares its consequence class. The prop must be a union whose values are consequence classes."
+    },
+    "policies": {
+      "type": "object",
+      "description": "For a generic action component: the treatment each class requires around this component. Keys are consequence classes.",
+      "propertyNames": {
+        "$ref": "#/$defs/class"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/policy"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "description": "For a component that owns its actions: each action, its class and the treatment it actually gets, as a verifiable claim.",
+      "items": {
+        "$ref": "#/$defs/action"
+      }
+    }
+  },
+  "dependentRequired": {
+    "prop": [
+      "policies"
+    ],
+    "policies": [
+      "prop"
+    ]
+  },
+  "$defs": {
+    "class": {
+      "enum": [
+        "reversible",
+        "irreversible",
+        "external",
+        "financial",
+        "privacy",
+        "identity"
+      ],
+      "description": "reversible: the user can undo it. irreversible: destroys data or state with no recovery. external: sends something to another person or system and cannot be recalled. financial: commits or moves money. privacy: discloses personal data beyond the user's own view. identity: changes credentials, ownership or authentication factors."
+    },
+    "confirmation": {
+      "enum": [
+        "none",
+        "review",
+        "explicit",
+        "typed"
+      ],
+      "description": "Ordered weakest to strongest. review: the user sees exactly what will happen or be sent before committing. explicit: a separate confirming action names the consequence. typed: the user types a confirming value."
+    },
+    "recovery": {
+      "enum": [
+        "none",
+        "undo",
+        "inverse-action"
+      ],
+      "description": "undo: a time-boxed undo restores the prior state. inverse-action: a separate action reverses it at any time."
+    },
+    "authentication": {
+      "enum": [
+        "none",
+        "recent",
+        "step-up"
+      ],
+      "description": "Ordered weakest to strongest. recent: a sign-in within a short window. step-up: re-authenticate for this action."
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "confirmation",
+        "recovery"
+      ],
+      "properties": {
+        "confirmation": {
+          "$ref": "#/$defs/confirmation"
+        },
+        "recovery": {
+          "$ref": "#/$defs/recovery"
+        },
+        "authentication": {
+          "$ref": "#/$defs/authentication"
+        },
+        "tone": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The tone value the triggering control must use, e.g. error for irreversible."
+        },
+        "rule": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "description": "Id of a usage rule (section 4 of the spec) that enforces part of this policy statically."
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "class",
+        "statement",
+        "confirmation",
+        "recovery",
+        "verification"
+      ],
+      "properties": {
+        "confirmation": {
+          "$ref": "#/$defs/confirmation"
+        },
+        "recovery": {
+          "$ref": "#/$defs/recovery"
+        },
+        "authentication": {
+          "$ref": "#/$defs/authentication"
+        },
+        "tone": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The tone value the triggering control must use, e.g. error for irreversible."
+        },
+        "rule": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "description": "Id of a usage rule (section 4 of the spec) that enforces part of this policy statically."
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "class": {
+          "$ref": "#/$defs/class"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification": {
+          "enum": [
+            "automated",
+            "manual",
+            "unverified"
+          ]
+        },
+        "test": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "const": "automated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "test"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "const": "manual"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reviewedAt"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

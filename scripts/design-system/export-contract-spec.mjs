@@ -35,6 +35,11 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT = join(ROOT, "public/contracts/v1");
 const SCHEMA_SOURCE = join(ROOT, "packages/contract-spec/schema/contract.schema.json");
 const SCHEMA_OUT = join(ROOT, "public/schemas/contract-spec/1.0/contract.schema.json");
+// RFC 0001 extension schemas, served at the URLs their $id names.
+const EXTENSION_SCHEMAS = ["temporal", "consequence"].map((name) => ({
+  source: join(ROOT, `packages/contract-spec/schema/extensions/${name}.schema.json`),
+  out: join(ROOT, `public/schemas/contract-spec/extensions/${name}.schema.json`),
+}));
 const SCHEMA_URL =
   "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json";
 const CONTRACT_ROOTS = [
@@ -202,6 +207,10 @@ function exportContract(file) {
   if (contract.status === "deprecated") {
     out.deprecation = { reason: contract.deprecatedReason ?? "Deprecated." };
   }
+  // RFC 0001 draft extensions, exported verbatim; contract-check validates
+  // them and proves each automated claim's test exists and names the claim.
+  if (contract.temporal) out["x-temporal"] = contract.temporal;
+  if (contract.consequence) out["x-consequence"] = contract.consequence;
   out.source = readdirSync(componentDir)
     .filter((name) => /\.(tsx|module\.css)$/.test(name) && !/\.(test|stories)\./.test(name))
     .map((name) => relative(OUT, join(componentDir, name)))
@@ -239,6 +248,11 @@ if (check) {
   if (!existsSync(SCHEMA_OUT) || readFileSync(SCHEMA_OUT, "utf8") !== schemaText) {
     drift.push("public schema copy");
   }
+  for (const { source, out } of EXTENSION_SCHEMAS) {
+    if (!existsSync(out) || readFileSync(out, "utf8") !== readFileSync(source, "utf8")) {
+      drift.push(`public extension schema ${relative(ROOT, out)}`);
+    }
+  }
   if (drift.length > 0) {
     console.error(
       `FAIL: ${drift.length} exported contract file(s) out of date: ${drift.slice(0, 8).join(", ")}` +
@@ -253,6 +267,10 @@ if (check) {
   for (const [name, text] of outputs) writeFileSync(join(OUT, name), text);
   mkdirSync(dirname(SCHEMA_OUT), { recursive: true });
   writeFileSync(SCHEMA_OUT, schemaText);
+  for (const { source, out } of EXTENSION_SCHEMAS) {
+    mkdirSync(dirname(out), { recursive: true });
+    writeFileSync(out, readFileSync(source, "utf8"));
+  }
   const head = execFileSync("git", ["rev-parse", "--short", "HEAD"], { cwd: ROOT })
     .toString()
     .trim();

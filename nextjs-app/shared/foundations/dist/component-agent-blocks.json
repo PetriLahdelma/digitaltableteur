@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T12:51:52.613Z",
+  "generatedAt": "2026-10-04T13:56:36.078Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -340,10 +340,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "AlertBanner": {
       "preferredImport": "@dt/AlertBanner",
@@ -671,10 +683,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ArticleCard": {
       "preferredImport": "@dt/ArticleCard",
@@ -892,10 +916,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ArticleContent": {
       "preferredImport": "@dt/ArticleContent",
@@ -1151,10 +1187,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ArticleShareSection": {
       "preferredImport": "@dt/ArticleShareSection",
@@ -1446,10 +1494,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "AspectRatio": {
       "preferredImport": "@dt/AspectRatio",
@@ -1692,10 +1752,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Author": {
       "preferredImport": "@dt/Author",
@@ -1904,10 +1976,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "AuthorBio": {
       "preferredImport": "@dt/AuthorBio",
@@ -2160,10 +2244,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Avatar": {
       "preferredImport": "@dt/Avatar",
@@ -2464,10 +2560,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "AvatarGroup": {
       "preferredImport": "@dt/AvatarGroup",
@@ -2747,10 +2855,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Badge": {
       "preferredImport": "@dt/Badge",
@@ -3096,10 +3216,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "BlogCategoryFilter": {
       "preferredImport": "@dt/BlogCategoryFilter",
@@ -3419,10 +3551,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "BlogMediaImage": {
       "preferredImport": "@dt/BlogMediaImage",
@@ -3701,10 +3845,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "BlogNav": {
       "preferredImport": "@dt/BlogNav",
@@ -3946,10 +4102,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Breadcrumb": {
       "preferredImport": "@dt/Breadcrumb",
@@ -4240,10 +4408,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Button": {
       "preferredImport": "@dt/Button",
@@ -4369,6 +4549,19 @@
           "optional": true,
           "type": "string",
           "description": "Native tooltip text; also used as an accessible-name fallback for icon-only buttons."
+        },
+        "consequence": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "reversible",
+            "irreversible",
+            "external",
+            "financial",
+            "privacy",
+            "identity"
+          ],
+          "description": "Class of action this button performs. `irreversible` requires\n`tone=\"error\"` and an explicit confirmation step; `external` (sends\nsomething to someone) requires a review step; `reversible` requires an\nundo. Rendered as `data-consequence` for tests and audits."
         }
       },
       "propRelationships": [
@@ -4425,6 +4618,45 @@
           "reason": "An icon-only button has no accessible name. Add accessibleName, accessibleNameRef, or tooltip, e.g. <Button icon=\"search\" accessibleName=\"Search\" />.",
           "severity": "error",
           "evidence": "Button.tsx development warning (isIconOnly && !hasAccessibleName)"
+        },
+        {
+          "id": "button-irreversible-needs-error-tone",
+          "when": {
+            "consequence": {
+              "equals": "irreversible"
+            },
+            "tone": {
+              "oneOf": [
+                "neutral",
+                "info",
+                "success",
+                "warning"
+              ]
+            }
+          },
+          "forbid": [
+            "tone"
+          ],
+          "reason": "An irreversible action must read as destructive before it is activated. Use tone=\"error\", e.g. <Button consequence=\"irreversible\" tone=\"error\">Delete</Button>.",
+          "severity": "error",
+          "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
+        },
+        {
+          "id": "button-irreversible-tone-missing",
+          "when": {
+            "consequence": {
+              "equals": "irreversible"
+            },
+            "tone": {
+              "absent": true
+            }
+          },
+          "requireAllOf": [
+            "tone"
+          ],
+          "reason": "An irreversible action defaults to the neutral tone, which hides its consequence. Set tone=\"error\".",
+          "severity": "error",
+          "evidence": "Button.tsx development warning (consequence irreversible without tone error)"
         }
       ],
       "variants": {
@@ -4512,7 +4744,7 @@
         "raw button",
         "Link for in-copy navigation"
       ],
-      "declaredPropCount": 19,
+      "declaredPropCount": 20,
       "guidelines": [
         {
           "level": "should",
@@ -4722,6 +4954,16 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": {
@@ -4757,6 +4999,71 @@
           "children": 24
         },
         "notes": "FI and SV labels run 20-30% longer than EN. The 24-char ceiling is measured on the longest locale, not on EN."
+      },
+      "temporal": {
+        "transitions": [
+          {
+            "id": "pending-locks-immediately",
+            "statement": "When clickAction returns a promise, the button is disabled and sets aria-busy on the same render, and repeat activations while pending do not call clickAction again.",
+            "from": "pending",
+            "to": "locked",
+            "afterMs": 0,
+            "guarantees": [
+              "no-duplicate-action",
+              "announced"
+            ],
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/Button/Button.temporal.test.tsx"
+          },
+          {
+            "id": "pending-settles",
+            "statement": "When the pending promise resolves or rejects, the button returns to idle; a rejection never leaves it disabled.",
+            "from": "pending",
+            "to": "idle",
+            "on": "settled",
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/Button/Button.temporal.test.tsx"
+          }
+        ]
+      },
+      "consequence": {
+        "prop": "consequence",
+        "policies": {
+          "reversible": {
+            "confirmation": "none",
+            "recovery": "undo",
+            "rationale": "Offer undo instead of asking first. Confirming routine actions trains people to click through the confirmations that matter."
+          },
+          "irreversible": {
+            "confirmation": "explicit",
+            "recovery": "none",
+            "tone": "error",
+            "rule": "button-irreversible-needs-error-tone",
+            "rationale": "A separate confirming action names what will be destroyed; the label says Delete, never Remove (see content.terminology)."
+          },
+          "external": {
+            "confirmation": "review",
+            "recovery": "none",
+            "rationale": "Sending cannot be recalled. Show exactly what will be sent, to whom, next to the button that sends it."
+          },
+          "financial": {
+            "confirmation": "explicit",
+            "recovery": "none",
+            "authentication": "step-up",
+            "rationale": "Restate the amount and the payee in the confirming action."
+          },
+          "privacy": {
+            "confirmation": "review",
+            "recovery": "none",
+            "rationale": "Show which personal data leaves the user's own view, and to whom, before it does."
+          },
+          "identity": {
+            "confirmation": "explicit",
+            "recovery": "none",
+            "authentication": "recent",
+            "rationale": "Credential and ownership changes are the usual target of account takeover; require a recent sign-in."
+          }
+        }
       }
     },
     "ButtonGroup": {
@@ -5016,10 +5323,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Card": {
       "preferredImport": "@dt/Card",
@@ -5413,10 +5732,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CategoryFilter": {
       "preferredImport": "@dt/CategoryFilter",
@@ -5721,10 +6052,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Center": {
       "preferredImport": "@dt/Center",
@@ -6141,10 +6484,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ChatWidget": {
       "preferredImport": "@dt/ChatWidget",
@@ -6418,10 +6773,116 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": {
+        "transitions": [
+          {
+            "id": "slow-response-acknowledged",
+            "statement": "A request with no first token after the acknowledge-delay threshold shows a polite status saying it is taking longer than usual, next to the Stop control; the notice clears as soon as the reply starts or the request ends.",
+            "from": "submitted",
+            "to": "slow",
+            "afterMs": 10000,
+            "threshold": "acknowledgeDelayMs",
+            "guarantees": [
+              "announced"
+            ],
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+          }
+        ],
+        "validity": [
+          {
+            "id": "clear-undo-window",
+            "statement": "After Clear, the previous transcript can be restored with Undo for the undo-window threshold; sending a new message or the window ending makes the clear final.",
+            "state": "cleared",
+            "staleAfterMs": 10000,
+            "threshold": "undoWindowMs",
+            "then": "finalize",
+            "guarantees": [
+              "announced"
+            ],
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+          }
+        ],
+        "interruptions": [
+          {
+            "id": "transcript-survives-navigation",
+            "statement": "The transcript is kept in sessionStorage and restored when the widget mounts again in the same tab, including after a reload, so leaving and returning does not lose the conversation. Nothing is written to storage until the restore has run, so the first render cannot overwrite it.",
+            "event": "navigation",
+            "preserve": [
+              "transcript"
+            ],
+            "then": "resume",
+            "guarantees": [
+              "state-preserved"
+            ],
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+          },
+          {
+            "id": "unreachable-endpoint-retries-once",
+            "statement": "When a request fails before reaching a server (failed to fetch or 404), the widget switches to the alternate endpoint and resends the last message once; a request that reached a server is never resent automatically.",
+            "event": "request-failed",
+            "then": "retry-once",
+            "guarantees": [
+              "no-duplicate-action"
+            ],
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+          },
+          {
+            "id": "email-draft-kept-on-send-error",
+            "statement": "If sending the email fails, the draft is kept so the person can edit or retry without retyping.",
+            "event": "request-failed",
+            "preserve": [
+              "email draft"
+            ],
+            "then": "resume",
+            "guarantees": [
+              "state-preserved",
+              "user-confirms-retry"
+            ],
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+          }
+        ]
+      },
+      "consequence": {
+        "actions": [
+          {
+            "id": "clear-undo-window",
+            "class": "reversible",
+            "statement": "Clear empties the conversation and offers Undo for ten seconds.",
+            "confirmation": "none",
+            "recovery": "undo",
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+          },
+          {
+            "id": "email-send-reviewed",
+            "class": "external",
+            "statement": "Donny sends an email to the studio only from the review step, which lists every field that will be sent; a repeated Send while sending does nothing.",
+            "confirmation": "review",
+            "recovery": "none",
+            "verification": "automated",
+            "test": "nextjs-app/shared/components/ChatWidget/ChatWidget.temporal.test.tsx"
+          }
+        ]
+      }
     },
     "Checkbox": {
       "preferredImport": "@dt/Checkbox",
@@ -6748,10 +7209,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CheckboxGroup": {
       "preferredImport": "@dt/CheckboxGroup",
@@ -7053,10 +7526,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ClientLogoMarquee": {
       "preferredImport": "@dt/ClientLogoMarquee",
@@ -7262,10 +7747,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CodeBlockWindow": {
       "preferredImport": "@dt/CodeBlockWindow",
@@ -7488,10 +7985,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CodeSnippet": {
       "preferredImport": "@dt/CodeSnippet",
@@ -7744,10 +8253,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Combobox": {
       "preferredImport": "@dt/Combobox",
@@ -8054,10 +8575,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CommandPalette": {
       "preferredImport": "@dt/CommandPalette",
@@ -8343,10 +8876,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ComplianceCard": {
       "preferredImport": "@dt/ComplianceCard",
@@ -8557,10 +9102,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ContactForm": {
       "preferredImport": "@dt/ContactForm",
@@ -8822,10 +9379,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ContactFormEditorial": {
       "preferredImport": "@dt/ContactFormEditorial",
@@ -9025,10 +9594,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Container": {
       "preferredImport": "@dt/Container",
@@ -9446,10 +10027,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CookieConsent": {
       "preferredImport": "@dt/CookieConsent",
@@ -9643,10 +10236,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "DataTable": {
       "preferredImport": "@dt/DataTable",
@@ -10019,10 +10624,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Designerman": {
       "preferredImport": "@dt/Designerman",
@@ -10241,10 +10858,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Display": {
       "preferredImport": "@dt/Display",
@@ -10483,10 +11112,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Divider": {
       "preferredImport": "@dt/Divider",
@@ -10706,10 +11347,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "DonnyAvatar": {
       "preferredImport": "@dt/DonnyAvatar",
@@ -11022,10 +11675,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "EmailSignatureGenerator": {
       "preferredImport": "@dt/EmailSignatureGenerator",
@@ -11228,10 +11893,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "EmptyState": {
       "preferredImport": "@dt/EmptyState",
@@ -11527,10 +12204,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "EnhancedProjectCard": {
       "preferredImport": "@dt/EnhancedProjectCard",
@@ -11845,10 +12534,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ExpandableSection": {
       "preferredImport": "@dt/ExpandableSection",
@@ -12159,10 +12860,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "FileUpload": {
       "preferredImport": "@dt/FileUpload",
@@ -12502,10 +13215,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "FilterChip": {
       "preferredImport": "@dt/FilterChip",
@@ -12831,10 +13556,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "FlexBox": {
       "preferredImport": "@dt/FlexBox",
@@ -13122,10 +13859,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "FormField": {
       "preferredImport": "@dt/FormField",
@@ -13412,10 +14161,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "FormFieldEditorial": {
       "preferredImport": "@dt/FormFieldEditorial",
@@ -13662,10 +14423,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Gallery": {
       "preferredImport": "@dt/Gallery",
@@ -13945,10 +14718,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Grid": {
       "preferredImport": "@dt/Grid",
@@ -14313,10 +15098,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "GroupLabel": {
       "preferredImport": "@dt/GroupLabel",
@@ -14561,10 +15358,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "HelperText": {
       "preferredImport": "@dt/HelperText",
@@ -14815,10 +15624,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Icon": {
       "preferredImport": "@dt/Icon",
@@ -15152,10 +15973,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "IconButton": {
       "preferredImport": "@dt/IconButton",
@@ -15470,10 +16303,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ImagePlaceholder": {
       "preferredImport": "@dt/ImagePlaceholder",
@@ -15722,10 +16567,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Kbd": {
       "preferredImport": "@dt/Kbd",
@@ -15986,10 +16843,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Label": {
       "preferredImport": "@dt/Label",
@@ -16236,10 +17105,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "LanguageSwitcher": {
       "preferredImport": "@dt/LanguageSwitcher",
@@ -16537,10 +17418,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Lightbox": {
       "preferredImport": "@dt/Lightbox",
@@ -16855,6 +17748,16 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": {
@@ -16879,7 +17782,9 @@
           "caption": 120
         },
         "notes": "Every image needs a real alt. A caption does not substitute for one: captions are visible to everyone, alt text carries the description for AT."
-      }
+      },
+      "temporal": null,
+      "consequence": null
     },
     "Link": {
       "preferredImport": "@dt/Link",
@@ -17166,10 +18071,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "LinkedInQuoteCard": {
       "preferredImport": "@dt/LinkedInQuoteCard",
@@ -17416,10 +18333,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "List": {
       "preferredImport": "@dt/List",
@@ -17720,10 +18649,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ListItem": {
       "preferredImport": "@dt/ListItem",
@@ -18010,10 +18951,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "LocationCard": {
       "preferredImport": "@dt/LocationCard",
@@ -18304,10 +19257,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Logo": {
       "preferredImport": "@dt/Logo",
@@ -18625,10 +19590,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "MCPActionButton": {
       "preferredImport": "@dt/MCPActionButton",
@@ -18842,10 +19819,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "MacWindowFrame": {
       "preferredImport": "@dt/MacWindowFrame",
@@ -19071,10 +20060,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "MarkdownMessage": {
       "preferredImport": "@dt/MarkdownMessage",
@@ -19305,10 +20306,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Menu": {
       "preferredImport": "@dt/Menu",
@@ -19625,10 +20638,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Mermaid": {
       "preferredImport": "@dt/Mermaid",
@@ -19908,10 +20933,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Modal": {
       "preferredImport": "@dt/Modal",
@@ -20329,6 +21366,16 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": {
@@ -20353,7 +21400,9 @@
           "title": 48
         },
         "notes": "Title is the AT announcement. Keep it a noun phrase naming what opened, never a full sentence."
-      }
+      },
+      "temporal": null,
+      "consequence": null
     },
     "MultiCombobox": {
       "preferredImport": "@dt/MultiCombobox",
@@ -20659,10 +21708,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "NavLink": {
       "preferredImport": "@dt/NavLink",
@@ -20952,10 +22013,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "NavMenuList": {
       "preferredImport": "@dt/NavMenuList",
@@ -21159,10 +22232,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "NewsletterWaitlist": {
       "preferredImport": "@dt/NewsletterWaitlist",
@@ -21437,10 +22522,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "NextLayout": {
       "preferredImport": "@dt/NextLayout",
@@ -21635,10 +22732,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "OpenHours": {
       "preferredImport": "@dt/OpenHours",
@@ -21844,10 +22953,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Pagination": {
       "preferredImport": "@dt/Pagination",
@@ -22125,10 +23246,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "PersonCard": {
       "preferredImport": "@dt/PersonCard",
@@ -22429,10 +23562,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "PhoneInput": {
       "preferredImport": "@dt/PhoneInput",
@@ -22988,10 +24133,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "PixelLoop": {
       "preferredImport": "@dt/PixelLoop",
@@ -23293,6 +24450,16 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": {
@@ -23300,7 +24467,9 @@
         "lastReviewed": "2026-07-23",
         "note": "The Primary Studio reference informed the compact modular format, while original 5x5 vector cell-grid artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
       },
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Progress": {
       "preferredImport": "@dt/Progress",
@@ -23593,10 +24762,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProjectCard": {
       "preferredImport": "@dt/ProjectCard",
@@ -23908,10 +25089,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProjectGallery": {
       "preferredImport": "@dt/ProjectGallery",
@@ -24223,10 +25416,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProjectNav": {
       "preferredImport": "@dt/ProjectNav",
@@ -24463,10 +25668,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Radio": {
       "preferredImport": "@dt/Radio",
@@ -24729,10 +25946,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "RadioGroup": {
       "preferredImport": "@dt/RadioGroup",
@@ -25018,10 +26247,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ReadingProgress": {
       "preferredImport": "@dt/ReadingProgress",
@@ -25238,10 +26479,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ReliablePartnerBadge": {
       "preferredImport": "@dt/ReliablePartnerBadge",
@@ -25546,10 +26799,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ResizablePanelGroup": {
       "preferredImport": "@dt/ResizablePanelGroup",
@@ -25840,10 +27105,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ScrollIndicator": {
       "preferredImport": "@dt/ScrollIndicator",
@@ -26216,6 +27493,16 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": {
@@ -26240,7 +27527,9 @@
           "label": 24
         },
         "notes": "The label is optional. When omitted the control still needs an accessible name naming the destination."
-      }
+      },
+      "temporal": null,
+      "consequence": null
     },
     "Section": {
       "preferredImport": "@dt/Section",
@@ -26478,10 +27767,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SecureCVDownload": {
       "preferredImport": "@dt/SecureCVDownload",
@@ -26691,10 +27992,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SegmentedControl": {
       "preferredImport": "@dt/SegmentedControl",
@@ -26995,10 +28308,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Select": {
       "preferredImport": "@dt/Select",
@@ -27322,10 +28647,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SelectOption": {
       "preferredImport": "@dt/Select",
@@ -27546,10 +28883,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SelectableCard": {
       "preferredImport": "@dt/SelectableCard",
@@ -27819,10 +29168,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SelectableCardGroup": {
       "preferredImport": "@dt/SelectableCard",
@@ -28124,10 +29485,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SentrySummaryCard": {
       "preferredImport": "@dt/SentrySummaryCard",
@@ -28314,10 +29687,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ServiceCard": {
       "preferredImport": "@dt/ServiceCard",
@@ -28563,10 +29948,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ServicesGrid": {
       "preferredImport": "@dt/ServicesGrid",
@@ -28760,10 +30157,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SiteTree": {
       "preferredImport": "@dt/SiteTree",
@@ -29032,10 +30441,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Skeleton": {
       "preferredImport": "@dt/Skeleton",
@@ -29310,10 +30731,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SkipLink": {
       "preferredImport": "@dt/SkipLink",
@@ -29559,10 +30992,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SlideButton": {
       "preferredImport": "@dt/SlideButton",
@@ -29885,6 +31330,16 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": {
@@ -29909,7 +31364,9 @@
           "label": 24
         },
         "notes": "The label is required and is the control's accessible name. The icon disc is decorative."
-      }
+      },
+      "temporal": null,
+      "consequence": null
     },
     "SocialIconLink": {
       "preferredImport": "@dt/SocialIconLink",
@@ -30216,10 +31673,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SocialShare": {
       "preferredImport": "@dt/SocialShare",
@@ -30485,10 +31954,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Spacer": {
       "preferredImport": "@dt/Spacer",
@@ -30749,10 +32230,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Spinner": {
       "preferredImport": "@dt/Spinner",
@@ -31008,10 +32501,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SplitButton": {
       "preferredImport": "@dt/SplitButton",
@@ -31303,10 +32808,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Stack": {
       "preferredImport": "@dt/Stack",
@@ -31775,10 +33292,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "StatusDot": {
       "preferredImport": "@dt/StatusDot",
@@ -32059,10 +33588,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Switch": {
       "preferredImport": "@dt/Switch",
@@ -32393,10 +33934,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Table": {
       "preferredImport": "@dt/Table",
@@ -32714,10 +34267,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TableCell": {
       "preferredImport": "@dt/TableCell",
@@ -32968,10 +34533,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TableHeaderCell": {
       "preferredImport": "@dt/TableHeaderCell",
@@ -33282,10 +34859,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TableOfContents": {
       "preferredImport": "@dt/TableOfContents",
@@ -33558,10 +35147,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TableRow": {
       "preferredImport": "@dt/TableRow",
@@ -33793,10 +35394,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Tabs": {
       "preferredImport": "@dt/Tabs",
@@ -34131,10 +35744,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Testimonial": {
       "preferredImport": "@dt/Testimonial",
@@ -34352,10 +35977,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Text": {
       "preferredImport": "@dt/Text",
@@ -34631,10 +36268,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TextArea": {
       "preferredImport": "@dt/TextArea",
@@ -34928,10 +36577,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TextInput": {
       "preferredImport": "@dt/TextInput",
@@ -35341,10 +37002,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ThemeProvider": {
       "preferredImport": "@dt/ThemeProvider",
@@ -35552,10 +37225,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Timestamp": {
       "preferredImport": "@dt/Timestamp",
@@ -35876,10 +37561,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Title": {
       "preferredImport": "@dt/Title",
@@ -36173,10 +37870,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Toast": {
       "preferredImport": "@dt/Toast",
@@ -36516,10 +38225,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ToastStack": {
       "preferredImport": "@dt/ToastStack",
@@ -36799,10 +38520,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Tooltip": {
       "preferredImport": "@dt/Tooltip",
@@ -37087,10 +38820,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TransformingActionInput": {
       "preferredImport": "@dt/TransformingActionInput",
@@ -37347,10 +39092,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TreeView": {
       "preferredImport": "@dt/TreeView",
@@ -37689,10 +39446,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ValueCard": {
       "preferredImport": "@dt/ValueCard",
@@ -37957,10 +39726,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "VirtualList": {
       "preferredImport": "@dt/VirtualList",
@@ -38262,10 +40043,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "VirtualListItem": {
       "preferredImport": "@dt/VirtualListItem",
@@ -38511,10 +40304,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "VisuallyHidden": {
       "preferredImport": "@dt/VisuallyHidden",
@@ -38722,10 +40527,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "WipBadge": {
       "preferredImport": "@dt/WipBadge",
@@ -38938,10 +40755,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "WorkNav": {
       "preferredImport": "@dt/WorkNav",
@@ -39186,10 +41015,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "FadeIn": {
       "preferredImport": "@dt/FadeIn",
@@ -39573,10 +41414,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "AboutHero": {
       "preferredImport": "@dt/AboutHero",
@@ -39804,10 +41657,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "AboutPageContent": {
       "preferredImport": "@dt/AboutPageContent",
@@ -40003,10 +41868,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ArticleHero": {
       "preferredImport": "@dt/ArticleHero",
@@ -40253,10 +42130,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ArticleLayout": {
       "preferredImport": "@dt/ArticleLayout",
@@ -40494,10 +42383,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ArticlePageTemplate": {
       "preferredImport": "@dt/ArticlePageTemplate",
@@ -40725,10 +42626,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "BlogHero": {
       "preferredImport": "@dt/BlogHero",
@@ -40968,10 +42881,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "BlogIndexContent": {
       "preferredImport": "@dt/BlogIndexContent",
@@ -41222,10 +43147,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CTASection": {
       "preferredImport": "@dt/CTASection",
@@ -41481,10 +43418,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CVDownloadSection": {
       "preferredImport": "@dt/CVDownloadSection",
@@ -41707,10 +43656,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "CaseStudySummary": {
       "preferredImport": "@dt/CaseStudySummary",
@@ -41988,10 +43949,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ContactHero": {
       "preferredImport": "@dt/ContactHero",
@@ -42206,10 +44179,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ContactInquiryPanel": {
       "preferredImport": "@dt/ContactInquiryPanel",
@@ -42485,10 +44470,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ContactPageContentEditorial": {
       "preferredImport": "@dt/ContactPageContentEditorial",
@@ -42698,10 +44695,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ContentSection": {
       "preferredImport": "@dt/ContentSection",
@@ -42950,10 +44959,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "DesignSprintsSection": {
       "preferredImport": "@dt/DesignSprintsSection",
@@ -43160,10 +45181,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Footer": {
       "preferredImport": "@dt/Footer",
@@ -43352,10 +45385,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "GridBlock": {
       "preferredImport": "@dt/GridBlock",
@@ -43615,10 +45660,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "Hero": {
       "preferredImport": "@dt/Hero",
@@ -43933,10 +45990,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "HeroSection": {
       "preferredImport": "@dt/HeroSection",
@@ -44417,10 +46486,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "HighlightSection": {
       "preferredImport": "@dt/HighlightSection",
@@ -44685,10 +46766,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "HomeHero": {
       "preferredImport": "@dt/HomeHero",
@@ -44890,10 +46983,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ManifestoSection": {
       "preferredImport": "@dt/ManifestoSection",
@@ -45121,10 +47226,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "NewsBulletin": {
       "preferredImport": "@dt/NewsBulletin",
@@ -45390,10 +47507,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "PageLayout": {
       "preferredImport": "@dt/PageLayout",
@@ -45682,10 +47811,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "PricingCalculator": {
       "preferredImport": "@dt/PricingCalculator",
@@ -45948,10 +48089,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "PricingPageContent": {
       "preferredImport": "@dt/PricingPageContent",
@@ -46204,10 +48357,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProcessBlock": {
       "preferredImport": "@dt/ProcessBlock",
@@ -46464,10 +48629,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProjectDetailLayout": {
       "preferredImport": "@dt/ProjectDetailLayout",
@@ -46712,10 +48889,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProjectDetailTemplate": {
       "preferredImport": "@dt/ProjectDetailTemplate",
@@ -46948,10 +49137,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProjectHero": {
       "preferredImport": "@dt/ProjectHero",
@@ -47223,10 +49424,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProjectMetaSection": {
       "preferredImport": "@dt/ProjectMetaSection",
@@ -47488,10 +49701,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ProofBlock": {
       "preferredImport": "@dt/ProofBlock",
@@ -47715,10 +49940,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "RelatedPosts": {
       "preferredImport": "@dt/RelatedPosts",
@@ -47931,10 +50168,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "RelatedProjects": {
       "preferredImport": "@dt/RelatedProjects",
@@ -48154,10 +50403,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ServicesBlock": {
       "preferredImport": "@dt/ServicesBlock",
@@ -48424,10 +50685,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ServicesSection": {
       "preferredImport": "@dt/ServicesSection",
@@ -48665,10 +50938,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SiteFooter": {
       "preferredImport": "@dt/SiteFooter",
@@ -48928,10 +51213,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "SiteHeader": {
       "preferredImport": "@dt/SiteHeader",
@@ -49200,10 +51497,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "StatsSection": {
       "preferredImport": "@dt/StatsSection",
@@ -49422,10 +51731,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "StoryBlock": {
       "preferredImport": "@dt/StoryBlock",
@@ -49706,10 +52027,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "TeamBlock": {
       "preferredImport": "@dt/TeamBlock",
@@ -49978,10 +52311,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "ValuesSection": {
       "preferredImport": "@dt/ValuesSection",
@@ -50223,10 +52568,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "WorkCTA": {
       "preferredImport": "@dt/WorkCTA",
@@ -50434,10 +52791,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "WorkHero": {
       "preferredImport": "@dt/WorkHero",
@@ -50650,10 +53019,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "WorkMagneticField": {
       "preferredImport": "@dt/WorkMagneticField",
@@ -50875,10 +53256,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     },
     "WorkPreviewSection": {
       "preferredImport": "@dt/WorkPreviewSection",
@@ -51108,10 +53501,22 @@
           "origin": "derived",
           "authorship": "mixed",
           "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
         }
       },
       "governance": null,
-      "content": null
+      "content": null,
+      "temporal": null,
+      "consequence": null
     }
   }
 }
