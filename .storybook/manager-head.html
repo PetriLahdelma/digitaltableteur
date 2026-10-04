@@ -139,6 +139,18 @@
     outline-offset: 2px;
   }
 
+  /* The search box is one control: ring the field, not the input inside it.
+     Storybook already outlines .search-field on focus-within, so the global
+     rule above drew a second ring around the bare input. */
+  .search-field input[type="search"]:focus-visible {
+    outline: none;
+  }
+
+  .search-field:focus-within {
+    outline: 2px solid var(--dt-chrome-accent);
+    outline-offset: 2px;
+  }
+
   [role="listbox"] [role="option"][aria-selected="true"] {
     color: var(--dt-chrome-ink);
     background: var(--dt-chrome-surface);

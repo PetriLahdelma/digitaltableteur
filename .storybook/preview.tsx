@@ -515,7 +515,13 @@ const preview: Preview = {
         headingSelector: "h2",
         ignoreSelector:
           ".docs-story *, .sb-story *, [data-doc-block='components-gallery'] *, .skip-toc",
-        unsafeTocbotOptions: { scrollSmooth: false },
+        // Active state and click handling belong to docsToc.ts; tocbot's own
+        // classes are renamed so its stale scroll tracking cannot fight it.
+        unsafeTocbotOptions: {
+          scrollSmooth: false,
+          activeLinkClass: "dt-tocbot-active",
+          activeListItemClass: "dt-tocbot-active-li",
+        },
       },
       source: { transform: dtSourceTransform },
     },

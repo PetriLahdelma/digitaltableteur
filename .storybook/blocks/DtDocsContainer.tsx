@@ -7,6 +7,7 @@ import { GLOBALS_UPDATED } from "storybook/internal/core-events";
 import { create } from "storybook/theming";
 import type { ThemeVars } from "storybook/theming";
 import styles from "./DtDocsContainer.module.css";
+import { enhanceDocsToc } from "./docsToc";
 
 const THEME_KEY = "storybook-theme";
 const DT_THEMES = ["light", "dark", "hcb", "hcw"] as const;
@@ -124,6 +125,9 @@ export function DtDocsContainer(props: PropsWithChildren<DocsContainerProps>) {
     channel.on(GLOBALS_UPDATED, onGlobalsUpdated);
     return () => channel.off(GLOBALS_UPDATED, onGlobalsUpdated);
   }, []);
+
+  // "On this page": in-iframe navigation and scroll-spy (see docsToc.ts).
+  useEffect(() => enhanceDocsToc(document), []);
 
   return (
     <div className={styles.frame}>

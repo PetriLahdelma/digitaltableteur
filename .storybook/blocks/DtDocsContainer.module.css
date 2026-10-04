@@ -37,6 +37,11 @@
 }
 
 .frame :global(.sbdocs-toc--custom) nav {
+  /* Indicator bar riding the start border; docsToc.ts sets its position. */
+  --dt-toc-indicator-top: 0;
+  --dt-toc-indicator-height: 0;
+  --dt-toc-indicator-opacity: 0;
+
   position: sticky;
   padding-block: 0;
   padding-inline-start: var(--space-internal-16);
@@ -66,13 +71,40 @@
   font-size: var(--font-size-text-xs);
   line-height: 1.5;
   color: var(--color-muted);
+  transition: color var(--duration-fast) linear;
 }
 
-.frame :global(.toc-list-item.is-active-li) > a,
+.frame :global(.sbdocs-toc--custom) nav::before {
+  position: absolute;
+  block-size: var(--dt-toc-indicator-height);
+  inline-size: 2px;
+  border-radius: var(--radius-full);
+  background: var(--color-text);
+  transition:
+    inset-block-start var(--duration-fast) var(--ease-out-quart),
+    block-size var(--duration-fast) var(--ease-out-quart),
+    opacity var(--duration-fast) linear;
+  opacity: var(--dt-toc-indicator-opacity);
+  content: "";
+  inset-block-start: var(--dt-toc-indicator-top);
+  inset-inline-start: 0;
+  translate: -100% 0;
+}
+
 .frame :global(.toc-list-item) > a:hover {
-  text-decoration: underline;
   color: var(--color-text);
-  text-underline-offset: 0.2em;
+}
+
+.frame :global(.toc-list-item) > a:global(.dt-toc-active) {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame :global(.sbdocs-toc--custom) nav::before,
+  .frame :global(.toc-list-item) > a {
+    transition: none;
+  }
 }
 
 @media (width < 1100px) {
@@ -93,6 +125,19 @@
     max-block-size: none;
     border-block-end: 1px solid var(--color-border-light);
     border-inline-start: 0;
+  }
+
+  /* Wrapped horizontal list: no vertical track, so mark the current item
+     with an underline instead of the bar. */
+
+  .frame :global(.sbdocs-toc--custom) nav::before {
+    display: none;
+  }
+
+  .frame :global(.toc-list-item) > a:global(.dt-toc-active) {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
   }
 
   .frame :global(.toc-list) {

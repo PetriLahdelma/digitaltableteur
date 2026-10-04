@@ -17,8 +17,12 @@
   outline-offset: var(--focus-ring-offset);
 }
 
+/* Below this width the table scrolls inside .controls instead of crushing
+   its columns to one letter per line. */
+
 .controls :global(.docblock-argstable) {
   margin: 0;
+  min-inline-size: var(--container-sm);
   font-family: var(--font-body);
   font-size: var(--font-size-text-xs);
 }
@@ -26,4 +30,8 @@
 .controls :global(.docblock-argstable) :is(th, td) {
   padding: var(--space-internal-12) var(--space-internal-16);
   line-height: var(--line-height-normal);
+}
+
+.controls :global(.docblock-argstable) :is(th, td):first-child {
+  white-space: nowrap;
 }
