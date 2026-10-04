@@ -21,7 +21,14 @@ export function PropsSection({
     <Section block="props" heading={heading}>
       <div className={styles.panel}>
         <Canvas of={playground.moduleExport} sourceState="none" />
-        <Controls of={playground.moduleExport} />
+        <div
+          className={styles.controls}
+          role="region"
+          aria-label="Playground controls"
+          tabIndex={0}
+        >
+          <Controls of={playground.moduleExport} />
+        </div>
       </div>
     </Section>
   );

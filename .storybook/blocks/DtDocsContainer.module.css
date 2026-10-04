@@ -1,0 +1,104 @@
+/* Presentation chrome only. Never select component descendants: the direct
+   children here are Storybook's document shell, not its rendered examples. */
+
+.frame > :global(.sbdocs-wrapper) {
+  padding: clamp(1.5rem, 4vi, 4rem);
+  gap: var(--space-layout-48);
+}
+
+.frame :global(.sbdocs-content) {
+  min-inline-size: 0;
+  max-inline-size: var(--container-md);
+}
+
+/* MDX prose only. Contract blocks own their typography in their modules. */
+
+.frame :global(.sbdocs-content) > :is(h1, h2, h3) {
+  font-family: var(--font-title);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.frame :global(.sbdocs-content) > h1 {
+  margin-block: 0 var(--space-layout-24);
+  font-size: clamp(2rem, 3vi, 3.5rem);
+  line-height: var(--line-height-tight);
+}
+
+.frame :global(.sbdocs-content) > :is(p, ul, ol) {
+  max-inline-size: 72ch;
+  font-size: 1rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.frame :global(.sbdocs-toc--custom) {
+  flex: 0 0 11rem;
+}
+
+.frame :global(.sbdocs-toc--custom) nav {
+  position: sticky;
+  padding-block: 0;
+  padding-inline-start: var(--space-internal-16);
+  inline-size: auto;
+  max-block-size: calc(100vb - var(--space-layout-64));
+  border-inline-start: 1px solid var(--color-border-light);
+  inset-block-start: var(--space-layout-32);
+}
+
+.frame :global(.sbdocs-toc--custom) h2 {
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-xs);
+  font-weight: 600;
+  text-transform: none;
+}
+
+.frame :global(.toc-list-item) {
+  margin-inline-start: 0;
+  padding-block: var(--space-internal-4);
+}
+
+.frame :global(.toc-list-item)::before {
+  display: none;
+}
+
+.frame :global(.toc-list-item) > a {
+  font-size: var(--font-size-text-xs);
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.frame :global(.toc-list-item.is-active-li) > a,
+.frame :global(.toc-list-item) > a:hover {
+  text-decoration: underline;
+  color: var(--color-text);
+  text-underline-offset: 0.2em;
+}
+
+@media (width < 1100px) {
+  .frame > :global(.sbdocs-wrapper) {
+    flex-direction: column;
+    gap: var(--space-layout-24);
+  }
+
+  .frame :global(.sbdocs-toc--custom) {
+    display: block;
+    inline-size: 100%;
+    flex: none;
+  }
+
+  .frame :global(.sbdocs-toc--custom) nav {
+    position: static;
+    padding: 0 0 var(--space-internal-16);
+    max-block-size: none;
+    border-block-end: 1px solid var(--color-border-light);
+    border-inline-start: 0;
+  }
+
+  .frame :global(.toc-list) {
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+    gap: var(--space-internal-8) var(--space-internal-16);
+  }
+}

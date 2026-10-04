@@ -1,21 +1,34 @@
 .stage {
-  /* Decorative dot grid: half-strength border-light, resolved per theme.
+  /* Decorative dot grid: low-strength border-light, resolved per theme.
      HCW overrides this below to 25% — it pairs a deliberately bold dark
-     border-light (#444) with a white canvas, so a 50% mix still reads
+     border-light (#444) with a white canvas, so the default mix still reads
      near-solid; 25% lets the grid recede like the other themes. */
-  --stage-dot: color-mix(in srgb, var(--color-border-light) 50%, transparent);
+  --stage-dot: color-mix(in srgb, var(--color-border-light) 35%, transparent);
 
+  display: grid;
   margin-block: var(--space-internal-24);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg, 12px);
-  background:
-    radial-gradient(circle at 1px 1px, var(--stage-dot) 1px, transparent 0);
-  background-size: 24px 24px;
-  background-color: var(--main-body-background-color);
   padding: var(--space-layout-32) var(--space-internal-24);
   min-block-size: 160px;
-  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg, 12px);
+  background: radial-gradient(
+    circle at 1px 1px,
+    var(--stage-dot) 1px,
+    transparent 0
+  );
+  background-color: var(--main-body-background-color);
+  background-size: 24px 24px;
+}
+
+/* Full-page and layout examples retain their authored width. Never clip:
+   menus, tooltips and focus rings may extend beyond the example surface. */
+
+.stage[data-layout="fullscreen"] {
+  padding: 0;
+  min-block-size: 0;
+  background-image: none;
 }
 
 :global(.themeHCW) .stage {
@@ -24,23 +37,24 @@
 
 @media (width >= 768px) {
   .stage {
-    min-block-size: clamp(220px, 28vi, 420px);
+    min-block-size: calc(var(--space-layout-64) * 3.5);
   }
 }
 
 /* The nested addon-docs preview block brings its own card + code-toggle bar;
    the stage already is the card, so flatten the inner chrome entirely. */
+
 .stage :global(.sbdocs-preview) {
-  border: none;
-  box-shadow: none;
-  background: transparent;
   margin: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 .stage :global(.docs-story) {
   border: none;
-  box-shadow: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .stage :global(.sbdocs-preview-actions),
@@ -49,8 +63,8 @@
 }
 
 .error {
-  color: var(--color-error);
+  margin: 0;
   font-size: var(--font-size-text-s);
   white-space: pre-wrap;
-  margin: 0;
+  color: var(--color-error);
 }

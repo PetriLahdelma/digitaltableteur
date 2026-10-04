@@ -25,8 +25,8 @@ const dtTheme = create({
     '"Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
   fontCode: 'ui-monospace, "SF Mono", Menlo, monospace',
 
-  colorPrimary: "#6fa8ff", // --color-primary (dark)
-  colorSecondary: "#6fa8ff", // --color-primary (dark)
+  colorPrimary: "#dfff00", // --logo-background (original chartreuse mark)
+  colorSecondary: "#dfff00", // DT chrome accent, independent of preview theme
 
   appBg: "#181a1b", // --main-body-background-color (dark)
   appContentBg: "#181a1b", // --main-body-background-color (dark)
@@ -36,12 +36,12 @@ const dtTheme = create({
 
   textColor: "#e0e0e0", // --color-text (dark)
   textInverseColor: "#041b23", // --color-primary (light)
-  textMutedColor: "#888888", // --color-muted (dark)
+  textMutedColor: "#949494", // --color-muted (dark)
 
   barBg: "#181a1b", // --main-body-background-color (dark)
-  barTextColor: "#888888", // --color-muted (dark)
-  barHoverColor: "#6fa8ff", // --color-primary (dark)
-  barSelectedColor: "#6fa8ff", // --color-primary (dark)
+  barTextColor: "#e0e0e0", // --color-text (dark); labels are not accent ink
+  barHoverColor: "#dfff00", // --logo-background (light)
+  barSelectedColor: "#dfff00", // --logo-background (light)
 
   inputBg: "#181a1b", // --main-body-background-color (dark)
   inputBorder: "#444444", // --color-border-light (dark)

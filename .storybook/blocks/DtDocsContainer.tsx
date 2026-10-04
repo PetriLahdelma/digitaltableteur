@@ -6,6 +6,7 @@ import { addons } from "storybook/preview-api";
 import { GLOBALS_UPDATED } from "storybook/internal/core-events";
 import { create } from "storybook/theming";
 import type { ThemeVars } from "storybook/theming";
+import styles from "./DtDocsContainer.module.css";
 
 const THEME_KEY = "storybook-theme";
 const DT_THEMES = ["light", "dark", "hcb", "hcw"] as const;
@@ -45,6 +46,8 @@ const DOCS_THEMES: Record<DtTheme, ThemeVars> = {
     base: "light",
     fontBase,
     fontCode,
+    colorPrimary: "#041b23", // --color-primary (light)
+    colorSecondary: "#041b23",
   }),
   dark: create({
     base: "dark",
@@ -104,9 +107,7 @@ const DOCS_THEMES: Record<DtTheme, ThemeVars> = {
  * from the persisted `storybook-theme` key (written by the theme decorator in
  * preview.tsx); toolbar switches arrive via GLOBALS_UPDATED without a reload.
  */
-export function DtDocsContainer(
-  props: PropsWithChildren<DocsContainerProps>,
-) {
+export function DtDocsContainer(props: PropsWithChildren<DocsContainerProps>) {
   const [theme, setTheme] = useState<DtTheme>(readStoredTheme);
 
   useEffect(() => {
@@ -124,5 +125,9 @@ export function DtDocsContainer(
     return () => channel.off(GLOBALS_UPDATED, onGlobalsUpdated);
   }, []);
 
-  return <DocsContainer {...props} theme={DOCS_THEMES[theme]} />;
+  return (
+    <div className={styles.frame}>
+      <DocsContainer {...props} theme={DOCS_THEMES[theme]} />
+    </div>
+  );
 }

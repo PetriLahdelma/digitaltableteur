@@ -11,6 +11,7 @@ import TextInput from "@dt/TextInput";
 import Title from "@dt/Title";
 import { getContractByName, storyIdFromTitle } from "../lib/contracts";
 import type { DtContract } from "../lib/contracts";
+import { resolveValue } from "../lib/resolveElements";
 import { managerHref } from "./managerHref";
 import { StatusPill } from "./StatusPill";
 import styles from "./ComponentsGallery.module.css";
@@ -184,6 +185,34 @@ function SpacerPreview(
 }
 
 const PREVIEW_SPECS: Record<string, PreviewSpec> = {
+  // JSON contracts cannot carry callbacks. Supply the existing sample-data
+  // adapters in the gallery only; component contracts and stories stay intact.
+  DataTable: {
+    fill: true,
+    render: (defaults, Component) => {
+      if (!Component) return null;
+      const columns = (defaults.columns as Array<{ id: string }>).map(
+        (column) => ({
+          ...column,
+          accessor: (row: Record<string, React.ReactNode>) => row[column.id],
+        }),
+      );
+      return (
+        <Component
+          {...defaults}
+          columns={columns}
+          getRowId={(row: { id: string }) => row.id}
+        />
+      );
+    },
+  },
+  VirtualList: {
+    fill: true,
+    props: {
+      getItemKey: (item: { id: string }) => item.id,
+      getItemProps: (item: { label: string }) => ({ children: item.label }),
+    },
+  },
   // Toast fixes itself to the viewport by default; `inline` keeps it in flow.
   Toast: { props: { inline: true } },
   // Full-bleed marks collapse to zero width when centered — let them stretch.
@@ -241,7 +270,8 @@ export function GalleryCard({
     `/story/${storyIdFromTitle(`${category}/${name}`)}--playground`,
   );
   const spec = PREVIEW_SPECS[name];
-  const defaults = contract?.playground?.defaults;
+  const defaults = resolveValue(contract?.playground?.defaults) as
+    Record<string, unknown> | undefined;
   const Component = resolveComponent(name);
 
   let previewNode: React.ReactNode = null;
@@ -263,7 +293,7 @@ export function GalleryCard({
 
   return (
     <article className={styles.card}>
-      <span className={styles.preview} aria-hidden="true">
+      <span className={`${styles.preview} sb-unstyled`} aria-hidden="true">
         {canPreview ? (
           <PreviewBoundary fallback={<Monogram name={name} />}>
             <span className={previewInnerClassName}>{previewNode}</span>

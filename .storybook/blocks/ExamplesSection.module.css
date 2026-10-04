@@ -1,17 +1,20 @@
 .list {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-layout-32);
 }
 
 .example {
   margin: 0;
+  min-inline-size: 0;
 }
 
 .exampleHeader {
   display: flex;
+  margin-block-end: var(--space-internal-8);
+  flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-internal-12);
-  margin-block-end: var(--space-internal-8);
 }
 
 .exampleName {
@@ -22,20 +25,20 @@
 .canvasLink {
   margin-inline-start: auto;
   font-size: var(--font-size-text-s);
-  color: var(--color-muted);
   text-decoration: none;
   white-space: nowrap;
+  color: var(--color-muted);
 }
 
 .canvasLink:hover,
 .canvasLink:focus-visible {
-  color: var(--color-primary);
   text-decoration: underline;
+  color: var(--color-primary);
 }
 
 .exampleDescription {
-  max-inline-size: 70ch;
   margin-block-end: var(--space-internal-8);
+  max-inline-size: 70ch;
   color: var(--color-muted);
 }
 

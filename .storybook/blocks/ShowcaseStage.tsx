@@ -34,9 +34,19 @@ class StageErrorBoundary extends React.Component<
  * because the inner surface uses the same body-background token the theme
  * classes drive.
  */
-export function ShowcaseStage({ children }: { children: React.ReactNode }) {
+export function ShowcaseStage({
+  children,
+  layout,
+}: {
+  children: React.ReactNode;
+  layout?: unknown;
+}) {
   return (
-    <div className={styles.stage} data-doc-block="showcase">
+    <div
+      className={styles.stage}
+      data-doc-block="showcase"
+      data-layout={layout === "fullscreen" ? "fullscreen" : "component"}
+    >
       <StageErrorBoundary>{children}</StageErrorBoundary>
     </div>
   );

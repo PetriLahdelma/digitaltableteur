@@ -18,7 +18,12 @@ export function Section({
 }) {
   return (
     <section className={styles.section} data-doc-block={block}>
-      <Title as="h2" size="xs" className={styles.heading}>
+      <Title
+        as="h2"
+        size="xs"
+        id={`dt-docs-${block}`}
+        className={styles.heading}
+      >
         {heading}
       </Title>
       {children}

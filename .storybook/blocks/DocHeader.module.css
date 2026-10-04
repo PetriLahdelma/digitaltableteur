@@ -1,25 +1,29 @@
 .header {
   display: flex;
+  margin-block-end: var(--space-layout-32);
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-internal-8);
-  margin-block-end: var(--space-layout-24);
+  gap: var(--space-internal-16);
 }
 
 .group {
-  color: var(--color-muted);
   text-transform: lowercase;
+  color: var(--color-muted);
 }
 
 .titleRow {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-internal-12);
-  flex-wrap: wrap;
 }
 
-.title {
+.title.title {
   margin: 0;
+  font-size: clamp(2.5rem, 4vi, 4rem);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-tight);
+  overflow-wrap: anywhere;
 }
 
 .lifecycleStatuses,
@@ -38,9 +42,9 @@
 }
 
 .lifecycleLabel {
-  color: var(--color-muted);
   font-family: var(--font-body);
   font-size: var(--font-size-text-xs, 0.75rem);
+  color: var(--color-muted);
 }
 
 .implementations {
@@ -57,8 +61,8 @@
   margin-block-end: -1px;
   padding-block: var(--space-internal-8);
   border-block-end: 2px solid transparent;
-  color: var(--color-muted);
   text-decoration: none;
+  color: var(--color-muted);
 }
 
 .implementations a:hover,
@@ -73,9 +77,9 @@
 }
 
 .currentImplementation {
-  border-block-end-color: var(--color-text);
-  color: var(--color-text);
   font-weight: 600;
+  color: var(--color-text);
+  border-block-end-color: var(--color-text);
 }
 
 /* View in Figma sits on its own row; a touch more air above it than the
@@ -83,20 +87,24 @@
    no icon. The doubled class (.figma.figma) raises specificity above
    Storybook's global `.sbdocs a` rule, which otherwise bleeds a plain
    text-decoration: underline onto the link. */
+
 .figma.figma {
   margin-block-start: var(--space-internal-4);
-  white-space: nowrap;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 /* @dt/Link auto-appends an external-link arrow for external hrefs; the mock
    wants a plain "View in Figma" text link, so hide it here. */
+
 .figma [class*="externalIcon"] {
   display: none;
 }
 
-.standfirst {
+.standfirst.standfirst {
   margin: 0;
-  max-inline-size: 70ch;
+  max-inline-size: 65ch;
+  font-size: var(--font-size-text-m);
+  line-height: var(--line-height-relaxed);
   color: var(--color-text);
 }

@@ -39,24 +39,33 @@ export function ThemingSection({ contract }: { contract: DtContract }) {
 
   return (
     <Section block="theming" heading="Theming">
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th scope="col">Token</th>
-            <th scope="col">{vars.length > 0 ? "Description" : "Category"}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.name}>
-              <td>
-                <code className={styles.token}>{row.name}</code>
-              </td>
-              <td className={styles.detail}>{row.detail}</td>
+      <div
+        className={styles.tableScroll}
+        role="region"
+        aria-label="Theming tokens"
+        tabIndex={0}
+      >
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th scope="col">Token</th>
+              <th scope="col">
+                {vars.length > 0 ? "Description" : "Category"}
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.name}>
+                <td>
+                  <code className={styles.token}>{row.name}</code>
+                </td>
+                <td className={styles.detail}>{row.detail}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Section>
   );
 }

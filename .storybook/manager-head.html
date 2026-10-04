@@ -1,4 +1,4 @@
-<link rel="icon" href="/favicon-storybook.ico" />
+<link rel="icon" href="./favicon-storybook.ico" />
 <style>
   /* DT manager chrome (Astryx Phase 2). The manager cannot load
      variables.css, so hex values are copied with their source token named
@@ -6,7 +6,7 @@
 
   @font-face {
     font-family: "Satoshi";
-    src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+    src: url("./fonts/Satoshi-Variable.woff2") format("woff2");
     font-weight: 300 900;
     font-style: normal;
     font-display: swap;
@@ -65,5 +65,96 @@
   .dt-sidebar-label--deprecated {
     opacity: 0.65;
     text-decoration: line-through;
+  }
+
+  /* Manager-only tokens: never imported into the preview iframe. Values
+     reference variables.css: logo-background (light), color-text (dark),
+     color-light-bg (dark), color-border-light (dark), color-muted (dark). */
+  :root {
+    --dt-chrome-accent: #dfff00;
+    --dt-chrome-ink: #e0e0e0;
+    --dt-chrome-surface: #23272a;
+    --dt-chrome-border: #444444;
+    --dt-chrome-muted: #949494;
+  }
+
+  #storybook-explorer-tree .sidebar-item {
+    margin-block: 2px;
+    border-radius: 6px;
+  }
+
+  #storybook-explorer-tree .sidebar-item[data-selected="true"] {
+    background: var(--dt-chrome-accent);
+    color: #041b23; /* --color-primary (light) */
+  }
+
+  #storybook-explorer-tree .sidebar-item[data-selected="true"] a,
+  #storybook-explorer-tree .sidebar-item[data-selected="true"] svg {
+    color: #041b23;
+  }
+
+  #storybook-explorer-tree .sidebar-item:not([data-selected="true"]):hover {
+    background: var(--dt-chrome-surface);
+  }
+
+  #storybook-explorer-tree [data-nodetype="root"] {
+    color: var(--dt-chrome-muted);
+  }
+
+  input[type="search"] {
+    font-family: "Satoshi", sans-serif;
+    color: var(--dt-chrome-ink);
+  }
+
+  input[type="search"]::placeholder {
+    color: var(--dt-chrome-muted);
+    opacity: 1;
+  }
+
+  /* Stable ARIA hooks, not generated Emotion classes. Separating SVG from
+     label ink prevents changed/open theme selections turning dark on dark. */
+  [role="toolbar"] button[aria-haspopup="listbox"] {
+    color: var(--dt-chrome-ink);
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  [role="toolbar"] button[aria-haspopup="listbox"] svg {
+    color: var(--dt-chrome-accent);
+  }
+
+  [role="toolbar"]
+    button[aria-haspopup="listbox"]:is(
+      :hover,
+      :focus-visible,
+      [aria-expanded="true"]
+    ) {
+    color: var(--dt-chrome-ink);
+    background: var(--dt-chrome-surface);
+    box-shadow: inset 0 0 0 1px var(--dt-chrome-border);
+  }
+
+  :is(button, a, input, [role="option"]):focus-visible {
+    outline: 2px solid var(--dt-chrome-accent);
+    outline-offset: 2px;
+  }
+
+  [role="listbox"] [role="option"][aria-selected="true"] {
+    color: var(--dt-chrome-ink);
+    background: var(--dt-chrome-surface);
+  }
+
+  [role="listbox"] [role="option"][aria-selected="true"] svg {
+    color: var(--dt-chrome-accent);
+  }
+
+  @media (forced-colors: active) {
+    :root {
+      --dt-chrome-accent: Highlight;
+      --dt-chrome-ink: CanvasText;
+      --dt-chrome-surface: Canvas;
+      --dt-chrome-border: ButtonText;
+      --dt-chrome-muted: CanvasText;
+    }
   }
 </style>

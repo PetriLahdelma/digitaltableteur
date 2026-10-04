@@ -510,6 +510,13 @@ const preview: Preview = {
       // legible in dark/HCB/HCW (see DtDocsContainer for the regression note).
       container: DtDocsContainer,
       page: DtDocsPage,
+      toc: {
+        title: "On this page",
+        headingSelector: "h2",
+        ignoreSelector:
+          ".docs-story *, .sb-story *, [data-doc-block='components-gallery'] *, .skip-toc",
+        unsafeTocbotOptions: { scrollSmooth: false },
+      },
       source: { transform: dtSourceTransform },
     },
     controls: {

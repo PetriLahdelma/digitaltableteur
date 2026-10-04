@@ -141,14 +141,14 @@ export function DtDocsPage() {
       (definition) => definition.sourceComponent === contract.name,
     );
     return (
-      <div className={styles.page}>
+      <div className={`${styles.page} sb-unstyled`}>
         <DocHeader
           contract={contract}
           implementation="web-component"
           implementationStatus={implementationStatus ?? "alpha"}
         />
         {primary ? (
-          <ShowcaseStage>
+          <ShowcaseStage layout={primary.parameters?.layout}>
             <DocsStory
               of={primary.moduleExport}
               expanded={false}
@@ -186,7 +186,7 @@ export function DtDocsPage() {
   // Showcase the canonical Default story (spec 3.2 A item 2); fall back to
   // the first story for components whose Default is an alias re-export.
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} sb-unstyled`}>
       <DocHeader contract={contract} implementation="react" />
       {contract.status === "deprecated" ? (
         <AlertBanner
@@ -199,7 +199,7 @@ export function DtDocsPage() {
         />
       ) : null}
       {primary ? (
-        <ShowcaseStage>
+        <ShowcaseStage layout={primary.parameters?.layout}>
           <DocsStory
             of={primary.moduleExport}
             expanded={false}

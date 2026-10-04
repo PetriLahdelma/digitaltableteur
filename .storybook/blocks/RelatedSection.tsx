@@ -23,7 +23,7 @@ export function RelatedSection({
         {related.map((name) => {
           const href = hrefForComponent(name);
           return href ? (
-            <a key={name} href={href} className={styles.chip}>
+            <a key={name} href={href} target="_top" className={styles.chip}>
               {name}
             </a>
           ) : (

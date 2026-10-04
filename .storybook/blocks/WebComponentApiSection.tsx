@@ -21,30 +21,37 @@ export function WebComponentApiSection({
   if (props.length === 0) return null;
   return (
     <Section block="native-api" heading="Native API">
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th scope="col">Attribute</th>
-            <th scope="col">Property</th>
-            <th scope="col">Type</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.map((prop) => (
-            <tr key={prop.name}>
-              <th scope="row">
-                <code>{attributeName(prop.name)}</code>
-              </th>
-              <td>
-                <code>{prop.name}</code>
-              </td>
-              <td>{prop.propertyType ?? prop.type}</td>
-              <td>{prop.description ?? ""}</td>
+      <div
+        className={styles.tableScroll}
+        role="region"
+        aria-label="Native API table"
+        tabIndex={0}
+      >
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th scope="col">Attribute</th>
+              <th scope="col">Property</th>
+              <th scope="col">Type</th>
+              <th scope="col">Description</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {props.map((prop) => (
+              <tr key={prop.name}>
+                <th scope="row">
+                  <code>{attributeName(prop.name)}</code>
+                </th>
+                <td>
+                  <code>{prop.name}</code>
+                </td>
+                <td>{prop.propertyType ?? prop.type}</td>
+                <td>{prop.description ?? ""}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Section>
   );
 }

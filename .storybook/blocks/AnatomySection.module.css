@@ -1,14 +1,24 @@
+.tableScroll {
+  max-inline-size: 100%;
+  overflow: auto;
+}
+
+.tableScroll:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
 .table {
-  border-collapse: collapse;
   inline-size: 100%;
   font-size: var(--font-size-text-s);
+  border-collapse: collapse;
 }
 
 .table th,
 .table td {
-  text-align: start;
-  padding: var(--space-internal-8) var(--space-internal-12);
+  padding: var(--space-internal-12) var(--space-internal-16);
   border-block-end: 1px solid var(--color-border-light);
+  text-align: start;
   vertical-align: top;
 }
 

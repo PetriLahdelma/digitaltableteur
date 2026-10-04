@@ -10,6 +10,24 @@ import {
 } from "./ComponentsGallery";
 
 describe("ComponentsGallery", () => {
+  it.each(["DataTable", "VirtualList", "ResizablePanelGroup"])(
+    "renders the real %s preview instead of an error fallback",
+    (name) => {
+      const { container } = render(
+        <GalleryCard name={name} category="Layout" />,
+      );
+      expect(container.querySelector("[class*='monogram']")).toBeNull();
+      if (name === "DataTable")
+        expect(container).toHaveTextContent("Ada Lovelace");
+      if (name === "VirtualList")
+        expect(container).toHaveTextContent("Component result 1");
+      if (name === "ResizablePanelGroup")
+        expect(container).toHaveTextContent(
+          "Inspect the selected component documentation.",
+        );
+    },
+  );
+
   it("renders one card per DOC_TIER_1 component", () => {
     const { container } = render(<ComponentsGallery />);
     const cards = container.querySelectorAll("article");
