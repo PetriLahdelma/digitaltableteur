@@ -225,6 +225,13 @@
             "runner": "local-rfc0001"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.forced-colors.json",
+            "sourceCommit": "5c63be409224d91844d0380c2f8bdbc0cbedac79",
+            "capturedAt": "2026-10-04T14:14:18.555Z",
+            "passed": true,
+            "runner": "local-rfc0001"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.light.json",
             "sourceCommit": "c543b7908a991afc272a267b5030b222d7d8debf",
             "capturedAt": "2026-10-04T14:08:52.511Z",
@@ -239,6 +246,13 @@
             "runner": "local-rfc0001"
           },
           {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.forced-colors.json",
+            "sourceCommit": "5c63be409224d91844d0380c2f8bdbc0cbedac79",
+            "capturedAt": "2026-10-04T14:14:18.633Z",
+            "passed": true,
+            "runner": "local-rfc0001"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.light.json",
             "sourceCommit": "c543b7908a991afc272a267b5030b222d7d8debf",
             "capturedAt": "2026-10-04T14:08:52.560Z",
@@ -249,6 +263,13 @@
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.dark.json",
             "sourceCommit": "c543b7908a991afc272a267b5030b222d7d8debf",
             "capturedAt": "2026-10-04T14:09:15.245Z",
+            "passed": true,
+            "runner": "local-rfc0001"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.forced-colors.json",
+            "sourceCommit": "5c63be409224d91844d0380c2f8bdbc0cbedac79",
+            "capturedAt": "2026-10-04T14:14:18.477Z",
             "passed": true,
             "runner": "local-rfc0001"
           },
