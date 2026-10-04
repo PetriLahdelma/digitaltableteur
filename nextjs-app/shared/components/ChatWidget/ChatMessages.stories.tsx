@@ -170,7 +170,7 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await waitFor(() => {
-      expect(canvas.getByText(/Donny/i)).toBeInTheDocument();
+      expect(canvas.getByText(/I'm Donny, the Digitaltableteur/i)).toBeInTheDocument();
       expect(
         canvas.getByText(/What services do you offer/i),
       ).toBeInTheDocument();
