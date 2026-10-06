@@ -1,9 +1,9 @@
 {
   "storyId": "site-enhancedprojectcard-default",
   "mode": "forced-colors",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:08:28.898Z",
-  "runner": null,
+  "sourceSHA": "ae494032feba1e30af4e04dae4f6f44023f75f0f",
+  "capturedAt": "2026-10-06T20:56:37.035Z",
+  "runner": "local-gj-loop",
   "checks": {
     "accessibility-tree": {
       "passed": true
