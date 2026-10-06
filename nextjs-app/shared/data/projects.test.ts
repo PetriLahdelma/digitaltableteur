@@ -126,3 +126,15 @@ describe("project thumbnails", () => {
     }
   });
 });
+
+describe("unlisted projects", () => {
+  it("stay routable: only the /work index grid leaves them out", () => {
+    const unlisted = projects.filter((p) => p.unlisted);
+    expect(unlisted.map((p) => p.slug)).toContain("llm-component-schema");
+    for (const project of unlisted) {
+      expect(project.comingSoon).not.toBe(true);
+      expect(resolveProjectNavigationPath(project.slug)).toBe(`/work/${project.slug}`);
+      expect(getProjectNavigationCatalog().map((entry) => entry.slug)).toContain(project.slug);
+    }
+  });
+});

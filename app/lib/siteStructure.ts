@@ -2,7 +2,7 @@ import type { SiteTreeNode } from "@dt/SiteTree";
 
 import { getVisiblePosts } from "@/app/blog/postMetadata";
 import { getAuthors } from "@/nextjs-app/shared/data/authors";
-import { sortedProjects } from "@/nextjs-app/shared/data/projects";
+import { isRoutableProject, sortedProjects } from "@/nextjs-app/shared/data/projects";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 
 export type SiteStructureLabels = {
@@ -38,7 +38,8 @@ export function buildSiteTree(labels: SiteStructureLabels): SiteTreeNode[] {
   const pseoCatalog = getPseoCatalog();
   const pseoLeafPages = getPseoLeafPages();
 
-  const workChildren: SiteTreeNode[] = sortedProjects.map((project) => ({
+  // Coming-soon teasers have no page; unlisted projects keep theirs.
+  const workChildren: SiteTreeNode[] = sortedProjects.filter(isRoutableProject).map((project) => ({
     id: `work-${project.id}`,
     label: project.title,
     href: `/work/${project.slug}`,

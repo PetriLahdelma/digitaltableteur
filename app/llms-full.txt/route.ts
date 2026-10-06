@@ -88,7 +88,10 @@ export async function GET() {
     if (project.duration) body += `- Duration: ${project.duration}\n`;
     if (project.client) body += `- Client: ${project.client}\n`;
     if (project.liveUrl) body += `- Live: ${project.liveUrl}\n`;
-    body += `- Case study: ${baseUrl}/work/${project.slug}\n\n`;
+    // Coming-soon teasers have no page yet; never print a link that 404s.
+    body += project.comingSoon
+      ? "- Case study: coming soon\n\n"
+      : `- Case study: ${baseUrl}/work/${project.slug}\n\n`;
   }
 
   // All blog posts

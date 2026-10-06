@@ -41,7 +41,10 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
 
   // Filter projects based on active category
   const filteredProjects = useMemo(() => {
-    return filterProjects(projects, activeCategory);
+    return filterProjects(
+      projects.filter((project) => !project.unlisted),
+      activeCategory,
+    );
   }, [activeCategory]);
 
   // GSAP ScrollTrigger-based orchestrated stagger (transplanted from the

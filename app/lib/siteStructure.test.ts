@@ -62,3 +62,14 @@ describe("buildSiteTree", () => {
     )).toBe(true);
   });
 });
+
+describe("work section of the site tree", () => {
+  it("links every page that exists and never a coming-soon teaser", () => {
+    const hrefs = JSON.stringify(buildSiteTree(labels));
+    expect(hrefs).not.toContain("/work/vr-design-system");
+    expect(hrefs).not.toContain("/work/process-genius-design-system");
+    expect(hrefs).not.toContain("/work/precedent");
+    // Unlisted projects still have a page, so the sitemap keeps them.
+    expect(hrefs).toContain("/work/llm-component-schema");
+  });
+});

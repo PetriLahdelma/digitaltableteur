@@ -16,7 +16,7 @@ describe("Work pages", () => {
       <WorkIndexPage nav={<div data-testid="work-nav">NAV</div>} />,
     );
     expect(screen.getByTestId("work-nav")).toBeInTheDocument();
-    const linkedProjects = projects.filter((p) => !p.comingSoon);
+    const linkedProjects = projects.filter((p) => !p.comingSoon && !p.unlisted);
     const links = screen.getAllByRole("link");
     expect(links.length).toBeGreaterThanOrEqual(linkedProjects.length);
     // Coming-soon teasers render as non-interactive cards with the badge.
@@ -32,6 +32,12 @@ describe("Work pages", () => {
     expect(screen.getAllByText("Coming soon").length).toBeGreaterThanOrEqual(
       teasers.length,
     );
+    // Unlisted projects are off the grid but keep their page (see projects.test).
+    for (const hidden of projects.filter((p) => p.unlisted)) {
+      expect(
+        screen.queryByRole("heading", { name: hidden.title, level: 3 }),
+      ).not.toBeInTheDocument();
+    }
   });
 
   it("renders New Things Co case study content", () => {

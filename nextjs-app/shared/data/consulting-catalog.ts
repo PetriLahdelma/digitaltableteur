@@ -5,7 +5,11 @@
 
 import { getPseoCatalog } from "@/lib/pseo/catalog";
 import { WEEKLY_HOURS } from "@/nextjs-app/shared/data/openHours";
-import { projects, type Project } from "@/nextjs-app/shared/data/projects";
+import {
+  isRoutableProject,
+  projects,
+  type Project,
+} from "@/nextjs-app/shared/data/projects";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -159,7 +163,8 @@ function toCaseStudySummary(project: Project): CaseStudySummary {
 export function getCaseStudies(options?: {
   featuredOnly?: boolean;
 }): CaseStudySummary[] {
-  let list = [...projects].sort(
+  // Every summary carries a /work URL, so teasers without a page stay out.
+  let list = projects.filter(isRoutableProject).sort(
     (a, b) => (a.order ?? 999) - (b.order ?? 999),
   );
   if (options?.featuredOnly) {
@@ -172,7 +177,7 @@ export function getCaseStudyBySlug(
   slug: string,
 ): CaseStudySummary | undefined {
   const project = projects.find((p) => p.slug === slug);
-  return project ? toCaseStudySummary(project) : undefined;
+  return isRoutableProject(project) ? toCaseStudySummary(project) : undefined;
 }
 
 export function getConsultingPackages(): ConsultingPackage[] {

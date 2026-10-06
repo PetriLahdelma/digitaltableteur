@@ -45,6 +45,12 @@ export interface Project {
   duration?: string;
   /** Teaser entry: renders a non-clickable card with a coming-soon badge (no detail route) */
   comingSoon?: boolean;
+  /**
+   * Left off the /work index grid only. Unlike comingSoon, the page, its
+   * route, navigation, related-project links and sitemap stay intact, so
+   * existing links keep working.
+   */
+  unlisted?: boolean;
 }
 
 export interface CategoryOption {
@@ -90,6 +96,21 @@ export const projects: Project[] = [
     featured: false,
     order: 1,
     client: "VR Group",
+    duration: "2026",
+    comingSoon: true,
+  },
+  {
+    id: "process-genius-design-system",
+    slug: "process-genius-design-system",
+    title: "Process Genius Design System",
+    description:
+      "A contract-driven design system for Genius Core, Process Genius's facility operations platform: modernised components, design tokens and machine-readable contracts, built alongside the existing library.",
+    thumbnail: "/images/portfolio/process-genius/thumbnail.svg",
+    category: "design-systems",
+    tags: ["Design Systems", "Design Tokens", "Component Contracts", "Accessibility"],
+    featured: false,
+    order: 1,
+    client: "Process Genius",
     duration: "2026",
     comingSoon: true,
   },
@@ -303,6 +324,7 @@ export const projects: Project[] = [
     order: 6,
     liveUrl: "https://petrilahdelma.gumroad.com/l/mcqoq",
     duration: "Dec 2025 – Present",
+    unlisted: true,
   },
 ];
 
@@ -477,7 +499,8 @@ function scoreProjectMatch(project: Project, query: string): number {
  * Returns null when no confident single match exists.
  */
 /** Coming-soon projects have no case-study route to navigate to. */
-function isRoutableProject(project: Project | undefined): project is Project {
+/** True when the project has a page. Coming-soon teasers have none. */
+export function isRoutableProject(project: Project | undefined): project is Project {
   return Boolean(project && !project.comingSoon);
 }
 

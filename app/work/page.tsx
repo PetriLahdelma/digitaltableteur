@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 
 import { WorkIndexPage } from "@dt-pages/Work/WorkIndex";
-import { projects } from "@/nextjs-app/shared/data/projects";
+import { isRoutableProject, projects } from "@/nextjs-app/shared/data/projects";
 import {
   getBreadcrumbSchema,
   getCollectionPageSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
 
-// Dynamic project list for structured data
-const projectNames = projects.map((p) => p.title).join(", ");
+// The case studies the index links to: coming-soon teasers have no page
+// (a URL to them is a 404 for crawlers) and unlisted projects are off the grid.
+const linkedProjects = projects.filter((p) => isRoutableProject(p) && !p.unlisted);
+const projectNames = linkedProjects.map((p) => p.title).join(", ");
 
 export const metadata: Metadata = {
   title: "Work & Portfolio | Digitaltableteur",
@@ -57,7 +59,7 @@ export default function Work() {
         "branding work",
         "product design case studies",
       ],
-      items: projects.map((project) => ({
+      items: linkedProjects.map((project) => ({
         name: project.title,
         url: `/work/${project.slug}`,
         description: project.description,

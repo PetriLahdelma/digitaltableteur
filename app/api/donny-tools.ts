@@ -10,6 +10,7 @@ import {
 } from "@/nextjs-app/shared/data/openHours";
 import {
   sortedProjects,
+  isRoutableProject,
   resolveProjectNavigationPath,
 } from "@/nextjs-app/shared/data/projects";
 import { resolveDonnyNavigationPath } from "@/nextjs-app/shared/data/donny-navigation";
@@ -343,7 +344,8 @@ const staticTools: ToolMap = {
       additionalProperties: false,
     }),
     async execute(input) {
-      let filtered = [...sortedProjects]; // Already sorted by order
+      // Results carry a /work URL, so coming-soon teasers (no page) stay out.
+      let filtered = sortedProjects.filter(isRoutableProject); // Already sorted by order
 
       // Filter by slug (exact match)
       if (input?.slug) {
