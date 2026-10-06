@@ -1,8 +1,8 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { EnhancedProjectCard } from "./EnhancedProjectCard";
 
@@ -75,13 +75,12 @@ describe("EnhancedProjectCard", () => {
     expect(img).toHaveAttribute("alt", "");
   });
 
-  it("keeps video previews paused even when legacy autoplay is requested", () => {
+  it("keeps video previews paused unless autoPlayVideo is set", () => {
     const { container } = render(
       <EnhancedProjectCard
         {...baseProps}
         thumbnail="/images/poster.webp"
         videoThumbnail="/images/preview.webm"
-        autoPlayVideo
       />,
     );
     const video = container.querySelector("video");
@@ -146,5 +145,77 @@ describe("EnhancedProjectCard", () => {
       <EnhancedProjectCard {...baseProps} comingSoon />,
     );
     expect(await axe(container)).toHaveNoViolations();
+  });
+});
+
+describe("EnhancedProjectCard autoplay loop", () => {
+  const loopProps = {
+    ...baseProps,
+    thumbnail: "/poster.webp",
+    videoThumbnail: ["/loop.webm", "/loop.mp4"],
+    autoPlayVideo: true,
+  };
+
+  function setup(reducedMotion: boolean) {
+    let observe: (entries: Array<{ isIntersecting: boolean }>) => void = () => {};
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        constructor(cb: typeof observe) {
+          observe = cb;
+        }
+        observe() {}
+        disconnect() {}
+      },
+    );
+    vi.spyOn(window, "matchMedia").mockImplementation(
+      () =>
+        ({
+          matches: reducedMotion,
+          addEventListener() {},
+          removeEventListener() {},
+        }) as unknown as MediaQueryList,
+    );
+    const play = vi.spyOn(HTMLMediaElement.prototype, "play").mockResolvedValue();
+    const pause = vi.spyOn(HTMLMediaElement.prototype, "pause").mockImplementation(() => {});
+    // Prototype spies keep call history across tests; start each from zero.
+    play.mockClear();
+    pause.mockClear();
+    const view = render(<EnhancedProjectCard {...loopProps} />);
+    return { view, play, pause, enter: (on: boolean) => act(() => observe([{ isIntersecting: on }])) };
+  }
+
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+  });
+
+  it("offers WebM then MP4, muted, looping and inline, with the still as poster", () => {
+    const { view } = setup(false);
+    const video = view.container.querySelector("video")!;
+    expect(video.muted).toBe(true);
+    expect(video.loop).toBe(true);
+    expect(video.hasAttribute("playsinline")).toBe(true);
+    expect(video.hasAttribute("autoplay")).toBe(false);
+    expect(video.getAttribute("poster")).toBe("/poster.webp");
+    expect([...video.querySelectorAll("source")].map((s) => s.getAttribute("type"))).toEqual([
+      "video/webm",
+      "video/mp4",
+    ]);
+  });
+
+  it("plays only while on screen", () => {
+    const { play, pause, enter } = setup(false);
+    enter(true);
+    expect(play).toHaveBeenCalled();
+    enter(false);
+    expect(pause).toHaveBeenCalled();
+  });
+
+  it("never plays for visitors who prefer reduced motion", () => {
+    const { play, enter } = setup(true);
+    enter(true);
+    expect(play).not.toHaveBeenCalled();
   });
 });

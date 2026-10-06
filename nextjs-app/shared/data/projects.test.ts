@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   filterProjects,
@@ -106,6 +108,21 @@ describe("coming-soon projects are unroutable", () => {
     for (const entry of catalog) {
       expect(comingSoonSlugs.has(entry.slug)).toBe(false);
       expect(entry.url).toBe(`/work/${entry.slug}`);
+    }
+  });
+});
+
+describe("project thumbnails", () => {
+  // Card previews never autoplay (#1498), so `thumbnail` is all most visitors
+  // see. A video there rendered Garage Junction as an empty grey box.
+  it("every thumbnail is a still image that exists in public/", () => {
+    for (const project of projects) {
+      const file = project.thumbnail.split("?")[0] ?? project.thumbnail;
+      expect(file, project.slug).not.toMatch(/\.(mov|mp4|webm)$/i);
+      expect(
+        existsSync(join(process.cwd(), "public", file)),
+        `${project.slug}: ${project.thumbnail}`,
+      ).toBe(true);
     }
   });
 });

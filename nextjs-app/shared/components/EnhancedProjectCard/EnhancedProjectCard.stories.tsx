@@ -40,7 +40,7 @@ export const Default: Story = {
 };
 // Description is seeded so showDescription has something to toggle.
 // videoThumbnail stays unset so the static thumbnail image remains probeable;
-// the deprecated autoPlayVideo prop is retained only for API compatibility.
+// autoPlayVideo needs a video source, so it has no effect here.
 export const Playground: Story = {
   tags: ["beta-matrix"],
   args: {

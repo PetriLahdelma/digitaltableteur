@@ -132,8 +132,8 @@
         },
         "videoThumbnail": {
             "optional": true,
-            "type": "string",
-            "description": "Video thumbnail URL rendered as a paused decorative preview"
+            "type": "string | string[]",
+            "description": "Video thumbnail: one URL, or several in preference order (for example\nWebM then MP4). `thumbnail` is its poster. Paused unless `autoPlayVideo`."
         },
         "description": {
             "optional": true,
@@ -174,7 +174,7 @@
         "autoPlayVideo": {
             "optional": true,
             "type": "boolean",
-            "description": "Deprecated compatibility prop; card previews never autoplay"
+            "description": "Loop the video like a GIF: muted, inline, playing only while on screen,\nand never for visitors who prefer reduced motion (they see the poster).\nKeep such clips short."
         },
         "comingSoon": {
             "optional": true,

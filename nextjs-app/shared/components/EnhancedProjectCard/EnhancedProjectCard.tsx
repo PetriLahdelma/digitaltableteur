@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useEffect, useId, useRef } from "react";
 import { Link } from "../../lib/linkComponent";
 import { Image } from "../../lib/imageComponent";
 import { cn } from "../../lib/cn";
@@ -13,8 +13,11 @@ export interface EnhancedProjectCardProps {
   slug: string;
   /** Thumbnail image URL */
   thumbnail: string;
-  /** Video thumbnail URL. The preview stays paused until the project is opened. */
-  videoThumbnail?: string;
+  /**
+   * Video thumbnail: one URL, or several in preference order (for example
+   * WebM then MP4). `thumbnail` is its poster. Paused unless `autoPlayVideo`.
+   */
+  videoThumbnail?: string | string[];
   /** Short description */
   description?: string;
   /** Project category */
@@ -27,7 +30,11 @@ export interface EnhancedProjectCardProps {
   showCategory?: boolean;
   /** Show description on hover */
   showDescription?: boolean;
-  /** @deprecated Card previews no longer autoplay. Retained for API compatibility. */
+  /**
+   * Loop the video like a GIF: muted, inline, playing only while on screen,
+   * and never for visitors who prefer reduced motion (they see the poster).
+   * Keep such clips short. @default false
+   */
   autoPlayVideo?: boolean;
   /** Render as a non-interactive teaser with a "coming soon" badge over the media */
   comingSoon?: boolean;
@@ -49,6 +56,13 @@ const aspectRatioClasses: Record<
   landscape: styles.landscape,
 };
 
+function videoMimeType(src: string): string | undefined {
+  const path = src.split("?")[0] ?? src;
+  if (path.endsWith(".webm")) return "video/webm";
+  if (path.endsWith(".mp4")) return "video/mp4";
+  return undefined;
+}
+
 /**
  * EnhancedProjectCard component.
  */
@@ -63,6 +77,7 @@ export function EnhancedProjectCard({
   aspectRatio = "video",
   showCategory = true,
   showDescription = true,
+  autoPlayVideo = false,
   comingSoon = false,
   comingSoonLabel = "Coming soon",
   contentLanguage,
@@ -75,7 +90,45 @@ export function EnhancedProjectCard({
     thumbnail.endsWith(".mov") ||
     thumbnail.endsWith(".mp4") ||
     thumbnail.endsWith(".webm");
-  const videoSrc = videoThumbnail || (isVideoThumbnail ? thumbnail : undefined);
+  const videoSources = videoThumbnail
+    ? Array.isArray(videoThumbnail)
+      ? videoThumbnail
+      : [videoThumbnail]
+    : isVideoThumbnail
+      ? [thumbnail]
+      : [];
+  const shouldLoop = autoPlayVideo && !comingSoon && videoSources.length > 0;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Play only while visible and motion is welcome; pause otherwise. No
+  // `autoplay` attribute, so reduced-motion visitors never get a first frame
+  // of motion before JS runs.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !shouldLoop) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const sync = () => {
+      if (visible && !reduce.matches) {
+        void video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = Boolean(entry?.isIntersecting);
+        sync();
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(video);
+    reduce.addEventListener("change", sync);
+    return () => {
+      observer.disconnect();
+      reduce.removeEventListener("change", sync);
+    };
+  }, [shouldLoop]);
 
   const idBase = `${slug}-${rawId.replace(/:/g, "")}`;
   const titleId = `${idBase}-title`;
@@ -89,17 +142,22 @@ export function EnhancedProjectCard({
         data-project-card-media=""
       >
         {/* Video thumbnail */}
-        {isVideoThumbnail && videoSrc ? (
+        {isVideoThumbnail && videoSources.length > 0 ? (
           <video
-            src={videoSrc}
+            ref={videoRef}
             muted
+            loop={shouldLoop}
             playsInline
-            preload="metadata"
+            preload={shouldLoop ? "auto" : "metadata"}
             poster={videoThumbnail ? thumbnail : undefined}
             aria-hidden="true"
             className={styles.asset}
             data-project-card-asset=""
-          />
+          >
+            {videoSources.map((src) => (
+              <source key={src} src={src} type={videoMimeType(src)} />
+            ))}
+          </video>
         ) : (
           /* Static image thumbnail */
           <Image

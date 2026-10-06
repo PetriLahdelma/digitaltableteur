@@ -23,9 +23,9 @@ export interface Project {
   description?: string;
   /** Thumbnail image path */
   thumbnail: string;
-  /** Video thumbnail path (for hover autoplay) */
-  thumbnailVideo?: string;
-  /** Autoplay video thumbnail continuously (not just on hover) */
+  /** Video thumbnail: one path, or several in preference order (WebM, then MP4) */
+  thumbnailVideo?: string | string[];
+  /** Loop the video thumbnail like a GIF (muted, on screen only, off for reduced motion) */
   autoPlayVideo?: boolean;
   /** Primary category */
   category: Exclude<ProjectCategory, "all">;
@@ -128,8 +128,14 @@ export const projects: Project[] = [
     title: "Garage Junction",
     description:
       "Web and social assets for a creative underground music outing.",
-    thumbnail: "/images/portfolio/garage_junction/GJ_loop.mov",
-    thumbnailVideo: "/images/portfolio/garage_junction/GJ_loop.mov",
+    // The still is the poster and what reduced-motion visitors see. The loop
+    // is GJ_loop.mov (the 1608px master, not served) retimed to 2.9 s at
+    // 720px/24fps: WebM 70 KB, MP4 106 KB, instead of a 2.4 MB .mov.
+    thumbnail: "/images/portfolio/garage_junction/GJ_loop_poster.webp",
+    thumbnailVideo: [
+      "/images/portfolio/garage_junction/GJ_loop.webm",
+      "/images/portfolio/garage_junction/GJ_loop.mp4",
+    ],
     autoPlayVideo: true,
     category: "ux-design",
     secondaryCategories: ["branding"],
