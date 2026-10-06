@@ -201,14 +201,7 @@
     "DonnyAvatar": {},
     "EmailSignatureGenerator": {},
     "EmptyState": {},
-    "EnhancedProjectCard": {
-      "props": {
-        "autoPlayVideo": {
-          "deprecated": true,
-          "deprecation": "Card previews no longer autoplay. Retained for API compatibility."
-        }
-      }
-    },
+    "EnhancedProjectCard": {},
     "ExpandableSection": {
       "propRelationships": [
         {

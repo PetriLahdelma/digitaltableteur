@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-04T14:15:38.495Z",
+  "generatedAt": "2026-10-06T20:51:53.829Z",
   "summary": {
     "componentCount": 180,
     "statusCounts": {
@@ -21286,8 +21286,8 @@
           },
           "videoThumbnail": {
             "optional": true,
-            "type": "string",
-            "description": "Video thumbnail URL rendered as a paused decorative preview"
+            "type": "string | string[]",
+            "description": "Video thumbnail: one URL, or several in preference order (for example\nWebM then MP4). `thumbnail` is its poster. Paused unless `autoPlayVideo`."
           },
           "description": {
             "optional": true,
@@ -21328,7 +21328,7 @@
           "autoPlayVideo": {
             "optional": true,
             "type": "boolean",
-            "description": "Deprecated compatibility prop; card previews never autoplay"
+            "description": "Loop the video like a GIF: muted, inline, playing only while on screen,\nand never for visitors who prefer reduced motion (they see the poster).\nKeep such clips short."
           },
           "comingSoon": {
             "optional": true,
@@ -21434,8 +21434,8 @@
           },
           "videoThumbnail": {
             "optional": true,
-            "type": "string",
-            "description": "Video thumbnail URL. The preview stays paused until the project is opened."
+            "type": "string | string[]",
+            "description": "Video thumbnail: one URL, or several in preference order (for example\nWebM then MP4). `thumbnail` is its poster. Paused unless `autoPlayVideo`."
           },
           "description": {
             "optional": true,
@@ -21476,8 +21476,7 @@
           "autoPlayVideo": {
             "optional": true,
             "type": "boolean",
-            "deprecated": true,
-            "deprecation": "Card previews no longer autoplay. Retained for API compatibility."
+            "description": "Loop the video like a GIF: muted, inline, playing only while on screen,\nand never for visitors who prefer reduced motion (they see the poster).\nKeep such clips short."
           },
           "comingSoon": {
             "optional": true,
@@ -21557,8 +21556,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -21572,8 +21571,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -21594,8 +21593,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -21622,8 +21621,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
