@@ -69,6 +69,10 @@ const csp = isDev
       "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.ahrefs.com https://app.cal.com https://app.cal.eu https://mcp.figma.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
+      // Sentry Session Replay compresses recordings in a blob: Web Worker.
+      // Without worker-src the browser falls back to script-src and blocks
+      // it (console errors on every page, uncompressed uploads).
+      "worker-src 'self' blob:",
       "font-src 'self' data:",
       "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://analytics.ahrefs.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu https://mcp.figma.com wss: ws:",
       // Allow embedding trusted media providers in MDX (e.g. YouTube) during local dev.
@@ -83,6 +87,10 @@ const csp = isDev
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.ahrefs.com https://vercel.live https://app.cal.com https://app.cal.eu",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
+      // Sentry Session Replay compresses recordings in a blob: Web Worker.
+      // Without worker-src the browser falls back to script-src and blocks
+      // it (console errors on every page, uncompressed uploads).
+      "worker-src 'self' blob:",
       "font-src 'self' data:",
       "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://vercel.live https://api.resend.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://analytics.ahrefs.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu wss:",
       // Allow Vercel preview tooling + trusted embedded media providers (MDX embeds).
