@@ -19,9 +19,12 @@ updates:
     commit-message:
       prefix: "chore(deps)"
       include: "scope"
-    # Group ALL minor+patch updates into two PRs; majors stay individual.
-    # Previous pattern-based groups were too narrow and produced ~15
-    # single-bump PRs per week.
+    # Minor+patch and major updates each get their own group per dependency
+    # type. Majors must be grouped too: while a minor/patch group PR is open,
+    # Dependabot defers to it and marks every member dependency as handled,
+    # so an ungrouped major never gets its individual PR (no major PR was
+    # raised between 2026-08-10 and 2026-10-15). Groups with non-overlapping
+    # update-types are complementary, so a dependency belongs to both.
     groups:
       development-dependencies:
         dependency-type: "development"
@@ -33,6 +36,14 @@ updates:
         update-types:
           - "minor"
           - "patch"
+      development-majors:
+        dependency-type: "development"
+        update-types:
+          - "major"
+      production-majors:
+        dependency-type: "production"
+        update-types:
+          - "major"
     # Security updates always get individual PRs
     versioning-strategy: "increase"
     ignore:
@@ -64,6 +75,11 @@ updates:
         update-types:
           - "minor"
           - "patch"
+      blog-majors:
+        patterns:
+          - "*"
+        update-types:
+          - "major"
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
@@ -86,3 +102,8 @@ updates:
         update-types:
           - "minor"
           - "patch"
+      ci-actions-majors:
+        patterns:
+          - "*"
+        update-types:
+          - "major"
