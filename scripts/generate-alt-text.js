@@ -27,7 +27,9 @@ const MIME_TYPES = {
 };
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const OPENAI_ALT_MODEL = process.env.OPENAI_ALT_MODEL || "gpt-4o-mini";
+const OPENAI_ALT_MODEL = process.env.OPENAI_ALT_MODEL || "gpt-6-luna";
+// GPT-5+ and o-series default to reasoning; "none" keeps them fast and cheap.
+const IS_REASONING_MODEL = /^(gpt-([5-9]|\d{2,})|o\d)/.test(OPENAI_ALT_MODEL);
 const OPENAI_API_URL =
   process.env.OPENAI_API_URL || "https://api.openai.com/v1/chat/completions";
 const FORCE_MODE = process.argv.includes("--force");
@@ -174,8 +176,9 @@ async function generateAltText(imagePath, contextHint) {
     },
     body: JSON.stringify({
       model: OPENAI_ALT_MODEL,
-      max_tokens: 120,
+      max_completion_tokens: 120,
       temperature: 0.2,
+      ...(IS_REASONING_MODEL && { reasoning_effort: "none" }),
       messages: [
         {
           role: "system",

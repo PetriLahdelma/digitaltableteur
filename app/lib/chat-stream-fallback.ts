@@ -23,6 +23,7 @@ type StreamTextParams = {
   stopWhen: Parameters<typeof streamText>[0]["stopWhen"];
   temperature: number;
   maxOutputTokens: number;
+  providerOptions?: Parameters<typeof streamText>[0]["providerOptions"];
 };
 
 const STREAM_META_TYPES = new Set([

@@ -22,7 +22,7 @@ import { getDonnyTools } from "../donny-tools";
 import { checkPromptInjection } from "../../lib/promptGuardrails";
 import {
   resolveChatBackendOrder,
-  type ChatModelBackend,
+  getChatProviderOptions,
 } from "../../lib/chat-model";
 import {
   adaptToolRecordKeys,
@@ -123,19 +123,15 @@ function trackChatUsage(
 
 async function buildChatStreamParams(
   messages: IncomingUiMessages,
-  backend: ChatModelBackend,
   lastUserMessage: string,
 ) {
   const rawTools = await getDonnyTools({ enableMcp: false, allowStdio: false });
   const scopedTools = selectDonnyToolsForChat(rawTools, lastUserMessage);
-  const tools =
-    backend === "openai"
-      ? adaptToolRecordKeys(scopedTools, toOpenAiToolName)
-      : scopedTools;
+  // Both backends get underscore names: OpenAI (direct or via the Gateway)
+  // rejects "studio.x" with a pattern error, which broke the Gateway fallback.
+  const tools = adaptToolRecordKeys(scopedTools, toOpenAiToolName);
   const toolNames = Object.keys(tools);
-  const system = buildSystemPrompt(toolNames, {
-    useOpenAiToolNames: backend === "openai",
-  });
+  const system = buildSystemPrompt(toolNames, { useOpenAiToolNames: true });
   const trimmedMessages = trimChatHistory(messages);
   const modelMessages = await convertToModelMessages(trimmedMessages);
   return {
@@ -145,6 +141,7 @@ async function buildChatStreamParams(
     stopWhen: stepCountIs(CHAT_MAX_STEPS),
     temperature: 0.2,
     maxOutputTokens: MAX_OUTPUT_TOKENS,
+    providerOptions: getChatProviderOptions(),
   };
 }
 
@@ -234,8 +231,7 @@ export async function POST(request: NextRequest) {
 
     return createChatStreamResponse({
       backends,
-      buildParams: (backend) =>
-        buildChatStreamParams(messages, backend, lastContent),
+      buildParams: () => buildChatStreamParams(messages, lastContent),
       headers: {
         ...corsHeaders,
         "Cache-Control": "no-store, no-transform, max-age=0",

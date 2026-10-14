@@ -89,13 +89,19 @@ const PRESERVED_STACK_NAMES: Record<string, string> = {
 const getStackDisplayName = (item: CatalogItem & { displayName?: string }) =>
   item.displayName ?? PRESERVED_STACK_NAMES[item.slug] ?? item.name;
 
-const getOpenAiModel = () => process.env.OPENAI_MODEL?.trim() || "gpt-4o-mini";
+const DEFAULT_MODEL = "gpt-6-luna";
+
+const getOpenAiModel = () => process.env.OPENAI_MODEL?.trim() || DEFAULT_MODEL;
+
+// GPT-5+ and o-series default to reasoning; "none" keeps them fast and cheap.
+const isReasoningModel = (model: string) =>
+  /^(openai\/)?(gpt-([5-9]|\d{2,})|o\d)/.test(model);
 
 const getGatewayModel = () => {
   const gatewayModel = process.env.AI_GATEWAY_MODEL?.trim();
   if (gatewayModel) return gatewayModel;
   const openAiModel = process.env.OPENAI_MODEL?.trim();
-  if (!openAiModel) return "openai/gpt-4o-mini";
+  if (!openAiModel) return `openai/${DEFAULT_MODEL}`;
   return openAiModel.includes("/") ? openAiModel : `openai/${openAiModel}`;
 };
 
@@ -159,6 +165,7 @@ async function callChatCompletions(
     body: JSON.stringify({
       model,
       temperature: 0.2,
+      ...(isReasoningModel(model) && { reasoning_effort: "none" }),
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         { role: "user", content: prompt },

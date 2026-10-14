@@ -128,7 +128,7 @@ export const buildSystemPrompt = (
     "- When the user asks to navigate, open, go to, view, or show me a page (including prices, packages, pricing, work, contact), call studio.navigateTo immediately. Examples: 'show me the prices' → destination 'pricing' or '/pricing'; 'open SAP' → 'SAP Build Apps'. Their browser navigates automatically — never refuse to show the public pricing page.",
     "- When the user asks about accessibility issues, WCAG, a11y audits, screen readers, or inclusive design tooling, call studio.vertaauxAccessibility and mention VertaaUX. Include [[vertaauxOffer]] in your reply so the chat shows links to the VertaaUX case study (/work/vertaaux) and vertaaux.ai ('Score your accessibility with VertaaUX').",
     "- When the user asks to request a CV/resume or request a portfolio/work samples by email, call studio.composeMailRequest immediately (requestType 'cv' or 'portfolio'). This opens their email client with a pre-filled message to mail@digitaltableteur.com — do not refuse or redirect to the contact form.",
-    "- LEAD TRIAGE: When someone wants to hire Petri, buy services, discuss a project, or asks about engagement — run a short intake (one question at a time): (1) persona — client buying services, recruiter/hiring manager, or other; (2) need/challenge; (3) timeline and budget band if relevant. Then call studio.getCaseStudies with persona, studio.getServicePackages for clients (with problem/budget), and studio.composeMailRequest (cv) for recruiters who want CV/portfolio by email. Never invent package prices — use tool output only.",
+    "- LEAD TRIAGE: When someone wants to hire Petri, buy services, discuss a project, or asks about engagement — run a short intake (one question at a time): (1) persona — client buying services, recruiter/hiring manager, or other; (2) need/challenge; (3) timeline and budget band if relevant. Then call studio.getCaseStudies with persona, studio.getServicePackages for clients (with problem/budget), and studio.composeMailRequest (cv) for recruiters who want CV/portfolio by email. If the persona is not yet known, ask the persona question first and call no tool in that reply. Never invent package prices — use tool output only.",
     "- When studio.getCaseStudies or studio.getServicePackages render cards in chat, do NOT repeat them as markdown lists, headings (## Case Studies), or ![image](url) thumbnails — summarize in one short paragraph only; the UI shows cards with section headers.",
     "- In lead triage, call at most ONE tool per reply (getCaseStudies OR getServicePackages OR createLead OR bookCall — never chain multiple tools). Summarize in text after that single tool call.",
     "- After fit is confirmed (package chosen, budget band aligned, or they ask to schedule), call studio.bookCall with packageId and any known name/email/notes. The chat renders the same inline scheduler as /contact?mode=book. If booking env vars are unset, point them to /contact.",
@@ -149,16 +149,29 @@ export const buildSystemPrompt = (
   return `${baseSystemPrompt}\n\n${guidelines}`;
 };
 
+/**
+ * Default chat model. gpt-4o-mini is removed from the OpenAI API on
+ * 2027-01-14; see docs/DONNY_MODEL_MIGRATION.md before changing this.
+ */
+export const DEFAULT_OPENAI_MODEL = "gpt-6-luna";
+
+/**
+ * Gateway fallback model. The Vercel AI Gateway account is on the free tier,
+ * which rejects gpt-6-luna ("Free tier users do not have access to this
+ * model", 2026-10-14); gpt-5.4-nano is allowed and accepts reasoning "none".
+ */
+export const DEFAULT_GATEWAY_MODEL = "openai/gpt-5.4-nano";
+
 export const resolveModelId = () => {
   const env = process.env.OPENAI_MODEL?.trim();
-  return env || "gpt-4o-mini";
+  return env || DEFAULT_OPENAI_MODEL;
 };
 
 export const resolveGatewayModelId = () => {
   const gatewayModel = process.env.AI_GATEWAY_MODEL?.trim();
   if (gatewayModel) return gatewayModel;
   const openAiModel = process.env.OPENAI_MODEL?.trim();
-  if (!openAiModel) return "openai/gpt-4o-mini";
+  if (!openAiModel) return DEFAULT_GATEWAY_MODEL;
   return openAiModel.includes("/") ? openAiModel : `openai/${openAiModel}`;
 };
 

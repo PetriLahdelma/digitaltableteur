@@ -6,6 +6,7 @@ import {
   resolveModelId,
 } from "@/app/api/chat-shared";
 import { gatewayFinishCompatMiddleware } from "./gateway-finish-compat";
+import { openAiPhaseFilterMiddleware } from "./openai-phase-filter";
 
 export type ChatModelBackend = "gateway" | "openai";
 
@@ -57,7 +58,10 @@ export function getChatLanguageModel(backend: ChatModelBackend): LanguageModel {
     const openai = createOpenAI({
       apiKey: process.env.OPENAI_API_KEY!.trim(),
     });
-    return openai(resolveModelId());
+    return wrapLanguageModel({
+      model: openai(resolveModelId()),
+      middleware: openAiPhaseFilterMiddleware,
+    });
   }
 
   const gateway = createGateway({
@@ -68,8 +72,30 @@ export function getChatLanguageModel(backend: ChatModelBackend): LanguageModel {
   // see gateway-finish-compat.ts.
   return wrapLanguageModel({
     model: gateway(resolveGatewayModelId()),
-    middleware: gatewayFinishCompatMiddleware,
+    middleware: [gatewayFinishCompatMiddleware, openAiPhaseFilterMiddleware],
   });
+}
+
+/**
+ * GPT-6 Luna defaults to reasoning effort "medium", which is slower, drops
+ * temperature, and spends reasoning tokens against maxOutputTokens. Donny
+ * runs it at "none", as OpenAI's GPT-4.x migration guide recommends. Needs
+ * @ai-sdk/openai >= 4.0.90; older versions drop "none" with only a warning.
+ * Non-reasoning models (e.g. a gpt-4o-mini rollback) ignore this option.
+ *
+ * parallelToolCalls: false enforces the system prompt's "at most one tool
+ * per reply" rule at the API level; both models broke it in the 2026-10-14
+ * eval (scripts/donny-model-eval.ts).
+ */
+export const CHAT_REASONING_EFFORT = "none";
+
+export function getChatProviderOptions() {
+  return {
+    openai: {
+      reasoningEffort: CHAT_REASONING_EFFORT,
+      parallelToolCalls: false,
+    },
+  } as const;
 }
 
 export function describeChatBackend(backend: ChatModelBackend): string {

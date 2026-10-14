@@ -49,11 +49,11 @@ Required env (either provider):
 ```bash
 # Preferred for batch generation (avoids direct OpenAI quota limits)
 AI_GATEWAY_API_KEY=...
-AI_GATEWAY_MODEL=openai/gpt-4o-mini   # optional
+AI_GATEWAY_MODEL=openai/gpt-6-luna    # optional
 
 # Fallback
 OPENAI_API_KEY=...
-OPENAI_MODEL=gpt-4o-mini            # optional
+OPENAI_MODEL=gpt-6-luna             # optional
 ```
 
 Use `--provider gateway` or `--provider openai` to force a backend. By default the script tries Gateway first, then OpenAI.
