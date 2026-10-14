@@ -191,7 +191,9 @@ export function selectDonnyToolsForChat(
     selected.add("studio.openHours");
   }
 
-  if (SERVICES_INTENT_PATTERN.test(text)) {
+  // "Take me to services" is navigation; offering the services card too made
+  // the model show the card and then say it could not navigate.
+  if (SERVICES_INTENT_PATTERN.test(text) && !NAVIGATE_INTENT_PATTERN.test(text)) {
     selected.add("studio.services");
   }
 

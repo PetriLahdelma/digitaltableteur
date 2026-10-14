@@ -114,4 +114,12 @@ describe("selectDonnyToolsForChat", () => {
     for (const text of hostile) selectDonnyToolsForChat(allTools, text, [text, text]);
     expect(performance.now() - started).toBeLessThan(250);
   });
+
+  it("treats 'take me to services' as navigation, not the services card", () => {
+    const picked = names("Take me to the services section");
+    expect(picked).toContain("studio.navigateTo");
+    expect(picked).not.toContain("studio.services");
+    expect(names("What services do you offer?")).toContain("studio.services");
+  });
 });
+
