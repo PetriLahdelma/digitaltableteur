@@ -259,6 +259,12 @@
 
 /* Wide wordmark variants — match SVG viewBox (~1346×416) */
 .logoCardWordmark {
+  /* The wordmark SVGs carry their own clear space (80 of 416 units top and
+     bottom). With the shared clamp() padding (48px at desktop) a 125px-tall
+     card left the image 29px, drawing the logo 18px tall. No block padding;
+     side padding only, as a share of the card. */
+  padding-block: 0;
+  padding-inline: 10%;
   aspect-ratio: 1346 / 416;
   inline-size: 100%;
 }
