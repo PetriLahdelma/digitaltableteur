@@ -114,6 +114,41 @@ const EXTRACTION_LITERALS = [
   "disregard all prior",
 ];
 
+/**
+ * Domain vocabulary on a design-systems site. "system" and "token" are
+ * extraction words on their own, but "design system(s)" and "design token(s)"
+ * are the site's subject: "Show me your design system projects" was blocked
+ * in production (2026-10-14). These phrases are removed before matching, so
+ * "show me your design system prompt" is still caught by "show me" + "prompt".
+ */
+const DOMAIN_PHRASE_PATTERN =
+  /\bdesign[\s-]*(?:systems?|tokens?)\b|\bsystems?[\s-]+design\b/g;
+
+/**
+ * Whole-word match, plural allowed. Substring matching made "blog" and
+ * "catalog" count as "log" and "author" as "auth". Only letters and digits
+ * count as word characters, so "SYSTEM_OVERRIDE" still matches "system" and
+ * "override".
+ */
+const termPatternCache = new Map<string, RegExp>();
+function termPattern(term: string): RegExp {
+  let pattern = termPatternCache.get(term);
+  if (!pattern) {
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    pattern = new RegExp(`(?<![\\p{L}\\p{N}])${escaped}s?(?![\\p{L}\\p{N}])`, "u");
+    termPatternCache.set(term, pattern);
+  }
+  return pattern;
+}
+
+function hasTerm(text: string, term: string): boolean {
+  return termPattern(term).test(text);
+}
+
+export function normalizeForGuardrails(prompt: string): string {
+  return prompt.toLowerCase().replace(DOMAIN_PHRASE_PATTERN, " ");
+}
+
 function hasExtractionPattern(lowerPrompt: string): boolean {
   if (EXTRACTION_LITERALS.some((literal) => lowerPrompt.includes(literal))) {
     return true;
@@ -130,7 +165,7 @@ function hasExtractionPattern(lowerPrompt: string): boolean {
 
   return EXTRACTION_PHRASE_GROUPS.some((requiredTerms) => {
     const terms = requiredTerms.filter((term) => term.length > 0);
-    return terms.length >= 2 && terms.every((term) => lowerPrompt.includes(term));
+    return terms.length >= 2 && terms.every((term) => hasTerm(lowerPrompt, term));
   });
 }
 
@@ -155,7 +190,7 @@ export function checkPromptInjection(
   prompt: string,
   ipAddress?: string,
 ): GuardrailCheckResult {
-  const lowerPrompt = prompt.toLowerCase();
+  const lowerPrompt = normalizeForGuardrails(prompt);
   const trimmedPrompt = prompt.trim();
 
   // Empty or very short prompts are safe
@@ -183,7 +218,7 @@ export function checkPromptInjection(
 
   // Check for multiple sensitive keywords (medium severity)
   const foundKeywords = SENSITIVE_KEYWORDS.filter((keyword) =>
-    lowerPrompt.includes(keyword),
+    hasTerm(lowerPrompt, keyword),
   );
 
   if (foundKeywords.length >= 3) {
@@ -218,11 +253,11 @@ export function checkPromptInjection(
 
   // Check for single high-risk keyword combinations
   const hasEnvKeyword =
-    lowerPrompt.includes("env") || lowerPrompt.includes("environment");
+    hasTerm(lowerPrompt, "env") || hasTerm(lowerPrompt, "environment");
   const hasSecretKeyword =
-    lowerPrompt.includes("key") ||
-    lowerPrompt.includes("token") ||
-    lowerPrompt.includes("secret");
+    hasTerm(lowerPrompt, "key") ||
+    hasTerm(lowerPrompt, "token") ||
+    hasTerm(lowerPrompt, "secret");
 
   if (hasEnvKeyword && hasSecretKeyword) {
     logSecurityEvent({
