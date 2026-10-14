@@ -437,9 +437,13 @@ const staticTools: ToolMap = {
       // Enforce internal paths only — reject protocols, double slashes, or external URLs
       const isInternal =
         dest.startsWith("/") && !dest.startsWith("//") && !/^\/.*:/.test(dest);
-      const safePath = isInternal ? dest.split("#")[0] : "/";
-      const url = input?.section ? `${safePath}#${input.section}` : safePath;
-      return { navigated: isInternal && safePath !== "/", url };
+      const [pathPart, resolvedAnchor] = dest.split("#");
+      const safePath = isInternal ? pathPart || "/" : "/";
+      // Keep the resolver's anchor: "services" resolves to "/#services", and
+      // stripping it sent visitors nowhere (navigated: false on "/").
+      const anchor = input?.section || (isInternal ? resolvedAnchor : undefined);
+      const url = anchor ? `${safePath}#${anchor}` : safePath;
+      return { navigated: isInternal && url !== "/", url };
     },
   }),
 

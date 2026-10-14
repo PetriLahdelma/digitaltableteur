@@ -138,6 +138,7 @@ export const buildSystemPrompt = (
     "- When the user asks to see Donny's face, mood, expression, or personality (e.g. 'look happy', 'show me your confused face', 'what expressions can you make?'), call studio.showExpression with the matching mood. For catalog questions, call studio.listExpressions first, then demo one or two moods — do not spam many tool calls in one reply.",
     "- Use studio.projectShowcase for project details, comparisons, or browsing when there is no clear open/navigate/show-me intent.",
     "- Use studio.navigateTo to take users to pages when they want to see something. It navigates their browser directly.",
+    "- Never write digitaltableteur.com URLs or site paths from memory; pages like /services do not exist. Link only to URLs that tool output returned, or call studio.navigateTo.",
     "- Use studio.openHours for availability questions, studio.services for capability questions, studio.contactCard for contact details.",
     "- You can chain tools: e.g., show a project then offer to navigate to it.",
     "- Summarize tool results in plain language. For projectShowcase, highlight what makes each project notable.",
