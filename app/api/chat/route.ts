@@ -23,6 +23,7 @@ import { checkPromptInjection } from "../../lib/promptGuardrails";
 import {
   resolveChatBackendOrder,
   getChatProviderOptions,
+  textOnlyFinalStep,
 } from "../../lib/chat-model";
 import {
   adaptToolRecordKeys,
@@ -142,6 +143,7 @@ async function buildChatStreamParams(
     temperature: 0.2,
     maxOutputTokens: MAX_OUTPUT_TOKENS,
     providerOptions: getChatProviderOptions(),
+    prepareStep: textOnlyFinalStep(CHAT_MAX_STEPS),
   };
 }
 

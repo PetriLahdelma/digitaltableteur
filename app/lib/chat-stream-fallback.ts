@@ -24,6 +24,7 @@ type StreamTextParams = {
   temperature: number;
   maxOutputTokens: number;
   providerOptions?: Parameters<typeof streamText>[0]["providerOptions"];
+  prepareStep?: (options: { stepNumber: number }) => { toolChoice: "none" } | undefined;
 };
 
 const STREAM_META_TYPES = new Set([

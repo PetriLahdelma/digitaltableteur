@@ -98,6 +98,17 @@ export function getChatProviderOptions() {
   } as const;
 }
 
+/**
+ * Makes the last allowed step text-only, so a turn always ends with a written
+ * reply. Without it, gpt-6-luna in production (2026-10-14) spent both steps
+ * on tools (getCaseStudies, then getServicePackages) and the user got cards
+ * with no text. parallelToolCalls: false only stops tools in the same step.
+ */
+export function textOnlyFinalStep(maxSteps: number) {
+  return ({ stepNumber }: { stepNumber: number }) =>
+    stepNumber >= maxSteps - 1 ? { toolChoice: "none" as const } : undefined;
+}
+
 export function describeChatBackend(backend: ChatModelBackend): string {
   return backend === "openai"
     ? `openai/${resolveModelId()}`

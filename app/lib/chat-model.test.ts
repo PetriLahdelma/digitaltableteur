@@ -7,6 +7,7 @@ import {
 } from "@/app/api/chat-shared";
 import {
   getChatProviderOptions,
+  textOnlyFinalStep,
   resolvePrimaryChatBackend,
   resolveChatBackendOrder,
   hasOpenAiFallback,
@@ -98,5 +99,11 @@ describe("chat-model", () => {
     expect(body?.temperature).toBe(0.2);
     expect(body?.parallel_tool_calls).toBe(false);
     expect(result.warnings ?? []).toEqual([]);
+  });
+
+  it("forces a text-only final step so a turn never ends on a tool call", () => {
+    const prepare = textOnlyFinalStep(2);
+    expect(prepare({ stepNumber: 0 })).toBeUndefined();
+    expect(prepare({ stepNumber: 1 })).toEqual({ toolChoice: "none" });
   });
 });
