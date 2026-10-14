@@ -42,9 +42,18 @@ import {
 } from "@/nextjs-app/shared/lib/chat-error-codes";
 import { getClientIp } from "../../lib/security-logger";
 
-const MAX_TOKENS = 4000;
 const MAX_OUTPUT_TOKENS = 900;
-const TOKEN_USAGE_WARNING_THRESHOLD = 3000;
+/**
+ * Alert thresholds, calibrated 2026-10-14. One step re-sends the system
+ * prompt and tool schemas (~3.1k input tokens, ~2.9k of it cached), and the
+ * step after a tool call adds the tool result, so ~6.5k input is a normal
+ * tool turn. The old 3k/3.6k "max" thresholds fired on nearly every tool
+ * turn at level "error". Now only real problems alert: a reply nearing the
+ * output cap (risk of a cut-off answer), or one step's input far above
+ * normal (chat-history trimming not working).
+ */
+const OUTPUT_TOKENS_ALERT = Math.floor(MAX_OUTPUT_TOKENS * 0.9);
+const STEP_INPUT_TOKENS_ALERT = 16_000;
 const CHAT_MAX_STEPS = 2;
 const CHAT_RATE_LIMIT_WINDOW_MS = 60_000;
 const CHAT_RATE_LIMIT_MAX = 12;
@@ -91,29 +100,30 @@ function trackChatUsage(
 ): void {
   void (async () => {
     try {
+      // usage = the final step; that is where a long reply gets cut off and
+      // where the largest prompt (history + tool result) is sent.
       const usage = await result.usage;
-      const totalTokens = usage.totalTokens || 0;
-      if (totalTokens > TOKEN_USAGE_WARNING_THRESHOLD) {
-        Sentry.captureMessage("High token usage detected", {
+      const inputCount = usage.inputTokens ?? 0;
+      const outputCount = usage.outputTokens ?? 0;
+      // Field names avoid "token": Sentry's scrubber nulls those keys.
+      const extra = {
+        inputCount,
+        cachedInputCount: usage.inputTokenDetails?.cacheReadTokens ?? null,
+        outputCount,
+        outputCap: MAX_OUTPUT_TOKENS,
+      };
+      if (outputCount >= OUTPUT_TOKENS_ALERT) {
+        Sentry.captureMessage("Chat reply near the output cap", {
           level: "warning",
           tags: { feature: "chat", model: context.modelId },
-          extra: {
-            totalTokens,
-            promptTokens: usage.inputTokens,
-            completionTokens: usage.outputTokens,
-            maxTokensLimit: MAX_TOKENS,
-          },
+          extra,
         });
       }
-      if (totalTokens > MAX_TOKENS * 0.9) {
-        Sentry.captureMessage("Token usage approaching maximum", {
-          level: "error",
+      if (inputCount > STEP_INPUT_TOKENS_ALERT) {
+        Sentry.captureMessage("Chat step input far above normal", {
+          level: "warning",
           tags: { feature: "chat", model: context.modelId },
-          extra: {
-            totalTokens,
-            maxTokens: MAX_TOKENS,
-            utilizationPercent: (totalTokens / MAX_TOKENS) * 100,
-          },
+          extra: { ...extra, inputAlert: STEP_INPUT_TOKENS_ALERT },
         });
       }
     } catch (usageError) {

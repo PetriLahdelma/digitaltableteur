@@ -393,8 +393,15 @@ function logSecurityEvent(event: {
       security_event: event.type,
       severity: event.severity,
     },
+    // No client IP in Sentry: it is personal data, and the per-IP rate limit
+    // already acts on it in memory. The console line keeps it in Vercel logs.
     extra: {
-      ...event,
+      type: event.type,
+      severity: event.severity,
+      reason: event.reason,
+      promptLength: event.promptLength,
+      pattern: event.pattern,
+      keywords: event.keywords,
       timestamp: new Date().toISOString(),
     },
   });
