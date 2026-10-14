@@ -428,14 +428,11 @@ const staticTools: ToolMap = {
     }),
     async execute(input) {
       const raw = (input?.destination ?? "/").trim();
-      let dest = raw;
+      let dest: string;
 
-      if (!raw.startsWith("/")) {
-        const resolved = resolveDonnyNavigationPath(raw);
-        if (resolved) {
-          dest = resolved;
-        }
-      }
+      // Paths are resolved too: the model can invent routes ("/services").
+      // Anything unresolvable falls back to home instead of a 404.
+      dest = resolveDonnyNavigationPath(raw) ?? "/";
 
       // Enforce internal paths only — reject protocols, double slashes, or external URLs
       const isInternal =
@@ -490,7 +487,7 @@ const staticTools: ToolMap = {
 
   "studio.getServicePackages": tool({
     description:
-      "Return fixed consulting packages (€8–20k) and optional package recommendation from the visitor's problem or budget hints. Use during client lead triage and whenever the visitor asks what a service costs — never invent prices.",
+      "Return fixed consulting packages (€7–20k) and optional package recommendation from the visitor's problem or budget hints. Use during client lead triage and whenever the visitor asks what a service costs — never invent prices.",
     inputSchema: jsonSchema<{
       problem?: string;
       budget?: string;
