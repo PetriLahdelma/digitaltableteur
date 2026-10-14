@@ -1,9 +1,9 @@
 {
   "storyId": "site-chat-chatcomposer-interactive",
   "mode": "forced-colors",
-  "sourceSHA": "5c63be409224d91844d0380c2f8bdbc0cbedac79",
-  "capturedAt": "2026-10-04T14:14:07.764Z",
-  "runner": "local-rfc0001",
+  "sourceSHA": "62ee94060da7f9cb391a72633aa4d3f214136550",
+  "capturedAt": "2026-10-14T19:58:57.304Z",
+  "runner": "local-2026-10-14",
   "checks": {
     "accessibility-tree": {
       "passed": true
