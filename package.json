@@ -427,7 +427,7 @@
     "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-declaration-strict-value": "^1.12.1",
-    "stylelint-order": "^8.1.1",
+    "stylelint-order": "^8.1.2",
     "stylelint-plugin-logical-css": "^2.1.0",
     "stylelint-plugin-rhythmguard": "^3.8.0",
     "tailwindcss": "^4.3.1",
