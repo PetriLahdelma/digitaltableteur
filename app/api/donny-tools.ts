@@ -490,7 +490,7 @@ const staticTools: ToolMap = {
 
   "studio.getServicePackages": tool({
     description:
-      "Return fixed consulting packages (€8–20k) and optional package recommendation from the visitor's problem or budget hints. Use during client lead triage — never invent prices.",
+      "Return fixed consulting packages (€8–20k) and optional package recommendation from the visitor's problem or budget hints. Use during client lead triage and whenever the visitor asks what a service costs — never invent prices.",
     inputSchema: jsonSchema<{
       problem?: string;
       budget?: string;

@@ -27,20 +27,60 @@ const PORTFOLIO_INTENT_PATTERN =
 const PROJECT_INTENT_PATTERN =
   /\b(sap|vertaaux|dsharp|project|build\s*apps)\b/i;
 
-const HOURS_INTENT_PATTERN =
-  /\b(open\s*hours|hours|availability|aukiolo|öppet)\b/i;
+/**
+ * `\b` only knows ASCII letters, so it never matches next to ä/ö and rejects
+ * Finnish inflections ("palveluita"). English terms use `\b…\b`; FI/SV terms
+ * are word-start stems with a Unicode-aware lookbehind.
+ */
+function intent(english: RegExp, stems: readonly string[] = []): RegExp {
+  if (stems.length === 0) return english;
+  return new RegExp(
+    `${english.source}|(?<![\\p{L}\\p{N}])(?:${stems.join("|")})`,
+    "iu",
+  );
+}
 
-const SERVICES_INTENT_PATTERN =
-  /\b(services?|capabilities|offerings?|palvelu|tjänst)\b/i;
+const HOURS_INTENT_PATTERN = intent(
+  /\b(open\s*hours|hours|availability)\b/i,
+  ["aukiolo", "öppet", "öppettid"],
+);
 
-const ACCESSIBILITY_INTENT_PATTERN =
-  /\b(accessibility|a11y|wcag|screen\s*reader|saavutettavuus|tillgänglighet)\b/i;
+const SERVICES_INTENT_PATTERN = intent(
+  /\b(services?|capabilities|offerings?)\b/i,
+  ["palvelu", "tjänst"],
+);
 
-const EXPRESSION_INTENT_PATTERN =
-  /\b(expression|mood|face|moods?)\b/i;
+const ACCESSIBILITY_INTENT_PATTERN = intent(
+  /\b(accessibility|a11y|wcag|screen\s*reader)\b/i,
+  ["saavutettav", "tillgänglig"],
+);
 
-const MAIL_INTENT_PATTERN =
-  /\b(cv|resume|curriculum|portfolio\s*by\s*email|mail\s*me)\b/i;
+const EXPRESSION_INTENT_PATTERN = intent(
+  /\b(expressions?|moods?|faces?|emotions?)\b/i,
+  ["ilme", "uttryck", "humör"],
+);
+
+const MAIL_INTENT_PATTERN = intent(
+  /\b(cv|resume|curriculum|work\s*samples?|mail\s*me)\b|\b(request|send|email|e-mail|mail|get|receive)\b.*\bportfolio\b|\bportfolio\b.*\b(e-?mail|mail|pdf|samples?)\b/i,
+  ["résumé", "ansioluettel", "meritförteckning"],
+);
+
+/** Follow-up consent or contact details, e.g. "Yes, you can follow up. anna@example.com". */
+const CONSENT_INTENT_PATTERN =
+  /\b(follow[\s-]?up|contact\s+me|reach\s+me|get\s+back\s+to\s+me|consent|you\s+can\s+(store|save|keep|contact|email))\b|[^\s@]+@[^\s@]+\.[a-z]{2,}/i;
+
+const PRICING_INTENT_PATTERN = intent(
+  /\b(cost|costs|price|prices|pricing|how\s+much|fee|fees|rates?)\b/i,
+  ["hinta", "hinnat", "hinnoittel", "maksa", "pris", "kostar", "kostnad"],
+);
+
+const NAVIGATE_INTENT_PATTERN = intent(
+  /\b(take\s+me|go\s+to|navigate|open|bring\s+me|page)\b/i,
+  ["siirry", "avaa", "sivu", "gå till", "öppna", "sida"],
+);
+
+/** How many recent user turns keep lead tools available during triage. */
+const LEAD_CONTEXT_TURNS = 3;
 
 function pickTools(tools: ToolMap, names: readonly string[]): ToolMap {
   const picked: ToolMap = {};
@@ -50,10 +90,47 @@ function pickTools(tools: ToolMap, names: readonly string[]): ToolMap {
   return picked;
 }
 
-/** Expose a smaller tool set per turn to reduce prompt size and model indecision. */
+type ChatMessageLike = {
+  role?: unknown;
+  content?: unknown;
+  parts?: unknown;
+};
+
+function messageText(message: ChatMessageLike): string {
+  const source = message.content ?? message.parts;
+  if (typeof source === "string") return source;
+  if (!Array.isArray(source)) return "";
+  return source
+    .map((part) =>
+      typeof part === "string"
+        ? part
+        : typeof (part as { text?: unknown })?.text === "string"
+          ? (part as { text: string }).text
+          : "",
+    )
+    .join(" ");
+}
+
+/** Text of the most recent user messages, oldest first. */
+export function recentUserTexts(
+  messages: readonly unknown[],
+  limit = LEAD_CONTEXT_TURNS,
+): string[] {
+  return messages
+    .filter((m): m is ChatMessageLike => (m as ChatMessageLike)?.role === "user")
+    .slice(-limit)
+    .map(messageText);
+}
+
+/**
+ * Expose a smaller tool set per turn to reduce prompt size and model indecision.
+ * `recentUserMessages` keeps lead tools available across a multi-turn triage,
+ * where later answers ("I'm a client", "yes, follow up") carry no keywords.
+ */
 export function selectDonnyToolsForChat(
   tools: ToolMap,
   lastUserMessage: string,
+  recentUserMessages: readonly string[] = [],
 ): ToolMap {
   const text = lastUserMessage.trim();
   if (!text) {
@@ -62,7 +139,17 @@ export function selectDonnyToolsForChat(
 
   const selected = new Set<string>(CORE_CHAT_TOOLS);
 
-  if (LEAD_INTENT_PATTERN.test(text)) {
+  const leadContext = recentUserMessages
+    .slice(-LEAD_CONTEXT_TURNS)
+    .some((message) => LEAD_INTENT_PATTERN.test(message));
+  const pricingQuestion = PRICING_INTENT_PATTERN.test(text);
+
+  if (
+    LEAD_INTENT_PATTERN.test(text) ||
+    CONSENT_INTENT_PATTERN.test(text) ||
+    pricingQuestion ||
+    leadContext
+  ) {
     for (const name of LEAD_CHAT_TOOLS) selected.add(name);
   }
 
@@ -99,6 +186,12 @@ export function selectDonnyToolsForChat(
   if (selected.size <= CORE_CHAT_TOOLS.length) {
     selected.add("studio.projectShowcase");
     for (const name of LEAD_CHAT_TOOLS) selected.add(name);
+  }
+
+  // A cost question needs package data, not a page. navigateTo's description
+  // invites "prices, packages", so models chose it over getServicePackages.
+  if (pricingQuestion && !NAVIGATE_INTENT_PATTERN.test(text)) {
+    selected.delete("studio.navigateTo");
   }
 
   const picked = pickTools(tools, Array.from(selected));

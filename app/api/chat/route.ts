@@ -33,7 +33,7 @@ import {
   createChatStreamResponse,
   trimChatHistory,
 } from "../../lib/chat-stream-fallback";
-import { selectDonnyToolsForChat } from "../../lib/chat-tool-selection";
+import { recentUserTexts, selectDonnyToolsForChat } from "../../lib/chat-tool-selection";
 import { checkRateLimit } from "../../lib/rate-limit";
 import { logChatFailure } from "../../lib/chat-errors";
 import {
@@ -127,7 +127,11 @@ async function buildChatStreamParams(
   lastUserMessage: string,
 ) {
   const rawTools = await getDonnyTools({ enableMcp: false, allowStdio: false });
-  const scopedTools = selectDonnyToolsForChat(rawTools, lastUserMessage);
+  const scopedTools = selectDonnyToolsForChat(
+    rawTools,
+    lastUserMessage,
+    recentUserTexts(messages),
+  );
   // Both backends get underscore names: OpenAI (direct or via the Gateway)
   // rejects "studio.x" with a pattern error, which broke the Gateway fallback.
   const tools = adaptToolRecordKeys(scopedTools, toOpenAiToolName);

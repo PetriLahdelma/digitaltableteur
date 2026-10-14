@@ -16,7 +16,7 @@ import { streamText, stepCountIs, type ModelMessage, type ToolSet } from "ai";
 import { buildSystemPrompt } from "../app/api/chat-shared";
 import { getDonnyTools } from "../app/api/donny-tools";
 import { getChatLanguageModel, getChatProviderOptions } from "../app/lib/chat-model";
-import { selectDonnyToolsForChat } from "../app/lib/chat-tool-selection";
+import { recentUserTexts, selectDonnyToolsForChat } from "../app/lib/chat-tool-selection";
 import {
   adaptToolRecordKeys,
   fromOpenAiToolName,
@@ -101,7 +101,7 @@ async function runCase(modelId: string, c: EvalCase): Promise<CaseResult> {
   const lastUser = [...c.messages].reverse().find((m) => m.role === "user");
   const lastText = typeof lastUser?.content === "string" ? lastUser.content : "";
   const rawTools = await getDonnyTools({ enableMcp: false, allowStdio: false });
-  const scoped = selectDonnyToolsForChat(rawTools, lastText);
+  const scoped = selectDonnyToolsForChat(rawTools, lastText, recentUserTexts(c.messages));
   const noExecute = Object.fromEntries(
     Object.entries(scoped).map(([name, t]) => [name, { ...(t as object), execute: undefined }]),
   );

@@ -119,6 +119,7 @@ Until 2027-01-14: set `OPENAI_MODEL=gpt-4o-mini` and `AI_GATEWAY_MODEL=openai/gp
 - Both models break "one tool per reply" without `parallelToolCalls: false`; now enforced at the API.
 - Luna is more eager to show packages before asking the persona question; the system prompt now says to ask it first with no tool call. One slip in run 6.
 - Four failures are shared by both models every run and are **tool-scoping gaps, not model issues**: `selectDonnyToolsForChat` does not offer `composeMailRequest` for "portfolio", `listExpressions` for "expressions", or `createLead` on a consent reply (it only reads the last message), and both models answer "how much does an audit cost" with `navigateTo` instead of `getServicePackages`.
+- **Fixed 2026-10-14 (scoping):** `selectDonnyToolsForChat` now treats a portfolio request or work samples as mail intent, matches plurals ("expressions"), offers lead tools on consent replies and email addresses and for 3 user turns after any lead intent, and drops `navigateTo` for cost questions without navigation words. FI/SV terms match as word-start stems, because JavaScript `\b` is ASCII-only and never matched next to ä/ö. After the fix: gpt-6-luna 21/21 and 20/21, gpt-5.4-nano 18/21 and 19/21.
 - Latency: Luna's median time to first token was 3 to 33% slower across runs (about 30 to 250 ms), total time 5 to 19% slower. Part of that is holding back commentary text.
 
 ## 6. Sources
