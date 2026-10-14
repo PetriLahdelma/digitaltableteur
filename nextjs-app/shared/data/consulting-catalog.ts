@@ -69,7 +69,7 @@ export const CONSULTING_PACKAGES: ConsultingPackage[] = [
   {
     id: "ux-sprint",
     name: "UX Sprint",
-    priceRangeEur: "€8–14k",
+    priceRangeEur: "€7–14k",
     duration: "2 weeks",
     description:
       "Prototype, eval plan and handoff your team can ship.",

@@ -90,7 +90,7 @@ Implemented at `/mcp` (rewrites to `/api/mcp`). Discovery via `/.well-known/mcp/
 |------|------|
 | `list_case_studies` | Portfolio from `projects.ts` |
 | `get_case_study` | `{ slug }` |
-| `list_pricing_packages` | Fixed packages €8–20k |
+| `list_pricing_packages` | Fixed packages €7–20k |
 | `get_hourly_rate` | €90/h typical, €90–150/h range |
 | `list_services` | pseo services catalog |
 | `list_expertise_stacks` | React, Next.js, Figma, etc. |
@@ -104,7 +104,7 @@ Implemented at `/mcp` (rewrites to `/api/mcp`). Discovery via `/.well-known/mcp/
 |------|------|
 | `list_case_studies` | Portfolio from `projects.ts` |
 | `get_case_study` | `{ slug }` |
-| `list_pricing_packages` | Fixed packages €8–20k |
+| `list_pricing_packages` | Fixed packages €7–20k |
 | `get_hourly_rate` | €90/h typical, €90–150/h range |
 | `list_services` | pseo services catalog |
 | `list_expertise_stacks` | React, Next.js, Figma, etc. |
