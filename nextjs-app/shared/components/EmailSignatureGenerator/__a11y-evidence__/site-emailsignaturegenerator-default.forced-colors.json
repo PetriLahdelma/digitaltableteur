@@ -1,19 +1,16 @@
 {
   "storyId": "site-emailsignaturegenerator-default",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:44:08.480Z",
-  "runner": "backfill",
+  "sourceSHA": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+  "capturedAt": "2026-10-14T20:31:44.661Z",
+  "runner": "local-2026-10-14b",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     },
     "forced-colors-real-browser": {
-      "passed": true
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "storyId": "site-animations-fadein-default",
+  "mode": "light",
+  "sourceSHA": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+  "capturedAt": "2026-10-14T20:32:09.143Z",
+  "runner": "local-2026-10-14b",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

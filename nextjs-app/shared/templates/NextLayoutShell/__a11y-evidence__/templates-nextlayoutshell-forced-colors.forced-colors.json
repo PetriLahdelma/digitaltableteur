@@ -1,9 +1,9 @@
 {
   "storyId": "templates-nextlayoutshell-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-  "capturedAt": "2026-09-29T17:39:38.073Z",
-  "runner": "local",
+  "sourceSHA": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+  "capturedAt": "2026-10-14T20:34:59.233Z",
+  "runner": "local-2026-10-14b",
   "checks": {
     "accessibility-tree": {
       "passed": true
