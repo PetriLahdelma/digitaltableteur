@@ -104,6 +104,18 @@ const csp = isDev
       ...(isHttpsDeployment ? ["upgrade-insecure-requests"] : []),
     ].join("; ");
 
+/**
+ * The embedded Sanity Studio (/studio) calls the Sanity API from the browser.
+ * The site-wide connect-src does not allow it, so the Studio showed "Couldn't
+ * reach the Sanity servers" (2026-10-14). Only /studio gets these hosts.
+ */
+const SANITY_CONNECT_HOSTS =
+  "https://ai4cwr0g.api.sanity.io https://ai4cwr0g.apicdn.sanity.io https://*.api.sanity.io https://*.apicdn.sanity.io wss://*.api.sanity.io";
+const studioCsp = csp.replace(
+  /connect-src ([^;]*)/,
+  (_match, sources: string) => `connect-src ${sources} ${SANITY_CONNECT_HOSTS}`,
+);
+
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
@@ -262,6 +274,12 @@ const nextConfig: NextConfig = {
       {
         source: "/:path+",
         headers: securityHeaders,
+      },
+      {
+        // Later rules override earlier ones for the same header key, so this
+        // replaces the site-wide CSP on Studio routes only.
+        source: "/studio/:path*",
+        headers: [{ key: "Content-Security-Policy", value: studioCsp }],
       },
       {
         // Agent discovery links belong on every document response, not just the
