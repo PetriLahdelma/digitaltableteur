@@ -102,4 +102,16 @@ describe("selectDonnyToolsForChat", () => {
     expect(fiPrice).toContain("studio.getServicePackages");
     expect(fiPrice).not.toContain("studio.navigateTo");
   });
+
+  it("stays fast on very long input (no quadratic regex backtracking)", () => {
+    const hostile = [
+      "a".repeat(200_000),
+      "a@" + "a.".repeat(100_000),
+      "request ".repeat(25_000),
+      "portfolio ".repeat(20_000),
+    ];
+    const started = performance.now();
+    for (const text of hostile) selectDonnyToolsForChat(allTools, text, [text, text]);
+    expect(performance.now() - started).toBeLessThan(250);
+  });
 });

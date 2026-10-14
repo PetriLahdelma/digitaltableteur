@@ -61,13 +61,37 @@ const EXPRESSION_INTENT_PATTERN = intent(
 );
 
 const MAIL_INTENT_PATTERN = intent(
-  /\b(cv|resume|curriculum|work\s*samples?|mail\s*me)\b|\b(request|send|email|e-mail|mail|get|receive)\b.*\bportfolio\b|\bportfolio\b.*\b(e-?mail|mail|pdf|samples?)\b/i,
+  /\b(cv|resume|curriculum|work\s*samples?|mail\s*me)\b/i,
   ["résumé", "ansioluettel", "meritförteckning"],
 );
 
-/** Follow-up consent or contact details, e.g. "Yes, you can follow up. anna@example.com". */
+// Portfolio + delivery verb is mail intent ("request a portfolio", "email me
+// your portfolio"); "show me your portfolio" stays browsing. Two separate
+// tests instead of `a.*b`, which backtracks quadratically on long input.
+const PORTFOLIO_WORD_PATTERN = /\bportfolio\b/i;
+const PORTFOLIO_DELIVERY_PATTERN =
+  /\b(request|send|email|e-mail|mail|get|receive|pdf|samples?)\b/i;
+
+/** Follow-up consent, e.g. "Yes, you can follow up." Email addresses are checked separately. */
 const CONSENT_INTENT_PATTERN =
-  /\b(follow[\s-]?up|contact\s+me|reach\s+me|get\s+back\s+to\s+me|consent|you\s+can\s+(store|save|keep|contact|email))\b|[^\s@]+@[^\s@]+\.[a-z]{2,}/i;
+  /\b(follow[\s-]?up|contact\s+me|reach\s+me|get\s+back\s+to\s+me|consent|you\s+can\s+(store|save|keep|contact|email))\b/i;
+
+const EMAIL_TOKEN_PATTERN = /^[^@]+@[^@]+\.[a-z]{2,}$/i;
+
+/** Anchored per whitespace token, so the check stays linear in input length. */
+function containsEmailAddress(text: string): boolean {
+  if (!text.includes("@")) return false;
+  return text
+    .split(/\s+/)
+    .some((token) => EMAIL_TOKEN_PATTERN.test(token.replace(/[.,;:!?)]+$/, "")));
+}
+
+/**
+ * Intent is stated near the start of a message; scanning more only costs CPU.
+ * Bounds every pattern here regardless of request size (there is no upstream
+ * length cap on chat messages).
+ */
+const MAX_SCOPING_CHARS = 2000;
 
 const PRICING_INTENT_PATTERN = intent(
   /\b(cost|costs|price|prices|pricing|how\s+much|fee|fees|rates?)\b/i,
@@ -132,7 +156,7 @@ export function selectDonnyToolsForChat(
   lastUserMessage: string,
   recentUserMessages: readonly string[] = [],
 ): ToolMap {
-  const text = lastUserMessage.trim();
+  const text = lastUserMessage.trim().slice(0, MAX_SCOPING_CHARS);
   if (!text) {
     return pickTools(tools, [...CORE_CHAT_TOOLS, ...LEAD_CHAT_TOOLS, "studio.projectShowcase"]);
   }
@@ -141,12 +165,13 @@ export function selectDonnyToolsForChat(
 
   const leadContext = recentUserMessages
     .slice(-LEAD_CONTEXT_TURNS)
-    .some((message) => LEAD_INTENT_PATTERN.test(message));
+    .some((message) => LEAD_INTENT_PATTERN.test(message.slice(0, MAX_SCOPING_CHARS)));
   const pricingQuestion = PRICING_INTENT_PATTERN.test(text);
 
   if (
     LEAD_INTENT_PATTERN.test(text) ||
     CONSENT_INTENT_PATTERN.test(text) ||
+    containsEmailAddress(text) ||
     pricingQuestion ||
     leadContext
   ) {
@@ -179,7 +204,10 @@ export function selectDonnyToolsForChat(
     selected.add("studio.listExpressions");
   }
 
-  if (MAIL_INTENT_PATTERN.test(text)) {
+  if (
+    MAIL_INTENT_PATTERN.test(text) ||
+    (PORTFOLIO_WORD_PATTERN.test(text) && PORTFOLIO_DELIVERY_PATTERN.test(text))
+  ) {
     selected.add("studio.composeMailRequest");
   }
 
