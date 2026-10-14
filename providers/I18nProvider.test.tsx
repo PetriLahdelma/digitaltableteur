@@ -80,6 +80,36 @@ describe("I18nProvider", () => {
     }
   });
 
+  it("translates with the committed language, not the live i18n singleton", async () => {
+    // Regression (2026-10-14): the persisted language is applied in an effect.
+    // A Suspense boundary that hydrated after that effect (BlogIndexContent)
+    // read the already-switched singleton and rendered "Ajatuksia" against
+    // server HTML "Thoughts", a hydration mismatch. A translate captured from a
+    // committed render must keep that render's language until React re-renders.
+    let latestT: ReturnType<typeof useTranslate> | undefined;
+    function TitleProbe() {
+      const t = useTranslate();
+      latestT = t;
+      return <output data-testid="title">{t("blogHeroTitle")}</output>;
+    }
+
+    render(
+      <I18nProvider>
+        <TitleProbe />
+      </I18nProvider>,
+    );
+    expect(screen.getByTestId("title").textContent).toBe("Thoughts");
+
+    const committedT = latestT!;
+    await i18n.changeLanguage("fi");
+    expect(committedT("blogHeroTitle")).toBe("Thoughts");
+
+    // The switch still reaches the UI as a normal React update.
+    await waitFor(() => {
+      expect(screen.getByTestId("title").textContent).toBe("Ajatuksia");
+    });
+  });
+
   it("persists a user language switch across provider remounts", async () => {
     setLanguageCookie("fi");
     window.localStorage.setItem("i18nextLng", "fi");

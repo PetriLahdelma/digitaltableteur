@@ -1,7 +1,7 @@
 "use client";
 
 import { I18nextProvider } from "react-i18next";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import i18n from "../i18n/config";
 import {
@@ -95,6 +95,18 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     resolvedLanguage: i18n.resolvedLanguage || i18n.language || "en",
   }));
 
+  // Bind translations to the language in React state, not the live i18n
+  // singleton. The persisted language is applied in an effect after the first
+  // commit; a Suspense boundary that hydrates later (BlogIndexContent) would
+  // otherwise read the already-switched singleton and render "Ajatuksia"
+  // against server HTML "Thoughts" (hydration mismatch). Through React state,
+  // React hydrates the pending boundary with the old language first and then
+  // applies the switch as a normal update.
+  const fixedT = useMemo(
+    () => i18n.getFixedT(runtimeLanguage.language),
+    [runtimeLanguage.language],
+  );
+
   const translate = useCallback(
     (
       key: string,
@@ -105,7 +117,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
         typeof fallbackOrOptions === "string"
           ? { ...options, defaultValue: fallbackOrOptions }
           : fallbackOrOptions;
-      const translated = i18n.t(key, translationOptions);
+      const translated = fixedT(key, translationOptions);
       if (typeof translated === "string") return translated;
       // `returnObjects: true` lookups (e.g. HomeHero's title/subtext option
       // arrays) must pass through structurally, matching the shared lib's
@@ -116,7 +128,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       }
       return String(translated);
     },
-    [],
+    [fixedT],
   );
 
   const getResourceBundle = useCallback(
