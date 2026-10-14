@@ -168,7 +168,7 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
     contactParts.length > 0
       ? `<tr>
     <td style="padding-top: 8px; color: var(--color-text);">
-      ${contactParts.join(" · ")}
+      ${contactParts.join(", ")}
     </td>
   </tr>`
       : ""
@@ -329,7 +329,7 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
           <div className={styles.signatureContact}>
             {contactParts.map((part, index) => (
               <React.Fragment key={index}>
-                {index > 0 && <span className={styles.bullet}>·</span>}
+                {index > 0 && <span className={styles.bullet}>, </span>}
                 {part}
               </React.Fragment>
             ))}

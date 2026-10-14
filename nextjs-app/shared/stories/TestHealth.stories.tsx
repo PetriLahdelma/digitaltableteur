@@ -283,7 +283,7 @@ const TestHealthOverview = () => {
         <p className={styles.updatedAt}>
           {t("dashboardLastUpdated", { date: stalenessLabel })}
           {runSummary
-            ? ` · ${runSummary.runId}${
+            ? `, ${runSummary.runId}${
                 runSummary.branch ? ` (${runSummary.branch})` : ""
               }`
             : ""}
@@ -396,7 +396,7 @@ const TestHealthOverview = () => {
               tone={d2d.averageDays <= d2d.targetDays ? "success" : "warning"}
             />
             <p className={styles.miniFoot}>
-              p95 {d2d.p95Days.toFixed(1)}d ·{" "}
+              p95 {d2d.p95Days.toFixed(1)}d,{" "}
               {t("dashboardDesignToDevTarget", { days: d2d.targetDays })}
             </p>
           </article>

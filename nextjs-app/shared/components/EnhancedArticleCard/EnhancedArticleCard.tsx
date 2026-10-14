@@ -134,7 +134,7 @@ export function EnhancedArticleCard({
           </h3>
           <p className="text-xs text-muted-foreground">
             {formattedDate}
-            {readTime && ` · ${readTime}`}
+            {readTime && `, ${readTime}`}
           </p>
         </div>
       </Link>
@@ -268,7 +268,7 @@ export function EnhancedArticleCard({
               showReadMore ? "justify-between" : "justify-start",
             )}
           >
-            <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+            <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
               {showAuthor && author && (
                 <>
                   <div className="relative size-7 shrink-0 overflow-hidden rounded-full bg-muted">
@@ -285,13 +285,9 @@ export function EnhancedArticleCard({
                   </span>
                 </>
               )}
-              {showAuthor && author && formattedDate && (
-                <span aria-hidden="true">·</span>
-              )}
               {formattedDate && (
                 <time dateTime={publishedAt}>{formattedDate}</time>
               )}
-              {formattedDate && readTime && <span aria-hidden="true">·</span>}
               {readTime && <span>{readTime}</span>}
             </div>
 

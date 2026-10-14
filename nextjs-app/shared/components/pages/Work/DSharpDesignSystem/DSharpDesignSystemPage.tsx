@@ -178,7 +178,7 @@ function FoundationsSpecimen() {
 
         {/* Color row */}
         <g transform="translate(40, 36)">
-          <SpecimenCaption x={0} y={0} label="Color · primitives" />
+          <SpecimenCaption x={0} y={0} label="Color, primitives" />
           {colors.map(([name, value], i) => {
             const x = i * 130;
             const needsElevation = name === "surface/raised";
@@ -219,7 +219,7 @@ function FoundationsSpecimen() {
 
         {/* Typography */}
         <g transform="translate(40, 220)">
-          <SpecimenCaption x={0} y={0} label="Type · DM Sans / DM Mono" />
+          <SpecimenCaption x={0} y={0} label="Type, DM Sans / DM Mono" />
           <text
             x={0}
             y={88}
@@ -259,14 +259,14 @@ function FoundationsSpecimen() {
               fontSize={12}
               fontWeight={500}
             >
-              var(--font-sans){"  "}·{"  "}var(--font-mono)
+              var(--font-sans), var(--font-mono)
             </text>
           </g>
         </g>
 
         {/* Space scale */}
         <g transform="translate(40, 380)">
-          <SpecimenCaption x={0} y={0} label="Space · 14-step rhythm" />
+          <SpecimenCaption x={0} y={0} label="Space, 14-step rhythm" />
           {space.map((value, i) => {
             const x = i * 88;
             return (
@@ -521,7 +521,7 @@ function AtomsSpecimen() {
       >
         {/* Variants row */}
         <g transform="translate(48, 56)">
-          <SpecimenCaption x={0} y={0} label="Button · variants" />
+          <SpecimenCaption x={0} y={0} label="Button, variants" />
           <text
             x={0}
             y={22}
@@ -573,7 +573,7 @@ function AtomsSpecimen() {
 
         {/* Sizes row */}
         <g transform="translate(48, 264)">
-          <SpecimenCaption x={0} y={0} label="Button · sizes" />
+          <SpecimenCaption x={0} y={0} label="Button, sizes" />
           <text
             x={0}
             y={22}
@@ -581,7 +581,7 @@ function AtomsSpecimen() {
             fontFamily={FONT_SANS}
             fontSize={13}
           >
-            Heights snap to the space scale: 28 · 32 · 40.
+            Heights snap to the space scale: 28, 32, 40.
           </text>
           <g transform="translate(0, 48)">
             <SvgButton x={0} y={6} label="Save" variant="primary" size="sm" />
@@ -590,9 +590,9 @@ function AtomsSpecimen() {
           </g>
           <g transform="translate(0, 102)">
             {[
-              { x: 0, label: "sm · 28px" },
-              { x: 100, label: "md · 32px" },
-              { x: 216, label: "lg · 40px" },
+              { x: 0, label: "sm, 28px" },
+              { x: 100, label: "md, 32px" },
+              { x: 216, label: "lg, 40px" },
             ].map((item) => (
               <text
                 key={item.label}
@@ -611,7 +611,7 @@ function AtomsSpecimen() {
 
         {/* States row */}
         <g transform="translate(48, 432)">
-          <SpecimenCaption x={0} y={0} label="Button · states" />
+          <SpecimenCaption x={0} y={0} label="Button, states" />
           <text
             x={0}
             y={22}
@@ -727,7 +727,7 @@ function MoleculesSpecimen() {
       >
         {/* Alert */}
         <g transform="translate(48, 48)">
-          <SpecimenCaption x={0} y={0} label="Alert · warning" />
+          <SpecimenCaption x={0} y={0} label="Alert, warning" />
           <g transform="translate(0, 24)">
             <rect
               x={0}
@@ -796,7 +796,7 @@ function MoleculesSpecimen() {
 
         {/* Tabs */}
         <g transform="translate(472, 48)">
-          <SpecimenCaption x={0} y={0} label="Tabs · contextual navigation" />
+          <SpecimenCaption x={0} y={0} label="Tabs, contextual navigation" />
           <g transform="translate(0, 24)">
             <rect
               x={0}
@@ -855,7 +855,7 @@ function MoleculesSpecimen() {
               fontSize={10}
               letterSpacing="0.06em"
             >
-              role=&quot;tablist&quot; · roving focus · arrow-key nav
+              role=&quot;tablist&quot;, roving focus, arrow-key nav
             </text>
           </g>
         </g>
@@ -865,7 +865,7 @@ function MoleculesSpecimen() {
           <SpecimenCaption
             x={0}
             y={0}
-            label="FormField · label, control, helper"
+            label="FormField, label, control, helper"
           />
           <g transform="translate(0, 24)">
             <rect
@@ -951,7 +951,7 @@ function MoleculesSpecimen() {
 
         {/* Table */}
         <g transform="translate(472, 240)">
-          <SpecimenCaption x={0} y={0} label="Table · composing the atoms" />
+          <SpecimenCaption x={0} y={0} label="Table, composing the atoms" />
           <g transform="translate(0, 24)">
             <rect
               x={0}
@@ -1242,7 +1242,7 @@ function OrganismsSpecimen() {
       >
         {/* LayerNav */}
         <g transform="translate(48, 48)">
-          <SpecimenCaption x={0} y={0} label="LayerNav · medallion sidebar" />
+          <SpecimenCaption x={0} y={0} label="LayerNav, medallion sidebar" />
           <g transform="translate(0, 24)">
             <rect
               x={0}
@@ -1326,7 +1326,7 @@ function OrganismsSpecimen() {
 
         {/* ConceptCard */}
         <g transform="translate(316, 48)">
-          <SpecimenCaption x={0} y={0} label="ConceptCard · archetype tint" />
+          <SpecimenCaption x={0} y={0} label="ConceptCard, archetype tint" />
           <g transform="translate(0, 24)">
             <rect
               x={0}
@@ -1498,7 +1498,7 @@ function OrganismsSpecimen() {
 
         {/* Inspector */}
         <g transform="translate(600, 48)">
-          <SpecimenCaption x={0} y={0} label="Inspector · contract pane" />
+          <SpecimenCaption x={0} y={0} label="Inspector, contract pane" />
           <g transform="translate(0, 24)">
             <rect
               x={0}
@@ -1527,7 +1527,7 @@ function OrganismsSpecimen() {
               fontSize={10}
               letterSpacing="0.06em"
             >
-              tier: atom · group: domain
+              tier: atom, group: domain
             </text>
             <line
               x1={20}
@@ -1539,7 +1539,7 @@ function OrganismsSpecimen() {
             />
             {[
               ["variants", "primary / ghost"],
-              ["slots", "label · helper"],
+              ["slots", "label, helper"],
               ["asChild", "true"],
               ["a11y.reviewed", "true"],
               ["tokens.declared", "12"],
@@ -1581,7 +1581,7 @@ function OrganismsSpecimen() {
           <SpecimenCaption
             x={0}
             y={0}
-            label="AIToolbar · scoped agent actions"
+            label="AIToolbar, scoped agent actions"
           />
           <g transform="translate(0, 24)">
             <rect
@@ -1664,7 +1664,7 @@ function OrganismsSpecimen() {
 
         {/* ConceptDiagram */}
         <g transform="translate(48, 564)">
-          <SpecimenCaption x={0} y={0} label="ConceptDiagram · ER canvas" />
+          <SpecimenCaption x={0} y={0} label="ConceptDiagram, ER canvas" />
           <g transform="translate(0, 24)">
             <rect
               x={0}

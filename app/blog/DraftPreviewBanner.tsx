@@ -28,7 +28,7 @@ export async function DraftPreviewBanner() {
         <Link href="/blog?preview=drafts" className="underline underline-offset-2">
           Show scheduled &amp; draft posts
         </Link>
-        {" · "}
+        {", "}
         <code className="text-xs">npm run dev:drafts</code>
       </div>
     );
@@ -53,7 +53,7 @@ export async function DraftPreviewBanner() {
     >
       <p className="text-center font-medium">
         Draft preview ON ({envHint})
-        {" · "}
+        {", "}
         <Link href="/blog?preview=off" className="underline underline-offset-2">
           Turn off
         </Link>

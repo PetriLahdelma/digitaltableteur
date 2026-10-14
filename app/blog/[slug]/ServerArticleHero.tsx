@@ -58,13 +58,13 @@ export function ServerArticleHero({
             ) : null}
             {showUpdated && modifiedAt ? (
               <>
-                {" · Updated "}
+                {", updated "}
                 <time dateTime={modifiedAt}>
                   {formatPublishedDate(modifiedAt)}
                 </time>
               </>
             ) : null}
-            {readTime ? ` · ${readTime}` : ""}
+            {readTime ? `, ${readTime}` : ""}
           </p>
           <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-foreground tablet:text-5xl">
             {title}

@@ -207,9 +207,9 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
               <Title as="h3" unstyled className={styles.metaLabel}>Packages</Title>
               <p className={styles.metaText}>
                 <a href="https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts" target="_blank" rel="noopener noreferrer">contracts</a>
-                {" · "}
+                {", "}
                 <a href="https://www.npmjs.com/package/@petritapanilahdelma/llm-component-cli" target="_blank" rel="noopener noreferrer">cli</a>
-                {" · "}
+                {", "}
                 <a href="https://github.com/PetriLahdelma/llm-component-schema-template" target="_blank" rel="noopener noreferrer">GitHub</a>
               </p>
             </div>

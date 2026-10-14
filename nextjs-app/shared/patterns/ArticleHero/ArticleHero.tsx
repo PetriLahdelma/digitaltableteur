@@ -199,16 +199,6 @@ export function ArticleHero({
                 <span className="font-body text-sm">{formattedDate}</span>
               )}
 
-              {/* Separator */}
-              {formattedDate && readTime && (
-                <span
-                  className={cn(
-                    isFullWidth ? "text-white/40" : "text-border"
-                  )}
-                >
-                  ·
-                </span>
-              )}
 
               {/* Read time */}
               {readTime && (

@@ -84,7 +84,7 @@ export function formatAttachmentDisplayName(name: string): string {
   const ext = extMatch?.[1]?.toUpperCase() ?? "FILE";
 
   if (/^ig_[a-f0-9]+\.(png|jpe?g|gif|webp)$/i.test(trimmed)) {
-    return `Uploaded image · ${ext}`;
+    return `Uploaded image, ${ext}`;
   }
 
   if (trimmed.length > 42) {
@@ -158,7 +158,7 @@ function buildTextFields(payload: ContactNotificationPayload): TextField[] {
         type,
       ]
         .filter(Boolean)
-        .join(" · "),
+        .join(", "),
     });
   }
   if (payload.attachmentNotice?.trim()) {
@@ -176,11 +176,11 @@ export function buildContactNotificationSubject(
 ): string {
   const leadInterest = payload.interest?.split(",")[0]?.trim();
   const portfolioFlag = payload.requestPortfolioMaterials
-    ? "Work samples follow-up · "
+    ? "Work samples follow-up, "
     : "";
   return leadInterest
-    ? `${portfolioFlag}Contact inquiry · ${payload.name} · ${leadInterest}`
-    : `${portfolioFlag}Contact inquiry · ${payload.name}`;
+    ? `${portfolioFlag}Contact inquiry, ${payload.name}, ${leadInterest}`
+    : `${portfolioFlag}Contact inquiry, ${payload.name}`;
 }
 
 export function buildContactNotificationText(
@@ -261,7 +261,7 @@ function renderAttachmentCard(
             ${escapeHTML(displayName)}
           </p>
           <p style="margin:0;font-family:${FONT};font-size:12px;line-height:1.4;color:${MUTED};">
-            ${escapeHTML([sizeLabel, typeLabel].filter(Boolean).join(" · ") || "See attached file")}
+            ${escapeHTML([sizeLabel, typeLabel].filter(Boolean).join(", ") || "See attached file")}
           </p>
         </td>
       </tr>
@@ -354,7 +354,7 @@ export function buildContactNotificationHtml(
                   digitaltableteur
                 </p>
                 <p style="margin:0 0 4px 0;font-size:13px;line-height:1.4;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.64);">
-                  ${payload.requestPortfolioMaterials ? "New contact inquiry · work samples follow-up" : "New contact inquiry"}
+                  ${payload.requestPortfolioMaterials ? "New contact inquiry, work samples follow-up" : "New contact inquiry"}
                 </p>
                 <h1 style="margin:0;font-size:28px;line-height:1.2;font-weight:600;color:#ffffff;">
                   ${escapeHTML(payload.name)}
@@ -397,7 +397,7 @@ export function buildContactNotificationHtml(
             </tr>
             <tr>
               <td align="center" style="padding:0 28px 24px 28px;font-family:${FONT};font-size:12px;line-height:1.5;color:${MUTED};">
-                digitaltableteur.com · contact form notification
+                digitaltableteur.com, contact form notification
               </td>
             </tr>
           </table>

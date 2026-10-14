@@ -105,7 +105,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
                 >
                   npm
                 </a>
-                {" · "}
+                {", "}
                 <a
                   href="https://github.com/PetriLahdelma/stylelint-plugin-rhythmguard"
                   target="_blank"

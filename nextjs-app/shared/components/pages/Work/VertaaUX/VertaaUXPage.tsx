@@ -585,7 +585,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             },
             {
               sizeClass: styles.waterfallSizeMd,
-              text: "Audit completed in 2.7 s · 91 checks passed · 4 dimensions analyzed",
+              text: "Audit completed in 2.7 s, 91 checks passed, 4 dimensions analyzed",
             },
             {
               sizeClass: styles.waterfallSizeSpecimen,

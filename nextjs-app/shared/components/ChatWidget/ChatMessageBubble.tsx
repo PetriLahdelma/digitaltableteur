@@ -273,7 +273,7 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
   const isAssistant = message.role === "assistant";
   const speakerId = React.useId();
   const speaker = isAssistant
-    ? t("chatSpeakerAssistant", "Donny · AI assistant")
+    ? t("chatSpeakerAssistant", "Donny, AI assistant")
     : t("chatSpeakerUser", "You");
   const thinking = t("chatThinking", "Thinking…");
   const fallback = isAssistant ? (isStreaming ? thinking : "") : "";

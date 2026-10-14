@@ -90,7 +90,7 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
                 >
                   projectspine.dev
                 </a>
-                {" · "}
+                {", "}
                 <a
                   href="https://github.com/PetriLahdelma/project-spine"
                   target="_blank"

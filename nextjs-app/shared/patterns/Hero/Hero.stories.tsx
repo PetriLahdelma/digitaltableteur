@@ -376,7 +376,7 @@ export const SplitImageRight: Story = {
 export const PortfolioProject: Story = {
   args: {
     title: "Helsinki Design System",
-    subtitle: "Design System · 2024",
+    subtitle: "Design System, 2024",
     description:
       "A comprehensive design system for the city of Helsinki, featuring accessible components, design tokens, and documentation.",
     imageSrc: "/placeholder.png",

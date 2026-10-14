@@ -41,7 +41,7 @@ describe("ChatMessageBubble", () => {
       expect(
         screen.getByText(/Hello! How can I help you?/),
       ).toBeInTheDocument();
-      expect(screen.getByRole("group", { name: "Donny · AI assistant" })).toHaveTextContent(
+      expect(screen.getByRole("group", { name: "Donny, AI assistant" })).toHaveTextContent(
         "Hello! How can I help you?",
       );
       expect(screen.getByTestId("chat-message-assistant")).toHaveAttribute(

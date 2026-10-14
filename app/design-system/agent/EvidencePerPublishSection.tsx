@@ -91,48 +91,48 @@ export function EvidencePerPublishSection({
       name: "Bundle cost",
       records:
         "Minified+gzip bytes per exported component, in two honest modes: the package's own code (self) and the marginal cost to a consumer that satisfies the peer contract (withDeps).",
-      headline: `${exportCount} exports · package self ${kb(bundle.totals.js.self.gzipBytes)} JS + ${kb(bundle.totals.css.gzipBytes)} CSS gzip`,
+      headline: `${exportCount} exports, package self ${kb(bundle.totals.js.self.gzipBytes)} JS + ${kb(bundle.totals.css.gzipBytes)} CSS gzip`,
       file: "bundle-evidence.json",
     },
     {
       name: "SSR + hydration",
       records:
         "renderToString in plain Node (no DOM globals), then hydrateRoot over that HTML with zero recoverable hydration errors.",
-      headline: `${ssr.totals.ssrPass} SSR pass · ${ssr.totals.hydrationClean} hydrate clean · ${ssr.totals.ssrError} provider-required errors`,
+      headline: `${ssr.totals.ssrPass} SSR pass, ${ssr.totals.hydrationClean} hydrate clean, ${ssr.totals.ssrError} provider-required errors`,
       file: "ssr-evidence.json",
     },
     {
       name: "Override precedence",
       records:
         "A consumer's single-class className override wins over component base styles in real Chromium (the owner-decided contract), plus the container × child encapsulation matrix on child-pinned properties.",
-      headline: `${override.totals.pass} pass · ${override.totals.fail} fail · ${override.encapsulation.matrix.pairsMeasured} matrix pairs, ${override.encapsulation.matrix.pairsAffected} affected`,
+      headline: `${override.totals.pass} pass, ${override.totals.fail} fail, ${override.encapsulation.matrix.pairsMeasured} matrix pairs, ${override.encapsulation.matrix.pairsAffected} affected`,
       file: "override-evidence.json",
     },
     {
       name: "Interaction cost",
       records:
         "Mount/re-render commit cost (flushSync, informational) and DOM render weight per component, plus interaction recipes over the data primitives' documented hot paths.",
-      headline: `${interaction.totals.measured} measured · ${interaction.totals.recipes} recipes completed`,
+      headline: `${interaction.totals.measured} measured, ${interaction.totals.recipes} recipes completed`,
       file: "interaction-evidence.json",
     },
     {
       name: "React peer-range matrix",
       records: `The declared react range (${compatMatrix.dimensions.react.declaredRange}) exercised at its endpoints in isolated consumer installs; outcome sets must match across combos.`,
-      headline: `react ${compatMatrix.dimensions.react.combosExercised.join(" & ")} · ${compatMatrix.totals.divergence} divergent components`,
+      headline: `react ${compatMatrix.dimensions.react.combosExercised.join(" & ")}, ${compatMatrix.totals.divergence} divergent components`,
       file: "compat-matrix.json",
     },
     {
       name: "Web-component parity",
       records:
         "React↔native rendered parity (pixels + geometry across the viewport/theme matrix); enforced components fail the publish on regression.",
-      headline: `${wcParity.roster.enforcedCount} enforced clean · fleet visual ${wcParity.totals.visualParity}, geometry ${wcParity.totals.geometryParity} of ${wcParity.totals.comparisons}`,
+      headline: `${wcParity.roster.enforcedCount} enforced clean, fleet visual ${wcParity.totals.visualParity}, geometry ${wcParity.totals.geometryParity} of ${wcParity.totals.comparisons}`,
       file: "wc-parity.json",
     },
     {
       name: "Compatibility manifest",
       records:
         "The toolchain combinations ACTUALLY exercised by the gates — resolved versions, never ranges. Absence means untested, not incompatible.",
-      headline: `react ${compatibility.exercised.react} · next ${compatibility.exercised.next} · typescript ${compatibility.exercised.typescript}`,
+      headline: `react ${compatibility.exercised.react}, next ${compatibility.exercised.next}, typescript ${compatibility.exercised.typescript}`,
       file: "compatibility-manifest.json",
     },
   ];

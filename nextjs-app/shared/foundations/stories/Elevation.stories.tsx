@@ -32,10 +32,10 @@ export const Overview: Story = {
             }}
           >
             {[
-              { token: "--shadow-sm", label: "sm · resting" },
-              { token: "--shadow-md", label: "md · raised" },
-              { token: "--shadow-lg", label: "lg · overlay" },
-              { token: "--shadow-xl", label: "xl · modal" },
+              { token: "--shadow-sm", label: "sm, resting" },
+              { token: "--shadow-md", label: "md, raised" },
+              { token: "--shadow-lg", label: "lg, overlay" },
+              { token: "--shadow-xl", label: "xl, modal" },
             ].map(({ token, label }) => (
               <div key={token} style={{ textAlign: "center" }}>
                 <div

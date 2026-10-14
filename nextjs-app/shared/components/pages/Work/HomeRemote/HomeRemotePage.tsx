@@ -180,7 +180,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             }
             chart={`%%{init: {"flowchart": {"subGraphTitleMargin": {"top": 12, "bottom": 12}}}}%%
 flowchart LR
-    subgraph mac["Mac · trusted LAN"]
+    subgraph mac["Mac, trusted LAN"]
       daemon("Local daemon\\nowns pairings + Keychain")
       app("macOS app\\nmenu bar + window")
       cli("hometv CLI")

@@ -218,7 +218,7 @@ export function PseoLeafPageView({
             </Title>
             <Text>{blocks.packageFit.reason}</Text>
             <Text size="s">
-              {blocks.packageFit.name} · {blocks.packageFit.duration} ·{" "}
+              {blocks.packageFit.name}, {blocks.packageFit.duration},{" "}
               {blocks.packageFit.priceRangeEur}
             </Text>
             <div className={styles.ctaActions}>

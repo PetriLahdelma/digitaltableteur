@@ -24,7 +24,7 @@ const samplePayload = {
 describe("contact-notification-email", () => {
   it("builds a descriptive subject with lead interest", () => {
     expect(buildContactNotificationSubject(samplePayload)).toBe(
-      "Contact inquiry · Petri Lahdelma · Brand & Identity",
+      "Contact inquiry, Petri Lahdelma, Brand & Identity",
     );
   });
 
@@ -35,7 +35,7 @@ describe("contact-notification-email", () => {
         requestPortfolioMaterials: true,
       }),
     ).toBe(
-      "Work samples follow-up · Contact inquiry · Petri Lahdelma · Brand & Identity",
+      "Work samples follow-up, Contact inquiry, Petri Lahdelma, Brand & Identity",
     );
   });
 
@@ -65,7 +65,7 @@ describe("contact-notification-email", () => {
     expect(text).toContain("Budget: 50k€+");
     expect(text).toContain("Timeline: ASAP");
     expect(text).toContain("Source: Search engine");
-    expect(text).toContain("Attachment: Uploaded image · PNG · 1.8 MB");
+    expect(text).toContain("Attachment: Uploaded image, PNG, 1.8 MB");
   });
 
   it("shortens hashed social upload filenames", () => {
@@ -73,7 +73,7 @@ describe("contact-notification-email", () => {
       formatAttachmentDisplayName(
         "ig_037ea11908ff3f8c016a19dd2b60188191b791ba9b102e806d.png",
       ),
-    ).toBe("Uploaded image · PNG");
+    ).toBe("Uploaded image, PNG");
   });
 
   it("renders polished HTML with chips, metrics, and reply CTA", () => {
@@ -89,7 +89,7 @@ describe("contact-notification-email", () => {
     expect(html).toContain("Search engine");
     expect(html).toContain("Reply to Petri");
     expect(html).toContain("Attachment included");
-    expect(html).toContain("Uploaded image · PNG");
+    expect(html).toContain("Uploaded image, PNG");
     expect(html).not.toContain("<script>");
     expect(html).toContain("&lt;script&gt;");
     expect(html).not.toContain("INSPIRATION / REFERENCES");

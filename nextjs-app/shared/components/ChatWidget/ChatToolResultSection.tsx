@@ -29,7 +29,7 @@ const ChatToolResultSection: React.FC<ChatToolResultSectionProps> = ({
           {meta.timestamp ? (
             <>
               <time dateTime={meta.timestampIso}>{meta.timestamp}</time>
-              <span aria-hidden="true"> · </span>
+              <span aria-hidden="true">, </span>
             </>
           ) : null}
           Used {meta.toolLabel}

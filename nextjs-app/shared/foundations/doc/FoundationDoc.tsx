@@ -191,7 +191,7 @@ export function TypeSpecimen({
         {sample}
       </div>
       <div className={styles.typeMeta}>
-        <code>{token}</code> · {meta}
+        <code>{token}</code>, {meta}
       </div>
     </div>
   );
