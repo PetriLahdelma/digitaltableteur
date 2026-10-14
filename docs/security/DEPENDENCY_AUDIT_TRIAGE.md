@@ -16,6 +16,6 @@ Track separately:
 
 Current posture after the maintenance cleanup:
 
-- Root app and embedded Studio share the Node `>=22.12.0` floor required by Sanity 6.
+- Root app floor is Node `>=22.22.2` (isomorphic-dompurify 3.23); the embedded Studio keeps `>=22.12.0`, the floor Sanity 6 requires.
 - Removed dead Vite and duplicate Next app package surfaces from dependency scanning.
 - Audit output remains non-zero and should be reviewed by bucket rather than forced blindly.

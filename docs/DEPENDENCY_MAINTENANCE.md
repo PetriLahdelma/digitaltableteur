@@ -19,6 +19,6 @@ Rules:
 
 - Keep Vite only as Storybook/Vitest tooling; do not add app-level Vite package surfaces.
 - Keep `@vitejs/plugin-react` direct while Vitest imports it. Version 5.x is intentional with Vite 6.x; Sanity's transitive 6.x plugin expects Vite 8.x.
-- Keep Node at `>=22.12.0` while Sanity Studio 6 is active.
+- Keep Node at `>=22.22.2` (raised 2026-10-14: `isomorphic-dompurify` 3.23 needs 22.22.2; Sanity Studio 6 needs 22.12+). CI, `.nvmrc` and `engines` share this floor; Vercel builds on 24.x because `engines` is open-ended.
 - Do not pin dependencies to old majors without recording the reason in the PR and, when durable, this document.
 - Do not run `npm audit fix --force` without reviewing production reachability and generated diff size.
