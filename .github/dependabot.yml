@@ -19,31 +19,21 @@ updates:
     commit-message:
       prefix: "chore(deps)"
       include: "scope"
-    # Minor+patch and major updates each get their own group per dependency
-    # type. Majors must be grouped too: while a minor/patch group PR is open,
-    # Dependabot defers to it and marks every member dependency as handled,
-    # so an ungrouped major never gets its individual PR (no major PR was
-    # raised between 2026-08-10 and 2026-10-15). Groups with non-overlapping
-    # update-types are complementary, so a dependency belongs to both.
+    # One group per dependency type, covering every update type (major
+    # included). Do not split majors into their own group or restrict a
+    # group with update-types: while a group PR is open, hosted Dependabot
+    # marks every member as handled, so a sibling majors group (or an
+    # individual major PR) is never created. No major PR was raised from
+    # 2026-08-10 to 2026-10-15 because of this. A single group's open PR is
+    # refreshed with all pending updates, majors included, so nothing is
+    # suppressed. Upstream fix: dependabot/dependabot-core#16113, behind the
+    # individual_prs_for_semver_excluded_dependencies flag (off by default
+    # as of 2026-10-15); revisit splitting majors once it ships.
     groups:
       development-dependencies:
         dependency-type: "development"
-        update-types:
-          - "minor"
-          - "patch"
       production-dependencies:
         dependency-type: "production"
-        update-types:
-          - "minor"
-          - "patch"
-      development-majors:
-        dependency-type: "development"
-        update-types:
-          - "major"
-      production-majors:
-        dependency-type: "production"
-        update-types:
-          - "major"
     # Security updates always get individual PRs
     versioning-strategy: "increase"
     ignore:
@@ -69,17 +59,10 @@ updates:
       prefix: "chore(deps)"
       include: "scope"
     groups:
+      # All update types in one group; see the root entry for why.
       blog-dependencies:
         patterns:
           - "*"
-        update-types:
-          - "minor"
-          - "patch"
-      blog-majors:
-        patterns:
-          - "*"
-        update-types:
-          - "major"
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
@@ -96,14 +79,7 @@ updates:
     commit-message:
       prefix: "chore(ci)"
     groups:
+      # All update types in one group; see the root entry for why.
       ci-actions:
         patterns:
           - "*"
-        update-types:
-          - "minor"
-          - "patch"
-      ci-actions-majors:
-        patterns:
-          - "*"
-        update-types:
-          - "major"
