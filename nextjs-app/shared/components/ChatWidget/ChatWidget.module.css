@@ -1073,6 +1073,12 @@
   color: var(--secondary-text-color);
 }
 
+.projectCardMeta.packageCardMeta {
+  /* Package durations and "Recommended" are sentence text, not category
+     labels; capitalize turned "2 viikkoa" into "2 Viikkoa". */
+  text-transform: none;
+}
+
 .projectCardDesc {
   display: -webkit-box;
   font-family: var(--font-sans);

@@ -35,6 +35,30 @@ export interface ChatMessageBubbleProps {
   workflowUI?: React.ReactNode;
 }
 
+/**
+ * Package copy in chat comes from the server tool in English. The pricing page
+ * owns the localized copy (pricingPackage{n}*), keyed by the same package ids.
+ */
+const PRICING_PAGE_PACKAGE_KEY: Record<string, number> = {
+  "design-system-lift-off": 1,
+  "ai-ready-designops": 2,
+  "ux-sprint": 3,
+};
+
+function localizePackage(pkg: ServicePackageCardData, t: Translate) {
+  const n = PRICING_PAGE_PACKAGE_KEY[pkg.id];
+  if (!n) return pkg;
+  return {
+    ...pkg,
+    name: t(`pricingPackage${n}Title`, pkg.name),
+    priceRangeEur: t(`pricingPackage${n}Price`, pkg.priceRangeEur),
+    duration: t(`pricingPackage${n}Duration`, pkg.duration),
+    description: pkg.description
+      ? t(`pricingPackage${n}Description`, pkg.description)
+      : pkg.description,
+  };
+}
+
 function renderProjectCard(project: ProjectCardData) {
   return (
     <Link key={project.slug} href={project.url} className={styles.projectCard}>
@@ -51,8 +75,8 @@ function renderProjectCard(project: ProjectCardData) {
         <span className={styles.projectCardTitle}>{project.title}</span>
         <span className={styles.projectCardMeta}>
           {project.category}
-          {project.client ? ` · ${project.client}` : ""}
-          {project.duration ? ` · ${project.duration}` : ""}
+          {project.client ? `, ${project.client}` : ""}
+          {project.duration ? `, ${project.duration}` : ""}
         </span>
         {project.description ? (
           <span className={styles.projectCardDesc}>{project.description}</span>
@@ -141,21 +165,21 @@ function renderComponentPart(
     };
     return wrap(
       <div className={styles.projectCards}>
-        {packages.map((pkg) => (
+        {packages.map((rawPkg) => localizePackage(rawPkg, t)).map((pkg) => (
           <Link
             key={pkg.id}
             href={`${pricingUrl}#${pkg.id}`}
             className={`${styles.projectCard}${pkg.recommended ? ` ${styles.packageRecommended}` : ""}`}
           >
             <div className={styles.projectCardBody}>
-              <span className={styles.projectCardTitle}>
-                {pkg.name}
-                {pkg.recommended
-                  ? ` · ${t("chatRecommendedPackage", "Recommended")}`
-                  : ""}
-              </span>
-              <span className={styles.projectCardMeta}>
-                {pkg.priceRangeEur} · {pkg.duration}
+              <span className={styles.projectCardTitle}>{pkg.name}</span>
+              {pkg.recommended ? (
+                <span className={`${styles.projectCardMeta} ${styles.packageCardMeta}`}>
+                  {t("chatRecommendedPackage", "Recommended")}
+                </span>
+              ) : null}
+              <span className={`${styles.projectCardMeta} ${styles.packageCardMeta}`}>
+                {pkg.priceRangeEur}, {pkg.duration}
               </span>
               {pkg.description ? (
                 <span className={styles.projectCardDesc}>
@@ -168,6 +192,10 @@ function renderComponentPart(
             </div>
           </Link>
         ))}
+        <Link href={`${pricingUrl}#calculator`} className={styles.navigateLink}>
+          {t("chatOpenCalculator", "Estimate a custom engagement with the calculator")}{" "}
+          →
+        </Link>
       </div>,
     );
   }
