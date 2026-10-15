@@ -13,6 +13,12 @@
   inline-size: 100%;
   background: var(--color-surface);
   font-size: var(--font-size-text-s);
+
+  /* The body inherits overflow-wrap: anywhere, which lets a column's
+     min-content shrink to one letter: the auto layout then squeezed a
+     column until words broke mid-word ("Char / ts"). break-word still
+     breaks a long URL but sizes columns by whole words. */
+  overflow-wrap: break-word;
   color: var(--color-text);
   border-collapse: separate;
   border-spacing: 0;
@@ -188,6 +194,13 @@
 /* Stacked layout (stackOnNarrow): below a 40rem container, each body row
    becomes a block and every cell shows its column label. The header row stays
    in the accessibility tree but leaves the layout. */
+
+/* Text tables (stackOnNarrow) carry sentence-length column labels: let
+   them wrap, or the nowrap header row alone outgrows the column. */
+
+.stacked .headerCell {
+  white-space: normal;
+}
 
 .stackContainer {
   container: dt-table / inline-size;
