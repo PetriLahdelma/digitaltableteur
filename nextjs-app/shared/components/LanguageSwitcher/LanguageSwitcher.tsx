@@ -12,9 +12,9 @@ export type LanguageSwitcherOption = {
   /** Visible label, e.g. "FI". */
   label: string;
   /**
-   * The language's name, e.g. "Suomi". Not an action phrase: the trigger
-   * announces "<label>, <name>. Show language options" and each option
-   * "<label>, <name>", so the visible label stays in the name (WCAG 2.5.3).
+   * The language's name, e.g. "Suomi". Not an action phrase: the trigger and
+   * each option are named "<label>, <name>", so the visible label stays in
+   * the name (WCAG 2.5.3); the trigger's aria-expanded carries open/closed.
    */
   ariaLabel: string;
 };
@@ -141,12 +141,10 @@ export function LanguageSwitcher({
         )}
         aria-expanded={isOpen}
         aria-controls={optionsId}
-        aria-label={
-          isOpen
-            ? `${current.label}, ${current.ariaLabel}. ${t("languageSwitcherCollapse", "Hide language options")}`
-            : `${current.label}, ${current.ariaLabel}. ${t("languageSwitcherExpand", "Show language options")}`
-        }
-        aria-current="true"
+        // A stable name: aria-expanded already says whether the options are
+        // shown, so the name must not change with state (and voice control
+        // users keep one target). The group supplies the "Language" context.
+        aria-label={`${current.label}, ${current.ariaLabel}`}
         onClick={() => setIsOpen((open) => !open)}
       >
         {current.label}

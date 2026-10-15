@@ -34,8 +34,7 @@ renders the trigger + fanned options and the open/close behavior.
 
 ## Interaction contract
 
-- **Trigger** is a `button` with `aria-expanded`, `aria-controls`, and
-  `aria-current`; Enter/Space toggle it (native button).
+- **Trigger** is a `button` with `aria-expanded` and `aria-controls`; Enter/Space toggle it (native button). No `aria-current`: it is a single control, not an item in a set.
 - **Options** are native `button`s named "<label>, <ariaLabel>" (e.g. "FI, Suomi") with `lang` set to the option's code; Enter/Space activate.
 - **Escape** closes the fan and returns control to the trigger.
 - Verified by the `KeyboardToggle` story play function (open via trigger, close
@@ -52,10 +51,12 @@ renders the trigger + fanned options and the open/close behavior.
 ## Accessibility
 
 - `role="group"` with an `aria-label` ("Language").
-- Trigger announces "<label>, <name>. Show language options" (or "Hide" when open)
-  plus its expanded state; options announce "<label>, <name>". Both names start
-  with the visible label (WCAG 2.5.3 Label in Name), and option buttons carry
-  `lang` so screen readers pronounce each language's own name correctly.
+- Trigger is named "<label>, <name>" (e.g. "EN, English") and keeps that name
+  in both states; `aria-expanded` carries open/closed, so the name never
+  changes under a voice control user. Options are named "<label>, <name>".
+  Both names start with the visible label (WCAG 2.5.3 Label in Name), and
+  option buttons carry `lang` so screen readers pronounce each language's
+  own name correctly.
 - Reduced motion respected; colors inherit theme tokens (light/dark + forced
   colors safe).
 

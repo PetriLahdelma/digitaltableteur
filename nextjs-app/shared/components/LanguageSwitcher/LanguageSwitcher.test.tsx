@@ -50,13 +50,12 @@ describe("LanguageSwitcher", () => {
     expect(screen.getByText("SV")).toBeVisible();
   });
 
-  it("pins trigger aria-current, aria-expanded, and aria-controls", async () => {
+  it("pins trigger aria-expanded and aria-controls", async () => {
     renderSwitcher("en");
     const user = userEvent.setup();
     const trigger = screen.getByRole("button", { name: /english/i });
     const controlsId = trigger.getAttribute("aria-controls");
 
-    expect(trigger).toHaveAttribute("aria-current", "true");
     expect(trigger).toHaveAttribute("aria-expanded", "false");
     expect(controlsId).toBeTruthy();
     expect(document.getElementById(controlsId as string)).toHaveAttribute(
@@ -65,29 +64,31 @@ describe("LanguageSwitcher", () => {
 
     await user.click(trigger);
 
-    expect(trigger).toHaveAttribute("aria-current", "true");
     expect(trigger).toHaveAttribute("aria-expanded", "true");
     expect(trigger).toHaveAttribute("aria-controls", controlsId);
     expect(document.getElementById(controlsId as string)).toHaveAttribute(
       "aria-hidden",
       "false",
     );
-    expect(trigger).toHaveAccessibleName(/EN.*English.*Hide language options/i);
+    expect(trigger).toHaveAccessibleName("EN, English");
   });
 
   // Regression: the header once passed "EN — Switch to English" as the
   // language name, so the trigger announced "EN, EN — Switch to English"
   // while English was active. Pin the exact spoken names.
-  it("announces the visible label and language name, never an action", async () => {
+  it("names the trigger and options by visible label and language name", async () => {
     renderSwitcher("en");
     const user = userEvent.setup();
     const trigger = screen.getByRole("button", { name: /english/i });
 
-    expect(trigger).toHaveAccessibleName("EN, English. Show language options");
+    expect(trigger).toHaveAccessibleName("EN, English");
+    expect(trigger).not.toHaveAttribute("aria-current");
 
     await user.click(trigger);
 
-    expect(trigger).toHaveAccessibleName("EN, English. Hide language options");
+    // Stable name; aria-expanded carries the state.
+    expect(trigger).toHaveAccessibleName("EN, English");
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
     const finnish = screen.getByRole("button", { name: "FI, Finnish" });
     const swedish = screen.getByRole("button", { name: "SV, Swedish" });
     expect(finnish).toHaveAttribute("lang", "fi");

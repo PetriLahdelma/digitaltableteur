@@ -168,7 +168,7 @@ export const AccessibleNames: Story = {
     docs: {
       description: {
         story:
-          "Pass each language’s own name as ariaLabel (English, Suomi, Svenska). The component announces the visible code first, “FI, Suomi”, so voice control users can say what they see (WCAG 2.5.3), and sets lang on each option so screen readers pronounce the name correctly. Never put an action such as “Switch to” in ariaLabel: the trigger already says “Show language options”, and the name would announce an instruction to switch to the language already in use.",
+          "Pass each language’s own name as ariaLabel (English, Suomi, Svenska). The component announces the visible code first, “FI, Suomi”, so voice control users can say what they see (WCAG 2.5.3), and sets lang on each option so screen readers pronounce the name correctly. Never put an action such as “Switch to” in ariaLabel: the trigger’s expanded state already tells users what it does, and the name would announce an instruction to switch to the language already in use.",
       },
     },
   },
