@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/work/intrum",
   },
+  // Work in progress: reachable by URL, not indexed or listed.
+  robots: { index: false, follow: true },
 };
 
 export const revalidate = 3600;

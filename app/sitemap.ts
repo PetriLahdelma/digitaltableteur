@@ -8,6 +8,7 @@ import {
   getPseoLeafPages,
 } from "@/lib/pseo/catalog";
 import { getPseoPageCopy } from "@/lib/pseo/copy";
+import { isPseoLeafIndexable } from "@/lib/pseo/indexing";
 import type { PseoCatalogItem, PseoLeafPage } from "@/lib/pseo/types";
 import { toAbsoluteSiteUrl } from "./lib/siteUrl";
 
@@ -42,14 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "/" ? 1.0 : 0.7,
   }));
 
+  // Intrum, Tulli and Raw View are work in progress: their routes exist but
+  // they stay out of the sitemap and the /work grid (and are noindex).
   const workRoutes: MetadataRoute.Sitemap = [
     "/work/dsharp-design-system",
     "/work/knobsmith-audio",
     "/work/vertaaux",
     "/work/finnish-transport-agency",
-    "/work/raw-view",
-    "/work/tulli",
-    "/work/intrum",
     "/work/new-things-co",
     "/work/illustrations",
     "/work/garage-junction",
@@ -105,8 +105,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  const pseoLeafRoutes: MetadataRoute.Sitemap = pseoLeafPages.map(
-    (page: PseoLeafPage) => {
+  // Leaves stay noindex until approved for indexing (lib/pseo/indexing.ts);
+  // listing a noindex page in the sitemap contradicts it, and every one of
+  // the 100 leaves was reported as an error for exactly that.
+  const pseoLeafRoutes: MetadataRoute.Sitemap = pseoLeafPages
+    .filter((page: PseoLeafPage) => isPseoLeafIndexable(page.slug))
+    .map((page: PseoLeafPage) => {
       const copyUpdated = getPseoPageCopy(page.slug)?.updatedAt;
       const lastModified = copyUpdated
         ? new Date(copyUpdated)
@@ -120,8 +124,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "monthly" as const,
         priority: 0.5,
       };
-    },
-  );
+    });
 
   return [
     ...staticRoutes,
