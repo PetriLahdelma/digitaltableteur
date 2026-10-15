@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T21:55:02.866Z",
+  "generatedAt": "2026-10-15T23:18:38.354Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1000,9 +1000,9 @@
         "AuthorBio",
         "DashLeadList",
         "List",
+        "StageList",
         "Table",
-        "TableRow",
-        "TableHeaderCell"
+        "TableRow"
       ],
       "prefersOver": [],
       "declaredPropCount": 3,
@@ -1285,9 +1285,9 @@
         "AuthorBio",
         "DashLeadList",
         "List",
+        "StageList",
         "Table",
-        "TableRow",
-        "TableHeaderCell"
+        "TableRow"
       ],
       "prefersOver": [],
       "declaredPropCount": 5,
@@ -2092,10 +2092,10 @@
       "composesWith": [
         "DashLeadList",
         "List",
+        "StageList",
         "Table",
         "TableRow",
-        "TableHeaderCell",
-        "TableCell"
+        "TableHeaderCell"
       ],
       "prefersOver": [],
       "declaredPropCount": 11,
@@ -18531,10 +18531,10 @@
       "composesWith": [
         "AuthorBio",
         "DashLeadList",
+        "StageList",
         "Table",
         "TableRow",
-        "TableHeaderCell",
-        "TableCell"
+        "TableHeaderCell"
       ],
       "prefersOver": [],
       "declaredPropCount": 10,
@@ -33467,7 +33467,14 @@
         "use it for step-by-step task flows.",
         "rely on colour or position for stage or recurrence."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "AuthorBio",
+        "DashLeadList",
+        "List",
+        "Table",
+        "TableRow",
+        "TableHeaderCell"
+      ],
       "prefersOver": [],
       "declaredPropCount": 8,
       "guidelines": [
@@ -33504,8 +33511,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -33519,8 +33526,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -33541,8 +33548,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -33569,8 +33576,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "4.1.2",
@@ -33585,7 +33592,7 @@
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-10-16: built from the format study for \"Who to call and when\" (Plausible Accessibility). Reviewed: heading levels and outline per variant, list semantics, index landmark and anchor targets, fieldset/legend grouping and checkbox names in the checklist, live-region count, keyboard path (Tab, Space, Enter) via play functions, light and dark themes, forced colours (rail markers and rules use CanvasText), 390px width with no horizontal overflow, axe clean per variant in unit tests. Known limitations: the sheet's pinned stage label assumes a sticky site header and reads --stage-list-sticky-offset; the checklist inherits Checkbox's primary label colour."
+          "note": "2026-10-16: built from the format study for \"Who to call and when\" (Plausible Accessibility). Reviewed: heading levels and outline per variant, list semantics, index landmark and anchor targets, fieldset/legend grouping and checkbox names in the checklist, live-region count, keyboard path (Tab, Space, Enter) via play functions, light and dark themes, forced colours (rail markers and rules use CanvasText), 390px width with no horizontal overflow, axe clean per variant in unit tests. Known limitations: the sheet's pinned stage label assumes a sticky site header and reads --stage-list-sticky-offset; the checklist reads Checkbox's helper text by its id suffix (-helper) to mute it."
         }
       ],
       "docOrigin": {
@@ -35340,9 +35347,9 @@
         "AuthorBio",
         "DashLeadList",
         "List",
+        "StageList",
         "Table",
-        "TableRow",
-        "TableHeaderCell"
+        "TableRow"
       ],
       "prefersOver": [],
       "declaredPropCount": 5,

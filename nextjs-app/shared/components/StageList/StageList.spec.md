@@ -36,4 +36,6 @@ under the first one and writes out the rest.
 - Tokens only; forced colours use CanvasText for rail markers and rules.
 - `--stage-list-sticky-offset` sets where the pinned stage label stops under a
   sticky header; `--stage-list-label-width` sets the margin column.
-- Figma: placeholder link until the Figma component is built at stable.
+- Figma: `StageList` component set (node 1897:302, Organisms page) with a
+  `Variant` property per layout; token-bound to DT/Color and DT/Dimension,
+  with Badge and Checkbox instances and `StageList/*` text styles.

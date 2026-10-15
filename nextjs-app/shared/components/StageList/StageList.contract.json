@@ -6,7 +6,7 @@
   "group": "content",
   "status": "beta",
   "description": "Places entries by the lifecycle stage they belong to, so a reader at any stage finds what applies now. Five layouts over one data model: sheet, rail, index, checklist and cards.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-stage-list",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1897-302",
   "radixPrimitive": null,
   "element": "div",
   "variants": {
