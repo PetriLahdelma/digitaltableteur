@@ -67,6 +67,10 @@ const STORYBOOK_WATCH_IGNORED = [
   "**/tests/**",
   "**/__visual__/**",
   "**/__a11y-snapshots__/**",
+  // Evidence JSON is written by the test runner mid-run. Watching it made
+  // Tailwind and the preview hot-reload, remounting the story under test, so
+  // play tests (LanguageSwitcher KeyboardToggle) hung for the full timeout.
+  "**/__a11y-evidence__/**",
   "**/playwright-report/**",
 ];
 
