@@ -1,25 +1,27 @@
 ---
-title: "Plausible Accessibility: Where AI Still Struggles With A11y, and Who to Call Instead"
+title: "Plausible Accessibility: Where AI Still Falls Short, and Who to Call Instead"
 slug: "plausible-accessibility"
 publishedAt: "2026-10-15T00:00:00.000Z"
-readTime: "12 min read"
-excerpt: "AI produces the most likely interface. Accessibility lives in the specific one. Here is where that gap still hurts people, and when to bring in a specialist or test with disabled people."
+readTime: "14 min read"
+excerpt: "AI builds the most likely interface, and accessibility lives in the specific one. Here is where that gap still fails disabled people, and when to bring in a specialist or test with the people who use what you build."
 authorName: "Petri Lahdelma"
 authorSlug: "petri-lahdelma"
 mainImageUrl: "/blog/plausible-accessibility/hero-stencil-at-desk.webp"
 ---
 
-Every code reviewer knows the shorthand. LGTM: looks good to me. It is the most common approval in software, and for most of what we review it is a reasonable bar. For accessibility it is a strange one, because it names the single sense that many of the people we are building for do not use.
+Every code reviewer knows the shorthand. LGTM: looks good to me. It's one of the most common approvals in software, and for most of what we review it's a reasonable bar.
 
-I started thinking about that phrase in September, when I recaptured the accessibility evidence for the design system behind this site. Every Storybook story writes a small record: which checks ran, which passed, which runner produced it.
+For accessibility it's an odd one. It names the one sense that many users, and some reviewers, don't use.
 
-The first attempt produced 949 records for the light theme, all green, all exit code zero. Every one of them had quietly lost its axe result. A missing environment variable switched the test runner into a mode where it skipped the check and recorded the run as fine. Nothing failed. Nothing warned. It looked good to me.
+I started thinking about the phrase in September, when I re-ran the accessibility checks behind every component in this site's design system. Each Storybook story in the test matrix writes a small evidence record: which checks ran, which passed, which runner produced them.
 
-That is the problem I want to name, because AI is about to make a great deal more of it.
+The first run produced 949 records for the light theme. All green, every one with exit code zero, and every one missing its axe result. I'd forgotten one environment variable, `CI=1`. Without it the test runner treated accessibility violations as warnings, and the records came out without the check that mattered most. Nothing failed, and nothing warned. It looked good to me.
+
+I threw that run away. The name for what it produced stuck.
 
 **Plausible accessibility.**
 
-Plausible accessibility is output that has the shape of accessible work and passes as accessible to anyone who cannot check it: a reviewer skimming a diff, a scanner that tests what it can measure, a model grading its own answer. It is not the same as inaccessible work. Inaccessible work usually looks broken somewhere. Plausible work looks finished, and that is what makes it expensive.
+Plausible accessibility is output that has the shape of accessible work and passes for anyone who can't check it: a reviewer skimming a diff, a scanner that tests what it can measure, a model grading its own answer. Inaccessible work usually looks broken somewhere. Plausible work looks finished, so nobody goes back to check it until someone can't use it.
 
 <ArticleFigure layout="center">
 
@@ -42,9 +44,10 @@ Plausible accessibility is output that has the shape of accessible work and pass
 }
 ```
 
-<figcaption>One of this design system's evidence records as committed: the story, the theme, the commit it was captured against, and each check that ran. In September a missing <code>CI=1</code> produced 949 of these with no <code>axe-no-violations</code> entry, and every run exited 0. Those records were thrown away before commit, so this is the healthy version.</figcaption>
+<figcaption>One evidence record as committed: the story, the theme, the commit it was captured against, and each check that ran. In September a missing <code>CI=1</code> produced 949 of these with no <code>axe-no-violations</code> entry, and every run exited 0. Those records were thrown away before commit, so this is the healthy version.</figcaption>
 
 </ArticleFigure>
+
 <ArticleFigure layout="full">
 
 <img src="/blog/plausible-accessibility/fig-hollow-checkmark.webp" alt="" />
@@ -53,15 +56,21 @@ Plausible accessibility is output that has the shape of accessible work and pass
 
 ## The median of an inaccessible web
 
-A language model writes the most likely continuation of what it has seen. For interface code, what it has seen is the public web, and the public web is not a good teacher. WebAIM's annual scan of the top million home pages found detectable WCAG failures on [95.9% of them in 2026](https://webaim.org/projects/million/), up from 94.8% the year before. It was the first rise after six years of slow improvement, with an average of 56.1 detected errors per page, and the report names AI-assisted "vibe coding" as one likely reason pages are getting more complex. Those are only the errors software can detect.
+AI is about to produce a great deal more of it. A language model writes the most likely continuation of what it has seen, and for interface code, what it has seen is the public web.
 
-So the default output of a code model is the median of an inaccessible web, delivered with perfect confidence. Michael Fairchild at Microsoft built a benchmark to measure exactly this, generating 1,280 samples across eight frontier models with no accessibility instructions. [The average pass rate was 12%](https://dev.to/mfairchild365/ai-generated-accessibility-an-update-frontier-models-still-fail-but-skills-change-the-game-5629). The best model passed a quarter of the time; the hardest prompt, a dark-themed shopping home page, passed none of the time.
+The web isn't a good teacher. WebAIM's annual scan of the top million home pages found detectable WCAG failures on [95.9% of them in the WebAIM Million 2026 report](https://webaim.org/projects/million/), up from 94.8% the year before. It was the first rise in six years. The average page had 56.1 detected errors, and the report names AI-assisted "vibe coding" as one likely reason pages are getting more complex. Those are only the errors software can detect.
 
-The obvious fix is to ask for accessibility, and the evidence there is mixed in an instructive way. Fairchild found that a short instruction file tripled the pass rate, and a two-step "generate, then review" skill reached 86%. A study of six AI design tools at W4A 2026 found the opposite: when designers [added accessibility requirements to their prompts, compliance went down](https://doi.org/10.1145/3800424.3800430), and 39% of the AI tools' violations needed a major redesign to fix, against 22% for human-made designs. Different tools, different measures. What they share is the ceiling. Every pass in those numbers is an automated pass, and Microsoft's own report is careful to say that a perfect score does not mean conformance.
+So when a code model writes a button, it writes the web's average button, and the web's average button fails. Michael Fairchild at Microsoft built a benchmark to measure exactly this: 1,280 samples across eight frontier models, with no accessibility instructions. In [his May 2026 update](https://dev.to/mfairchild365/ai-generated-accessibility-an-update-frontier-models-still-fail-but-skills-change-the-game-5629) the average pass rate was 12%. The best model passed a quarter of the time. The hardest prompt, a dark-themed shopping home page, never passed.
 
-Then there is the confidence. Eevis, an Android accessibility specialist in Helsinki, asked an assistant to build an app [and explicitly asked for accessibility](https://dev.to/eevajonnapanula/does-claude-generate-accessible-apps-5759). The reply listed fifteen accessibility features it had considered. In the code she found a helper file that nothing used, a semantic role that does not exist in the framework, and cards that made TalkBack read the same instruction twice. The list was plausible. The app was not.
+The obvious fix is to ask for accessibility. It helps, sometimes. Fairchild found that a one-line instruction took the pass rate from 12% to 37%, and a short instruction file took it to 60%. A study of six AI design tools presented at W4A 2026, a web accessibility research conference, found the opposite: when designers [added accessibility requirements to their prompts, compliance went down](https://doi.org/10.1145/3800424.3800430). The designers judged that 39% of the AI tools' violations would need a major redesign, against 22% for their own work.
 
-At scale, plausibility becomes a product. Overlays promise to make a site accessible with one script tag. In April 2025 the US Federal Trade Commission [ordered accessiBe to pay $1 million](https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million) and barred it from claiming its automated product makes sites WCAG-compliant without evidence. A small florist that installed another overlay was sued by a blind customer anyway, and is now [suing the overlay vendor](https://www.lflegal.com/2025/02/userway-overlay-lawsuit). Nobody in that story acted irrationally. They bought something that looked like the answer.
+Different tools, measured differently. What they share is a ceiling. Fairchild's passes are automated passes, and Microsoft's own report says a perfect score doesn't mean a page conforms to WCAG.
+
+Then there's the confidence. Eeva-Jonna Panula, known as Eevis, an Android accessibility specialist in Helsinki, asked an assistant to build an app [and explicitly asked for accessibility](https://dev.to/eevajonnapanula/does-claude-generate-accessible-apps-5759). The reply listed fifteen accessibility features it had considered. In the code she found a helper file nothing used, a semantic role that doesn't exist in the framework, and cards with a redundant "Tap for details" on elements TalkBack, Android's screen reader, already announces as clickable. The list was plausible. The app wasn't.
+
+People who use assistive technology meet this from the other side. When sixteen blind and low-vision programmers [used Copilot for two weeks](https://arxiv.org/abs/2506.13270), they worked faster, and they also struggled to tell the tool what they meant, to check what it produced, and to keep track of what it changed.
+
+At scale, plausibility is sold by subscription. Overlays promise to make a site accessible with one script tag, and disabled people have [organised against them for years](https://overlayfactsheet.com/) because overlays get in the way of the screen readers and settings people already rely on. In April 2025 the US Federal Trade Commission [ordered accessiBe to pay $1 million](https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million) and barred it from claiming its product makes sites WCAG-compliant without evidence. A small florist that installed another overlay still had a site a blind customer couldn't use, was sued, and is now [suing the overlay vendor](https://www.lflegal.com/2025/02/userway-overlay-lawsuit). The florist bought the thing that promised to make the problem go away. The customer was the one locked out.
 
 <ArticleFigure layout="full">
 
@@ -69,17 +78,21 @@ At scale, plausibility becomes a product. Overlays promise to make a site access
 
 </ArticleFigure>
 
-## Five places plausibility breaks
+## What the green runs hid
 
-The W3C is unusually blunt about the limits of automation. Its guide to choosing evaluation tools says [tools can not determine accessibility, they can only assist](https://www.w3.org/WAI/test-evaluate/tools/selecting/), and the newest evaluation methodology, WCAG-EM 2.0, notes that [most accessibility checks are not fully automatable](https://www.w3.org/TR/wcag-em-2/). Even a passing automated rule only means no failure was detected; the W3C's own explanation of its test rules says a pass [typically requires further verification by human testers](https://www.w3.org/WAI/standards-guidelines/act/rules/about/).
+Once `CI=1` was back, the September runs went green for real. Green turned out to be a low bar. In the weeks that followed, this site turned up three more problems that no gate in the repo had caught.
 
-The failures are not random. They cluster where a judgment depends on purpose, sound, sequence, meaning, or effort, which is to say on context a model does not have and cannot see.
+The W3C saw this coming. Its guide to evaluation tools says [tools can not determine accessibility, they can only assist](https://www.w3.org/WAI/test-evaluate/tools/selecting/). WCAG-EM 2.0, its newest evaluation methodology, notes that [most accessibility checks are not fully automatable](https://www.w3.org/TR/wcag-em-2/). Even a passing automated rule only means no failure was detected; a pass [typically requires further verification by human testers](https://www.w3.org/WAI/standards-guidelines/act/rules/about/).
 
-### Purpose, not pixels
+The failures cluster in five places, each a judgment that needs context the model never sees: what something is for, how it sounds, the order it happens in, what it's called, and how much effort it costs.
 
-WCAG's first success criterion, [1.1.1 Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html), asks for a text alternative that serves the equivalent purpose. Purpose is the hard part. The W3C images tutorial says the right alternative is [determined by the author, depending on the usage, context, and content](https://www.w3.org/WAI/tutorials/images/). A vision model describes what is in the picture. It cannot know why the picture is on the page.
+### What the picture is for
 
-That gap shows up in small, telling ways. A house icon that links to the homepage should be announced as "Home", and an AI describes it, accurately, as a house. A bar chart's meaning lives in its trend, and the W3C's draft research on [machine learning and accessibility](https://w3c.github.io/ai-accessibility/) notes that automatic descriptions often miss the values that matter. Generative descriptions add detail, but the same draft observes they change each time the same image is processed. An author who regenerates alt text three times can get three different accounts of what a chart says. The better fix for a chart is usually a short written summary and a data table beside it, as the [complex images tutorial](https://www.w3.org/WAI/tutorials/images/complex/) has recommended for years. Longer alt text rarely helps.
+WCAG's first success criterion, [1.1.1 Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html), asks for a text alternative that serves the equivalent purpose. Purpose is the hard part. The W3C images tutorial says the right alternative is [determined by the author, depending on the usage, context, and content](https://www.w3.org/WAI/tutorials/images/). A vision model describes what's in the picture. It can't know why the picture is on the page.
+
+A house icon that links to the homepage should be announced as "Home", and a model will describe it, accurately, as a house. A bar chart's meaning lives in its trend, and the W3C's draft research on [machine learning and accessibility](https://w3c.github.io/ai-accessibility/) notes that automatic descriptions often miss the values that matter.
+
+Generative descriptions add detail, but the same draft observes that they change each time the same image is processed. Regenerate the alt text for a chart three times and you can get three different accounts of what it says. Pick your favourite. For a chart the better fix is usually a short written summary and a data table beside it, as the [W3C complex images tutorial](https://www.w3.org/WAI/tutorials/images/complex/) has recommended for years.
 
 <ArticleFigure layout="full">
 
@@ -87,21 +100,25 @@ That gap shows up in small, telling ways. A house icon that links to the homepag
 
 </ArticleFigure>
 
-### Words heard, not words written
+### Captions that score well
 
-Captions look like the most solved problem on this list. The W3C draft puts automatic speech recognition at roughly 85% accuracy and records that the Deaf community still generally considers it lacking. Criterion [1.2.2 Captions (Prerecorded)](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html) also asks for things accuracy scores ignore: who is speaking, and the sounds that carry meaning.
+Captions look like the most solved problem on this list. The W3C draft puts automatic speech recognition at roughly 85% accuracy and notes that the Deaf community still considers it lacking. [1.2.2 Captions (Prerecorded)](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html), a Level A criterion, and 1.2.4 for live content also ask for things accuracy scores ignore: who is speaking, and the sounds that carry meaning.
 
-Drishti Bansal, a deaf student, [describes it from the receiving end](https://medium.com/@dribans/how-ai-actually-helps-me-as-a-deaf-person-and-the-parts-no-one-talks-about-b7be5f9236c6): captions fall apart with accents, quiet voices, or an air conditioner in the room; technical terms come out mangled; two people talking at once defeats them; and tone disappears entirely. Her summary: "AI makes communication possible, not equal." A September 2026 study with 216 deaf and hard-of-hearing viewers adds a twist that matters for anyone buying caption tools: the standard accuracy metrics [tracked viewers' ratings far worse for AI captions](https://arxiv.org/abs/2609.11408) than for broadcast captions. The number on the vendor's slide is measuring something other than what the audience experiences.
+Drishti Bansal, a deaf student who uses captions every day, [describes where they break](https://medium.com/@dribans/how-ai-actually-helps-me-as-a-deaf-person-and-the-parts-no-one-talks-about-b7be5f9236c6): accents, quiet voices, an air conditioner in the room, technical terms, two people talking at once. Tone disappears entirely.
 
-Sign language is further away still. Signed languages have their own grammar, and the World Federation of the Deaf and the interpreters' association WASLI have said plainly that [signing avatars should not replace human interpreters](https://wfdeaf.org/wp-content/uploads/WFD-and-WASLI-Statement-on-Avatar-FINAL-14032018-Updated-14042018.pdf).
+A September 2026 preprint surveying 216 viewers, most of them deaf or hard of hearing, found the standard accuracy metrics [tracked viewers' ratings far worse for AI captions](https://arxiv.org/abs/2609.11408) than for broadcast ones. The number on a vendor's slide and the audience are scoring different things. Bansal's own verdict is the better summary: "AI makes communication possible, not equal."
+
+Sign language is further away still. Signed languages have their own grammar, and the World Federation of the Deaf and the interpreters' association WASLI have [cautioned against signing avatars as a replacement for human interpreters](https://wfdeaf.org/wp-content/uploads/WFD-and-WASLI-Statement-on-Avatar-FINAL-14032018-Updated-14042018.pdf).
 
 ### Order, focus, and the keyboard
 
-Generated components fail most often at the moment a person tries to operate them. On the Frontend Masters blog, Durgesh Rajubhai Pawar walked through [a typical AI-generated sidebar](https://blog.master.dev/ai-generated-ui-is-inaccessible-by-default/) that rendered perfectly and appeared in the accessibility tree as an anonymous generic container: no landmark, no heading, nothing focusable. Ten failures in 29 lines, and every one of them invisible on screen.
+Generated components usually look fine. They fail when someone operates them with a keyboard. On the Frontend Masters blog, Durgesh Rajubhai Pawar walked through [a typical AI-generated sidebar](https://blog.master.dev/ai-generated-ui-is-inaccessible-by-default/) that rendered perfectly and showed up in the accessibility tree as an anonymous generic container: no landmark, no heading, nothing focusable. Ten failures in 29 lines, none of them visible on screen.
 
-The modal is the classic case. One developer's AI-built dashboard [let focus escape the dialog](https://dev.to/lixingliangsy/ai-generated-ui-is-shipping-faster-than-accessibility-can-catch-up-1o2i) to the page behind it. A QA team auditing a booking site found a modal that [never returned focus to the button that opened it](https://dev.to/tudorsss-betterqa/accessibility-testing-what-automated-scanners-keep-missing-2d44), so keyboard users were dropped back at the top of the page. Their automated scan had found 14 issues; a manual pass found 47 more. Criteria such as [2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html) require that order preserve meaning and operability, and the W3C's own guidance says several different orders can pass. A rule engine cannot pick the right one. Someone has to press Tab and pay attention.
+The modal is the classic case. One developer's AI-built dashboard [let focus escape the dialog](https://dev.to/lixingliangsy/ai-generated-ui-is-shipping-faster-than-accessibility-can-catch-up-1o2i) to the page behind it. A QA team auditing a booking site found a modal that [never returned focus to the button that opened it](https://dev.to/tudorsss-betterqa/accessibility-testing-what-automated-scanners-keep-missing-2d44). Their scan found 14 issues; a manual pass found 47 more.
 
-AI products are not exempt from their own problem. Mike Gower at IBM found a floating chat button that [looked about twelve tab stops away and took 85 presses to reach](https://medium.com/design-ibm/catching-up-on-accessibility-with-ai-chat-1129be33c184), and streamed answers that [keep changing until they settle](https://medium.com/design-ibm/usable-ai-chat-46dedcca6a8f), which breaks the usual live-region patterns. Screen reader users get either silence or the whole reply at once.
+[2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html) asks that the order preserve meaning and operability, and the W3C's guidance says several different orders can pass. A rule engine can't pick the right one. Someone has to press Tab and pay attention.
+
+AI products have the same problem. Mike Gower at IBM found a floating chat button that [looked about twelve tab stops away and took 85 presses to reach](https://medium.com/design-ibm/catching-up-on-accessibility-with-ai-chat-1129be33c184). Streamed answers [keep changing until they settle](https://medium.com/design-ibm/usable-ai-chat-46dedcca6a8f), which breaks live regions, the mechanism screen readers use to announce content that changes ([4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)). Gower calls the usual workaround feast or famine: a periodic "still composing", then the whole reply at once.
 
 <ArticleFigure layout="full">
 
@@ -111,75 +128,235 @@ AI products are not exempt from their own problem. Mike Gower at IBM found a flo
 
 ### Names that sound right
 
-Here is my own example, found while writing this piece. The language button in this site's header shows "EN". With English already active, its computed accessible name began `EN, EN`, then a separator, then "Switch to English. Show language options." It passed every automated check in this repo. It had a name. The name contained the visible label, so it satisfied [2.5.3 Label in Name](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html). And a screen reader user heard a repeated code followed by an instruction to switch to the language they were already using. The cause was ordinary: the header handed the component an action phrase where its contract asked for the language's name, and the component dutifully read both.
+The first of this site's three came from its own header. The language button shows "EN". With English already active, its accessible name began `EN, EN`, then a separator, then "Switch to English. Show language options." It passed every automated check in the repo. It had a name, and the name contained the visible label, so it satisfied [2.5.3 Label in Name](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html).
 
-The fix itself was small. The test that keeps it fixed is the part worth copying: it asserts the exact spoken name of every state ("EN, English. Show language options", then "FI, Suomi" for an option) instead of checking that a name exists. A presence check is what let the bug through. An exact-string check fails the moment a name stops making sense out loud, which is the one thing a person would have noticed in the first second.
+A screen reader user would have heard a repeated code and an instruction to switch to the language they were already using. A human auditor could fail it under 2.4.6 Headings and Labels. No machine would. The cause was ordinary: the header handed the component an action phrase where its contract asked for the language's name, and the component dutifully read both.
 
-No rule flags that, because every individual part is valid. Eevis found the same family of problem in [AI-generated Android apps from four different tools](https://dev.to/eevajonnapanula/does-ai-generate-accessible-android-apps-2gb5): an "Add yarn" button labelled "Add new yarn", so some screen readers read both. The QA team above found a date picker that VoiceOver on iOS read as "button, button, button". [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) can be tested for presence by a machine. Whether a name makes sense when spoken, in that order, on that device, can only be heard.
+Eevis found the same family of problem in [AI-generated Android apps from four different tools](https://dev.to/eevajonnapanula/does-ai-generate-accessible-android-apps-2gb5): an "Add yarn" button described as "Add new yarn", so some screen readers read both. A machine can confirm a name exists. Whether it makes sense, said aloud in that order, takes someone listening.
+
+The fix took two rounds. The first stopped the repetition but kept "Show language options" in the name, so the name changed whenever the menu opened, duplicating what `aria-expanded` already says. A review caught that. The name is now just the label and the language. The test that keeps it that way is the part worth copying, because it asserts the exact accessible name in each state:
+
+```tsx
+expect(trigger).toHaveAccessibleName("EN, English");
+await user.click(trigger);
+expect(trigger).toHaveAccessibleName("EN, English");
+expect(trigger).toHaveAttribute("aria-expanded", "true");
+expect(screen.getByRole("button", { name: "FI, Finnish" })).toHaveAttribute(
+  "lang",
+  "fi",
+);
+```
+
+A presence check is what let the bug through. An exact-name check fails the moment a name stops making sense. It still isn't the whole story: a screen reader adds the role and state, and each reader phrases them its own way, so someone still has to listen to the result.
 
 <ArticleFigure layout="center">
 
 ```diff
    - group "Language":
 -    - button "EN, EN — Switch to English. Show language options": EN
-+    - button "EN, English. Show language options": EN
++    - button "EN, English": EN
 ```
 
-<figcaption>The language button in the header's committed accessibility-tree snapshot, before and after the fix (commit b73740e0f), with English active. Both versions passed every automated check in the repo.</figcaption>
+<figcaption>The header's language button in the committed accessibility-tree snapshot, before and after, with English active. Both versions passed every automated check in the repo.</figcaption>
 
 </ArticleFigure>
 
 ### Meaning, memory, and effort
 
-The quietest failures are cognitive. When researchers audited six AI-generated websites at ASSETS 2025, [52.93% of the 308 errors they found were cognitive accessibility issues](https://doi.org/10.1145/3663547.3759755), and those sit largely outside what WCAG automation checks. Fluent text makes this worse, because it reads as if someone has already simplified it. The AAA criterion [3.1.5 Reading Level](https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html) can be approximated with a readability formula, and the formula will happily approve a short sentence that has lost the one condition a reader needed.
+The quietest failures are cognitive. When researchers audited six AI-generated websites for ASSETS 2025, a leading accessibility research conference, [52.93% of the 308 errors they found were cognitive accessibility issues](https://doi.org/10.1145/3663547.3759755), and most cognitive needs sit outside WCAG itself. The W3C's [Making Content Usable for People with Cognitive and Learning Disabilities](https://www.w3.org/TR/coga-usable/) covers what WCAG doesn't.
 
-Authentication is where machines and people part ways most visibly. The W3C's note on [the inaccessibility of CAPTCHA](https://www.w3.org/TR/turingtest/) cites research in which software beat audio reCAPTCHA about 90% of the time, while blind, deaf, and cognitively disabled people remain locked out. The test meant to tell humans from machines now mostly tells machines from disabled humans. Criterion [3.3.8 Accessible Authentication](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html) exists for this, and checking it means walking the whole login flow as a person with limited memory or attention would.
+Fluent text makes this worse, because it reads as if someone already simplified it. The AAA criterion [3.1.5 Reading Level](https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html) can be approximated with a readability formula, and the formula will happily approve a short sentence that lost the one condition a reader needed.
+
+Login is the clearest case. The W3C's note on [the inaccessibility of CAPTCHA](https://www.w3.org/TR/turingtest/) cites research in which software beat audio reCAPTCHA about 90% of the time, while blind, deafblind, and cognitively disabled people remain locked out. The test meant to tell humans from machines mostly tells machines from disabled humans.
+
+WCAG only partly covers it. [3.3.8 Accessible Authentication (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html), at AA, removes memory and puzzle tests from login but still allows object-recognition CAPTCHAs; 3.3.9 at AAA closes that gap, and 1.1.1 requires a CAPTCHA to offer alternatives in more than one sense. Checking any of it means watching people with memory or attention disabilities go through the whole flow.
+
+## What the machines are good at
+
+None of this means keeping AI out of accessibility work. The real question is which work to give it.
+
+Automation is excellent at the measurable. The same pipeline that once wrote empty records caught a real failure in September: in dark theme, the user's chat bubble on this site rendered body text at 1.82:1 against its blue background, and axe flagged it on every chat message story.
+
+The same bubble hid the second of the three. Its list bullets were the exact colour of its background: type a list into the chat and they vanished, at a measured contrast of 1:1. 1:1 is the technical term for invisible. No axe rule checks marker colour, so axe caught 1.82:1 and couldn't see 1:1. The fix was one line of CSS. The check that now guards it is a Storybook play test that measures the computed marker colour against the bubble and fails below 4.5:1, since numbered markers are text.
+
+Models are useful when the job is structured: drafting alt text for a person to edit, turning success criteria into a test plan, or reviewing their own output. Fairchild's best result came from a two-step "generate, then review" loop, which reached 86% at about five and a half times the input tokens. He also found that pasting the whole of WCAG into the instructions often made the code worse. Short and specific works better, something like this in the instruction file your coding agent reads:
+
+```md
+## Accessibility
+
+- Use native elements first: <button>, <a href>, <label>, <dialog>. No click handlers on <div>.
+- Every control has a visible label, and its accessible name starts with that label.
+- Dialogs move focus in, keep it inside, and return it to the trigger on close.
+- Errors are text linked to their field with aria-describedby, never colour alone.
+- Announce status changes in a polite live region instead of moving focus.
+- Respect prefers-reduced-motion, and keep layouts working at 200% text zoom.
+- Before replying, review your output against this list and fix what fails.
+```
+
+The last line is the review step. It costs tokens. It's cheaper than shipping the first draft.
+
+The division of labour I trust is plain. Machines propose and measure. People decide, and the people who decide whether something works are the ones who use it. Once a model's output is accepted because it sounds right, the work has slipped back into plausibility.
 
 ## Who to call, and when
 
-The W3C's guidance on evaluation does not stop at "use a tool". It describes [combining expertise](https://www.w3.org/WAI/test-evaluate/combined-expertise/) (people who understand disability barriers, assistive technology, and adaptive strategies) and [involving users](https://www.w3.org/WAI/test-evaluate/involving-users/), because user involvement finds usability problems that conformance evaluation alone does not. Those are two different calls. An accessibility specialist tells you whether something meets the standard and why. Disabled people tell you whether it works. You usually need both, and you need them at different moments.
+The W3C's evaluation guidance asks for [combined expertise](https://www.w3.org/WAI/test-evaluate/combined-expertise/) (people who understand disability barriers, assistive technology, and adaptive strategies) and for [involving users](https://www.w3.org/WAI/test-evaluate/involving-users/), because testing with people finds what a conformance review misses. Those are two roles, and they often meet in one person: many of the best accessibility specialists are disabled themselves. A specialist tells you whether something meets the standard and why. The people who use assistive technology every day tell you whether it works. You usually need both: the specialist while you build, and users from the first prototype onwards, not as a final sign-off.
 
-Here is a routing table for AI-assisted work. It is not exhaustive, but every row comes from a failure described above.
+The table below routes the cases from this article. Every row comes from a failure described above or from a gap an expert reviewer added.
 
-| Case | Why automation misses it | Who to bring in | What to give them |
-|------|--------------------------|-----------------|-------------------|
-| Charts, maps, and diagrams where meaning is in the pattern | Tools confirm alt text exists, not that it carries the point | Accessibility specialist; screen reader users for the final check | The chart's purpose in one sentence and the underlying data |
-| Video and audio with technical, legal, or medical terms | Accuracy scores ignore speaker changes, sounds, and the terms that matter | Professional captioner; deaf and hard-of-hearing reviewers | Glossary of terms and speaker names |
-| Content in sign language | Signed languages have their own grammar; avatars do not carry it | Deaf signers and qualified interpreters | The source content and the audience |
-| Custom widgets: date pickers, comboboxes, drag and drop, modals | Focus order and announcements only show up in operation | Specialist for keyboard and screen reader testing on real devices | The interaction spec and the supported platforms |
-| AI chat and other streaming interfaces | Live regions behave differently with text that changes as it arrives | Daily screen reader users across at least two screen readers | Tasks to complete, not screens to inspect |
-| Login, signup, and verification flows | Scanners stop at the login; cognitive tests need a person | Specialist for 3.3.8; users with cognitive and memory disabilities | Test accounts and the full flow end to end |
-| Forms with error handling | Errors shown only in colour pass a structure check | Screen reader and voice control users | A task that triggers each error state |
-| Onboarding, instructions, and plain-language content | Readability formulas reward short sentences, not clear ones | People with cognitive and learning disabilities; plain-language editor | The decisions the reader must make |
-| Before any conformance claim or procurement statement | A green report is not a conformance evaluation | Specialist running a WCAG-EM style evaluation | Scope, sample, and the evidence you already have |
+<Table caption="Who to call, and when" striped stackOnNarrow>
+  <thead role="rowgroup">
+    <TableRow>
+      <TableHeaderCell>Case</TableHeaderCell>
+      <TableHeaderCell>Why automation misses it</TableHeaderCell>
+      <TableHeaderCell>Who to bring in</TableHeaderCell>
+      <TableHeaderCell>What to give them</TableHeaderCell>
+      <TableHeaderCell>Owner, when</TableHeaderCell>
+    </TableRow>
+  </thead>
+  <tbody role="rowgroup">
+    <TableRow>
+      <TableHeaderCell scope="row">Charts, maps, and diagrams</TableHeaderCell>
+      <TableCell label="Why automation misses it">Tools confirm alt text exists, not that it carries the point</TableCell>
+      <TableCell label="Who to bring in">Specialist; screen reader users from the first prototype</TableCell>
+      <TableCell label="What to give them">The chart's purpose in one sentence, the data, the palette</TableCell>
+      <TableCell label="Owner, when">Product team, design review</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Captions for technical, legal, or medical media</TableHeaderCell>
+      <TableCell label="Why automation misses it">Accuracy scores ignore speaker changes, sounds, and the terms that matter</TableCell>
+      <TableCell label="Who to bring in">Professional captioner; deaf and hard-of-hearing reviewers</TableCell>
+      <TableCell label="What to give them">A glossary and speaker names</TableCell>
+      <TableCell label="Owner, when">Content team, before publishing</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Audio description for video</TableHeaderCell>
+      <TableCell label="Why automation misses it">Only a person knows which visuals carry the meaning</TableCell>
+      <TableCell label="Who to bring in">Describer; blind reviewers</TableCell>
+      <TableCell label="What to give them">The script and the visuals that matter</TableCell>
+      <TableCell label="Owner, when">Content team, before publishing</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Content in sign language</TableHeaderCell>
+      <TableCell label="Why automation misses it">Signed languages have their own grammar; avatars don't carry it</TableCell>
+      <TableCell label="Who to bring in">Deaf signers and qualified interpreters (in Finland, through Kuurojen Liitto)</TableCell>
+      <TableCell label="What to give them">Which sign language, the source script, the budget</TableCell>
+      <TableCell label="Owner, when">Content team, scoping</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Custom widgets: date pickers, comboboxes, drag and drop, modals</TableHeaderCell>
+      <TableCell label="Why automation misses it">Focus order and announcements only show up in operation</TableCell>
+      <TableCell label="Who to bring in">Specialist; daily keyboard, switch, voice control, and screen reader users</TableCell>
+      <TableCell label="What to give them">The interaction pattern, a single-pointer alternative to dragging, the devices you support</TableCell>
+      <TableCell label="Owner, when">Design system team, release candidate</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">AI chat and other streaming interfaces</TableHeaderCell>
+      <TableCell label="Why automation misses it">Live regions behave differently with text that changes as it arrives</TableCell>
+      <TableCell label="Who to bring in">Specialist to design the announcements; daily users of at least two screen readers; magnifier users</TableCell>
+      <TableCell label="What to give them">Tasks to complete, not screens to inspect</TableCell>
+      <TableCell label="Owner, when">Product team, prototype and release candidate</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Login, signup, and verification</TableHeaderCell>
+      <TableCell label="Why automation misses it">Unauthenticated scans stop at the login; cognitive tests need people</TableCell>
+      <TableCell label="Who to bring in">Specialist; people with memory and attention disabilities</TableCell>
+      <TableCell label="What to give them">Test accounts, the two-factor path, time limits</TableCell>
+      <TableCell label="Owner, when">Product team, design review and release candidate</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Forms with error handling</TableHeaderCell>
+      <TableCell label="Why automation misses it">Errors shown only in colour pass a structure check</TableCell>
+      <TableCell label="Who to bring in">Screen reader, voice control, and magnifier users</TableCell>
+      <TableCell label="What to give them">A task that triggers every error state</TableCell>
+      <TableCell label="Owner, when">Design system team, release candidate</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Onboarding and plain-language content</TableHeaderCell>
+      <TableCell label="Why automation misses it">Readability formulas reward short sentences, not clear ones</TableCell>
+      <TableCell label="Who to bring in">People with cognitive and learning disabilities; a plain-language editor (in Finland, Selkokeskus)</TableCell>
+      <TableCell label="What to give them">The decisions the reader has to make</TableCell>
+      <TableCell label="Owner, when">Content team, drafting</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Zoom, reflow, and contrast themes</TableHeaderCell>
+      <TableCell label="Why automation misses it">Tools render at one viewport and one colour scheme</TableCell>
+      <TableCell label="Who to bring in">Specialist; low-vision users who magnify or use high-contrast modes</TableCell>
+      <TableCell label="What to give them">400% zoom and 320px targets, forced-colours and high-contrast modes</TableCell>
+      <TableCell label="Owner, when">Design system team, every release</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Motion and animation</TableHeaderCell>
+      <TableCell label="Why automation misses it">Tools can't judge vestibular impact</TableCell>
+      <TableCell label="Who to bring in">Specialist; people with vestibular disorders</TableCell>
+      <TableCell label="What to give them">An inventory of animations and the reduced-motion behaviour</TableCell>
+      <TableCell label="Owner, when">Design system team, design review</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Documents and PDFs</TableHeaderCell>
+      <TableCell label="Why automation misses it">Tags can exist and still be in the wrong reading order</TableCell>
+      <TableCell label="Who to bring in">Document remediation specialist; screen reader users</TableCell>
+      <TableCell label="What to give them">The source files, not only the exports</TableCell>
+      <TableCell label="Owner, when">Content team, before publishing</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Native mobile apps</TableHeaderCell>
+      <TableCell label="Why automation misses it">Web scanners don't run there, and platform settings vary</TableCell>
+      <TableCell label="Who to bring in">Mobile accessibility specialist; daily TalkBack and VoiceOver users</TableCell>
+      <TableCell label="What to give them">Builds, supported OS versions, text-size targets</TableCell>
+      <TableCell label="Owner, when">Product team, release candidate</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Before any conformance claim</TableHeaderCell>
+      <TableCell label="Why automation misses it">A green report isn't a conformance evaluation</TableCell>
+      <TableCell label="Who to bring in">An independent specialist running a WCAG-EM style evaluation</TableCell>
+      <TableCell label="What to give them">Scope, sample, the evidence you have, your accessibility statement</TableCell>
+      <TableCell label="Owner, when">Leadership, before the claim</TableCell>
+    </TableRow>
+  </tbody>
+</Table>
 
-Two rules make the table work. First, give testers tasks, not pages: "change your delivery address" finds problems that "review the settings page" never will. Second, the W3C warns against [generalising from one or two users](https://www.w3.org/WAI/test-evaluate/involving-users/); different disabilities and assistive technologies surface different problems. And pay people. Disabled testers are experts doing skilled work, and recruiting them with the same care and budget as any other specialist is part of doing this properly.
+Three rules make the table work. Give testers tasks, not pages: "change your delivery address" finds problems that "review the settings page" never will. Don't [generalise from one or two people](https://www.w3.org/WAI/test-evaluate/involving-users/); different disabilities and assistive technologies surface different problems.
+
+And pay people, properly. Disabled testers are experts doing skilled work, so budget for them as you would any other specialist, including their preparation time. Recruit through disabled people's organisations or specialist panels, with sign-up and scheduling that work with assistive technology. Let people use their own devices and settings. Ask for informed consent and keep only the data you need, since disability data is special-category data under the GDPR. Credit people's contribution when they want it.
 
 <ArticleFigure layout="full">
 
 <img src="/blog/plausible-accessibility/fig-who-to-call.webp" alt="" />
 
 </ArticleFigure>
-{/* Figure C: the routing table above, published as an HTML table (preferred) rather than an image. */}
 
-## What the machines are good at
-
-None of this means keeping AI out of accessibility work. The real question is which work to give it.
-
-Automation is excellent at the measurable. The same evidence pipeline that once recorded empty passes also caught a real failure in September: in dark theme, the user's chat bubble on this site rendered body text at a contrast ratio of 1.82:1 against its blue background, a serious failure that axe flagged on every chat story. Models are useful too when the job is structured: drafting a first alt text for a person to edit, writing a test plan from the success criteria, or running Fairchild's generate-then-review loop, which moved pass rates from 12% to 86% at about five and a half times the input tokens.
-
-The division of labour I trust is simple. Machines propose and measure. People with the right expertise decide, and people with lived experience confirm. The moment a model's output is accepted because it sounds right, the work has slipped back into plausibility.
+If you need to make the case to leadership in Europe, it isn't optional anymore. The European Accessibility Act has applied since June 2025, and EN 301 549 is the standard used to show conformance. A plausible accessibility statement is now a compliance risk as well as a user one.
 
 ## Where my own checks still fall short
 
-I would like to say the pipeline that missed 949 axe results is fixed, and in the narrow sense it is: the missing variable is now part of the documented recapture recipe. But the language button passed every gate after that fix. So did the list markers in the same chat bubble, which shared the bubble's background colour exactly: type a list into the chat and its bullets vanished, at a measured contrast of 1:1. axe does not check marker colour at all, so no rule could have caught it. The fix was one line of CSS; the check that now guards it measures the computed marker colour against the bubble in a Storybook play test and fails below 3:1. And recapturing evidence for the button turned up one more quiet failure: writing the evidence files made Storybook hot-reload the story under test, so the check hung instead of failing. Automation that cannot see its own blind spots tends to fail politely.
+I'd like to say the pipeline that missed 949 axe results is fixed. In the narrow sense it is: I now know to set the variable. But no package script sets it for me, and when I went back a month later to reproduce the failure for this article, I couldn't. The same command now records the axe result either way. I don't know exactly what changed, which is its own kind of lesson.
 
-The accessibility-tree snapshots this design system commits for every story are good at one thing: catching structural change. They record roles, names, and states. They do not record whether a name makes sense out loud, whether an announcement arrives at the right moment, or whether a sequence of steps is tiring. Those are judgments, and a snapshot of a bad judgment passes forever.
+The third failure came from recapturing evidence for the language button. Writing the evidence files made Storybook hot-reload the story under test, so one check hung for its full 60-second timeout instead of failing. It passed in 241 milliseconds without the update step. Automation that can't detect its own gaps tends to fail politely.
 
-{/* AUTHOR CHECK: confirm or adjust the next paragraph. Describe actual testing with disabled people on Digitaltableteur work, or replace with a dated commitment. Do not publish a claim that is not true. */}
-What closes that gap is a standing arrangement with people who use assistive technology every day, booked before a release rather than after a complaint. Another check would only measure the same things more often.
+A small guard closes the silent-skip class in any pipeline that writes records like these. It fails when a check you rely on is missing, as well as when it fails:
+
+```js
+for (const record of records) {
+  if (record.optedOut) continue; // stories that disable axe on purpose
+  const axe = record.checks["axe-no-violations"];
+  if (!axe) throw new Error(`${record.storyId}: axe result missing`);
+  if (!axe.passed) throw new Error(`${record.storyId}: axe violations`);
+}
+```
+
+The accessibility-tree snapshots this design system commits for every story in its test matrix are good at one thing: catching structural change. They record roles, names, and states. They don't record whether a name makes sense out loud, whether an announcement arrives at the right moment, or whether a sequence of steps is tiring. Those are judgments, and a snapshot of a bad judgment passes forever.
+
+Digitaltableteur has worked with two accessibility experts from Siteimprove, both with visual disabilities.
+
+{/* AUTHOR CHECK: add what that review covered and found, when it happened, and whether it is a standing arrangement or a one-off. Keep to what is true. */}
 
 ## Works for whom
+
+Looks good to me is still a fine approval for code. For accessibility, it answers the wrong question.
+
+Models will keep getting closer to likely. Getting from likely to right, for one particular person, is still work for people.
+
+The useful questions are smaller and harder: works for whom, on what, doing which task, and who told you?
 
 <ArticleFigure layout="full">
 
@@ -187,8 +364,4 @@ What closes that gap is a standing arrangement with people who use assistive tec
 
 </ArticleFigure>
 
-Looks good to me is still a fine approval for code. For accessibility, it answers the wrong question. The useful questions are smaller and harder: works for whom, on what, doing which task, and who told you?
-
-AI will keep getting better at the shape of accessible work, and some of what fails today will pass next year. The gap that remains will be the one this piece is about: the distance between output that is likely and output that is right for a particular person in a particular moment. Models will keep closing in on likely. Getting from likely to right is still work for people.
-
-*Working out where your team needs a specialist or user testing? [Get in touch](/contact).*
+*If your team is working out where it needs a specialist or testing with disabled people, [get in touch](/contact).*

@@ -31,6 +31,19 @@ All URLs were checked on 2026-10-15. Order follows the flagship standard: primar
 | [FTC final order, accessiBe](https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million) (2025-04-22) | $1M; no unsupported WCAG claims |
 | Bloomsybox.com LLC v. UserWay, D. Del. 1:24-cv-00844; [Lainey Feingold summary](https://www.lflegal.com/2025/02/userway-overlay-lawsuit) | Florist sued despite overlay, now suing the vendor. A Feb 2026 recommendation to let claims proceed is not yet adopted: no liability finding |
 
+## Added in draft 2
+
+| Source | Used for |
+|--------|----------|
+| Chen et al., [Screen Reader Programmers in the Vibe Coding Era](https://arxiv.org/abs/2506.13270) (preprint, 2025) | 16 blind and low-vision programmers using Copilot for two weeks: faster, but struggled to express intent, check output, and track changes |
+| [Overlay Fact Sheet](https://overlayfactsheet.com/) | The disabled-led and practitioner opposition to overlays |
+| [W3C, Making Content Usable for People with Cognitive and Learning Disabilities](https://www.w3.org/TR/coga-usable/) | Cognitive needs beyond WCAG |
+| [WCAG 2.2 Understanding 4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html) | Streamed chat announcements |
+| Selkokeskus, Kuurojen Liitto | Finnish plain-language and Deaf-led organisations named in the routing table |
+| European Accessibility Act (Directive (EU) 2019/882, applied from 28 June 2025); EN 301 549 | The EU business case |
+| Fairchild instruction findings (same report): one-line instruction 12% to 37%, short instruction file 60%, pasting all of WCAG often worse | Corrected "tripled" claim; the agent instruction block |
+| Owner, 2026-10-15 | Digitaltableteur has worked with two accessibility experts from Siteimprove, both with visual disabilities (details pending AUTHOR CHECK) |
+
 ## Practitioner evidence (Medium and Dev.to)
 
 | Source | Strength | Used for |

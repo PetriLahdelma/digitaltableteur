@@ -94,3 +94,17 @@ Seven independent seats reviewed the same evidence pack (line-numbered draft, me
 
 - Real-artifact figures A (an evidence record, captioned with the true history: the September copies were discarded and the failure no longer reproduces) and B (the committed snapshot diff from b73740e0f) are in the draft as text, not images of text.
 - Hero images without their own alt are now decorative site-wide, so screen readers no longer hear every post's title twice.
+
+## Draft 2 (2026-10-15): what the owner chose and what changed
+
+Owner picked: verified errors, inclusion fixes, voice and rhythm pass, restructure around September; routing table upgrade, code blocks, EAA and recruiting paragraph; all four code fixes. Illustration redraws were not picked.
+
+- **Restructured** around the September story: the opening (949 empty records), "What the green runs hid" (three more problems no gate caught: the button, the 1:1 markers, the recapture hang), the 1.82:1 vs 1:1 pairing in "What the machines are good at", and the limits section.
+- **All verified fact and accessibility corrections applied** (216 viewers, instruction numbers, participant-judged redesign share, WFD wording, Gower's feast or famine, accessible name not spoken name, 3.3.8 vs CAPTCHA with 3.3.9 and 1.1.1, 1.2.2 level and 1.2.4, unauthenticated scans, deafblind, cognitive needs outside WCAG with COGA, matrix-only snapshots, the CI=1 recipe and the failure no longer reproducing).
+- **Inclusion:** "experts decide, lived experience confirms" replaced; specialists can be disabled; testing with people with memory or attention disabilities rather than simulating them; overlays framed around the blind customer and the disabled-led Overlay Fact Sheet; blind and low-vision programmers' study added; "pay people" now a full paragraph (rate including prep, accessible recruitment, own setup, consent and GDPR special-category data, credit); Finnish disabled-led and plain-language bodies named; "blind spots" removed.
+- **Voice:** 52 contractions (draft 1: none); 3.2 sentences per paragraph (4.1); four one-line paragraphs, none adjacent; closes on "who told you?"; footer is a statement.
+- **Additions:** routing table as a striped design-system Table with Owner and timing, 14 rows (audio description, zoom and reflow, motion, documents, native mobile added; voice and switch users in widget rows), stacked on phones; code blocks for the exact accessible-name test, an agent instruction file, and a silent-skip guard; the EAA paragraph.
+- **Code:** LanguageSwitcher stable name without aria-current (Figure B now shows the final name); marker play test at 4.5:1; captionless figures and hero render as plain wrappers; table caption, row headers, explicit roles, small-screen layout.
+- **AUTHOR CHECK:** partly resolved. The limits section states that Digitaltableteur has worked with two Siteimprove accessibility experts, both with visual disabilities. Still needed from the owner: what that work covered and found, when, and whether it continues.
+
+Still open: illustration redraws (hands, stencil model, palette), the CodeBlockWindow component wraps every code block in an uncaptioned figure, and the article runs about 2,870 prose words (target 2,000 to 2,800) because of the expanded table.
