@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T08:16:02.604Z",
+  "generatedAt": "2026-10-15T14:22:40.236Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -999,10 +999,10 @@
       "composesWith": [
         "AuthorBio",
         "DashLeadList",
-        "TableOfContents",
-        "EnhancedAuthorCard",
-        "ArticleShareSection",
-        "MdxImage"
+        "Table",
+        "TableRow",
+        "TableHeaderCell",
+        "TableCell"
       ],
       "prefersOver": [],
       "declaredPropCount": 3,
@@ -1284,10 +1284,10 @@
       "composesWith": [
         "AuthorBio",
         "DashLeadList",
-        "ArticleContent",
-        "TableOfContents",
-        "EnhancedAuthorCard",
-        "MdxImage"
+        "Table",
+        "TableRow",
+        "TableHeaderCell",
+        "TableCell"
       ],
       "prefersOver": [],
       "declaredPropCount": 5,
@@ -2020,7 +2020,7 @@
         "bio": {
           "optional": true,
           "type": "string",
-          "description": "Biography text; markdown after the first paragraph. The first paragraph\nrenders as the lead/tagline."
+          "description": "Biography text (markdown). Paragraphs are separated by blank lines; the\n`compact` variant renders only the first one."
         },
         "email": {
           "optional": true,
@@ -2041,11 +2041,33 @@
           "optional": true,
           "type": "boolean",
           "description": "Render the author's contact email (mailto) after the bio, if the author has one."
+        },
+        "profileHref": {
+          "optional": true,
+          "type": "string",
+          "description": "Link the author's name to their profile page (e.g. `/blog/authors/<slug>`)."
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "full",
+            "compact"
+          ],
+          "description": "`full` renders the whole biography (author pages). `compact` renders only\nthe lead paragraph, for the end of an article."
         }
       },
       "propRelationships": [],
       "forbiddenCombos": [],
-      "variants": {},
+      "variants": {
+        "variant": {
+          "values": [
+            "full",
+            "compact"
+          ],
+          "default": "full"
+        }
+      },
       "cvaVariants": {},
       "variantsFnName": null,
       "useWhen": [
@@ -2069,14 +2091,14 @@
       ],
       "composesWith": [
         "DashLeadList",
-        "ArticleContent",
-        "TableOfContents",
-        "EnhancedAuthorCard",
-        "ArticleShareSection",
-        "MdxImage"
+        "Table",
+        "TableRow",
+        "TableHeaderCell",
+        "TableCell",
+        "ArticleContent"
       ],
       "prefersOver": [],
-      "declaredPropCount": 9,
+      "declaredPropCount": 11,
       "guidelines": [
         {
           "level": "should",
@@ -2370,12 +2392,12 @@
         "nest an Avatar inside a Button. Pick one — Avatar already owns the click affordance when clickable, and Button owns it when not."
       ],
       "composesWith": [
-        "Link",
-        "Text",
-        "Title",
         "Grid",
         "ArticleCard",
-        "Checkbox"
+        "Checkbox",
+        "CheckboxGroup",
+        "FlexBox",
+        "TextInput"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,
@@ -9627,8 +9649,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Max-width token."
         },
@@ -9836,8 +9858,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "default": "sm"
         }
@@ -17183,7 +17205,6 @@
       "requiredA11y": [
         "role=group with aria-label",
         "trigger aria-expanded + aria-controls",
-        "trigger aria-current",
         "each option is named '<label>, <language name>' (visible label first, WCAG 2.5.3) and carries lang"
       ],
       "keyboard": [
@@ -17338,7 +17359,7 @@
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact spoken names are unit-tested."
+          "note": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact accessible names are unit-tested. Same day, a council review found the trigger name changed with state (Show/Hide) and the trigger carried aria-current; the name is now stable ('EN, English'), aria-expanded carries state, and aria-current is gone."
         }
       ],
       "docOrigin": {
@@ -17868,9 +17889,9 @@
         "Text",
         "Title",
         "Button",
-        "Avatar",
         "Badge",
-        "ReliablePartnerBadge"
+        "ReliablePartnerBadge",
+        "Grid"
       ],
       "prefersOver": [
         "Button with href for body-copy links"
@@ -18434,9 +18455,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "compact",
             "normal",
-            "relaxed",
-            "compact"
+            "relaxed"
           ],
           "description": "Vertical spacing between items."
         },
@@ -33993,6 +34014,11 @@
           "type": "boolean",
           "description": "Pin the header row while the table body scrolls."
         },
+        "stackOnNarrow": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Below a 40rem container width, stack each body row as a block instead of\nsqueezing columns, with every cell prefixed by its `TableCell` `label`.\nAdds explicit table roles so assistive technology keeps the table\nsemantics that a CSS `display` change drops in some browsers. Give\n`<thead>`/`<tbody>` `role=\"rowgroup\"` for the same reason."
+        },
         "wrapperClassName": {
           "optional": true,
           "type": "string",
@@ -34053,11 +34079,12 @@
         "TableRow",
         "TableHeaderCell",
         "TableCell",
-        "Checkbox",
-        "IconButton"
+        "AuthorBio",
+        "DashLeadList",
+        "ArticleContent"
       ],
       "prefersOver": [],
-      "declaredPropCount": 6,
+      "declaredPropCount": 7,
       "guidelines": [
         {
           "level": "should",
@@ -34310,6 +34337,11 @@
           "optional": true,
           "type": "boolean",
           "description": "Right-align and tabular-figure numeric values."
+        },
+        "label": {
+          "optional": true,
+          "type": "string",
+          "description": "Column name shown before the value when the parent `Table` stacks rows\n(`stackOnNarrow`). Hidden from assistive technology, which reads the\ncolumn header instead."
         }
       },
       "propRelationships": [],
@@ -34355,11 +34387,12 @@
         "TableRow",
         "TableHeaderCell",
         "Table",
-        "Checkbox",
-        "IconButton"
+        "AuthorBio",
+        "DashLeadList",
+        "ArticleContent"
       ],
       "prefersOver": [],
-      "declaredPropCount": 2,
+      "declaredPropCount": 3,
       "guidelines": [
         {
           "level": "should",
@@ -34652,8 +34685,9 @@
         "TableRow",
         "TableCell",
         "Table",
-        "Checkbox",
-        "IconButton"
+        "AuthorBio",
+        "DashLeadList",
+        "ArticleContent"
       ],
       "prefersOver": [],
       "declaredPropCount": 5,
@@ -34953,10 +34987,10 @@
       "composesWith": [
         "AuthorBio",
         "DashLeadList",
-        "ArticleContent",
-        "EnhancedAuthorCard",
-        "ArticleShareSection",
-        "MdxImage"
+        "Table",
+        "TableRow",
+        "TableHeaderCell",
+        "TableCell"
       ],
       "prefersOver": [],
       "declaredPropCount": 5,
@@ -35216,8 +35250,9 @@
         "TableHeaderCell",
         "TableCell",
         "Table",
-        "Checkbox",
-        "IconButton"
+        "AuthorBio",
+        "DashLeadList",
+        "ArticleContent"
       ],
       "prefersOver": [],
       "declaredPropCount": 1,
@@ -43722,8 +43757,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum content width."
         },
@@ -45452,8 +45487,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint"
         },
@@ -45461,8 +45496,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -45775,8 +45810,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum content width"
         },
@@ -45784,8 +45819,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -47548,8 +47583,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint for the content"
         },
@@ -47567,8 +47602,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -48418,8 +48453,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint"
         },
@@ -48427,8 +48462,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -49500,8 +49535,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Max width constraint for the section"
         },
@@ -50479,8 +50514,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum content width"
         },
@@ -50488,8 +50523,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -51807,8 +51842,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint"
         },
@@ -51816,8 +51851,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -52093,8 +52128,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint"
         },
@@ -52102,8 +52137,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],

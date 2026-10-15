@@ -8,7 +8,16 @@
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1432-2568",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {},
+    "variants": {
+        "variant": {
+            "values": [
+                "full",
+                "compact"
+            ],
+            "default": "full",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -134,6 +143,16 @@
             "optional": true,
             "type": "boolean",
             "description": "Render the author's contact email (mailto) after the bio, if the author has one."
+        },
+        "profileHref": {
+            "optional": true,
+            "type": "string",
+            "description": "Link the author's name to their profile page (e.g. /blog/authors/<slug>)."
+        },
+        "variant": {
+            "optional": true,
+            "type": "\"full\" | \"compact\"",
+            "description": "full renders the whole biography (author pages). compact renders only the lead paragraph, for the end of an article."
         }
     },
     "forbiddenUse": [

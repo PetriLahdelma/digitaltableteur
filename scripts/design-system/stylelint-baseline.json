@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1891,
+  "warningCount": 1880,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -1144,105 +1144,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Author/Author.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 53,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border-block-end\" to come before \"inset-block-end\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::order/properties-order::Expected \"border-block-end\" to come before \"inset-block-end\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 46,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-block-end\" to come before \"color\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::order/properties-order::Expected \"padding-block-end\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 19,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 42,
-      "column": 15,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 71,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 13,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 15,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 19,
-      "column": 17,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 66,
-      "column": 15,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 4,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css",
-      "line": 46,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/AuthorBio/AuthorBio.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::2"
     },
     {
       "file": "nextjs-app/shared/components/Avatar/avatar.module.css",
@@ -6448,16 +6349,16 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 163,
+      "line": 172,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".chat p\" to come before selector \".root p:first-child\", at line 35 (no-descending-specificity)",
+      "text": "Expected selector \".chat p\" to come before selector \".root p:first-child\", at line 44 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::no-descending-specificity::Expected selector \".chat p\" to come before selector \".root p:first-child\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 154,
+      "line": 163,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -6466,7 +6367,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 55,
+      "line": 64,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -6475,7 +6376,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 179,
+      "line": 188,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6484,7 +6385,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 189,
+      "line": 198,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6493,7 +6394,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 164,
+      "line": 173,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6502,7 +6403,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 171,
+      "line": 180,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6511,7 +6412,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 196,
+      "line": 205,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6520,7 +6421,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 179,
+      "line": 188,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6529,7 +6430,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 189,
+      "line": 198,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6538,7 +6439,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 171,
+      "line": 180,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6547,7 +6448,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 78,
+      "line": 87,
       "column": 11,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6556,7 +6457,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 73,
+      "line": 82,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6565,7 +6466,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 164,
+      "line": 173,
       "column": 11,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6574,7 +6475,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 171,
+      "line": 180,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6583,7 +6484,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 196,
+      "line": 205,
       "column": 11,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6592,7 +6493,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 179,
+      "line": 188,
       "column": 11,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6601,7 +6502,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 189,
+      "line": 198,
       "column": 11,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6610,7 +6511,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 180,
+      "line": 189,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6619,7 +6520,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 190,
+      "line": 199,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6628,7 +6529,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 160,
+      "line": 169,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6637,7 +6538,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 165,
+      "line": 174,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6646,7 +6547,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 197,
+      "line": 206,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6655,7 +6556,7 @@
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 159,
+      "line": 168,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",

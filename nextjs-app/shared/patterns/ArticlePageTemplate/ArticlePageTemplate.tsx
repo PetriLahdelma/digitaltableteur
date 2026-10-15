@@ -7,7 +7,6 @@ import { ArticleHero } from "../ArticleHero";
 import { RelatedPosts } from "../RelatedPosts";
 import { ArticleContent, ArticleProse } from "../../components/ArticleContent";
 import { TableOfContents } from "../../components/TableOfContents";
-import { EnhancedAuthorCard } from "../../components/EnhancedAuthorCard";
 import { ArticleShareSection } from "../../components/ArticleShareSection";
 import { useTableOfContents } from "../../hooks/useTableOfContents";
 import { getAuthorBySlug } from "../../data/authors";
@@ -17,6 +16,10 @@ import type { BlogPostEntry } from "../../data/blogPosts";
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
 import { CodeBlockWindow, Link, Text } from "@digitaltableteur/react";
 import { DashLeadList } from "@dt/DashLeadList";
+import { Table } from "@dt/Table";
+import { TableRow } from "@dt/TableRow";
+import { TableHeaderCell } from "@dt/TableHeaderCell";
+import { TableCell } from "@dt/TableCell";
 import { MdxImage } from "../../components/MdxImage";
 import { cn } from "../../lib/cn";
 import React from "react";
@@ -296,9 +299,13 @@ const MdxFigure = ({
       media.push(child);
     });
 
+    // A figure without a caption is a decorative illustration: render a plain
+    // wrapper so screen readers do not announce an empty, unnamed figure.
+    const Wrapper = captions.length > 0 ? "figure" : "div";
+
     return (
       <FigureLayoutContext.Provider value={layout}>
-        <figure
+        <Wrapper
           className={cn(
             "not-prose",
             figureStyles.figure,
@@ -315,7 +322,7 @@ const MdxFigure = ({
           {captions.map((caption, index) =>
             renderFigureCaption(caption, index),
           )}
-        </figure>
+        </Wrapper>
       </FigureLayoutContext.Provider>
     );
   }
@@ -390,6 +397,10 @@ const mdxComponents = {
   AuthorBio: MdxAuthorBio,
   ArticleFigure,
   DashLeadList,
+  Table,
+  TableRow,
+  TableHeaderCell,
+  TableCell,
   img: MdxImageWrapper,
   figcaption: MdxFigcaption,
   figure: MdxFigure,
@@ -519,16 +530,12 @@ export function ArticlePageTemplate({
 
         {/* Author card — outside prose so avatar is not styled as article imagery */}
         {author && (
-          <div className="not-prose mt-12">
-            <EnhancedAuthorCard
-              name={author.name}
-              slug={author.slug}
-              imageUrl={author.imageUrl}
-              bio={author.bio}
-              variant="inline"
-              showMoreLink
-            />
-          </div>
+          <AuthorBio
+            slug={author.slug}
+            profileHref={`/blog/authors/${author.slug}`}
+            variant="compact"
+            className="mt-12"
+          />
         )}
 
         {/* Share section */}

@@ -1,76 +1,131 @@
+/*
+ * Author card: a warm surface with a faint diagonal plane behind the photo,
+ * the photo as a rounded square, then the name and the bio as plain prose.
+ * Everything derives from theme tokens so dark and high-contrast themes follow.
+ */
+
 .authorBio {
-  --author-bio-padding: 1.5rem;
+  --author-bio-surface: var(--color-light-bg);
+  --author-bio-plane: color-mix(in srgb, var(--color-text) 5%, transparent);
+  --author-bio-photo-size: 7.5rem;
+  --author-bio-photo-size-narrow: 5rem;
+  --author-bio-plane-height-narrow: 7rem;
 
-  margin-block-start: 2rem;
-  padding: var(--author-bio-padding);
-  border: 2px solid var(--color-primary);
-  background: var(--main-body-background-color);
-  box-shadow: var(--shadow-lg);
-}
-
-.header {
-  display: flex;
-  margin-block: 0 1rem;
+  display: grid;
+  position: relative;
+  margin-block-start: var(--space-layout-32);
+  padding: var(--space-layout-32) var(--space-layout-40);
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-layout-32);
+  border-radius: var(--radius-xl);
+  background: var(--author-bio-surface);
+  container-type: inline-size;
+  overflow: hidden;
 }
 
-.article img {
-  margin-block: 1rem 0.5rem;
+/* The faint plane: a wedge that rises behind the photo and leans right. */
+
+.authorBio::before {
+  position: absolute;
+  inset-block: 0;
+  z-index: 0;
+  inline-size: min(17rem, 45%);
+  background: var(--author-bio-plane);
+  pointer-events: none;
+  clip-path: polygon(0 32%, 52% 0, 72% 0, 100% 100%, 0 100%);
+  content: "";
+  inset-inline-start: 0;
+}
+
+.media,
+.body {
+  position: relative;
+  z-index: 1;
+}
+
+.photo {
+  display: block;
+  block-size: var(--author-bio-photo-size);
+  inline-size: var(--author-bio-photo-size);
+  border-radius: var(--radius-md);
+  object-fit: cover;
 }
 
 /*
- * Scoped under .header so these beat the Title/Text base classes (equal
- * single-class specificity, base wins on source order otherwise). Sizing is
- * left to the Title/Text size props; these only reset margin and set ink so
- * the name and role read as one tight unit.
+ * Scoped under .body so these beat the Title/Text base classes (equal
+ * single-class specificity, base wins on source order otherwise).
  */
 
-.header .name {
+.body .name {
   margin: 0;
   color: var(--color-text);
 }
 
-.header .role {
+.nameLink {
+  text-decoration: underline;
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.body .role {
   margin-block: var(--space-internal-4) 0;
   font-weight: 400;
   color: var(--color-muted);
 }
 
-.tagline {
-  position: relative;
-  margin: 0 0 1.5rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-text);
-  padding-block-end: 2rem;
-}
-
-.tagline::after {
-  position: absolute;
-  inset-inline: calc(-1 * var(--author-bio-padding));
-  inset-block-end: 0;
-  border-block-end: 2px solid
-    color-mix(in srgb, var(--color-primary) 20%, transparent);
-  content: "";
-}
-
 .bioContent {
+  margin-block-start: var(--space-internal-12);
   font-family: var(--font-text);
-  font-size: 1rem;
+  font-size: var(--font-size-text-m);
   line-height: 1.6;
   color: var(--color-text);
 }
 
 .bioContent p {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--space-internal-12);
+}
+
+.bioContent p:last-child {
+  margin-block-end: 0;
 }
 
 .contact {
   display: block;
-  margin-block-start: 1.5rem;
+  margin-block-start: var(--space-internal-16);
   font-family: var(--font-text);
-  font-size: 1rem;
+  font-size: var(--font-size-text-m);
   line-height: 1.6;
   color: var(--color-text);
+}
+
+/* Narrow containers: photo above the text, smaller, plane kept to the top. */
+
+@container (width < 32rem) {
+  .authorBio {
+    padding: var(--space-layout-24);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-internal-16);
+  }
+
+  .authorBio::before {
+    block-size: var(--author-bio-plane-height-narrow);
+    inline-size: 60%;
+  }
+
+  .photo {
+    block-size: var(--author-bio-photo-size-narrow);
+    inline-size: var(--author-bio-photo-size-narrow);
+  }
+}
+
+@media (forced-colors: active) {
+  .authorBio {
+    border: 1px solid CanvasText;
+  }
+
+  .authorBio::before {
+    display: none;
+  }
 }

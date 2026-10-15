@@ -1,6 +1,6 @@
 /// <reference types="../../../vitest-axe" />
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, test, expect, vi, beforeEach } from "vitest";
 import { axe } from "jest-axe";
 import "@testing-library/jest-dom/vitest";
@@ -83,10 +83,9 @@ describe("AuthorBio", () => {
 
     test("renders avatar when imageUrl is provided", () => {
       vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
-      render(<AuthorBio slug="john-doe" />);
-      const avatar = screen.getByAltText("John Doe");
-      expect(avatar).toBeInTheDocument();
-      expect(avatar).toHaveAttribute("src", mockAuthor.imageUrl);
+      const { container } = render(<AuthorBio slug="john-doe" />);
+      const photo = container.querySelector("img");
+      expect(photo).toHaveAttribute("src", mockAuthor.imageUrl);
     });
 
     test("does not render avatar when imageUrl is missing", () => {
@@ -109,7 +108,9 @@ describe("AuthorBio", () => {
     test("does not render role when absent", () => {
       vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
       const { container } = render(<AuthorBio slug="john-doe" />);
-      expect(container.querySelector("[class*='role']")).not.toBeInTheDocument();
+      expect(
+        container.querySelector("[class*='role']"),
+      ).not.toBeInTheDocument();
     });
 
     test("renders lead paragraph as tagline", () => {
@@ -232,11 +233,11 @@ describe("AuthorBio", () => {
       expect(heading).toHaveTextContent("John Doe");
     });
 
-    test("avatar has proper alt text", () => {
+    test("photo is decorative because the name sits beside it", () => {
       vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
-      render(<AuthorBio slug="john-doe" />);
-      const avatar = screen.getByAltText("John Doe");
-      expect(avatar).toBeInTheDocument();
+      const { container } = render(<AuthorBio slug="john-doe" />);
+      expect(container.querySelector("img")).toHaveAttribute("alt", "");
+      expect(screen.queryByRole("img")).not.toBeInTheDocument();
     });
   });
 
@@ -245,16 +246,13 @@ describe("AuthorBio", () => {
       vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
       const { container } = render(<AuthorBio slug="john-doe" />);
 
-      // Lead paragraph should be in tagline class
-      const tagline = container.querySelector("[class*='tagline']");
-      expect(tagline).toHaveTextContent("First paragraph with introduction.");
-
-      // Remaining paragraphs should be in bioContent class
-      const bioContent = container.querySelector("[class*='bioContent']");
-      expect(bioContent).toHaveTextContent(
-        "Second paragraph with more details.",
+      // The full variant renders every paragraph as its own <p>.
+      const paragraphs = container.querySelectorAll("[class*='bioContent'] p");
+      expect(paragraphs).toHaveLength(3);
+      expect(paragraphs[0]).toHaveTextContent(
+        "First paragraph with introduction.",
       );
-      expect(bioContent).toHaveTextContent("Third paragraph conclusion.");
+      expect(paragraphs[2]).toHaveTextContent("Third paragraph conclusion.");
     });
 
     test("trims whitespace from split content", () => {
@@ -282,20 +280,22 @@ describe("AuthorBio", () => {
       const { container } = render(<AuthorBio slug="john-doe" />);
 
       expect(screen.getByText("Only one paragraph here.")).toBeInTheDocument();
-      // bioContent should not render when no remainder
-      const bioContent = container.querySelector("[class*='bioContent']");
-      expect(bioContent).not.toBeInTheDocument();
+      expect(
+        container.querySelectorAll("[class*='bioContent'] p"),
+      ).toHaveLength(1);
     });
   });
 
   describe("Component Integration", () => {
-    test("uses Avatar component with correct props", () => {
+    test("links the name to the profile when profileHref is set", () => {
       vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
-      render(<AuthorBio slug="john-doe" />);
-
-      const avatar = screen.getByAltText("John Doe");
-      expect(avatar).toHaveAttribute("src", mockAuthor.imageUrl);
-      // Avatar size is passed as "4rem" in the component
+      render(
+        <AuthorBio slug="john-doe" profileHref="/blog/authors/john-doe" />,
+      );
+      const heading = screen.getByRole("heading", { level: 3 });
+      expect(
+        within(heading).getByRole("link", { name: "John Doe" }),
+      ).toHaveAttribute("href", "/blog/authors/john-doe");
     });
 
     test("uses Title component for heading", () => {
@@ -306,12 +306,15 @@ describe("AuthorBio", () => {
       expect(heading.className).toMatch(/name/);
     });
 
-    test("uses Text component for tagline", () => {
+    test("compact variant renders only the lead paragraph", () => {
       vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
-      const { container } = render(<AuthorBio slug="john-doe" />);
-
-      const tagline = container.querySelector("[class*='tagline']");
-      expect(tagline).toBeInTheDocument();
+      render(<AuthorBio slug="john-doe" variant="compact" />);
+      expect(
+        screen.getByText("First paragraph with introduction."),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByText("Second paragraph with more details."),
+      ).not.toBeInTheDocument();
     });
 
     test("uses ReactMarkdown for bio content", () => {
@@ -349,7 +352,7 @@ describe("AuthorBio", () => {
       expect(
         screen.getByText("Writes about design systems."),
       ).toBeInTheDocument();
-      expect(screen.getByAltText("Jane Doe")).toHaveAttribute(
+      expect(document.querySelector("section img")).toHaveAttribute(
         "src",
         "https://example.com/jane.jpg",
       );
@@ -371,7 +374,7 @@ describe("AuthorBio", () => {
         "Override Name",
       );
       // Non-overridden fields still come from the registry entry.
-      expect(screen.getByAltText("Override Name")).toHaveAttribute(
+      expect(document.querySelector("section img")).toHaveAttribute(
         "src",
         mockAuthor.imageUrl,
       );

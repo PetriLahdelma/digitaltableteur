@@ -1001,6 +1001,16 @@
           "optional": true,
           "type": "boolean",
           "description": "Render the author's contact email (mailto) after the bio, if the author has one."
+        },
+        "profileHref": {
+          "optional": true,
+          "type": "string",
+          "description": "Link the author's name to their profile page (e.g. /blog/authors/<slug>)."
+        },
+        "variant": {
+          "optional": true,
+          "type": "\"full\" | \"compact\"",
+          "description": "full renders the whole biography (author pages). compact renders only the lead paragraph, for the end of an article."
         }
       },
       "composesWith": [
@@ -8772,12 +8782,12 @@
         {
           "story": "FanOpen",
           "description": "Activating the trigger fans the other locales out with a spring (a plain fade under prefers-reduced-motion). While closed the tray is inert, so its buttons can never take keyboard focus.",
-          "source": "export const FanOpen: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Activating the trigger fans the other locales out with a spring (a plain fade under prefers-reduced-motion). While closed the tray is inert, so its buttons can never take keyboard focus.\",\n      },\n    },\n  },\n  render: () => <LanguageSwitcherDemo />,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const trigger = canvas.getByRole(\"button\", {\n      name: /show language options|english/i,\n    });\n    await userEvent.click(trigger);\n    const finnish = await waitFor(() => {\n      const option = canvas.getByRole(\"button\", { name: /^finnish$/i });\n      expect(option).toBeVisible();\n      return option;\n    });\n    /* The fan tray springs in via Framer opacity; the post-play axe audit\n       measures blended text color, so wait for the animation to fully settle\n       before handing the tree over. */\n    await waitFor(() => {\n      const tray = finnish.closest(\"[class*='optionsTrayFan']\") as HTMLElement;\n      expect(Number(getComputedStyle(tray).opacity)).toBe(1);\n    });\n  },\n};\n\n/** Accessible names speak the target language. */"
+          "source": "export const FanOpen: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Activating the trigger fans the other locales out with a spring (a plain fade under prefers-reduced-motion). While closed the tray is inert, so its buttons can never take keyboard focus.\",\n      },\n    },\n  },\n  render: () => <LanguageSwitcherDemo />,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const trigger = canvas.getByRole(\"button\", {\n      name: /show language options|english/i,\n    });\n    await userEvent.click(trigger);\n    const finnish = await waitFor(() => {\n      const option = canvas.getByRole(\"button\", { name: /^FI, Suomi$/ });\n      expect(option).toBeVisible();\n      return option;\n    });\n    /* The fan tray springs in via Framer opacity; the post-play axe audit\n       measures blended text color, so wait for the animation to fully settle\n       before handing the tree over. */\n    await waitFor(() => {\n      const tray = finnish.closest(\"[class*='optionsTrayFan']\") as HTMLElement;\n      expect(Number(getComputedStyle(tray).opacity)).toBe(1);\n    });\n  },\n};\n\n/** Each option is named by its visible code and the language's own name. */"
         },
         {
           "story": "AccessibleNames",
-          "description": "Each option's ariaLabel should be written in the language it switches to — \\\"Vaihda kieli suomeksi\\\", \\\"Byt språk till svenska\\\" — so the users who need that locale understand the control. Visible labels stay short locale codes.",
-          "source": "export const AccessibleNames: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Each option's ariaLabel should be written in the language it switches to — \\\"Vaihda kieli suomeksi\\\", \\\"Byt språk till svenska\\\" — so the users who need that locale understand the control. Visible labels stay short locale codes.\",\n      },\n    },\n  },\n  render: () => <LanguageSwitcherDemo />,\n};\n\n/** Controlled wiring: i18n changes in the callback, currentLang flows back. */"
+          "description": "Pass each language’s own name as ariaLabel (English, Suomi, Svenska). The component announces the visible code first, “FI, Suomi”, so voice control users can say what they see (WCAG 2.5.3), and sets lang on each option so screen readers pronounce the name correctly. Never put an action such as “Switch to” in ariaLabel: the trigger’s expanded state already tells users what it does, and the name would announce an instruction to switch to the language already in use.",
+          "source": "export const AccessibleNames: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Pass each language’s own name as ariaLabel (English, Suomi, Svenska). The component announces the visible code first, “FI, Suomi”, so voice control users can say what they see (WCAG 2.5.3), and sets lang on each option so screen readers pronounce the name correctly. Never put an action such as “Switch to” in ariaLabel: the trigger’s expanded state already tells users what it does, and the name would announce an instruction to switch to the language already in use.\",\n      },\n    },\n  },\n  render: () => <LanguageSwitcherDemo />,\n};\n\n/** Controlled wiring: i18n changes in the callback, currentLang flows back. */"
         },
         {
           "story": "ControlledWiring",
@@ -16153,6 +16163,11 @@
           "optional": true,
           "type": "string",
           "description": "Class applied to the scroll wrapper."
+        },
+        "stackOnNarrow": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Below a 40rem container width, stack each body row as a block instead of squeezing columns, with every cell prefixed by its TableCell label. Adds explicit table roles so assistive technology keeps table semantics."
         }
       },
       "composesWith": [
@@ -16208,7 +16223,12 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] = React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\n/** Below a 40rem container, rows stack and each cell shows its column label. */"
+        },
+        {
+          "story": "StackedOnNarrow",
+          "description": "stackOnNarrow turns each row into a block below a 40rem container, so prose-heavy tables stay readable on phones. Cells take a label prop for the visible column name; explicit roles keep the table semantics.",
+          "source": "export const StackedOnNarrow: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"stackOnNarrow turns each row into a block below a 40rem container, so prose-heavy tables stay readable on phones. Cells take a label prop for the visible column name; explicit roles keep the table semantics.\",\n      },\n    },\n  },\n  render: (args) => (\n    <div className={storyStyles.narrow}>\n      <Table {...args} caption=\"Who to call\" striped stackOnNarrow>\n        <thead role=\"rowgroup\">\n          <TableRow>\n            <TableHeaderCell>Case</TableHeaderCell>\n            <TableHeaderCell>Who to bring in</TableHeaderCell>\n            <TableHeaderCell>When</TableHeaderCell>\n          </TableRow>\n        </thead>\n        <tbody role=\"rowgroup\">\n          <TableRow>\n            <TableHeaderCell scope=\"row\">Custom widgets</TableHeaderCell>\n            <TableCell label=\"Who to bring in\">\n              Daily keyboard and screen reader users\n            </TableCell>\n            <TableCell label=\"When\">Release candidate</TableCell>\n          </TableRow>\n          <TableRow>\n            <TableHeaderCell scope=\"row\">Login flows</TableHeaderCell>\n            <TableCell label=\"Who to bring in\">\n              People with memory disabilities\n            </TableCell>\n            <TableCell label=\"When\">Design and release candidate</TableCell>\n          </TableRow>\n        </tbody>\n      </Table>\n    </div>\n  ),\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const row = canvas.getByRole(\"rowheader\", { name: \"Custom widgets\" })\n      .parentElement as HTMLElement;\n    await expect(getComputedStyle(row).display).toBe(\"block\");\n    await expect(\n      canvas.getByRole(\"cell\", { name: \"Release candidate\" }),\n    ).toHaveAttribute(\"data-label\", \"When\");\n  },\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] = React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
         },
         {
           "story": "KeyboardInteraction",
@@ -16241,6 +16261,11 @@
           "name": "numeric",
           "type": "boolean",
           "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false
         }
       ],
       "props": {
@@ -16258,6 +16283,11 @@
           "optional": true,
           "type": "boolean",
           "description": "Right-align and tabular-figure numeric values."
+        },
+        "label": {
+          "optional": true,
+          "type": "string",
+          "description": "Column name shown before the value when the parent Table stacks rows (stackOnNarrow). Hidden from assistive technology, which reads the column header instead."
         }
       },
       "composesWith": [

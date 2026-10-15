@@ -46,6 +46,8 @@ export function ServerArticleHero({
     publishedAt &&
     modifiedAt.slice(0, 10) !== publishedAt.slice(0, 10);
 
+  const HeroWrapper = mainImageCaption ? "figure" : "div";
+
   return (
     <div className="bg-background">
       <Container size="md" className="py-10 tablet:py-14">
@@ -89,7 +91,9 @@ export function ServerArticleHero({
           ) : null}
         </div>
         {mainImageUrl ? (
-          <figure className="mx-auto mt-10 max-w-4xl">
+          // Uncaptioned hero art is decorative: a plain wrapper, so screen
+          // readers don't announce an empty, unnamed figure.
+          <HeroWrapper className="mx-auto mt-10 max-w-4xl">
             <Image
               src={mainImageUrl}
               /* Hero art is decorative unless the post supplies its own alt:
@@ -107,7 +111,7 @@ export function ServerArticleHero({
                 {mainImageCaption}
               </figcaption>
             ) : null}
-          </figure>
+          </HeroWrapper>
         ) : null}
       </Container>
     </div>

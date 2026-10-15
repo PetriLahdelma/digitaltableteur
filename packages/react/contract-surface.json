@@ -8,6 +8,30 @@
       "level": "additive",
       "detail": "prop `consequence` added",
       "bump": "patch"
+    },
+    {
+      "component": "AuthorBio",
+      "level": "additive",
+      "detail": "prop `profileHref` added",
+      "bump": "patch"
+    },
+    {
+      "component": "AuthorBio",
+      "level": "additive",
+      "detail": "prop `variant` added",
+      "bump": "patch"
+    },
+    {
+      "component": "Table",
+      "level": "additive",
+      "detail": "prop `stackOnNarrow` added",
+      "bump": "patch"
+    },
+    {
+      "component": "TableCell",
+      "level": "additive",
+      "detail": "prop `label` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -203,6 +227,10 @@
           "optional": true,
           "type": "string"
         },
+        "profileHref": {
+          "optional": true,
+          "type": "string"
+        },
         "role": {
           "optional": true,
           "type": "string"
@@ -214,6 +242,13 @@
         "slug": {
           "optional": true,
           "type": "string"
+        },
+        "variant": {
+          "optional": true,
+          "values": [
+            "compact",
+            "full"
+          ]
         }
       },
       "slots": [],
@@ -4295,6 +4330,10 @@
             "sm"
           ]
         },
+        "stackOnNarrow": {
+          "optional": true,
+          "type": "boolean"
+        },
         "stickyHeader": {
           "optional": true,
           "type": "boolean"
@@ -4326,6 +4365,10 @@
             "end",
             "start"
           ]
+        },
+        "label": {
+          "optional": true,
+          "type": "string"
         },
         "numeric": {
           "optional": true,

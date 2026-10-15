@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-15T08:16:02.938Z",
+  "generatedAt": "2026-10-15T14:22:40.629Z",
   "summary": {
     "componentCount": 180,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 168,
     "withProductionUsage": 40,
     "uniqueImportedComponents": 168,
-    "totalEvidenceRows": 869,
-    "aliasImportFiles": 449,
-    "relativeImportFiles": 453,
+    "totalEvidenceRows": 873,
+    "aliasImportFiles": 452,
+    "relativeImportFiles": 454,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -1920,10 +1920,10 @@
         "composesWith": [
           "AuthorBio",
           "DashLeadList",
-          "TableOfContents",
-          "EnhancedAuthorCard",
-          "ArticleShareSection",
-          "MdxImage"
+          "Table",
+          "TableRow",
+          "TableHeaderCell",
+          "TableCell"
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
@@ -2383,10 +2383,10 @@
         "composesWith": [
           "AuthorBio",
           "DashLeadList",
-          "ArticleContent",
-          "TableOfContents",
-          "EnhancedAuthorCard",
-          "MdxImage"
+          "Table",
+          "TableRow",
+          "TableHeaderCell",
+          "TableCell"
         ],
         "prefersOver": [],
         "declaredPropCount": 5,
@@ -3365,7 +3365,16 @@
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1432-2568",
         "radixPrimitive": null,
         "element": "div",
-        "variants": {},
+        "variants": {
+          "variant": {
+            "values": [
+              "full",
+              "compact"
+            ],
+            "default": "full",
+            "propSourced": true
+          }
+        },
         "slots": [],
         "asChild": false,
         "subParts": [],
@@ -3491,6 +3500,16 @@
             "optional": true,
             "type": "boolean",
             "description": "Render the author's contact email (mailto) after the bio, if the author has one."
+          },
+          "profileHref": {
+            "optional": true,
+            "type": "string",
+            "description": "Link the author's name to their profile page (e.g. /blog/authors/<slug>)."
+          },
+          "variant": {
+            "optional": true,
+            "type": "\"full\" | \"compact\"",
+            "description": "full renders the whole biography (author pages). compact renders only the lead paragraph, for the end of an article."
           }
         },
         "forbiddenUse": [
@@ -3521,11 +3540,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/AuthorBio",
-        "importCount": 3,
-        "productionImportCount": 1,
+        "importCount": 4,
+        "productionImportCount": 2,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/AuthorBio/AuthorBio",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
             "importKind": "alias",
@@ -3573,7 +3598,7 @@
           "bio": {
             "optional": true,
             "type": "string",
-            "description": "Biography text; markdown after the first paragraph. The first paragraph\nrenders as the lead/tagline."
+            "description": "Biography text (markdown). Paragraphs are separated by blank lines; the\n`compact` variant renders only the first one."
           },
           "email": {
             "optional": true,
@@ -3594,11 +3619,33 @@
             "optional": true,
             "type": "boolean",
             "description": "Render the author's contact email (mailto) after the bio, if the author has one."
+          },
+          "profileHref": {
+            "optional": true,
+            "type": "string",
+            "description": "Link the author's name to their profile page (e.g. `/blog/authors/<slug>`)."
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "full",
+              "compact"
+            ],
+            "description": "`full` renders the whole biography (author pages). `compact` renders only\nthe lead paragraph, for the end of an article."
           }
         },
         "propRelationships": [],
         "forbiddenCombos": [],
-        "variants": {},
+        "variants": {
+          "variant": {
+            "values": [
+              "full",
+              "compact"
+            ],
+            "default": "full"
+          }
+        },
         "cvaVariants": {},
         "variantsFnName": null,
         "useWhen": [
@@ -3622,14 +3669,14 @@
         ],
         "composesWith": [
           "DashLeadList",
-          "ArticleContent",
-          "TableOfContents",
-          "EnhancedAuthorCard",
-          "ArticleShareSection",
-          "MdxImage"
+          "Table",
+          "TableRow",
+          "TableHeaderCell",
+          "TableCell",
+          "ArticleContent"
         ],
         "prefersOver": [],
-        "declaredPropCount": 9,
+        "declaredPropCount": 11,
         "guidelines": [
           {
             "level": "should",
@@ -4067,19 +4114,13 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Avatar",
-        "importCount": 6,
+        "importCount": 5,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 3,
+        "componentImportCount": 2,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/Author/Author.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Avatar",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/AuthorBio/AuthorBio.tsx",
             "importKind": "alias",
             "importPath": "@dt/Avatar",
             "context": "component"
@@ -4219,12 +4260,12 @@
           "nest an Avatar inside a Button. Pick one — Avatar already owns the click affordance when clickable, and Button owns it when not."
         ],
         "composesWith": [
-          "Link",
-          "Text",
-          "Title",
           "Grid",
           "ArticleCard",
-          "Checkbox"
+          "Checkbox",
+          "CheckboxGroup",
+          "FlexBox",
+          "TextInput"
         ],
         "prefersOver": [],
         "declaredPropCount": 12,
@@ -17091,8 +17132,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Max-width token."
           },
@@ -17300,8 +17341,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "default": "sm"
           }
@@ -29860,12 +29901,11 @@
           "ariaRequirements": [
             "role=group with aria-label",
             "trigger aria-expanded + aria-controls",
-            "trigger aria-current",
             "each option is named '<label>, <language name>' (visible label first, WCAG 2.5.3) and carries lang"
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact spoken names are unit-tested.",
+          "reviewedNote": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact accessible names are unit-tested. Same day, a council review found the trigger name changed with state (Show/Hide) and the trigger carried aria-current; the name is now stable ('EN, English'), aria-expanded carries state, and aria-current is gone.",
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true
@@ -30021,7 +30061,7 @@
           }
         }
       },
-      "spec": "# LanguageSwitcher — spec\n\nCompact locale selector. Molecule, navigation group.\n\n## Intent\n\nLet a visitor switch UI language from a small, header-friendly control that\nshows the current language and reveals the alternatives on demand, without a\nfull dropdown's weight. Used in the site header.\n\n## Purpose\n\nSingle, accessible language control shared across layouts. The parent owns the\nlanguage list and the change handler (i18n lives outside the component); this\nrenders the trigger + fanned options and the open/close behavior.\n\n## API\n\n| Prop               | Type                       | Notes                                   |\n| ------------------ | -------------------------- | --------------------------------------- |\n| `languages`        | `LanguageSwitcherOption[]` | `{ code, label, ariaLabel }` per locale |\n| `currentLang`      | `string`                   | Selected language code                  |\n| `onLanguageChange` | `(code: string) => void`   | Called when an option is chosen         |\n| `className`        | `string`                   | Classes on the `role=group` wrapper     |\n| `*ClassName`       | `string`                   | Style overrides for trigger/options     |\n\n## Behavior\n\n- Collapsed: shows only the current language as the trigger.\n- Expanded: fans out the other locales as buttons; selecting one calls\n  `onLanguageChange` and collapses.\n- Closes on Escape and on outside click.\n- Animations use a spring fan, swapped for a plain fade under reduced motion.\n\n## Interaction contract\n\n- **Trigger** is a `button` with `aria-expanded`, `aria-controls`, and\n  `aria-current`; Enter/Space toggle it (native button).\n- **Options** are native `button`s named \"<label>, <ariaLabel>\" (e.g. \"FI, Suomi\") with `lang` set to the option's code; Enter/Space activate.\n- **Escape** closes the fan and returns control to the trigger.\n- Verified by the `KeyboardToggle` story play function (open via trigger, close\n  via Escape).\n\n## Do / don't\n\n- Do: pass the language's name as `ariaLabel` (e.g. \"Suomi\"), not just the code.\n- Don't: pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\"). The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the language already in use.\n- Do: keep language state in the parent and feed `currentLang` back.\n- Don't: translate inside the component; labels and accessible names come from the caller.\n- Don't: render it as the only navigation; it complements rather than replaces site navigation.\n\n## Accessibility\n\n- `role=\"group\"` with an `aria-label` (\"Language\").\n- Trigger announces \"<label>, <name>. Show language options\" (or \"Hide\" when open)\n  plus its expanded state; options announce \"<label>, <name>\". Both names start\n  with the visible label (WCAG 2.5.3 Label in Name), and option buttons carry\n  `lang` so screen readers pronounce each language's own name correctly.\n- Reduced motion respected; colors inherit theme tokens (light/dark + forced\n  colors safe).\n\n## Design notes\n\n- The \"fan\" is intentional brand motion; it degrades to a fade, never blocking\n  use. Styling is utility-class driven with overridable `*ClassName` props for\n  header vs. floated placements.\n",
+      "spec": "# LanguageSwitcher — spec\n\nCompact locale selector. Molecule, navigation group.\n\n## Intent\n\nLet a visitor switch UI language from a small, header-friendly control that\nshows the current language and reveals the alternatives on demand, without a\nfull dropdown's weight. Used in the site header.\n\n## Purpose\n\nSingle, accessible language control shared across layouts. The parent owns the\nlanguage list and the change handler (i18n lives outside the component); this\nrenders the trigger + fanned options and the open/close behavior.\n\n## API\n\n| Prop               | Type                       | Notes                                   |\n| ------------------ | -------------------------- | --------------------------------------- |\n| `languages`        | `LanguageSwitcherOption[]` | `{ code, label, ariaLabel }` per locale |\n| `currentLang`      | `string`                   | Selected language code                  |\n| `onLanguageChange` | `(code: string) => void`   | Called when an option is chosen         |\n| `className`        | `string`                   | Classes on the `role=group` wrapper     |\n| `*ClassName`       | `string`                   | Style overrides for trigger/options     |\n\n## Behavior\n\n- Collapsed: shows only the current language as the trigger.\n- Expanded: fans out the other locales as buttons; selecting one calls\n  `onLanguageChange` and collapses.\n- Closes on Escape and on outside click.\n- Animations use a spring fan, swapped for a plain fade under reduced motion.\n\n## Interaction contract\n\n- **Trigger** is a `button` with `aria-expanded` and `aria-controls`; Enter/Space toggle it (native button). No `aria-current`: it is a single control, not an item in a set.\n- **Options** are native `button`s named \"<label>, <ariaLabel>\" (e.g. \"FI, Suomi\") with `lang` set to the option's code; Enter/Space activate.\n- **Escape** closes the fan and returns control to the trigger.\n- Verified by the `KeyboardToggle` story play function (open via trigger, close\n  via Escape).\n\n## Do / don't\n\n- Do: pass the language's name as `ariaLabel` (e.g. \"Suomi\"), not just the code.\n- Don't: pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\"). The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the language already in use.\n- Do: keep language state in the parent and feed `currentLang` back.\n- Don't: translate inside the component; labels and accessible names come from the caller.\n- Don't: render it as the only navigation; it complements rather than replaces site navigation.\n\n## Accessibility\n\n- `role=\"group\"` with an `aria-label` (\"Language\").\n- Trigger is named \"<label>, <name>\" (e.g. \"EN, English\") and keeps that name\n  in both states; `aria-expanded` carries open/closed, so the name never\n  changes under a voice control user. Options are named \"<label>, <name>\".\n  Both names start with the visible label (WCAG 2.5.3 Label in Name), and\n  option buttons carry `lang` so screen readers pronounce each language's\n  own name correctly.\n- Reduced motion respected; colors inherit theme tokens (light/dark + forced\n  colors safe).\n\n## Design notes\n\n- The \"fan\" is intentional brand motion; it degrades to a fade, never blocking\n  use. Styling is utility-class driven with overridable `*ClassName` props for\n  header vs. floated placements.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/LanguageSwitcher",
@@ -30100,7 +30140,6 @@
         "requiredA11y": [
           "role=group with aria-label",
           "trigger aria-expanded + aria-controls",
-          "trigger aria-current",
           "each option is named '<label>, <language name>' (visible label first, WCAG 2.5.3) and carries lang"
         ],
         "keyboard": [
@@ -30255,7 +30294,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact spoken names are unit-tested."
+            "note": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact accessible names are unit-tested. Same day, a council review found the trigger name changed with state (Show/Hide) and the trigger carried aria-current; the name is now stable ('EN, English'), aria-expanded carries state, and aria-current is gone."
           }
         ],
         "docOrigin": {
@@ -31220,9 +31259,9 @@
           "Text",
           "Title",
           "Button",
-          "Avatar",
           "Badge",
-          "ReliablePartnerBadge"
+          "ReliablePartnerBadge",
+          "Grid"
         ],
         "prefersOver": [
           "Button with href for body-copy links"
@@ -32227,9 +32266,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "compact",
               "normal",
-              "relaxed",
-              "compact"
+              "relaxed"
             ],
             "description": "Vertical spacing between items."
           },
@@ -57017,6 +57056,14 @@
             ],
             "default": "false",
             "propSourced": true
+          },
+          "stackOnNarrow": {
+            "values": [
+              "true",
+              "false"
+            ],
+            "default": "false",
+            "propSourced": true
           }
         },
         "slots": [],
@@ -57116,6 +57163,11 @@
             "optional": true,
             "type": "string",
             "description": "Class applied to the scroll wrapper."
+          },
+          "stackOnNarrow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Below a 40rem container width, stack each body row as a block instead of squeezing columns, with every cell prefixed by its TableCell label. Adds explicit table roles so assistive technology keeps table semantics."
           }
         },
         "forbiddenUse": [
@@ -57139,11 +57191,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Table",
-        "importCount": 8,
+        "importCount": 9,
         "productionImportCount": 0,
-        "patternImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 4,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Table",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -57228,6 +57286,11 @@
             "type": "boolean",
             "description": "Pin the header row while the table body scrolls."
           },
+          "stackOnNarrow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Below a 40rem container width, stack each body row as a block instead of\nsqueezing columns, with every cell prefixed by its `TableCell` `label`.\nAdds explicit table roles so assistive technology keeps the table\nsemantics that a CSS `display` change drops in some browsers. Give\n`<thead>`/`<tbody>` `role=\"rowgroup\"` for the same reason."
+          },
           "wrapperClassName": {
             "optional": true,
             "type": "string",
@@ -57288,11 +57351,12 @@
           "TableRow",
           "TableHeaderCell",
           "TableCell",
-          "Checkbox",
-          "IconButton"
+          "AuthorBio",
+          "DashLeadList",
+          "ArticleContent"
         ],
         "prefersOver": [],
-        "declaredPropCount": 6,
+        "declaredPropCount": 7,
         "guidelines": [
           {
             "level": "should",
@@ -57618,6 +57682,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Right-align and tabular-figure numeric values."
+          },
+          "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Column name shown before the value when the parent Table stacks rows (stackOnNarrow). Hidden from assistive technology, which reads the column header instead."
           }
         },
         "forbiddenUse": [
@@ -57634,11 +57703,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableCell",
-        "importCount": 6,
+        "importCount": 7,
         "productionImportCount": 0,
-        "patternImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableCell",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -57695,6 +57770,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Right-align and tabular-figure numeric values."
+          },
+          "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Column name shown before the value when the parent `Table` stacks rows\n(`stackOnNarrow`). Hidden from assistive technology, which reads the\ncolumn header instead."
           }
         },
         "propRelationships": [],
@@ -57740,11 +57820,12 @@
           "TableRow",
           "TableHeaderCell",
           "Table",
-          "Checkbox",
-          "IconButton"
+          "AuthorBio",
+          "DashLeadList",
+          "ArticleContent"
         ],
         "prefersOver": [],
-        "declaredPropCount": 2,
+        "declaredPropCount": 3,
         "guidelines": [
           {
             "level": "should",
@@ -58092,11 +58173,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableHeaderCell",
-        "importCount": 6,
+        "importCount": 7,
         "productionImportCount": 0,
-        "patternImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableHeaderCell",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -58229,8 +58316,9 @@
           "TableRow",
           "TableCell",
           "Table",
-          "Checkbox",
-          "IconButton"
+          "AuthorBio",
+          "DashLeadList",
+          "ArticleContent"
         ],
         "prefersOver": [],
         "declaredPropCount": 5,
@@ -58651,10 +58739,10 @@
         "composesWith": [
           "AuthorBio",
           "DashLeadList",
-          "ArticleContent",
-          "EnhancedAuthorCard",
-          "ArticleShareSection",
-          "MdxImage"
+          "Table",
+          "TableRow",
+          "TableHeaderCell",
+          "TableCell"
         ],
         "prefersOver": [],
         "declaredPropCount": 5,
@@ -58955,11 +59043,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableRow",
-        "importCount": 6,
+        "importCount": 7,
         "productionImportCount": 0,
-        "patternImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableRow",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -59042,8 +59136,9 @@
           "TableHeaderCell",
           "TableCell",
           "Table",
-          "Checkbox",
-          "IconButton"
+          "AuthorBio",
+          "DashLeadList",
+          "ArticleContent"
         ],
         "prefersOver": [],
         "declaredPropCount": 1,
@@ -72398,8 +72493,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum content width."
           },
@@ -75117,8 +75212,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint"
           },
@@ -75126,8 +75221,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -75646,8 +75741,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum content width"
           },
@@ -75655,8 +75750,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -78651,8 +78746,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint for the content"
           },
@@ -78670,8 +78765,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -80057,8 +80152,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint"
           },
@@ -80066,8 +80161,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -81779,8 +81874,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Max width constraint for the section"
           },
@@ -83293,8 +83388,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum content width"
           },
@@ -83302,8 +83397,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -85421,8 +85516,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint"
           },
@@ -85430,8 +85525,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -85899,8 +85994,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint"
           },
@@ -85908,8 +86003,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],

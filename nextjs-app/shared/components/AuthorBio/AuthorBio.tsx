@@ -1,8 +1,12 @@
+"use client";
+
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import type { ImageSource as StaticImageData } from "../../lib/imageComponent";
+import {
+  Image,
+  type ImageSource as StaticImageData,
+} from "../../lib/imageComponent";
 import { useTranslate } from "../../lib/translation";
-import Avatar from "@dt/Avatar";
 import Link from "@dt/Link";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
@@ -30,8 +34,8 @@ export interface AuthorBioProps {
   imageUrl?: string | { default: string } | StaticImageData;
   /** Role/title shown under the name (e.g. "Founder, CEO"). */
   role?: string;
-  /** Biography text; markdown after the first paragraph. The first paragraph
-   * renders as the lead/tagline. */
+  /** Biography text (markdown). Paragraphs are separated by blank lines; the
+   * `compact` variant renders only the first one. */
   bio?: string;
   /** Contact email rendered as a mailto link when `showContact` is set. */
   email?: string;
@@ -41,7 +45,19 @@ export interface AuthorBioProps {
   heading?: string;
   /** Render the author's contact email (mailto) after the bio, if the author has one. */
   showContact?: boolean;
+  /** Link the author's name to their profile page (e.g. `/blog/authors/<slug>`). */
+  profileHref?: string;
+  /**
+   * `full` renders the whole biography (author pages). `compact` renders only
+   * the lead paragraph, for the end of an article. @default "full"
+   */
+  variant?: "full" | "compact";
 }
+
+const resolveImageSrc = (
+  source: NonNullable<AuthorBioProps["imageUrl"]>,
+): string | StaticImageData =>
+  typeof source === "object" && "default" in source ? source.default : source;
 
 /**
  * AuthorBio component.
@@ -56,6 +72,8 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({
   className,
   heading,
   showContact = false,
+  profileHref,
+  variant = "full",
 }) => {
   const t = useTranslate();
   const registryAuthor = slug ? getAuthorBySlug(slug) : undefined;
@@ -80,45 +98,58 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({
     ? `${styles.authorBio} not-prose ${className}`
     : `${styles.authorBio} not-prose`;
 
-  const bioContent = author.bio ?? "";
-  const [lead = "", ...rest] = bioContent.split(/\n{2,}/);
-  const leadText = lead.trim();
-  const remainder = rest.join("\n\n").trim();
+  const bioContent = (author.bio ?? "").trim();
+  const [lead = ""] = bioContent.split(/\n\s*\n/);
+  const bioToRender = variant === "compact" ? lead.trim() : bioContent;
+  const displayName = heading || author.name;
 
   return (
     <section
       className={rootClassName}
       aria-label={t("authorBio.ariaLabel", { name: author.name })}
     >
-      <div className={styles.header}>
-        {author.imageUrl && (
-          <Avatar imageUrl={author.imageUrl} name={author.name} size="4rem" />
-        )}
-        <div>
-          <Title level={3} className={styles.name}>
-            {/* || not ??: a cleared/seeded Controls text field passes "" and
-                must fall back to the author name, never render an empty heading. */}
-            {heading || author.name}
-          </Title>
-          {author.role && (
-            <Text size="s" className={styles.role}>
-              {author.role}
-            </Text>
+      {author.imageUrl && (
+        <div className={styles.media}>
+          {/* Decorative: the name sits right beside the photo. */}
+          <Image
+            src={resolveImageSrc(author.imageUrl)}
+            alt=""
+            width={120}
+            height={120}
+            sizes="120px"
+            className={styles.photo}
+          />
+        </div>
+      )}
+      <div className={styles.body}>
+        <Title level={3} size="xxs" className={styles.name}>
+          {/* || not ??: a cleared/seeded Controls text field passes "" and
+              must fall back to the author name, never render an empty heading. */}
+          {profileHref ? (
+            <Link href={profileHref} className={styles.nameLink}>
+              {displayName}
+            </Link>
+          ) : (
+            displayName
           )}
-        </div>
+        </Title>
+        {author.role && (
+          <Text size="s" className={styles.role}>
+            {author.role}
+          </Text>
+        )}
+        {bioToRender && (
+          <div className={styles.bioContent}>
+            <ReactMarkdown>{bioToRender}</ReactMarkdown>
+          </div>
+        )}
+        {showContact && author.email && (
+          <Text className={styles.contact}>
+            {t("authorGetInTouch")}:{" "}
+            <Link href={`mailto:${author.email}`}>{author.email}</Link>
+          </Text>
+        )}
       </div>
-      {leadText && <Text className={styles.tagline}>{leadText}</Text>}
-      {remainder && (
-        <div className={styles.bioContent}>
-          <ReactMarkdown>{remainder}</ReactMarkdown>
-        </div>
-      )}
-      {showContact && author.email && (
-        <Text className={styles.contact}>
-          {t("authorGetInTouch")}:{" "}
-          <Link href={`mailto:${author.email}`}>{author.email}</Link>
-        </Text>
-      )}
     </section>
   );
 };
