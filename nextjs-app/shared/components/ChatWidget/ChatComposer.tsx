@@ -6,6 +6,7 @@ import HelperText from "@dt/HelperText";
 import styles from "./ChatWidget.module.css";
 import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
+import Kbd from "@dt/Kbd";
 
 /**
  * Props for the ChatComposer component.
@@ -90,6 +91,18 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
       "chatResetShortcutTitle",
       "Clear conversation (⌘ + Shift + ⌫ on Mac, Ctrl + Shift + Backspace on Windows)",
     );
+    // Translations mark key names with brackets ("Press [⌘] + [Enter]…") so
+    // each language keeps its own word order; brackets render as <kbd>.
+    const withKeys = (text: string) =>
+      text.split(/\[([^\]]+)\]/).map((part, index) =>
+        index % 2 === 1 ? (
+          <Kbd key={index} size="sm" variant="secondary">
+            {part}
+          </Kbd>
+        ) : (
+          part
+        ),
+      );
     const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
     useImperativeHandle(
@@ -173,9 +186,11 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
             </div>
             <div className={styles.hintRow}>
               <HelperText className={styles.shortcutHint}>
-                {t(
-                  "chatShortcutSubmit",
-                  "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.",
+                {withKeys(
+                  t(
+                    "chatShortcutSubmit",
+                    "Press [⌘] + [Enter] (Mac) or [Ctrl] + [Enter] to send.",
+                  ),
                 )}
               </HelperText>
               {onReset && (

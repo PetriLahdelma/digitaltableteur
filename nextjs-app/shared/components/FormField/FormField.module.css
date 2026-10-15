@@ -12,14 +12,17 @@
 }
 
 .legend {
+  /* A rendered legend sits outside the fieldset's flex layout, so the
+     fieldset gap never reached it; the space is the legend's own. */
+  margin-block-end: var(--space-internal-16);
   padding: 0;
-  font-family: var(--font-body);
 
-  /* Nearest ladder step: --font-size-text-l clamps from a 1.125rem base,
-     matching the previous literal at minimum viewport. */
-  font-size: var(--font-size-text-l);
-  font-weight: 600;
-  color: var(--color-text);
+  /* The unified label treatment (2026-08-05): one look for single-field
+     labels and group legends, matching Label and GroupLabel. */
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-primary);
 }
 
 .groupDescription {

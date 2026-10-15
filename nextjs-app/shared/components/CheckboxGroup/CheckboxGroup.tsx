@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useTranslate } from "../../lib/translation";
 import Checkbox from "@dt/Checkbox/Checkbox";
-import GroupLabel from "@dt/GroupLabel/GroupLabel";
+import { FormField } from "@dt/FormField";
 import styles from "./CheckboxGroup.module.css";
 
 export interface CheckboxGroupProps {
@@ -93,15 +93,15 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     }
   };
 
+  // fieldset/legend gives the group its name. The previous <label for>
+  // pointed at a nonexistent id when the master checkbox was hidden, so the
+  // checkboxes had no group name at all, and with the master shown it
+  // doubled the master's own label.
   return (
-    <div className={`${styles["checkboxGroup"]} ${className || ""}`}>
-      <GroupLabel
-        htmlFor={
-          showMasterCheckbox ? `masterCheckbox-${id}` : `checkboxgroup-${id}`
-        }
-      >
-        {label}
-      </GroupLabel>
+    <FormField
+      legend={label}
+      className={`${styles["checkboxGroup"]} ${className || ""}`.trim()}
+    >
       {showMasterCheckbox && (
         <Checkbox
           label={(() => {
@@ -136,7 +136,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           );
         })}
       </div>
-    </div>
+    </FormField>
   );
 };
 

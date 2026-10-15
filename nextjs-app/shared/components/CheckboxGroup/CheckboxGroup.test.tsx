@@ -92,4 +92,36 @@ describe("CheckboxGroup", () => {
     expect(master.checked).toBe(false);
     expect(master.indeterminate).toBe(false);
   });
+
+  it("names the group with a legend, including without the master checkbox", () => {
+    render(
+      <CheckboxGroup
+        id="follow-up"
+        label="How should we follow up?"
+        showMasterCheckbox={false}
+        options={[
+          { label: "Email", value: "email" },
+          { label: "Phone", value: "phone" },
+        ]}
+      />,
+    );
+    // Was a <label for> pointing at a nonexistent id: no group name at all.
+    const group = screen.getByRole("group", { name: "How should we follow up?" });
+    expect(group.tagName).toBe("FIELDSET");
+    expect(screen.getByRole("checkbox", { name: "Email" })).toBeInTheDocument();
+  });
+
+  it("keeps the master checkbox's own name", () => {
+    render(
+      <CheckboxGroup
+        id="all"
+        label="Topics"
+        masterLabel="All topics"
+        options={[{ label: "Design", value: "design" }]}
+      />,
+    );
+    expect(
+      screen.getByRole("checkbox", { name: "All topics" }),
+    ).toBeInTheDocument();
+  });
 });

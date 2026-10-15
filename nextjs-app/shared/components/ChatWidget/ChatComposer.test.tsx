@@ -190,6 +190,26 @@ describe("ChatComposer inline reset", () => {
   });
 });
 
+describe("ChatComposer shortcut hint", () => {
+  it("marks each key in the send hint as <kbd>", () => {
+    const { container } = render(
+      <ChatComposer
+        inputId="chat-input"
+        value=""
+        onValueChange={vi.fn()}
+        onSubmit={vi.fn()}
+        isSending={false}
+      />,
+    );
+    const keys = [...container.querySelectorAll("kbd")].map(
+      (key) => key.textContent,
+    );
+    expect(keys).toEqual(["⌘", "Enter", "Ctrl", "Enter"]);
+    // No bracket markers leak into the rendered sentence.
+    expect(container.textContent).not.toMatch(/[[\]]/);
+  });
+});
+
 describe("ChatComposer accessibility", () => {
   it("has no accessibility violations in default state", async () => {
     const onSubmit = vi.fn();

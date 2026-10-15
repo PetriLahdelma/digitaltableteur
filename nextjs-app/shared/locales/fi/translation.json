@@ -51,7 +51,7 @@
   "chatNoticeDismiss": "Sulje ilmoitus",
   "chatAboutAiLink": "Tietoa tekoälystä",
   "chatReportLink": "Ilmoita ongelmasta",
-  "chatShortcutSubmit": "Paina '⌘ + Enter' (Mac) tai 'Ctrl + Enter' lähettääksesi.",
+  "chatShortcutSubmit": "Paina [⌘] + [Enter] (Mac) tai [Ctrl] + [Enter] lähettääksesi.",
   "chatReset": "Tyhjennä",
   "chatResetAria": "Tyhjennä keskustelu",
   "chatResetShortcutTitle": "Tyhjennä keskustelu (⌘ + Shift + ⌫ Macilla, Ctrl + Shift + Backspace Windowsilla)",

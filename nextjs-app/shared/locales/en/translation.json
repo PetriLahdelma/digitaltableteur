@@ -51,7 +51,7 @@
   "chatNoticeDismiss": "Dismiss notice",
   "chatAboutAiLink": "About this AI",
   "chatReportLink": "Report a problem",
-  "chatShortcutSubmit": "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.",
+  "chatShortcutSubmit": "Press [⌘] + [Enter] (Mac) or [Ctrl] + [Enter] to send.",
   "chatReset": "Clear",
   "chatResetAria": "Clear conversation",
   "chatResetShortcutTitle": "Clear conversation (⌘ + Shift + ⌫ on Mac, Ctrl + Shift + Backspace on Windows)",

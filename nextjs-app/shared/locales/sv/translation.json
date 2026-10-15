@@ -51,7 +51,7 @@
   "chatNoticeDismiss": "Stäng meddelandet",
   "chatAboutAiLink": "Om AI-assistenten",
   "chatReportLink": "Rapportera ett problem",
-  "chatShortcutSubmit": "Tryck '⌘ + Enter' (Mac) eller 'Ctrl + Enter' för att skicka.",
+  "chatShortcutSubmit": "Tryck [⌘] + [Enter] (Mac) eller [Ctrl] + [Enter] för att skicka.",
   "chatReset": "Rensa",
   "chatResetAria": "Rensa konversationen",
   "chatResetShortcutTitle": "Rensa konversationen (⌘ + Shift + ⌫ på Mac, Ctrl + Shift + Backspace på Windows)",
