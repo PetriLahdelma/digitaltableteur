@@ -386,6 +386,18 @@
   border-block-end: 1px solid var(--color-border-light);
 }
 
+/* The tick box label is the entry's headline here, not a form label, so it
+   takes the text colour; the detail under it is muted like other layouts. */
+
+.root .checkItem label {
+  color: var(--color-text);
+}
+
+.root .checkItem [id$="-helper"] {
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
 /* cards: a card grid per group */
 
 .root .cardGrid {

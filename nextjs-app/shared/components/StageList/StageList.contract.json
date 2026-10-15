@@ -47,7 +47,7 @@
     "reducedMotion": true,
     "reviewed": true,
     "forcedColorsVerified": true,
-    "reviewedNote": "2026-10-16: built from the format study for \"Who to call and when\" (Plausible Accessibility). Reviewed: heading levels and outline per variant, list semantics, index landmark and anchor targets, fieldset/legend grouping and checkbox names in the checklist, live-region count, keyboard path (Tab, Space, Enter) via play functions, light and dark themes, forced colours (rail markers and rules use CanvasText), 390px width with no horizontal overflow, axe clean per variant in unit tests. Known limitations: the sheet's pinned stage label assumes a sticky site header and reads --stage-list-sticky-offset; the checklist inherits Checkbox's primary label colour."
+    "reviewedNote": "2026-10-16: built from the format study for \"Who to call and when\" (Plausible Accessibility). Reviewed: heading levels and outline per variant, list semantics, index landmark and anchor targets, fieldset/legend grouping and checkbox names in the checklist, live-region count, keyboard path (Tab, Space, Enter) via play functions, light and dark themes, forced colours (rail markers and rules use CanvasText), 390px width with no horizontal overflow, axe clean per variant in unit tests. Known limitations: the sheet's pinned stage label assumes a sticky site header and reads --stage-list-sticky-offset; the checklist reads Checkbox's helper text by its id suffix (-helper) to mute it."
   },
   "tokens": {
     "colors": [

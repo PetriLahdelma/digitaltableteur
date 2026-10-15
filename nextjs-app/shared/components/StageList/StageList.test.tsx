@@ -225,4 +225,10 @@ describe("StageList styles", () => {
     expect(css).toMatch(/@container \(width < 40rem\)/);
     expect(css).toMatch(/@media \(forced-colors: active\)/);
   });
+
+  it("gives checklist labels the text colour, not the form-label primary", () => {
+    expect(css).toMatch(
+      /\.root \.checkItem label \{\s*color: var\(--color-text\);/,
+    );
+  });
 });
