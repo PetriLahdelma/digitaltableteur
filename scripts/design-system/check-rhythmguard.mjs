@@ -38,6 +38,17 @@ const findingIds = createStableRhythmguardIds(report.findings);
 const missingTokens = (report.contracts?.tokens?.missingTokens ?? [])
   .map(({ files, token }) => ({ files: [...files].sort(), token }))
   .sort((a, b) => a.token.localeCompare(b.token));
+// Token ladders (font-size, spacing) must stay usable scales: no new
+// collapsed, too-close or inverted steps. Accepted problems are baselined.
+const ladderProblems = (report.contracts?.tokens?.ladders?.entries ?? [])
+  .flatMap(({ prefix, problems }) =>
+    problems.map(({ end, tokens, type }) => ({ end, ladder: prefix, tokens, type })),
+  )
+  .sort((a, b) =>
+    `${a.ladder}${a.type}${a.end}${a.tokens}`.localeCompare(
+      `${b.ladder}${b.type}${b.end}${b.tokens}`,
+    ),
+  );
 
 if (update) {
   writeFileSync(
@@ -56,6 +67,7 @@ if (update) {
     `${JSON.stringify(
       {
         generatedBy: "npm run audit:rhythm:update",
+        ladderProblems,
         missingTokens,
       },
       null,
@@ -87,17 +99,29 @@ if (update) {
     process.exit(1);
   }
 
-  const baseline = JSON.parse(
-    readFileSync(TOKEN_BASELINE, "utf8"),
-  ).missingTokens;
+  const tokenBaseline = JSON.parse(readFileSync(TOKEN_BASELINE, "utf8"));
+  const baseline = tokenBaseline.missingTokens;
   if (JSON.stringify(missingTokens) !== JSON.stringify(baseline)) {
     console.error("FAIL: Rhythmguard missing-token contract changed.");
     console.error(`Expected: ${JSON.stringify(baseline, null, 2)}`);
     console.error(`Received: ${JSON.stringify(missingTokens, null, 2)}`);
     process.exit(1);
   }
+
+  const ladderBaseline = tokenBaseline.ladderProblems ?? [];
+  if (JSON.stringify(ladderProblems) !== JSON.stringify(ladderBaseline)) {
+    console.error(
+      "FAIL: Rhythmguard token-ladder problems changed (collapsed, too-close or inverted steps).",
+    );
+    console.error(`Expected: ${JSON.stringify(ladderBaseline, null, 2)}`);
+    console.error(`Received: ${JSON.stringify(ladderProblems, null, 2)}`);
+    console.error(
+      "Fix the ladder in nextjs-app/shared/styles/variables.css, or run npm run audit:rhythm:update if the change is intended.",
+    );
+    process.exit(1);
+  }
 }
 
 console.log(
-  `✓ Rhythmguard verified (${report.summary.totalFindings} findings, ${report.summary.scaleCleanliness}% cleanliness, ${missingTokens.length} allowed custom spacing hooks)`,
+  `✓ Rhythmguard verified (${report.summary.totalFindings} findings, ${report.summary.scaleCleanliness}% cleanliness, ${missingTokens.length} allowed custom spacing hooks, ${ladderProblems.length} accepted ladder problems)`,
 );

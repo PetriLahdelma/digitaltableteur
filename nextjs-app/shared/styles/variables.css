@@ -33,17 +33,23 @@
   /* Typography tokens - Satoshi everywhere (next/font provides --font-body; --font-heading follows it) */
   --font-title: var(--font-heading), system-ui, sans-serif;
   --font-text: var(--font-body), system-ui, sans-serif;
-  --font-size-text: clamp(1rem, 0.6vi + 0.9rem, 1.25rem);
+  --font-size-text: var(--font-size-text-m);
 
-  /* Text ladder. 14px (0.875rem) is the floor (matches --font-size-button-s);
-     small steps differ by max size. xs no longer aliased to s; text-s min 12 to 14px. */
-  --font-size-text-xxs: clamp(0.875rem, 0.1vi + 0.85rem, 0.9375rem);
-  --font-size-text-xs: clamp(0.875rem, 0.2vi + 0.83rem, 1rem);
-  --font-size-text-s: clamp(0.875rem, 0.35vi + 0.8rem, 1.05rem);
-  --font-size-text-m: clamp(1rem, 0.6vi + 0.9rem, 1.25rem);
-  --font-size-text-l: clamp(1.125rem, 0.8vi + 1rem, 1.5rem);
-  --font-size-text-xl: clamp(1.375rem, 1vi + 1.15rem, 1.875rem);
-  --font-size-text-xxl: clamp(1.625rem, 1.4vi + 1.35rem, 2.25rem);
+  /* Text ladder (2026-10-15). Desktop sizes are the type scale 14, 16, 18,
+     20, 24, 32, 40px; on phones each step renders one step smaller, scaling
+     linearly from 320px to 1280px. 14px (0.875rem) is the floor (matches
+     --font-size-button-s), so xxs is fixed and xxs and xs share 14px on
+     phones: the one collapsed pair the Rhythmguard ladder report flags by
+     design. The old ladder collapsed xxs, xs and s at 14px and kept them
+     0.8px to 1px apart on desktop. Raw font-size literals are held to this
+     scale by rhythmguard/use-scale propertyScales in .stylelintrc.json. */
+  --font-size-text-xxs: 0.875rem;
+  --font-size-text-xs: clamp(0.875rem, 0.208vi + 0.8333rem, 1rem);
+  --font-size-text-s: clamp(1rem, 0.208vi + 0.9583rem, 1.125rem);
+  --font-size-text-m: clamp(1.125rem, 0.208vi + 1.0833rem, 1.25rem);
+  --font-size-text-l: clamp(1.25rem, 0.417vi + 1.1667rem, 1.5rem);
+  --font-size-text-xl: clamp(1.5rem, 0.833vi + 1.3333rem, 2rem);
+  --font-size-text-xxl: clamp(2rem, 0.833vi + 1.8333rem, 2.5rem);
   --font-size-title: clamp(2.25rem, 3.5vi + 1.5rem, 3.75rem);
 
   /* Title ladder. xxs/xs added below s, xxl above xl (2026-06-20). Fixes
@@ -51,8 +57,14 @@
   --font-size-title-xxs: clamp(1.125rem, 0.4vi + 1.05rem, 1.375rem);
   --font-size-title-xs: clamp(1.25rem, 0.9vi + 1.1rem, 1.75rem);
   --font-size-title-s: clamp(1.5rem, 2vi + 1.1rem, 2.25rem);
-  --font-size-title-m: clamp(2rem, 2.8vi + 1.3rem, 3rem);
-  --font-size-title-l: clamp(2.75rem, 4vi + 1.75rem, 4.25rem);
+
+  /* title-m and title-l retuned 2026-10-15 so the ladder stays in order at
+     every width from 320px. After the title-xl retune below, title-l's 44px
+     floor was larger than title-xl (the h1) up to about 400px wide. Desktop
+     sizes are unchanged from 1040px up; the order holds with at least 2.2px
+     between steps. */
+  --font-size-title-m: clamp(1.75rem, 2.8vi + 1.3rem, 3rem);
+  --font-size-title-l: clamp(2rem, 5vi + 1rem, 4.25rem);
 
   /* Retuned 2026-09-01. The old curve, clamp(3.5rem, 6vi + 2.5rem, 5.5rem),
      was dominated by its 2.5rem intercept at phone widths: 6vi contributes
@@ -60,8 +72,10 @@
      per line, which towered any headline and made the pricing hero fill 0.92
      of the viewport against 0.56 on desktop. Steepening the slope and
      dropping the intercept scales the small end down while leaving the large
-     end identical: both curves still cap at 5.5rem well before desktop. */
-  --font-size-title-xl: clamp(2rem, 9vi + 0.5rem, 5.5rem);
+     end identical: both curves still cap at 5.5rem well before desktop.
+     Floor raised from 2rem to 2.25rem on 2026-10-15 so it sits above
+     title-l's 2rem floor; it binds only below 311px wide. */
+  --font-size-title-xl: clamp(2.25rem, 9vi + 0.5rem, 5.5rem);
   --font-size-title-xxl: clamp(4.5rem, 8vi + 3rem, 7rem);
   --font-size-display: clamp(
     5rem,

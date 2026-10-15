@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1918,
+  "warningCount": 1891,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -157,15 +157,6 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 211,
-      "column": 38,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
       "line": 113,
       "column": 15,
       "rule": "rhythmguard/use-scale",
@@ -253,6 +244,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": ".storybook/blocks/DocHeader.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": ".storybook/blocks/DocHeader.module.css",
+      "line": 43,
+      "column": 39,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": ".storybook/blocks/DocHeader.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
@@ -526,6 +526,24 @@
     },
     {
       "file": ".storybook/blocks/StatusPill.module.css",
+      "line": 8,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": ".storybook/blocks/StatusPill.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": ".storybook/blocks/StatusPill.module.css",
+      "line": 12,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": ".storybook/blocks/StatusPill.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": ".storybook/blocks/StatusPill.module.css",
       "line": 5,
       "column": 1,
       "rule": "rule-empty-line-before",
@@ -706,15 +724,6 @@
     },
     {
       "file": "app/globals.css",
-      "line": 112,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "app/globals.css::rhythmguard/use-scale::Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "app/globals.css",
       "line": 56,
       "column": 1,
       "rule": "rule-empty-line-before",
@@ -766,24 +775,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Accordion/Accordion.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AlertBanner/AlertBanner.module.css",
-      "line": 41,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/AlertBanner/AlertBanner.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css",
-      "line": 34,
-      "column": 38,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/animations/AnimatedCounter/AnimatedCounter.module.css",
@@ -908,8 +899,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ArticleCard/ArticleCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ArticleCard/ArticleCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ArticleCard/ArticleCard.module.css",
@@ -1027,15 +1018,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
-      "line": 31,
-      "column": 38,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
@@ -1300,6 +1282,33 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
+      "line": 29,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
+      "line": 35,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
+      "line": 207,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
       "line": 141,
       "column": 15,
       "rule": "rhythmguard/use-scale",
@@ -1333,24 +1342,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 41,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 217,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
@@ -1421,8 +1412,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css",
@@ -1430,8 +1421,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css",
@@ -1439,8 +1430,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.1em\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1em\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.1em\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1em\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.module.css",
@@ -1610,8 +1601,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/AIProcessingState.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/AIProcessingState.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2591,8 +2582,62 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.6875rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.6875rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.6875rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.6875rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 117,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 135,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 699,
+      "column": 16,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 1071,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 1126,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::5"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 1136,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::6"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2618,8 +2663,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2627,8 +2672,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2636,8 +2681,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2645,26 +2690,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 338,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 365,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::4"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2673,25 +2700,7 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 586,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 606,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::5"
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2700,25 +2709,43 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::6"
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1000,
+      "line": 338,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 1115,
+      "line": 365,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 586,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 606,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::4"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2726,8 +2753,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2735,17 +2762,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 250,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2754,7 +2772,7 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2763,7 +2781,16 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "line": 250,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2803,21 +2830,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
-      "line": 147,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
       "line": 169,
       "column": 84,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::3"
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2826,7 +2844,7 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::4"
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2835,7 +2853,7 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::5"
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::4"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -2844,7 +2862,7 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::6"
+      "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::5"
     },
     {
       "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
@@ -3388,12 +3406,30 @@
     },
     {
       "file": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css",
+      "line": 73,
+      "column": 40,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css",
+      "line": 92,
+      "column": 40,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css",
       "line": 128,
       "column": 38,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css",
@@ -3401,8 +3437,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css",
@@ -3613,30 +3649,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css",
-      "line": 40,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css",
-      "line": 32,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css",
       "line": 42,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+      "id": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css",
@@ -3856,21 +3874,12 @@
     },
     {
       "file": "nextjs-app/shared/components/ContactForm/ContactForm.module.css",
-      "line": 27,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactForm/ContactForm.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ContactForm/ContactForm.module.css",
       "line": 96,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactForm/ContactForm.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ContactForm/ContactForm.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ContactForm/ContactForm.module.css",
@@ -3955,21 +3964,21 @@
     },
     {
       "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 95,
+      "line": 34,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"12px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"12px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 123,
+      "line": 86,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"12px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"12px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css",
@@ -4022,8 +4031,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"13px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"13px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"13px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"13px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.module.css",
@@ -4096,15 +4105,6 @@
       "severity": "warning",
       "text": "Expected \"inline-size\" to come before \"min-block-size\" (order/properties-order)",
       "id": "nextjs-app/shared/components/CookieConsent/CookieConsentBanner.module.css::order/properties-order::Expected \"inline-size\" to come before \"min-block-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/DashLeadList/DashLeadList.module.css",
-      "line": 9,
-      "column": 39,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DashLeadList/DashLeadList.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/DashLeadList/DashLeadList.module.css",
@@ -4249,6 +4249,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"8px\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Designerman/Designerman.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"8px\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/Designerman/Designerman.module.css",
+      "line": 72,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"12px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Designerman/Designerman.module.css::rhythmguard/use-scale::Unexpected off-scale value \"12px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Designerman/Designerman.module.css",
@@ -4706,8 +4715,17 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
+      "line": 528,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.module.css",
@@ -5008,39 +5026,12 @@
     },
     {
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 155,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 167,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 281,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
       "line": 320,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
@@ -5048,8 +5039,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
@@ -5179,21 +5170,21 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
-      "line": 92,
+      "line": 130,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
-      "line": 239,
-      "column": 16,
+      "line": 175,
+      "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
@@ -5201,8 +5192,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"11px\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"11px\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"11px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"11px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ExpandableSection/ExpandableSection.module.css",
@@ -5212,15 +5203,6 @@
       "severity": "warning",
       "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
       "id": "nextjs-app/shared/components/ExpandableSection/ExpandableSection.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/ExpandableSection/ExpandableSection.module.css",
-      "line": 15,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ExpandableSection/ExpandableSection.module.css::rhythmguard/use-scale::Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/FileUpload/FileUpload.module.css",
@@ -5331,24 +5313,6 @@
       "id": "nextjs-app/shared/components/FileUpload/FileUpload.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
     },
     {
-      "file": "nextjs-app/shared/components/FileUpload/FileUpload.module.css",
-      "line": 38,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/FileUpload/FileUpload.module.css::rhythmguard/use-scale::Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/FileUpload/FileUpload.module.css",
-      "line": 67,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/FileUpload/FileUpload.module.css::rhythmguard/use-scale::Unexpected off-scale value \"14px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
       "line": 23,
       "column": 19,
@@ -5359,12 +5323,12 @@
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 37,
-      "column": 38,
+      "line": 31,
+      "column": 39,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/FilterChip/FilterChip.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/FilterChip/FilterChip.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
@@ -5548,6 +5512,15 @@
     },
     {
       "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
+      "line": 164,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"12px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"12px\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
       "line": 63,
       "column": 19,
       "rule": "rhythmguard/use-scale",
@@ -5642,8 +5615,8 @@
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Gallery/Gallery.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Gallery/Gallery.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Gallery/Gallery.module.css",
@@ -5718,22 +5691,13 @@
       "id": "nextjs-app/shared/components/HelperText/HelperText.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
     },
     {
-      "file": "nextjs-app/shared/components/HelperText/HelperText.module.css",
-      "line": 8,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/HelperText/HelperText.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css",
       "line": 10,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css",
@@ -5741,8 +5705,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/HelsinkiClock/HelsinkiClock.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/Icon/Icon.module.css",
@@ -5935,30 +5899,30 @@
     },
     {
       "file": "nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.module.css",
-      "line": 95,
-      "column": 38,
+      "line": 103,
+      "column": 39,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.module.css",
-      "line": 117,
-      "column": 40,
+      "line": 121,
+      "column": 41,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/Kbd/Kbd.module.css",
-      "line": 57,
+      "line": 50,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Kbd/Kbd.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Kbd/Kbd.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Label/Label.module.css",
@@ -6268,15 +6232,6 @@
     },
     {
       "file": "nextjs-app/shared/components/Lightbox/Lightbox.module.css",
-      "line": 64,
-      "column": 38,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Lightbox/Lightbox.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Lightbox/Lightbox.module.css",
       "line": 61,
       "column": 20,
       "rule": "rhythmguard/use-scale",
@@ -6366,15 +6321,6 @@
       "id": "nextjs-app/shared/components/Link/Link.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.3rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
     },
     {
-      "file": "nextjs-app/shared/components/Link/Link.module.css",
-      "line": 17,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Link/Link.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css",
       "line": 8,
       "column": 12,
@@ -6385,48 +6331,12 @@
     },
     {
       "file": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css",
-      "line": 88,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css",
-      "line": 95,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css",
-      "line": 103,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css",
-      "line": 121,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css",
       "line": 80,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.3rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.3rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.3rem\". Use scale values (nearest: 20px or 22px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.3rem\". Use scale values (nearest: 20px or 22px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.module.css",
@@ -6445,6 +6355,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.5em\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/List/List.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5em\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/ListItem/ListItem.module.css",
+      "line": 57,
+      "column": 39,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/ListItem/ListItem.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/ListItem/ListItem.module.css",
@@ -6695,8 +6614,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
@@ -6704,17 +6623,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
-      "line": 172,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
@@ -6722,8 +6632,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
@@ -6731,8 +6641,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
@@ -6740,8 +6650,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9375rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.module.css",
@@ -6994,15 +6904,6 @@
       "severity": "warning",
       "text": "Expected \"overflow-inline\" to come before \"overflow-x\" (order/properties-order)",
       "id": "nextjs-app/shared/components/Mermaid/Mermaid.module.css::order/properties-order::Expected \"overflow-inline\" to come before \"overflow-x\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Mermaid/Mermaid.module.css",
-      "line": 108,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Mermaid/Mermaid.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Modal/Modal.module.css",
@@ -7568,8 +7469,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/AboutPage/AboutPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/AboutPage/AboutPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/AboutPage/AboutPage.module.css",
@@ -7708,12 +7609,21 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Blog/Blog.module.css",
+      "line": 21,
+      "column": 16,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"4rem\". Use scale values (nearest: 48px or 68px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Blog/Blog.module.css::rhythmguard/use-scale::Unexpected off-scale value \"4rem\". Use scale values (nearest: 48px or 68px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/pages/Blog/Blog.module.css",
       "line": 7,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Blog/Blog.module.css::rhythmguard/use-scale::Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"5rem\". Use scale values (nearest: 68px or 88px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Blog/Blog.module.css::rhythmguard/use-scale::Unexpected off-scale value \"5rem\". Use scale values (nearest: 68px or 88px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css",
@@ -7910,8 +7820,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css",
@@ -7919,8 +7829,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css",
@@ -7930,15 +7840,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css",
-      "line": 29,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.75rem\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Blog/BlogArticle.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.75rem\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Colophon/colophon.module.css",
@@ -7955,8 +7856,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Colophon/colophon.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Colophon/colophon.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Colophon/colophon.module.css",
@@ -8212,15 +8113,6 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css",
-      "line": 211,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css",
       "line": 95,
       "column": 11,
       "rule": "rhythmguard/use-scale",
@@ -8234,8 +8126,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css",
@@ -8243,8 +8135,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css",
@@ -8252,8 +8144,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.8rem\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.8rem\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.8rem\". Use scale values (nearest: 28px or 32px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.8rem\". Use scale values (nearest: 28px or 32px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css",
@@ -8279,8 +8171,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"5rem\". Use scale values (nearest: 68px or 88px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"5rem\". Use scale values (nearest: 68px or 88px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/ContactPage/ContactPage.module.css",
@@ -8455,15 +8347,6 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 306,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Home/Home.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
       "line": 153,
       "column": 20,
       "rule": "rhythmguard/use-scale",
@@ -8482,30 +8365,21 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
+      "line": 302,
+      "column": 16,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"4rem\". Use scale values (nearest: 48px or 68px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Home/Home.module.css::rhythmguard/use-scale::Unexpected off-scale value \"4rem\". Use scale values (nearest: 48px or 68px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
       "line": 59,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"800px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/pages/Home/Home.module.css::rhythmguard/use-scale::Unexpected off-scale value \"800px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 110,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Home/Home.module.css::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 195,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Home/Home.module.css::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
@@ -8909,8 +8783,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/AdobeToolIcon.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/AdobeToolIcon.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css",
@@ -8936,8 +8810,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.88em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.88em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.88em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.88em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css",
@@ -9318,6 +9192,15 @@
       "id": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"16px\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
     },
     {
+      "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
+      "line": 80,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
       "line": 111,
       "column": 18,
@@ -9391,39 +9274,21 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 343,
-      "column": 14,
+      "line": 443,
+      "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 435,
+      "line": 455,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 423,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 491,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
@@ -9458,8 +9323,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"3.5rem\". Use scale values (nearest: 48px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"3.5rem\". Use scale values (nearest: 48px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"3.5rem\". Use scale values (nearest: 48px or 68px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"3.5rem\". Use scale values (nearest: 48px or 68px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
@@ -9476,8 +9341,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 88px or 112px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 88px or 112px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
@@ -9571,21 +9436,12 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/llm-component-schema.module.css",
-      "line": 32,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/llm-component-schema.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/llm-component-schema.module.css",
       "line": 9,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/llm-component-schema.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/llm-component-schema.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/llm-component-schema.module.css",
@@ -9683,8 +9539,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/ProjectSpine/project-spine.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/ProjectSpine/project-spine.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/RawView/rawView.module.css",
@@ -9710,8 +9566,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/Rhythmguard/rhythmguard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/Rhythmguard/rhythmguard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
@@ -9859,12 +9715,12 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 394,
+      "line": 388,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
@@ -10597,15 +10453,6 @@
     },
     {
       "file": "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css",
-      "line": 44,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.module.css",
       "line": 3,
       "column": 19,
       "rule": "rhythmguard/use-scale",
@@ -10903,30 +10750,12 @@
     },
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 30,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
       "line": 42,
       "column": 38,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 43,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
@@ -11794,15 +11623,6 @@
     },
     {
       "file": "nextjs-app/shared/components/SocialShare/SocialShare.module.css",
-      "line": 16,
-      "column": 38,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SocialShare/SocialShare.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SocialShare/SocialShare.module.css",
       "line": 65,
       "column": 16,
       "rule": "rhythmguard/use-scale",
@@ -12095,8 +11915,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Switch/Switch.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Switch/Switch.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Switch/Switch.module.css",
@@ -12158,8 +11978,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.78em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Tabs/Tabs.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.78em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.78em\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Tabs/Tabs.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.78em\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Tabs/Tabs.stories.module.css",
@@ -12531,24 +12351,6 @@
       "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
     },
     {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 31,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 43,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/Toast/Toast.module.css",
       "line": 27,
       "column": 3,
@@ -12779,8 +12581,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",
@@ -12788,8 +12590,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",
@@ -12797,8 +12599,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",
@@ -12806,8 +12608,26 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::4"
+      "text": "Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.65rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",
+      "line": 106,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",
+      "line": 159,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",
@@ -12815,8 +12635,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.7rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.7rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.7rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.7rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",
@@ -12824,8 +12644,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",
@@ -12936,15 +12756,6 @@
       "id": "nextjs-app/shared/index.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
     },
     {
-      "file": "nextjs-app/shared/index.css",
-      "line": 84,
-      "column": 16,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/index.css::rhythmguard/use-scale::Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
       "line": 87,
       "column": 3,
@@ -12979,15 +12790,6 @@
       "severity": "warning",
       "text": "Expected \"padding-block\" to come before \"justify-content\" (order/properties-order)",
       "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::order/properties-order::Expected \"padding-block\" to come before \"justify-content\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 77,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
@@ -13078,15 +12880,6 @@
       "severity": "warning",
       "text": "Expected \"padding\" to come before \"inline-size\" (order/properties-order)",
       "id": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css::order/properties-order::Expected \"padding\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 68,
-      "column": 38,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
@@ -14174,8 +13967,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.803rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.803rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.803rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.803rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
@@ -14907,24 +14700,6 @@
       "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
     },
     {
-      "file": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css",
-      "line": 32,
-      "column": 29,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css",
-      "line": 128,
-      "column": 29,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
       "line": 616,
       "column": 33,
@@ -15358,30 +15133,12 @@
     },
     {
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 145,
+      "line": 202,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 242,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 80,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
@@ -15632,8 +15389,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/Docs/Icons.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/Docs/Icons.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/Docs/Icons.module.css",
@@ -15830,8 +15587,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/Docs/ThemingAndLocalization.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/Docs/ThemingAndLocalization.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/Docs/ThemingAndLocalization.module.css",
@@ -16069,12 +15826,21 @@
     },
     {
       "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
+      "line": 98,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
       "line": 31,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.85em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85em\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.85em\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85em\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
@@ -16082,8 +15848,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
@@ -16091,17 +15857,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 81,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.125rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
@@ -16640,8 +16397,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.78rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.78rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.78rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.78rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16658,8 +16415,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16667,8 +16424,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16676,8 +16433,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16685,8 +16442,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16694,8 +16451,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16712,8 +16469,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16721,8 +16478,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16730,8 +16487,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.92rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.92rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.92rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.92rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16739,8 +16496,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16748,8 +16505,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16762,21 +16519,12 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 97,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
       "line": 106,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16785,7 +16533,7 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::4"
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16794,7 +16542,16 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::5"
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 97,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16802,8 +16559,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::6"
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16811,8 +16568,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::7"
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16820,8 +16577,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16829,8 +16586,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16928,8 +16685,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"2.2rem\". Use scale values (nearest: 32px or 40px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.2rem\". Use scale values (nearest: 32px or 40px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"2.2rem\". Use scale values (nearest: 32px or 36px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.2rem\". Use scale values (nearest: 32px or 36px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -16937,8 +16694,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"2.4rem\". Use scale values (nearest: 32px or 40px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.4rem\". Use scale values (nearest: 32px or 40px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"2.4rem\". Use scale values (nearest: 36px or 40px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.4rem\". Use scale values (nearest: 36px or 40px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
@@ -17054,8 +16811,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/Welcome.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/Welcome.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/Welcome.module.css",
@@ -17063,8 +16820,8 @@
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/Welcome.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/Welcome.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 18px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/Welcome.module.css",
@@ -17139,13 +16896,13 @@
       "id": "nextjs-app/shared/stories/WipBadge.module.css::order/properties-order::Expected \"z-index\" to come before \"inset-block-end\" (order/properties-order)::2"
     },
     {
-      "file": "nextjs-app/shared/styles/typography.css",
-      "line": 109,
+      "file": "nextjs-app/shared/styles/brand-chip.module.css",
+      "line": 15,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/styles/typography.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/styles/brand-chip.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/styles/utilities.css",
@@ -17194,7 +16951,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 817,
+      "line": 829,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -17203,7 +16960,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 805,
+      "line": 817,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -17212,7 +16969,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 805,
+      "line": 817,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -17221,7 +16978,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 805,
+      "line": 817,
       "column": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -17230,7 +16987,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 817,
+      "line": 829,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -17239,7 +16996,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 403,
+      "line": 415,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -17248,7 +17005,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 491,
+      "line": 503,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -17257,7 +17014,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 701,
+      "line": 713,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

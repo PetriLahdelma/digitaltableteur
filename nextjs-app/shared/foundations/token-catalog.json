@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-09-09T19:57:58.410Z",
+  "generatedAt": "2026-10-15T06:35:23.388Z",
   "tokenCount": 200,
   "usageCoverage": 164,
   "themes": [
@@ -2088,56 +2088,56 @@
       "tokens": [
         {
           "name": "--font-size-text",
-          "value": "clamp(1rem, 0.6vi + 0.9rem, 1.25rem)",
+          "value": "var(--font-size-text-m)",
           "usage": "Fluid type size token (text); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-text-xxs",
-          "value": "clamp(0.875rem, 0.1vi + 0.85rem, 0.9375rem)",
+          "value": "0.875rem",
           "usage": "Fluid type size token (text-xxs); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-text-xs",
-          "value": "clamp(0.875rem, 0.2vi + 0.83rem, 1rem)",
+          "value": "clamp(0.875rem, 0.208vi + 0.8333rem, 1rem)",
           "usage": "Fluid type size token (text-xs); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-text-s",
-          "value": "clamp(0.875rem, 0.35vi + 0.8rem, 1.05rem)",
+          "value": "clamp(1rem, 0.208vi + 0.9583rem, 1.125rem)",
           "usage": "Fluid type size token (text-s); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-text-m",
-          "value": "clamp(1rem, 0.6vi + 0.9rem, 1.25rem)",
+          "value": "clamp(1.125rem, 0.208vi + 1.0833rem, 1.25rem)",
           "usage": "Fluid type size token (text-m); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-text-l",
-          "value": "clamp(1.125rem, 0.8vi + 1rem, 1.5rem)",
+          "value": "clamp(1.25rem, 0.417vi + 1.1667rem, 1.5rem)",
           "usage": "Fluid type size token (text-l); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-text-xl",
-          "value": "clamp(1.375rem, 1vi + 1.15rem, 1.875rem)",
+          "value": "clamp(1.5rem, 0.833vi + 1.3333rem, 2rem)",
           "usage": "Fluid type size token (text-xl); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-text-xxl",
-          "value": "clamp(1.625rem, 1.4vi + 1.35rem, 2.25rem)",
+          "value": "clamp(2rem, 0.833vi + 1.8333rem, 2.5rem)",
           "usage": "Fluid type size token (text-xxl); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
@@ -2172,21 +2172,21 @@
         },
         {
           "name": "--font-size-title-m",
-          "value": "clamp(2rem, 2.8vi + 1.3rem, 3rem)",
+          "value": "clamp(1.75rem, 2.8vi + 1.3rem, 3rem)",
           "usage": "Fluid type size token (title-m); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-title-l",
-          "value": "clamp(2.75rem, 4vi + 1.75rem, 4.25rem)",
+          "value": "clamp(2rem, 5vi + 1rem, 4.25rem)",
           "usage": "Fluid type size token (title-l); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },
         {
           "name": "--font-size-title-xl",
-          "value": "clamp(2rem, 9vi + 0.5rem, 5.5rem)",
+          "value": "clamp(2.25rem, 9vi + 0.5rem, 5.5rem)",
           "usage": "Fluid type size token (title-xl); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"

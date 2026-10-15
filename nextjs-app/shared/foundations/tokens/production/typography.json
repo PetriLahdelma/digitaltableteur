@@ -40,43 +40,38 @@
         },
         {
           "cssVar": "--font-size-text",
-          "css": "clamp(1rem, 0.6vi + 0.9rem, 1.25rem)",
-          "reason": "\"clamp(1rem, 0.6vi + 0.9rem, 1.25rem)\" is not a px/rem dimension"
-        },
-        {
-          "cssVar": "--font-size-text-xxs",
-          "css": "clamp(0.875rem, 0.1vi + 0.85rem, 0.9375rem)",
-          "reason": "\"clamp(0.875rem, 0.1vi + 0.85rem, 0.9375rem)\" is not a px/rem dimension"
+          "css": "var(--font-size-text-m)",
+          "reason": "\"clamp(1.125rem, 0.208vi + 1.0833rem, 1.25rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-text-xs",
-          "css": "clamp(0.875rem, 0.2vi + 0.83rem, 1rem)",
-          "reason": "\"clamp(0.875rem, 0.2vi + 0.83rem, 1rem)\" is not a px/rem dimension"
+          "css": "clamp(0.875rem, 0.208vi + 0.8333rem, 1rem)",
+          "reason": "\"clamp(0.875rem, 0.208vi + 0.8333rem, 1rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-text-s",
-          "css": "clamp(0.875rem, 0.35vi + 0.8rem, 1.05rem)",
-          "reason": "\"clamp(0.875rem, 0.35vi + 0.8rem, 1.05rem)\" is not a px/rem dimension"
+          "css": "clamp(1rem, 0.208vi + 0.9583rem, 1.125rem)",
+          "reason": "\"clamp(1rem, 0.208vi + 0.9583rem, 1.125rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-text-m",
-          "css": "clamp(1rem, 0.6vi + 0.9rem, 1.25rem)",
-          "reason": "\"clamp(1rem, 0.6vi + 0.9rem, 1.25rem)\" is not a px/rem dimension"
+          "css": "clamp(1.125rem, 0.208vi + 1.0833rem, 1.25rem)",
+          "reason": "\"clamp(1.125rem, 0.208vi + 1.0833rem, 1.25rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-text-l",
-          "css": "clamp(1.125rem, 0.8vi + 1rem, 1.5rem)",
-          "reason": "\"clamp(1.125rem, 0.8vi + 1rem, 1.5rem)\" is not a px/rem dimension"
+          "css": "clamp(1.25rem, 0.417vi + 1.1667rem, 1.5rem)",
+          "reason": "\"clamp(1.25rem, 0.417vi + 1.1667rem, 1.5rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-text-xl",
-          "css": "clamp(1.375rem, 1vi + 1.15rem, 1.875rem)",
-          "reason": "\"clamp(1.375rem, 1vi + 1.15rem, 1.875rem)\" is not a px/rem dimension"
+          "css": "clamp(1.5rem, 0.833vi + 1.3333rem, 2rem)",
+          "reason": "\"clamp(1.5rem, 0.833vi + 1.3333rem, 2rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-text-xxl",
-          "css": "clamp(1.625rem, 1.4vi + 1.35rem, 2.25rem)",
-          "reason": "\"clamp(1.625rem, 1.4vi + 1.35rem, 2.25rem)\" is not a px/rem dimension"
+          "css": "clamp(2rem, 0.833vi + 1.8333rem, 2.5rem)",
+          "reason": "\"clamp(2rem, 0.833vi + 1.8333rem, 2.5rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-title",
@@ -100,18 +95,18 @@
         },
         {
           "cssVar": "--font-size-title-m",
-          "css": "clamp(2rem, 2.8vi + 1.3rem, 3rem)",
-          "reason": "\"clamp(2rem, 2.8vi + 1.3rem, 3rem)\" is not a px/rem dimension"
+          "css": "clamp(1.75rem, 2.8vi + 1.3rem, 3rem)",
+          "reason": "\"clamp(1.75rem, 2.8vi + 1.3rem, 3rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-title-l",
-          "css": "clamp(2.75rem, 4vi + 1.75rem, 4.25rem)",
-          "reason": "\"clamp(2.75rem, 4vi + 1.75rem, 4.25rem)\" is not a px/rem dimension"
+          "css": "clamp(2rem, 5vi + 1rem, 4.25rem)",
+          "reason": "\"clamp(2rem, 5vi + 1rem, 4.25rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-title-xl",
-          "css": "clamp(2rem, 9vi + 0.5rem, 5.5rem)",
-          "reason": "\"clamp(2rem, 9vi + 0.5rem, 5.5rem)\" is not a px/rem dimension"
+          "css": "clamp(2.25rem, 9vi + 0.5rem, 5.5rem)",
+          "reason": "\"clamp(2.25rem, 9vi + 0.5rem, 5.5rem)\" is not a px/rem dimension"
         },
         {
           "cssVar": "--font-size-title-xxl",
@@ -164,6 +159,26 @@
           "category": "typography",
           "subgroup": "Families & aliases",
           "css": "source-code-pro, menlo, monaco, consolas, \"Courier New\", monospace"
+        }
+      }
+    },
+    "size": {
+      "text": {
+        "xxs": {
+          "$value": {
+            "value": 0.875,
+            "unit": "rem"
+          },
+          "$type": "dimension",
+          "$description": "Fluid type size token (text-xxs); uses clamp().",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--font-size-text-xxs",
+              "category": "typography",
+              "subgroup": "Type scale",
+              "css": "0.875rem"
+            }
+          }
         }
       }
     },

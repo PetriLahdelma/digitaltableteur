@@ -1,5 +1,16 @@
 {
   "generatedBy": "npm run audit:rhythm:update",
+  "ladderProblems": [
+    {
+      "end": "min",
+      "ladder": "--font-size-text",
+      "tokens": [
+        "--font-size-text-xxs",
+        "--font-size-text-xs"
+      ],
+      "type": "collapsed"
+    }
+  ],
   "missingTokens": [
     {
       "files": [

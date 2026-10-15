@@ -1,6 +1,21 @@
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import postcss from "postcss";
 import stylelint from "stylelint";
 import ts from "typescript";
+
+// The font-size type scale lives in .stylelintrc.json; read it from there so
+// native templates and stylesheets are held to the same scale.
+// fileURLToPath takes the string form: under Vitest's jsdom environment the
+// global URL class is jsdom's, which node:fs rejects.
+const stylelintConfigPath = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "../../.stylelintrc.json",
+);
+const stylelintConfig = JSON.parse(readFileSync(stylelintConfigPath, "utf8"));
+const sharedPropertyScales =
+  stylelintConfig.rules["rhythmguard/use-scale"][1].propertyScales;
 
 export const logicalCssRules = {
   "logical-css/require-logical-keywords": [
@@ -50,6 +65,7 @@ export const rhythmguardRules = {
     true,
     {
       propertyGroups: ["spacing", "radius", "typography", "size"],
+      propertyScales: sharedPropertyScales,
       scale: [0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64],
       fixToScale: false,
       severity: "warning",
