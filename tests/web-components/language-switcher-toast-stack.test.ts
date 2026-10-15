@@ -15,8 +15,8 @@ const TOAST_STACK_TAG = "dt-toast-stack";
 
 const languages: DtLanguageSwitcherOption[] = [
   { code: "en", label: "EN", ariaLabel: "English" },
-  { code: "fi", label: "FI", ariaLabel: "Vaihda kieli suomeksi" },
-  { code: "sv", label: "SV", ariaLabel: "Byt språk till svenska" },
+  { code: "fi", label: "FI", ariaLabel: "Suomi" },
+  { code: "sv", label: "SV", ariaLabel: "Svenska" },
 ];
 
 beforeAll(() => {
@@ -109,16 +109,18 @@ describe("native LanguageSwitcher", () => {
   it("renders only the controlled current language while closed", () => {
     const element = renderLanguageSwitcher("en");
     const trigger = languageTrigger(element);
-    const descriptionId = trigger.getAttribute("aria-controls");
+    const optionsId = trigger.getAttribute("aria-controls");
 
     expect(trigger).toHaveTextContent("EN");
-    expect(trigger).toHaveAttribute("aria-current", "true");
+    expect(trigger).not.toHaveAttribute("aria-current");
     expect(trigger).toHaveAttribute("aria-expanded", "false");
-    expect(trigger).toHaveAccessibleName(/english.*show language options/i);
-    expect(descriptionId).toBeTruthy();
-    expect(
-      element.shadowRoot?.getElementById(descriptionId!),
-    ).toHaveTextContent("Show language options");
+    // Exact, stable name: starts with the visible label (WCAG 2.5.3).
+    expect(trigger).toHaveAccessibleName("EN, English");
+    expect(optionsId).toBeTruthy();
+    expect(element.shadowRoot?.getElementById(optionsId!)).toHaveAttribute(
+      "part",
+      "options",
+    );
     expect(languageOptions(element)).toHaveLength(0);
     expect(element.shadowRoot?.querySelector("[role='group']")).toHaveAttribute(
       "aria-label",
@@ -138,8 +140,12 @@ describe("native LanguageSwitcher", () => {
     const options = languageOptions(element);
     expect(element.open).toBe(true);
     expect(trigger).toHaveAttribute("aria-expanded", "true");
+    // The name does not change with state; aria-expanded carries it.
+    expect(trigger).toHaveAccessibleName("EN, English");
     expect(trigger).toHaveClass("button-probe", "open-probe");
     expect(options.map((option) => option.textContent)).toEqual(["SV", "FI"]);
+    expect(options[1]).toHaveAccessibleName("FI, Suomi");
+    expect(options[1]).toHaveAttribute("lang", "fi");
     expect(options[0]).toHaveClass("button-probe", "floated-probe");
     expect(
       element.shadowRoot?.querySelector("[part='options']"),
@@ -208,9 +214,7 @@ describe("native LanguageSwitcher", () => {
     element.currentLang = "fi";
     document.body.append(element);
 
-    expect(languageTrigger(element)).toHaveAccessibleName(
-      /näytä kielivaihtoehdot/i,
-    );
+    expect(languageTrigger(element)).toHaveAccessibleName("FI, Suomi");
     expect(element.shadowRoot?.querySelector("[role='group']")).toHaveAttribute(
       "aria-label",
       "Kieli",

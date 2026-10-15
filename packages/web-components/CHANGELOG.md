@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+- `dt-language-switcher`: the trigger keeps one accessible name in both
+  states, "<label>, <ariaLabel>" (e.g. "EN, English"), so the name starts
+  with the visible label (WCAG 2.5.3) and `aria-expanded` alone carries
+  open or closed. The "Show/Hide language options" suffix, the hidden
+  description span and `aria-current` are gone; `aria-controls` now points
+  at the options. Options are named the same way and carry `lang`.
+  `ariaLabel` is the language's own name ("Suomi"), not an action phrase.
+  Matches the React LanguageSwitcher.
+- Generated element contracts now record `dt-form-field` and `dt-kbd` as
+  beta, matching their source contracts.
+
 ## 0.10.2 - 2026-09-25
 
 - `dt-breadcrumb`: the collapsed-trail ellipsis trigger ("Show N hidden

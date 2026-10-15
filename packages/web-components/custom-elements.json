@@ -3300,7 +3300,7 @@
           "events": [],
           "dtSourceComponent": "FormField",
           "dtBackend": "native",
-          "dtContractStatus": "stable",
+          "dtContractStatus": "beta",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
@@ -5416,7 +5416,7 @@
           "events": [],
           "dtSourceComponent": "Kbd",
           "dtBackend": "native",
-          "dtContractStatus": "stable",
+          "dtContractStatus": "beta",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },

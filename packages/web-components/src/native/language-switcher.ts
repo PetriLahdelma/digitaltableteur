@@ -7,8 +7,15 @@ import {
 import { localizedText } from "./localization";
 
 export interface DtLanguageSwitcherOption {
+  /** BCP 47 code; also set as `lang` on the option so it is pronounced right. */
   code: string;
+  /** Visible label, e.g. "EN". */
   label: string;
+  /**
+   * The language's name in its own language ("English", "Suomi", "Svenska"),
+   * not an action phrase. Buttons are named "<label>, <ariaLabel>", so the
+   * name starts with the visible label (WCAG 2.5.3).
+   */
   ariaLabel: string;
 }
 
@@ -95,17 +102,6 @@ const styles = `
     outline: var(--focus-ring-width, 2px) solid
       var(--focus-ring-color, var(--color-focus-ring, currentcolor));
     outline-offset: 2px;
-  }
-  .srOnly {
-    position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border: 0;
   }
   @keyframes dt-language-switcher-enter {
     from { opacity: 0; transform: translateX(0.625rem); }
@@ -330,22 +326,6 @@ export class DtLanguageSwitcherElement extends DigitaltableteurElement {
     );
   }
 
-  private expandLabel(): string {
-    return localizedText(this, {
-      en: "Show language options",
-      fi: "Näytä kielivaihtoehdot",
-      sv: "Visa språkalternativ",
-    });
-  }
-
-  private collapseLabel(): string {
-    return localizedText(this, {
-      en: "Hide language options",
-      fi: "Piilota kielivaihtoehdot",
-      sv: "Dölj språkalternativ",
-    });
-  }
-
   private render(focusTrigger = false): void {
     const languages = this.languages;
     const current =
@@ -362,7 +342,7 @@ export class DtLanguageSwitcherElement extends DigitaltableteurElement {
       return;
     }
 
-    const descriptionId = `${this.instanceId}-description`;
+    const optionsId = `${this.instanceId}-options`;
     const trigger = this.ownerDocument.createElement("button");
     trigger.type = "button";
     trigger.className = "option trigger";
@@ -371,15 +351,13 @@ export class DtLanguageSwitcherElement extends DigitaltableteurElement {
     if (this.openState) addClasses(trigger, this.openTriggerClassName);
     trigger.setAttribute("part", "trigger option");
     trigger.setAttribute("aria-expanded", String(this.openState));
-    trigger.setAttribute("aria-controls", descriptionId);
-    trigger.setAttribute("aria-current", "true");
+    trigger.setAttribute("aria-controls", optionsId);
     trigger.setAttribute("data-open", String(this.openState));
-    trigger.setAttribute(
-      "aria-label",
-      this.openState
-        ? this.collapseLabel()
-        : `${current.ariaLabel}. ${this.expandLabel()}`,
-    );
+    // A stable name: aria-expanded already says whether the options are
+    // shown, so the name must not change with state ("Show"/"Hide" doubled
+    // it). No aria-current either: the trigger is a disclosure, not one item
+    // in a set of links.
+    trigger.setAttribute("aria-label", `${current.label}, ${current.ariaLabel}`);
     trigger.textContent = current.label;
     trigger.addEventListener("click", () =>
       this.updateOpen(!this.openState, true),
@@ -388,6 +366,7 @@ export class DtLanguageSwitcherElement extends DigitaltableteurElement {
 
     const anchor = this.ownerDocument.createElement("div");
     anchor.className = "trayAnchor";
+    anchor.id = optionsId;
     anchor.setAttribute("part", "options");
     anchor.setAttribute("data-open", String(this.openState));
     anchor.setAttribute("aria-hidden", String(!this.openState));
@@ -405,7 +384,8 @@ export class DtLanguageSwitcherElement extends DigitaltableteurElement {
         addClasses(button, this.buttonClassName);
         addClasses(button, this.floatedButtonClassName);
         button.setAttribute("part", "option");
-        button.setAttribute("aria-label", option.ariaLabel);
+        button.setAttribute("aria-label", `${option.label}, ${option.ariaLabel}`);
+        button.setAttribute("lang", option.code);
         button.dataset.code = option.code;
         button.textContent = option.label;
         button.addEventListener("click", () => this.select(option));
@@ -414,14 +394,6 @@ export class DtLanguageSwitcherElement extends DigitaltableteurElement {
       anchor.append(fan);
     }
     root.append(anchor);
-
-    const description = this.ownerDocument.createElement("span");
-    description.id = descriptionId;
-    description.className = "srOnly";
-    description.textContent = this.openState
-      ? this.collapseLabel()
-      : this.expandLabel();
-    root.append(description);
 
     this.replaceShadow(styles, root);
     if (focusTrigger) {
