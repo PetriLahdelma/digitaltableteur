@@ -223,6 +223,10 @@ export function EnhancedProjectCard({
             {category}
           </span>
         )}
+        {/* Whitespace between category and title: text extraction (axe's
+            visible text, copy and paste) otherwise fuses them into
+            "Design SystemsSAP Build Apps". The grid does not render it. */}
+        {hasCategory ? " " : null}
 
         {/* Title */}
         <h3 id={titleId} className={styles.title} lang={contentLanguage}>
