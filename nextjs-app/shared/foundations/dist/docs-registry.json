@@ -9225,7 +9225,6 @@
         "striped": {
           "optional": true,
           "type": "boolean",
-          "default": false,
           "description": "Alternate row backgrounds for long lists of multi-line entries; rows get padding and no markers unless listStyleType asks for them."
         }
       },
