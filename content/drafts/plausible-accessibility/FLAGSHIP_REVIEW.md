@@ -24,11 +24,11 @@ Yes, see `SOURCES.md`. The APA AI document is labelled as draft research. Unveri
 Candidates to sharpen in draft 2: "None of this means keeping AI out of accessibility work." and "Two rules make the table work." Both are serviceable but generic.
 
 **8. One illustration family; real artifacts with real alt text?**
-Planned, not produced. See `VISUAL_BRIEF.md`: the hollow stencil motif across five illustrations, decorative ones `alt=""`. Two real artifacts (evidence record diff, accessibility inspector screenshot) must be captured from the live systems, and the routing table ships as an HTML table.
+Planned, not produced. See `VISUAL_BRIEF.md`: the hollow stencil motif across five illustrations, decorative ones `alt=""`. Two real artifacts come from the repo history (the evidence record before and after the silent strip, and the accessibility-tree snapshot diff of the language button in b73740e0f), and the routing table ships as an HTML table.
 
 ## Open items for the author
 
 - **AUTHOR CHECK** in "Where my own checks still fall short": confirm what testing with disabled people has actually happened on Digitaltableteur work, or replace with a dated commitment. Nothing untrue should ship.
 - Density versus the benchmark: paragraphs average about 4 sentences against the benchmark's 2.4. Draft 2 can split for rhythm once the substance is agreed.
 - Title length: 12 words. A shorter option is "Plausible Accessibility" with the rest in the excerpt.
-- Two real bugs surfaced while writing (language button name, invisible list markers). Fix them before publishing, or the article's examples become a live demo.
+- Language button: fixed (3bc2c6e83) and the article now tells it in the past tense, with the exact-name test as a takeable mechanism. Invisible list markers: still open (task chip); fix before publishing or reword the limits section.

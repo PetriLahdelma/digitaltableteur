@@ -71,11 +71,13 @@ AI products are not exempt from their own problem. Mike Gower at IBM found a flo
 
 ### Names that sound right
 
-Here is my own example, from this week. The language button in this site's header has visible text "EN". Its computed accessible name, with English already active, begins `EN, EN`, then a separator, then "Switch to English. Show language options." It passes the automated checks in this repo. It has a name. The name contains the visible label, so it satisfies [2.5.3 Label in Name](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html). And a screen reader user hears a repeated code followed by an instruction to switch to the language they are already using.
+Here is my own example, found while writing this piece. The language button in this site's header shows "EN". With English already active, its computed accessible name began `EN, EN`, then a separator, then "Switch to English. Show language options." It passed every automated check in this repo. It had a name. The name contained the visible label, so it satisfied [2.5.3 Label in Name](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html). And a screen reader user heard a repeated code followed by an instruction to switch to the language they were already using. The cause was ordinary: the header handed the component an action phrase where its contract asked for the language's name, and the component dutifully read both.
+
+The fix itself was small. The test that keeps it fixed is the part worth copying: it asserts the exact spoken name of every state ("EN, English. Show language options", then "FI, Suomi" for an option) instead of checking that a name exists. A presence check is what let the bug through. An exact-string check fails the moment a name stops making sense out loud, which is the one thing a person would have noticed in the first second.
 
 No rule flags that, because every individual part is valid. Eevis found the same family of problem in [AI-generated Android apps from four different tools](https://dev.to/eevajonnapanula/does-ai-generate-accessible-android-apps-2gb5): an "Add yarn" button labelled "Add new yarn", so some screen readers read both. The QA team above found a date picker that VoiceOver on iOS read as "button, button, button". [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) can be tested for presence by a machine. Whether a name makes sense when spoken, in that order, on that device, can only be heard.
 
-{/* Figure B: accessibility inspector screenshot of the language button. See VISUAL_BRIEF.md. */}
+{/* Figure B: accessibility-tree snapshot diff of the language button, before and after (b73740e0f). See VISUAL_BRIEF.md. */}
 
 ### Meaning, memory, and effort
 
@@ -116,7 +118,7 @@ The division of labour I trust is simple. Machines propose and measure. People w
 
 ## Where my own checks still fall short
 
-I would like to say the pipeline that missed 949 axe results is fixed, and in the narrow sense it is: the missing variable is now part of the documented recapture recipe. But the language button passed every gate after that fix. So did the list markers in that same chat bubble, which are set to the same colour as the user bubble's background. Type a list into the chat and its bullets disappear for everyone. No check has flagged them, because they only appear when someone types a list.
+I would like to say the pipeline that missed 949 axe results is fixed, and in the narrow sense it is: the missing variable is now part of the documented recapture recipe. But the language button passed every gate after that fix, and recapturing its evidence turned up one more quiet failure: writing the evidence files made Storybook hot-reload the story under test, so the check hung instead of failing. Automation that cannot see its own blind spots tends to fail politely. So did the list markers in that same chat bubble, which are set to the same colour as the user bubble's background. Type a list into the chat and its bullets disappear for everyone. No check has flagged them, because they only appear when someone types a list.
 
 The accessibility-tree snapshots this design system commits for every story are good at one thing: catching structural change. They record roles, names, and states. They do not record whether a name makes sense out loud, whether an announcement arrives at the right moment, or whether a sequence of steps is tiring. Those are judgments, and a snapshot of a bad judgment passes forever.
 
