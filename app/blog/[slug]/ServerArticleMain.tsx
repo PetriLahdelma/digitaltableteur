@@ -1,6 +1,6 @@
 
 import { getPostMetaBySlug } from "@/app/blog/postMetadata";
-import AuthorBio from "@/nextjs-app/shared/components/AuthorBio/AuthorBio";
+import { AuthorBio } from "@digitaltableteur/react";
 import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import { toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
 import { BlogArticleMdxBody } from "./BlogArticleMdxBody";
