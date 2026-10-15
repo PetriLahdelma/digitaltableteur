@@ -15,8 +15,13 @@
   position: relative;
   margin-block-start: var(--space-layout-32);
   padding: var(--space-layout-32) var(--space-layout-40);
+
+  /* inline-size containment drops the intrinsic width to zero, so in a
+     shrink-to-fit parent (a centered flex item) the card collapsed to one
+     character per line. Claim the available width instead. */
+  inline-size: 100%;
   grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
+  align-items: start;
   gap: var(--space-layout-32);
   border-radius: var(--radius-xl);
   background: var(--author-bio-surface);
@@ -63,10 +68,8 @@
 }
 
 .nameLink {
-  text-decoration: underline;
+  /* Link draws its own wavy underline; a text-decoration here doubled it. */
   color: inherit;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.2em;
 }
 
 .body .role {

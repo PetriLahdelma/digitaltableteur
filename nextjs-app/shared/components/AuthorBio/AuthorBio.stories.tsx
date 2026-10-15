@@ -17,7 +17,7 @@ const meta: Meta<typeof AuthorBio> = {
     },
     contractStatus: contract.status,
     a11y: { test: "error" },
-    layout: "centered",
+    layout: "padded",
   },
 };
 

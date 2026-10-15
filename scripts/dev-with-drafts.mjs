@@ -26,8 +26,11 @@ const run = (command, args) =>
   });
 
 console.log("\n  Draft preview: ON (SHOW_UNPUBLISHED_POSTS + NEXT_PUBLIC_*)\n");
-console.log("  Toggle in browser: http://localhost:3001/blog?preview=drafts");
-console.log("  Turn off:          http://localhost:3001/blog?preview=off\n");
+console.log("  Turn off: restart with npm run dev (the env flag overrides ?preview=off).");
+console.log(
+  "  Note: npm run build regenerates the blog files without drafts; re-run",
+);
+console.log("  npm run dev:drafts afterwards to get them back.\n");
 
 await run("npm", ["run", "generate:blog"]);
 await run("npm", ["run", "dev"]);
