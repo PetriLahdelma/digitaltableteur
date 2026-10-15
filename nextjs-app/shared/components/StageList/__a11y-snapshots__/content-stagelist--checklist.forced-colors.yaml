@@ -1,0 +1,23 @@
+- status: Work in progress (beta)
+- list:
+  - listitem:
+    - heading "Before launch" [level=3]
+    - text: 0 of 2 done
+    - group "Plan":
+      - text: Plan
+      - checkbox "Recruit five people who match the main audience"
+      - text: Recruit five people who match the main audience
+      - paragraph: User research. Book them two weeks ahead and share the tasks, not the screens.
+    - group "Build":
+      - text: Build
+      - checkbox "A content designer reads every screen aloud"
+      - text: A content designer reads every screen aloud
+      - paragraph: Content review. Plain words catch the gaps a style guide misses. Again at launch.
+  - listitem:
+    - heading "At launch" [level=3]
+    - text: 0 of 1 done
+    - group "Launch":
+      - text: Launch
+      - checkbox "Walk the support team through what changed"
+      - text: Walk the support team through what changed
+      - paragraph: Support briefing. Give them the release notes and the three likeliest questions.

@@ -1,0 +1,39 @@
+- status: Work in progress (beta)
+- navigation:
+  - list:
+    - listitem:
+      - text: Plan
+      - list:
+        - listitem:
+          - link "User research":
+            - /url: "#stage-list-_r_3_-research"
+    - listitem:
+      - text: Build
+      - list:
+        - listitem:
+          - link "Content review":
+            - /url: "#stage-list-_r_3_-content"
+    - listitem:
+      - text: Launch
+      - list:
+        - listitem:
+          - link "Content review":
+            - /url: "#stage-list-_r_3_-content"
+        - listitem:
+          - link "Support briefing":
+            - /url: "#stage-list-_r_3_-support"
+- article "User research":
+  - paragraph: Plan, Research
+  - heading "User research" [level=3]
+  - paragraph: Recruit five people who match the main audience
+  - paragraph: Book them two weeks ahead and share the tasks, not the screens.
+- article "Content review":
+  - paragraph: Build and Launch, Content
+  - heading "Content review" [level=3]
+  - paragraph: A content designer reads every screen aloud
+  - paragraph: Plain words catch the gaps a style guide misses.
+- article "Support briefing":
+  - paragraph: Launch, Support
+  - heading "Support briefing" [level=3]
+  - paragraph: Walk the support team through what changed
+  - paragraph: Give them the release notes and the three likeliest questions.

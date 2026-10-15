@@ -1,0 +1,122 @@
+- status: Work in progress (beta)
+- heading "Before launch" [level=3]
+- heading "Plan" [level=4]
+- list:
+  - listitem:
+    - paragraph: User research, Research
+    - paragraph: Recruit five people who match the main audience
+    - paragraph: Book them two weeks ahead and share the tasks, not the screens.
+- heading "Build" [level=4]
+- list:
+  - listitem:
+    - paragraph: Content review, Content
+    - paragraph: A content designer reads every screen aloud
+    - paragraph: Plain words catch the gaps a style guide misses. Again at launch.
+- heading "At launch" [level=3]
+- heading "Launch" [level=4]
+- list:
+  - listitem:
+    - paragraph: Support briefing, Support
+    - paragraph: Walk the support team through what changed
+    - paragraph: Give them the release notes and the three likeliest questions.
+- list:
+  - listitem:
+    - heading "Plan" [level=3]
+    - list:
+      - listitem:
+        - paragraph: User research Research
+        - paragraph: Recruit five people who match the main audience
+        - paragraph: Book them two weeks ahead and share the tasks, not the screens.
+  - listitem:
+    - heading "Build" [level=3]
+    - list:
+      - listitem:
+        - paragraph: Content review Content
+        - paragraph: A content designer reads every screen aloud
+        - paragraph: Plain words catch the gaps a style guide misses. Again at launch.
+  - listitem:
+    - heading "Launch" [level=3]
+    - list:
+      - listitem:
+        - paragraph: Support briefing Support
+        - paragraph: Walk the support team through what changed
+        - paragraph: Give them the release notes and the three likeliest questions.
+- navigation:
+  - list:
+    - listitem:
+      - text: Plan
+      - list:
+        - listitem:
+          - link "User research":
+            - /url: "#stage-list-_r_d_-research"
+    - listitem:
+      - text: Build
+      - list:
+        - listitem:
+          - link "Content review":
+            - /url: "#stage-list-_r_d_-content"
+    - listitem:
+      - text: Launch
+      - list:
+        - listitem:
+          - link "Content review":
+            - /url: "#stage-list-_r_d_-content"
+        - listitem:
+          - link "Support briefing":
+            - /url: "#stage-list-_r_d_-support"
+- article "User research":
+  - paragraph: Plan, Research
+  - heading "User research" [level=3]
+  - paragraph: Recruit five people who match the main audience
+  - paragraph: Book them two weeks ahead and share the tasks, not the screens.
+- article "Content review":
+  - paragraph: Build and Launch, Content
+  - heading "Content review" [level=3]
+  - paragraph: A content designer reads every screen aloud
+  - paragraph: Plain words catch the gaps a style guide misses.
+- article "Support briefing":
+  - paragraph: Launch, Support
+  - heading "Support briefing" [level=3]
+  - paragraph: Walk the support team through what changed
+  - paragraph: Give them the release notes and the three likeliest questions.
+- list:
+  - listitem:
+    - heading "Before launch" [level=3]
+    - text: 0 of 2 done
+    - group "Plan":
+      - text: Plan
+      - checkbox "Recruit five people who match the main audience"
+      - text: Recruit five people who match the main audience
+      - paragraph: User research. Book them two weeks ahead and share the tasks, not the screens.
+    - group "Build":
+      - text: Build
+      - checkbox "A content designer reads every screen aloud"
+      - text: A content designer reads every screen aloud
+      - paragraph: Content review. Plain words catch the gaps a style guide misses. Again at launch.
+  - listitem:
+    - heading "At launch" [level=3]
+    - text: 0 of 1 done
+    - group "Launch":
+      - text: Launch
+      - checkbox "Walk the support team through what changed"
+      - text: Walk the support team through what changed
+      - paragraph: Support briefing. Give them the release notes and the three likeliest questions.
+- heading "Before launch" [level=3]
+- list:
+  - listitem:
+    - text: Plan Research
+    - paragraph: Recruit five people who match the main audience
+    - paragraph: User research
+    - paragraph: Book them two weeks ahead and share the tasks, not the screens.
+  - listitem:
+    - text: Build and Launch Content
+    - paragraph: A content designer reads every screen aloud
+    - paragraph: Content review
+    - paragraph: Plain words catch the gaps a style guide misses.
+- heading "At launch" [level=3]
+- list:
+  - listitem:
+    - text: Launch Support
+    - paragraph: Walk the support team through what changed
+    - paragraph: Support briefing
+    - paragraph: Give them the release notes and the three likeliest questions.

@@ -1,0 +1,76 @@
+- status: Work in progress (beta)
+- heading "Before you build" [level=3]
+- heading "Scoping" [level=4]
+- list:
+  - listitem:
+    - paragraph: Content in sign language, content team
+    - paragraph: Deaf signers and qualified interpreters (in Finland, through Kuurojen Liitto)
+    - paragraph: Signed languages have their own grammar; avatars don't carry it. Give them which sign language, the source script and the budget.
+- heading "Drafting" [level=4]
+- list:
+  - listitem:
+    - paragraph: Onboarding and plain-language content, content team
+    - paragraph: People with cognitive and learning disabilities and a plain-language editor (in Finland, Selkokeskus)
+    - paragraph: Readability formulas reward short sentences, not clear ones. Give them the decisions the reader has to make.
+- heading "Design review" [level=4]
+- list:
+  - listitem:
+    - paragraph: Motion and animation, design system team
+    - paragraph: A specialist and people with vestibular disorders
+    - paragraph: Tools can't judge vestibular impact. Give them an inventory of animations and the reduced-motion behaviour.
+  - listitem:
+    - paragraph: Charts, maps and diagrams, product team
+    - paragraph: A specialist and screen reader users from the first prototype
+    - paragraph: Tools confirm alt text exists, not that it carries the point. Give them the chart's purpose in one sentence, the data and the palette.
+  - listitem:
+    - paragraph: Login, signup and verification, product team
+    - paragraph: A specialist and people with memory and attention disabilities
+    - paragraph: Unauthenticated scans stop at the login; cognitive tests need people. Give them test accounts, the two-factor path and the time limits. Again at release candidate.
+- heading "Prototype" [level=4]
+- list:
+  - listitem:
+    - paragraph: AI chat and other streaming interfaces, product team
+    - paragraph: A specialist to design the announcements, daily users of at least two screen readers and magnifier users
+    - paragraph: Live regions behave differently with text that changes as it arrives. Give them tasks to complete, not screens to inspect. Again at release candidate.
+- heading "Before you ship" [level=3]
+- heading "Release candidate" [level=4]
+- list:
+  - listitem:
+    - paragraph: "Custom widgets: date pickers, comboboxes, drag and drop, modals, design system team"
+    - paragraph: A specialist and daily keyboard, switch, voice control and screen reader users
+    - paragraph: Focus order and announcements only show up in operation. Give them the interaction pattern, a single-pointer alternative to dragging and the devices you support.
+  - listitem:
+    - paragraph: Forms with error handling, design system team
+    - paragraph: Screen reader, voice control and magnifier users
+    - paragraph: Errors shown only in colour pass a structure check. Give them a task that triggers every error state.
+  - listitem:
+    - paragraph: Native mobile apps, product team
+    - paragraph: A mobile accessibility specialist and daily TalkBack and VoiceOver users
+    - paragraph: Web scanners don't run there; platform settings vary. Give them builds, supported OS versions and text-size targets.
+- heading "Before publishing" [level=4]
+- list:
+  - listitem:
+    - paragraph: Captions for technical, legal or medical media, content team
+    - paragraph: A professional captioner and deaf and hard-of-hearing reviewers
+    - paragraph: Accuracy scores ignore speaker changes, sounds and the terms that matter. Give them a glossary and speaker names.
+  - listitem:
+    - paragraph: Audio description for video, content team
+    - paragraph: A describer and blind reviewers
+    - paragraph: Only a person knows which visuals carry the meaning. Give them the script and the visuals that matter.
+  - listitem:
+    - paragraph: Documents and PDFs, content team
+    - paragraph: A document remediation specialist and screen reader users
+    - paragraph: Tags can exist and still be in the wrong reading order. Give them the source files, not only the exports.
+- heading "Every release and every claim" [level=3]
+- heading "Every release" [level=4]
+- list:
+  - listitem:
+    - paragraph: Zoom, reflow and contrast themes, design system team
+    - paragraph: A specialist and low-vision users who magnify or use high-contrast modes
+    - paragraph: Tools render at one viewport and one colour scheme. Give them 400% zoom and 320px targets, forced-colours and high-contrast modes.
+- heading "Before the claim" [level=4]
+- list:
+  - listitem:
+    - paragraph: Before any conformance claim, leadership
+    - paragraph: An independent specialist running a WCAG-EM style evaluation
+    - paragraph: A green report isn't a conformance evaluation. Give them the scope, the sample, the evidence you have and your accessibility statement.

@@ -1,0 +1,20 @@
+- status: Work in progress (beta)
+- heading "Before launch" [level=3]
+- list:
+  - listitem:
+    - text: Plan Research
+    - paragraph: Recruit five people who match the main audience
+    - paragraph: User research
+    - paragraph: Book them two weeks ahead and share the tasks, not the screens.
+  - listitem:
+    - text: Build and Launch Content
+    - paragraph: A content designer reads every screen aloud
+    - paragraph: Content review
+    - paragraph: Plain words catch the gaps a style guide misses.
+- heading "At launch" [level=3]
+- list:
+  - listitem:
+    - text: Launch Support
+    - paragraph: Walk the support team through what changed
+    - paragraph: Support briefing
+    - paragraph: Give them the release notes and the three likeliest questions.

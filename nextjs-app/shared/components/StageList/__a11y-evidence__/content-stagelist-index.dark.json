@@ -1,0 +1,16 @@
+{
+  "storyId": "content-stagelist-index",
+  "mode": "dark",
+  "sourceSHA": "5296f2cb14fff4611bb968956a653b2c6644e57f",
+  "capturedAt": "2026-10-15T22:04:59.203Z",
+  "runner": "local-2026-10-16a",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
