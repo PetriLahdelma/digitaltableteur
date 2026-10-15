@@ -185,7 +185,6 @@ describe("SelectableCard — standalone", () => {
 describe("SelectableCard — CSS module classes exist", () => {
   it.each([
     "group",
-    "legend",
     "options",
     "vertical",
     "horizontal",

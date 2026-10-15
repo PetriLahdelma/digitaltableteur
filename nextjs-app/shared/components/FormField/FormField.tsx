@@ -2,6 +2,7 @@
 
 import { type ReactNode } from "react";
 import { cn } from "../../lib/cn";
+import GroupLabel from "@dt/GroupLabel";
 import styles from "./FormField.module.css";
 
 export interface FormFieldProps {
@@ -46,10 +47,9 @@ export function FormField({
 }: FormFieldProps) {
   return (
     <fieldset className={cn(styles.fieldset, className)} disabled={disabled}>
-      <legend className={styles.legend}>
+      <GroupLabel as="legend" required={required} disabled={disabled}>
         {legend}
-        {required ? <span aria-hidden="true"> *</span> : null}
-      </legend>
+      </GroupLabel>
       {groupDescription ? (
         <p className={styles.groupDescription}>{groupDescription}</p>
       ) : null}

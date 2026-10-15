@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useId, useState } from "react";
 import Card, { type CardProps } from "@dt/Card";
 import HelperText from "@dt/HelperText";
+import GroupLabel from "@dt/GroupLabel";
 import styles from "./SelectableCard.module.css";
 
 export type SelectableCardSelectionType = "single" | "multiple";
@@ -117,7 +118,9 @@ export const SelectableCardGroup: React.FC<SelectableCardGroupProps> = ({
       aria-invalid={error ? true : undefined}
       disabled={disabled}
     >
-      <legend className={styles.legend}>{legend}</legend>
+      <GroupLabel as="legend" disabled={disabled}>
+        {legend}
+      </GroupLabel>
       <div
         className={[
           styles.options,

@@ -1,6 +1,7 @@
 import React, { useId, useState } from "react";
 import Radio from "@dt/Radio";
 import HelperText from "@dt/HelperText";
+import GroupLabel from "@dt/GroupLabel";
 import styles from "./RadioGroup.module.css";
 import type { SizeUnified } from "../../utils/sizeNormalization";
 
@@ -77,7 +78,9 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
       aria-invalid={error ? true : undefined}
       disabled={disabled}
     >
-      <legend className={styles.legend}>{legend}</legend>
+      <GroupLabel as="legend" disabled={disabled}>
+        {legend}
+      </GroupLabel>
       <div
         className={[
           styles.options,

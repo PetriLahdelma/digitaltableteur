@@ -111,4 +111,28 @@ describe("GroupLabel", () => {
     expect(label?.className).toContain("disabled");
     expect(screen.getByText("*")).toBeInTheDocument();
   });
+
+  it("as a legend, names the fieldset it heads", () => {
+    render(
+      <fieldset>
+        <GroupLabel as="legend">Delivery speed</GroupLabel>
+        <input type="radio" name="speed" aria-label="Standard" />
+      </fieldset>,
+    );
+    expect(
+      screen.getByRole("group", { name: "Delivery speed" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Delivery speed").tagName).toBe("LEGEND");
+  });
+
+  it("hides the required asterisk from assistive technology", () => {
+    render(
+      <fieldset>
+        <GroupLabel as="legend" required>
+          Topics
+        </GroupLabel>
+      </fieldset>,
+    );
+    expect(screen.getByRole("group", { name: "Topics" })).toBeInTheDocument();
+  });
 });

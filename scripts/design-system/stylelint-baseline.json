@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1880,
+  "warningCount": 1879,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -5556,15 +5556,6 @@
       "id": "nextjs-app/shared/components/Grid/Grid.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::2"
     },
     {
-      "file": "nextjs-app/shared/components/GroupLabel/GroupLabel.module.css",
-      "line": 4,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/GroupLabel/GroupLabel.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/HelperText/HelperText.module.css",
       "line": 5,
       "column": 8,
@@ -10678,25 +10669,25 @@
     },
     {
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 99,
+      "line": 92,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\", at line 83 (no-descending-specificity)",
+      "text": "Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\", at line 76 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::no-descending-specificity::Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 87,
+      "line": 80,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\", at line 83 (no-descending-specificity)",
+      "text": "Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\", at line 76 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::no-descending-specificity::Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 60,
+      "line": 53,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10705,7 +10696,7 @@
     },
     {
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 96,
+      "line": 89,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",

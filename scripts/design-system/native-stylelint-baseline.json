@@ -1383,7 +1383,7 @@
     {
       "column": 46,
       "file": "packages/web-components/src/native/language-switcher.ts",
-      "line": 111,
+      "line": 107,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
       "text": "Unexpected transform translation value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/no-offscale-transform)",
@@ -1392,7 +1392,7 @@
     {
       "column": 46,
       "file": "packages/web-components/src/native/language-switcher.ts",
-      "line": 111,
+      "line": 107,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
@@ -1401,7 +1401,7 @@
     {
       "column": 21,
       "file": "packages/web-components/src/native/language-switcher.ts",
-      "line": 97,
+      "line": 104,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
@@ -1410,7 +1410,7 @@
     {
       "column": 23,
       "file": "packages/web-components/src/native/language-switcher.ts",
-      "line": 123,
+      "line": 119,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
@@ -1419,7 +1419,7 @@
     {
       "column": 46,
       "file": "packages/web-components/src/native/language-switcher.ts",
-      "line": 111,
+      "line": 107,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",

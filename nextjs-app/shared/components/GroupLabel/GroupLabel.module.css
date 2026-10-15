@@ -1,12 +1,32 @@
+/*
+ * The group heading. One treatment for every group of controls, so a
+ * radio set, a checkbox set and a card choice read the same: semibold on
+ * the small text step, in the title colour. Single-field labels keep the
+ * lighter Label treatment, which keeps the hierarchy visible.
+ */
+
 .groupLabel {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* 8px */
-
-  /* Typography matches the Label primitive exactly — one label treatment
-   * across single fields and group legends (unified 2026-08-05). */
+  gap: var(--space-internal-4);
   font-family: var(--font-text);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--color-primary);
+  font-size: var(--font-size-text-s);
+  font-weight: 600;
+  color: var(--color-title, var(--color-primary));
+}
+
+/* As a fieldset legend: a rendered legend sits outside the fieldset's flex
+   layout, so the space below it is the legend's own. */
+
+.legend {
+  margin-block-end: var(--space-internal-8);
+  padding: 0;
+}
+
+.required {
+  color: var(--color-error);
+}
+
+.disabled {
+  color: var(--color-muted-light);
 }

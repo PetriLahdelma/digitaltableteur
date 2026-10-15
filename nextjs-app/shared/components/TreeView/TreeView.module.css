@@ -19,8 +19,11 @@
   cursor: pointer;
 }
 
+/* Half-strength neutral tint: full --color-neutral-bg read as a second
+   selection state beside the selected row; --color-light-bg vanished. */
+
 .item:hover {
-  background: var(--color-neutral-bg);
+  background: color-mix(in srgb, var(--color-neutral-bg) 50%, transparent);
 }
 
 .item[data-selected] {

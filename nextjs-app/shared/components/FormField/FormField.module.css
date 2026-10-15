@@ -11,20 +11,6 @@
   border: 0;
 }
 
-.legend {
-  /* A rendered legend sits outside the fieldset's flex layout, so the
-     fieldset gap never reached it; the space is the legend's own. */
-  margin-block-end: var(--space-internal-16);
-  padding: 0;
-
-  /* The unified label treatment (2026-08-05): one look for single-field
-     labels and group legends, matching Label and GroupLabel. */
-  font-family: var(--font-text);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--color-primary);
-}
-
 .groupDescription {
   margin: calc(var(--space-internal-8) * -1) 0 0;
   font-family: var(--font-body);
