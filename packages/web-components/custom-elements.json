@@ -9482,7 +9482,7 @@
           "events": [],
           "dtSourceComponent": "GroupLabel",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },

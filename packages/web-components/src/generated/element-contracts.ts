@@ -982,7 +982,7 @@ export const elementMigrationManifest = [
   { tagName: "dt-breadcrumb", sourceComponent: "Breadcrumb", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-pagination", sourceComponent: "Pagination", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-timestamp", sourceComponent: "Timestamp", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
-  { tagName: "dt-group-label", sourceComponent: "GroupLabel", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-group-label", sourceComponent: "GroupLabel", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-mac-window-frame", sourceComponent: "MacWindowFrame", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-file-upload", sourceComponent: "FileUpload", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-category-filter", sourceComponent: "CategoryFilter", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },

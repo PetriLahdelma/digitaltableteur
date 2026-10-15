@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./GroupLabel.module.css";
 
-export interface GroupLabelProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
+export interface GroupLabelProps extends Omit<
+  React.HTMLAttributes<HTMLElement>,
+  "title"
+> {
   /**
    * Element to render. `legend` (as the first child of a `<fieldset>`) names a
    * group of controls and is what group components use; `label` names one

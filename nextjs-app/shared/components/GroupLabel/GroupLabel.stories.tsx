@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import GroupLabel from "./GroupLabel";
 import contract from "./GroupLabel.contract.json";
+import storyStyles from "./GroupLabel.stories.module.css";
 
 const defaultArgs = {
   htmlFor: "newsletter-options",
@@ -12,7 +13,7 @@ const defaultArgs = {
 const meta = {
   title: "Forms/GroupLabel",
   component: GroupLabel,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -45,6 +46,27 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+};
+
+export const AsLegend: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The main use: as=\"legend\" as the first child of a fieldset names the whole group. FormField, RadioGroup and the SelectableCard group all render it this way.",
+      },
+    },
+  },
+  args: { as: "legend", htmlFor: undefined, children: "Follow-up preferences" },
+  render: (args) => (
+    <fieldset className={storyStyles.fieldset}>
+      <GroupLabel {...args} />
+      <label>
+        <input type="checkbox" /> Email
+      </label>
+    </fieldset>
+  ),
 };
 
 export const Basic: Story = {

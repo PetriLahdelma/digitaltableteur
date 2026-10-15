@@ -1,0 +1,9 @@
+/* Bare fieldset so the story shows only the legend and one control. */
+
+.fieldset {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  border: 0;
+}

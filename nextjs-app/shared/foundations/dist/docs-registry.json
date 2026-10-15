@@ -7573,7 +7573,7 @@
       "name": "GroupLabel",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Fieldset/legend-shaped label used by `CheckboxGroup`, `FormGroup`, and other multi-control groupings. Provides the group's accessible name without forcing every child input to repeat it.",
       "dense": "heading-style label for a cluster of related controls; htmlFor targets the primary control; for true same-name sets use FormField or RadioGroup (fieldset legend)",
       "keywords": [
@@ -7585,9 +7585,14 @@
       "importLine": "import GroupLabel from \"@dt/GroupLabel\";",
       "keyProps": [
         {
+          "name": "as",
+          "type": "label | legend",
+          "required": false
+        },
+        {
           "name": "htmlFor",
           "type": "string",
-          "required": true
+          "required": false
         },
         {
           "name": "tooltipText",
@@ -7611,10 +7616,19 @@
         }
       ],
       "props": {
+        "as": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "label",
+            "legend"
+          ],
+          "description": "Element to render. legend (first child of a fieldset) names a group of controls; label names one control through htmlFor."
+        },
         "htmlFor": {
-          "optional": false,
+          "optional": true,
           "type": "string",
-          "description": "ID of the grouped control for label association"
+          "description": "ID of the control the label names. Required for label; ignored for legend."
         },
         "tooltipText": {
           "optional": true,
@@ -7684,6 +7698,11 @@
         ]
       },
       "examples": [
+        {
+          "story": "AsLegend",
+          "description": "The main use: as=\\\"legend\\\" as the first child of a fieldset names the whole group. FormField, RadioGroup and the SelectableCard group all render it this way.",
+          "source": "export const AsLegend: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The main use: as=\\\"legend\\\" as the first child of a fieldset names the whole group. FormField, RadioGroup and the SelectableCard group all render it this way.\",\n      },\n    },\n  },\n  args: { as: \"legend\", htmlFor: undefined, children: \"Follow-up preferences\" },\n  render: (args) => (\n    <fieldset className={storyStyles.fieldset}>\n      <GroupLabel {...args} />\n      <label>\n        <input type=\"checkbox\" /> Email\n      </label>\n    </fieldset>\n  ),\n};"
+        },
         {
           "story": "Basic",
           "description": "The group heading pointing at its primary control via htmlFor; clicking the text focuses that control.",
