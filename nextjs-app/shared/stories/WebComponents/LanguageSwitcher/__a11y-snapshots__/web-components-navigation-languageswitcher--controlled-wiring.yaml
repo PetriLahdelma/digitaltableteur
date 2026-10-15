@@ -3,5 +3,4 @@
   - text: "Current language:"
   - strong: en
 - group "Language":
-  - button "English. Show language options": EN
-  - text: Show language options
+  - button "EN, English": EN

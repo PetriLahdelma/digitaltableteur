@@ -1,0 +1,16 @@
+{
+  "storyId": "web-components-navigation-languageswitcher-keyboard-toggle",
+  "mode": "dark",
+  "sourceSHA": "92c35c96d0e56a89351a810b64efa8e747a52437",
+  "capturedAt": "2026-10-15T15:23:21.659Z",
+  "runner": "local-2026-10-15f",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
