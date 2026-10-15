@@ -1,2 +1,3 @@
-- checkbox "Select All" [checked]
-- text: Select All
+- group:
+  - checkbox "Select All" [checked]
+  - text: Select All
