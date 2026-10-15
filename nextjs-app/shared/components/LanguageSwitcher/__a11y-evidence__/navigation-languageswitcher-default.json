@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-languageswitcher-default",
   "mode": "light",
-  "sourceSHA": "8187e69ddf8f738917a8fa10204b62800553147a",
-  "capturedAt": "2026-09-27T05:44:45.018Z",
-  "runner": null,
+  "sourceSHA": "ab85ef6ed9a545a5e1b91a5ef4f7d6af1097c3f5",
+  "capturedAt": "2026-10-15T08:36:24.942Z",
+  "runner": "local-2026-10-15",
   "checks": {
     "accessibility-tree": {
       "passed": true

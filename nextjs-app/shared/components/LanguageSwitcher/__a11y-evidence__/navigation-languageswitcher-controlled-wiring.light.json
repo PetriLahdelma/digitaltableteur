@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-languageswitcher-controlled-wiring",
   "mode": "light",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:07:23.930Z",
-  "runner": null,
+  "sourceSHA": "ab85ef6ed9a545a5e1b91a5ef4f7d6af1097c3f5",
+  "capturedAt": "2026-10-15T08:37:13.639Z",
+  "runner": "local-2026-10-15",
   "checks": {
     "accessibility-tree": {
       "passed": true
