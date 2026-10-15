@@ -52,6 +52,6 @@ All URLs were checked on 2026-10-15. Order follows the flagship standard: primar
 |------------------|----------|
 | 949 light-theme records lost their axe result, exit 0 | `.storybook/preview.tsx:564` sets `test` to `"todo"` without `CI`; recapture recipe and incident in memory note `project_a11y_evidence_recapture` (2026-09-01, #1470) |
 | Chat bubble at 1.82:1 in dark theme, flagged by axe | `MarkdownMessage.module.css` comment and fix 3bb66d360 (2026-09-02): `#e0e0e0` on `#6fa8ff` |
-| Invisible list markers in the user bubble | `MarkdownMessage.module.css:20` `::marker { color: var(--color-primary) }`; user messages render through `MarkdownMessage` (`ChatMessageBubble.tsx:258`) on a `--color-primary` background. Still open |
+| Invisible list markers in the user bubble | `MarkdownMessage.module.css` coloured `::marker` with `--color-primary`, the user bubble's background (measured 1:1). Fixed in 796ffa9c8 with a play test (`UserMessageWithList`) that requires 3:1 marker contrast; it fails at 1:1 without the fix |
 | Language button name | Production, 2026-10-15: computed `aria-label` began `EN, EN` then "Switch to English. Show language options" with English active. Fixed in 3bc2c6e83 (exact spoken names unit-tested); snapshot diff in b73740e0f shows old and new names across 16 header snapshots |
 | Recapture hang | Writing `__a11y-evidence__` JSON hot-reloaded Storybook mid-test; KeyboardToggle hung 60 s in every mode with the update flag, passed in 241 ms without it. Fixed in 9b0304e5c |
