@@ -1,9 +1,9 @@
 {
   "storyId": "content-authorbio-forced-colors",
   "mode": "light",
-  "sourceSHA": "7af9b8c7505329993405fac4a1484b5d90f1933b",
-  "capturedAt": "2026-10-15T14:47:51.988Z",
-  "runner": "local-2026-10-15c",
+  "sourceSHA": "d4b2550aabac291a7d79906f80bc22d480d964bb",
+  "capturedAt": "2026-10-15T16:34:43.016Z",
+  "runner": "local-2026-10-15g",
   "checks": {
     "accessibility-tree": {
       "passed": true
