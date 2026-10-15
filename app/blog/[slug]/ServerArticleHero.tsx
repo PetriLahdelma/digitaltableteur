@@ -92,7 +92,10 @@ export function ServerArticleHero({
           <figure className="mx-auto mt-10 max-w-4xl">
             <Image
               src={mainImageUrl}
-              alt={mainImageAlt || title}
+              /* Hero art is decorative unless the post supplies its own alt:
+                 falling back to the title made screen readers hear the
+                 h1 twice on every post. */
+              alt={mainImageAlt ?? ""}
               width={1600}
               height={900}
               priority

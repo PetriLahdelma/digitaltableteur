@@ -468,7 +468,9 @@ export function ArticlePageTemplate({
             mainImageUrl
               ? {
                   src: mainImageUrl,
-                  alt: mainImageAlt || title,
+                  // Decorative unless the post supplies its own alt; the
+                  // title fallback repeated the h1 for screen reader users.
+                  alt: mainImageAlt ?? "",
                   caption: mainImageCaption,
                 }
               : undefined
