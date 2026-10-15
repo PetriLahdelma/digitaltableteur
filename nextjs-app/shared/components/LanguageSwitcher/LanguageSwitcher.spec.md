@@ -36,14 +36,15 @@ renders the trigger + fanned options and the open/close behavior.
 
 - **Trigger** is a `button` with `aria-expanded`, `aria-controls`, and
   `aria-current`; Enter/Space toggle it (native button).
-- **Options** are native `button`s with an `aria-label`; Enter/Space activate.
+- **Options** are native `button`s named "<label>, <ariaLabel>" (e.g. "FI, Suomi") with `lang` set to the option's code; Enter/Space activate.
 - **Escape** closes the fan and returns control to the trigger.
 - Verified by the `KeyboardToggle` story play function (open via trigger, close
   via Escape).
 
 ## Do / don't
 
-- Do: pass an `ariaLabel` per language (e.g. "Finnish"), not just the code.
+- Do: pass the language's name as `ariaLabel` (e.g. "Suomi"), not just the code.
+- Don't: pass an action or the code in `ariaLabel` ("FI, Switch to Suomi"). The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the language already in use.
 - Do: keep language state in the parent and feed `currentLang` back.
 - Don't: translate inside the component; labels and accessible names come from the caller.
 - Don't: render it as the only navigation; it complements rather than replaces site navigation.
@@ -51,8 +52,10 @@ renders the trigger + fanned options and the open/close behavior.
 ## Accessibility
 
 - `role="group"` with an `aria-label` ("Language").
-- Trigger announces expanded state and current language; options announce their
-  language name.
+- Trigger announces "<label>, <name>. Show language options" (or "Hide" when open)
+  plus its expanded state; options announce "<label>, <name>". Both names start
+  with the visible label (WCAG 2.5.3 Label in Name), and option buttons carry
+  `lang` so screen readers pronounce each language's own name correctly.
 - Reduced motion respected; colors inherit theme tokens (light/dark + forced
   colors safe).
 

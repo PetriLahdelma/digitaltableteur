@@ -7,8 +7,15 @@ import { cn } from "../../lib/cn";
 import styles from "./LanguageSwitcher.module.css";
 
 export type LanguageSwitcherOption = {
+  /** BCP 47 language code; also set as `lang` on the option button. */
   code: string;
+  /** Visible label, e.g. "FI". */
   label: string;
+  /**
+   * The language's name, e.g. "Suomi". Not an action phrase: the trigger
+   * announces "<label>, <name>. Show language options" and each option
+   * "<label>, <name>", so the visible label stays in the name (WCAG 2.5.3).
+   */
   ariaLabel: string;
 };
 
@@ -180,7 +187,11 @@ export function LanguageSwitcher({
                     buttonClassName,
                     floatedButtonClassName,
                   )}
-                  aria-label={lang.ariaLabel}
+                  // Starts with the visible label so voice control users can
+                  // say what they see (WCAG 2.5.3); lang lets screen readers
+                  // pronounce the language's own name correctly.
+                  aria-label={`${lang.label}, ${lang.ariaLabel}`}
+                  lang={lang.code}
                   onClick={() => handleSelect(lang.code)}
                 >
                   {lang.label}

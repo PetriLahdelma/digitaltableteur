@@ -163,6 +163,18 @@ describe("MobileDrawer focus trap (#6)", () => {
     );
   });
 
+  it("names each language by its visible code and own name, with lang", () => {
+    renderDrawer({ currentLang: "en" });
+
+    for (const [name, lang] of [
+      ["EN, English", "en"],
+      ["FI, Suomi", "fi"],
+      ["SV, Svenska", "sv"],
+    ]) {
+      expect(screen.getByRole("button", { name })).toHaveAttribute("lang", lang);
+    }
+  });
+
   it("closes and releases modal isolation when the desktop breakpoint matches", () => {
     let desktopListener: ((event: MediaQueryListEvent) => void) | undefined;
     const originalMatchMedia = window.matchMedia;

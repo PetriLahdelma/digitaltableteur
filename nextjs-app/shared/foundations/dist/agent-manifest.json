@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-06T20:56:53.840Z",
+  "generatedAt": "2026-10-15T08:16:02.938Z",
   "summary": {
     "componentCount": 180,
     "statusCounts": {
@@ -29861,11 +29861,11 @@
             "role=group with aria-label",
             "trigger aria-expanded + aria-controls",
             "trigger aria-current",
-            "each option has an accessible name (aria-label)"
+            "each option is named '<label>, <language name>' (visible label first, WCAG 2.5.3) and carries lang"
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close.",
+          "reviewedNote": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact spoken names are unit-tested.",
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true
@@ -30021,7 +30021,7 @@
           }
         }
       },
-      "spec": "# LanguageSwitcher — spec\n\nCompact locale selector. Molecule, navigation group.\n\n## Intent\n\nLet a visitor switch UI language from a small, header-friendly control that\nshows the current language and reveals the alternatives on demand, without a\nfull dropdown's weight. Used in the site header.\n\n## Purpose\n\nSingle, accessible language control shared across layouts. The parent owns the\nlanguage list and the change handler (i18n lives outside the component); this\nrenders the trigger + fanned options and the open/close behavior.\n\n## API\n\n| Prop               | Type                       | Notes                                   |\n| ------------------ | -------------------------- | --------------------------------------- |\n| `languages`        | `LanguageSwitcherOption[]` | `{ code, label, ariaLabel }` per locale |\n| `currentLang`      | `string`                   | Selected language code                  |\n| `onLanguageChange` | `(code: string) => void`   | Called when an option is chosen         |\n| `className`        | `string`                   | Classes on the `role=group` wrapper     |\n| `*ClassName`       | `string`                   | Style overrides for trigger/options     |\n\n## Behavior\n\n- Collapsed: shows only the current language as the trigger.\n- Expanded: fans out the other locales as buttons; selecting one calls\n  `onLanguageChange` and collapses.\n- Closes on Escape and on outside click.\n- Animations use a spring fan, swapped for a plain fade under reduced motion.\n\n## Interaction contract\n\n- **Trigger** is a `button` with `aria-expanded`, `aria-controls`, and\n  `aria-current`; Enter/Space toggle it (native button).\n- **Options** are native `button`s with an `aria-label`; Enter/Space activate.\n- **Escape** closes the fan and returns control to the trigger.\n- Verified by the `KeyboardToggle` story play function (open via trigger, close\n  via Escape).\n\n## Do / don't\n\n- Do: pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.\n- Do: keep language state in the parent and feed `currentLang` back.\n- Don't: translate inside the component; labels and accessible names come from the caller.\n- Don't: render it as the only navigation; it complements rather than replaces site navigation.\n\n## Accessibility\n\n- `role=\"group\"` with an `aria-label` (\"Language\").\n- Trigger announces expanded state and current language; options announce their\n  language name.\n- Reduced motion respected; colors inherit theme tokens (light/dark + forced\n  colors safe).\n\n## Design notes\n\n- The \"fan\" is intentional brand motion; it degrades to a fade, never blocking\n  use. Styling is utility-class driven with overridable `*ClassName` props for\n  header vs. floated placements.\n",
+      "spec": "# LanguageSwitcher — spec\n\nCompact locale selector. Molecule, navigation group.\n\n## Intent\n\nLet a visitor switch UI language from a small, header-friendly control that\nshows the current language and reveals the alternatives on demand, without a\nfull dropdown's weight. Used in the site header.\n\n## Purpose\n\nSingle, accessible language control shared across layouts. The parent owns the\nlanguage list and the change handler (i18n lives outside the component); this\nrenders the trigger + fanned options and the open/close behavior.\n\n## API\n\n| Prop               | Type                       | Notes                                   |\n| ------------------ | -------------------------- | --------------------------------------- |\n| `languages`        | `LanguageSwitcherOption[]` | `{ code, label, ariaLabel }` per locale |\n| `currentLang`      | `string`                   | Selected language code                  |\n| `onLanguageChange` | `(code: string) => void`   | Called when an option is chosen         |\n| `className`        | `string`                   | Classes on the `role=group` wrapper     |\n| `*ClassName`       | `string`                   | Style overrides for trigger/options     |\n\n## Behavior\n\n- Collapsed: shows only the current language as the trigger.\n- Expanded: fans out the other locales as buttons; selecting one calls\n  `onLanguageChange` and collapses.\n- Closes on Escape and on outside click.\n- Animations use a spring fan, swapped for a plain fade under reduced motion.\n\n## Interaction contract\n\n- **Trigger** is a `button` with `aria-expanded`, `aria-controls`, and\n  `aria-current`; Enter/Space toggle it (native button).\n- **Options** are native `button`s named \"<label>, <ariaLabel>\" (e.g. \"FI, Suomi\") with `lang` set to the option's code; Enter/Space activate.\n- **Escape** closes the fan and returns control to the trigger.\n- Verified by the `KeyboardToggle` story play function (open via trigger, close\n  via Escape).\n\n## Do / don't\n\n- Do: pass the language's name as `ariaLabel` (e.g. \"Suomi\"), not just the code.\n- Don't: pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\"). The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the language already in use.\n- Do: keep language state in the parent and feed `currentLang` back.\n- Don't: translate inside the component; labels and accessible names come from the caller.\n- Don't: render it as the only navigation; it complements rather than replaces site navigation.\n\n## Accessibility\n\n- `role=\"group\"` with an `aria-label` (\"Language\").\n- Trigger announces \"<label>, <name>. Show language options\" (or \"Hide\" when open)\n  plus its expanded state; options announce \"<label>, <name>\". Both names start\n  with the visible label (WCAG 2.5.3 Label in Name), and option buttons carry\n  `lang` so screen readers pronounce each language's own name correctly.\n- Reduced motion respected; colors inherit theme tokens (light/dark + forced\n  colors safe).\n\n## Design notes\n\n- The \"fan\" is intentional brand motion; it degrades to a fade, never blocking\n  use. Styling is utility-class driven with overridable `*ClassName` props for\n  header vs. floated placements.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/LanguageSwitcher",
@@ -30089,10 +30089,11 @@
         "cvaVariants": {},
         "variantsFnName": null,
         "useWhen": [
-          "pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.",
+          "pass the language's name as `ariaLabel` (e.g. \"Suomi\"), not just the code.",
           "keep language state in the parent and feed `currentLang` back."
         ],
         "avoidWhen": [
+          "pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\"). The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the lang…",
           "translate inside the component; labels and accessible names come from the caller.",
           "render it as the only navigation; it complements rather than replaces site navigation."
         ],
@@ -30100,7 +30101,7 @@
           "role=group with aria-label",
           "trigger aria-expanded + aria-controls",
           "trigger aria-current",
-          "each option has an accessible name (aria-label)"
+          "each option is named '<label>, <language name>' (visible label first, WCAG 2.5.3) and carries lang"
         ],
         "keyboard": [
           "Tab",
@@ -30119,6 +30120,7 @@
         ],
         "replacementFor": [],
         "forbiddenUse": [
+          "pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\"). The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the lang…",
           "translate inside the component; labels and accessible names come from the caller.",
           "render it as the only navigation; it complements rather than replaces site navigation."
         ],
@@ -30134,9 +30136,16 @@
         "guidelines": [
           {
             "level": "should",
-            "guidance": "pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.",
+            "guidance": "pass the language's name as `ariaLabel` (e.g. \"Suomi\"), not just the code.",
             "rationale": null,
             "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\")",
+            "rationale": "The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the language already in use.",
+            "rationaleSource": "inferred",
             "source": "spec.md#do-dont"
           },
           {
@@ -30246,7 +30255,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close."
+            "note": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact spoken names are unit-tested."
           }
         ],
         "docOrigin": {

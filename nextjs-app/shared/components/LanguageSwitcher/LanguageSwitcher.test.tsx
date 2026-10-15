@@ -32,10 +32,10 @@ describe("LanguageSwitcher", () => {
       screen.getByRole("button", { name: /english/i }),
     ).toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: /^finnish$/i }),
+      screen.queryByRole("button", { name: /^FI, Finnish$/ }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: /^swedish$/i }),
+      screen.queryByRole("button", { name: /^SV, Swedish$/ }),
     ).not.toBeInTheDocument();
   });
 
@@ -44,8 +44,8 @@ describe("LanguageSwitcher", () => {
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: /english/i }));
 
-    expect(screen.getByRole("button", { name: /^finnish$/i })).toBeVisible();
-    expect(screen.getByRole("button", { name: /^swedish$/i })).toBeVisible();
+    expect(screen.getByRole("button", { name: /^FI, Finnish$/ })).toBeVisible();
+    expect(screen.getByRole("button", { name: /^SV, Swedish$/ })).toBeVisible();
     expect(screen.getByText("FI")).toBeVisible();
     expect(screen.getByText("SV")).toBeVisible();
   });
@@ -75,6 +75,26 @@ describe("LanguageSwitcher", () => {
     expect(trigger).toHaveAccessibleName(/EN.*English.*Hide language options/i);
   });
 
+  // Regression: the header once passed "EN — Switch to English" as the
+  // language name, so the trigger announced "EN, EN — Switch to English"
+  // while English was active. Pin the exact spoken names.
+  it("announces the visible label and language name, never an action", async () => {
+    renderSwitcher("en");
+    const user = userEvent.setup();
+    const trigger = screen.getByRole("button", { name: /english/i });
+
+    expect(trigger).toHaveAccessibleName("EN, English. Show language options");
+
+    await user.click(trigger);
+
+    expect(trigger).toHaveAccessibleName("EN, English. Hide language options");
+    const finnish = screen.getByRole("button", { name: "FI, Finnish" });
+    const swedish = screen.getByRole("button", { name: "SV, Swedish" });
+    expect(finnish).toHaveAttribute("lang", "fi");
+    expect(swedish).toHaveAttribute("lang", "sv");
+    expect(finnish).toHaveTextContent("FI");
+  });
+
   // Backs the audit:controls effect exemptions for the open-tray class props:
   // both exist in the DOM only while the tray is expanded.
   it("applies openTriggerClassName and floatedButtonClassName while open", async () => {
@@ -98,7 +118,7 @@ describe("LanguageSwitcher", () => {
 
     expect(trigger.className).toContain("open-trigger-probe");
     expect(
-      screen.getByRole("button", { name: /^finnish$/i }).className,
+      screen.getByRole("button", { name: /^FI, Finnish$/ }).className,
     ).toContain("floated-probe");
   });
 
@@ -106,11 +126,11 @@ describe("LanguageSwitcher", () => {
     const { onLanguageChange } = renderSwitcher("en");
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: /english/i }));
-    await user.click(screen.getByRole("button", { name: /^finnish$/i }));
+    await user.click(screen.getByRole("button", { name: /^FI, Finnish$/ }));
 
     expect(onLanguageChange).toHaveBeenCalledWith("fi");
     expect(
-      screen.queryByRole("button", { name: /^swedish$/i }),
+      screen.queryByRole("button", { name: /^SV, Swedish$/ }),
     ).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: /english/i })).toHaveFocus();
   });
@@ -120,7 +140,7 @@ describe("LanguageSwitcher", () => {
     const user = userEvent.setup();
     const trigger = screen.getByRole("button", { name: /english/i });
     await user.click(trigger);
-    screen.getByRole("button", { name: /^finnish$/i }).focus();
+    screen.getByRole("button", { name: /^FI, Finnish$/ }).focus();
 
     await user.keyboard("{Escape}");
 

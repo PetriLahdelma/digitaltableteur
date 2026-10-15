@@ -187,15 +187,18 @@ export function MobileDrawer({
               </span>
               <div className="flex gap-2">
                 {[
-                  { code: "en", ariaLabel: t("langEN_ariaLabel") },
-                  { code: "fi", ariaLabel: t("langFI_ariaLabel") },
-                  { code: "sv", ariaLabel: t("langSV_ariaLabel") },
+                  // Each language's own name, the same in every UI locale.
+                  { code: "en", nativeName: "English" },
+                  { code: "fi", nativeName: "Suomi" },
+                  { code: "sv", nativeName: "Svenska" },
                 ].map((lang) => (
                   <button
                     key={lang.code}
                     type="button"
                     onClick={() => onLanguageChange(lang.code)}
-                    aria-label={`${lang.code.toUpperCase()} — ${lang.ariaLabel}`}
+                    // Visible code first (WCAG 2.5.3); lang for pronunciation.
+                    aria-label={`${lang.code.toUpperCase()}, ${lang.nativeName}`}
+                    lang={lang.code}
                     aria-pressed={currentLang === lang.code}
                     className={cn(
                       "flex-1 py-2 px-3 rounded-md text-text-m font-body uppercase transition-colors",

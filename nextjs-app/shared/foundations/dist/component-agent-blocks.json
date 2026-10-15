@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T20:56:53.430Z",
+  "generatedAt": "2026-10-15T08:16:02.604Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -17172,10 +17172,11 @@
       "cvaVariants": {},
       "variantsFnName": null,
       "useWhen": [
-        "pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.",
+        "pass the language's name as `ariaLabel` (e.g. \"Suomi\"), not just the code.",
         "keep language state in the parent and feed `currentLang` back."
       ],
       "avoidWhen": [
+        "pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\"). The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the lang…",
         "translate inside the component; labels and accessible names come from the caller.",
         "render it as the only navigation; it complements rather than replaces site navigation."
       ],
@@ -17183,7 +17184,7 @@
         "role=group with aria-label",
         "trigger aria-expanded + aria-controls",
         "trigger aria-current",
-        "each option has an accessible name (aria-label)"
+        "each option is named '<label>, <language name>' (visible label first, WCAG 2.5.3) and carries lang"
       ],
       "keyboard": [
         "Tab",
@@ -17202,6 +17203,7 @@
       ],
       "replacementFor": [],
       "forbiddenUse": [
+        "pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\"). The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the lang…",
         "translate inside the component; labels and accessible names come from the caller.",
         "render it as the only navigation; it complements rather than replaces site navigation."
       ],
@@ -17217,9 +17219,16 @@
       "guidelines": [
         {
           "level": "should",
-          "guidance": "pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.",
+          "guidance": "pass the language's name as `ariaLabel` (e.g. \"Suomi\"), not just the code.",
           "rationale": null,
           "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "pass an action or the code in `ariaLabel` (\"FI, Switch to Suomi\")",
+          "rationale": "The component already adds the visible label and the show/hide action, so the trigger would announce the code twice and tell users to switch to the language already in use.",
+          "rationaleSource": "inferred",
           "source": "spec.md#do-dont"
         },
         {
@@ -17329,7 +17338,7 @@
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close."
+          "note": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close. 2026-10-15: the header passed an action phrase as the language name, so the trigger announced the code twice and an instruction to switch to the active language. ariaLabel is now documented as the language name only; options are named '<label>, <name>' with lang; exact spoken names are unit-tested."
         }
       ],
       "docOrigin": {

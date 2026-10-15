@@ -50,19 +50,22 @@ const languages = [
   {
     code: "en",
     labelKey: "langEN",
-    ariaLabelKey: "langEN_ariaLabel",
+    // The language's own name, the same in every UI locale.
+    nativeName: "English",
     announcementKey: "languageName.en",
   },
   {
     code: "fi",
     labelKey: "langFI",
-    ariaLabelKey: "langFI_ariaLabel",
+    // The language's own name, the same in every UI locale.
+    nativeName: "Suomi",
     announcementKey: "languageName.fi",
   },
   {
     code: "sv",
     labelKey: "langSV",
-    ariaLabelKey: "langSV_ariaLabel",
+    // The language's own name, the same in every UI locale.
+    nativeName: "Svenska",
     announcementKey: "languageName.sv",
   },
 ];
@@ -223,7 +226,7 @@ export function SiteHeader({
                 languages={languages.map((lang) => ({
                   code: lang.code,
                   label: lang.code.toUpperCase(),
-                  ariaLabel: `${lang.code.toUpperCase()} — ${t(lang.ariaLabelKey)}`,
+                  ariaLabel: lang.nativeName,
                 }))}
                 currentLang={currentLang}
                 onLanguageChange={handleLanguageChange}
