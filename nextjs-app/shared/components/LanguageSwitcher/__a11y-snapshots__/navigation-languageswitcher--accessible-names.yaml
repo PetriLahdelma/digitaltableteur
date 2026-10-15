@@ -1,2 +1,2 @@
 - group "Language":
-  - button "EN, English. Show language options": EN
+  - button "EN, English": EN

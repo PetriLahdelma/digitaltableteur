@@ -1,0 +1,16 @@
+{
+  "storyId": "data-display-tablerow-example",
+  "mode": "light",
+  "sourceSHA": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
+  "capturedAt": "2026-10-15T14:26:47.175Z",
+  "runner": "local-2026-10-15b",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

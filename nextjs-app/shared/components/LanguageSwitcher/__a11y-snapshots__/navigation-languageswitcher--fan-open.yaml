@@ -1,4 +1,4 @@
 - group "Language":
-  - button "EN, English. Hide language options" [expanded]: EN
+  - button "EN, English" [expanded]: EN
   - button "SV, Svenska": SV
   - button "FI, Suomi": FI
