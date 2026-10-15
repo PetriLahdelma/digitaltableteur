@@ -158,6 +158,10 @@ export const Inline: Story = {
     code: "npm install @digitaltableteur/components",
     language: "bash",
     showLineNumbers: false,
+    // The shared "Code snippet in TypeScript" label names the block region;
+    // on the inline copy button it would replace the visible code in the
+    // name (WCAG 2.5.3). The default "Copy code: <code>" is the right one.
+    ariaLabel: "",
   },
 };
 export const Single: Story = {

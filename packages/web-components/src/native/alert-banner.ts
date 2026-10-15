@@ -152,7 +152,8 @@ export class DtAlertBannerElement extends DigitaltableteurElement {
       dismiss.setAttribute("part", "dismiss-button");
       dismiss.setAttribute(
         "aria-label",
-        stringAttribute(this, "dismiss-label", "Dismiss alert"),
+        // Starts with the visible "Close" (WCAG 2.5.3), as the React twin.
+        stringAttribute(this, "dismiss-label", "Close alert"),
       );
       dismiss.textContent = "Close";
       dismiss.addEventListener("click", () =>

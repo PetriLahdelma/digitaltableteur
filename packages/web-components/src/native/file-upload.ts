@@ -757,13 +757,16 @@ export class DtFileUploadElement extends DigitaltableteurElement {
       trigger.type = "button";
       trigger.className = "editorialTrigger";
       trigger.disabled = disabled;
-      trigger.setAttribute("aria-labelledby", labelId);
+      // Label, then the visible status: the name holds the button's text
+      // (WCAG 2.5.3) and carries the current state, as the React twin.
+      trigger.setAttribute("aria-labelledby", `${labelId} ${controlId}-value`);
       if (describedBy) trigger.setAttribute("aria-describedby", describedBy);
       if (error) trigger.setAttribute("aria-invalid", "true");
       if (this.required) trigger.setAttribute("aria-required", "true");
       trigger.addEventListener("click", () => this.requestPicker("summary"));
 
       const text = this.ownerDocument.createElement("span");
+      text.id = `${controlId}-value`;
       if (!fileSummary && this.placeholder) text.className = "editorialPlaceholder";
       text.textContent = fileSummary || this.placeholder;
       trigger.append(text);

@@ -305,7 +305,11 @@ describe("DtFileUploadElement", () => {
     document.body.append(element);
 
     const trigger = summaryButton(element);
-    expect(trigger).toHaveAttribute("aria-labelledby", "control-label");
+    // Label, then the visible file status (WCAG 2.5.3 Label in Name).
+    expect(trigger).toHaveAttribute(
+      "aria-labelledby",
+      "control-label control-value",
+    );
     expect(trigger).toHaveAttribute("aria-describedby", "error helper");
     expect(trigger).toHaveAttribute("aria-invalid", "true");
     expect(trigger).toHaveAttribute("aria-required", "true");
