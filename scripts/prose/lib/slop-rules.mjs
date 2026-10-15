@@ -30,6 +30,18 @@ export const SLOP_RULES = [
     },
   },
   {
+    // Owner rule (docs/WRITING_STYLE.md): no Oxford comma, and no comma
+    // before "and"/"or" joining two phrases either.
+    id: "comma-before-conjunction",
+    severity: "error",
+    label: 'Comma before "and"/"or" (no Oxford comma)',
+    test: (body) => {
+      const hits = [...body.matchAll(/,\s+(and|or)\b/gi)];
+      if (hits.length === 0) return null;
+      return { count: hits.length, sample: sampleAround(body, hits[0].index) };
+    },
+  },
+  {
     id: "opener-landscape",
     severity: "error",
     label: "Generic AI opener (fast-paced / ever-evolving landscape)",

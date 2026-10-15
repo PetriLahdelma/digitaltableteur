@@ -135,7 +135,7 @@ Generic AI defaults and hollow intensifiers. If one appears in a draft, replace 
 | Lists | **Tools and checklists only** — not as a substitute for argument; default body is flowing prose |
 | Bold | Sparingly — terms on first definitional use, not whole sentences |
 | Contractions | Yes (`don’t`, `it’s`, `we’re`) in blog voice |
-| Oxford comma | Yes |
+| Oxford comma | **No.** No comma before the final "and" or "or" in a list. No comma before "and" joining two phrases either ("Where AI Falls Short and Who to Call"). Owner rule. |
 | Questions in headings | Rare; prefer statements |
 | Code / commands | Fenced blocks or inline backticks; real commands from this repo when claiming enforcement |
 | MDX extras | `<Figure>` / images need unique assets and alt text that describes the diagram; no filler SVGs |
