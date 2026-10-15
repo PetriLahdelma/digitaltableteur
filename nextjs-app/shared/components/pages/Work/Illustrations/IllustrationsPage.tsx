@@ -126,7 +126,7 @@ const works: IllustrationWork[] = [
     placement: "trioEnd",
   },
   {
-    src: "/images/portfolio/illustrations/gallery/salute.png",
+    src: "/images/portfolio/illustrations/gallery/salute.webp",
     alt: "Army salute illustration",
     title: "Salute",
     note: "Character work, Personal",

@@ -347,7 +347,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
       <div className={styles.ogImageSection}>
         <div className={styles.ogImageWrapper}>
           <img
-            src="/images/portfolio/knobsmith-audio/hero.png"
+            src="/images/portfolio/knobsmith-audio/hero.webp"
             alt="KnobSmith Audio social media preview card"
             className={styles.ogImage}
           />

@@ -34,11 +34,11 @@
 
 | File | Concept |
 |------|---------|
-| `fig-operating-loop.png` | Simpler loop diagram for Part 1 body |
-| `fig-tools-layers.png` | Three-layer model for Part 2 |
+| `fig-operating-loop.webp` | Simpler loop diagram for Part 1 body |
+| `fig-tools-layers.webp` | Three-layer model for Part 2 |
 | `fig-contract-v1-v2.png` | Two-tier contract layers for Part 3 |
-| `fig-mvp-stack.png` | Six-layer stack for Part 4 |
-| `fig-agentops-bridge.png` | DesignOps → AgentOps bridge for Part 5 |
+| `fig-mvp-stack.webp` | Six-layer stack for Part 4 |
+| `fig-agentops-bridge.webp` | DesignOps → AgentOps bridge for Part 5 |
 
 Keep inline figures smaller in composition (more margin, single focal object).
 
