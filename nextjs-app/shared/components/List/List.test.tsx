@@ -17,6 +17,22 @@ describe("List", () => {
     expect(container.querySelector("ol")).toBeInTheDocument();
   });
 
+  it("striped adds the row class, drops markers, and keeps list semantics", () => {
+    const { container } = render(<List items={items} striped />);
+    const list = container.querySelector("ul");
+    expect(list).toHaveClass(styles.striped);
+    // "none" maps to a single-space marker so Safari keeps the list role.
+    expect(list?.style.listStyleType).toBe('" "');
+    expect(screen.getAllByRole("listitem")).toHaveLength(3);
+  });
+
+  it("striped respects an explicit listStyleType", () => {
+    const { container } = render(
+      <List items={items} striped listStyleType="decimal" as="ol" />,
+    );
+    expect(container.querySelector("ol")?.style.listStyleType).toBe("decimal");
+  });
+
   it("renders all list items", () => {
     render(<List items={items} />);
     expect(screen.getByText("Item 1")).toBeInTheDocument();

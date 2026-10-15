@@ -9221,6 +9221,12 @@
           "optional": true,
           "type": "string",
           "description": "Optional ARIA role override for specialized list semantics."
+        },
+        "striped": {
+          "optional": true,
+          "type": "boolean",
+          "default": false,
+          "description": "Alternate row backgrounds for long lists of multi-line entries; rows get padding and no markers unless listStyleType asks for them."
         }
       },
       "composesWith": [
@@ -16318,7 +16324,7 @@
         {
           "story": "Example",
           "description": "numeric cells right-align with tabular figures so columns line up on the decimal.",
-          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"numeric cells right-align with tabular figures so columns line up on the decimal.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Numbers\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Metric</TableHeaderCell>\n          <TableHeaderCell align=\"end\">Value</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Requests</TableCell>\n          <TableCell numeric>1,204</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Errors</TableCell>\n          <TableCell numeric>12</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Latency</TableCell>\n          <TableCell numeric>98</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"numeric cells right-align with tabular figures so columns line up on the decimal.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Numbers\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Metric</TableHeaderCell>\n          <TableHeaderCell align=\"end\">Value</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Requests</TableCell>\n          <TableCell numeric>1,204</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Errors</TableCell>\n          <TableCell numeric>12</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Latency</TableCell>\n          <TableCell numeric>98</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
         }
       ]
     },

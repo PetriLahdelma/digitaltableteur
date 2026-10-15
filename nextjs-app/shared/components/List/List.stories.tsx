@@ -63,6 +63,12 @@ const meta: Meta<typeof List> = {
       description: "Spacing between list items",
     },
 
+    striped: {
+      control: { type: "boolean" },
+      description: "Alternate row backgrounds for long multi-line lists",
+      table: { defaultValue: { summary: "false" } },
+    },
+
     listStyleType: {
       control: { type: "select" },
       options: [
@@ -342,4 +348,36 @@ export const ForcedColors = {
   globals: { forcedColors: "active" },
   render: Template,
   args: defaultListArgs,
+};
+
+export const Striped: StoryFn = () => {
+  const { t } = useTranslation();
+  const longText =
+    t("storyListLongText") ||
+    "This is a longer list item that demonstrates the effect of different line heights on text readability and visual density.";
+  const items = [
+    <span key="1">
+      <strong>{t("storyListBold")}</strong> {longText}
+    </span>,
+    <span key="2">
+      <strong>{t("storyListBold")}</strong> {longText}
+    </span>,
+    <span key="3">
+      <strong>{t("storyListBold")}</strong> {longText}
+    </span>,
+    <span key="4">
+      <strong>{t("storyListBold")}</strong> {longText}
+    </span>,
+  ];
+
+  return <List items={items} striped />;
+};
+Striped.tags = ["beta-matrix"];
+Striped.parameters = {
+  docs: {
+    description: {
+      story:
+        "striped tints every other row and drops the markers: for long lists of multi-line entries where the eye needs to hold its place.",
+    },
+  },
 };

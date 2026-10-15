@@ -16,6 +16,7 @@ import type { BlogPostEntry } from "../../data/blogPosts";
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
 import { CodeBlockWindow, Link, Text } from "@digitaltableteur/react";
 import { DashLeadList } from "@dt/DashLeadList";
+import List from "@dt/List";
 import { Table } from "@dt/Table";
 import { TableRow } from "@dt/TableRow";
 import { TableHeaderCell } from "@dt/TableHeaderCell";
@@ -397,6 +398,7 @@ const mdxComponents = {
   AuthorBio: MdxAuthorBio,
   ArticleFigure,
   DashLeadList,
+  List,
   Table,
   TableRow,
   TableHeaderCell,

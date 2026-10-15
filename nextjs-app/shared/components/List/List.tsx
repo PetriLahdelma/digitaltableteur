@@ -36,6 +36,12 @@ export interface ListProps {
   spacing?: "compact" | "normal" | "relaxed";
   /** Optional ARIA role override for specialized list semantics. */
   role?: string;
+  /**
+   * Alternate row backgrounds for long lists of multi-line entries, so the
+   * eye can hold its place. Rows get padding and no markers unless
+   * `listStyleType` asks for them. @default false
+   */
+  striped?: boolean;
 }
 
 const sizeClassMap: Record<TextSize, string> = {
@@ -79,6 +85,7 @@ export const List = React.forwardRef<
     listStyleType,
     spacing = "normal",
     role,
+    striped = false,
   },
   ref,
 ) {
@@ -91,14 +98,17 @@ export const List = React.forwardRef<
     : "";
   const spacingClass = spacingClassMap[spacing] || "";
 
+  // Striped rows are the item boundary; a marker beside each row is noise.
+  const effectiveListStyleType =
+    listStyleType ?? (striped ? "none" : undefined);
   const resolvedListStyleType =
-    listStyleType === "none"
+    effectiveListStyleType === "none"
       ? ('" "' as ListStyleType)
-      : listStyleType === "dash"
+      : effectiveListStyleType === "dash"
         ? // The dash is drawn by .markerDash li::before so it can hang in the
           // li padding; the native marker is suppressed.
           ("none" as ListStyleType)
-        : listStyleType;
+        : effectiveListStyleType;
 
   const combinedStyle = {
     ...style,
@@ -109,8 +119,8 @@ export const List = React.forwardRef<
     <Tag
       ref={ref}
       className={`${styles.list} ${sizeClass} ${lineHeightClass} ${spacingClass} ${
-        listStyleType === "dash" ? styles.markerDash : ""
-      } ${className}`
+        effectiveListStyleType === "dash" ? styles.markerDash : ""
+      } ${striped ? styles.striped : ""} ${className}`
         .replace(/\s+/g, " ")
         .trim()}
       style={combinedStyle}

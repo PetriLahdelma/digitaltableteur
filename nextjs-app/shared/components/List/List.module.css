@@ -45,6 +45,27 @@
   margin-block-end: var(--space-internal-12);
 }
 
+/* Striped rows: each item is a padded row; even rows take a quiet tint.
+   Declared after the spacing classes so rows sit flush (equal specificity,
+   later wins). The same tint as Table's striped rows. */
+.striped {
+  padding-inline-start: 0;
+}
+.striped li {
+  margin-block-end: 0;
+  padding: var(--space-internal-12) var(--space-internal-16);
+  border-radius: var(--radius-md);
+}
+.striped li:nth-child(even) {
+  background: color-mix(in srgb, var(--color-light-bg) 55%, transparent);
+}
+
+@media (forced-colors: active) {
+  .striped li:nth-child(even) {
+    outline: 1px solid CanvasText;
+  }
+}
+
 .list li:last-child,
 .spacingCompact li:last-child,
 .spacingNormal li:last-child,
