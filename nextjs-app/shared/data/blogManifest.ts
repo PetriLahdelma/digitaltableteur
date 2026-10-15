@@ -38,18 +38,21 @@ import Post11, {
 } from "../../../content/posts/petri-lahdelma-bio.mdx";
 import Post12, {
   frontmatter as Post12Frontmatter,
-} from "../../../content/posts/the-evolutionary-difference-between-constructive-and-constrictive-criticism.mdx";
+} from "../../../content/posts/plausible-accessibility.mdx";
 import Post13, {
   frontmatter as Post13Frontmatter,
-} from "../../../content/drafts/agentic-design-systems/the-minimum-viable-agent-ready-design-system.mdx";
+} from "../../../content/posts/the-evolutionary-difference-between-constructive-and-constrictive-criticism.mdx";
 import Post14, {
   frontmatter as Post14Frontmatter,
-} from "../../../content/posts/thoughts-on-future-branding.mdx";
+} from "../../../content/drafts/agentic-design-systems/the-minimum-viable-agent-ready-design-system.mdx";
 import Post15, {
   frontmatter as Post15Frontmatter,
-} from "../../../content/drafts/agentic-design-systems/tools-harnesses-and-skills-the-missing-model-for-design-systems.mdx";
+} from "../../../content/posts/thoughts-on-future-branding.mdx";
 import Post16, {
   frontmatter as Post16Frontmatter,
+} from "../../../content/drafts/agentic-design-systems/tools-harnesses-and-skills-the-missing-model-for-design-systems.mdx";
+import Post17, {
+  frontmatter as Post17Frontmatter,
 } from "../../../content/posts/workflow-tips.mdx";
 
 export type BlogManifestEntry = {
@@ -138,28 +141,33 @@ export const blogManifest: BlogManifestEntry[] = [
     frontmatter: Post11Frontmatter,
   },
   {
-    slug: "the-evolutionary-difference-between-constructive-and-constrictive-criticism",
+    slug: "plausible-accessibility",
     Component: Post12 as unknown as import("react").ComponentType,
     frontmatter: Post12Frontmatter,
   },
   {
-    slug: "the-minimum-viable-agent-ready-design-system",
+    slug: "the-evolutionary-difference-between-constructive-and-constrictive-criticism",
     Component: Post13 as unknown as import("react").ComponentType,
     frontmatter: Post13Frontmatter,
   },
   {
-    slug: "thoughts-on-future-branding",
+    slug: "the-minimum-viable-agent-ready-design-system",
     Component: Post14 as unknown as import("react").ComponentType,
     frontmatter: Post14Frontmatter,
   },
   {
-    slug: "tools-harnesses-and-skills-the-missing-model-for-design-systems",
+    slug: "thoughts-on-future-branding",
     Component: Post15 as unknown as import("react").ComponentType,
     frontmatter: Post15Frontmatter,
   },
   {
-    slug: "workflow-tips",
+    slug: "tools-harnesses-and-skills-the-missing-model-for-design-systems",
     Component: Post16 as unknown as import("react").ComponentType,
     frontmatter: Post16Frontmatter,
+  },
+  {
+    slug: "workflow-tips",
+    Component: Post17 as unknown as import("react").ComponentType,
+    frontmatter: Post17Frontmatter,
   },
 ];

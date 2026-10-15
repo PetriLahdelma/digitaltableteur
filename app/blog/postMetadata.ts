@@ -27,9 +27,19 @@ export type BlogPostMeta = {
 
 export const allPosts: BlogPostMeta[] = [
   {
+    title: "Plausible Accessibility: Where AI Still Falls Short and Who to Call Instead",
+    slug: "plausible-accessibility",
+    excerpt: "AI builds the most likely interface and accessibility lives in the specific one. Here is where that gap still fails disabled people and when to bring in a specialist or test with the people who use what you build.",
+    readTime: "14 min read",
+    publishedAt: "2026-10-15T00:00:00.000Z",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+    mainImageUrl: "/blog/plausible-accessibility/hero-stencil-at-desk.webp",
+  },
+  {
     title: "From DesignOps to AgentOps",
     slug: "from-designops-to-agentops",
-    excerpt: "As AI agents enter product delivery, design-system leaders become operators of context, contracts, review loops, and trust.",
+    excerpt: "As AI agents enter product delivery, design-system leaders become operators of context, contracts, review loops and trust.",
     readTime: "8 min read",
     publishedAt: "2026-06-19T08:00:00.000Z",
     status: "scheduled",
@@ -55,7 +65,7 @@ export const allPosts: BlogPostMeta[] = [
   {
     title: "Component Contracts Are Where Taste Becomes Infrastructure",
     slug: "component-contracts-are-where-taste-becomes-infrastructure",
-    excerpt: "Taste does not scale by explanation alone. In agentic design systems, it has to become contracts, examples, and verification.",
+    excerpt: "Taste does not scale by explanation alone. In agentic design systems, it has to become contracts, examples and verification.",
     readTime: "14 min read",
     publishedAt: "2026-06-11T08:00:00.000Z",
     status: "scheduled",
@@ -66,9 +76,9 @@ export const allPosts: BlogPostMeta[] = [
     tags: ["Component Contracts","Design Systems","AI","Frontend Architecture"],
   },
   {
-    title: "Tools, Harnesses, and Skills: The Missing Model for Design Systems",
+    title: "Tools, Harnesses and Skills: The Missing Model for Design Systems",
     slug: "tools-harnesses-and-skills-the-missing-model-for-design-systems",
-    excerpt: "Most agentic design workflow conversations confuse the workspace, the operating model, and the reusable capability. Separating them changes how teams scale.",
+    excerpt: "Most agentic design workflow conversations confuse the workspace, the operating model and the reusable capability. Separating them changes how teams scale.",
     readTime: "9 min read",
     publishedAt: "2026-06-07T08:00:00.000Z",
     status: "scheduled",
@@ -94,7 +104,7 @@ export const allPosts: BlogPostMeta[] = [
   {
     title: "From Tokens to Thinking Systems: Making AI-Native Design Systems Actually Work",
     slug: "from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work",
-    excerpt: "A practical blueprint for AI-native design systems that LLMs can actually execute: tokens, schema, and generative rules as explicit contracts.",
+    excerpt: "A practical blueprint for AI-native design systems that LLMs can actually execute: tokens, schema and generative rules as explicit contracts.",
     readTime: "9 min read",
     publishedAt: "2025-12-29T08:16:00.000Z",
     authorName: "Petri Lahdelma",
@@ -157,7 +167,7 @@ export const allPosts: BlogPostMeta[] = [
     mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/46eb4a68c7bd8e08f23cb83b8ebba0a73925ed34-1440x962.jpg?w=1600",
   },
   {
-    title: "MCP, Design Systems, and Generative UI",
+    title: "MCP, Design Systems and Generative UI",
     slug: "figma-mcp-design-systems",
     excerpt: "How Figma's MCP server speeds up design-to-code workflows.",
     readTime: "4 min read",
