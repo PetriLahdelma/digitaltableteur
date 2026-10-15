@@ -1,9 +1,9 @@
 {
   "storyId": "content-stagelist-index",
   "mode": "light",
-  "sourceSHA": "5296f2cb14fff4611bb968956a653b2c6644e57f",
-  "capturedAt": "2026-10-15T22:04:52.818Z",
-  "runner": "local-2026-10-16a",
+  "sourceSHA": "4761b895fef5b7921b6dea2004b1c9fe16315941",
+  "capturedAt": "2026-10-15T22:45:56.174Z",
+  "runner": "local-2026-10-16b",
   "checks": {
     "accessibility-tree": {
       "passed": true
