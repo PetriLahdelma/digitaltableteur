@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, type CSSProperties } from "react";
+import { Fragment, useEffect, useId, useRef, type CSSProperties } from "react";
 import { Link } from "../../lib/linkComponent";
 import { Image } from "../../lib/imageComponent";
 import { cn } from "../../lib/cn";
@@ -146,6 +146,16 @@ export function EnhancedProjectCard({
   const idBase = `${slug}-${rawId.replace(/:/g, "")}`;
   const titleId = `${idBase}-title`;
   const descriptionId = `${idBase}-description`;
+  const categoryId = `${idBase}-category`;
+  const tagsId = `${idBase}-tags`;
+  const hasCategory = Boolean(showCategory && category);
+  const hasTags = Boolean(tags && tags.length > 0);
+  // The link's name covers its visible text in visual order (WCAG 2.5.3
+  // Label in Name; axe-core 4.14 enforces it): category, title, tags. The
+  // description stays the accessible description.
+  const labelledBy = [hasCategory && categoryId, titleId, hasTags && tagsId]
+    .filter(Boolean)
+    .join(" ");
 
   const content = (
     <>
@@ -205,7 +215,11 @@ export function EnhancedProjectCard({
       <div className={styles.caption}>
         {/* Category label */}
         {showCategory && category && (
-          <span className={styles.category} lang={contentLanguage}>
+          <span
+            id={categoryId}
+            className={styles.category}
+            lang={contentLanguage}
+          >
             {category}
           </span>
         )}
@@ -229,14 +243,19 @@ export function EnhancedProjectCard({
         {/* Tags */}
         {tags && tags.length > 0 && (
           <div
+            id={tagsId}
             className={styles.tags}
             data-project-card-tags=""
             lang={contentLanguage}
           >
-            {tags.slice(0, 3).map((tag) => (
-              <span key={tag} className={styles.tag}>
-                {tag}
-              </span>
+            {/* The space keeps tags apart in the accessible name
+                ("Enterprise Low-Code", not "EnterpriseLow-Code"); a flex
+                row does not render whitespace. */}
+            {tags.slice(0, 3).map((tag, index) => (
+              <Fragment key={tag}>
+                {index > 0 ? " " : null}
+                <span className={styles.tag}>{tag}</span>
+              </Fragment>
             ))}
           </div>
         )}
@@ -259,7 +278,7 @@ export function EnhancedProjectCard({
     <Link
       href={`/work/${slug}`}
       className={cn(styles.card, className)}
-      aria-labelledby={titleId}
+      aria-labelledby={labelledBy}
       aria-describedby={description ? descriptionId : undefined}
       data-enhanced-project-card=""
       data-donny-interest="portfolio-project"

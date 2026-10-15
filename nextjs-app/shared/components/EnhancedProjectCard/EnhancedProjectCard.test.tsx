@@ -32,16 +32,15 @@ describe("EnhancedProjectCard", () => {
     expect(link).toHaveAttribute("href", "/work/sap-build-apps");
   });
 
-  it("uses the visible title and one visible description for the link semantics", () => {
+  it("names the link by its visible text in order, with one visible description", () => {
     render(<EnhancedProjectCard {...baseProps} />);
-    const link = screen.getByRole("link", { name: baseProps.title });
-    const labelledBy = link.getAttribute("aria-labelledby");
+    // WCAG 2.5.3 Label in Name (axe-core 4.14 enforces it): the name holds
+    // the card's visible text in visual order, so category, title, tags.
+    const link = screen.getByRole("link", {
+      name: "Design Systems SAP Build Apps Design System Enterprise Low-Code",
+    });
     const describedBy = link.getAttribute("aria-describedby");
-    expect(labelledBy).toBeTruthy();
     expect(describedBy).toBeTruthy();
-    expect(document.getElementById(labelledBy as string)).toHaveTextContent(
-      baseProps.title,
-    );
     const description = document.getElementById(describedBy as string);
     expect(description).toHaveTextContent(baseProps.description);
     expect(screen.getAllByText(baseProps.description)).toHaveLength(1);
