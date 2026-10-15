@@ -1,9 +1,9 @@
 {
   "storyId": "site-newsletterwaitlist-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
-  "capturedAt": "2026-07-30T08:56:02.575Z",
-  "runner": null,
+  "sourceSHA": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+  "capturedAt": "2026-10-15T19:30:58.304Z",
+  "runner": "local-2026-10-15t",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -18,8 +18,7 @@
     - link "Contact":
       - /url: /contact
   - group "Language":
-    - button "EN — Switch to English. Show language options": EN
-    - text: Show language options
+    - button "EN, English": EN
   - button "Toggle dark mode"
 - main:
   - heading "Page content" [level=1]
@@ -73,8 +72,8 @@
   - link "Dribbble":
     - /url: https://dribbble.com/digitaltableteur
   - text: © 2026 Digitaltableteur. All rights reserved.
-  - link "Reliable Partner — verified by Vastuu Group":
+  - link "Reliable Partner, verified by Vastuu Group":
     - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
-    - img "Reliable Partner — verified by Vastuu Group"
+    - img "Reliable Partner, verified by Vastuu Group"
 - button "AI assistant — Open Donny AI assistant": AI assistant
 - status

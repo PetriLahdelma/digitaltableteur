@@ -1,9 +1,9 @@
 {
   "storyId": "content-authorbio-example",
   "mode": "light",
-  "sourceSHA": "1b3b7d94a588730bd7b52bbadb539c8777f9fb8a",
-  "capturedAt": "2026-10-15T17:17:54.412Z",
-  "runner": "local-2026-10-15n",
+  "sourceSHA": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+  "capturedAt": "2026-10-15T19:31:08.882Z",
+  "runner": "local-2026-10-15t",
   "checks": {
     "accessibility-tree": {
       "passed": true

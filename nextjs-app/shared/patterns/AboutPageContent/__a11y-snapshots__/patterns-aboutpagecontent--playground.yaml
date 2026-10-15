@@ -1,6 +1,5 @@
 - heading "The approach" [level=1]
 - paragraph: Design and AI consultancy helping organizations create and scale digital products and systems
-- button "Scroll to content"
 - heading "The promise" [level=2]
 - paragraph: "Proof over promises: each of these is visible in the work."
 - article:
@@ -39,13 +38,13 @@
   - heading "You Own the IP" [level=3]
   - paragraph: You keep full ownership of the code, design and tokens built together. No lock-in, no licensing games.
 - region "A Vastuu Group Reliable Partner":
-  - link "Reliable Partner — verified by Vastuu Group":
+  - link "Reliable Partner, verified by Vastuu Group":
     - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
-    - img "Reliable Partner — verified by Vastuu Group"
+    - img "Reliable Partner, verified by Vastuu Group"
   - paragraph: A Vastuu Group Reliable Partner
   - paragraph: Tax, pension and employer obligations are continuously verified through Vastuu Group's Reliable Partner programme, as required by the Finnish Contractor's Obligations Act.
   - paragraph:
-    - link "Open the Reliable Partner report (PDF)":
+    - link "Open the Reliable Partner report (PDF, opens in a new tab)":
       - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
 - heading "Strategy to scale" [level=2]
 - paragraph: A compact operating model for teams that need direction, delivery and a system that keeps working after launch.

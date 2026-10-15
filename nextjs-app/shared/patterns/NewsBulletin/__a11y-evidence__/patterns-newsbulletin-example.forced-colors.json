@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-newsbulletin-example",
   "mode": "forced-colors",
-  "sourceSHA": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-  "capturedAt": "2026-09-29T17:39:12.915Z",
-  "runner": "local",
+  "sourceSHA": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+  "capturedAt": "2026-10-15T19:25:34.307Z",
+  "runner": "local-2026-10-15t",
   "checks": {
     "accessibility-tree": {
       "passed": true

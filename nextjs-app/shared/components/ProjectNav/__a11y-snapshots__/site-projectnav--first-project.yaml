@@ -3,8 +3,10 @@
     - /url: /work
     - img
     - text: Back to work
-  - img
-  - text: Prev
+  - 'link "Previous project: Home Remote"':
+    - /url: /work/home-remote
+    - img
+    - text: Previous
   - 'link "Next project: Project Spine"':
     - /url: /work/project-spine
     - text: Next

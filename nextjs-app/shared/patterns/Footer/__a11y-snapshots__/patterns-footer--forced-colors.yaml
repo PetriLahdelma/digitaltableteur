@@ -6,12 +6,11 @@
   - paragraph: Visit
   - paragraph:
     - text: Hämeentie 8 C 00530 Helsinki
-    - link "footerAriaEmail":
+    - link "mail@digitaltableteur.com":
       - /url: mailto:mail@digitaltableteur.com
-      - text: mail@digitaltableteur.com
   - paragraph: Billing details
   - paragraph:
-    - strong: E-invoice address
+    - strong: e-invoice address
     - text: "003722644552"
     - strong: Operator
     - text: APIX Messaging Oy

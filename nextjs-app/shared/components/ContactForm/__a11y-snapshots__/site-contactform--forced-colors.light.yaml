@@ -256,17 +256,19 @@
 - textbox "Phone Number":
   - /placeholder: Enter your phone number
   - text: "+358"
-- text: Your Interest
-- checkbox "Your Interest Select All"
-- text: Select All
-- checkbox "Brand strategy"
-- text: Brand strategy
-- checkbox "Design and creative"
-- text: Design and creative
-- checkbox "Digital products"
-- text: Digital products
-- checkbox "Help me choose"
-- text: Help me choose Your Message (required)
+- group "Your Interest":
+  - text: Your Interest
+  - checkbox "Select All"
+  - text: Select All
+  - checkbox "Brand strategy"
+  - text: Brand strategy
+  - checkbox "Design and creative"
+  - text: Design and creative
+  - checkbox "Digital products"
+  - text: Digital products
+  - checkbox "Help me choose"
+  - text: Help me choose
+- text: Your Message (required)
 - textbox "Your Message (required)":
   - /placeholder: Enter your message
 - text: Attachment (optional)

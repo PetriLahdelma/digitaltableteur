@@ -1,9 +1,9 @@
 {
   "storyId": "forms-fileupload-playground",
   "mode": "light",
-  "sourceSHA": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-  "capturedAt": "2026-09-29T20:02:10.315Z",
-  "runner": "local",
+  "sourceSHA": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+  "capturedAt": "2026-10-15T19:31:51.011Z",
+  "runner": "local-2026-10-15t",
   "checks": {
     "accessibility-tree": {
       "passed": true

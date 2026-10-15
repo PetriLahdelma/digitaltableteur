@@ -1,9 +1,9 @@
 {
   "storyId": "layout-flexbox-default",
   "mode": "dark",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:37:40.129Z",
-  "runner": null,
+  "sourceSHA": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+  "capturedAt": "2026-10-15T19:24:23.055Z",
+  "runner": "local-2026-10-15t",
   "checks": {
     "accessibility-tree": {
       "passed": true

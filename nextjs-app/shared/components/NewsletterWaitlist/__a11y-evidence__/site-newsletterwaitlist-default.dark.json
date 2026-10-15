@@ -1,9 +1,9 @@
 {
   "storyId": "site-newsletterwaitlist-default",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:15:58.067Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+  "capturedAt": "2026-10-15T19:30:52.769Z",
+  "runner": "local-2026-10-15t",
   "checks": {
     "accessibility-tree": {
       "passed": true

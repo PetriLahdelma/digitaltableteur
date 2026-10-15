@@ -1,9 +1,9 @@
 {
   "storyId": "templates-nextlayoutshell-example",
   "mode": "light",
-  "sourceSHA": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
-  "capturedAt": "2026-10-14T20:34:02.644Z",
-  "runner": "local-2026-10-14b",
+  "sourceSHA": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+  "capturedAt": "2026-10-15T19:29:37.837Z",
+  "runner": "local-2026-10-15t",
   "checks": {
     "accessibility-tree": {
       "passed": true

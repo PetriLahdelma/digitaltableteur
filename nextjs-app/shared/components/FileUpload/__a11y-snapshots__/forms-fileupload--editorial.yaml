@@ -1,4 +1,4 @@
 - text: Attachment (optional)
-- button "Attachment (optional)": No file selected
+- button "Attachment (optional) No file selected": No file selected
 - button "Choose file"
 - paragraph: "Optional. Max 5 MB. Accepted formats: PDF, PNG, JPG."

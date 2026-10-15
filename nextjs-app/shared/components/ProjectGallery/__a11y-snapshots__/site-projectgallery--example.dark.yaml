@@ -5,22 +5,19 @@
         - img "Concept frame one"
       - text: Early exploration
   - listitem:
-    - figure:
-      - button "View Concept frame two in fullscreen":
-        - img "Concept frame two"
+    - button "View Concept frame two in fullscreen":
+      - img "Concept frame two"
   - listitem:
     - figure "Colour study":
       - button "View Concept frame three in fullscreen":
         - img "Concept frame three"
       - text: Colour study
   - listitem:
-    - figure:
-      - button "View Concept frame four in fullscreen":
-        - img "Concept frame four"
+    - button "View Concept frame four in fullscreen":
+      - img "Concept frame four"
   - listitem:
-    - figure:
-      - button "View Concept frame five in fullscreen":
-        - img "Concept frame five"
+    - button "View Concept frame five in fullscreen":
+      - img "Concept frame five"
   - listitem:
     - figure "Final render":
       - button "View Studio shot in fullscreen":
