@@ -10,8 +10,9 @@
   at the options. Options are named the same way and carry `lang`.
   `ariaLabel` is the language's own name ("Suomi"), not an action phrase.
   Matches the React LanguageSwitcher.
-- Generated element contracts now record `dt-form-field` and `dt-kbd` as
-  beta, matching their source contracts.
+- Generated element contracts follow the source contracts: `dt-kbd` and
+  `dt-form-field` are stable again (both have production consumers), and
+  `dt-group-label` is beta (its only consumer moved to FormField).
 
 ## 0.10.2 - 2026-09-25
 
