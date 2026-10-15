@@ -25,8 +25,9 @@
 3. **No** banned AI filler (see [Banned vocabulary](#banned-vocabulary)).
 4. **First person** where the author is reporting practice (“I have seen…”, “We run…”) when appropriate.
 5. Technical claims are **grounded** (repo commands, file paths, counts) when the post is about this stack.
-6. **One** hero image per post; no recycled art from other articles; no decorative callout/diagram spam unless they teach something the prose cannot.
+6. Images follow the [illustration standard](#illustration-standard): one bespoke family per article, nothing recycled, every explanatory figure a real working artifact.
 7. Read aloud once: does it sound like Petri on [petrilahdelma.com/writing](https://www.petrilahdelma.com/writing), not a generic AI essay?
+8. Flagship pieces also pass the [flagship review](#flagship-review-editorial-not-a-score).
 
 ---
 
@@ -129,7 +130,7 @@ Generic AI defaults and hollow intensifiers. If one appears in a draft, replace 
 | Rule | Target |
 |------|--------|
 | Average sentence length | ~12–18 words; occasional shorter for emphasis |
-| Paragraph length | 2–5 sentences; **avoid** single-sentence paragraphs back-to-back |
+| Paragraph length | 2–5 sentences; **avoid** single-sentence paragraphs back-to-back. A one-line paragraph is allowed as deliberate punctuation (a coined term landing, a dry aside), at most four per article |
 | Headings | `##` for major turns; title case; not every paragraph needs a subhead |
 | Lists | **Tools and checklists only** — not as a substitute for argument; default body is flowing prose |
 | Bold | Sparingly — terms on first definitional use, not whole sentences |
@@ -155,7 +156,60 @@ In today's rapidly evolving world of AI and design systems, organizations must a
 
 ### Closers
 
-End with **one clear takeaway or next action** (read the next post, run a command, adopt a test). No summary-of-summaries unless the piece is >2,500 words.
+End with **one clear takeaway or next action** (read the next post, run a command, adopt a test). No summary-of-summaries unless the piece is >2,500 words. Flagship pieces close by returning to the opening image or question, so the reader feels the loop shut.
+
+---
+
+## Flagship standard
+
+> **Benchmark:** Daniel Yuschick, [Refactoring trust debt in your design system through predictable release cycles](https://zeroheight.com/blog/refactoring-trust-debt-in-your-design-system-through-predictable-release-cycles/) (zeroheight, 2026-10-14). We do not imitate it, quote it, or borrow its art. We codify why it works and hold our flagship articles to the same bar. Measured: about 2,150 words, 49 paragraphs averaging 2.4 sentences, 17-word sentences, one three-item list, no pull quotes, eight images (six decorative illustrations, two working artifacts).
+
+A flagship article is one argument, told as practice, that a reader can act on. The earlier posts that read as listicles (for example `content/posts/workflow-tips.mdx`, which opens on a "rapidly evolving landscape") are below this bar. Treat them as calibration, not as voice references.
+
+**1. A named spine.** Coin or adopt one concept that carries the whole piece (the benchmark's is "trust debt"). Name it within the first 150 words, let it land in its own one-line paragraph, use it in the title or excerpt, and return to it in the close. One concept per article; a second coined term competes with the first.
+
+**2. An opening that reframes something familiar.** Start from an idea the reader already owns (a thought experiment, a common saying, a scene from review) and turn it toward the topic. Within the first three paragraphs, put the author in the story with real stakes: the role taken on, the audit run, the incident seen.
+
+**3. An arc of practice, not a catalogue.** The body follows what happened or what to do, in order: diagnose, intervene, show evidence, admit limits. `##` headings trace that arc and may be playful, as long as they still describe the section. Use `###` only for genuinely parallel mechanisms (three release types, four failure modes).
+
+**4. Specificity density.** Every section carries at least one concrete, checkable detail: a version number, a cadence, a count, a duration, a named artifact, a policy with its exact rule. An abstract claim gets an instance within two sentences. "Some products pinned years-old versions" is an observation; "v89 with no changelogs" is evidence.
+
+**5. Mechanisms the reader can take.** Practical advice arrives as the specific mechanism used (the policy, the ritual, the template, the cadence), with enough detail to copy it on Monday. Lists are for parallel categories only: one or two per article, three to five items each.
+
+**6. Honest evidence and an honest limits section.** Say what was measured and what was not; anecdotal results are fine when labelled as anecdotal. Before the close, include a section on what still did not work or what remains open. It is the most credible part of the article.
+
+**7. Empathy for the people in the system.** Users, contributors, and teams who drifted are never the villain. Explain why their behaviour was rational given what they faced.
+
+**8. Credit and sources.** Name and link the people and writing that shaped the work. For research-led pieces, primary sources first (standards, specifications, official guidance), then practitioner evidence with first-hand testing, then commentary. Every factual claim must trace to a source or to the author's own practice, and the draft keeps a source list for review.
+
+**9. Voice texture.** First person singular for lived practice, `we` for the team, `you` sparingly for direct advice. Dry, brief humour that deflates rather than performs: a three-word aside after a long paragraph, at most one per section. Show change through quoted shifts in what people actually said when the article has them.
+
+**10. Length and close.** 2,000 to 2,800 words. The close returns to the opening image, delivers one memorable line, and ends with a single understated footer line (event, next post, or contact). No inline sales pitch.
+
+### Writing about disability
+
+Accessibility pieces describe disabled people as the experts on their own experience, not as edge cases or beneficiaries. Use the terms the community uses: "disabled people" and "people with disabilities" are both acceptable; name specific groups ("screen reader users", "Deaf people who sign") when the point depends on it. Never use "suffers from", "confined to a wheelchair", or "normal users". When an article argues for testing with disabled people, it also says they should be paid and recruited with the same care as any other expert.
+
+### Illustration standard
+
+- **One bespoke family per article.** A hero plus three to six section illustrations at major turns, roughly every 300 to 450 words, in one consistent Digitaltableteur style. No recycled art, no stock, no generic AI imagery that could illustrate any article.
+- **Illustrations carry the metaphor, not the text.** Each one depicts the section's idea as an image (a character, an object, a small scene); it never repeats a sentence from the paragraph as a caption-diagram.
+- **Decorative means empty alt.** Purely decorative illustrations get `alt=""` so screen reader users are not made to listen to them; the article must still make complete sense without them.
+- **Explanatory figures are real artifacts.** Timelines, tables, checklists, before-and-after comparisons, or screenshots from the actual work, with descriptive alt text that conveys the figure's information and a one-line caption.
+- **Briefs first.** A draft lists an illustration brief per placement (subject, metaphor, placement, alt treatment) so art can be commissioned or produced before publishing.
+
+### Flagship review (editorial, not a score)
+
+Answer each question in writing before an article ships. These are editorial judgments for the author and editor; they are deliberately not turned into a numeric score, because mechanical scores reward the presence of signals rather than quality.
+
+1. Can you state the spine concept in one sentence, and does the close return to it?
+2. Would a practitioner learn a mechanism they could use this week? Which one?
+3. Does every section contain at least one detail a sceptical reader could check?
+4. Is there a section that admits what did not work or is still unknown?
+5. Is any person or group cast as the villain? Rewrite until no one is.
+6. Are all factual claims sourced, with primary sources first?
+7. Read aloud: is there any sentence that could appear in any other article on any other site? Cut or sharpen it.
+8. Do the illustrations form one family, and is every explanatory figure a real artifact with real alt text?
 
 ---
 
@@ -225,6 +279,7 @@ Three disconnected micro-sections with no through-line.
 3. **Voice** — Run [Banned vocabulary](#banned-vocabulary); read aloud.
 4. **Facts** — Verify commands, paths, and dates against the repo.
 5. **MDX** — Frontmatter, unique `mainImageUrl`, alt text, internal links.
+6. **Flagship** — For flagship pieces, write answers to the [flagship review](#flagship-review-editorial-not-a-score) questions and keep them with the draft.
 
 Optional tightening: apply the same anti-slop instincts as the `stop-slop` skill (no em dashes, no “not X, it’s Y”, active voice) — **in-repo rules above take precedence** for Digitaltableteur voice.
 
@@ -309,4 +364,4 @@ Agent skill: `.claude/skills/prose-quality/SKILL.md`
 
 ---
 
-**Last updated:** 2026-05-28 — project-local only.
+**Last updated:** 2026-10-15 (flagship standard, illustration standard, writing about disability). Project-local only.

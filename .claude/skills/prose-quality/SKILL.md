@@ -4,7 +4,7 @@ Use when drafting or editing blog MDX, case studies, or long-form content in thi
 
 ## Before writing
 
-Read `docs/WRITING_STYLE.md` (voice, banned words, structure).
+Read `docs/WRITING_STYLE.md` (voice, banned words, structure). For flagship articles, also follow its **Flagship standard**, **Illustration standard**, and **Writing about disability** sections, and keep written answers to the **Flagship review** questions with the draft.
 
 ## After editing
 
