@@ -79,8 +79,6 @@ export async function GET() {
         name: "LLM Component Schema",
         description:
           "npm schema and CLI for component contracts with drift detection and eval benchmarks.",
-        repository:
-          "https://github.com/PetriLahdelma/llm-component-schema-template",
       },
     ],
     interaction: {

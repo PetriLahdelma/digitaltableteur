@@ -75,7 +75,7 @@ export async function GET() {
   body +=
     "JSON schema, CLI, and governance toolkit that makes component intent machine-readable. Two npm packages (@petritapanilahdelma/llm-component-contracts and @petritapanilahdelma/llm-component-cli). 4 CLI commands: validate, drift-check, migrate, init. 2 style packs (base and tailwind). Agent eval harness, failing-examples regression library, governance templates. v1.2.0, MIT.\n";
   body +=
-    "- GitHub: https://github.com/PetriLahdelma/llm-component-schema-template\n";
+    "- npm: https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts\n";
   body += `- Case study: ${baseUrl}/work/llm-component-schema\n\n`;
 
   // All portfolio projects

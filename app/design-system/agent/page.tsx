@@ -93,10 +93,9 @@ export default function DesignSystemAgentPage() {
         <h2 className="font-display text-xl font-semibold">MCP &amp; docs</h2>
         <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed">
           <li>
-            MCP:{" "}
-            <a href="/mcp" className="underline underline-offset-2">
-              /mcp
-            </a>
+            {/* Not a link: the endpoint only answers MCP POSTs, so a
+                followed GET is a 405 (crawlers report it as a broken page). */}
+            MCP: <code>/mcp</code> (POST, Streamable HTTP)
           </li>
           <li>
             Card:{" "}
