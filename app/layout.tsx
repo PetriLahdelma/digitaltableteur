@@ -91,8 +91,17 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Google shows search-result favicons from the largest declared icon and
+  // asks for multiples of 48px; with only the 64px .ico it drew the mark
+  // inset inside its placeholder circle. The PNGs are renders of favicon.svg.
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "64x64" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icon-96.png", type: "image/png", sizes: "96x96" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
     shortcut: "/favicon.ico",
   },
 };
