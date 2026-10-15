@@ -59,14 +59,14 @@ describe("AlertBanner", () => {
   it("renders dismiss button when dismissible", () => {
     render(<AlertBanner title="Message" dismissible />);
     expect(
-      screen.getByRole("button", { name: /dismiss alert/i }),
+      screen.getByRole("button", { name: /close alert/i }),
     ).toBeInTheDocument();
   });
 
   it("does not render dismiss button when not dismissible", () => {
     render(<AlertBanner title="Message" />);
     expect(
-      screen.queryByRole("button", { name: /dismiss alert/i }),
+      screen.queryByRole("button", { name: /close alert/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -75,7 +75,7 @@ describe("AlertBanner", () => {
     const onDismiss = vi.fn();
     render(<AlertBanner title="Message" dismissible onDismiss={onDismiss} />);
 
-    await user.click(screen.getByRole("button", { name: /dismiss alert/i }));
+    await user.click(screen.getByRole("button", { name: /close alert/i }));
     expect(onDismiss).toHaveBeenCalledTimes(1);
   });
 

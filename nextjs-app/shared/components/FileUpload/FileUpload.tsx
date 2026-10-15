@@ -179,13 +179,17 @@ const FileUpload: React.FC<FileUploadProps> = ({
             type="button"
             className={fieldStyles.trigger}
             disabled={disabled}
-            aria-labelledby={`${fieldId}-label`}
+            // Label, then the visible status ("No file selected" or the
+            // file name): the button's name holds its visible text (WCAG
+            // 2.5.3) and tells screen reader users the current state.
+            aria-labelledby={`${fieldId}-label ${fieldId}-value`}
             aria-describedby={describedBy || undefined}
             aria-invalid={displayError ? true : undefined}
             aria-required={required || undefined}
             onClick={handleBrowseClick}
           >
             <span
+              id={`${fieldId}-value`}
               className={cn(
                 fieldStyles.triggerLabel,
                 !fileSummary && placeholder && fieldStyles.triggerPlaceholder,

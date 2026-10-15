@@ -66,7 +66,7 @@ export function ProjectNav({ currentSlug, className }: ProjectNavProps) {
               >
                 <ArrowLeft className="size-4" weight="bold" />
                 <span className="hidden tablet:inline">
-                  {t("workNavPrev", "Prev")}
+                  {t("workNavPrev", "Previous")}
                 </span>
               </Link>
             ) : (
@@ -80,7 +80,7 @@ export function ProjectNav({ currentSlug, className }: ProjectNavProps) {
               >
                 <ArrowLeft className="size-4" weight="bold" />
                 <span className="hidden tablet:inline">
-                  {t("workNavPrev", "Prev")}
+                  {t("workNavPrev", "Previous")}
                 </span>
               </span>
             )}

@@ -86,7 +86,9 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
           size="sm"
           className={styles.dismiss}
           onClick={onDismiss}
-          aria-label={t("alertBanner.dismissLabel", "Dismiss alert")}
+          // Starts with the visible "Close" (WCAG 2.5.3): a voice-control
+          // user says what they see.
+          aria-label={t("alertBanner.dismissLabel", "Close alert")}
         >
           {t("alertBanner.close", "Close")}
         </Button>

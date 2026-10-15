@@ -11,7 +11,10 @@ import {
 } from "@/nextjs-app/shared/data/news-bulletin";
 import { cn } from "../../lib/cn";
 import { useScrollOverflow } from "../../hooks/useOverflow";
-import { NewsBulletinBadgeMark, badgeAccessibleLabel } from "./NewsBulletinBadge";
+import {
+  NewsBulletinBadgeMark,
+  badgeAccessibleLabel,
+} from "./NewsBulletinBadge";
 import styles from "./NewsBulletin.module.css";
 
 const TRACK_ID = "news-bulletin-track";
@@ -32,6 +35,8 @@ function BulletinCardContent({ item }: { item: NewsBulletinItem }) {
   return (
     <div className={styles.cardLayout}>
       <NewsBulletinBadgeMark badge={item.badge} />
+      {/* Keeps the badge and body apart in extracted text ("2027 Now
+          booking", not "2027Now booking"); the layout ignores it. */}{" "}
       <p className={styles.body}>{item.body}</p>
     </div>
   );
@@ -44,7 +49,10 @@ function resolveLink(link: NewsBulletinLink | undefined): NewsBulletinLink {
 function BulletinCard({ item }: { item: NewsBulletinItem }) {
   const link = resolveLink(item.link);
   const label = cardLabel(item);
-  const cardClass = cn(styles.card, link.kind !== "static" && styles.cardInteractive);
+  const cardClass = cn(
+    styles.card,
+    link.kind !== "static" && styles.cardInteractive,
+  );
 
   if (link.kind === "internal") {
     return (
@@ -179,10 +187,7 @@ export function NewsBulletin({
         <div
           ref={trackRef}
           id={TRACK_ID}
-          className={cn(
-            styles.track,
-            !isOverflowing && styles.trackCentered,
-          )}
+          className={cn(styles.track, !isOverflowing && styles.trackCentered)}
           tabIndex={isOverflowing ? 0 : undefined}
         >
           {items.map((item) => (
@@ -195,10 +200,7 @@ export function NewsBulletin({
             <button
               type="button"
               className={styles.navButton}
-              aria-label={t(
-                "newsBulletinScrollNext",
-                "Show more highlights",
-              )}
+              aria-label={t("newsBulletinScrollNext", "Show more highlights")}
               aria-controls={TRACK_ID}
               onClick={() => scrollTrack(1)}
             >

@@ -30,11 +30,9 @@ export const Footer = ({ className }: FooterProps = {}) => {
             <br />
             {t("footerAddress2")}
             <br />
-            <a
-              href="mailto:mail@digitaltableteur.com"
-              aria-label={t("footerAriaEmail")}
-              title={t("footerAriaEmail")}
-            >
+            {/* The visible address is the name; the old aria-label pointed at
+                a translation key that never existed ("footerAriaEmail"). */}
+            <a href="mailto:mail@digitaltableteur.com">
               mail@digitaltableteur.com
             </a>
           </p>

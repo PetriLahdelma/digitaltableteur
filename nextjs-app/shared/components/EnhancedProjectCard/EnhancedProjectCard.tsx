@@ -153,7 +153,16 @@ export function EnhancedProjectCard({
   // The link's name covers its visible text in visual order (WCAG 2.5.3
   // Label in Name; axe-core 4.14 enforces it): category, title, tags. The
   // description stays the accessible description.
-  const labelledBy = [hasCategory && categoryId, titleId, hasTags && tagsId]
+  // A visible description (always on touch screens, on hover otherwise)
+  // is part of the link's text too, so it joins the name; a screen-reader-
+  // only one stays the accessible description instead.
+  const descriptionInName = Boolean(description && showDescription);
+  const labelledBy = [
+    hasCategory && categoryId,
+    titleId,
+    descriptionInName && descriptionId,
+    hasTags && tagsId,
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -227,12 +236,12 @@ export function EnhancedProjectCard({
             visible text, copy and paste) otherwise fuses them into
             "Design SystemsSAP Build Apps". The grid does not render it. */}
         {hasCategory ? " " : null}
-
         {/* Title */}
         <h3 id={titleId} className={styles.title} lang={contentLanguage}>
           {title}
         </h3>
-
+        {/* Whitespace keeps title, description and tags apart in extracted
+            text; the caption grid does not render it. */}{" "}
         {/* Description - visible on hover for desktop, always for mobile */}
         {description && (
           <p
@@ -242,8 +251,7 @@ export function EnhancedProjectCard({
           >
             {description}
           </p>
-        )}
-
+        )}{" "}
         {/* Tags */}
         {tags && tags.length > 0 && (
           <div
@@ -283,7 +291,9 @@ export function EnhancedProjectCard({
       href={`/work/${slug}`}
       className={cn(styles.card, className)}
       aria-labelledby={labelledBy}
-      aria-describedby={description ? descriptionId : undefined}
+      aria-describedby={
+        description && !descriptionInName ? descriptionId : undefined
+      }
       data-enhanced-project-card=""
       data-donny-interest="portfolio-project"
     >
