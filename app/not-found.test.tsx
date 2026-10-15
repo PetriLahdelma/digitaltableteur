@@ -37,7 +37,7 @@ describe("NotFound", () => {
   it("explains what happened in prose", () => {
     render(<NotFound />);
     expect(
-      screen.getByText(/does not exist, or it has moved/i),
+      screen.getByText(/does not exist or it has moved/i),
     ).toBeInTheDocument();
   });
 
