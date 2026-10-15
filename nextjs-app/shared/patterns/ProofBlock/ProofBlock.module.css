@@ -74,8 +74,12 @@
   opacity: 0.85;
 }
 
+/* Inverted card: --color-dark and --color-white flip together per theme, so
+   every tint derives from --color-white. Hard-coded white stayed white on
+   the dark theme's light card (1.29:1). */
+
 .metricCardDark {
-  border-color: rgb(255 255 255 / 8%);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
   background: var(--color-dark);
   box-shadow: var(--shadow-lg);
   color: var(--color-white);
@@ -86,11 +90,11 @@
 }
 
 .metricCardDark .metricLabel {
-  color: rgb(255 255 255 / 92%);
+  color: color-mix(in srgb, var(--color-white) 92%, transparent);
 }
 
 .metricCardDark .metricDetail {
-  color: rgb(255 255 255 / 85%);
+  color: color-mix(in srgb, var(--color-white) 85%, transparent);
   opacity: 1;
 }
 
