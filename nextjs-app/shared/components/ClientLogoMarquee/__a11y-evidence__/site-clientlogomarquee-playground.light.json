@@ -1,9 +1,9 @@
 {
   "storyId": "site-clientlogomarquee-playground",
   "mode": "light",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:07:35.464Z",
-  "runner": null,
+  "sourceSHA": "1b3b7d94a588730bd7b52bbadb539c8777f9fb8a",
+  "capturedAt": "2026-10-15T17:17:20.485Z",
+  "runner": "local-2026-10-15n",
   "checks": {
     "accessibility-tree": {
       "passed": true

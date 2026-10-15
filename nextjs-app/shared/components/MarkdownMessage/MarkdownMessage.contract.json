@@ -32,8 +32,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
         "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
         "accessibilityTreeVerified": true
     },
     "tokens": {

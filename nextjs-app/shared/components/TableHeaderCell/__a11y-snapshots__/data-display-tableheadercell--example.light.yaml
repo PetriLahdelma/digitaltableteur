@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - table "Sort states":
   - caption: Sort states
   - rowgroup:

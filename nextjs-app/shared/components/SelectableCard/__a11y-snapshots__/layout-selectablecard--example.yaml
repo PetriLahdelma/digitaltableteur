@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - group "Choose a plan":
   - text: Choose a plan
   - radio "Starter 1 seat, community support."

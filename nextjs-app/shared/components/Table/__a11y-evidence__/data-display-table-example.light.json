@@ -1,9 +1,9 @@
 {
   "storyId": "data-display-table-example",
   "mode": "light",
-  "sourceSHA": "32572d90008164052ed69ccb911e24e41e7b25aa",
-  "capturedAt": "2026-10-15T15:00:34.538Z",
-  "runner": "local-2026-10-15d",
+  "sourceSHA": "1b3b7d94a588730bd7b52bbadb539c8777f9fb8a",
+  "capturedAt": "2026-10-15T17:12:54.457Z",
+  "runner": "local-2026-10-15n",
   "checks": {
     "accessibility-tree": {
       "passed": true

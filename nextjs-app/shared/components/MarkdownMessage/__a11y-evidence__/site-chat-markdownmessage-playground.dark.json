@@ -1,9 +1,9 @@
 {
   "storyId": "site-chat-markdownmessage-playground",
   "mode": "dark",
-  "sourceSHA": "796ffa9c8bc3111616195063188244d4b57acb7f",
-  "capturedAt": "2026-10-15T09:15:14.232Z",
-  "runner": "local-2026-10-15",
+  "sourceSHA": "1b3b7d94a588730bd7b52bbadb539c8777f9fb8a",
+  "capturedAt": "2026-10-15T17:16:51.460Z",
+  "runner": "local-2026-10-15n",
   "checks": {
     "accessibility-tree": {
       "passed": true

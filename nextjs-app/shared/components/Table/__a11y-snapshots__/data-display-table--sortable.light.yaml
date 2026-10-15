@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - table "Sortable columns":
   - caption: Sortable columns
   - rowgroup:

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-15T17:11:33.111Z",
+  "generatedAt": "2026-10-15T17:23:28.421Z",
   "summary": {
     "componentCount": 180,
     "statusCounts": {
@@ -3011,7 +3011,18 @@
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1440-2603",
         "radixPrimitive": null,
         "element": "div",
-        "variants": {},
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg",
+              "xl"
+            ],
+            "default": "md",
+            "propSourced": true
+          }
+        },
         "slots": [],
         "asChild": false,
         "subParts": [],
@@ -3026,8 +3037,9 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
+          "realBrowserForcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "accessibilityTreeVerified": true
         },
         "tokens": {
@@ -3263,7 +3275,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+            "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {
@@ -13185,7 +13197,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "realBrowserForcedColorsVerified": true,
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "accessibilityTreeVerified": true
         },
         "tokens": {
@@ -13366,7 +13379,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+            "note": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {
@@ -34796,8 +34809,9 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
+          "realBrowserForcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "accessibilityTreeVerified": true
         },
         "tokens": {
@@ -35051,7 +35065,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+            "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {
@@ -49151,8 +49165,9 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. SelectableCardGroup renders a fieldset with a legend for the accessible name; each SelectableCard is a label wrapping a visually-hidden native radio (single) or checkbox (multiple) input, so keyboard, focus and form submission come from the platform. Error announces via role=alert and sets aria-invalid on the group. Selected/disabled states mirror to data-attributes for CSS + tests. Motion respects prefers-reduced-motion. Axe asserted in the colocated a11y test; forced-colors + light/dark verified on a non-6010 Storybook.",
+          "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. SelectableCardGroup renders a fieldset with a legend for the accessible name; each SelectableCard is a label wrapping a visually-hidden native radio (single) or checkbox (multiple) input, so keyboard, focus and form submission come from the platform. Error announces via role=alert and sets aria-invalid on the group. Selected/disabled states mirror to data-attributes for CSS + tests. Motion respects prefers-reduced-motion. Axe asserted in the colocated a11y test; forced-colors + light/dark verified on a non-6010 Storybook. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "forcedColorsVerified": true,
+          "realBrowserForcedColorsVerified": true,
           "accessibilityTreeVerified": true
         },
         "tokens": {
@@ -49460,7 +49475,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-12 — alpha→beta: code-level a11y review. SelectableCardGroup renders a fieldset with a legend for the accessible name; each SelectableCard is a label wrapping a visually-hidden native radio (single) or checkbox (multiple) input, so keyboard, focus and form submission come from the platform. Error announces via role=alert and sets aria-invalid on the group. Selected/disabled states mirror to data-attributes for CSS + tests. Motion respects prefers-reduced-motion. Axe asserted in the colocated a11y test; forced-colors + light/dark verified on a non-6010 Storybook."
+            "note": "2026-07-12 — alpha→beta: code-level a11y review. SelectableCardGroup renders a fieldset with a legend for the accessible name; each SelectableCard is a label wrapping a visually-hidden native radio (single) or checkbox (multiple) input, so keyboard, focus and form submission come from the platform. Error announces via role=alert and sets aria-invalid on the group. Selected/disabled states mirror to data-attributes for CSS + tests. Motion respects prefers-reduced-motion. Axe asserted in the colocated a11y test; forced-colors + light/dark verified on a non-6010 Storybook. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {
@@ -57099,9 +57114,10 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+          "reviewedNote": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "forcedColorsVerified": true,
-          "accessibilityTreeVerified": false
+          "realBrowserForcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -57558,7 +57574,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level."
+            "note": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {
@@ -57716,9 +57732,10 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+          "reviewedNote": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "forcedColorsVerified": true,
-          "accessibilityTreeVerified": false
+          "realBrowserForcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -57994,8 +58011,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -58009,8 +58026,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -58031,14 +58048,14 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -58053,7 +58070,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level."
+            "note": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {
@@ -58216,9 +58233,10 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+          "reviewedNote": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "forcedColorsVerified": true,
-          "accessibilityTreeVerified": false
+          "realBrowserForcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -58640,7 +58658,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level."
+            "note": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {
@@ -59198,9 +59216,10 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+          "reviewedNote": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "forcedColorsVerified": true,
-          "accessibilityTreeVerified": false
+          "realBrowserForcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -59493,7 +59512,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level."
+            "note": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {
@@ -68186,7 +68205,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "realBrowserForcedColorsVerified": true,
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
           "accessibilityTreeVerified": true
         },
         "tokens": {
@@ -68429,7 +68449,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+            "note": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean."
           }
         ],
         "docOrigin": {

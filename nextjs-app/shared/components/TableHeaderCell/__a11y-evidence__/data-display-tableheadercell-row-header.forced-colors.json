@@ -1,12 +1,16 @@
 {
   "storyId": "data-display-tableheadercell-row-header",
   "mode": "forced-colors",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:38:13.223Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "1b3b7d94a588730bd7b52bbadb539c8777f9fb8a",
+  "capturedAt": "2026-10-15T17:19:08.885Z",
+  "runner": "local-2026-10-15o",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

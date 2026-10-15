@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - table "Keyboard sort":
   - caption: Keyboard sort
   - rowgroup:
