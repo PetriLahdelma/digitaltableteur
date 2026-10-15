@@ -15,7 +15,7 @@ For accessibility it's an odd one. It names the one sense that many users and so
 
 I started thinking about the phrase in September, when I re-ran the accessibility checks behind every component in this site's design system. Each Storybook story in the test matrix writes a small evidence record: which checks ran, which passed, which runner produced them.
 
-The first run produced 949 records for the light theme. All green, every one with exit code zero and every one missing its axe result. I'd forgotten one environment variable, `CI=1`. Without it the test runner treated accessibility violations as warnings and the records came out without the check that mattered most. Nothing failed and nothing warned. It looked good to me.
+The first run produced 949 records for the light theme. All green, every one with exit code zero and every one missing its axe result. I'd forgotten one environment variable, `CI=1`. Without it the test runner treated accessibility violations as warnings. The records came out without the check that mattered most. Nothing failed and nothing warned. It looked good to me.
 
 I threw that run away. The name for what it produced stuck.
 
@@ -58,7 +58,7 @@ Plausible accessibility is output that has the shape of accessible work and pass
 
 AI is about to produce a great deal more of it. A language model writes the most likely continuation of what it has seen and for interface code, what it has seen is the public web.
 
-The web isn't a good teacher. WebAIM's annual scan of the top million home pages found detectable WCAG failures on [95.9% of them in the WebAIM Million 2026 report](https://webaim.org/projects/million/), up from 94.8% the year before. It was the first rise in six years. The average page had 56.1 detected errors and the report names AI-assisted "vibe coding" as one likely reason pages are getting more complex. Those are only the errors software can detect.
+The web isn't a good teacher. WebAIM's annual scan of the top million home pages found detectable WCAG failures on [95.9% of them in the WebAIM Million 2026 report](https://webaim.org/projects/million/), up from 94.8% the year before. It was the first rise in six years. The average page had 56.1 detected errors. The report names AI-assisted "vibe coding" as one likely reason pages are getting more complex. Those are only the errors software can detect.
 
 So when a code model writes a button, it writes the web's average button and the web's average button fails. Michael Fairchild at Microsoft built a benchmark to measure exactly this: 1,280 samples across eight frontier models, with no accessibility instructions. In [his May 2026 update](https://dev.to/mfairchild365/ai-generated-accessibility-an-update-frontier-models-still-fail-but-skills-change-the-game-5629) the average pass rate was 12%. The best model passed a quarter of the time. The hardest prompt, a dark-themed shopping home page, never passed.
 
@@ -90,7 +90,7 @@ The failures cluster in five places, each a judgment that needs context the mode
 
 WCAG's first success criterion, [1.1.1 Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html), asks for a text alternative that serves the equivalent purpose. Purpose is the hard part. The W3C images tutorial says the right alternative is [determined by the author, depending on the usage, context and content](https://www.w3.org/WAI/tutorials/images/). A vision model describes what's in the picture. It can't know why the picture is on the page.
 
-A house icon that links to the homepage should be announced as "Home" and a model will describe it, accurately, as a house. A bar chart's meaning lives in its trend and the W3C's draft research on [machine learning and accessibility](https://w3c.github.io/ai-accessibility/) notes that automatic descriptions often miss the values that matter.
+A house icon that links to the homepage should be announced as "Home" and a model will describe it, accurately, as a house. A bar chart's meaning lives in its trend. The W3C's draft research on [machine learning and accessibility](https://w3c.github.io/ai-accessibility/) notes that automatic descriptions often miss the values that matter.
 
 Generative descriptions add detail, but the same draft observes that they change each time the same image is processed. Regenerate the alt text for a chart three times and you can get three different accounts of what it says. Pick your favourite. For a chart the better fix is usually a short written summary and a data table beside it, as the [W3C complex images tutorial](https://www.w3.org/WAI/tutorials/images/complex/) has recommended for years.
 
@@ -116,7 +116,7 @@ Generated components usually look fine. They fail when someone operates them wit
 
 The modal is the classic case. One developer's AI-built dashboard [let focus escape the dialog](https://dev.to/lixingliangsy/ai-generated-ui-is-shipping-faster-than-accessibility-can-catch-up-1o2i) to the page behind it. A QA team auditing a booking site found a modal that [never returned focus to the button that opened it](https://dev.to/tudorsss-betterqa/accessibility-testing-what-automated-scanners-keep-missing-2d44). Their scan found 14 issues; a manual pass found 47 more.
 
-[2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html) asks that the order preserve meaning and operability and the W3C's guidance says several different orders can pass. A rule engine can't pick the right one. Someone has to press Tab and pay attention.
+[2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html) asks that the order preserve meaning and operability. The W3C's guidance says several different orders can pass. A rule engine can't pick the right one. Someone has to press Tab and pay attention.
 
 AI products have the same problem. Mike Gower at IBM found a floating chat button that [looked about twelve tab stops away and took 85 presses to reach](https://medium.com/design-ibm/catching-up-on-accessibility-with-ai-chat-1129be33c184). Streamed answers [keep changing until they settle](https://medium.com/design-ibm/usable-ai-chat-46dedcca6a8f), which breaks live regions, the mechanism screen readers use to announce content that changes ([4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)). Gower calls the usual workaround feast or famine: a periodic "still composing", then the whole reply at once.
 
@@ -147,7 +147,7 @@ expect(screen.getByRole("button", { name: "FI, Finnish" })).toHaveAttribute(
 );
 ```
 
-A presence check is what let the bug through. An exact-name check fails the moment a name stops making sense. It still isn't the whole story: a screen reader adds the role and state and each reader phrases them its own way, so someone still has to listen to the result.
+A presence check is what let the bug through. An exact-name check fails the moment a name stops making sense. It still isn't the whole story: a screen reader adds the role and state. Each reader phrases them its own way, so someone still has to listen to the result.
 
 <ArticleFigure layout="center">
 
@@ -165,7 +165,7 @@ A presence check is what let the bug through. An exact-name check fails the mome
 
 The quietest failures are cognitive. When researchers audited six AI-generated websites for ASSETS 2025, a leading accessibility research conference, [52.93% of the 308 errors they found were cognitive accessibility issues](https://doi.org/10.1145/3663547.3759755) and most cognitive needs sit outside WCAG itself. The W3C's [Making Content Usable for People with Cognitive and Learning Disabilities](https://www.w3.org/TR/coga-usable/) covers what WCAG doesn't.
 
-Fluent text makes this worse, because it reads as if someone already simplified it. The AAA criterion [3.1.5 Reading Level](https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html) can be approximated with a readability formula and the formula will happily approve a short sentence that lost the one condition a reader needed.
+Fluent text makes this worse, because it reads as if someone already simplified it. The AAA criterion [3.1.5 Reading Level](https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html) can be approximated with a readability formula. The formula will happily approve a short sentence that lost the one condition a reader needed.
 
 Login is the clearest case. The W3C's note on [the inaccessibility of CAPTCHA](https://www.w3.org/TR/turingtest/) cites research in which software beat audio reCAPTCHA about 90% of the time, while blind, deafblind and cognitively disabled people remain locked out. The test meant to tell humans from machines mostly tells machines from disabled humans.
 
@@ -195,7 +195,7 @@ Models are useful when the job is structured: drafting alt text for a person to 
 
 The last line is the review step. It costs tokens. It's cheaper than shipping the first draft.
 
-The division of labour I trust is plain. Machines propose and measure. People decide and the people who decide whether something works are the ones who use it. Once a model's output is accepted because it sounds right, the work has slipped back into plausibility.
+The division of labour I trust is plain. Machines propose and measure. People decide. The people who decide whether something works are the ones who use it. Once a model's output is accepted because it sounds right, the work has slipped back into plausibility.
 
 ## Who to call and when
 
@@ -306,11 +306,9 @@ for (const record of records) {
 }
 ```
 
-The accessibility-tree snapshots this design system commits for every story in its test matrix are good at one thing: catching structural change. They record roles, names and states. They don't record whether a name makes sense out loud, whether an announcement arrives at the right moment or whether a sequence of steps is tiring. Those are judgments and a snapshot of a bad judgment passes forever.
+The accessibility-tree snapshots this design system commits for every story in its test matrix are good at one thing: catching structural change. They record roles, names and states. They don't record whether a name makes sense out loud, whether an announcement arrives at the right moment or whether a sequence of steps is tiring. Those are judgments. A snapshot of a bad judgment passes forever.
 
-Digitaltableteur has worked with two accessibility experts from Siteimprove, both with visual disabilities.
-
-{/* AUTHOR CHECK: add what that review covered and found, when it happened and whether it is a standing arrangement or a one-off. Keep to what is true. */}
+During the Helsinki Design System work, I worked with two accessibility experts from Siteimprove. Both have visual disabilities. That engagement ended with the project. The design system behind this site hasn't had a review like it, which is the gap this article is about.
 
 ## Works for whom
 

@@ -105,6 +105,12 @@ Owner picked: verified errors, inclusion fixes, voice and rhythm pass, restructu
 - **Voice:** 52 contractions (draft 1: none); 3.2 sentences per paragraph (4.1); four one-line paragraphs, none adjacent; closes on "who told you?"; footer is a statement.
 - **Additions:** routing table as a striped design-system Table with Owner and timing, 14 rows (audio description, zoom and reflow, motion, documents, native mobile added; voice and switch users in widget rows), stacked on phones; code blocks for the exact accessible-name test, an agent instruction file, and a silent-skip guard; the EAA paragraph.
 - **Code:** LanguageSwitcher stable name without aria-current (Figure B now shows the final name); marker play test at 4.5:1; captionless figures and hero render as plain wrappers; table caption, row headers, explicit roles, small-screen layout.
-- **AUTHOR CHECK:** partly resolved. The limits section states that Digitaltableteur has worked with two Siteimprove accessibility experts, both with visual disabilities. Still needed from the owner: what that work covered and found, when, and whether it continues.
+- **AUTHOR CHECK:** resolved. The two Siteimprove experts, both with visual disabilities, worked with the owner during the Helsinki Design System work; the engagement has ended. The limits section says so and names the gap: this site's design system has not had a review like it.
 
 Still open: illustration redraws (hands, stencil model, palette), the CodeBlockWindow component wraps every code block in an uncaptioned figure, and the article runs about 2,870 prose words (target 2,000 to 2,800) because of the expanded table.
+
+## After draft 2 (2026-10-15)
+
+- Routing table replaced by four striped lists grouped by owning team (owner: a table was the wrong form for sentence-length cases).
+- No Oxford comma anywhere; title and headings fixed; run-on joins left by the comma removal split into sentences.
+- Illustration redraws: owner declined, ship the current set.

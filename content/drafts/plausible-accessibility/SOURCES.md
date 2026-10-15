@@ -42,7 +42,7 @@ All URLs were checked on 2026-10-15. Order follows the flagship standard: primar
 | Selkokeskus, Kuurojen Liitto | Finnish plain-language and Deaf-led organisations named in the routing table |
 | European Accessibility Act (Directive (EU) 2019/882, applied from 28 June 2025); EN 301 549 | The EU business case |
 | Fairchild instruction findings (same report): one-line instruction 12% to 37%, short instruction file 60%, pasting all of WCAG often worse | Corrected "tripled" claim; the agent instruction block |
-| Owner, 2026-10-15 | Digitaltableteur has worked with two accessibility experts from Siteimprove, both with visual disabilities (details pending AUTHOR CHECK) |
+| Owner, 2026-10-15 | Two Siteimprove accessibility experts, both with visual disabilities, worked with the owner during the Helsinki Design System work; the engagement has ended and did not cover this site's design system |
 
 ## Practitioner evidence (Medium and Dev.to)
 

@@ -10,7 +10,7 @@ authorSlug: "petri-lahdelma"
 
 **It's late April 2025.** I'm staring at my screen, a sprawling design system for a European fintech startup. There are dozens of components, dozens of variant states, tokens updated across light and dark themes, edge cases and accessibility tweaks. The Figma file is immaculate. The Storybook build is green. And yet the product still reads like three different companies depending on which squad shipped last.
 
-A few hours ago, a senior engineer asked: "Why does this system need a brand identity? Isn't this just code, or design, not something people see directly?"
+A few hours ago, a senior engineer asked: "Why does this system need a brand identity? Isn't this just code or design, not something people see directly?"
 
 Her question hit home, because it is the polite version of a belief I hear constantly: design systems are plumbing. Brand is marketing. Keep them separate and nobody gets confused. That separation sounds rational until you watch a contractor drop a neon gradient "primary" button into a calm banking flow because the token was technically allowed. The system did not fail. The system had no opinion.
 
@@ -20,9 +20,9 @@ For many teams, a design system really is invisible infrastructure: a tool, a li
 
 A design system is not a collection of components. It is a silent manifesto. Every default encodes a claim about who you are and how you build. Default button size says something about density and confidence. Default error copy says something about blame and care. Default motion says something about whether your product is nervous or composed. None of that is neutral.
 
-When you build a system without a clear identity, you still get typography and spacing. You still pass accessibility checks if you are disciplined. You end up with something efficient but soulless. It works fine on a checklist. It does not persuade a user who is deciding whether to trust you with their money, their health data, or their team's workflow. It does not persuade an engineer who has six ways to implement the same card and no guidance on which one is "us."
+When you build a system without a clear identity, you still get typography and spacing. You still pass accessibility checks if you are disciplined. You end up with something efficient but soulless. It works fine on a checklist. It does not persuade a user who is deciding whether to trust you with their money, their health data or their team's workflow. It does not persuade an engineer who has six ways to implement the same card and no guidance on which one is "us."
 
-Branding your design system turns it into a unified language for the whole team. It stops being "the catalogue of UI bits" and becomes "our toolbox," with shared nouns, shared limits, and shared pride. Pride sounds soft until you have maintained a system for three years. The teams that treat the system as culture ship faster because they argue about intent, not about hex codes.
+Branding your design system turns it into a unified language for the whole team. It stops being "the catalogue of UI bits" and becomes "our toolbox," with shared nouns, shared limits and shared pride. Pride sounds soft until you have maintained a system for three years. The teams that treat the system as culture ship faster because they argue about intent, not about hex codes.
 
 ## What branding a design system is not
 
@@ -30,17 +30,17 @@ Let me be blunt about the distractions.
 
 Branding a design system is not slapping the marketing logo on the Storybook header. It is not a PDF brand book that designers cite once and engineers never open. It is not choosing Inter because everyone else did, then calling it a day. Those activities can run in parallel with good work, but they do not substitute for operational brand inside the system.
 
-It is also not the same job as campaign branding. Marketing needs spikes, seasonal skins, emotional swings. A product design system needs stability, predictability, and rules that survive a reorg. The argument I make to brand teams is simple: give us principles and constraints we can enforce, not mood boards we can only admire. If the brand team cannot answer "what should the destructive button never do," the design system team cannot protect users when shipping velocity doubles.
+It is also not the same job as campaign branding. Marketing needs spikes, seasonal skins, emotional swings. A product design system needs stability, predictability and rules that survive a reorg. The argument I make to brand teams is simple: give us principles and constraints we can enforce, not mood boards we can only admire. If the brand team cannot answer "what should the destructive button never do," the design system team cannot protect users when shipping velocity doubles.
 
 The most expensive failure mode I see is performative branding: new token names that sound on-brand, same components underneath, no change in behavior. You get `brand-accent-emphasis` instead of `blue-500` and the UI still feels like a generic SaaS template. That is renaming, not branding.
 
 ## Human trust in machine-era infrastructure
 
-We build on abstractions now: APIs, feature flags, generated themes, agents that draft layouts from prompts. It is easy to forget that every layer still carries human judgment, or the absence of it.
+We build on abstractions now: APIs, feature flags, generated themes, agents that draft layouts from prompts. It is easy to forget that every layer still carries human judgment or the absence of it.
 
-Human-centred branding inside a design system reminds everyone that someone decided padding, corner radius, hover feedback, and the voice in microcopy. Those decisions are ethical, not decorative. A cramped table says you optimize for data density over readability. A playful empty state in a grief-adjacent product says you did not think hard enough about context. A system with no stance on either makes every squad improvise their own ethics at the component level.
+Human-centred branding inside a design system reminds everyone that someone decided padding, corner radius, hover feedback and the voice in microcopy. Those decisions are ethical, not decorative. A cramped table says you optimize for data density over readability. A playful empty state in a grief-adjacent product says you did not think hard enough about context. A system with no stance on either makes every squad improvise their own ethics at the component level.
 
-That matters internally before it matters externally. Engineers trust a system when it reduces guessing. Designers trust it when it protects craft instead of freezing it. Product managers trust it when "on brand" is testable, not a meeting. Externally, users do not read your token JSON. They feel mood, promise, and consistency in the hundred small choices that survived contact with your repo.
+That matters internally before it matters externally. Engineers trust a system when it reduces guessing. Designers trust it when it protects craft instead of freezing it. Product managers trust it when "on brand" is testable, not a meeting. Externally, users do not read your token JSON. They feel mood, promise and consistency in the hundred small choices that survived contact with your repo.
 
 I am not romantic about this. Users will not thank you for semantic color roles. They will notice when the product stops feeling like it was assembled by committee. Brand, in that sense, is the compression algorithm for a thousand micro-decisions.
 
@@ -48,19 +48,19 @@ I am not romantic about this. Users will not thank you for semantic color roles.
 
 Branding a design system means holding two hats at once: brand strategist and systems thinker. The strategist asks what you want people to believe. The systems thinker asks how to make belief cheap to ship and hard to violate.
 
-Purpose comes first. "Makes UI easy" is not a purpose; it is a feature description. A sharper purpose sounds like: "Help teams ship calm, legible financial interfaces without re-litigating basics every sprint." That sentence already rules things out. It has an opinion about density, tone, and risk.
+Purpose comes first. "Makes UI easy" is not a purpose; it is a feature description. A sharper purpose sounds like: "Help teams ship calm, legible financial interfaces without re-litigating basics every sprint." That sentence already rules things out. It has an opinion about density, tone and risk.
 
-Values are next, and they must be falsifiable. "We care about accessibility" is worthless until it changes defaults: focus rings always on, minimum touch targets, error text that names the fix, not the failure. "We care about clarity" should show up in typography scales, table layouts, and the ban on icon-only buttons without labels in production paths. If a value cannot fail a pull request, it is wallpaper.
+Values are next and they must be falsifiable. "We care about accessibility" is worthless until it changes defaults: focus rings always on, minimum touch targets, error text that names the fix, not the failure. "We care about clarity" should show up in typography scales, table layouts and the ban on icon-only buttons without labels in production paths. If a value cannot fail a pull request, it is wallpaper.
 
-Voice and tone belong in the system, not only in marketing copy. Error states, empty states, loading states, and confirmation dialogs are where brand actually lives for most users. I push teams to ship example strings alongside components, not lorem ipsum. "Payment failed" and "We could not charge your card. Try again or use a different method." are the same fact with different relationships to the user. Your system should know which one you are.
+Voice and tone belong in the system, not only in marketing copy. Error states, empty states, loading states and confirmation dialogs are where brand actually lives for most users. I push teams to ship example strings alongside components, not lorem ipsum. "Payment failed" and "We could not charge your card. Try again or use a different method." are the same fact with different relationships to the user. Your system should know which one you are.
 
-Flexibility without dilution is the hard trade. Dark mode, white-label themes, and localization are not excuses to fork the soul of the product. The opinionated take: variation should ride on semantic tokens and documented exceptions, not ad hoc overrides in product repos. If every market gets its own button component, you do not have a design system. You have a museum of compromises.
+Flexibility without dilution is the hard trade. Dark mode, white-label themes and localization are not excuses to fork the soul of the product. The opinionated take: variation should ride on semantic tokens and documented exceptions, not ad hoc overrides in product repos. If every market gets its own button component, you do not have a design system. You have a museum of compromises.
 
-Onboarding should feel like initiation, not like reading a manual written by someone who hates you. New designers and engineers should absorb how you argue, what you refuse, and what you automate. Good branded systems teach judgment. Bad ones teach Ctrl+C from Storybook.
+Onboarding should feel like initiation, not like reading a manual written by someone who hates you. New designers and engineers should absorb how you argue, what you refuse and what you automate. Good branded systems teach judgment. Bad ones teach Ctrl+C from Storybook.
 
 ## Governance: who owns the soul
 
-Here is the uncomfortable part most posts skip. Somebody has to own brand inside the system, and in many orgs that person does not exist.
+Here is the uncomfortable part most posts skip. Somebody has to own brand inside the system and in many orgs that person does not exist.
 
 Marketing owns campaigns. Product owns roadmaps. Platform owns uptime. Design system teams own releases and migration guides. Brand gets shared across all of them and therefore accountable to none of them. The result is a beautiful library that decays the moment pressure hits, because "on brand" becomes whatever the loudest stakeholder in the sprint wants.
 
@@ -76,7 +76,7 @@ When you name a color `semantic.error` instead of `red-500`, you are telling fut
 
 That is branding in the only form engineers will consistently respect: enforceable structure. The fintech team I mentioned eventually stopped debating "is this blue on-brand?" and started debating "is this the right semantic role for a destructive action in a wealth context?" Better arguments, fewer meetings, stronger product.
 
-The same logic applies to motion, elevation, and density. A snappy animation curve is a brand choice. A table that defaults to 40px row height is a brand choice. Pretending those are neutral engineering decisions is how you get a product that feels like a theme switcher on top of someone else's personality.
+The same logic applies to motion, elevation and density. A snappy animation curve is a brand choice. A table that defaults to 40px row height is a brand choice. Pretending those are neutral engineering decisions is how you get a product that feels like a theme switcher on top of someone else's personality.
 
 ## When branding the system is a waste
 
@@ -86,7 +86,7 @@ The other time to pause is during acquisition chaos or a full rebrand in flight.
 
 Everything else is fair game.
 
-## White-label, franchises, and the identity trap
+## White-label, franchises and the identity trap
 
 Multi-tenant products tempt you to think brand belongs only in the theme layer. Sometimes that is true. Often it is a lie that saves sales demos and punishes users.
 
@@ -106,6 +106,6 @@ That is not fluff. It is competitive advantage expressed as fewer regressions an
 
 ---
 
-If your team is building a design system, or thinking of scaling one, treat branding as a core feature, not an afterthought. Start with purpose you can enforce, values that can fail a PR, and voice baked into components, not only into landing pages.
+If your team is building a design system or thinking of scaling one, treat branding as a core feature, not an afterthought. Start with purpose you can enforce, values that can fail a PR and voice baked into components, not only into landing pages.
 
-Real consistency does not live in token names or CSS variables alone. It lives in what your product feels like when someone clicks, scrolls, or hesitates for a moment. That feeling is your brand. The system is how you keep it honest when you are not watching every merge.
+Real consistency does not live in token names or CSS variables alone. It lives in what your product feels like when someone clicks, scrolls or hesitates for a moment. That feeling is your brand. The system is how you keep it honest when you are not watching every merge.

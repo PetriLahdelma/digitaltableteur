@@ -17,15 +17,15 @@ mainImageUrl: "/blog/agentic-design-systems/hero-04-mvp.png"
 mainImageAlt: "Six-layer minimum viable agent-ready design system stack"
 ---
 
-Not every team needs a cathedral. Some hear “design system” and picture governance councils, forty component owners, and a documentation site with its own roadmap. That shape exists. It is not where most squads should start if agents are already generating UI in the repo.
+Not every team needs a cathedral. Some hear “design system” and picture governance councils, forty component owners and a documentation site with its own roadmap. That shape exists. It is not where most squads should start if agents are already generating UI in the repo.
 
-**Thesis:** The minimum viable agent-ready design system is small, strict, and explicit — six layers you can enforce in CI before agents outpace your docs. The alternative to a giant system is not chaos. It is a thinner stack where every layer fails loudly when drift appears.
+**Thesis:** The minimum viable agent-ready design system is small, strict and explicit — six layers you can enforce in CI before agents outpace your docs. The alternative to a giant system is not chaos. It is a thinner stack where every layer fails loudly when drift appears.
 
 The useful target for many teams is a **minimum viable agent-ready design system**: small enough to maintain, strict enough to prevent drift, explicit enough that humans and machines can work without hallway context.
 
 ## Why “small team magic” stops working
 
-Proximity carries context — who owns brand judgment, which shortcuts are tolerated, which form pattern is canonical. Add contractors, parallel squads, coding agents, or a second repo and proximity stops scaling. Drift shows up as informal button variants, empty states with different voice, forms that validate on different triggers, spacing that becomes local guesswork, dark mode that breaks at the edges, accessibility that arrives in a late audit. None of that requires an enterprise program. All of it requires a real system, just not necessarily a large one.
+Proximity carries context — who owns brand judgment, which shortcuts are tolerated, which form pattern is canonical. Add contractors, parallel squads, coding agents or a second repo. Proximity stops scaling. Drift shows up as informal button variants, empty states with different voice, forms that validate on different triggers, spacing that becomes local guesswork, dark mode that breaks at the edges, accessibility that arrives in a late audit. None of that requires an enterprise program. All of it requires a real system, just not necessarily a large one.
 
 Agents accelerate the failure mode. When only four people touched the repo, informal rules lived in glances across the desk. When four people and two agents touch it, the agent copies the first plausible example. Without contracts, the example might be three quarters deprecated. Without token lint, the shortcut becomes `#ddd` in six files before anyone notices. Without pattern recipes, every form invents its own error anatomy.
 
@@ -37,7 +37,7 @@ You can stay small and still be operational. You cannot stay informal and expect
 
 <img src="/blog/agentic-design-systems/fig-mvp-stack.png" alt="Six layers of a minimum viable agent-ready design system." />
 
-<figcaption>Tokens, components, contracts, patterns, examples, and verification — thin, but enforceable.</figcaption>
+<figcaption>Tokens, components, contracts, patterns, examples and verification — thin, but enforceable.</figcaption>
 
 </ArticleFigure>
 
@@ -45,7 +45,7 @@ Build from the bottom of the stack. Skip a layer and the one above it becomes op
 
 **Semantic tokens** — Agents and developers should reach for `surface`, `text`, `border`, `accent`, `danger`, `focus` — not `gray-800` or ad hoc hex. Token lint is the cheapest mechanical gate. In our repo, Stylelint with strict value rules rejects raw colors in component CSS. Start with color and spacing; add motion and elevation when basics hold.
 
-**Production components** — Coded, with stable props and stories that reflect product reality. Prefer six components used everywhere over twenty that exist only in Figma. Each component gets a folder, CSS modules, stories, tests, and a contract file. If it is not in code, agents will hallucinate it.
+**Production components** — Coded, with stable props and stories that reflect product reality. Prefer six components used everywhere over twenty that exist only in Figma. Each component gets a folder, CSS modules, stories, tests and a contract file. If it is not in code, agents will hallucinate it.
 
 **Structural contracts** — Required stories, a11y flags, token references, lifecycle status. See [Part 3](/blog/component-contracts-are-where-taste-becomes-infrastructure) for v1 vs v2. Ship structural before semantic; honesty about gaps beats pretend coverage.
 
@@ -59,15 +59,15 @@ That is already a design system, even if you call it a UI foundation. Six compon
 
 ## Start where the product already hurts
 
-Variant taxonomy debates, documentation migration, and AI generation all feel productive. They delay enforcement. Start where friction is visible.
+Variant taxonomy debates, documentation migration and AI generation all feel productive. They delay enforcement. Start where friction is visible.
 
-If forms are inconsistent, write a form recipe before you rename another input variant. If dashboards drift, define density and toolbar patterns. If agents misuse components, contract the top five offenders — usually Button, Input, Dialog, Card, and whatever you use for errors. If accessibility arrives late, gate promotion on axe and keyboard coverage in required stories. If brand dilutes, fix semantic token scopes and show real usage in examples, not lavender placeholders.
+If forms are inconsistent, write a form recipe before you rename another input variant. If dashboards drift, define density and toolbar patterns. If agents misuse components, contract the top five offenders — usually Button, Input, Dialog, Card and whatever you use for errors. If accessibility arrives late, gate promotion on axe and keyboard coverage in required stories. If brand dilutes, fix semantic token scopes and show real usage in examples, not lavender placeholders.
 
 Grow from repeated product friction, not from an abstract inventory. Every layer you add should answer a failure that happened twice.
 
 ## Agent-readiness without archaeology
 
-A small system is ready when naming is consistent across Figma, code, and Storybook; when contracts and examples describe intent, not only appearance; when one command detects invalid usage; when review spends time on judgment, not mechanics; and when deprecations ship with migration notes in the same PR as the breaking change.
+A small system is ready when naming is consistent across Figma, code and Storybook; when contracts and examples describe intent, not only appearance; when one command detects invalid usage; when review spends time on judgment, not mechanics; and when deprecations ship with migration notes in the same PR as the breaking change.
 
 The shape can be as small as this:
 
@@ -81,31 +81,31 @@ The shape can be as small as this:
 
 For bulk token setup in Figma, some teams use [figma-cli](https://github.com/silships/figma-cli) (Sil Bormüller) to import from `DESIGN.md`. That is a tool from [Part 2](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems); contracts in the repo still define what “done” means in code.
 
-Readiness is not component count. It is whether an agent session can answer: which file is authoritative, which example to copy, which command proves safety, and what happens when the command fails.
+Readiness is not component count. It is whether an agent session can answer: which file is authoritative, which example to copy, which command proves safety and what happens when the command fails.
 
 ## Ownership in a small squad
 
-You need a named owner — often the design-system lead or the person who already answers “which button do we use?” Design owns token semantics, pattern recipes, and Storybook examples. Engineering owns contracts, the validation script, and the CI gate. Promotion criteria (experimental → beta → stable) are shared. If nobody owns contracts, agents will still generate UI; the system will not learn from failures.
+You need a named owner — often the design-system lead or the person who already answers “which button do we use?” Design owns token semantics, pattern recipes and Storybook examples. Engineering owns contracts, the validation script and the CI gate. Promotion criteria (experimental → beta → stable) are shared. If nobody owns contracts, agents will still generate UI; the system will not learn from failures.
 
-In a squad of eight, this is often four hours a week, not a full role — until agents touch the repo daily, then it becomes the difference between compounding quality and compounding drift. The owner curates which examples agents see, triages validator false positives, and converts repeat review comments into rules.
+In a squad of eight, this is often four hours a week, not a full role — until agents touch the repo daily, then it becomes the difference between compounding quality and compounding drift. The owner curates which examples agents see, triages validator false positives and converts repeat review comments into rules.
 
 ## A 30–60–90 day path
 
-**Days 1–30:** Ship semantic color, spacing, type, and focus tokens. Add structural contracts for Button, Input, Dialog, Alert, and Card. Wire `npm run validate:components` (or your equivalent) into CI. Document the harness: authoritative paths, required commands, human review triggers for taxonomy changes.
+**Days 1–30:** Ship semantic color, spacing, type and focus tokens. Add structural contracts for Button, Input, Dialog, Alert and Card. Wire `npm run validate:components` (or your equivalent) into CI. Document the harness: authoritative paths, required commands, human review triggers for taxonomy changes.
 
-**Days 31–60:** Add form and error-state pattern recipes. Expand stories to cover loading, error, and keyboard paths for top components. Turn on token lint if not already blocking. Demote or mark legacy any story agents keep copying.
+**Days 31–60:** Add form and error-state pattern recipes. Expand stories to cover loading, error and keyboard paths for top components. Turn on token lint if not already blocking. Demote or mark legacy any story agents keep copying.
 
-**Days 61–90:** Introduce lifecycle stages in contracts. Write contribution rules with required evidence for promotion. Ship migration notes whenever props change. Review agent failure logs — anything three times becomes a rule, skill, or check.
+**Days 61–90:** Introduce lifecycle stages in contracts. Write contribution rules with required evidence for promotion. Ship migration notes whenever props change. Review agent failure logs — anything three times becomes a rule, skill or check.
 
 Treat the timeline as a hypothesis. The point is enforcement before agents outpace your docs. If agents are not in the repo yet, use the same stack for human contributors — the operating model still pays off.
 
 ## When to stop (or never start)
 
-Defer this stack if UI is still throwaway pre-PMF, if one person owns every surface for the foreseeable year, if agents are not in the repo yet, or if you cannot maintain contracts after the first sprint — unmaintained contracts become lies agents trust.
+Defer this stack if UI is still throwaway pre-PMF, if one person owns every surface for the foreseeable year, if agents are not in the repo yet or if you cannot maintain contracts after the first sprint — unmaintained contracts become lies agents trust.
 
-Structural validation catches prop and story drift; it does not replace design review for hierarchy and copy. When the stack fits, output starts closer to acceptable, onboarding shortens, and contributors plug into boundaries instead of reverse-engineering taste from screenshots.
+Structural validation catches prop and story drift; it does not replace design review for hierarchy and copy. When the stack fits, output starts closer to acceptable, onboarding shortens and contributors plug into boundaries instead of reverse-engineering taste from screenshots.
 
-[Part 5](/blog/from-designops-to-agentops) closes the series: who owns the stack when agents join the delivery loop, and what changes in the design-system lead role.
+[Part 5](/blog/from-designops-to-agentops) closes the series: who owns the stack when agents join the delivery loop and what changes in the design-system lead role.
 
 ## Anti-patterns that look like progress
 
@@ -117,7 +117,7 @@ Structural validation catches prop and story drift; it does not replace design r
 
 **Figma-first, code-never.** Agents ship in the repo. If tokens live only in Figma, code will invent its own palette.
 
-**Hero-story-only Storybook.** Beautiful defaults teach agents that empty, error, and loading states are optional.
+**Hero-story-only Storybook.** Beautiful defaults teach agents that empty, error and loading states are optional.
 
 Avoiding these is cheaper than fixing production drift later.
 

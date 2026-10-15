@@ -17,29 +17,29 @@ mainImageUrl: "/blog/agentic-design-systems/hero-01-operating-models.png"
 mainImageAlt: "Circular diagram of the agentic operating loop: intent, rules, output, evidence, better rules"
 ---
 
-Last year I wrote about [design systems for bots](https://www.petrilahdelma.com/writing/design-systems-for-bots): UI contracts that agents cannot misinterpret. Since then I have watched teams run the experiment for real. The agent ships fast, the first draft looks plausible, and then someone opens the diff and finds the same failures again — wrong action hierarchy, raw values instead of semantic tokens, a component that made sense in Storybook but not in the flow. AI did not invent those problems. It removed the slack that used to hide them.
+Last year I wrote about [design systems for bots](https://www.petrilahdelma.com/writing/design-systems-for-bots): UI contracts that agents cannot misinterpret. Since then I have watched teams run the experiment for real. The agent ships fast, the first draft looks plausible and then someone opens the diff and finds the same failures again — wrong action hierarchy, raw values instead of semantic tokens, a component that made sense in Storybook but not in the flow. AI did not invent those problems. It removed the slack that used to hide them.
 
-**Thesis:** A design system without an operating model is a component catalogue with good intentions. Agents do not need more pieces. They need a repeatable loop — intent, rules, output, evidence — that humans already trust. This post names that loop, shows where teams stall, and gives you a maturity test you can run this week without buying another tool.
+**Thesis:** A design system without an operating model is a component catalogue with good intentions. Agents do not need more pieces. They need a repeatable loop — intent, rules, output, evidence — that humans already trust. This post names that loop, shows where teams stall and gives you a maturity test you can run this week without buying another tool.
 
-[From Tokens to Thinking Systems](/blog/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work) asked what AI-native design systems must encode. [Figma MCP](/blog/figma-mcp-design-systems) showed one tool surface. This series is about how teams **operate** those systems when agents, linters, and humans share the same repo — with evidence that fails in CI, not in Slack.
+[From Tokens to Thinking Systems](/blog/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work) asked what AI-native design systems must encode. [Figma MCP](/blog/figma-mcp-design-systems) showed one tool surface. This series is about how teams **operate** those systems when agents, linters and humans share the same repo — with evidence that fails in CI, not in Slack.
 
 ## The wrong question
 
 Teams still ask whether a design system is worth the effort now that models can generate screens. Executives hear “the model can build UI” and wonder why they fund a forty-person guild. Practitioners hear the same sentence and wonder why their review queue doubled. Both reactions miss the point.
 
-The better question is whether the system can be **operated** by everyone who now touches the repo: designers, engineers, coding agents, linters, and the orchestration layers that turn intent into merged code. Can a new contributor — human or machine — produce output that passes the same checks a senior would apply? Can you tell, from artifacts alone, which decision drove a change?
+The better question is whether the system can be **operated** by everyone who now touches the repo: designers, engineers, coding agents, linters and the orchestration layers that turn intent into merged code. Can a new contributor — human or machine — produce output that passes the same checks a senior would apply? Can you tell, from artifacts alone, which decision drove a change?
 
-A component library tells an agent what pieces exist. It rarely tells the agent how the product thinks — the difference between confirmation and destructive commitment, or why a decision region should have one primary action. When the system is mostly a catalogue, AI routes around it. It copies the nearest story, imports the path with the shortest name, and ships. When it is an operating model, AI can work inside it because the rules and the proof are in the same place as the components.
+A component library tells an agent what pieces exist. It rarely tells the agent how the product thinks — the difference between confirmation and destructive commitment or why a decision region should have one primary action. When the system is mostly a catalogue, AI routes around it. It copies the nearest story, imports the path with the shortest name and ships. When it is an operating model, AI can work inside it because the rules and the proof are in the same place as the components.
 
 I have seen teams respond to agent drift by adding components. A “ConfirmDialogAgentSafe” appears next to the existing dialog. A “PrimaryButtonV2” lands because the old one had too many legacy stories. The catalogue grows. The operating model does not. Six months later the agent still picks the wrong variant because nothing in the repo says which dialog owns destructive flows.
 
 ## What “operating model” means in practice
 
-An operating model is the loop that connects intent, rules, output, and evidence. It is not a slide deck and not a governance council. It is what happens when someone — or something — tries to change the UI.
+An operating model is the loop that connects intent, rules, output and evidence. It is not a slide deck and not a governance council. It is what happens when someone — or something — tries to change the UI.
 
-**Intent** is the product decision in plain language: delete workspace, recover from billing error, invite a teammate with insufficient permissions. Intent lives in tickets, briefs, and sometimes Figma annotations. It is often clear to humans and invisible to agents unless you copy it into the repo.
+**Intent** is the product decision in plain language: delete workspace, recover from billing error, invite a teammate with insufficient permissions. Intent lives in tickets, briefs and sometimes Figma annotations. It is often clear to humans and invisible to agents unless you copy it into the repo.
 
-**Rules** encode that decision in system terms: which pattern, which variants, which tokens, which combinations are forbidden. Rules belong in contracts, lint config, and pattern recipes — not only in a Notion doc titled “UI principles.” A rule nobody can run is a preference.
+**Rules** encode that decision in system terms: which pattern, which variants, which tokens, which combinations are forbidden. Rules belong in contracts, lint config and pattern recipes — not only in a Notion doc titled “UI principles.” A rule nobody can run is a preference.
 
 **Output** is the UI, generated or hand-built. Output is cheap now. The cost moved to verification.
 
@@ -47,7 +47,7 @@ An operating model is the loop that connects intent, rules, output, and evidence
 
 <ArticleFigure layout="center">
 
-<img src="/blog/agentic-design-systems/fig-operating-loop.png" alt="Agentic operating loop: intent, rules, output, evidence, and better rules." />
+<img src="/blog/agentic-design-systems/fig-operating-loop.png" alt="Agentic operating loop: intent, rules, output, evidence and better rules." />
 
 <figcaption>The operating loop — intent, rules, output, evidence, better rules — is the spine of the series; everything else hangs off it.</figcaption>
 
@@ -59,7 +59,7 @@ Without that loop you have a library. With it you have something agents and huma
 
 Picture a squad that adopted Cursor and a Figma MCP integration in the same sprint. Monday: an agent refactors a settings page and swaps `Button` variants correctly but hardcodes `#E5E5E5` for a divider because the semantic border token was three clicks deep in Storybook. Tuesday: a designer fixes the color in Figma; the agent never sees the update. Wednesday: a second agent copies a card story that still shows deprecated padding. Thursday: QA files a bug on action hierarchy in a delete modal. Friday: the team debates whether to “fine-tune the prompt.” Nobody asks which rule should have failed on Monday.
 
-That is not an AI problem. It is an operating model problem. The team had tools and components. It did not have a closed loop between intent, rules, output, and evidence.
+That is not an AI problem. It is an operating model problem. The team had tools and components. It did not have a closed loop between intent, rules, output and evidence.
 
 Another pattern I see in reviews: the agent does everything technically right inside a component and everything product-wrong between components. Spacing tokens are correct; the form layout ignores the recipe. Variants are valid; hierarchy is nonsense. Operating models must span composition, not only atoms — which is why later posts cover pattern recipes and semantic contracts, not just Button props.
 
@@ -67,19 +67,19 @@ Operating rules belong in [component contracts](/blog/component-contracts-are-wh
 
 ## What agents inherit (and what they do not)
 
-Humans carry context that never made it into the file: which component is politically deprecated, which product area runs dense tables, why a “simple” error still needs recovery copy. Agents inherit none of that unless you encode it. They read files, exports, stories, and tests. If the easiest example to copy is stale, stale becomes the default — I have seen an agent reuse the first Storybook story for a card, hardcoded padding and all, because nothing marked it legacy.
+Humans carry context that never made it into the file: which component is politically deprecated, which product area runs dense tables, why a “simple” error still needs recovery copy. Agents inherit none of that unless you encode it. They read files, exports, stories and tests. If the easiest example to copy is stale, stale becomes the default — I have seen an agent reuse the first Storybook story for a card, hardcoded padding and all, because nothing marked it legacy.
 
 Agents also inherit whatever your repo rewards. If the fastest path to green CI is a shallow story with no keyboard test, you will get shallow UI. If the only documented form pattern is a marketing signup, you will get signup anatomy on an enterprise settings screen. If destructive actions share a story with primary actions, the model learns that hierarchy is optional.
 
 What agents inherit well: stable prop names, explicit variant enums, token references that lint, contracts that fail when stories disappear, migration notes in the same PR as the breaking change. What they inherit poorly: tribal knowledge, “ask Sarah,” screenshots in Slack, Figma files with six near-duplicate buttons and no component status.
 
-Agentic design systems are less about “adding AI” and more about tightening the boundary between intent and execution: what something means, when to use it, what it must never do, and how the team proves it still works. The boundary is not a prompt. It is the operating model.
+Agentic design systems are less about “adding AI” and more about tightening the boundary between intent and execution: what something means, when to use it, what it must never do and how the team proves it still works. The boundary is not a prompt. It is the operating model.
 
 ## Governance as throughput, not ceremony
 
 Governance in this context is not a committee. It is what stops every sprint from rediscovering the same decisions. When governance works, it feels like throughput: fewer repeat debates, faster merges, clearer escalation. When it fails, it feels like theatre — office hours nobody attends, a checklist PDF, a Slack emoji for “DS approved.”
 
-Reviews shift from “does this look fine?” to which contract controlled the change, which example was copied, which checks produced evidence, and which calls still require human taste. Under pressure, humans and agents both reach for the nearest pattern. If that pattern is explicit and validated, the system compounds; if it is stale, drift compounds faster because there are more authors.
+Reviews shift from “does this look fine?” to which contract controlled the change, which example was copied, which checks produced evidence and which calls still require human taste. Under pressure, humans and agents both reach for the nearest pattern. If that pattern is explicit and validated, the system compounds; if it is stale, drift compounds faster because there are more authors.
 
 A practical shift: publish what reviewers no longer need to say. If Stylelint rejects raw hex, stop commenting “use tokens” on every PR. If `validate:components` fails when a required story is missing, stop asking “where is the empty state?” in review. Reserve human time for judgment the machine cannot yet encode — proportion, copy tone, whether an exception is worth the complexity.
 
@@ -89,13 +89,13 @@ Token enforcement is an early win that actually sticks. In our repo, Stylelint w
 
 In [design systems for bots](https://www.petrilahdelma.com/writing/design-systems-for-bots) I used three levels. They still hold. Most teams claiming “AI-ready” are still arguing about the first.
 
-**Readability** — can an agent find the right component? Readable systems have consistent names across Figma, code, and Storybook; entry points agents can reach (`AGENTS.md`, indexed skills, obvious import paths); and examples that match product reality rather than lorem ipsum hero cards. Test: give a contractor the repo and a ticket. Can they identify the correct component in under ten minutes without a call?
+**Readability** — can an agent find the right component? Readable systems have consistent names across Figma, code and Storybook; entry points agents can reach (`AGENTS.md`, indexed skills, obvious import paths); and examples that match product reality rather than lorem ipsum hero cards. Test: give a contractor the repo and a ticket. Can they identify the correct component in under ten minutes without a call?
 
-**Executability** — can you validate usage mechanically? Executable systems have contracts, lint, typecheck, and tests that fail on drift — not docs that suggest best practices. Test: introduce a deliberate violation (wrong token, missing story, forbidden variant pair). Does something red appear before human review?
+**Executability** — can you validate usage mechanically? Executable systems have contracts, lint, typecheck and tests that fail on drift — not docs that suggest best practices. Test: introduce a deliberate violation (wrong token, missing story, forbidden variant pair). Does something red appear before human review?
 
-**Survivability** — can you change internals without breaking consumers? Survivable systems version props, document deprecations, and keep migration paths next to the code agents copy. Test: rename a variant. Do stories, contracts, and consumers update in one PR, or do you discover breakage in production?
+**Survivability** — can you change internals without breaking consumers? Survivable systems version props, document deprecations and keep migration paths next to the code agents copy. Test: rename a variant. Do stories, contracts and consumers update in one PR or do you discover breakage in production?
 
-If a new contributor cannot ship a compliant page without a thread of Slack questions, if validation cannot separate a cosmetic tweak from a broken contract, or if nobody can tell what is stable versus experimental, more components will not help. More operational clarity will.
+If a new contributor cannot ship a compliant page without a thread of Slack questions, if validation cannot separate a cosmetic tweak from a broken contract or if nobody can tell what is stable versus experimental, more components will not help. More operational clarity will.
 
 ## What to do in the next ninety days
 
@@ -105,23 +105,23 @@ You do not need a reorg. You need three commitments.
 
 **Next thirty days:** Add token lint or tighten existing rules. Promote two pattern recipes for places agents already drift — forms, destructive flows, empty states. Demote or mark legacy the stories agents keep copying.
 
-**Final thirty days:** Review repeated agent failures. Turn the third occurrence of the same mistake into a rule, a skill, or a check. Measure review time on mechanical vs judgment comments. If mechanical comments dominate, your operating model is still aspirational.
+**Final thirty days:** Review repeated agent failures. Turn the third occurrence of the same mistake into a rule, a skill or a check. Measure review time on mechanical vs judgment comments. If mechanical comments dominate, your operating model is still aspirational.
 
-If you lead a design system, you own this loop whether or not your title says “AgentOps.” [Part 2](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) separates tools, harnesses, and skills so you do not buy the wrong fix for a loop problem.
+If you lead a design system, you own this loop whether or not your title says “AgentOps.” [Part 2](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) separates tools, harnesses and skills so you do not buy the wrong fix for a loop problem.
 
 ## Objections worth answering
 
 **“Our design system is already mature.”** Maturity measured in component count is the wrong metric. Ask whether executability and survivability pass the tests above. Many “mature” libraries have excellent Figma coverage and no CI validation. Agents do not care about your FigJam roadmap.
 
-**“We will add AI governance later.”** Agents are already in repos via IDE plugins, CI bots, and contractor laptops. Later means you are training on drift. The first contract file is cheaper than the first production rollback.
+**“We will add AI governance later.”** Agents are already in repos via IDE plugins, CI bots and contractor laptops. Later means you are training on drift. The first contract file is cheaper than the first production rollback.
 
 **“Designers will resist rules.”** Designers already resist repeat review comments. Contracts remove the comments that insult everyone’s intelligence — the ones that say “use a token” for the fifth time. Judgment stays human; mechanics move to CI.
 
-**“Our org is not ready for AgentOps.”** You do not need a new org chart. You need a named owner, five contracts, and one failing command. That is an operating model, not a reorg.
+**“Our org is not ready for AgentOps.”** You do not need a new org chart. You need a named owner, five contracts and one failing command. That is an operating model, not a reorg.
 
 ## Where libraries pretend to be systems
 
-Many teams have the artefacts of a design system without the operation. They have a Figma library with tidy variants, a Storybook with polished defaults, a documentation site with principles, and a Slack channel for questions. What they lack is a closed loop under pressure.
+Many teams have the artefacts of a design system without the operation. They have a Figma library with tidy variants, a Storybook with polished defaults, a documentation site with principles and a Slack channel for questions. What they lack is a closed loop under pressure.
 
 Ask these diagnostic questions in your next leadership review. When a production bug traces to UI drift, how long until a rule prevents recurrence? When a new engineer joins, how many days before their first PR passes validation without tribal help? When an agent opens a PR, does CI know the difference between a cosmetic tweak and a broken contract? If the answers are measured in quarters, you have a library. If the answers are measured in hours or days, you have the beginnings of an operating model.
 
@@ -143,12 +143,12 @@ Product managers belong in the loop at the intent stage — not to write contrac
 
 ## How this series fits together
 
-Part 1 names the loop. [Part 2](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) separates tools, harnesses, and skills. [Part 3](/blog/component-contracts-are-where-taste-becomes-infrastructure) turns taste into infrastructure. [Part 4](/blog/the-minimum-viable-agent-ready-design-system) keeps the stack small. [Part 5](/blog/from-designops-to-agentops) names who operates it. Read them in order if you are building; jump to the post that matches your current failure if you are fixing.
+Part 1 names the loop. [Part 2](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) separates tools, harnesses and skills. [Part 3](/blog/component-contracts-are-where-taste-becomes-infrastructure) turns taste into infrastructure. [Part 4](/blog/the-minimum-viable-agent-ready-design-system) keeps the stack small. [Part 5](/blog/from-designops-to-agentops) names who operates it. Read them in order if you are building; jump to the post that matches your current failure if you are fixing.
 
 ## Next in the series
 
-**Next:** [Tools, harnesses, and skills](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) — why conflating workspace, operating model, and repeatable capability breaks agentic workflows.
+**Next:** [Tools, harnesses and skills](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) — why conflating workspace, operating model and repeatable capability breaks agentic workflows.
 
 ---
 
-**Series:** Part 1 of 5, [Agentic Design Systems](/blog/agentic-design-systems-need-operating-models-not-more-components), **Next →** [Tools, Harnesses, and Skills](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems)
+**Series:** Part 1 of 5, [Agentic Design Systems](/blog/agentic-design-systems-need-operating-models-not-more-components), **Next →** [Tools, Harnesses and Skills](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems)

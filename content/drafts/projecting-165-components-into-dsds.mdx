@@ -8,11 +8,11 @@ authorName: "Petri Lahdelma"
 authorSlug: "petri-lahdelma"
 ---
 
-The Design System Doc Spec turned up in my reading last week: a JSON schema for design system documentation, deliberately layered above the W3C token format and Custom Elements Manifest. It documents eight entity types, holds them in typed blocks with a `kind` tag, and refuses to duplicate anything the formats below it already own.
+The Design System Doc Spec turned up in my reading last week: a JSON schema for design system documentation, deliberately layered above the W3C token format and Custom Elements Manifest. It documents eight entity types, holds them in typed blocks with a `kind` tag and refuses to duplicate anything the formats below it already own.
 
-I did not adopt it. It is version 0.15.2, five months old, and 211 of its 212 commits come from one person. What I did instead was project our system into it: 165 components, generated from the contracts and agent blocks we already maintain, written out as DSDS documents and validated against the spec's own bundled schema.
+I did not adopt it. It is version 0.15.2, five months old and 211 of its 212 commits come from one person. What I did instead was project our system into it: 165 components, generated from the contracts and agent blocks we already maintain, written out as DSDS documents and validated against the spec's own bundled schema.
 
-The projection is throwaway. The residue is not. A schema someone else designed is a claim about what design system knowledge looks like, and running your own documentation through it tells you where your model and theirs disagree. Every disagreement is either a gap in yours or a gap in theirs, and you have to look at each one to find out which.
+The projection is throwaway. The residue is not. A schema someone else designed is a claim about what design system knowledge looks like and running your own documentation through it tells you where your model and theirs disagree. Every disagreement is either a gap in yours or a gap in theirs and you have to look at each one to find out which.
 
 Here is what fell out.
 
@@ -20,11 +20,11 @@ Here is what fell out.
 
 Our documentation lives in two places. Each component has a `contract.json` carrying structural facts (props, variants, a11y state, tokens consumed, story requirements) and a `spec.md` carrying human guidance under a "Do / don't" heading. A build step compiles both into `component-agent-blocks.json`, which is what coding agents actually read.
 
-The projection maps that onto DSDS entities. Props become an `api` block, Do/don't lines become `guidelines`, accessibility state becomes an `accessibility` block with criteria, and anything with no home goes into a residue report rather than getting quietly dropped. The residue is the output I cared about.
+The projection maps that onto DSDS entities. Props become an `api` block, Do/don't lines become `guidelines`, accessibility state becomes an `accessibility` block with criteria and anything with no home goes into a residue report rather than getting quietly dropped. The residue is the output I cared about.
 
 First run: 9,191 validation errors across 25 classes. That number is not interesting on its own, because most of it was me writing the projection from the prose documentation instead of the schema files. Reading the actual JSON Schema took the count to 2,807, then 1,020, then 19, then zero. All 165 entities validate.
 
-The interesting part is the four things that never validated cleanly, and had to be worked around.
+The interesting part is the four things that never validated cleanly and had to be worked around.
 
 ## What the Schema Could Not Express
 
@@ -32,11 +32,11 @@ The interesting part is the four things that never validated cleanly, and had to
 
 This is the one that mattered most, because it is the one where our data was better than the schema's vocabulary.
 
-Our contracts carried eight accessibility booleans: `reviewed`, `forcedColorsVerified`, `accessibilityTreeVerified`, `realBrowserForcedColorsVerified`, `screenReaderVerified`, and three more. Each asserts that something was checked. None records by what. A claim that CI proves on every push and a claim a human made once in March have the same shape on disk, which means neither can be trusted more than the other.
+Our contracts carried eight accessibility booleans: `reviewed`, `forcedColorsVerified`, `accessibilityTreeVerified`, `realBrowserForcedColorsVerified`, `screenReaderVerified` and three more. Each asserts that something was checked. None records by what. A claim that CI proves on every push and a claim a human made once in March have the same shape on disk, which means neither can be trusted more than the other.
 
-DSDS fixes exactly this with `verification` on a criterion: `automated` (with a named check), `assisted`, or `manual`. I built the same thing into our contracts, deriving criteria from the booleans using the check names that were already sitting in our schema descriptions as prose. That produced 783 criteria across the system: 473 automated, 195 manual, and 115 that nothing verifies at all.
+DSDS fixes exactly this with `verification` on a criterion: `automated` (with a named check), `assisted` or `manual`. I built the same thing into our contracts, deriving criteria from the booleans using the check names that were already sitting in our schema descriptions as prose. That produced 783 criteria across the system: 473 automated, 195 manual and 115 that nothing verifies at all.
 
-Those 115 have no representation in DSDS. The enum has no member for them. The spec's answer is to omit `verification` entirely, and its description instructs tools to treat a missing value as no evidence of automatability. That is a reasonable default, but it means *automatability unknown*, which is a weaker claim than *we know that nothing proves this*. One is an absence of information. The other is a finding.
+Those 115 have no representation in DSDS. The enum has no member for them. The spec's answer is to omit `verification` entirely. Its description instructs tools to treat a missing value as no evidence of automatability. That is a reasonable default, but it means *automatability unknown*, which is a weaker claim than *we know that nothing proves this*. One is an absence of information. The other is a finding.
 
 Worse, I could not record it in a vendor extension either. Document blocks gained `$extensions` in 0.15.2, but `criterion` is a closed object that never got one. So the marker had to be hoisted up to the parent `accessibility` block as a list of criterion ids, which technically preserves the data and breaks the link between the gap and the requirement it belongs to.
 
@@ -44,23 +44,23 @@ That count of 115 is now a ratcheted gate in our repo. It can go down and it can
 
 ### Documentation that a rule set derived
 
-DSDS's `docOrigin` distinguishes how documentation came to exist: `authored`, `generated`, `extracted`, or `reconstructed`. It is a genuinely good idea and I stole it, because our agent blocks mix machine-read props with hand-written intent in one object, and an agent has no way to tell which is which. That matters: an agent that "corrects" a human-authored intent line toward what the code appears to do has destroyed the only part of the file that says what the code was *for*.
+DSDS's `docOrigin` distinguishes how documentation came to exist: `authored`, `generated`, `extracted` or `reconstructed`. It is a genuinely good idea and I stole it, because our agent blocks mix machine-read props with hand-written intent in one object. An agent has no way to tell which is which. That matters: an agent that "corrects" a human-authored intent line toward what the code appears to do has destroyed the only part of the file that says what the code was *for*.
 
-But our provenance has three states and theirs has four that do not include ours. Props read from the TypeScript AST are `generated`. Intent written by a person is `authored`. And then there is a third kind: our forbidden-use list, our composition rules, our accessibility criteria. Those are computed by a rule set from human-authored input. No machine read them off the source, and no human wrote them.
+But our provenance has three states and theirs has four that do not include ours. Props read from the TypeScript AST are `generated`. Intent written by a person is `authored`. And then there is a third kind: our forbidden-use list, our composition rules, our accessibility criteria. Those are computed by a rule set from human-authored input. No machine read them off the source and no human wrote them.
 
-`generated` implies read from source. `extracted` means a person or agent read the existing code after the fact. Neither is right, and collapsing to `generated` loses the distinction between "a machine read this" and "a machine inferred this from what a human wrote." The second is much less trustworthy than the first, which is the whole reason to record provenance. 165 blocks hit this.
+`generated` implies read from source. `extracted` means a person or agent read the existing code after the fact. Neither is right and collapsing to `generated` loses the distinction between "a machine read this" and "a machine inferred this from what a human wrote." The second is much less trustworthy than the first, which is the whole reason to record provenance. 165 blocks hit this.
 
 ### The MAY level
 
 DSDS's `conformanceLevel` is `must`, `should`, `should-not`, `must-not`. RFC 2119, which the field is explicitly named for, also defines MAY: truly optional, no recommendation either way.
 
-Omitting it is defensible. A documentation rule that says "you may do this" is arguably not a rule. But it means a genuinely optional allowance has to be written as `should`, which recommends it, and the difference between "this is permitted" and "we suggest this" is exactly the kind of thing an agent reads literally.
+Omitting it is defensible. A documentation rule that says "you may do this" is arguably not a rule. But it means a genuinely optional allowance has to be written as `should`, which recommends it. The difference between "this is permitted" and "we suggest this" is exactly the kind of thing an agent reads literally.
 
 ### The component-to-token edge
 
-Every one of our contracts records which design tokens the component consumes, in a typed `tokens` object split by colors, spacing, radii, shadows, z-index, and typography. It is how we answer "what breaks if this token changes."
+Every one of our contracts records which design tokens the component consumes, in a typed `tokens` object split by colors, spacing, radii, shadows, z-index and typography. It is how we answer "what breaks if this token changes."
 
-DSDS documents tokens as first-class entities, and documents components as first-class entities, and provides no typed edge from a component to the tokens it uses. You can mention tokens in prose inside an anatomy or design-specifications block. You cannot query it. All 165 components carry that data into `$extensions`, where no DSDS consumer will look for it.
+DSDS documents tokens as first-class entities and documents components as first-class entities and provides no typed edge from a component to the tokens it uses. You can mention tokens in prose inside an anatomy or design-specifications block. You cannot query it. All 165 components carry that data into `$extensions`, where no DSDS consumer will look for it.
 
 This is the residue table in full. Each row is data our contracts hold that the schema has no typed home for:
 
@@ -74,29 +74,29 @@ This is the residue table in full. Each row is data our contracts hold that the 
    2  radixPrimitive
 ```
 
-Some of those are fair. `tier`, `requiredStories`, and `declaredPropCount` are our build system's business, not a documentation standard's. But `tokens` and `consumers` are the two edges that make our graph queryable, and both fall out.
+Some of those are fair. `tier`, `requiredStories` and `declaredPropCount` are our build system's business, not a documentation standard's. But `tokens` and `consumers` are the two edges that make our graph queryable and both fall out.
 
 ## What the Schema Expressed Better Than We Did
 
-An honest projection cuts both ways, and this direction produced the more useful findings.
+An honest projection cuts both ways and this direction produced the more useful findings.
 
 ### Rules and facts are different things
 
-I had designed a `content` field for UX writing guidance, holding voice, capitalization, terminology, and length limits together. Then I read DSDS's `content` block and found it is a label dictionary plus localization notes, with an explicit instruction that general content guidance belongs in `guidelines` with category `content` instead.
+I had designed a `content` field for UX writing guidance, holding voice, capitalization, terminology and length limits together. Then I read DSDS's `content` block and found it is a label dictionary plus localization notes, with an explicit instruction that general content guidance belongs in `guidelines` with category `content` instead.
 
-The spec's line is sharp: a guideline says "use sentence case," which is a rule. A content entry says "Add: takes an existing object and uses it in a new context," which is a fact. I had merged two kinds of thing because they were both about words. Splitting them is correct, and the projection now emits voice and capitalization as guidelines and terminology as labels.
+The spec's line is sharp: a guideline says "use sentence case," which is a rule. A content entry says "Add: takes an existing object and uses it in a new context," which is a fact. I had merged two kinds of thing because they were both about words. Splitting them is correct. The projection now emits voice and capitalization as guidelines and terminology as labels.
 
-I was also wrong in the other direction. I had written in my own notes that DSDS has no localization surface, so our FI and SV constraints had nowhere to go. It has `localizationEntry`, with `text-expansion` and `truncation` as named concerns, which is precisely our problem. What is genuinely lost is narrower than I claimed: the concern survives, but a per-slot integer ceiling becomes prose, and no gate can fail a build on a sentence.
+I was also wrong in the other direction. I had written in my own notes that DSDS has no localization surface, so our FI and SV constraints had nowhere to go. It has `localizationEntry`, with `text-expansion` and `truncation` as named concerns, which is precisely our problem. What is genuinely lost is narrower than I claimed: the concern survives, but a per-slot integer ceiling becomes prose and no gate can fail a build on a sentence.
 
 ### Unresolvable references are defects
 
 DSDS's conformance model says a conforming consumer "MUST treat unresolvable references as defects, not silently drop them." Schema validity is explicitly not enough; there is a semantic layer covering identifier uniqueness and reference resolution.
 
-So I checked. Our 165 components produced 440 relationship edges, and 58 of them pointed at nothing. My first reaction was that we had 58 broken edges. That reaction was wrong, and the way it was wrong is the more useful finding.
+So I checked. Our 165 components produced 440 relationship edges and 58 of them pointed at nothing. My first reaction was that we had 58 broken edges. That reaction was wrong and the way it was wrong is the more useful finding.
 
 The 58 were three unrelated problems wearing the same shape.
 
-Twenty-six were entries like `raw <button>`, `window.alert`, and `shadcn Button` sitting in `replacementFor`. Those are not broken references. They are the whole point of the field: Button exists to replace a raw `<button>`, and telling an agent so is valuable. They fail reference resolution because DSDS models a relationship target as a documented entity, and an anti-pattern will never be one. Correct data, wrong container.
+Twenty-six were entries like `raw <button>`, `window.alert` and `shadcn Button` sitting in `replacementFor`. Those are not broken references. They are the whole point of the field: Button exists to replace a raw `<button>` and telling an agent so is valuable. They fail reference resolution because DSDS models a relationship target as a documented entity. An anti-pattern will never be one. Correct data, wrong container.
 
 Two were genuine defects. Our co-import scanner infers composition from shared imports using this regex:
 
@@ -104,11 +104,11 @@ Two were genuine defects. Our co-import scanner infers composition from shared i
 /(?:components|patterns)\/([A-Za-z][A-Za-z0-9]*)/g
 ```
 
-An import of `components/animations/FadeIn` captures `animations`, which is a grouping directory, not a component. So `animations` and `ui` had become graph nodes. The allowlist needed to reject them was already loaded in that file, three lines away, and simply never applied.
+An import of `components/animations/FadeIn` captures `animations`, which is a grouping directory, not a component. So `animations` and `ui` had become graph nodes. The allowlist needed to reject them was already loaded in that file, three lines away and simply never applied.
 
-The remaining thirty pointed at eight components that are entirely real. `DashLeadList`, `MdxImage`, `StudioMap`, and five others exist on disk, are imported by documented components, and have neither a contract nor a spec.md. Chasing that gave the number that actually matters: **186 components on disk, 165 documented, 22 with no documentation of any kind**. Twelve percent of the system is invisible to every gate we run, and the only reason it surfaced is that documented components kept pointing at it.
+The remaining thirty pointed at eight components that are entirely real. `DashLeadList`, `MdxImage`, `StudioMap` and five others exist on disk, are imported by documented components and have neither a contract nor a spec.md. Chasing that gave the number that actually matters: **186 components on disk, 165 documented, 22 with no documentation of any kind**. Twelve percent of the system is invisible to every gate we run. The only reason it surfaced is that documented components kept pointing at it.
 
-The fix that mattered was not repairing edges. It was learning to tell the three cases apart, which is now a gate: artifacts fail the build, anti-patterns are classified as guidance rather than graph edges, and the undocumented count is ratcheted at 22 so it can go down and not up.
+The fix that mattered was not repairing edges. It was learning to tell the three cases apart, which is now a gate: artifacts fail the build; anti-patterns are classified as guidance rather than graph edges; the undocumented count is ratcheted at 22 so it can go down and not up.
 
 ### Deprecation needs a forwarding address
 
@@ -141,11 +141,11 @@ Five things, none of them the format itself:
 
 Guidance now carries an RFC 2119 level and a rationale. `- Don't (must): nest a Button inside another interactive control -- nested interactive elements produce an ambiguous accessibility tree and swallow clicks.` Unmarked lines still parse and default to `should`, so all 166 spec files kept working. Six hard rules are marked so far, against 555 still sitting at the default, which is an honest picture of how much of our guidance has ever had its severity decided.
 
-Rationale extraction is labelled by provenance. The reason usually exists already, as the sentence after the rule, so the parser infers it. Sampling put that at roughly 80% precision: sometimes the trailing sentence is the remedy, not the reason. So each rationale records whether it was `explicit` or `inferred`, and the gate counts them separately. 8 explicit, 94 inferred.
+Rationale extraction is labelled by provenance. The reason usually exists already, as the sentence after the rule, so the parser infers it. Sampling put that at roughly 80% precision: sometimes the trailing sentence is the remedy, not the reason. So each rationale records whether it was `explicit` or `inferred`. The gate counts them separately. 8 explicit, 94 inferred.
 
 Provenance per field, so an agent knows what not to rewrite.
 
-Accessibility criteria with a declared verification mode, and the 115-item ratchet that came with it.
+Accessibility criteria with a declared verification mode and the 115-item ratchet that came with it.
 
 `governance.lastReviewed`, because 165 components and no record of when a human last read any of them is its own kind of debt.
 
@@ -153,8 +153,8 @@ Accessibility criteria with a declared verification mode, and the 115-item ratch
 
 Not as a source of truth, not at 0.15.2, not with one author. Pinned schema URLs are immutable and the stability page is unusually honest about pre-1.0 risk, so the downside is bounded, but there is no second implementer and nothing else in your toolchain reads DSDS today.
 
-Steal from it instead. The RFC 2119 levels, the provenance model, and the verification modes are all ideas that improved our own schema without coupling us to theirs. Then run the projection once, throw it away, and read the residue.
+Steal from it instead. The RFC 2119 levels, the provenance model and the verification modes are all ideas that improved our own schema without coupling us to theirs. Then run the projection once, throw it away and read the residue.
 
-The exercise is worth an afternoon even if you delete the output. A foreign schema will not tell you what your documentation says. It will tell you what your documentation is *shaped* like, and where that shape is an accident. We found 22 undocumented components, 115 unverifiable accessibility claims, two scanner artifacts posing as components, and one parser that had been truncating guidance mid-sentence into committed files.
+The exercise is worth an afternoon even if you delete the output. A foreign schema will not tell you what your documentation says. It will tell you what your documentation is *shaped* like and where that shape is an accident. We found 22 undocumented components, 115 unverifiable accessibility claims, two scanner artifacts posing as components and one parser that had been truncating guidance mid-sentence into committed files.
 
 None of those were in the residue table. They were in the process of building it. The residue told me where the two models disagreed; the disagreements were what sent me looking at data I had stopped reading years ago.
