@@ -64,6 +64,10 @@ const ALLOWED_APP_LOCAL_IMPORTS = new Map([
 // unclassified). Keyed `file :: importPath`, both exact.
 const ALLOWED_LOCAL_SHARED_IMPORTS = new Map([
   [
+    "app/blog/[slug]/ServerArticleMain.tsx :: @/nextjs-app/shared/components/AuthorBio/AuthorBio",
+    "TEMPORARY: needs AuthorBio's profileHref and compact variant, which ship in @digitaltableteur/react 0.1.27; switch to the package import when the site consumes 0.1.27 and delete this entry",
+  ],
+  [
     "providers/NextLinkProvider.tsx :: @/nextjs-app/shared/lib/linkComponent",
     "dual-provides the LOCAL LinkProvider instance alongside the package one (#1019)",
   ],
