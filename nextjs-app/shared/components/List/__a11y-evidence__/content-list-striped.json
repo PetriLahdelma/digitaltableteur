@@ -1,0 +1,16 @@
+{
+  "storyId": "content-list-striped",
+  "mode": "light",
+  "sourceSHA": "32572d90008164052ed69ccb911e24e41e7b25aa",
+  "capturedAt": "2026-10-15T14:59:27.455Z",
+  "runner": "local-2026-10-15d",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
