@@ -102,7 +102,8 @@ const contrastRatio = (a: string, b: string) => {
 /**
  * A list typed by the user. Markers once took --color-primary, the user
  * bubble's own background, and vanished. axe does not check ::marker colour,
- * so the play function measures it against the bubble (WCAG 1.4.11, 3:1).
+ * so the play function measures it against the bubble. Numbered markers are
+ * text, so the bar is WCAG 1.4.3's 4.5:1, not the 3:1 for non-text graphics.
  */
 export const UserMessageWithList: Story = {
   tags: ["beta-matrix"],
@@ -114,7 +115,7 @@ export const UserMessageWithList: Story = {
     const background = getComputedStyle(bubble as HTMLElement).backgroundColor;
     for (const item of items) {
       const marker = getComputedStyle(item, "::marker").color;
-      expect(contrastRatio(marker, background)).toBeGreaterThanOrEqual(3);
+      expect(contrastRatio(marker, background)).toBeGreaterThanOrEqual(4.5);
     }
   },
 };
