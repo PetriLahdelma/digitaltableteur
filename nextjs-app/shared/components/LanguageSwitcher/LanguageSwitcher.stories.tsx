@@ -10,8 +10,8 @@ import {
 
 const LANGUAGES: LanguageSwitcherOption[] = [
   { code: "en", label: "EN", ariaLabel: "English" },
-  { code: "fi", label: "FI", ariaLabel: "Finnish" },
-  { code: "sv", label: "SV", ariaLabel: "Swedish" },
+  { code: "fi", label: "FI", ariaLabel: "Suomi" },
+  { code: "sv", label: "SV", ariaLabel: "Svenska" },
 ];
 
 /** Stateful wrapper so the trigger reflects the selected language. */
@@ -52,7 +52,10 @@ const meta = {
       },
       description:
         "Available languages (code, label, accessible name). Pick a preset here; compose your own in code.",
-      table: { category: "Content", type: { summary: "LanguageSwitcherOption[]" } },
+      table: {
+        category: "Content",
+        type: { summary: "LanguageSwitcherOption[]" },
+      },
     },
     currentLang: {
       control: { type: "inline-radio" },
@@ -101,7 +104,7 @@ export const KeyboardToggle: Story = {
     /* The option rail animates in/out (Framer Motion opacity); assert through
        the transition, not against its first frame. */
     await waitFor(() =>
-      expect(canvas.getByRole("button", { name: /^finnish$/i })).toBeVisible(),
+      expect(canvas.getByRole("button", { name: /^FI, Suomi$/ })).toBeVisible(),
     );
     await userEvent.keyboard("{Escape}");
     /* hidden: true — the closed tray goes aria-hidden immediately, which
@@ -110,7 +113,7 @@ export const KeyboardToggle: Story = {
        audit runs against a settled tree. */
     await waitFor(() =>
       expect(
-        canvas.queryByRole("button", { name: /^finnish$/i, hidden: true }),
+        canvas.queryByRole("button", { name: /^FI, Suomi$/, hidden: true }),
       ).not.toBeInTheDocument(),
     );
   },
@@ -143,7 +146,7 @@ export const FanOpen: Story = {
     });
     await userEvent.click(trigger);
     const finnish = await waitFor(() => {
-      const option = canvas.getByRole("button", { name: /^finnish$/i });
+      const option = canvas.getByRole("button", { name: /^FI, Suomi$/ });
       expect(option).toBeVisible();
       return option;
     });
@@ -157,7 +160,7 @@ export const FanOpen: Story = {
   },
 };
 
-/** Accessible names speak the target language. */
+/** Each option is named by its visible code and the language's own name. */
 export const AccessibleNames: Story = {
   tags: ["example"],
   parameters: {
@@ -165,7 +168,7 @@ export const AccessibleNames: Story = {
     docs: {
       description: {
         story:
-          "Each option's ariaLabel should be written in the language it switches to — \"Vaihda kieli suomeksi\", \"Byt språk till svenska\" — so the users who need that locale understand the control. Visible labels stay short locale codes.",
+          "Pass each language’s own name as ariaLabel (English, Suomi, Svenska). The component announces the visible code first, “FI, Suomi”, so voice control users can say what they see (WCAG 2.5.3), and sets lang on each option so screen readers pronounce the name correctly. Never put an action such as “Switch to” in ariaLabel: the trigger already says “Show language options”, and the name would announce an instruction to switch to the language already in use.",
       },
     },
   },
