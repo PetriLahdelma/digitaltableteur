@@ -15,6 +15,9 @@ export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
   ({ selected, className, ...rest }, ref) => (
     <tr
       ref={ref}
+      // Explicit role: a stacked Table (stackOnNarrow) changes display, which
+      // drops native row semantics in some browsers.
+      role="row"
       className={cn(styles.row, className)}
       data-selected={selected || undefined}
       {...rest}

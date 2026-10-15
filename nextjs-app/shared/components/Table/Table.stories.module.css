@@ -1,0 +1,6 @@
+.narrow {
+  /* Narrower than the 40rem stacking threshold, like a phone column. */
+  --table-story-narrow: 22rem;
+
+  max-inline-size: var(--table-story-narrow);
+}

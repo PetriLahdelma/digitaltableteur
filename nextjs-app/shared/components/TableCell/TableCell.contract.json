@@ -86,6 +86,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Right-align and tabular-figure numeric values."
+        },
+        "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Column name shown before the value when the parent Table stacks rows (stackOnNarrow). Hidden from assistive technology, which reads the column header instead."
         }
     },
     "forbiddenUse": [

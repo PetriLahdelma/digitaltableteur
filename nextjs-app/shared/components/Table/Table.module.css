@@ -185,6 +185,70 @@
   border-block-end: 0;
 }
 
+/* Stacked layout (stackOnNarrow): below a 40rem container, each body row
+   becomes a block and every cell shows its column label. The header row stays
+   in the accessibility tree but leaves the layout. */
+
+.stackContainer {
+  container: dt-table / inline-size;
+}
+
+@container dt-table (width < 40rem) {
+  .stacked,
+  .stacked :where(tbody),
+  .stacked :where(tbody) .row,
+  .stacked :where(tbody) .cell,
+  .stacked :where(tbody) .headerCell {
+    display: block;
+  }
+
+  .stacked .caption {
+    /* A block table leaves the caption at its min-content width; make it a
+       block too or it wraps one character per line. */
+    display: block;
+  }
+
+  .stacked :where(thead) {
+    position: absolute;
+    block-size: 1px;
+    inline-size: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+  }
+
+  .stacked :where(tbody) .row {
+    padding-block: var(--space-internal-12);
+    border-block-end: 1px solid var(--color-border-light);
+  }
+
+  .stacked :where(tbody) .row:last-child {
+    border-block-end: 0;
+  }
+
+  .stacked :where(tbody) .headerCell[scope="row"],
+  .stacked :where(tbody) .cell {
+    padding-block: var(--space-internal-4);
+    border-block-end: 0;
+  }
+
+  .stacked :where(tbody) .headerCell[scope="row"] {
+    font-weight: 600;
+  }
+
+  .stacked :where(tbody) .cell[data-label]::before {
+    /* Visual label only: the empty alternative keeps it out of the accessible
+       name, since assistive technology already reads the column header. */
+    display: block;
+    margin-block-end: var(--space-internal-2);
+    font-size: var(--font-size-text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    content: attr(data-label) / "";
+  }
+}
+
 @media (forced-colors: active) {
   .wrapper,
   .headerCell,

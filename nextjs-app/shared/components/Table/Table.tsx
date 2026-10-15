@@ -18,6 +18,14 @@ export interface TableProps
   striped?: boolean;
   /** Pin the header row while the table body scrolls. */
   stickyHeader?: boolean;
+  /**
+   * Below a 40rem container width, stack each body row as a block instead of
+   * squeezing columns, with every cell prefixed by its `TableCell` `label`.
+   * Adds explicit table roles so assistive technology keeps the table
+   * semantics that a CSS `display` change drops in some browsers. Give
+   * `<thead>`/`<tbody>` `role="rowgroup"` for the same reason.
+   */
+  stackOnNarrow?: boolean;
   /** Class applied to the scroll wrapper. */
   wrapperClassName?: string;
 }
@@ -36,6 +44,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
       size = "md",
       striped = false,
       stickyHeader = false,
+      stackOnNarrow = false,
       wrapperClassName,
       className,
       children,
@@ -43,14 +52,22 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
     },
     ref,
   ) => (
-    <div className={cn(styles.wrapper, wrapperClassName)}>
+    <div
+      className={cn(
+        styles.wrapper,
+        stackOnNarrow && styles.stackContainer,
+        wrapperClassName,
+      )}
+    >
       <table
         ref={ref}
+        role={stackOnNarrow ? "table" : undefined}
         className={cn(
           styles.table,
           styles[size],
           striped && styles.striped,
           stickyHeader && styles.stickyHeader,
+          stackOnNarrow && styles.stacked,
           className,
         )}
         {...rest}

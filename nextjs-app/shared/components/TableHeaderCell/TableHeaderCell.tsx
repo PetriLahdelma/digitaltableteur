@@ -58,6 +58,9 @@ export const TableHeaderCell = React.forwardRef<
       <th
         ref={ref}
         scope={scope}
+        // Explicit role: a stacked Table (stackOnNarrow) changes display,
+        // which drops native header semantics in some browsers.
+        role={isColumn ? "columnheader" : "rowheader"}
         className={cn(styles.headerCell, className)}
         data-align={align}
         aria-sort={active ? sortDirection : undefined}

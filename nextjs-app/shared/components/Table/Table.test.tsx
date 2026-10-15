@@ -18,7 +18,11 @@ function Basic({
     <Table caption="People">
       <thead>
         <TableRow>
-          <TableHeaderCell sortable sortDirection={sortDirection} onSort={() => {}}>
+          <TableHeaderCell
+            sortable
+            sortDirection={sortDirection}
+            onSort={() => {}}
+          >
             Name
           </TableHeaderCell>
           <TableHeaderCell align="end">Projects</TableHeaderCell>
@@ -39,7 +43,9 @@ describe("Table primitives", () => {
     render(<Basic />);
     const table = screen.getByRole("table", { name: "People" });
     expect(table.tagName).toBe("TABLE");
-    expect(screen.getByRole("columnheader", { name: /Name/ }).tagName).toBe("TH");
+    expect(screen.getByRole("columnheader", { name: /Name/ }).tagName).toBe(
+      "TH",
+    );
     expect(screen.getByRole("cell", { name: "Ada" }).tagName).toBe("TD");
   });
 
@@ -65,6 +71,35 @@ describe("Table primitives", () => {
   it("renders the sortable header control as a button", () => {
     render(<Basic />);
     expect(screen.getByRole("button", { name: /Name/ }).tagName).toBe("BUTTON");
+  });
+
+  it("stacks on narrow containers with explicit roles and cell labels", async () => {
+    const { container } = render(
+      <Table caption="Routing" striped stackOnNarrow>
+        <thead role="rowgroup">
+          <TableRow>
+            <TableHeaderCell>Case</TableHeaderCell>
+            <TableHeaderCell>Who</TableHeaderCell>
+          </TableRow>
+        </thead>
+        <tbody role="rowgroup">
+          <TableRow>
+            <TableHeaderCell scope="row">Charts</TableHeaderCell>
+            <TableCell label="Who">Specialist</TableCell>
+          </TableRow>
+        </tbody>
+      </Table>,
+    );
+    const table = screen.getByRole("table", { name: "Routing" });
+    expect(table).toHaveAttribute("role", "table");
+    expect(
+      screen.getByRole("rowheader", { name: "Charts" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "Specialist" })).toHaveAttribute(
+      "data-label",
+      "Who",
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 
   it("has no axe violations", async () => {

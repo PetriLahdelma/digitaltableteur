@@ -37,6 +37,14 @@
             ],
             "default": "false",
             "propSourced": true
+        },
+        "stackOnNarrow": {
+            "values": [
+                "true",
+                "false"
+            ],
+            "default": "false",
+            "propSourced": true
         }
     },
     "slots": [],
@@ -136,6 +144,11 @@
             "optional": true,
             "type": "string",
             "description": "Class applied to the scroll wrapper."
+        },
+        "stackOnNarrow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Below a 40rem container width, stack each body row as a block instead of squeezing columns, with every cell prefixed by its TableCell label. Adds explicit table roles so assistive technology keeps table semantics."
         }
     },
     "forbiddenUse": [

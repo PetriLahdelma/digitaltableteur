@@ -8,6 +8,7 @@ import { TableCell } from "@dt/TableCell";
 import Checkbox from "../Checkbox/Checkbox";
 import { useTableSelection } from "../../hooks/useTableSelection";
 import contract from "./Table.contract.json";
+import storyStyles from "./Table.stories.module.css";
 
 const people = [
   { id: "ada", name: "Ada Lovelace", role: "Engineer", projects: 8 },
@@ -222,6 +223,57 @@ export const Example: Story = {
       <Body />
     </Table>
   ),
+};
+
+/** Below a 40rem container, rows stack and each cell shows its column label. */
+export const StackedOnNarrow: Story = {
+  tags: ["beta-matrix", "example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "stackOnNarrow turns each row into a block below a 40rem container, so prose-heavy tables stay readable on phones. Cells take a label prop for the visible column name; explicit roles keep the table semantics.",
+      },
+    },
+  },
+  render: (args) => (
+    <div className={storyStyles.narrow}>
+      <Table {...args} caption="Who to call" striped stackOnNarrow>
+        <thead role="rowgroup">
+          <TableRow>
+            <TableHeaderCell>Case</TableHeaderCell>
+            <TableHeaderCell>Who to bring in</TableHeaderCell>
+            <TableHeaderCell>When</TableHeaderCell>
+          </TableRow>
+        </thead>
+        <tbody role="rowgroup">
+          <TableRow>
+            <TableHeaderCell scope="row">Custom widgets</TableHeaderCell>
+            <TableCell label="Who to bring in">
+              Daily keyboard and screen reader users
+            </TableCell>
+            <TableCell label="When">Release candidate</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableHeaderCell scope="row">Login flows</TableHeaderCell>
+            <TableCell label="Who to bring in">
+              People with memory disabilities
+            </TableCell>
+            <TableCell label="When">Design and release candidate</TableCell>
+          </TableRow>
+        </tbody>
+      </Table>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const row = canvas.getByRole("rowheader", { name: "Custom widgets" })
+      .parentElement as HTMLElement;
+    await expect(getComputedStyle(row).display).toBe("block");
+    await expect(
+      canvas.getByRole("cell", { name: "Release candidate" }),
+    ).toHaveAttribute("data-label", "When");
+  },
 };
 
 function KeyboardSortTable(args: React.ComponentProps<typeof Table>) {
