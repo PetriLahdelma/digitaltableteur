@@ -21,7 +21,10 @@ describe("Footer", () => {
   it("renders contact info and social links", () => {
     render(<Footer />);
 
-    expect(screen.getByLabelText("footerAriaEmail")).toBeInTheDocument();
+    // Named by the visible address (the old label was a missing i18n key).
+    expect(
+      screen.getByRole("link", { name: "mail@digitaltableteur.com" }),
+    ).toHaveAttribute("href", "mailto:mail@digitaltableteur.com");
     expect(screen.getByRole("link", { name: "footerImprint" })).toHaveAttribute(
       "href",
       "/imprint",
