@@ -2,10 +2,23 @@
 # See: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
 
 version: 2
+
+# The @digitaltableteur/* packages are private on npmjs.com. Without a read
+# token Dependabot gets a 404 for each of them and marks the run as failed.
+# NPM_READ_TOKEN is a Dependabot secret (Settings > Secrets and variables >
+# Dependabot), separate from the Actions secret of the same name.
+registries:
+  npmjs:
+    type: npm-registry
+    url: https://registry.npmjs.org
+    token: ${{secrets.NPM_READ_TOKEN}}
+
 updates:
   # Main package.json (root)
   - package-ecosystem: "npm"
     directory: "/"
+    registries:
+      - npmjs
     schedule:
       interval: "weekly"
       day: "monday"
