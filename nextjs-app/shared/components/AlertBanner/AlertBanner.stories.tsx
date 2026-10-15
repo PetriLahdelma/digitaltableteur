@@ -100,7 +100,7 @@ export const Dismissible: Story = {
     // The dismiss button is the banner's only tabbable part; it must work
     // keyboard-only.
     const canvas = within(canvasElement);
-    const dismiss = canvas.getByRole("button", { name: /dismiss alert/i });
+    const dismiss = canvas.getByRole("button", { name: /close alert/i });
     dismiss.focus();
     await userEvent.keyboard("{Enter}");
     expect(args.onDismiss).toHaveBeenCalled();
