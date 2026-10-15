@@ -1,9 +1,9 @@
 {
   "storyId": "forms-radiogroup-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-  "capturedAt": "2026-09-29T19:05:46.504Z",
-  "runner": "local",
+  "sourceSHA": "b454078d59a2ce7928c45dbb79e82f840172579f",
+  "capturedAt": "2026-10-15T18:18:40.453Z",
+  "runner": "local-2026-10-15p",
   "checks": {
     "accessibility-tree": {
       "passed": true

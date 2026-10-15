@@ -1,12 +1,16 @@
 {
   "storyId": "navigation-treeview-disabled-node",
   "mode": "forced-colors",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:38:13.231Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "b454078d59a2ce7928c45dbb79e82f840172579f",
+  "capturedAt": "2026-10-15T18:19:48.891Z",
+  "runner": "local-2026-10-15p",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

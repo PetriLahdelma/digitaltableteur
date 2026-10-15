@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-treeview-large-tree",
   "mode": "dark",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:37:51.352Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "b454078d59a2ce7928c45dbb79e82f840172579f",
+  "capturedAt": "2026-10-15T18:19:43.308Z",
+  "runner": "local-2026-10-15p",
   "checks": {
     "accessibility-tree": {
       "passed": true

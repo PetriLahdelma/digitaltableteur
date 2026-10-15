@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - group "Whole group disabled":
   - text: Whole group disabled
   - radio "Option A Selected but disabled." [checked] [disabled]

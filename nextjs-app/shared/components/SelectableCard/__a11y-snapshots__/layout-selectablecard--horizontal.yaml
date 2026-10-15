@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - group "T-shirt size":
   - text: T-shirt size
   - radio "S"

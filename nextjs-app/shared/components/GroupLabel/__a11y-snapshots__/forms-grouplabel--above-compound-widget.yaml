@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - text: Price range
 - textbox "Minimum price"
 - textbox "Maximum price"
