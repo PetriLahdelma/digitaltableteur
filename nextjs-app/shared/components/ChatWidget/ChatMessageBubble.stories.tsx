@@ -1,4 +1,5 @@
 import React from "react";
+import { expect, within } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatMessageBubble from "./ChatMessageBubble";
 import type { ProcessedMessage } from "@dt/ChatWidget/messageProcessor";
@@ -71,6 +72,52 @@ export const AssistantMessage: Story = {
 };
 
 export const UserMessage: Story = { args: { message: userMessage } };
+
+const userListMessage: ProcessedMessage = {
+  id: "user-2",
+  role: "user",
+  parts: [
+    {
+      kind: "text",
+      content:
+        "I need help with:\n- a design system audit\n- token naming\n\nIn this order:\n1. Audit\n2. Roadmap",
+    },
+  ],
+};
+
+const channels = (rgb: string) =>
+  (rgb.match(/[\d.]+/g) ?? []).slice(0, 3).map(Number);
+const luminance = (rgb: string) => {
+  const [r, g, b] = channels(rgb).map((value) => {
+    const c = value / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const contrastRatio = (a: string, b: string) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+};
+
+/**
+ * A list typed by the user. Markers once took --color-primary, the user
+ * bubble's own background, and vanished. axe does not check ::marker colour,
+ * so the play function measures it against the bubble (WCAG 1.4.11, 3:1).
+ */
+export const UserMessageWithList: Story = {
+  tags: ["beta-matrix"],
+  args: { message: userListMessage },
+  play: async ({ canvasElement }) => {
+    const items = within(canvasElement).getAllByRole("listitem");
+    const bubble = canvasElement.querySelector<HTMLElement>("[data-role=user]");
+    expect(bubble).not.toBeNull();
+    const background = getComputedStyle(bubble as HTMLElement).backgroundColor;
+    for (const item of items) {
+      const marker = getComputedStyle(item, "::marker").color;
+      expect(contrastRatio(marker, background)).toBeGreaterThanOrEqual(3);
+    }
+  },
+};
 
 export const AssistantStreaming: Story = {
   args: { message: assistantMessage, isStreaming: true },

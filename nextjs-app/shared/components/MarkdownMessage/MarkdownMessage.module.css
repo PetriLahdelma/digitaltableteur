@@ -21,6 +21,15 @@
   color: var(--color-primary);
 }
 
+.root[data-role="user"] :global(::marker) {
+  /* The chat user bubble IS --color-primary (white or black in the
+     high-contrast themes), so primary markers vanished into it: a list typed
+     into the chat lost its bullets in every theme. Inside a user message,
+     markers follow the bubble's own ink, the same rule as the
+     `color: inherit` on .root above. */
+  color: inherit;
+}
+
 .root p {
   margin: var(--space-internal-8) 0;
   font-size: 1rem;
