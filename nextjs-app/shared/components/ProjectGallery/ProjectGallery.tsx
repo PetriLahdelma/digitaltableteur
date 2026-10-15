@@ -150,63 +150,72 @@ export function ProjectGallery({
         role="list"
         aria-label="Project gallery"
       >
-        {images.map((image, index) => (
-          // role="listitem" lives on a wrapper: axe (aria-allowed-role) does
-          // not allow it on <figure>, which keeps its own figure semantics.
-          <div
-            key={`${image.src}-${index}`}
-            data-gallery-item
-            className="relative group"
-            role="listitem"
-          >
-            <figure>
-              <button
-                type="button"
-                onClick={() => handleImageClick(index)}
-                onKeyDown={(e) => handleKeyDown(e, index)}
-                disabled={!enableLightbox}
-                className={cn(
-                  "relative w-full overflow-hidden rounded-lg bg-muted",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                  enableLightbox && "cursor-zoom-in",
-                  aspectRatio !== "mixed" && aspectClasses[aspectRatio],
-                )}
-                aria-label={
-                  enableLightbox ? `View ${image.alt} in fullscreen` : undefined
-                }
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
+        {images.map((image, index) => {
+          // Only a captioned image is a figure; without a caption a <figure>
+          // would be announced as an empty, unnamed figure.
+          const ItemWrapper = image.caption ? "figure" : "div";
+          return (
+            // role="listitem" lives on a wrapper: axe (aria-allowed-role) does
+            // not allow it on <figure>, which keeps its own figure semantics.
+            <div
+              key={`${image.src}-${index}`}
+              data-gallery-item
+              className="relative group"
+              role="listitem"
+            >
+              <ItemWrapper>
+                <button
+                  type="button"
+                  onClick={() => handleImageClick(index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  disabled={!enableLightbox}
                   className={cn(
-                    "object-cover transition-transform duration-300 motion-reduce:transition-none",
-                    enableLightbox &&
-                      "group-hover:scale-105 motion-reduce:group-hover:scale-100",
-                    aspectRatio === "mixed" ? "w-full h-auto" : "w-full h-full",
+                    "relative w-full overflow-hidden rounded-lg bg-muted",
+                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                    enableLightbox && "cursor-zoom-in",
+                    aspectRatio !== "mixed" && aspectClasses[aspectRatio],
                   )}
-                  sizes={`(max-width: 768px) 100vw, (max-width: 1200px) ${100 / (columns === 4 ? 3 : columns === 3 ? 2 : 2)}vw, ${100 / columns}vw`}
-                />
-                {/* Hover overlay */}
-                {enableLightbox && (
-                  <div
+                  aria-label={
+                    enableLightbox
+                      ? `View ${image.alt} in fullscreen`
+                      : undefined
+                  }
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
                     className={cn(
-                      "absolute inset-0 bg-black/0 transition-colors duration-300 motion-reduce:transition-none",
-                      "group-hover:bg-black/20",
+                      "object-cover transition-transform duration-300 motion-reduce:transition-none",
+                      enableLightbox &&
+                        "group-hover:scale-105 motion-reduce:group-hover:scale-100",
+                      aspectRatio === "mixed"
+                        ? "w-full h-auto"
+                        : "w-full h-full",
                     )}
+                    sizes={`(max-width: 768px) 100vw, (max-width: 1200px) ${100 / (columns === 4 ? 3 : columns === 3 ? 2 : 2)}vw, ${100 / columns}vw`}
                   />
+                  {/* Hover overlay */}
+                  {enableLightbox && (
+                    <div
+                      className={cn(
+                        "absolute inset-0 bg-black/0 transition-colors duration-300 motion-reduce:transition-none",
+                        "group-hover:bg-black/20",
+                      )}
+                    />
+                  )}
+                </button>
+                {/* Caption */}
+                {image.caption && (
+                  <figcaption className="mt-2 text-sm text-muted-foreground text-center">
+                    {image.caption}
+                  </figcaption>
                 )}
-              </button>
-              {/* Caption */}
-              {image.caption && (
-                <figcaption className="mt-2 text-sm text-muted-foreground text-center">
-                  {image.caption}
-                </figcaption>
-              )}
-            </figure>
-          </div>
-        ))}
+              </ItemWrapper>
+            </div>
+          );
+        })}
       </div>
 
       {/* Lightbox */}
