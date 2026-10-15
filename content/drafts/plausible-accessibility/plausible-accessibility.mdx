@@ -6,6 +6,7 @@ readTime: "12 min read"
 excerpt: "AI produces the most likely interface. Accessibility lives in the specific one. Here is where that gap still hurts people, and when to bring in a specialist or test with disabled people."
 authorName: "Petri Lahdelma"
 authorSlug: "petri-lahdelma"
+mainImageUrl: "/blog/plausible-accessibility/hero-stencil-at-desk.webp"
 ---
 
 Every code reviewer knows the shorthand. LGTM: looks good to me. It is the most common approval in software, and for most of what we review it is a reasonable bar. For accessibility it is a strange one, because it names the single sense that many of the people we are building for do not use.
@@ -20,8 +21,35 @@ That is the problem I want to name, because AI is about to make a great deal mor
 
 Plausible accessibility is output that has the shape of accessible work and passes as accessible to anyone who cannot check it: a reviewer skimming a diff, a scanner that tests what it can measure, a model grading its own answer. It is not the same as inaccessible work. Inaccessible work usually looks broken somewhere. Plausible work looks finished, and that is what makes it expensive.
 
-{/* Figure A: evidence record before and after the silent strip. See VISUAL_BRIEF.md. */}
-{/* Illustration 1: magnifying glass over a page of checkmarks. Decorative, alt="". */}
+<ArticleFigure layout="center">
+
+```json
+{
+  "storyId": "navigation-languageswitcher-default",
+  "mode": "light",
+  "sourceSHA": "ab85ef6ed9a545a5e1b91a5ef4f7d6af1097c3f5",
+  "capturedAt": "2026-10-15T08:36:30.037Z",
+  "runner": "local-2026-10-15",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
+```
+
+<figcaption>One of this design system's evidence records as committed: the story, the theme, the commit it was captured against, and each check that ran. In September a missing <code>CI=1</code> produced 949 of these with no <code>axe-no-violations</code> entry, and every run exited 0. Those records were thrown away before commit, so this is the healthy version.</figcaption>
+
+</ArticleFigure>
+<ArticleFigure layout="full">
+
+<img src="/blog/plausible-accessibility/fig-hollow-checkmark.webp" alt="" />
+
+</ArticleFigure>
 
 ## The median of an inaccessible web
 
@@ -35,7 +63,11 @@ Then there is the confidence. Eevis, an Android accessibility specialist in Hels
 
 At scale, plausibility becomes a product. Overlays promise to make a site accessible with one script tag. In April 2025 the US Federal Trade Commission [ordered accessiBe to pay $1 million](https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million) and barred it from claiming its automated product makes sites WCAG-compliant without evidence. A small florist that installed another overlay was sued by a blind customer anyway, and is now [suing the overlay vendor](https://www.lflegal.com/2025/02/userway-overlay-lawsuit). Nobody in that story acted irrationally. They bought something that looked like the answer.
 
-{/* Illustration 2: stacked translucent pages blurring into one average page. Decorative, alt="". */}
+<ArticleFigure layout="full">
+
+<img src="/blog/plausible-accessibility/fig-median-web.webp" alt="" />
+
+</ArticleFigure>
 
 ## Five places plausibility breaks
 
@@ -49,7 +81,11 @@ WCAG's first success criterion, [1.1.1 Non-text Content](https://www.w3.org/WAI/
 
 That gap shows up in small, telling ways. A house icon that links to the homepage should be announced as "Home", and an AI describes it, accurately, as a house. A bar chart's meaning lives in its trend, and the W3C's draft research on [machine learning and accessibility](https://w3c.github.io/ai-accessibility/) notes that automatic descriptions often miss the values that matter. Generative descriptions add detail, but the same draft observes they change each time the same image is processed. An author who regenerates alt text three times can get three different accounts of what a chart says. The better fix for a chart is usually a short written summary and a data table beside it, as the [complex images tutorial](https://www.w3.org/WAI/tutorials/images/complex/) has recommended for years. Longer alt text rarely helps.
 
-{/* Illustration 3: framed picture with a luggage tag facing the wall. Decorative, alt="". */}
+<ArticleFigure layout="full">
+
+<img src="/blog/plausible-accessibility/fig-outline-pulled-loose.webp" alt="" />
+
+</ArticleFigure>
 
 ### Words heard, not words written
 
@@ -67,7 +103,11 @@ The modal is the classic case. One developer's AI-built dashboard [let focus esc
 
 AI products are not exempt from their own problem. Mike Gower at IBM found a floating chat button that [looked about twelve tab stops away and took 85 presses to reach](https://medium.com/design-ibm/catching-up-on-accessibility-with-ai-chat-1129be33c184), and streamed answers that [keep changing until they settle](https://medium.com/design-ibm/usable-ai-chat-46dedcca6a8f), which breaks the usual live-region patterns. Screen reader users get either silence or the whole reply at once.
 
-{/* Illustration 4: paper maze, violet thread looping around a closed box. Decorative, alt="". */}
+<ArticleFigure layout="full">
+
+<img src="/blog/plausible-accessibility/fig-focus-maze.webp" alt="" />
+
+</ArticleFigure>
 
 ### Names that sound right
 
@@ -77,7 +117,17 @@ The fix itself was small. The test that keeps it fixed is the part worth copying
 
 No rule flags that, because every individual part is valid. Eevis found the same family of problem in [AI-generated Android apps from four different tools](https://dev.to/eevajonnapanula/does-ai-generate-accessible-android-apps-2gb5): an "Add yarn" button labelled "Add new yarn", so some screen readers read both. The QA team above found a date picker that VoiceOver on iOS read as "button, button, button". [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) can be tested for presence by a machine. Whether a name makes sense when spoken, in that order, on that device, can only be heard.
 
-{/* Figure B: accessibility-tree snapshot diff of the language button, before and after (b73740e0f). See VISUAL_BRIEF.md. */}
+<ArticleFigure layout="center">
+
+```diff
+   - group "Language":
+-    - button "EN, EN — Switch to English. Show language options": EN
++    - button "EN, English. Show language options": EN
+```
+
+<figcaption>The language button in the header's committed accessibility-tree snapshot, before and after the fix (commit b73740e0f), with English active. Both versions passed every automated check in the repo.</figcaption>
+
+</ArticleFigure>
 
 ### Meaning, memory, and effort
 
@@ -105,7 +155,11 @@ Here is a routing table for AI-assisted work. It is not exhaustive, but every ro
 
 Two rules make the table work. First, give testers tasks, not pages: "change your delivery address" finds problems that "review the settings page" never will. Second, the W3C warns against [generalising from one or two users](https://www.w3.org/WAI/test-evaluate/involving-users/); different disabilities and assistive technologies surface different problems. And pay people. Disabled testers are experts doing skilled work, and recruiting them with the same care and budget as any other specialist is part of doing this properly.
 
-{/* Illustration 5: stencil figure stepping aside from a chair; violet hands at the table with a marked-up checklist. Decorative, alt="". */}
+<ArticleFigure layout="full">
+
+<img src="/blog/plausible-accessibility/fig-who-to-call.webp" alt="" />
+
+</ArticleFigure>
 {/* Figure C: the routing table above, published as an HTML table (preferred) rather than an image. */}
 
 ## What the machines are good at
@@ -126,6 +180,12 @@ The accessibility-tree snapshots this design system commits for every story are 
 What closes that gap is a standing arrangement with people who use assistive technology every day, booked before a release rather than after a complaint. Another check would only measure the same things more often.
 
 ## Works for whom
+
+<ArticleFigure layout="full">
+
+<img src="/blog/plausible-accessibility/fig-placing-a-person.webp" alt="" />
+
+</ArticleFigure>
 
 Looks good to me is still a fine approval for code. For accessibility, it answers the wrong question. The useful questions are smaller and harder: works for whom, on what, doing which task, and who told you?
 

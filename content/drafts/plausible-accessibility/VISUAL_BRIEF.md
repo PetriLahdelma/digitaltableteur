@@ -1,6 +1,6 @@
 # Plausible accessibility: visual brief
 
-Follows the house [illustration standard](../../../docs/WRITING_STYLE.md#illustration-standard) and the palette and style rules in [`agentic-design-systems/VISUAL_BRIEF.md`](../agentic-design-systems/VISUAL_BRIEF.md). Status: brief only. Nothing here is produced yet.
+Follows the house [illustration standard](../../../docs/WRITING_STYLE.md#illustration-standard) and the palette and style rules in [`agentic-design-systems/VISUAL_BRIEF.md`](../agentic-design-systems/VISUAL_BRIEF.md). Status: illustrations produced and placed (2026-10-15); the two explanatory artifacts (A, B) are still to capture.
 
 ## The family
 
@@ -32,3 +32,17 @@ Follows the house [illustration standard](../../../docs/WRITING_STYLE.md#illustr
 | C | "Who to call, and when" | The routing table from the article, set as a designed table (case, why automation misses it, who to bring in, what to give them). | Alt: summary of the table; the full table is also in the text, so the figure is a visual duplicate and could be `alt=""` if the HTML table is published instead. Prefer the HTML table. |
 
 Capture A and B from the real systems before publishing; do not mock them.
+
+## Produced and placed
+
+All in `public/blog/plausible-accessibility/`, decorative, rendered with `alt=""`. The produced set follows the motif and palette; two placements changed from the brief where the delivered image fit a different section better.
+
+| File | Placement | Notes |
+|------|-----------|-------|
+| `hero-stencil-at-desk.webp` (1536×1024) | Hero (`mainImageUrl`) | As briefed: stencil at the desk, checklist, violet hand on the keyboard |
+| `fig-hollow-checkmark.webp` | After the opening, where the concept lands | As briefed: magnifier finds a dashed, hollow checkmark |
+| `fig-median-web.webp` | "The median of an inaccessible web" | As briefed: stacked translucent pages and a stencil figure |
+| `fig-outline-pulled-loose.webp` | "Purpose, not pixels" | Replaces the luggage-tag brief: a violet hand lifts an outline that no longer matches its shape, a description traced around the object rather than its purpose |
+| `fig-focus-maze.webp` | "Order, focus, and the keyboard" | As briefed: violet thread loops around the centre and never gets out |
+| `fig-who-to-call.webp` | "Who to call, and when", after the table | As briefed: the stencil leaves the chair; violet hands at the table with the checklist |
+| `fig-placing-a-person.webp` (1536×1024) | "Works for whom", the close | Added: a violet hand places a real person into the empty frame beside the interface |
