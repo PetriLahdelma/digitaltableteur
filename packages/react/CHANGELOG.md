@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.29 - 2026-10-16
+
+- New `StageList` (beta): places entries by the lifecycle stage they belong
+  to, in five layouts over one data model (`variant`: `sheet`, the default,
+  `rail`, `index`, `checklist` and `cards`). Items name a lead answer,
+  detail, their stages and an optional tag; later stages become an "Again
+  at" line. Optional `phases`, `headingLevel`, `storageKey` (checklist ticks
+  kept in the reader's browser) and `indexLabel`. Exported from the root and
+  `content` entry points. Additive.
+- `Checkbox`: the box no longer shrinks when its label wraps.
+
 ## 0.1.28 - 2026-10-15
 
 - `GroupLabel` is the one group heading. It gains `as` (`label` | `legend`;
