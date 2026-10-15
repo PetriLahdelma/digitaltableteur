@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-proofblock-example",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:26:05.471Z",
-  "runner": null,
+  "sourceSHA": "8cca46ecd2c5ca308bccb2f7baef863f7e19b649",
+  "capturedAt": "2026-10-15T19:54:38.803Z",
+  "runner": "local-2026-10-15w",
   "checks": {
     "accessibility-tree": {
       "passed": true

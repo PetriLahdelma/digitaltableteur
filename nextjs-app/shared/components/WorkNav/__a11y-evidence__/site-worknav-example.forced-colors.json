@@ -1,9 +1,9 @@
 {
   "storyId": "site-worknav-example",
   "mode": "forced-colors",
-  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-  "capturedAt": "2026-09-29T19:10:11.102Z",
-  "runner": "local",
+  "sourceSHA": "8cca46ecd2c5ca308bccb2f7baef863f7e19b649",
+  "capturedAt": "2026-10-15T19:55:11.995Z",
+  "runner": "local-2026-10-15w",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -2,9 +2,9 @@
   - button "Work Work":
     - img "Work"
     - text: Work
-  - button "Prev Prev":
-    - img "Prev"
-    - text: Prev
+  - button "Previous Previous":
+    - img "Previous"
+    - text: Previous
   - button "Next Next" [disabled]:
     - text: Next
     - img "Next"
