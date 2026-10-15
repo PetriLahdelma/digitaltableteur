@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.10.3 - 2026-10-15
 
 - `dt-language-switcher`: the trigger keeps one accessible name in both
   states, "<label>, <ariaLabel>" (e.g. "EN, English"), so the name starts
@@ -11,8 +11,10 @@
   `ariaLabel` is the language's own name ("Suomi"), not an action phrase.
   Matches the React LanguageSwitcher.
 - Generated element contracts follow the source contracts: `dt-kbd` and
-  `dt-form-field` are stable again (both have production consumers), and
+  `dt-form-field` are stable again (both have production consumers).
   `dt-group-label` is beta (its only consumer moved to FormField).
+  `dt-author`, `dt-selectable-card`, `dt-selectable-card-group` and
+  `dt-visually-hidden` follow their source components to stable.
 
 ## 0.10.2 - 2026-09-25
 

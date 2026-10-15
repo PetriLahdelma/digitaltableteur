@@ -32,6 +32,12 @@
       "level": "additive",
       "detail": "prop `label` added",
       "bump": "patch"
+    },
+    {
+      "component": "List",
+      "level": "additive",
+      "detail": "prop `striped` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -2432,6 +2438,10 @@
             "normal",
             "relaxed"
           ]
+        },
+        "striped": {
+          "optional": true,
+          "type": "boolean"
         },
         "style": {
           "optional": true,

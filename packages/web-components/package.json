@@ -1,6 +1,6 @@
 {
   "name": "@digitaltableteur/web-components",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "private": false,
   "description": "Framework-neutral custom elements for the Digitaltableteur design system.",
   "type": "module",

@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.27 - 2026-10-15
+
+- `List` gains `striped`: alternate row tints for long lists of multi-line
+  entries; rows get padding and drop markers unless `listStyleType` asks for
+  them. Additive.
+- `Table` gains `stackOnNarrow` (rows become labelled cards below a 40rem
+  container) and `TableCell` gains `label`; table, row, cell and header
+  roles are explicit, so a CSS display change never strips semantics.
+  Columns size by whole words (no mid-word breaks) and text-table headers
+  wrap instead of overflowing.
+- `CheckboxGroup` names its group with a fieldset and legend (through
+  `FormField`). Its `<label for>` pointed at a nonexistent id when the master
+  checkbox was hidden, so the group had no accessible name (WCAG 1.3.1).
+  `FormField`'s legend takes the shared label treatment and keeps its space
+  above the controls.
+- `LanguageSwitcher` keeps one accessible name in both states ("EN,
+  English"), drops `aria-current` and gives each option `lang`.
+- `AuthorBio` gains `profileHref` and `variant` (`full` | `compact`) and a
+  warmer card with a faint plane behind the photo; it no longer collapses
+  in shrink-to-fit parents.
+- `Button` gains `consequence` (RFC 0001), rendered as `data-consequence`;
+  `irreversible` warns unless `tone="error"`.
+- `CookieConsent` reserves space for the banner and scrolls a focused
+  control out from under it (WCAG 2.4.11). `ScrollIndicator`'s motion hint
+  stops within five seconds (WCAG 2.2.2).
+
 ## 0.1.26 - 2026-09-25
 
 - `NavLink` accepts an optional `onClick`, fired only when the navigable
