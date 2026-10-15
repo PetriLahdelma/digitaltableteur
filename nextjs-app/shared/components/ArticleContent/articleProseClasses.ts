@@ -26,6 +26,9 @@ export const articleProseClassName = cn(
   "prose-blockquote:my-8",
   "prose-code:font-mono prose-code:text-sm",
   "prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded",
+  // Typography's default wraps inline code in literal backticks via
+  // ::before/::after; the chip background already marks it as code.
+  "prose-code:before:content-none prose-code:after:content-none",
   "prose-pre:bg-muted prose-pre:rounded-lg prose-pre:p-4",
   "prose-pre:mx-auto prose-pre:max-w-[80%] prose-pre:max-h-[35vh]",
   "prose-pre:overflow-x-hidden prose-pre:overflow-y-auto prose-pre:whitespace-pre-wrap prose-pre:break-words prose-pre:my-6",
