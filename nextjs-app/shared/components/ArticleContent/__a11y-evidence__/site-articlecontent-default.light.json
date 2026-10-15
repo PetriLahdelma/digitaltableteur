@@ -1,9 +1,9 @@
 {
   "storyId": "site-articlecontent-default",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:29:13.488Z",
-  "runner": null,
+  "sourceSHA": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+  "capturedAt": "2026-10-15T15:04:20.074Z",
+  "runner": "local-2026-10-15e",
   "checks": {
     "accessibility-tree": {
       "passed": true
