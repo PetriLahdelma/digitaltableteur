@@ -51,6 +51,12 @@ const meta = {
       description: "Pin the header row while the body scrolls.",
       table: { defaultValue: { summary: "false" } },
     },
+    stackOnNarrow: {
+      control: "boolean",
+      description:
+        "Below a 40rem container, stack each row as a block with column labels (TableCell label).",
+      table: { defaultValue: { summary: "false" } },
+    },
     wrapperClassName: {
       control: "text",
       description: "Class on the scroll wrapper around the table.",

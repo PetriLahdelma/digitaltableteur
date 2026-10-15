@@ -28,6 +28,11 @@ const meta = {
       description: "Tabular figures, end-aligned.",
       table: { defaultValue: { summary: "false" } },
     },
+    label: {
+      control: "text",
+      description:
+        "Column name shown before the value when the Table stacks rows (stackOnNarrow).",
+    },
   },
   render: (args) => (
     <Table caption="Contributors">
@@ -58,7 +63,8 @@ export const Example: Story = {
   parameters: {
     docs: {
       description: {
-        story: "numeric cells right-align with tabular figures so columns line up on the decimal.",
+        story:
+          "numeric cells right-align with tabular figures so columns line up on the decimal.",
       },
     },
   },
@@ -89,4 +95,6 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
-  tags: ["beta-matrix"], globals: { forcedColors: "active" } };
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

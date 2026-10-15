@@ -73,11 +73,6 @@
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/page.tsx",
             "since": "2026-06-04"
         },
@@ -93,26 +88,6 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleMain.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
             "since": "2026-06-04"
         },
@@ -124,11 +99,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
             "since": "2026-06-04"
         }
     ],
