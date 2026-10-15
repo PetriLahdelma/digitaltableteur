@@ -50,6 +50,12 @@
       "level": "additive",
       "detail": "prop `as` added",
       "bump": "patch"
+    },
+    {
+      "component": "StageList",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -4240,6 +4246,55 @@
       "slots": [],
       "subParts": [],
       "keyboard": []
+    },
+    "StageList": {
+      "element": "div",
+      "props": {
+        "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "headingLevel": {
+          "optional": true,
+          "type": "2 | 3 | 4"
+        },
+        "indexLabel": {
+          "optional": true,
+          "type": "string"
+        },
+        "items": {
+          "optional": false,
+          "type": "StageListItem[]"
+        },
+        "phases": {
+          "optional": true,
+          "type": "StageListPhase[]"
+        },
+        "stages": {
+          "optional": false,
+          "type": "StageListStage[]"
+        },
+        "storageKey": {
+          "optional": true,
+          "type": "string"
+        },
+        "variant": {
+          "optional": true,
+          "values": [
+            "cards",
+            "checklist",
+            "index",
+            "rail",
+            "sheet"
+          ]
+        }
+      },
+      "slots": [],
+      "subParts": [],
+      "keyboard": [
+        "Space toggles the focused tick box; Enter follows the focused index link to its entry.",
+        "Tab moves through the index links and the checklist tick boxes in reading order; the other layouts hold no controls."
+      ]
     },
     "StatusDot": {
       "element": "span",
