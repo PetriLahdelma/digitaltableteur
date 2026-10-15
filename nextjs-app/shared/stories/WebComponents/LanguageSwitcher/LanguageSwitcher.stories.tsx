@@ -13,8 +13,8 @@ if (!customElements.get("dt-language-switcher")) {
 
 const LANGUAGES: DtLanguageSwitcherOption[] = [
   { code: "en", label: "EN", ariaLabel: "English" },
-  { code: "fi", label: "FI", ariaLabel: "Vaihda kieli suomeksi" },
-  { code: "sv", label: "SV", ariaLabel: "Byt språk till svenska" },
+  { code: "fi", label: "FI", ariaLabel: "Suomi" },
+  { code: "sv", label: "SV", ariaLabel: "Svenska" },
 ];
 
 type Args = {
