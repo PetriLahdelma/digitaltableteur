@@ -1453,5 +1453,10 @@
   "caseStudySummaryConstraints": "Constraints",
   "caseStudySummaryDecisions": "Key decisions",
   "caseStudySummaryEvidence": "Evidence",
-  "caseStudySummarySource": "Source"
+  "caseStudySummarySource": "Source",
+  "stageListAnd": "and",
+  "stageListAgainAt": "Again at {{stages}}.",
+  "stageListProgress": "{{done}} of {{total}} done",
+  "stageListClear": "Clear all",
+  "stageListIndexLabel": "Entries by stage"
 }

@@ -1,0 +1,6 @@
+/* Articles sit under two sticky bars (site header and article nav, ~145px
+   together), so a pinned stage label stops below both. */
+
+.stageList {
+  --stage-list-sticky-offset: calc(var(--space-layout-96) + var(--space-layout-64));
+}

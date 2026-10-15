@@ -1,0 +1,463 @@
+/* StageList: entries placed by lifecycle stage, in five layouts. Layout
+   responds to the list's own width (container query), so it adapts inside
+   an article column as well as on a full page. Every rule is scoped under
+   .root so the list keeps its rhythm inside prose containers, whose
+   element rules (.prose p, .prose h3) outrank a single class. */
+
+.root {
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  font-family: var(--font-text);
+  color: var(--color-text);
+  container-type: inline-size;
+}
+
+/* The site styles bare p, ul, ol and li (and article p) for prose; the list
+   sets its own rhythm, so those element defaults are reset inside it. */
+
+.root p,
+.root ul,
+.root ol,
+.root li {
+  margin-block: 0;
+}
+
+.root ul,
+.root ol {
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+/* Shared entry parts */
+
+.root .entries {
+  display: grid;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  gap: var(--space-layout-32);
+  list-style: none;
+}
+
+.root .entry {
+  display: grid;
+  gap: var(--space-internal-4);
+}
+
+.root .lead {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-text-m);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.root .detail {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-text-s);
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.root .groupName {
+  margin-block: 0 var(--space-internal-16);
+  margin-inline: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-l);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-title, var(--color-text));
+}
+
+.root .group + .group {
+  margin-block-start: var(--space-layout-48);
+}
+
+/* sheet: phases, the stage pinned in the margin, the answer as headline */
+
+.root .sheetGroupName {
+  margin-block: var(--space-layout-48) 0;
+  margin-inline: 0;
+  padding-block-end: var(--space-internal-12);
+  border-block-end: 2px solid var(--color-text);
+}
+
+.root .sheetGroupName:first-child {
+  margin-block-start: 0;
+}
+
+.root .sheetStage {
+  display: grid;
+  padding-block: var(--space-internal-24);
+  grid-template-columns: minmax(0, var(--stage-list-label-width, 10rem)) minmax(0, 1fr);
+  gap: var(--space-internal-8) var(--space-layout-32);
+  border-block-end: 1px solid var(--color-border-light);
+}
+
+.root .sheetStageName {
+  position: sticky;
+  margin-block: 0;
+  margin-inline: 0;
+  align-self: start;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-muted);
+  inset-block-start: var(--stage-list-sticky-offset, var(--space-layout-96));
+}
+
+.root .kicker {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-text-s);
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.root .sheetLead {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-text-l);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text);
+}
+
+@container (width < 40rem) {
+  .root .sheetStage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .root .sheetStageName {
+    position: static;
+  }
+}
+
+/* rail: a vertical timeline of stages */
+
+.root.rail {
+  list-style: none;
+}
+
+.root .railStage {
+  position: relative;
+  padding-block-end: var(--space-layout-32);
+  padding-inline-start: var(--space-layout-32);
+}
+
+/* The rail line joins the stage markers. */
+
+.root .railStage::before {
+  position: absolute;
+  inset-block: var(--space-internal-12) 0;
+  inline-size: 2px;
+  background: var(--color-border);
+  content: "";
+  inset-inline-start: calc((var(--space-internal-16) - 2px) / 2);
+}
+
+.root .railStage:last-child::before {
+  display: none;
+}
+
+.root .railStage::after {
+  position: absolute;
+  box-sizing: border-box;
+  block-size: var(--space-internal-16);
+  inline-size: var(--space-internal-16);
+  border: 3px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  background: var(--main-body-background-color);
+  content: "";
+  inset-block-start: var(--space-internal-4);
+  inset-inline-start: 0;
+}
+
+.root .railStageName {
+  margin-block: 0 var(--space-internal-12);
+  margin-inline: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-l);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-title, var(--color-text));
+}
+
+.root.rail .entries {
+  gap: var(--space-internal-16);
+}
+
+.root .railHead {
+  display: flex;
+  margin-block: 0;
+  margin-inline: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-internal-8);
+}
+
+.root .railTitle {
+  font-size: var(--font-size-text-m);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* index: a linked overview by stage, then every entry in full */
+
+.root .indexNav {
+  padding-block: var(--space-internal-24);
+  padding-inline: var(--space-internal-24);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.root .indexList {
+  display: grid;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  gap: var(--space-internal-16);
+  list-style: none;
+}
+
+.root .indexRow {
+  display: grid;
+  grid-template-columns: minmax(0, var(--stage-list-label-width, 10rem)) minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-internal-4) var(--space-internal-24);
+}
+
+.root .indexStage {
+  font-size: var(--font-size-text-s);
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+/* One entry per line: titles carry their own commas, so a run-on row of
+   them would read as a single list. */
+
+.root .indexEntries {
+  display: grid;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  gap: var(--space-internal-4);
+  font-size: var(--font-size-text-m);
+  line-height: 1.45;
+  list-style: none;
+}
+
+.root .indexEntries a {
+  color: var(--color-text);
+  text-decoration-color: var(--color-muted);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.root .indexEntries a:hover {
+  text-decoration-color: currentcolor;
+}
+
+.root .indexEntries a:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: var(--space-internal-2);
+}
+
+.root .indexDetails {
+  display: grid;
+  margin-block-start: var(--space-layout-48);
+}
+
+.root .indexDetail {
+  padding-block: var(--space-internal-24);
+  border-block-start: 1px solid var(--color-border-light);
+  scroll-margin-block-start: var(--stage-list-sticky-offset, var(--space-layout-96));
+}
+
+.root .indexDetail:target {
+  border-block-start-color: var(--color-primary);
+}
+
+.root .eyebrow {
+  margin-block: 0 var(--space-internal-4);
+  margin-inline: 0;
+  font-size: var(--font-size-text-xs);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.root .indexTitle {
+  margin-block: 0 var(--space-internal-8);
+  margin-inline: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-l);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-title, var(--color-text));
+}
+
+.root .indexDetail .lead {
+  margin-block-end: var(--space-internal-4);
+}
+
+@container (width < 40rem) {
+  .root .indexRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* checklist: a tick box per entry, a running count per group */
+
+.root .checkGroups {
+  display: grid;
+  margin-block: 0 var(--space-internal-24);
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  gap: var(--space-layout-40);
+  list-style: none;
+}
+
+.root .checkHead {
+  display: flex;
+  padding-block-end: var(--space-internal-12);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-8) var(--space-internal-12);
+  border-block-end: 2px solid var(--color-text);
+}
+
+.root .checkHead .groupName {
+  margin-block: 0;
+  margin-inline: 0;
+  flex: 1 1 auto;
+}
+
+.root .checkNumber {
+  display: inline-grid;
+  box-sizing: border-box;
+  block-size: var(--space-layout-32);
+  inline-size: var(--space-layout-32);
+  place-items: center;
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-full);
+  background: var(--color-text);
+  font-size: var(--font-size-text-s);
+  font-weight: 700;
+  color: var(--main-body-background-color);
+}
+
+.root .checkCount {
+  margin-inline-start: auto;
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.root .checkStage {
+  display: grid;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: var(--space-internal-16) 0;
+  padding-inline: 0;
+  gap: var(--space-internal-16);
+  border: 0;
+}
+
+.root .checkLegend {
+  padding-block: 0;
+  padding-inline: 0;
+  font-size: var(--font-size-text-xs);
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.root .checkItem {
+  padding-block-end: var(--space-internal-16);
+  border-block-end: 1px solid var(--color-border-light);
+}
+
+/* cards: a card grid per group */
+
+.root .cardGrid {
+  display: grid;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: var(--space-internal-16);
+  list-style: none;
+}
+
+.root .card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+}
+
+.root .cardTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-8);
+}
+
+.root .cardTag {
+  font-size: var(--font-size-text-xs);
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.root .cardLead {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-text-l);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text);
+}
+
+.root .cardTitle {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-text-s);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+@media (forced-colors: active) {
+  .root .railStage::before {
+    background: CanvasText;
+  }
+
+  .root .railStage::after {
+    border-color: CanvasText;
+    background: Canvas;
+  }
+
+  .root .sheetGroupName,
+  .root .checkHead {
+    border-block-end-color: CanvasText;
+  }
+
+  .root .checkNumber {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .root .indexDetail:target {
+    border-block-start-color: Highlight;
+  }
+}

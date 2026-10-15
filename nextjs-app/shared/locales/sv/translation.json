@@ -1453,5 +1453,10 @@
   "caseStudySummaryConstraints": "Förutsättningar",
   "caseStudySummaryDecisions": "Viktiga beslut",
   "caseStudySummaryEvidence": "Belägg",
-  "caseStudySummarySource": "Källa"
+  "caseStudySummarySource": "Källa",
+  "stageListAnd": "och",
+  "stageListAgainAt": "Igen: {{stages}}.",
+  "stageListProgress": "{{done}} av {{total}} klara",
+  "stageListClear": "Rensa alla",
+  "stageListIndexLabel": "Poster per skede"
 }

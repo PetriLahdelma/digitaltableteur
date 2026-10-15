@@ -103,6 +103,14 @@ export type { IconProps } from "./Icon";
 export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
 export { default as Kbd } from "./Kbd/Kbd";
 export type { KbdProps, KbdSize } from "./Kbd";
+export { default as StageList } from "./StageList/StageList";
+export type {
+  StageListItem,
+  StageListPhase,
+  StageListProps,
+  StageListStage,
+  StageListVariant,
+} from "./StageList";
 export { default as StatusDot } from "./StatusDot/StatusDot";
 export type { StatusDotProps, StatusDotSize, StatusDotTone } from "./StatusDot";
 export { default as TextInput } from "./TextInput/TextInput";

@@ -1453,5 +1453,10 @@
   "caseStudySummaryConstraints": "Reunaehdot",
   "caseStudySummaryDecisions": "Keskeiset päätökset",
   "caseStudySummaryEvidence": "Näyttö",
-  "caseStudySummarySource": "Lähde"
+  "caseStudySummarySource": "Lähde",
+  "stageListAnd": "ja",
+  "stageListAgainAt": "Uudelleen: {{stages}}.",
+  "stageListProgress": "{{done}}/{{total}} tehty",
+  "stageListClear": "Tyhjennä kaikki",
+  "stageListIndexLabel": "Kohdat vaiheittain"
 }

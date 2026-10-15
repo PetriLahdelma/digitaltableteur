@@ -1,0 +1,10 @@
+/* Stories render at an article column's width. */
+
+.column {
+  max-inline-size: var(--container-md);
+}
+
+.stack {
+  display: grid;
+  gap: var(--space-layout-64);
+}

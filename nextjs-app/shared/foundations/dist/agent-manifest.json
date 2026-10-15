@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-15T18:24:24.992Z",
+  "generatedAt": "2026-10-15T21:55:03.166Z",
   "summary": {
-    "componentCount": 180,
+    "componentCount": 181,
     "statusCounts": {
-      "beta": 42,
+      "beta": 43,
       "stable": 111,
       "alpha": 26,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 91.4,
-    "codebaseComponentCount": 197,
-    "usageCoveragePercent": 93.3,
+    "codebaseComponentCount": 198,
+    "usageCoveragePercent": 93.4,
     "componentsWithProductionUsage": 40,
     "notReadyForStablePromotion": false
   },
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 197,
-    "inCatalog": 180,
+    "totalComponentsInCodebase": 198,
+    "inCatalog": 181,
     "outOfCatalog": 17,
     "catalogCompletenessPercent": 91.4,
     "artifactCoverage": {
-      "stories": 164,
-      "tests": 175,
+      "stories": 165,
+      "tests": 176,
       "mdx": 4,
-      "spec": 180
+      "spec": 181
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,13 +77,13 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 180,
-    "withAnyUsage": 168,
+    "catalogedComponents": 181,
+    "withAnyUsage": 169,
     "withProductionUsage": 40,
-    "uniqueImportedComponents": 168,
-    "totalEvidenceRows": 878,
+    "uniqueImportedComponents": 169,
+    "totalEvidenceRows": 883,
     "aliasImportFiles": 457,
-    "relativeImportFiles": 454,
+    "relativeImportFiles": 460,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -102,12 +102,12 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 180,
+      "digitaltableteur": 181,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 42,
+        "beta": 43,
         "stable": 111,
         "alpha": 26,
         "deprecated": 1
@@ -1823,8 +1823,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ArticleContent",
-        "importCount": 4,
-        "productionImportCount": 2,
+        "importCount": 5,
+        "productionImportCount": 3,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
@@ -1838,6 +1838,12 @@
             "path": "app/blog/[slug]/ClientArticleShell.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/ArticleContent",
+            "context": "production"
+          },
+          {
+            "path": "app/dev/who-to-call/page.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/ArticleContent/articleProseClasses",
             "context": "production"
           },
           {
@@ -3568,17 +3574,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/AuthorBio",
-        "importCount": 4,
-        "productionImportCount": 2,
+        "importCount": 3,
+        "productionImportCount": 1,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "app/blog/[slug]/ServerArticleMain.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/AuthorBio/AuthorBio",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
             "importKind": "alias",
@@ -5224,10 +5224,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
-        "importCount": 13,
+        "importCount": 14,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 4,
+        "componentImportCount": 5,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
@@ -5251,6 +5251,12 @@
             "path": "nextjs-app/shared/components/OpenHours/OpenHours.tsx",
             "importKind": "alias",
             "importPath": "@dt/Badge",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/StageList/StageList.tsx",
+            "importKind": "relative",
+            "importPath": "../Badge/Badge",
             "context": "component"
           },
           {
@@ -5293,12 +5299,6 @@
             "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Badge",
-            "context": "story"
-          },
-          {
-            "path": "nextjs-app/shared/stories/KitchenSink.stories.tsx",
-            "importKind": "relative",
-            "importPath": "../components/Badge/Badge.stories",
             "context": "story"
           }
         ]
@@ -8189,10 +8189,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 64,
+        "importCount": 65,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 37,
+        "componentImportCount": 38,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
@@ -9688,10 +9688,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Card",
-        "importCount": 9,
+        "importCount": 10,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 4,
+        "componentImportCount": 5,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
@@ -9715,6 +9715,12 @@
             "path": "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Card",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/StageList/StageList.tsx",
+            "importKind": "relative",
+            "importPath": "../Card/Card",
             "context": "component"
           },
           {
@@ -12217,10 +12223,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Checkbox",
-        "importCount": 9,
+        "importCount": 10,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 4,
+        "componentImportCount": 5,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/AskAI/AskAI.tsx",
@@ -12244,6 +12250,12 @@
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./Checkbox/Checkbox",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/StageList/StageList.tsx",
+            "importKind": "relative",
+            "importPath": "../Checkbox/Checkbox",
             "context": "component"
           },
           {
@@ -31378,8 +31390,8 @@
           "Text",
           "Title",
           "Button",
-          "Badge",
           "ReliablePartnerBadge",
+          "Badge",
           "Grid"
         ],
         "prefersOver": [
@@ -38871,8 +38883,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -55983,6 +55995,546 @@
       }
     },
     {
+      "name": "StageList",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "StageList",
+        "tier": "organism",
+        "group": "content",
+        "status": "beta",
+        "description": "Places entries by the lifecycle stage they belong to, so a reader at any stage finds what applies now. Five layouts over one data model: sheet, rail, index, checklist and cards.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-stage-list",
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {
+          "variant": {
+            "values": [
+              "sheet",
+              "rail",
+              "index",
+              "checklist",
+              "cards"
+            ],
+            "default": "sheet",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab moves through the index links and the checklist tick boxes in reading order; the other layouts hold no controls.",
+            "Space toggles the focused tick box; Enter follows the focused index link to its entry."
+          ],
+          "ariaRequirements": [
+            "Phase and stage names are real headings, one level apart, starting at headingLevel so the list slots into the page outline.",
+            "The rail is an ordered list of stages; entries are list items.",
+            "The index overview is a navigation landmark named by indexLabel; each entry is an article named by its heading.",
+            "Each checklist stage is a fieldset named by its legend; each tick box is named by the entry's lead and described by the entry's detail.",
+            "The checklist count is a polite live region so ticking announces progress without moving focus.",
+            "Recurring stages are written out in text (\"Again at ...\"), never conveyed by position or colour alone."
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "forcedColorsVerified": true,
+          "reviewedNote": "2026-10-16: built from the format study for \"Who to call and when\" (Plausible Accessibility). Reviewed: heading levels and outline per variant, list semantics, index landmark and anchor targets, fieldset/legend grouping and checkbox names in the checklist, live-region count, keyboard path (Tab, Space, Enter) via play functions, light and dark themes, forced colours (rail markers and rules use CanvasText), 390px width with no horizontal overflow, axe clean per variant in unit tests. Known limitations: the sheet's pinned stage label assumes a sticky site header and reads --stage-list-sticky-offset; the checklist inherits Checkbox's primary label colour."
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-title",
+            "--color-border",
+            "--color-border-light",
+            "--color-primary",
+            "--color-focus-ring",
+            "--main-body-background-color"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24",
+            "--space-layout-32",
+            "--space-layout-40",
+            "--space-layout-48",
+            "--space-layout-96"
+          ],
+          "typography": [
+            "--font-text",
+            "--font-size-text-xs",
+            "--font-size-text-s",
+            "--font-size-text-m",
+            "--font-size-text-l"
+          ]
+        },
+        "lightDarkVerified": true,
+        "consumers": [],
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "StageListItem[]",
+            "description": "Entries to place by stage; each sits under the first stage it lists."
+          },
+          "stages": {
+            "optional": false,
+            "type": "StageListStage[]",
+            "description": "Lifecycle stages in order."
+          },
+          "phases": {
+            "optional": true,
+            "type": "StageListPhase[]",
+            "description": "Groups consecutive stages into phases for the sheet, checklist and cards layouts."
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sheet",
+              "rail",
+              "index",
+              "checklist",
+              "cards"
+            ],
+            "description": "Layout of the list."
+          },
+          "headingLevel": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "2",
+              "3",
+              "4"
+            ],
+            "description": "Level of the top headings the list renders."
+          },
+          "storageKey": {
+            "optional": true,
+            "type": "string",
+            "description": "Checklist only: localStorage key that keeps ticks between visits."
+          },
+          "indexLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name for the index layout's overview navigation."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional className for the root element."
+          }
+        },
+        "composesWith": [
+          "Badge",
+          "Card",
+          "Checkbox",
+          "Button"
+        ],
+        "prefersOver": [],
+        "forbiddenUse": [
+          "Use for a sequence the reader must follow step by step to finish a task; that is a stepper or an ordered list of instructions.",
+          "Use when entries have no stage; a plain List or Table reads better."
+        ],
+        "displayName": "StageList",
+        "keywords": [
+          "stage",
+          "lifecycle",
+          "timeline",
+          "checklist",
+          "phase",
+          "when to",
+          "routing",
+          "call sheet"
+        ],
+        "dense": "Entries placed by lifecycle stage (sheet, rail, index, checklist, cards); items name a lead answer, detail, stages and an optional tag",
+        "usage": {
+          "description": "StageList answers \"what applies at this stage?\". Each entry names its stages; the list places it under the first and writes out the later ones. Pick a layout for the reading task: sheet for scanning answers by stage (the default), rail when the order is the point, index for a long list read in two passes, checklist when the reader works through it on a project, cards for a looser overview.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Lead each entry with the answer the reader scans for (who to call, what to do) and keep the title as the smaller line."
+            },
+            {
+              "guidance": true,
+              "description": "Group more than about five stages into phases so the list has a short outline."
+            },
+            {
+              "guidance": true,
+              "description": "Set headingLevel to one below the surrounding section heading."
+            },
+            {
+              "guidance": true,
+              "description": "Give each stage a phrase for the recurrence line when its label would read oddly mid-sentence."
+            },
+            {
+              "guidance": false,
+              "description": "Do not use the checklist layout for state that must persist across devices or people; ticks stay in one browser."
+            },
+            {
+              "guidance": false,
+              "description": "Do not encode stage or recurrence with colour or position alone; the text says it."
+            }
+          ],
+          "anatomy": []
+        },
+        "playground": {
+          "defaults": {
+            "variant": "sheet",
+            "headingLevel": 3
+          }
+        }
+      },
+      "spec": "# StageList\n\n## Intent\n\nAnswer \"what applies at this stage?\" for a body of guidance that is spread\nover a lifecycle. Each entry names the stages it belongs to; the list places it\nunder the first one and writes out the rest.\n\n## Layouts\n\n- **sheet** (default): phases as headings, the stage pinned in the margin while\n  its entries scroll past, each entry leading with its answer.\n- **rail**: a vertical timeline of stages; use when the order is the point.\n- **index**: a linked overview by stage, then every entry in full.\n- **checklist**: a tick box per entry, a running count per group, optional\n  persistence in the reader's browser.\n- **cards**: a card per entry with its stages as a badge.\n\n## Interaction contract\n\n- Keyboard: Tab reaches index links and checklist tick boxes in reading order;\n  Space toggles a tick box; Enter follows an index link.\n- Screen readers: headings start at `headingLevel`; checklist stages are\n  fieldsets with legends; the count is a polite live region.\n- Layout responds to the list's own width, not the viewport.\n\n## Do / don't\n\n- Do: lead entries with the answer; keep titles short.\n- Do: group more than about five stages into phases.\n- Don't: use it for step-by-step task flows.\n- Don't: rely on colour or position for stage or recurrence.\n\n## Design notes\n\n- Tokens only; forced colours use CanvasText for rail markers and rules.\n- `--stage-list-sticky-offset` sets where the pinned stage label stops under a\n  sticky header; `--stage-list-label-width` sets the margin column.\n- Figma: placeholder link until the Figma component is built at stable.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/StageList",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./StageList/StageList",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/StageList",
+        "intent": "Answer \"what applies at this stage?\" for a body of guidance that is spread over a lifecycle. Each entry names the stages it belongs to; the list places it under the first one and writes out the rest.",
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "StageListItem[]",
+            "description": "Entries to place by stage."
+          },
+          "stages": {
+            "optional": false,
+            "type": "StageListStage[]",
+            "description": "Lifecycle stages in order."
+          },
+          "phases": {
+            "optional": true,
+            "type": "StageListPhase[]",
+            "description": "Optional grouping of stages into phases (sheet, checklist and cards)."
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sheet",
+              "rail",
+              "index",
+              "checklist",
+              "cards"
+            ],
+            "description": "Layout. sheet: phases with the stage pinned in the margin, entries lead\nwith the answer. rail: a vertical timeline of stages. index: a linked\noverview by stage, then every entry in full. checklist: a tick box per\nentry with a count per group. cards: a card grid per group."
+          },
+          "headingLevel": {
+            "optional": true,
+            "type": "2 | 3 | 4",
+            "description": "Level of the top headings the list renders."
+          },
+          "storageKey": {
+            "optional": true,
+            "type": "string",
+            "description": "Checklist only: localStorage key that keeps ticks between visits. Omit to keep ticks in memory."
+          },
+          "indexLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name for the index variant's overview navigation."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional className for the root element."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {
+          "variant": {
+            "values": [
+              "sheet",
+              "rail",
+              "index",
+              "checklist",
+              "cards"
+            ],
+            "default": "sheet"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "lead entries with the answer; keep titles short.",
+          "group more than about five stages into phases."
+        ],
+        "avoidWhen": [
+          "use it for step-by-step task flows.",
+          "rely on colour or position for stage or recurrence."
+        ],
+        "requiredA11y": [
+          "Phase and stage names are real headings, one level apart, starting at headingLevel so the list slots into the page outline.",
+          "The rail is an ordered list of stages; entries are list items.",
+          "The index overview is a navigation landmark named by indexLabel; each entry is an article named by its heading.",
+          "Each checklist stage is a fieldset named by its legend; each tick box is named by the entry's lead and described by the entry's detail.",
+          "The checklist count is a polite live region so ticking announces progress without moving focus.",
+          "Recurring stages are written out in text (\"Again at ...\"), never conveyed by position or colour alone."
+        ],
+        "keyboard": [
+          "Tab moves through the index links and the checklist tick boxes in reading order; the other layouts hold no controls.",
+          "Space toggles the focused tick box; Enter follows the focused index link to its entry."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use it for step-by-step task flows.",
+          "rely on colour or position for stage or recurrence."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 8,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "lead entries with the answer; keep titles short.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "group more than about five stages into phases.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it for step-by-step task flows.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "rely on colour or position for stage or recurrence.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-10-16: built from the format study for \"Who to call and when\" (Plausible Accessibility). Reviewed: heading levels and outline per variant, list semantics, index landmark and anchor targets, fieldset/legend grouping and checkbox names in the checklist, live-region count, keyboard path (Tab, Space, Enter) via play functions, light and dark themes, forced colours (rail markers and rules use CanvasText), 390px width with no horizontal overflow, axe clean per variant in unit tests. Known limitations: the sheet's pinned stage label assumes a sticky site header and reads --stage-list-sticky-offset; the checklist inherits Checkbox's primary label colour."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "StageList.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "StageList.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "StageList.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "StageList.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "StatusDot",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -62335,8 +62887,8 @@
           "Text",
           "Button",
           "CheckboxGroup",
-          "Badge",
           "TextArea",
+          "Badge",
           "Title"
         ],
         "prefersOver": [],

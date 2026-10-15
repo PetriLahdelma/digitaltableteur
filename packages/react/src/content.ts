@@ -25,6 +25,14 @@ export { default as Gallery } from "../../../nextjs-app/shared/components/Galler
 export type { GalleryProps } from "../../../nextjs-app/shared/components/Gallery";
 export { default as List } from "../../../nextjs-app/shared/components/List/List";
 export type { ListProps } from "../../../nextjs-app/shared/components/List/List";
+export { default as StageList } from "../../../nextjs-app/shared/components/StageList/StageList";
+export type {
+  StageListItem,
+  StageListPhase,
+  StageListProps,
+  StageListStage,
+  StageListVariant,
+} from "../../../nextjs-app/shared/components/StageList";
 export { default as ListItem } from "../../../nextjs-app/shared/components/ListItem/ListItem";
 export type { ListItemProps } from "../../../nextjs-app/shared/components/ListItem/ListItem";
 export { Logo } from "../../../nextjs-app/shared/components/Logo/Logo";

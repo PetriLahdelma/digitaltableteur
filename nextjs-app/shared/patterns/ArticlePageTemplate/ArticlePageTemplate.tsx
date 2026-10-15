@@ -17,6 +17,7 @@ import AuthorBio from "@dt/AuthorBio/AuthorBio";
 import { CodeBlockWindow, Link, Text } from "@digitaltableteur/react";
 import { DashLeadList } from "@dt/DashLeadList";
 import List from "@dt/List";
+import { StageList, type StageListProps } from "@dt/StageList";
 import { Table } from "@dt/Table";
 import { TableRow } from "@dt/TableRow";
 import { TableHeaderCell } from "@dt/TableHeaderCell";
@@ -25,6 +26,7 @@ import { MdxImage } from "../../components/MdxImage";
 import { cn } from "../../lib/cn";
 import React from "react";
 import figureStyles from "./ArticleFigure.module.css";
+import stageListStyles from "./ArticleStageList.module.css";
 
 type WithChildrenProps = { children?: React.ReactNode };
 type DataProps = { [key: string]: unknown; children?: React.ReactNode };
@@ -393,12 +395,21 @@ const ArticleFigure = ({
   </MdxFigure>
 );
 
+/* Opts out of the prose typography: StageList sets its own. */
+const MdxStageList = ({ className, ...props }: StageListProps) => (
+  <StageList
+    {...props}
+    className={cn("not-prose", stageListStyles.stageList, className)}
+  />
+);
+
 const mdxComponents = {
   Embed,
   AuthorBio: MdxAuthorBio,
   ArticleFigure,
   DashLeadList,
   List,
+  StageList: MdxStageList,
   Table,
   TableRow,
   TableHeaderCell,

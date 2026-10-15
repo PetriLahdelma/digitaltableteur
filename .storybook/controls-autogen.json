@@ -109,6 +109,7 @@
     "ImagePlaceholder",
     "Logo",
     "PersonCard",
-    "Designerman"
+    "Designerman",
+    "StageList"
   ]
 }

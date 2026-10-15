@@ -403,7 +403,7 @@
         {
           "story": "Dismissible",
           "description": "dismissible adds a localized Close control — the only tabbable part of the banner. Persist the dismissal in the consumer.",
-          "source": "export const Dismissible: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"dismissible adds a localized Close control — the only tabbable part of the banner. Persist the dismissal in the consumer.\",\n      },\n    },\n  },\n  args: {\n    tone: \"success\",\n    title: \"Saved\",\n    description: \"Your changes have been stored.\",\n    dismissible: true,\n    onDismiss: fn(),\n  },\n  play: async ({ args, canvasElement }) => {\n    // The dismiss button is the banner's only tabbable part; it must work\n    // keyboard-only.\n    const canvas = within(canvasElement);\n    const dismiss = canvas.getByRole(\"button\", { name: /dismiss alert/i });\n    dismiss.focus();\n    await userEvent.keyboard(\"{Enter}\");\n    expect(args.onDismiss).toHaveBeenCalled();\n  },\n};"
+          "source": "export const Dismissible: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"dismissible adds a localized Close control — the only tabbable part of the banner. Persist the dismissal in the consumer.\",\n      },\n    },\n  },\n  args: {\n    tone: \"success\",\n    title: \"Saved\",\n    description: \"Your changes have been stored.\",\n    dismissible: true,\n    onDismiss: fn(),\n  },\n  play: async ({ args, canvasElement }) => {\n    // The dismiss button is the banner's only tabbable part; it must work\n    // keyboard-only.\n    const canvas = within(canvasElement);\n    const dismiss = canvas.getByRole(\"button\", { name: /close alert/i });\n    dismiss.focus();\n    await userEvent.keyboard(\"{Enter}\");\n    expect(args.onDismiss).toHaveBeenCalled();\n  },\n};"
         },
         {
           "story": "WithAction",
@@ -15718,6 +15718,209 @@
           "story": "SemanticList",
           "description": "Rendering as ul keeps the markup a real list while Stack owns the rhythm — list semantics without list styling.",
           "source": "export const SemanticList: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Rendering as ul keeps the markup a real list while Stack owns the rhythm — list semantics without list styling.\" } },\n  },\n  render: () => (\n    <>\n      <style>{\".stack-semantic-list { list-style: none; padding: 0; margin: 0; }\"}</style>\n      <Stack as=\"ul\" gap=\"sm\" className=\"stack-semantic-list\">\n        {[\"Design tokens\", \"Components\", \"Patterns\"].map((item) => (\n          <li key={item} style={{ border: \"1px dashed var(--color-border, #999)\", padding: \"0.5rem\" }}>{item}</li>\n        ))}\n      </Stack>\n    </>\n  ),\n};"
+        }
+      ]
+    },
+    "StageList": {
+      "name": "StageList",
+      "group": "content",
+      "tier": 2,
+      "status": "beta",
+      "description": "Places entries by the lifecycle stage they belong to, so a reader at any stage finds what applies now. Five layouts over one data model: sheet, rail, index, checklist and cards.",
+      "dense": "Entries placed by lifecycle stage (sheet, rail, index, checklist, cards); items name a lead answer, detail, stages and an optional tag",
+      "keywords": [
+        "stage",
+        "lifecycle",
+        "timeline",
+        "checklist",
+        "phase",
+        "when to",
+        "routing",
+        "call sheet"
+      ],
+      "importLine": "import StageList from \"@dt/StageList\";",
+      "keyProps": [
+        {
+          "name": "items",
+          "type": "StageListItem[]",
+          "required": true
+        },
+        {
+          "name": "stages",
+          "type": "StageListStage[]",
+          "required": true
+        },
+        {
+          "name": "variant",
+          "type": "sheet | rail | index | checklist | cards",
+          "required": false
+        },
+        {
+          "name": "headingLevel",
+          "type": "2 | 3 | 4",
+          "required": false
+        },
+        {
+          "name": "phases",
+          "type": "StageListPhase[]",
+          "required": false
+        },
+        {
+          "name": "storageKey",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "items": {
+          "optional": false,
+          "type": "StageListItem[]",
+          "description": "Entries to place by stage; each sits under the first stage it lists."
+        },
+        "stages": {
+          "optional": false,
+          "type": "StageListStage[]",
+          "description": "Lifecycle stages in order."
+        },
+        "phases": {
+          "optional": true,
+          "type": "StageListPhase[]",
+          "description": "Groups consecutive stages into phases for the sheet, checklist and cards layouts."
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sheet",
+            "rail",
+            "index",
+            "checklist",
+            "cards"
+          ],
+          "description": "Layout of the list."
+        },
+        "headingLevel": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "2",
+            "3",
+            "4"
+          ],
+          "description": "Level of the top headings the list renders."
+        },
+        "storageKey": {
+          "optional": true,
+          "type": "string",
+          "description": "Checklist only: localStorage key that keeps ticks between visits."
+        },
+        "indexLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name for the index layout's overview navigation."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Additional className for the root element."
+        }
+      },
+      "composesWith": [
+        "Badge",
+        "Card",
+        "Checkbox",
+        "Button"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "Use for a sequence the reader must follow step by step to finish a task; that is a stepper or an ordered list of instructions.",
+        "Use when entries have no stage; a plain List or Table reads better."
+      ],
+      "usage": {
+        "description": "StageList answers \"what applies at this stage?\". Each entry names its stages; the list places it under the first and writes out the later ones. Pick a layout for the reading task: sheet for scanning answers by stage (the default), rail when the order is the point, index for a long list read in two passes, checklist when the reader works through it on a project, cards for a looser overview.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Lead each entry with the answer the reader scans for (who to call, what to do) and keep the title as the smaller line."
+          },
+          {
+            "guidance": true,
+            "description": "Group more than about five stages into phases so the list has a short outline."
+          },
+          {
+            "guidance": true,
+            "description": "Set headingLevel to one below the surrounding section heading."
+          },
+          {
+            "guidance": true,
+            "description": "Give each stage a phrase for the recurrence line when its label would read oddly mid-sentence."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use the checklist layout for state that must persist across devices or people; ticks stay in one browser."
+          },
+          {
+            "guidance": false,
+            "description": "Do not encode stage or recurrence with colour or position alone; the text says it."
+          }
+        ],
+        "anatomy": []
+      },
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted",
+          "--color-title",
+          "--color-border",
+          "--color-border-light",
+          "--color-primary",
+          "--color-focus-ring",
+          "--main-body-background-color"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24",
+          "--space-layout-32",
+          "--space-layout-40",
+          "--space-layout-48",
+          "--space-layout-96"
+        ],
+        "typography": [
+          "--font-text",
+          "--font-size-text-xs",
+          "--font-size-text-s",
+          "--font-size-text-m",
+          "--font-size-text-l"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Rail",
+          "description": "A vertical timeline: each stage is a marker on the rail with its entries beside it. Reads best when stages are few and the order is the point.",
+          "source": "export const Rail: Story = {\n  tags: [\"example\"],\n  args: { variant: \"rail\" },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"A vertical timeline: each stage is a marker on the rail with its entries beside it. Reads best when stages are few and the order is the point.\",\n      },\n    },\n  },\n};"
+        },
+        {
+          "story": "Index",
+          "description": "Two passes: a linked overview lists each stage's entries (an entry appears under every stage it belongs to), then every entry in full. The overview links jump to the entry.",
+          "source": "export const Index: Story = {\n  tags: [\"example\"],\n  args: { variant: \"index\" },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Two passes: a linked overview lists each stage's entries (an entry appears under every stage it belongs to), then every entry in full. The overview links jump to the entry.\",\n      },\n    },\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const first = canvas.getAllByRole(\"link\")[0]!;\n    first.focus();\n    await userEvent.keyboard(\"{Enter}\");\n    const target = canvasElement.querySelector(first.getAttribute(\"href\")!);\n    await expect(target).not.toBeNull();\n  },\n};"
+        },
+        {
+          "story": "Checklist",
+          "description": "A tick box per entry with a running count per group. Pass storageKey to keep ticks between visits in the reader's own browser.",
+          "source": "export const Checklist: Story = {\n  tags: [\"example\"],\n  args: { variant: \"checklist\" },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"A tick box per entry with a running count per group. Pass storageKey to keep ticks between visits in the reader's own browser.\",\n      },\n    },\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const box = canvas.getByRole(\"checkbox\", { name: launchItems[0]!.lead });\n    box.focus();\n    await userEvent.keyboard(\" \");\n    await expect(box).toBeChecked();\n    await expect(canvas.getByText(\"1 of 2 done\")).toBeInTheDocument();\n    await userEvent.keyboard(\" \");\n    await expect(box).not.toBeChecked();\n  },\n};"
+        },
+        {
+          "story": "Cards",
+          "description": "A card per entry, grouped by phase, with the stages as a badge. Two columns where there is room, one on narrow screens.",
+          "source": "export const Cards: Story = {\n  tags: [\"example\"],\n  args: { variant: \"cards\" },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"A card per entry, grouped by phase, with the stages as a badge. Two columns where there is room, one on narrow screens.\",\n      },\n    },\n  },\n};"
+        },
+        {
+          "story": "WithoutPhases",
+          "description": "Without phases the stages are the top headings. Use phases when there are more than about five stages.",
+          "source": "export const WithoutPhases: Story = {\n  tags: [\"example\"],\n  args: { phases: undefined },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Without phases the stages are the top headings. Use phases when there are more than about five stages.\",\n      },\n    },\n  },\n};"
         }
       ]
     },

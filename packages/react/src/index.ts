@@ -296,6 +296,14 @@ export {
   Stack,
   type StackProps,
 } from "../../../nextjs-app/shared/components/Stack";
+export { default as StageList } from "../../../nextjs-app/shared/components/StageList/StageList";
+export type {
+  StageListItem,
+  StageListPhase,
+  StageListProps,
+  StageListStage,
+  StageListVariant,
+} from "../../../nextjs-app/shared/components/StageList";
 export { default as StatusDot } from "../../../nextjs-app/shared/components/StatusDot/StatusDot";
 export type {
   StatusDotProps,

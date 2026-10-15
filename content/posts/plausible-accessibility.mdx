@@ -201,83 +201,157 @@ The division of labour I trust is plain. Machines propose and measure. People de
 
 The W3C's evaluation guidance asks for [combined expertise](https://www.w3.org/WAI/test-evaluate/combined-expertise/) (people who understand disability barriers, assistive technology and adaptive strategies) and for [involving users](https://www.w3.org/WAI/test-evaluate/involving-users/), because testing with people finds what a conformance review misses. Those are two roles and they often meet in one person: many of the best accessibility specialists are disabled themselves. A specialist tells you whether something meets the standard and why. The people who use assistive technology every day tell you whether it works. You usually need both: the specialist while you build; users from the first prototype onwards, not as a final sign-off.
 
-The lists below route the cases from this article to the team that owns them. Every entry comes from a failure described above or from a gap an expert reviewer added.
+The cases from this article are sorted below by when to make the call; each names the team that owns it. Every entry comes from a failure described above or from a gap an expert reviewer added.
 
-### Design system team
+export const whoToCallStages = [
+  { id: "scoping", label: "Scoping", phrase: "scoping" },
+  { id: "drafting", label: "Drafting", phrase: "drafting" },
+  { id: "design-review", label: "Design review", phrase: "design review" },
+  { id: "prototype", label: "Prototype", phrase: "prototype" },
+  { id: "release-candidate", label: "Release candidate", phrase: "release candidate" },
+  { id: "before-publishing", label: "Before publishing", phrase: "before publishing" },
+  { id: "every-release", label: "Every release", phrase: "every release" },
+  { id: "before-the-claim", label: "Before the claim", phrase: "before the claim" },
+];
 
-<List
-  striped
-  items={[
-    <>
-      <strong>Custom widgets: date pickers, comboboxes, drag and drop, modals.</strong> Focus order and announcements only show up in operation. Bring in a specialist and daily keyboard, switch, voice control and screen reader users. Give them the interaction pattern, a single-pointer alternative to dragging and the devices you support. When: release candidate.
-    </>,
-    <>
-      <strong>Forms with error handling.</strong> Errors shown only in colour pass a structure check. Bring in screen reader, voice control and magnifier users. Give them a task that triggers every error state. When: release candidate.
-    </>,
-    <>
-      <strong>Zoom, reflow and contrast themes.</strong> Tools render at one viewport and one colour scheme. Bring in a specialist and low-vision users who magnify or use high-contrast modes. Give them 400% zoom and 320px targets, forced-colours and high-contrast modes. When: every release.
-    </>,
-    <>
-      <strong>Motion and animation.</strong> Tools can't judge vestibular impact. Bring in a specialist and people with vestibular disorders. Give them an inventory of animations and the reduced-motion behaviour. When: design review.
-    </>,
-  ]}
-/>
+export const whoToCallPhases = [
+  { label: "Before you build", stages: ["scoping", "drafting", "design-review", "prototype"] },
+  { label: "Before you ship", stages: ["release-candidate", "before-publishing"] },
+  { label: "Every release and every claim", stages: ["every-release", "before-the-claim"] },
+];
 
-### Product team
+export const whoToCall = [
+  {
+    id: "custom-widgets",
+    title: "Custom widgets: date pickers, comboboxes, drag and drop, modals",
+    tag: "design system team",
+    lead: "A specialist and daily keyboard, switch, voice control and screen reader users",
+    description:
+      "Focus order and announcements only show up in operation. Give them the interaction pattern, a single-pointer alternative to dragging and the devices you support.",
+    stages: ["release-candidate"],
+  },
+  {
+    id: "forms-with-error-handling",
+    title: "Forms with error handling",
+    tag: "design system team",
+    lead: "Screen reader, voice control and magnifier users",
+    description:
+      "Errors shown only in colour pass a structure check. Give them a task that triggers every error state.",
+    stages: ["release-candidate"],
+  },
+  {
+    id: "zoom-reflow-and-contrast-themes",
+    title: "Zoom, reflow and contrast themes",
+    tag: "design system team",
+    lead: "A specialist and low-vision users who magnify or use high-contrast modes",
+    description:
+      "Tools render at one viewport and one colour scheme. Give them 400% zoom and 320px targets, forced-colours and high-contrast modes.",
+    stages: ["every-release"],
+  },
+  {
+    id: "motion-and-animation",
+    title: "Motion and animation",
+    tag: "design system team",
+    lead: "A specialist and people with vestibular disorders",
+    description:
+      "Tools can't judge vestibular impact. Give them an inventory of animations and the reduced-motion behaviour.",
+    stages: ["design-review"],
+  },
+  {
+    id: "charts-maps-and-diagrams",
+    title: "Charts, maps and diagrams",
+    tag: "product team",
+    lead: "A specialist and screen reader users from the first prototype",
+    description:
+      "Tools confirm alt text exists, not that it carries the point. Give them the chart's purpose in one sentence, the data and the palette.",
+    stages: ["design-review"],
+  },
+  {
+    id: "ai-chat-and-other-streaming-interfaces",
+    title: "AI chat and other streaming interfaces",
+    tag: "product team",
+    lead: "A specialist to design the announcements, daily users of at least two screen readers and magnifier users",
+    description:
+      "Live regions behave differently with text that changes as it arrives. Give them tasks to complete, not screens to inspect.",
+    stages: ["prototype", "release-candidate"],
+  },
+  {
+    id: "login-signup-and-verification",
+    title: "Login, signup and verification",
+    tag: "product team",
+    lead: "A specialist and people with memory and attention disabilities",
+    description:
+      "Unauthenticated scans stop at the login; cognitive tests need people. Give them test accounts, the two-factor path and the time limits.",
+    stages: ["design-review", "release-candidate"],
+  },
+  {
+    id: "native-mobile-apps",
+    title: "Native mobile apps",
+    tag: "product team",
+    lead: "A mobile accessibility specialist and daily TalkBack and VoiceOver users",
+    description:
+      "Web scanners don't run there; platform settings vary. Give them builds, supported OS versions and text-size targets.",
+    stages: ["release-candidate"],
+  },
+  {
+    id: "captions-for-technical-legal-or-medical-media",
+    title: "Captions for technical, legal or medical media",
+    tag: "content team",
+    lead: "A professional captioner and deaf and hard-of-hearing reviewers",
+    description:
+      "Accuracy scores ignore speaker changes, sounds and the terms that matter. Give them a glossary and speaker names.",
+    stages: ["before-publishing"],
+  },
+  {
+    id: "audio-description-for-video",
+    title: "Audio description for video",
+    tag: "content team",
+    lead: "A describer and blind reviewers",
+    description:
+      "Only a person knows which visuals carry the meaning. Give them the script and the visuals that matter.",
+    stages: ["before-publishing"],
+  },
+  {
+    id: "content-in-sign-language",
+    title: "Content in sign language",
+    tag: "content team",
+    lead: "Deaf signers and qualified interpreters (in Finland, through Kuurojen Liitto)",
+    description:
+      "Signed languages have their own grammar; avatars don't carry it. Give them which sign language, the source script and the budget.",
+    stages: ["scoping"],
+  },
+  {
+    id: "onboarding-and-plain-language-content",
+    title: "Onboarding and plain-language content",
+    tag: "content team",
+    lead: "People with cognitive and learning disabilities and a plain-language editor (in Finland, Selkokeskus)",
+    description:
+      "Readability formulas reward short sentences, not clear ones. Give them the decisions the reader has to make.",
+    stages: ["drafting"],
+  },
+  {
+    id: "documents-and-pdfs",
+    title: "Documents and PDFs",
+    tag: "content team",
+    lead: "A document remediation specialist and screen reader users",
+    description:
+      "Tags can exist and still be in the wrong reading order. Give them the source files, not only the exports.",
+    stages: ["before-publishing"],
+  },
+  {
+    id: "before-any-conformance-claim",
+    title: "Before any conformance claim",
+    tag: "leadership",
+    lead: "An independent specialist running a WCAG-EM style evaluation",
+    description:
+      "A green report isn't a conformance evaluation. Give them the scope, the sample, the evidence you have and your accessibility statement.",
+    stages: ["before-the-claim"],
+  },
+];
 
-<List
-  striped
-  items={[
-    <>
-      <strong>Charts, maps and diagrams.</strong> Tools confirm alt text exists, not that it carries the point. Bring in a specialist and screen reader users from the first prototype. Give them the chart's purpose in one sentence, the data and the palette. When: design review.
-    </>,
-    <>
-      <strong>AI chat and other streaming interfaces.</strong> Live regions behave differently with text that changes as it arrives. Bring in a specialist to design the announcements, daily users of at least two screen readers and magnifier users. Give them tasks to complete, not screens to inspect. When: prototype and release candidate.
-    </>,
-    <>
-      <strong>Login, signup and verification.</strong> Unauthenticated scans stop at the login; cognitive tests need people. Bring in a specialist and people with memory and attention disabilities. Give them test accounts, the two-factor path and the time limits. When: design review and release candidate.
-    </>,
-    <>
-      <strong>Native mobile apps.</strong> Web scanners don't run there; platform settings vary. Bring in a mobile accessibility specialist and daily TalkBack and VoiceOver users. Give them builds, supported OS versions and text-size targets. When: release candidate.
-    </>,
-  ]}
-/>
+<StageList items={whoToCall} stages={whoToCallStages} phases={whoToCallPhases} />
 
-### Content team
-
-<List
-  striped
-  items={[
-    <>
-      <strong>Captions for technical, legal or medical media.</strong> Accuracy scores ignore speaker changes, sounds and the terms that matter. Bring in a professional captioner and deaf and hard-of-hearing reviewers. Give them a glossary and speaker names. When: before publishing.
-    </>,
-    <>
-      <strong>Audio description for video.</strong> Only a person knows which visuals carry the meaning. Bring in a describer and blind reviewers. Give them the script and the visuals that matter. When: before publishing.
-    </>,
-    <>
-      <strong>Content in sign language.</strong> Signed languages have their own grammar; avatars don't carry it. Bring in Deaf signers and qualified interpreters (in Finland, through Kuurojen Liitto). Give them which sign language, the source script and the budget. When: scoping.
-    </>,
-    <>
-      <strong>Onboarding and plain-language content.</strong> Readability formulas reward short sentences, not clear ones. Bring in people with cognitive and learning disabilities and a plain-language editor (in Finland, Selkokeskus). Give them the decisions the reader has to make. When: drafting.
-    </>,
-    <>
-      <strong>Documents and PDFs.</strong> Tags can exist and still be in the wrong reading order. Bring in a document remediation specialist and screen reader users. Give them the source files, not only the exports. When: before publishing.
-    </>,
-  ]}
-/>
-
-### Leadership
-
-<List
-  striped
-  items={[
-    <>
-      <strong>Before any conformance claim.</strong> A green report isn't a conformance evaluation. Bring in an independent specialist running a WCAG-EM style evaluation. Give them the scope, the sample, the evidence you have and your accessibility statement. When: before the claim.
-    </>,
-  ]}
-/>
-
-Three rules make these lists work. Give testers tasks, not pages: "change your delivery address" finds problems that "review the settings page" never will. Don't [generalise from one or two people](https://www.w3.org/WAI/test-evaluate/involving-users/); different disabilities and assistive technologies surface different problems.
+Three rules make these calls work. Give testers tasks, not pages: "change your delivery address" finds problems that "review the settings page" never will. Don't [generalise from one or two people](https://www.w3.org/WAI/test-evaluate/involving-users/); different disabilities and assistive technologies surface different problems.
 
 And pay people, properly. Disabled testers are experts doing skilled work, so budget for them as you would any other specialist, including their preparation time. Recruit through disabled people's organisations or specialist panels, with sign-up and scheduling that work with assistive technology. Let people use their own devices and settings. Ask for informed consent and keep only the data you need, since disability data is special-category data under the GDPR. Credit people's contribution when they want it.
 
