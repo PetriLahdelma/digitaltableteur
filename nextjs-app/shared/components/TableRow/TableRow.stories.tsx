@@ -20,7 +20,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   args: { selected: false },
   argTypes: {
     selected: {

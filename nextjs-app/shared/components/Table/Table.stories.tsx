@@ -25,7 +25,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   args: {
     caption: "Project contributors",
     size: "md",

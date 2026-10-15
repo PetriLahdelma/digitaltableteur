@@ -3,7 +3,7 @@
     "name": "Author",
     "tier": "molecule",
     "group": "structure",
-    "status": "beta",
+    "status": "stable",
     "description": "Compact byline that attributes content to any author: name, avatar (URL or path), optional profile link, and a localized or custom byline prefix; the fuller biography treatment is AuthorBio.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1440-2603",
     "radixPrimitive": null,
@@ -32,7 +32,23 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "name": {

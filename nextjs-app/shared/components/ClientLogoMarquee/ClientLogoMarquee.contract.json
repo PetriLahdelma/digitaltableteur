@@ -3,7 +3,7 @@
     "name": "ClientLogoMarquee",
     "tier": "organism",
     "group": "marketing",
-    "status": "beta",
+    "status": "stable",
     "description": "Animated client logo marquee on the homepage.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1443-2373",
     "radixPrimitive": null,
@@ -31,7 +31,13 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "slots": [],
     "schemaVersion": 2,
     "props": {

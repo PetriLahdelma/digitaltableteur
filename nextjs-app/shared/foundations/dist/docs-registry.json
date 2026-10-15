@@ -806,7 +806,7 @@
       "name": "Author",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Compact byline that attributes content to any author: name, avatar (URL or path), optional profile link, and a localized or custom byline prefix; the fuller biography treatment is AuthorBio.",
       "dense": "Article byline: author name/avatar attribution line for blog posts",
       "keywords": [
@@ -3713,7 +3713,7 @@
       "name": "ClientLogoMarquee",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Animated client logo marquee on the homepage.",
       "dense": "Animated client-logo marquee for the homepage with pause/resume controls and one semantic client list",
       "keywords": [
@@ -9894,7 +9894,7 @@
       "name": "MarkdownMessage",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Markdown renderer that maps elements onto design-system components so chat replies and long-form content share one typographic path.",
       "dense": "Renders markdown through DS components (Title/Text/Link/CodeSnippet) — chat replies + long-form content share one styling path",
       "keywords": [
@@ -13864,7 +13864,7 @@
       "name": "SelectableCard",
       "group": "form",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "A Card that is one selectable option; grouped into single (radio) or multiple (checkbox) sets via SelectableCardGroup.",
       "dense": "Card as one selectable option; grouped via SelectableCardGroup into single (radio) or multiple (checkbox) sets; whole card is a label over a hidden native input; controlled or uncontrolled.",
       "keywords": [
@@ -16088,7 +16088,7 @@
       "name": "Table",
       "group": "data-display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
       "dense": "composable native table primitives; density, striping, sticky header, three-state DS-Icon sort caret; pairs with useTable* hooks",
       "keywords": [
@@ -16246,7 +16246,7 @@
       "name": "TableCell",
       "group": "data-display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
       "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
       "keywords": [
@@ -16331,7 +16331,7 @@
       "name": "TableHeaderCell",
       "group": "data-display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
       "dense": "th with scope col/row; col carries the three-state sort caret + aria-sort, row names its data row",
       "keywords": [
@@ -16541,7 +16541,7 @@
       "name": "TableRow",
       "group": "data-display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
       "dense": "table row; works in thead/tbody, selected surface, hover + zebra via the Table root",
       "keywords": [
@@ -19025,7 +19025,7 @@
       "name": "VisuallyHidden",
       "group": "utility",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Screen-reader-only text; not visible until focused in context.",
       "dense": "Screen-reader-only text wrapper (visually hidden, focusable variants respected); the sr-only utility as a component",
       "keywords": [

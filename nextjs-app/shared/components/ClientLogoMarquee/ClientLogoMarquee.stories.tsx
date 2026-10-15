@@ -9,7 +9,7 @@ const defaultArgs = {
 const meta = {
   title: "Site/ClientLogoMarquee",
   component: ClientLogoMarquee,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-15T17:02:11.341Z",
+  "generatedAt": "2026-10-15T17:11:33.111Z",
   "summary": {
     "componentCount": 180,
     "statusCounts": {
-      "beta": 52,
-      "stable": 101,
+      "beta": 43,
+      "stable": 110,
       "alpha": 26,
       "deprecated": 1
     },
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 101,
+    "stableCount": 110,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 52,
-        "stable": 101,
+        "beta": 43,
+        "stable": 110,
         "alpha": 26,
         "deprecated": 1
       },
@@ -3006,7 +3006,7 @@
         "name": "Author",
         "tier": "molecule",
         "group": "structure",
-        "status": "beta",
+        "status": "stable",
         "description": "Compact byline that attributes content to any author: name, avatar (URL or path), optional profile link, and a localized or custom byline prefix; the fuller biography treatment is AuthorBio.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1440-2603",
         "radixPrimitive": null,
@@ -3035,7 +3035,23 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "name": {
@@ -11671,8 +11687,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -11686,8 +11702,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -11708,8 +11724,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -11736,8 +11752,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -12955,8 +12971,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -12970,8 +12986,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -12992,8 +13008,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -13020,8 +13036,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -13149,7 +13165,7 @@
         "name": "ClientLogoMarquee",
         "tier": "organism",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Animated client logo marquee on the homepage.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1443-2373",
         "radixPrimitive": null,
@@ -13177,7 +13193,13 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -24330,8 +24352,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -24345,8 +24367,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -24367,8 +24389,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -24395,8 +24417,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -34745,7 +34767,7 @@
         "name": "MarkdownMessage",
         "tier": "molecule",
         "group": "structure",
-        "status": "beta",
+        "status": "stable",
         "description": "Markdown renderer that maps elements onto design-system components so chat replies and long-form content share one typographic path.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1446-2388",
         "radixPrimitive": null,
@@ -34783,7 +34805,23 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "content": {
@@ -49085,7 +49123,7 @@
         "name": "SelectableCard",
         "tier": "molecule",
         "group": "form",
-        "status": "beta",
+        "status": "stable",
         "description": "A Card that is one selectable option; grouped into single (radio) or multiple (checkbox) sets via SelectableCardGroup.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1288-2114",
         "radixPrimitive": null,
@@ -49198,7 +49236,39 @@
             "value": "starter",
             "children": "Starter"
           }
-        }
+        },
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "since": "2026-06-04"
+          }
+        ]
       },
       "spec": "# SelectableCard\n\n## Intent\nTurn a Card into a selectable option so a set of rich choices (plan pickers,\nonboarding options, add-ons, settings tiles) reads as cards rather than bare\nradios or checkboxes. `SelectableCardGroup` owns the selection; `SelectableCard`\nis one option in it.\n\n## Interaction contract\n- Keyboard: Tab moves focus into the group; Arrow keys move within a single-select\n  set (native radio behavior); Space toggles the focused option.\n- Pointer: the whole card is the hit area — clicking anywhere toggles the option.\n- Screen readers: the group is a fieldset announced by its legend; each option is\n  a native radio (single) or checkbox (multiple) whose accessible name is the\n  card content; errors announce via role=alert and set aria-invalid on the group.\n\n## Do / don't\n- Do: write the legend as the question; keep each card's title short and scannable.\n- Do: use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons.\n- Don't: nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.\n- Don't: use it for navigation; selecting must not commit or route on click.\n\n## Design notes\n- Tokens: `--color-primary` (selected ring), `--color-focus-ring` (focus),\n  `--color-border` / `--color-border-light` (rest/hover);\n  spacing from `--space-internal-*`. No hardcoded colors.\n- The whole card is the control: no radio/checkbox glyph is drawn. The selected\n  state is shown by a ring on the surface in `--color-primary`, with a\n  forced-colors mapping to `Highlight`. Card content centers vertically so a\n  lone title sits mid-card when grid rows stretch options to equal heights.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `SelectableCard`). Ships at alpha with the WIP badge. Do not\npromote past alpha/beta without a documented production consumer, AT snapshots,\nand forced-colors + light/dark verification.\n",
       "documentationDebt": false,
@@ -56963,7 +57033,7 @@
         "name": "Table",
         "tier": "molecule",
         "group": "data-display",
-        "status": "beta",
+        "status": "stable",
         "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
         "usage": {
           "description": "Table renders semantic tabular data: a caption-led <table> whose rows and cells come from TableRow, TableHeaderCell and TableCell, with sorting and selection driven by the useTable* hooks rather than cell-local state. Use it when the content really is a data grid; DataTable wraps it for the batteries-included workflow."
@@ -57125,7 +57195,69 @@
           "defaults": {
             "caption": "Project contributors"
           }
-        }
+        },
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+            "since": "2026-06-04"
+          }
+        ]
       },
       "spec": "# Table\n\nComposable table primitives — `Table`, `TableRow`, `TableHeaderCell`, and\n`TableCell` — that render semantic `<table>` markup with design-system chrome.\nThey are the presentational layer beneath `DataTable`; behavior (sorting,\nselection, pagination) lives in the `useTable*` hooks.\n\n## Intent\n\nGive the design system a low-level, composable table so product surfaces can\nassemble bespoke tables from DS-styled parts, while `DataTable` provides the\nbatteries-included configuration on top. Compose with native `<thead>` and\n`<tbody>`:\n\n- **Table** — scroll wrapper + `<table>` with the `<caption>`; owns density\n  (`sm`/`md`/`lg`), `striped`, and `stickyHeader`.\n- **TableRow** — `<tr>`; `selected` renders the selected surface and sets\n  `data-selected`.\n- **TableHeaderCell** — `<th scope=\"col\">`; `sortable` + `sortDirection` render\n  a sort button whose caret is a DS `Icon` (`caret-up-down` unsorted,\n  `caret-up` ascending, `caret-down` descending).\n- **TableCell** — `<td>`; `align` and `numeric` (tabular figures, end-aligned).\n\n## Interaction contract\n\n- Sortable headers toggle via an inner `<button>`; drive the actual sort with\n  `useTableSortable` and pass the resulting `sortDirection`/`onSort`.\n- `aria-sort` is exposed only while a column is actively sorted; the caret is\n  decorative (`aria-hidden`) and never the sole carrier of state.\n- Row selection is presentational here (`selected`) — the state lives in\n  `useTableSelection`; render a DS `Checkbox` in the leading cell.\n\n## Do / don't\n\n- Do: Give every table a concise `caption`.\n- Do: Drive sorting/selection with the `useTable*` hooks rather than local state.\n- Do: Use `numeric` for figures so columns align on the decimal.\n- Don't: Use Table for page layout.\n- Don't: Put sort logic inside a cell instead of the hooks.\n- Don't: Rely on the caret color alone to convey sort state.\n\n## Design notes\n\n- Quiet header: small uppercase `--font-size-text-xs` labels in `--color-muted`\n  on a `--color-light-bg` surface, with hairline (`1px`) row dividers.\n- The active sort caret uses `--color-primary`; the unsorted caret sits at\n  `--color-muted` so a sorted column reads at a glance while the unsorted\n  affordance still clears ≥3:1 non-text contrast in every theme (including\n  HCB, where `--color-border` would fail).\n- Density scales header/cell padding across `sm`/`md`/`lg`.\n- Forced-colors: borders map to `CanvasText`, the focus ring to `Highlight`.\n",
       "documentationDebt": false,
@@ -57540,7 +57672,7 @@
         "name": "TableCell",
         "tier": "atom",
         "group": "data-display",
-        "status": "beta",
+        "status": "stable",
         "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
         "usage": {
           "description": "TableCell is the body cell of the Table family: plain tabular data with an optional numeric mode that aligns figures on the decimal. Header semantics belong to TableHeaderCell; TableCell never announces scope."
@@ -57637,6 +57769,68 @@
           "Table",
           "TableRow",
           "TableHeaderCell"
+        ],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+            "since": "2026-06-04"
+          }
         ]
       },
       "spec": "# TableCell\n\nA table data cell (`<td>`) for the Table family.\n\n## Intent\n\nThe body cell of the composable `Table`. `align` sets text alignment; `numeric`\nright-aligns with tabular figures so numbers line up on the decimal. It pairs\nwith `TableHeaderCell` (`scope=\"col\"`/`\"row\"`) so cells inherit their column and\nrow context for assistive tech.\n\n## Interaction contract\n\n- Presentational: native `<td>`, no ARIA of its own.\n- `numeric` defaults the alignment to `end`; an explicit `align` overrides it.\n- Native attributes pass through, so `colSpan` (e.g. an empty-state cell that\n  spans the table) works as usual.\n\n## Do / don't\n\n- Do: Use `numeric` for figures so columns align.\n- Do: Let `TableHeaderCell scope=\"row\"` name the row; keep other cells as `TableCell`.\n- Don't: Use `TableCell` for a header — use `TableHeaderCell` so context is announced.\n- Don't: Render it outside a table row.\n\n## Design notes\n\n- Padding scales with the `Table` root's density (`sm`/`md`/`lg`); the row\n  divider and last-row border come from the shared `Table.module.css`.\n- `numeric` applies `font-variant-numeric: tabular-nums`.\n- Forced-colors: borders map to `CanvasText`.\n",
@@ -57973,7 +58167,7 @@
         "name": "TableHeaderCell",
         "tier": "atom",
         "group": "data-display",
-        "status": "beta",
+        "status": "stable",
         "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
         "usage": {
           "description": "TableHeaderCell names a column or row with correct scope semantics, and hosts sortable column headers driven by useTableSortable; sort state is announced via aria-sort, never by caret colour alone."
@@ -58107,6 +58301,68 @@
           "TableRow",
           "TableCell",
           "Icon"
+        ],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+            "since": "2026-06-04"
+          }
         ]
       },
       "spec": "# TableHeaderCell\n\nA table header cell (`<th>`) for the Table family.\n\n## Intent\n\nHeader cell with an explicit `scope`. `scope=\"col\"` (default) labels a column\nand can carry a three-state sort control; `scope=\"row\"` marks the identifying\ncell of a body row so a screen reader announces the row context (\"Ada\nLovelace\") along with every other cell in that row — the accessibility feature a\nplain `<td>` grid can't provide.\n\n## Interaction contract\n\n- Column headers (`scope=\"col\"`) with `sortable` render an inner `<button>` and\n  expose `aria-sort` only while actively sorted. Wire `sortDirection`/`onSort`\n  from `useTableSortable`.\n- The sort caret is a DS `Icon` (`caret-up-down` unsorted / `caret-up` asc /\n  `caret-down` desc), decorative (`aria-hidden`); state is carried by\n  `aria-sort`, never the icon alone.\n- Row headers (`scope=\"row\"`) never render a sort control — they name a row,\n  they are not interactive.\n\n## Do / don't\n\n- Do: Use `scope=\"row\"` on the identifying cell of each body row for accessible data tables.\n- Do: Drive sorting with `useTableSortable`.\n- Don't: Make a `scope=\"row\"` header sortable.\n- Don't: Convey sort state with the caret colour alone.\n- Don't: Render it outside a table.\n\n## Design notes\n\n- Quiet column headers: small uppercase `--font-size-text-xs` labels in\n  `--color-muted`; the active sort caret uses `--color-primary`, the unsorted\n  one `--color-muted` so a sorted column reads at a glance and clears ≥3:1\n  contrast in every theme.\n- Padding/borders/sticky behaviour come from the shared `Table.module.css`.\n",
@@ -58907,7 +59163,7 @@
         "name": "TableRow",
         "tier": "atom",
         "group": "data-display",
-        "status": "beta",
+        "status": "stable",
         "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
         "usage": {
           "description": "TableRow groups cells inside a Table's thead or tbody and carries the selected state visually while a real selection control (Checkbox) remains the source of truth."
@@ -58977,6 +59233,68 @@
           "Table",
           "TableCell",
           "TableHeaderCell"
+        ],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+            "since": "2026-06-04"
+          }
         ]
       },
       "spec": "# TableRow\n\nA table row (`<tr>`) for the Table family.\n\n## Intent\n\nOne of the composable `Table` parts (`Table` root, `TableRow`,\n`TableHeaderCell`, `TableCell`). Works in both `<thead>` and `<tbody>`. Its only\nprop, `selected`, renders the selection surface and sets `data-selected` — the\nhover, zebra-stripe, and selection-tint treatments are cross-cutting styles\nsupplied by the `Table` root, so a row only looks striped/selected inside one.\n\n## Interaction contract\n\n- Presentational: no ARIA, no events of its own.\n- `selected` is **visual only**. The semantic selection state belongs to a\n  checkbox in the row or to the consuming application (`aria-selected` on a grid,\n  etc.) — never to the row's appearance alone.\n\n## Do / don't\n\n- Do: Compose it inside a `Table` root, in `<thead>` or `<tbody>`.\n- Do: Pair `selected` with a real selection control (a `Checkbox`).\n- Don't: Render it outside a table.\n- Don't: Treat `selected` as the source of truth for selection.\n\n## Design notes\n\n- The row itself is unstyled; the border, hover, zebra, and selection tint come\n  from `Table.module.css` (shared across the family) so the whole table reads as\n  one system.\n- Forced-colors: borders map to `CanvasText` via the shared stylesheet.\n",
@@ -67847,7 +68165,7 @@
         "name": "VisuallyHidden",
         "tier": "atom",
         "group": "utility",
-        "status": "beta",
+        "status": "stable",
         "description": "Screen-reader-only text; not visible until focused in context.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-31",
         "radixPrimitive": null,
@@ -67879,7 +68197,48 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ImprintPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "children": {

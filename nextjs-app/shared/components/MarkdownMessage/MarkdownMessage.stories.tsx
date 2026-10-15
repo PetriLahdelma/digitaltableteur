@@ -19,7 +19,7 @@ const meta: Meta<typeof MarkdownMessage> = {
   },
   title: "Site/Chat/MarkdownMessage",
   component: MarkdownMessage,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -3,7 +3,7 @@
     "name": "MarkdownMessage",
     "tier": "molecule",
     "group": "structure",
-    "status": "beta",
+    "status": "stable",
     "description": "Markdown renderer that maps elements onto design-system components so chat replies and long-form content share one typographic path.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1446-2388",
     "radixPrimitive": null,
@@ -41,7 +41,23 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "content": {

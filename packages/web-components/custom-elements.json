@@ -5710,7 +5710,7 @@
           "events": [],
           "dtSourceComponent": "VisuallyHidden",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
@@ -10163,7 +10163,7 @@
           ],
           "dtSourceComponent": "SelectableCard",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
@@ -10324,7 +10324,7 @@
           ],
           "dtSourceComponent": "SelectableCardGroup",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
@@ -10692,7 +10692,7 @@
           "events": [],
           "dtSourceComponent": "Author",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
