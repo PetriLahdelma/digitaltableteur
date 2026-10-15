@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.28 - 2026-10-15
+
+- `GroupLabel` is the one group heading. It gains `as` (`label` | `legend`;
+  `htmlFor` is now optional and ignored for `legend`) and takes a single
+  look in both modes: semibold on the small text step, in the title colour.
+  `FormField`, `RadioGroup` and the `SelectableCard` group render it as
+  their legend, so every group of controls reads the same; `CheckboxGroup`
+  (through `FormField`) now shows that heading. The required asterisk is
+  hidden from assistive technology. The required and disabled styles now
+  exist (the classes were referenced but never defined). Additive.
+- `TreeView`'s hover tint is half strength, so it no longer reads as a
+  second selected row.
+
 ## 0.1.27 - 2026-10-15
 
 - `List` gains `striped`: alternate row tints for long lists of multi-line

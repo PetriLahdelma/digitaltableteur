@@ -38,6 +38,18 @@
       "level": "additive",
       "detail": "prop `striped` added",
       "bump": "patch"
+    },
+    {
+      "component": "GroupLabel",
+      "level": "additive",
+      "detail": "prop `htmlFor` became optional",
+      "bump": "patch"
+    },
+    {
+      "component": "GroupLabel",
+      "level": "additive",
+      "detail": "prop `as` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -2067,12 +2079,19 @@
     "GroupLabel": {
       "element": "label",
       "props": {
+        "as": {
+          "optional": true,
+          "values": [
+            "label",
+            "legend"
+          ]
+        },
         "disabled": {
           "optional": true,
           "type": "boolean"
         },
         "htmlFor": {
-          "optional": false,
+          "optional": true,
           "type": "string"
         },
         "required": {
