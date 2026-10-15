@@ -19,9 +19,9 @@ mainImageAlt: "Three-layer diagram: tools workspace, harness boundaries, skills 
 
 Most agentic design-system conversations start with model choice. That is rarely where teams lose.
 
-**Thesis:** Tools, harnesses and skills are three different layers. Tools are where work happens. Harnesses are how work stays safe. Skills are what valuable work becomes repeatable. When you treat them as one purchase decision — “we need Claude in Figma” — you get impressive demos and unreviewable diffs. When you separate them, the same [operating model](/blog/agentic-design-systems-need-operating-models-not-more-components) survives tool churn.
+**Thesis:** Tools, harnesses and skills are three different layers. Tools are where work happens. Harnesses are how work stays safe. Skills are what valuable work becomes repeatable. When you treat them as one purchase decision (“we need Claude in Figma”) you get impressive demos and unreviewable diffs. When you separate them, the same [operating model](/blog/agentic-design-systems-need-operating-models-not-more-components) survives tool churn.
 
-When I [connected Figma’s MCP server to a live design system](/blog/figma-mcp-design-systems), the interesting part was not the model but the metadata — intent, variant logic, token semantics where the tool could read them. Swap the IDE but keep the operating model: the workflow still works. Swap the structure but keep the IDE: you get impressive demos followed by unreviewable diffs.
+When I [connected Figma’s MCP server to a live design system](/blog/figma-mcp-design-systems), the interesting part was not the model but the metadata: intent, variant logic, token semantics where the tool could read them. Swap the IDE but keep the operating model: the workflow still works. Swap the structure but keep the IDE: you get impressive demos followed by unreviewable diffs.
 
 Mature teams separate three things that are usually conflated: **tools** (where work happens), **harnesses** (how work stays safe) and **skills** (what valuable work becomes repeatable). The map is three layers, not three buzzwords; the sections below are how to use it without buying another chat client.
 
@@ -35,13 +35,13 @@ Mature teams separate three things that are usually conflated: **tools** (where 
 
 ## Tools are the workspace
 
-Tools expose surfaces — files, components, diffs, previews, logs, CI. Figma, Storybook, GitHub, Cursor, Claude Code and MCP integrations all live here. Good tools reduce context switching; bad tools hide state until something breaks in CI. None of them create discipline by themselves. Storybook does not guarantee maturity; Figma variables do not guarantee token discipline. The tool gives the system a place to act; the harness defines how action is allowed to proceed.
+Tools expose surfaces: files, components, diffs, previews, logs, CI. Figma, Storybook, GitHub, Cursor, Claude Code and MCP integrations all live here. Good tools reduce context switching; bad tools hide state until something breaks in CI. None of them create discipline by themselves. Storybook does not guarantee maturity; Figma variables do not guarantee token discipline. The tool gives the system a place to act; the harness defines how action is allowed to proceed.
 
 When teams say “connect AI to Figma,” they usually mean one of three shapes, all tools, none a substitute for contracts or CI.
 
-[Figma’s official MCP server](https://www.figma.com/blog/introducing-figma-mcp-server/) — the bridge we wrote up in [Figma MCP](/blog/figma-mcp-design-systems) — routes file context and component metadata into the agent loop. Use it when the agent needs to read component structure, variant properties and file organization without leaving the IDE. It is the default starting point if you already live in Figma Dev Mode.
+[Figma’s official MCP server](https://www.figma.com/blog/introducing-figma-mcp-server/) (the bridge we wrote up in [Figma MCP](/blog/figma-mcp-design-systems)) routes file context and component metadata into the agent loop. Use it when the agent needs to read component structure, variant properties and file organization without leaving the IDE. It is the default starting point if you already live in Figma Dev Mode.
 
-[Figma Console MCP](https://github.com/southleft/figma-console-mcp) by TJ Pitre goes further on extraction, creation and debugging; see [docs.figma-console-mcp.southleft.com](https://docs.figma-console-mcp.southleft.com/). Reach for it when you need deeper programmatic access — batch extraction, creation workflows or debugging plugin-level issues that the official server does not expose.
+[Figma Console MCP](https://github.com/southleft/figma-console-mcp) by TJ Pitre goes further on extraction, creation and debugging; see [docs.figma-console-mcp.southleft.com](https://docs.figma-console-mcp.southleft.com/). Reach for it when you need deeper programmatic access: batch extraction, creation workflows or debugging plugin-level issues that the official server does not expose.
 
 [figma-cli](https://github.com/silships/figma-cli) by Sil Bormüller is deliberately not MCP: a CLI that talks to Figma Desktop for batch work such as importing a `DESIGN.md` into variables ([walkthrough](https://www.intodesignsystems.com/blog/claude-code-figma-no-mcp)). Use it when the job is migration or bulk token setup, not interactive pair programming in the editor.
 
@@ -51,12 +51,12 @@ Pick the surface that matches the job, then wire it into the same harness regard
 
 A harness answers what agents will not infer: which files are authoritative, what must be read before editing, which paths are out of scope, which commands prove safety and when a human must review judgment rather than mechanics. Without it, teams collect agent wins and production surprises in equal measure.
 
-We do not ship a single `agent-harness.yml`. The harness is distributed — `AGENTS.md`, `docs/LLM_COMPONENT_GENERATION_RULES.md`, per-component `.contract.json` files, verification scripts. That is intentional. A monolithic harness file rots the day someone adds a new package root. Distributed harness pieces version with the code they protect.
+We do not ship a single `agent-harness.yml`. The harness is distributed: `AGENTS.md`, `docs/LLM_COMPONENT_GENERATION_RULES.md`, per-component `.contract.json` files, verification scripts. That is intentional. A monolithic harness file rots the day someone adds a new package root. Distributed harness pieces version with the code they protect.
 
 The YAML below is illustrative: the shape those pieces take when you compile them for one component edit.
 
 ```yaml title="agent-harness.example.yml"
-# Illustrative — not a file in our repo
+# Illustrative, not a file in our repo
 scope:
   allowed_paths:
     - nextjs-app/shared/components/Button/**
@@ -78,9 +78,9 @@ human_review:
 
 Notice what is missing: model names, prompt poetry, brand adjectives. A harness is operational, not inspirational. It should fit on a screen and fail loudly when ignored.
 
-Good harness properties are boring. **Scope** prevents drive-by refactors in token files. **Required context** stops agents from inventing components from memory. **Verification** turns “looks fine” into commands. **Human review triggers** reserve judgment for changes that lint cannot encode — taxonomy shifts, accessibility exceptions, copy that carries legal weight.
+Good harness properties are boring. **Scope** prevents drive-by refactors in token files. **Required context** stops agents from inventing components from memory. **Verification** turns “looks fine” into commands. **Human review triggers** reserve judgment for changes that lint cannot encode: taxonomy shifts, accessibility exceptions, copy that carries legal weight.
 
-[Project Spine](https://projectspine.dev) packages a similar idea — curated context bundles instead of the whole monorepo dumped into a prompt. Whether you use Spine, `AGENTS.md` or a compiled YAML file, the test is the same: can a new agent session find the authoritative answer without reading fifty unrelated files?
+[Project Spine](https://projectspine.dev) packages a similar idea: curated context bundles instead of the whole monorepo dumped into a prompt. Whether you use Spine, `AGENTS.md` or a compiled YAML file, the test is the same: can a new agent session find the authoritative answer without reading fifty unrelated files?
 
 ## Skills are repeatable capabilities
 
@@ -102,7 +102,7 @@ On [digitaltableteur.com](https://www.digitaltableteur.com) we publish `dt-*` sk
 }
 ```
 
-Three skills cover most early agentic DS work before you need a library of dozens. **Promotion skill** — given a component, verify contract, stories, axe and migration notes before status moves from beta to stable. **Drift audit skill** — compare Figma variant names to CVA props and file a diff report. **Pattern pick skill** — given a user story, return the pattern recipe and forbidden combinations before any code is written. Skills compose: the pattern pick skill should refuse to proceed if the harness files are missing.
+Three skills cover most early agentic DS work before you need a library of dozens. **Promotion skill:** given a component, verify contract, stories, axe and migration notes before status moves from beta to stable. **Drift audit skill:** compare Figma variant names to CVA props and file a diff report. **Pattern pick skill:** given a user story, return the pattern recipe and forbidden combinations before any code is written. Skills compose: the pattern pick skill should refuse to proceed if the harness files are missing.
 
 ## Diagnose before you buy another tool
 
@@ -124,7 +124,7 @@ Before adding tooling, name what each column does for your squad. Tools make wor
 
 ## Tool churn without harness churn
 
-Teams rotate IDEs, models and MCP servers faster than they update docs. That is fine if the harness is stable. When Figma MCP replaced a manual export script in one squad I advised, the harness files — contracts, required context, verification commands — stayed the same. Only the tool column changed. When another squad swapped harness clarity instead, swapping from Claude Code to Cursor did not help: agents still edited token files because scope was never written down.
+Teams rotate IDEs, models and MCP servers faster than they update docs. That is fine if the harness is stable. When Figma MCP replaced a manual export script in one squad I advised, the harness files (contracts, required context, verification commands) stayed the same. Only the tool column changed. When another squad swapped harness clarity instead, swapping from Claude Code to Cursor did not help: agents still edited token files because scope was never written down.
 
 Document harness changes in the same PR as tool changes. If you add a new MCP server, add the allowed paths it may touch. If you remove a server, remove stale references from `AGENTS.md` so agents do not hunt missing tools.
 
@@ -144,7 +144,7 @@ Few teams pass all five. Passing three is a honest start. Failing all five while
 
 Storybook is not a deliverable for stakeholders. For agentic workflows, it is training data. Agents do not infer your intent from principles; they mimic examples. Curate defaults the way you curate public API: the Default story should be the product-correct baseline, not the prettiest marketing layout.
 
-Rename stories that mislead. If `Example` shows deprecated padding, delete or fix it before an agent treats it as canonical. Add `Legacy` or `Deprecated` to titles when you must keep history. Link from the story docs tab to the contract status field. Context operators — Part 5 — own this curation weekly, not once a quarter.
+Rename stories that mislead. If `Example` shows deprecated padding, delete or fix it before an agent treats it as canonical. Add `Legacy` or `Deprecated` to titles when you must keep history. Link from the story docs tab to the contract status field. Context operators (Part 5) own this curation weekly, not once a quarter.
 
 ---
 

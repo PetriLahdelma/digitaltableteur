@@ -19,9 +19,9 @@ mainImageAlt: "Bridge from DesignOps through context operator to AgentOps"
 
 DesignOps solved a human coordination problem: how design teams work with clarity, consistency and organizational trust across rituals, libraries, critiques and handoffs to engineering. That work still matters. The environment changed.
 
-**Thesis:** Agents extend DesignOps; they do not replace it. DesignOps made collaboration legible. AgentOps makes automated collaboration inspectable. If you lead a design system, you are the natural owner of the context, contracts and review loops agents inherit — whether or not your title changes.
+**Thesis:** Agents extend DesignOps; they do not replace it. DesignOps made collaboration legible. AgentOps makes automated collaboration inspectable. If you lead a design system, you are the natural owner of the context, contracts and review loops agents inherit, whether or not your title changes.
 
-Agents now show up as implementers, reviewers, test writers, documentation assistants and sometimes autonomous editors in the repo. I use **AgentOps** as internal vocabulary — not a new department, but DesignOps with agent guardrails: automated work reliable enough to use on real product systems.
+Agents now show up as implementers, reviewers, test writers, documentation assistants and sometimes autonomous editors in the repo. I use **AgentOps** as internal vocabulary, not a new department, but DesignOps with agent guardrails: automated work reliable enough to use on real product systems.
 
 This post closes the series on [operating models](/blog/agentic-design-systems-need-operating-models-not-more-components), [tools and harnesses](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems), [contracts](/blog/component-contracts-are-where-taste-becomes-infrastructure) and a [minimum viable stack](/blog/the-minimum-viable-agent-ready-design-system).
 
@@ -35,13 +35,13 @@ This post closes the series on [operating models](/blog/agentic-design-systems-n
 
 ## What DesignOps already solved
 
-DesignOps gave teams shared vocabulary for critique, intake and release. It aligned Figma libraries with roadmaps, defined who approves patterns and made handoffs legible to engineering. Those problems do not disappear because an agent can open a PR. If anything, handoffs multiply — human to human, human to agent, agent to CI, CI back to human.
+DesignOps gave teams shared vocabulary for critique, intake and release. It aligned Figma libraries with roadmaps, defined who approves patterns and made handoffs legible to engineering. Those problems do not disappear because an agent can open a PR. If anything, handoffs multiply: human to human, human to agent, agent to CI, CI back to human.
 
 The mistake is treating AgentOps as a replacement discipline. It is an extension. You still need critique culture. You still need adoption politics. You still need a human who can say “this is on-brand but wrong for this moment.” AgentOps adds mechanical gates so that conversation happens at the right altitude.
 
 ## The design-system lead becomes a context operator
 
-In classic design-system work, context lived in people — why a component exists, why a pattern failed last quarter, which API is legacy-only. Agents need that context written, structured and retrievable. The expanded job is curating the information environment: which documents are authoritative, which examples agents should copy, which patterns are safe for generation, which rules are hard constraints versus guidance and which decisions still require human taste.
+In classic design-system work, context lived in people: why a component exists, why a pattern failed last quarter, which API is legacy-only. Agents need that context written, structured and retrievable. The expanded job is curating the information environment: which documents are authoritative, which examples agents should copy, which patterns are safe for generation, which rules are hard constraints versus guidance and which decisions still require human taste.
 
 Context operators do unglamorous work. They delete duplicate stories. They mark deprecated variants in contracts. They move “do not copy” examples behind clearer names. They ensure `AGENTS.md` points to the current harness, not a doc from two reorganizations ago. Bad context produces bad automation at scale. Good context compounds.
 
@@ -51,9 +51,9 @@ A practical test: start a fresh agent session on a real ticket. Time how long un
 
 The immature version asks for a screen, receives a screen, merges it and discovers problems in QA. AgentOps asks for inspectability: rules known before editing, source of truth explicit, file boundaries enforced, validation run before review, mechanical changes separated from judgment. If an agent changes a component, the team should see why, against which contract, with which tests, under which review rule.
 
-We do not run a numeric eval pipeline yet. We do run mechanical gates. Example: an agent-assisted PR renamed a Storybook story without updating `Button.contract.json`. `npm run validate:components -- --component Button` failed in CI — required story missing, drift caught before a human opened the diff. That is AgentOps at v1: failing commands as evaluation, not Slack vibes or fabricated scores.
+We do not run a numeric eval pipeline yet. We do run mechanical gates. Example: an agent-assisted PR renamed a Storybook story without updating `Button.contract.json`. `npm run validate:components -- --component Button` failed in CI: required story missing, drift caught before a human opened the diff. That is AgentOps at v1: failing commands as evaluation, not Slack vibes or fabricated scores.
 
-Later maturity adds targeted evals — golden flows, forbidden composition checks, regression suites on pattern recipes. The principle stays: evidence before merge, not vibes after demo.
+Later maturity adds targeted evals: golden flows, forbidden composition checks, regression suites on pattern recipes. The principle stays: evidence before merge, not vibes after demo.
 
 ## Responsibilities that extend the role
 
@@ -61,13 +61,13 @@ Later maturity adds targeted evals — golden flows, forbidden composition check
 
 **Context curation** promotes the right examples and demotes stale ones. Storybook is not a gallery; it is training data.
 
-**Workflow design** sets harness boundaries for common agent tasks — component edits, story additions, token changes, doc updates — each with different allowed paths.
+**Workflow design** sets harness boundaries for common agent tasks (component edits, story additions, token changes, doc updates) each with different allowed paths.
 
 **Evaluation** turns repeat failures into rules instead of repeat review comments. CI failures are feedback. Track them.
 
 **Escalation design** keeps brand, legal copy, destructive flows and accessibility exceptions on the human side. Agents should know when to stop and ask.
 
-Design-system practitioners already translate between product intent, brand, accessibility, APIs and adoption politics. Agents amplify whichever system you actually have — coherent or vague.
+Design-system practitioners already translate between product intent, brand, accessibility, APIs and adoption politics. Agents amplify whichever system you actually have: coherent or vague.
 
 ## When AgentOps is not worth the tax
 
@@ -85,31 +85,31 @@ Treat this as a learning loop, not a ceremony program.
 
 **Monthly:** Promote repeats into contracts, examples or skills. Remove one stale story agents keep finding.
 
-**Quarterly:** Is the system safer than last quarter? Compare review time on mechanical vs judgment comments. Survey contributors — human and otherwise — on whether they know which example is canonical.
+**Quarterly:** Is the system safer than last quarter? Compare review time on mechanical vs judgment comments. Survey contributors (human and otherwise) on whether they know which example is canonical.
 
 ## Bridging design leadership and engineering trust
 
 AgentOps fails when design owns rules engineering will not enforce or engineering wires agents that bypass design context. The bridge is shared evidence: contracts in the repo, validators in CI, examples both sides recognize. Design-system leads do not need to write TypeScript; they need to show up when validation fails for product reasons, not treat CI as someone else’s department.
 
-When engineering proposes “let the agent refactor tokens globally,” the context operator asks for scope, rollback and verification — the same questions you would ask a junior engineer with root access. Trust compounds when agents fail safely in preview, not when they ship surprises on Friday.
+When engineering proposes “let the agent refactor tokens globally,” the context operator asks for scope, rollback and verification, the same questions you would ask a junior engineer with root access. Trust compounds when agents fail safely in preview, not when they ship surprises on Friday.
 
-Leadership visibility matters: one slide per quarter showing loop closure — rules added, evidence upgraded, repeat failures eliminated — beats a vanity metric on components shipped. AgentOps is measured in fewer repeat mistakes, not more agent demos.
+Leadership visibility matters: one slide per quarter showing loop closure (rules added, evidence upgraded, repeat failures eliminated) beats a vanity metric on components shipped. AgentOps is measured in fewer repeat mistakes, not more agent demos.
 
-Your title may still say DesignOps. Your calendar should reflect context operation — curating examples, reviewing validator failures, converting critique into contracts. That is the job agents amplified, not replaced.
+Your title may still say DesignOps. Your calendar should reflect context operation: curating examples, reviewing validator failures, converting critique into contracts. That is the job agents amplified, not replaced.
 
 If the same mistake appears three times, it should stop being a review comment and become a rule, an example or a check. That sentence is the whole series in one line.
 
 ## Closing
 
-Craft moves upstream. Instead of only designing the button, you design the rules that keep the next thousand decisions coherent. Teams will use agents. The question is whether work happens inside the [operating model](/blog/agentic-design-systems-need-operating-models-not-more-components) or around it — with context, evidence and trust designed as deliberately as the components themselves.
+Craft moves upstream. Instead of only designing the button, you design the rules that keep the next thousand decisions coherent. Teams will use agents. The question is whether work happens inside the [operating model](/blog/agentic-design-systems-need-operating-models-not-more-components) or around it, with context, evidence and trust designed as deliberately as the components themselves.
 
 You already have the spine: intent, rules, output, evidence, better rules. Tools expose surfaces. Harnesses enforce boundaries. Skills package repeat work. Contracts turn taste into infrastructure. The minimum stack keeps it maintainable. AgentOps keeps it yours to operate.
 
 ## What to do Monday morning
 
-If you only do three things after this series: assign an owner for contracts and context, wire one validation command into CI for your top five components and run the harness audit from Part 2. Everything else — semantic rules, skills, evals — compounds from there.
+If you only do three things after this series: assign an owner for contracts and context, wire one validation command into CI for your top five components and run the harness audit from Part 2. Everything else (semantic rules, skills, evals) compounds from there.
 
-The goal was never “AI in the design system.” The goal is a design system that still makes sense when agents are in the repo — operated, evidenced and honest about what fails today versus what you aspire to enforce tomorrow.
+The goal was never “AI in the design system.” The goal is a design system that still makes sense when agents are in the repo: operated, evidenced and honest about what fails today versus what you aspire to enforce tomorrow.
 
 ---
 

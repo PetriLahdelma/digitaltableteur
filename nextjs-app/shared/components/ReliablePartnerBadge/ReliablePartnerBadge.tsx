@@ -75,7 +75,7 @@ export function ReliablePartnerBadge({
       : href;
   const alt = t(
     "reliablePartnerAlt",
-    "Reliable Partner — verified by Vastuu Group",
+    "Reliable Partner, verified by Vastuu Group",
   );
 
   const asset = GREEN_BADGE_BY_LANGUAGE[language] ?? GREEN_BADGE_BY_LANGUAGE.en;
