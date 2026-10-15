@@ -10,6 +10,49 @@
   outline: none;
 }
 
+/*
+ * Hover glow: the cover glows in its own colours. The frame takes the cover
+ * as its background while hovered; ::before inherits that background (the
+ * same image), is blurred to mush, saturated so the colours sing and scaled
+ * up so it spills past the edges. isolation keeps it behind the cover.
+ */
+
+.mediaFrame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+.mediaFrame::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: inherit;
+  pointer-events: none;
+  transition:
+    opacity var(--duration-normal) var(--ease-out-cubic),
+    transform var(--duration-slow) var(--ease-out-expo);
+  transform: scale(1);
+  opacity: 0;
+  content: "";
+  filter: blur(var(--space-internal-32)) saturate(1.8);
+}
+
+.card:hover .mediaFrame,
+.card:focus-visible .mediaFrame {
+  background-image: var(--project-card-cover, none);
+}
+
+.card:hover .mediaFrame::before,
+.card:focus-visible .mediaFrame::before {
+  transform: scale(1.1);
+  opacity: 0.85;
+}
+
 .media {
   position: relative;
   inline-size: 100%;
@@ -146,6 +189,10 @@
   transform: none;
 }
 
+.comingSoon:hover .mediaFrame::before {
+  opacity: 0;
+}
+
 .comingSoon:hover .asset {
   transform: scale(1.001);
 }
@@ -182,9 +229,6 @@
 
 .card:hover .media,
 .card:focus-visible .media {
-  box-shadow:
-    0 18px 38px color-mix(in srgb, var(--color-primary) 10%, transparent),
-    0 2px 8px color-mix(in srgb, var(--color-primary) 6%, transparent);
   transform: translateY(calc(-1 * var(--space-internal-2)));
 }
 
@@ -241,6 +285,10 @@
 }
 
 @media (forced-colors: active) {
+  .mediaFrame::before {
+    display: none;
+  }
+
   .comingSoonBadge {
     border-color: CanvasText;
     background: Canvas;
@@ -268,5 +316,14 @@
   .card:active .media,
   .tags {
     transform: none;
+  }
+
+  /* The glow still appears, as a fade only, already at its spill size. */
+
+  .mediaFrame::before,
+  .card:hover .mediaFrame::before,
+  .card:focus-visible .mediaFrame::before {
+    transition: opacity var(--duration-normal) linear;
+    transform: scale(1.1);
   }
 }

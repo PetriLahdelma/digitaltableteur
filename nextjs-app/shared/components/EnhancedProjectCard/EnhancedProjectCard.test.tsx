@@ -219,3 +219,27 @@ describe("EnhancedProjectCard autoplay loop", () => {
     expect(play).not.toHaveBeenCalled();
   });
 });
+
+describe("EnhancedProjectCard hover glow", () => {
+  it("hands the cover image to the glow frame", () => {
+    const { container } = render(
+      <EnhancedProjectCard
+        title="Spine"
+        slug="project-spine"
+        thumbnail="/images/a b.png"
+      />,
+    );
+    const frame = container.querySelector("[data-project-card-glow]");
+    expect(frame).not.toBeNull();
+    expect(
+      (frame as HTMLElement).style.getPropertyValue("--project-card-cover"),
+    ).toBe('url("/images/a b.png")');
+  });
+
+  it("has no glow when the thumbnail itself is a video", () => {
+    const { container } = render(
+      <EnhancedProjectCard title="Loop" slug="loop" thumbnail="/v/loop.mp4" />,
+    );
+    expect(container.querySelector("[data-project-card-glow]")).toBeNull();
+  });
+});

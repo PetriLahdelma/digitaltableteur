@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, type CSSProperties } from "react";
 import { Link } from "../../lib/linkComponent";
 import { Image } from "../../lib/imageComponent";
 import { cn } from "../../lib/cn";
@@ -130,55 +130,75 @@ export function EnhancedProjectCard({
     };
   }, [shouldLoop]);
 
+  // The hover glow is the cover itself: the frame carries it as its
+  // background (only while hovered, so the file is fetched on demand) and
+  // a pseudo-element inherits that background, blurred and saturated. A
+  // thumbnail that is itself a video has no image to glow with.
+  const glowSource = /\.(mov|mp4|webm)(\?|$)/i.test(thumbnail)
+    ? null
+    : thumbnail;
+  const frameStyle = glowSource
+    ? ({
+        "--project-card-cover": `url(${JSON.stringify(glowSource)})`,
+      } as CSSProperties)
+    : undefined;
+
   const idBase = `${slug}-${rawId.replace(/:/g, "")}`;
   const titleId = `${idBase}-title`;
   const descriptionId = `${idBase}-description`;
 
   const content = (
     <>
-      {/* Media Container - Clean, no overlays (coming-soon badge excepted) */}
+      {/* Frame: holds the cover glow, which spills past the clipped media */}
       <div
-        className={cn(styles.media, aspectRatioClasses[aspectRatio])}
-        data-project-card-media=""
+        className={styles.mediaFrame}
+        style={frameStyle}
+        data-project-card-glow={glowSource ? "" : undefined}
       >
-        {/* Video thumbnail */}
-        {isVideoThumbnail && videoSources.length > 0 ? (
-          <video
-            ref={videoRef}
-            muted
-            loop={shouldLoop}
-            playsInline
-            preload={shouldLoop ? "auto" : "metadata"}
-            poster={videoThumbnail ? thumbnail : undefined}
-            aria-hidden="true"
-            className={styles.asset}
-            data-project-card-asset=""
-          >
-            {videoSources.map((src) => (
-              <source key={src} src={src} type={videoMimeType(src)} />
-            ))}
-          </video>
-        ) : (
-          /* Static image thumbnail */
-          <Image
-            src={thumbnail}
-            alt="" // Decorative; the adjacent title and description provide the equivalent.
-            fill
-            className={styles.asset}
-            data-project-card-asset=""
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          />
-        )}
+        {/* Media Container - Clean, no overlays (coming-soon badge excepted) */}
+        <div
+          className={cn(styles.media, aspectRatioClasses[aspectRatio])}
+          data-project-card-media=""
+        >
+          {/* Video thumbnail */}
+          {isVideoThumbnail && videoSources.length > 0 ? (
+            <video
+              ref={videoRef}
+              muted
+              loop={shouldLoop}
+              playsInline
+              preload={shouldLoop ? "auto" : "metadata"}
+              poster={videoThumbnail ? thumbnail : undefined}
+              aria-hidden="true"
+              className={styles.asset}
+              data-project-card-asset=""
+            >
+              {videoSources.map((src) => (
+                <source key={src} src={src} type={videoMimeType(src)} />
+              ))}
+            </video>
+          ) : (
+            /* Static image thumbnail */
+            <Image
+              src={thumbnail}
+              alt="" // Decorative; the adjacent title and description provide the equivalent.
+              fill
+              className={styles.asset}
+              data-project-card-asset=""
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            />
+          )}
 
-        {/* Coming-soon overlay badge */}
-        {comingSoon && (
-          <span
-            className={styles.comingSoonBadge}
-            data-project-card-coming-soon=""
-          >
-            {comingSoonLabel}
-          </span>
-        )}
+          {/* Coming-soon overlay badge */}
+          {comingSoon && (
+            <span
+              className={styles.comingSoonBadge}
+              data-project-card-coming-soon=""
+            >
+              {comingSoonLabel}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Caption Area - External, below image */}
