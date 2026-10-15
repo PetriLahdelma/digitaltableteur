@@ -54,8 +54,8 @@
       "line": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/avatar-group.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/avatar-group.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 193,
@@ -135,8 +135,8 @@
       "line": 42,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/avatar.ts::rhythmguard/use-scale::Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/avatar.ts::rhythmguard/use-scale::Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 55,
@@ -180,8 +180,8 @@
       "line": 30,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/badge.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/badge.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 80,
@@ -189,8 +189,8 @@
       "line": 31,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/badge.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/badge.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 90,
@@ -225,8 +225,8 @@
       "line": 29,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/badge.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/badge.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 194,
@@ -234,8 +234,8 @@
       "line": 44,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/badge.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/badge.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 10,
@@ -369,8 +369,8 @@
       "line": 64,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/button.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/button.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 21,
@@ -405,8 +405,8 @@
       "line": 181,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/card.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/card.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 133,
@@ -423,8 +423,8 @@
       "line": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \".75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/category-filter.ts::rhythmguard/use-scale::Unexpected off-scale value \".75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \".75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/category-filter.ts::rhythmguard/use-scale::Unexpected off-scale value \".75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 92,
@@ -432,8 +432,8 @@
       "line": 26,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/category-filter.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/category-filter.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 87,
@@ -567,8 +567,8 @@
       "line": 78,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 41,
@@ -576,8 +576,8 @@
       "line": 95,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 41,
@@ -585,8 +585,8 @@
       "line": 124,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 41,
@@ -594,8 +594,8 @@
       "line": 214,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::3"
     },
     {
       "column": 21,
@@ -612,8 +612,8 @@
       "line": 69,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 14,
@@ -666,8 +666,8 @@
       "line": 98,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 42,
@@ -675,8 +675,8 @@
       "line": 172,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 42,
@@ -684,8 +684,8 @@
       "line": 246,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::3"
     },
     {
       "column": 40,
@@ -711,8 +711,8 @@
       "line": 153,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 22,
@@ -900,8 +900,8 @@
       "line": 35,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"15rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"15rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"15rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"15rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 95,
@@ -999,8 +999,8 @@
       "line": 54,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"40rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/container.ts::rhythmguard/use-scale::Unexpected off-scale value \"40rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"40rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/container.ts::rhythmguard/use-scale::Unexpected off-scale value \"40rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 46,
@@ -1008,8 +1008,8 @@
       "line": 55,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"60rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/container.ts::rhythmguard/use-scale::Unexpected off-scale value \"60rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"60rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/container.ts::rhythmguard/use-scale::Unexpected off-scale value \"60rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 46,
@@ -1017,8 +1017,8 @@
       "line": 56,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"75rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/container.ts::rhythmguard/use-scale::Unexpected off-scale value \"75rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"75rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/container.ts::rhythmguard/use-scale::Unexpected off-scale value \"75rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 46,
@@ -1026,8 +1026,8 @@
       "line": 57,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"90rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/container.ts::rhythmguard/use-scale::Unexpected off-scale value \"90rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"90rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/container.ts::rhythmguard/use-scale::Unexpected off-scale value \"90rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 61,
@@ -1116,8 +1116,8 @@
       "line": 150,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 61,
@@ -1152,8 +1152,8 @@
       "line": 83,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"72rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/use-scale::Unexpected off-scale value \"72rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"72rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/use-scale::Unexpected off-scale value \"72rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 111,
@@ -1161,8 +1161,8 @@
       "line": 153,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 21,
@@ -1278,8 +1278,8 @@
       "line": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/filter-chip.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/filter-chip.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 84,
@@ -1287,8 +1287,8 @@
       "line": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/filter-chip.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/filter-chip.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 82,
@@ -1377,8 +1377,8 @@
       "line": 70,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/kbd.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/kbd.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 46,
@@ -1548,8 +1548,8 @@
       "line": 82,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/list-item.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/list-item.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 18,
@@ -1611,8 +1611,8 @@
       "line": 68,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/mac-window-frame.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/mac-window-frame.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 21,
@@ -1629,8 +1629,8 @@
       "line": 70,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/menu.ts::rhythmguard/use-scale::Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/menu.ts::rhythmguard/use-scale::Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 46,
@@ -1764,8 +1764,8 @@
       "line": 161,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"11.25rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/modal.ts::rhythmguard/use-scale::Unexpected off-scale value \"11.25rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"11.25rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/modal.ts::rhythmguard/use-scale::Unexpected off-scale value \"11.25rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 130,
@@ -1836,8 +1836,8 @@
       "line": 26,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.8125rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 56,
@@ -1863,8 +1863,8 @@
       "line": 49,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"14rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"14rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"14rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"14rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 201,
@@ -1872,8 +1872,8 @@
       "line": 59,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"17.5rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"17.5rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"17.5rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"17.5rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 63,
@@ -2088,8 +2088,8 @@
       "line": 31,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"100rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"100rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"100rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"100rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 139,
@@ -2097,8 +2097,8 @@
       "line": 49,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"240px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"240px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"240px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"240px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 162,
@@ -2106,8 +2106,8 @@
       "line": 49,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"240px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"240px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"240px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"240px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 125,
@@ -2133,8 +2133,8 @@
       "line": 43,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 54,
@@ -2142,8 +2142,8 @@
       "line": 43,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 28,
@@ -2151,8 +2151,8 @@
       "line": 31,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"96px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"96px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"96px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"96px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 46,
@@ -2160,8 +2160,8 @@
       "line": 31,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"96px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"96px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"96px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/use-scale::Unexpected off-scale value \"96px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 49,
@@ -2349,8 +2349,8 @@
       "line": 52,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 60,
@@ -2430,8 +2430,8 @@
       "line": 41,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 26,
@@ -2439,8 +2439,8 @@
       "line": 33,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 26,
@@ -2448,8 +2448,8 @@
       "line": 40,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 28,
@@ -2457,8 +2457,8 @@
       "line": 42,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::3"
     },
     {
       "column": 32,
@@ -2466,8 +2466,8 @@
       "line": 43,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::4"
+      "text": "Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"8rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::4"
     },
     {
       "column": 23,
@@ -2511,8 +2511,8 @@
       "line": 68,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/segmented-control.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/segmented-control.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 21,
@@ -2853,8 +2853,8 @@
       "line": 114,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"120px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/skeleton.ts::rhythmguard/use-scale::Unexpected off-scale value \"120px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"120px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/skeleton.ts::rhythmguard/use-scale::Unexpected off-scale value \"120px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 17,
@@ -2862,8 +2862,8 @@
       "line": 118,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"180px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/skeleton.ts::rhythmguard/use-scale::Unexpected off-scale value \"180px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"180px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/skeleton.ts::rhythmguard/use-scale::Unexpected off-scale value \"180px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 10,
@@ -3294,8 +3294,8 @@
       "line": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 85,
@@ -3420,8 +3420,8 @@
       "line": 203,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/split-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/split-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"11rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 22,
@@ -3447,8 +3447,8 @@
       "line": 153,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/split-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/split-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 63,
@@ -3492,8 +3492,8 @@
       "line": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/switch.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/switch.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 21,
@@ -3537,8 +3537,8 @@
       "line": 201,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.78em\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.78em\". Use scale values (nearest: 14px or 14px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.78em\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.78em\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 20,
@@ -3546,8 +3546,8 @@
       "line": 199,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 47,
@@ -3645,8 +3645,8 @@
       "line": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/text-area.ts::rhythmguard/use-scale::Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/text-area.ts::rhythmguard/use-scale::Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 45,
@@ -3771,8 +3771,8 @@
       "line": 30,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/text-input.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/text-input.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 18,
@@ -3897,8 +3897,8 @@
       "line": 37,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"20rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/tooltip.ts::rhythmguard/use-scale::Unexpected off-scale value \"20rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"20rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/tooltip.ts::rhythmguard/use-scale::Unexpected off-scale value \"20rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 73,
