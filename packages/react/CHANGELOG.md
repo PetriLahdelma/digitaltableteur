@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.30 - 2026-10-16
+
+- `Breadcrumb`: the current page item now carries `aria-current="page"` in
+  the full, home-icon and collapsed trails, so screen readers announce it as
+  the current location. The slash separators are `aria-hidden` and no longer
+  read aloud between crumbs. No API change.
+
 ## 0.1.29 - 2026-10-16
 
 - New `StageList` (beta): places entries by the lifecycle stage they belong
