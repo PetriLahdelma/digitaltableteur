@@ -19507,7 +19507,7 @@
         },
         {
           "name": "background",
-          "type": "image | minimal | gradient",
+          "type": "image | minimal | gradient | primary",
           "required": false
         },
         {
@@ -19548,9 +19548,10 @@
           "values": [
             "image",
             "minimal",
-            "gradient"
+            "gradient",
+            "primary"
           ],
-          "description": "Background variant"
+          "description": "Background variant; primary fills the hero with the primary colour and sets inverse text"
         },
         "backgroundImage": {
           "optional": true,
@@ -20846,7 +20847,7 @@
       "keyProps": [
         {
           "name": "engagementId",
-          "type": "audit | liftoff | aiops | partnership",
+          "type": "audit | liftoff | aiops | partnership | workshop | designopsPilot | agentPilot | dsMcp | agentWorkforce",
           "required": true
         },
         {
@@ -20863,7 +20864,12 @@
             "audit",
             "liftoff",
             "aiops",
-            "partnership"
+            "partnership",
+            "workshop",
+            "designopsPilot",
+            "agentPilot",
+            "dsMcp",
+            "agentWorkforce"
           ],
           "description": "Which engagement page to render"
         },

@@ -181,6 +181,7 @@
   "contactNewBusinessImageAlt": "Portrait of Petri Lahdelma",
   "contactPullQuote": "DT helps ambitious teams turn what they do into products with clarity and conviction. Bring your vision and together we'll shape how it shows up in the world.",
   "pricingHeroTitle": "Transparent price tags.",
+  "pricingHeroSubtitle": "Packaged engagements with the scope, timeline and deliverables stated up front",
   "pricingHeroImageAlt": "Design system component library preview",
   "pricingComparisonUsTitle": "Digitaltableteur",
   "pricingComparisonThemTitle": "Large delivery team",
@@ -204,10 +205,16 @@
   "pricingPackage2Price": "€11–17k",
   "pricingPackage2Duration": "3 weeks",
   "pricingPackage2Description": "Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.",
-  "pricingPackage3Title": "UX Sprint",
+  "pricingPackage3Title": "UX Sprint/DS Audit",
   "pricingPackage3Price": "€7–14k",
+  "pricingPackageReadMore": "Read more",
+  "pricingPackageCtaWorkshop": "Ask for a workshop quote",
+  "pricingPackageWorkshopDescription": "Prep work, two facilitated days and a written analysis. The price depends on group size, travel and remote or on-site delivery.",
+  "pricingPackageWorkshopDuration": "2 days, with prep and analysis",
+  "pricingPackageWorkshopPrice": "Quoted per workshop",
+  "pricingPackageWorkshopTitle": "Design System Workshop",
   "pricingPackage3Duration": "2 weeks",
-  "pricingPackage3Description": "Prototype, eval plan and handoff your team can ship.",
+  "pricingPackage3Description": "A working prototype of the key flow, an eval plan to test it with users and a handoff your team can ship.",
   "pricingGalleryAlt1": "Component concept cards from a design system",
   "pricingGalleryAlt2": "Command palette UI pattern",
   "pricingGalleryAlt3": "Brand campaign visual",
@@ -218,9 +225,6 @@
   "pricingPackageCtaUxSprint": "Book UX Sprint",
   "pricingPackageCtaAiReady": "Book AI-Ready Ops",
   "pricingPackageCtaLiftOff": "Book Design System Lift-Off",
-  "pricingPackageProofUxSprint": "2-week prototype with eval plan; see the UX Sprint patterns in the work.",
-  "pricingPackageProofAiReady": "Agent-ready tokens and governance. See AI DesignOps case studies.",
-  "pricingPackageProofLiftOff": "Storybook + adoption playbook. See design system deliveries.",
   "pricingAaasTitle": "AI agents and automation",
   "pricingAaasToggleExpand": "Expand AI agents and automation",
   "pricingAaasToggleCollapse": "Collapse AI agents and automation",
@@ -230,6 +234,11 @@
   "pricingAaasAgentPilotDuration": "3 weeks",
   "pricingAaasAgentPilotDescription": "Scope one workflow, ship a working agent with guardrails, evals and a handoff your team can run.",
   "pricingAaasAgentPilotCta": "Book Agent Pilot",
+  "pricingAaasDsMcpTitle": "Design System MCP",
+  "pricingAaasDsMcpPrice": "€12–18k",
+  "pricingAaasDsMcpDuration": "4 weeks",
+  "pricingAaasDsMcpDescription": "Component contracts, an MCP server and an eval benchmark, so coding agents build with your design system instead of around it.",
+  "pricingAaasDsMcpCta": "Book Design System MCP",
   "pricingAaasAgentWorkforceTitle": "Agent Workforce",
   "pricingAaasAgentWorkforcePrice": "€20–32k",
   "pricingAaasAgentWorkforceDuration": "6 weeks",
@@ -534,7 +543,7 @@
   "aboutBringToolsTitle": "Tools, not just advice",
   "aboutBringToolsDescription": "Tooling to support your team: Rhythmguard, Project Spine and machine-readable component contracts that agents and CI can check.",
   "aboutBringAccessibilityTitle": "Accessibility, proven",
-  "aboutBringAccessibilityDescription": "Automated checks cover every component, including forced colors and target size, so accessibility is demonstrated rather than promised.",
+  "aboutBringAccessibilityDescription": "Automated checks cover every component, forced colors and target size included, so accessibility is shown, not promised.",
   "aboutBringBrandToCodeTitle": "One team from brand to code",
   "aboutBringBrandToCodeDescription": "Identity, product design and engineering in the same hands, so nothing is lost between the concept and the shipped interface.",
   "aboutDesignSubtitle": "What we do",
@@ -1758,6 +1767,323 @@
       ],
       "bookTitle": "Plan the partnership on a 30-minute call",
       "bookBody": "Talk through the term, the weekly rhythm and what the partnership should own. A calendar invite arrives by email."
+    },
+    "workshop": {
+      "metaTitle": "Design System Workshop | Digitaltableteur",
+      "metaDescription": "Two facilitated days on your design system, with prep work before and a written analysis after. Quoted per workshop by group size, travel and format.",
+      "eyebrow": "Design System Workshop",
+      "package": "Design System Workshop",
+      "title": "Get the team aligned on the design system in two days",
+      "lead": "Designers, engineers and product owners describe the same system differently. Decisions stall because nobody owns them. The workshop starts with prep work, works through the hard questions in two facilitated days and ends with a written analysis the team can act on.",
+      "cta1": "Ask for a workshop quote",
+      "cta2": "Book a 30-minute call",
+      "signalsTitle": "Use a workshop when the team needs a shared picture",
+      "signals": [
+        "Design and engineering describe the system in different terms",
+        "A rebuild, migration or new brand is coming and the plan is unclear",
+        "Ownership of components and tokens is undecided",
+        "Earlier initiatives started strong and stalled"
+      ],
+      "scopeTitle": "What the workshop covers",
+      "scope": "Prep work maps the current setup through short interviews and a review of the components, tokens and documentation in use. The two days work through priorities, ownership and next steps with the people who make the decisions. The analysis afterwards records what was agreed and what is still open.",
+      "limitsTitle": "Not included unless scoped separately",
+      "limits": [
+        "Building or rebuilding components",
+        "A full design system audit",
+        "Ongoing facilitation after the analysis"
+      ],
+      "stepsTitle": "How the workshop runs",
+      "steps": [
+        "Interview key people and review the current setup before the first day.",
+        "Day one: map the system, the people who use it and where it fails them.",
+        "Day two: agree on priorities, ownership and a sequence for the next steps.",
+        "Deliver a written analysis with findings and a plan for next steps."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "A summary of the prep interviews and setup review",
+        "Workshop outputs captured and cleaned up",
+        "A written analysis of findings and open questions",
+        "A prioritised plan for next steps"
+      ],
+      "investMeta": "2 days, with prep and analysis",
+      "investNote": "Quoted per workshop. The price depends on group size, travel and whether the workshop runs remotely or on-site.",
+      "investLink": "Ask for a quote",
+      "faqTitle": "About the workshop",
+      "faq": [
+        {
+          "question": "Who should take part?",
+          "answer": "The people who decide how the system is built and used: design, engineering and product leads. Group size affects the format and the quote."
+        },
+        {
+          "question": "Can it run remotely?",
+          "answer": "Yes. Both remote and on-site delivery are possible. On-site delivery adds travel to the quote."
+        },
+        {
+          "question": "What happens after the two days?",
+          "answer": "A written analysis and a plan for next steps. Continuing is optional: the plan can feed a UX Sprint, a Lift-Off or work run by your own team."
+        },
+        {
+          "question": "How much preparation does the team need?",
+          "answer": "A few short interviews and access to the current components, tokens and documentation. The prep work handles the rest."
+        }
+      ],
+      "bookTitle": "Get a quote for your team",
+      "bookBody": "Describe the team, the preferred format and what the workshop should answer. The reply covers format, dates and a quote."
+    },
+    "designopsPilot": {
+      "metaTitle": "DesignOps Pilot | Digitaltableteur",
+      "metaDescription": "A supervised agent that triages components, keeps tokens honest and drafts release notes your team approves. Ongoing, billed monthly.",
+      "eyebrow": "DesignOps Pilot",
+      "package": "DesignOps Pilot",
+      "title": "Hand routine design system upkeep to a supervised agent",
+      "lead": "Component requests pile up. Token values drift between design files and code. Release notes get written last, if at all. DesignOps Pilot runs a supervised agent that triages components, keeps tokens honest and drafts release notes. Your team approves every change.",
+      "cta1": "Book DesignOps Pilot",
+      "cta2": "Send a question",
+      "signalsTitle": "Use it when upkeep crowds out design system work",
+      "signals": [
+        "Component requests wait weeks for triage",
+        "Token values drift between design files and code",
+        "Release notes are written late or not at all",
+        "The core team spends more time on upkeep than on improvements"
+      ],
+      "scopeTitle": "What DesignOps Pilot covers",
+      "scope": "The agent works in your existing repositories and tools. It sorts incoming component requests and issues, flags token drift between design and code and drafts release notes from merged changes. Every output goes to your team for approval before anything ships.",
+      "limitsTitle": "Not included",
+      "limits": [
+        "Changes merged without human approval",
+        "Building new components from scratch",
+        "Replacing the design system team"
+      ],
+      "stepsTitle": "How DesignOps Pilot runs",
+      "steps": [
+        "Connect the agent to the repositories, trackers and design files in scope.",
+        "Agree on what the agent may draft and what always needs approval.",
+        "Run triage, drift checks and release note drafts on a regular cadence.",
+        "Review the results monthly and adjust scope, rules and guardrails."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "A configured agent running in your tools",
+        "Triage of incoming component requests and issues",
+        "Token drift reports between design and code",
+        "Release note drafts ready for approval",
+        "A monthly review of results and guardrails"
+      ],
+      "investMeta": "Ongoing, billed monthly",
+      "investNote": "The monthly price depends on the number of repositories, design files and teams the agent covers.",
+      "investLink": "Ask about scope",
+      "faqTitle": "About DesignOps Pilot",
+      "faq": [
+        {
+          "question": "Can the agent change production?",
+          "answer": "No. The agent drafts and reports. Your team approves every change before it ships."
+        },
+        {
+          "question": "Which tools does it work with?",
+          "answer": "The repositories, issue trackers and design files your team already uses. Provider selection depends on your stack and policies. The AI use policy describes how AI is used in client work."
+        },
+        {
+          "question": "How long is the commitment?",
+          "answer": "It runs as an ongoing monthly engagement. Notice terms are agreed in the contract."
+        },
+        {
+          "question": "How is success measured?",
+          "answer": "Triage time, drift caught before release and the share of drafts approved without rework, reviewed every month."
+        }
+      ],
+      "bookTitle": "Start with a 30-minute call",
+      "bookBody": "Talk through where upkeep slows the team down. A calendar invite arrives by email."
+    },
+    "agentPilot": {
+      "metaTitle": "Agent Pilot | Digitaltableteur",
+      "metaDescription": "Scope one workflow and ship a working agent with guardrails, evals and a handoff your team can run, in three weeks.",
+      "eyebrow": "Agent Pilot",
+      "package": "Agent Pilot",
+      "title": "Ship one working agent with guardrails in three weeks",
+      "lead": "AI experiments rarely leave the demo stage when nobody has scoped the workflow, the guardrails or who runs the agent afterwards. Agent Pilot picks one workflow, ships a working agent with guardrails and evals and hands it to a team that can run it.",
+      "cta1": "Book Agent Pilot",
+      "cta2": "Send a question",
+      "signalsTitle": "Use it when AI ideas stall before production",
+      "signals": [
+        "Several agent ideas, none in production",
+        "Unclear which workflow is safe to automate first",
+        "No way to tell whether the output of an agent is good enough",
+        "Concern about agents acting without oversight"
+      ],
+      "scopeTitle": "What Agent Pilot covers",
+      "scope": "One workflow, chosen where repetitive work costs the team the most. The pilot defines what the agent may do, builds it with guardrails, sets up evals that measure output quality and documents how your team runs and improves it.",
+      "limitsTitle": "Not included",
+      "limits": [
+        "More than one workflow in the same pilot",
+        "Agents acting in production without review",
+        "Training or fine-tuning custom models"
+      ],
+      "stepsTitle": "How Agent Pilot runs",
+      "steps": [
+        "Pick one workflow and define what good output looks like.",
+        "Set guardrails: what the agent may read, draft and change.",
+        "Build the agent and the evals that measure its output.",
+        "Hand over with a runbook and a review of the eval results."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "A working agent for one workflow",
+        "Guardrails written down and enforced",
+        "Evals that measure output quality",
+        "A handoff and runbook your team can run"
+      ],
+      "investMeta": "3 weeks, fixed scope",
+      "investNote": "Final scope depends on the workflow, the systems the agent connects to and the review process around it.",
+      "investLink": "Estimate a custom engagement",
+      "faqTitle": "About Agent Pilot",
+      "faq": [
+        {
+          "question": "Which workflow should go first?",
+          "answer": "One with clear inputs, repetitive steps and a person who can judge the output, for example issue triage or documentation drafts."
+        },
+        {
+          "question": "Who stays in control?",
+          "answer": "Your team. The guardrails define what the agent may do and which steps need human review."
+        },
+        {
+          "question": "Which AI models are used?",
+          "answer": "Provider selection depends on your stack and policies. The AI use policy describes how AI is used in client work."
+        },
+        {
+          "question": "What happens after the pilot?",
+          "answer": "Your team runs the agent with the runbook. Agent Workforce extends the same approach to several workflows."
+        }
+      ],
+      "bookTitle": "Start with a 30-minute call",
+      "bookBody": "Talk through the workflow to automate first. A calendar invite arrives by email."
+    },
+    "agentWorkforce": {
+      "metaTitle": "Agent Workforce | Digitaltableteur",
+      "metaDescription": "A crew of task-specific agents wired into your stack, with monitoring, fallbacks and a runbook your team owns, in six weeks.",
+      "eyebrow": "Agent Workforce",
+      "package": "Agent Workforce",
+      "title": "Run several task-specific agents your team can trust",
+      "lead": "One agent proved the idea. Now several workflows need automation without losing oversight. Agent Workforce wires a crew of task-specific agents into your stack, with monitoring, fallbacks and a runbook your team owns.",
+      "cta1": "Book Agent Workforce",
+      "cta2": "Send a question",
+      "signalsTitle": "Use it when one pilot is not enough",
+      "signals": [
+        "A pilot agent works and more workflows are waiting",
+        "Agents need to hand work to each other or to people",
+        "Failures must surface before they reach users",
+        "The team needs to own and change the agents"
+      ],
+      "scopeTitle": "What Agent Workforce covers",
+      "scope": "Several related workflows, each with its own agent and guardrails. Monitoring shows what the agents do, fallbacks route failures to people and the runbook documents how your team operates, changes and retires each agent.",
+      "limitsTitle": "Not included",
+      "limits": [
+        "Unsupervised agents changing production",
+        "Automating decisions that need human judgement",
+        "Platform engineering outside the agreed workflows"
+      ],
+      "stepsTitle": "How Agent Workforce runs",
+      "steps": [
+        "Map the workflows and the handoffs between agents and people.",
+        "Build each agent with guardrails and evals.",
+        "Add monitoring, alerts and fallbacks to human review.",
+        "Hand over with a runbook and a joint review of the first runs."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "A crew of task-specific agents wired into your stack",
+        "Monitoring and alerts for agent activity",
+        "Fallbacks that route failures to people",
+        "A runbook your team owns"
+      ],
+      "investMeta": "6 weeks, fixed scope",
+      "investNote": "Final scope depends on the number of workflows, the systems involved and the monitoring already in place.",
+      "investLink": "Estimate a custom engagement",
+      "faqTitle": "About Agent Workforce",
+      "faq": [
+        {
+          "question": "Is an Agent Pilot needed first?",
+          "answer": "Not necessarily, but it helps. A pilot proves one workflow before several run together."
+        },
+        {
+          "question": "How are failures handled?",
+          "answer": "Monitoring flags unusual results and fallbacks route the work to a person instead of guessing."
+        },
+        {
+          "question": "Who owns the agents afterwards?",
+          "answer": "Your team. The runbook covers how to operate, change and retire each agent."
+        },
+        {
+          "question": "Which AI models are used?",
+          "answer": "Provider selection depends on your stack and policies. The AI use policy describes how AI is used in client work."
+        }
+      ],
+      "bookTitle": "Start with a 30-minute call",
+      "bookBody": "Talk through the workflows and the systems involved. A calendar invite arrives by email."
+    },
+    "dsMcp": {
+      "metaTitle": "Design System MCP | Digitaltableteur",
+      "metaDescription": "Machine-readable component contracts, an MCP server and an eval benchmark so coding agents build with your design system, in four weeks.",
+      "eyebrow": "Design System MCP",
+      "package": "Design System MCP",
+      "title": "Make your design system readable for coding agents",
+      "lead": "Coding agents already write a share of the UI. Without access to the design system they guess: hardcoded colours, duplicate components, props that do not exist. Design System MCP turns the system into contracts and an MCP server agents can query, then measures how well they use it.",
+      "cta1": "Book Design System MCP",
+      "cta2": "Send a question",
+      "signalsTitle": "Use it when agents write UI that ignores the system",
+      "signals": [
+        "Generated code hardcodes values the tokens already define",
+        "Agents recreate components that already exist",
+        "Component docs are written for people, not for tools",
+        "Nobody can say whether agent output follows the system"
+      ],
+      "scopeTitle": "What Design System MCP covers",
+      "scope": "The components, tokens and usage rules your team already has. Each component gets a machine-readable contract. An MCP server exposes the contracts, tokens and guidance to coding agents in your editors and pipelines. An eval benchmark measures how often agents produce on-system UI, before and after.",
+      "limitsTitle": "Not included",
+      "limits": [
+        "Rebuilding the component library",
+        "Choosing or licensing the coding agents",
+        "Rolling the setup out across every repository at once"
+      ],
+      "stepsTitle": "How Design System MCP runs",
+      "steps": [
+        "Inventory the components, tokens and rules agents need to know.",
+        "Write machine-readable contracts for the components in scope.",
+        "Ship an MCP server and connect it to the editors and agents the team uses.",
+        "Benchmark agent output before and after, then hand over."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "Machine-readable contracts for the components in scope",
+        "An MCP server for contracts, tokens and usage guidance",
+        "Drift checks that flag where code and contracts disagree",
+        "An eval benchmark with before and after results",
+        "Documentation for keeping the contracts current"
+      ],
+      "investMeta": "4 weeks, fixed scope",
+      "investNote": "Final scope depends on the number of components, repositories and agent tools included.",
+      "investLink": "Estimate a custom engagement",
+      "faqTitle": "About Design System MCP",
+      "faq": [
+        {
+          "question": "What is an MCP server?",
+          "answer": "A Model Context Protocol server lets AI tools look up information on demand. Here it answers questions about your components, tokens and usage rules."
+        },
+        {
+          "question": "Which coding agents does it work with?",
+          "answer": "Any tool that supports the Model Context Protocol. The setup is tested with the editors and agents your team uses."
+        },
+        {
+          "question": "Does the design system need to be in good shape first?",
+          "answer": "It helps. Gaps found while writing the contracts are listed. A UX Sprint/DS Audit can come first when the system needs work."
+        },
+        {
+          "question": "How is success measured?",
+          "answer": "The eval benchmark runs the same UI tasks before and after and compares how often the output follows the system."
+        }
+      ],
+      "bookTitle": "Start with a 30-minute call",
+      "bookBody": "Talk through the design system and the agents your team uses. A calendar invite arrives by email."
     }
   },
   "procurementFaq": {
@@ -1811,8 +2137,5 @@
         "answer": "Only as described in the AI use policy, which lists the tools, the safeguards and how client data is handled."
       }
     ]
-  },
-  "pricingPackageDetailsUxSprint": "Use it as a design system audit",
-  "pricingPackageDetailsAiReady": "See the full scope",
-  "pricingPackageDetailsLiftOff": "See the full scope"
+  }
 }

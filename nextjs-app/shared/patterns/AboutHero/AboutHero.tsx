@@ -13,7 +13,7 @@ export interface AboutHeroProps {
   /** Optional subtitle */
   subtitle?: string;
   /** Background variant */
-  background?: "gradient" | "image" | "minimal";
+  background?: "gradient" | "image" | "minimal" | "primary";
   /** Background image URL (for image variant) */
   backgroundImage?: string;
   /** Show scroll indicator at bottom */
@@ -26,6 +26,7 @@ const backgroundClasses: Record<NonNullable<AboutHeroProps["background"]>, strin
   gradient: "bg-gradient-to-br from-primary/10 via-background to-accent/10",
   image: "bg-cover bg-center bg-no-repeat",
   minimal: "bg-background",
+  primary: "bg-primary",
 };
 
 export function AboutHero({
@@ -37,6 +38,7 @@ export function AboutHero({
   className,
 }: AboutHeroProps) {
   const isImageBackground = background === "image" && backgroundImage;
+  const isInverse = background === "primary";
 
   return (
     <Section
@@ -51,14 +53,14 @@ export function AboutHero({
       {/* Background image layer */}
       {isImageBackground && (
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-[center_30%] bg-no-repeat"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       )}
 
       {/* Overlay for image background */}
       {isImageBackground && (
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
       )}
 
       <Container size="lg" className="relative z-10 text-center py-16">
@@ -71,7 +73,8 @@ export function AboutHero({
           className={cn(
             "font-display font-bold",
             "text-4xl tablet:text-5xl desktop:text-6xl",
-            "text-foreground leading-tight tracking-tight"
+            isInverse ? "text-primary-foreground" : "text-foreground",
+            "leading-tight tracking-tight"
           )}
           as="h1"
         >
@@ -84,7 +87,7 @@ export function AboutHero({
             <p
               className={cn(
                 "font-body text-lg tablet:text-xl desktop:text-2xl",
-                "text-muted-foreground",
+                isInverse ? "text-primary-foreground" : "text-muted-foreground",
                 "max-w-2xl mx-auto mt-6",
                 "leading-relaxed"
               )}

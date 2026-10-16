@@ -181,6 +181,7 @@
   "contactNewBusinessImageAlt": "Porträtt av Petri Lahdelma",
   "contactPullQuote": "DT hjälper ambitiösa team att förvandla det de gör till produkter med tydlighet och övertygelse. Ta med din vision så formar vi tillsammans hur den syns i världen.",
   "pricingHeroTitle": "Transparent prissättning.",
+  "pricingHeroSubtitle": "Paketerade uppdrag där omfattning, tidsplan och leveranser anges i förväg",
   "pricingHeroImageAlt": "Förhandsvisning av designsystemets komponentbibliotek",
   "pricingComparisonUsTitle": "Digitaltableteur",
   "pricingComparisonThemTitle": "Stort leveransteam",
@@ -204,10 +205,16 @@
   "pricingPackage2Price": "11–17k €",
   "pricingPackage2Duration": "3 veckor",
   "pricingPackage2Description": "Designarbetsflöden, komponentstyrning, AI-verktygsintegration och en DesignOps-spelplan ert team kan köra.",
-  "pricingPackage3Title": "UX Sprint",
+  "pricingPackage3Title": "UX Sprint/DS Audit",
   "pricingPackage3Price": "7–14k €",
+  "pricingPackageReadMore": "Läs mer",
+  "pricingPackageCtaWorkshop": "Be om en workshopoffert",
+  "pricingPackageWorkshopDescription": "Förarbete, två faciliterade dagar och en skriftlig analys. Priset beror på gruppstorlek, resor och distans eller på plats.",
+  "pricingPackageWorkshopDuration": "2 dagar, med förberedelse och analys",
+  "pricingPackageWorkshopPrice": "Pris per workshop",
+  "pricingPackageWorkshopTitle": "Designsystem-workshop",
   "pricingPackage3Duration": "2 veckor",
-  "pricingPackage3Description": "Prototyp, utvärderingsplan och överlämning som ditt team kan leverera.",
+  "pricingPackage3Description": "En fungerande prototyp av det centrala flödet, en utvärderingsplan för att testa den med användare och en överlämning som ditt team kan leverera.",
   "pricingGalleryAlt1": "Komponentkonceptkort från ett designsystem",
   "pricingGalleryAlt2": "Kommandopalett i gränssnittet",
   "pricingGalleryAlt3": "Visuellt från varumärkeskampanj",
@@ -218,9 +225,6 @@
   "pricingPackageCtaUxSprint": "Boka UX Sprint",
   "pricingPackageCtaAiReady": "Boka AI-Ready Ops",
   "pricingPackageCtaLiftOff": "Boka Design System Lift-Off",
-  "pricingPackageProofUxSprint": "2 veckors prototyp med utvärderingsplan; se UX Sprint-mönstren i arbetet.",
-  "pricingPackageProofAiReady": "Agentredo tokens och styrning. Se AI DesignOps-case.",
-  "pricingPackageProofLiftOff": "Storybook och adoptions-playbook. Se designsystemleveranser.",
   "pricingAaasTitle": "AI-agenter och automation",
   "pricingAaasToggleExpand": "Visa AI-agenter och automation",
   "pricingAaasToggleCollapse": "Dölj AI-agenter och automation",
@@ -230,6 +234,11 @@
   "pricingAaasAgentPilotDuration": "3 veckor",
   "pricingAaasAgentPilotDescription": "Avgränsa ett arbetsflöde, leverera en fungerande agent med skyddsräcken, evals och en överlämning ditt team kan köra.",
   "pricingAaasAgentPilotCta": "Boka Agent Pilot",
+  "pricingAaasDsMcpTitle": "Design System MCP",
+  "pricingAaasDsMcpPrice": "€12–18k",
+  "pricingAaasDsMcpDuration": "4 veckor",
+  "pricingAaasDsMcpDescription": "Komponentkontrakt, en MCP-server och en eval-benchmark, så att kodagenter bygger med ditt designsystem i stället för runt det.",
+  "pricingAaasDsMcpCta": "Boka Design System MCP",
   "pricingAaasAgentWorkforceTitle": "Agent Workforce",
   "pricingAaasAgentWorkforcePrice": "€20–32k",
   "pricingAaasAgentWorkforceDuration": "6 veckor",
@@ -534,7 +543,7 @@
   "aboutBringToolsTitle": "Verktyg, inte bara råd",
   "aboutBringToolsDescription": "Verktyg som stöder ditt team: Rhythmguard, Project Spine och maskinläsbara komponentkontrakt som agenter och CI kan kontrollera.",
   "aboutBringAccessibilityTitle": "Tillgänglighet, bevisad",
-  "aboutBringAccessibilityDescription": "Automatiska kontroller täcker varje komponent, även tvingade färger och målstorlek, så att tillgängligheten visas i stället för att utlovas.",
+  "aboutBringAccessibilityDescription": "Automatiska kontroller täcker varje komponent, även tvingade färger och målstorlek: tillgängligheten visas, inte utlovas.",
   "aboutBringBrandToCodeTitle": "Ett team från varumärke till kod",
   "aboutBringBrandToCodeDescription": "Identitet, produktdesign och utveckling i samma händer, så att inget går förlorat mellan konceptet och det levererade gränssnittet.",
   "aboutDesignSubtitle": "Vad vi gör",
@@ -1758,6 +1767,323 @@
       ],
       "bookTitle": "Planera partnerskapet i ett samtal på 30 minuter",
       "bookBody": "Gå igenom perioden, veckorytmen och vad partnerskapet ska ansvara för. En kalenderinbjudan kommer via e-post."
+    },
+    "workshop": {
+      "metaTitle": "Designsystem-workshop | Digitaltableteur",
+      "metaDescription": "Två faciliterade dagar kring ditt designsystem, med förarbete före och en skriftlig analys efteråt. Pris per workshop utifrån gruppstorlek, resor och format.",
+      "eyebrow": "Designsystem-workshop",
+      "package": "Designsystem-workshop",
+      "title": "Få teamet på samma linje om designsystemet på två dagar",
+      "lead": "Designers, utvecklare och produktägare beskriver samma system på olika sätt. Beslut fastnar eftersom ingen äger dem. Workshopen börjar med förarbete, går igenom de svåra frågorna under två faciliterade dagar och avslutas med en skriftlig analys som teamet kan agera på.",
+      "cta1": "Be om en workshopoffert",
+      "cta2": "Boka ett samtal på 30 minuter",
+      "signalsTitle": "Välj en workshop när teamet behöver en gemensam bild",
+      "signals": [
+        "Design och utveckling beskriver systemet med olika begrepp",
+        "En ombyggnad, en migrering eller ett nytt varumärke väntar och planen är oklar",
+        "Ägarskapet för komponenter och tokens är inte bestämt",
+        "Tidigare initiativ började starkt och stannade av"
+      ],
+      "scopeTitle": "Vad workshopen omfattar",
+      "scope": "Förarbetet kartlägger nuläget genom korta intervjuer och en genomgång av komponenterna, tokens och dokumentationen som används. De två dagarna går igenom prioriteringar, ägarskap och nästa steg tillsammans med dem som fattar besluten. Analysen efteråt dokumenterar vad som överenskommits och vad som fortfarande är öppet.",
+      "limitsTitle": "Ingår inte om det inte avtalas separat",
+      "limits": [
+        "Att bygga eller bygga om komponenter",
+        "En fullständig designsystemaudit",
+        "Fortsatt facilitering efter analysen"
+      ],
+      "stepsTitle": "Så går workshopen till",
+      "steps": [
+        "Intervjua nyckelpersoner och gå igenom nuläget före den första dagen.",
+        "Dag ett: kartlägg systemet, personerna som använder det och var det sviker dem.",
+        "Dag två: kom överens om prioriteringar, ägarskap och en ordning för nästa steg.",
+        "Leverera en skriftlig analys med fynd och en plan för nästa steg."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "En sammanfattning av förintervjuerna och genomgången av nuläget",
+        "Workshopens resultat dokumenterade och renskrivna",
+        "En skriftlig analys av fynd och öppna frågor",
+        "En prioriterad plan för nästa steg"
+      ],
+      "investMeta": "2 dagar, med förberedelse och analys",
+      "investNote": "Pris per workshop. Priset beror på gruppstorlek, resor och om workshopen hålls på distans eller på plats.",
+      "investLink": "Be om en offert",
+      "faqTitle": "Om workshopen",
+      "faq": [
+        {
+          "question": "Vem bör delta?",
+          "answer": "De som bestämmer hur systemet byggs och används: design-, utvecklings- och produktansvariga. Gruppstorleken påverkar formatet och offerten."
+        },
+        {
+          "question": "Kan den hållas på distans?",
+          "answer": "Ja. Workshopen kan hållas både på distans och på plats. Vid genomförande på plats tillkommer resor i offerten."
+        },
+        {
+          "question": "Vad händer efter de två dagarna?",
+          "answer": "En skriftlig analys och en plan för nästa steg. Att fortsätta är frivilligt: planen kan ligga till grund för en UX Sprint, en Lift-Off eller arbete som ditt eget team driver."
+        },
+        {
+          "question": "Hur mycket behöver teamet förbereda?",
+          "answer": "Några korta intervjuer och tillgång till nuvarande komponenter, tokens och dokumentation. Förarbetet sköter resten."
+        }
+      ],
+      "bookTitle": "Få en offert för ditt team",
+      "bookBody": "Beskriv teamet, önskat format och vad workshopen ska besvara. Svaret innehåller format, datum och en offert."
+    },
+    "designopsPilot": {
+      "metaTitle": "DesignOps Pilot | Digitaltableteur",
+      "metaDescription": "En övervakad agent som triagerar komponenter, håller tokens ärliga och tar fram utkast till release notes som ditt team godkänner. Löpande, faktureras månadsvis.",
+      "eyebrow": "DesignOps Pilot",
+      "package": "DesignOps Pilot",
+      "title": "Lämna det rutinmässiga designsystemunderhållet till en övervakad agent",
+      "lead": "Komponentförfrågningar hopar sig. Tokenvärden glider isär mellan designfiler och kod. Release notes skrivs sist, om alls. DesignOps Pilot kör en övervakad agent som triagerar komponenter, håller tokens ärliga och tar fram utkast till release notes. Ditt team godkänner varje ändring.",
+      "cta1": "Boka DesignOps Pilot",
+      "cta2": "Ställ en fråga",
+      "signalsTitle": "Passar när underhållet tränger undan arbetet med designsystemet",
+      "signals": [
+        "Komponentförfrågningar väntar i veckor på triage",
+        "Tokenvärden glider isär mellan designfiler och kod",
+        "Release notes skrivs sent eller inte alls",
+        "Kärnteamet lägger mer tid på underhåll än på förbättringar"
+      ],
+      "scopeTitle": "Vad DesignOps Pilot omfattar",
+      "scope": "Agenten arbetar i teamets befintliga repositorier och verktyg. Den sorterar inkommande komponentförfrågningar och ärenden, flaggar tokenavvikelser mellan design och kod och tar fram utkast till release notes från sammanslagna ändringar. Allt agenten tar fram går till ditt team för godkännande innan något levereras.",
+      "limitsTitle": "Ingår inte",
+      "limits": [
+        "Ändringar som slås samman utan mänskligt godkännande",
+        "Att bygga nya komponenter från grunden",
+        "Att ersätta designsystemteamet"
+      ],
+      "stepsTitle": "Så går DesignOps Pilot till",
+      "steps": [
+        "Koppla agenten till repositorierna, ärendesystemen och designfilerna som ingår.",
+        "Kom överens om vad agenten får ta fram utkast till och vad som alltid kräver godkännande.",
+        "Kör triage, avvikelsekontroller och utkast till release notes i en regelbunden rytm.",
+        "Gå igenom resultaten varje månad och justera omfattning, regler och skyddsräcken."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "En konfigurerad agent som körs i teamets verktyg",
+        "Triage av inkommande komponentförfrågningar och ärenden",
+        "Rapporter om tokenavvikelser mellan design och kod",
+        "Utkast till release notes, klara för godkännande",
+        "En månatlig genomgång av resultat och skyddsräcken"
+      ],
+      "investMeta": "Löpande, faktureras månadsvis",
+      "investNote": "Månadspriset beror på antalet repositorier, designfiler och team som agenten täcker.",
+      "investLink": "Fråga om omfattningen",
+      "faqTitle": "Om DesignOps Pilot",
+      "faq": [
+        {
+          "question": "Kan agenten ändra i produktion?",
+          "answer": "Nej. Agenten tar fram utkast och rapporterar. Ditt team godkänner varje ändring innan den levereras."
+        },
+        {
+          "question": "Vilka verktyg fungerar den med?",
+          "answer": "Repositorierna, ärendesystemen och designfilerna som ditt team redan använder. Valet av leverantör beror på er teknikstack och era riktlinjer. Policyn för AI-användning beskriver hur AI används i kunduppdrag."
+        },
+        {
+          "question": "Hur lång är bindningstiden?",
+          "answer": "Det är ett löpande uppdrag på månadsbasis. Uppsägningstiden avtalas i kontraktet."
+        },
+        {
+          "question": "Hur mäts framgång?",
+          "answer": "Triagetid, avvikelser som fångas före release och andelen utkast som godkänns utan omarbetning, uppföljt varje månad."
+        }
+      ],
+      "bookTitle": "Börja med ett samtal på 30 minuter",
+      "bookBody": "Gå igenom var underhållet bromsar teamet. En kalenderinbjudan kommer via e-post."
+    },
+    "agentPilot": {
+      "metaTitle": "Agent Pilot | Digitaltableteur",
+      "metaDescription": "Avgränsa ett arbetsflöde och leverera en fungerande agent med skyddsräcken, evals och en överlämning ditt team kan köra, på tre veckor.",
+      "eyebrow": "Agent Pilot",
+      "package": "Agent Pilot",
+      "title": "Leverera en fungerande agent med skyddsräcken på tre veckor",
+      "lead": "AI-experiment kommer sällan längre än demon när ingen har avgränsat arbetsflödet, skyddsräckena eller vem som driver agenten efteråt. Agent Pilot väljer ett arbetsflöde, levererar en fungerande agent med skyddsräcken och evals och lämnar över den till ett team som kan driva den.",
+      "cta1": "Boka Agent Pilot",
+      "cta2": "Ställ en fråga",
+      "signalsTitle": "Passar när AI-idéer fastnar före produktion",
+      "signals": [
+        "Flera agentidéer, ingen i produktion",
+        "Oklart vilket arbetsflöde som är säkert att automatisera först",
+        "Inget sätt att avgöra om en agents resultat är tillräckligt bra",
+        "Oro för agenter som agerar utan tillsyn"
+      ],
+      "scopeTitle": "Vad Agent Pilot omfattar",
+      "scope": "Ett arbetsflöde, valt där repetitivt arbete kostar teamet mest. Piloten definierar vad agenten får göra, bygger den med skyddsräcken, sätter upp evals som mäter resultatens kvalitet och dokumenterar hur ditt team driver och förbättrar den.",
+      "limitsTitle": "Ingår inte",
+      "limits": [
+        "Mer än ett arbetsflöde i samma pilot",
+        "Agenter som agerar i produktion utan granskning",
+        "Träning eller finjustering av egna modeller"
+      ],
+      "stepsTitle": "Så går Agent Pilot till",
+      "steps": [
+        "Välj ett arbetsflöde och definiera hur ett bra resultat ser ut.",
+        "Sätt skyddsräcken: vad agenten får läsa, ta fram utkast till och ändra.",
+        "Bygg agenten och de evals som mäter dess resultat.",
+        "Lämna över med en runbook och en genomgång av eval-resultaten."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "En fungerande agent för ett arbetsflöde",
+        "Skyddsräcken som är nedskrivna och upprätthålls",
+        "Evals som mäter resultatens kvalitet",
+        "En överlämning och runbook som ditt team kan köra"
+      ],
+      "investMeta": "3 veckor, fast omfattning",
+      "investNote": "Slutlig omfattning beror på arbetsflödet, systemen som agenten kopplas till och granskningsprocessen kring den.",
+      "investLink": "Uppskatta ett skräddarsytt uppdrag",
+      "faqTitle": "Om Agent Pilot",
+      "faq": [
+        {
+          "question": "Vilket arbetsflöde bör komma först?",
+          "answer": "Ett med tydliga indata, repetitiva steg och en person som kan bedöma resultatet, till exempel triage av ärenden eller utkast till dokumentation."
+        },
+        {
+          "question": "Vem behåller kontrollen?",
+          "answer": "Ditt team. Skyddsräckena definierar vad agenten får göra och vilka steg som kräver mänsklig granskning."
+        },
+        {
+          "question": "Vilka AI-modeller används?",
+          "answer": "Valet av leverantör beror på er teknikstack och era riktlinjer. Policyn för AI-användning beskriver hur AI används i kunduppdrag."
+        },
+        {
+          "question": "Vad händer efter piloten?",
+          "answer": "Ditt team driver agenten med hjälp av runbooken. Agent Workforce utvidgar samma arbetssätt till flera arbetsflöden."
+        }
+      ],
+      "bookTitle": "Börja med ett samtal på 30 minuter",
+      "bookBody": "Gå igenom vilket arbetsflöde som ska automatiseras först. En kalenderinbjudan kommer via e-post."
+    },
+    "agentWorkforce": {
+      "metaTitle": "Agent Workforce | Digitaltableteur",
+      "metaDescription": "En uppsättning uppgiftsspecifika agenter kopplade till din stack, med övervakning, fallback och en runbook ditt team äger, på sex veckor.",
+      "eyebrow": "Agent Workforce",
+      "package": "Agent Workforce",
+      "title": "Kör flera uppgiftsspecifika agenter som ditt team kan lita på",
+      "lead": "En agent har bevisat idén. Nu behöver flera arbetsflöden automatiseras utan att tillsynen går förlorad. Agent Workforce kopplar en uppsättning uppgiftsspecifika agenter till din stack, med övervakning, fallback och en runbook ditt team äger.",
+      "cta1": "Boka Agent Workforce",
+      "cta2": "Ställ en fråga",
+      "signalsTitle": "Passar när en pilot inte räcker",
+      "signals": [
+        "En pilotagent fungerar och fler arbetsflöden väntar",
+        "Agenter behöver lämna över arbete till varandra eller till människor",
+        "Fel måste upptäckas innan de når användarna",
+        "Teamet behöver äga och kunna ändra agenterna"
+      ],
+      "scopeTitle": "Vad Agent Workforce omfattar",
+      "scope": "Flera relaterade arbetsflöden, vart och ett med en egen agent och egna skyddsräcken. Övervakningen visar vad agenterna gör, fallback-flöden skickar fel vidare till människor och runbooken dokumenterar hur ditt team driver, ändrar och avvecklar varje agent.",
+      "limitsTitle": "Ingår inte",
+      "limits": [
+        "Agenter utan tillsyn som ändrar produktion",
+        "Automatisering av beslut som kräver mänskligt omdöme",
+        "Plattformsutveckling utanför de överenskomna arbetsflödena"
+      ],
+      "stepsTitle": "Så går Agent Workforce till",
+      "steps": [
+        "Kartlägg arbetsflödena och överlämningarna mellan agenter och människor.",
+        "Bygg varje agent med skyddsräcken och evals.",
+        "Lägg till övervakning, larm och fallback till mänsklig granskning.",
+        "Lämna över med en runbook och en gemensam genomgång av de första körningarna."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "En uppsättning uppgiftsspecifika agenter kopplade till din stack",
+        "Övervakning och larm för agenternas aktivitet",
+        "Fallback-flöden som skickar fel vidare till människor",
+        "En runbook som ditt team äger"
+      ],
+      "investMeta": "6 veckor, fast omfattning",
+      "investNote": "Slutlig omfattning beror på antalet arbetsflöden, systemen som berörs och den övervakning som redan finns.",
+      "investLink": "Uppskatta ett skräddarsytt uppdrag",
+      "faqTitle": "Om Agent Workforce",
+      "faq": [
+        {
+          "question": "Behövs en Agent Pilot först?",
+          "answer": "Inte nödvändigtvis, men det hjälper. En pilot bevisar ett arbetsflöde innan flera körs tillsammans."
+        },
+        {
+          "question": "Hur hanteras fel?",
+          "answer": "Övervakningen flaggar ovanliga resultat och fallback-flöden skickar arbetet vidare till en person i stället för att gissa."
+        },
+        {
+          "question": "Vem äger agenterna efteråt?",
+          "answer": "Ditt team. Runbooken beskriver hur varje agent drivs, ändras och avvecklas."
+        },
+        {
+          "question": "Vilka AI-modeller används?",
+          "answer": "Valet av leverantör beror på er teknikstack och era riktlinjer. Policyn för AI-användning beskriver hur AI används i kunduppdrag."
+        }
+      ],
+      "bookTitle": "Börja med ett samtal på 30 minuter",
+      "bookBody": "Gå igenom arbetsflödena och systemen som berörs. En kalenderinbjudan kommer via e-post."
+    },
+    "dsMcp": {
+      "metaTitle": "Design System MCP | Digitaltableteur",
+      "metaDescription": "Maskinläsbara komponentkontrakt, en MCP-server och en eval-benchmark så att kodagenter bygger med ditt designsystem, på fyra veckor.",
+      "eyebrow": "Design System MCP",
+      "package": "Design System MCP",
+      "title": "Gör ditt designsystem läsbart för kodagenter",
+      "lead": "Kodagenter skriver redan en del av gränssnittet. Utan tillgång till designsystemet gissar de: hårdkodade färger, dubblerade komponenter, props som inte finns. Design System MCP gör systemet till kontrakt och en MCP-server som agenter kan fråga och mäter sedan hur väl de använder det.",
+      "cta1": "Boka Design System MCP",
+      "cta2": "Ställ en fråga",
+      "signalsTitle": "Passar när agenter skriver gränssnitt som ignorerar systemet",
+      "signals": [
+        "Genererad kod hårdkodar värden som tokens redan definierar",
+        "Agenter återskapar komponenter som redan finns",
+        "Komponentdokumentationen är skriven för människor, inte för verktyg",
+        "Ingen kan säga om agenternas resultat följer systemet"
+      ],
+      "scopeTitle": "Vad Design System MCP omfattar",
+      "scope": "De komponenter, tokens och användningsregler som ditt team redan har. Varje komponent får ett maskinläsbart kontrakt. En MCP-server gör kontrakten, tokens och riktlinjerna tillgängliga för kodagenter i teamets editorer och pipelines. En eval-benchmark mäter hur ofta agenter tar fram gränssnitt som följer systemet, före och efter.",
+      "limitsTitle": "Ingår inte",
+      "limits": [
+        "Ombyggnad av komponentbiblioteket",
+        "Val eller licensiering av kodagenterna",
+        "Utrullning i alla repositorier på en gång"
+      ],
+      "stepsTitle": "Så går Design System MCP till",
+      "steps": [
+        "Inventera de komponenter, tokens och regler som agenterna behöver känna till.",
+        "Skriv maskinläsbara kontrakt för komponenterna som ingår.",
+        "Leverera en MCP-server och koppla den till de editorer och agenter som teamet använder.",
+        "Benchmarka agenternas resultat före och efter och lämna sedan över."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "Maskinläsbara kontrakt för komponenterna som ingår",
+        "En MCP-server för kontrakt, tokens och användningsriktlinjer",
+        "Avvikelsekontroller som flaggar var kod och kontrakt inte stämmer överens",
+        "En eval-benchmark med resultat före och efter",
+        "Dokumentation för att hålla kontrakten aktuella"
+      ],
+      "investMeta": "4 veckor, fast omfattning",
+      "investNote": "Slutlig omfattning beror på antalet komponenter, repositorier och agentverktyg som ingår.",
+      "investLink": "Uppskatta ett skräddarsytt uppdrag",
+      "faqTitle": "Om Design System MCP",
+      "faq": [
+        {
+          "question": "Vad är en MCP-server?",
+          "answer": "En Model Context Protocol-server låter AI-verktyg slå upp information vid behov. Här svarar den på frågor om dina komponenter, tokens och användningsregler."
+        },
+        {
+          "question": "Vilka kodagenter fungerar den med?",
+          "answer": "Alla verktyg som stöder Model Context Protocol. Lösningen testas med de editorer och agenter som ditt team använder."
+        },
+        {
+          "question": "Måste designsystemet vara i gott skick först?",
+          "answer": "Det hjälper. Brister som upptäcks när kontrakten skrivs listas. En UX Sprint/DS Audit kan komma först när systemet behöver ses över."
+        },
+        {
+          "question": "Hur mäts framgång?",
+          "answer": "Eval-benchmarken kör samma gränssnittsuppgifter före och efter och jämför hur ofta resultatet följer systemet."
+        }
+      ],
+      "bookTitle": "Börja med ett samtal på 30 minuter",
+      "bookBody": "Gå igenom designsystemet och de agenter som ditt team använder. En kalenderinbjudan kommer via e-post."
     }
   },
   "procurementFaq": {
@@ -1811,8 +2137,5 @@
         "answer": "Endast så som policyn för AI-användning beskriver. Den listar verktygen, skyddsåtgärderna och hur kunddata hanteras."
       }
     ]
-  },
-  "pricingPackageDetailsUxSprint": "Använd det som designsystemaudit",
-  "pricingPackageDetailsAiReady": "Se hela omfattningen",
-  "pricingPackageDetailsLiftOff": "Se hela omfattningen"
+  }
 }

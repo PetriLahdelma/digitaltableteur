@@ -1,5 +1,5 @@
 /**
- * The four engagement offer pages (/engagements/<slug>) and the contact
+ * The engagement offer pages (/engagements/<slug>) and the contact
  * form's package field. Copy lives in the locale files under
  * `engagementPages.<id>`; this file holds what does not translate: routes,
  * contact links, the name, price and duration sources, the project types a
@@ -7,7 +7,16 @@
  * pricing page keys so a package changes in one place.
  */
 
-export type EngagementId = "audit" | "liftoff" | "aiops" | "partnership";
+export type EngagementId =
+  | "audit"
+  | "liftoff"
+  | "aiops"
+  | "partnership"
+  | "workshop"
+  | "designopsPilot"
+  | "agentPilot"
+  | "dsMcp"
+  | "agentWorkforce";
 
 export interface EngagementConfig {
   id: EngagementId;
@@ -87,6 +96,72 @@ export const ENGAGEMENTS: readonly EngagementConfig[] = [
     secondaryHref: "/pricing?duration=6m&days=4#calculator",
     investHref: "/pricing?duration=6m&days=4#calculator",
     proof: ["sap-build-apps", "dsharp-design-system", "helsinki-design-system"],
+  },
+  {
+    id: "workshop",
+    slug: "design-system-workshop",
+    packageId: "workshop",
+    nameKey: "pricingPackageWorkshopTitle",
+    priceKey: "pricingPackageWorkshopPrice",
+    durationKey: "pricingPackageWorkshopDuration",
+    projectTypes: [],
+    // Quoted per workshop: the main action asks for a quote, not a booking.
+    primaryHref: "/contact?mode=message&package=workshop",
+    secondaryHref: "/contact?mode=book&package=workshop",
+    investHref: "/contact?mode=message&package=workshop",
+    proof: ["helsinki-design-system", "sap-build-apps", "dsharp-design-system"],
+  },
+  {
+    id: "designopsPilot",
+    slug: "designops-pilot",
+    packageId: "designops-copilot",
+    nameKey: "pricingAaasCopilotTitle",
+    priceKey: "pricingAaasCopilotPrice",
+    durationKey: "pricingAaasCopilotDuration",
+    projectTypes: ["ai-designops"],
+    primaryHref: "/contact?mode=book&package=designops-copilot",
+    secondaryHref: "/contact?mode=message&package=designops-copilot",
+    investHref: "/contact?mode=message&package=designops-copilot",
+    proof: ["dsharp-design-system", "llm-component-schema", "project-spine"],
+  },
+  {
+    id: "agentPilot",
+    slug: "agent-pilot",
+    packageId: "agent-pilot",
+    nameKey: "pricingAaasAgentPilotTitle",
+    priceKey: "pricingAaasAgentPilotPrice",
+    durationKey: "pricingAaasAgentPilotDuration",
+    projectTypes: ["ai-designops"],
+    primaryHref: "/contact?mode=book&package=agent-pilot",
+    secondaryHref: "/contact?mode=message&package=agent-pilot",
+    investHref: "/pricing#calculator",
+    proof: ["project-spine", "llm-component-schema", "dsharp-design-system"],
+  },
+  {
+    id: "dsMcp",
+    slug: "design-system-mcp",
+    packageId: "design-system-mcp",
+    nameKey: "pricingAaasDsMcpTitle",
+    priceKey: "pricingAaasDsMcpPrice",
+    durationKey: "pricingAaasDsMcpDuration",
+    projectTypes: ["ai-designops", "component-library"],
+    primaryHref: "/contact?mode=book&package=design-system-mcp",
+    secondaryHref: "/contact?mode=message&package=design-system-mcp",
+    investHref: "/pricing#calculator",
+    proof: ["llm-component-schema", "dsharp-design-system", "project-spine"],
+  },
+  {
+    id: "agentWorkforce",
+    slug: "agent-workforce",
+    packageId: "agent-workforce",
+    nameKey: "pricingAaasAgentWorkforceTitle",
+    priceKey: "pricingAaasAgentWorkforcePrice",
+    durationKey: "pricingAaasAgentWorkforceDuration",
+    projectTypes: ["ai-designops"],
+    primaryHref: "/contact?mode=book&package=agent-workforce",
+    secondaryHref: "/contact?mode=message&package=agent-workforce",
+    investHref: "/pricing#calculator",
+    proof: ["dsharp-design-system", "project-spine", "llm-component-schema"],
   },
 ];
 

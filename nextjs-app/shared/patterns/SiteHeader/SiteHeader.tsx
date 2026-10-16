@@ -184,7 +184,7 @@ export function SiteHeader({
           <div
             className={cn(
               "flex items-center justify-center rounded-full transition-transform group-hover:scale-110",
-              "h-10 w-10",
+              "h-10 w-10 lg:h-11 lg:w-11",
               "bg-[var(--logo-background)] text-[var(--logo-color)]",
             )}
           >
@@ -192,10 +192,10 @@ export function SiteHeader({
               size={24}
               animated={isLogoHovered}
               decorative
-              className="h-6 w-6"
+              className="h-6 w-6 lg:h-6.5 lg:w-6.5"
             />
           </div>
-          <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
+          <span className="font-heading text-lg lg:text-[1.375rem] font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
             Digitaltableteur
           </span>
         </RouterLink>

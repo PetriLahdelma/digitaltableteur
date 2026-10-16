@@ -30,19 +30,9 @@
   display: flex;
   align-items: center;
   inline-size: 100vi;
-  min-block-size: 52vb;
+  min-block-size: 80vb;
   margin-inline: calc(50% - 50vi);
   overflow: hidden;
-}
-
-.heroBleedImage {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 .heroBleedOverlay {
@@ -50,18 +40,18 @@
   inset: 0;
   z-index: 1;
 
-  /* Always a light wash — image barely visible beneath */
-  background-color: rgb(255 255 255 / 91%);
+  /* Prototype: solid logo yellow behind the hero text. */
+  background-color: var(--logo-background);
 }
 
 .heroBleedContent {
   position: relative;
   z-index: 2;
 
-  /* Dark ink on light hero — stable across theme switches */
-  --color-title: #041b23;
+  /* Logo ink on the logo field: the pair flips together in every theme */
+  --color-title: var(--logo-color);
 
-  color: #041b23;
+  color: var(--logo-color);
   margin-inline: auto;
   inline-size: 100%;
   max-inline-size: var(--container-lg);
@@ -76,10 +66,6 @@
 }
 
 @media (width >= 1024px) {
-  .heroBleed {
-    min-block-size: 56vb;
-  }
-
   .heroBleedContent {
     padding-block: var(--space-layout-64);
     padding-inline: var(--page-margin-desktop);
@@ -92,6 +78,12 @@
   color: inherit;
 }
 
+.heroSubtitle {
+  margin: var(--space-layout-24) 0 0;
+  max-inline-size: 40ch;
+  color: inherit;
+}
+
 /* Legacy hero block removed — kept selector out of cascade */
 
 .value {
@@ -100,7 +92,13 @@
   justify-content: center;
   align-items: stretch;
   min-block-size: 36vb;
-  padding-block: var(--space-layout-48);
+  padding-block: var(--space-layout-64);
+}
+
+@media (width >= 768px) {
+  .value {
+    padding-block: var(--space-layout-96);
+  }
 }
 
 .comparisonGrid {
@@ -267,9 +265,9 @@
   gap: var(--space-layout-24);
 }
 
-@media (width >= 1024px) {
+@media (width >= 768px) {
   .packageList {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-layout-32);
   }
 }
@@ -313,21 +311,12 @@
   margin: 0;
 }
 
-.packageProof {
-  margin: 0;
-  color: var(--color-muted);
-  font-size: var(--font-size-text-s);
-}
-
-.packageDetails {
-  align-self: flex-start;
-  font-size: var(--font-size-text-s);
-  font-weight: 500;
-}
-
 .packageCta {
+  display: flex;
   margin-block-start: auto;
   padding-block-start: var(--space-layout-8);
+  flex-wrap: wrap;
+  gap: var(--space-layout-8);
 }
 
 .packageCta :global(a),
@@ -336,7 +325,7 @@
   min-inline-size: 2.75rem;
 }
 
-/* AaaS — borderless accordion (pricing-native, not Accordion component) */
+/* AI agents and automation: always open, same rhythm as the packages */
 
 .aaasSection {
   display: flex;
@@ -345,56 +334,11 @@
   margin-block-start: var(--space-layout-48);
 }
 
-.aaasTrigger {
+.aaasHeading {
   display: flex;
-  align-items: center;
-  inline-size: 100%;
-  padding: 0;
-  border: none;
-  background: transparent;
-  text-align: start;
-  cursor: pointer;
-  gap: var(--space-layout-24);
-}
-
-.aaasTrigger:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 4px;
-  border-radius: var(--radius-sm);
-}
-
-.aaasCaretWrap {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-}
-
-.aaasCaretIcon {
-  min-inline-size: 16px;
-  min-block-size: 16px;
-  transition: transform var(--duration-fast) var(--ease-out-cubic);
-}
-
-.aaasCaretOpen {
-  transform: rotate(90deg);
-}
-
-.aaasTriggerHeading {
-  display: inline-flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-layout-8);
-  min-inline-size: 0;
-}
-
-.aaasTriggerTitle {
-  font-family: var(--font-sans);
-  font-size: var(--font-size-title-s);
-  font-weight: 600;
-  line-height: var(--line-height-tight);
-  color: var(--color-text);
-  white-space: nowrap;
 }
 
 .newBadge {
@@ -402,26 +346,10 @@
   flex-shrink: 0;
 }
 
-.aaasPanel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-layout-24);
-}
-
-.aaasPanel[hidden] {
-  display: none;
-}
-
 .aaasSummary {
   margin: 0;
   max-inline-size: 52ch;
   color: var(--color-muted);
-}
-
-@media (width <= 767px) {
-  .aaasTriggerTitle {
-    white-space: normal;
-  }
 }
 
 /* Calculator — custom-engagement estimator leading the deliverables block,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-16T09:58:33.186Z",
+  "generatedAt": "2026-10-16T19:07:13.749Z",
   "summary": {
     "componentCount": 183,
     "statusCounts": {
@@ -70214,9 +70214,10 @@
             "values": [
               "image",
               "minimal",
-              "gradient"
+              "gradient",
+              "primary"
             ],
-            "description": "Background variant"
+            "description": "Background variant; primary fills the hero with the primary colour and sets inverse text"
           },
           "backgroundImage": {
             "optional": true,
@@ -70281,6 +70282,7 @@
             "type": "union",
             "values": [
               "image",
+              "primary",
               "minimal",
               "gradient"
             ],
@@ -75815,7 +75817,12 @@
               "audit",
               "liftoff",
               "aiops",
-              "partnership"
+              "partnership",
+              "workshop",
+              "designopsPilot",
+              "agentPilot",
+              "dsMcp",
+              "agentWorkforce"
             ],
             "description": "Which engagement page to render"
           },
@@ -75879,7 +75886,12 @@
               "audit",
               "liftoff",
               "aiops",
-              "partnership"
+              "partnership",
+              "workshop",
+              "designopsPilot",
+              "agentPilot",
+              "dsMcp",
+              "agentWorkforce"
             ],
             "description": "Which engagement to render."
           },

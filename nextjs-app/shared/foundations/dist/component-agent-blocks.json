@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T09:58:32.862Z",
+  "generatedAt": "2026-10-16T19:06:43.006Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -41857,6 +41857,7 @@
           "type": "union",
           "values": [
             "image",
+            "primary",
             "minimal",
             "gradient"
           ],
@@ -45616,7 +45617,12 @@
             "audit",
             "liftoff",
             "aiops",
-            "partnership"
+            "partnership",
+            "workshop",
+            "designopsPilot",
+            "agentPilot",
+            "dsMcp",
+            "agentWorkforce"
           ],
           "description": "Which engagement to render."
         },

@@ -45,9 +45,10 @@
             "values": [
                 "image",
                 "minimal",
-                "gradient"
+                "gradient",
+                "primary"
             ],
-            "description": "Background variant"
+            "description": "Background variant; primary fills the hero with the primary colour and sets inverse text"
         },
         "backgroundImage": {
             "optional": true,

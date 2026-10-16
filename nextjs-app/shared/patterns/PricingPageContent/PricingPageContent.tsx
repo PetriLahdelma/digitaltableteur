@@ -1,19 +1,17 @@
 "use client";
 
-import Image from "next/image";
-import { useId, useState } from "react";
 import { useTranslate } from "../../lib/translation";
 import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 import { cn } from "../../lib/cn";
-import { Button, Icon, Link, Text, Title } from "@digitaltableteur/react";
+import { Button, Icon, Text, Title } from "@digitaltableteur/react";
 import { PricingCalculator } from "../PricingCalculator";
 import { IconButton } from "../../components/IconButton";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
 import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
 import { ProcurementFaq } from "../ProcurementFaq";
+import { TextReveal } from "../../components/animations/TextReveal";
+import { FadeIn } from "../../components/animations/FadeIn";
 import styles from "./PricingPageContent.module.css";
-
-const PRICING_HERO_IMAGE = "/images/pricing/dsharp3-hero.png";
 
 type ComparisonRow = {
   usKey: string;
@@ -58,38 +56,48 @@ type PackageItem = {
   durationDefault: string;
   descriptionKey: string;
   descriptionDefault: string;
-  proofKey: string;
-  proofDefault: string;
   ctaKey: string;
   ctaDefault: string;
   contactPackageId: string;
   donnyTarget: string;
   /** Offer page for this package (/engagements/<slug>). */
-  detailsHref: string;
-  detailsKey: string;
-  detailsDefault: string;
+  detailsHref?: string;
+  /** Overrides the default booking link, e.g. a quote request. */
+  ctaHref?: string;
 };
 
 const PACKAGES: PackageItem[] = [
   {
+    titleKey: "pricingPackageWorkshopTitle",
+    titleDefault: "Design System Workshop",
+    priceKey: "pricingPackageWorkshopPrice",
+    priceDefault: "Quoted per workshop",
+    durationKey: "pricingPackageWorkshopDuration",
+    durationDefault: "2 days, with prep and analysis",
+    descriptionKey: "pricingPackageWorkshopDescription",
+    descriptionDefault:
+      "Prep work, two facilitated days and a written analysis. The price depends on group size, travel and remote or on-site delivery.",
+    ctaKey: "pricingPackageCtaWorkshop",
+    ctaDefault: "Ask for a workshop quote",
+    contactPackageId: "workshop",
+    ctaHref: "/contact?mode=message&package=workshop",
+    detailsHref: "/engagements/design-system-workshop",
+    donnyTarget: "pricing.package.workshop",
+  },
+  {
     titleKey: "pricingPackage3Title",
-    titleDefault: "UX Sprint",
+    titleDefault: "UX Sprint/DS Audit",
     priceKey: "pricingPackage3Price",
     priceDefault: "€7–14k",
     durationKey: "pricingPackage3Duration",
     durationDefault: "2 weeks",
     descriptionKey: "pricingPackage3Description",
     descriptionDefault:
-      "Prototype, eval plan and handoff your team can ship.",
-    proofKey: "pricingPackageProofUxSprint",
-    proofDefault:
-      "2-week prototype with eval plan; see the UX Sprint patterns in the work.",
+      "A working prototype of the key flow, an eval plan to test it with users and a handoff your team can ship.",
     ctaKey: "pricingPackageCtaUxSprint",
     ctaDefault: "Book UX Sprint",
     contactPackageId: "ux-sprint",
     detailsHref: "/engagements/design-system-audit",
-    detailsKey: "pricingPackageDetailsUxSprint",
-    detailsDefault: "Use it as a design system audit",
     donnyTarget: "pricing.package.uxSprint",
   },
   {
@@ -102,15 +110,10 @@ const PACKAGES: PackageItem[] = [
     descriptionKey: "pricingPackage2Description",
     descriptionDefault:
       "Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.",
-    proofKey: "pricingPackageProofAiReady",
-    proofDefault:
-      "Agent-ready tokens and governance — see AI DesignOps case studies.",
     ctaKey: "pricingPackageCtaAiReady",
     ctaDefault: "Book AI-Ready Ops",
     contactPackageId: "ai-ready-designops",
     detailsHref: "/engagements/ai-ready-ops",
-    detailsKey: "pricingPackageDetailsAiReady",
-    detailsDefault: "See the full scope",
     donnyTarget: "pricing.package.aiReadyDesignOps",
   },
   {
@@ -123,15 +126,10 @@ const PACKAGES: PackageItem[] = [
     descriptionKey: "pricingPackage1Description",
     descriptionDefault:
       "Audit, tokens, core components, Storybook and an adoption playbook.",
-    proofKey: "pricingPackageProofLiftOff",
-    proofDefault:
-      "Storybook + adoption playbook — see design system deliveries.",
     ctaKey: "pricingPackageCtaLiftOff",
     ctaDefault: "Book Design System Lift-Off",
     contactPackageId: "design-system-lift-off",
     detailsHref: "/engagements/design-system-lift-off",
-    detailsKey: "pricingPackageDetailsLiftOff",
-    detailsDefault: "See the full scope",
     donnyTarget: "pricing.package.designSystemLiftOff",
   },
 ];
@@ -148,9 +146,26 @@ type AaasPackageItem = {
   ctaKey: string;
   ctaDefault: string;
   contactPackageId: string;
+  /** Offer page for this package (/engagements/<slug>). */
+  detailsHref?: string;
 };
 
 const AAAS_PACKAGES: AaasPackageItem[] = [
+  {
+    titleKey: "pricingAaasCopilotTitle",
+    titleDefault: "DesignOps Pilot",
+    priceKey: "pricingAaasCopilotPrice",
+    priceDefault: "€5–8k / mo",
+    durationKey: "pricingAaasCopilotDuration",
+    durationDefault: "Ongoing",
+    descriptionKey: "pricingAaasCopilotDescription",
+    descriptionDefault:
+      "A supervised agent that triages components, keeps tokens honest and drafts release notes your team approves.",
+    ctaKey: "pricingAaasCopilotCta",
+    ctaDefault: "Book DesignOps Pilot",
+    contactPackageId: "designops-copilot",
+    detailsHref: "/engagements/designops-pilot",
+  },
   {
     titleKey: "pricingAaasAgentPilotTitle",
     titleDefault: "Agent Pilot",
@@ -164,6 +179,22 @@ const AAAS_PACKAGES: AaasPackageItem[] = [
     ctaKey: "pricingAaasAgentPilotCta",
     ctaDefault: "Book Agent Pilot",
     contactPackageId: "agent-pilot",
+    detailsHref: "/engagements/agent-pilot",
+  },
+  {
+    titleKey: "pricingAaasDsMcpTitle",
+    titleDefault: "Design System MCP",
+    priceKey: "pricingAaasDsMcpPrice",
+    priceDefault: "€12–18k",
+    durationKey: "pricingAaasDsMcpDuration",
+    durationDefault: "4 weeks",
+    descriptionKey: "pricingAaasDsMcpDescription",
+    descriptionDefault:
+      "Component contracts, an MCP server and an eval benchmark, so coding agents build with your design system instead of around it.",
+    ctaKey: "pricingAaasDsMcpCta",
+    ctaDefault: "Book Design System MCP",
+    contactPackageId: "design-system-mcp",
+    detailsHref: "/engagements/design-system-mcp",
   },
   {
     titleKey: "pricingAaasAgentWorkforceTitle",
@@ -178,20 +209,7 @@ const AAAS_PACKAGES: AaasPackageItem[] = [
     ctaKey: "pricingAaasAgentWorkforceCta",
     ctaDefault: "Book Agent Workforce",
     contactPackageId: "agent-workforce",
-  },
-  {
-    titleKey: "pricingAaasCopilotTitle",
-    titleDefault: "DesignOps Pilot",
-    priceKey: "pricingAaasCopilotPrice",
-    priceDefault: "€5–8k / mo",
-    durationKey: "pricingAaasCopilotDuration",
-    durationDefault: "Ongoing",
-    descriptionKey: "pricingAaasCopilotDescription",
-    descriptionDefault:
-      "A supervised agent that triages components, keeps tokens honest and drafts release notes your team approves.",
-    ctaKey: "pricingAaasCopilotCta",
-    ctaDefault: "Book DesignOps Pilot",
-    contactPackageId: "designops-copilot",
+    detailsHref: "/engagements/agent-workforce",
   },
 ];
 
@@ -307,7 +325,7 @@ function PackageCard({
   donnyTarget?: string;
 }) {
   const t = useTranslate();
-  const hasProof = "proofKey" in pkg;
+  const title = t(pkg.titleKey, pkg.titleDefault);
 
   return (
     <li
@@ -319,7 +337,7 @@ function PackageCard({
     >
       <div className={styles.packageHeader}>
         <Title level={3} size="s">
-          {t(pkg.titleKey, pkg.titleDefault)}
+          {title}
         </Title>
         <Text as="p" size="m" className={styles.packagePrice}>
           {t(pkg.priceKey, pkg.priceDefault)}
@@ -331,19 +349,18 @@ function PackageCard({
       <Text as="p" size="m" className={styles.packageDescription}>
         {t(pkg.descriptionKey, pkg.descriptionDefault)}
       </Text>
-      {hasProof ? (
-        <Text as="p" size="s" className={styles.packageProof}>
-          {t(pkg.proofKey, pkg.proofDefault)}
-        </Text>
-      ) : null}
-      {"detailsHref" in pkg ? (
-        <Link href={pkg.detailsHref} className={styles.packageDetails}>
-          {t(pkg.detailsKey, pkg.detailsDefault)}
-        </Link>
-      ) : null}
       <div className={styles.packageCta}>
+        {"detailsHref" in pkg && pkg.detailsHref ? (
+          <Button href={pkg.detailsHref} variant="secondary" size="md">
+            {t("pricingPackageReadMore", "Read more")}
+            <VisuallyHidden>: {title}</VisuallyHidden>
+          </Button>
+        ) : null}
         <Button
-          href={packageContactHref(pkg.contactPackageId)}
+          href={
+            ("ctaHref" in pkg && pkg.ctaHref) ||
+            packageContactHref(pkg.contactPackageId)
+          }
           variant="primary"
           size="md"
         >
@@ -364,22 +381,11 @@ export interface PricingPageContentProps {
  */
 export function PricingPageContent({ className }: PricingPageContentProps) {
   const t = useTranslate();
-  const aaasPanelId = useId();
-  const aaasHeadingId = useId();
-  const [aaasOpen, setAaasOpen] = useState(false);
   const { copiedKey: copiedField, copy: copyField } = useCopyToClipboard();
 
   return (
     <div className={cn(styles.page, className)}>
       <section className={styles.heroBleed} aria-labelledby="pricing-hero-title">
-        <Image
-          src={PRICING_HERO_IMAGE}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className={styles.heroBleedImage}
-        />
         <div className={styles.heroBleedOverlay} aria-hidden="true" />
         <div className={styles.heroBleedContent}>
           <Title
@@ -389,8 +395,15 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
             className={styles.heroTitle}
             id="pricing-hero-title"
           >
-            {t("pricingHeroTitle", "Transparent price tags.")}
+            <TextReveal as="span" type="words" animation="fade" duration={0.8} stagger={0.06}>
+              {t("pricingHeroTitle", "Transparent price tags.")}
+            </TextReveal>
           </Title>
+          <FadeIn direction="up" delay={0.5} distance={30}>
+            <Text size="l" className={styles.heroSubtitle}>
+              {t("pricingHeroSubtitle")}
+            </Text>
+          </FadeIn>
         </div>
       </section>
 
@@ -493,54 +506,34 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
           </div>
 
           <div className={styles.aaasSection} data-donny-target="pricing.aaas">
-            <button
-              type="button"
-              className={styles.aaasTrigger}
-              aria-expanded={aaasOpen}
-              aria-controls={aaasPanelId}
-              onClick={() => setAaasOpen((open) => !open)}
-            >
-              <span className={styles.aaasCaretWrap} aria-hidden>
-                <Icon
-                  name="caret-right"
-                  size="md"
-                  weight="bold"
-                  decorative
-                  className={cn(
-                    styles.aaasCaretIcon,
-                    aaasOpen && styles.aaasCaretOpen,
-                  )}
-                />
+            <div className={styles.aaasHeading}>
+              <Title
+                level={3}
+                size="s"
+                lineHeight="tight"
+                className={styles.packagesHeading}
+                id="pricing-aaas-title"
+              >
+                {t("pricingAaasTitle", "AI agents and automation")}
+              </Title>
+              <span className={styles.newBadge} aria-hidden="true">
+                {t("contactInquiryBookTabNew", "NEW!")}
               </span>
-              <span className={styles.aaasTriggerHeading}>
-                <span id={aaasHeadingId} className={styles.aaasTriggerTitle}>
-                  {t("pricingAaasTitle", "AI agents and automation")}
-                </span>
-                <span className={styles.newBadge} aria-hidden="true">
-                  {t("contactInquiryBookTabNew", "NEW!")}
-                </span>
-              </span>
-            </button>
-
-            <div
-              id={aaasPanelId}
-              className={styles.aaasPanel}
-              role="region"
-              aria-labelledby={aaasHeadingId}
-              hidden={!aaasOpen}
-            >
-              <Text as="p" size="m" className={styles.aaasSummary}>
-                {t(
-                  "pricingAaasSummary",
-                  "Autonomous DesignOps packages. Agents that do the work, supervised by your team.",
-                )}
-              </Text>
-              <ul className={styles.packageList}>
-                {AAAS_PACKAGES.map((pkg) => (
-                  <PackageCard key={pkg.titleKey} pkg={pkg} />
-                ))}
-              </ul>
             </div>
+            <Text as="p" size="m" className={styles.aaasSummary}>
+              {t(
+                "pricingAaasSummary",
+                "Autonomous DesignOps packages. Agents that do the work, supervised by your team.",
+              )}
+            </Text>
+            <ul
+              className={styles.packageList}
+              aria-labelledby="pricing-aaas-title"
+            >
+              {AAAS_PACKAGES.map((pkg) => (
+                <PackageCard key={pkg.titleKey} pkg={pkg} />
+              ))}
+            </ul>
           </div>
 
           <div className={styles.ctaRow}>

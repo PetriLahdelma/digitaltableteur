@@ -64,7 +64,12 @@
         "audit",
         "liftoff",
         "aiops",
-        "partnership"
+        "partnership",
+        "workshop",
+        "designopsPilot",
+        "agentPilot",
+        "dsMcp",
+        "agentWorkforce"
       ],
       "description": "Which engagement page to render"
     },

@@ -211,8 +211,14 @@
   gap: var(--space-internal-12);
 }
 
-.deliverable > svg {
+/* The icon sits in a box one text line tall (Text M at line-height 1.6),
+   so it centres on the first line and stays there when an item wraps. */
+
+.deliverable > [data-icon-name] {
+  display: inline-flex;
+  block-size: calc(var(--font-size-text-m) * 1.6);
   flex: 0 0 auto;
+  align-items: center;
 }
 
 /* Investment */

@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1879,
+  "warningCount": 1867,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -2812,11 +2812,11 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 305,
+      "line": 307,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \":global(.themeHCB) input.checkbox:checked::after\" to come before selector \".checkboxContainer input.checkbox:disabled:checked::after\", at line 294 (no-descending-specificity)",
+      "text": "Expected selector \":global(.themeHCB) input.checkbox:checked::after\" to come before selector \".checkboxContainer input.checkbox:disabled:checked::after\", at line 296 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) input.checkbox:checked::after\" to come before selector \".checkboxContainer input.checkbox:disabled:checked::after\" (no-descending-specificity)::1"
     },
     {
@@ -2830,7 +2830,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 67,
+      "line": 69,
       "column": 46,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2839,7 +2839,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 102,
+      "line": 104,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2848,7 +2848,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 116,
+      "line": 118,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -2857,7 +2857,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 32,
+      "line": 34,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2866,7 +2866,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 33,
+      "line": 35,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2875,7 +2875,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 42,
+      "line": 44,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2884,7 +2884,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 43,
+      "line": 45,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2893,7 +2893,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 227,
+      "line": 229,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2902,7 +2902,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 249,
+      "line": 251,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2911,7 +2911,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 135,
+      "line": 137,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2920,7 +2920,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 157,
+      "line": 159,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2929,7 +2929,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 180,
+      "line": 182,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2938,7 +2938,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 206,
+      "line": 208,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -2947,7 +2947,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 274,
+      "line": 276,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -2956,7 +2956,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 294,
+      "line": 296,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -2965,7 +2965,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 305,
+      "line": 307,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -2974,7 +2974,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 295,
+      "line": 297,
       "column": 1,
       "rule": "selector-max-specificity",
       "severity": "warning",
@@ -2983,7 +2983,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 300,
+      "line": 302,
       "column": 1,
       "rule": "selector-max-specificity",
       "severity": "warning",
@@ -2992,7 +2992,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 294,
+      "line": 296,
       "column": 1,
       "rule": "selector-max-specificity",
       "severity": "warning",
@@ -3001,7 +3001,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 279,
+      "line": 281,
       "column": 1,
       "rule": "selector-max-specificity",
       "severity": "warning",
@@ -3010,7 +3010,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 299,
+      "line": 301,
       "column": 1,
       "rule": "selector-max-specificity",
       "severity": "warning",
@@ -3019,7 +3019,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
-      "line": 280,
+      "line": 282,
       "column": 1,
       "rule": "selector-max-specificity",
       "severity": "warning",
@@ -5062,7 +5062,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
-      "line": 68,
+      "line": 111,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -5071,7 +5071,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
-      "line": 130,
+      "line": 173,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -5080,7 +5080,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
-      "line": 175,
+      "line": 222,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -5089,7 +5089,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
-      "line": 67,
+      "line": 110,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -5413,7 +5413,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 164,
+      "line": 188,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -5422,7 +5422,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 63,
+      "line": 78,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12685,7 +12685,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 60,
+      "line": 66,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
@@ -12703,7 +12703,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 55,
+      "line": 61,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12712,7 +12712,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 67,
+      "line": 73,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12721,7 +12721,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 56,
+      "line": 62,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12748,7 +12748,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 64,
+      "line": 70,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12784,7 +12784,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 63,
+      "line": 69,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -13954,7 +13954,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 151,
+      "line": 149,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13963,7 +13963,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 166,
+      "line": 164,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13972,7 +13972,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 175,
+      "line": 173,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13981,30 +13981,12 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 43,
+      "line": 158,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
       "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 160,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::2"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 357,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border-radius\" to come before \"outline-offset\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"border-radius\" to come before \"outline-offset\" (order/properties-order)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
@@ -14017,25 +13999,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 319,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"font-size\" to come before \"color\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"font-size\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 351,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"gap\" to come before \"cursor\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"gap\" to come before \"cursor\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 144,
+      "line": 142,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14044,7 +14008,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 267,
+      "line": 265,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14062,7 +14026,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 109,
+      "line": 107,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14071,16 +14035,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 345,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"inline-size\" to come before \"align-items\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"inline-size\" to come before \"align-items\" (order/properties-order)::3"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 159,
+      "line": 157,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14089,7 +14044,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 158,
+      "line": 156,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14098,16 +14053,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 364,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"justify-content\" to come before \"align-items\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"justify-content\" to come before \"align-items\" (order/properties-order)::2"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 254,
+      "line": 252,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14116,7 +14062,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 339,
+      "line": 334,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14125,7 +14071,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 65,
+      "line": 55,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14143,7 +14089,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 140,
+      "line": 138,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14152,7 +14098,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 102,
+      "line": 94,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14170,25 +14116,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 369,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-block-size\" to come before \"min-inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"min-block-size\" to come before \"min-inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 382,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-inline-size\" to come before \"gap\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"min-inline-size\" to come before \"gap\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 235,
+      "line": 233,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14197,7 +14125,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 188,
+      "line": 186,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14206,7 +14134,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 68,
+      "line": 58,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14215,7 +14143,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 103,
+      "line": 95,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14233,7 +14161,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 203,
+      "line": 201,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14242,7 +14170,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 280,
+      "line": 278,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14251,16 +14179,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 346,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"padding\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 221,
+      "line": 219,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14269,25 +14188,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 391,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"white-space\" to come before \"color\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::order/properties-order::Expected \"white-space\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 356,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"4px\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"4px\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 159,
+      "line": 157,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14296,7 +14197,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 160,
+      "line": 158,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14305,7 +14206,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 329,
+      "line": 324,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14314,21 +14215,12 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 330,
+      "line": 325,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 40px or 48px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 40px or 48px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 64,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#041b23\" of \"color\" (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#041b23\" of \"color\" (scale-unlimited/declaration-strict-value)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css",

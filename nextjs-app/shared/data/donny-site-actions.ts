@@ -23,6 +23,7 @@ export type DonnyTargetId =
   | "home.contactCta"
   | "pricing.comparison"
   | "pricing.packages"
+  | "pricing.package.workshop"
   | "pricing.package.uxSprint"
   | "pricing.package.aiReadyDesignOps"
   | "pricing.package.designSystemLiftOff"
@@ -162,6 +163,17 @@ export const DONNY_SITE_TARGETS: DonnyTarget[] = [
     allowedModes: SECTION_MODES,
     intent: ["pricing"],
     fallbackTargetId: "pricing.comparison",
+  }),
+  target({
+    id: "pricing.package.workshop",
+    route: "/pricing",
+    label: "Design System Workshop package",
+    summary:
+      "Two facilitated days with prep interviews before and a written analysis after. Quoted per workshop: the price depends on participants, remote or on-site delivery and travel.",
+    allowedModes: CARD_MODES,
+    intent: ["pricing", "services"],
+    packageId: "workshop",
+    fallbackTargetId: "pricing.packages",
   }),
   target({
     id: "pricing.package.uxSprint",

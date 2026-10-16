@@ -19,7 +19,17 @@ const meta = {
   argTypes: {
     engagementId: {
       control: { type: "select" },
-      options: ["audit", "liftoff", "aiops", "partnership"],
+      options: [
+        "audit",
+        "liftoff",
+        "aiops",
+        "partnership",
+        "workshop",
+        "designopsPilot",
+        "agentPilot",
+        "dsMcp",
+        "agentWorkforce",
+      ],
       description: "Which engagement page to render",
       table: { category: "Content", defaultValue: { summary: "audit" } },
     },

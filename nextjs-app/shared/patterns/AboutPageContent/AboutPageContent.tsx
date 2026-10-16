@@ -237,7 +237,7 @@ export function AboutPageContent({
       <AboutHero
         title={t("aboutHeroTitle")}
         subtitle={t("aboutHeroSubtitle")}
-        background="gradient"
+        background="primary"
         showScrollIndicator
       />
 

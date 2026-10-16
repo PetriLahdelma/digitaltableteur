@@ -181,6 +181,7 @@
   "contactNewBusinessImageAlt": "Petri Lahdelman muotokuva",
   "contactPullQuote": "DT auttaa kunnianhimoisia tiimejä muuttamaan tekemisensä selkeiksi, vakuuttaviksi tuotteiksi. Tuo visiosi, ja muovaamme sen yhdessä näkyväksi maailmassa.",
   "pricingHeroTitle": "Läpinäkyvä hinnoittelu.",
+  "pricingHeroSubtitle": "Paketoidut toimeksiannot, joissa laajuus, kesto ja tuotokset kerrotaan etukäteen",
   "pricingHeroImageAlt": "Design system -komponenttikirjaston esikatselu",
   "pricingComparisonUsTitle": "Digitaltableteur",
   "pricingComparisonThemTitle": "Laaja toimitustiimi",
@@ -204,10 +205,16 @@
   "pricingPackage2Price": "11–17k €",
   "pricingPackage2Duration": "3 viikkoa",
   "pricingPackage2Description": "Design-työnkulut, komponenttihallinta, AI-työkalukytkennät ja DesignOps-käyttöönoton pelikirja tiimillesi.",
-  "pricingPackage3Title": "UX Sprint",
+  "pricingPackage3Title": "UX Sprint/DS Audit",
   "pricingPackage3Price": "7–14k €",
+  "pricingPackageReadMore": "Lue lisää",
+  "pricingPackageCtaWorkshop": "Pyydä työpajatarjous",
+  "pricingPackageWorkshopDescription": "Esivalmistelu, kaksi fasilitoitua päivää ja kirjallinen analyysi. Hintaan vaikuttavat ryhmän koko, matkat sekä etä- tai lähitoteutus.",
+  "pricingPackageWorkshopDuration": "2 päivää, valmistelu ja analyysi mukaan lukien",
+  "pricingPackageWorkshopPrice": "Hinta työpajakohtaisesti",
+  "pricingPackageWorkshopTitle": "Design system -työpaja",
   "pricingPackage3Duration": "2 viikkoa",
-  "pricingPackage3Description": "Prototyyppi, arviointisuunnitelma ja luovutus, jonka tiimisi voi viedä tuotantoon.",
+  "pricingPackage3Description": "Toimiva prototyyppi keskeisestä polusta, arviointisuunnitelma sen testaamiseen käyttäjillä ja luovutus, jonka tiimisi voi viedä tuotantoon.",
   "pricingGalleryAlt1": "Design systemin komponenttikonseptikortit",
   "pricingGalleryAlt2": "Komentopaletti-käyttöliittymä",
   "pricingGalleryAlt3": "Brändikampanjan visuaali",
@@ -218,9 +225,6 @@
   "pricingPackageCtaUxSprint": "Varaa UX-sprintti",
   "pricingPackageCtaAiReady": "Varaa AI-Ready Ops",
   "pricingPackageCtaLiftOff": "Varaa Design System Lift-Off",
-  "pricingPackageProofUxSprint": "2 viikon prototyyppi ja arviointisuunnitelma; katso UX-sprinttien työt.",
-  "pricingPackageProofAiReady": "Agenttivalmiit tokenit ja hallinta. Katso AI DesignOps -caset.",
-  "pricingPackageProofLiftOff": "Storybook ja käyttöönoton playbook. Katso design system -toimitukset.",
   "pricingAaasTitle": "Tekoälyagentit ja automaatio",
   "pricingAaasToggleExpand": "Laajenna: tekoälyagentit ja automaatio",
   "pricingAaasToggleCollapse": "Pienennä: tekoälyagentit ja automaatio",
@@ -230,6 +234,11 @@
   "pricingAaasAgentPilotDuration": "3 viikkoa",
   "pricingAaasAgentPilotDescription": "Rajaa yksi työnkulku, toimita toimiva agentti suojauksilla, evaluoinneilla ja luovutuksella, jonka tiimisi voi ajaa.",
   "pricingAaasAgentPilotCta": "Varaa Agent Pilot",
+  "pricingAaasDsMcpTitle": "Design System MCP",
+  "pricingAaasDsMcpPrice": "€12–18k",
+  "pricingAaasDsMcpDuration": "4 viikkoa",
+  "pricingAaasDsMcpDescription": "Komponenttisopimukset, MCP-palvelin ja evaluointivertailu, jotta koodausagentit rakentavat design-systeemisi avulla eivätkä sen ohi.",
+  "pricingAaasDsMcpCta": "Varaa Design System MCP",
   "pricingAaasAgentWorkforceTitle": "Agent Workforce",
   "pricingAaasAgentWorkforcePrice": "€20–32k",
   "pricingAaasAgentWorkforceDuration": "6 viikkoa",
@@ -534,7 +543,7 @@
   "aboutBringToolsTitle": "Työkaluja, ei vain neuvoja",
   "aboutBringToolsDescription": "Työkalut tiimisi tueksi: Rhythmguard, Project Spine ja koneluettavat komponenttisopimukset, joita agentit ja CI voivat tarkistaa.",
   "aboutBringAccessibilityTitle": "Saavutettavuus todennettuna",
-  "aboutBringAccessibilityDescription": "Automaattiset tarkistukset kattavat jokaisen komponentin, myös pakotetut värit ja kohteiden koon, joten saavutettavuus osoitetaan eikä vain luvata.",
+  "aboutBringAccessibilityDescription": "Jokainen komponentti tarkistetaan automaattisesti, myös pakotetut värit ja kohdekoko: saavutettavuus osoitetaan, ei luvata.",
   "aboutBringBrandToCodeTitle": "Yksi tiimi brändistä koodiin",
   "aboutBringBrandToCodeDescription": "Identiteetti, tuotesuunnittelu ja toteutus samoissa käsissä, joten mitään ei katoa konseptin ja julkaistun käyttöliittymän välillä.",
   "aboutDesignSubtitle": "Mitä teemme",
@@ -1758,6 +1767,323 @@
       ],
       "bookTitle": "Suunnitellaan kumppanuus 30 minuutin puhelulla",
       "bookBody": "Käydään läpi kesto, viikkorytmi ja se, mistä kumppanuus vastaa. Kalenterikutsu tulee sähköpostilla."
+    },
+    "workshop": {
+      "metaTitle": "Design system -työpaja | Digitaltableteur",
+      "metaDescription": "Kaksi fasilitoitua päivää design-systeemin parissa, esivalmistelu ennen ja kirjallinen analyysi jälkeen. Hinta työpajakohtaisesti ryhmän koon, matkojen ja toteutustavan mukaan.",
+      "eyebrow": "Design system -työpaja",
+      "package": "Design system -työpaja",
+      "title": "Tiimi samalle linjalle design-systeemistä kahdessa päivässä",
+      "lead": "Suunnittelijat, kehittäjät ja tuoteomistajat kuvaavat saman systeemin eri tavoin. Päätökset jumittuvat, koska kukaan ei omista niitä. Työpaja alkaa esivalmistelulla, käy vaikeat kysymykset läpi kahtena fasilitoituna päivänä ja päättyy kirjalliseen analyysiin, jonka pohjalta tiimi voi toimia.",
+      "cta1": "Pyydä tarjous työpajasta",
+      "cta2": "Varaa 30 minuutin puhelu",
+      "signalsTitle": "Työpaja sopii, kun tiimi tarvitsee yhteisen kuvan",
+      "signals": [
+        "Design ja kehitys kuvaavat systeemiä eri käsittein",
+        "Edessä on uudelleenrakennus, siirtymä tai uusi brändi, eikä suunnitelma ole selvä",
+        "Komponenttien ja tokenien omistajuudesta ei ole päätetty",
+        "Aiemmat hankkeet alkoivat vauhdikkaasti ja hiipuivat"
+      ],
+      "scopeTitle": "Mitä työpaja kattaa",
+      "scope": "Esivalmistelu kartoittaa nykytilan lyhyillä haastatteluilla ja käymällä läpi käytössä olevat komponentit, tokenit ja dokumentaation. Kahtena päivänä käydään läpi prioriteetit, omistajuus ja seuraavat askeleet niiden ihmisten kanssa, jotka tekevät päätökset. Jälkikäteen laadittava analyysi kirjaa, mistä sovittiin ja mikä on yhä auki.",
+      "limitsTitle": "Ei sisälly, ellei erikseen sovita",
+      "limits": [
+        "Komponenttien rakentaminen tai uudelleenrakentaminen",
+        "Design-systeemin kattava auditointi",
+        "Jatkuva fasilitointi analyysin jälkeen"
+      ],
+      "stepsTitle": "Näin työpaja etenee",
+      "steps": [
+        "Haastattele avainhenkilöt ja käy nykytila läpi ennen ensimmäistä päivää.",
+        "Ensimmäinen päivä: kartoita systeemi, sen käyttäjät ja kohdat, joissa se ei palvele heitä.",
+        "Toinen päivä: sovi prioriteeteista, omistajuudesta ja seuraavien askelten järjestyksestä.",
+        "Toimita kirjallinen analyysi havaintoineen ja suunnitelma seuraavista askelista."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "Yhteenvedon esivalmistelun haastatteluista ja nykytilan katselmoinnista",
+        "Työpajan tuotokset koottuina ja siistittyinä",
+        "Kirjallisen analyysin havainnoista ja avoimista kysymyksistä",
+        "Priorisoidun suunnitelman seuraavista askelista"
+      ],
+      "investMeta": "2 päivää, valmistelu ja analyysi mukaan lukien",
+      "investNote": "Hinta työpajakohtaisesti. Hintaan vaikuttavat ryhmän koko, matkat ja se, toteutetaanko työpaja etänä vai paikan päällä.",
+      "investLink": "Pyydä tarjous",
+      "faqTitle": "Työpajasta",
+      "faq": [
+        {
+          "question": "Kenen kannattaa osallistua?",
+          "answer": "Niiden, jotka päättävät, miten systeemi rakennetaan ja miten sitä käytetään: designin, kehityksen ja tuotteen vetäjien. Ryhmän koko vaikuttaa toteutustapaan ja tarjoukseen."
+        },
+        {
+          "question": "Voiko työpajan pitää etänä?",
+          "answer": "Kyllä. Sekä etä- että lähitoteutus on mahdollinen. Lähitoteutuksessa tarjoukseen lisätään matkat."
+        },
+        {
+          "question": "Mitä kahden päivän jälkeen tapahtuu?",
+          "answer": "Saat kirjallisen analyysin ja suunnitelman seuraavista askelista. Jatko on vapaaehtoinen: suunnitelma voi pohjustaa UX Sprintin, Lift-Offin tai tiimisi itse vetämän työn."
+        },
+        {
+          "question": "Kuinka paljon valmistelua tiimiltä vaaditaan?",
+          "answer": "Muutama lyhyt haastattelu ja pääsy nykyisiin komponentteihin, tokeneihin ja dokumentaatioon. Esivalmistelu hoitaa loput."
+        }
+      ],
+      "bookTitle": "Pyydä tarjous tiimillesi",
+      "bookBody": "Kerro tiimistä, toivotusta toteutustavasta ja siitä, mihin työpajan pitäisi vastata. Vastaus kattaa toteutustavan, ajankohdat ja tarjouksen."
+    },
+    "designopsPilot": {
+      "metaTitle": "DesignOps Pilot | Digitaltableteur",
+      "metaDescription": "Valvottu agentti, joka lajittelee ja priorisoi komponentteja, pitää tokenit kurissa ja luonnostelee julkaisutiedotteet tiimisi hyväksyttäviksi. Jatkuva palvelu, laskutus kuukausittain.",
+      "eyebrow": "DesignOps Pilot",
+      "package": "DesignOps Pilot",
+      "title": "Siirrä design-systeemin rutiiniylläpito valvotulle agentille",
+      "lead": "Komponenttipyynnöt kasautuvat. Tokenien arvot erkanevat design-tiedostojen ja koodin välillä. Julkaisutiedotteet kirjoitetaan viimeisenä, jos ollenkaan. DesignOps Pilot ajaa valvottua agenttia, joka lajittelee ja priorisoi komponentteja, pitää tokenit kurissa ja luonnostelee julkaisutiedotteet. Tiimisi hyväksyy jokaisen muutoksen.",
+      "cta1": "Varaa DesignOps Pilot",
+      "cta2": "Lähetä kysymys",
+      "signalsTitle": "Sopii, kun ylläpito syrjäyttää design-systeemin kehittämisen",
+      "signals": [
+        "Komponenttipyynnöt odottavat lajittelua viikkoja",
+        "Tokenien arvot erkanevat design-tiedostojen ja koodin välillä",
+        "Julkaisutiedotteet kirjoitetaan myöhässä tai ei ollenkaan",
+        "Ydintiimi käyttää enemmän aikaa ylläpitoon kuin parannuksiin"
+      ],
+      "scopeTitle": "Mitä DesignOps Pilot kattaa",
+      "scope": "Agentti toimii nykyisissä repositorioissasi ja työkaluissasi. Se lajittelee saapuvat komponenttipyynnöt ja tiketit, nostaa esiin tokenien poikkeamat designin ja koodin välillä ja luonnostelee julkaisutiedotteet yhdistetyistä muutoksista. Jokainen tuotos menee tiimisi hyväksyttäväksi ennen kuin mitään julkaistaan.",
+      "limitsTitle": "Ei sisälly",
+      "limits": [
+        "Ilman ihmisen hyväksyntää yhdistetyt muutokset",
+        "Uusien komponenttien rakentaminen alusta",
+        "Design-systeemitiimin korvaaminen"
+      ],
+      "stepsTitle": "Näin DesignOps Pilot etenee",
+      "steps": [
+        "Kytke agentti laajuuteen kuuluviin repositorioihin, tikettijärjestelmiin ja design-tiedostoihin.",
+        "Sovi, mitä agentti saa luonnostella ja mikä vaatii aina hyväksynnän.",
+        "Aja lajittelu, poikkeamatarkistukset ja julkaisutiedotteiden luonnokset säännöllisessä rytmissä.",
+        "Käy tulokset läpi kuukausittain ja säädä laajuutta, sääntöjä ja suojakaiteita."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "Määritetyn agentin, joka toimii työkaluissasi",
+        "Saapuvien komponenttipyyntöjen ja tikettien lajittelun",
+        "Raportit tokenien poikkeamista designin ja koodin välillä",
+        "Hyväksyntävalmiit julkaisutiedotteiden luonnokset",
+        "Kuukausittaisen katsauksen tuloksiin ja suojakaiteisiin"
+      ],
+      "investMeta": "Jatkuva, laskutus kuukausittain",
+      "investNote": "Kuukausihinta riippuu siitä, kuinka monta repositoriota, design-tiedostoa ja tiimiä agentti kattaa.",
+      "investLink": "Kysy laajuudesta",
+      "faqTitle": "DesignOps Pilotista",
+      "faq": [
+        {
+          "question": "Voiko agentti muuttaa tuotantoa?",
+          "answer": "Ei. Agentti luonnostelee ja raportoi. Tiimisi hyväksyy jokaisen muutoksen ennen julkaisua."
+        },
+        {
+          "question": "Minkä työkalujen kanssa se toimii?",
+          "answer": "Niiden repositorioiden, tikettijärjestelmien ja design-tiedostojen, joita tiimisi jo käyttää. Palveluntarjoajien valinta riippuu teknologiapinostasi ja käytännöistäsi. Tekoälyn käyttöperiaatteet kertovat, miten tekoälyä käytetään asiakastyössä."
+        },
+        {
+          "question": "Kuinka pitkä sitoumus on?",
+          "answer": "Palvelu jatkuu kuukausittaisena toimeksiantona. Irtisanomisajasta sovitaan sopimuksessa."
+        },
+        {
+          "question": "Miten onnistumista mitataan?",
+          "answer": "Lajitteluaika, ennen julkaisua havaitut poikkeamat ja ilman uudelleentyötä hyväksyttyjen luonnosten osuus käydään läpi joka kuukausi."
+        }
+      ],
+      "bookTitle": "Aloita 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi, missä ylläpito hidastaa tiimiä. Kalenterikutsu tulee sähköpostilla."
+    },
+    "agentPilot": {
+      "metaTitle": "Agent Pilot | Digitaltableteur",
+      "metaDescription": "Rajaa yksi työnkulku ja toimita toimiva agentti suojakaiteilla, evaluoinneilla ja luovutuksella, jonka tiimisi voi ajaa, kolmessa viikossa.",
+      "eyebrow": "Agent Pilot",
+      "package": "Agent Pilot",
+      "title": "Yksi toimiva agentti suojakaiteineen kolmessa viikossa",
+      "lead": "Tekoälykokeilut pääsevät harvoin demovaihetta pidemmälle, kun kukaan ei ole rajannut työnkulkua, suojakaiteita tai sitä, kuka agenttia ajaa jatkossa. Agent Pilot valitsee yhden työnkulun, toimittaa toimivan agentin suojakaiteineen ja evaluointeineen ja luovuttaa sen tiimille, joka pystyy ajamaan sitä.",
+      "cta1": "Varaa Agent Pilot",
+      "cta2": "Lähetä kysymys",
+      "signalsTitle": "Sopii, kun tekoälyideat jumittuvat ennen tuotantoa",
+      "signals": [
+        "Useita agentti-ideoita, mutta yksikään ei ole tuotannossa",
+        "Epäselvää, mikä työnkulku on turvallista automatisoida ensin",
+        "Ei keinoa arvioida, onko agentin tuotos riittävän hyvä",
+        "Huoli agenteista, jotka toimivat ilman valvontaa"
+      ],
+      "scopeTitle": "Mitä Agent Pilot kattaa",
+      "scope": "Yhden työnkulun, joka valitaan sieltä, missä toistuva työ maksaa tiimille eniten. Pilotti määrittelee agentin sallitut toimet ja rakentaa agentin suojakaiteineen. Lisäksi se ottaa käyttöön tuotoksen laatua mittaavat evaluoinnit ja dokumentoi, miten tiimisi ajaa ja kehittää agenttia.",
+      "limitsTitle": "Ei sisälly",
+      "limits": [
+        "Useampi kuin yksi työnkulku samassa pilotissa",
+        "Agentit toimimassa tuotannossa ilman katselmointia",
+        "Omien mallien koulutus tai hienosäätö"
+      ],
+      "stepsTitle": "Näin Agent Pilot etenee",
+      "steps": [
+        "Valitse yksi työnkulku ja määrittele, millainen on hyvä tuotos.",
+        "Aseta suojakaiteet: mitä agentti saa lukea, luonnostella ja muuttaa.",
+        "Rakenna agentti ja evaluoinnit, jotka mittaavat sen tuotosta.",
+        "Luovuta runbookin kanssa ja käy evaluointien tulokset läpi."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "Toimivan agentin yhdelle työnkululle",
+        "Kirjatut ja valvotut suojakaiteet",
+        "Evaluoinnit, jotka mittaavat tuotoksen laatua",
+        "Luovutuksen ja runbookin, jota tiimisi voi ajaa"
+      ],
+      "investMeta": "3 viikkoa, kiinteä laajuus",
+      "investNote": "Lopullinen laajuus riippuu työnkulusta, agenttiin kytkettävistä järjestelmistä ja agentin katselmointiprosessista.",
+      "investLink": "Arvioi räätälöity toimeksianto",
+      "faqTitle": "Agent Pilotista",
+      "faq": [
+        {
+          "question": "Mikä työnkulku kannattaa ottaa ensin?",
+          "answer": "Sellainen, jossa on selkeät syötteet, toistuvat vaiheet ja ihminen, joka osaa arvioida tuotoksen, esimerkiksi tikettien lajittelu tai dokumentaatioluonnokset."
+        },
+        {
+          "question": "Kuka pitää ohjat?",
+          "answer": "Tiimisi. Suojakaiteet määrittelevät, mitä agentti saa tehdä ja mitkä vaiheet vaativat ihmisen katselmoinnin."
+        },
+        {
+          "question": "Mitä tekoälymalleja käytetään?",
+          "answer": "Palveluntarjoajien valinta riippuu teknologiapinostasi ja käytännöistäsi. Tekoälyn käyttöperiaatteet kertovat, miten tekoälyä käytetään asiakastyössä."
+        },
+        {
+          "question": "Mitä pilotin jälkeen tapahtuu?",
+          "answer": "Tiimisi ajaa agenttia runbookin avulla. Agent Workforce laajentaa saman lähestymistavan useisiin työnkulkuihin."
+        }
+      ],
+      "bookTitle": "Aloita 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi työnkulku, joka automatisoidaan ensin. Kalenterikutsu tulee sähköpostilla."
+    },
+    "agentWorkforce": {
+      "metaTitle": "Agent Workforce | Digitaltableteur",
+      "metaDescription": "Joukko tehtäväkohtaisia agentteja kytkettynä teknologiapinoosi, seuranta, varasuunnitelmat ja runbook, jonka tiimisi omistaa, kuudessa viikossa.",
+      "eyebrow": "Agent Workforce",
+      "package": "Agent Workforce",
+      "title": "Useita tehtäväkohtaisia agentteja, joihin tiimisi voi luottaa",
+      "lead": "Yksi agentti osoitti idean toimivaksi. Nyt useampi työnkulku kaipaa automaatiota ilman, että valvonta katoaa. Agent Workforce kytkee joukon tehtäväkohtaisia agentteja teknologiapinoosi. Mukana ovat seuranta, varasuunnitelmat ja runbook, jonka tiimisi omistaa.",
+      "cta1": "Varaa Agent Workforce",
+      "cta2": "Lähetä kysymys",
+      "signalsTitle": "Sopii, kun yksi pilotti ei riitä",
+      "signals": [
+        "Pilottiagentti toimii ja lisää työnkulkuja odottaa",
+        "Agenttien täytyy siirtää työtä toisilleen tai ihmisille",
+        "Virheiden täytyy tulla esiin ennen kuin ne päätyvät käyttäjille",
+        "Tiimin täytyy voida omistaa ja muuttaa agentteja"
+      ],
+      "scopeTitle": "Mitä Agent Workforce kattaa",
+      "scope": "Useita toisiinsa liittyviä työnkulkuja, joista jokaisella on oma agenttinsa ja suojakaiteensa. Seuranta näyttää, mitä agentit tekevät. Varasuunnitelmat ohjaavat virhetilanteet ihmisille. Runbook dokumentoi, miten tiimisi operoi, muuttaa ja poistaa käytöstä kunkin agentin.",
+      "limitsTitle": "Ei sisälly",
+      "limits": [
+        "Valvomattomat agentit muuttamassa tuotantoa",
+        "Ihmisen harkintaa vaativien päätösten automatisointi",
+        "Alustakehitys sovittujen työnkulkujen ulkopuolella"
+      ],
+      "stepsTitle": "Näin Agent Workforce etenee",
+      "steps": [
+        "Kartoita työnkulut ja luovutukset agenttien ja ihmisten välillä.",
+        "Rakenna jokainen agentti suojakaiteineen ja evaluointeineen.",
+        "Lisää seuranta, hälytykset ja varasuunnitelmat, jotka ohjaavat työn ihmisen katselmoitavaksi.",
+        "Luovuta runbookin kanssa ja käy ensimmäiset ajot läpi yhdessä."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "Joukon tehtäväkohtaisia agentteja kytkettynä teknologiapinoosi",
+        "Seurannan ja hälytykset agenttien toiminnalle",
+        "Varasuunnitelmat, jotka ohjaavat virhetilanteet ihmisille",
+        "Runbookin, jonka tiimisi omistaa"
+      ],
+      "investMeta": "6 viikkoa, kiinteä laajuus",
+      "investNote": "Lopullinen laajuus riippuu työnkulkujen määrästä, mukana olevista järjestelmistä ja jo käytössä olevasta seurannasta.",
+      "investLink": "Arvioi räätälöity toimeksianto",
+      "faqTitle": "Agent Workforcesta",
+      "faq": [
+        {
+          "question": "Tarvitaanko ensin Agent Pilot?",
+          "answer": "Ei välttämättä, mutta siitä on apua. Pilotti todentaa yhden työnkulun ennen kuin useita ajetaan yhdessä."
+        },
+        {
+          "question": "Miten virhetilanteet käsitellään?",
+          "answer": "Seuranta liputtaa poikkeavat tulokset ja varasuunnitelmat ohjaavat työn ihmiselle arvailun sijaan."
+        },
+        {
+          "question": "Kuka omistaa agentit jatkossa?",
+          "answer": "Tiimisi. Runbook kattaa kunkin agentin operoinnin, muuttamisen ja käytöstä poistamisen."
+        },
+        {
+          "question": "Mitä tekoälymalleja käytetään?",
+          "answer": "Palveluntarjoajien valinta riippuu teknologiapinostasi ja käytännöistäsi. Tekoälyn käyttöperiaatteet kertovat, miten tekoälyä käytetään asiakastyössä."
+        }
+      ],
+      "bookTitle": "Aloita 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi työnkulut ja mukana olevat järjestelmät. Kalenterikutsu tulee sähköpostilla."
+    },
+    "dsMcp": {
+      "metaTitle": "Design System MCP | Digitaltableteur",
+      "metaDescription": "Koneluettavat komponenttisopimukset, MCP-palvelin ja evaluointivertailu, jotta koodausagentit rakentavat design-systeemisi avulla, neljässä viikossa.",
+      "eyebrow": "Design System MCP",
+      "package": "Design System MCP",
+      "title": "Tee design-systeemistäsi luettava koodausagenteille",
+      "lead": "Koodausagentit kirjoittavat jo osan käyttöliittymästä. Ilman pääsyä design-systeemiin ne arvaavat: kovakoodattuja värejä, päällekkäisiä komponentteja ja propseja, joita ei ole olemassa. Design System MCP muuttaa systeemin sopimuksiksi ja MCP-palvelimeksi, jolta agentit voivat kysyä. Sen jälkeen se mittaa, kuinka hyvin agentit käyttävät systeemiä.",
+      "cta1": "Varaa Design System MCP",
+      "cta2": "Lähetä kysymys",
+      "signalsTitle": "Sopii, kun agentit kirjoittavat käyttöliittymää systeemistä välittämättä",
+      "signals": [
+        "Generoitu koodi kovakoodaa arvoja, jotka tokenit jo määrittelevät",
+        "Agentit luovat uudelleen komponentteja, jotka ovat jo olemassa",
+        "Komponenttidokumentaatio on kirjoitettu ihmisille eikä työkaluille",
+        "Kukaan ei osaa sanoa, noudattaako agenttien tuotos systeemiä"
+      ],
+      "scopeTitle": "Mitä Design System MCP kattaa",
+      "scope": "Komponentit, tokenit ja käyttösäännöt, jotka tiimilläsi jo on. Jokainen komponentti saa koneluettavan sopimuksen. MCP-palvelin tuo sopimukset, tokenit ja ohjeistuksen koodausagenttien käyttöön tiimisi editoreissa ja putkissa. Evaluointivertailu mittaa ennen ja jälkeen, kuinka usein agentit tuottavat systeemin mukaista käyttöliittymää.",
+      "limitsTitle": "Ei sisälly",
+      "limits": [
+        "Komponenttikirjaston uudelleenrakentaminen",
+        "Koodausagenttien valinta tai lisensointi",
+        "Käyttöönotto kaikissa repositorioissa kerralla"
+      ],
+      "stepsTitle": "Näin Design System MCP etenee",
+      "steps": [
+        "Kartoita komponentit, tokenit ja säännöt, jotka agenttien täytyy tuntea.",
+        "Kirjoita koneluettavat sopimukset mukana oleville komponenteille.",
+        "Toimita MCP-palvelin ja kytke se tiimin käyttämiin editoreihin ja agentteihin.",
+        "Vertaile agenttien tuotosta ennen ja jälkeen ja luovuta sitten."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "Koneluettavat sopimukset mukana oleville komponenteille",
+        "MCP-palvelimen sopimuksille, tokeneille ja käyttöohjeistukselle",
+        "Poikkeamatarkistukset, jotka nostavat esiin kohdat, joissa koodi ja sopimukset eivät täsmää",
+        "Evaluointivertailun ja sen tulokset ennen ja jälkeen",
+        "Dokumentaation siitä, miten sopimukset pidetään ajan tasalla"
+      ],
+      "investMeta": "4 viikkoa, kiinteä laajuus",
+      "investNote": "Lopullinen laajuus riippuu mukana olevien komponenttien, repositorioiden ja agenttityökalujen määrästä.",
+      "investLink": "Arvioi räätälöity toimeksianto",
+      "faqTitle": "Design System MCP:stä",
+      "faq": [
+        {
+          "question": "Mikä on MCP-palvelin?",
+          "answer": "Model Context Protocol -palvelimen avulla tekoälytyökalut voivat hakea tietoa tarpeen mukaan. Tässä se vastaa kysymyksiin komponenteistasi, tokeneistasi ja käyttösäännöistäsi."
+        },
+        {
+          "question": "Minkä koodausagenttien kanssa se toimii?",
+          "answer": "Minkä tahansa työkalun kanssa, joka tukee Model Context Protocolia. Käyttöönotto testataan niillä editoreilla ja agenteilla, joita tiimisi käyttää."
+        },
+        {
+          "question": "Pitääkö design-systeemin olla ensin hyvässä kunnossa?",
+          "answer": "Se auttaa. Sopimuksia kirjoitettaessa löytyneet puutteet listataan. UX Sprint/DS Audit voi edeltää tätä, jos systeemissä on korjattavaa."
+        },
+        {
+          "question": "Miten onnistumista mitataan?",
+          "answer": "Evaluointivertailu ajaa samat käyttöliittymätehtävät ennen ja jälkeen ja vertaa, kuinka usein tuotos noudattaa systeemiä."
+        }
+      ],
+      "bookTitle": "Aloita 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi design-systeemi ja agentit, joita tiimisi käyttää. Kalenterikutsu tulee sähköpostilla."
     }
   },
   "procurementFaq": {
@@ -1811,8 +2137,5 @@
         "answer": "Vain tekoälyn käyttöperiaatteissa kuvatulla tavalla. Ne listaavat työkalut, suojatoimet ja asiakasdatan käsittelyn."
       }
     ]
-  },
-  "pricingPackageDetailsUxSprint": "Käytä design-systeemin auditointiin",
-  "pricingPackageDetailsAiReady": "Katso koko laajuus",
-  "pricingPackageDetailsLiftOff": "Katso koko laajuus"
+  }
 }
