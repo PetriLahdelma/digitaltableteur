@@ -1,0 +1,72 @@
+name: DS npm Consume
+
+# Resolves a published @digitaltableteur/* version into the site's
+# package.json and package-lock.json with the NPM_READ_TOKEN secret and
+# returns both files as an artifact. Lockfile only: nothing is installed or
+# pushed. The local gate still runs before the bump is committed, so a stale
+# local read token never blocks a consume.
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Package to consume
+        required: true
+        type: choice
+        default: react
+        options:
+          - react
+          - tokens
+          - tokens-css
+          - web-components
+      version:
+        description: Exact published version, e.g. 0.1.30
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  consume:
+    name: Resolve the published version into the lockfile
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Prepare private npm read config
+        env:
+          NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+        run: bash .github/scripts/write-npm-read-config.sh
+
+      - name: Resolve the version
+        env:
+          PKG: ${{ inputs.package }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Invalid version: $VERSION"; exit 1; }
+          export NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc"
+          before=$(grep -c linux package-lock.json)
+          npm view "@digitaltableteur/$PKG@$VERSION" version
+          npm install "@digitaltableteur/$PKG@^$VERSION" --package-lock-only --ignore-scripts --no-audit --no-fund
+          after=$(grep -c linux package-lock.json)
+          echo "linux lockfile entries: $before -> $after"
+          [ "$before" = "$after" ] || { echo "Lockfile lost platform entries"; exit 1; }
+          node -e "const l=require('./package-lock.json'); const v=l.packages['node_modules/@digitaltableteur/$PKG'].version; if (v !== '$VERSION') { console.error('lockfile resolved ' + v); process.exit(1) } console.log('resolved', v)"
+          git diff --stat package.json package-lock.json
+
+      - name: Upload package files
+        uses: actions/upload-artifact@v7
+        with:
+          name: consume-${{ inputs.package }}-${{ inputs.version }}
+          path: |
+            package.json
+            package-lock.json
+          if-no-files-found: error
