@@ -14,8 +14,12 @@
   gap: var(--space-layout-32);
 }
 
+/* Display size over two or three lines: the default heading leading reads
+   as loose, so the hero sets it like the price figure. */
+
 .heroTitle {
   max-inline-size: 20ch;
+  line-height: 1.1;
 }
 
 .lead {
