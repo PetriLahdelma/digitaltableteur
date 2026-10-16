@@ -9,6 +9,8 @@ export type ContactNotificationPayload = {
   hearAbout?: string | null;
   budget?: string | null;
   timeline?: string | null;
+  /** Readable package summary, e.g. "UX Sprint: €7–14k, 2 weeks". */
+  engagementPackage?: string | null;
   inspiration?: string | null;
   time?: string | null;
   attachmentName?: string | null;
@@ -116,6 +118,10 @@ function buildTextFields(payload: ContactNotificationPayload): TextField[] {
   }
   if (payload.interest?.trim()) {
     fields.push({ label: "Project type", value: payload.interest.trim() });
+  }
+
+  if (payload.engagementPackage?.trim()) {
+    fields.push({ label: "Package", value: payload.engagementPackage.trim() });
   }
 
   const budget = formatSelectValue(payload.budget, BUDGET_LABELS);
@@ -278,7 +284,9 @@ export function buildContactNotificationHtml(
   const messageHtml = escapeHTML(payload.message).replace(/\n/g, "<br />");
   const mailto = `mailto:${encodeURIComponent(payload.email)}`;
 
+  const engagementPackage = payload.engagementPackage?.trim();
   const metricItems = [
+    engagementPackage ? { label: "Package", value: engagementPackage } : null,
     budget ? { label: "Budget", value: budget } : null,
     timeline ? { label: "Timeline", value: timeline } : null,
     source ? { label: "Source", value: source } : null,

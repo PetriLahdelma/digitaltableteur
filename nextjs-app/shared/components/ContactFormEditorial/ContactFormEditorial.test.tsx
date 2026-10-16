@@ -5,7 +5,10 @@ import { axe, toHaveNoViolations } from "jest-axe";
 import { describe, it, expect, vi } from "vitest";
 import { ContactFormEditorial } from "./ContactFormEditorial";
 
-const { showToastMock } = vi.hoisted(() => ({ showToastMock: vi.fn() }));
+const { showToastMock, searchParamsRef } = vi.hoisted(() => ({
+  showToastMock: vi.fn(),
+  searchParamsRef: { current: new URLSearchParams() },
+}));
 
 expect.extend(toHaveNoViolations);
 
@@ -29,7 +32,7 @@ vi.mock("../../lib/navigation", async () => {
   const actual = await vi.importActual<object>("../../lib/navigation");
   return {
     ...actual,
-    useNavigationSearchParams: () => new URLSearchParams(),
+    useNavigationSearchParams: () => searchParamsRef.current,
   };
 });
 
@@ -161,4 +164,58 @@ describe("ContactFormEditorial", () => {
     fetchSpy.mockRestore();
     consoleError.mockRestore();
   }, 30_000);
+  describe("package field", () => {
+    const fillRequired = async (user: ReturnType<typeof userEvent.setup>) => {
+      await user.type(screen.getByLabelText(/contactFullName/), "Test Person");
+      await user.type(screen.getByLabelText(/^contactEmail/), "test@example.com");
+      await user.type(screen.getByLabelText(/^contactMessage/), "Hello there");
+    };
+
+    it("preselects the package from ?package=, shows the price read-only and pre-selects its project type", async () => {
+      searchParamsRef.current = new URLSearchParams("package=ux-sprint");
+      try {
+        render(<ContactFormEditorial />);
+        const budget = await screen.findByRole("textbox", { name: "Budget" });
+        expect(budget).toHaveAttribute("readonly");
+        expect(budget).toHaveValue("pricingPackage3Price, pricingPackage3Duration");
+        expect(budget).toHaveAccessibleDescription("contactPackageBudgetHelper");
+        expect(screen.queryByRole("combobox", { name: "Budget range" })).toBeNull();
+        expect(screen.getByText("contactProjectDsAudit")).toBeInTheDocument();
+      } finally {
+        searchParamsRef.current = new URLSearchParams();
+      }
+    });
+
+    it("ignores an unknown package id", () => {
+      searchParamsRef.current = new URLSearchParams("package=nope");
+      try {
+        render(<ContactFormEditorial />);
+        expect(screen.queryByRole("textbox", { name: "Budget" })).toBeNull();
+      } finally {
+        searchParamsRef.current = new URLSearchParams();
+      }
+    });
+
+    it("sends the package summary and no budget bracket when a package is chosen", async () => {
+      searchParamsRef.current = new URLSearchParams("package=design-system-lift-off");
+      const user = userEvent.setup();
+      const fetchSpy = vi
+        .spyOn(globalThis, "fetch")
+        .mockResolvedValue(new Response(null, { status: 200 }));
+      try {
+        render(<ContactFormEditorial />);
+        await fillRequired(user);
+        await user.click(screen.getByRole("button", { name: /send|submit/i }));
+        await waitFor(() => expect(fetchSpy).toHaveBeenCalledTimes(1));
+        const body = JSON.parse(String((fetchSpy.mock.calls[0]?.[1] as RequestInit).body));
+        expect(body.engagementPackage).toBe("contactPackageOption");
+        expect(body.budget).toBe("");
+        expect(body.interest).toContain("contactProjectComponentLib");
+        expect(body.interest).toContain("contactProjectTokens");
+      } finally {
+        fetchSpy.mockRestore();
+        searchParamsRef.current = new URLSearchParams();
+      }
+    });
+  });
 });

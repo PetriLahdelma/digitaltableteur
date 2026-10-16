@@ -29,6 +29,7 @@ import {
   DONNY_PREFILL_CONTACT_EVENT,
   type DonnyContactPrefillDetail,
 } from "../DonnyActionProvider/donnyContactPrefill";
+import { ENGAGEMENTS, getEngagementByPackageId } from "../../data/engagements";
 
 // === PRESERVED CONSTANTS ===
 const MAX_ATTACHMENT_BYTES = CONTACT_ATTACHMENT_MAX_BYTES;
@@ -43,6 +44,8 @@ const getInitialFormState = () => ({
   message: "",
   budget: "",
   timeline: "",
+  /** Package id from data/engagements; "" means no package (custom). */
+  engagementPackage: "",
   projectType: [] as string[],
   followUpPreferences: [] as string[],
   hearAbout: "",
@@ -71,6 +74,7 @@ type FormAction =
   | { type: "UPDATE_PROJECT_TYPES"; payload: string[] }
   | { type: "UPDATE_FOLLOW_UP_PREFERENCES"; payload: string[] }
   | { type: "ADD_PROJECT_TYPE"; payload: string }
+  | { type: "SET_PACKAGE"; payload: string }
   | { type: "RESET" };
 
 const mergeProjectType = (current: string[], next: string): string[] => {
@@ -94,6 +98,22 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
         ...state,
         projectType: mergeProjectType(state.projectType, action.payload),
       };
+    case "SET_PACKAGE": {
+      // Swap the previous package's implied project types for the new one's;
+      // anything the visitor picked themselves stays. A package also sets the
+      // budget, so the budget bracket is cleared.
+      const previous = getEngagementByPackageId(state.engagementPackage);
+      const next = getEngagementByPackageId(action.payload);
+      const kept = state.projectType.filter(
+        (type) => !previous?.projectTypes.includes(type),
+      );
+      return {
+        ...state,
+        engagementPackage: next ? next.packageId : "",
+        budget: next ? "" : state.budget,
+        projectType: (next?.projectTypes ?? []).reduce(mergeProjectType, kept),
+      };
+    }
     case "RESET":
       return getInitialFormState();
     default:
@@ -200,6 +220,16 @@ export function ContactFormEditorial({
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    const engagement = getEngagementByPackageId(
+      searchParams?.get("package")?.trim().toLowerCase(),
+    );
+    if (!engagement) return;
+
+    dispatchForm({ type: "SET_PACKAGE", payload: engagement.packageId });
+    setTier2Expanded(true);
+  }, [searchParams]);
+
+  useEffect(() => {
     const service = searchParams?.get("service")?.trim().toLowerCase();
     if (!service) return;
 
@@ -265,6 +295,13 @@ export function ContactFormEditorial({
   const [tier3Expanded, setTier3Expanded] = useState(false);
 
   // Derived values
+  const selectedEngagement = getEngagementByPackageId(formData.engagementPackage);
+  const packageSummary = (engagement: (typeof ENGAGEMENTS)[number]) =>
+    t("contactPackageOption", {
+      name: t(engagement.nameKey),
+      price: t(engagement.priceKey),
+      duration: t(engagement.durationKey),
+    });
   const attachmentSizeValue = (MAX_ATTACHMENT_BYTES / (1024 * 1024)).toFixed(0);
   const emailAttachmentLimitValue = (
     EMAIL_ATTACHMENT_LIMIT_BYTES /
@@ -437,8 +474,11 @@ export function ContactFormEditorial({
           interest: formatProjectTypesForSubmit(formData.projectType, t),
           message: formData.message,
           hearAbout: formData.hearAbout,
-          budget: formData.budget,
+          budget: selectedEngagement ? "" : formData.budget,
           timeline: formData.timeline,
+          engagementPackage: selectedEngagement
+            ? packageSummary(selectedEngagement)
+            : "",
           inspiration: formData.inspiration,
           followUpPreferences: formatOptionsForSubmit(
             formData.followUpPreferences,
@@ -585,18 +625,51 @@ export function ContactFormEditorial({
         <div className={styles.fields}>
           <Combobox
             className={styles.alignedCombobox}
-            label={t("contactBudgetLabel", "Budget range")}
-            placeholder={t("contactSelectPlaceholder", "Select...")}
-            value={formData.budget}
-            onValueChange={updateSelectField("budget")}
+            label={t("contactPackageLabel", "Package")}
+            placeholder={t("contactPackageNone", "Not sure yet / custom")}
+            value={formData.engagementPackage}
+            onValueChange={(value) =>
+              dispatchForm({ type: "SET_PACKAGE", payload: value })
+            }
             options={[
-              { value: "", label: t("contactSelectPlaceholder", "Select...") },
-              ...BUDGET_OPTIONS.map((opt) => ({
-                value: opt.value,
-                label: t(opt.labelKey),
+              {
+                value: "",
+                label: t("contactPackageNone", "Not sure yet / custom"),
+              },
+              ...ENGAGEMENTS.map((engagement) => ({
+                value: engagement.packageId,
+                label: packageSummary(engagement),
               })),
             ]}
           />
+
+          {selectedEngagement ? (
+            <FormFieldEditorial
+              id="contact-package-budget"
+              label={t("contactPackageBudgetLabel", "Budget")}
+              type="text"
+              readOnly
+              value={`${t(selectedEngagement.priceKey)}, ${t(selectedEngagement.durationKey)}`}
+              helperText={t("contactPackageBudgetHelper", {
+                package: t(selectedEngagement.nameKey),
+              })}
+            />
+          ) : (
+            <Combobox
+              className={styles.alignedCombobox}
+              label={t("contactBudgetLabel", "Budget range")}
+              placeholder={t("contactSelectPlaceholder", "Select...")}
+              value={formData.budget}
+              onValueChange={updateSelectField("budget")}
+              options={[
+                { value: "", label: t("contactSelectPlaceholder", "Select...") },
+                ...BUDGET_OPTIONS.map((opt) => ({
+                  value: opt.value,
+                  label: t(opt.labelKey),
+                })),
+              ]}
+            />
+          )}
 
           <Combobox
             className={styles.alignedCombobox}

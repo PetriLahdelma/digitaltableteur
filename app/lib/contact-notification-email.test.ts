@@ -94,4 +94,24 @@ describe("contact-notification-email", () => {
     expect(html).toContain("&lt;script&gt;");
     expect(html).not.toContain("INSPIRATION / REFERENCES");
   });
+  it("leads with the chosen package in both text and HTML", () => {
+    const payload = {
+      ...samplePayload,
+      budget: "",
+      engagementPackage: "UX Sprint: €7–14k, 2 weeks",
+    };
+    const text = buildContactNotificationText(payload);
+    expect(text).toContain("Package: UX Sprint: €7–14k, 2 weeks");
+    expect(text).not.toContain("Budget:");
+    const html = buildContactNotificationHtml(payload);
+    expect(html).toContain("UX Sprint: €7–14k, 2 weeks");
+  });
+
+  it("escapes the package text in HTML", () => {
+    const html = buildContactNotificationHtml({
+      ...samplePayload,
+      engagementPackage: "<script>x</script>",
+    });
+    expect(html).not.toContain("<script>x</script>");
+  });
 });

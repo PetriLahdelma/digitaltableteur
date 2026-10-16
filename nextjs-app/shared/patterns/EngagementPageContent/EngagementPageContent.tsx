@@ -88,7 +88,7 @@ export function EngagementPageContent({
       id: engagement.id,
       href: getEngagementPath(engagement),
       name: t(`engagementPages.${engagement.id}.eyebrow`),
-      meta: `${t(`engagementPages.${engagement.id}.timeline`)}, ${t(engagement.priceKey)}`,
+      meta: `${t(engagement.durationKey)}, ${t(engagement.priceKey)}`,
     }),
   );
   const ids = {
@@ -134,7 +134,7 @@ export function EngagementPageContent({
           <dl className={styles.facts}>
             <div className={styles.fact}>
               <dt>{common("factTimeline")}</dt>
-              <dd>{text("timeline")}</dd>
+              <dd>{t(config.durationKey)}</dd>
             </div>
             <div className={styles.fact}>
               <dt>{common("factInvestment")}</dt>
