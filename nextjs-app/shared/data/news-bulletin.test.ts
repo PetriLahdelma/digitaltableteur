@@ -16,12 +16,12 @@ describe("news-bulletin data", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  // Slot 1 intentionally diverges from Figma 310:898 until that node is
-  // updated: the summer-2026 bandwidth line is stale, replaced by the 2027
-  // booking signal. Slots 2 and 3 still track the design.
-  it("matches Figma slot copy (310:899)", () => {
+  // Pins the live slot copy. Figma 310:898 and 310:897 lag behind: slot 1
+  // still shows the summer-2026 bandwidth line and slot 2 the Rhythmguard
+  // 2.0 release; slot 3 tracks the design.
+  it("pins the bulletin slot copy (310:899)", () => {
     expect(NEWS_BULLETIN_ITEMS[0]?.body).toBe("Now booking for Q1–Q2");
-    expect(NEWS_BULLETIN_ITEMS[1]?.body).toBe("From DesignOps to AgentOps");
+    expect(NEWS_BULLETIN_ITEMS[1]?.body).toBe("Plausible accessibility");
     expect(NEWS_BULLETIN_ITEMS[2]?.body).toBe("2026 State of Digital Accessibility");
   });
 });

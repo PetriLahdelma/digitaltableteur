@@ -90,19 +90,16 @@ export const NEWS_BULLETIN_ITEMS: NewsBulletinItem[] = [
     link: { kind: "internal", href: "/contact" },
   },
   {
-    // Replaces the Rhythmguard slot, which had sat unchanged since 2026-06-01
-    // and still advertised 2.0.0 after 2.0.1 published on 2026-06-17 — a
-    // release announcement that outlived its release. This is the newest post
-    // on the blog and it argues the positioning the rest of the site takes as
-    // given, so the slot now sends people to the argument rather than to a
-    // package page they have no reason to open.
-    id: "designops-to-agentops",
+    // The article slot points at the newest post. Plausible Accessibility
+    // (2026-10-15) replaced From DesignOps to AgentOps, which had held the
+    // slot since it replaced the Rhythmguard release announcement.
+    id: "plausible-accessibility",
     figmaRef: "310:897",
     badge: { kind: "icon", name: "Newspaper", label: "Article" },
-    body: "From DesignOps to AgentOps",
+    body: "Plausible accessibility",
     link: {
       kind: "internal",
-      href: "/blog/from-designops-to-agentops",
+      href: "/blog/plausible-accessibility",
     },
   },
   {

@@ -64,7 +64,7 @@ describe("NewsBulletin", () => {
         name: /2027\. now booking for q1/i,
       }),
     ).toHaveAttribute("href", "/contact");
-    expect(screen.getByText("From DesignOps to AgentOps")).toBeInTheDocument();
+    expect(screen.getByText("Plausible accessibility")).toBeInTheDocument();
     expect(
       screen.getByRole("link", {
         name: /vertaaux\. 2026 state of digital accessibility/i,
@@ -74,7 +74,7 @@ describe("NewsBulletin", () => {
       "https://vertaaux.ai/articles/state-of-digital-accessibility-2026-eu",
     );
     expect(
-      screen.getByRole("link", { name: /article\. from designops to agentops/i }),
-    ).toHaveAttribute("href", "/blog/from-designops-to-agentops");
+      screen.getByRole("link", { name: /article\. plausible accessibility/i }),
+    ).toHaveAttribute("href", "/blog/plausible-accessibility");
   });
 });
