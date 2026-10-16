@@ -1,12 +1,35 @@
+/* One row, always: chips and the filter input share the field's single-line
+   height like every other field. Extra chips scroll sideways inside the
+   field instead of growing it; focus and typing scroll their target into
+   view. */
+
 .inner {
   display: flex;
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16) 0;
   min-inline-size: 0;
   flex: 1;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: var(--space-internal-6);
+
+  /* A mask reads alpha only; any opaque token works. */
+  mask-image: linear-gradient(
+    to left,
+    transparent,
+    var(--color-text) var(--space-internal-24)
+  );
+  overflow-x: auto;
+  /* stylelint-disable-next-line order/properties-order -- logical fallback pair must follow the physical property */
+  overflow-inline: auto;
+  overscroll-behavior-x: contain;
+  /* stylelint-disable-next-line order/properties-order -- logical fallback pair must follow the physical property */
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+}
+
+.inner::-webkit-scrollbar {
+  display: none;
 }
 
 .control {
@@ -20,9 +43,9 @@
 .input {
   padding-block: var(--space-internal-4);
   padding-inline: 0 var(--space-internal-8);
-  min-inline-size: min(10rem, 100%);
+  min-inline-size: 4rem;
   max-inline-size: 100%;
-  flex: 1 1 10rem;
+  flex: 1 1 4rem;
   border: none;
   outline: none;
   background: transparent;
@@ -64,6 +87,7 @@
 .badgeWrap {
   display: inline-flex;
   max-inline-size: 100%;
+  flex: 0 0 auto;
 }
 
 .badge {

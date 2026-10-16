@@ -1,0 +1,16 @@
+{
+  "storyId": "forms-multicombobox-overflow",
+  "mode": "light",
+  "sourceSHA": "6413538e721f2c966da1f407aff5044a05a19b09",
+  "capturedAt": "2026-10-16T10:09:27.712Z",
+  "runner": "local-2026-10-16i",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
