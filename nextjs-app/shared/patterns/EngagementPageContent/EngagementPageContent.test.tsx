@@ -62,8 +62,7 @@ describe("EngagementPageContent", () => {
         expect(
           within(trail).getByRole("link", { name: en.engagementPages.common.breadcrumbPricing }),
         ).toHaveAttribute("href", "/pricing");
-        const current = within(trail).getByText(copy.eyebrow);
-        expect(current.closest("a")).toBeNull();
+        expect(within(trail).getByText(copy.eyebrow)).toHaveAttribute("aria-current", "page");
       });
 
       it("links the other three engagements and not itself", () => {
