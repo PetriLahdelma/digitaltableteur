@@ -1,9 +1,9 @@
 {
   "storyId": "forms-multicombobox-keyboard-multi-select",
   "mode": "forced-colors",
-  "sourceSHA": "6413538e721f2c966da1f407aff5044a05a19b09",
-  "capturedAt": "2026-10-16T10:09:44.787Z",
-  "runner": "local-2026-10-16i",
+  "sourceSHA": "db81df4833b18bf44d56fdeb097a314fbeaf6f31",
+  "capturedAt": "2026-10-16T10:11:00.372Z",
+  "runner": "local-2026-10-16j",
   "checks": {
     "accessibility-tree": {
       "passed": true
