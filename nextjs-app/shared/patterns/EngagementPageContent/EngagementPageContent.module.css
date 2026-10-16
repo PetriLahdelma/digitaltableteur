@@ -265,9 +265,12 @@
   border-radius: var(--radius-lg);
 }
 
+/* The link keeps its own width so the wavy underline ends with the text. */
+
 .proofCard .arrowLink {
   margin-block-start: auto;
   padding-block-start: var(--space-internal-8);
+  align-self: flex-start;
 }
 
 /* Offer FAQ */
