@@ -2,16 +2,12 @@
  * Markdown versions of blog posts for AI agents, built from the MDX source.
  * Served at /blog/<slug>/markdown (and at the post URL for Accept:
  * text/markdown or a .md suffix, through the proxy) and inlined in
- * llms-full.txt. Read at build time; next.config traces content/ into the
- * routes so revalidation finds the files too.
+ * llms-full.txt. The MDX bodies come from app/blog/postSources.generated.ts
+ * (npm run generate:blog), so nothing reads the file system at runtime.
  */
 
-import { readFileSync, readdirSync, statSync } from "node:fs";
-import path from "node:path";
-
 import type { BlogPostMeta } from "@/app/blog/postMetadata";
-
-const CONTENT_DIRS = ["content/posts", "content/drafts"];
+import { POST_SOURCES } from "@/app/blog/postSources.generated";
 
 type StageDef = { id: string; label: string; phrase?: string };
 type PhaseDef = { label: string; stages: string[] };
@@ -23,44 +19,9 @@ type StageItem = {
   stages: string[];
 };
 
-let sourceIndex: Map<string, string> | null = null;
-
-function listMdx(dir: string): string[] {
-  let entries: string[];
-  try {
-    entries = readdirSync(dir);
-  } catch {
-    return [];
-  }
-  return entries.flatMap((name) => {
-    const full = path.join(dir, name);
-    if (statSync(full).isDirectory()) return listMdx(full);
-    return name.endsWith(".mdx") ? [full] : [];
-  });
-}
-
-function frontmatterSlug(source: string): string | undefined {
-  const fm = source.replace(/\r\n?/g, "\n").match(/^---\n([\s\S]*?)\n---/);
-  return fm?.[1].match(/^slug:\s*"?([^"\n]+)"?\s*$/m)?.[1];
-}
-
-/** slug → absolute MDX path, from content/posts and content/drafts. */
-function getSourceIndex(): Map<string, string> {
-  if (sourceIndex) return sourceIndex;
-  const index = new Map<string, string>();
-  for (const dir of CONTENT_DIRS) {
-    for (const file of listMdx(path.join(process.cwd(), dir))) {
-      const slug = frontmatterSlug(readFileSync(file, "utf8"));
-      if (slug && !index.has(slug)) index.set(slug, file);
-    }
-  }
-  sourceIndex = index;
-  return index;
-}
-
+/** MDX body (frontmatter removed) of a listed post, from the generated module. */
 export function readPostSource(slug: string): string | null {
-  const file = getSourceIndex().get(slug);
-  return file ? readFileSync(file, "utf8") : null;
+  return POST_SOURCES[slug] ?? null;
 }
 
 function absolute(url: string, baseUrl: string): string {
@@ -270,9 +231,8 @@ export function buildPostMarkdown(
   baseUrl: string,
   headingLevel = 1,
 ): string | null {
-  const source = readPostSource(post.slug);
-  if (!source) return null;
-  const body = source.replace(/\r\n?/g, "\n").replace(/^---\n[\s\S]*?\n---\n/, "");
+  const body = readPostSource(post.slug);
+  if (body === null) return null;
   let markdown = mdxToMarkdown(body, baseUrl);
   if (headingLevel > 1) {
     const shift = "#".repeat(headingLevel - 1);

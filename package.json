@@ -20,7 +20,7 @@
     "postbuild": "node scripts/ensure-no-static-sitemap.mjs",
     "predev": "node scripts/ensure-stale-dev-killed.mjs && node scripts/ensure-dev-next-cache.mjs",
     "prebuild": "npm run generate:blog && node scripts/generate-codeblock-fixtures.mjs && node scripts/ensure-no-static-sitemap.mjs",
-    "generate:blog": "node scripts/generate-blog-manifest.mjs && tsx scripts/update-post-metadata.ts",
+    "generate:blog": "node scripts/generate-blog-manifest.mjs && tsx scripts/update-post-metadata.ts && node scripts/generate-post-sources.mjs",
     "vercel-build": "npm run build",
     "start": "next start",
     "typecheck": "next typegen && tsc --noEmit",

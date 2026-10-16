@@ -186,12 +186,6 @@ const nextConfig: NextConfig = {
   // dev-server-only. The subnet wildcard tolerates DHCP reassigning the IP.
   allowedDevOrigins: ["192.168.1.119", "192.168.1.*"],
   outputFileTracingRoot: __dirname,
-  // Markdown versions of posts read the MDX source; keep it in the functions
-  // so a revalidation outside the build still finds the files.
-  outputFileTracingIncludes: {
-    "/blog/[slug]/markdown": ["./content/posts/**/*.mdx", "./content/drafts/**/*.mdx"],
-    "/llms-full.txt": ["./content/posts/**/*.mdx", "./content/drafts/**/*.mdx"],
-  },
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["react-phone-number-input", "libphonenumber-js"],
   // Sentry + OpenTelemetry use dynamic `require()` patterns that webpack

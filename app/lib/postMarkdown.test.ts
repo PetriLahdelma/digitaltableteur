@@ -1,6 +1,9 @@
+import { readFileSync, readdirSync, statSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import { getVisiblePosts } from "@/app/blog/postMetadata";
+import { POST_SOURCES } from "@/app/blog/postSources.generated";
 import { buildPostMarkdown, literalToJson, mdxToMarkdown } from "./postMarkdown";
 
 const BASE = "https://www.digitaltableteur.com";
@@ -86,6 +89,21 @@ describe("post markdown", () => {
   it("finds a Markdown source for every visible post", () => {
     for (const post of getVisiblePosts()) {
       expect(buildPostMarkdown(post, BASE), post.slug).not.toBeNull();
+    }
+  });
+
+  it("keeps the generated post sources in sync with the MDX files", () => {
+    const walk = (dir: string): string[] =>
+      readdirSync(dir).flatMap((name) => {
+        const full = path.join(dir, name);
+        return statSync(full).isDirectory() ? walk(full) : full.endsWith(".mdx") ? [full] : [];
+      });
+    const files = ["content/posts", "content/drafts"].flatMap((d) => walk(path.join(process.cwd(), d)));
+    for (const [slug, body] of Object.entries(POST_SOURCES)) {
+      const file = files.find((f) => readFileSync(f, "utf8").includes(`slug: "${slug}"`));
+      expect(file, slug).toBeDefined();
+      const raw = readFileSync(file!, "utf8").replace(/\r\n?/g, "\n");
+      expect(raw.replace(/^---\n[\s\S]*?\n---\n/, ""), `${slug}: run npm run generate:blog`).toBe(body);
     }
   });
 });
