@@ -48,6 +48,12 @@
   margin-inline: auto;
 }
 
+/* A code block keeps the article code width; the cap is for diagrams. */
+
+.figureCenter .media:has(pre) {
+  max-inline-size: none;
+}
+
 .figureCenter .media img {
   display: block;
   inline-size: 100%;
