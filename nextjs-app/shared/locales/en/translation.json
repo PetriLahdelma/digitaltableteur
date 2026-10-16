@@ -1469,12 +1469,11 @@
       "proofTitle": "Relevant published work",
       "proofLink": "Read the case study",
       "breadcrumbHome": "Home",
-      "breadcrumbPricing": "Pricing",
-      "emailLabel": "Email"
+      "breadcrumbPricing": "Pricing"
     },
     "proof": {
       "helsinki-design-system": {
-        "eyebrow": "City of Helsinki, 2020 to 2022",
+        "eyebrow": "City of Helsinki, 2020 to present",
         "title": "Helsinki Design System",
         "body": "Research, component structures, accessibility review, documentation and delivery practices for a design system used across many digital services."
       },

@@ -68,6 +68,8 @@
       - paragraph: 2 weeks
       - paragraph: Prototype, eval plan and handoff your team can ship.
       - paragraph: 2-week prototype with eval plan; see the UX Sprint patterns in the work.
+      - link "Use it as a design system audit":
+        - /url: /engagements/design-system-audit
       - link "Book UX Sprint":
         - /url: /contact?mode=book&package=ux-sprint
     - listitem:
@@ -76,6 +78,8 @@
       - paragraph: 3 weeks
       - paragraph: Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.
       - paragraph: Agent-ready tokens and governance. See AI DesignOps case studies.
+      - link "See the full scope":
+        - /url: /engagements/ai-ready-ops
       - link "Book AI-Ready Ops":
         - /url: /contact?mode=book&package=ai-ready-designops
     - listitem:
@@ -84,6 +88,8 @@
       - paragraph: 4 weeks
       - paragraph: Audit, tokens, core components, Storybook and an adoption playbook.
       - paragraph: Storybook + adoption playbook. See design system deliveries.
+      - link "See the full scope":
+        - /url: /engagements/design-system-lift-off
       - link "Book Design System Lift-Off":
         - /url: /contact?mode=book&package=design-system-lift-off
   - button "AI agents and automation"
@@ -106,3 +112,17 @@
     - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
     - img "Reliable Partner, verified by Vastuu Group"
   - paragraph: "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified."
+  - region "Buying from Digitaltableteur":
+    - heading "Buying from Digitaltableteur" [level=2]
+    - paragraph: Answers for procurement, legal and finance teams. Anything not covered here can go in the first message.
+    - button "Who is the contracting party?" [expanded]
+    - region "Who is the contracting party?":
+      - paragraph: Digitaltableteur, a Finnish sole trader registered in the Trade Register. Business ID 2264455-2, VAT ID FI22644552, Hämeentie 8 C 26, 00530 Helsinki.
+    - button "Is Digitaltableteur a verified supplier?"
+    - button "How is invoicing handled?"
+    - button "Can a client NDA or framework agreement be used?"
+    - button "Who owns the work?"
+    - button "Which working languages are available?"
+    - button "Is the work remote or on site?"
+    - button "Does the work cover accessibility law?"
+    - button "Is AI used on client work?"

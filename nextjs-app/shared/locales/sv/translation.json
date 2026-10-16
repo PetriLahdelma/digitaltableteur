@@ -1469,12 +1469,11 @@
       "proofTitle": "Relevanta publicerade arbeten",
       "proofLink": "Läs fallstudien",
       "breadcrumbHome": "Hem",
-      "breadcrumbPricing": "Priser",
-      "emailLabel": "E-post"
+      "breadcrumbPricing": "Priser"
     },
     "proof": {
       "helsinki-design-system": {
-        "eyebrow": "Helsingfors stad, 2020–2022",
+        "eyebrow": "Helsingfors stad, sedan 2020",
         "title": "Helsinki Design System",
         "body": "Forskning, komponentstrukturer, tillgänglighetsgranskning, dokumentation och leveransrutiner för ett designsystem som används i många digitala tjänster."
       },

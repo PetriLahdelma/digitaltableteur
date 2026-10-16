@@ -181,9 +181,9 @@
   inline-size: var(--space-layout-40);
   place-items: center;
   border-radius: var(--radius-full);
-  background: var(--logo-background);
+  background: var(--logo-color);
   font-weight: 500;
-  color: var(--logo-text-color);
+  color: var(--logo-background);
 }
 
 /* Deliverables */
@@ -318,16 +318,7 @@
   gap: var(--space-internal-12);
 }
 
-.email {
-  color: var(--color-white);
-  text-decoration-line: underline;
-  text-underline-offset: 0.2em;
-}
 
-.email:focus-visible {
-  outline: 2px solid var(--color-white);
-  outline-offset: var(--space-internal-2);
-}
 
 @media (width < 56rem) {
   .split,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-16T06:06:46.225Z",
+  "generatedAt": "2026-10-16T06:10:27.425Z",
   "summary": {
     "componentCount": 183,
     "statusCounts": {
@@ -75722,7 +75722,7 @@
             "--color-primary",
             "--color-white",
             "--logo-background",
-            "--logo-text-color"
+            "--logo-color"
           ],
           "spacing": [
             "--space-internal-4",

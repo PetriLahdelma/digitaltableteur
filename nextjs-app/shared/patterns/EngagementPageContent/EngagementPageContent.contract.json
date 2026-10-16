@@ -41,7 +41,7 @@
       "--color-primary",
       "--color-white",
       "--logo-background",
-      "--logo-text-color"
+      "--logo-color"
     ],
     "spacing": [
       "--space-internal-4",

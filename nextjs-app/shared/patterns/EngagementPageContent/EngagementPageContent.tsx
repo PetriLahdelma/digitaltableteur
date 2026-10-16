@@ -310,10 +310,6 @@ export function EngagementPageContent({
               <Button href={config.secondaryHref} variant="secondary" surface="onDark" size="md">
                 {text("cta2")}
               </Button>
-              <a href="mailto:mail@digitaltableteur.com" className={styles.email}>
-                <VisuallyHidden>{`${common("emailLabel")}: `}</VisuallyHidden>
-                mail@digitaltableteur.com
-              </a>
             </div>
           </div>
         </section>

@@ -1469,12 +1469,11 @@
       "proofTitle": "Julkaistut työt aiheesta",
       "proofLink": "Lue case-tarina",
       "breadcrumbHome": "Etusivu",
-      "breadcrumbPricing": "Hinnoittelu",
-      "emailLabel": "Sähköposti"
+      "breadcrumbPricing": "Hinnoittelu"
     },
     "proof": {
       "helsinki-design-system": {
-        "eyebrow": "Helsingin kaupunki, 2020–2022",
+        "eyebrow": "Helsingin kaupunki, 2020 alkaen",
         "title": "Helsinki Design System",
         "body": "Tutkimus, komponenttirakenteet, saavutettavuuskatselmointi, dokumentaatio ja toimituskäytännöt design-systeemille, jota käytetään lukuisissa digipalveluissa."
       },
