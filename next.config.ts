@@ -186,6 +186,12 @@ const nextConfig: NextConfig = {
   // dev-server-only. The subnet wildcard tolerates DHCP reassigning the IP.
   allowedDevOrigins: ["192.168.1.119", "192.168.1.*"],
   outputFileTracingRoot: __dirname,
+  // Markdown versions of posts read the MDX source; keep it in the functions
+  // so a revalidation outside the build still finds the files.
+  outputFileTracingIncludes: {
+    "/blog/[slug]/markdown": ["./content/posts/**/*.mdx", "./content/drafts/**/*.mdx"],
+    "/llms-full.txt": ["./content/posts/**/*.mdx", "./content/drafts/**/*.mdx"],
+  },
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["react-phone-number-input", "libphonenumber-js"],
   // Sentry + OpenTelemetry use dynamic `require()` patterns that webpack
@@ -293,17 +299,17 @@ const nextConfig: NextConfig = {
         source: "/:path((?!_next/|.*\\.).*)",
         headers: [agentLinkHeader],
       },
-      {
-        // Markdown briefs of the offer pages point search engines back at the
-        // HTML page; this rule runs last, so its Link value wins.
-        source: "/engagements/:slug/markdown",
+      // Markdown versions point search engines back at the HTML page; these
+      // rules run last, so their Link value wins.
+      ...["engagements", "blog", "work"].map((section) => ({
+        source: `/${section}/:slug/markdown`,
         headers: [
           {
             key: "Link",
-            value: `<${agentDiscoveryBaseUrl}/engagements/:slug>; rel="canonical", ${getAgentDiscoveryLinkHeader()}`,
+            value: `<${agentDiscoveryBaseUrl}/${section}/:slug>; rel="canonical", ${getAgentDiscoveryLinkHeader()}`,
           },
         ],
-      },
+      })),
     ];
   },
   async redirects() {

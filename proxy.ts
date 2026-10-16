@@ -1,8 +1,13 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { markdownNegotiationHeader } from "@/app/lib/agent-discovery";
+import {
+  agentDiscoveryBaseUrl,
+  getAgentDiscoveryLinkHeader,
+  markdownNegotiationHeader,
+} from "@/app/lib/agent-discovery";
 import { PREVIEW_DRAFTS_COOKIE } from "@/lib/blog/postVisibility";
+import { isRoutableProject, projects } from "@/nextjs-app/shared/data/projects";
 
 const PREVIEW_COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
@@ -29,25 +34,67 @@ function handleBlogDraftPreview(request: NextRequest) {
   return response;
 }
 
-const ENGAGEMENT_PAGE = /^\/engagements\/([a-z0-9-]+)\/?$/;
+// Offer pages, blog posts and case studies each have a Markdown version at
+// /<section>/<slug>/markdown. Agents reach it by adding .md to the page URL
+// or, for offer pages and posts, with Accept: text/markdown. Case-study
+// Markdown is a summary, so a negotiated request keeps the full HTML page.
+const MARKDOWN_PAGE = /^\/(engagements|blog|work)\/([a-z0-9-]+)(\.md)?\/?$/;
+
+// Standalone case studies without a project record have no Markdown summary.
+const WORK_MARKDOWN = new Set(
+  projects.filter((project) => isRoutableProject(project)).map((project) => project.slug),
+);
+
+/** q-value of a media type in an Accept header (0 when absent). */
+function acceptQuality(accept: string, type: string): number {
+  let best = 0;
+  for (const part of accept.split(",")) {
+    const [media, ...params] = part.trim().toLowerCase().split(";");
+    if (media.trim() !== type) continue;
+    const q = params.map((p) => p.trim()).find((p) => p.startsWith("q="));
+    const value = q ? Number.parseFloat(q.slice(2)) : 1;
+    if (Number.isFinite(value)) best = Math.max(best, value);
+  }
+  return best;
+}
+
+/** True when the client prefers Markdown over HTML. */
+export function prefersMarkdown(accept: string): boolean {
+  const markdown = acceptQuality(accept, "text/markdown");
+  return markdown > 0 && markdown >= acceptQuality(accept, "text/html");
+}
 
 /**
  * Markdown content negotiation for AI agents (Cloudflare Agent Readiness / llmstxt.org).
  * Homepage requests with Accept: text/markdown receive llms.txt content;
- * offer pages receive their markdown brief.
+ * offer pages, blog posts and case studies receive their Markdown version.
  */
 export function proxy(request: NextRequest) {
   const draftPreview = handleBlogDraftPreview(request);
   if (draftPreview) return draftPreview;
 
   const accept = request.headers.get("accept") ?? "";
-  const engagement = request.nextUrl.pathname.match(ENGAGEMENT_PAGE);
+  const page = request.nextUrl.pathname.match(MARKDOWN_PAGE);
 
-  if (engagement && accept.includes("text/markdown")) {
-    const markdownUrl = request.nextUrl.clone();
-    markdownUrl.pathname = `/engagements/${engagement[1]}/markdown`;
-    const response = NextResponse.rewrite(markdownUrl);
-    response.headers.set("Vary", "Accept");
+  if (page) {
+    const [, section, slug, suffix] = page;
+    const available = section !== "work" || WORK_MARKDOWN.has(slug);
+    const wantsMarkdown = Boolean(suffix) || (section !== "work" && prefersMarkdown(accept));
+    if (available && wantsMarkdown) {
+      const markdownUrl = request.nextUrl.clone();
+      markdownUrl.pathname = `/${section}/${slug}/markdown`;
+      const response = NextResponse.rewrite(markdownUrl);
+      response.headers.set("Vary", "Accept");
+      // The .md URL is a second address for the page; point search engines
+      // at the HTML original.
+      response.headers.set(
+        "Link",
+        `<${agentDiscoveryBaseUrl}/${section}/${slug}>; rel="canonical", ${getAgentDiscoveryLinkHeader()}`,
+      );
+      return response;
+    }
+    const response = NextResponse.next();
+    if (section !== "work") response.headers.set("Vary", "Accept");
     return response;
   }
 
@@ -55,7 +102,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (!accept.includes("text/markdown")) {
+  if (!prefersMarkdown(accept)) {
     return NextResponse.next();
   }
 
@@ -73,5 +120,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/blog", "/blog/:path*", "/engagements/:slug"],
+  matcher: ["/", "/blog", "/blog/:path*", "/engagements/:slug", "/work/:slug"],
 };

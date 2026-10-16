@@ -118,7 +118,7 @@ export function getEngagementEntry(slug: string): EngagementEntry | undefined {
 
 /** One line per engagement for llms.txt. */
 export function formatEngagementLine(entry: EngagementEntry, baseUrl: string): string {
-  return `- ${entry.name} (${entry.priceLabel}, ${entry.durationLabel}): ${baseUrl}${entry.path}: ${entry.copy.metaDescription}`;
+  return `- [${entry.name}](${baseUrl}${entry.path}): ${entry.priceLabel}, ${entry.durationLabel}. ${entry.copy.metaDescription}`;
 }
 
 /** Full markdown brief of one engagement, for agents and llms-full.txt. */

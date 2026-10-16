@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getVisiblePosts } from "../blog/postMetadata";
+import { buildPostMarkdown } from "@/app/lib/postMarkdown";
 import { projects } from "@/nextjs-app/shared/data/projects";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 import type { PseoCatalogItem } from "@/lib/pseo/types";
@@ -20,9 +21,9 @@ export async function GET() {
   const pseoLeafPages = getPseoLeafPages();
   const posts = getVisiblePosts();
 
-  let body = "# Digitaltableteur — Full Context\n\n";
+  let body = "# Digitaltableteur: Full Context\n\n";
   body +=
-    "> Helsinki-based design systems consultancy. We build, audit, and scale design systems, and ship open-source tools that prove the expertise.\n\n";
+    "> Helsinki-based design systems consultancy that builds, audits and scales design systems and ships open-source tools that prove the expertise. Every article below is inlined in full. Offer pages and blog posts are also available as Markdown by adding .md to the URL; listed case studies have a Markdown summary at their URL plus .md.\n\n";
 
   // Identity
   body += "## Identity\n\n";
@@ -37,11 +38,21 @@ export async function GET() {
   body += `- Website: ${baseUrl}\n`;
   body += `- Agent endpoint: ${baseUrl}/.well-known/agent.json\n\n`;
 
+  // Contact guidance
+  body += "## Contact\n\n";
+  body += `- Contact form: ${baseUrl}/contact\n`;
+  body += "- Email: mail@digitaltableteur.com\n";
+  body += "- Phone: +358 45 657 4469\n";
+  body += `- AI chat (Donny): available on ${baseUrl} during operating hours\n`;
+  body += `- Agent endpoint: ${baseUrl}/.well-known/agent.json\n`;
+  body += `- Programmatic contact: POST to ${baseUrl}/api/contact with JSON body (name, email, message fields required)\n`;
+  body += "\n";
+
   // Services
   body += "## Services\n\n";
   body += "### Design system audit\n";
   body +=
-    "Assess your current UI foundation, identify gaps, and create a prioritized roadmap.\n\n";
+    "Assess your current UI foundation, identify gaps and create a prioritized roadmap.\n\n";
   body += "### Component library build\n";
   body +=
     "Production-ready accessible components with documentation and governance.\n\n";
@@ -53,7 +64,7 @@ export async function GET() {
     "Automate workflows, reduce design debt, scale consistent execution.\n\n";
   body += "### Brand & Identity\n";
   body +=
-    "Visual identity systems, brand strategy, and creative direction.\n\n";
+    "Visual identity systems, brand strategy and creative direction.\n\n";
   body += "### Digital Product Design\n";
   body +=
     "User-centered product interfaces with accessibility and performance.\n\n";
@@ -77,14 +88,14 @@ export async function GET() {
 
   body += "### Project Spine\n";
   body +=
-    "OSS CLI that compiles a client brief, a repo, and optional design tokens into a repo-native operating layer for AI coding agents. Emits 19 files per compile: AGENTS.md, CLAUDE.md, copilot-instructions.md at repo root plus 11 markdown exports under .project-spine/. Hashed export manifest for drift detection. 6 built-in brief templates. 121 Vitest tests. v0.9.x alpha, MIT.\n";
+    "OSS CLI that compiles a client brief, a repo and optional design tokens into a repo-native operating layer for AI coding agents. Emits 19 files per compile: AGENTS.md, CLAUDE.md, copilot-instructions.md at repo root plus 11 markdown exports under .project-spine/. Hashed export manifest for drift detection. 6 built-in brief templates. 121 Vitest tests. v0.9.x alpha, MIT.\n";
   body += "- Homepage: https://projectspine.dev\n";
   body += "- GitHub: https://github.com/PetriLahdelma/project-spine\n";
   body += `- Case study: ${baseUrl}/work/project-spine\n\n`;
 
   body += "### LLM Component Schema\n";
   body +=
-    "JSON schema, CLI, and governance toolkit that makes component intent machine-readable. Two npm packages (@petritapanilahdelma/llm-component-contracts and @petritapanilahdelma/llm-component-cli). 4 CLI commands: validate, drift-check, migrate, init. 2 style packs (base and tailwind). Agent eval harness, failing-examples regression library, governance templates. v1.2.0, MIT.\n";
+    "JSON schema, CLI and governance toolkit that makes component intent machine-readable. Two npm packages (@petritapanilahdelma/llm-component-contracts and @petritapanilahdelma/llm-component-cli). 4 CLI commands: validate, drift-check, migrate, init. 2 style packs (base and tailwind). Agent eval harness, failing-examples regression library, governance templates. v1.2.0, MIT.\n";
   body +=
     "- npm: https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts\n";
   body += `- Case study: ${baseUrl}/work/llm-component-schema\n\n`;
@@ -105,13 +116,17 @@ export async function GET() {
       : `- Case study: ${baseUrl}/work/${project.slug}\n\n`;
   }
 
-  // All blog posts
+  // All blog posts, inlined in full so answer engines can quote and cite
+  // them without fetching each page.
   body += "## Blog posts\n\n";
   for (const post of posts) {
+    const full = buildPostMarkdown(post, baseUrl, 3);
+    if (full) {
+      body += `${full}\n`;
+      continue;
+    }
     body += `### ${post.title}\n`;
     if (post.excerpt) body += `${post.excerpt}\n`;
-    body += `- Published: ${post.publishedAt}\n`;
-    if (post.readTime) body += `- Read time: ${post.readTime}\n`;
     body += `- URL: ${baseUrl}/blog/${post.slug}\n\n`;
   }
 
@@ -120,28 +135,28 @@ export async function GET() {
 
   body += "### Services\n";
   for (const s of pseoCatalog.services as PseoCatalogItem[]) {
-    body += `- ${s.name}: ${baseUrl}/pseo/services/${s.slug}`;
-    if (s.shortDescription) body += ` — ${s.shortDescription}`;
+    body += `- [${s.name}](${baseUrl}/pseo/services/${s.slug})`;
+    if (s.shortDescription) body += `: ${s.shortDescription}`;
     body += "\n";
   }
 
   body += "\n### Technology stacks\n";
   for (const s of pseoCatalog.stacks as PseoCatalogItem[]) {
-    body += `- ${s.name}: ${baseUrl}/pseo/stacks/${s.slug}`;
-    if (s.shortDescription) body += ` — ${s.shortDescription}`;
+    body += `- [${s.name}](${baseUrl}/pseo/stacks/${s.slug})`;
+    if (s.shortDescription) body += `: ${s.shortDescription}`;
     body += "\n";
   }
 
   body += "\n### Audiences\n";
   for (const a of pseoCatalog.audiences as PseoCatalogItem[]) {
-    body += `- ${a.name}: ${baseUrl}/pseo/audiences/${a.slug}`;
-    if (a.shortDescription) body += ` — ${a.shortDescription}`;
+    body += `- [${a.name}](${baseUrl}/pseo/audiences/${a.slug})`;
+    if (a.shortDescription) body += `: ${a.shortDescription}`;
     body += "\n";
   }
 
   body += "\n### Guide pages\n";
   for (const page of pseoLeafPages) {
-    body += `- ${page.title}: ${baseUrl}/pseo/${page.slug}\n`;
+    body += `- [${page.title}](${baseUrl}/pseo/${page.slug})\n`;
   }
 
   // Agent skills (coding agents / Claude Code dynamic workflows)
@@ -155,15 +170,6 @@ export async function GET() {
   body += "- dt-design-system, dt-nextjs-app, dt-api-routes, dt-scripts, dt-sanity-cms, dt-ship-pr: same index\n";
   body += "- Workflow prompt templates live in repo: .claude/skills/dt-workflow/references/templates.md\n";
   body += "- Human index: repo AGENT_INDEX.md; architecture: docs/AGENT_WORKFLOW.md\n\n";
-
-  // Contact guidance
-  body += "\n## How to reach us\n\n";
-  body += `- Contact form: ${baseUrl}/contact\n`;
-  body += "- Email: mail@digitaltableteur.com\n";
-  body += "- Phone: +358 45 657 4469\n";
-  body += `- AI chat (Donny): available on ${baseUrl} during operating hours\n`;
-  body += `- Agent endpoint: ${baseUrl}/.well-known/agent.json\n`;
-  body += `- Programmatic contact: POST to ${baseUrl}/api/contact with JSON body (name, email, message fields required)\n`;
 
   return new NextResponse(body, {
     status: 200,

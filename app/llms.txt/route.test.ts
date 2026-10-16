@@ -26,7 +26,7 @@ const readBody = async () => {
 describe("llms.txt", () => {
   it("publishes an explicit when-to-use section", async () => {
     const body = await readBody();
-    expect(body).toContain("## When to use Digitaltableteur");
+    expect(body).toContain("**When to use Digitaltableteur**");
   });
 
   it("names concrete best-fit jobs rather than generic marketing copy", async () => {
@@ -41,7 +41,7 @@ describe("llms.txt", () => {
   it("states what is explicitly not a fit so agents can route elsewhere", async () => {
     const body = await readBody();
     expect(body).toContain("Not a fit, so route elsewhere:");
-    expect(body).toContain("Backend, data engineering, or infrastructure work.");
+    expect(body).toContain("Backend, data engineering or infrastructure work.");
   });
 
   it("tells an agent how to proceed, including the MCP endpoint", async () => {
@@ -53,9 +53,9 @@ describe("llms.txt", () => {
 
   it("keeps the when-to-use guidance above the link lists", async () => {
     const body = await readBody();
-    expect(body.indexOf("## When to use Digitaltableteur")).toBeLessThan(
-      body.indexOf("## Best starting points"),
-    );
+    // llmstxt.org: prose sits before the first H2; H2 sections are link lists.
+    expect(body.indexOf("**When to use Digitaltableteur**")).toBeLessThan(body.indexOf("## "));
+    expect(body.indexOf("**Guidance for language models**")).toBeLessThan(body.indexOf("## "));
   });
 
   it("lists every engagement offer page with its price", async () => {
@@ -71,6 +71,21 @@ describe("llms.txt", () => {
     ]) {
       expect(body).toContain(`/engagements/${slug}`);
     }
-    expect(body).toContain("Agent Pilot (€9–15k, 3 weeks)");
+    expect(body).toContain("- [Agent Pilot](https://www.digitaltableteur.com/engagements/agent-pilot): €9–15k, 3 weeks.");
+  });
+
+  it("points to llms-full.txt and the Markdown versions up front", async () => {
+    const body = await readBody();
+    const pointer = body.indexOf("Full content at ");
+    expect(pointer).toBeGreaterThan(-1);
+    expect(pointer).toBeLessThan(body.indexOf("## "));
+    expect(body).toContain("add .md to the URL or send Accept: text/markdown");
+  });
+
+  it("writes links in the llms.txt Markdown format, without em dashes", async () => {
+    const body = await readBody();
+    expect(body).toContain("- [Pricing](https://www.digitaltableteur.com/pricing)");
+    expect(body).not.toMatch(/^- [^[\n]+: https?:\/\//m);
+    expect(body).not.toContain("\u2014");
   });
 });

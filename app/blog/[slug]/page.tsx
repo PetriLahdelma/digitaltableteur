@@ -85,6 +85,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: url,
+      types: { "text/markdown": `${url}/markdown` },
     },
   };
 }
