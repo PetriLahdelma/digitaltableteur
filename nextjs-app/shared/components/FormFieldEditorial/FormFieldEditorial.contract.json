@@ -97,6 +97,11 @@
             "optional": true,
             "type": "string",
             "description": "Field ID (auto-generated from label if not provided)"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string",
+            "description": "Supporting text under the field, linked with aria-describedby. Text and textarea fields only; use it to say why a read-only value is fixed."
         }
     },
     "forbiddenUse": [

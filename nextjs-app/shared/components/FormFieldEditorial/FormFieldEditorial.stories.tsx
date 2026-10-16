@@ -98,3 +98,21 @@ export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
   args: defaultArgs,
 };
+
+/** A fixed value: focusable and announced as read-only, dashed border, helper says why. */
+export const ReadOnly: Story = {
+  tags: ["beta-matrix"],
+  name: "Read-only (value set elsewhere)",
+  parameters: { layout: "padded" },
+  render: () => (
+    <div style={{ maxWidth: 420 }}>
+      <FormFieldEditorial
+        label="Budget"
+        type="text"
+        readOnly
+        value="€7–14k, 2 weeks"
+        helperText="Set by the UX Sprint package. Choose Not sure yet / custom to give your own budget."
+      />
+    </div>
+  ),
+};

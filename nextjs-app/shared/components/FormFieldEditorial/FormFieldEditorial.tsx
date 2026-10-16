@@ -21,6 +21,11 @@ interface BaseProps {
   className?: string;
   /** Field ID (auto-generated from label if not provided) */
   id?: string;
+  /**
+   * Supporting text under the field, linked with aria-describedby. Text and
+   * textarea fields only; use it to say why a read-only value is fixed.
+   */
+  helperText?: string;
 }
 
 interface TextInputProps extends BaseProps, Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "id"> {
@@ -67,9 +72,10 @@ export const FormFieldEditorial = forwardRef<
   HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
   FormFieldEditorialProps
 >(function FormFieldEditorial(props, ref) {
-  const { label, error, required, className, id: providedId, type = "text", ...restProps } = props;
+  const { label, error, required, className, id: providedId, type = "text", helperText, ...restProps } = props;
   const id = providedId || generateId(label);
   const errorId = `${id}-error`;
+  const helperId = `${id}-helper`;
 
   const labelElement = (
     <label htmlFor={id} className={styles.label}>
@@ -84,6 +90,12 @@ export const FormFieldEditorial = forwardRef<
     </p>
   );
 
+  const helperElement = helperText && (
+    <p id={helperId} className={styles.helper}>
+      {helperText}
+    </p>
+  );
+
   if (type === "textarea") {
     const { children, rows = 5, ...textareaProps } = restProps as Omit<TextareaProps, keyof BaseProps | "type">;
     const {
@@ -91,8 +103,9 @@ export const FormFieldEditorial = forwardRef<
       ...forwardedTextareaProps
     } = textareaProps;
     const describedBy =
-      [error && errorId, externalDescribedBy].filter(Boolean).join(" ") ||
-      undefined;
+      [error && errorId, helperText && helperId, externalDescribedBy]
+        .filter(Boolean)
+        .join(" ") || undefined;
     return (
       <div className={cn(styles.field, className)}>
         {labelElement}
@@ -106,6 +119,7 @@ export const FormFieldEditorial = forwardRef<
           aria-describedby={describedBy}
           {...forwardedTextareaProps}
         />
+        {helperElement}
         {errorElement}
       </div>
     );
@@ -152,8 +166,9 @@ export const FormFieldEditorial = forwardRef<
     ...forwardedInputProps
   } = inputProps;
   const describedBy =
-    [error && errorId, externalDescribedBy].filter(Boolean).join(" ") ||
-    undefined;
+    [error && errorId, helperText && helperId, externalDescribedBy]
+      .filter(Boolean)
+      .join(" ") || undefined;
   return (
     <div className={cn(styles.field, className)}>
       {labelElement}
@@ -167,6 +182,7 @@ export const FormFieldEditorial = forwardRef<
         aria-describedby={describedBy}
         {...forwardedInputProps}
       />
+      {helperElement}
       {errorElement}
     </div>
   );

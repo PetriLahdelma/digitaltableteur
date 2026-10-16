@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T08:39:47.687Z",
+  "generatedAt": "2026-10-16T09:58:32.862Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -14243,6 +14243,11 @@
           "optional": true,
           "type": "string",
           "description": "Field ID (auto-generated from label if not provided)"
+        },
+        "helperText": {
+          "optional": true,
+          "type": "string",
+          "description": "Supporting text under the field, linked with aria-describedby. Text and\ntextarea fields only; use it to say why a read-only value is fixed."
         }
       },
       "propRelationships": [
@@ -14291,7 +14296,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 7,
+      "declaredPropCount": 8,
       "guidelines": [
         {
           "level": "should",

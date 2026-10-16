@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-16T08:39:48.021Z",
+  "generatedAt": "2026-10-16T09:58:33.186Z",
   "summary": {
     "componentCount": 183,
     "statusCounts": {
@@ -7153,7 +7153,27 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/EngagementPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -24684,6 +24704,11 @@
             "optional": true,
             "type": "string",
             "description": "Field ID (auto-generated from label if not provided)"
+          },
+          "helperText": {
+            "optional": true,
+            "type": "string",
+            "description": "Supporting text under the field, linked with aria-describedby. Text and textarea fields only; use it to say why a read-only value is fixed."
           }
         },
         "forbiddenUse": [
@@ -24762,6 +24787,11 @@
             "optional": true,
             "type": "string",
             "description": "Field ID (auto-generated from label if not provided)"
+          },
+          "helperText": {
+            "optional": true,
+            "type": "string",
+            "description": "Supporting text under the field, linked with aria-describedby. Text and\ntextarea fields only; use it to say why a read-only value is fixed."
           }
         },
         "propRelationships": [
@@ -24810,7 +24840,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 7,
+        "declaredPropCount": 8,
         "guidelines": [
           {
             "level": "should",
@@ -32768,6 +32798,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/EngagementPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
             "since": "2026-06-04"
           },
@@ -32779,6 +32819,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -35557,6 +35607,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/EngagementPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
             "since": "2026-06-04"
           },
@@ -35568,6 +35628,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/index.ts",
             "since": "2026-06-04"
           }
         ]

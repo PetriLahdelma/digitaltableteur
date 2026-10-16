@@ -82,4 +82,37 @@ describe("FormFieldEditorial", () => {
     );
     expect(await axe(container)).toHaveNoViolations();
   });
+  describe("read-only with helper text", () => {
+    it("keeps the value focusable, unchangeable and described by the helper", async () => {
+      render(
+        <FormFieldEditorial
+          label="Budget"
+          readOnly
+          value="€7–14k, 2 weeks"
+          helperText="Set by the package."
+        />,
+      );
+      const input = screen.getByRole("textbox", { name: "Budget" });
+      expect(input).toHaveAttribute("readonly");
+      expect(input).toHaveValue("€7–14k, 2 weeks");
+      expect(input).toHaveAccessibleDescription("Set by the package.");
+      await userEvent.type(input, "x");
+      expect(input).toHaveValue("€7–14k, 2 weeks");
+      input.focus();
+      expect(input).toHaveFocus();
+    });
+
+    it("links helper and error together when both are present", () => {
+      render(<FormFieldEditorial label="Notes" type="textarea" helperText="Optional." error="Too long" />);
+      const field = screen.getByRole("textbox", { name: "Notes" });
+      expect(field.getAttribute("aria-describedby")?.split(" ")).toEqual(["notes-error", "notes-helper"]);
+    });
+
+    it("has no axe violations", async () => {
+      const { container } = render(
+        <FormFieldEditorial label="Budget" readOnly value="€7–14k" helperText="Set by the package." />,
+      );
+      expect(await axe(container)).toHaveNoViolations();
+    });
+  });
 });

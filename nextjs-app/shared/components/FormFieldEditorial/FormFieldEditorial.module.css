@@ -55,6 +55,21 @@
   border-color: var(--color-error);
 }
 
+/* Read-only: a fixed value, still focusable, selectable and submitted. The
+   dashed border says "not editable" without the low contrast of disabled. */
+
+.input[readonly],
+.textarea[readonly] {
+  border-style: dashed;
+  color: var(--color-title);
+  cursor: default;
+}
+
+.input[readonly]:focus,
+.textarea[readonly]:focus {
+  border-color: var(--color-border);
+}
+
 /* Bordered textarea */
 
 .textarea {
@@ -154,6 +169,15 @@
 
 .select:focus + .chevronSlot .chevron {
   color: var(--color-primary);
+}
+
+/* Helper text */
+
+.helper {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
 }
 
 /* Error message */
