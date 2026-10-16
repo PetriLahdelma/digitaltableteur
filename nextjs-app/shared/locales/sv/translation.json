@@ -1458,5 +1458,358 @@
   "stageListAgainAt": "Igen: {{stages}}.",
   "stageListProgress": "{{done}} av {{total}} klara",
   "stageListClear": "Rensa alla",
-  "stageListIndexLabel": "Poster per skede"
+  "stageListIndexLabel": "Poster per skede",
+  "engagementPages": {
+    "common": {
+      "factTimeline": "Tidsram",
+      "factInvestment": "Investering",
+      "factPackage": "Paket",
+      "investLabel": "Investering",
+      "investTitle": "Så sätts priset",
+      "proofTitle": "Relevanta publicerade arbeten",
+      "proofLink": "Läs fallstudien",
+      "breadcrumbHome": "Hem",
+      "breadcrumbPricing": "Priser",
+      "emailLabel": "E-post"
+    },
+    "proof": {
+      "helsinki-design-system": {
+        "eyebrow": "Helsingfors stad, 2020–2022",
+        "title": "Helsinki Design System",
+        "body": "Forskning, komponentstrukturer, tillgänglighetsgranskning, dokumentation och leveransrutiner för ett designsystem som används i många digitala tjänster."
+      },
+      "dsharp-design-system": {
+        "eyebrow": "VR Group, sedan 2026",
+        "title": "DSharp Design System",
+        "body": "Tokens, komponentkontrakt, Storybook, MCP, CLI och efterlevnadsverktyg för en AI-stödd designsystemarkitektur."
+      },
+      "llm-component-schema": {
+        "eyebrow": "Öppen källkod, sedan 2025",
+        "title": "LLM Component Schema",
+        "body": "Ett publicerat schema och CLI för komponentkontrakt, med avvikelsedetektering och utvärderingsbenchmarks."
+      },
+      "sap-build-apps": {
+        "eyebrow": "SAP, 2022–2026",
+        "title": "SAP Build Apps Design System",
+        "body": "Designsystemet för SAP:s lågkodsplattform: över 100 komponenter i Figma och React för över 300 utvecklare och designers."
+      },
+      "project-spine": {
+        "eyebrow": "Öppen källkod, 2026",
+        "title": "Project Spine",
+        "body": "Ett CLI som sammanställer briefer, repositorier och designtokens till driftkontext för kodagenter."
+      }
+    },
+    "audit": {
+      "metaTitle": "Designsystemaudit för produktteam | Digitaltableteur",
+      "metaDescription": "Hitta luckor i komponenter, tokens, tillgänglighet och styrning i ditt nuvarande designsystem. Få fynd rangordnade efter allvarlighet och en praktisk 90-dagars färdplan.",
+      "eyebrow": "Designsystemaudit",
+      "timeline": "1–2 veckor",
+      "package": "UX Sprint",
+      "title": "Ta reda på var designsystemet kostar teamet tid",
+      "lead": "Likadana komponenter beter sig olika. Tillgänglighetsfel återkommer i nya funktioner. Figma och produktion är oense om vad som hör till systemet. En fokuserad audit gör symptomen till en inventering, fynd rangordnade efter allvarlighet och en 90-dagars färdplan.",
+      "cta1": "Boka UX Sprint",
+      "cta2": "Ställ en fråga om auditen",
+      "signalsTitle": "Gör en audit när systemet finns men förtroendet sviktar",
+      "signals": [
+        "Likadana komponenter beter sig olika i olika team",
+        "Tillgänglighetsfel återkommer eftersom mönstret inte är dokumenterat",
+        "Design och utveckling är oense om vad som ingår i systemet",
+        "Tokenändringar bryter flera applikationer eftersom namngivning och ägarskap är oklara"
+      ],
+      "scopeTitle": "Vad auditen granskar",
+      "scope": "Arbetet utgår från de gränssnitt, komponenter, tokens och mönster teamet använder nu. Ett representativt urval granskas för konsekvens, tillgänglighet och tokenanvändning. Ägarskap samt gransknings- och releaserutiner kartläggs parallellt med inventeringen, så att färdplanen skiljer snabba åtgärder från strukturellt arbete.",
+      "limitsTitle": "Ingår inte om det inte avtalas separat",
+      "limits": [
+        "En fullständig ombyggnad av komponenter",
+        "En migrering i varje produkt",
+        "Ett certifikat för tillgänglighetsefterlevnad"
+      ],
+      "stepsTitle": "Så går auditen till",
+      "steps": [
+        "Kartlägg gränssnitten i drift och vem som äger varje mönsterfamilj.",
+        "Ta ett urval av viktiga flöden för konsekvens, tillgänglighet och tokenanvändning.",
+        "Rangordna fynd efter användarpåverkan, omarbetningskostnad och åtgärdens komplexitet.",
+        "Kom överens om minimistandarder och en införandeordning som intressenterna kan följa."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "En inventering av komponenter, tokens och mönster som används",
+        "Fynd rangordnade efter allvarlighet med insatsuppskattningar",
+        "En 90-dagars färdplan som skiljer snabba vinster från strukturella åtgärder",
+        "Styrningsrekommendationer för RFC, granskning och releasetakt"
+      ],
+      "investMeta": "2 veckor, fast omfattning",
+      "investNote": "Auditen genomförs som UX Sprint-paketet. Slutlig omfattning beror på antalet produktytor, repositorier och team som ingår.",
+      "investLink": "Uppskatta ett skräddarsytt uppdrag",
+      "faqTitle": "Om auditen",
+      "faq": [
+        {
+          "question": "Hur stor del av produkten täcker auditen?",
+          "answer": "Ett representativt urval av ytor, komponenter, tokens och mönster som används, inte varje vy. Omfattningen beror på ytorna, repositorierna och teamen som ingår."
+        },
+        {
+          "question": "Åtgärdar auditen det den hittar?",
+          "answer": "Nej. Den är ett beslutsverktyg: en inventering, rangordnade fynd och en 90-dagars färdplan. Åtgärder kan följa som Design System Lift-Off eller ett integrerat partnerskap."
+        },
+        {
+          "question": "Är det här en audit av tillgänglighetsefterlevnad?",
+          "answer": "Tillgänglighet granskas som en del av mönstrens kvalitet, med WCAG 2.2 AA som referens. En efterlevnadsutvärdering eller ett certifikat avtalas separat."
+        },
+        {
+          "question": "Varför bokas den som en UX Sprint?",
+          "answer": "Auditen använder UX Sprint-paketet: två veckor, prissatt efter ytorna och teamen som ingår."
+        }
+      ],
+      "bookTitle": "Börja med ett samtal på 30 minuter",
+      "bookBody": "Gå igenom systemet, teamen som berörs och vad auditen ska besvara. En kalenderinbjudan kommer via e-post."
+    },
+    "liftoff": {
+      "metaTitle": "Design System Lift-Off | Digitaltableteur",
+      "metaDescription": "Audit, tokens, kärnkomponenter, Storybook och en adoptions-playbook på fyra veckor: en designsystemgrund som dina team kan bygga vidare på.",
+      "eyebrow": "Design System Lift-Off",
+      "timeline": "4 veckor",
+      "package": "Design System Lift-Off",
+      "title": "Från spridda komponenter till ett system som teamen kan bygga på",
+      "lead": "Varje team levererar lite olika knappar, formulär och modaler. Storybook stämmer inte längre med produktion. Lift-Off omfattar audit, tokenarkitektur, kärnkomponenter, Storybook och en adoptions-playbook på fyra veckor.",
+      "cta1": "Boka Design System Lift-Off",
+      "cta2": "Ställ en fråga",
+      "signalsTitle": "Välj Lift-Off när varje team bygger sin egen version",
+      "signals": [
+        "Varje team levererar lite olika knappar, formulär och modaler",
+        "Storybook finns men berättelserna stämmer inte med användningen i produktion",
+        "Figma-variabler och CSS-variabler har olika namn",
+        "Mörkt läge är påklistrat i stället för designat som ett tema"
+      ],
+      "scopeTitle": "Vad Lift-Off omfattar",
+      "scope": "En audit av den nuvarande grunden, därefter en tokentaxonomi, kärnkomponenterna och Storybook-dokumentation, med en adoptions-playbook för teamen som ska använda systemet. Komponenterna prioriteras efter användning, omarbetningskostnad och tillgänglighetsrisk.",
+      "limitsTitle": "Ingår inte om det inte avtalas separat",
+      "limits": [
+        "En ombyggnad av varje befintlig komponent",
+        "Migrering av varje produkt till det nya systemet",
+        "Ett certifikat för tillgänglighetsefterlevnad"
+      ],
+      "stepsTitle": "Så går Lift-Off till",
+      "steps": [
+        "Prioritera komponenter efter användning, omarbetningskostnad och tillgänglighetsrisk.",
+        "Definiera kompositionsmönster innan engångsvarianter byggs.",
+        "Dokumentera tillstånd, kantfall och tangentbordsbeteende i Storybook.",
+        "Pilotera med ett produktteam och utöka sedan med uppmätt användning."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "En tokentaxonomi från primitiva till semantiska och komponentnivå",
+        "En uppsättning kärnkomponenter med typade props och tillgänglighetsbaslinje",
+        "Storybook-dokumentation med riktlinjer för användning",
+        "En bidragsguide, en granskningslista och en adoptions-playbook"
+      ],
+      "investMeta": "4 veckor, fast omfattning",
+      "investNote": "Slutlig omfattning beror på antalet komponenter, produkter och team som ingår.",
+      "investLink": "Uppskatta ett skräddarsytt uppdrag",
+      "faqTitle": "Om Lift-Off",
+      "faq": [
+        {
+          "question": "Vad ingår i de fyra veckorna?",
+          "answer": "En audit av den nuvarande grunden, tokenarkitektur, kärnkomponenter, Storybook-dokumentation och en adoptions-playbook."
+        },
+        {
+          "question": "Byggs varje komponent om?",
+          "answer": "Nej. Kärnuppsättningen väljs efter användning, omarbetningskostnad och tillgänglighetsrisk. Kompositionsmönster kommer före engångsvarianter."
+        },
+        {
+          "question": "Hur börjar teamen använda det?",
+          "answer": "Först en pilot med ett produktteam, sedan en bredare utrullning med uppmätt användning."
+        },
+        {
+          "question": "Vad händer efter de fyra veckorna?",
+          "answer": "Ditt team driver systemet med adoptions-playbooken. Arbetet kan fortsätta som ett integrerat partnerskap."
+        }
+      ],
+      "bookTitle": "Börja med ett samtal på 30 minuter",
+      "bookBody": "Gå igenom produkterna, teamen och de nuvarande komponenterna. En kalenderinbjudan kommer via e-post."
+    },
+    "aiops": {
+      "metaTitle": "AI-Ready Ops | Digitaltableteur",
+      "metaDescription": "Arbetsflöde, komponentstyrning, kopplingar till AI-verktyg och en DesignOps-playbook som teamet kan driva själv, på tre veckor.",
+      "eyebrow": "AI-Ready Ops",
+      "timeline": "3 veckor",
+      "package": "AI-Ready Ops",
+      "title": "Skyddsräcken och automation för hur designarbete levereras",
+      "lead": "Granskningar blir flaskhalsar när antalet personer inte växer i takt med leveranserna. Ingen har definierat vad agenter och verktyg får ändra. AI-Ready Ops sätter upp arbetsflödet, komponentstyrningen, kopplingarna till AI-verktyg och en DesignOps-playbook som teamet kan driva själv, på tre veckor.",
+      "cta1": "Boka AI-Ready Ops",
+      "cta2": "Ställ en fråga",
+      "signalsTitle": "Passar när designskulden växer snabbare än granskningen",
+      "signals": [
+        "Designgranskningar blir flaskhalsar när antalet personer inte växer i takt med leveranserna",
+        "Överlämningar bygger fortfarande på skärmdumpar och chattrådar",
+        "Ingen gemensam sanning för vad agenter eller verktyg får ändra",
+        "Designskulden växer snabbare än manuell kvalitetssäkring hinner upptäcka"
+      ],
+      "scopeTitle": "Vad AI-Ready Ops omfattar",
+      "scope": "En karta över var tid går förlorad i specifikation, utveckling, granskning och release. Därefter skyddsräcken för vad agenter och verktyg får ändra i designsystemet, avvikelsekontroller i CI och ett arbetsflöde automatiserat från början till slut.",
+      "limitsTitle": "Ingår inte",
+      "limits": [
+        "Automatisering av beslut som kräver mänskligt omdöme",
+        "Automation i alla arbetsflöden på en gång",
+        "Agenter utan tillsyn som ändrar produktion"
+      ],
+      "stepsTitle": "Så går AI-Ready Ops till",
+      "steps": [
+        "Kartlägg var tid går förlorad: specifikation, utveckling, granskning eller release.",
+        "Skilj säkra automationsmål från beslut som kräver mänskligt omdöme.",
+        "Prototypa ett arbetsflöde från början till slut, till exempel en pull request för tokens.",
+        "Mät genomflöde och felfrekvens innan automationen utökas."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "En karta över DesignOps-arbetsflödet med automationskandidater",
+        "Skyddsräcken för agenters och verktygs ändringar i designsystemet",
+        "Lint- eller CI-kontroller för avvikelser i tokens och komponenter",
+        "En playbook för granskning med människan i loopen"
+      ],
+      "investMeta": "3 veckor, fast omfattning",
+      "investNote": "Slutlig omfattning beror på antalet arbetsflöden, repositorier och team som ingår.",
+      "investLink": "Uppskatta ett skräddarsytt uppdrag",
+      "faqTitle": "Om AI-Ready Ops",
+      "faq": [
+        {
+          "question": "Vilket arbetsflöde automatiseras först?",
+          "answer": "Ett arbetsflöde från början till slut, till exempel en pull request för tokens eller en komponentmall, valt där tid går förlorad i dag."
+        },
+        {
+          "question": "Vem behåller kontrollen?",
+          "answer": "Ditt team. Playbooken definierar vad agenter och verktyg får ändra och vilka beslut som kräver mänsklig granskning."
+        },
+        {
+          "question": "Vilka AI-verktyg används?",
+          "answer": "Valet av leverantör beror på er teknikstack och era riktlinjer. Policyn för AI-användning beskriver hur AI används i kunduppdrag."
+        },
+        {
+          "question": "Hur mäts framgång?",
+          "answer": "Genomflöde och felfrekvens mäts i det första arbetsflödet innan automationen utökas."
+        }
+      ],
+      "bookTitle": "Börja med ett samtal på 30 minuter",
+      "bookBody": "Gå igenom var designarbetet saktar ner i dag. En kalenderinbjudan kommer via e-post."
+    },
+    "partnership": {
+      "metaTitle": "Integrerat designpartnerskap | Digitaltableteur",
+      "metaDescription": "Seniort design- och designsystemledarskap integrerat i ditt team i sex eller tolv månader, till partnerskapspriset 90 €/timme.",
+      "price": "90 €/h",
+      "eyebrow": "Integrerat partnerskap",
+      "timeline": "6 eller 12 månader",
+      "package": "Partnerskapspris",
+      "title": "Seniort design- och systemledarskap, integrerat i ditt team",
+      "lead": "För produktorganisationer som behöver förvaltning av designsystem, styrning och praktisk leverans under månader snarare än veckor. Sex eller tolv månader, minst fyra dagar i veckan, till partnerskapspriset 90 €/timme.",
+      "cta1": "Planera ett partnerskap",
+      "cta2": "Öppna kalkylatorn",
+      "signalsTitle": "Välj ett partnerskap när arbetet varar längre än en sprint",
+      "signals": [
+        "En integrerad designpartner för produkt och varumärke",
+        "Designsystemprogram med styrning och agentstödd drift",
+        "Holistiskt designledarskap för hela produkten",
+        "Designsystemförvaltning i hela organisationen och AI-mognad"
+      ],
+      "scopeTitle": "Vad partnerskapet omfattar",
+      "scope": "Dedikerad designkompetens minst fyra dagar i veckan: hela designprocessen med leveranser, direkt samarbete och strategisk designrådgivning, med specialister från ett nätverk när arbetet kräver det.",
+      "limitsTitle": "Passar inte för",
+      "limits": [
+        "Bemanning av ett stort parallellt program",
+        "Perioder under sex månader till partnerskapspriset",
+        "Färre än fyra dagar i veckan till partnerskapspriset"
+      ],
+      "stepsTitle": "Så går ett partnerskap till",
+      "steps": [
+        "Kom överens om period, dagar per vecka och vilka resultat partnerskapet ansvarar för.",
+        "Börja med en kort genomgång av det nuvarande systemet och teamets arbetssätt.",
+        "Arbeta inom teamets planerings-, gransknings- och releaserutiner.",
+        "Följ upp framstegen mot de överenskomna resultaten och justera planen."
+      ],
+      "deliverablesTitle": "Det här ingår i partnerskapet",
+      "deliverables": [
+        "Dedikerad designkompetens minst fyra dagar i veckan",
+        "Hela designprocessen med leveranser",
+        "Direkt samarbete och strategisk designrådgivning",
+        "Specialister från ett nätverk när arbetet kräver det"
+      ],
+      "investMeta": "6 eller 12 månader, minst 4 dagar i veckan",
+      "investNote": "Sex månader med fyra dagar i veckan är 780 timmar, cirka 70k €. Kortare perioder eller lättare veckor prissätts till standardpriset 120 €/timme.",
+      "investLink": "Öppna kalkylatorn",
+      "faqTitle": "Om partnerskapet",
+      "faq": [
+        {
+          "question": "Hur sätts priset?",
+          "answer": "Periodens timmar till 90 €/timme, 25 % under standardpriset 120 €/timme. Sex månader med fyra dagar i veckan är 780 timmar, cirka 70k €."
+        },
+        {
+          "question": "Kan man börja i mindre skala?",
+          "answer": "Ja, till standardpriset. Perioder under sex månader eller under fyra dagar i veckan prissätts till 120 €/timme eller som ett fast paket."
+        },
+        {
+          "question": "Vem gör arbetet?",
+          "answer": "En senior praktiker direkt i arbetet, med specialister från ett nätverk när arbetet kräver det."
+        },
+        {
+          "question": "Kan partnerskapet pågå längre än sex månader?",
+          "answer": "Ja. Perioden på tolv månader behåller partnerskapspriset 90 €/timme."
+        }
+      ],
+      "bookTitle": "Planera partnerskapet i ett samtal på 30 minuter",
+      "bookBody": "Gå igenom perioden, veckorytmen och vad partnerskapet ska ansvara för. En kalenderinbjudan kommer via e-post."
+    }
+  },
+  "procurementFaq": {
+    "title": "Att köpa av Digitaltableteur",
+    "intro": "Svar för inköp, juridik och ekonomi. Allt annat kan tas upp i det första meddelandet.",
+    "aiPolicyLink": "Läs policyn för AI-användning",
+    "items": [
+      {
+        "id": "contracting-party",
+        "question": "Vem är avtalspart?",
+        "answer": "Digitaltableteur, en finländsk enskild näringsidkare registrerad i handelsregistret. FO-nummer 2264455-2, momsnummer FI22644552, Hämeentie 8 C 26, 00530 Helsingfors."
+      },
+      {
+        "id": "verified-supplier",
+        "question": "Är Digitaltableteur en verifierad leverantör?",
+        "answer": "Ja. Skatte-, pensions- och arbetsgivarförpliktelser verifieras kontinuerligt i Vastuu Groups program Pålitlig Partner, så som den finländska lagen om beställaransvar kräver. Rapporten är offentlig."
+      },
+      {
+        "id": "invoicing",
+        "question": "Hur sköts faktureringen?",
+        "answer": "E-fakturor till adress 003722644552 via APIX Messaging Oy, operatörs-ID 003723327487. Betalningsvillkor avtalas i uppdraget."
+      },
+      {
+        "id": "nda",
+        "question": "Kan kundens sekretessavtal eller ramavtal användas?",
+        "answer": "Ja. Ett kort uppdragsavtal finns också."
+      },
+      {
+        "id": "ownership",
+        "question": "Vem äger arbetet?",
+        "answer": "Du behåller fullt ägande av koden, designen och tokens som byggs tillsammans. Ingen inlåsning, inga licensspel."
+      },
+      {
+        "id": "languages",
+        "question": "Vilka arbetsspråk finns?",
+        "answer": "Engelska och finska, i workshops och i dokumentation."
+      },
+      {
+        "id": "remote",
+        "question": "Sker arbetet på distans eller på plats?",
+        "answer": "På distans som standard, med bas i Helsingfors."
+      },
+      {
+        "id": "accessibility-law",
+        "question": "Täcker arbetet tillgänglighetslagstiftningen?",
+        "answer": "Arbetet siktar på WCAG 2.2 AA, som omfattar de WCAG 2.1 AA-kriterier som EN 301 549 och den europeiska tillgänglighetslagen bygger på. En formell utvärdering av efterlevnad avtalas separat."
+      },
+      {
+        "id": "ai-use",
+        "question": "Används AI i kunduppdrag?",
+        "answer": "Endast så som policyn för AI-användning beskriver. Den listar verktygen, skyddsåtgärderna och hur kunddata hanteras."
+      }
+    ]
+  },
+  "pricingPackageDetailsUxSprint": "Använd det som designsystemaudit",
+  "pricingPackageDetailsAiReady": "Se hela omfattningen",
+  "pricingPackageDetailsLiftOff": "Se hela omfattningen"
 }

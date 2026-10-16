@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { PricingPage } from "@dt-pages/PricingPage";
-import { pricingFaqs } from "@/app/lib/aeoContent";
+import { procurementFaqEntries } from "@/app/lib/procurementFaq";
 import {
   getBreadcrumbSchema,
   getFaqSchema,
@@ -47,7 +47,8 @@ export default function Pricing() {
         "UX/UI pricing",
       ],
     }),
-    getFaqSchema(pricingFaqs),
+    // The visible procurement FAQ on the page is the FAQPage source.
+    getFaqSchema(procurementFaqEntries),
     getBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Pricing", url: "/pricing" },

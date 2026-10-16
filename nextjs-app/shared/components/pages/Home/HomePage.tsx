@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useTranslation } from "react-i18next";
+import { Container } from "@digitaltableteur/react";
 import styles from "./Home.module.css";
 
 // Above-fold patterns (eager)
@@ -27,6 +28,11 @@ const CTASection = dynamic(() =>
 const NewsBulletin = dynamic(() =>
   import("../../../patterns/NewsBulletin").then((m) => ({
     default: m.NewsBulletin,
+  })),
+);
+const ProcurementFaq = dynamic(() =>
+  import("../../../patterns/ProcurementFaq").then((m) => ({
+    default: m.ProcurementFaq,
   })),
 );
 const DesignSprintsSection = dynamic(() =>
@@ -160,6 +166,13 @@ export function HomePage() {
 
       {/* Design Sprints Section */}
       <DesignSprintsSection id="design-sprints" />
+
+      {/* Procurement answers; also the source of the page's FAQ data. */}
+      <div className={styles.procurement}>
+        <Container size="lg">
+          <ProcurementFaq />
+        </Container>
+      </div>
 
       {/* Contact CTA Section */}
       <CTASection

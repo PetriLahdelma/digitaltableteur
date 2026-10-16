@@ -320,3 +320,7 @@
     align-items: center;
   }
 }
+
+.procurement {
+  padding-block: var(--space-layout-96);
+}

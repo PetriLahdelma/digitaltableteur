@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { HomePage } from "@dt-pages/Home/HomePage";
+import { procurementFaqEntries } from "@/app/lib/procurementFaq";
 import {
   getFaqSchema,
   getItemListSchema,
@@ -30,24 +31,6 @@ export const metadata: Metadata = {
 };
 
 export const revalidate = 3600;
-
-const homepageQuestions = [
-  {
-    question: "What does Digitaltableteur do?",
-    answer:
-      "Digitaltableteur is a design consultancy and portfolio focused on design systems, AI-powered design workflows, DesignOps, and product design for modern digital products.",
-  },
-  {
-    question: "Who is this site for?",
-    answer:
-      "The site is for product leaders, design leaders, and teams that need a clearer design system, stronger component libraries, or better AI-assisted design workflows.",
-  },
-  {
-    question: "What can I find on this site?",
-    answer:
-      "You can explore services, portfolio work, articles, accessibility guidance, and ways to contact Digitaltableteur for consulting or project work.",
-  },
-];
 
 const homepagePaths = [
   {
@@ -95,7 +78,8 @@ export default function Home() {
       name: "Primary Digitaltableteur paths",
       items: homepagePaths,
     }),
-    getFaqSchema(homepageQuestions),
+    // The visible procurement FAQ on the page is the FAQPage source.
+    getFaqSchema(procurementFaqEntries),
   ];
 
   return (

@@ -1,0 +1,372 @@
+/* Engagement offer page. Sections stack with layout spacing; two-column
+   blocks and grids collapse under 56rem. */
+
+.root {
+  padding-block: var(--space-layout-64) 0;
+  color: var(--color-text);
+}
+
+/* Hero */
+
+.hero {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-layout-32);
+}
+
+.heroTitle {
+  max-inline-size: 20ch;
+}
+
+.lead {
+  max-inline-size: 65ch;
+}
+
+.facts {
+  display: flex;
+  margin-block: 0;
+  padding-block-start: var(--space-internal-24);
+  flex-wrap: wrap;
+  gap: var(--space-internal-16) var(--space-layout-48);
+  border-block-start: 1px solid var(--color-border-light);
+  justify-self: stretch;
+}
+
+.fact {
+  display: grid;
+  gap: var(--space-internal-4);
+}
+
+.fact dt {
+  font-size: var(--font-size-text-s);
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.fact dd {
+  margin-inline-start: 0;
+  font-size: var(--font-size-text-l);
+  font-weight: 700;
+  color: var(--color-title);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-internal-12);
+}
+
+/* Shared section rhythm */
+
+.section {
+  margin-block-start: var(--space-layout-96);
+}
+
+.sectionTitle {
+  margin-block-end: var(--space-layout-32);
+  max-inline-size: 40ch;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+  align-items: start;
+  gap: var(--space-layout-48);
+}
+
+.stack {
+  display: grid;
+  align-content: start;
+  gap: var(--space-internal-16);
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+/* Signals */
+
+.signals {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-internal-16);
+  list-style: none;
+}
+
+.signal {
+  display: flex;
+  padding: var(--space-internal-24);
+  min-block-size: var(--space-layout-96);
+  align-items: center;
+  gap: var(--space-internal-12);
+  border-radius: var(--radius-lg);
+  background: var(--color-light-bg);
+}
+
+.marker {
+  block-size: var(--space-internal-12);
+  inline-size: var(--space-internal-12);
+  flex: 0 0 auto;
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-full);
+  background: var(--logo-background);
+}
+
+/* Scope and limits */
+
+.limits {
+  display: grid;
+  padding: var(--space-internal-24);
+  gap: var(--space-internal-12);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.limitList {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-internal-12);
+  list-style: none;
+}
+
+.limitList li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-internal-12);
+}
+
+.limitList li::before {
+  block-size: 2px;
+  inline-size: var(--space-internal-12);
+  flex: 0 0 auto;
+  background: var(--color-muted);
+  content: "";
+}
+
+/* Text spans inside list rows carry a paragraph margin; the rows set their
+   own rhythm. */
+
+.signal > span,
+.step > span,
+.deliverable > span,
+.limitList li > span {
+  margin-block: 0;
+}
+
+/* Steps */
+
+.steps {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-internal-24);
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  padding-block-start: var(--space-internal-24);
+  align-content: start;
+  gap: var(--space-internal-16);
+  border-block-start: 2px solid var(--color-text);
+}
+
+.stepNumber {
+  display: inline-grid;
+  block-size: var(--space-layout-40);
+  inline-size: var(--space-layout-40);
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--logo-background);
+  font-weight: 500;
+  color: var(--logo-text-color);
+}
+
+/* Deliverables */
+
+.band {
+  display: grid;
+  padding: var(--space-layout-48);
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  gap: var(--space-layout-48);
+  border-radius: var(--radius-lg);
+  background: var(--color-light-bg);
+}
+
+.bandTitle {
+  margin: 0;
+}
+
+.deliverables {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-internal-16);
+  list-style: none;
+}
+
+.deliverable {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-internal-12);
+}
+
+.deliverable > svg {
+  flex: 0 0 auto;
+}
+
+/* Investment */
+
+.priceCard {
+  display: grid;
+  padding: var(--space-layout-32);
+  justify-items: start;
+  gap: var(--space-internal-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.price {
+  margin: 0;
+  font-size: var(--font-size-title-l);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-title);
+}
+
+.arrowLink {
+  display: inline-flex;
+  margin-block-start: var(--space-internal-8);
+  align-items: center;
+  gap: var(--space-internal-8);
+  font-weight: 500;
+}
+
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-16);
+}
+
+/* Investment reads price first: the card leads the split. */
+
+.split:has(.priceCard) {
+  grid-template-columns: minmax(0, 28rem) minmax(0, 1fr);
+}
+
+/* Proof */
+
+.proof {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-internal-24);
+  list-style: none;
+}
+
+.proofCard {
+  display: flex;
+  padding: var(--space-internal-24);
+  flex-direction: column;
+  gap: var(--space-internal-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.proofCard .arrowLink {
+  margin-block-start: auto;
+  padding-block-start: var(--space-internal-8);
+}
+
+/* Offer FAQ */
+
+.faq {
+  display: grid;
+  grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
+  gap: var(--space-layout-48);
+}
+
+/* Booking */
+
+.bookSection {
+  padding-block-end: var(--space-layout-96);
+}
+
+.book {
+  display: grid;
+  padding: var(--space-layout-64);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-layout-48);
+  border-radius: var(--radius-lg);
+  background: var(--color-primary);
+}
+
+.onPanel {
+  color: var(--color-white);
+}
+
+.bookActions {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-internal-12);
+}
+
+.email {
+  color: var(--color-white);
+  text-decoration-line: underline;
+  text-underline-offset: 0.2em;
+}
+
+.email:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: var(--space-internal-2);
+}
+
+@media (width < 56rem) {
+  .split,
+  .split:has(.priceCard),
+  .band,
+  .faq,
+  .book {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proof {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (width < 36rem) {
+  .signals,
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .band,
+  .book {
+    padding: var(--space-layout-32);
+  }
+}
+
+@media (forced-colors: active) {
+  .marker,
+  .stepNumber {
+    border: 1px solid CanvasText;
+    background: Canvas;
+  }
+
+  .book {
+    border: 1px solid CanvasText;
+  }
+}

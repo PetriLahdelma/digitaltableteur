@@ -20,4 +20,16 @@ describe("sitemap", () => {
       expect(urls.some((url) => url.endsWith(`/work/${slug}`))).toBe(false);
     }
   });
+
+  it("lists every engagement offer page", async () => {
+    const urls = (await sitemap()).map((entry) => entry.url);
+    for (const slug of [
+      "design-system-audit",
+      "design-system-lift-off",
+      "ai-ready-ops",
+      "embedded-partnership",
+    ]) {
+      expect(urls.some((url) => url.endsWith(`/engagements/${slug}`))).toBe(true);
+    }
+  });
 });

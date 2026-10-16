@@ -1,0 +1,101 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "schemaVersion": 2,
+  "tier": "pattern",
+  "group": "marketing",
+  "status": "alpha",
+  "radixPrimitive": null,
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default"
+  ],
+  "lightDarkVerified": false,
+  "name": "EngagementPageContent",
+  "description": "One engagement offer page: problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ and a booking call to action.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1912-33",
+  "element": "article",
+  "a11y": {
+    "keyboard": [
+      "Tab reaches the calls to action, links and FAQ triggers in reading order; Enter or Space toggles an FAQ item."
+    ],
+    "ariaRequirements": [
+      "The article is labelled by its single h1; each section is labelled by its h2.",
+      "Steps are an ordered list; decorative numbers and icons are hidden from assistive technology.",
+      "Proof links carry the case title in a visually hidden suffix so repeated link text stays distinguishable."
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [
+      "--color-text",
+      "--color-title",
+      "--color-muted",
+      "--color-border",
+      "--color-border-light",
+      "--color-light-bg",
+      "--color-primary",
+      "--color-white",
+      "--logo-background",
+      "--logo-text-color"
+    ],
+    "spacing": [
+      "--space-internal-4",
+      "--space-internal-8",
+      "--space-internal-12",
+      "--space-internal-16",
+      "--space-internal-24",
+      "--space-layout-32",
+      "--space-layout-40",
+      "--space-layout-48",
+      "--space-layout-64",
+      "--space-layout-96"
+    ]
+  },
+  "props": {
+    "engagementId": {
+      "optional": false,
+      "type": "union",
+      "values": [
+        "audit",
+        "liftoff",
+        "aiops",
+        "partnership"
+      ],
+      "description": "Which engagement page to render"
+    },
+    "className": {
+      "optional": true,
+      "type": "string",
+      "description": "Additional class name on the root"
+    }
+  },
+  "composesWith": [
+    "ProcurementFaq",
+    "Accordion",
+    "Badge",
+    "Button",
+    "ReliablePartnerBadge"
+  ],
+  "forbiddenUse": [
+    "Show a claim, figure or client outcome that is not published elsewhere on the site.",
+    "Repeat a procurement question in the offer FAQ."
+  ],
+  "keywords": [
+    "offer page",
+    "engagement",
+    "service page",
+    "package",
+    "pricing",
+    "audit",
+    "design system"
+  ],
+  "dense": "Engagement offer page from data/engagements and engagementPages locale copy: hero, fit, scope, steps, deliverables, price, proof, FAQs, booking",
+  "usage": {
+    "description": "Renders /engagements/<slug>. Copy lives under engagementPages.<id> in the locales; routes, contact links, price keys and proof order in data/engagements."
+  }
+}

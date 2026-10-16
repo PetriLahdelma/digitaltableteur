@@ -1,0 +1,39 @@
+/* Procurement FAQ: intro column beside a divided accordion; stacks on narrow
+   containers. */
+
+.root {
+  display: grid;
+  grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
+  gap: var(--space-layout-48);
+}
+
+.intro {
+  display: grid;
+  align-content: start;
+  gap: var(--space-internal-16);
+}
+
+.introText {
+  color: var(--color-muted);
+}
+
+.list {
+  min-inline-size: 0;
+}
+
+.answer {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-internal-12);
+}
+
+.badge {
+  margin-block-start: var(--space-internal-4);
+}
+
+@media (width < 56rem) {
+  .root {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-layout-24);
+  }
+}

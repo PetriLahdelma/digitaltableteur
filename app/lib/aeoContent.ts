@@ -1,24 +1,6 @@
 import type { FaqEntry } from "@/app/lib/structuredData";
 
 /** Answer-first FAQ blocks for AEO / GEO — used in JSON-LD on key commercial pages. */
-export const pricingFaqs: FaqEntry[] = [
-  {
-    question: "How much does Digitaltableteur charge for design work?",
-    answer:
-      "Productized packages start from €7,000. Scope covers design systems, UX/UI, DesignOps, and AI-ready workflows with fixed deliverables and senior delivery — not open-ended agency retainers.",
-  },
-  {
-    question: "What is included in a Digitaltableteur pricing package?",
-    answer:
-      "Packages include defined deliverables such as audits, component libraries, design tokens, documentation, and handoff assets. Each tier lists scope, timeline, and revision boundaries up front.",
-  },
-  {
-    question: "Does Digitaltableteur offer design systems consulting?",
-    answer:
-      "Yes. Digitaltableteur specializes in design system audits, component libraries, token architecture, governance, and AI-assisted DesignOps for product teams.",
-  },
-];
-
 export const aboutFaqs: FaqEntry[] = [
   {
     question: "Who is Petri Lahdelma?",

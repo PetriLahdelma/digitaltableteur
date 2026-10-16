@@ -5,11 +5,12 @@ import { useId, useState } from "react";
 import { useTranslate } from "../../lib/translation";
 import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 import { cn } from "../../lib/cn";
-import { Button, Icon, Text, Title } from "@digitaltableteur/react";
+import { Button, Icon, Link, Text, Title } from "@digitaltableteur/react";
 import { PricingCalculator } from "../PricingCalculator";
 import { IconButton } from "../../components/IconButton";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
 import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
+import { ProcurementFaq } from "../ProcurementFaq";
 import styles from "./PricingPageContent.module.css";
 
 const PRICING_HERO_IMAGE = "/images/pricing/dsharp3-hero.png";
@@ -63,6 +64,10 @@ type PackageItem = {
   ctaDefault: string;
   contactPackageId: string;
   donnyTarget: string;
+  /** Offer page for this package (/engagements/<slug>). */
+  detailsHref: string;
+  detailsKey: string;
+  detailsDefault: string;
 };
 
 const PACKAGES: PackageItem[] = [
@@ -82,6 +87,9 @@ const PACKAGES: PackageItem[] = [
     ctaKey: "pricingPackageCtaUxSprint",
     ctaDefault: "Book UX Sprint",
     contactPackageId: "ux-sprint",
+    detailsHref: "/engagements/design-system-audit",
+    detailsKey: "pricingPackageDetailsUxSprint",
+    detailsDefault: "Use it as a design system audit",
     donnyTarget: "pricing.package.uxSprint",
   },
   {
@@ -100,6 +108,9 @@ const PACKAGES: PackageItem[] = [
     ctaKey: "pricingPackageCtaAiReady",
     ctaDefault: "Book AI-Ready Ops",
     contactPackageId: "ai-ready-designops",
+    detailsHref: "/engagements/ai-ready-ops",
+    detailsKey: "pricingPackageDetailsAiReady",
+    detailsDefault: "See the full scope",
     donnyTarget: "pricing.package.aiReadyDesignOps",
   },
   {
@@ -118,6 +129,9 @@ const PACKAGES: PackageItem[] = [
     ctaKey: "pricingPackageCtaLiftOff",
     ctaDefault: "Book Design System Lift-Off",
     contactPackageId: "design-system-lift-off",
+    detailsHref: "/engagements/design-system-lift-off",
+    detailsKey: "pricingPackageDetailsLiftOff",
+    detailsDefault: "See the full scope",
     donnyTarget: "pricing.package.designSystemLiftOff",
   },
 ];
@@ -321,6 +335,11 @@ function PackageCard({
         <Text as="p" size="s" className={styles.packageProof}>
           {t(pkg.proofKey, pkg.proofDefault)}
         </Text>
+      ) : null}
+      {"detailsHref" in pkg ? (
+        <Link href={pkg.detailsHref} className={styles.packageDetails}>
+          {t(pkg.detailsKey, pkg.detailsDefault)}
+        </Link>
       ) : null}
       <div className={styles.packageCta}>
         <Button
@@ -597,6 +616,8 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
               </Text>
             </div>
           </div>
+
+          <ProcurementFaq className={styles.procurement} />
         </section>
       </div>
     </div>

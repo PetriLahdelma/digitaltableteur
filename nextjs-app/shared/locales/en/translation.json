@@ -1458,5 +1458,358 @@
   "stageListAgainAt": "Again at {{stages}}.",
   "stageListProgress": "{{done}} of {{total}} done",
   "stageListClear": "Clear all",
-  "stageListIndexLabel": "Entries by stage"
+  "stageListIndexLabel": "Entries by stage",
+  "engagementPages": {
+    "common": {
+      "factTimeline": "Timeline",
+      "factInvestment": "Investment",
+      "factPackage": "Package",
+      "investLabel": "Investment",
+      "investTitle": "How the price is set",
+      "proofTitle": "Relevant published work",
+      "proofLink": "Read the case study",
+      "breadcrumbHome": "Home",
+      "breadcrumbPricing": "Pricing",
+      "emailLabel": "Email"
+    },
+    "proof": {
+      "helsinki-design-system": {
+        "eyebrow": "City of Helsinki, 2020 to 2022",
+        "title": "Helsinki Design System",
+        "body": "Research, component structures, accessibility review, documentation and delivery practices for a design system used across many digital services."
+      },
+      "dsharp-design-system": {
+        "eyebrow": "VR Group, 2026 to present",
+        "title": "DSharp Design System",
+        "body": "Tokens, component contracts, Storybook, MCP, CLI and enforcement tooling for an AI-assisted design-system architecture."
+      },
+      "llm-component-schema": {
+        "eyebrow": "Open source, 2025 to present",
+        "title": "LLM Component Schema",
+        "body": "A published schema and CLI for component contracts, with drift detection and evaluation benchmarks."
+      },
+      "sap-build-apps": {
+        "eyebrow": "SAP, 2022 to 2026",
+        "title": "SAP Build Apps Design System",
+        "body": "The design system for SAP's low-code platform: 100+ components across Figma and React, serving 300+ developers and designers."
+      },
+      "project-spine": {
+        "eyebrow": "Open source, 2026",
+        "title": "Project Spine",
+        "body": "A CLI that compiles briefs, repositories and design tokens into operating context for coding agents."
+      }
+    },
+    "audit": {
+      "metaTitle": "Design System Audit for Product Teams | Digitaltableteur",
+      "metaDescription": "Find component, token, accessibility and governance gaps in your current design system. Receive severity-ranked findings and a practical 90-day roadmap.",
+      "eyebrow": "Design system audit",
+      "timeline": "1 to 2 weeks",
+      "package": "UX Sprint",
+      "title": "Find where your design system is costing the team time",
+      "lead": "Similar components behave differently. Accessibility defects return in new features. Figma and production disagree about what belongs in the system. A focused audit turns those symptoms into an inventory, severity-ranked findings and a 90-day roadmap.",
+      "cta1": "Book UX Sprint",
+      "cta2": "Send an audit question",
+      "signalsTitle": "Use an audit when the system exists but trust is slipping",
+      "signals": [
+        "Components look similar but behave differently across squads",
+        "Accessibility defects return because the pattern is not documented",
+        "Design and engineering disagree about what is in the system",
+        "Token changes break several applications because naming and ownership are unclear"
+      ],
+      "scopeTitle": "What the audit reviews",
+      "scope": "The work starts from the UI surfaces, components, tokens and patterns your team uses now. A representative sample is reviewed for consistency, accessibility and token use. Ownership, review and release practices are mapped alongside the inventory, so the roadmap separates quick fixes from structural work.",
+      "limitsTitle": "Not included unless scoped separately",
+      "limits": [
+        "A full component rebuild",
+        "A migration across every product",
+        "An accessibility conformance certificate"
+      ],
+      "stepsTitle": "How the audit runs",
+      "steps": [
+        "Map live UI surfaces and who owns each pattern family.",
+        "Sample important flows for consistency, accessibility and token use.",
+        "Rank findings by user impact, rework cost and fix complexity.",
+        "Agree on minimum standards and an adoption sequence stakeholders can follow."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "An inventory of the components, tokens and patterns in use",
+        "Severity-ranked findings with effort estimates",
+        "A 90-day roadmap separating quick wins from structural fixes",
+        "Governance recommendations for RFCs, review and release cadence"
+      ],
+      "investMeta": "2 weeks, fixed scope",
+      "investNote": "The audit runs as the UX Sprint package. Final scope depends on the number of product surfaces, repositories and teams included.",
+      "investLink": "Estimate a custom engagement",
+      "faqTitle": "About the audit",
+      "faq": [
+        {
+          "question": "How much of the product does the audit cover?",
+          "answer": "A representative sample of the surfaces, components, tokens and patterns in use, not every screen. Scope depends on the surfaces, repositories and teams included."
+        },
+        {
+          "question": "Does the audit fix what it finds?",
+          "answer": "No. It is a decision tool: an inventory, ranked findings and a 90-day roadmap. Fixes can follow as Design System Lift-Off or an embedded partnership."
+        },
+        {
+          "question": "Is this an accessibility conformance audit?",
+          "answer": "Accessibility is reviewed as part of pattern quality, with WCAG 2.2 AA as the reference. A conformance evaluation or certificate is scoped separately."
+        },
+        {
+          "question": "Why is it booked as a UX Sprint?",
+          "answer": "The audit uses the UX Sprint package: two weeks, priced by the surfaces and teams included."
+        }
+      ],
+      "bookTitle": "Start with a 30-minute call",
+      "bookBody": "Talk through the system, the teams involved and what the audit should answer. A calendar invite arrives by email."
+    },
+    "liftoff": {
+      "metaTitle": "Design System Lift-Off | Digitaltableteur",
+      "metaDescription": "Audit, tokens, core components, Storybook and an adoption playbook in four weeks: a design system foundation your teams can build on.",
+      "eyebrow": "Design System Lift-Off",
+      "timeline": "4 weeks",
+      "package": "Design System Lift-Off",
+      "title": "From scattered components to a system your teams can build on",
+      "lead": "Every squad ships slightly different buttons, forms and modals. Storybook no longer matches production. Lift-Off covers the audit, token architecture, core components, Storybook and an adoption playbook in four weeks.",
+      "cta1": "Book Design System Lift-Off",
+      "cta2": "Send a question",
+      "signalsTitle": "Use Lift-Off when every squad builds its own version",
+      "signals": [
+        "Every squad ships slightly different buttons, forms and modals",
+        "Storybook exists but stories do not match production usage",
+        "Figma variables and CSS custom properties use different names",
+        "Dark mode is bolted on instead of designed as a theme"
+      ],
+      "scopeTitle": "What Lift-Off covers",
+      "scope": "An audit of the current foundation, then a token taxonomy, the core component set and Storybook documentation, with an adoption playbook for the teams that will use it. Components are prioritised by traffic, rework cost and accessibility risk.",
+      "limitsTitle": "Not included unless scoped separately",
+      "limits": [
+        "A rebuild of every existing component",
+        "Migration of every product to the new system",
+        "An accessibility conformance certificate"
+      ],
+      "stepsTitle": "How Lift-Off runs",
+      "steps": [
+        "Prioritise components by traffic, rework cost and accessibility risk.",
+        "Define composition patterns before building one-off variants.",
+        "Document states, edge cases and keyboard behaviour in Storybook.",
+        "Pilot with one product squad, then expand with measured adoption."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "A token taxonomy from primitive to semantic to component",
+        "A core component set with typed props and accessibility baselines",
+        "Storybook documentation with usage do's and don'ts",
+        "A contribution guide, review checklist and adoption playbook"
+      ],
+      "investMeta": "4 weeks, fixed scope",
+      "investNote": "Final scope depends on the number of components, products and teams included.",
+      "investLink": "Estimate a custom engagement",
+      "faqTitle": "About Lift-Off",
+      "faq": [
+        {
+          "question": "What do the four weeks include?",
+          "answer": "An audit of the current foundation, token architecture, core components, Storybook documentation and an adoption playbook."
+        },
+        {
+          "question": "Is every component rebuilt?",
+          "answer": "No. The core set is chosen by traffic, rework cost and accessibility risk. Composition patterns come before one-off variants."
+        },
+        {
+          "question": "How do teams adopt it?",
+          "answer": "A pilot with one product squad comes first, then a wider rollout with measured adoption."
+        },
+        {
+          "question": "What happens after the four weeks?",
+          "answer": "Your team runs the system with the adoption playbook. Continued work can run as an embedded partnership."
+        }
+      ],
+      "bookTitle": "Start with a 30-minute call",
+      "bookBody": "Talk through your products, teams and current components. A calendar invite arrives by email."
+    },
+    "aiops": {
+      "metaTitle": "AI-Ready Ops | Digitaltableteur",
+      "metaDescription": "Workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run, in three weeks.",
+      "eyebrow": "AI-Ready Ops",
+      "timeline": "3 weeks",
+      "package": "AI-Ready Ops",
+      "title": "Put guardrails and automation around how design work ships",
+      "lead": "Reviews bottleneck when headcount does not scale with output. Nobody has defined what agents and tools may change. AI-Ready Ops sets up the workflow, component governance, AI tooling hooks and a DesignOps playbook your team can run, in three weeks.",
+      "cta1": "Book AI-Ready Ops",
+      "cta2": "Send a question",
+      "signalsTitle": "Use it when design debt grows faster than review",
+      "signals": [
+        "Design review bottlenecks when headcount does not scale with output",
+        "Handoffs still rely on screenshots and chat threads",
+        "No single source of truth for what agents or tools may change",
+        "Design debt accumulates faster than manual QA can catch"
+      ],
+      "scopeTitle": "What AI-Ready Ops covers",
+      "scope": "A map of where time is lost across spec, build, review and release. Then guardrails for what agents and tools may change in the design system, drift checks in CI and one workflow automated end to end.",
+      "limitsTitle": "Not included",
+      "limits": [
+        "Automating decisions that need human judgement",
+        "Rolling automation across every workflow at once",
+        "Unsupervised agents changing production"
+      ],
+      "stepsTitle": "How AI-Ready Ops runs",
+      "steps": [
+        "Map where time is lost: spec, build, review or release.",
+        "Separate safe automation targets from decisions that need human judgement.",
+        "Prototype one workflow end to end, for example a token pull request.",
+        "Measure throughput and error rate before expanding automation."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "A DesignOps workflow map with automation candidates",
+        "Guardrails for agent and tool changes to the design system",
+        "Linting or CI checks for token and component drift",
+        "A playbook for human-in-the-loop review"
+      ],
+      "investMeta": "3 weeks, fixed scope",
+      "investNote": "Final scope depends on the number of workflows, repositories and teams included.",
+      "investLink": "Estimate a custom engagement",
+      "faqTitle": "About AI-Ready Ops",
+      "faq": [
+        {
+          "question": "Which workflow is automated first?",
+          "answer": "One workflow end to end, for example a token pull request or a component scaffold, chosen where time is lost today."
+        },
+        {
+          "question": "Who stays in control?",
+          "answer": "Your team. The playbook defines what agents and tools may change and which decisions need human review."
+        },
+        {
+          "question": "Which AI tools are used?",
+          "answer": "Provider selection depends on your stack and policies. The AI use policy describes how AI is used in client work."
+        },
+        {
+          "question": "How is success measured?",
+          "answer": "Throughput and error rate are measured on the first workflow before automation expands."
+        }
+      ],
+      "bookTitle": "Start with a 30-minute call",
+      "bookBody": "Talk through where design work slows down today. A calendar invite arrives by email."
+    },
+    "partnership": {
+      "metaTitle": "Embedded Design Partnership | Digitaltableteur",
+      "metaDescription": "Senior design and design-system leadership embedded in your team for six or twelve months, at the 90 €/h partnership rate.",
+      "price": "90 €/h",
+      "eyebrow": "Embedded partnership",
+      "timeline": "6 or 12 months",
+      "package": "Partnership rate",
+      "title": "Senior design and system leadership, embedded in your team",
+      "lead": "For product organisations that need design-system stewardship, governance and hands-on delivery over months rather than weeks. Six or twelve months at four or more days a week, at the 90 €/h partnership rate.",
+      "cta1": "Plan a partnership",
+      "cta2": "Open the calculator",
+      "signalsTitle": "Use a partnership when the work outlasts a sprint",
+      "signals": [
+        "An embedded design partner across product and brand",
+        "Design system programs with governance and agent-assisted ops",
+        "Holistic design leadership for the whole product",
+        "Org-wide design system stewardship and AI enablement"
+      ],
+      "scopeTitle": "What the partnership covers",
+      "scope": "Dedicated design expertise four or more days a week: the complete design process and its deliverables, direct collaboration and strategic design guidance, with specialists from a network added as the work needs them.",
+      "limitsTitle": "Not the right fit for",
+      "limits": [
+        "Staffing a large parallel program",
+        "Terms under six months at the partnership rate",
+        "Fewer than four days a week at the partnership rate"
+      ],
+      "stepsTitle": "How a partnership runs",
+      "steps": [
+        "Agree the term, days per week and the outcomes the partnership owns.",
+        "Start with a short audit of the current system and team practices.",
+        "Work inside your planning, review and release rituals.",
+        "Review progress against the agreed outcomes and adjust the plan."
+      ],
+      "deliverablesTitle": "What the partnership includes",
+      "deliverables": [
+        "Dedicated design expertise four or more days a week",
+        "The complete design process and its deliverables",
+        "Direct collaboration and strategic design guidance",
+        "Specialists from a network when the work needs them"
+      ],
+      "investMeta": "6 or 12 months, 4 or more days a week",
+      "investNote": "Six months at four days a week is 780 hours, about €70k. Shorter terms or lighter weeks use the standard 120 €/h rate.",
+      "investLink": "Open the calculator",
+      "faqTitle": "About the partnership",
+      "faq": [
+        {
+          "question": "How is the price set?",
+          "answer": "Hours across the term at 90 €/h, 25% below the standard 120 €/h. Six months at four days a week is 780 hours, about €70k."
+        },
+        {
+          "question": "Can it start smaller?",
+          "answer": "Yes, at the standard rate. Terms under six months or under four days a week are priced at 120 €/h or as a fixed package."
+        },
+        {
+          "question": "Who does the work?",
+          "answer": "A senior practitioner directly on the work, with specialists from a network added as the work needs them."
+        },
+        {
+          "question": "Can the partnership run longer than six months?",
+          "answer": "Yes. The twelve-month term keeps the 90 €/h partnership rate."
+        }
+      ],
+      "bookTitle": "Plan the partnership on a 30-minute call",
+      "bookBody": "Talk through the term, the weekly rhythm and what the partnership should own. A calendar invite arrives by email."
+    }
+  },
+  "procurementFaq": {
+    "title": "Buying from Digitaltableteur",
+    "intro": "Answers for procurement, legal and finance teams. Anything not covered here can go in the first message.",
+    "aiPolicyLink": "Read the AI use policy",
+    "items": [
+      {
+        "id": "contracting-party",
+        "question": "Who is the contracting party?",
+        "answer": "Digitaltableteur, a Finnish sole trader registered in the Trade Register. Business ID 2264455-2, VAT ID FI22644552, Hämeentie 8 C 26, 00530 Helsinki."
+      },
+      {
+        "id": "verified-supplier",
+        "question": "Is Digitaltableteur a verified supplier?",
+        "answer": "Yes. Tax, pension and employer obligations are continuously verified through Vastuu Group's Reliable Partner programme, as the Finnish Contractor's Obligations Act requires. The report is public."
+      },
+      {
+        "id": "invoicing",
+        "question": "How is invoicing handled?",
+        "answer": "E-invoices go to address 003722644552 through APIX Messaging Oy, operator ID 003723327487. Payment terms are agreed in the engagement."
+      },
+      {
+        "id": "nda",
+        "question": "Can a client NDA or framework agreement be used?",
+        "answer": "Yes. A short engagement agreement is also available."
+      },
+      {
+        "id": "ownership",
+        "question": "Who owns the work?",
+        "answer": "You keep full ownership of the code, design and tokens built together. No lock-in, no licensing games."
+      },
+      {
+        "id": "languages",
+        "question": "Which working languages are available?",
+        "answer": "English and Finnish, in workshops and in documentation."
+      },
+      {
+        "id": "remote",
+        "question": "Is the work remote or on site?",
+        "answer": "Remote by default, based in Helsinki."
+      },
+      {
+        "id": "accessibility-law",
+        "question": "Does the work cover accessibility law?",
+        "answer": "The work targets WCAG 2.2 AA, which includes the WCAG 2.1 AA criteria that EN 301 549 and the European Accessibility Act rely on. A formal conformance evaluation is scoped separately."
+      },
+      {
+        "id": "ai-use",
+        "question": "Is AI used on client work?",
+        "answer": "Only as described in the AI use policy, which lists the tools, the safeguards and how client data is handled."
+      }
+    ]
+  },
+  "pricingPackageDetailsUxSprint": "Use it as a design system audit",
+  "pricingPackageDetailsAiReady": "See the full scope",
+  "pricingPackageDetailsLiftOff": "See the full scope"
 }

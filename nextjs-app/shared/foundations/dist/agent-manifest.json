@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-15T23:18:38.721Z",
+  "generatedAt": "2026-10-16T05:46:56.886Z",
   "summary": {
-    "componentCount": 181,
+    "componentCount": 183,
     "statusCounts": {
       "beta": 43,
       "stable": 111,
-      "alpha": 26,
+      "alpha": 28,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 91.4,
-    "codebaseComponentCount": 198,
+    "catalogCompletenessPercent": 91.5,
+    "codebaseComponentCount": 200,
     "usageCoveragePercent": 93.4,
-    "componentsWithProductionUsage": 40,
+    "componentsWithProductionUsage": 41,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 198,
-    "inCatalog": 181,
+    "totalComponentsInCodebase": 200,
+    "inCatalog": 183,
     "outOfCatalog": 17,
-    "catalogCompletenessPercent": 91.4,
+    "catalogCompletenessPercent": 91.5,
     "artifactCoverage": {
-      "stories": 165,
-      "tests": 176,
+      "stories": 167,
+      "tests": 178,
       "mdx": 4,
-      "spec": 181
+      "spec": 183
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 181,
-    "withAnyUsage": 169,
-    "withProductionUsage": 40,
-    "uniqueImportedComponents": 169,
-    "totalEvidenceRows": 883,
+    "catalogedComponents": 183,
+    "withAnyUsage": 171,
+    "withProductionUsage": 41,
+    "uniqueImportedComponents": 171,
+    "totalEvidenceRows": 889,
     "aliasImportFiles": 458,
-    "relativeImportFiles": 459,
+    "relativeImportFiles": 465,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-10-15T23:18:27.137Z",
+    "generatedAt": "2026-10-16T05:46:50.385Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 96,
+    "nodesWithComposesWith": 97,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 181,
+      "digitaltableteur": 183,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 43,
         "stable": 111,
-        "alpha": 26,
+        "alpha": 28,
         "deprecated": 1
       },
       "dsharp": {
@@ -45678,9 +45678,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ReliablePartnerBadge",
-        "importCount": 3,
+        "importCount": 5,
         "productionImportCount": 0,
-        "patternImportCount": 3,
+        "patternImportCount": 5,
         "componentImportCount": 0,
         "evidence": [
           {
@@ -45690,7 +45690,19 @@
             "context": "pattern"
           },
           {
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ReliablePartnerBadge",
+            "context": "pattern"
+          },
+          {
             "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ReliablePartnerBadge",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/ProcurementFaq/ProcurementFaq.tsx",
             "importKind": "relative",
             "importPath": "../../components/ReliablePartnerBadge",
             "context": "pattern"
@@ -45777,11 +45789,11 @@
         ],
         "composesWith": [
           "Link",
+          "VisuallyHidden",
           "StatsSection",
           "SlideButton",
           "Container",
-          "Stack",
-          "SocialIconLink"
+          "Stack"
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
@@ -56354,8 +56366,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -56369,8 +56381,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -56391,8 +56403,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -56419,8 +56431,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -68964,9 +68976,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/VisuallyHidden",
-        "importCount": 4,
+        "importCount": 5,
         "productionImportCount": 1,
-        "patternImportCount": 1,
+        "patternImportCount": 2,
         "componentImportCount": 2,
         "evidence": [
           {
@@ -68974,6 +68986,12 @@
             "importKind": "relative",
             "importPath": "../../VisuallyHidden",
             "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/VisuallyHidden",
+            "context": "pattern"
           },
           {
             "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
@@ -69044,8 +69062,8 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "IconButton",
-          "ReliablePartnerBadge"
+          "ReliablePartnerBadge",
+          "IconButton"
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
@@ -72852,6 +72870,7 @@
           "ServicesSection",
           "WorkMagneticField",
           "NewsBulletin",
+          "ProcurementFaq",
           "DesignSprintsSection"
         ],
         "prefersOver": [],
@@ -75425,7 +75444,8 @@
           "ServicesSection",
           "WorkMagneticField",
           "CTASection",
-          "NewsBulletin"
+          "NewsBulletin",
+          "ProcurementFaq"
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
@@ -75551,6 +75571,389 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "DesignSprintsSection.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
+      "name": "EngagementPageContent",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "tier": "pattern",
+        "group": "marketing",
+        "status": "alpha",
+        "radixPrimitive": null,
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default"
+        ],
+        "lightDarkVerified": false,
+        "name": "EngagementPageContent",
+        "description": "One engagement offer page: problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ and a booking call to action.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1912-33",
+        "element": "article",
+        "a11y": {
+          "keyboard": [
+            "Tab reaches the calls to action, links and FAQ triggers in reading order; Enter or Space toggles an FAQ item."
+          ],
+          "ariaRequirements": [
+            "The article is labelled by its single h1; each section is labelled by its h2.",
+            "Steps are an ordered list; decorative numbers and icons are hidden from assistive technology.",
+            "Proof links carry the case title in a visually hidden suffix so repeated link text stays distinguishable."
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-title",
+            "--color-muted",
+            "--color-border",
+            "--color-border-light",
+            "--color-light-bg",
+            "--color-primary",
+            "--color-white",
+            "--logo-background",
+            "--logo-text-color"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24",
+            "--space-layout-32",
+            "--space-layout-40",
+            "--space-layout-48",
+            "--space-layout-64",
+            "--space-layout-96"
+          ]
+        },
+        "props": {
+          "engagementId": {
+            "optional": false,
+            "type": "union",
+            "values": [
+              "audit",
+              "liftoff",
+              "aiops",
+              "partnership"
+            ],
+            "description": "Which engagement page to render"
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional class name on the root"
+          }
+        },
+        "composesWith": [
+          "ProcurementFaq",
+          "Accordion",
+          "Badge",
+          "Button",
+          "ReliablePartnerBadge"
+        ],
+        "forbiddenUse": [
+          "Show a claim, figure or client outcome that is not published elsewhere on the site.",
+          "Repeat a procurement question in the offer FAQ."
+        ],
+        "keywords": [
+          "offer page",
+          "engagement",
+          "service page",
+          "package",
+          "pricing",
+          "audit",
+          "design system"
+        ],
+        "dense": "Engagement offer page from data/engagements and engagementPages locale copy: hero, fit, scope, steps, deliverables, price, proof, FAQs, booking",
+        "usage": {
+          "description": "Renders /engagements/<slug>. Copy lives under engagementPages.<id> in the locales; routes, contact links, price keys and proof order in data/engagements."
+        }
+      },
+      "spec": "# EngagementPageContent\n\n## Intent\nOne offer page per engagement (Design System Audit, Lift-Off, AI-Ready Ops, Embedded partnership), so a buyer sees scope, limits, steps, deliverables, price, proof and the next step before getting in touch.\n\n## Interaction contract\n- Keyboard: calls to action, links and FAQ triggers in reading order\n- Screen readers: one h1 per page; each section labelled by its h2; steps are an ordered list\n\n## Do / don't\n- Do: take every claim from published sources (package data, the service catalog, project data)\n- Do: read prices from the pricing page keys so a price changes in one place\n- Don't: repeat a procurement question in the offer FAQ\n\n## Design notes\n- Figma: views 1912:33 (Views page), sections 1910:298 (Sections page)\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/EngagementPageContent",
+        "importCount": 1,
+        "productionImportCount": 1,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../patterns/EngagementPageContent",
+            "context": "production"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/EngagementPageContent",
+        "intent": "One offer page per engagement (Design System Audit, Lift-Off, AI-Ready Ops, Embedded partnership), so a buyer sees scope, limits, steps, deliverables, price, proof and the next step before getting in touch.",
+        "props": {
+          "engagementId": {
+            "optional": false,
+            "type": "union",
+            "values": [
+              "audit",
+              "liftoff",
+              "aiops",
+              "partnership"
+            ],
+            "description": "Which engagement to render."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional class name on the root."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "take every claim from published sources (package data, the service catalog, project data)",
+          "read prices from the pricing page keys so a price changes in one place"
+        ],
+        "avoidWhen": [
+          "repeat a procurement question in the offer FAQ"
+        ],
+        "requiredA11y": [
+          "The article is labelled by its single h1; each section is labelled by its h2.",
+          "Steps are an ordered list; decorative numbers and icons are hidden from assistive technology.",
+          "Proof links carry the case title in a visually hidden suffix so repeated link text stays distinguishable."
+        ],
+        "keyboard": [
+          "Tab reaches the calls to action, links and FAQ triggers in reading order; Enter or Space toggles an FAQ item."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "repeat a procurement question in the offer FAQ"
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 2,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "take every claim from published sources (package data, the service catalog, project data)",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "read prices from the pricing page keys so a price changes in one place",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "repeat a procurement question in the offer FAQ",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual"
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "EngagementPageContent.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "EngagementPageContent.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "EngagementPageContent.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "EngagementPageContent.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
@@ -78475,6 +78878,7 @@
           "WorkMagneticField",
           "CTASection",
           "NewsBulletin",
+          "ProcurementFaq",
           "DesignSprintsSection"
         ],
         "prefersOver": [],
@@ -79179,6 +79583,7 @@
           "ServicesSection",
           "WorkMagneticField",
           "CTASection",
+          "ProcurementFaq",
           "DesignSprintsSection"
         ],
         "prefersOver": [],
@@ -81324,6 +81729,377 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "ProcessBlock.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
+      "name": "ProcurementFaq",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "tier": "pattern",
+        "group": "content",
+        "status": "alpha",
+        "radixPrimitive": null,
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default"
+        ],
+        "lightDarkVerified": false,
+        "name": "ProcurementFaq",
+        "description": "Visible answers for procurement, legal and finance teams: contracting party, supplier verification, invoicing, agreements, ownership, languages, location, accessibility law and AI use.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1910-223",
+        "element": "section",
+        "a11y": {
+          "keyboard": [
+            "Tab reaches each question trigger; Enter or Space toggles its answer."
+          ],
+          "ariaRequirements": [
+            "The section is labelled by its heading.",
+            "Answers stay in the DOM when collapsed (inert and hidden from assistive technology) so the visible content matches the FAQ structured data."
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-muted"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24",
+            "--space-layout-48"
+          ]
+        },
+        "props": {
+          "headingLevel": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "2",
+              "3"
+            ],
+            "description": "Heading level of the section title"
+          },
+          "id": {
+            "optional": true,
+            "type": "string",
+            "description": "Section id, for in-page links"
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional class name on the section"
+          }
+        },
+        "composesWith": [
+          "Accordion",
+          "ReliablePartnerBadge",
+          "Link"
+        ],
+        "forbiddenUse": [
+          "Publish a policy answer the owner has not confirmed.",
+          "Emit FAQ structured data for questions that are not rendered on the page."
+        ],
+        "keywords": [
+          "faq",
+          "procurement",
+          "legal",
+          "invoicing",
+          "supplier",
+          "nda"
+        ],
+        "dense": "Visible procurement FAQ (9 locale items, Accordion divided); its English items feed the FAQPage data of the pages that render it",
+        "usage": {
+          "description": "Shown on the engagement pages, Pricing and the homepage. app/lib/procurementFaq.ts reads the same English items for FAQPage structured data."
+        }
+      },
+      "spec": "# ProcurementFaq\n\n## Intent\nAnswer the procurement, legal and finance questions a buyer asks before signing, in the page itself, so the FAQ structured data describes visible content.\n\n## Interaction contract\n- Keyboard: question triggers in order; Enter or Space toggles\n- Screen readers: section labelled by its heading; collapsed answers are inert and hidden\n\n## Do / don't\n- Do: keep answers to published facts or owner-confirmed policy\n- Don't: emit FAQ structured data for questions that are not on the page\n\n## Design notes\n- Figma: Procurement FAQ component 1910:223; FAQ item set 1910:53\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/ProcurementFaq",
+        "importCount": 2,
+        "productionImportCount": 0,
+        "patternImportCount": 2,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../ProcurementFaq",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../ProcurementFaq",
+            "context": "pattern"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/ProcurementFaq",
+        "intent": "Answer the procurement, legal and finance questions a buyer asks before signing, in the page itself, so the FAQ structured data describes visible content.",
+        "props": {
+          "headingLevel": {
+            "optional": true,
+            "type": "2 | 3",
+            "description": "Heading level of the section title."
+          },
+          "id": {
+            "optional": true,
+            "type": "string",
+            "description": "Section id, for in-page links."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional class name on the section."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "keep answers to published facts or owner-confirmed policy"
+        ],
+        "avoidWhen": [
+          "emit FAQ structured data for questions that are not on the page"
+        ],
+        "requiredA11y": [
+          "The section is labelled by its heading.",
+          "Answers stay in the DOM when collapsed (inert and hidden from assistive technology) so the visible content matches the FAQ structured data."
+        ],
+        "keyboard": [
+          "Tab reaches each question trigger; Enter or Space toggles its answer."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "emit FAQ structured data for questions that are not on the page"
+        ],
+        "composesWith": [
+          "HomeHero",
+          "ServicesSection",
+          "WorkMagneticField",
+          "CTASection",
+          "NewsBulletin",
+          "DesignSprintsSection"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 3,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "keep answers to published facts or owner-confirmed policy",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "emit FAQ structured data for questions that are not on the page",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual"
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ProcurementFaq.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ProcurementFaq.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ProcurementFaq.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ProcurementFaq.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
@@ -84832,6 +85608,7 @@
           "WorkMagneticField",
           "CTASection",
           "NewsBulletin",
+          "ProcurementFaq",
           "DesignSprintsSection"
         ],
         "prefersOver": [],
@@ -88391,6 +89168,7 @@
           "ServicesSection",
           "CTASection",
           "NewsBulletin",
+          "ProcurementFaq",
           "DesignSprintsSection"
         ],
         "prefersOver": [],

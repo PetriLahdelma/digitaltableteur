@@ -20821,6 +20821,112 @@
       },
       "examples": []
     },
+    "EngagementPageContent": {
+      "name": "EngagementPageContent",
+      "group": "marketing",
+      "tier": 2,
+      "status": "alpha",
+      "description": "One engagement offer page: problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ and a booking call to action.",
+      "dense": "Engagement offer page from data/engagements and engagementPages locale copy: hero, fit, scope, steps, deliverables, price, proof, FAQs, booking",
+      "keywords": [
+        "offer page",
+        "engagement",
+        "service page",
+        "package",
+        "pricing",
+        "audit",
+        "design system"
+      ],
+      "importLine": "import EngagementPageContent from \"@dt/EngagementPageContent\";",
+      "keyProps": [
+        {
+          "name": "engagementId",
+          "type": "audit | liftoff | aiops | partnership",
+          "required": true
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "engagementId": {
+          "optional": false,
+          "type": "union",
+          "values": [
+            "audit",
+            "liftoff",
+            "aiops",
+            "partnership"
+          ],
+          "description": "Which engagement page to render"
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Additional class name on the root"
+        }
+      },
+      "composesWith": [
+        "ProcurementFaq",
+        "Accordion",
+        "Badge",
+        "Button",
+        "ReliablePartnerBadge"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "Show a claim, figure or client outcome that is not published elsewhere on the site.",
+        "Repeat a procurement question in the offer FAQ."
+      ],
+      "usage": {
+        "description": "Renders /engagements/<slug>. Copy lives under engagementPages.<id> in the locales; routes, contact links, price keys and proof order in data/engagements."
+      },
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-title",
+          "--color-muted",
+          "--color-border",
+          "--color-border-light",
+          "--color-light-bg",
+          "--color-primary",
+          "--color-white",
+          "--logo-background",
+          "--logo-text-color"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24",
+          "--space-layout-32",
+          "--space-layout-40",
+          "--space-layout-48",
+          "--space-layout-64",
+          "--space-layout-96"
+        ]
+      },
+      "examples": [
+        {
+          "story": "LiftOff",
+          "description": "Design System Lift-Off: four weeks, priced from the pricing page package.",
+          "source": "export const LiftOff: Story = {\n  tags: [\"example\"],\n  args: { engagementId: \"liftoff\" },\n  parameters: {\n    docs: { description: { story: \"Design System Lift-Off: four weeks, priced from the pricing page package.\" } },\n  },\n};"
+        },
+        {
+          "story": "AiReadyOps",
+          "description": "AI-Ready Ops: three weeks of workflow, governance and guardrails.",
+          "source": "export const AiReadyOps: Story = {\n  tags: [\"example\"],\n  args: { engagementId: \"aiops\" },\n  parameters: {\n    docs: { description: { story: \"AI-Ready Ops: three weeks of workflow, governance and guardrails.\" } },\n  },\n};"
+        },
+        {
+          "story": "EmbeddedPartnership",
+          "description": "Embedded partnership: priced by the calculator's partnership tier; the secondary action opens it at 6 months and 4 days a week.",
+          "source": "export const EmbeddedPartnership: Story = {\n  tags: [\"example\"],\n  args: { engagementId: \"partnership\" },\n  parameters: {\n    docs: {\n      description: {\n        story: \"Embedded partnership: priced by the calculator's partnership tier; the secondary action opens it at 6 months and 4 days a week.\",\n      },\n    },\n  },\n};"
+        }
+      ]
+    },
     "Footer": {
       "name": "Footer",
       "group": "navigation",
@@ -22284,6 +22390,87 @@
           "--color-white"
         ],
         "spacing": []
+      },
+      "examples": []
+    },
+    "ProcurementFaq": {
+      "name": "ProcurementFaq",
+      "group": "content",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Visible answers for procurement, legal and finance teams: contracting party, supplier verification, invoicing, agreements, ownership, languages, location, accessibility law and AI use.",
+      "dense": "Visible procurement FAQ (9 locale items, Accordion divided); its English items feed the FAQPage data of the pages that render it",
+      "keywords": [
+        "faq",
+        "procurement",
+        "legal",
+        "invoicing",
+        "supplier",
+        "nda"
+      ],
+      "importLine": "import ProcurementFaq from \"@dt/ProcurementFaq\";",
+      "keyProps": [
+        {
+          "name": "headingLevel",
+          "type": "2 | 3",
+          "required": false
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "headingLevel": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "2",
+            "3"
+          ],
+          "description": "Heading level of the section title"
+        },
+        "id": {
+          "optional": true,
+          "type": "string",
+          "description": "Section id, for in-page links"
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Additional class name on the section"
+        }
+      },
+      "composesWith": [
+        "Accordion",
+        "ReliablePartnerBadge",
+        "Link"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "Publish a policy answer the owner has not confirmed.",
+        "Emit FAQ structured data for questions that are not rendered on the page."
+      ],
+      "usage": {
+        "description": "Shown on the engagement pages, Pricing and the homepage. app/lib/procurementFaq.ts reads the same English items for FAQPage structured data."
+      },
+      "tokens": {
+        "colors": [
+          "--color-muted"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-layout-24",
+          "--space-layout-48"
+        ]
       },
       "examples": []
     },

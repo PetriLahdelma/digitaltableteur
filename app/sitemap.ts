@@ -3,6 +3,10 @@ import type { MetadataRoute } from "next";
 import { getVisiblePosts } from "./blog/postMetadata";
 import { getAuthors } from "@/nextjs-app/shared/data/authors";
 import {
+  ENGAGEMENTS,
+  getEngagementPath,
+} from "@/nextjs-app/shared/data/engagements";
+import {
   getPseoCatalog,
   getPseoCatalogUpdatedAt,
   getPseoLeafPages,
@@ -42,6 +46,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: path === "/" ? 1.0 : 0.7,
   }));
+
+  // One offer page per engagement, beside the pricing page they price.
+  const engagementRoutes: MetadataRoute.Sitemap = ENGAGEMENTS.map(
+    (engagement) => ({
+      url: toUrl(getEngagementPath(engagement)),
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }),
+  );
 
   // Intrum, Tulli and Raw View are work in progress: their routes exist but
   // they stay out of the sitemap and the /work grid (and are noindex).
@@ -128,6 +142,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes,
+    ...engagementRoutes,
     ...workRoutes,
     ...blogRoutes,
     ...authorRoutes,

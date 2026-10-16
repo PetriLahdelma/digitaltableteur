@@ -1458,5 +1458,358 @@
   "stageListAgainAt": "Uudelleen: {{stages}}.",
   "stageListProgress": "{{done}}/{{total}} tehty",
   "stageListClear": "Tyhjennä kaikki",
-  "stageListIndexLabel": "Kohdat vaiheittain"
+  "stageListIndexLabel": "Kohdat vaiheittain",
+  "engagementPages": {
+    "common": {
+      "factTimeline": "Kesto",
+      "factInvestment": "Investointi",
+      "factPackage": "Paketti",
+      "investLabel": "Investointi",
+      "investTitle": "Miten hinta määräytyy",
+      "proofTitle": "Julkaistut työt aiheesta",
+      "proofLink": "Lue case-tarina",
+      "breadcrumbHome": "Etusivu",
+      "breadcrumbPricing": "Hinnoittelu",
+      "emailLabel": "Sähköposti"
+    },
+    "proof": {
+      "helsinki-design-system": {
+        "eyebrow": "Helsingin kaupunki, 2020–2022",
+        "title": "Helsinki Design System",
+        "body": "Tutkimus, komponenttirakenteet, saavutettavuuskatselmointi, dokumentaatio ja toimituskäytännöt design-systeemille, jota käytetään lukuisissa digipalveluissa."
+      },
+      "dsharp-design-system": {
+        "eyebrow": "VR Group, 2026 alkaen",
+        "title": "DSharp Design System",
+        "body": "Tokenit, komponenttisopimukset, Storybook, MCP, CLI ja valvontatyökalut tekoälyavusteiselle design-systeemiarkkitehtuurille."
+      },
+      "llm-component-schema": {
+        "eyebrow": "Avoin lähdekoodi, 2025 alkaen",
+        "title": "LLM Component Schema",
+        "body": "Julkaistu skeema ja CLI komponenttisopimuksille, mukana poikkeamien tunnistus ja arviointivertailut."
+      },
+      "sap-build-apps": {
+        "eyebrow": "SAP, 2022–2026",
+        "title": "SAP Build Apps Design System",
+        "body": "SAP:n low-code-alustan design-systeemi: yli 100 komponenttia Figmassa ja Reactissa yli 300 kehittäjän ja suunnittelijan käytössä."
+      },
+      "project-spine": {
+        "eyebrow": "Avoin lähdekoodi, 2026",
+        "title": "Project Spine",
+        "body": "CLI, joka kokoaa briefit, repositoriot ja design-tokenit koodausagenttien toimintakontekstiksi."
+      }
+    },
+    "audit": {
+      "metaTitle": "Design-systeemin auditointi tuotetiimeille | Digitaltableteur",
+      "metaDescription": "Löydä komponenttien, tokenien, saavutettavuuden ja hallintamallin aukot nykyisestä design-systeemistä. Saat vakavuusjärjestetyt havainnot ja käytännöllisen 90 päivän tiekartan.",
+      "eyebrow": "Design-systeemin auditointi",
+      "timeline": "1–2 viikkoa",
+      "package": "UX Sprint",
+      "title": "Selvitä, missä design-systeemi maksaa tiimille aikaa",
+      "lead": "Samannäköiset komponentit toimivat eri tavoin. Saavutettavuusvirheet palaavat uusissa ominaisuuksissa. Figma ja tuotanto ovat eri mieltä siitä, mitä systeemiin kuuluu. Rajattu auditointi muuttaa oireet inventaarioksi, vakavuusjärjestetyiksi havainnoiksi ja 90 päivän tiekartaksi.",
+      "cta1": "Varaa UX-sprintti",
+      "cta2": "Kysy auditoinnista",
+      "signalsTitle": "Auditointi sopii, kun systeemi on olemassa mutta luottamus horjuu",
+      "signals": [
+        "Samannäköiset komponentit toimivat eri tiimeissä eri tavoin",
+        "Saavutettavuusvirheet palaavat, koska mallia ei ole dokumentoitu",
+        "Design ja kehitys ovat eri mieltä siitä, mitä systeemiin kuuluu",
+        "Tokenimuutokset rikkovat useita sovelluksia epäselvän nimeämisen ja omistajuuden takia"
+      ],
+      "scopeTitle": "Mitä auditointi käy läpi",
+      "scope": "Työ alkaa niistä käyttöliittymistä, komponenteista, tokeneista ja malleista, joita tiimi käyttää nyt. Edustava otos käydään läpi johdonmukaisuuden, saavutettavuuden ja tokenien käytön osalta. Omistajuus sekä katselmointi- ja julkaisukäytännöt kartoitetaan inventaarion rinnalla, jotta tiekartta erottaa nopeat korjaukset rakenteellisesta työstä.",
+      "limitsTitle": "Ei sisälly, ellei erikseen sovita",
+      "limits": [
+        "Kaikkien komponenttien uudelleenrakentaminen",
+        "Siirtymä jokaisessa tuotteessa",
+        "Saavutettavuuden vaatimustenmukaisuussertifikaatti"
+      ],
+      "stepsTitle": "Näin auditointi etenee",
+      "steps": [
+        "Kartoita käytössä olevat näkymät ja kunkin malliperheen omistajat.",
+        "Ota otos tärkeimmistä poluista johdonmukaisuuden, saavutettavuuden ja tokenien käytön osalta.",
+        "Järjestä havainnot käyttäjävaikutuksen, uudelleentyön kustannuksen ja korjauksen vaativuuden mukaan.",
+        "Sovi vähimmäisstandardeista ja käyttöönoton järjestyksestä, jota sidosryhmät voivat seurata."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "Inventaarion käytössä olevista komponenteista, tokeneista ja malleista",
+        "Vakavuusjärjestetyt havainnot työmääräarvioineen",
+        "90 päivän tiekartan, joka erottaa nopeat voitot rakenteellisista korjauksista",
+        "Hallintamallisuositukset RFC-, katselmointi- ja julkaisurytmille"
+      ],
+      "investMeta": "2 viikkoa, kiinteä laajuus",
+      "investNote": "Auditointi toteutetaan UX Sprint -pakettina. Lopullinen laajuus riippuu mukana olevien näkymien, repositorioiden ja tiimien määrästä.",
+      "investLink": "Arvioi räätälöity toimeksianto",
+      "faqTitle": "Auditoinnista",
+      "faq": [
+        {
+          "question": "Kuinka suuren osan tuotteesta auditointi kattaa?",
+          "answer": "Edustavan otoksen käytössä olevista näkymistä, komponenteista, tokeneista ja malleista, ei jokaista näkymää. Laajuus riippuu mukana olevista näkymistä, repositorioista ja tiimeistä."
+        },
+        {
+          "question": "Korjaako auditointi löytämänsä ongelmat?",
+          "answer": "Ei. Se on päätöksenteon työkalu: inventaario, järjestetyt havainnot ja 90 päivän tiekartta. Korjaukset voivat jatkua Design System Lift-Offina tai integroituna kumppanuutena."
+        },
+        {
+          "question": "Onko tämä saavutettavuuden vaatimustenmukaisuusauditointi?",
+          "answer": "Saavutettavuus arvioidaan osana mallien laatua. Viitteenä on WCAG 2.2 AA. Vaatimustenmukaisuusarviointi tai sertifikaatti sovitaan erikseen."
+        },
+        {
+          "question": "Miksi auditointi varataan UX-sprinttinä?",
+          "answer": "Auditointi käyttää UX Sprint -pakettia: kaksi viikkoa. Hinta määräytyy mukana olevien näkymien ja tiimien mukaan."
+        }
+      ],
+      "bookTitle": "Aloita 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi systeemi, mukana olevat tiimit ja se, mihin auditoinnin pitäisi vastata. Kalenterikutsu tulee sähköpostilla."
+    },
+    "liftoff": {
+      "metaTitle": "Design System Lift-Off | Digitaltableteur",
+      "metaDescription": "Auditointi, tokenit, ydinkomponentit, Storybook ja käyttöönoton playbook neljässä viikossa: design-systeemin perusta, jonka varaan tiimit voivat rakentaa.",
+      "eyebrow": "Design System Lift-Off",
+      "timeline": "4 viikkoa",
+      "package": "Design System Lift-Off",
+      "title": "Hajanaisista komponenteista systeemiin, jonka varaan tiimit voivat rakentaa",
+      "lead": "Jokainen tiimi julkaisee hieman erilaiset painikkeet, lomakkeet ja modaalit. Storybook ei enää vastaa tuotantoa. Lift-Off kattaa auditoinnin, token-arkkitehtuurin, ydinkomponentit, Storybookin ja käyttöönoton playbookin neljässä viikossa.",
+      "cta1": "Varaa Design System Lift-Off",
+      "cta2": "Lähetä kysymys",
+      "signalsTitle": "Lift-Off sopii, kun jokainen tiimi rakentaa oman versionsa",
+      "signals": [
+        "Jokainen tiimi julkaisee hieman erilaiset painikkeet, lomakkeet ja modaalit",
+        "Storybook on olemassa, mutta tarinat eivät vastaa tuotantokäyttöä",
+        "Figman muuttujat ja CSS-muuttujat on nimetty eri tavoin",
+        "Tumma tila on lisätty jälkikäteen eikä suunniteltu teemaksi"
+      ],
+      "scopeTitle": "Mitä Lift-Off kattaa",
+      "scope": "Nykyisen perustan auditoinnin, sen jälkeen token-taksonomian, ydinkomponentit ja Storybook-dokumentaation sekä käyttöönoton playbookin niille tiimeille, jotka systeemiä käyttävät. Komponentit priorisoidaan käyttömäärän, uudelleentyön kustannuksen ja saavutettavuusriskin mukaan.",
+      "limitsTitle": "Ei sisälly, ellei erikseen sovita",
+      "limits": [
+        "Kaikkien nykyisten komponenttien uudelleenrakentaminen",
+        "Jokaisen tuotteen siirtäminen uuteen systeemiin",
+        "Saavutettavuuden vaatimustenmukaisuussertifikaatti"
+      ],
+      "stepsTitle": "Näin Lift-Off etenee",
+      "steps": [
+        "Priorisoi komponentit käyttömäärän, uudelleentyön kustannuksen ja saavutettavuusriskin mukaan.",
+        "Määrittele koostamismallit ennen yksittäisiä variantteja.",
+        "Dokumentoi tilat, reunatapaukset ja näppäimistökäyttö Storybookiin.",
+        "Pilotoi yhden tuotetiimin kanssa ja laajenna mitatun käyttöönoton perusteella."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "Token-taksonomian primitiiveistä semanttisiin ja komponenttikohtaisiin",
+        "Ydinkomponentit tyypitetyillä propseilla ja saavutettavuuden perustasolla",
+        "Storybook-dokumentaation käyttöohjeineen",
+        "Kontribuutio-ohjeen, katselmointilistan ja käyttöönoton playbookin"
+      ],
+      "investMeta": "4 viikkoa, kiinteä laajuus",
+      "investNote": "Lopullinen laajuus riippuu mukana olevien komponenttien, tuotteiden ja tiimien määrästä.",
+      "investLink": "Arvioi räätälöity toimeksianto",
+      "faqTitle": "Lift-Offista",
+      "faq": [
+        {
+          "question": "Mitä neljä viikkoa sisältää?",
+          "answer": "Nykyisen perustan auditoinnin, token-arkkitehtuurin, ydinkomponentit, Storybook-dokumentaation ja käyttöönoton playbookin."
+        },
+        {
+          "question": "Rakennetaanko jokainen komponentti uudelleen?",
+          "answer": "Ei. Ydinjoukko valitaan käyttömäärän, uudelleentyön kustannuksen ja saavutettavuusriskin mukaan. Koostamismallit tulevat ennen yksittäisiä variantteja."
+        },
+        {
+          "question": "Miten tiimit ottavat sen käyttöön?",
+          "answer": "Ensin pilotti yhden tuotetiimin kanssa, sitten laajempi käyttöönotto mitatusti."
+        },
+        {
+          "question": "Mitä neljän viikon jälkeen tapahtuu?",
+          "answer": "Tiimisi ylläpitää systeemiä käyttöönoton playbookin avulla. Työ voi jatkua integroituna kumppanuutena."
+        }
+      ],
+      "bookTitle": "Aloita 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi tuotteet, tiimit ja nykyiset komponentit. Kalenterikutsu tulee sähköpostilla."
+    },
+    "aiops": {
+      "metaTitle": "AI-Ready Ops | Digitaltableteur",
+      "metaDescription": "Työnkulun käyttöönotto, komponenttien hallintamalli, tekoälytyökalujen kytkennät ja DesignOps-playbook, jota tiimi voi itse ajaa, kolmessa viikossa.",
+      "eyebrow": "AI-Ready Ops",
+      "timeline": "3 viikkoa",
+      "package": "AI-Ready Ops",
+      "title": "Suojakaiteet ja automaatio sille, miten design-työ julkaistaan",
+      "lead": "Katselmoinnit pullonkaulautuvat, kun henkilöstö ei kasva tuotoksen tahdissa. Kukaan ei ole määritellyt, mitä agentit ja työkalut saavat muuttaa. AI-Ready Ops rakentaa työnkulun, komponenttien hallintamallin, tekoälytyökalujen kytkennät ja DesignOps-playbookin, jota tiimi voi itse ajaa, kolmessa viikossa.",
+      "cta1": "Varaa AI-Ready Ops",
+      "cta2": "Lähetä kysymys",
+      "signalsTitle": "Sopii, kun design-velka kasvaa katselmointia nopeammin",
+      "signals": [
+        "Design-katselmoinnit pullonkaulautuvat, kun henkilöstö ei kasva tuotoksen tahdissa",
+        "Luovutukset nojaavat yhä kuvakaappauksiin ja chat-ketjuihin",
+        "Ei yhtä totuuden lähdettä sille, mitä agentit tai työkalut saavat muuttaa",
+        "Design-velka kertyy nopeammin kuin manuaalinen laadunvarmistus ehtii havaita"
+      ],
+      "scopeTitle": "Mitä AI-Ready Ops kattaa",
+      "scope": "Kartan siitä, missä aikaa kuluu määrittelyssä, toteutuksessa, katselmoinnissa ja julkaisussa. Sen jälkeen suojakaiteet sille, mitä agentit ja työkalut saavat design-systeemissä muuttaa, poikkeamatarkistukset CI:hin ja yhden työnkulun automatisoituna alusta loppuun.",
+      "limitsTitle": "Ei sisälly",
+      "limits": [
+        "Ihmisen harkintaa vaativien päätösten automatisointi",
+        "Automaation levittäminen kaikkiin työnkulkuihin kerralla",
+        "Valvomattomat agentit muuttamassa tuotantoa"
+      ],
+      "stepsTitle": "Näin AI-Ready Ops etenee",
+      "steps": [
+        "Kartoita, missä aikaa kuluu: määrittely, toteutus, katselmointi vai julkaisu.",
+        "Erottele turvalliset automaatiokohteet päätöksistä, jotka vaativat ihmisen harkintaa.",
+        "Prototypoi yksi työnkulku alusta loppuun, esimerkiksi tokenien pull request.",
+        "Mittaa läpimeno ja virhetaso ennen automaation laajentamista."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "DesignOps-työnkulun kartan automaatioehdokkaineen",
+        "Suojakaiteet agenttien ja työkalujen design-systeemimuutoksille",
+        "Lint- tai CI-tarkistukset tokenien ja komponenttien poikkeamille",
+        "Playbookin ihmisen tekemälle katselmoinnille"
+      ],
+      "investMeta": "3 viikkoa, kiinteä laajuus",
+      "investNote": "Lopullinen laajuus riippuu mukana olevien työnkulkujen, repositorioiden ja tiimien määrästä.",
+      "investLink": "Arvioi räätälöity toimeksianto",
+      "faqTitle": "AI-Ready Opsista",
+      "faq": [
+        {
+          "question": "Mikä työnkulku automatisoidaan ensin?",
+          "answer": "Yksi työnkulku alusta loppuun, esimerkiksi tokenien pull request tai komponentin pohja, valittuna sieltä, missä aikaa nyt kuluu."
+        },
+        {
+          "question": "Kuka pitää ohjat?",
+          "answer": "Tiimisi. Playbook määrittelee, mitä agentit ja työkalut saavat muuttaa ja mitkä päätökset vaativat ihmisen katselmoinnin."
+        },
+        {
+          "question": "Mitä tekoälytyökaluja käytetään?",
+          "answer": "Palveluntarjoajien valinta riippuu teknologiapinostasi ja käytännöistäsi. Tekoälyn käyttöperiaatteet kertovat, miten tekoälyä käytetään asiakastyössä."
+        },
+        {
+          "question": "Miten onnistumista mitataan?",
+          "answer": "Läpimeno ja virhetaso mitataan ensimmäisessä työnkulussa ennen automaation laajentamista."
+        }
+      ],
+      "bookTitle": "Aloita 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi, missä design-työ nyt hidastuu. Kalenterikutsu tulee sähköpostilla."
+    },
+    "partnership": {
+      "metaTitle": "Integroitu design-kumppanuus | Digitaltableteur",
+      "metaDescription": "Kokenut design- ja design-systeemijohtajuus osana tiimiäsi kuudeksi tai kahdeksitoista kuukaudeksi, kumppanuushinnalla 90 €/tunti.",
+      "price": "90 €/h",
+      "eyebrow": "Integroitu kumppanuus",
+      "timeline": "6 tai 12 kuukautta",
+      "package": "Kumppanuushinta",
+      "title": "Kokenut design- ja systeemijohtajuus osana tiimiäsi",
+      "lead": "Tuoteorganisaatioille, jotka tarvitsevat design-systeemin ylläpitoa, hallintamallia ja käytännön toteutusta kuukausien eikä viikkojen ajan. Kuusi tai kaksitoista kuukautta, vähintään neljä päivää viikossa, kumppanuushinnalla 90 €/tunti.",
+      "cta1": "Suunnittele kumppanuus",
+      "cta2": "Avaa laskuri",
+      "signalsTitle": "Kumppanuus sopii, kun työ kestää sprinttiä pidempään",
+      "signals": [
+        "Integroitu design-kumppani tuotteen ja brändin tueksi",
+        "Design-systeemiohjelmat hallintamallilla ja agenttiavusteisella opsilla",
+        "Kokonaisvaltainen designjohtajuus koko tuotteelle",
+        "Organisaationlaajuinen design-systeemin ylläpito ja AI-kyvykkyydet"
+      ],
+      "scopeTitle": "Mitä kumppanuus kattaa",
+      "scope": "Omistautunutta design-osaamista vähintään neljä päivää viikossa: koko design-prosessi toimituksineen, suora yhteistyö ja strateginen designohjaus sekä verkoston asiantuntijat työn niin vaatiessa.",
+      "limitsTitle": "Ei sovi",
+      "limits": [
+        "Suuren rinnakkaisen ohjelman miehittämiseen",
+        "Alle kuuden kuukauden jaksoihin kumppanuushinnalla",
+        "Alle neljään päivään viikossa kumppanuushinnalla"
+      ],
+      "stepsTitle": "Näin kumppanuus etenee",
+      "steps": [
+        "Sovi kesto, päivät viikossa ja tulokset, joista kumppanuus vastaa.",
+        "Aloita lyhyellä katsauksella nykyiseen systeemiin ja tiimin käytäntöihin.",
+        "Työskentele tiimin suunnittelu-, katselmointi- ja julkaisurytmissä.",
+        "Arvioi edistymistä sovittuihin tuloksiin nähden ja tarkenna suunnitelmaa."
+      ],
+      "deliverablesTitle": "Mitä kumppanuus sisältää",
+      "deliverables": [
+        "Omistautunutta design-osaamista vähintään neljä päivää viikossa",
+        "Koko design-prosessin toimituksineen",
+        "Suoran yhteistyön ja strategisen designohjauksen",
+        "Verkoston asiantuntijat, kun työ niitä vaatii"
+      ],
+      "investMeta": "6 tai 12 kuukautta, vähintään 4 päivää viikossa",
+      "investNote": "Kuusi kuukautta neljänä päivänä viikossa on 780 tuntia, noin 70k €. Lyhyemmät jaksot tai kevyemmät viikot hinnoitellaan normaalihinnalla 120 €/tunti.",
+      "investLink": "Avaa laskuri",
+      "faqTitle": "Kumppanuudesta",
+      "faq": [
+        {
+          "question": "Miten hinta määräytyy?",
+          "answer": "Jakson tunnit hinnalla 90 €/tunti, mikä on 25 % alle normaalihinnan 120 €/tunti. Kuusi kuukautta neljänä päivänä viikossa on 780 tuntia, noin 70k €."
+        },
+        {
+          "question": "Voiko aloittaa pienemmin?",
+          "answer": "Kyllä, normaalihinnalla. Alle kuuden kuukauden tai alle neljän päivän viikon toimeksiannot hinnoitellaan 120 €/tunti tai kiinteänä pakettina."
+        },
+        {
+          "question": "Kuka työn tekee?",
+          "answer": "Kokenut tekijä suoraan työn äärellä. Verkoston asiantuntijat tulevat mukaan työn niin vaatiessa."
+        },
+        {
+          "question": "Voiko kumppanuus kestää yli kuusi kuukautta?",
+          "answer": "Kyllä. Kahdentoista kuukauden jaksossa pätee sama 90 €/tunti kumppanuushinta."
+        }
+      ],
+      "bookTitle": "Suunnitellaan kumppanuus 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi kesto, viikkorytmi ja se, mistä kumppanuus vastaa. Kalenterikutsu tulee sähköpostilla."
+    }
+  },
+  "procurementFaq": {
+    "title": "Hankinta Digitaltableteurilta",
+    "intro": "Vastauksia hankinnalle, juristeille ja taloushallinnolle. Kaiken muun voi kysyä ensimmäisessä viestissä.",
+    "aiPolicyLink": "Lue tekoälyn käyttöperiaatteet",
+    "items": [
+      {
+        "id": "contracting-party",
+        "question": "Kuka on sopimusosapuoli?",
+        "answer": "Digitaltableteur, kaupparekisteriin merkitty suomalainen toiminimi. Y-tunnus 2264455-2, ALV-tunnus FI22644552, Hämeentie 8 C 26, 00530 Helsinki."
+      },
+      {
+        "id": "verified-supplier",
+        "question": "Onko Digitaltableteur todennettu toimittaja?",
+        "answer": "Kyllä. Vero-, eläke- ja työnantajavelvoitteet todennetaan jatkuvasti Vastuu Groupin Luotettava Kumppani -ohjelmassa tilaajavastuulain edellyttämällä tavalla. Raportti on julkinen."
+      },
+      {
+        "id": "invoicing",
+        "question": "Miten laskutus hoidetaan?",
+        "answer": "Verkkolaskut osoitteeseen 003722644552, välittäjä APIX Messaging Oy, välittäjätunnus 003723327487. Maksuehdot sovitaan toimeksiannossa."
+      },
+      {
+        "id": "nda",
+        "question": "Voiko asiakkaan salassapitosopimusta tai puitesopimusta käyttää?",
+        "answer": "Kyllä. Saatavilla on myös lyhyt toimeksiantosopimus."
+      },
+      {
+        "id": "ownership",
+        "question": "Kuka omistaa työn?",
+        "answer": "Säilytät täyden omistajuuden yhdessä rakennettuun koodiin, suunnitteluun ja tokeneihin. Ei lukkiutumista, ei lisenssipelejä."
+      },
+      {
+        "id": "languages",
+        "question": "Mitkä työkielet ovat käytössä?",
+        "answer": "Englanti ja suomi, työpajoissa ja dokumentaatiossa."
+      },
+      {
+        "id": "remote",
+        "question": "Tehdäänkö työ etänä vai paikan päällä?",
+        "answer": "Oletuksena etänä, kotipaikka Helsinki."
+      },
+      {
+        "id": "accessibility-law",
+        "question": "Kattaako työ saavutettavuuslainsäädännön?",
+        "answer": "Työn tavoitetaso on WCAG 2.2 AA, joka sisältää EN 301 549 -standardin ja Euroopan saavutettavuusdirektiivin edellyttämät WCAG 2.1 AA -kriteerit. Muodollinen vaatimustenmukaisuusarviointi sovitaan erikseen."
+      },
+      {
+        "id": "ai-use",
+        "question": "Käytetäänkö asiakastyössä tekoälyä?",
+        "answer": "Vain tekoälyn käyttöperiaatteissa kuvatulla tavalla. Ne listaavat työkalut, suojatoimet ja asiakasdatan käsittelyn."
+      }
+    ]
+  },
+  "pricingPackageDetailsUxSprint": "Käytä design-systeemin auditointiin",
+  "pricingPackageDetailsAiReady": "Katso koko laajuus",
+  "pricingPackageDetailsLiftOff": "Katso koko laajuus"
 }

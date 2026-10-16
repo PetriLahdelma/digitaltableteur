@@ -319,6 +319,12 @@
   font-size: var(--font-size-text-s);
 }
 
+.packageDetails {
+  align-self: flex-start;
+  font-size: var(--font-size-text-s);
+  font-weight: 500;
+}
+
 .packageCta {
   margin-block-start: auto;
   padding-block-start: var(--space-layout-8);
@@ -436,6 +442,10 @@
 
 /* Now nested inside .billingRow, which already carries the rule above the
    whole block, so this only needs to space itself off the detail list. */
+
+.procurement {
+  margin-block-start: var(--space-layout-96);
+}
 
 .trustRow {
   display: flex;
