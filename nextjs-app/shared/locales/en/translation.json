@@ -1480,7 +1480,7 @@
         "body": "Research, component structures, accessibility review, documentation and delivery practices for a design system used across many digital services."
       },
       "dsharp-design-system": {
-        "eyebrow": "VR Group, 2026 to present",
+        "eyebrow": "DSharp, 2026 to present",
         "title": "DSharp Design System",
         "body": "Tokens, component contracts, Storybook, MCP, CLI and enforcement tooling for an AI-assisted design-system architecture."
       },

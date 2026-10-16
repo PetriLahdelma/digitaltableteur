@@ -1480,7 +1480,7 @@
         "body": "Tutkimus, komponenttirakenteet, saavutettavuuskatselmointi, dokumentaatio ja toimituskäytännöt design-systeemille, jota käytetään lukuisissa digipalveluissa."
       },
       "dsharp-design-system": {
-        "eyebrow": "VR Group, 2026 alkaen",
+        "eyebrow": "DSharp, 2026 alkaen",
         "title": "DSharp Design System",
         "body": "Tokenit, komponenttisopimukset, Storybook, MCP, CLI ja valvontatyökalut tekoälyavusteiselle design-systeemiarkkitehtuurille."
       },

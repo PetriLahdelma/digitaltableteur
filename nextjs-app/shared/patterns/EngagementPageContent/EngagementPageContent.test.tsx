@@ -3,6 +3,7 @@ import { render, screen, within } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import en from "../../locales/en/translation.json";
 import { ENGAGEMENTS } from "../../data/engagements";
+import { projects } from "../../data/projects";
 import { EngagementPageContent } from "./EngagementPageContent";
 
 expect.extend(toHaveNoViolations);
@@ -96,6 +97,19 @@ describe("EngagementPageContent", () => {
       });
     });
   }
+
+  it("attributes each proof case to its own client, never another project's", () => {
+    const proof = en.engagementPages.proof as Record<string, { eyebrow: string }>;
+    for (const [slug, copy] of Object.entries(proof)) {
+      const project = projects.find((p) => p.slug === slug);
+      expect(project, `proof slug ${slug} has no project record`).toBeDefined();
+      if (project?.client) expect(copy.eyebrow).toContain(project.client);
+      for (const other of projects) {
+        if (other.slug === slug || !other.client) continue;
+        expect(copy.eyebrow, `${slug} names ${other.client}`).not.toContain(other.client);
+      }
+    }
+  });
 
   it("states the price from the pricing page keys", () => {
     const { container } = render(<EngagementPageContent engagementId="liftoff" />);
