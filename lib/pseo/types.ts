@@ -2,6 +2,8 @@ export type PseoCatalogItem = {
   slug: string;
   name: string;
   shortDescription: string;
+  /** Search snippet for the hub page (110 to 160 characters); falls back to shortDescription. */
+  metaDescription?: string;
   /** Preferred display label (preserves Next.js, TypeScript, etc.) */
   displayName?: string;
   /** Service-only: common client pain points */

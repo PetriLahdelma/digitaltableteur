@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!service) return {};
   const url = `${siteBase}/pseo/services/${service.slug}`;
   const title = `${service.name} Guides | Digitaltableteur`;
-  const description = service.shortDescription;
+  const description = service.metaDescription ?? service.shortDescription;
 
   return {
     title,

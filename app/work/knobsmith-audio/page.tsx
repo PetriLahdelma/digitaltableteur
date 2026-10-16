@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "KnobSmith Audio Case Study | Digitaltableteur",
   description:
-    "Designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
+    "Knobsmith Audio case study: designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
   openGraph: {
     title: "KnobSmith Audio Case Study | Digitaltableteur",
     description:
-      "Designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
+      "Knobsmith Audio case study: designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "KnobSmith Audio Case Study | Digitaltableteur",
     description:
-      "Designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
+      "Knobsmith Audio case study: designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
   },
   alternates: {
     canonical: "/work/knobsmith-audio",

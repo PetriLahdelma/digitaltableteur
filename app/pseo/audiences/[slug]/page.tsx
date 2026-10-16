@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!audience) return {};
   const url = `${siteBase}/pseo/audiences/${audience.slug}`;
   const title = `${audience.name} Guides | Digitaltableteur`;
-  const description = audience.shortDescription;
+  const description = audience.metaDescription ?? audience.shortDescription;
 
   return {
     title,

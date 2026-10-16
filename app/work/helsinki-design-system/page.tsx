@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "Helsinki Design System Case Study | Digitaltableteur",
   description:
-    "Enterprise design system for the City of Helsinki: comprehensive user research, design process, component library development, and measurable impact across multivendor digital services. WCAG AA accessible.",
+    "Enterprise design system for the City of Helsinki: user research, design process, component library and measurable impact across multivendor services. WCAG AA.",
   openGraph: {
     title: "Helsinki Design System Case Study | Digitaltableteur",
     description:
-      "Enterprise design system for the City of Helsinki: comprehensive user research, design process, component library development, and measurable impact across multivendor digital services. WCAG AA accessible.",
+      "Enterprise design system for the City of Helsinki: user research, design process, component library and measurable impact across multivendor services. WCAG AA.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Helsinki Design System Case Study | Digitaltableteur",
     description:
-      "Enterprise design system for the City of Helsinki: comprehensive user research, design process, component library development, and measurable impact across multivendor digital services. WCAG AA accessible.",
+      "Enterprise design system for the City of Helsinki: user research, design process, component library and measurable impact across multivendor services. WCAG AA.",
   },
   alternates: {
     canonical: "/work/helsinki-design-system",

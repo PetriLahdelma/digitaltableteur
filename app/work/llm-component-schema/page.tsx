@@ -5,12 +5,12 @@ import { NextWorkNav } from "../NextWorkNav";
 
 export const metadata: Metadata = {
   title:
-    "LLM Component Schema: Component Contracts for AI | Digitaltableteur",
+    "LLM Component Schema: Contracts for AI | Digitaltableteur",
   description:
     "A published npm schema and CLI for component contracts that AI agents can consume, with drift detection and eval benchmarks.",
   openGraph: {
     title:
-      "LLM Component Schema: Component Contracts for AI | Digitaltableteur",
+      "LLM Component Schema: Contracts for AI | Digitaltableteur",
     description:
       "A published npm schema and CLI for component contracts that AI agents can consume, with drift detection and eval benchmarks.",
     type: "article",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "LLM Component Schema: Component Contracts for AI | Digitaltableteur",
+      "LLM Component Schema: Contracts for AI | Digitaltableteur",
     description:
       "A published npm schema and CLI for component contracts that AI agents can consume, with drift detection and eval benchmarks.",
   },

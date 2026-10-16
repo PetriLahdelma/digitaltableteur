@@ -11,11 +11,10 @@ import {
 // The case studies the index links to: coming-soon teasers have no page
 // (a URL to them is a 404 for crawlers) and unlisted projects are off the grid.
 const linkedProjects = projects.filter((p) => isRoutableProject(p) && !p.unlisted);
-const projectNames = linkedProjects.map((p) => p.title).join(", ");
 
 export const metadata: Metadata = {
   title: "Work & Portfolio | Digitaltableteur",
-  description: `Explore a portfolio of design systems, UX design and creative projects. See case studies from ${projectNames}, and more.`,
+  description: "Portfolio of design systems, UX and creative work: case studies from the Helsinki Design System, SAP Build Apps, DSharp and more, with process and outcomes.",
   keywords: [
     "design systems",
     "UX design",
@@ -30,14 +29,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Work & Portfolio | Digitaltableteur",
-    description: `Explore a portfolio of design systems, UX design and creative projects. See case studies from ${projectNames}, and more.`,
+    description: "Portfolio of design systems, UX and creative work: case studies from the Helsinki Design System, SAP Build Apps, DSharp and more, with process and outcomes.",
     type: "website",
     siteName: "Digitaltableteur",
   },
   twitter: {
     card: "summary_large_image",
     title: "Work & Portfolio | Digitaltableteur",
-    description: `Explore a portfolio of design systems, UX design and creative projects. See case studies from ${projectNames}, and more.`,
+    description: "Portfolio of design systems, UX and creative work: case studies from the Helsinki Design System, SAP Build Apps, DSharp and more, with process and outcomes.",
   },
   alternates: {
     canonical: "/work",

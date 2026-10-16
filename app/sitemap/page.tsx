@@ -10,11 +10,11 @@ import {
 export const metadata: Metadata = {
   title: "Sitemap | Digitaltableteur",
   description:
-    "Browse every page on digitaltableteur.com — work, blog, guides, and legal information.",
+    "Every page on digitaltableteur.com in one list: case studies, offer pages, blog articles, design system guides and legal information.",
   openGraph: {
     title: "Sitemap | Digitaltableteur",
     description:
-      "Browse every page on digitaltableteur.com — work, blog, guides, and legal information.",
+      "Every page on digitaltableteur.com in one list: case studies, offer pages, blog articles, design system guides and legal information.",
     type: "website",
     siteName: "Digitaltableteur",
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Sitemap | Digitaltableteur",
     description:
-      "Browse every page on digitaltableteur.com — work, blog, guides, and legal information.",
+      "Every page on digitaltableteur.com in one list: case studies, offer pages, blog articles, design system guides and legal information.",
   },
   alternates: {
     canonical: "/sitemap",
@@ -36,7 +36,7 @@ export default function Sitemap() {
     getWebPageSchema({
       name: "Sitemap | Digitaltableteur",
       description:
-        "Browse every page on digitaltableteur.com — work, blog, guides, and legal information.",
+        "Every page on digitaltableteur.com in one list: case studies, offer pages, blog articles, design system guides and legal information.",
       url: "/sitemap",
     }),
     getBreadcrumbSchema([

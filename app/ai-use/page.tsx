@@ -5,11 +5,11 @@ import { AiUsagePage } from "@dt-pages/AiUsagePage";
 export const metadata: Metadata = {
   title: "AI Use & Transparency | Digitaltableteur",
   description:
-    "Discover how Digitaltableteur uses AI-assisted tools responsibly, the safeguards we apply, and your rights under GDPR and EU law. Committed to ethical AI practices.",
+    "How Digitaltableteur uses AI-assisted tools in client work, the safeguards applied and your rights under GDPR and EU law, explained in plain language.",
   openGraph: {
     title: "AI Use & Transparency | Digitaltableteur",
     description:
-      "Discover how Digitaltableteur uses AI-assisted tools responsibly, the safeguards we apply, and your rights under GDPR and EU law. Committed to ethical AI practices.",
+      "How Digitaltableteur uses AI-assisted tools in client work, the safeguards applied and your rights under GDPR and EU law, explained in plain language.",
     type: "website",
     siteName: "Digitaltableteur",
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Use & Transparency | Digitaltableteur",
     description:
-      "Discover how Digitaltableteur uses AI-assisted tools responsibly, the safeguards we apply, and your rights under GDPR and EU law. Committed to ethical AI practices.",
+      "How Digitaltableteur uses AI-assisted tools in client work, the safeguards applied and your rights under GDPR and EU law, explained in plain language.",
   },
   alternates: {
     canonical: "/ai-use",

@@ -11,7 +11,7 @@ import {
 export async function generateMetadata(): Promise<Metadata> {
   const title = "About Petri Lahdelma | Digitaltableteur";
   const description =
-    "Meet Petri Lahdelma, Design Systems Specialist and DesignOps Engineer. Expert in React, TypeScript, Figma, and AI-powered design workflows. Based in Finland, working globally.";
+    "Petri Lahdelma, design systems specialist and DesignOps engineer: React, TypeScript, Figma and AI-powered design workflows. Based in Finland, working globally.";
 
   return {
     title,

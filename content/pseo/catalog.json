@@ -6,6 +6,7 @@
       "slug": "design-system-audit",
       "name": "Design system audit",
       "shortDescription": "Assess your current UI foundation, identify gaps, and create a prioritized roadmap.",
+      "metaDescription": "Design system audit guides: inventory components and tokens, rank findings by severity and leave with a 90-day roadmap of quick wins and structural fixes.",
       "painPoints": [
         "Components look similar but behave differently across squads",
         "Accessibility issues repeat because patterns are undocumented",
@@ -38,6 +39,7 @@
       "slug": "design-tokens-setup",
       "name": "Design tokens setup",
       "shortDescription": "Define tokens, align design + code, and ship a scalable theming foundation.",
+      "metaDescription": "Design token guides: a primitive, semantic and component taxonomy, a Figma variables to code pipeline and themes for light, dark and high contrast.",
       "painPoints": [
         "Figma variables and CSS custom properties use different names",
         "Dark mode is bolted on instead of designed as a theme",
@@ -69,6 +71,7 @@
       "slug": "component-library-build",
       "name": "Component library build",
       "shortDescription": "Build production-ready components with accessibility, documentation, and governance.",
+      "metaDescription": "Component library guides: core components with typed props and accessibility baselines, Storybook docs, regression tests and a contribution guide.",
       "painPoints": [
         "Every squad ships slightly different buttons, forms, and modals",
         "Storybook exists but stories do not match production usage",
@@ -101,6 +104,7 @@
       "slug": "ai-designops-automation",
       "name": "AI-powered DesignOps automation",
       "shortDescription": "Automate workflows, reduce design debt, and scale consistent execution.",
+      "metaDescription": "AI DesignOps guides: map automation candidates, set guardrails for agents and tools, add CI drift checks and keep people in the review loop.",
       "painPoints": [
         "Design review bottlenecks when headcount does not scale with output",
         "Handoffs still rely on screenshots and Slack threads",
@@ -135,6 +139,7 @@
       "name": "React",
       "displayName": "React",
       "shortDescription": "Modern component architecture with typed props and predictable composition.",
+      "metaDescription": "Design systems in React: compound components over prop explosion, CSS Modules with tokens and keyboard and screen reader testing beyond visual snapshots.",
       "implementationNotes": [
         "Prefer composition over prop explosion; use compound components for complex UI.",
         "Colocate styles with CSS Modules or tokens; avoid inline one-offs.",
@@ -151,6 +156,7 @@
       "name": "Next.js",
       "displayName": "Next.js",
       "shortDescription": "App Router-ready UI systems with performance and SEO built in.",
+      "metaDescription": "Design systems in Next.js: clear server and client component boundaries, dynamic imports for heavy widgets and shared metadata and Open Graph patterns.",
       "implementationNotes": [
         "Separate server and client component boundaries in your design system docs.",
         "Use dynamic imports for heavy client-only widgets in marketing surfaces.",
@@ -167,6 +173,7 @@
       "name": "Storybook",
       "displayName": "Storybook",
       "shortDescription": "Component-driven development, documentation, and visual regression workflows.",
+      "metaDescription": "Design systems in Storybook: stories that match real product compositions, documented controls for meaningful props and visual regression on pull requests.",
       "implementationNotes": [
         "Stories should reflect real product compositions—not isolated atoms only.",
         "Document controls for every meaningful prop; hide internal ones.",
@@ -183,6 +190,7 @@
       "name": "Figma",
       "displayName": "Figma",
       "shortDescription": "Design-to-code alignment, tokens, and component specs that engineers can ship.",
+      "metaDescription": "Design systems in Figma: component names and variants that mirror code, semantic tokens as variables and a changelog for library updates that affect files.",
       "implementationNotes": [
         "Mirror code component names and variant props in Figma component properties.",
         "Use variables for semantic tokens; avoid hardcoded hex in component sets.",
@@ -199,6 +207,7 @@
       "name": "TypeScript",
       "displayName": "TypeScript",
       "shortDescription": "Type-safe design systems and predictable component APIs.",
+      "metaDescription": "Design systems in TypeScript: discriminated unions for variant props, documentation generated from types and strict mode for the library package itself.",
       "implementationNotes": [
         "Export discriminated unions for variant props instead of loose strings.",
         "Generate docs from types where possible (Storybook docgen, TSDoc).",
@@ -216,6 +225,7 @@
       "slug": "startups",
       "name": "startup teams",
       "shortDescription": "Move fast without creating UI debt that blocks your roadmap.",
+      "metaDescription": "Design systems for startup teams: consistent MVP UI in two to four weeks with one or two designers, without a rewrite when the company starts to grow.",
       "constraints": ["1–2 designers", "small eng team", "need shippable UI in weeks not quarters"],
       "successMetric": "Consistent MVP UI in 2–4 weeks without a rewrite at Series A"
     },
@@ -223,6 +233,7 @@
       "slug": "scaleups",
       "name": "scaleup teams",
       "shortDescription": "Standardize UI and workflows across multiple squads and surfaces.",
+      "metaDescription": "Design systems for scaleup teams: one shared component source across three or more squads, legacy and new code side by side and measurable adoption.",
       "constraints": ["3+ product squads", "legacy and greenfield code coexist", "release trains already exist"],
       "successMetric": "One shared component source with measurable adoption across squads"
     },
@@ -230,6 +241,7 @@
       "slug": "enterprises",
       "name": "enterprise teams",
       "shortDescription": "Governance, accessibility, and multi-team alignment for long-term scale.",
+      "metaDescription": "Design systems for enterprise teams: a documented governance model, WCAG-aligned baselines and an audit trail that holds up across vendors and approvals.",
       "constraints": ["procurement and a11y compliance", "multiple vendors", "long approval cycles"],
       "successMetric": "Documented governance model with WCAG-aligned baselines and audit trail"
     },
@@ -237,6 +249,7 @@
       "slug": "designops",
       "name": "DesignOps teams",
       "shortDescription": "Tooling, process, and automation to improve throughput and consistency.",
+      "metaDescription": "Design systems for DesignOps teams: tooling, process and automation that cut review cycle time and design-to-dev regressions, with ROI you can show.",
       "constraints": ["serve many designers", "tooling budget scrutiny", "must prove ROI"],
       "successMetric": "Reduced review cycle time and fewer design-to-dev regressions"
     },
@@ -244,6 +257,7 @@
       "slug": "product-teams",
       "name": "product teams",
       "shortDescription": "Faster shipping with better UX and fewer regressions.",
+      "metaDescription": "Design systems for product teams with embedded designers: faster feature delivery and fewer UI bugs in QA, even under OKR pressure and mixed skills.",
       "constraints": ["designers embedded in squads", "OKR pressure", "mixed skill levels"],
       "successMetric": "Faster feature delivery with fewer UI bugs in QA"
     }

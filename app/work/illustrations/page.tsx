@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "Illustrations Portfolio | Digitaltableteur",
   description:
-    "Diverse illustration work spanning traditional pencil drawings, watercolor paintings, vector graphics, and pixel art. Creative exploration across multiple mediums and styles.",
+    "Illustration work across pencil drawings, watercolor paintings, vector graphics and pixel art: creative exploration in many mediums and styles.",
   openGraph: {
     title: "Illustrations Portfolio | Digitaltableteur",
     description:
-      "Diverse illustration work spanning traditional pencil drawings, watercolor paintings, vector graphics, and pixel art. Creative exploration across multiple mediums and styles.",
+      "Illustration work across pencil drawings, watercolor paintings, vector graphics and pixel art: creative exploration in many mediums and styles.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Illustrations Portfolio | Digitaltableteur",
     description:
-      "Diverse illustration work spanning traditional pencil drawings, watercolor paintings, vector graphics, and pixel art. Creative exploration across multiple mediums and styles.",
+      "Illustration work across pencil drawings, watercolor paintings, vector graphics and pixel art: creative exploration in many mediums and styles.",
   },
   alternates: {
     canonical: "/work/illustrations",

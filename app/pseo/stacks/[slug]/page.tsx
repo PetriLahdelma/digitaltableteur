@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!stack) return {};
   const url = `${siteBase}/pseo/stacks/${stack.slug}`;
   const title = `${stack.name} Design System Guides | Digitaltableteur`;
-  const description = stack.shortDescription;
+  const description = stack.metaDescription ?? stack.shortDescription;
   return {
     title,
     description,
