@@ -90,7 +90,10 @@ export function categorizeToken(name) {
     name.startsWith("--main-body") ||
     name.startsWith("--link-") ||
     name.startsWith("--logo-") ||
-    name.startsWith("--selection-")
+    name.startsWith("--selection-") ||
+    // The focus ring's colour is a colour token; its width and offset stay
+    // in the "focus" category below.
+    name === "--focus-ring-color"
   ) {
     return "color";
   }
