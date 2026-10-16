@@ -1,9 +1,9 @@
 {
   "storyId": "site-formfieldeditorial-default",
   "mode": "light",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:38:34.845Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "bc0a504a009232b19dd267115ec2c7931b2f8102",
+  "capturedAt": "2026-10-16T09:59:51.788Z",
+  "runner": "local-2026-10-16g",
   "checks": {
     "accessibility-tree": {
       "passed": true

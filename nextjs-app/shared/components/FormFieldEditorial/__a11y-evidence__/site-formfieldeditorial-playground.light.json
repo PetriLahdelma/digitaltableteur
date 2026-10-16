@@ -1,9 +1,9 @@
 {
   "storyId": "site-formfieldeditorial-playground",
   "mode": "light",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:07:38.962Z",
-  "runner": null,
+  "sourceSHA": "bc0a504a009232b19dd267115ec2c7931b2f8102",
+  "capturedAt": "2026-10-16T09:59:57.300Z",
+  "runner": "local-2026-10-16g",
   "checks": {
     "accessibility-tree": {
       "passed": true

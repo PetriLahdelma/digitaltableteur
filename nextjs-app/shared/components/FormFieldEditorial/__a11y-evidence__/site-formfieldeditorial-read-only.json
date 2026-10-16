@@ -1,0 +1,16 @@
+{
+  "storyId": "site-formfieldeditorial-read-only",
+  "mode": "light",
+  "sourceSHA": "bc0a504a009232b19dd267115ec2c7931b2f8102",
+  "capturedAt": "2026-10-16T09:59:52.694Z",
+  "runner": "local-2026-10-16g",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
