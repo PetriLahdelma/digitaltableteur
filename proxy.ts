@@ -29,19 +29,32 @@ function handleBlogDraftPreview(request: NextRequest) {
   return response;
 }
 
+const ENGAGEMENT_PAGE = /^\/engagements\/([a-z0-9-]+)\/?$/;
+
 /**
  * Markdown content negotiation for AI agents (Cloudflare Agent Readiness / llmstxt.org).
- * Homepage requests with Accept: text/markdown receive llms.txt content.
+ * Homepage requests with Accept: text/markdown receive llms.txt content;
+ * offer pages receive their markdown brief.
  */
 export function proxy(request: NextRequest) {
   const draftPreview = handleBlogDraftPreview(request);
   if (draftPreview) return draftPreview;
 
+  const accept = request.headers.get("accept") ?? "";
+  const engagement = request.nextUrl.pathname.match(ENGAGEMENT_PAGE);
+
+  if (engagement && accept.includes("text/markdown")) {
+    const markdownUrl = request.nextUrl.clone();
+    markdownUrl.pathname = `/engagements/${engagement[1]}/markdown`;
+    const response = NextResponse.rewrite(markdownUrl);
+    response.headers.set("Vary", "Accept");
+    return response;
+  }
+
   if (request.nextUrl.pathname !== "/") {
     return NextResponse.next();
   }
 
-  const accept = request.headers.get("accept") ?? "";
   if (!accept.includes("text/markdown")) {
     return NextResponse.next();
   }
@@ -60,5 +73,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/blog", "/blog/:path*"],
+  matcher: ["/", "/blog", "/blog/:path*", "/engagements/:slug"],
 };

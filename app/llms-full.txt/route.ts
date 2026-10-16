@@ -4,6 +4,10 @@ import { getVisiblePosts } from "../blog/postMetadata";
 import { projects } from "@/nextjs-app/shared/data/projects";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 import type { PseoCatalogItem } from "@/lib/pseo/types";
+import {
+  formatEngagementMarkdown,
+  getEngagementEntries,
+} from "@/app/lib/engagementCatalog";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -55,6 +59,13 @@ export async function GET() {
     "User-centered product interfaces with accessibility and performance.\n\n";
 
   // Open source tools
+  body += "## Engagements and prices\n\n";
+  body +=
+    "Productized engagements with published scope and prices in euros. Each section mirrors its offer page; request a page with Accept: text/markdown for the same brief.\n\n";
+  for (const entry of getEngagementEntries()) {
+    body += `${formatEngagementMarkdown(entry, baseUrl, 3)}\n`;
+  }
+
   body += "## Open-source tools\n\n";
   body += "### Rhythmguard\n";
   body +=

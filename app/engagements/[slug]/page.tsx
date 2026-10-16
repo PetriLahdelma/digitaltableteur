@@ -12,9 +12,14 @@ import { procurementFaqEntries } from "@/app/lib/procurementFaq";
 import {
   getBreadcrumbSchema,
   getFaqSchema,
+  getServiceSchema,
   getWebPageSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
+import {
+  getEngagementEntry,
+  toServiceSchemaOptions,
+} from "@/app/lib/engagementCatalog";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -51,7 +56,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: copy.metaTitle,
       description: copy.metaDescription,
     },
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      types: { "text/markdown": `${path}/markdown` },
+    },
   };
 }
 
@@ -61,8 +69,11 @@ export default async function EngagementRoute({ params }: Props) {
   const { engagement, copy } = found;
   const path = getEngagementPath(engagement);
 
+  const entry = getEngagementEntry(engagement.slug);
+
   // Both FAQs on the page are visible, so both feed the FAQPage data.
   const structuredData = [
+    ...(entry ? [getServiceSchema(toServiceSchemaOptions(entry))] : []),
     getWebPageSchema({
       name: copy.metaTitle,
       description: copy.metaDescription,

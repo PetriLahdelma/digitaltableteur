@@ -5,7 +5,10 @@ import type { NextConfig } from "next";
 import path from "path";
 import webpack from "webpack";
 
-import { getAgentDiscoveryLinkHeader } from "./app/lib/agent-discovery";
+import {
+  agentDiscoveryBaseUrl,
+  getAgentDiscoveryLinkHeader,
+} from "./app/lib/agent-discovery";
 
 // Shared path aliases (webpack + turbopack)
 const nextjsSharedComponents = path.resolve(
@@ -289,6 +292,17 @@ const nextConfig: NextConfig = {
         // the header does not repeat on every static asset for no benefit.
         source: "/:path((?!_next/|.*\\.).*)",
         headers: [agentLinkHeader],
+      },
+      {
+        // Markdown briefs of the offer pages point search engines back at the
+        // HTML page; this rule runs last, so its Link value wins.
+        source: "/engagements/:slug/markdown",
+        headers: [
+          {
+            key: "Link",
+            value: `<${agentDiscoveryBaseUrl}/engagements/:slug>; rel="canonical", ${getAgentDiscoveryLinkHeader()}`,
+          },
+        ],
       },
     ];
   },

@@ -534,6 +534,102 @@ export function getCreativeWorkSchema(
   };
 }
 
+export interface ServicePriceOptions {
+  minPrice: number;
+  maxPrice: number;
+  currency: string;
+  /** UN/CEFACT unit code for prices per unit of time, e.g. MON or HUR. */
+  unitCode?: string;
+}
+
+export interface ServiceSchemaOptions {
+  name: string;
+  description: string;
+  url: string;
+  serviceType: string;
+  /** Visible price text, kept as the offer description. */
+  priceLabel: string;
+  /** Null when the offer is quoted per engagement. */
+  price: ServicePriceOptions | null;
+  /** Where the offer is booked or quoted. */
+  offerUrl: string;
+}
+
+function getOfferSchema(options: ServiceSchemaOptions): Record<string, unknown> {
+  const { price, priceLabel, offerUrl } = options;
+  return {
+    "@type": "Offer",
+    url: toAbsoluteUrl(offerUrl),
+    description: priceLabel,
+    availability: "https://schema.org/InStock",
+    seller: { "@type": "Organization", name: "Digitaltableteur", url: getSiteUrl() },
+    ...(price
+      ? {
+          priceCurrency: price.currency,
+          priceSpecification: {
+            "@type": price.unitCode ? "UnitPriceSpecification" : "PriceSpecification",
+            priceCurrency: price.currency,
+            minPrice: price.minPrice,
+            maxPrice: price.maxPrice,
+            ...(price.unitCode ? { unitCode: price.unitCode } : {}),
+          },
+        }
+      : {}),
+  };
+}
+
+/**
+ * Service schema for a productized engagement with its offer. Answer engines
+ * read the provider, scope, languages and price range from one entity.
+ */
+export function getServiceSchema(
+  options: ServiceSchemaOptions,
+): Record<string, unknown> {
+  const url = toAbsoluteUrl(options.url);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: options.name,
+    description: options.description,
+    url,
+    serviceType: options.serviceType,
+    provider: { "@type": "Organization", name: "Digitaltableteur", url: getSiteUrl() },
+    areaServed: [
+      { "@type": "Country", name: "Finland" },
+      { "@type": "Place", name: "Europe" },
+    ],
+    availableLanguage: ["English", "Finnish", "Swedish"],
+    offers: getOfferSchema(options),
+  };
+}
+
+/**
+ * OfferCatalog schema for a pricing page that lists several services.
+ */
+export function getOfferCatalogSchema(
+  name: string,
+  url: string,
+  services: ServiceSchemaOptions[],
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name,
+    url: toAbsoluteUrl(url),
+    itemListElement: services.map((service) => ({
+      ...getOfferSchema(service),
+      itemOffered: {
+        "@type": "Service",
+        "@id": `${toAbsoluteUrl(service.url)}#service`,
+        name: service.name,
+        url: toAbsoluteUrl(service.url),
+        description: service.description,
+      },
+    })),
+  };
+}
+
 /**
  * Safely stringify JSON-LD for script tag injection
  * Uses DOMPurify for defense-in-depth XSS protection

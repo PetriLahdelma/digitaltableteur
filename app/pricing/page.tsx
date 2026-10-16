@@ -5,9 +5,14 @@ import { procurementFaqEntries } from "@/app/lib/procurementFaq";
 import {
   getBreadcrumbSchema,
   getFaqSchema,
+  getOfferCatalogSchema,
   getWebPageSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
+import {
+  getEngagementEntries,
+  toServiceSchemaOptions,
+} from "@/app/lib/engagementCatalog";
 
 export const metadata: Metadata = {
   title: "Pricing | Digitaltableteur",
@@ -47,6 +52,12 @@ export default function Pricing() {
         "UX/UI pricing",
       ],
     }),
+    // Every package card links to its offer page; the catalog names them all.
+    getOfferCatalogSchema(
+      "Digitaltableteur engagements",
+      "/pricing",
+      getEngagementEntries().map(toServiceSchemaOptions),
+    ),
     // The visible procurement FAQ on the page is the FAQPage source.
     getFaqSchema(procurementFaqEntries),
     getBreadcrumbSchema([

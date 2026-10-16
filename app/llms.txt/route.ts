@@ -6,6 +6,10 @@ import { getVisiblePosts } from "../blog/postMetadata";
 import { projects } from "@/nextjs-app/shared/data/projects";
 import { getPseoLeafPages } from "@/lib/pseo/catalog";
 import { getSiteUrl, toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
+import {
+  formatEngagementLine,
+  getEngagementEntries,
+} from "@/app/lib/engagementCatalog";
 
 export const revalidate = 600;
 
@@ -98,6 +102,13 @@ export async function GET() {
     "- Product design and UX: digital product interfaces, accessibility-minded interaction design, branded digital experiences.\n";
   body +=
     "- Portfolio proof: public case studies and work examples across enterprise systems, startups, and creative projects.\n\n";
+
+  body += "## Engagements and prices\n\n";
+  body += `Every package has an offer page with scope, steps, deliverables, price and FAQ. Send Accept: text/markdown to an offer page for a markdown brief; the full set is in ${baseUrl}/llms-full.txt.\n\n`;
+  for (const entry of getEngagementEntries()) {
+    body += `${formatEngagementLine(entry, baseUrl)}\n`;
+  }
+  body += "\n";
 
   body += "## Featured portfolio pages\n\n";
   for (const project of featuredProjects) {

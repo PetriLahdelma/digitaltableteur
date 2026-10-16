@@ -57,4 +57,20 @@ describe("llms.txt", () => {
       body.indexOf("## Best starting points"),
     );
   });
+
+  it("lists every engagement offer page with its price", async () => {
+    const body = await readBody();
+    expect(body).toContain("## Engagements and prices");
+    for (const slug of [
+      "design-system-audit",
+      "design-system-workshop",
+      "designops-pilot",
+      "agent-pilot",
+      "design-system-mcp",
+      "agent-workforce",
+    ]) {
+      expect(body).toContain(`/engagements/${slug}`);
+    }
+    expect(body).toContain("Agent Pilot (€9–15k, 3 weeks)");
+  });
 });
