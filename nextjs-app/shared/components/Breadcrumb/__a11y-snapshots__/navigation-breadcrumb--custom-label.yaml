@@ -3,9 +3,7 @@
     - listitem:
       - link "Archive":
         - /url: /archive
-      - text: /
     - listitem:
       - link "Projects":
         - /url: /archive/projects
-      - text: /
     - listitem: "2025"

@@ -158,7 +158,12 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
           {icon}
         </Link>
       ) : (
-        <span className={`${styles.current} ${styles.homeLink}`}>{icon}</span>
+        <span
+          className={`${styles.current} ${styles.homeLink}`}
+          aria-current={isLast ? "page" : undefined}
+        >
+          {icon}
+        </span>
       );
     }
     return isLink ? (
@@ -171,7 +176,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
         {item.label}
       </Link>
     ) : (
-      <span className={styles.current}>{item.label}</span>
+      <span className={styles.current} aria-current={isLast ? "page" : undefined}>
+        {item.label}
+      </span>
     );
   };
 
@@ -226,15 +233,17 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
             {collapsed.leading.map((item, idx) => (
               <li key={`${item.label}-${idx}`} className={styles.item}>
                 {renderItemContent(item, idx, false)}
-                <span className={styles.separator}>/</span>
+                <span className={styles.separator} aria-hidden="true">/</span>
               </li>
             ))}
             <li className={styles.item}>
               {renderEllipsis(collapsed.hidden)}
-              <span className={styles.separator}>/</span>
+              <span className={styles.separator} aria-hidden="true">/</span>
             </li>
             <li className={styles.item}>
-              <span className={styles.current}>{collapsed.current.label}</span>
+              <span className={styles.current} aria-current="page">
+                {collapsed.current.label}
+              </span>
             </li>
           </>
         ) : (
@@ -243,7 +252,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
             return (
               <li key={`${item.label}-${idx}`} className={styles.item}>
                 {renderItemContent(item, idx, isLast)}
-                {!isLast && <span className={styles.separator}>/</span>}
+                {!isLast && <span className={styles.separator} aria-hidden="true">/</span>}
               </li>
             );
           })
@@ -267,7 +276,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
                 data-measure-item
               >
                 {renderItemContent(item, idx, isLast)}
-                {!isLast && <span className={styles.separator}>/</span>}
+                {!isLast && <span className={styles.separator} aria-hidden="true">/</span>}
               </li>
             );
           })}
@@ -275,7 +284,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
             <span className={styles.ellipsis}>
               <span className={styles.ellipsisDots}>…</span>
             </span>
-            <span className={styles.separator}>/</span>
+            <span className={styles.separator} aria-hidden="true">/</span>
           </li>
         </ol>
       )}

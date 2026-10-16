@@ -3,5 +3,4 @@
     - listitem:
       - link "Home":
         - /url: /
-      - text: /
     - listitem: Contact

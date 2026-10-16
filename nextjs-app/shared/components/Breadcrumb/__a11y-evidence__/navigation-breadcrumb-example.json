@@ -1,0 +1,12 @@
+{
+  "storyId": "navigation-breadcrumb-example",
+  "mode": "light",
+  "sourceSHA": "e74ff8236eff2007b7fc58675488cb3d0fc4ecc9",
+  "capturedAt": "2026-10-16T08:57:54.964Z",
+  "runner": "local-2026-10-16e",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

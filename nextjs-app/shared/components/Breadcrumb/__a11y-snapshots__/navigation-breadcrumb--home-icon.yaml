@@ -4,9 +4,7 @@
       - link "Home":
         - /url: /
         - img "Home"
-      - text: /
     - listitem:
       - link "Blog":
         - /url: /blog
-      - text: /
     - listitem: Article

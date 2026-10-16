@@ -1,0 +1,8 @@
+- navigation "Breadcrumb":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem: "2026"
+    - listitem: July
+    - listitem: Weekly notes

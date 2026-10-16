@@ -1,0 +1,27 @@
+- navigation "Always":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+    - listitem: Article
+- navigation "Hover":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+    - listitem: Article
+- navigation "None":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+    - listitem: Article

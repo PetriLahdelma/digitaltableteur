@@ -1,0 +1,9 @@
+- navigation "Archive location":
+  - list:
+    - listitem:
+      - link "Archive":
+        - /url: /archive
+    - listitem:
+      - link "Projects":
+        - /url: /archive/projects
+    - listitem: "2025"

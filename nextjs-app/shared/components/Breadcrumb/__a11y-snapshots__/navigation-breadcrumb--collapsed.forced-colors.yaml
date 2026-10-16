@@ -1,0 +1,11 @@
+- navigation "Breadcrumb":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "Components":
+        - /url: /components
+    - listitem:
+      - button "Show 3 hidden breadcrumbs"
+    - listitem: Button

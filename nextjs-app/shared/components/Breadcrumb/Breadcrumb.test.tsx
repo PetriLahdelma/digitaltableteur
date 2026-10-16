@@ -57,6 +57,34 @@ describe("Breadcrumb", () => {
     expect(separators).toHaveLength(2);
   });
 
+  it("hides the separators from assistive technology", () => {
+    const items: BreadcrumbItem[] = [
+      { label: "Home", href: "/" },
+      { label: "Details" },
+    ];
+    const { container } = render(<Breadcrumb items={items} />);
+    for (const separator of container.querySelectorAll('[class*="separator"]')) {
+      expect(separator).toHaveAttribute("aria-hidden", "true");
+    }
+  });
+
+  it("marks only the last item as the current page", () => {
+    const items: BreadcrumbItem[] = [
+      { label: "Home", href: "/" },
+      { label: "Section" },
+      { label: "Details" },
+    ];
+    const { container } = render(<Breadcrumb items={items} />);
+    const current = container.querySelectorAll('[aria-current="page"]');
+    expect(current).toHaveLength(1);
+    expect(current[0]).toHaveTextContent("Details");
+  });
+
+  it("marks the home icon as current when it is the only item", () => {
+    const { container } = render(<Breadcrumb items={[{ label: "Home" }]} homeIcon />);
+    expect(container.querySelector('[aria-current="page"]')).not.toBeNull();
+  });
+
   it("applies custom aria-label", () => {
     const items: BreadcrumbItem[] = [{ label: "Home" }];
     render(<Breadcrumb items={items} aria-label="Custom breadcrumb" />);
@@ -173,6 +201,13 @@ describe("Breadcrumb collapse (static maxItems)", () => {
     { label: "Menu", href: "/components/overlays/menu" },
     { label: "Button" },
   ];
+
+  it("keeps the current page marked when the trail collapses", () => {
+    const { container } = render(<Breadcrumb items={longTrail} maxItems={4} />);
+    const current = container.querySelectorAll('nav [aria-current="page"]');
+    expect(current).toHaveLength(1);
+    expect(current[0]).toHaveTextContent("Button");
+  });
 
   it("does not collapse when items fit within maxItems", () => {
     render(<Breadcrumb items={longTrail} maxItems={10} />);

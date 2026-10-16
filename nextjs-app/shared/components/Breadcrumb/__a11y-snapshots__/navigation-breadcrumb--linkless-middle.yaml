@@ -3,7 +3,6 @@
     - listitem:
       - link "Home":
         - /url: /
-      - text: /
-    - listitem: 2026 /
-    - listitem: July /
+    - listitem: "2026"
+    - listitem: July
     - listitem: Weekly notes

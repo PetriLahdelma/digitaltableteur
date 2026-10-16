@@ -3,9 +3,7 @@
     - listitem:
       - link "Home":
         - /url: /
-      - text: /
     - listitem:
       - link "Blog":
         - /url: /blog
-      - text: /
     - listitem: Article
