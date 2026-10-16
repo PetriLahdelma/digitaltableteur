@@ -96,22 +96,8 @@
 }
 
 .signal {
-  display: flex;
-  padding: var(--space-internal-24);
-  min-block-size: var(--space-layout-96);
-  align-items: center;
-  gap: var(--space-internal-12);
-  border-radius: var(--radius-lg);
-  background: var(--color-light-bg);
-}
-
-.marker {
-  block-size: var(--space-internal-12);
-  inline-size: var(--space-internal-12);
-  flex: 0 0 auto;
-  border: 1px solid var(--color-text);
-  border-radius: var(--radius-full);
-  background: var(--logo-background);
+  padding-block: var(--space-internal-24);
+  border-block-start: 1px solid var(--color-border);
 }
 
 /* Scope and limits */
@@ -351,7 +337,6 @@
 }
 
 @media (forced-colors: active) {
-  .marker,
   .stepNumber {
     border: 1px solid CanvasText;
     background: Canvas;

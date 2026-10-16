@@ -141,7 +141,6 @@ export function EngagementPageContent({
           <ul className={styles.signals}>
             {list("signals").map((signal) => (
               <li key={signal} className={styles.signal}>
-                <span className={styles.marker} aria-hidden="true" />
                 <Text as="span" size="m">
                   {signal}
                 </Text>
