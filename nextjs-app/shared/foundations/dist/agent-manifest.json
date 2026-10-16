@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-16T06:10:27.425Z",
+  "generatedAt": "2026-10-16T08:39:48.021Z",
   "summary": {
     "componentCount": 183,
     "statusCounts": {
@@ -75695,7 +75695,7 @@
         ],
         "lightDarkVerified": false,
         "name": "EngagementPageContent",
-        "description": "One engagement offer page: problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ and a booking call to action.",
+        "description": "One engagement offer page: a breadcrumb back to Pricing, problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ, the other engagements and a booking call to action.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1912-33",
         "element": "article",
         "a11y": {
@@ -75757,6 +75757,7 @@
         },
         "composesWith": [
           "ProcurementFaq",
+          "Breadcrumb",
           "Accordion",
           "Badge",
           "Button",
@@ -75780,7 +75781,7 @@
           "description": "Renders /engagements/<slug>. Copy lives under engagementPages.<id> in the locales; routes, contact links, price keys and proof order in data/engagements."
         }
       },
-      "spec": "# EngagementPageContent\n\n## Intent\nOne offer page per engagement (Design System Audit, Lift-Off, AI-Ready Ops, Embedded partnership), so a buyer sees scope, limits, steps, deliverables, price, proof and the next step before getting in touch.\n\n## Interaction contract\n- Keyboard: calls to action, links and FAQ triggers in reading order\n- Screen readers: one h1 per page; each section labelled by its h2; steps are an ordered list\n\n## Do / don't\n- Do: take every claim from published sources (package data, the service catalog, project data)\n- Do: read prices from the pricing page keys so a price changes in one place\n- Don't: repeat a procurement question in the offer FAQ\n\n## Design notes\n- Figma: views 1912:33 (Views page), sections 1910:298 (Sections page)\n",
+      "spec": "# EngagementPageContent\n\n## Intent\nOne offer page per engagement (Design System Audit, Lift-Off, AI-Ready Ops, Embedded partnership), so a buyer sees scope, limits, steps, deliverables, price, proof and the next step before getting in touch.\n\n## Interaction contract\n- Keyboard: calls to action, links and FAQ triggers in reading order\n- Screen readers: one h1 per page; a labelled breadcrumb landmark leads it; each section labelled by its h2; steps are an ordered list; each other-engagement row is one link carrying name, timeline and price\n\n## Do / don't\n- Do: take every claim from published sources (package data, the service catalog, project data)\n- Do: read prices from the pricing page keys so a price changes in one place\n- Do: keep the breadcrumb trail identical to the BreadcrumbList structured data (Home / Pricing / engagement)\n- Don't: repeat a procurement question in the offer FAQ\n- Don't: list the current engagement among the other engagements\n\n## Design notes\n- Figma: views 1912:33 (Views page), sections 1910:298 (Sections page)\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/EngagementPageContent",
@@ -75825,10 +75826,12 @@
         "variantsFnName": null,
         "useWhen": [
           "take every claim from published sources (package data, the service catalog, project data)",
-          "read prices from the pricing page keys so a price changes in one place"
+          "read prices from the pricing page keys so a price changes in one place",
+          "keep the breadcrumb trail identical to the BreadcrumbList structured data (Home / Pricing / engagement)"
         ],
         "avoidWhen": [
-          "repeat a procurement question in the offer FAQ"
+          "repeat a procurement question in the offer FAQ",
+          "list the current engagement among the other engagements"
         ],
         "requiredA11y": [
           "The article is labelled by its single h1; each section is labelled by its h2.",
@@ -75844,7 +75847,8 @@
         ],
         "replacementFor": [],
         "forbiddenUse": [
-          "repeat a procurement question in the offer FAQ"
+          "repeat a procurement question in the offer FAQ",
+          "list the current engagement among the other engagements"
         ],
         "composesWith": [],
         "prefersOver": [],
@@ -75865,8 +75869,22 @@
             "source": "spec.md#do-dont"
           },
           {
+            "level": "should",
+            "guidance": "keep the breadcrumb trail identical to the BreadcrumbList structured data (Home / Pricing / engagement)",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
             "level": "should-not",
             "guidance": "repeat a procurement question in the offer FAQ",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "list the current engagement among the other engagements",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
@@ -81132,8 +81150,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -81147,8 +81165,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -81169,8 +81187,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -81198,8 +81216,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "4.1.2",

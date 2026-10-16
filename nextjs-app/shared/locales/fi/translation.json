@@ -1469,7 +1469,9 @@
       "proofTitle": "Julkaistut työt aiheesta",
       "proofLink": "Lue case-tarina",
       "breadcrumbHome": "Etusivu",
-      "breadcrumbPricing": "Hinnoittelu"
+      "breadcrumbPricing": "Hinnoittelu",
+      "breadcrumbLabel": "Murupolku",
+      "otherTitle": "Muut toimeksiannot"
     },
     "proof": {
       "helsinki-design-system": {

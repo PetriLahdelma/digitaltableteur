@@ -20826,7 +20826,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "alpha",
-      "description": "One engagement offer page: problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ and a booking call to action.",
+      "description": "One engagement offer page: a breadcrumb back to Pricing, problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ, the other engagements and a booking call to action.",
       "dense": "Engagement offer page from data/engagements and engagementPages locale copy: hero, fit, scope, steps, deliverables, price, proof, FAQs, booking",
       "keywords": [
         "offer page",
@@ -20870,6 +20870,7 @@
       },
       "composesWith": [
         "ProcurementFaq",
+        "Breadcrumb",
         "Accordion",
         "Badge",
         "Button",

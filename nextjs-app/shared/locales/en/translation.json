@@ -1469,7 +1469,9 @@
       "proofTitle": "Relevant published work",
       "proofLink": "Read the case study",
       "breadcrumbHome": "Home",
-      "breadcrumbPricing": "Pricing"
+      "breadcrumbPricing": "Pricing",
+      "breadcrumbLabel": "Breadcrumb",
+      "otherTitle": "Other engagements"
     },
     "proof": {
       "helsinki-design-system": {

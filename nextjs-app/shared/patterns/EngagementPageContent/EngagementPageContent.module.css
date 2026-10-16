@@ -2,8 +2,14 @@
    blocks and grids collapse under 56rem. */
 
 .root {
-  padding-block: var(--space-layout-64) 0;
+  padding-block: var(--space-layout-32) 0;
   color: var(--color-text);
+}
+
+/* Breadcrumb */
+
+.breadcrumb {
+  margin-block-end: var(--space-layout-40);
 }
 
 /* Hero */
@@ -285,6 +291,55 @@
   gap: var(--space-layout-48);
 }
 
+/* Other engagements: hairline rows like the signals, each row one link */
+
+.siblings {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-internal-16);
+  list-style: none;
+}
+
+.sibling {
+  border-block-start: 1px solid var(--color-border);
+}
+
+.siblingLink {
+  display: grid;
+  padding-block: var(--space-internal-24);
+  gap: var(--space-internal-8);
+  color: var(--color-text);
+}
+
+.siblingHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-12);
+}
+
+.siblingHead > svg {
+  flex: 0 0 auto;
+}
+
+.siblingName {
+  font-size: var(--font-size-title-xxs);
+  font-weight: 500;
+  color: var(--color-title);
+}
+
+.siblingMeta {
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
+}
+
+.siblingLink:hover .siblingName {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 /* Booking */
 
 .bookSection {
@@ -330,7 +385,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .proof {
+  .proof,
+  .siblings {
     grid-template-columns: minmax(0, 1fr);
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T06:06:45.924Z",
+  "generatedAt": "2026-10-16T08:39:47.687Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -45628,10 +45628,12 @@
       "variantsFnName": null,
       "useWhen": [
         "take every claim from published sources (package data, the service catalog, project data)",
-        "read prices from the pricing page keys so a price changes in one place"
+        "read prices from the pricing page keys so a price changes in one place",
+        "keep the breadcrumb trail identical to the BreadcrumbList structured data (Home / Pricing / engagement)"
       ],
       "avoidWhen": [
-        "repeat a procurement question in the offer FAQ"
+        "repeat a procurement question in the offer FAQ",
+        "list the current engagement among the other engagements"
       ],
       "requiredA11y": [
         "The article is labelled by its single h1; each section is labelled by its h2.",
@@ -45647,7 +45649,8 @@
       ],
       "replacementFor": [],
       "forbiddenUse": [
-        "repeat a procurement question in the offer FAQ"
+        "repeat a procurement question in the offer FAQ",
+        "list the current engagement among the other engagements"
       ],
       "composesWith": [],
       "prefersOver": [],
@@ -45668,8 +45671,22 @@
           "source": "spec.md#do-dont"
         },
         {
+          "level": "should",
+          "guidance": "keep the breadcrumb trail identical to the BreadcrumbList structured data (Home / Pricing / engagement)",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
           "level": "should-not",
           "guidance": "repeat a procurement question in the offer FAQ",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "list the current engagement among the other engagements",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"
@@ -48851,8 +48868,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -48866,8 +48883,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -48888,8 +48905,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -48917,8 +48934,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "4.1.2",

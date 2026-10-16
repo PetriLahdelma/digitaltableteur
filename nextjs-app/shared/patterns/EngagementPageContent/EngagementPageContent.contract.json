@@ -14,7 +14,7 @@
   ],
   "lightDarkVerified": false,
   "name": "EngagementPageContent",
-  "description": "One engagement offer page: problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ and a booking call to action.",
+  "description": "One engagement offer page: a breadcrumb back to Pricing, problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ, the other engagements and a booking call to action.",
   "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1912-33",
   "element": "article",
   "a11y": {
@@ -76,6 +76,7 @@
   },
   "composesWith": [
     "ProcurementFaq",
+    "Breadcrumb",
     "Accordion",
     "Badge",
     "Button",

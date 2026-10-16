@@ -1469,7 +1469,9 @@
       "proofTitle": "Relevanta publicerade arbeten",
       "proofLink": "Läs fallstudien",
       "breadcrumbHome": "Hem",
-      "breadcrumbPricing": "Priser"
+      "breadcrumbPricing": "Priser",
+      "breadcrumbLabel": "Brödsmulor",
+      "otherTitle": "Andra uppdrag"
     },
     "proof": {
       "helsinki-design-system": {

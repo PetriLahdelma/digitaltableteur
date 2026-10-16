@@ -54,6 +54,33 @@ describe("EngagementPageContent", () => {
         }
       });
 
+      it("leads with a breadcrumb back to Pricing, ending on this engagement", () => {
+        render(<EngagementPageContent engagementId={engagement.id} />);
+        const trail = screen.getByRole("navigation", {
+          name: en.engagementPages.common.breadcrumbLabel,
+        });
+        expect(
+          within(trail).getByRole("link", { name: en.engagementPages.common.breadcrumbPricing }),
+        ).toHaveAttribute("href", "/pricing");
+        const current = within(trail).getByText(copy.eyebrow);
+        expect(current.closest("a")).toBeNull();
+      });
+
+      it("links the other three engagements and not itself", () => {
+        render(<EngagementPageContent engagementId={engagement.id} />);
+        const section = screen
+          .getByRole("heading", { level: 2, name: en.engagementPages.common.otherTitle })
+          .closest("section") as HTMLElement;
+        const hrefs = within(section)
+          .getAllByRole("link")
+          .map((link) => link.getAttribute("href"));
+        expect(hrefs).toEqual(
+          ENGAGEMENTS.filter((other) => other.id !== engagement.id).map(
+            (other) => `/engagements/${other.slug}`,
+          ),
+        );
+      });
+
       it("asks nothing the procurement FAQ already asks", () => {
         const procurement = new Set(en.procurementFaq.items.map((item) => item.question));
         for (const item of copy.faq) expect(procurement.has(item.question)).toBe(false);

@@ -4,6 +4,7 @@ import { useId } from "react";
 import {
   Accordion,
   Badge,
+  Breadcrumb,
   Button,
   Container,
   Icon,
@@ -13,7 +14,7 @@ import {
 } from "@digitaltableteur/react";
 import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
-import { ENGAGEMENTS, type EngagementId } from "../../data/engagements";
+import { ENGAGEMENTS, getEngagementPath, type EngagementId } from "../../data/engagements";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import { ProcurementFaq } from "../ProcurementFaq";
@@ -54,7 +55,8 @@ const asQA = (value: unknown): QA[] =>
 /**
  * One engagement offer page: the problem, when it fits, scope and limits,
  * steps, deliverables, investment, published proof, an offer FAQ, the shared
- * procurement FAQ and a booking call to action. Copy comes from
+ * procurement FAQ, the other engagements and a booking call to action. A
+ * breadcrumb back to Pricing leads the page. Copy comes from
  * `engagementPages.<id>`; routes, prices and proof order from
  * `data/engagements`.
  */
@@ -81,6 +83,14 @@ export function EngagementPageContent({
       defaultValue: { eyebrow: "", title: slug, body: "" },
     }) as unknown as ProofCopy),
   }));
+  const siblings = ENGAGEMENTS.filter((engagement) => engagement.id !== engagementId).map(
+    (engagement) => ({
+      id: engagement.id,
+      href: getEngagementPath(engagement),
+      name: t(`engagementPages.${engagement.id}.eyebrow`),
+      meta: `${t(`engagementPages.${engagement.id}.timeline`)}, ${t(engagement.priceKey)}`,
+    }),
+  );
   const ids = {
     title: `${uid}-title`,
     signals: `${uid}-signals`,
@@ -90,6 +100,7 @@ export function EngagementPageContent({
     invest: `${uid}-invest`,
     proof: `${uid}-proof`,
     faq: `${uid}-faq`,
+    other: `${uid}-other`,
     book: `${uid}-book`,
   };
 
@@ -100,6 +111,16 @@ export function EngagementPageContent({
       data-engagement={engagementId}
     >
       <Container size="lg">
+        <div className={styles.breadcrumb}>
+          <Breadcrumb
+            aria-label={common("breadcrumbLabel")}
+            items={[
+              { label: common("breadcrumbHome"), href: "/" },
+              { label: common("breadcrumbPricing"), href: "/pricing" },
+              { label: text("eyebrow") },
+            ]}
+          />
+        </div>
         <header className={styles.hero}>
           <Badge variant="secondary" size="md">
             {text("eyebrow")}
@@ -291,6 +312,25 @@ export function EngagementPageContent({
         <div className={styles.section}>
           <ProcurementFaq id={`${uid}-procurement`} />
         </div>
+
+        <section aria-labelledby={ids.other} className={styles.section}>
+          <Title level={2} size="s" id={ids.other} className={styles.sectionTitle}>
+            {common("otherTitle")}
+          </Title>
+          <ul className={styles.siblings}>
+            {siblings.map((sibling) => (
+              <li key={sibling.id} className={styles.sibling}>
+                <Link href={sibling.href} underline="none" className={styles.siblingLink}>
+                  <span className={styles.siblingHead}>
+                    <span className={styles.siblingName}>{sibling.name}</span>
+                    <Icon name="arrow-right" size={20} aria-hidden="true" />
+                  </span>{" "}
+                  <span className={styles.siblingMeta}>{sibling.meta}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section aria-labelledby={ids.book} className={cn(styles.section, styles.bookSection)}>
           <div className={styles.book}>
