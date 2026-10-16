@@ -301,10 +301,14 @@
   color: var(--color-white);
 }
 
+/* The actions column is as wide as the longer label and both buttons fill
+   it, so the stack has no ragged edge in any language. */
+
 .bookActions {
   display: grid;
-  justify-items: start;
+  justify-items: stretch;
   gap: var(--space-internal-12);
+  justify-self: start;
 }
 
 

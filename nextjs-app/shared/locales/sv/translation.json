@@ -1506,8 +1506,8 @@
       "package": "UX Sprint",
       "title": "Ta reda på var designsystemet kostar teamet tid",
       "lead": "Likadana komponenter beter sig olika. Tillgänglighetsfel återkommer i nya funktioner. Figma och produktion är oense om vad som hör till systemet. En fokuserad audit gör symptomen till en inventering, fynd rangordnade efter allvarlighet och en 90-dagars färdplan.",
-      "cta1": "Boka UX Sprint",
-      "cta2": "Ställ en fråga om auditen",
+      "cta1": "Boka en UX Sprint",
+      "cta2": "Fråga om auditen",
       "signalsTitle": "Gör en audit när systemet finns men förtroendet sviktar",
       "signals": [
         "Likadana komponenter beter sig olika i olika team",

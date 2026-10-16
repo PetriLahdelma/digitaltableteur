@@ -1506,8 +1506,8 @@
       "package": "UX Sprint",
       "title": "Find where your design system is costing the team time",
       "lead": "Similar components behave differently. Accessibility defects return in new features. Figma and production disagree about what belongs in the system. A focused audit turns those symptoms into an inventory, severity-ranked findings and a 90-day roadmap.",
-      "cta1": "Book UX Sprint",
-      "cta2": "Send an audit question",
+      "cta1": "Book a UX Sprint",
+      "cta2": "Send a question",
       "signalsTitle": "Use an audit when the system exists but trust is slipping",
       "signals": [
         "Components look similar but behave differently across squads",
