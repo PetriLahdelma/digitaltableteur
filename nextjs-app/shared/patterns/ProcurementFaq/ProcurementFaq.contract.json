@@ -81,6 +81,6 @@
   ],
   "dense": "Visible procurement FAQ (9 locale items, Accordion divided); its English items feed the FAQPage data of the pages that render it",
   "usage": {
-    "description": "Shown on the engagement pages, Pricing and the homepage. app/lib/procurementFaq.ts reads the same English items for FAQPage structured data."
+    "description": "Shown on the engagement pages and Pricing (not the homepage, owner decision 2026-10-16). app/lib/procurementFaq.ts reads the same English items for FAQPage structured data."
   }
 }

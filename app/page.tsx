@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 
 import { HomePage } from "@dt-pages/Home/HomePage";
-import { procurementFaqEntries } from "@/app/lib/procurementFaq";
 import {
-  getFaqSchema,
   getItemListSchema,
   getWebPageSchema,
   stringifyJsonLd,
@@ -78,8 +76,6 @@ export default function Home() {
       name: "Primary Digitaltableteur paths",
       items: homepagePaths,
     }),
-    // The visible procurement FAQ on the page is the FAQPage source.
-    getFaqSchema(procurementFaqEntries),
   ];
 
   return (

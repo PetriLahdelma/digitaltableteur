@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 
 import { AboutPage } from "@dt-pages/AboutPage";
-import { aboutFaqs } from "@/app/lib/aeoContent";
 import {
   getBreadcrumbSchema,
-  getFaqSchema,
   getPersonSchema,
   getWebPageSchema,
   stringifyJsonLd,
@@ -51,7 +49,6 @@ export default function About() {
       ],
     }),
     getPersonSchema(),
-    getFaqSchema(aboutFaqs),
     getBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "About", url: "/about" },

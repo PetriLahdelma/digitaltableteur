@@ -22458,7 +22458,7 @@
         "Emit FAQ structured data for questions that are not rendered on the page."
       ],
       "usage": {
-        "description": "Shown on the engagement pages, Pricing and the homepage. app/lib/procurementFaq.ts reads the same English items for FAQPage structured data."
+        "description": "Shown on the engagement pages and Pricing (not the homepage, owner decision 2026-10-16). app/lib/procurementFaq.ts reads the same English items for FAQPage structured data."
       },
       "tokens": {
         "colors": [

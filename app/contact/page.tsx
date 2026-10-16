@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ContactContent } from "./ContactContent";
-import { contactFaqs } from "@/app/lib/aeoContent";
 import {
   getContactPageSchema,
   getBreadcrumbSchema,
-  getFaqSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
 import { resolveSiteBookingConfig } from "@/nextjs-app/shared/lib/donny-booking";
@@ -58,7 +56,6 @@ export default async function ContactPage({
       url: "/contact",
       email: "mail@digitaltableteur.com",
     }),
-    getFaqSchema(contactFaqs),
     getBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Contact", url: "/contact" },
