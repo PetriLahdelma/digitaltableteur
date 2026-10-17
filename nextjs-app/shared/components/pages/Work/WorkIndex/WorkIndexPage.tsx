@@ -13,7 +13,9 @@ import {
   Section,
   SegmentedControl,
 } from "@digitaltableteur/react";
-import Icon from "../../../Icon/Icon";
+// Glyphs imported directly: an Icon name would add them to the shared icon
+// registry and the web-components icon data (size-budgeted).
+import { List as ListIcon, SquaresFour } from "@phosphor-icons/react";
 import { WorkHero } from "../../../../patterns/WorkHero";
 import { EnhancedProjectCard } from "../../../EnhancedProjectCard";
 import { FadeIn } from "../../../../components/animations/FadeIn";
@@ -190,7 +192,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
         value: "cards",
         label: (
           <span className={styles.segmentLabel}>
-            <Icon name="squares-four" size={16} />
+            <SquaresFour size={16} aria-hidden="true" />
             {t("workViewCards", "Cards")}
           </span>
         ),
@@ -199,7 +201,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
         value: "list",
         label: (
           <span className={styles.segmentLabel}>
-            <Icon name="list" size={16} />
+            <ListIcon size={16} aria-hidden="true" />
             {t("workViewList", "List")}
           </span>
         ),
