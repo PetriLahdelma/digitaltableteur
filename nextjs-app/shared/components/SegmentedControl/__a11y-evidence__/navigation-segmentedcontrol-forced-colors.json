@@ -1,0 +1,12 @@
+{
+  "storyId": "navigation-segmentedcontrol-forced-colors",
+  "mode": "light",
+  "sourceSHA": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+  "capturedAt": "2026-10-17T09:16:56.504Z",
+  "runner": "local-2026-10-17",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

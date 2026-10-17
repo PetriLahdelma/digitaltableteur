@@ -1,0 +1,16 @@
+{
+  "storyId": "navigation-segmentedcontrol-example",
+  "mode": "light",
+  "sourceSHA": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+  "capturedAt": "2026-10-17T09:16:56.479Z",
+  "runner": "local-2026-10-17",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

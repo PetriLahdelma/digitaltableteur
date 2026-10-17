@@ -1,8 +1,8 @@
 {
   "storyId": "content-projectlist-playground",
   "mode": "dark",
-  "sourceSHA": "c4fc52e555934539e4641eac129a893062a03c72",
-  "capturedAt": "2026-10-17T07:31:56.588Z",
+  "sourceSHA": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+  "capturedAt": "2026-10-17T09:17:28.536Z",
   "runner": "local-2026-10-17",
   "checks": {
     "accessibility-tree": {
