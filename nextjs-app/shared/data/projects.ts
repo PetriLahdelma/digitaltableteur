@@ -185,7 +185,7 @@ export const projects: Project[] = [
     tags: ["Illustration", "Character Design", "Editorial"],
     featured: false,
     order: 11,
-    period: { start: "2016" },
+    period: { start: "2009" },
     clientNote: "various",
   },
   {
