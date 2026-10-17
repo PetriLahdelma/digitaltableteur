@@ -15,6 +15,7 @@ import { LanguageSwitcher } from "../../components/LanguageSwitcher";
 import { List, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import { MobileDrawer } from "./MobileDrawer";
 import styles from "./SiteHeader.module.css";
+import { SITE_SUBNAV_SLOT_ID } from "./SiteSubnav";
 import type { Theme } from "../../components/ThemeProvider";
 
 export interface NavItem {
@@ -264,6 +265,8 @@ export function SiteHeader({
           />
         </div>
       </Container>
+      {/* Phone-only slot: SiteSubnav portals the page nav bar here on scroll up. */}
+      <div id={SITE_SUBNAV_SLOT_ID} className={styles.subnavSlot} />
       </header>
 
       {/* Mobile Drawer - outside header to avoid inheriting transparent background */}

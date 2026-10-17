@@ -2,6 +2,7 @@
 
 import { type ReactNode, useState, useEffect, useRef } from "react";
 import { cn } from "../../lib/cn";
+import { SiteSubnav } from "../SiteHeader/SiteSubnav";
 import { WorkCTA } from "../WorkCTA/WorkCTA";
 import styles from "./ProjectDetailLayout.module.css";
 
@@ -82,17 +83,17 @@ export function ProjectDetailLayout({
         className={cn("min-h-screen", className)}
         data-donny-target={donnyTarget}
       >
-        {/* Navigation: sticky below the header from tablet up, in flow on
-            phones (see ArticleLayout for why). */}
+        {/* Navigation: sticky from tablet up; on phones it scrolls away and
+            returns inside the header on scroll up (SiteSubnav). */}
         {nav && (
-          <div
+          <SiteSubnav
             className={cn(
-              "relative z-30 border-b border-border flex items-center tablet:sticky tablet:top-20",
+              "border-b border-border flex items-center",
               styles.brandNav,
             )}
           >
             {nav}
-          </div>
+          </SiteSubnav>
         )}
 
         {/* Hero */}

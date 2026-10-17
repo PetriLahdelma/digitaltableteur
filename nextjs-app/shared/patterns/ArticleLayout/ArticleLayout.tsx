@@ -2,6 +2,7 @@
 
 import { type ReactNode, type RefObject } from "react";
 import { cn } from "../../lib/cn";
+import { SiteSubnav } from "../SiteHeader/SiteSubnav";
 import { ReadingProgress } from "../../components/ReadingProgress";
 import styles from "./ArticleLayout.module.css";
 
@@ -54,19 +55,17 @@ export function ArticleLayout({
         <ReadingProgress targetRef={contentRef} />
       )}
 
-      {/* Navigation in brand colours. Sticky below the header from tablet up;
-          on phones it scrolls with the page. Two stacked sticky layers (header
-          plus this bar) seam and shimmer by a device pixel during iOS momentum
-          scrolling, and the pair took 150px of an 812px viewport. */}
+      {/* Navigation in brand colours: sticky from tablet up; on phones it
+          scrolls away and returns inside the header on scroll up (SiteSubnav). */}
       {nav && (
-        <div
+        <SiteSubnav
           className={cn(
-            "relative z-30 flex w-full items-center border-b border-border tablet:sticky tablet:top-20",
+            "flex w-full items-center border-b border-border",
             styles.brandNav,
           )}
         >
           {nav}
-        </div>
+        </SiteSubnav>
       )}
 
       {/* Hero */}

@@ -3,6 +3,49 @@
   inset-block-start: 0;
 }
 
+/* Page nav bar copy shown on phones when scrolling up (SiteSubnav). Hangs
+   below the header without adding to its height, so nothing below shifts. */
+
+.subnavSlot {
+  position: absolute;
+  inset-inline: 0;
+  pointer-events: none;
+  inset-block-start: 100%;
+  overflow: clip;
+}
+
+.subnavCopy {
+  pointer-events: auto;
+  transition:
+    transform var(--duration-fast) var(--ease-out-cubic),
+    visibility 0s linear var(--duration-fast);
+  transform: translateY(-100%);
+  visibility: hidden;
+}
+
+.subnavCopy[data-state="shown"] {
+  transition: transform var(--duration-fast) var(--ease-out-cubic);
+  transform: none;
+  visibility: visible;
+}
+
+.subnavCopy[data-state="handoff"] {
+  transition: none;
+}
+
+@media (width >= 768px) {
+  .subnavSlot {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subnavCopy,
+  .subnavCopy[data-state="shown"] {
+    transition: none;
+  }
+}
+
 /* At high zoom or short landscape heights, a persistent header and consent
    banner can occupy the entire viewport. Keep the header in normal flow. */
 
