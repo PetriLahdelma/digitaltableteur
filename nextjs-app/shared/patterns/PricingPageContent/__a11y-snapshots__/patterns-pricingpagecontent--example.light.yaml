@@ -1,5 +1,6 @@
 - region "Transparent price tags.":
   - heading "Transparent price tags." [level=1]
+  - paragraph: Packaged engagements with the scope, timeline and deliverables stated up front
 - region "Digitaltableteur / Large delivery team":
   - heading "Digitaltableteur" [level=2]
   - list:
@@ -63,12 +64,20 @@
   - heading "Packages" [level=3]
   - list "Packages":
     - listitem:
-      - heading "UX Sprint" [level=3]
+      - heading "Design System Workshop" [level=3]
+      - paragraph: Quoted per workshop
+      - paragraph: 2 days, with prep and analysis
+      - paragraph: Prep work, two facilitated days and a written analysis. The price depends on group size, travel and remote or on-site delivery.
+      - 'link "Read more : Design System Workshop"':
+        - /url: /engagements/design-system-workshop
+      - link "Ask for a workshop quote":
+        - /url: /contact?mode=message&package=workshop
+    - listitem:
+      - heading "UX Sprint/DS Audit" [level=3]
       - paragraph: €7–14k
       - paragraph: 2 weeks
-      - paragraph: Prototype, eval plan and handoff your team can ship.
-      - paragraph: 2-week prototype with eval plan; see the UX Sprint patterns in the work.
-      - link "Use it as a design system audit":
+      - paragraph: A working prototype of the key flow, an eval plan to test it with users and a handoff your team can ship.
+      - 'link "Read more : UX Sprint/DS Audit"':
         - /url: /engagements/design-system-audit
       - link "Book UX Sprint":
         - /url: /contact?mode=book&package=ux-sprint
@@ -77,8 +86,7 @@
       - paragraph: €11–17k
       - paragraph: 3 weeks
       - paragraph: Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.
-      - paragraph: Agent-ready tokens and governance. See AI DesignOps case studies.
-      - link "See the full scope":
+      - 'link "Read more : AI-Ready Ops"':
         - /url: /engagements/ai-ready-ops
       - link "Book AI-Ready Ops":
         - /url: /contact?mode=book&package=ai-ready-designops
@@ -87,12 +95,49 @@
       - paragraph: €14–20k
       - paragraph: 4 weeks
       - paragraph: Audit, tokens, core components, Storybook and an adoption playbook.
-      - paragraph: Storybook + adoption playbook. See design system deliveries.
-      - link "See the full scope":
+      - 'link "Read more : Design System Lift-Off"':
         - /url: /engagements/design-system-lift-off
       - link "Book Design System Lift-Off":
         - /url: /contact?mode=book&package=design-system-lift-off
-  - button "AI agents and automation"
+  - heading "AI agents and automation" [level=3]
+  - paragraph: Autonomous DesignOps packages. Agents that do the work, supervised by your team.
+  - list "AI agents and automation":
+    - listitem:
+      - heading "DesignOps Pilot" [level=3]
+      - paragraph: €5–8k / mo
+      - paragraph: Ongoing
+      - paragraph: A supervised agent that triages components, keeps tokens honest and drafts release notes your team approves.
+      - 'link "Read more : DesignOps Pilot"':
+        - /url: /engagements/designops-pilot
+      - link "Book DesignOps Pilot":
+        - /url: /contact?mode=book&package=designops-copilot
+    - listitem:
+      - heading "Agent Pilot" [level=3]
+      - paragraph: €9–15k
+      - paragraph: 3 weeks
+      - paragraph: Scope one workflow, ship a working agent with guardrails, evals and a handoff your team can run.
+      - 'link "Read more : Agent Pilot"':
+        - /url: /engagements/agent-pilot
+      - link "Book Agent Pilot":
+        - /url: /contact?mode=book&package=agent-pilot
+    - listitem:
+      - heading "Design System MCP" [level=3]
+      - paragraph: €12–18k
+      - paragraph: 4 weeks
+      - paragraph: Component contracts, an MCP server and an eval benchmark, so coding agents build with your design system instead of around it.
+      - 'link "Read more : Design System MCP"':
+        - /url: /engagements/design-system-mcp
+      - link "Book Design System MCP":
+        - /url: /contact?mode=book&package=design-system-mcp
+    - listitem:
+      - heading "Agent Workforce" [level=3]
+      - paragraph: €20–32k
+      - paragraph: 6 weeks
+      - paragraph: A crew of task-specific agents wired into your stack, with monitoring, fallbacks and a runbook your team owns.
+      - 'link "Read more : Agent Workforce"':
+        - /url: /engagements/agent-workforce
+      - link "Book Agent Workforce":
+        - /url: /contact?mode=book&package=agent-workforce
   - link "Book a call":
     - /url: /contact?mode=book
   - link "See the work":

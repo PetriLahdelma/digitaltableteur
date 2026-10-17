@@ -1,0 +1,12 @@
+{
+  "storyId": "actions-button-forced-colors",
+  "mode": "light",
+  "sourceSHA": "c4fc52e555934539e4641eac129a893062a03c72",
+  "capturedAt": "2026-10-17T07:34:15.872Z",
+  "runner": "local-2026-10-17",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

@@ -1,0 +1,15 @@
+- status: Work in progress (beta)
+- list "Projects":
+  - listitem:
+    - link "DSharp Design System Design systems 2026–Present":
+      - /url: /work/dsharp-design-system
+  - listitem: VR Design System VR Group Design systems 2026 Coming soon
+  - listitem:
+    - link "Helsinki Design System City of Helsinki Design systems 2020–2022":
+      - /url: /work/helsinki-design-system
+  - listitem:
+    - link "SAP Build Apps Design System SAP Design systems Mar 2022 – Feb 2026":
+      - /url: /work/sap-build-apps
+  - listitem:
+    - link "Rhythmguard Tools and OSS Dec 2025 – Present":
+      - /url: /work/rhythmguard

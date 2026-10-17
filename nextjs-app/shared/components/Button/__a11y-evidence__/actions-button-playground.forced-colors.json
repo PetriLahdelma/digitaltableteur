@@ -1,9 +1,9 @@
 {
   "storyId": "actions-button-playground",
   "mode": "forced-colors",
-  "sourceSHA": "5c63be409224d91844d0380c2f8bdbc0cbedac79",
-  "capturedAt": "2026-10-04T14:14:18.477Z",
-  "runner": "local-rfc0001",
+  "sourceSHA": "c4fc52e555934539e4641eac129a893062a03c72",
+  "capturedAt": "2026-10-17T07:34:32.756Z",
+  "runner": "local-2026-10-17",
   "checks": {
     "accessibility-tree": {
       "passed": true

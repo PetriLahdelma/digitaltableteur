@@ -10,7 +10,7 @@
   - paragraph: "Tooling to support your team: Rhythmguard, Project Spine and machine-readable component contracts that agents and CI can check."
 - article:
   - heading "Accessibility, proven" [level=3]
-  - paragraph: Automated checks cover every component, including forced colors and target size, so accessibility is demonstrated rather than promised.
+  - paragraph: Automated checks cover every component, forced colors and target size included, so accessibility is shown, not promised.
 - article:
   - heading "One team from brand to code" [level=3]
   - paragraph: Identity, product design and engineering in the same hands, so nothing is lost between the concept and the shipped interface.
@@ -75,7 +75,7 @@
     - listitem "Storybook 10"
     - listitem "npm"
   - term: react
-  - definition: 0.1.30
+  - definition: 0.1.31
   - term: web-components
   - definition: 0.10.3
   - term: tokens

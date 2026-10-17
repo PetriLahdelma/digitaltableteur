@@ -1,0 +1,16 @@
+{
+  "storyId": "content-projectlist-example",
+  "mode": "dark",
+  "sourceSHA": "c4fc52e555934539e4641eac129a893062a03c72",
+  "capturedAt": "2026-10-17T07:31:56.872Z",
+  "runner": "local-2026-10-17",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

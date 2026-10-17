@@ -1,0 +1,16 @@
+{
+  "storyId": "content-projectlist-forced-colors",
+  "mode": "forced-colors",
+  "sourceSHA": "c4fc52e555934539e4641eac129a893062a03c72",
+  "capturedAt": "2026-10-17T07:32:02.435Z",
+  "runner": "local-2026-10-17",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

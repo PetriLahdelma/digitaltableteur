@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-workmagneticfield-forced-colors",
   "mode": "dark",
-  "sourceSHA": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-  "capturedAt": "2026-10-15T19:25:08.454Z",
-  "runner": "local-2026-10-15t",
+  "sourceSHA": "c4fc52e555934539e4641eac129a893062a03c72",
+  "capturedAt": "2026-10-17T07:32:36.334Z",
+  "runner": "local-2026-10-17",
   "checks": {
     "accessibility-tree": {
       "passed": true
