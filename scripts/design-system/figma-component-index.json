@@ -816,6 +816,16 @@
       "name": "StageList",
       "type": "COMPONENT_SET",
       "page": "Organisms"
+    },
+    "1943-166": {
+      "name": "ProjectList",
+      "type": "COMPONENT_SET",
+      "page": "Molecules"
+    },
+    "1943-69": {
+      "name": "ProjectList/Row",
+      "type": "COMPONENT_SET",
+      "page": "Molecules"
     }
   }
 }

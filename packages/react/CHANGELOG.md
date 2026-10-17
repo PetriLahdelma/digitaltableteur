@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.31 - 2026-10-17
+
+- New `ProjectList` (beta): a compact project index, one row per project,
+  the whole row a link to its case study. Under 40rem of its own width a row
+  is a thumbnail, the title and one meta line (client, or discipline when
+  there is no client, then the period); wider, aligned columns for project,
+  client, discipline and year under a visual column header. Teasers without
+  a page render muted with a coming-soon label and no link. Nothing
+  truncates; `:hover` styling only applies where hover exists, so one tap
+  opens a row on touch screens. Exported from the root and `content` entry
+  points. Additive.
+
 ## 0.1.30 - 2026-10-16
 
 - `Breadcrumb`: the current page item now carries `aria-current="page"` in

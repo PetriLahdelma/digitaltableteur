@@ -1,0 +1,11 @@
+/* Narrow stories render at about a phone's width (384px), under the
+   list's 40rem breakpoint. */
+
+.phone {
+  max-inline-size: calc(var(--container-sm) / 2 + var(--space-layout-64));
+}
+
+.stack {
+  display: grid;
+  gap: var(--space-layout-64);
+}

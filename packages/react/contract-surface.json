@@ -56,6 +56,12 @@
       "level": "additive",
       "detail": "component added to the public API",
       "bump": "patch"
+    },
+    {
+      "component": "ProjectList",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -3410,6 +3416,37 @@
       "slots": [],
       "subParts": [],
       "keyboard": []
+    },
+    "ProjectList": {
+      "element": "div",
+      "props": {
+        "ariaLabel": {
+          "optional": false,
+          "type": "string"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "comingSoonLabel": {
+          "optional": true,
+          "type": "string"
+        },
+        "contentLanguage": {
+          "optional": true,
+          "type": "string"
+        },
+        "items": {
+          "optional": false,
+          "type": "ProjectListItem[]"
+        }
+      },
+      "slots": [],
+      "subParts": [],
+      "keyboard": [
+        "Enter follows the focused row's link.",
+        "Tab moves through the project links in list order; teaser rows without a page hold no control."
+      ]
     },
     "Radio": {
       "element": "div",

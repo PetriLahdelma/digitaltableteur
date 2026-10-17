@@ -12500,6 +12500,141 @@
       },
       "examples": []
     },
+    "ProjectList": {
+      "name": "ProjectList",
+      "group": "content",
+      "tier": 2,
+      "status": "beta",
+      "description": "A compact project index: one row per project, the whole row a link to its case study. Narrow, a thumbnail, the title and one meta line; wide, aligned columns for project, client, discipline and period.",
+      "dense": "Compact project index: rows of thumbnail, title, client, discipline and period; whole row links to the case study; teasers muted without a link",
+      "keywords": [
+        "project",
+        "portfolio",
+        "work",
+        "index",
+        "list view",
+        "case study",
+        "rows"
+      ],
+      "importLine": "import ProjectList from \"@dt/ProjectList\";",
+      "keyProps": [
+        {
+          "name": "items",
+          "type": "ProjectListItem[]",
+          "required": true
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "comingSoonLabel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "contentLanguage",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "items": {
+          "optional": false,
+          "type": "ProjectListItem[]",
+          "description": "Projects in display order; items without href (or marked comingSoon) render as muted teaser rows."
+        },
+        "ariaLabel": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible name for the list."
+        },
+        "comingSoonLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Label on teaser rows; defaults to the translated \"Coming soon\"."
+        },
+        "contentLanguage": {
+          "optional": true,
+          "type": "string",
+          "description": "Language of titles and clients when it differs from the page."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Additional className for the root element."
+        }
+      },
+      "composesWith": [
+        "SegmentedControl",
+        "CategoryFilter",
+        "Icon"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "Use as the only view of a visual portfolio's first impression; pair it with the card grid and a view toggle.",
+        "Use for tabular data the reader sorts or compares; that is a Table."
+      ],
+      "usage": {
+        "description": "ProjectList is the fast way through a portfolio: every project in a row, scannable by name and client. Use it as the list view beside a card grid, behind a Cards and List toggle, with the same filter and order.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Copy client and period verbatim from the project record; leave a field empty rather than inventing one."
+          },
+          {
+            "guidance": true,
+            "description": "Keep the order and filter identical to the card view so switching views keeps the reader's place."
+          },
+          {
+            "guidance": false,
+            "description": "Do not put a second link or button inside a row; the row is one link."
+          }
+        ],
+        "anatomy": []
+      },
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted",
+          "--color-title",
+          "--color-border",
+          "--color-border-light",
+          "--color-primary",
+          "--color-focus-ring"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-layout-48",
+          "--space-layout-64",
+          "--space-layout-120"
+        ],
+        "typography": [
+          "--font-text",
+          "--font-size-text-xs",
+          "--font-size-text-s",
+          "--font-size-text-m",
+          "--font-weight-title"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Narrow",
+          "description": "Under 40rem of its own width each row is a thumbnail, the title and one meta line: the client (or the discipline when the record names no client), then the period. The whole row is one tap target.",
+          "source": "export const Narrow: Story = {\n  tags: [\"example\"],\n  decorators: [\n    (Story) => (\n      <div className={storyStyles.phone}>\n        <Story />\n      </div>\n    ),\n  ],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Under 40rem of its own width each row is a thumbnail, the title and one meta line: the client (or the discipline when the record names no client), then the period. The whole row is one tap target.\",\n      },\n    },\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const first = canvas.getAllByRole(\"link\")[0]!;\n    await userEvent.tab();\n    await expect(first).toHaveFocus();\n  },\n};"
+        }
+      ]
+    },
     "ProjectNav": {
       "name": "ProjectNav",
       "group": "navigation",

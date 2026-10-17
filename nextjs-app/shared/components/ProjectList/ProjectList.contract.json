@@ -1,0 +1,140 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "schemaVersion": 2,
+  "name": "ProjectList",
+  "tier": "molecule",
+  "group": "content",
+  "status": "beta",
+  "description": "A compact project index: one row per project, the whole row a link to its case study. Narrow, a thumbnail, the title and one meta line; wide, aligned columns for project, client, discipline and period.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1943-166",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Tab moves through the project links in list order; teaser rows without a page hold no control.",
+      "Enter follows the focused row's link."
+    ],
+    "ariaRequirements": [
+      "The rows are a list named by ariaLabel; each project is a list item.",
+      "Each row with a page is a single link whose name is its visible text in reading order, so the name starts with the project title (WCAG 2.5.3).",
+      "The wide layout's column labels are visual only (aria-hidden); every row's cells carry their own text.",
+      "Thumbnails are decorative (empty alt); the title names the project.",
+      "Teaser rows are not links and state their coming-soon label in text."
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "reviewedNote": "2026-10-17: built for the /work index list view. Reviewed: list semantics and name, one link per row with label-in-name order, aria-hidden column header, decorative thumbnails, teaser rows without links, keyboard path (Tab, Enter) via play function, :hover gated to (hover: hover) so one tap opens a row on touch screens, light and dark themes, forced colours (focus outline Highlight, teaser border CanvasText), 390px width with no horizontal overflow, axe clean in unit tests."
+  },
+  "tokens": {
+    "colors": [
+      "--color-text",
+      "--color-muted",
+      "--color-title",
+      "--color-border",
+      "--color-border-light",
+      "--color-primary",
+      "--color-focus-ring"
+    ],
+    "spacing": [
+      "--space-internal-2",
+      "--space-internal-4",
+      "--space-internal-8",
+      "--space-internal-12",
+      "--space-internal-16",
+      "--space-layout-48",
+      "--space-layout-64",
+      "--space-layout-120"
+    ],
+    "typography": [
+      "--font-text",
+      "--font-size-text-xs",
+      "--font-size-text-s",
+      "--font-size-text-m",
+      "--font-weight-title"
+    ]
+  },
+  "lightDarkVerified": true,
+  "consumers": [],
+  "props": {
+    "items": {
+      "optional": false,
+      "type": "ProjectListItem[]",
+      "description": "Projects in display order; items without href (or marked comingSoon) render as muted teaser rows."
+    },
+    "ariaLabel": {
+      "optional": false,
+      "type": "string",
+      "description": "Accessible name for the list."
+    },
+    "comingSoonLabel": {
+      "optional": true,
+      "type": "string",
+      "description": "Label on teaser rows; defaults to the translated \"Coming soon\"."
+    },
+    "contentLanguage": {
+      "optional": true,
+      "type": "string",
+      "description": "Language of titles and clients when it differs from the page."
+    },
+    "className": {
+      "optional": true,
+      "type": "string",
+      "description": "Additional className for the root element."
+    }
+  },
+  "composesWith": [
+    "SegmentedControl",
+    "CategoryFilter",
+    "Icon"
+  ],
+  "prefersOver": [],
+  "forbiddenUse": [
+    "Use as the only view of a visual portfolio's first impression; pair it with the card grid and a view toggle.",
+    "Use for tabular data the reader sorts or compares; that is a Table."
+  ],
+  "displayName": "ProjectList",
+  "keywords": [
+    "project",
+    "portfolio",
+    "work",
+    "index",
+    "list view",
+    "case study",
+    "rows"
+  ],
+  "dense": "Compact project index: rows of thumbnail, title, client, discipline and period; whole row links to the case study; teasers muted without a link",
+  "usage": {
+    "description": "ProjectList is the fast way through a portfolio: every project in a row, scannable by name and client. Use it as the list view beside a card grid, behind a Cards and List toggle, with the same filter and order.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Copy client and period verbatim from the project record; leave a field empty rather than inventing one."
+      },
+      {
+        "guidance": true,
+        "description": "Keep the order and filter identical to the card view so switching views keeps the reader's place."
+      },
+      {
+        "guidance": false,
+        "description": "Do not put a second link or button inside a row; the row is one link."
+      }
+    ],
+    "anatomy": []
+  },
+  "playground": {
+    "defaults": {
+      "ariaLabel": "Projects"
+    }
+  }
+}

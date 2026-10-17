@@ -103,6 +103,8 @@ export type { IconProps } from "./Icon";
 export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
 export { default as Kbd } from "./Kbd/Kbd";
 export type { KbdProps, KbdSize } from "./Kbd";
+export { default as ProjectList } from "./ProjectList/ProjectList";
+export type { ProjectListItem, ProjectListProps } from "./ProjectList";
 export { default as StageList } from "./StageList/StageList";
 export type {
   StageListItem,

@@ -2,6 +2,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { packageLocaleSubset } from "../../scripts/design-system/react-package-locale-subset.mjs";
 
 const packageRoot = fileURLToPath(new URL(".", import.meta.url));
 const repoRoot = resolve(packageRoot, "../..");
@@ -58,7 +59,16 @@ function isExternal(id: string): boolean {
 }
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    // Only the English strings the package's components use; the site's full
+    // locale (every page's copy) stays out of the bundle.
+    packageLocaleSubset({
+      localeFile: resolve(sharedRoot, "locales/en/translation.json"),
+      entryFiles: Object.values(entries),
+      componentsRoot,
+    }),
+    react(),
+  ],
   resolve: {
     alias: [
       {

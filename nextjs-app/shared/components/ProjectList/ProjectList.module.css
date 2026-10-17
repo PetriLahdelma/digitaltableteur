@@ -1,0 +1,189 @@
+/* ProjectList: a compact project index, one row per project. Layout responds
+   to the list's own width (container query). Narrow: thumbnail, title and a
+   meta line. Wide: aligned columns under a column header row. */
+
+.root {
+  font-family: var(--font-text);
+  color: var(--color-text);
+  container-type: inline-size;
+}
+
+.list {
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  border-block-start: 1px solid var(--color-border);
+  list-style: none;
+}
+
+.item {
+  margin-block: 0;
+  border-block-end: 1px solid var(--color-border);
+}
+
+/* Narrow: [thumb] [title + meta] [end] */
+
+.row {
+  display: grid;
+  padding-block: var(--space-internal-12);
+  min-block-size: var(--space-layout-64);
+  grid-template-columns: var(--space-layout-48) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-internal-16);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: inherit;
+  touch-action: manipulation;
+}
+
+.row:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: var(--space-internal-2);
+}
+
+.thumb {
+  position: relative;
+  inline-size: 100%;
+  border-radius: var(--radius-md);
+  background: var(--color-border-light);
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.thumb img {
+  object-fit: cover;
+}
+
+.main {
+  display: grid;
+  min-inline-size: 0;
+  gap: var(--space-internal-2);
+}
+
+/* Nothing truncates: long titles, clients and periods wrap and the row
+   grows, so no project data is ever hidden. */
+
+.title {
+  font-size: var(--font-size-text-m);
+  font-weight: var(--font-weight-title);
+  line-height: 1.3;
+  color: var(--color-title);
+}
+
+.meta {
+  font-size: var(--font-size-text-s);
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+.client,
+.discipline,
+.year {
+  display: none;
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
+}
+
+.end {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--color-muted);
+}
+
+.arrow {
+  transition: transform var(--duration-fast) var(--ease-out-cubic);
+}
+
+.soon {
+  padding-block: var(--space-internal-2);
+  padding-inline: var(--space-internal-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-text-xs);
+  white-space: nowrap;
+  color: var(--color-muted);
+}
+
+.muted .thumb {
+  opacity: 0.6;
+}
+
+.muted .title {
+  color: var(--color-muted);
+}
+
+.header {
+  display: none;
+}
+
+/* :hover only where hover exists, so a tap opens the row at once. */
+
+@media (hover: hover) {
+  .row[href]:hover .title {
+    color: var(--color-primary);
+  }
+
+  .row[href]:hover .arrow {
+    transform: translateX(var(--space-internal-4));
+  }
+}
+
+/* Wide: [thumb] [project] [client] [discipline] [year] [end] */
+
+@container (width >= 40rem) {
+  .header,
+  .row {
+    grid-template-columns:
+      var(--space-layout-64) minmax(0, 2.2fr) minmax(0, 1.2fr)
+      minmax(0, 1fr) minmax(0, 1.4fr) var(--space-layout-120);
+  }
+
+  .header {
+    display: grid;
+    padding-block-end: var(--space-internal-8);
+    gap: var(--space-internal-16);
+    font-size: var(--font-size-text-xs);
+    color: var(--color-muted);
+  }
+
+  .row {
+    padding-block: var(--space-internal-8);
+    min-block-size: var(--space-layout-48);
+  }
+
+  .thumb {
+    aspect-ratio: 16 / 11;
+  }
+
+  .meta {
+    display: none;
+  }
+
+  .client,
+  .discipline,
+  .year {
+    display: block;
+  }
+}
+
+@media (forced-colors: active) {
+  .row:focus-visible {
+    outline-color: Highlight;
+  }
+
+  .soon {
+    border-color: CanvasText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow {
+    transition: none;
+  }
+
+  .row[href]:hover .arrow {
+    transform: none;
+  }
+}

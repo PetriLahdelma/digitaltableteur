@@ -296,6 +296,11 @@ export {
   Stack,
   type StackProps,
 } from "../../../nextjs-app/shared/components/Stack";
+export { default as ProjectList } from "../../../nextjs-app/shared/components/ProjectList/ProjectList";
+export type {
+  ProjectListItem,
+  ProjectListProps,
+} from "../../../nextjs-app/shared/components/ProjectList";
 export { default as StageList } from "../../../nextjs-app/shared/components/StageList/StageList";
 export type {
   StageListItem,
