@@ -57,7 +57,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           {
             title: "A Design System Guild with a defined lifecycle",
             detail:
-              "Designers, developers and product managers reviewed proposals every two weeks, and every component moved through proposal, design, development, documentation and versioned release.",
+              "Designers, developers and product managers reviewed proposals every two weeks and every component moved through proposal, design, development, documentation and versioned release.",
           },
           {
             title: "Tokens on SAP Horizon semantics as the shared language",
@@ -140,7 +140,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
               SAP&apos;s flagship low-code platform, evolved from AppGyver
               following its 2021 acquisition. It enables business users and
               developers to create enterprise-grade applications with
-              drag-and-drop UI, 400+ formula functions, and deep SAP BTP
+              drag-and-drop UI, 400+ formula functions and deep SAP BTP
               integration.
             </Text>
             <Text size="s">
@@ -234,16 +234,16 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="1" size="s">
             <span className={caseStudy.leadIn}>
-              We established the Design System Guild
+              The team established the Design System Guild
             </span>
             , a cross-functional team responsible for maintaining and evolving
-            the design system. This included designers, developers, and product
+            the design system. This included designers, developers and product
             managers who met bi-weekly to review proposals and prioritize work.
           </Text>,
           <Text key="2" size="s">
             Every component followed a defined lifecycle: from initial proposal
             through design exploration, development implementation,
-            documentation, and finally release with proper versioning.
+            documentation and finally release with proper versioning.
           </Text>,
         ]}
         images={{
@@ -269,7 +269,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
               The foundation of the system was built on design tokens
             </span>{" "}
             as a shared language between design and code. Colors, spacing,
-            typography, and other visual properties were defined once and
+            typography and other visual properties were defined once and
             consumed by both Figma and ReactTS, ensuring seamless integration
             with SAP BTP and compatibility with SAP&apos;s enterprise ecosystem.
           </Text>,
@@ -304,7 +304,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           },
           {
             src: "/images/portfolio/sap-build-apps/font.png?v=2",
-            alt: "Typography scale showing font families, sizes, and weights for enterprise readability",
+            alt: "Typography scale showing font families, sizes and weights for enterprise readability",
             width: 738,
             height: 506,
             caption:
@@ -325,36 +325,36 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             <span className={caseStudy.leadIn}>
               Core components were designed with accessibility-first principles.
             </span>{" "}
-            Each component included comprehensive states, variants, and detailed
+            Each component included comprehensive states, variants and detailed
             documentation of behavior patterns, all WCAG 2.1 AA compliant with
             keyboard navigation and screen reader support.
           </Text>,
           <Text key="2" size="s">
-            The button system alone covered primary, secondary, ghost, and
-            destructive variants, each with hover, active, focus, and disabled
+            The button system alone covered primary, secondary, ghost and
+            destructive variants, each with hover, active, focus and disabled
             states across multiple sizes. The library grew to 100+ components
-            covering form controls, data display, navigation, and feedback
+            covering form controls, data display, navigation and feedback
             patterns.
           </Text>,
         ]}
         images={[
           {
             src: "/images/portfolio/sap-build-apps/buttons_hires.png",
-            alt: "Button component variants showing primary, secondary, ghost, and destructive states with all interaction states",
+            alt: "Button component variants showing primary, secondary, ghost and destructive states with all interaction states",
             width: 1476,
             height: 506,
             caption: "Button system with all variants and interaction states",
           },
           {
             src: "/images/portfolio/sap-build-apps/message_popover.png?v=2",
-            alt: "Message popover component with semantic variants for error, warning, success, and info states",
+            alt: "Message popover component with semantic variants for error, warning, success and info states",
             width: 738,
             height: 506,
             caption: "Semantic message variants with form integration",
           },
           {
             src: "/images/portfolio/sap-build-apps/table.png",
-            alt: "Table component with sorting, filtering, and data management features",
+            alt: "Table component with sorting, filtering and data management features",
             width: 738,
             height: 506,
             caption: "Table component with hundreds of features and addons",
@@ -382,7 +382,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
               I led the design and specification of a comprehensive table
               component
             </span>{" "}
-            supporting sorting, filtering, pagination, row selection, and column
+            supporting sorting, filtering, pagination, row selection and column
             configuration. Optimized for large enterprise datasets with
             thousands of rows, the table includes full keyboard navigation and
             screen reader support, built for seamless integration with SAP data
@@ -392,7 +392,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             <span className={caseStudy.leadIn}>
               Data visualization components for analytics dashboards
             </span>{" "}
-            included bar, line, pie, donut, and area chart variants. All charts
+            included bar, line, pie, donut and area chart variants. All charts
             were designed to be responsive and accessible with proper color
             contrast and pattern alternatives for colorblind users, consistent
             with SAP Horizon theme tokens.
@@ -401,7 +401,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         images={[
           {
             src: "/images/portfolio/sap-build-apps/table.png",
-            alt: "Table component with sorting, filtering, pagination, and row selection features",
+            alt: "Table component with sorting, filtering, pagination and row selection features",
             width: 738,
             height: 506,
             caption: "Data table component for enterprise data display",
@@ -430,7 +430,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             </span>{" "}
             required components optimized for enterprise-grade performance. The
             design system integrated with SAP backend services including
-            S/4HANA, SuccessFactors, and third-party systems via REST and OData,
+            S/4HANA, SuccessFactors and third-party systems via REST and OData,
             supporting real-time data flows common in low-code applications.
           </Text>,
           <Text key="2" size="s">
@@ -460,7 +460,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
                 <Text size="l">100+ Components</Text>
                 <Text size="s">
                   Comprehensive library covering form controls, data display,
-                  navigation, feedback, and layout patterns.
+                  navigation, feedback and layout patterns.
                 </Text>
               </>
             ),

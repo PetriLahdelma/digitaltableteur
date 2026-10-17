@@ -50,7 +50,7 @@ export default function Work() {
     getCollectionPageSchema({
       name: "Digitaltableteur Work & Portfolio",
       description:
-        "Portfolio examples across design systems, branding, illustration, and AI-powered product design work.",
+        "Portfolio examples across design systems, branding, illustration and AI-powered product design work.",
       url: "/work",
       keywords: [
         "design systems portfolio",

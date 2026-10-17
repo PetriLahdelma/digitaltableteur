@@ -34,7 +34,7 @@ const gaMeasurementId =
 export const metadata: Metadata = {
   title: "Digitaltableteur",
   description:
-    "Design consultancy and portfolio focused on design systems, AI-powered design workflows, DesignOps, accessibility, and product craft.",
+    "Design consultancy and portfolio focused on design systems, AI-powered design workflows, DesignOps, accessibility and product craft.",
   metadataBase: new URL(siteUrl),
   verification: {
     google: "ZWNygD_tzG8nCWZFlCNWKGCbTkDMFthbvF8L4zltpwE",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
     description:
-      "Design consultancy, portfolio work, design systems, AI-native workflows, and accessibility-minded product craft from Digitaltableteur.",
+      "Design consultancy, portfolio work, design systems, AI-native workflows and accessibility-minded product craft from Digitaltableteur.",
     siteName: "Digitaltableteur",
     images: [
       {
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
     description:
-      "Design consultancy, portfolio work, design systems, AI-native workflows, and accessibility-minded product craft from Digitaltableteur.",
+      "Design consultancy, portfolio work, design systems, AI-native workflows and accessibility-minded product craft from Digitaltableteur.",
     images: [`${siteUrl}/twitter-image`],
   },
   robots: {

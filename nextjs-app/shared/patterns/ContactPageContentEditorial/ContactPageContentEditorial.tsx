@@ -302,7 +302,7 @@ export function ContactPageContentEditorial({
               >
                 {t(
                   "contactPullQuote",
-                  "DT helps ambitious teams turn what they do into products with clarity and conviction. Bring your vision and together we'll shape how it shows up in the world."
+                  "DT helps ambitious teams turn what they do into products with clarity and conviction. Bring your vision and shape how it shows up in the world, together."
                 )}
               </Text>
             </motion.blockquote>

@@ -79,8 +79,8 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
             <br />
             <br />
             The specification outlines user roles (user, reporter, agent),
-            language selection, login and role selection flows, and the core
-            views for case tracking, notification lists, and declaration
+            language selection, login and role selection flows and the core
+            views for case tracking, notification lists and declaration
             handling across the Intrastat workflow.
           </Text>
         }
@@ -94,14 +94,14 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             The service defines clear roles for enterprise users: individual
-            users, reporters responsible for Intrastat reporting, and agents
+            users, reporters responsible for Intrastat reporting and agents
             acting on behalf of companies. Login and role selection are critical
             entry points into the service, paired with language selection and an
             anonymous front page for first-time visitors.
           </Text>,
           <Text key="p2" size="s">
             Case tracking is anchored by the Ilmoitukset view, where recent
-            declarations and actions are listed with filters, sorting, and
+            declarations and actions are listed with filters, sorting and
             status visibility.
           </Text>,
         ]}
@@ -125,12 +125,12 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             The Intrastat flow supports new declarations created manually, by
-            copying previous entries, or by importing CSV and ASCII files. Users
-            move through header data, line items, and summary steps before
+            copying previous entries or by importing CSV and ASCII files. Users
+            move through header data, line items and summary steps before
             submitting reports to Customs.
           </Text>,
           <Text key="p2" size="s">
-            The workflow also includes correction requests, printing tools, and
+            The workflow also includes correction requests, printing tools and
             summary views that confirm successful submissions.
           </Text>,
         ]}
@@ -162,7 +162,7 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
             content: (
               <Text size="s">
                 The Tulli styleguide defines the visual system: a blue and
-                yellow core palette, Gill Sans typography, and a 12-column grid
+                yellow core palette, Gill Sans typography and a 12-column grid
                 for large screens and tablets. The image line follows Customs
                 staff in action, captured from an observer's viewpoint to keep
                 the focus on the work rather than the camera.

@@ -81,7 +81,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
             </Title>
             <p className={styles.metaOverview}>
               <strong>New Things Co</strong> (originally Lab of New) approached
-              us in September 2017 seeking to establish a cohesive brand
+              Digitaltableteur in September 2017 seeking to establish a cohesive brand
               identity that reflected their innovative approach to software
               development. The company was founded by Reaktor alumni and owned
               jointly with Talented.
@@ -89,7 +89,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
             <p className={styles.metaOverview}>
               <strong>The challenge:</strong> Create a complete rebrand from
               strategic pillars and core values through visual identity, down to
-              the most minute details for marketing, events, recruitment, and
+              the most minute details for marketing, events, recruitment and
               company culture.
             </p>
           </div>
@@ -158,8 +158,8 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="s">
             The task was comprehensive: rename the company, establish strategic
-            pillars and purpose, create the complete visual identity, and
-            deliver all assets needed for marketing, events, recruitment, and
+            pillars and purpose, create the complete visual identity and
+            deliver all assets needed for marketing, events, recruitment and
             internal culture over a 16-month period.
           </Text>,
         ]}
@@ -287,8 +287,8 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             The website design reflects the brand&apos;s personality: bold,
-            direct, and human. Social media templates ensure consistent
-            presentation across platforms for recruitment, events, and company
+            direct and human. Social media templates ensure consistent
+            presentation across platforms for recruitment, events and company
             updates.
           </Text>,
         ]}
@@ -356,7 +356,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.galleryHeader}>
           <Title level={3}>Culture & Merch</Title>
           <Text size="s">
-            Internal culture assets including apparel, event materials, and
+            Internal culture assets including apparel, event materials and
             office decorations helped build team identity and employer brand.
           </Text>
         </div>

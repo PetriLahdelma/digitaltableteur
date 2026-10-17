@@ -297,8 +297,9 @@ export function PseoLeafPageView({
             Want help implementing this?
           </Title>
           <Text>
-            Describe your stack, team size, and timeline—we will suggest a
-            scoped engagement or point you to the right playbook next step.
+            Describe your stack, team size and timeline. Digitaltableteur will
+            suggest a scoped engagement or point you to the right playbook next
+            step.
           </Text>
           <div className={styles.ctaActions}>
             <Button

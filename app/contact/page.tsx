@@ -11,11 +11,11 @@ import { resolveSiteBookingConfig } from "@/nextjs-app/shared/lib/donny-booking"
 export const metadata: Metadata = {
   title: "Contact | Digitaltableteur",
   description:
-    "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries, and design automation projects.",
+    "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries and design automation projects.",
   openGraph: {
     title: "Contact | Digitaltableteur",
     description:
-      "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries, and design automation projects.",
+      "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries and design automation projects.",
     type: "website",
     siteName: "Digitaltableteur",
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact | Digitaltableteur",
     description:
-      "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries, and design automation projects.",
+      "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries and design automation projects.",
   },
   alternates: {
     canonical: "/contact",
@@ -52,7 +52,7 @@ export default async function ContactPage({
     getContactPageSchema({
       name: "Contact Digitaltableteur",
       description:
-        "Contact Digitaltableteur about design systems consulting, AI-powered DesignOps, component libraries, and digital product work.",
+        "Contact Digitaltableteur about design systems consulting, AI-powered DesignOps, component libraries and digital product work.",
       url: "/contact",
       email: "mail@digitaltableteur.com",
     }),

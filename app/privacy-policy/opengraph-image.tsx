@@ -9,6 +9,6 @@ export default async function Image() {
   return generatePageOgImage({
     tag: "PRIVACY",
     title: "Privacy Policy",
-    subtitle: "How we collect, use, and protect your data",
+    subtitle: "How your data is collected, used and protected",
   });
 }

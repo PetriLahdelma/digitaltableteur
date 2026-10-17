@@ -39,7 +39,7 @@ const defaultPlaybookSteps = [
   "Baseline the current UI surface area and ownership model.",
   "Identify the highest-friction inconsistencies blocking delivery.",
   "Define the smallest set of standards that removes rework.",
-  "Implement, document, and agree on how changes get reviewed.",
+  "Implement, document and agree on how changes get reviewed.",
 ];
 
 function resolvePackageFit(service: PseoCatalogItem): PseoPackageFit | null {
@@ -160,16 +160,16 @@ function buildDefaultFaqs(page: PseoLeafPage, service: PseoCatalogItem) {
   return [
     {
       question: `How long does ${service.name.toLowerCase()} take for ${audienceName} on ${stackName}?`,
-      answerMarkdown: `Most engagements run **${timeline}**. We scope against your live ${stackName} codebase—not a generic template.`,
+      answerMarkdown: `Most engagements run **${timeline}**. Scope is set against your live ${stackName} codebase, not a generic template.`,
     },
     {
       question: `Can you ${service.name.toLowerCase()} without pausing ${stackName} feature work?`,
       answerMarkdown:
-        "Yes. We sequence work around your release calendar and land changes incrementally so squads keep shipping.",
+        "Yes. Work is sequenced around your release calendar and changes land incrementally so squads keep shipping.",
     },
     {
       question: `What should ${audienceName} prepare before kickoff?`,
-      answerMarkdown: `Repo or Storybook access, your primary Figma library, and one decision-maker who can define done for ${stackName} UI standards.`,
+      answerMarkdown: `Repo or Storybook access, your primary Figma library and one decision-maker who can define done for ${stackName} UI standards.`,
     },
   ];
 }
@@ -200,7 +200,7 @@ export function mergeLeafCopy(
 
   const introMarkdown =
     copy?.introMarkdown ??
-    `${buildLeafDescription(page.service, page.stack, page.audience)}\n\nUse this playbook to scope work, align design and engineering, and avoid the failure modes we see most often on **${getStackDisplayName(page.stack)}** teams.`;
+    `${buildLeafDescription(page.service, page.stack, page.audience)}\n\nUse this playbook to scope work, align design and engineering and avoid the most common failure modes on **${getStackDisplayName(page.stack)}** teams.`;
 
   if (copy?.sections?.length) {
     for (const section of copy.sections) {

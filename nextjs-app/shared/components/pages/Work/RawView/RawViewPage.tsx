@@ -76,7 +76,7 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
           <Text size="s">
             Raw View marks a new beginning for the former Photo Raw magazine.
             The relaunch shifted the publication into a bookazine format,
-            expanded the page count to 160 pages, and introduced both English
+            expanded the page count to 160 pages and introduced both English
             and Finnish editions alongside a new e-magazine and website.
             <br />
             <br />
@@ -174,7 +174,7 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="s">
             Raw View champions carefully crafted documentary projects that take
             an artistic approach to societal subjects. The goal is to inspire,
-            stimulate, and entertain while staying grounded in journalistic
+            stimulate and entertain while staying grounded in journalistic
             integrity.
           </Text>,
           <Text key="p2" size="s">
@@ -212,7 +212,7 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
               <Text size="s">
                 The relaunch brought new contributors and an expanded editorial
                 team, including international advisors and two photo editors.
-                The visual appearance was shaped to feel clear, dynamic, and
+                The visual appearance was shaped to feel clear, dynamic and
                 exciting while respecting the documentary voice of the
                 publication.
               </Text>

@@ -23,7 +23,7 @@ describe("AiUsagePage", () => {
 
   it("renders principles section", () => {
     renderWithProviders(<AiUsagePage />);
-    expect(screen.getByText(/Our AI principles/i)).toBeInTheDocument();
+    expect(screen.getByText(/^AI principles$/i)).toBeInTheDocument();
   });
 
   it("renders use cases section", () => {

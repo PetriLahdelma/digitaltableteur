@@ -11,7 +11,7 @@ export async function GET() {
     schema_version: "1.0",
     name: "Digitaltableteur",
     description:
-      "Helsinki-based design systems consultancy. We build, audit, and scale design systems, and ship open-source tools that prove the expertise.",
+      "Helsinki-based design systems consultancy that builds, audits and scales design systems and ships open-source tools that prove the expertise.",
     url: baseUrl,
     provider: {
       organization: "Digitaltableteur",
@@ -41,7 +41,7 @@ export async function GET() {
       {
         name: "Design system audit",
         description:
-          "Assess your current UI foundation, identify gaps, and create a prioritized roadmap.",
+          "Assess your current UI foundation, identify gaps and create a prioritized roadmap.",
       },
       {
         name: "Component library build",
@@ -71,7 +71,7 @@ export async function GET() {
       {
         name: "Project Spine",
         description:
-          "CLI that compiles briefs, repos, and tokens into agent-native operating context.",
+          "CLI that compiles briefs, repos and tokens into agent-native operating context.",
         url: "https://projectspine.dev",
         repository: "https://github.com/PetriLahdelma/project-spine",
       },

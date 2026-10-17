@@ -24,7 +24,7 @@ export default function CodeWindowDemoPage() {
         </Title>
         <Text as="p" size="m">
           This page showcases the macOS-style code block window with Shiki-ready
-          markup, copy controls, and line numbers.
+          markup, copy controls and line numbers.
         </Text>
       </header>
 

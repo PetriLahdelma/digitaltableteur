@@ -351,7 +351,7 @@ export function TokenCatalogSearch() {
       <input
         className={styles.searchInput}
         type="search"
-        placeholder="Search tokens by name, value, or usage…"
+        placeholder="Search tokens by name, value or usage…"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         aria-label="Search design tokens"

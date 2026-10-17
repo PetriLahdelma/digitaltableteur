@@ -6,11 +6,11 @@ import { PseoIndexPage } from "@dt-pages/Pseo/PseoIndexPage";
 export const metadata: Metadata = {
   title: "Design System Playbooks | Digitaltableteur",
   description:
-    "Practical design system and DesignOps playbooks by service, stack, and team context. Situation briefs, checklists, and case-study proof.",
+    "Practical design system and DesignOps playbooks by service, stack and team context. Situation briefs, checklists and case-study proof.",
   openGraph: {
     title: "Design System Playbooks | Digitaltableteur",
     description:
-      "Practical design system and DesignOps playbooks by service, stack, and team context. Situation briefs, checklists, and case-study proof.",
+      "Practical design system and DesignOps playbooks by service, stack and team context. Situation briefs, checklists and case-study proof.",
     type: "website",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Design System Playbooks | Digitaltableteur",
     description:
-      "Practical design system and DesignOps playbooks by service, stack, and team context. Situation briefs, checklists, and case-study proof.",
+      "Practical design system and DesignOps playbooks by service, stack and team context. Situation briefs, checklists and case-study proof.",
   },
   alternates: {
     canonical: "/pseo",

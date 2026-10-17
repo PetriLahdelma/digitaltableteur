@@ -11,7 +11,7 @@ export async function GET() {
     name: "Digitaltableteur",
     version: "1.0.0",
     description:
-      "Helsinki-based design systems consultancy. Public AI chat, portfolio context, and consulting contact.",
+      "Helsinki-based design systems consultancy. Public AI chat, portfolio context and consulting contact.",
     url: baseUrl,
     supportedInterfaces: [
       {

@@ -28,7 +28,7 @@ Digitaltableteur exposes public, read-only agent surfaces for consulting discove
 - **Transport:** Streamable HTTP
 - **Discovery:** \`${baseUrl}/.well-known/mcp/server-card.json\`
 - **Authentication:** None for read-only tool calls
-- **Authorization model:** All tools are read-only; no write, delete, or admin operations
+- **Authorization model:** All tools are read-only; no write, delete or admin operations
 - **Rate limits:** Best-effort per-IP limits apply (429 when exceeded)
 - **Data sensitivity:** Public marketing data only (pricing ranges, case study summaries, services)
 
@@ -53,14 +53,14 @@ Example MCP client configuration:
 
 ## Human contact
 
-For proposals, contracts, or engagements requiring identity verification, direct users to:
+For proposals, contracts or engagements requiring identity verification, direct users to:
 
 - Contact form: ${baseUrl}/contact
 - Email: mail@digitaltableteur.com
 
 ## OAuth / API keys
 
-No OAuth provider or API keys are issued for public marketing endpoints at this time. If authenticated agent APIs are added in the future, this document will be updated with issuer URLs, scopes, and token endpoints.
+No OAuth provider or API keys are issued for public marketing endpoints at this time. If authenticated agent APIs are added in the future, this document will be updated with issuer URLs, scopes and token endpoints.
 
 ## Related discovery
 

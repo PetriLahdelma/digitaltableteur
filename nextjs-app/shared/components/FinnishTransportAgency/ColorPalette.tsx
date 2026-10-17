@@ -158,7 +158,7 @@ export function ColorPalette({ showProportions = true }: ColorPaletteProps) {
           <div className={styles.proportionsChart}>
             <Image
               src="/images/portfolio/finnish-transport-agency/color-coverage.png"
-              alt="Color proportions donut chart showing primary blues, neutrals, and accent usage"
+              alt="Color proportions donut chart showing primary blues, neutrals and accent usage"
               width={1167}
               height={1151}
               className={styles.proportionsImage}

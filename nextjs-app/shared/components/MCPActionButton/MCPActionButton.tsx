@@ -50,7 +50,7 @@ const governanceBlueprint = {
   ],
   governance_checks: [
     "Ensure aria-live is present for status",
-    "Tokenize padding, radius, and border",
+    "Tokenize padding, radius and border",
     "Respect prefers-reduced-motion for status transitions",
   ],
   performance_metrics: [

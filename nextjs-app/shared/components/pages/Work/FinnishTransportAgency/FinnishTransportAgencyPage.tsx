@@ -71,14 +71,14 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             <Title as="h3" unstyled className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>When Finland merged</strong> its Maritime Administration, Rail
-              Administration, and Road Administration into a single transport agency,
+              Administration and Road Administration into a single transport agency,
               the new organization needed an identity that could unify three distinct
-              cultures while serving citizens in Finnish, Swedish, and English.
+              cultures while serving citizens in Finnish, Swedish and English.
             </p>
             <p className={styles.metaOverview}>
               <strong>The goal:</strong> Create a cohesive visual identity system
               that signals a fresh start for the merged organization, works across
-              three official languages, and scales from business cards to highway
+              three official languages and scales from business cards to highway
               signage.
             </p>
           </div>
@@ -184,7 +184,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="s">
             The logo structure is a graphic interpretation of a polyphonic musical
             score, positioning Liikennevirasto as the conductor orchestrating
-            Finland's roads, rails, and waterways. The cascading word parts create
+            Finland's roads, rails and waterways. The cascading word parts create
             a unique, human-friendly wordmark that signals a fresh start for the
             merged organization.
           </Text>,
@@ -208,7 +208,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             The identity supports three official languages: Finnish (Liikennevirasto),
-            Swedish (Trafikverket), and English (Finnish Transport Agency). Each
+            Swedish (Trafikverket) and English (Finnish Transport Agency). Each
             lockup maintains the cascading wordmark with language descriptors in
             horizontal or vertical arrangements.
           </Text>,
@@ -270,7 +270,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="s">
             Five basic rules govern logo usage: always use official files, never
             modify element relationships, never alter colors, respect protection
-            zones, and avoid adding effects like drop shadows or gradients. The
+            zones and avoid adding effects like drop shadows or gradients. The
             guidelines show approved applications on various backgrounds.
           </Text>,
         ]}
@@ -279,7 +279,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           alt: "Logo usage examples showing correct and incorrect applications with checkmarks and X marks",
           width: 1754,
           height: 1241,
-          caption: "Approved usage on white, tinted, and photographic backgrounds",
+          caption: "Approved usage on white, tinted and photographic backgrounds",
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -295,7 +295,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           <Text size="s" className={styles.colorIntro}>
             Four primary blues form the wordmark, supported by warm grays and
             accent colors. The palette was specified for Pantone (print), CMYK
-            (process), and RGB (screen) to ensure consistency across all media.
+            (process) and RGB (screen) to ensure consistency across all media.
           </Text>
           <ColorPalette showProportions={true} />
         </div>
@@ -321,15 +321,15 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.waterfallItem}>
               <span className={styles.waterfallLabel}>Subhead</span>
               <span className={styles.waterfallSubhead}>
-                Connecting roads, rails, and waterways across the nation
+                Connecting roads, rails and waterways across the nation
               </span>
             </div>
             <div className={styles.waterfallItem}>
               <span className={styles.waterfallLabel}>Body</span>
               <span className={styles.waterfallBody}>
-                The Finnish Transport Agency oversees the planning, construction,
+                The Finnish Transport Agency oversees the planning, construction
                 and maintenance of transport infrastructure. Our mission is to
-                ensure safe, efficient, and sustainable mobility for all.
+                ensure safe, efficient and sustainable mobility for all.
               </span>
             </div>
             <div className={styles.waterfallItem}>
@@ -362,7 +362,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           alt: "Five circular stamp logo variations for official documents",
           width: 2481,
           height: 1754,
-          caption: "Stamp variations for certificates, approvals, and official seals",
+          caption: "Stamp variations for certificates, approvals and official seals",
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -452,14 +452,14 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="s">
             The identity unified three historically separate agencies under a
             single visual language. The musical score concept gave staff across
-            road, rail, and maritime divisions a shared symbol, one that
-            communicates movement, coordination, and national reach.
+            road, rail and maritime divisions a shared symbol, one that
+            communicates movement, coordination and national reach.
           </Text>,
           <Text key="p2" size="s">
             Trilingual support (Finnish, Swedish, English) ensures accessibility
             for all citizens, while strict construction rules maintain consistency
             from business cards to highway signs. The system scaled successfully
-            across print, digital, environmental, and publication applications.
+            across print, digital, environmental and publication applications.
           </Text>,
         ]}
         imageLayout="none"
@@ -478,7 +478,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.resultValue}>3</span>
               <span className={styles.resultLabel}>Agencies Unified</span>
               <span className={styles.resultDetail}>
-                Road, Rail, and Maritime administrations merged under one identity
+                Road, Rail and Maritime administrations merged under one identity
               </span>
             </div>
             <div className={styles.resultItem}>

@@ -131,7 +131,7 @@ export function AgentBenchSection({
         {artifact.totalRuns} published runs across{" "}
         {families.map((family) => family.label).join(" and ")}. Metered spend
         on these runs: ${artifact.totalCostUsd.toFixed(2)}; subscription runs
-        report output tokens instead, and spend on superseded runs is in the
+        report output tokens instead and spend on superseded runs is in the
         notes. Acceptance tests user-visible
         semantics and contract conformance, not implementation; reuse of{" "}
         <code className="text-xs">@dt/*</code> is reported separately and

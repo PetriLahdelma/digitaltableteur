@@ -14,9 +14,9 @@ export function ColophonPage() {
         <Title level={1}>Colophon</Title>
         <Text as="p" className={styles.intro}>
           This site is its own case study — a production portfolio, content
-          platform, and agent-aware design system in one codebase. Twelve case
+          platform and agent-aware design system in one codebase. Twelve case
           studies, a crawlable blog, a hundred programmatic SEO guides,
-          streaming AI chat with booking, and a token system that enforces
+          streaming AI chat with booking and a token system that enforces
           itself. Here is how it is built today.
         </Text>
       </header>
@@ -71,7 +71,7 @@ export function ColophonPage() {
             <p className={styles.cardValue}>
               Next.js 16 App Router with React 19 and TypeScript 6. Server
               components by default; client components where interactivity,
-              i18n, or animation require them. ISR revalidation on marketing and
+              i18n or animation require them. ISR revalidation on marketing and
               content routes.
             </p>
           </div>
@@ -125,7 +125,7 @@ export function ColophonPage() {
             <p className={styles.cardValue}>
               One hundred service × stack × audience topic pages under{" "}
               <code className={styles.inlineCode}>/pseo</code>, generated from a
-              typed catalog with pillar pages for services, stacks, and
+              typed catalog with pillar pages for services, stacks and
               audiences.
             </p>
           </div>
@@ -133,7 +133,7 @@ export function ColophonPage() {
             <p className={styles.cardLabel}>Portfolio</p>
             <p className={styles.cardValue}>
               Twelve case-study routes with shared ProjectDetailLayout,
-              ProjectMetaSection, StoryBlock, and ProcessBlock patterns — each
+              ProjectMetaSection, StoryBlock and ProcessBlock patterns — each
               with bespoke CSS Modules where the story demands it.
             </p>
           </div>
@@ -141,7 +141,7 @@ export function ColophonPage() {
             <p className={styles.cardLabel}>Blog</p>
             <p className={styles.cardValue}>
               MDX articles with server-rendered prose, related posts, author
-              pages, reading-time metadata, and share actions. Scheduled posts
+              pages, reading-time metadata and share actions. Scheduled posts
               stay out of the public index until their publish date.
             </p>
           </div>
@@ -157,9 +157,9 @@ export function ColophonPage() {
             <p className={styles.cardLabel}>Tokens</p>
             <p className={styles.cardValue}>
               198 design tokens for typography, color, spacing, grid, motion,
-              radius, and a four-step elevation ramp — 469 declarations once
+              radius and a four-step elevation ramp — 469 declarations once
               redefined across all four themes. Exported to DTCG JSON. Enforced
-              by Stylelint, Rhythmguard, and codemod gates (
+              by Stylelint, Rhythmguard and codemod gates (
               <code className={styles.inlineCode}>check:tokens</code>,{" "}
               <code className={styles.inlineCode}>check:radius-shadow</code>).
             </p>
@@ -184,7 +184,7 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Themes</p>
             <p className={styles.cardValue}>
-              Light, dark, high-contrast black, and high-contrast white.
+              Light, dark, high-contrast black and high-contrast white.
               Switched via CSS class selectors on the root element and persisted
               in a cookie.
             </p>
@@ -199,7 +199,7 @@ export function ColophonPage() {
         <Text as="p">
           Every component ships as a folder: functional component, CSS Module,
           Storybook story, Vitest test (including axe-core where applicable),
-          contract.json, spec.md, and barrel export.
+          contract.json, spec.md and barrel export.
         </Text>
         <div className={styles.grid}>
           <div className={styles.card}>
@@ -213,7 +213,7 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Layout</p>
             <p className={styles.cardValue}>
-              Container, Stack, Grid, FlexBox, Spacer, Section, Center, and
+              Container, Stack, Grid, FlexBox, Spacer, Section, Center and
               PageLayout with responsive page-margin tokens. SiteTree for
               hierarchical navigation displays.
             </p>
@@ -221,15 +221,15 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Storybook</p>
             <p className={styles.cardValue}>
-              Storybook 10 with a11y addon, Vitest integration, and MCP addon.
-              WIP badge until a11y, visual, and translation verification pass.
+              Storybook 10 with a11y addon, Vitest integration and MCP addon.
+              WIP badge until a11y, visual and translation verification pass.
             </p>
           </div>
           <div className={styles.card}>
             <p className={styles.cardLabel}>Testing</p>
             <p className={styles.cardValue}>
               Vitest for unit tests, axe-core for accessibility, Playwright for
-              visual regression against Storybook. CI runs typecheck, lint, and
+              visual regression against Storybook. CI runs typecheck, lint and
               tests before every merge.
             </p>
           </div>
@@ -253,7 +253,7 @@ export function ColophonPage() {
             <p className={styles.cardLabel}>Framer Motion</p>
             <p className={styles.cardValue}>
               React transitions and AnimatePresence for enter/exit animations,
-              page transitions, and layout animations.
+              page transitions and layout animations.
             </p>
           </div>
           <div className={styles.card}>
@@ -272,8 +272,8 @@ export function ColophonPage() {
           Internationalization
         </Title>
         <Text as="p">
-          English, Finnish, and Swedish — full coverage across UI strings, form
-          labels, error messages, and cookie consent. Powered by i18next and
+          English, Finnish and Swedish — full coverage across UI strings, form
+          labels, error messages and cookie consent. Powered by i18next and
           react-i18next with browser language detection and cookie persistence.
           Complete translation coverage is a shipping requirement.
         </Text>
@@ -290,13 +290,13 @@ export function ColophonPage() {
               Studio guide chatbot for design-system intake. Streaming responses
               via the Vercel AI SDK with rate limiting and prompt-injection
               guards. Tool calling for portfolio showcase, in-app navigation,
-              lead capture, Cal.com booking handoff, and avatar expressions.
+              lead capture, Cal.com booking handoff and avatar expressions.
             </p>
           </div>
           <div className={styles.card}>
             <p className={styles.cardLabel}>Contact</p>
             <p className={styles.cardValue}>
-              Editorial contact form with file uploads, MongoDB persistence, and
+              Editorial contact form with file uploads, MongoDB persistence and
               Cal.com scheduling tabs on the contact page. Donny can pre-fill
               the form and spotlight relevant fields.
             </p>
@@ -306,12 +306,12 @@ export function ColophonPage() {
             <p className={styles.cardValue}>
               Fourteen Model Context Protocol configurations for development and
               operations: Figma, GitHub, Sentry, Vercel, Sanity, Context7,
-              TypeScript LSP, Akaunting, Docker, Next.js devtools, and more. The
+              TypeScript LSP, Akaunting, Docker, Next.js devtools and more. The
               repo and CMS workflows are agent-native by design. The{" "}
               <Link href="/design-system/agent" className={styles.inlineLink}>
                 design system agent demo
               </Link>{" "}
-              shows MCP tools, golden evals, and pattern recipes without
+              shows MCP tools, golden evals and pattern recipes without
               changing production chrome.
             </p>
           </div>
@@ -327,7 +327,7 @@ export function ColophonPage() {
           max-age and preload. Input sanitized via mongo-sanitize and
           isomorphic-dompurify. Rate limiting on AI chat and contact endpoints.
           GDPR-compliant data deletion API with automated weekly cleanup.
-          Permissions-Policy disables camera, microphone, and geolocation.
+          Permissions-Policy disables camera, microphone and geolocation.
         </Text>
       </section>
 

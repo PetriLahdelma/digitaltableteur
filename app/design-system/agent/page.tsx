@@ -32,7 +32,7 @@ import {
 export const metadata: Metadata = {
   title: "Design System Agent Demo | Digitaltableteur",
   description:
-    "Public proof surface for @dt intent retrieval, pattern composition recipes, MCP tools, and local agent eval benchmarks.",
+    "Public proof surface for @dt intent retrieval, pattern composition recipes, MCP tools and local agent eval benchmarks.",
   alternates: { canonical: "/design-system/agent" },
 };
 
@@ -78,7 +78,7 @@ export default function DesignSystemAgentPage() {
         Design system agent demo
       </h1>
       <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-        Machine-readable contracts, intent benchmarks, and MCP tools so agents
+        Machine-readable contracts, intent benchmarks and MCP tools so agents
         reuse <code className="text-xs">@dt/*</code> before inventing markup.{" "}
         <Link
           href="/colophon"

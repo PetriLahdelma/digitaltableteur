@@ -27,7 +27,7 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
       hero={
         <ProjectHero
           title="Project Spine"
-          description="An OSS CLI that compiles a client brief, a repo, and optional design-system inputs into a repo-native, machine-readable operating layer for humans and AI coding agents. One command, 19 structured files, zero hosted dependencies."
+          description="An OSS CLI that compiles a client brief, a repo and optional design-system inputs into a repo-native, machine-readable operating layer for humans and AI coding agents. One command, 19 structured files, zero hosted dependencies."
           image={{
             src: "/images/portfolio/project-spine/hero.png",
             alt: "Project Spine wordmark: bold pink retro display type with dark starfield shadow on blue background",
@@ -117,7 +117,7 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
             <p className={styles.metaOverview}>
               <strong>Project Spine closes that gap.</strong> It reads your
               actual brief, scans the repo for framework signals, ingests design
-              tokens (DTCG or Tokens Studio), and compiles everything into 19
+              tokens (DTCG or Tokens Studio) and compiles everything into 19
               structured files that AI coding agents consume on the first
               prompt.
             </p>
@@ -185,7 +185,7 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="2" size="s">
             <span className={caseStudy.leadIn}>Repo directory</span>. Scanned
-            for <code>package.json</code>, <code>tsconfig.json</code>, and
+            for <code>package.json</code>, <code>tsconfig.json</code> and
             framework signals. Spine doesn&apos;t need you to describe your
             stack; it reads it.
           </Text>,
@@ -220,7 +220,7 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
             </span>
             . <code>AGENTS.md</code>, <code>CLAUDE.md</code>,{" "}
             <code>.github/copilot-instructions.md</code>. The paths where Claude
-            Code, Cursor, and GitHub Copilot look first. Spine writes them with
+            Code, Cursor and GitHub Copilot look first. Spine writes them with
             repo-specific content, not boilerplate.
           </Text>,
           <Text key="2" size="s">

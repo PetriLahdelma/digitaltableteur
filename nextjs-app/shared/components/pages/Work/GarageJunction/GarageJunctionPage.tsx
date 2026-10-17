@@ -82,14 +82,14 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             <p className={styles.metaOverview}>
               <strong>Garage Junction</strong> was a collaborative event series
               launched at Merikerho, Helsinki, in 2018. The project brought
-              together music lovers, artists, and creative professionals for
+              together music lovers, artists and creative professionals for
               club nights celebrating underground music and visual arts.
             </p>
             <p className={styles.metaOverview}>
               <strong>The vision:</strong> Create an inclusive platform
               capturing the raw energy and diversity of Helsinki&apos;s
               nightlife with a UK garage twist. The brand identity needed to be
-              bold, memorable, and flexible for both digital and print
+              bold, memorable and flexible for both digital and print
               promotion.
             </p>
           </div>
@@ -154,7 +154,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             The name "Garage Junction" references both UK garage music and the
             idea of a meeting point for diverse sounds and people. The visual
             identity uses bold typography and a checkerboard pattern inspired by
-            the Helsinki Underground/Subway, or as Finns call it, the metro and
+            the Helsinki Underground/Subway or as Finns call it, the metro and
             its high-contrast two-tone aesthetics.
           </Text>,
           <Text key="p2" size="s">
@@ -215,7 +215,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             </span>{" "}
             in both horizontal and vertical formats. The checkerboard pattern
             provides a distinctive secondary element that can be used as
-            backgrounds, borders, or accent graphics.
+            backgrounds, borders or accent graphics.
           </Text>,
         ]}
         images={[

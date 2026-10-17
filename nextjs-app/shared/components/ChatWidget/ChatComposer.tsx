@@ -75,7 +75,7 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
     const t = useTranslate();
     const resolvedPlaceholder =
       placeholder ??
-      t("chatPlaceholder", "Ask about a project, service, or approach…");
+      t("chatPlaceholder", "Ask about a project, service or approach…");
     // || not ??: Storybook's seeded text controls pass "", and an empty
     // accessible name is never valid — fall back to the translations.
     const resolvedLabel = label || t("chatInputLabel", "Ask Donny a question");

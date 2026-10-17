@@ -218,7 +218,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={{
           src: "/images/portfolio/rhythmguard/scene-1.png",
-          alt: "Rhythmguard step 1 of 6: install + strict config. Terminal shows npm install, .stylelintrc.json extending the strict preset, and the three rules (use-scale, prefer-token, no-offscale-transform).",
+          alt: "Rhythmguard step 1 of 6: install + strict config. Terminal shows npm install, .stylelintrc.json extending the strict preset and the three rules (use-scale, prefer-token, no-offscale-transform).",
           width: 1920,
           height: 1080,
           caption:
@@ -240,7 +240,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             value must be on the configured scale. Write{" "}
             <code>margin-top: 13px</code>, get autofixed to <code>12px</code>.
             Supports 17 built-in scales including 4pt grid, 8pt grid, Material
-            8dp, Atlassian, Carbon 2x, Fibonacci, and golden ratio.
+            8dp, Atlassian, Carbon 2x, Fibonacci and golden ratio.
           </Text>,
           <Text key="2" size="s">
             <span className={caseStudy.leadIn}>prefer-token</span>. Raw literal
@@ -326,14 +326,14 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             A separate export provides the <code>tailwind-class-use-scale</code>{" "}
             rule. It checks every string literal, automatically covering{" "}
             <code>cn()</code>, <code>clsx()</code>, <code>cva()</code>,{" "}
-            <code>twMerge()</code>, and JSX <code>className</code>.{" "}
+            <code>twMerge()</code> and JSX <code>className</code>.{" "}
             <code>p-[13px]</code> becomes <code>p-[12px]</code>.
           </Text>,
           <Text key="2" size="s">
             Seven shipped config presets, from <code>migration</code> (lenient)
             to <code>strict</code> (scale + tokens + transforms) to{" "}
             <code>react-tailwind</code> (Tailwind + CSS Modules + Next.js
-            ignores). Framework snippets for Vue, Lit, Astro, and SvelteKit.
+            ignores). Framework snippets for Vue, Lit, Astro and SvelteKit.
           </Text>,
         ]}
         images={{
@@ -411,7 +411,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
                 <Text size="l">17 Scale Presets</Text>
                 <Text size="s">
                   4pt grid, 8pt grid, Material, Atlassian, Carbon, Fibonacci,
-                  golden ratio, and custom.
+                  golden ratio and custom.
                 </Text>
               </>
             ),

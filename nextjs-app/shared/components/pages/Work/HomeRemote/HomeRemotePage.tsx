@@ -144,7 +144,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           <Mermaid
             key="architecture"
             title="Home Remote local device-control architecture"
-            description="The macOS app, command-line interface, and MCP server all use one local daemon, which controls displays over the trusted local network."
+            description="The macOS app, command-line interface and MCP server all use one local daemon, which controls displays over the trusted local network."
             accessibleDetails={
               <>
                 <Text as="p" size="s">
@@ -286,9 +286,9 @@ flowchart LR
             every surface. Blocks sit on one 18-point rhythm.
           </Text>,
           <Text key="p2" size="s">
-            Availability still reads as green, amber, or red, but never by color
+            Availability still reads as green, amber or red, but never by color
             alone. Motion is a defined system for press, release, hover and
-            state, and the panel ORs the system Reduce Motion setting with its
+            state and the panel ORs the system Reduce Motion setting with its
             own preference.
           </Text>,
         ]}

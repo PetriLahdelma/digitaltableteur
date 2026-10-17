@@ -104,7 +104,7 @@ export function RingStatsPage({ nav }: { nav?: React.ReactNode }) {
             <p className={styles.metaOverview}>
               <strong>The design challenge:</strong> answer &ldquo;how am I
               doing today?&rdquo; in five seconds without becoming another
-              dashboard, and never show a number as current when it is not.
+              dashboard and never show a number as current when it is not.
             </p>
           </div>
         </div>
@@ -533,8 +533,8 @@ flowchart LR
         content={[
           <Text key="p1" size="s">
             Ring Stats is an independent project, not affiliated with or
-            endorsed by Oura, and the identity makes that clear at a glance: a
-            warm-neutral palette, native system type and icons, and an original
+            endorsed by Oura and the identity makes that clear at a glance: a
+            warm-neutral palette, native system type and icons and an original
             mark. No borrowed logo, product silhouette, proprietary fonts or
             copied app chrome.
           </Text>,
@@ -604,7 +604,7 @@ flowchart LR
             Version 1.2 added Shortcuts actions for any stat or the battery, so
             the numbers also work in automations. Next: a moderated usability
             study with five to eight ring owners, manual VoiceOver and keyboard
-            verification, and battery-first features such as an optional
+            verification and battery-first features such as an optional
             low-battery notification.
           </Text>,
         ]}

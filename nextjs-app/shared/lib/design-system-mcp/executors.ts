@@ -274,7 +274,7 @@ export function executeValidateComponentUsage(args?: {
 
   if (!filePath && !snippet && !component) {
     return dsTextResult(
-      "Error: provide filePath, snippet, or component with structured props.",
+      "Error: provide filePath, snippet or component with structured props.",
       true,
     );
   }

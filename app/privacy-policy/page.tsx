@@ -5,11 +5,11 @@ import { PrivacyPolicyPage } from "@dt-pages/PrivacyPolicyPage";
 export const metadata: Metadata = {
   title: "Privacy Policy | Digitaltableteur",
   description:
-    "Digitaltableteur privacy policy. Learn how we collect, use, and protect your personal data in compliance with GDPR and EU privacy regulations.",
+    "Digitaltableteur privacy policy: how your personal data is collected, used and protected in compliance with GDPR and EU privacy regulations.",
   openGraph: {
     title: "Privacy Policy | Digitaltableteur",
     description:
-      "Digitaltableteur privacy policy. Learn how we collect, use, and protect your personal data in compliance with GDPR and EU privacy regulations.",
+      "Digitaltableteur privacy policy: how your personal data is collected, used and protected in compliance with GDPR and EU privacy regulations.",
     type: "website",
     siteName: "Digitaltableteur",
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Privacy Policy | Digitaltableteur",
     description:
-      "Digitaltableteur privacy policy. Learn how we collect, use, and protect your personal data in compliance with GDPR and EU privacy regulations.",
+      "Digitaltableteur privacy policy: how your personal data is collected, used and protected in compliance with GDPR and EU privacy regulations.",
   },
   alternates: {
     canonical: "/privacy-policy",

@@ -90,7 +90,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             <p className={styles.metaOverview}>
               <strong>The design challenge:</strong> Modernize skeuomorphic
               controls without losing the familiarity musicians expect. Every
-              control needs to be discoverable, precise, and fast to adjust
+              control needs to be discoverable, precise and fast to adjust
               under creative pressure.
             </p>
           </div>
@@ -108,13 +108,13 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="s">
             KnobSmith focuses on removing friction from everyday workflows by
-            rethinking control affordances, feedback loops, and parameter
+            rethinking control affordances, feedback loops and parameter
             discoverability.
           </Text>,
           <Mermaid
             key="mindmap"
             title="Audio plugin usability problem map"
-            description="Four groups of problems make many audio plugins difficult to perceive and operate: skeuomorphism, decoration over function, workflow friction, and accessibility gaps."
+            description="Four groups of problems make many audio plugins difficult to perceive and operate: skeuomorphism, decoration over function, workflow friction and accessibility gaps."
             accessibleDetails={
               <List
                 size="s"
@@ -218,7 +218,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             </video>
           </div>
           <Text size="xs" className={styles.videoCaption}>
-            Exploration of layout, controls, and real-time feedback.
+            Exploration of layout, controls and real-time feedback.
           </Text>
         </div>
 
@@ -228,7 +228,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           content={[
             <Text key="p1" size="s">
               Interaction patterns prioritize clarity: larger touch targets,
-              explicit value readouts, and smooth animated feedback for every
+              explicit value readouts and smooth animated feedback for every
               parameter change.
             </Text>,
             <Text key="p2" size="s">
@@ -303,7 +303,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             producers connected on the go.
           </Text>,
           <Text key="p2" size="s">
-            Typography, color, and interface patterns remain consistent from
+            Typography, color and interface patterns remain consistent from
             desktop to pocket, reinforcing brand recognition whether users are
             browsing demos or managing licenses.
           </Text>,
@@ -450,7 +450,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="s">
             The pink-on-white inversion brings energy to marketing materials,
-            social media, and lighter web contexts, ensuring the brand stands
+            social media and lighter web contexts, ensuring the brand stands
             out whether it&apos;s embedded in a DAW or scrolling through a feed.
           </Text>,
         ]}
@@ -509,7 +509,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.swatchHex}>#ED4B9B</span>
               <Text size="xs" className={styles.swatchDescription}>
                 The brand&apos;s primary accent. Use for interactive elements,
-                CTAs, key highlights, and anywhere the brand needs to assert
+                CTAs, key highlights and anywhere the brand needs to assert
                 itself. Energetic and unmistakable.
               </Text>
             </div>
@@ -524,7 +524,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.swatchHex}>#2B2F33</span>
               <Text size="xs" className={styles.swatchDescription}>
                 The foundation color for plugin interfaces and dark UI. Use for
-                backgrounds, body text on light surfaces, and anywhere stability
+                backgrounds, body text on light surfaces and anywhere stability
                 and focus are paramount.
               </Text>
             </div>
@@ -539,7 +539,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.swatchHex}>#FFFFFF</span>
               <Text size="xs" className={styles.swatchDescription}>
                 The breathing room. Use for light backgrounds, text on dark
-                surfaces, and negative space. Creates contrast and clarity
+                surfaces and negative space. Creates contrast and clarity
                 without competing for attention.
               </Text>
             </div>

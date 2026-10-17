@@ -39,7 +39,7 @@ export default function About() {
     getWebPageSchema({
       name: "About Petri Lahdelma | Digitaltableteur",
       description:
-        "Design Systems Specialist and DesignOps Engineer. Expert in React, TypeScript, Figma, and AI-powered design workflows.",
+        "Design Systems Specialist and DesignOps Engineer. Expert in React, TypeScript, Figma and AI-powered design workflows.",
       url: "/about",
       keywords: [
         "Petri Lahdelma",

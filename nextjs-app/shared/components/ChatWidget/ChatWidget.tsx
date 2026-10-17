@@ -473,7 +473,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       ),
       unavailable: t(
         "chatErrorUnavailable",
-        "Donny is temporarily unavailable. Please try again later, or email mail@digitaltableteur.com.",
+        "Donny is temporarily unavailable. Please try again later or email mail@digitaltableteur.com.",
       ),
       busy: t(
         "chatErrorBusy",

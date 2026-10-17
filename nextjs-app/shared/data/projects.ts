@@ -69,7 +69,7 @@ export const projects: Project[] = [
     slug: "dsharp-design-system",
     title: "DSharp Design System",
     description:
-      "Fully AI-powered and guardrailed design-system architecture for enterprise data products: tokens, contracts, Storybook, MCP, CLI, and Rhythmguard enforcement.",
+      "Fully AI-powered and guardrailed design-system architecture for enterprise data products: tokens, contracts, Storybook, MCP, CLI and Rhythmguard enforcement.",
     thumbnail:
       "/images/portfolio/dsharp-design-system/dsharp-thumbnail-logo.svg",
     category: "design-systems",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     slug: "vr-design-system",
     title: "VR Design System",
     description:
-      "Industrialising VR's live design system into one agent-ready source of truth: DTCG tokens, an enforceable component contract, and accessibility as a CI gate across web and mobile.",
+      "Industrialising VR's live design system into one agent-ready source of truth: DTCG tokens, an enforceable component contract and accessibility as a CI gate across web and mobile.",
     thumbnail: "/images/portfolio/vr-design-system/thumbnail.svg",
     category: "design-systems",
     tags: ["Design Systems", "Design Tokens", "Accessibility", "Agent-ready"],
@@ -170,7 +170,7 @@ export const projects: Project[] = [
     slug: "illustrations",
     title: "Illustrations",
     description:
-      "Collection of editorial illustrations, character designs, and visual storytelling for various clients.",
+      "Collection of editorial illustrations, character designs and visual storytelling for various clients.",
     thumbnail: "/images/portfolio/illustrations/ice-cream_square.webp",
     category: "illustration",
     tags: ["Illustration", "Character Design", "Editorial"],
@@ -288,7 +288,7 @@ export const projects: Project[] = [
     slug: "rhythmguard",
     title: "Rhythmguard",
     description:
-      "A Stylelint plugin that enforces design token usage at lint time: spacing scales, color tokens, and Tailwind class strings.",
+      "A Stylelint plugin that enforces design token usage at lint time: spacing scales, color tokens and Tailwind class strings.",
     thumbnail: "/images/portfolio/rhythmguard/thumbnail.png",
     category: "tools",
     tags: ["Open Source", "Stylelint", "Design Tokens", "DX", "npm"],
@@ -302,7 +302,7 @@ export const projects: Project[] = [
     slug: "project-spine",
     title: "Project Spine",
     description:
-      "An OSS CLI that compiles briefs, repos, and design tokens into agent-native operating context: CLAUDE.md, AGENTS.md, and 19 structured exports.",
+      "An OSS CLI that compiles briefs, repos and design tokens into agent-native operating context: CLAUDE.md, AGENTS.md and 19 structured exports.",
     thumbnail: "/images/portfolio/project-spine/thumbnail.png",
     category: "tools",
     tags: ["Open Source", "CLI", "AI Agents", "Design Tokens", "Context"],

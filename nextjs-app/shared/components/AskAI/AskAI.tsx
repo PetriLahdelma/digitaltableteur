@@ -84,17 +84,17 @@ export function AskAI({ className }: AskAIProps) {
 
   const companyPrompt = t("askAIPromptCompany", {
     defaultValue:
-      "Tell me about Digitaltableteur, a Finnish design consultancy specializing in Design Systems, DesignOps, and AI-augmented design workflows. What services do they offer and what makes them unique?",
+      "Tell me about Digitaltableteur, a Finnish design consultancy specializing in Design Systems, DesignOps and AI-augmented design workflows. What services do they offer and what makes them unique?",
   });
 
   const founderPrompt = t("askAIPromptFounder", {
     defaultValue:
-      "Tell me about Petri Lahdelma, founder of Digitaltableteur. He is a Design Systems Specialist and DesignOps Engineer based in Finland with expertise in React, TypeScript, Figma, and AI-powered design workflows. What is his background and expertise?",
+      "Tell me about Petri Lahdelma, founder of Digitaltableteur. He is a Design Systems Specialist and DesignOps Engineer based in Finland with expertise in React, TypeScript, Figma and AI-powered design workflows. What is his background and expertise?",
   });
 
   const personalizedCompanyPrompt = t("askAIPromptCompanyPersonalized", {
     defaultValue:
-      "Based on what you know about me and my professional background, suggest how Digitaltableteur (a Finnish design consultancy specializing in Design Systems, DesignOps, and AI-augmented workflows) could help me with my current challenges. Consider my role, industry, and any goals I've shared with you.",
+      "Based on what you know about me and my professional background, suggest how Digitaltableteur (a Finnish design consultancy specializing in Design Systems, DesignOps and AI-augmented workflows) could help me with my current challenges. Consider my role, industry and any goals I've shared with you.",
   });
 
   const personalizedFounderPrompt = t("askAIPromptFounderPersonalized", {

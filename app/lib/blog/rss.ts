@@ -13,7 +13,7 @@ function escapeXml(value: string): string {
 export function buildBlogRssFeed(posts: BlogPostMeta[]): string {
   const channelTitle = "Digitaltableteur Blog";
   const channelDescription =
-    "Articles on design systems, component architecture, AI-powered workflows, and DesignOps.";
+    "Articles on design systems, component architecture, AI-powered workflows and DesignOps.";
   const channelUrl = toAbsoluteSiteUrl("/blog");
   const feedUrl = toAbsoluteSiteUrl("/blog/feed.xml");
   const lastBuildDate =

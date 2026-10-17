@@ -61,10 +61,10 @@ export function CookiePolicyFullEnPage({
       <br />
       <p>
         <strong>Purpose of personal data processing:</strong> The legal basis is
-        agreement. The purpose is to maintain, manage, archive, and process
-        contracts signed with customers and other interest groups, and to
+        agreement. The purpose is to maintain, manage, archive and process
+        contracts signed with customers and other interest groups and to
         maintain customer relationships. Information may be used to improve
-        operations, for statistics, and for more personalised content. Data are
+        operations, for statistics and for more personalised content. Data are
         processed in accordance with the Personal Data Act. Data may be used for
         targeted advertising within the company’s own systems, but not disclosed
         to external parties. Partners may be used for technical reasons, but
@@ -101,17 +101,17 @@ export function CookiePolicyFullEnPage({
       <p>
         <strong>Regular data sources:</strong> Phone and electronic
         communication. Data may also be obtained from subcontractors or partner
-        websites, data systems, or other digital sources using electronic
-        sign-in, cookies, or customer-specific identifiers.
+        websites, data systems or other digital sources using electronic
+        sign-in, cookies or customer-specific identifiers.
       </p>
       <br />
       <p>
         <strong>Use and disclosure:</strong> Data are used solely by the
         company, except when an external service provider is used for added
         value or credit-related services. Data will not be disclosed to external
-        parties except for credit applications, debt collection, invoicing, or
+        parties except for credit applications, debt collection, invoicing or
         as required by law. Data are removed upon request unless prohibited by
-        law, outstanding invoices, or debt collection.
+        law, outstanding invoices or debt collection.
       </p>
       <br />
       <p>
@@ -153,8 +153,8 @@ export function CookiePolicyFullEnPage({
       </ul>
       <Title level={3}>Cookies</Title>
       <p>
-        We use cookies to improve and personalise your experience, and to
-        analyse and improve our site. Data collected with cookies may be used
+        Digitaltableteur uses cookies to improve and personalise your
+        experience and to analyse and improve this site. Data collected with cookies may be used
         for targeted communication and marketing, but visitors cannot be
         identified based solely on cookies. You can prohibit cookies in your
         browser settings, but this may affect site functionality.
@@ -170,7 +170,7 @@ export function CookiePolicyFullEnPage({
       </p>
       <Title level={3}>Google Analytics</Title>
       <p>
-        We use Google Analytics to monitor site activity, improve functionality,
+        Google Analytics is used to monitor site activity, improve functionality
         and develop marketing. Data collected cannot be linked to individual
         users. You can change your Google ad settings or disable Analytics
         monitoring with a browser add-on.
@@ -178,20 +178,20 @@ export function CookiePolicyFullEnPage({
       <Title level={3}>Managing consent</Title>
       <p>
         You can revisit your choice at any time. Clear the “cookieConsent” entry
-        in your browser storage (or all cookies) to re-open the banner, or email
-        mail@digitaltableteur.com and we will reset it on your behalf.
+        in your browser storage (or all cookies) to re-open the banner or email
+        mail@digitaltableteur.com to have it reset on your behalf.
       </p>
       <Title level={3}>AI-assisted services</Title>
       <p>
-        Parts of the site (for example, translated articles, Storybook previews,
+        Parts of the site (for example, translated articles, Storybook previews
         or prototype copy) are reviewed with AI-assisted tooling. Humans remain
         accountable for every deliverable and personal data is minimised before
-        any prompt is sent. See our{" "}
+        any prompt is sent. See the{" "}
         <Link href="/ai-use">AI use & transparency statement</Link> for details.
       </p>
       <Title level={3}>How to exercise your rights</Title>
       <p>
-        To access, rectify, or erase your data, or to object to processing,
+        To access, rectify or erase your data or to object to processing,
         contact the data controller or the contact person above. You have the
         right to lodge a complaint with the Data Protection Ombudsman (
         <a href="mailto:tietosuoja@om.fi">tietosuoja@om.fi</a>,{" "}

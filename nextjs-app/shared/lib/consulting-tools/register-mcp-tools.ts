@@ -28,7 +28,7 @@ export function registerConsultingMcpTools(server: McpServer): number {
   server.registerTool(
     "list_case_studies",
     {
-      description: "List Digitaltableteur portfolio case studies with slug, title, category, tags, and URLs.",
+      description: "List Digitaltableteur portfolio case studies with slug, title, category, tags and URLs.",
       inputSchema: z.object({
         featuredOnly: z
           .boolean()

@@ -27,7 +27,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
     {
       name: "list_case_studies",
       description:
-        "List Digitaltableteur portfolio case studies with slug, title, category, tags, and URLs.",
+        "List Digitaltableteur portfolio case studies with slug, title, category, tags and URLs.",
       inputSchema: {
         type: "object",
         properties: {

@@ -5,7 +5,7 @@
     {
       "slug": "design-system-audit",
       "name": "Design system audit",
-      "shortDescription": "Assess your current UI foundation, identify gaps, and create a prioritized roadmap.",
+      "shortDescription": "Assess your current UI foundation, identify gaps and create a prioritized roadmap.",
       "metaDescription": "Design system audit guides: inventory components and tokens, rank findings by severity and leave with a 90-day roadmap of quick wins and structural fixes.",
       "painPoints": [
         "Components look similar but behave differently across squads",
@@ -14,14 +14,14 @@
         "Token renames break multiple apps because naming is inconsistent"
       ],
       "deliverables": [
-        "Inventory of components, tokens, and patterns in use",
+        "Inventory of components, tokens and patterns in use",
         "Severity-ranked findings with effort estimates",
         "90-day roadmap with quick wins vs structural fixes",
         "Governance recommendations (RFC, review, release cadence)"
       ],
       "typicalTimeline": "1–2 weeks",
       "pricingPackageSlug": "ux-sprint",
-      "packageFitReason": "UX Sprint covers a focused audit, eval plan, and handoff your team can ship within two weeks.",
+      "packageFitReason": "UX Sprint covers a focused audit, eval plan and handoff your team can ship within two weeks.",
       "relatedWorkSlugs": ["helsinki-design-system", "dsharp-design-system", "project-spine"],
       "proofReasons": {
         "helsinki-design-system": "City-scale design system audit and adoption across multiple product teams.",
@@ -30,15 +30,15 @@
       },
       "playbookSteps": [
         "Map live UI surfaces and who owns each pattern family.",
-        "Sample high-traffic flows for consistency, a11y, and token usage.",
-        "Score findings by user impact, rework cost, and fix complexity.",
+        "Sample high-traffic flows for consistency, a11y and token usage.",
+        "Score findings by user impact, rework cost and fix complexity.",
         "Agree on minimal standards and an adoption sequence stakeholders will follow."
       ]
     },
     {
       "slug": "design-tokens-setup",
       "name": "Design tokens setup",
-      "shortDescription": "Define tokens, align design + code, and ship a scalable theming foundation.",
+      "shortDescription": "Define tokens, align design + code and ship a scalable theming foundation.",
       "metaDescription": "Design token guides: a primitive, semantic and component taxonomy, a Figma variables to code pipeline and themes for light, dark and high contrast.",
       "painPoints": [
         "Figma variables and CSS custom properties use different names",
@@ -54,14 +54,14 @@
       ],
       "typicalTimeline": "2–3 weeks",
       "pricingPackageSlug": "design-system-lift-off",
-      "packageFitReason": "Design System Lift-Off includes token architecture, core components, and Storybook setup.",
+      "packageFitReason": "Design System Lift-Off includes token architecture, core components and Storybook setup.",
       "relatedWorkSlugs": ["helsinki-design-system", "project-spine"],
       "proofReasons": {
         "helsinki-design-system": "Production token pipeline for a multi-team municipal design system.",
         "project-spine": "Token contracts shared between design tools and React components."
       },
       "playbookSteps": [
-        "Audit existing color, type, and spacing decisions in design and code.",
+        "Audit existing color, type and spacing decisions in design and code.",
         "Define semantic tokens that survive brand refreshes.",
         "Wire Figma variables to code exports your CI can validate.",
         "Roll out themes incrementally with a deprecation plan for legacy values."
@@ -70,10 +70,10 @@
     {
       "slug": "component-library-build",
       "name": "Component library build",
-      "shortDescription": "Build production-ready components with accessibility, documentation, and governance.",
+      "shortDescription": "Build production-ready components with accessibility, documentation and governance.",
       "metaDescription": "Component library guides: core components with typed props and accessibility baselines, Storybook docs, regression tests and a contribution guide.",
       "painPoints": [
-        "Every squad ships slightly different buttons, forms, and modals",
+        "Every squad ships slightly different buttons, forms and modals",
         "Storybook exists but stories do not match production usage",
         "Props APIs grow organically and become hard to learn",
         "Visual regressions slip through because testing is manual"
@@ -86,7 +86,7 @@
       ],
       "typicalTimeline": "3–4 weeks",
       "pricingPackageSlug": "design-system-lift-off",
-      "packageFitReason": "Lift-Off is scoped for audit through core components, Storybook, and adoption playbook.",
+      "packageFitReason": "Lift-Off is scoped for audit through core components, Storybook and adoption playbook.",
       "relatedWorkSlugs": ["helsinki-design-system", "sap-build-apps", "dsharp-design-system"],
       "proofReasons": {
         "helsinki-design-system": "Large-scale React component library with municipal accessibility requirements.",
@@ -94,16 +94,16 @@
         "dsharp-design-system": "AI-guardrailed component architecture with enforcement tooling."
       },
       "playbookSteps": [
-        "Prioritize components by traffic, rework cost, and a11y risk.",
+        "Prioritize components by traffic, rework cost and a11y risk.",
         "Define composition patterns before building one-off variants.",
-        "Document states, edge cases, and keyboard behavior in Storybook.",
+        "Document states, edge cases and keyboard behavior in Storybook.",
         "Pilot with one product squad, then expand with measured adoption metrics."
       ]
     },
     {
       "slug": "ai-designops-automation",
       "name": "AI-powered DesignOps automation",
-      "shortDescription": "Automate workflows, reduce design debt, and scale consistent execution.",
+      "shortDescription": "Automate workflows, reduce design debt and scale consistent execution.",
       "metaDescription": "AI DesignOps guides: map automation candidates, set guardrails for agents and tools, add CI drift checks and keep people in the review loop.",
       "painPoints": [
         "Design review bottlenecks when headcount does not scale with output",
@@ -119,14 +119,14 @@
       ],
       "typicalTimeline": "2–3 weeks",
       "pricingPackageSlug": "ai-ready-designops",
-      "packageFitReason": "AI-Ready Ops packages workflow setup, governance, and tooling hooks in three weeks.",
+      "packageFitReason": "AI-Ready Ops packages workflow setup, governance and tooling hooks in three weeks.",
       "relatedWorkSlugs": ["dsharp-design-system", "llm-component-schema"],
       "proofReasons": {
-        "dsharp-design-system": "MCP, CLI, and Rhythmguard enforcement for AI-assisted design systems.",
+        "dsharp-design-system": "MCP, CLI and Rhythmguard enforcement for AI-assisted design systems.",
         "llm-component-schema": "Structured schemas so LLMs generate components that pass review."
       },
       "playbookSteps": [
-        "Map where time is lost: spec, build, review, or release.",
+        "Map where time is lost: spec, build, review or release.",
         "Identify safe automation targets vs decisions that need human judgment.",
         "Prototype one workflow end-to-end (e.g. token PR or component scaffold).",
         "Measure throughput and error rate before expanding automation scope."
@@ -172,7 +172,7 @@
       "slug": "storybook",
       "name": "Storybook",
       "displayName": "Storybook",
-      "shortDescription": "Component-driven development, documentation, and visual regression workflows.",
+      "shortDescription": "Component-driven development, documentation and visual regression workflows.",
       "metaDescription": "Design systems in Storybook: stories that match real product compositions, documented controls for meaningful props and visual regression on pull requests.",
       "implementationNotes": [
         "Stories should reflect real product compositions—not isolated atoms only.",
@@ -189,7 +189,7 @@
       "slug": "figma",
       "name": "Figma",
       "displayName": "Figma",
-      "shortDescription": "Design-to-code alignment, tokens, and component specs that engineers can ship.",
+      "shortDescription": "Design-to-code alignment, tokens and component specs that engineers can ship.",
       "metaDescription": "Design systems in Figma: component names and variants that mirror code, semantic tokens as variables and a changelog for library updates that affect files.",
       "implementationNotes": [
         "Mirror code component names and variant props in Figma component properties.",
@@ -240,7 +240,7 @@
     {
       "slug": "enterprises",
       "name": "enterprise teams",
-      "shortDescription": "Governance, accessibility, and multi-team alignment for long-term scale.",
+      "shortDescription": "Governance, accessibility and multi-team alignment for long-term scale.",
       "metaDescription": "Design systems for enterprise teams: a documented governance model, WCAG-aligned baselines and an audit trail that holds up across vendors and approvals.",
       "constraints": ["procurement and a11y compliance", "multiple vendors", "long approval cycles"],
       "successMetric": "Documented governance model with WCAG-aligned baselines and audit trail"
@@ -248,7 +248,7 @@
     {
       "slug": "designops",
       "name": "DesignOps teams",
-      "shortDescription": "Tooling, process, and automation to improve throughput and consistency.",
+      "shortDescription": "Tooling, process and automation to improve throughput and consistency.",
       "metaDescription": "Design systems for DesignOps teams: tooling, process and automation that cut review cycle time and design-to-dev regressions, with ROI you can show.",
       "constraints": ["serve many designers", "tooling budget scrutiny", "must prove ROI"],
       "successMetric": "Reduced review cycle time and fewer design-to-dev regressions"

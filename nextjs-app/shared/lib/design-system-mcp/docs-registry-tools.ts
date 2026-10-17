@@ -87,7 +87,7 @@ function brief(entry: RegistryEntry) {
     import: entry.importLine,
     keyProps: entry.keyProps,
     related: entry.composesWith.slice(0, 6),
-    hint: `Call get("${entry.name}") for full usage, props, and example story source — or get("${entry.name}", "examples") for examples only.`,
+    hint: `Call get("${entry.name}") for full usage, props and example story source — or get("${entry.name}", "examples") for examples only.`,
   };
 }
 
@@ -187,9 +187,9 @@ export function registerDocsRegistryMcpTools(server: McpServer): number {
     {
       title: "Search design-system docs",
       description:
-        "Search the @dt design-system docs registry by name, keyword, or UI intent. Returns budgeted briefs (import line, key props, related components) with a hint for the follow-up get call.",
+        "Search the @dt design-system docs registry by name, keyword or UI intent. Returns budgeted briefs (import line, key props, related components) with a hint for the follow-up get call.",
       inputSchema: z.object({
-        query: z.string().describe("Component name, keyword, or UI intent (e.g. \"toggle\")"),
+        query: z.string().describe("Component name, keyword or UI intent (e.g. \"toggle\")"),
         limit: z.number().int().min(1).max(20).optional().describe("Max results, default 8"),
       }),
       outputSchema: z.object(docsSearchOutput),
@@ -203,7 +203,7 @@ export function registerDocsRegistryMcpTools(server: McpServer): number {
     {
       title: "Get component docs",
       description:
-        "Get the full docs-registry entry for one component: usage guidance, props, example story source, and theming tokens.",
+        "Get the full docs-registry entry for one component: usage guidance, props, example story source and theming tokens.",
       inputSchema: z.object({
         name: z.string().describe("Component name, e.g. \"Button\""),
         section: z

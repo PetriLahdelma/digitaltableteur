@@ -41,7 +41,7 @@ export function BlogHero({
     subtitle ||
     t(
       "blogHeroSubtitle",
-      "Thoughts on design, development, and everything in between"
+      "Thoughts on design, development and everything in between"
     );
 
   const isFullHeight = variant === "full";

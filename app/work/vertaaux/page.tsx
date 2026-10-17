@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "VertaaUX Case Study | Digitaltableteur",
   description:
-    "Building a real-time, predictive UX intelligence engine delivering one-click audits for usability, accessibility, and conversion.",
+    "Building a real-time, predictive UX intelligence engine delivering one-click audits for usability, accessibility and conversion.",
   openGraph: {
     title: "VertaaUX Case Study | Digitaltableteur",
     description:
-      "Building a real-time, predictive UX intelligence engine delivering one-click audits for usability, accessibility, and conversion.",
+      "Building a real-time, predictive UX intelligence engine delivering one-click audits for usability, accessibility and conversion.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VertaaUX Case Study | Digitaltableteur",
     description:
-      "Building a real-time, predictive UX intelligence engine delivering one-click audits for usability, accessibility, and conversion.",
+      "Building a real-time, predictive UX intelligence engine delivering one-click audits for usability, accessibility and conversion.",
   },
   alternates: {
     canonical: "/work/vertaaux",

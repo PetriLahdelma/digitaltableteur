@@ -85,7 +85,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               <strong>VertaaUX.ai</strong> is an automated UX intelligence
               platform that delivers comprehensive a11y- and UX-audits. Using
               15+ specialized AI agents and 91+ automated checks, it analyzes
-              usability, clarity, information architecture, and WCAG 2.2
+              usability, clarity, information architecture and WCAG 2.2
               accessibility compliance without requiring deep UX expertise.
             </p>
             <p className={styles.metaOverview}>
@@ -154,8 +154,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Most digital products fail because the experience is confusing,
-            unclear, inaccessible, or unoptimized. Traditional UX audits are
-            slow, expensive, manual, and often inconsistent.
+            unclear, inaccessible or unoptimized. Traditional UX audits are
+            slow, expensive, manual and often inconsistent.
           </Text>,
           <Text key="p2" size="s">
             VertaaUX compresses that timeline into seconds, delivering
@@ -164,7 +164,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           <Mermaid
             key="mindmap"
             title="Traditional UX audit problem map"
-            description="Traditional UX audits have four connected problem areas: time and cost, inconsistent judgement, limited scope, and recommendations that are difficult to act on."
+            description="Traditional UX audits have four connected problem areas: time and cost, inconsistent judgement, limited scope and recommendations that are difficult to act on."
             accessibleDetails={
               <List
                 size="s"
@@ -274,7 +274,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           ]}
           images={{
             src: "/images/portfolio/vertaaux/screenshot-audit-results.png",
-            alt: "VertaaUX audit results interface showing scores across usability, clarity, and accessibility dimensions",
+            alt: "VertaaUX audit results interface showing scores across usability, clarity and accessibility dimensions",
             width: 1920,
             height: 1080,
             caption:
@@ -294,7 +294,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               The engine analyzes pages across seven key dimensions: usability
               scoring based on Nielsen heuristics and cognitive load, clarity
               analysis including visual hierarchy and CTA effectiveness,
-              information architecture assessment, and full WCAG 2.2
+              information architecture assessment and full WCAG 2.2
               accessibility compliance checking.
             </Text>,
             <Text key="p2" size="s">
@@ -307,7 +307,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           ]}
           images={{
             src: "/images/portfolio/vertaaux/screenshot-detailed-analysis.png",
-            alt: "VertaaUX detailed analysis view showing individual findings with severity, selectors, and fix recommendations",
+            alt: "VertaaUX detailed analysis view showing individual findings with severity, selectors and fix recommendations",
             width: 1920,
             height: 1080,
             caption:
@@ -331,7 +331,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             </span>{" "}
             The brand identity is built on three pillars: Evidence-First (every
             finding backed by inspectable data), Quiet Confidence (the product
-            speaks through clarity and measured output), and Craft Over
+            speaks through clarity and measured output) and Craft Over
             Compliance (accessibility as a discipline, not a checklist).
           </Text>,
           <Text key="p2" size="s">
@@ -499,8 +499,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Dark-biased surfaces with neon teal (#00FFCC) as a signal color —
-            used sparingly for CTAs, scores, and key data. Never decorative.
-            Semantic score states map to Excellent, Good, Fair, and Poor with
+            used sparingly for CTAs, scores and key data. Never decorative.
+            Semantic score states map to Excellent, Good, Fair and Poor with
             WCAG AA contrast on all surfaces.
           </Text>,
         ]}
@@ -550,8 +550,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Geist Sans for everything human. Geist Mono for everything data. The
-            font pairing has clear semantic roles — Sans for prose, headings,
-            and UI labels; Mono for scores, selectors, code references, and
+            font pairing has clear semantic roles — Sans for prose, headings
+            and UI labels; Mono for scores, selectors, code references and
             technical metadata.
           </Text>,
         ]}
@@ -638,7 +638,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Neon glow as a signature effect on primary CTAs — used sparingly,
-            max one per screen. Score badges, metric cards, and issue rows
+            max one per screen. Score badges, metric cards and issue rows
             follow a consistent 8px card radius, 4px input radius system.
           </Text>,
         ]}
@@ -661,7 +661,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <figure className={styles.brandFigure}>
           <img
             src="/images/portfolio/vertaaux/brand/ui-metric-card.png"
-            alt="VertaaUX score card showing Usability Score 76/100 with confidence badge, progress bar, and Solid foundation rating"
+            alt="VertaaUX score card showing Usability Score 76/100 with confidence badge, progress bar and Solid foundation rating"
             className={styles.brandImage}
           />
           <figcaption className={styles.brandCaption}>Metric card</figcaption>
@@ -669,7 +669,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <figure className={styles.brandFigure}>
           <img
             src="/images/portfolio/vertaaux/brand/ui-issue-row.png"
-            alt="VertaaUX issue detail card showing missing alt text error with severity badges, business impact grid, and fix priority"
+            alt="VertaaUX issue detail card showing missing alt text error with severity badges, business impact grid and fix priority"
             className={styles.brandImage}
           />
           <figcaption className={styles.brandCaption}>Issue row</figcaption>
@@ -684,21 +684,21 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="s">
             The interface prioritizes clarity and speed, presenting complex UX
             data in an instantly scannable format. Users can run guest audits
-            without creating an account, or sign in to access audit history,
-            shareable reports, and team collaboration features.
+            without creating an account or sign in to access audit history,
+            shareable reports and team collaboration features.
           </Text>,
           <Text key="p2" size="s">
-            Enterprise plans include SAML SSO, multi-tenant support, API access,
+            Enterprise plans include SAML SSO, multi-tenant support, API access
             and developer documentation for integration into existing CI/CD
             pipelines and quality assurance workflows.
           </Text>,
         ]}
         images={{
           src: "/images/portfolio/vertaaux/screenshot-dashboard.png",
-          alt: "Person using VertaaUX dashboard on a laptop, showing score trends, audit history, and team activity",
+          alt: "Person using VertaaUX dashboard on a laptop, showing score trends, audit history and team activity",
           width: 2000,
           height: 1333,
-          caption: "Dashboard — audit history, scores, and team collaboration.",
+          caption: "Dashboard — audit history, scores and team collaboration.",
         }}
         imageLayout="single"
         backgroundColor="light"
@@ -762,7 +762,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             With 91+ automated checks across seven audit dimensions and WCAG 2.2
             compliance testing with less than 5% false positive rate, the
             platform democratizes UX expertise for teams without dedicated
-            specialists. Enterprise customers benefit from SAML SSO, API access,
+            specialists. Enterprise customers benefit from SAML SSO, API access
             and GDPR- compliant data handling.
           </Text>,
         ]}

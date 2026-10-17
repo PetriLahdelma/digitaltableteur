@@ -49,11 +49,11 @@ const SERVICE_AREAS = [
     id: "design",
     title: "Product & Identity Design",
     summary:
-      "Design systems, product UI, and editorial storytelling tailored for AI-native experiences.",
+      "Design systems, product UI and editorial storytelling tailored for AI-native experiences.",
     highlights: [
-      "Design systems that cover marketing, product, and ops surfaces",
-      "Rapid prototyping across web, native, and experiential canvases",
-      "Illustration, motion, and editorial support for launches",
+      "Design systems that cover marketing, product and ops surfaces",
+      "Rapid prototyping across web, native and experiential canvases",
+      "Illustration, motion and editorial support for launches",
     ],
     proofPoints: [
       "Recent brand refreshes for applied-AI startups",
@@ -64,10 +64,10 @@ const SERVICE_AREAS = [
     id: "development",
     title: "Full-Stack Development",
     summary:
-      "Senior-level engineering across React, Vite, Node, serverless edges, and design-to-code handoff.",
+      "Senior-level engineering across React, Vite, Node, serverless edges and design-to-code handoff.",
     highlights: [
       "Type-safe frontends with accessibility and performance baked in",
-      "API integration, data viz, and geospatial experiences",
+      "API integration, data viz and geospatial experiences",
       "Design-to-code pipelines with Storybook and visual regression",
     ],
     proofPoints: [
@@ -79,7 +79,7 @@ const SERVICE_AREAS = [
     id: "strategy",
     title: "Product & Brand Strategy",
     summary:
-      "Clarify positioning, craft go-to-market pitches, and build living roadmaps that guide execution.",
+      "Clarify positioning, craft go-to-market pitches and build living roadmaps that guide execution.",
     highlights: [
       "Workshops that align leadership around KPIs and creative direction",
       "Messaging architectures for fundraising or enterprise sales",
@@ -94,10 +94,10 @@ const SERVICE_AREAS = [
     id: "ai",
     title: "Applied AI & Agentic Workflows",
     summary:
-      "Proofs of concept and production deployments that pair the Vercel AI SDK, AI Gateway, and custom MCP tooling.",
+      "Proofs of concept and production deployments that pair the Vercel AI SDK, AI Gateway and custom MCP tooling.",
     highlights: [
       "Architecture reviews for GenAI copilots and chat widgets",
-      "Tool-calling, Retrieval, and MCP integration patterns",
+      "Tool-calling, Retrieval and MCP integration patterns",
       "Evaluation harnesses and guardrail experiment design",
     ],
     proofPoints: [
@@ -270,7 +270,7 @@ const staticTools: ToolMap = {
   }),
   "studio.projectShowcase": tool({
     description:
-      "Browse and display portfolio projects. Can filter by category, search by keyword, or fetch a specific project by slug. Returns rich project data for inline display.",
+      "Browse and display portfolio projects. Can filter by category, search by keyword or fetch a specific project by slug. Returns rich project data for inline display.",
     inputSchema: jsonSchema<{
       query?: string;
       category?: string;
@@ -282,7 +282,7 @@ const staticTools: ToolMap = {
         query: {
           type: "string",
           description:
-            "Free-text search across titles, descriptions, and tags.",
+            "Free-text search across titles, descriptions and tags.",
         },
         category: {
           type: "string",
@@ -390,7 +390,7 @@ const staticTools: ToolMap = {
 
   "studio.navigateTo": tool({
     description:
-      "Navigate the user to a page on digitaltableteur.com. Accepts paths (/pricing, /work, /contact) OR natural language (prices, packages, SAP Build Apps, vertaaux). Use when the user asks to navigate, open, go to, view, or show me a page, prices, packages, project, or section.",
+      "Navigate the user to a page on digitaltableteur.com. Accepts paths (/pricing, /work, /contact) OR natural language (prices, packages, SAP Build Apps, vertaaux). Use when the user asks to navigate, open, go to, view or show me a page, prices, packages, project or section.",
     inputSchema: jsonSchema<{
       destination: string;
       section?: string;
@@ -634,7 +634,7 @@ const staticTools: ToolMap = {
 
   "studio.draftFollowUp": tool({
     description:
-      "Draft a follow-up email for the visitor to review and send themselves. Never auto-sends mail — returns subject, body, and disclaimer only.",
+      "Draft a follow-up email for the visitor to review and send themselves. Never auto-sends mail — returns subject, body and disclaimer only.",
     inputSchema: jsonSchema<{
       persona: string;
       recipientName?: string;
@@ -747,7 +747,7 @@ const staticTools: ToolMap = {
 
   "studio.composeMailRequest": tool({
     description:
-      "Open the visitor's email client with a pre-filled message to mail@digitaltableteur.com. Use for 'Request a CV', 'Request a portfolio', or similar email requests — not for general contact form questions.",
+      "Open the visitor's email client with a pre-filled message to mail@digitaltableteur.com. Use for 'Request a CV', 'Request a portfolio' or similar email requests — not for general contact form questions.",
     inputSchema: jsonSchema<{
       requestType?: DonnyMailRequestType;
       query?: string;
@@ -806,7 +806,7 @@ const staticTools: ToolMap = {
 
   "studio.listExpressions": tool({
     description:
-      "List Donny's showcase avatar moods/expressions. Use when the user asks what faces, moods, or expressions Donny can show.",
+      "List Donny's showcase avatar moods/expressions. Use when the user asks what faces, moods or expressions Donny can show.",
     inputSchema: jsonSchema({
       type: "object",
       properties: {},
@@ -840,7 +840,7 @@ const staticTools: ToolMap = {
 
   "studio.showExpression": tool({
     description:
-      "Show Donny's avatar in a specific mood or expression. Use when the user asks to see a face, mood, expression, or personality demo (e.g. 'look happy', 'show me your confused face', 'what moods can you make?').",
+      "Show Donny's avatar in a specific mood or expression. Use when the user asks to see a face, mood, expression or personality demo (e.g. 'look happy', 'show me your confused face', 'what moods can you make?').",
     inputSchema: jsonSchema<{
       expression: string;
       durationMs?: number;
@@ -888,7 +888,7 @@ const staticTools: ToolMap = {
 
   "studio.vertaauxAccessibility": tool({
     description:
-      "Recommend VertaaUX when the user asks about accessibility issues, WCAG, audits, a11y tooling, screen readers, or inclusive design. Returns links to the VertaaUX case study and the live product at vertaaux.ai.",
+      "Recommend VertaaUX when the user asks about accessibility issues, WCAG, audits, a11y tooling, screen readers or inclusive design. Returns links to the VertaaUX case study and the live product at vertaaux.ai.",
     inputSchema: jsonSchema({
       type: "object",
       properties: {},
@@ -910,7 +910,7 @@ const staticTools: ToolMap = {
 
   "studio.contactCard": tool({
     description:
-      "Return the studio contact details, response windows, and meeting link.",
+      "Return the studio contact details, response windows and meeting link.",
     inputSchema: jsonSchema({
       type: "object",
       properties: {},

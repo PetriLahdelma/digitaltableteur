@@ -64,14 +64,14 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
         overview={
           <Text size="s">
             The Compass program mapped Intrum Justitia's receivable life cycle
-            and aligned teams across debt collection, debt surveillance, and
+            and aligned teams across debt collection, debt surveillance and
             legal affairs. The work combined business process mapping with deep
             user research across call centers and back-office teams.
             <br />
             <br />
             Personas and interviews highlighted major pain points: switching
             between multiple systems, client instructions stored in different
-            locations, and payment plans that were difficult to complete while
+            locations and payment plans that were difficult to complete while
             on calls. The goal was a unified workspace that guides actions and
             reduces manual work.
           </Text>
@@ -86,14 +86,14 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Service advisors described daily work split between outbound calls,
-            email shifts, and manual list management. Many tasks required
-            jumping between Rekondis, Bevis, and SLS/LARE, which made it hard to
+            email shifts and manual list management. Many tasks required
+            jumping between Rekondis, Bevis and SLS/LARE, which made it hard to
             keep context while speaking with debtors.
           </Text>,
           <Text key="p2" size="s">
             Pain points consistently pointed to fragmented instructions and the
             need for automation: payment plans were too complex to complete
-            during a call, and critical information was buried behind too many
+            during a call and critical information was buried behind too many
             clicks.
           </Text>,
         ]}
@@ -117,9 +117,9 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Compass documented the full receivable journey from sales and
-            invoicing through payment, collection, and legal affairs. The maps
+            invoicing through payment, collection and legal affairs. The maps
             surfaced the differences between B2B and B2C collections, debt
-            surveillance, and the handoffs into legal processes.
+            surveillance and the handoffs into legal processes.
           </Text>,
           <Text key="p2" size="s">
             This clarity was essential for designing a shared system that could
@@ -154,7 +154,7 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
             content: (
               <Text size="s">
                 The product direction focused on reducing paper-based tasks,
-                automating daily call lists, and guiding users with the options
+                automating daily call lists and guiding users with the options
                 each client actually allows. A unified system would keep
                 critical data visible without constant context switching.
               </Text>

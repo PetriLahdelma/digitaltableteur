@@ -196,7 +196,7 @@ export const allPosts: BlogPostMeta[] = [
   {
     title: "Workflow Tips",
     slug: "workflow-tips",
-    excerpt: "A behind-the-scenes look at how we keep projects moving.",
+    excerpt: "A behind-the-scenes look at how Digitaltableteur keeps projects moving.",
     readTime: "3 min read",
     publishedAt: "2025-05-12T00:00:00.000Z",
     seoDescription: "Workflow tips for designers working with automation and AI tooling: shared metadata, semantic design systems and closer collaboration with developers.",

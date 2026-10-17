@@ -41,7 +41,7 @@ const governanceBlueprint = {
   ],
   governance_checks: [
     "Ensure header controls are decorative with aria-hidden",
-    "Use tokenized background, border, and radius",
+    "Use tokenized background, border and radius",
     "Respect prefers-reduced-motion for hover effects",
   ],
   performance_metrics: ["interaction_success_rate", "friction_score"],

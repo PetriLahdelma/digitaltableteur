@@ -453,7 +453,7 @@ export function getWebSiteSchema(
     name: "Digitaltableteur",
     url: siteUrl,
     description:
-      "Design Systems, AI-Powered DesignOps, and product craft from Digitaltableteur",
+      "Design Systems, AI-Powered DesignOps and product craft from Digitaltableteur",
     inLanguage: ["en", "fi", "sv"],
     publisher: {
       "@type": "Organization",

@@ -32,7 +32,7 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
     {
       title: "List components",
       description:
-        "List cataloged @dt components with status, import path, usage counts, and composesWith neighbors. Filter by status (stable|beta|alpha|deprecated|all).",
+        "List cataloged @dt components with status, import path, usage counts and composesWith neighbors. Filter by status (stable|beta|alpha|deprecated|all).",
       inputSchema: z.object(listComponentsInput),
       outputSchema: z.object(listComponentsOutput),
       annotations: READ_ONLY,
@@ -45,7 +45,7 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
     {
       title: "Find component for intent",
       description:
-        "Rank @dt components for a free-text UI task (e.g. dismissible warning banner with action). Returns import, variants, composesWith, and validation commands.",
+        "Rank @dt components for a free-text UI task (e.g. dismissible warning banner with action). Returns import, variants, composesWith and validation commands.",
       inputSchema: z.object(findComponentForIntentInput),
       outputSchema: z.object(findComponentForIntentOutput),
       annotations: READ_ONLY,
@@ -58,7 +58,7 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
     {
       title: "Suggest layout pattern",
       description:
-        "Rank @dt layout patterns (CTASection, Header, HeroSection, …) for a page-level intent. Returns useWhen, avoidWhen, composesWith, and variantNotes — not a license to replace pattern chrome.",
+        "Rank @dt layout patterns (CTASection, Header, HeroSection, …) for a page-level intent. Returns useWhen, avoidWhen, composesWith and variantNotes — not a license to replace pattern chrome.",
       inputSchema: z.object(suggestPatternForLayoutInput),
       outputSchema: z.object(suggestPatternForLayoutOutput),
       annotations: READ_ONLY,

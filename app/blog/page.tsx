@@ -8,7 +8,7 @@ import {
 import { getVisiblePosts } from "./postMetadata";
 
 const blogDescription =
-  "Articles on design systems, component architecture, AI-powered workflows, and DesignOps. Expert insights on React, TypeScript, and Figma.";
+  "Articles on design systems, component architecture, AI-powered workflows and DesignOps. Expert insights on React, TypeScript and Figma.";
 
 export const metadata: Metadata = {
   title: "Blog | Digitaltableteur",

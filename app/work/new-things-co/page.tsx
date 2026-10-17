@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "New Things Co Case Study | Digitaltableteur",
   description:
-    "Comprehensive branding, design system development, and web design for New Things Co. Full-stack design solution from concept to implementation.",
+    "Comprehensive branding, design system development and web design for New Things Co. Full-stack design solution from concept to implementation.",
   openGraph: {
     title: "New Things Co Case Study | Digitaltableteur",
     description:
-      "Comprehensive branding, design system development, and web design for New Things Co. Full-stack design solution from concept to implementation.",
+      "Comprehensive branding, design system development and web design for New Things Co. Full-stack design solution from concept to implementation.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "New Things Co Case Study | Digitaltableteur",
     description:
-      "Comprehensive branding, design system development, and web design for New Things Co. Full-stack design solution from concept to implementation.",
+      "Comprehensive branding, design system development and web design for New Things Co. Full-stack design solution from concept to implementation.",
   },
   alternates: {
     canonical: "/work/new-things-co",

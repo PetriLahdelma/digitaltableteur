@@ -176,7 +176,7 @@ const Button = React.forwardRef<
         // eslint-disable-next-line no-console
         console.warn(
           "[Button] Icon-only button without an accessible name. " +
-            "Add accessibleName, accessibleNameRef, or tooltip. " +
+            "Add accessibleName, accessibleNameRef or tooltip. " +
             'Example: <Button icon="search" accessibleName="Search" />',
         );
       }

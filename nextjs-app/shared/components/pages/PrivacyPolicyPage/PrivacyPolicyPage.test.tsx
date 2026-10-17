@@ -14,7 +14,7 @@ describe("PrivacyPolicyPage", () => {
   it("renders privacy policy content", () => {
     renderWithProviders(<PrivacyPolicyPage />);
     expect(
-      screen.getByRole("heading", { name: /What data do we collect/i }),
+      screen.getByRole("heading", { name: /What data is collected/i }),
     ).toBeInTheDocument();
   });
 

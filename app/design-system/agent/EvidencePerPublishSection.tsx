@@ -150,7 +150,7 @@ export function EvidencePerPublishSection({
         </code>
         . Numbers below are derived from the committed artifacts, never
         hand-written; each raw file carries its own provenance (source commit,
-        generator, tree state), and timings live outside the stamped substance
+        generator, tree state) and timings live outside the stamped substance
         because they vary by machine.
       </Text>
 

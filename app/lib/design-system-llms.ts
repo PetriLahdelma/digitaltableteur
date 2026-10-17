@@ -51,12 +51,12 @@ export function buildDesignSystemLlmsTxt(baseUrl: string): string {
   );
 
   let body = "# Digitaltableteur design system\n\n";
-  body += `> ${entries.length} React components with machine-readable contracts: typed props, variants, keyboard and ARIA requirements, and usage rules an agent can validate against. Exported components ship in the \`@digitaltableteur/react\` npm package (restricted access).\n\n`;
+  body += `> ${entries.length} React components with machine-readable contracts: typed props, variants, keyboard and ARIA requirements and usage rules an agent can validate against. Exported components ship in the \`@digitaltableteur/react\` npm package (restricted access).\n\n`;
   body += "## How to use this file\n\n";
-  body += `- Query the MCP endpoint at ${baseUrl}/mcp (Streamable HTTP, no auth). \`search\` returns component briefs by name, keyword, or UI intent; \`get\` returns full usage, props, and example story source.\n`;
-  body += "- Before proposing JSX, call `validate_component_usage` with the snippet. It checks prop relationships, forbidden prop combinations, and deprecated props from the contracts, and names the rule it applied.\n";
+  body += `- Query the MCP endpoint at ${baseUrl}/mcp (Streamable HTTP, no auth). \`search\` returns component briefs by name, keyword or UI intent; \`get\` returns full usage, props and example story source.\n`;
+  body += "- Before proposing JSX, call `validate_component_usage` with the snippet. It checks prop relationships, forbidden prop combinations and deprecated props from the contracts and names the rule it applied.\n";
   body += "- Prefer `stable` components. `beta` is usable with care; `alpha` is internal and not exported.\n";
-  body += `- Every contract is also published in the open Design System Contract 1.0 format at ${baseUrl}/contracts/v1/<Name>.contract.json (index: ${baseUrl}/contracts/v1/index.json), with accessibility claims labelled automated, manual, or unverified and linked to evidence records. Check them with \`npx @digitaltableteur/contract-spec\`.\n`;
+  body += `- Every contract is also published in the open Design System Contract 1.0 format at ${baseUrl}/contracts/v1/<Name>.contract.json (index: ${baseUrl}/contracts/v1/index.json), with accessibility claims labelled automated, manual or unverified and linked to evidence records. Check them with \`npx @digitaltableteur/contract-spec\`.\n`;
   body += `- Human docs and the agent benchmark: ${baseUrl}/design-system/agent\n\n`;
 
   for (const group of groups) {

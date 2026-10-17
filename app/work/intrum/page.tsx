@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "Intrum Case Study | Digitaltableteur",
   description:
-    "Research-led UX redesign for Intrum Justitia operations, aligning debt collection tools, processes, and teams.",
+    "Research-led UX redesign for Intrum Justitia operations, aligning debt collection tools, processes and teams.",
   openGraph: {
     title: "Intrum Case Study | Digitaltableteur",
     description:
-      "Research-led UX redesign for Intrum Justitia operations, aligning debt collection tools, processes, and teams.",
+      "Research-led UX redesign for Intrum Justitia operations, aligning debt collection tools, processes and teams.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Intrum Case Study | Digitaltableteur",
     description:
-      "Research-led UX redesign for Intrum Justitia operations, aligning debt collection tools, processes, and teams.",
+      "Research-led UX redesign for Intrum Justitia operations, aligning debt collection tools, processes and teams.",
   },
   alternates: {
     canonical: "/work/intrum",

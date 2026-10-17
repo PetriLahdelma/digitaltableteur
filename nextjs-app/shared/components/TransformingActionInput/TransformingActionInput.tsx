@@ -53,7 +53,7 @@ const governanceBlueprint = {
     "Input → Command surface when extended controls are provided",
   ],
   governance_checks: [
-    "Validate token usage for padding, colors, and radius",
+    "Validate token usage for padding, colors and radius",
     "Ensure aria-label/aria-describedby present in input mode",
     "Keep focus-visible outline intact post-transformation",
   ],

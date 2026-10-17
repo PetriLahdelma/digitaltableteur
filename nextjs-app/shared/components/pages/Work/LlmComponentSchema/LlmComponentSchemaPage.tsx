@@ -59,7 +59,7 @@ function ContractPipelineDiagram() {
         className={styles.pipelineSvg}
       >
         <title id="pipelineDiagramTitle">
-          Contract pipeline: Governance Templates review the Component Schema, which drives the AI Coding Agent to produce a Generated Component. The CLI runs validate and drift-check, the Eval Harness scores the output, and the CI Gate either releases immutable artifacts (pass) or returns control to the Agent (fail).
+          Contract pipeline: Governance Templates review the Component Schema, which drives the AI Coding Agent to produce a Generated Component. The CLI runs validate and drift-check, the Eval Harness scores the output and the CI Gate either releases immutable artifacts (pass) or returns control to the Agent (fail).
         </title>
 
         <defs>
@@ -162,7 +162,7 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
       hero={
         <ProjectHero
           title="LLM Component Schema"
-          description="A JSON schema, CLI, and governance toolkit that makes component intent machine-readable, so AI coding agents generate to spec, not from vibes. Two published npm packages, a CI drift-and-eval pipeline, and a reusable playbook."
+          description="A JSON schema, CLI and governance toolkit that makes component intent machine-readable, so AI coding agents generate to spec, not from vibes. Two published npm packages, a CI drift-and-eval pipeline and a reusable playbook."
           image={{
             src: "/images/portfolio/llm-component-schema/hero.png",
             alt: "LLM Component Schema: brain icon flanked by JSON braces, representing machine-readable component intelligence.",
@@ -218,7 +218,7 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
               <strong>AI-generated components look right but behave wrong.</strong> They miss ARIA attributes, invent prop APIs that don&apos;t match the system, use hardcoded values instead of tokens. Code review catches some of this. Most of it ships.
             </p>
             <p className={styles.metaOverview}>
-              <strong>LLM Component Schema gives agents ground truth.</strong> Tokens define visual possibilities. Component schemas define structure, behavior, accessibility, and constraints. Generative rules define how components adapt. Storybook + CI + Code Connect enforce the contract on every push.
+              <strong>LLM Component Schema gives agents ground truth.</strong> Tokens define visual possibilities. Component schemas define structure, behavior, accessibility and constraints. Generative rules define how components adapt. Storybook + CI + Code Connect enforce the contract on every push.
             </p>
           </div>
         </div>
@@ -277,7 +277,7 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         title="What a component contract defines"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>Props &amp; variants.</span> Every prop typed with allowed values, defaults, and constraints. Two style packs: <code>base</code> (styling-agnostic) and <code>tailwind</code> (class-name-aware). Same schema shape, different <code>stylingSystem</code>.
+            <span style={{ fontWeight: 600 }}>Props &amp; variants.</span> Every prop typed with allowed values, defaults and constraints. Two style packs: <code>base</code> (styling-agnostic) and <code>tailwind</code> (class-name-aware). Same schema shape, different <code>stylingSystem</code>.
           </Text>,
           <Text key="2" size="s">
             <span style={{ fontWeight: 600 }}>Accessibility contract.</span> Required ARIA attributes, keyboard interaction patterns, focus management rules. Per variant, not per component. <span style={{ fontWeight: 600 }}>Token bindings.</span> Which tokens map to which visual properties. No ambiguity.
@@ -295,7 +295,7 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         title="Contracts + CLI"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>@petritapanilahdelma/llm-component-cli</span> ships four commands: <code>validate</code> (strict structure + JSON contract checks), <code>drift-check</code> (compare schema against component props and Storybook args), <code>migrate</code> (v1 → v2 schema upgrade), and <code>init</code> (scaffold a full component starter).
+            <span style={{ fontWeight: 600 }}>@petritapanilahdelma/llm-component-cli</span> ships four commands: <code>validate</code> (strict structure + JSON contract checks), <code>drift-check</code> (compare schema against component props and Storybook args), <code>migrate</code> (v1 → v2 schema upgrade) and <code>init</code> (scaffold a full component starter).
           </Text>,
           <Text key="2" size="s">
             Both packages versioned in lockstep via npm workspace root. Tag-release workflow publishes immutable artifacts: schema pack archive, validator output, drift report, eval report, dashboard snapshot.
@@ -332,7 +332,7 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         title="Schema evolution as reviewed process"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>Schema change-request and system-health-review templates live in-repo</span> so contract evolution is reviewed, not ambient. When a component needs a new prop or variant, the change goes through the governance template: documenting why, what breaks, and what the migration path is.
+            <span style={{ fontWeight: 600 }}>Schema change-request and system-health-review templates live in-repo</span> so contract evolution is reviewed, not ambient. When a component needs a new prop or variant, the change goes through the governance template: documenting why, what breaks and what the migration path is.
           </Text>,
           <Text key="2" size="s">
             The contract pattern here is the ancestor of per-component <code>.contract.json</code> files in client projects. This repo is where the pattern was proven before being deployed in production design systems.

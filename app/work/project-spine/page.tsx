@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "Project Spine: Agent-Native Context CLI | Digitaltableteur",
   description:
-    "An OSS CLI that compiles briefs, repos, and design tokens into structured operating context for AI coding agents.",
+    "An OSS CLI that compiles briefs, repos and design tokens into structured operating context for AI coding agents.",
   openGraph: {
     title: "Project Spine: Agent-Native Context CLI | Digitaltableteur",
     description:
-      "An OSS CLI that compiles briefs, repos, and design tokens into structured operating context for AI coding agents.",
+      "An OSS CLI that compiles briefs, repos and design tokens into structured operating context for AI coding agents.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Project Spine: Agent-Native Context CLI | Digitaltableteur",
     description:
-      "An OSS CLI that compiles briefs, repos, and design tokens into structured operating context for AI coding agents.",
+      "An OSS CLI that compiles briefs, repos and design tokens into structured operating context for AI coding agents.",
   },
   alternates: {
     canonical: "/work/project-spine",

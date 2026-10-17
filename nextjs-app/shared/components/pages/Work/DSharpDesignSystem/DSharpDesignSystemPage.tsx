@@ -249,7 +249,7 @@ function FoundationsSpecimen() {
               fontFamily={FONT_SANS}
               fontSize={14}
             >
-              Headings, body, captions, and mono share one type ramp.
+              Headings, body, captions and mono share one type ramp.
             </text>
             <text
               x={0}
@@ -304,7 +304,7 @@ function FoundationsSpecimen() {
         </g>
       </svg>
       <figcaption className={styles.specimenCaption}>
-        Six brand primitives, one type ramp, and the 14-step space scale. The
+        Six brand primitives, one type ramp and the 14-step space scale. The
         scale numbers are the same set Rhythmguard later enforces in lint, so
         the rhythm in the documentation and the rhythm in the code cannot drift
         apart.
@@ -516,7 +516,7 @@ function AtomsSpecimen() {
       <svg
         viewBox="0 0 880 600"
         role="img"
-        aria-label="DSharp Button atom: variants, sizes, and interaction states"
+        aria-label="DSharp Button atom: variants, sizes and interaction states"
         className={styles.specimenSvg}
       >
         {/* Variants row */}
@@ -678,7 +678,7 @@ function AtomsSpecimen() {
         Button is the load-bearing atom in any system: six variants, three
         sizes, four states, all driven from the same tokens. DSharp&rsquo;s
         domain semantics, <code>LayerBadge</code>, <code>QualityBadge</code>,{" "}
-        <code>ArchetypeBadge</code>, and <code>ModeSwitch</code>, sit alongside
+        <code>ArchetypeBadge</code> and <code>ModeSwitch</code>, sit alongside
         as separate atoms with closed string-literal unions rather than variants
         of a generic Badge.
       </figcaption>
@@ -722,7 +722,7 @@ function MoleculesSpecimen() {
       <svg
         viewBox="0 0 880 432"
         role="img"
-        aria-label="DSharp molecules: Alert, Tabs, FormField, and a Table composed from domain atoms"
+        aria-label="DSharp molecules: Alert, Tabs, FormField and a Table composed from domain atoms"
         className={styles.specimenSvg}
       >
         {/* Alert */}
@@ -1237,7 +1237,7 @@ function OrganismsSpecimen() {
       <svg
         viewBox="0 0 880 856"
         role="img"
-        aria-label="DSharp organisms: LayerNav, ConceptCard, AIToolbar, and the ConceptDiagram canvas"
+        aria-label="DSharp organisms: LayerNav, ConceptCard, AIToolbar and the ConceptDiagram canvas"
         className={styles.specimenSvg}
       >
         {/* LayerNav */}
@@ -1768,7 +1768,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
       hero={
         <ProjectHero
           title="DSharp Design System"
-          description="The shared UI substrate for a multi-product data-modelling platform: three packages, a contract per component, and domain semantics encoded as atoms instead of styling variants."
+          description="The shared UI substrate for a multi-product data-modelling platform: three packages, a contract per component and domain semantics encoded as atoms instead of styling variants."
           image={{
             src: HERO_LOGO,
             alt: "DSharp logo on the opal-and-ivory brand field",
@@ -1794,7 +1794,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
               <Title as="h3" unstyled className={styles.metaLabel}>Client</Title>
               <p className={styles.metaText}>
                 DSharp, a Finnish data-modelling platform shipping DSharp
-                Studio, PathFinder, and the new DSharp Scout.
+                Studio, PathFinder and the new DSharp Scout.
               </p>
             </div>
             <div className={styles.metaBlock}>
@@ -1823,7 +1823,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
               <p className={styles.metaText}>
                 Five npm packages, <code>@dsharp/tokens</code>,{" "}
                 <code>@dsharp/tokens-css</code>, <code>@dsharp/react</code>,{" "}
-                <code>@dsharp/cli</code>, and <code>@dsharp/mcp</code>, on a
+                <code>@dsharp/cli</code> and <code>@dsharp/mcp</code>, on a
                 scoped Azure Artifacts feed. The MCP server exposes component
                 contracts to AI agents; the CLI scaffolds and validates
                 components against them.
@@ -1838,7 +1838,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
               maintained since 2006; PathFinder, its data-discovery sibling; and
               DSharp Scout, the new web product under active development. Each
               product had been built by its own team, with its own components,
-              its own spacing, and its own colour tokens. Migrations between
+              its own spacing and its own colour tokens. Migrations between
               them rebuilt the same primitives. Visual polish regressed every
               release.
             </p>
@@ -1907,7 +1907,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         title="Base layer is platform-agnostic JSON"
         content={[
           <Text key="1" size="s">
-            The first commitment was that the brand, the rhythm, and the
+            The first commitment was that the brand, the rhythm and the
             semantic palettes had to exist before the first button. The tokens
             ship as W3C DTCG JSON in <code>@dsharp/tokens</code> with no runtime
             dependencies; Style Dictionary transforms them into CSS custom
@@ -1920,7 +1920,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             mark to a primitive brand token, which flattened it when the surface
             inverted in dark mode; DTCG primitives, by design, do not
             theme-switch. The fix was a dedicated semantic alias that resolves
-            per mode, and a rule that travelled with it: brand-as-decoration
+            per mode and a rule that travelled with it: brand-as-decoration
             uses primitives, brand-as-content uses semantics.
           </Text>,
         ]}
@@ -1954,19 +1954,19 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             DSharp&rsquo;s data work is organised around two closed
             vocabularies. The medallion architecture sorts every table into one
             of four layers, <code>source</code>, <code>bronze</code>,{" "}
-            <code>silver</code>, or <code>gold</code>, depending on how far it
+            <code>silver</code> or <code>gold</code>, depending on how far it
             has moved from raw ingest. Every concept is one of four archetypes,{" "}
-            <code>moment</code>, <code>party</code>, <code>description</code>,
+            <code>moment</code>, <code>party</code>, <code>description</code>
             or <code>role</code>. These show up in tables, navigation, diagrams,
-            mapping screens, and forty-odd other surfaces.
+            mapping screens and forty-odd other surfaces.
           </Text>,
           <Text key="2" size="s">
             The shortest path would have been a generic <code>Badge</code> with{" "}
-            <code>variant=&ldquo;bronze&rdquo;</code>. The longer path we took
-            was <code>LayerBadge</code>, <code>QualityBadge</code>, and{" "}
+            <code>variant=&ldquo;bronze&rdquo;</code>. The longer path taken
+            instead was <code>LayerBadge</code>, <code>QualityBadge</code>, and{" "}
             <code>ArchetypeBadge</code> as separate atoms with string-literal
             unions. The type system refuses unknown values, the validator
-            confirms every variant is covered by a story, and downstream AI
+            confirms every variant is covered by a story and downstream AI
             agents have one authoritative source for what <code>bronze</code>{" "}
             means and where it can appear.
           </Text>,
@@ -1995,10 +1995,10 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="1" size="s">
             Every component in <code>@dsharp/react</code> ships four files: the
-            React source, a JSON manifest, a markdown spec, and Storybook
+            React source, a JSON manifest, a markdown spec and Storybook
             stories. The manifest is the file built for agents. It declares the
             component&rsquo;s tier and group, its variants and slots, the
-            stories that must exist, the tokens it is allowed to reference, and
+            stories that must exist, the tokens it is allowed to reference and
             its accessibility-review state. A scaffolder generates all four
             files pre-wired; the team rule is that no component is ever
             hand-written.
@@ -2006,7 +2006,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="2" size="s">
             A validator runs on every push and on every CI build. It enforces
             parity between the CVA variant definition and the manifest, story
-            coverage for every declared variant, and a status lifecycle that
+            coverage for every declared variant and a status lifecycle that
             gates promotion: <code>beta</code> requires a Figma URL,{" "}
             <code>stable</code> requires accessibility review. The contract is
             also what made it possible to add Rhythmguard alongside the system
@@ -2040,9 +2040,9 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             Scout is a task-based workbench rather than a CRUD app, which puts
             more weight on the organism layer than on the templates above it.
             LayerNav, ConceptCard, Inspector, AIToolbar, MappingGrid,
-            ConceptDiagram, and LineageGraph carry across every modelling
+            ConceptDiagram and LineageGraph carry across every modelling
             surface because they encode the work, not the page. A modelling
-            template assembles a sidebar, a canvas, an inspector, and a toolbar;
+            template assembles a sidebar, a canvas, an inspector and a toolbar;
             a refinement template assembles the same parts in a different
             proportion.
           </Text>,
@@ -2050,9 +2050,9 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             Inside the heavier organisms, the work split is DSharp-owned visual,
             library-owned mechanics. DataTable wraps TanStack Table;
             ConceptDiagram and LineageGraph wrap <code>@xyflow/react</code>. The
-            headless libraries handle sorting, virtualisation, node dragging,
+            headless libraries handle sorting, virtualisation, node dragging
             and edge routing. DSharp owns the typography, the badge composition,
-            the archetype tints, and the focus rules. The split keeps the system
+            the archetype tints and the focus rules. The split keeps the system
             small without rebuilding solved problems.
           </Text>,
         ]}
@@ -2102,8 +2102,8 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             </a>
             , the Stylelint plugin built alongside the system, enforces the
             14-step space scale in CSS declarations and Tailwind class strings.
-            It rejects off-scale literals on padding, margin, gap, inset, and
-            transform translations, and autofixes to the nearest valid step. The
+            It rejects off-scale literals on padding, margin, gap, inset and
+            transform translations and autofixes to the nearest valid step. The
             values in the spec sheet and the values in the code stay in
             agreement.
           </Text>,
@@ -2111,7 +2111,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             Stylelint cannot reach JSX inline styles or Tailwind arbitrary
             brackets, so spacing could still leak through composition. The
             answer was a small set of layout primitives, <code>Stack</code>,{" "}
-            <code>Row</code>, <code>Grid</code>, and <code>Container</code>,
+            <code>Row</code>, <code>Grid</code> and <code>Container</code>,
             that take space-scale tokens as props rather than arbitrary numbers.
             With the lint rule on the styling side and the primitives on the
             composition side, the rhythm has no path left to drift.

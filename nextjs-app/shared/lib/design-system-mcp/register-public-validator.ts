@@ -33,7 +33,7 @@ export function registerPublicValidatorTool(server: McpServer): number {
     {
       title: "Validate component usage",
       description:
-        "Check proposed @dt JSX against the component contracts: prop relationships, forbidden prop combinations, deprecated props, and raw-UI replacements. Pass a TSX snippet, or a component name with props.",
+        "Check proposed @dt JSX against the component contracts: prop relationships, forbidden prop combinations, deprecated props and raw-UI replacements. Pass a TSX snippet or a component name with props.",
       inputSchema: z.object({
         snippet: z
           .string()
@@ -63,7 +63,7 @@ export function registerPublicValidatorTool(server: McpServer): number {
               type: "text" as const,
               text: component && !canonical
                 ? `No cataloged component named ${component}.`
-                : "Provide a snippet, or a component name with props.",
+                : "Provide a snippet or a component name with props.",
             },
           ],
           isError: true,
