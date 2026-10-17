@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   CategoryFilter,
   Container,
   EmptyState,
   Grid,
+  ProjectList,
+  type ProjectListItem,
   Section,
+  SegmentedControl,
 } from "@digitaltableteur/react";
+import Icon from "../../../Icon/Icon";
 import { WorkHero } from "../../../../patterns/WorkHero";
 import { EnhancedProjectCard } from "../../../EnhancedProjectCard";
 import { FadeIn } from "../../../../components/animations/FadeIn";
@@ -20,6 +24,19 @@ import {
   filterProjects,
   type ProjectCategory,
 } from "../../../../data/projects";
+import styles from "./workIndex.module.css";
+import { cn } from "../../../../lib/cn";
+
+/**
+ * "auto" until the visitor picks: both views render and CSS shows the list on
+ * phones and the cards from tablet up, so nothing swaps after hydration. A
+ * pick is kept in localStorage and in the URL (?view=) for back and sharing.
+ */
+type WorkView = "auto" | "cards" | "list";
+const VIEW_PARAM = "view";
+const VIEW_STORAGE_KEY = "dt-work-view";
+const isPickedView = (value: unknown): value is "cards" | "list" =>
+  value === "cards" || value === "list";
 
 export interface WorkIndexPageProps {
   /** Optional navigation component (e.g., NextWorkNav) */
@@ -38,6 +55,32 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
   const gridRef = useRef<HTMLDivElement>(null);
   const { motionPreference } = useAnimationContext();
+  const [view, setView] = useState<WorkView>("auto");
+
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get(VIEW_PARAM);
+    let stored: string | null = null;
+    try {
+      stored = window.localStorage.getItem(VIEW_STORAGE_KEY);
+    } catch {
+      // Storage blocked: stay on the per-breakpoint default.
+    }
+    const picked = isPickedView(fromUrl) ? fromUrl : stored;
+    if (isPickedView(picked)) setView(picked);
+  }, []);
+
+  const handleViewChange = (next: string) => {
+    if (!isPickedView(next)) return;
+    setView(next);
+    try {
+      window.localStorage.setItem(VIEW_STORAGE_KEY, next);
+    } catch {
+      // Storage blocked: the URL still carries the choice.
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.set(VIEW_PARAM, next);
+    window.history.replaceState(window.history.state, "", url);
+  };
 
   // Filter projects based on active category
   const filteredProjects = useMemo(() => {
@@ -101,6 +144,48 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
   }, [t]);
 
   // Handle category change
+  const listItems = useMemo<ProjectListItem[]>(() => {
+    const labelFor = (value: string) =>
+      translatedCategories.find((cat) => cat.value === value)?.label ??
+      formatCategory(value);
+    return filteredProjects.map((project) => ({
+      id: project.id,
+      title: project.title,
+      href: project.comingSoon ? undefined : `/work/${project.slug}`,
+      thumbnail: project.thumbnail,
+      client: project.client,
+      discipline: labelFor(project.category),
+      year: project.duration,
+      comingSoon: project.comingSoon,
+    }));
+  }, [filteredProjects, translatedCategories]);
+
+  const viewToggleProps = {
+    ariaLabel: t("workViewLabel", "Project view"),
+    size: "sm" as const,
+    onValueChange: handleViewChange,
+    items: [
+      {
+        value: "cards",
+        label: (
+          <span className={styles.segmentLabel}>
+            <Icon name="squares-four" size={16} />
+            {t("workViewCards", "Cards")}
+          </span>
+        ),
+      },
+      {
+        value: "list",
+        label: (
+          <span className={styles.segmentLabel}>
+            <Icon name="list" size={16} />
+            {t("workViewList", "List")}
+          </span>
+        ),
+      },
+    ],
+  };
+
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category as ProjectCategory);
   };
@@ -121,7 +206,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
             delay={0.3}
             direction="up"
             distance={20}
-            className="mb-12 tablet:mb-16"
+            className={cn(styles.controls, "mb-6 tablet:mb-12")}
           >
             <CategoryFilter
               categories={translatedCategories}
@@ -130,6 +215,29 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
               variant="pills"
               size="md"
             />
+            {/* Count and view toggle: their own row on phones, right above the
+                first project; beside the filters on desktop. */}
+            <div className={styles.toolbar}>
+              <span className={styles.count} aria-live="polite">
+                {t("workProjectCount", {
+                  count: filteredProjects.length,
+                  defaultValue: "{{count}} projects",
+                })}
+              </span>
+              {/* One control per breakpoint, both always mounted so focus
+                  stays on the pressed option when the view changes. Before
+                  a pick each shows its breakpoint's default. */}
+              <SegmentedControl
+                {...viewToggleProps}
+                value={view === "auto" ? "list" : view}
+                className={styles.phoneOnly}
+              />
+              <SegmentedControl
+                {...viewToggleProps}
+                value={view === "auto" ? "cards" : view}
+                className={styles.wideOnly}
+              />
+            </div>
           </FadeIn>
 
           {/* Project Grid — DS Grid composition (WorkGrid dissolved per the
@@ -150,7 +258,14 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
               />
             </FadeIn>
           ) : (
-            <div ref={gridRef}>
+            <>
+            <div
+              ref={gridRef}
+              className={cn(
+                view === "list" && styles.hidden,
+                view === "auto" && styles.wideOnly,
+              )}
+            >
               <Grid
                 columns={1}
                 tabletColumns={2}
@@ -192,6 +307,17 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
                 })}
               </Grid>
             </div>
+            <ProjectList
+              items={listItems}
+              ariaLabel={t("workGalleryLabel", "Project gallery")}
+              comingSoonLabel={t("workComingSoon", "Coming soon")}
+              contentLanguage="en"
+              className={cn(
+                view === "cards" && styles.hidden,
+                view === "auto" && styles.phoneOnly,
+              )}
+            />
+            </>
           )}
         </Container>
       </Section>

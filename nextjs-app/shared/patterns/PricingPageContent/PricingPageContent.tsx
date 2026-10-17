@@ -351,9 +351,15 @@ function PackageCard({
       </Text>
       <div className={styles.packageCta}>
         {"detailsHref" in pkg && pkg.detailsHref ? (
-          <Button href={pkg.detailsHref} variant="secondary" size="md">
+          <Button
+            href={pkg.detailsHref}
+            variant="secondary"
+            size="md"
+            // Name starts with the visible label (WCAG 2.5.3); a hidden
+            // ": title" span read as "Read more : title" (stray space).
+            accessibleName={`${t("pricingPackageReadMore", "Read more")}: ${title}`}
+          >
             {t("pricingPackageReadMore", "Read more")}
-            <VisuallyHidden>: {title}</VisuallyHidden>
           </Button>
         ) : null}
         <Button
