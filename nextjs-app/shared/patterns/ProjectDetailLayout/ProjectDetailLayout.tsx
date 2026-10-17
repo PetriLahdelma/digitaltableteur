@@ -82,11 +82,12 @@ export function ProjectDetailLayout({
         className={cn("min-h-screen", className)}
         data-donny-target={donnyTarget}
       >
-        {/* Navigation - sticky below header */}
+        {/* Navigation: sticky below the header from tablet up, in flow on
+            phones (see ArticleLayout for why). */}
         {nav && (
           <div
             className={cn(
-              "sticky top-20 z-30 border-b border-border flex items-center",
+              "relative z-30 border-b border-border flex items-center tablet:sticky tablet:top-20",
               styles.brandNav,
             )}
           >

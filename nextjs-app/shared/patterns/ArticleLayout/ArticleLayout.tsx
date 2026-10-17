@@ -54,11 +54,14 @@ export function ArticleLayout({
         <ReadingProgress targetRef={contentRef} />
       )}
 
-      {/* Navigation - sticky below header with yellow background */}
+      {/* Navigation in brand colours. Sticky below the header from tablet up;
+          on phones it scrolls with the page. Two stacked sticky layers (header
+          plus this bar) seam and shimmer by a device pixel during iOS momentum
+          scrolling, and the pair took 150px of an 812px viewport. */}
       {nav && (
         <div
           className={cn(
-            "sticky top-20 z-30 flex w-full items-center border-b border-border",
+            "relative z-30 flex w-full items-center border-b border-border tablet:sticky tablet:top-20",
             styles.brandNav,
           )}
         >
