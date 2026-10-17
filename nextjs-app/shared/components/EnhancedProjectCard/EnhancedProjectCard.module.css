@@ -15,6 +15,11 @@
  * as its background while hovered; ::before inherits that background (the
  * same image), is blurred to mush, saturated so the colours sing and scaled
  * up so it spills past the edges. isolation keeps it behind the cover.
+ *
+ * Every :hover rule sits inside @media (hover: hover). On a touch screen the
+ * first tap fires a synthetic hover; when that hover visibly changes the card
+ * (glow, lift, colour) iOS Safari shows it and waits for a second tap before
+ * following the link. Keyboard focus keeps the affordances everywhere.
  */
 
 .mediaFrame {
@@ -42,15 +47,26 @@
   filter: blur(var(--space-internal-32)) saturate(1.8);
 }
 
-.card:hover .mediaFrame,
 .card:focus-visible .mediaFrame {
   background-image: var(--project-card-cover, none);
 }
 
-.card:hover .mediaFrame::before,
+@media (hover: hover) {
+  .card:hover .mediaFrame {
+    background-image: var(--project-card-cover, none);
+  }
+}
+
 .card:focus-visible .mediaFrame::before {
   transform: scale(1.1);
   opacity: 0.85;
+}
+
+@media (hover: hover) {
+  .card:hover .mediaFrame::before {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
 }
 
 .media {
@@ -184,22 +200,30 @@
   cursor: default;
 }
 
-.comingSoon:hover .media {
-  box-shadow: none;
-  transform: none;
+@media (hover: hover) {
+  .comingSoon:hover .media {
+    box-shadow: none;
+    transform: none;
+  }
 }
 
-.comingSoon:hover .mediaFrame::before {
-  opacity: 0;
+@media (hover: hover) {
+  .comingSoon:hover .mediaFrame::before {
+    opacity: 0;
+  }
 }
 
-.comingSoon:hover .asset {
-  transform: scale(1.001);
+@media (hover: hover) {
+  .comingSoon:hover .asset {
+    transform: scale(1.001);
+  }
 }
 
-.comingSoon:hover .category,
-.comingSoon:hover .title {
-  color: var(--primary-text-color);
+@media (hover: hover) {
+  .comingSoon:hover .category,
+  .comingSoon:hover .title {
+    color: var(--primary-text-color);
+  }
 }
 
 .comingSoonBadge {
@@ -217,7 +241,8 @@
   border-radius: var(--radius-full);
   background: color-mix(in srgb, var(--color-surface) 82%, transparent);
   backdrop-filter: blur(4px);
-  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 12%, transparent);
+  box-shadow: 0 2px 8px
+    color-mix(in srgb, var(--color-primary) 12%, transparent);
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
@@ -227,9 +252,14 @@
   color: var(--color-text);
 }
 
-.card:hover .media,
 .card:focus-visible .media {
   transform: translateY(calc(-1 * var(--space-internal-2)));
+}
+
+@media (hover: hover) {
+  .card:hover .media {
+    transform: translateY(calc(-1 * var(--space-internal-2)));
+  }
 }
 
 .card:focus-visible .title {
@@ -238,28 +268,50 @@
   text-underline-offset: 0.18em;
 }
 
-.card:hover .asset,
 .card:focus-visible .asset {
   transform: scale(1.035);
 }
 
-.card:hover .category,
+@media (hover: hover) {
+  .card:hover .asset {
+    transform: scale(1.035);
+  }
+}
+
 .card:focus-visible .category,
-.card:hover .title,
 .card:focus-visible .title {
   color: var(--color-primary);
 }
 
-.card:hover .description,
+@media (hover: hover) {
+  .card:hover .category,
+  .card:hover .title {
+    color: var(--color-primary);
+  }
+}
+
 .card:focus-visible .description {
   color: var(--color-text);
   opacity: 1;
 }
 
-.card:hover .tags,
+@media (hover: hover) {
+  .card:hover .description {
+    color: var(--color-text);
+    opacity: 1;
+  }
+}
+
 .card:focus-visible .tags {
   transform: translateY(0);
   opacity: 1;
+}
+
+@media (hover: hover) {
+  .card:hover .tags {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .card:active .media {
@@ -309,21 +361,32 @@
     animation: none;
   }
 
-  .card:hover .asset,
   .card:focus-visible .asset,
-  .card:hover .media,
   .card:focus-visible .media,
   .card:active .media,
   .tags {
     transform: none;
   }
 
+  @media (hover: hover) {
+    .card:hover .asset,
+    .card:hover .media {
+      transform: none;
+    }
+  }
+
   /* The glow still appears, as a fade only, already at its spill size. */
 
   .mediaFrame::before,
-  .card:hover .mediaFrame::before,
   .card:focus-visible .mediaFrame::before {
     transition: opacity var(--duration-normal) linear;
     transform: scale(1.1);
+  }
+
+  @media (hover: hover) {
+    .card:hover .mediaFrame::before {
+      transition: opacity var(--duration-normal) linear;
+      transform: scale(1.1);
+    }
   }
 }

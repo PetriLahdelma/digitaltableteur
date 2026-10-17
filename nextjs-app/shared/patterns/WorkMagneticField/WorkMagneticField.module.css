@@ -93,10 +93,19 @@
 /* Override EnhancedProjectCard hover effects inside magnetic field. */
 
 .cardContainer
-  :global([data-enhanced-project-card]:hover [data-project-card-asset]),
-.cardContainer
-  :global([data-enhanced-project-card]:focus-visible [data-project-card-asset]) {
+  :global(
+    [data-enhanced-project-card]:focus-visible [data-project-card-asset]
+  ) {
   transform: none;
+}
+
+/* :hover only where hover exists; see EnhancedProjectCard.module.css. */
+
+@media (hover: hover) {
+  .cardContainer
+    :global([data-enhanced-project-card]:hover [data-project-card-asset]) {
+    transform: none;
+  }
 }
 
 /* Tags always visible. */
@@ -109,11 +118,19 @@
 /* Remove hover shadow from image container inside card. */
 
 .cardContainer
-  :global([data-enhanced-project-card]:hover [data-project-card-media]),
-.cardContainer
-  :global([data-enhanced-project-card]:focus-visible [data-project-card-media]) {
+  :global(
+    [data-enhanced-project-card]:focus-visible [data-project-card-media]
+  ) {
   box-shadow: none;
   transform: none;
+}
+
+@media (hover: hover) {
+  .cardContainer
+    :global([data-enhanced-project-card]:hover [data-project-card-media]) {
+    box-shadow: none;
+    transform: none;
+  }
 }
 
 /* Mobile view-all link */
