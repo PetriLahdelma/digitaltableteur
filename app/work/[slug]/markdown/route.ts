@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { isRoutableProject, projects } from "@/nextjs-app/shared/data/projects";
+import { isRoutableProject, projectDuration, projects } from "@/nextjs-app/shared/data/projects";
 import en from "@/nextjs-app/shared/locales/en/translation.json";
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -46,7 +46,7 @@ export async function GET(
     ...(project.description ? [`> ${project.description}`, ""] : []),
     `- Case study: ${url}`,
     ...(project.client ? [`- Client: ${project.client}`] : []),
-    ...(project.duration ? [`- Period: ${project.duration}`] : []),
+    ...(projectDuration(project) ? [`- Period: ${projectDuration(project)}`] : []),
     `- Discipline: ${CATEGORY_LABELS[project.category] ?? project.category}`,
     ...(project.tags.length ? [`- Topics: ${project.tags.join(", ")}`] : []),
     ...(project.liveUrl ? [`- Live: ${project.liveUrl}`] : []),

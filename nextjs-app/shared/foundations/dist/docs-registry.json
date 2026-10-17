@@ -13735,7 +13735,7 @@
       "group": "form",
       "tier": 2,
       "status": "beta",
-      "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
+      "description": "Single-select segmented control: a compact, pill-shaped row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation. The selection indicator slides between options.",
       "dense": "Single-select segmented control (role=radiogroup): 2-5 short options, one visibly selected; sm/md/lg; controlled value + onValueChange; roving-tabindex arrow-key nav skipping disabled segments.",
       "keywords": [
         "segmented control",

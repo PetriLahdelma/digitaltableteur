@@ -9,6 +9,7 @@ import {
   isRoutableProject,
   projects,
   type Project,
+  projectDuration,
 } from "@/nextjs-app/shared/data/projects";
 
 const baseUrl =
@@ -61,8 +62,7 @@ export const HOURLY_RATE: HourlyRate = {
   rangeEur: { min: 90, max: 150 },
   currency: "EUR",
   unit: "hour",
-  note:
-    "Typical rate is €90/h. Complex or urgent engagements may be quoted up to €150/h. Fixed packages are usually preferred for defined outcomes.",
+  note: "Typical rate is €90/h. Complex or urgent engagements may be quoted up to €150/h. Fixed packages are usually preferred for defined outcomes.",
 };
 
 export const CONSULTING_PACKAGES: ConsultingPackage[] = [
@@ -71,8 +71,7 @@ export const CONSULTING_PACKAGES: ConsultingPackage[] = [
     name: "UX Sprint",
     priceRangeEur: "€7–14k",
     duration: "2 weeks",
-    description:
-      "Prototype, eval plan and handoff your team can ship.",
+    description: "Prototype, eval plan and handoff your team can ship.",
     pricingModel: "fixed_package",
   },
   {
@@ -154,7 +153,7 @@ function toCaseStudySummary(project: Project): CaseStudySummary {
     category: project.category,
     tags: project.tags,
     client: project.client,
-    duration: project.duration,
+    duration: projectDuration(project),
     featured: project.featured,
     url: `${baseUrl}/work/${project.slug}`,
   };
@@ -164,18 +163,16 @@ export function getCaseStudies(options?: {
   featuredOnly?: boolean;
 }): CaseStudySummary[] {
   // Every summary carries a /work URL, so teasers without a page stay out.
-  let list = projects.filter(isRoutableProject).sort(
-    (a, b) => (a.order ?? 999) - (b.order ?? 999),
-  );
+  let list = projects
+    .filter(isRoutableProject)
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
   if (options?.featuredOnly) {
     list = list.filter((p) => p.featured);
   }
   return list.map(toCaseStudySummary);
 }
 
-export function getCaseStudyBySlug(
-  slug: string,
-): CaseStudySummary | undefined {
+export function getCaseStudyBySlug(slug: string): CaseStudySummary | undefined {
   const project = projects.find((p) => p.slug === slug);
   return isRoutableProject(project) ? toCaseStudySummary(project) : undefined;
 }

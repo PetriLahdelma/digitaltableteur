@@ -12,6 +12,7 @@ import {
   sortedProjects,
   isRoutableProject,
   resolveProjectNavigationPath,
+  projectDuration,
 } from "@/nextjs-app/shared/data/projects";
 import { resolveDonnyNavigationPath } from "@/nextjs-app/shared/data/donny-navigation";
 import {
@@ -281,8 +282,7 @@ const staticTools: ToolMap = {
       properties: {
         query: {
           type: "string",
-          description:
-            "Free-text search across titles, descriptions and tags.",
+          description: "Free-text search across titles, descriptions and tags.",
         },
         category: {
           type: "string",
@@ -323,7 +323,15 @@ const staticTools: ToolMap = {
           type: "array",
           items: {
             type: "object",
-            required: ["title", "slug", "description", "thumbnail", "category", "tags", "url"],
+            required: [
+              "title",
+              "slug",
+              "description",
+              "thumbnail",
+              "category",
+              "tags",
+              "url",
+            ],
             properties: {
               title: { type: "string" },
               slug: { type: "string" },
@@ -379,7 +387,7 @@ const staticTools: ToolMap = {
           category: p.category.replace("-", " "),
           tags: p.tags,
           client: p.client,
-          duration: p.duration,
+          duration: projectDuration(p),
           liveUrl: p.liveUrl,
           url: `/work/${p.slug}`,
         })),
@@ -441,7 +449,8 @@ const staticTools: ToolMap = {
       const safePath = isInternal ? pathPart || "/" : "/";
       // Keep the resolver's anchor: "services" resolves to "/#services", and
       // stripping it sent visitors nowhere (navigated: false on "/").
-      const anchor = input?.section || (isInternal ? resolvedAnchor : undefined);
+      const anchor =
+        input?.section || (isInternal ? resolvedAnchor : undefined);
       const url = anchor ? `${safePath}#${anchor}` : safePath;
       return { navigated: isInternal && url !== "/", url };
     },
@@ -500,11 +509,13 @@ const staticTools: ToolMap = {
       properties: {
         problem: {
           type: "string",
-          description: "Visitor need in their words (design system, tokens, AI DesignOps, etc.).",
+          description:
+            "Visitor need in their words (design system, tokens, AI DesignOps, etc.).",
         },
         budget: {
           type: "string",
-          description: "Budget band or constraints, e.g. 'around 12k' or 'tight'.",
+          description:
+            "Budget band or constraints, e.g. 'around 12k' or 'tight'.",
         },
       },
       additionalProperties: false,
@@ -706,7 +717,8 @@ const staticTools: ToolMap = {
         email: { type: "string" },
         notes: {
           type: "string",
-          description: "Short context for the booking (need, budget band, timeline).",
+          description:
+            "Short context for the booking (need, budget band, timeline).",
         },
       },
       additionalProperties: false,

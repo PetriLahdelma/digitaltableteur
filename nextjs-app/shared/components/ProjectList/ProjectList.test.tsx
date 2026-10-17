@@ -73,10 +73,24 @@ describe("ProjectList", () => {
   it("marks titles with the content language when given", () => {
     render(<ProjectList items={items} ariaLabel="Projekti" contentLanguage="en" />);
     expect(screen.getByText("Rhythmguard")).toHaveAttribute("lang", "en");
+    expect(screen.getByText("City of Helsinki, 2020–2022")).toHaveAttribute("lang", "en");
+    // Labels and translated disciplines take the page language.
+    expect(screen.getByText("Tools and OSS, Dec 2025 – Present")).not.toHaveAttribute("lang");
   });
 
   it("has no axe violations", async () => {
     const { container } = render(<ProjectList items={items} ariaLabel="Projects" />);
     expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("keeps a client label in the page language", () => {
+    render(
+      <ProjectList
+        items={[{ id: "rg", title: "Rhythmguard", client: "Oma projekti", clientIsLabel: true, year: "2025" }]}
+        ariaLabel="Projektit"
+        contentLanguage="en"
+      />,
+    );
+    expect(screen.getByText("Oma projekti, 2025")).not.toHaveAttribute("lang");
   });
 });

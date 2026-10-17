@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.32 - 2026-10-17
+
+- `SegmentedControl`: pill-shaped (`radius-full`), matching the filter
+  chips, and the selected background is now an indicator that slides
+  between options. The selected segment paints its own background until the
+  indicator is measured, so server rendering and the first paint always show
+  the selection. No slide under reduced motion; forced colours keep the
+  Highlight outline. Hover colour only applies where hover exists. No API
+  change.
+- `ProjectList`: new optional `clientIsLabel` on items, for a client that is
+  a UI label in the page language ("Self-initiated", "Various") rather than
+  a name. Client names keep `contentLanguage`; labels and the translated
+  discipline fallback take the page language. Additive.
+
 ## 0.1.31 - 2026-10-17
 
 - New `ProjectList` (beta): a compact project index, one row per project,

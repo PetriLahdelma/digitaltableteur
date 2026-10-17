@@ -21,6 +21,11 @@ export interface ProjectListItem {
   thumbnail?: string;
   /** Client or organisation, as written in the project record. */
   client?: string;
+  /**
+   * `client` is a UI label in the page language ("Self-initiated", "Various")
+   * rather than a name, so it does not take `contentLanguage`.
+   */
+  clientIsLabel?: boolean;
   /** Discipline or category label (for example "Design systems"). */
   discipline?: string;
   /** Period, as written in the project record (for example "2020–2022"). */
@@ -77,6 +82,10 @@ export function ProjectList({
             .filter(Boolean)
             .join(", ");
           const linked = Boolean(item.href) && !item.comingSoon;
+          // A client name is content (contentLanguage); a label or the
+          // translated discipline fallback is in the page language.
+          const clientLang =
+            item.client && !item.clientIsLabel ? contentLanguage : undefined;
           const cells = (
             <>
               <span className={styles.thumb}>
@@ -89,12 +98,14 @@ export function ProjectList({
                   {item.title}
                 </span>
                 {meta && (
-                  <span className={styles.meta} lang={contentLanguage}>
+                  // The discipline label is translated, so the line takes
+                  // the content language only when it shows the client.
+                  <span className={styles.meta} lang={clientLang}>
                     {meta}
                   </span>
                 )}
               </span>
-              <span className={styles.client} lang={contentLanguage}>
+              <span className={styles.client} lang={clientLang}>
                 {item.client}
               </span>
               <span className={styles.discipline}>{item.discipline}</span>

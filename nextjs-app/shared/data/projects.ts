@@ -4,6 +4,8 @@
  * Future: Can be migrated to Sanity CMS by replacing this with GROQ queries.
  */
 
+import { formatPeriod, type ProjectPeriod } from "../lib/formatPeriod";
+
 export type ProjectCategory =
   | "design-systems"
   | "ux-design"
@@ -41,8 +43,13 @@ export interface Project {
   liveUrl?: string;
   /** Client or organization name */
   client?: string;
-  /** Project duration (e.g. "2022–2024") */
-  duration?: string;
+  /**
+   * Structured period ("YYYY-MM" or "YYYY"; no `end` while ongoing),
+   * formatted per locale by formatPeriod. The work index list reads this.
+   */
+  period?: ProjectPeriod;
+  /** When there is no named client: the owner's own product, or many clients. */
+  clientNote?: "self-initiated" | "various";
   /** Teaser entry: renders a non-clickable card with a coming-soon badge (no detail route) */
   comingSoon?: boolean;
   /**
@@ -82,7 +89,8 @@ export const projects: Project[] = [
     ],
     featured: true,
     order: 1,
-    duration: "2026–Present",
+    period: { start: "2026-04" },
+    client: "DSharp",
   },
   {
     id: "vr-design-system",
@@ -96,7 +104,7 @@ export const projects: Project[] = [
     featured: false,
     order: 1,
     client: "VR Group",
-    duration: "2026",
+    period: { start: "2026-06" },
     comingSoon: true,
   },
   {
@@ -111,7 +119,7 @@ export const projects: Project[] = [
     featured: false,
     order: 1,
     client: "Process Genius",
-    duration: "2026",
+    period: { start: "2026-09" },
     comingSoon: true,
   },
   {
@@ -127,7 +135,7 @@ export const projects: Project[] = [
     order: 8,
     liveUrl: "https://hds.hel.fi/",
     client: "City of Helsinki",
-    duration: "2020–2022",
+    period: { start: "2020-01", end: "2022-03" },
   },
   {
     id: "new-things-co",
@@ -141,7 +149,7 @@ export const projects: Project[] = [
     featured: true,
     order: 10,
     client: "New Things Co",
-    duration: "2019",
+    period: { start: "2017-09", end: "2018" },
   },
   {
     id: "garage-junction",
@@ -163,7 +171,8 @@ export const projects: Project[] = [
     tags: ["Web Design", "Animation", "Branding"],
     featured: false,
     order: 9,
-    duration: "2023",
+    period: { start: "2018-10", end: "2018-10" },
+    client: "Merikerho",
   },
   {
     id: "illustrations",
@@ -176,7 +185,8 @@ export const projects: Project[] = [
     tags: ["Illustration", "Character Design", "Editorial"],
     featured: false,
     order: 11,
-    duration: "2016–Present",
+    period: { start: "2016" },
+    clientNote: "various",
   },
   {
     id: "sap-build-apps-design-system",
@@ -192,7 +202,7 @@ export const projects: Project[] = [
     liveUrl:
       "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
     client: "SAP",
-    duration: "Mar 2022 – Feb 2026",
+    period: { start: "2022-03", end: "2026-02" },
   },
   {
     id: "home-remote",
@@ -206,7 +216,8 @@ export const projects: Project[] = [
     tags: ["Product Design", "macOS App", "Brand Identity", "3D Illustration"],
     featured: false,
     order: 0,
-    duration: "Aug 2026",
+    period: { start: "2026-07", end: "2026-08" },
+    clientNote: "self-initiated",
   },
   {
     id: "ring-stats",
@@ -220,7 +231,8 @@ export const projects: Project[] = [
     tags: ["Product Design", "macOS App", "Health Data", "Accessibility"],
     featured: false,
     order: -1,
-    duration: "Sep 2026",
+    period: { start: "2026-09", end: "2026-09" },
+    clientNote: "self-initiated",
   },
   {
     id: "precedent",
@@ -235,6 +247,8 @@ export const projects: Project[] = [
     featured: false,
     order: 2,
     comingSoon: true,
+    clientNote: "self-initiated",
+    period: { start: "2026-08" },
   },
   {
     id: "knobsmith-audio",
@@ -253,7 +267,8 @@ export const projects: Project[] = [
     featured: true,
     order: 3,
     liveUrl: "https://knobsmithaudio.com",
-    duration: "2025–Present",
+    period: { start: "2025-12" },
+    clientNote: "self-initiated",
   },
   {
     id: "vertaaux",
@@ -267,7 +282,8 @@ export const projects: Project[] = [
     featured: false,
     order: 4,
     liveUrl: "https://vertaaux.ai",
-    duration: "Dec 2025 – Present",
+    period: { start: "2025-12" },
+    clientNote: "self-initiated",
   },
   {
     id: "finnish-transport-agency",
@@ -281,7 +297,7 @@ export const projects: Project[] = [
     featured: false,
     order: 12,
     client: "Finnish Transport Agency",
-    duration: "2018",
+    period: { start: "2009", end: "2010" },
   },
   {
     id: "rhythmguard",
@@ -295,7 +311,8 @@ export const projects: Project[] = [
     featured: true,
     order: 5,
     liveUrl: "https://www.npmjs.com/package/stylelint-plugin-rhythmguard",
-    duration: "Dec 2025 – Present",
+    period: { start: "2026-02" },
+    clientNote: "self-initiated",
   },
   {
     id: "project-spine",
@@ -309,7 +326,8 @@ export const projects: Project[] = [
     featured: true,
     order: 2,
     liveUrl: "https://projectspine.dev",
-    duration: "Apr 2026",
+    period: { start: "2026-04" },
+    clientNote: "self-initiated",
   },
   {
     id: "llm-component-schema",
@@ -323,7 +341,8 @@ export const projects: Project[] = [
     featured: false,
     order: 6,
     liveUrl: "https://petrilahdelma.gumroad.com/l/mcqoq",
-    duration: "Dec 2025 – Present",
+    period: { start: "2025-12" },
+    clientNote: "self-initiated",
     unlisted: true,
   },
 ];
@@ -376,6 +395,16 @@ export function filterProjects(
 /**
  * Get project by slug
  */
+/**
+ * English period text ("Mar 2022 – Feb 2026", "Apr 2026 – Present") for
+ * plain-text surfaces (llms, Markdown, Donny). The UI formats per locale.
+ */
+export function projectDuration(project: Pick<Project, "period">): string | undefined {
+  return project.period
+    ? formatPeriod(project.period, "en", (start) => `${start} – Present`)
+    : undefined;
+}
+
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }

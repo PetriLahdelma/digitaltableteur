@@ -4,7 +4,7 @@ import {
   type ConsultingPackage,
   type ConsultingFitResult,
 } from "@/nextjs-app/shared/data/consulting-catalog";
-import { projects, type Project } from "@/nextjs-app/shared/data/projects";
+import { projectDuration, projects, type Project } from "@/nextjs-app/shared/data/projects";
 import { DONNY_PACKAGE_PROJECT_TYPE } from "@/nextjs-app/shared/components/DonnyActionProvider/donnyContactPrefill";
 
 export type DonnyLeadPersona = "client" | "recruiter" | "other";
@@ -74,7 +74,7 @@ function toProjectCard(project: Project): DonnyLeadProjectCard {
     category: project.category.replace("-", " "),
     tags: project.tags,
     client: project.client,
-    duration: project.duration,
+    duration: projectDuration(project),
     liveUrl: project.liveUrl,
     url: `/work/${project.slug}`,
   };

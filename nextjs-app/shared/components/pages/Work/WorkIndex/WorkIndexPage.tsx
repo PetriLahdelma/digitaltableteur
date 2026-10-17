@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useRef, useEffect } from "react";
+import { flushSync } from "react-dom";
 import { useTranslation } from "react-i18next";
 import {
   CategoryFilter,
@@ -25,6 +26,7 @@ import {
   type ProjectCategory,
 } from "../../../../data/projects";
 import styles from "./workIndex.module.css";
+import { formatPeriod } from "../../../../lib/formatPeriod";
 import { cn } from "../../../../lib/cn";
 
 /**
@@ -51,7 +53,8 @@ const formatCategory = (category: string): string =>
     .join(" ");
 
 export function WorkIndexPage({ nav }: WorkIndexPageProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = (i18n.resolvedLanguage ?? i18n.language ?? "en").split("-")[0] ?? "en";
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
   const gridRef = useRef<HTMLDivElement>(null);
   const { motionPreference } = useAnimationContext();
@@ -71,7 +74,14 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
 
   const handleViewChange = (next: string) => {
     if (!isPickedView(next)) return;
-    setView(next);
+    // Cross-fade the swap between cards and list where the browser supports
+    // view transitions; reduced motion and older browsers swap at once.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion && typeof document.startViewTransition === "function") {
+      document.startViewTransition(() => flushSync(() => setView(next)));
+    } else {
+      setView(next);
+    }
     try {
       window.localStorage.setItem(VIEW_STORAGE_KEY, next);
     } catch {
@@ -153,16 +163,27 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
       title: project.title,
       href: project.comingSoon ? undefined : `/work/${project.slug}`,
       thumbnail: project.thumbnail,
-      client: project.client,
+      client:
+        project.client ??
+        (project.clientNote === "self-initiated"
+          ? t("workClientSelfInitiated", "Self-initiated")
+          : project.clientNote === "various"
+            ? t("workClientVarious", "Various")
+            : undefined),
+      clientIsLabel: !project.client && Boolean(project.clientNote),
       discipline: labelFor(project.category),
-      year: project.duration,
+      year: project.period
+        ? formatPeriod(project.period, locale, (start) =>
+            t("workPeriodOngoing", { start, defaultValue: "{{start}} – Present" }),
+          )
+        : undefined,
       comingSoon: project.comingSoon,
     }));
-  }, [filteredProjects, translatedCategories]);
+  }, [filteredProjects, translatedCategories, t, locale]);
 
   const viewToggleProps = {
     ariaLabel: t("workViewLabel", "Project view"),
-    size: "sm" as const,
+    size: "md" as const,
     onValueChange: handleViewChange,
     items: [
       {

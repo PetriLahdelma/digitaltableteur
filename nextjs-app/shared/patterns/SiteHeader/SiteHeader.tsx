@@ -257,7 +257,10 @@ export function SiteHeader({
 
           {/* Mobile Menu Button */}
           <IconButton
-            icon={<List weight="bold" />}
+            // 32px glyph (the scale step above Button's 26px phone default):
+            // Phosphor's List draws in the middle ~70% of its box, so at 26px
+            // the lines read as an 18px icon.
+            icon={<List weight="bold" className="size-8" />}
             label={t("navMenuOpen", "Open navigation menu")}
             onClick={openMobileMenu}
             className="lg:hidden"

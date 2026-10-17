@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { cva } from "class-variance-authority";
 import { cn } from "../../lib/cn";
 import styles from "./SegmentedControl.module.css";
@@ -48,6 +48,13 @@ export interface SegmentedControlProps {
 export const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedControlProps>(
   ({ items, value, onValueChange, size = "md", ariaLabel, className }, ref) => {
     const segmentRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    // Sliding selection indicator, measured from the selected segment. Until
+    // it is measured (server render, first paint) the selected segment paints
+    // its own background, so the control never renders without a selection.
+    const thumbRef = useRef<HTMLSpanElement>(null);
+    // "placed" on the first measure, "moving" a frame later: the slide only
+    // animates changes, never the first placement after hydration.
+    const [thumbState, setThumbState] = useState<"placed" | "moving" | null>(null);
 
     const enabled = items.reduce<number[]>((acc, item, i) => {
       if (!item.disabled) acc.push(i);
@@ -57,6 +64,32 @@ export const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedContro
     // Exactly one segment is tabbable (the selection, else the first enabled).
     const selectedIndex = items.findIndex((item) => item.value === value && !item.disabled);
     const tabbableIndex = selectedIndex >= 0 ? selectedIndex : (enabled[0] ?? -1);
+
+    useLayoutEffect(() => {
+      const index = items.findIndex((item) => item.value === value);
+      const segment = segmentRefs.current[index];
+      const thumb = thumbRef.current;
+      if (!segment || !thumb) {
+        setThumbState(null);
+        return;
+      }
+      const measure = () => {
+        thumb.style.setProperty("--thumb-x", `${segment.offsetLeft}px`);
+        thumb.style.setProperty("--thumb-w", `${segment.offsetWidth}px`);
+      };
+      measure();
+      setThumbState((current) => current ?? "placed");
+      if (typeof ResizeObserver === "undefined") return;
+      const observer = new ResizeObserver(measure);
+      observer.observe(segment);
+      return () => observer.disconnect();
+    }, [items, value]);
+
+    useLayoutEffect(() => {
+      if (thumbState !== "placed") return;
+      const frame = requestAnimationFrame(() => setThumbState("moving"));
+      return () => cancelAnimationFrame(frame);
+    }, [thumbState]);
 
     const select = (index: number) => {
       const item = items[index];
@@ -97,7 +130,9 @@ export const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedContro
         role="radiogroup"
         aria-label={ariaLabel}
         className={cn(segmentedControlVariants({ size }), className)}
+        data-thumb={thumbState ?? undefined}
       >
+        <span ref={thumbRef} aria-hidden="true" className={styles.thumb} />
         {items.map((item, i) => {
           const selected = item.value === value;
           return (

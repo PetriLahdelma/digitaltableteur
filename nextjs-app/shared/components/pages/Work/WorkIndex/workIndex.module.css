@@ -49,14 +49,23 @@
   }
 }
 
+/* Desktop: toggle beside the filters, the same height as a chip. The filter
+   row pads its chips by --space-internal-4; the toolbar matches that and
+   stretches the toggle, so tops, bottoms and centres line up. */
+
 @media (width >= 1024px) {
   .controls {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
   }
 
   .toolbar {
+    padding-block: var(--space-internal-4);
     flex: none;
+  }
+
+  .toolbar > [role="radiogroup"] {
+    align-self: stretch;
   }
 }

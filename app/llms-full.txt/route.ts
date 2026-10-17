@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { getVisiblePosts } from "../blog/postMetadata";
 import { buildPostMarkdown } from "@/app/lib/postMarkdown";
-import { projects } from "@/nextjs-app/shared/data/projects";
+import { projectDuration, projects } from "@/nextjs-app/shared/data/projects";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 import type { PseoCatalogItem } from "@/lib/pseo/types";
 import {
@@ -107,7 +107,8 @@ export async function GET() {
     if (project.description) body += `${project.description}\n`;
     body += `- Category: ${project.category}\n`;
     body += `- Tags: ${project.tags.join(", ")}\n`;
-    if (project.duration) body += `- Duration: ${project.duration}\n`;
+    const duration = projectDuration(project);
+    if (duration) body += `- Duration: ${duration}\n`;
     if (project.client) body += `- Client: ${project.client}\n`;
     if (project.liveUrl) body += `- Live: ${project.liveUrl}\n`;
     // Coming-soon teasers have no page yet; never print a link that 404s.

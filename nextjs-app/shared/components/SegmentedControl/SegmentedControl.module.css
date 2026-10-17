@@ -1,15 +1,46 @@
+/* Pill-shaped, like the filter chips it usually sits beside. */
+
 .root {
   display: inline-flex;
+  position: relative;
   padding: var(--space-internal-2);
   gap: var(--space-internal-2);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   background-color: color-mix(in srgb, var(--color-muted) 14%, transparent);
+  isolation: isolate;
+}
+
+/* Sliding selection indicator, placed under the selected segment from its
+   measured offset (--thumb-x, --thumb-w set by the component). */
+
+.thumb {
+  position: absolute;
+  inset-block: var(--space-internal-2);
+  z-index: -1;
+  inline-size: var(--thumb-w, 0);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--color-text) 16%, transparent);
+  pointer-events: none;
+  transform: translateX(var(--thumb-x, 0));
+  opacity: 0;
+  inset-inline-start: 0;
+}
+
+.root[data-thumb] .thumb {
+  opacity: 1;
+}
+
+.root[data-thumb="moving"] .thumb {
+  transition:
+    transform var(--duration-normal) var(--ease-out-quart),
+    inline-size var(--duration-normal) var(--ease-out-quart);
 }
 
 .segment {
   padding-block: var(--space-internal-2);
   border: 0;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   background-color: transparent;
   font-family: var(--font-body);
   font-weight: 500;
@@ -27,6 +58,13 @@
   background-color: var(--color-surface);
   box-shadow: 0 1px 2px color-mix(in srgb, var(--color-text) 16%, transparent);
   color: var(--color-text);
+}
+
+/* Once the indicator is placed it carries the selected background. */
+
+.root[data-thumb] .segment[data-selected] {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .segment:disabled {
@@ -59,12 +97,15 @@
   font-size: var(--font-size-text-m);
 }
 
-.segment:hover:not([data-selected], :disabled) {
-  color: var(--color-text);
+@media (hover: hover) {
+  .segment:hover:not([data-selected], :disabled) {
+    color: var(--color-text);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .segment {
+  .segment,
+  .root[data-thumb="moving"] .thumb {
     transition: none;
   }
 }
@@ -77,5 +118,9 @@
   .segment[data-selected] {
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+
+  .thumb {
+    display: none;
   }
 }
