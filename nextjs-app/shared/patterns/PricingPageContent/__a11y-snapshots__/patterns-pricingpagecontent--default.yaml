@@ -68,8 +68,9 @@
       - paragraph: Quoted per workshop
       - paragraph: 2 days, with prep and analysis
       - paragraph: Prep work, two facilitated days and a written analysis. The price depends on group size, travel and remote or on-site delivery.
-      - 'link "Read more : Design System Workshop"':
+      - 'link "Read more: Design System Workshop"':
         - /url: /engagements/design-system-workshop
+        - text: Read more
       - link "Ask for a workshop quote":
         - /url: /contact?mode=message&package=workshop
     - listitem:
@@ -77,8 +78,9 @@
       - paragraph: €7–14k
       - paragraph: 2 weeks
       - paragraph: A working prototype of the key flow, an eval plan to test it with users and a handoff your team can ship.
-      - 'link "Read more : UX Sprint/DS Audit"':
+      - 'link "Read more: UX Sprint/DS Audit"':
         - /url: /engagements/design-system-audit
+        - text: Read more
       - link "Book UX Sprint":
         - /url: /contact?mode=book&package=ux-sprint
     - listitem:
@@ -86,8 +88,9 @@
       - paragraph: €11–17k
       - paragraph: 3 weeks
       - paragraph: Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.
-      - 'link "Read more : AI-Ready Ops"':
+      - 'link "Read more: AI-Ready Ops"':
         - /url: /engagements/ai-ready-ops
+        - text: Read more
       - link "Book AI-Ready Ops":
         - /url: /contact?mode=book&package=ai-ready-designops
     - listitem:
@@ -95,8 +98,9 @@
       - paragraph: €14–20k
       - paragraph: 4 weeks
       - paragraph: Audit, tokens, core components, Storybook and an adoption playbook.
-      - 'link "Read more : Design System Lift-Off"':
+      - 'link "Read more: Design System Lift-Off"':
         - /url: /engagements/design-system-lift-off
+        - text: Read more
       - link "Book Design System Lift-Off":
         - /url: /contact?mode=book&package=design-system-lift-off
   - heading "AI agents and automation" [level=3]
@@ -107,8 +111,9 @@
       - paragraph: €5–8k / mo
       - paragraph: Ongoing
       - paragraph: A supervised agent that triages components, keeps tokens honest and drafts release notes your team approves.
-      - 'link "Read more : DesignOps Pilot"':
+      - 'link "Read more: DesignOps Pilot"':
         - /url: /engagements/designops-pilot
+        - text: Read more
       - link "Book DesignOps Pilot":
         - /url: /contact?mode=book&package=designops-copilot
     - listitem:
@@ -116,8 +121,9 @@
       - paragraph: €9–15k
       - paragraph: 3 weeks
       - paragraph: Scope one workflow, ship a working agent with guardrails, evals and a handoff your team can run.
-      - 'link "Read more : Agent Pilot"':
+      - 'link "Read more: Agent Pilot"':
         - /url: /engagements/agent-pilot
+        - text: Read more
       - link "Book Agent Pilot":
         - /url: /contact?mode=book&package=agent-pilot
     - listitem:
@@ -125,8 +131,9 @@
       - paragraph: €12–18k
       - paragraph: 4 weeks
       - paragraph: Component contracts, an MCP server and an eval benchmark, so coding agents build with your design system instead of around it.
-      - 'link "Read more : Design System MCP"':
+      - 'link "Read more: Design System MCP"':
         - /url: /engagements/design-system-mcp
+        - text: Read more
       - link "Book Design System MCP":
         - /url: /contact?mode=book&package=design-system-mcp
     - listitem:
@@ -134,8 +141,9 @@
       - paragraph: €20–32k
       - paragraph: 6 weeks
       - paragraph: A crew of task-specific agents wired into your stack, with monitoring, fallbacks and a runbook your team owns.
-      - 'link "Read more : Agent Workforce"':
+      - 'link "Read more: Agent Workforce"':
         - /url: /engagements/agent-workforce
+        - text: Read more
       - link "Book Agent Workforce":
         - /url: /contact?mode=book&package=agent-workforce
   - link "Book a call":
