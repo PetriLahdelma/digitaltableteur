@@ -26,10 +26,10 @@
     "styled-components": "^6.5.3"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^6.0.0",
+    "@sanity/eslint-config-studio": "^7.0.0",
     "@types/react": "^19.3.0",
     "eslint": "^9.39",
-    "prettier": "^3.9.9",
+    "prettier": "^3.9.10",
     "typescript": "^6.0.3"
   },
   "prettier": {
