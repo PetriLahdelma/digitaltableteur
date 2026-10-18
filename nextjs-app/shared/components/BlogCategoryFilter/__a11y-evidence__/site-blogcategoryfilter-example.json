@@ -1,0 +1,16 @@
+{
+  "storyId": "site-blogcategoryfilter-example",
+  "mode": "light",
+  "sourceSHA": "28d484790ccf31daa78748cb89b8a7ae95a0e2b5",
+  "capturedAt": "2026-10-18T10:24:53.554Z",
+  "runner": "local-2026-10-18",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
