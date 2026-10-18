@@ -62,6 +62,7 @@
 - region "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k.":
   - heading "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k." [level=2]
   - heading "Packages" [level=3]
+  - paragraph: "Next available start: Q1 2027"
   - list "Packages":
     - listitem:
       - heading "Design System Workshop" [level=3]
@@ -74,12 +75,22 @@
       - link "Ask for a workshop quote":
         - /url: /contact?mode=message&package=workshop
     - listitem:
-      - heading "UX Sprint/DS Audit" [level=3]
+      - heading "Design System Audit" [level=3]
+      - paragraph: €7–14k
+      - paragraph: 2 weeks
+      - paragraph: An inventory, severity-ranked findings and a 90-day roadmap for the design system you already have.
+      - 'link "Read more: Design System Audit"':
+        - /url: /engagements/design-system-audit
+        - text: Read more
+      - link "Book a Design System Audit":
+        - /url: /contact?mode=book&package=design-system-audit
+    - listitem:
+      - heading "UX Sprint" [level=3]
       - paragraph: €7–14k
       - paragraph: 2 weeks
       - paragraph: A working prototype of the key flow, an eval plan to test it with users and a handoff your team can ship.
-      - 'link "Read more: UX Sprint/DS Audit"':
-        - /url: /engagements/design-system-audit
+      - 'link "Read more: UX Sprint"':
+        - /url: /engagements/ux-sprint
         - text: Read more
       - link "Book UX Sprint":
         - /url: /contact?mode=book&package=ux-sprint
@@ -103,9 +114,19 @@
         - text: Read more
       - link "Book Design System Lift-Off":
         - /url: /contact?mode=book&package=design-system-lift-off
-  - heading "AI agents and automation" [level=3]
+    - listitem:
+      - heading "Embedded partnership" [level=3]
+      - paragraph: 90 €/h
+      - paragraph: 6 or 12 months
+      - paragraph: A senior practitioner embedded in your team to run the design system and DesignOps over months, not weeks.
+      - 'link "Read more: Embedded partnership"':
+        - /url: /engagements/embedded-partnership
+        - text: Read more
+      - link "Book a call about a partnership":
+        - /url: /contact?mode=book&package=embedded-partnership
+  - heading "Agent track" [level=3]
   - paragraph: Autonomous DesignOps packages. Agents that do the work, supervised by your team.
-  - list "AI agents and automation":
+  - list "Agent track":
     - listitem:
       - heading "DesignOps Pilot" [level=3]
       - paragraph: €5–8k / mo
@@ -172,8 +193,13 @@
     - region "Who is the contracting party?":
       - paragraph: Digitaltableteur, a Finnish sole trader registered in the Trade Register. Business ID 2264455-2, VAT ID FI22644552, Hämeentie 8 C 26, 00530 Helsinki.
     - button "Is Digitaltableteur a verified supplier?"
+    - button "Who does the work?"
     - button "How is invoicing handled?"
+    - button "Do prices include VAT?"
+    - button "Is the work insured?"
     - button "Can a client NDA or framework agreement be used?"
+    - button "How is personal data handled?"
+    - button "Where does the work happen?"
     - button "Who owns the work?"
     - button "Which working languages are available?"
     - button "Is the work remote or on site?"
