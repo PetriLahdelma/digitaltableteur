@@ -60,6 +60,10 @@
   color: var(--color-title);
 }
 
+.relatedWork {
+  margin-block-start: var(--space-layout-24);
+}
+
 .availability {
   margin-block-start: var(--space-internal-12);
   color: var(--color-muted);

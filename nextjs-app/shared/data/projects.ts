@@ -5,6 +5,7 @@
  */
 
 import { formatPeriod, type ProjectPeriod } from "../lib/formatPeriod";
+import type { EngagementId } from "./engagements";
 
 export type ProjectCategory =
   | "design-systems"
@@ -50,6 +51,11 @@ export interface Project {
   period?: ProjectPeriod;
   /** When there is no named client: the owner's own product, or many clients. */
   clientNote?: "self-initiated" | "various";
+  /**
+   * The engagement type (data/engagements) the work was delivered as. Shown
+   * as a tag on /work and used by /work?package=<packageId>.
+   */
+  engagement?: EngagementId;
   /** Teaser entry: renders a non-clickable card with a coming-soon badge (no detail route) */
   comingSoon?: boolean;
   /**
@@ -90,6 +96,7 @@ export const projects: Project[] = [
     featured: true,
     order: 1,
     period: { start: "2026-04" },
+    engagement: "partnership",
     client: "DSharp",
   },
   {
@@ -136,6 +143,7 @@ export const projects: Project[] = [
     liveUrl: "https://hds.hel.fi/",
     client: "City of Helsinki",
     period: { start: "2020-01", end: "2022-03" },
+    engagement: "partnership",
   },
   {
     id: "new-things-co",
@@ -203,6 +211,7 @@ export const projects: Project[] = [
       "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
     client: "SAP",
     period: { start: "2022-03", end: "2026-02" },
+    engagement: "partnership",
   },
   {
     id: "home-remote",

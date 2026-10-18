@@ -4,6 +4,7 @@ import React, { useState, useMemo, useRef, useEffect } from "react";
 import { flushSync } from "react-dom";
 import { useTranslation } from "react-i18next";
 import {
+  Button,
   CategoryFilter,
   Container,
   EmptyState,
@@ -12,6 +13,8 @@ import {
   type ProjectListItem,
   Section,
   SegmentedControl,
+  Text,
+  Title,
 } from "@digitaltableteur/react";
 // Glyphs imported directly: an Icon name would add them to the shared icon
 // registry and the web-components icon data (size-budgeted).
@@ -25,8 +28,10 @@ import {
   projects,
   categories,
   filterProjects,
+  type Project,
   type ProjectCategory,
 } from "../../../../data/projects";
+import { ENGAGEMENTS, type EngagementId } from "../../../../data/engagements";
 import styles from "./workIndex.module.css";
 import { formatPeriod } from "../../../../lib/formatPeriod";
 import { cn } from "../../../../lib/cn";
@@ -74,6 +79,26 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
     if (isPickedView(picked)) setView(picked);
   }, []);
 
+  // /work?package=<packageId>, linked from the offer pages: only the work
+  // delivered as that engagement type.
+  const [packageFilter, setPackageFilter] = useState<{
+    id: EngagementId;
+    name: string;
+  } | null>(null);
+
+  useEffect(() => {
+    const packageId = new URLSearchParams(window.location.search).get("package");
+    const engagement = ENGAGEMENTS.find((entry) => entry.packageId === packageId);
+    if (engagement) setPackageFilter({ id: engagement.id, name: t(engagement.nameKey) });
+  }, [t]);
+
+  const clearPackageFilter = () => {
+    setPackageFilter(null);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("package");
+    window.history.replaceState(window.history.state, "", url);
+  };
+
   const handleViewChange = (next: string) => {
     if (!isPickedView(next)) return;
     // Cross-fade the swap between cards and list where the browser supports
@@ -96,11 +121,12 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
 
   // Filter projects based on active category
   const filteredProjects = useMemo(() => {
-    return filterProjects(
-      projects.filter((project) => !project.unlisted),
-      activeCategory,
-    );
-  }, [activeCategory]);
+    const listed = projects.filter((project) => !project.unlisted);
+    const byPackage = packageFilter
+      ? listed.filter((project) => project.engagement === packageFilter.id)
+      : listed;
+    return filterProjects(byPackage, activeCategory);
+  }, [activeCategory, packageFilter]);
 
   // GSAP ScrollTrigger-based orchestrated stagger (transplanted from the
   // dissolved WorkGrid organism), gated by the AnimationProvider preference.
@@ -166,32 +192,51 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
       : formatCategory(value);
   };
 
-  const listItems = useMemo<ProjectListItem[]>(() => {
-    const labelFor = (value: string) =>
-      translatedCategories.find((cat) => cat.value === value)?.label ??
-      formatCategory(value);
-    return filteredProjects.map((project) => ({
-      id: project.id,
-      title: project.title,
-      href: project.comingSoon ? undefined : `/work/${project.slug}`,
-      thumbnail: project.thumbnail,
-      client:
-        project.client ??
-        (project.clientNote === "self-initiated"
-          ? t("workClientSelfInitiated", "Self-initiated")
-          : project.clientNote === "various"
-            ? t("workClientVarious", "Various")
-            : undefined),
-      clientIsLabel: !project.client && Boolean(project.clientNote),
-      discipline: labelFor(project.category),
-      year: project.period
-        ? formatPeriod(project.period, locale, (start) =>
-            t("workPeriodOngoing", { start, defaultValue: "{{start}} – Present" }),
-          )
-        : undefined,
-      comingSoon: project.comingSoon,
-    }));
-  }, [filteredProjects, translatedCategories, t, locale]);
+  const labelFor = (value: string) =>
+    translatedCategories.find((cat) => cat.value === value)?.label ??
+    formatCategory(value);
+
+  const toListItem = (project: Project): ProjectListItem => ({
+    id: project.id,
+    title: project.title,
+    href: project.comingSoon ? undefined : `/work/${project.slug}`,
+    thumbnail: project.thumbnail,
+    client:
+      project.client ??
+      (project.clientNote === "self-initiated"
+        ? t("workClientSelfInitiated", "Self-initiated")
+        : project.clientNote === "various"
+          ? t("workClientVarious", "Various")
+          : undefined),
+    clientIsLabel: !project.client && Boolean(project.clientNote),
+    discipline: labelFor(project.category),
+    year: project.period
+      ? formatPeriod(project.period, locale, (start) =>
+          t("workPeriodOngoing", { start, defaultValue: "{{start}} – Present" }),
+        )
+      : undefined,
+    comingSoon: project.comingSoon,
+  });
+
+  // Package tags are English like the rest of the card content.
+  const englishPackageName = (project: Project): string | undefined => {
+    const engagement = ENGAGEMENTS.find((entry) => entry.id === project.engagement);
+    return engagement ? t(engagement.nameKey, { lng: "en" }) : undefined;
+  };
+
+  // Client work first, the owner's own products after it.
+  const projectGroups = [
+    {
+      key: "client",
+      title: t("workGroupClient", "Client work"),
+      projects: filteredProjects.filter((p) => p.clientNote !== "self-initiated"),
+    },
+    {
+      key: "self",
+      title: t("workGroupSelf", "Self-initiated"),
+      projects: filteredProjects.filter((p) => p.clientNote === "self-initiated"),
+    },
+  ].filter((group) => group.projects.length > 0);
 
   const viewToggleProps = {
     ariaLabel: t("workViewLabel", "Project view"),
@@ -277,6 +322,19 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
               component tribunal: layout = Grid, empty state = EmptyState,
               stagger = page-level GSAP). Columns snap to the token
               breakpoints (tablet 768 / desktop 1024) per owner ruling. */}
+          {packageFilter && (
+            <div className={styles.filterNotice} role="status">
+              <Text as="p" size="s">
+                {t("workPackageFilterNotice", {
+                  package: packageFilter.name,
+                  defaultValue: "Showing work delivered as {{package}}.",
+                })}
+              </Text>
+              <Button variant="tertiary" size="sm" onClick={clearPackageFilter}>
+                {t("workPackageFilterClear", "Show all work")}
+              </Button>
+            </div>
+          )}
           {filteredProjects.length === 0 ? (
             <FadeIn className="py-20" direction="up" distance={20}>
               <EmptyState
@@ -291,66 +349,82 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
               />
             </FadeIn>
           ) : (
-            <>
-            <div
-              ref={gridRef}
-              className={cn(
-                view === "list" && styles.hidden,
-                view === "auto" && styles.wideOnly,
-              )}
-            >
-              <Grid
-                columns={1}
-                tabletColumns={2}
-                desktopColumns={4}
-                gap="1.25rem"
-                tabletGap="2rem"
-                desktopGap="2.5rem"
-                role="list"
-                aria-label={t("workGalleryLabel", "Project gallery")}
-              >
-                {filteredProjects.map((project) => {
-                  const isFeatured = project.featured ?? false;
-
-                  return (
-                    <div
-                      key={project.id}
-                      role="listitem"
-                      className="h-full"
-                      data-grid-item
-                      {...(isFeatured ? { "data-featured": "" } : {})}
+            <div ref={gridRef} className={styles.groups}>
+              {projectGroups.map((group) => (
+                <section
+                  key={group.key}
+                  aria-labelledby={`work-group-${group.key}`}
+                  className={styles.group}
+                >
+                  <Title
+                    level={2}
+                    size="xs"
+                    id={`work-group-${group.key}`}
+                    className={styles.groupTitle}
+                  >
+                    {group.title}
+                  </Title>
+                  <div
+                    className={cn(
+                      view === "list" && styles.hidden,
+                      view === "auto" && styles.wideOnly,
+                    )}
+                  >
+                    <Grid
+                      columns={1}
+                      tabletColumns={2}
+                      desktopColumns={4}
+                      gap="1.25rem"
+                      tabletGap="2rem"
+                      desktopGap="2.5rem"
+                      role="list"
+                      aria-labelledby={`work-group-${group.key}`}
                     >
-                      <EnhancedProjectCard
-                        title={project.title}
-                        slug={project.slug}
-                        thumbnail={project.thumbnail}
-                        videoThumbnail={project.thumbnailVideo}
-                        autoPlayVideo={project.autoPlayVideo}
-                        description={project.description}
-                        category={englishCategory(project.category)}
-                        tags={project.tags}
-                        aspectRatio="square"
-                        showCategory={true}
-                        comingSoon={project.comingSoon}
-                        comingSoonLabel={t("workComingSoon", "Coming soon")}
-                        contentLanguage="en"
-                      />
-                    </div>
-                  );
-                })}
-              </Grid>
+                      {group.projects.map((project) => {
+                        const isFeatured = project.featured ?? false;
+                        const packageTag = englishPackageName(project);
+
+                        return (
+                          <div
+                            key={project.id}
+                            role="listitem"
+                            className="h-full"
+                            data-grid-item
+                            {...(isFeatured ? { "data-featured": "" } : {})}
+                          >
+                            <EnhancedProjectCard
+                              title={project.title}
+                              slug={project.slug}
+                              thumbnail={project.thumbnail}
+                              videoThumbnail={project.thumbnailVideo}
+                              autoPlayVideo={project.autoPlayVideo}
+                              description={project.description}
+                              category={englishCategory(project.category)}
+                              tags={packageTag ? [packageTag, ...project.tags] : project.tags}
+                              aspectRatio="square"
+                              showCategory={true}
+                              comingSoon={project.comingSoon}
+                              comingSoonLabel={t("workComingSoon", "Coming soon")}
+                              contentLanguage="en"
+                            />
+                          </div>
+                        );
+                      })}
+                    </Grid>
+                  </div>
+                  <ProjectList
+                    items={group.projects.map(toListItem)}
+                    ariaLabel={group.title}
+                    comingSoonLabel={t("workComingSoon", "Coming soon")}
+                    contentLanguage="en"
+                    className={cn(
+                      view === "cards" && styles.hidden,
+                      view === "auto" && styles.phoneOnly,
+                    )}
+                  />
+                </section>
+              ))}
             </div>
-            <ProjectList
-              items={listItems}
-              ariaLabel={t("workGalleryLabel", "Project gallery")}
-              comingSoonLabel={t("workComingSoon", "Coming soon")}
-              contentLanguage="en"
-              className={cn(
-                view === "cards" && styles.hidden,
-                view === "auto" && styles.phoneOnly,
-              )}
-            />
-            </>
           )}
         </Container>
       </Section>

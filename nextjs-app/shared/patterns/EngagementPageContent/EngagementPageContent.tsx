@@ -15,6 +15,7 @@ import {
 import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
 import { NEXT_AVAILABLE_START } from "../../data/availability";
+import { projects } from "../../data/projects";
 import { ENGAGEMENTS, getEngagementPath, type EngagementId } from "../../data/engagements";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
@@ -75,6 +76,10 @@ export function EngagementPageContent({
   const list = (field: string) =>
     asStrings(t(key(field), { returnObjects: true, defaultValue: [] }) as unknown);
   const common = (field: string) => t(`engagementPages.common.${field}`);
+  // Case studies delivered as this engagement type (projects.ts).
+  const deliveredWork = projects.filter(
+    (project) => project.engagement === engagementId && !project.unlisted,
+  ).length;
   const availability = t("nextAvailableStart", {
     start: NEXT_AVAILABLE_START,
     defaultValue: "Next available start: {{start}}",
@@ -296,6 +301,18 @@ export function EngagementPageContent({
               </li>
             ))}
           </ul>
+          {deliveredWork > 0 && (
+            <Link
+              href={`/work?package=${config.packageId}`}
+              className={cn(styles.arrowLink, styles.relatedWork)}
+            >
+              {t("engagementRelatedWork", {
+                package: t(config.nameKey),
+                defaultValue: "See work delivered as {{package}}",
+              })}
+              <Icon name="arrow-right" size={20} aria-hidden="true" />
+            </Link>
+          )}
         </section>
 
         <section aria-labelledby={ids.faq} className={cn(styles.section, styles.faq)}>

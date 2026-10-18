@@ -27,6 +27,31 @@
   gap: var(--space-internal-8);
 }
 
+/* Client work first, then self-initiated work, each under its own heading. */
+
+.groups {
+  display: grid;
+  gap: var(--space-layout-64);
+}
+
+.group {
+  display: grid;
+  gap: var(--space-layout-24);
+}
+
+.groupTitle {
+  margin: 0;
+}
+
+.filterNotice {
+  display: flex;
+  margin-block-end: var(--space-layout-32);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-8) var(--space-internal-16);
+  color: var(--color-muted);
+}
+
 .hidden {
   display: none;
 }

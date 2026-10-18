@@ -69,10 +69,19 @@ describe("WorkIndexPage", () => {
 
   it("lists every project as a row linking to its case study", () => {
     renderWithProviders(<WorkIndexPage />);
-    // The card grid and the row list share the name; only one is displayed.
+    // Client work comes first; its card grid and row list share the group
+    // heading as their name and only one of them is displayed.
     const rows = screen
-      .getAllByRole("list", { name: "Project gallery" })
+      .getAllByRole("list", { name: "Client work" })
       .find((list) => list.tagName === "UL")!;
     expect(within(rows).getAllByRole("link")[0]).toHaveAttribute("href");
+  });
+
+  it("groups client work before self-initiated work", () => {
+    renderWithProviders(<WorkIndexPage />);
+    const headings = screen
+      .getAllByRole("heading", { level: 2 })
+      .map((heading) => heading.textContent);
+    expect(headings.indexOf("Client work")).toBeLessThan(headings.indexOf("Self-initiated"));
   });
 });
