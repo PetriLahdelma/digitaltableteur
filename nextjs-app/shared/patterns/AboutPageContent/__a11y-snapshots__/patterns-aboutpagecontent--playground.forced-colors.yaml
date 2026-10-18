@@ -27,16 +27,19 @@
   - paragraph: One senior practitioner leads every engagement and does the work. You talk to the person building it, not an account manager.
 - article:
   - heading "Specialists When Needed" [level=3]
-  - paragraph: Front-end engineering, accessibility testing, brand and visual design or motion and 3D join under subcontract when the work calls for them, under the same lead.
+  - paragraph: Front-end engineering, accessibility testing, brand and visual design or motion and 3D join under subcontract when needed.
 - article:
   - heading "Governance & Adoption Playbooks" [level=3]
   - paragraph: Co-governance models, contribution guidelines and structured onboarding so the system keeps delivering long after launch.
 - article:
   - heading "Continuity by Design" [level=3]
-  - paragraph: Documentation, versioning and clean handover mean delivery never depends on a single person being available.
+  - paragraph: Documentation, versioning and a clean handover mean the work you keep never depends on one person being available.
 - article:
   - heading "You Own the IP" [level=3]
-  - paragraph: You keep full ownership of the code, design and tokens built together. No lock-in, no licensing games.
+  - paragraph: You keep full ownership of the code, design and tokens built together, in your own repositories. No lock-in, no licensing games.
+- article:
+  - heading "Procurement Ready" [level=3]
+  - paragraph: Liability insurance in place, a GDPR data processing agreement on request and e-invoicing. Prices exclude Finnish VAT.
 - region "A Vastuu Group Reliable Partner":
   - link "Reliable Partner, verified by Vastuu Group":
     - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
