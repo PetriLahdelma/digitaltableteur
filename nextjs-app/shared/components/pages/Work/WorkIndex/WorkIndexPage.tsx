@@ -292,6 +292,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
               onCategoryChange={handleCategoryChange}
               variant="pills"
               size="md"
+              collapsible
             />
             {/* Count and view toggle: their own row on phones, right above the
                 first project; beside the filters on desktop. */}
