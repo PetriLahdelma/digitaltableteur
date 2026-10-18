@@ -512,7 +512,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
           >
             {t(
               "pricingDeliverablesTitle",
-              "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k.",
+              "No guesswork. No scope creep. Scope, price and timeline agreed up front, from €7k.",
             )}
           </Title>
 

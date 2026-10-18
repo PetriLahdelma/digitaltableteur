@@ -13,7 +13,7 @@ describe("ContactPage", () => {
 
     expect(screen.getByRole("heading", { name: /Let's talk/i, level: 1 })).toBeInTheDocument();
     expect(
-      screen.getByText(/Would love to hear about your project/i),
+      screen.getByText(/Projects, ideas and hellos are all welcome/i),
     ).toBeInTheDocument();
   });
 });
