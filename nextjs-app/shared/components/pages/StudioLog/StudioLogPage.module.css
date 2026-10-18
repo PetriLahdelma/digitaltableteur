@@ -1,0 +1,90 @@
+/* Changelog: one dated line per event, grouped by year */
+
+.page {
+  margin-inline: auto;
+  padding-block: var(--space-layout-64);
+  padding-inline: var(--page-margin-mobile);
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: var(--container-md);
+}
+
+@media (width >= 768px) {
+  .page {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .page {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+.header {
+  margin-block-end: var(--space-layout-48);
+}
+
+.intro {
+  margin-block-start: var(--space-layout-16);
+  max-inline-size: 52ch;
+  color: var(--color-muted);
+}
+
+.year {
+  display: grid;
+  margin-block-end: var(--space-layout-32);
+  padding-block-start: var(--space-layout-16);
+  gap: var(--space-layout-8);
+  border-block-start: 1px solid var(--color-border);
+}
+
+/* The year sits in its own column beside the entries from tablet up, so the
+   timeline reads down one edge. */
+
+@media (width >= 768px) {
+  .year {
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: var(--space-layout-24);
+  }
+}
+
+.yearTitle {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: var(--space-layout-8);
+  list-style: none;
+  list-style-type: " ";
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: var(--space-layout-16);
+}
+
+.date {
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.text {
+  display: flex;
+  min-inline-size: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-internal-8);
+}
+
+.upcoming {
+  composes: brandchip from "../../../styles/brand-chip.module.css";
+}

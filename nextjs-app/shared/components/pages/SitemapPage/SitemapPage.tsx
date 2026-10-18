@@ -31,6 +31,7 @@ export function SitemapPage() {
         pricing: t("navPricing"),
         blog: t("navBlog"),
         colophon: t("sitemapColophon"),
+        changelog: t("footerChangelog"),
         privacyPolicy: t("footerPrivacyPolicy"),
         imprint: t("footerImprint"),
         aiUse: t("footerAiUse"),

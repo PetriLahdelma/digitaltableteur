@@ -22,6 +22,7 @@ export type SiteStructureLabels = {
   pricing: string;
   blog: string;
   colophon: string;
+  changelog: string;
   privacyPolicy: string;
   imprint: string;
   aiUse: string;
@@ -159,6 +160,7 @@ export function buildSiteTree(labels: SiteStructureLabels): SiteTreeNode[] {
           href: "/accessibility",
         },
         { id: "colophon", label: labels.colophon, href: "/colophon" },
+        { id: "changelog", label: labels.changelog, href: "/changelog" },
         {
           id: "sitemap-xml",
           label: labels.xmlSitemap,
