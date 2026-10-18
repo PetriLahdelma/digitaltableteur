@@ -1,3 +1,7 @@
+/* Collapsible chip filters (BlogCategoryFilter, CategoryFilter): the
+   disclosure button and the group's collapsed-row alignment, shared so both
+   filters look and move the same. Used with hooks/useFilterDisclosure. */
+
 /* Collapsible mode. While the height animates, the group is taller (or
    shorter) than its content; without these the flex row stretches to fill it
    and the chips balloon into tall pills for a frame. */
@@ -61,12 +65,6 @@
   .toggle:hover {
     border-color: var(--color-text);
     color: var(--color-text);
-  }
-}
-
-@media (forced-colors: active) {
-  .toggle {
-    border-color: ButtonText;
   }
 }
 

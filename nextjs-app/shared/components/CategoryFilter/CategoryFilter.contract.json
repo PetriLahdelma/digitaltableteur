@@ -122,6 +122,16 @@
                 "minimal"
             ],
             "description": "Style variant"
+        },
+        "collapsible": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Collapse to the active chip and a disclosure button; expanding shows every chip and picking one collapses back to it."
+        },
+        "disclosureLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name of the disclosure button; defaults to the translated \"All categories\"."
         }
     },
     "forbiddenUse": [

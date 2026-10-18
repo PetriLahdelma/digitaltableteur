@@ -62,6 +62,18 @@
       "level": "additive",
       "detail": "component added to the public API",
       "bump": "patch"
+    },
+    {
+      "component": "CategoryFilter",
+      "level": "additive",
+      "detail": "prop `collapsible` added",
+      "bump": "patch"
+    },
+    {
+      "component": "CategoryFilter",
+      "level": "additive",
+      "detail": "prop `disclosureLabel` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -742,6 +754,14 @@
           "type": "CategoryOption[]"
         },
         "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "collapsible": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "disclosureLabel": {
           "optional": true,
           "type": "string"
         },

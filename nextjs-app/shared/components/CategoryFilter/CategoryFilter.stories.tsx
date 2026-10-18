@@ -97,6 +97,13 @@ Playground.play = async ({ canvasElement }) => {
   await userEvent.tab();
 };
 
+/** The /work treatment: the active chip plus a disclosure button that opens
+ *  every category. */
+export const Collapsible: Story = {
+  args: { ...defaultArgs, collapsible: true },
+  render: (args) => <CategoryFilterDemo {...args} />,
+};
+
 export const Example: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },

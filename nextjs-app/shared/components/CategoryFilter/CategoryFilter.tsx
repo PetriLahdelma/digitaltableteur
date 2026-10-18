@@ -1,7 +1,12 @@
 "use client";
 
+// One Phosphor glyph imported directly: Icon would pull its whole registry in.
+import { CaretDown } from "@phosphor-icons/react";
 import { cn } from "../../lib/cn";
+import { useTranslate } from "../../lib/translation";
+import { useFilterDisclosure } from "../../hooks/useFilterDisclosure";
 import { FilterChip } from "../FilterChip";
+import styles from "../../styles/filter-disclosure.module.css";
 
 export interface CategoryOption {
   /** Category value */
@@ -23,6 +28,14 @@ export interface CategoryFilterProps {
   size?: "sm" | "md" | "lg";
   /** Style variant */
   variant?: "pills" | "underline" | "minimal";
+  /**
+   * Collapse to the active chip and a disclosure button; expanding shows
+   * every chip (accordion-style height change), and picking one collapses
+   * back to it.
+   */
+  collapsible?: boolean;
+  /** Accessible name of the disclosure button; defaults to the translated "All categories". */
+  disclosureLabel?: string;
 }
 
 /** CategoryFilter variant names predate FilterChip's; map plural → singular. */
@@ -57,18 +70,47 @@ export function CategoryFilter({
   className,
   size = "md",
   variant = "pills",
+  collapsible = false,
+  disclosureLabel,
 }: CategoryFilterProps) {
+  const t = useTranslate();
+  const disclosure = useFilterDisclosure(collapsible);
+  const visible = disclosure.collapsed
+    ? categories.filter((category) => category.value === activeCategory)
+    : categories;
+
   return (
     <div
+      ref={disclosure.groupRef}
+      id={disclosure.groupId}
       role="group"
       aria-label="Filter projects by category"
-      className={cn(groupClassMap[variant], className)}
+      className={cn(
+        groupClassMap[variant],
+        collapsible && styles.collapsible,
+        className,
+      )}
     >
-      {categories.map((category) => (
+      {collapsible && (
+        // Always the first child: it keeps its place open or closed and
+        // chips insert after it without moving focus.
+        <button
+          {...disclosure.toggleProps}
+          className={cn(styles.toggle, styles[size])}
+          aria-label={
+            disclosureLabel ?? t("categoryFilterAll", "All categories")
+          }
+        >
+          <CaretDown className={styles.caret} aria-hidden="true" />
+        </button>
+      )}
+      {visible.map((category) => (
         <FilterChip
           key={category.value}
           pressed={category.value === activeCategory}
-          onClick={() => onCategoryChange(category.value)}
+          onClick={() =>
+            disclosure.select(() => onCategoryChange(category.value))
+          }
           variant={chipVariantMap[variant]}
           size={size}
         >

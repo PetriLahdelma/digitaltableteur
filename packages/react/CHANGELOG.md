@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.34 - 2026-10-18
+
+- `CategoryFilter`: new optional `collapsible` (and `disclosureLabel`).
+  Collapsed, only the active chip shows behind a leading disclosure button
+  (`aria-expanded`); expanding reveals every chip with a height transition
+  (none under reduced motion) and picking one collapses back to it.
+  Additive.
+
 ## 0.1.33 - 2026-10-18
 
 - `ProjectList`: new optional `tag` on items, a short content label beside

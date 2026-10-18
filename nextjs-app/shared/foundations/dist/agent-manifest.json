@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-18T10:17:31.697Z",
+  "generatedAt": "2026-10-18T13:20:57.528Z",
   "summary": {
     "componentCount": 184,
     "statusCounts": {
@@ -63,7 +63,7 @@
     "catalogCompletenessPercent": 91.5,
     "artifactCoverage": {
       "stories": 168,
-      "tests": 179,
+      "tests": 180,
       "mdx": 4,
       "spec": 184
     },
@@ -5827,7 +5827,7 @@
           }
         ]
       },
-      "spec": "# BlogCategoryFilter\n\n## Intent\nSingle-select tag filter for the blog archive: a labelled group of toggle chips with an implicit All, three visual treatments, optional per-tag counts and an optional collapsed mode.\n\n## Interaction contract\n- Keyboard: Tab moves between chips; Enter/Space toggles the focused chip\n- Pointer: click a chip to select that tag (or All)\n- Screen readers: `role=\"group\"` labelled via blogFilterByTag; each chip is a toggle button with `aria-pressed`\n- Collapsible: only the selected chip and a disclosure button (`aria-expanded`, `aria-controls` on the group, named \"All topics\") show. Expanding reveals every chip with a height transition (none under reduced motion); picking a chip collapses back to it. The disclosure button is always the last child, so focus stays on it while chips appear\n- Controlled: `selectedTag` and `onTagChange` are supplied by the parent\n\n## Do / don't\n- Do: pass the tag list plus the current `selectedTag` (null = All) and an `onTagChange` handler\n- Do: enable `showCounts` with a `tagCounts` map to show per-tag totals\n- Do: use `collapsible` when the tag list wraps to several rows above content\n- Don't: invent parallel primitives inside this folder\n- Don't: use this for generic list pages; that is CategoryFilter\n\n## Design notes\n- Tokens: Tailwind utilities mapped to theme tokens (foreground/background/muted/border); the disclosure button uses the pill chip's border, radius and padding\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1035-110\n",
+      "spec": "# BlogCategoryFilter\n\n## Intent\nSingle-select tag filter for the blog archive: a labelled group of toggle chips with an implicit All, three visual treatments, optional per-tag counts and an optional collapsed mode.\n\n## Interaction contract\n- Keyboard: Tab moves between chips; Enter/Space toggles the focused chip\n- Pointer: click a chip to select that tag (or All)\n- Screen readers: `role=\"group\"` labelled via blogFilterByTag; each chip is a toggle button with `aria-pressed`\n- Collapsible: only the selected chip and a disclosure button (`aria-expanded`, `aria-controls` on the group, named \"All topics\") show. Expanding reveals every chip with a height transition (none under reduced motion); picking a chip collapses back to it. The disclosure button is always the first child: it keeps its place open or closed, precedes the chips in the focus order and focus stays on it while chips appear\n- Controlled: `selectedTag` and `onTagChange` are supplied by the parent\n\n## Do / don't\n- Do: pass the tag list plus the current `selectedTag` (null = All) and an `onTagChange` handler\n- Do: enable `showCounts` with a `tagCounts` map to show per-tag totals\n- Do: use `collapsible` when the tag list wraps to several rows above content\n- Don't: invent parallel primitives inside this folder\n- Don't: use this for generic list pages; that is CategoryFilter\n\n## Design notes\n- Tokens: Tailwind utilities mapped to theme tokens (foreground/background/muted/border); the disclosure button uses the pill chip's border, radius and padding\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1035-110\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/BlogCategoryFilter",
@@ -10338,6 +10338,16 @@
               "minimal"
             ],
             "description": "Style variant"
+          },
+          "collapsible": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Collapse to the active chip and a disclosure button; expanding shows every chip and picking one collapses back to it."
+          },
+          "disclosureLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name of the disclosure button; defaults to the translated \"All categories\"."
           }
         },
         "forbiddenUse": [
@@ -10381,7 +10391,7 @@
           }
         }
       },
-      "spec": "# CategoryFilter\n\n## Intent\nRender the canonical filter-by-category row used on list pages. Owns the active-state announcement and the visual variants so list-page consumers do not reinvent them.\n\n## Interaction contract\n- Keyboard: Tab between filters; Enter / Space toggles.\n- Pointer: Click a filter to activate.\n- Screen readers: Filter buttons announce as 'toggle button, {label}, pressed' for the active filter and 'not pressed' for the rest.\n\n## Do / don't\n- Do: Use on list pages where filtering is the primary UI affordance.\n- Do: Keep the filter labels short — they sit in a row.\n- Don't: Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.\n- Don't: Stack two filter rows when one composite control would do — readability collapses.\n\n## Design notes\n- Colors: --color-text, --color-accent, --color-border-default\n- Spacing: --space-internal-4, --space-internal-8\n- Typography: --font-size-sm, --font-size-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
+      "spec": "# CategoryFilter\n\n## Intent\nRender the canonical filter-by-category row used on list pages. Owns the active-state announcement and the visual variants so list-page consumers do not reinvent them.\n\n## Interaction contract\n- Keyboard: Tab between filters; Enter / Space toggles.\n- Pointer: Click a filter to activate.\n- Screen readers: Filter buttons announce as 'toggle button, {label}, pressed' for the active filter and 'not pressed' for the rest.\n- Collapsible: only the active chip and a leading disclosure button (`aria-expanded`, `aria-controls` on the group, named by `disclosureLabel`, default \"All categories\") show. Expanding reveals every chip with a height transition (none under reduced motion); picking a chip collapses back to it. The button keeps its place and focus while chips appear. Shares hooks/useFilterDisclosure and styles/filter-disclosure.module.css with BlogCategoryFilter.\n\n## Do / don't\n- Do: Use on list pages where filtering is the primary UI affordance.\n- Do: Keep the filter labels short; they sit in a row.\n- Do: Use `collapsible` when the row wraps above content.\n- Don't: Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.\n- Don't: Stack two filter rows when one composite control would do — readability collapses.\n\n## Design notes\n- Colors: --color-text, --color-accent, --color-border-default\n- Spacing: --space-internal-4, --space-internal-8\n- Typography: --font-size-sm, --font-size-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/CategoryFilter",
@@ -10441,6 +10451,16 @@
               "minimal"
             ],
             "description": "Style variant"
+          },
+          "collapsible": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Collapse to the active chip and a disclosure button; expanding shows\nevery chip (accordion-style height change), and picking one collapses\nback to it."
+          },
+          "disclosureLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name of the disclosure button; defaults to the translated \"All categories\"."
           }
         },
         "propRelationships": [],
@@ -10467,7 +10487,8 @@
         "variantsFnName": null,
         "useWhen": [
           "Use on list pages where filtering is the primary UI affordance.",
-          "Keep the filter labels short — they sit in a row."
+          "Keep the filter labels short; they sit in a row.",
+          "Use `collapsible` when the row wraps above content."
         ],
         "avoidWhen": [
           "Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.",
@@ -10497,7 +10518,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 6,
+        "declaredPropCount": 8,
         "guidelines": [
           {
             "level": "should",
@@ -10508,7 +10529,14 @@
           },
           {
             "level": "should",
-            "guidance": "Keep the filter labels short — they sit in a row.",
+            "guidance": "Keep the filter labels short; they sit in a row.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "Use `collapsible` when the row wraps above content.",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"

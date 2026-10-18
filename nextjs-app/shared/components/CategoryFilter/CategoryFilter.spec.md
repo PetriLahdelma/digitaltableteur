@@ -7,10 +7,12 @@ Render the canonical filter-by-category row used on list pages. Owns the active-
 - Keyboard: Tab between filters; Enter / Space toggles.
 - Pointer: Click a filter to activate.
 - Screen readers: Filter buttons announce as 'toggle button, {label}, pressed' for the active filter and 'not pressed' for the rest.
+- Collapsible: only the active chip and a leading disclosure button (`aria-expanded`, `aria-controls` on the group, named by `disclosureLabel`, default "All categories") show. Expanding reveals every chip with a height transition (none under reduced motion); picking a chip collapses back to it. The button keeps its place and focus while chips appear. Shares hooks/useFilterDisclosure and styles/filter-disclosure.module.css with BlogCategoryFilter.
 
 ## Do / don't
 - Do: Use on list pages where filtering is the primary UI affordance.
-- Do: Keep the filter labels short — they sit in a row.
+- Do: Keep the filter labels short; they sit in a row.
+- Do: Use `collapsible` when the row wraps above content.
 - Don't: Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.
 - Don't: Stack two filter rows when one composite control would do — readability collapses.
 

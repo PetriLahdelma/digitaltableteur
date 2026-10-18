@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T10:17:00.623Z",
+  "generatedAt": "2026-10-18T13:20:57.179Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -5827,6 +5827,16 @@
             "minimal"
           ],
           "description": "Style variant"
+        },
+        "collapsible": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Collapse to the active chip and a disclosure button; expanding shows\nevery chip (accordion-style height change), and picking one collapses\nback to it."
+        },
+        "disclosureLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name of the disclosure button; defaults to the translated \"All categories\"."
         }
       },
       "propRelationships": [],
@@ -5853,7 +5863,8 @@
       "variantsFnName": null,
       "useWhen": [
         "Use on list pages where filtering is the primary UI affordance.",
-        "Keep the filter labels short — they sit in a row."
+        "Keep the filter labels short; they sit in a row.",
+        "Use `collapsible` when the row wraps above content."
       ],
       "avoidWhen": [
         "Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.",
@@ -5883,7 +5894,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 6,
+      "declaredPropCount": 8,
       "guidelines": [
         {
           "level": "should",
@@ -5894,7 +5905,14 @@
         },
         {
           "level": "should",
-          "guidance": "Keep the filter labels short — they sit in a row.",
+          "guidance": "Keep the filter labels short; they sit in a row.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "Use `collapsible` when the row wraps above content.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"
