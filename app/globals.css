@@ -40,6 +40,14 @@ svg {
   block-size: auto;
 }
 
+/* Icons in buttons size themselves. Safari resolves the percentage cap above
+   against the icon wrapper's shrink-to-fit width (the svg's 1em default), so
+   a 32px menu icon rendered at about 12px on iPhone while Chrome showed 32px. */
+
+button svg {
+  max-inline-size: none;
+}
+
 input,
 button,
 textarea,
