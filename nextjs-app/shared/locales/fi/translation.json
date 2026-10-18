@@ -2253,5 +2253,17 @@
   "pricingPackageCtaPartnership": "Varaa puhelu kumppanuudesta",
   "articleOfferEyebrow": "Vie tämä käytäntöön",
   "articleOfferBook": "Varaa 30 minuutin puhelu",
-  "articleOfferDetails": "Lue lisää: {{name}}"
+  "articleOfferDetails": "Lue lisää: {{name}}",
+  "contactOrgStageLabel": "Organisaatio",
+  "contactOrgStageStartup": "Alkuvaiheen startup",
+  "contactOrgStageScaleUp": "Kasvuyritys",
+  "contactOrgStageEnterprise": "Suuryritys",
+  "contactOrgStagePublic": "Julkinen sektori",
+  "contactOrgStageAgency": "Toimisto tai konsultointiyritys",
+  "contactOrgStageOther": "Muu",
+  "contactStartLabel": "Milloin työn pitäisi alkaa?",
+  "contactNeedsLabel": "Mitä tarvitset?",
+  "contactWhyUsLabel": "Miksi Digitaltableteur?",
+  "contactWhyUsPlaceholder": "Mikä sai sinut ajattelemaan juuri tätä studiota?",
+  "contactReplyPromise": "Vastaus tulee yhden arkipäivän kuluessa."
 }

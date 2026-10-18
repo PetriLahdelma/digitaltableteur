@@ -12,6 +12,10 @@ export type ContactNotificationPayload = {
   /** Readable package summary, e.g. "UX Sprint: €7–14k, 2 weeks". */
   engagementPackage?: string | null;
   inspiration?: string | null;
+  /** Organisation stage, e.g. "enterprise". */
+  orgStage?: string | null;
+  /** Answer to "Why Digitaltableteur?". */
+  whyUs?: string | null;
   time?: string | null;
   attachmentName?: string | null;
   attachmentType?: string | null;
@@ -36,6 +40,15 @@ const BUDGET_LABELS: Record<string, string> = {
   "15k-50k": "15k€ – 50k€",
   "50k-plus": "50k€+",
   "not-sure": "Not sure yet",
+};
+
+const ORG_STAGE_LABELS: Record<string, string> = {
+  startup: "Early-stage startup",
+  "scale-up": "Scale-up",
+  enterprise: "Enterprise",
+  "public-sector": "Public sector",
+  agency: "Agency or consultancy",
+  other: "Other",
 };
 
 const TIMELINE_LABELS: Record<string, string> = {
@@ -124,6 +137,9 @@ function buildTextFields(payload: ContactNotificationPayload): TextField[] {
     fields.push({ label: "Package", value: payload.engagementPackage.trim() });
   }
 
+  const orgStage = formatSelectValue(payload.orgStage, ORG_STAGE_LABELS);
+  if (orgStage) fields.push({ label: "Organisation", value: orgStage });
+
   const budget = formatSelectValue(payload.budget, BUDGET_LABELS);
   if (budget) fields.push({ label: "Budget", value: budget });
 
@@ -133,6 +149,9 @@ function buildTextFields(payload: ContactNotificationPayload): TextField[] {
   const hearAbout = formatSelectValue(payload.hearAbout, HEAR_ABOUT_LABELS);
   if (hearAbout) fields.push({ label: "Source", value: hearAbout });
 
+  if (payload.whyUs?.trim()) {
+    fields.push({ label: "Why Digitaltableteur", value: payload.whyUs.trim() });
+  }
   if (payload.inspiration?.trim()) {
     fields.push({ label: "References", value: payload.inspiration.trim() });
   }
@@ -285,7 +304,9 @@ export function buildContactNotificationHtml(
   const mailto = `mailto:${encodeURIComponent(payload.email)}`;
 
   const engagementPackage = payload.engagementPackage?.trim();
+  const orgStageLabel = formatSelectValue(payload.orgStage, ORG_STAGE_LABELS);
   const metricItems = [
+    orgStageLabel ? { label: "Organisation", value: orgStageLabel } : null,
     engagementPackage ? { label: "Package", value: engagementPackage } : null,
     budget ? { label: "Budget", value: budget } : null,
     timeline ? { label: "Timeline", value: timeline } : null,
@@ -314,6 +335,10 @@ export function buildContactNotificationHtml(
     interests.length > 0
       ? renderSection("Project type", interests.map(renderPill).join(""))
       : "";
+
+  const whyUsSection = payload.whyUs?.trim()
+    ? renderSection("Why Digitaltableteur", escapeHTML(payload.whyUs.trim()))
+    : "";
 
   const referencesSection = payload.inspiration?.trim()
     ? renderSection("References", escapeHTML(payload.inspiration.trim()))
@@ -379,6 +404,7 @@ export function buildContactNotificationHtml(
                 ${workSamplesSection}
                 ${projectSection}
                 ${phoneSection}
+                ${whyUsSection}
                 ${referencesSection}
                 ${attachmentSection}
                 ${attachmentNoticeSection}

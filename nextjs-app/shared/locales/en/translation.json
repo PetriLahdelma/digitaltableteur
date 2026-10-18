@@ -2253,5 +2253,17 @@
   "pricingPackageCtaPartnership": "Book a call about a partnership",
   "articleOfferEyebrow": "Put this into practice",
   "articleOfferBook": "Book a 30-minute call",
-  "articleOfferDetails": "About {{name}}"
+  "articleOfferDetails": "About {{name}}",
+  "contactOrgStageLabel": "Organisation",
+  "contactOrgStageStartup": "Early-stage startup",
+  "contactOrgStageScaleUp": "Scale-up",
+  "contactOrgStageEnterprise": "Enterprise",
+  "contactOrgStagePublic": "Public sector",
+  "contactOrgStageAgency": "Agency or consultancy",
+  "contactOrgStageOther": "Other",
+  "contactStartLabel": "When should work start?",
+  "contactNeedsLabel": "What do you need?",
+  "contactWhyUsLabel": "Why Digitaltableteur?",
+  "contactWhyUsPlaceholder": "What made you think of this studio for the work?",
+  "contactReplyPromise": "A reply follows within one business day."
 }

@@ -50,6 +50,8 @@ const getInitialFormState = () => ({
   followUpPreferences: [] as string[],
   hearAbout: "",
   inspiration: "",
+  orgStage: "",
+  whyUs: "",
   honeypot: "",
 });
 
@@ -131,6 +133,15 @@ const BUDGET_OPTIONS = [
   { value: "15k-50k", labelKey: "contactBudget15k50k" },
   { value: "50k-plus", labelKey: "contactBudget50kPlus" },
   { value: "not-sure", labelKey: "contactBudgetNotSure" },
+];
+
+const ORG_STAGE_OPTIONS = [
+  { value: "startup", labelKey: "contactOrgStageStartup" },
+  { value: "scale-up", labelKey: "contactOrgStageScaleUp" },
+  { value: "enterprise", labelKey: "contactOrgStageEnterprise" },
+  { value: "public-sector", labelKey: "contactOrgStagePublic" },
+  { value: "agency", labelKey: "contactOrgStageAgency" },
+  { value: "other", labelKey: "contactOrgStageOther" },
 ];
 
 const TIMELINE_OPTIONS = [
@@ -291,7 +302,9 @@ export function ContactFormEditorial({
   const [attachmentError, setAttachmentError] = useState("");
 
   // Expansion state
-  const [tier2Expanded, setTier2Expanded] = useState(false);
+  // The brief (organisation, package, budget, start, needs, why us) is open
+  // by default: it is the qualifying part of the form, not an extra.
+  const [tier2Expanded, setTier2Expanded] = useState(true);
   const [tier3Expanded, setTier3Expanded] = useState(false);
 
   // Derived values
@@ -370,7 +383,7 @@ export function ContactFormEditorial({
     };
 
   const updateSelectField =
-    (field: "budget" | "timeline" | "hearAbout") => (value: string) => {
+    (field: "budget" | "timeline" | "hearAbout" | "orgStage") => (value: string) => {
       dispatchForm({
         type: "UPDATE_FIELD",
         payload: { field, value },
@@ -480,6 +493,8 @@ export function ContactFormEditorial({
             ? packageSummary(selectedEngagement)
             : "",
           inspiration: formData.inspiration,
+          orgStage: formData.orgStage,
+          whyUs: formData.whyUs,
           followUpPreferences: formatOptionsForSubmit(
             formData.followUpPreferences,
             FOLLOW_UP_OPTIONS,
@@ -625,6 +640,21 @@ export function ContactFormEditorial({
         <div className={styles.fields}>
           <Combobox
             className={styles.alignedCombobox}
+            label={t("contactOrgStageLabel", "Organisation")}
+            placeholder={t("contactSelectPlaceholder", "Select...")}
+            value={formData.orgStage}
+            onValueChange={updateSelectField("orgStage")}
+            options={[
+              { value: "", label: t("contactSelectPlaceholder", "Select...") },
+              ...ORG_STAGE_OPTIONS.map((opt) => ({
+                value: opt.value,
+                label: t(opt.labelKey),
+              })),
+            ]}
+          />
+
+          <Combobox
+            className={styles.alignedCombobox}
             label={t("contactPackageLabel", "Package")}
             placeholder={t("contactPackageNone", "Not sure yet / custom")}
             value={formData.engagementPackage}
@@ -673,7 +703,7 @@ export function ContactFormEditorial({
 
           <Combobox
             className={styles.alignedCombobox}
-            label={t("contactTimelineLabel", "Timeline")}
+            label={t("contactStartLabel", "When should work start?")}
             placeholder={t("contactSelectPlaceholder", "Select...")}
             value={formData.timeline}
             onValueChange={updateSelectField("timeline")}
@@ -688,7 +718,7 @@ export function ContactFormEditorial({
 
           <MultiCombobox
             className={styles.alignedCombobox}
-            label={t("contactProjectTypeLabel", "Project type")}
+            label={t("contactNeedsLabel", "What do you need?")}
             options={PROJECT_TYPE_OPTIONS.map((opt) => ({
               value: opt.value,
               label: t(opt.labelKey),
@@ -701,6 +731,19 @@ export function ContactFormEditorial({
               "contactMultiSelectPlaceholder",
               "Select one or more...",
             )}
+          />
+
+          <FormFieldEditorial
+            id="contact-why-us"
+            label={t("contactWhyUsLabel", "Why Digitaltableteur?")}
+            type="textarea"
+            value={formData.whyUs}
+            onChange={updateField("whyUs")}
+            placeholder={t(
+              "contactWhyUsPlaceholder",
+              "What made you think of this studio for the work?",
+            )}
+            rows={2}
           />
         </div>
 
@@ -809,6 +852,10 @@ export function ContactFormEditorial({
           {t("contactPrivacyPolicy2")}
         </a>
         .
+      </p>
+
+      <p className={styles.replyPromise}>
+        {t("contactReplyPromise", "A reply follows within one business day.")}
       </p>
 
       {/* Submit Button */}

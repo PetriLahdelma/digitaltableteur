@@ -89,6 +89,35 @@ function renderPanel(initialMode: "message" | "book" = "message") {
 }
 
 describe("ContactInquiryPanel", () => {
+  it("opens on booking by default when scheduling is configured", () => {
+    render(
+      <TranslationProvider
+        translate={createTranslate("en")}
+        language="en"
+        resolvedLanguage="en"
+      >
+        <ContactInquiryPanel
+          messagePanel={<div>Contact form body</div>}
+          bookingConfig={{
+            configured: true,
+            provider: "calcom",
+            meetingLabel: "30min",
+            embedUrl: "https://app.cal.eu/digitaltableteur/30min/embed?embed=true",
+            fallbackUrl: "https://cal.eu/digitaltableteur/30min",
+            prefillApplied: false,
+            calLink: "digitaltableteur/30min",
+            calOrigin: "https://cal.eu",
+            embedJsUrl: "https://app.cal.eu/embed/embed.js",
+          }}
+        />
+      </TranslationProvider>,
+    );
+    expect(screen.getByRole("tab", { name: /Book a call/i })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+  });
+
   it("shows message tab by default with both tabs visible when booking is not configured", () => {
     renderPanel("message");
 

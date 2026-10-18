@@ -2253,5 +2253,17 @@
   "pricingPackageCtaPartnership": "Boka ett samtal om partnerskap",
   "articleOfferEyebrow": "Omsätt det i praktiken",
   "articleOfferBook": "Boka ett samtal på 30 minuter",
-  "articleOfferDetails": "Läs mer: {{name}}"
+  "articleOfferDetails": "Läs mer: {{name}}",
+  "contactOrgStageLabel": "Organisation",
+  "contactOrgStageStartup": "Startup i tidigt skede",
+  "contactOrgStageScaleUp": "Scale-up",
+  "contactOrgStageEnterprise": "Storföretag",
+  "contactOrgStagePublic": "Offentlig sektor",
+  "contactOrgStageAgency": "Byrå eller konsultbolag",
+  "contactOrgStageOther": "Annat",
+  "contactStartLabel": "När ska arbetet börja?",
+  "contactNeedsLabel": "Vad behöver du?",
+  "contactWhyUsLabel": "Varför Digitaltableteur?",
+  "contactWhyUsPlaceholder": "Vad fick dig att tänka på just den här studion?",
+  "contactReplyPromise": "Svar inom en arbetsdag."
 }

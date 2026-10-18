@@ -26,6 +26,8 @@ const contactSchema = z.object({
   timeline: z.string().max(100).optional().nullable(),
   engagementPackage: z.string().max(200).optional().nullable(),
   inspiration: z.string().max(2000).optional().nullable(),
+  orgStage: z.string().max(100).optional().nullable(),
+  whyUs: z.string().max(2000).optional().nullable(),
   attachmentName: z.string().max(255).optional().nullable(),
   attachmentType: z.string().max(255).optional().nullable(),
   attachmentSize: z.number().int().nonnegative().optional().nullable(),
@@ -142,6 +144,8 @@ export async function POST(req: NextRequest) {
       ? sanitize(parsed.engagementPackage)
       : null,
     inspiration: parsed.inspiration ? sanitize(parsed.inspiration) : null,
+    orgStage: parsed.orgStage ? sanitize(parsed.orgStage) : null,
+    whyUs: parsed.whyUs ? sanitize(parsed.whyUs) : null,
     time: parsed.time ? sanitize(parsed.time) : null,
     attachmentName: parsed.attachmentName ? sanitize(parsed.attachmentName) : null,
     attachmentType: parsed.attachmentType ? sanitize(parsed.attachmentType) : null,
