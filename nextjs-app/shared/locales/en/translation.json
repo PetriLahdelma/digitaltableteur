@@ -530,6 +530,8 @@
   "aboutDeliveryContinuityDescription": "Documentation, versioning and a clean handover mean the work you keep never depends on one person being available.",
   "aboutDeliveryOwnershipTitle": "You Own the IP",
   "aboutDeliveryOwnershipDescription": "You keep full ownership of the code, design and tokens built together, in your own repositories. No lock-in, no licensing games.",
+  "aboutDeliveryProcurementTitle": "Procurement Ready",
+  "aboutDeliveryProcurementDescription": "Liability insurance in place, a GDPR data processing agreement on request and e-invoicing. Prices exclude Finnish VAT.",
   "aboutOperatingTitle": "Strategy to scale",
   "aboutOperatingSubtitle": "A compact operating model for teams that need direction, delivery and a system that keeps working after launch.",
   "aboutOperatingDiagnoseTitle": "Diagnose",
@@ -2205,7 +2207,7 @@
       {
         "id": "insurance",
         "question": "Is the work insured?",
-        "answer": "Yes. Liability insurance covers client engagements."
+        "answer": "Yes. Liability insurance and legal expenses insurance cover client engagements. A certificate with the coverage limits is available on request."
       },
       {
         "id": "nda",

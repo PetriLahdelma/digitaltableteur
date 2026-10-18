@@ -530,6 +530,8 @@
   "aboutDeliveryContinuityDescription": "Dokumentaatio, versiointi ja siisti luovutus varmistavat, ettei sinulle jäävä työ ole koskaan yhden henkilön varassa.",
   "aboutDeliveryOwnershipTitle": "Omistat oikeudet",
   "aboutDeliveryOwnershipDescription": "Säilytät täyden omistajuuden yhdessä rakennettuun koodiin, suunnitteluun ja tokeneihin omissa repositorioissasi. Ei lukkiutumista, ei lisenssipelejä.",
+  "aboutDeliveryProcurementTitle": "Valmis hankintaan",
+  "aboutDeliveryProcurementDescription": "Vastuuvakuutus voimassa, GDPR-tietojenkäsittelysopimus pyynnöstä ja verkkolaskutus. Hinnat ilman Suomen arvonlisäveroa.",
   "aboutOperatingTitle": "Strategiasta skaalaan",
   "aboutOperatingSubtitle": "Tiivis toimintamalli tiimeille, jotka tarvitsevat suunnan, toteutuksen ja järjestelmän, joka toimii myös lanseerauksen jälkeen.",
   "aboutOperatingDiagnoseTitle": "Diagnosoi",
@@ -2205,7 +2207,7 @@
       {
         "id": "insurance",
         "question": "Onko työ vakuutettu?",
-        "answer": "Kyllä. Vastuuvakuutus kattaa asiakastoimeksiannot."
+        "answer": "Kyllä. Vastuuvakuutus ja oikeusturvavakuutus kattavat asiakastoimeksiannot. Vakuutustodistus vakuutusmäärineen on saatavilla pyynnöstä."
       },
       {
         "id": "nda",

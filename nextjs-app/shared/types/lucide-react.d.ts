@@ -50,4 +50,5 @@ declare module "lucide-react" {
   export const ClipboardCheck: LucideIcon;
   export const RefreshCw: LucideIcon;
   export const KeyRound: LucideIcon;
+  export const ShieldCheck: LucideIcon;
 }

@@ -9,6 +9,7 @@ import {
   ClipboardCheck,
   RefreshCw,
   KeyRound,
+  ShieldCheck,
 } from "lucide-react";
 import {
   SiNextdotjs,
@@ -135,6 +136,11 @@ export function AboutPageContent({
         icon: <KeyRound className="w-6 h-6" />,
         title: t("aboutDeliveryOwnershipTitle"),
         description: t("aboutDeliveryOwnershipDescription"),
+      },
+      {
+        icon: <ShieldCheck className="w-6 h-6" />,
+        title: t("aboutDeliveryProcurementTitle"),
+        description: t("aboutDeliveryProcurementDescription"),
       },
     ],
     [t, i18n.language],

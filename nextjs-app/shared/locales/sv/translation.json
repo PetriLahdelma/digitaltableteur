@@ -530,6 +530,8 @@
   "aboutDeliveryContinuityDescription": "Dokumentation, versionshantering och en ren överlämning gör att arbetet du behåller aldrig hänger på en enda person.",
   "aboutDeliveryOwnershipTitle": "Du äger rättigheterna",
   "aboutDeliveryOwnershipDescription": "Du behåller fullt ägande av koden, designen och tokens som byggs tillsammans, i dina egna repon. Ingen inlåsning, inga licensspel.",
+  "aboutDeliveryProcurementTitle": "Redo för upphandling",
+  "aboutDeliveryProcurementDescription": "Ansvarsförsäkring på plats, ett GDPR-personuppgiftsbiträdesavtal på begäran och e-fakturering. Priserna exkluderar finsk moms.",
   "aboutOperatingTitle": "Från strategi till skala",
   "aboutOperatingSubtitle": "En kompakt operativ modell för team som behöver riktning, leverans och ett system som fortsätter fungera efter lansering.",
   "aboutOperatingDiagnoseTitle": "Diagnostisera",
@@ -2205,7 +2207,7 @@
       {
         "id": "insurance",
         "question": "Är arbetet försäkrat?",
-        "answer": "Ja. En ansvarsförsäkring täcker kunduppdrag."
+        "answer": "Ja. En ansvarsförsäkring och en rättsskyddsförsäkring täcker kunduppdrag. Ett försäkringsbevis med försäkringsbeloppen finns på begäran."
       },
       {
         "id": "nda",
