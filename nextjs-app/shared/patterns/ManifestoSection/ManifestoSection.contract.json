@@ -39,15 +39,10 @@
             "type": "ManifestoToken[]",
             "description": "Array of manifesto tokens"
         },
-        "interval": {
-            "optional": true,
-            "type": "number",
-            "description": "Timing input used to bound the one-time emphasis pulse"
-        },
         "separator": {
             "optional": true,
             "type": "string",
-            "description": "Separator character between highlightable tokens"
+            "description": "Separator character between phrases"
         },
         "background": {
             "optional": true,

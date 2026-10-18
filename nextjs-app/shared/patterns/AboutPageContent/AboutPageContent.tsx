@@ -218,21 +218,21 @@ export function AboutPageContent({
     [t, i18n.language],
   );
 
-  // Manifesto tokens (intro + highlightable phrases)
+  // Manifesto tokens (intro + phrases separated by the mark)
   const manifestoTokens: ManifestoToken[] = useMemo(
     () => [
-      { text: t("aboutManifestoIntro"), highlightable: false },
-      { text: t("aboutManifestoPhrase1"), highlightable: true },
-      { text: t("aboutManifestoPhrase2"), highlightable: true },
-      { text: t("aboutManifestoPhrase3"), highlightable: true },
-      { text: t("aboutManifestoPhrase4"), highlightable: true },
-      { text: t("aboutManifestoPhrase5"), highlightable: true },
-      { text: t("aboutManifestoPhrase6"), highlightable: true },
-      { text: t("aboutManifestoPhrase7"), highlightable: true },
-      { text: t("aboutManifestoPhrase8"), highlightable: true },
-      { text: t("aboutManifestoPhrase9"), highlightable: true },
-      { text: t("aboutManifestoPhrase10"), highlightable: true },
-      { text: t("aboutManifestoPhrase11"), highlightable: true },
+      { text: t("aboutManifestoIntro"), phrase: false },
+      { text: t("aboutManifestoPhrase1"), phrase: true },
+      { text: t("aboutManifestoPhrase2"), phrase: true },
+      { text: t("aboutManifestoPhrase3"), phrase: true },
+      { text: t("aboutManifestoPhrase4"), phrase: true },
+      { text: t("aboutManifestoPhrase5"), phrase: true },
+      { text: t("aboutManifestoPhrase6"), phrase: true },
+      { text: t("aboutManifestoPhrase7"), phrase: true },
+      { text: t("aboutManifestoPhrase8"), phrase: true },
+      { text: t("aboutManifestoPhrase9"), phrase: true },
+      { text: t("aboutManifestoPhrase10"), phrase: true },
+      { text: t("aboutManifestoPhrase11"), phrase: true },
     ],
     [t, i18n.language],
   );
@@ -350,8 +350,7 @@ export function AboutPageContent({
       <ManifestoSection
         title={t("aboutManifestoTitle")}
         tokens={manifestoTokens}
-        interval={2400}
-        separator="✕"
+        separator="×"
         background="transparent"
       />
 

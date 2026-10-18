@@ -1,18 +1,15 @@
 "use client";
 
-import { useRef, useEffect, useMemo, useCallback } from "react";
 import { cn } from "../../lib/cn";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
-import { gsap } from "../../lib/gsap";
-import { useAnimationContext } from "../../lib/animation";
 
 export interface ManifestoToken {
   /** Token text content */
   text: string;
-  /** Whether this token can be highlighted */
-  highlightable: boolean;
+  /** A manifesto phrase; consecutive phrases are separated by `separator`. */
+  phrase: boolean;
 }
 
 export interface ManifestoSectionProps {
@@ -20,9 +17,7 @@ export interface ManifestoSectionProps {
   title: string;
   /** Array of manifesto tokens */
   tokens: ManifestoToken[];
-  /** Timing input used to bound the one-time emphasis pulse */
-  interval?: number;
-  /** Separator character between highlightable tokens */
+  /** Separator character between phrases */
   separator?: string;
   /** Background variant */
   background?: "gradient" | "muted" | "transparent";
@@ -46,128 +41,20 @@ const backgroundClasses: Record<
   transparent: "bg-transparent",
 };
 
+/**
+ * A static manifesto line: an intro, then phrases separated by a mark. No
+ * highlight and no motion beyond the section's entrance fade.
+ */
 export function ManifestoSection({
   title,
   tokens,
-  interval = 2400,
-  separator = "✕",
+  separator = "×",
   background = "transparent",
   className,
 }: ManifestoSectionProps) {
-  const { motionPreference } = useAnimationContext();
-
-  // Refs for GSAP animation targets
-  const tokenRefs = useRef<Map<number, HTMLSpanElement>>(new Map());
-  const prevActiveRef = useRef<number | null>(null);
-  const pulseRef = useRef<gsap.core.Tween | null>(null);
-
-  // Set ref for each token element
-  const setTokenRef = useCallback((idx: number, el: HTMLSpanElement | null) => {
-    if (el) tokenRefs.current.set(idx, el);
-    else tokenRefs.current.delete(idx);
-  }, []);
-
-  // Get indices of highlightable tokens
-  const highlightableIndices = useMemo(
-    () =>
-      tokens
-        .map((token, idx) => (token.highlightable ? idx : -1))
-        .filter((idx) => idx >= 0),
-    [tokens],
-  );
-
-  // Keep one highlighted token as a stable visual anchor. Its entrance and
-  // pulse are finite, so the section settles within five seconds.
-  const activeIdx = highlightableIndices[0] ?? null;
-  const pulseDuration = Math.min(1.2, Math.max(0.2, interval / 2000));
-
-  // GSAP animation for token transitions
-  useEffect(() => {
-    if (motionPreference === "reduced" || activeIdx === null) return;
-
-    const prevIdx = prevActiveRef.current;
-    prevActiveRef.current = activeIdx;
-
-    // Kill previous pulse animation
-    if (pulseRef.current) {
-      pulseRef.current.kill();
-      pulseRef.current = null;
-    }
-
-    // Animate out previous active token
-    if (prevIdx !== null && prevIdx !== activeIdx) {
-      const prevEl = tokenRefs.current.get(prevIdx);
-      if (prevEl) {
-        gsap.to(prevEl, {
-          scale: 1,
-          y: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      }
-    }
-
-    // Animate in new active token
-    const activeEl = tokenRefs.current.get(activeIdx);
-    // The finite pulse spawns at the end of an async onComplete chain. Guard
-    // the chain so a reduced-motion change cannot create it after cleanup.
-    let cancelled = false;
-    if (activeEl) {
-      gsap.fromTo(
-        activeEl,
-        { scale: 0.92, y: 2 },
-        {
-          scale: 1.05,
-          y: -1,
-          duration: 0.5,
-          ease: "elastic.out(1, 0.4)",
-          onComplete: () => {
-            if (cancelled) return;
-            // Settle back and start pulse
-            gsap.to(activeEl, {
-              scale: 1,
-              y: 0,
-              duration: 0.3,
-              ease: "power2.out",
-              onComplete: () => {
-                if (cancelled) return;
-                // Two gentle phases, then settle.
-                pulseRef.current = gsap.to(activeEl, {
-                  scale: 1.02,
-                  duration: pulseDuration,
-                  ease: "sine.inOut",
-                  yoyo: true,
-                  repeat: 1,
-                });
-              },
-            });
-          },
-        },
-      );
-    }
-
-    // Cleanup on unmount and on preference/active changes
-    return () => {
-      cancelled = true;
-      if (activeEl) {
-        gsap.killTweensOf(activeEl);
-      }
-      if (pulseRef.current) {
-        pulseRef.current.kill();
-        pulseRef.current = null;
-      }
-    };
-  }, [activeIdx, motionPreference, pulseDuration]);
-
-  // Check if there are more highlightable tokens after current index
-  const hasNextHighlightable = useCallback(
-    (currentIdx: number) => {
-      return tokens.slice(currentIdx + 1).some((t) => t.highlightable);
-    },
-    [tokens],
-  );
-
   const isGradient = background === "gradient";
+  const hasNextPhrase = (idx: number) =>
+    tokens.slice(idx + 1).some((token) => token.phrase);
 
   return (
     <Section
@@ -176,7 +63,6 @@ export function ManifestoSection({
       className={cn(backgroundClasses[background], "isolate", className)}
     >
       <Container size="lg" className="relative z-10">
-        {/* Title */}
         <FadeIn direction="up" delay={0} distance={20}>
           <h2
             className={cn(
@@ -190,47 +76,25 @@ export function ManifestoSection({
           </h2>
         </FadeIn>
 
-        {/* Manifesto tokens */}
         <FadeIn direction="up" delay={0.1} distance={20}>
+          {/* Plain flowing text: each mark is joined to the phrase before it
+              with a no-break space, so no line starts with a stray mark. */}
           <p
             className={cn(
-              "flex flex-wrap gap-2",
               "font-body",
               "text-base tablet:text-lg desktop:text-xl",
               "leading-relaxed",
               isGradient ? "text-white" : "text-foreground",
             )}
           >
-            {tokens.map((token, idx) => {
-              const isActive = token.highlightable && activeIdx === idx;
-              const showSeparator =
-                token.highlightable && hasNextHighlightable(idx);
-
-              return (
-                <span key={`${idx}-${token.text}`} className="contents">
-                  <span
-                    ref={(el) => setTokenRef(idx, el)}
-                    className={cn(
-                      "inline-flex items-center",
-                      "px-1.5 py-0.5",
-                      "rounded-md",
-                      "transition-colors duration-200 ease-out",
-                      isActive && [
-                        isGradient
-                          ? "bg-white text-purple-700"
-                          : "bg-primary text-primary-foreground",
-                        "shadow-sm",
-                      ],
-                    )}
-                    aria-live="off"
-                  >
-                    {token.text}
-                  </span>
-                  {showSeparator && (
+            {tokens.map((token, idx) => (
+              <span key={`${idx}-${token.text}`}>
+                {token.text}
+                {token.phrase && hasNextPhrase(idx) && (
+                  <>
+                    {"\u00a0"}
                     <span
                       className={cn(
-                        "inline-flex items-center",
-                        "px-1",
                         "font-semibold",
                         isGradient ? "text-white/80" : "text-foreground/60",
                       )}
@@ -238,10 +102,11 @@ export function ManifestoSection({
                     >
                       {separator}
                     </span>
-                  )}
-                </span>
-              );
-            })}
+                  </>
+                )}
+                {idx < tokens.length - 1 && " "}
+              </span>
+            ))}
           </p>
         </FadeIn>
       </Container>

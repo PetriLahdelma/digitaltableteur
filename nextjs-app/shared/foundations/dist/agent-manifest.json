@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-18T13:20:57.528Z",
+  "generatedAt": "2026-10-18T18:03:31.901Z",
   "summary": {
     "componentCount": 184,
     "statusCounts": {
@@ -79760,15 +79760,10 @@
             "type": "ManifestoToken[]",
             "description": "Array of manifesto tokens"
           },
-          "interval": {
-            "optional": true,
-            "type": "number",
-            "description": "Timing input used to bound the one-time emphasis pulse"
-          },
           "separator": {
             "optional": true,
             "type": "string",
-            "description": "Separator character between highlightable tokens"
+            "description": "Separator character between phrases"
           },
           "background": {
             "optional": true,
@@ -79828,15 +79823,10 @@
             "type": "ManifestoToken[]",
             "description": "Array of manifesto tokens"
           },
-          "interval": {
-            "optional": true,
-            "type": "number",
-            "description": "Timing input used to bound the one-time emphasis pulse"
-          },
           "separator": {
             "optional": true,
             "type": "string",
-            "description": "Separator character between highlightable tokens"
+            "description": "Separator character between phrases"
           },
           "background": {
             "optional": true,
@@ -79880,7 +79870,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 6,
+        "declaredPropCount": 5,
         "guidelines": [
           {
             "level": "should",

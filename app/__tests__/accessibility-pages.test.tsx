@@ -144,11 +144,15 @@ describe.sequential("Page-level Accessibility Tests", () => {
       expect(headings.length).toBeGreaterThan(0);
     });
 
-    it("manifesto section exposes live regions for highlight tokens", async () => {
+    it("manifesto reads as one static sentence", async () => {
       await i18n.changeLanguage("en");
       const { container } = renderWithProviders(<AboutPage />);
-      const liveElements = container.querySelectorAll('[aria-live="off"]');
-      expect(liveElements.length).toBeGreaterThan(0);
+      const heading = [...container.querySelectorAll("h2")].find(
+        (h) => h.textContent === "Manifesto",
+      )!;
+      const paragraph = heading.closest("section")!.querySelector("p")!;
+      expect(paragraph.textContent).toMatch(/^Digitaltableteur is /);
+      expect(container.querySelectorAll('[aria-live="off"]')).toHaveLength(0);
     });
   });
 
@@ -282,13 +286,17 @@ describe.sequential("Page-level Accessibility Tests", () => {
       });
     });
 
-    it("AboutPage manifesto has proper aria-live attribute", async () => {
+    it("AboutPage manifesto hides its separator marks from assistive technology", async () => {
       await i18n.changeLanguage("en");
       const { container } = renderWithProviders(<AboutPage />);
-
-      // Manifesto words have aria-live="off" to prevent announcement spam
-      const liveElements = container.querySelectorAll('[aria-live="off"]');
-      expect(liveElements.length).toBeGreaterThan(0);
+      const heading = [...container.querySelectorAll("h2")].find(
+        (h) => h.textContent === "Manifesto",
+      )!;
+      const marks = heading
+        .closest("section")!
+        .querySelectorAll('p [aria-hidden="true"]');
+      expect(marks.length).toBeGreaterThan(0);
+      marks.forEach((mark) => expect(mark.textContent).toBe("×"));
     });
   });
 
