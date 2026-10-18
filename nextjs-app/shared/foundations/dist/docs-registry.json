@@ -1606,7 +1606,7 @@
       "group": "navigation",
       "tier": 2,
       "status": "stable",
-      "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
+      "description": "Single-select tag filter for the blog archive: a labelled group of toggle chips with an implicit All, three visual treatments, optional per-tag counts and an optional collapsed mode.",
       "dense": "Blog-specific category filter control; wraps CategoryFilter conventions for the blog archive",
       "keywords": [
         "blog",
@@ -1692,6 +1692,11 @@
             "lg"
           ],
           "description": "Size variant"
+        },
+        "collapsible": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Collapse to the selected chip and a disclosure button; expanding shows every chip and picking one collapses back to it."
         },
         "className": {
           "optional": true,

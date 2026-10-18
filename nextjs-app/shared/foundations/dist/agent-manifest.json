@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-18T09:59:37.243Z",
+  "generatedAt": "2026-10-18T10:17:31.697Z",
   "summary": {
     "componentCount": 184,
     "statusCounts": {
@@ -5667,7 +5667,7 @@
         "tier": "molecule",
         "group": "navigation",
         "status": "stable",
-        "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
+        "description": "Single-select tag filter for the blog archive: a labelled group of toggle chips with an implicit All, three visual treatments, optional per-tag counts and an optional collapsed mode.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1035-110",
         "radixPrimitive": null,
         "element": "div",
@@ -5767,6 +5767,11 @@
             ],
             "description": "Size variant"
           },
+          "collapsible": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Collapse to the selected chip and a disclosure button; expanding shows every chip and picking one collapses back to it."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -5822,7 +5827,7 @@
           }
         ]
       },
-      "spec": "# BlogCategoryFilter\n\n## Intent\nSingle-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.\n\n## Interaction contract\n- Keyboard: Arrow keys (and Up/Down) move between tabs with automatic activation; Home/End jump to the ends; Enter/Space or click activates the focused tab\n- Pointer: click a tab to select that tag (or All)\n- Screen readers: `role=\"tablist\"` labelled via blogFilterByTag; each filter is a `role=\"tab\"` with `aria-selected`; roving tabindex keeps only the active tab in the tab order\n- Controlled: `selectedTag` and `onTagChange` are supplied by the parent\n\n## Do / don't\n- Do: pass the tag list plus the current `selectedTag` (null = All) and an `onTagChange` handler\n- Do: enable `showCounts` with a `tagCounts` map to show per-tag totals\n- Don't: invent parallel primitives inside this folder\n- Don't: use this for generic list pages — that is CategoryFilter\n\n## Design notes\n- Tokens: Tailwind utilities mapped to theme tokens (foreground/background/muted/border)\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1035-110\n",
+      "spec": "# BlogCategoryFilter\n\n## Intent\nSingle-select tag filter for the blog archive: a labelled group of toggle chips with an implicit All, three visual treatments, optional per-tag counts and an optional collapsed mode.\n\n## Interaction contract\n- Keyboard: Tab moves between chips; Enter/Space toggles the focused chip\n- Pointer: click a chip to select that tag (or All)\n- Screen readers: `role=\"group\"` labelled via blogFilterByTag; each chip is a toggle button with `aria-pressed`\n- Collapsible: only the selected chip and a disclosure button (`aria-expanded`, `aria-controls` on the group, named \"All topics\") show. Expanding reveals every chip with a height transition (none under reduced motion); picking a chip collapses back to it. The disclosure button is always the last child, so focus stays on it while chips appear\n- Controlled: `selectedTag` and `onTagChange` are supplied by the parent\n\n## Do / don't\n- Do: pass the tag list plus the current `selectedTag` (null = All) and an `onTagChange` handler\n- Do: enable `showCounts` with a `tagCounts` map to show per-tag totals\n- Do: use `collapsible` when the tag list wraps to several rows above content\n- Don't: invent parallel primitives inside this folder\n- Don't: use this for generic list pages; that is CategoryFilter\n\n## Design notes\n- Tokens: Tailwind utilities mapped to theme tokens (foreground/background/muted/border); the disclosure button uses the pill chip's border, radius and padding\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1035-110\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/BlogCategoryFilter",
@@ -5847,7 +5852,7 @@
       },
       "agent": {
         "preferredImport": "@dt/BlogCategoryFilter",
-        "intent": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
+        "intent": "Single-select tag filter for the blog archive: a labelled group of toggle chips with an implicit All, three visual treatments, optional per-tag counts and an optional collapsed mode.",
         "props": {
           "tags": {
             "optional": false,
@@ -5894,6 +5899,11 @@
             ],
             "description": "Size variant"
           },
+          "collapsible": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Collapse to the selected chip and a disclosure button; expanding shows\nevery chip (accordion-style height change), and picking one collapses\nback to it."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -5924,11 +5934,12 @@
         "variantsFnName": null,
         "useWhen": [
           "pass the tag list plus the current `selectedTag` (null = All) and an `onTagChange` handler",
-          "enable `showCounts` with a `tagCounts` map to show per-tag totals"
+          "enable `showCounts` with a `tagCounts` map to show per-tag totals",
+          "use `collapsible` when the tag list wraps to several rows above content"
         ],
         "avoidWhen": [
           "invent parallel primitives inside this folder",
-          "use this for generic list pages — that is CategoryFilter"
+          "use this for generic list pages; that is CategoryFilter"
         ],
         "requiredA11y": [
           "role=group labelled via blogFilterByTag; each filter is a toggle button with aria-pressed",
@@ -5950,7 +5961,7 @@
         "replacementFor": [],
         "forbiddenUse": [
           "invent parallel primitives inside this folder",
-          "use this for generic list pages — that is CategoryFilter"
+          "use this for generic list pages; that is CategoryFilter"
         ],
         "composesWith": [
           "Container",
@@ -5959,7 +5970,7 @@
           "EnhancedArticleCard"
         ],
         "prefersOver": [],
-        "declaredPropCount": 8,
+        "declaredPropCount": 9,
         "guidelines": [
           {
             "level": "should",
@@ -5976,6 +5987,13 @@
             "source": "spec.md#do-dont"
           },
           {
+            "level": "should",
+            "guidance": "use `collapsible` when the tag list wraps to several rows above content",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
             "level": "should-not",
             "guidance": "invent parallel primitives inside this folder",
             "rationale": null,
@@ -5984,7 +6002,7 @@
           },
           {
             "level": "should-not",
-            "guidance": "use this for generic list pages — that is CategoryFilter",
+            "guidance": "use this for generic list pages; that is CategoryFilter",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
@@ -7740,6 +7758,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ArticleOfferBlock.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
             "since": "2026-06-04"
           },
@@ -7791,11 +7814,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/error.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -27303,6 +27321,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ArticleOfferBlock.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
             "since": "2026-06-04"
           },
@@ -27354,11 +27377,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -44095,8 +44113,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -44110,8 +44128,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -44132,8 +44150,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -44160,8 +44178,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -61883,6 +61901,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ArticleOfferBlock.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
             "since": "2026-06-04"
           },
@@ -61934,11 +61957,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -64788,6 +64806,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ArticleOfferBlock.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
             "since": "2026-06-04"
           },
@@ -64839,11 +64862,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
             "since": "2026-06-04"
           }
         ],

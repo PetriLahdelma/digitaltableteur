@@ -22,8 +22,8 @@ const translations = {
     contactInquiryMessageTab: "Send a message",
     contactInquiryBookTab: "Book a call",
     contactInquiryBookTabNew: "NEW!",
-    contactBookingComingSoon:
-      "Online scheduling is not live yet. Send a message and a reply with times will follow, usually within one business day.",
+    contactBookingUnavailable:
+      "The calendar didn't load. Send a message and a reply with times follows within one business day.",
     contactBookingUseForm: "Use the contact form",
     contactBookingEmail: "Send an email instead",
     donnyBookingLoading: "Loading booking calendar",
@@ -33,7 +33,7 @@ const translations = {
     contactInquiryMessageTab: "Lähetä viesti",
     contactInquiryBookTab: "Varaa puhelu",
     contactInquiryBookTabNew: "UUSI!",
-    contactBookingComingSoon:
+    contactBookingUnavailable:
       "Ajanvaraus ei ole vielä käytössä. Lähetä viesti, niin ehdotamme aikoja yleensä yhden arkipäivän kuluessa.",
     contactBookingUseForm: "Käytä yhteydenottolomaketta",
     contactBookingEmail: "Lähetä sähköpostia",
@@ -153,7 +153,7 @@ describe("ContactInquiryPanel", () => {
     ).toBeInTheDocument();
     expect(screen.getByText("NEW!")).toBeInTheDocument();
     expect(
-      screen.getByText(/Online scheduling is not live yet/i),
+      screen.getByText(/The calendar didn.t load/i),
     ).toBeInTheDocument();
 
     const user = userEvent.setup();

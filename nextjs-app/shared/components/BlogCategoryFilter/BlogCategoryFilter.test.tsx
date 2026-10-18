@@ -110,4 +110,45 @@ describe("BlogCategoryFilter", () => {
       expect(await axe(container)).toHaveNoViolations();
     },
   );
+
+  it("collapses to the selected chip and a disclosure button", async () => {
+    const onTagChange = vi.fn();
+    const user = userEvent.setup();
+    render(
+      <BlogCategoryFilter
+        tags={tags}
+        selectedTag="Tooling"
+        onTagChange={onTagChange}
+        collapsible
+      />,
+    );
+    const toggle = screen.getByRole("button", { name: "All topics" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getAllByRole("button")).toHaveLength(2);
+    expect(screen.getByRole("button", { name: "Tooling" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+
+    await user.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    expect(toggle).toHaveFocus();
+    expect(screen.getAllByRole("button")).toHaveLength(tags.length + 2);
+
+    await user.click(screen.getByRole("button", { name: "Process" }));
+    expect(onTagChange).toHaveBeenCalledWith("Process");
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("has no axe violations when collapsible", async () => {
+    const { container } = render(
+      <BlogCategoryFilter
+        tags={tags}
+        selectedTag={null}
+        onTagChange={vi.fn()}
+        collapsible
+      />,
+    );
+    expect(await axe(container)).toHaveNoViolations();
+  });
 });

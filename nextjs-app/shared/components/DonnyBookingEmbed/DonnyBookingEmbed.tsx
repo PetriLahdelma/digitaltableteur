@@ -45,6 +45,11 @@ export interface DonnyBookingEmbedProps {
   calOrigin?: string;
   embedJsUrl?: string;
   loadingFallback?: ReactNode;
+  /**
+   * Level of the "Book a call" title so it fits the page outline: h2 on a
+   * page whose only heading above is the h1, h4 inside a chat message.
+   */
+  headingLevel?: "h2" | "h3" | "h4";
 }
 
 const SUPPORTED_CAL_LOCALES = ["en", "fi", "sv"] as const;
@@ -81,6 +86,7 @@ export function DonnyBookingEmbed({
   calOrigin,
   embedJsUrl,
   loadingFallback,
+  headingLevel: Heading = "h4",
 }: DonnyBookingEmbedProps) {
   const { translate: t, language, resolvedLanguage } = useLocalization();
   const calLocale = useMemo(
@@ -149,7 +155,7 @@ export function DonnyBookingEmbed({
   return (
     <div className={styles.donnyBookingEmbed} data-testid="donny-booking-embed">
       <div className={styles.header}>
-        <h4 className={styles.title}>
+        <Heading className={styles.title}>
           {durationMinutes
             ? t("donnyBookingDurationTitle", "Book a {{minutes}}-minute call", {
                 minutes: durationMinutes,
@@ -157,7 +163,7 @@ export function DonnyBookingEmbed({
             : t("donnyBookingTitle", "Book a {{meeting}}", {
                 meeting: meetingLabel,
               })}
-        </h4>
+        </Heading>
         <p className={styles.subtitle}>
           {prefillApplied
             ? t(

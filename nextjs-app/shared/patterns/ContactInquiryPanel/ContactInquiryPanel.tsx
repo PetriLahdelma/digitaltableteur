@@ -165,13 +165,14 @@ export const ContactInquiryPanel = forwardRef<
               <DonnyBookingEmbed
                 {...booking}
                 loadingFallback={bookingLoadingFallback}
+                headingLevel="h2"
               />
             ) : (
               <div className={styles.unconfigured}>
                 <p className={styles.unconfiguredText}>
                   {t(
-                    "contactBookingComingSoon",
-                    "Online scheduling is not live yet. Send a message and a reply with times will follow, usually within one business day.",
+                    "contactBookingUnavailable",
+                    "The calendar didn't load. Send a message and a reply with times follows within one business day.",
                   )}
                 </p>
                 <div className={styles.unconfiguredActions}>

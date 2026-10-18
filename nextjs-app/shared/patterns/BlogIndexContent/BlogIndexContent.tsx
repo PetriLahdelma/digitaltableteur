@@ -158,6 +158,7 @@ function BlogIndexContentInner({
                 showCounts
                 tagCounts={tagCounts}
                 variant={filterVariant}
+                collapsible
               />
             </div>
           )}

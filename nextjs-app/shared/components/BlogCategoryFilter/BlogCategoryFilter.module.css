@@ -1,0 +1,69 @@
+/* Collapsible mode: the selected chip plus a round disclosure button that
+   matches the pill chip's border and height. Square, so the caret centres. */
+
+.toggle {
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+  aspect-ratio: 1;
+}
+
+.sm {
+  padding: var(--space-internal-6);
+  font-size: var(--font-size-text-xs);
+}
+
+.md {
+  padding: var(--space-internal-8);
+  font-size: var(--font-size-text-s);
+}
+
+.lg {
+  padding: var(--space-internal-8);
+  font-size: var(--font-size-text-m);
+}
+
+.toggle:focus-visible {
+  outline: var(--focus-ring-width, var(--space-internal-2)) solid
+    var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--space-internal-2);
+}
+
+.caret {
+  block-size: 1.5em;
+  inline-size: 1.5em;
+  transition: transform 0.24s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.toggle[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+@media (hover: hover) {
+  .toggle:hover {
+    border-color: var(--color-text);
+    color: var(--color-text);
+  }
+}
+
+@media (forced-colors: active) {
+  .toggle {
+    border-color: ButtonText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .caret {
+    transition: none;
+  }
+}

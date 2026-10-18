@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "navigation",
     "status": "stable",
-    "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
+    "description": "Single-select tag filter for the blog archive: a labelled group of toggle chips with an implicit All, three visual treatments, optional per-tag counts and an optional collapsed mode.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1035-110",
     "radixPrimitive": null,
     "element": "div",
@@ -103,6 +103,11 @@
                 "lg"
             ],
             "description": "Size variant"
+        },
+        "collapsible": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Collapse to the selected chip and a disclosure button; expanding shows every chip and picking one collapses back to it."
         },
         "className": {
             "optional": true,

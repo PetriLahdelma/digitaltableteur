@@ -1,8 +1,14 @@
 "use client";
 
+import { useId, useRef, useState } from "react";
+import { flushSync } from "react-dom";
+// One Phosphor glyph imported directly, like ProjectList: Icon would pull its
+// whole registry in.
+import { CaretDown } from "@phosphor-icons/react";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import { FilterChip } from "../FilterChip";
+import styles from "./BlogCategoryFilter.module.css";
 
 export interface BlogCategoryFilterProps {
   /** Array of unique tags */
@@ -19,6 +25,12 @@ export interface BlogCategoryFilterProps {
   variant?: "pills" | "underline" | "minimal";
   /** Size variant */
   size?: "sm" | "md" | "lg";
+  /**
+   * Collapse to the selected chip and a disclosure button; expanding shows
+   * every chip (accordion-style height change), and picking one collapses
+   * back to it.
+   */
+  collapsible?: boolean;
   /** Custom className */
   className?: string;
 }
@@ -64,9 +76,52 @@ export function BlogCategoryFilter({
   tagCounts = {},
   variant = "pills",
   size = "md",
+  collapsible = false,
   className,
 }: BlogCategoryFilterProps) {
   const t = useTranslate();
+  const groupId = useId();
+  const groupRef = useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = useState(false);
+  const collapsed = collapsible && !expanded;
+
+  /** Apply a state change and animate the group's height from old to new. */
+  const withHeightTransition = (update: () => void) => {
+    const el = groupRef.current;
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (!el || reduced || typeof el.animate !== "function") {
+      update();
+      return;
+    }
+    const from = el.offsetHeight;
+    flushSync(update);
+    const to = el.offsetHeight;
+    if (from === to) return;
+    // Clip only while the height moves, so focus rings are never cut off.
+    el.style.overflow = "hidden";
+    const animation = el.animate(
+      [{ blockSize: `${from}px` }, { blockSize: `${to}px` }],
+      { duration: 240, easing: "cubic-bezier(0.2, 0, 0, 1)" },
+    );
+    const release = () => {
+      el.style.overflow = "";
+    };
+    animation.onfinish = release;
+    animation.oncancel = release;
+  };
+
+  const select = (value: string | null) => {
+    if (collapsible && expanded) {
+      withHeightTransition(() => {
+        onTagChange(value);
+        setExpanded(false);
+      });
+      return;
+    }
+    onTagChange(value);
+  };
 
   // Add "All" option at the beginning
   const allOption = {
@@ -85,20 +140,28 @@ export function BlogCategoryFilter({
 
   const options = [allOption, ...tagOptions];
 
+  const isPressed = (value: string | null) =>
+    value === selectedTag || (value === null && selectedTag === null);
+  const visible = collapsed
+    ? options.filter((option) => isPressed(option.value))
+    : options;
+
   return (
     <div
+      ref={groupRef}
+      id={groupId}
       role="group"
       aria-label={t("blogFilterByTag", "Filter by topic")}
-      className={cn(groupClassMap[variant], className)}
+      className={cn(
+        groupClassMap[variant],
+        className,
+      )}
     >
-      {options.map((option) => (
+      {visible.map((option) => (
         <FilterChip
           key={option.value ?? "all"}
-          pressed={
-            option.value === selectedTag ||
-            (option.value === null && selectedTag === null)
-          }
-          onClick={() => onTagChange(option.value)}
+          pressed={isPressed(option.value)}
+          onClick={() => select(option.value)}
           variant={chipVariantMap[variant]}
           size={size}
           count={option.count}
@@ -106,6 +169,20 @@ export function BlogCategoryFilter({
           {option.label}
         </FilterChip>
       ))}
+      {collapsible && (
+        // Always the last child, so expanding inserts chips before it and
+        // never moves the focused button.
+        <button
+          type="button"
+          className={cn(styles.toggle, styles[size])}
+          aria-expanded={expanded}
+          aria-controls={groupId}
+          aria-label={t("blogFilterAllTopics", "All topics")}
+          onClick={() => withHeightTransition(() => setExpanded((v) => !v))}
+        >
+          <CaretDown className={styles.caret} aria-hidden="true" />
+        </button>
+      )}
     </div>
   );
 }

@@ -126,6 +126,12 @@ export const Minimal: Story = {
   args: { variant: "minimal", showCounts: false, selectedTag: "Tooling" },
 };
 
+/** The blog index treatment: the selected chip plus a disclosure button
+ *  that opens every topic. */
+export const Collapsible: Story = {
+  args: { collapsible: true },
+};
+
 export const Playground: Story = Default;
 
 export const Example: Story = {
