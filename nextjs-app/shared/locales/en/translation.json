@@ -206,7 +206,7 @@
   "pricingPackage2Price": "€11–17k",
   "pricingPackage2Duration": "3 weeks",
   "pricingPackage2Description": "Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.",
-  "pricingPackage3Title": "UX Sprint/DS Audit",
+  "pricingPackage3Title": "UX Sprint",
   "pricingPackage3Price": "€7–14k",
   "pricingPackageReadMore": "Read more",
   "pricingPackageCtaWorkshop": "Ask for a workshop quote",
@@ -226,7 +226,7 @@
   "pricingPackageCtaUxSprint": "Book UX Sprint",
   "pricingPackageCtaAiReady": "Book AI-Ready Ops",
   "pricingPackageCtaLiftOff": "Book Design System Lift-Off",
-  "pricingAaasTitle": "AI agents and automation",
+  "pricingAaasTitle": "Agent track",
   "pricingAaasToggleExpand": "Expand AI agents and automation",
   "pricingAaasToggleCollapse": "Collapse AI agents and automation",
   "pricingAaasSummary": "Autonomous DesignOps packages. Agents that do the work, supervised by your team.",
@@ -1526,16 +1526,26 @@
         "eyebrow": "Open source, 2026",
         "title": "Project Spine",
         "body": "A CLI that compiles briefs, repositories and design tokens into operating context for coding agents."
+      },
+      "home-remote": {
+        "eyebrow": "Self-initiated, 2026",
+        "title": "Home Remote",
+        "body": "A native macOS remote for TVs, home AV and audio: local-first control flows, interaction states and a component set for its clay interface."
+      },
+      "vertaaux": {
+        "eyebrow": "Self-initiated, 2025 to present",
+        "title": "VertaaUX",
+        "body": "A UX and accessibility auditing platform for development teams who treat accessibility as craft, not compliance."
       }
     },
     "audit": {
       "metaTitle": "Design System Audit for Product Teams | Digitaltableteur",
       "metaDescription": "Find component, token, accessibility and governance gaps in your current design system. Receive severity-ranked findings and a practical 90-day roadmap.",
       "eyebrow": "Design system audit",
-      "package": "UX Sprint",
+      "package": "Design System Audit",
       "title": "Find where your design system is costing the team time",
       "lead": "Similar components behave differently. Accessibility defects return in new features. Figma and production disagree about what belongs in the system. A focused audit turns those symptoms into an inventory, severity-ranked findings and a 90-day roadmap.",
-      "cta1": "Book a UX Sprint",
+      "cta1": "Book an audit",
       "cta2": "Send a question",
       "signalsTitle": "Use an audit when the system exists but trust is slipping",
       "signals": [
@@ -1567,7 +1577,7 @@
         "Governance recommendations for RFCs, review and release cadence"
       ],
       "investMeta": "2 weeks, fixed scope",
-      "investNote": "The audit runs as the UX Sprint package. Final scope depends on the number of product surfaces, repositories and teams included.",
+      "investNote": "Final scope depends on the number of product surfaces, repositories and teams included.",
       "investLink": "Estimate a custom engagement",
       "faqTitle": "About the audit",
       "faq": [
@@ -1582,14 +1592,69 @@
         {
           "question": "Is this an accessibility conformance audit?",
           "answer": "Accessibility is reviewed as part of pattern quality, with WCAG 2.2 AA as the reference. A conformance evaluation or certificate is scoped separately."
-        },
-        {
-          "question": "Why is it booked as a UX Sprint?",
-          "answer": "The audit uses the UX Sprint package: two weeks, priced by the surfaces and teams included."
         }
       ],
       "bookTitle": "Start with a 30-minute call",
       "bookBody": "Talk through the system, the teams involved and what the audit should answer. A calendar invite arrives by email."
+    },
+    "uxSprint": {
+      "metaTitle": "UX Sprint: a Tested Prototype in Two Weeks | Digitaltableteur",
+      "metaDescription": "Two weeks from an open product question to a working prototype of the key flow, an eval plan to test it with users and a handoff your team can build from.",
+      "eyebrow": "UX sprint",
+      "package": "UX Sprint",
+      "title": "Test the riskiest flow before the team builds it",
+      "lead": "A new flow is about to absorb months of build time and nobody has seen it work. A UX Sprint turns the open question into a working prototype of the key flow, an eval plan to test it with users and a handoff your team can build from.",
+      "cta1": "Book a UX Sprint",
+      "cta2": "Send a question",
+      "signalsTitle": "Use a sprint when a decision is waiting on evidence",
+      "signals": [
+        "A new feature or flow is about to go into a long build",
+        "Stakeholders disagree about how the key flow should work",
+        "Usability problems keep surfacing late, after release",
+        "An AI feature needs a defined way to judge whether its output is good enough"
+      ],
+      "scopeTitle": "What the sprint covers",
+      "scope": "The sprint focuses on one key flow: the one where the product decision carries the most risk. It is framed with the people who own it, built as a working prototype in your own components where possible and paired with an eval plan that says how users will test it and what counts as success.",
+      "limitsTitle": "Not included unless scoped separately",
+      "limits": [
+        "Production implementation of the flow",
+        "Running the full user study",
+        "Visual identity or brand work"
+      ],
+      "stepsTitle": "How the sprint runs",
+      "steps": [
+        "Frame the decision, the users and the success criteria with the team that owns the flow.",
+        "Map the flow and sketch the alternatives worth testing.",
+        "Build a working prototype of the key flow.",
+        "Write the eval plan and hand over the prototype, findings and next steps."
+      ],
+      "deliverablesTitle": "What you receive",
+      "deliverables": [
+        "A working prototype of the key flow",
+        "An eval plan with tasks, participants and success criteria",
+        "A decision record of the options considered",
+        "A handoff your team can build from"
+      ],
+      "investMeta": "2 weeks, fixed scope",
+      "investNote": "Final scope depends on the complexity of the flow, the number of user groups and how much of your existing design system the prototype can reuse.",
+      "investLink": "Estimate a custom engagement",
+      "faqTitle": "About the sprint",
+      "faq": [
+        {
+          "question": "Is a UX Sprint the same as a design system audit?",
+          "answer": "No. The sprint answers one product question with a working prototype. The Design System Audit reviews the system you already have and ends in a 90-day roadmap. They are booked separately."
+        },
+        {
+          "question": "Who runs the user tests?",
+          "answer": "The eval plan is ready for your team or a research partner to run, with tasks, participants and success criteria written out."
+        },
+        {
+          "question": "Can the prototype become production code?",
+          "answer": "It is built to test the decision, not to ship. Parts built with your design system's components carry over, and Design System Lift-Off or an embedded partnership can take the flow to production."
+        }
+      ],
+      "bookTitle": "Start with a 30-minute call",
+      "bookBody": "Talk through the flow, the decision it supports and who needs to be involved. A calendar invite arrives by email."
     },
     "liftoff": {
       "metaTitle": "Design System Lift-Off | Digitaltableteur",
@@ -2089,7 +2154,7 @@
         },
         {
           "question": "Does the design system need to be in good shape first?",
-          "answer": "It helps. Gaps found while writing the contracts are listed. A UX Sprint/DS Audit can come first when the system needs work."
+          "answer": "It helps. Gaps found while writing the contracts are listed. A Design System Audit can come first when the system needs work."
         },
         {
           "question": "How is success measured?",
@@ -2151,5 +2216,12 @@
         "answer": "Only as described in the AI use policy, which lists the tools, the safeguards and how client data is handled."
       }
     ]
-  }
+  },
+  "pricingPackageAuditTitle": "Design System Audit",
+  "pricingPackageAuditPrice": "€7–14k",
+  "pricingPackageAuditDuration": "2 weeks",
+  "pricingPackageAuditDescription": "An inventory, severity-ranked findings and a 90-day roadmap for the design system you already have.",
+  "pricingPackageCtaAudit": "Book a Design System Audit",
+  "pricingPackagePartnershipDescription": "A senior practitioner embedded in your team to run the design system and DesignOps over months, not weeks.",
+  "pricingPackageCtaPartnership": "Book a call about a partnership"
 }

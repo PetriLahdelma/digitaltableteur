@@ -172,12 +172,12 @@ describe("ContactFormEditorial", () => {
     };
 
     it("preselects the package from ?package=, shows the price read-only and pre-selects its project type", async () => {
-      searchParamsRef.current = new URLSearchParams("package=ux-sprint");
+      searchParamsRef.current = new URLSearchParams("package=design-system-audit");
       try {
         render(<ContactFormEditorial />);
         const budget = await screen.findByRole("textbox", { name: "Budget" });
         expect(budget).toHaveAttribute("readonly");
-        expect(budget).toHaveValue("pricingPackage3Price, pricingPackage3Duration");
+        expect(budget).toHaveValue("pricingPackageAuditPrice, pricingPackageAuditDuration");
         expect(budget).toHaveAccessibleDescription("contactPackageBudgetHelper");
         expect(screen.queryByRole("combobox", { name: "Budget range" })).toBeNull();
         expect(screen.getByText("contactProjectDsAudit")).toBeInTheDocument();

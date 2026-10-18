@@ -206,7 +206,7 @@
   "pricingPackage2Price": "11–17k €",
   "pricingPackage2Duration": "3 veckor",
   "pricingPackage2Description": "Designarbetsflöden, komponentstyrning, AI-verktygsintegration och en DesignOps-spelplan ert team kan köra.",
-  "pricingPackage3Title": "UX Sprint/DS Audit",
+  "pricingPackage3Title": "UX Sprint",
   "pricingPackage3Price": "7–14k €",
   "pricingPackageReadMore": "Läs mer",
   "pricingPackageCtaWorkshop": "Be om en workshopoffert",
@@ -226,7 +226,7 @@
   "pricingPackageCtaUxSprint": "Boka UX Sprint",
   "pricingPackageCtaAiReady": "Boka AI-Ready Ops",
   "pricingPackageCtaLiftOff": "Boka Design System Lift-Off",
-  "pricingAaasTitle": "AI-agenter och automation",
+  "pricingAaasTitle": "Agentspåret",
   "pricingAaasToggleExpand": "Visa AI-agenter och automation",
   "pricingAaasToggleCollapse": "Dölj AI-agenter och automation",
   "pricingAaasSummary": "Autonoma DesignOps-paket. Agenter som gör jobbet, övervakade av ditt team.",
@@ -1526,16 +1526,26 @@
         "eyebrow": "Öppen källkod, 2026",
         "title": "Project Spine",
         "body": "Ett CLI som sammanställer briefer, repositorier och designtokens till driftkontext för kodagenter."
+      },
+      "home-remote": {
+        "eyebrow": "Eget initiativ, 2026",
+        "title": "Home Remote",
+        "body": "En inbyggd macOS-fjärrkontroll för tv, hemmabio och ljud: lokala styrflöden, interaktionstillstånd och en komponentuppsättning för dess lerlika gränssnitt."
+      },
+      "vertaaux": {
+        "eyebrow": "Eget initiativ, sedan 2025",
+        "title": "VertaaUX",
+        "body": "En plattform för UX- och tillgänglighetsgranskning för utvecklingsteam som ser tillgänglighet som hantverk, inte efterlevnad."
       }
     },
     "audit": {
       "metaTitle": "Designsystemaudit för produktteam | Digitaltableteur",
       "metaDescription": "Hitta luckor i komponenter, tokens, tillgänglighet och styrning i ditt nuvarande designsystem. Få fynd rangordnade efter allvarlighet och en praktisk 90-dagars färdplan.",
       "eyebrow": "Designsystemaudit",
-      "package": "UX Sprint",
+      "package": "Granskning av designsystem",
       "title": "Ta reda på var designsystemet kostar teamet tid",
       "lead": "Likadana komponenter beter sig olika. Tillgänglighetsfel återkommer i nya funktioner. Figma och produktion är oense om vad som hör till systemet. En fokuserad audit gör symptomen till en inventering, fynd rangordnade efter allvarlighet och en 90-dagars färdplan.",
-      "cta1": "Boka en UX Sprint",
+      "cta1": "Boka en granskning",
       "cta2": "Fråga om auditen",
       "signalsTitle": "Gör en audit när systemet finns men förtroendet sviktar",
       "signals": [
@@ -1567,7 +1577,7 @@
         "Styrningsrekommendationer för RFC, granskning och releasetakt"
       ],
       "investMeta": "2 veckor, fast omfattning",
-      "investNote": "Auditen genomförs som UX Sprint-paketet. Slutlig omfattning beror på antalet produktytor, repositorier och team som ingår.",
+      "investNote": "Den slutliga omfattningen beror på antalet produktytor, repositorier och team som ingår.",
       "investLink": "Uppskatta ett skräddarsytt uppdrag",
       "faqTitle": "Om auditen",
       "faq": [
@@ -1582,14 +1592,69 @@
         {
           "question": "Är det här en audit av tillgänglighetsefterlevnad?",
           "answer": "Tillgänglighet granskas som en del av mönstrens kvalitet, med WCAG 2.2 AA som referens. En efterlevnadsutvärdering eller ett certifikat avtalas separat."
-        },
-        {
-          "question": "Varför bokas den som en UX Sprint?",
-          "answer": "Auditen använder UX Sprint-paketet: två veckor, prissatt efter ytorna och teamen som ingår."
         }
       ],
       "bookTitle": "Börja med ett samtal på 30 minuter",
       "bookBody": "Gå igenom systemet, teamen som berörs och vad auditen ska besvara. En kalenderinbjudan kommer via e-post."
+    },
+    "uxSprint": {
+      "metaTitle": "UX Sprint: en testad prototyp på två veckor | Digitaltableteur",
+      "metaDescription": "Två veckor från en öppen produktfråga till en fungerande prototyp av nyckelflödet, en utvärderingsplan för användartester och en överlämning teamet kan bygga vidare på.",
+      "eyebrow": "UX Sprint",
+      "package": "UX Sprint",
+      "title": "Testa det mest riskfyllda flödet innan teamet bygger det",
+      "lead": "Ett nytt flöde är på väg att ta månader av utvecklingstid och ingen har sett det fungera. En UX Sprint gör den öppna frågan till en fungerande prototyp av nyckelflödet, en utvärderingsplan för användartester och en överlämning teamet kan bygga vidare på.",
+      "cta1": "Boka en UX Sprint",
+      "cta2": "Skicka en fråga",
+      "signalsTitle": "Välj en sprint när ett beslut väntar på belägg",
+      "signals": [
+        "En ny funktion eller ett nytt flöde ska snart in i en lång utveckling",
+        "Intressenterna är oense om hur nyckelflödet ska fungera",
+        "Användbarhetsproblem dyker upp sent, först efter lansering",
+        "En AI-funktion behöver ett definierat sätt att bedöma om resultatet är tillräckligt bra"
+      ],
+      "scopeTitle": "Vad sprinten omfattar",
+      "scope": "Sprinten fokuserar på ett nyckelflöde: det där produktbeslutet bär störst risk. Det avgränsas tillsammans med dem som äger det, byggs som en fungerande prototyp med era egna komponenter där det går och kompletteras med en utvärderingsplan som beskriver hur användare testar det och vad som räknas som framgång.",
+      "limitsTitle": "Ingår inte om det inte avtalas separat",
+      "limits": [
+        "Produktionsimplementering av flödet",
+        "Genomförandet av hela användarstudien",
+        "Visuell identitet eller varumärkesarbete"
+      ],
+      "stepsTitle": "Så går sprinten till",
+      "steps": [
+        "Avgränsa beslutet, användarna och framgångskriterierna med teamet som äger flödet.",
+        "Kartlägg flödet och skissa alternativen som är värda att testa.",
+        "Bygg en fungerande prototyp av nyckelflödet.",
+        "Skriv utvärderingsplanen och lämna över prototypen, iakttagelserna och nästa steg."
+      ],
+      "deliverablesTitle": "Det här får du",
+      "deliverables": [
+        "En fungerande prototyp av nyckelflödet",
+        "En utvärderingsplan med uppgifter, deltagare och framgångskriterier",
+        "Ett beslutsprotokoll över de alternativ som övervägts",
+        "En överlämning teamet kan bygga vidare på"
+      ],
+      "investMeta": "2 veckor, fast omfattning",
+      "investNote": "Den slutliga omfattningen beror på flödets komplexitet, antalet användargrupper och hur mycket av ert befintliga designsystem prototypen kan återanvända.",
+      "investLink": "Uppskatta ett anpassat uppdrag",
+      "faqTitle": "Om sprinten",
+      "faq": [
+        {
+          "question": "Är en UX Sprint samma sak som en granskning av designsystemet?",
+          "answer": "Nej. Sprinten besvarar en produktfråga med en fungerande prototyp. Granskningen av designsystemet går igenom systemet ni redan har och avslutas med en 90-dagars färdplan. De bokas separat."
+        },
+        {
+          "question": "Vem genomför användartesterna?",
+          "answer": "Utvärderingsplanen är klar för ert team eller en forskningspartner att genomföra, med uppgifter, deltagare och framgångskriterier nedskrivna."
+        },
+        {
+          "question": "Kan prototypen bli produktionskod?",
+          "answer": "Den byggs för att testa beslutet, inte för att lanseras. Delar som byggts med designsystemets komponenter följer med, och Design System Lift-Off eller ett inbäddat partnerskap kan ta flödet till produktion."
+        }
+      ],
+      "bookTitle": "Börja med ett 30 minuters samtal",
+      "bookBody": "Gå igenom flödet, beslutet det stödjer och vem som behöver vara med. En kalenderinbjudan kommer via e-post."
     },
     "liftoff": {
       "metaTitle": "Design System Lift-Off | Digitaltableteur",
@@ -2089,7 +2154,7 @@
         },
         {
           "question": "Måste designsystemet vara i gott skick först?",
-          "answer": "Det hjälper. Brister som upptäcks när kontrakten skrivs listas. En UX Sprint/DS Audit kan komma först när systemet behöver ses över."
+          "answer": "Det hjälper. Brister som upptäcks när kontrakten skrivs listas. En granskning av designsystemet kan komma först när systemet behöver ses över."
         },
         {
           "question": "Hur mäts framgång?",
@@ -2151,5 +2216,12 @@
         "answer": "Endast så som policyn för AI-användning beskriver. Den listar verktygen, skyddsåtgärderna och hur kunddata hanteras."
       }
     ]
-  }
+  },
+  "pricingPackageAuditTitle": "Granskning av designsystem",
+  "pricingPackageAuditPrice": "7–14k €",
+  "pricingPackageAuditDuration": "2 veckor",
+  "pricingPackageAuditDescription": "En inventering, fynd rangordnade efter allvarlighetsgrad och en 90-dagars färdplan för designsystemet ni redan har.",
+  "pricingPackageCtaAudit": "Boka en granskning av designsystemet",
+  "pricingPackagePartnershipDescription": "En senior praktiker inbäddad i ert team som driver designsystemet och DesignOps i månader, inte veckor.",
+  "pricingPackageCtaPartnership": "Boka ett samtal om partnerskap"
 }

@@ -67,6 +67,15 @@ export const HOURLY_RATE: HourlyRate = {
 
 export const CONSULTING_PACKAGES: ConsultingPackage[] = [
   {
+    id: "design-system-audit",
+    name: "Design System Audit",
+    priceRangeEur: "€7–14k",
+    duration: "2 weeks",
+    description:
+      "An inventory, severity-ranked findings and a 90-day roadmap for an existing design system.",
+    pricingModel: "fixed_package",
+  },
+  {
     id: "ux-sprint",
     name: "UX Sprint",
     priceRangeEur: "€7–14k",

@@ -85,8 +85,24 @@ const PACKAGES: PackageItem[] = [
     donnyTarget: "pricing.package.workshop",
   },
   {
+    titleKey: "pricingPackageAuditTitle",
+    titleDefault: "Design System Audit",
+    priceKey: "pricingPackageAuditPrice",
+    priceDefault: "€7–14k",
+    durationKey: "pricingPackageAuditDuration",
+    durationDefault: "2 weeks",
+    descriptionKey: "pricingPackageAuditDescription",
+    descriptionDefault:
+      "An inventory, severity-ranked findings and a 90-day roadmap for the design system you already have.",
+    ctaKey: "pricingPackageCtaAudit",
+    ctaDefault: "Book a Design System Audit",
+    contactPackageId: "design-system-audit",
+    detailsHref: "/engagements/design-system-audit",
+    donnyTarget: "pricing.package.designSystemAudit",
+  },
+  {
     titleKey: "pricingPackage3Title",
-    titleDefault: "UX Sprint/DS Audit",
+    titleDefault: "UX Sprint",
     priceKey: "pricingPackage3Price",
     priceDefault: "€7–14k",
     durationKey: "pricingPackage3Duration",
@@ -97,7 +113,7 @@ const PACKAGES: PackageItem[] = [
     ctaKey: "pricingPackageCtaUxSprint",
     ctaDefault: "Book UX Sprint",
     contactPackageId: "ux-sprint",
-    detailsHref: "/engagements/design-system-audit",
+    detailsHref: "/engagements/ux-sprint",
     donnyTarget: "pricing.package.uxSprint",
   },
   {
@@ -131,6 +147,22 @@ const PACKAGES: PackageItem[] = [
     contactPackageId: "design-system-lift-off",
     detailsHref: "/engagements/design-system-lift-off",
     donnyTarget: "pricing.package.designSystemLiftOff",
+  },
+  {
+    titleKey: "engagementPages.partnership.eyebrow",
+    titleDefault: "Embedded partnership",
+    priceKey: "engagementPages.partnership.price",
+    priceDefault: "90 €/h",
+    durationKey: "engagementPages.partnership.timeline",
+    durationDefault: "6 or 12 months",
+    descriptionKey: "pricingPackagePartnershipDescription",
+    descriptionDefault:
+      "A senior practitioner embedded in your team to run the design system and DesignOps over months, not weeks.",
+    ctaKey: "pricingPackageCtaPartnership",
+    ctaDefault: "Book a call about a partnership",
+    contactPackageId: "embedded-partnership",
+    detailsHref: "/engagements/embedded-partnership",
+    donnyTarget: "pricing.package.embeddedPartnership",
   },
 ];
 
@@ -520,7 +552,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
                 className={styles.packagesHeading}
                 id="pricing-aaas-title"
               >
-                {t("pricingAaasTitle", "AI agents and automation")}
+                {t("pricingAaasTitle", "Agent track")}
               </Title>
               <span className={styles.newBadge} aria-hidden="true">
                 {t("contactInquiryBookTabNew", "NEW!")}

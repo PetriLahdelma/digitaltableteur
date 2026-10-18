@@ -206,7 +206,7 @@
   "pricingPackage2Price": "11–17k €",
   "pricingPackage2Duration": "3 viikkoa",
   "pricingPackage2Description": "Design-työnkulut, komponenttihallinta, AI-työkalukytkennät ja DesignOps-käyttöönoton pelikirja tiimillesi.",
-  "pricingPackage3Title": "UX Sprint/DS Audit",
+  "pricingPackage3Title": "UX Sprint",
   "pricingPackage3Price": "7–14k €",
   "pricingPackageReadMore": "Lue lisää",
   "pricingPackageCtaWorkshop": "Pyydä työpajatarjous",
@@ -226,7 +226,7 @@
   "pricingPackageCtaUxSprint": "Varaa UX-sprintti",
   "pricingPackageCtaAiReady": "Varaa AI-Ready Ops",
   "pricingPackageCtaLiftOff": "Varaa Design System Lift-Off",
-  "pricingAaasTitle": "Tekoälyagentit ja automaatio",
+  "pricingAaasTitle": "Agenttipolku",
   "pricingAaasToggleExpand": "Laajenna: tekoälyagentit ja automaatio",
   "pricingAaasToggleCollapse": "Pienennä: tekoälyagentit ja automaatio",
   "pricingAaasSummary": "Autonomiset DesignOps-paketit. Agentit tekevät työn, tiimisi valvoo.",
@@ -1526,16 +1526,26 @@
         "eyebrow": "Avoin lähdekoodi, 2026",
         "title": "Project Spine",
         "body": "CLI, joka kokoaa briefit, repositoriot ja design-tokenit koodausagenttien toimintakontekstiksi."
+      },
+      "home-remote": {
+        "eyebrow": "Oma projekti, 2026",
+        "title": "Home Remote",
+        "body": "Natiivi macOS-kaukosäädin televisioille, kotiteatterille ja äänilaitteille: paikalliset ohjauspolut, vuorovaikutustilat ja komponenttisarja savimaiseen käyttöliittymään."
+      },
+      "vertaaux": {
+        "eyebrow": "Oma projekti, 2025 alkaen",
+        "title": "VertaaUX",
+        "body": "UX- ja saavutettavuusauditointialusta kehitystiimeille, jotka kohtelevat saavutettavuutta käsityönä eivätkä pelkkänä vaatimustenmukaisuutena."
       }
     },
     "audit": {
       "metaTitle": "Design-systeemin auditointi tuotetiimeille | Digitaltableteur",
       "metaDescription": "Löydä komponenttien, tokenien, saavutettavuuden ja hallintamallin aukot nykyisestä design-systeemistä. Saat vakavuusjärjestetyt havainnot ja käytännöllisen 90 päivän tiekartan.",
       "eyebrow": "Design-systeemin auditointi",
-      "package": "UX Sprint",
+      "package": "Design systemin auditointi",
       "title": "Selvitä, missä design-systeemi maksaa tiimille aikaa",
       "lead": "Samannäköiset komponentit toimivat eri tavoin. Saavutettavuusvirheet palaavat uusissa ominaisuuksissa. Figma ja tuotanto ovat eri mieltä siitä, mitä systeemiin kuuluu. Rajattu auditointi muuttaa oireet inventaarioksi, vakavuusjärjestetyiksi havainnoiksi ja 90 päivän tiekartaksi.",
-      "cta1": "Varaa UX-sprintti",
+      "cta1": "Varaa auditointi",
       "cta2": "Kysy auditoinnista",
       "signalsTitle": "Auditointi sopii, kun systeemi on olemassa mutta luottamus horjuu",
       "signals": [
@@ -1567,7 +1577,7 @@
         "Hallintamallisuositukset RFC-, katselmointi- ja julkaisurytmille"
       ],
       "investMeta": "2 viikkoa, kiinteä laajuus",
-      "investNote": "Auditointi toteutetaan UX Sprint -pakettina. Lopullinen laajuus riippuu mukana olevien näkymien, repositorioiden ja tiimien määrästä.",
+      "investNote": "Lopullinen laajuus riippuu mukana olevien tuotepintojen, repositorioiden ja tiimien määrästä.",
       "investLink": "Arvioi räätälöity toimeksianto",
       "faqTitle": "Auditoinnista",
       "faq": [
@@ -1582,14 +1592,69 @@
         {
           "question": "Onko tämä saavutettavuuden vaatimustenmukaisuusauditointi?",
           "answer": "Saavutettavuus arvioidaan osana mallien laatua. Viitteenä on WCAG 2.2 AA. Vaatimustenmukaisuusarviointi tai sertifikaatti sovitaan erikseen."
-        },
-        {
-          "question": "Miksi auditointi varataan UX-sprinttinä?",
-          "answer": "Auditointi käyttää UX Sprint -pakettia: kaksi viikkoa. Hinta määräytyy mukana olevien näkymien ja tiimien mukaan."
         }
       ],
       "bookTitle": "Aloita 30 minuutin puhelulla",
       "bookBody": "Käydään läpi systeemi, mukana olevat tiimit ja se, mihin auditoinnin pitäisi vastata. Kalenterikutsu tulee sähköpostilla."
+    },
+    "uxSprint": {
+      "metaTitle": "UX Sprint: testattu prototyyppi kahdessa viikossa | Digitaltableteur",
+      "metaDescription": "Kahdessa viikossa avoimesta tuotekysymyksestä toimivaan prototyyppiin avainpolusta, käyttäjätestauksen arviointisuunnitelmaan ja luovutukseen, jonka pohjalta tiimi voi rakentaa.",
+      "eyebrow": "UX Sprint",
+      "package": "UX Sprint",
+      "title": "Testaa riskialttein polku ennen kuin tiimi rakentaa sen",
+      "lead": "Uusi käyttäjäpolku on viemässä kuukausia kehitysaikaa, eikä kukaan ole nähnyt sen toimivan. UX Sprint muuttaa avoimen kysymyksen toimivaksi prototyypiksi avainpolusta, arviointisuunnitelmaksi käyttäjätestausta varten ja luovutukseksi, jonka pohjalta tiimi voi rakentaa.",
+      "cta1": "Varaa UX Sprint",
+      "cta2": "Lähetä kysymys",
+      "signalsTitle": "Valitse sprintti, kun päätös odottaa näyttöä",
+      "signals": [
+        "Uusi ominaisuus tai polku on menossa pitkään toteutukseen",
+        "Sidosryhmät ovat eri mieltä siitä, miten avainpolun pitäisi toimia",
+        "Käytettävyysongelmat nousevat esiin myöhään, vasta julkaisun jälkeen",
+        "Tekoälyominaisuus tarvitsee määritellyn tavan arvioida, onko sen tuotos riittävän hyvä"
+      ],
+      "scopeTitle": "Mitä sprintti kattaa",
+      "scope": "Sprintti keskittyy yhteen avainpolkuun: siihen, jossa tuotepäätökseen liittyy suurin riski. Se rajataan polun omistajien kanssa, rakennetaan toimivaksi prototyypiksi mahdollisuuksien mukaan omilla komponenteillanne ja täydennetään arviointisuunnitelmalla, joka kertoo, miten käyttäjät testaavat sen ja mikä lasketaan onnistumiseksi.",
+      "limitsTitle": "Ei sisälly, ellei erikseen sovita",
+      "limits": [
+        "Polun tuotantototeutus",
+        "Koko käyttäjätutkimuksen toteuttaminen",
+        "Visuaalinen identiteetti tai brändityö"
+      ],
+      "stepsTitle": "Miten sprintti etenee",
+      "steps": [
+        "Rajataan päätös, käyttäjät ja onnistumisen kriteerit polun omistavan tiimin kanssa.",
+        "Kartoitetaan polku ja luonnostellaan testaamisen arvoiset vaihtoehdot.",
+        "Rakennetaan toimiva prototyyppi avainpolusta.",
+        "Kirjoitetaan arviointisuunnitelma ja luovutetaan prototyyppi, havainnot ja jatkoaskeleet."
+      ],
+      "deliverablesTitle": "Mitä saat",
+      "deliverables": [
+        "Toimivan prototyypin avainpolusta",
+        "Arviointisuunnitelman tehtävineen, osallistujineen ja onnistumisen kriteereineen",
+        "Päätöskirjauksen harkituista vaihtoehdoista",
+        "Luovutuksen, jonka pohjalta tiimi voi rakentaa"
+      ],
+      "investMeta": "2 viikkoa, kiinteä laajuus",
+      "investNote": "Lopullinen laajuus riippuu polun monimutkaisuudesta, käyttäjäryhmien määrästä ja siitä, kuinka paljon nykyisestä design systemistä prototyypissä voidaan hyödyntää.",
+      "investLink": "Arvioi räätälöity toimeksianto",
+      "faqTitle": "Sprintistä",
+      "faq": [
+        {
+          "question": "Onko UX Sprint sama kuin design systemin auditointi?",
+          "answer": "Ei ole. Sprintti vastaa yhteen tuotekysymykseen toimivalla prototyypillä. Design systemin auditointi arvioi olemassa olevan järjestelmän ja päättyy 90 päivän tiekarttaan. Ne varataan erikseen."
+        },
+        {
+          "question": "Kuka toteuttaa käyttäjätestit?",
+          "answer": "Arviointisuunnitelma on valmis tiiminne tai tutkimuskumppanin toteutettavaksi, ja tehtävät, osallistujat ja onnistumisen kriteerit on kirjoitettu auki."
+        },
+        {
+          "question": "Voiko prototyypistä tulla tuotantokoodia?",
+          "answer": "Se rakennetaan päätöksen testaamiseen, ei julkaistavaksi. Design systemin komponenteilla tehdyt osat siirtyvät eteenpäin, ja Design System Lift-Off tai sulautettu kumppanuus voi viedä polun tuotantoon."
+        }
+      ],
+      "bookTitle": "Aloita 30 minuutin puhelulla",
+      "bookBody": "Käydään läpi polku, sen tukema päätös ja kenen pitää olla mukana. Kalenterikutsu saapuu sähköpostiin."
     },
     "liftoff": {
       "metaTitle": "Design System Lift-Off | Digitaltableteur",
@@ -2089,7 +2154,7 @@
         },
         {
           "question": "Pitääkö design-systeemin olla ensin hyvässä kunnossa?",
-          "answer": "Se auttaa. Sopimuksia kirjoitettaessa löytyneet puutteet listataan. UX Sprint/DS Audit voi edeltää tätä, jos systeemissä on korjattavaa."
+          "answer": "Se auttaa. Sopimuksia kirjoitettaessa löytyneet puutteet listataan. Design systemin auditointi voi edeltää tätä, jos systeemissä on korjattavaa."
         },
         {
           "question": "Miten onnistumista mitataan?",
@@ -2151,5 +2216,12 @@
         "answer": "Vain tekoälyn käyttöperiaatteissa kuvatulla tavalla. Ne listaavat työkalut, suojatoimet ja asiakasdatan käsittelyn."
       }
     ]
-  }
+  },
+  "pricingPackageAuditTitle": "Design systemin auditointi",
+  "pricingPackageAuditPrice": "7–14k €",
+  "pricingPackageAuditDuration": "2 viikkoa",
+  "pricingPackageAuditDescription": "Inventaario, vakavuuden mukaan järjestetyt havainnot ja 90 päivän tiekartta olemassa olevalle design systemillesi.",
+  "pricingPackageCtaAudit": "Varaa design systemin auditointi",
+  "pricingPackagePartnershipDescription": "Kokenut tekijä osana tiimiäsi vetämässä design systemiä ja DesignOpsia kuukausien, ei viikkojen ajan.",
+  "pricingPackageCtaPartnership": "Varaa puhelu kumppanuudesta"
 }

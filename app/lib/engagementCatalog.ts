@@ -89,6 +89,7 @@ export function getEngagementEntries(): EngagementEntry[] {
 
 const SERVICE_TYPES: Record<EngagementConfig["id"], string> = {
   audit: "Design system audit",
+  uxSprint: "UX design sprint",
   liftoff: "Design system development",
   aiops: "DesignOps consulting",
   partnership: "Embedded design systems partnership",

@@ -76,7 +76,7 @@ describe("pseo leaf blocks", () => {
     expect(reactBlocks.situationMarkdown).toContain("startup teams");
     expect(figmaBlocks.situationMarkdown).toContain("enterprise teams");
     expect(reactBlocks.proofLinks.length).toBeGreaterThan(0);
-    expect(reactBlocks.packageFit?.slug).toBe("ux-sprint");
+    expect(reactBlocks.packageFit?.slug).toBe("design-system-audit");
     expect(figmaBlocks.packageFit?.slug).toBe("design-system-lift-off");
   });
 });

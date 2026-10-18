@@ -20,8 +20,8 @@
         "Governance recommendations (RFC, review, release cadence)"
       ],
       "typicalTimeline": "1–2 weeks",
-      "pricingPackageSlug": "ux-sprint",
-      "packageFitReason": "UX Sprint covers a focused audit, eval plan and handoff your team can ship within two weeks.",
+      "pricingPackageSlug": "design-system-audit",
+      "packageFitReason": "The Design System Audit covers this scope: an inventory, severity-ranked findings and a 90-day roadmap in two weeks.",
       "relatedWorkSlugs": ["helsinki-design-system", "dsharp-design-system", "project-spine"],
       "proofReasons": {
         "helsinki-design-system": "City-scale design system audit and adoption across multiple product teams.",

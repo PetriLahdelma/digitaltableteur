@@ -9,6 +9,7 @@
 
 export type EngagementId =
   | "audit"
+  | "uxSprint"
   | "liftoff"
   | "aiops"
   | "partnership"
@@ -46,16 +47,28 @@ export const ENGAGEMENTS: readonly EngagementConfig[] = [
   {
     id: "audit",
     slug: "design-system-audit",
-    // The audit is booked as the UX Sprint package (content/pseo/catalog.json).
+    packageId: "design-system-audit",
+    nameKey: "pricingPackageAuditTitle",
+    priceKey: "pricingPackageAuditPrice",
+    durationKey: "pricingPackageAuditDuration",
+    projectTypes: ["ds-audit"],
+    primaryHref: "/contact?mode=book&package=design-system-audit",
+    secondaryHref: "/contact?mode=message&package=design-system-audit",
+    investHref: "/pricing#calculator",
+    proof: ["helsinki-design-system", "dsharp-design-system", "llm-component-schema"],
+  },
+  {
+    id: "uxSprint",
+    slug: "ux-sprint",
     packageId: "ux-sprint",
     nameKey: "pricingPackage3Title",
     priceKey: "pricingPackage3Price",
     durationKey: "pricingPackage3Duration",
-    projectTypes: ["ds-audit"],
+    projectTypes: ["digital-product"],
     primaryHref: "/contact?mode=book&package=ux-sprint",
     secondaryHref: "/contact?mode=message&package=ux-sprint",
     investHref: "/pricing#calculator",
-    proof: ["helsinki-design-system", "dsharp-design-system", "llm-component-schema"],
+    proof: ["home-remote", "vertaaux"],
   },
   {
     id: "liftoff",

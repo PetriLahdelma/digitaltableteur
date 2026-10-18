@@ -24,9 +24,11 @@ export type DonnyTargetId =
   | "pricing.comparison"
   | "pricing.packages"
   | "pricing.package.workshop"
+  | "pricing.package.designSystemAudit"
   | "pricing.package.uxSprint"
   | "pricing.package.aiReadyDesignOps"
   | "pricing.package.designSystemLiftOff"
+  | "pricing.package.embeddedPartnership"
   | "work.index"
   | "work.project.sapBuildApps"
   | "work.project.sapBuildApps.overview"
@@ -176,6 +178,17 @@ export const DONNY_SITE_TARGETS: DonnyTarget[] = [
     fallbackTargetId: "pricing.packages",
   }),
   target({
+    id: "pricing.package.designSystemAudit",
+    route: "/pricing",
+    label: "Design System Audit package",
+    summary:
+      "Two-week audit of an existing design system: inventory, severity-ranked findings and a 90-day roadmap.",
+    allowedModes: CARD_MODES,
+    intent: ["pricing", "services"],
+    packageId: "design-system-audit",
+    fallbackTargetId: "pricing.packages",
+  }),
+  target({
     id: "pricing.package.uxSprint",
     route: "/pricing",
     label: "UX Sprint package",
@@ -205,6 +218,17 @@ export const DONNY_SITE_TARGETS: DonnyTarget[] = [
     allowedModes: CARD_MODES,
     intent: ["pricing", "services"],
     packageId: "design-system-lift-off",
+    fallbackTargetId: "pricing.packages",
+  }),
+  target({
+    id: "pricing.package.embeddedPartnership",
+    route: "/pricing",
+    label: "Embedded partnership",
+    summary:
+      "A senior practitioner embedded for 6 or 12 months to run the design system and DesignOps.",
+    allowedModes: CARD_MODES,
+    intent: ["pricing", "services"],
+    packageId: "embedded-partnership",
     fallbackTargetId: "pricing.packages",
   }),
   target({

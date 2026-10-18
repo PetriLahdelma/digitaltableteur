@@ -17,20 +17,21 @@ describe("consulting-catalog", () => {
     expect(rate.currency).toBe("EUR");
   });
 
-  it("lists three fixed packages from €7k", () => {
+  it("lists four fixed packages from €7k", () => {
     const packages = getConsultingPackages();
-    expect(packages).toHaveLength(3);
-    expect(packages[0]?.name).toBe("UX Sprint");
+    expect(packages).toHaveLength(4);
+    expect(packages[0]?.name).toBe("Design System Audit");
     expect(packages[0]?.priceRangeEur).toMatch(/€7/);
   });
 
   // Donny and the WebMCP tools quote this catalog; the pricing page quotes the
   // locale files. UX Sprint drifted (€8k here vs €7k on the page, 2026-07-18).
   it("matches the pricing page's package prices and durations", () => {
-    const pageKeyById: Record<string, number> = {
-      "design-system-lift-off": 1,
-      "ai-ready-designops": 2,
-      "ux-sprint": 3,
+    const pageKeyById: Record<string, string> = {
+      "design-system-lift-off": "1",
+      "ai-ready-designops": "2",
+      "ux-sprint": "3",
+      "design-system-audit": "Audit",
     };
     for (const pkg of getConsultingPackages()) {
       const n = pageKeyById[pkg.id];

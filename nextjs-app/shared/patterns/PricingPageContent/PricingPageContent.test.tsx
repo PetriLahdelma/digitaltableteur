@@ -33,10 +33,10 @@ describe("PricingPageContent", () => {
       screen.getByRole("link", { name: /book design system lift-off/i }),
     ).toHaveAttribute("href", "/contact?mode=book&package=design-system-lift-off");
     expect(
-      screen.getByRole("heading", { level: 3, name: /ai agents and automation/i }),
+      screen.getByRole("heading", { level: 3, name: /agent track/i }),
     ).toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: /ai agents and automation/i }),
+      screen.queryByRole("button", { name: /agent track/i }),
     ).not.toBeInTheDocument();
     expect(
       screen.getByRole("heading", { level: 3, name: /agent pilot/i }),
