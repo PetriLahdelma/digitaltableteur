@@ -21,6 +21,8 @@ type Frontmatter = {
   mainImageAlt?: string;
   mainImageCaption?: string;
   tags?: string[];
+  /** Engagement slug (/engagements/<slug>) the article leads to. */
+  engagement?: string;
 };
 
 type PostMeta = Required<Pick<Frontmatter, "title" | "slug">> &
@@ -75,6 +77,7 @@ const readFrontmatter = (filePath: string): PostMeta => {
     mainImageAlt: fm.mainImageAlt,
     mainImageCaption: fm.mainImageCaption,
     tags: fm.tags,
+    engagement: fm.engagement,
   };
 };
 
@@ -209,6 +212,7 @@ export type BlogPostMeta = {
   mainImageAlt?: string;
   mainImageCaption?: string;
   tags?: string[];
+  engagement?: string;
 };
 
 export const allPosts: BlogPostMeta[] = [

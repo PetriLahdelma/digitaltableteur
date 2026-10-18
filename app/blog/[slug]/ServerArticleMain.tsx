@@ -5,6 +5,7 @@ import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import { toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
 import { BlogArticleMdxBody } from "./BlogArticleMdxBody";
 import { BlogArticleShare } from "./BlogArticleShare";
+import { ArticleOfferBlock } from "./ArticleOfferBlock";
 
 /** Article body, author aside, and share links (hero is separate for layout shell). */
 export function ServerArticleMain({
@@ -24,6 +25,8 @@ export function ServerArticleMain({
   return (
     <>
       <BlogArticleMdxBody slug={slug} showUnpublished={showUnpublished} />
+
+      <ArticleOfferBlock engagementSlug={post.engagement} />
 
       <BlogArticleShare url={shareUrl} title={title} />
 

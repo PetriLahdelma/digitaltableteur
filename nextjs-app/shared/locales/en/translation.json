@@ -2250,5 +2250,8 @@
   "pricingPackageAuditDescription": "An inventory, severity-ranked findings and a 90-day roadmap for the design system you already have.",
   "pricingPackageCtaAudit": "Book a Design System Audit",
   "pricingPackagePartnershipDescription": "A senior practitioner embedded in your team to run the design system and DesignOps over months, not weeks.",
-  "pricingPackageCtaPartnership": "Book a call about a partnership"
+  "pricingPackageCtaPartnership": "Book a call about a partnership",
+  "articleOfferEyebrow": "Put this into practice",
+  "articleOfferBook": "Book a 30-minute call",
+  "articleOfferDetails": "About {{name}}"
 }

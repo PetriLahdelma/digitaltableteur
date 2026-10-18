@@ -1,0 +1,28 @@
+/* Closing offer block on articles: the engagement the post leads to. */
+
+.offer {
+  display: grid;
+  margin-block-start: var(--space-layout-48);
+  padding: var(--space-layout-32);
+  gap: var(--space-internal-12);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.eyebrow,
+.meta {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.title,
+.body {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  margin-block-start: var(--space-internal-8);
+  flex-wrap: wrap;
+  gap: var(--space-internal-12);
+}

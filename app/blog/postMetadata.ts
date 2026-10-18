@@ -23,6 +23,7 @@ export type BlogPostMeta = {
   mainImageAlt?: string;
   mainImageCaption?: string;
   tags?: string[];
+  engagement?: string;
 };
 
 export const allPosts: BlogPostMeta[] = [
@@ -37,6 +38,7 @@ export const allPosts: BlogPostMeta[] = [
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
     mainImageUrl: "/blog/plausible-accessibility/hero-stencil-at-desk.webp",
+    engagement: "design-system-audit",
   },
   {
     title: "From DesignOps to AgentOps",
@@ -50,6 +52,7 @@ export const allPosts: BlogPostMeta[] = [
     mainImageUrl: "/blog/agentic-design-systems/hero-05-agentops.png",
     mainImageAlt: "Bridge from DesignOps through context operator to AgentOps",
     tags: ["DesignOps","AgentOps","Design Leadership","AI"],
+    engagement: "designops-pilot",
   },
   {
     title: "The Minimum Viable Agent-Ready Design System",
@@ -64,6 +67,7 @@ export const allPosts: BlogPostMeta[] = [
     mainImageUrl: "/blog/agentic-design-systems/hero-04-mvp.png",
     mainImageAlt: "Six-layer minimum viable agent-ready design system stack",
     tags: ["Design Systems","AI Governance","Product Design","Frontend"],
+    engagement: "design-system-mcp",
   },
   {
     title: "Component Contracts Are Where Taste Becomes Infrastructure",
@@ -78,6 +82,7 @@ export const allPosts: BlogPostMeta[] = [
     mainImageUrl: "/blog/agentic-design-systems/hero-03-contracts.png",
     mainImageAlt: "Split panel: documentation explains, contracts constrain with v1 and v2 layers",
     tags: ["Component Contracts","Design Systems","AI","Frontend Architecture"],
+    engagement: "design-system-mcp",
   },
   {
     title: "Tools, Harnesses and Skills: The Missing Model for Design Systems",
@@ -92,6 +97,7 @@ export const allPosts: BlogPostMeta[] = [
     mainImageUrl: "/blog/agentic-design-systems/hero-02-tools-harness-skills.png",
     mainImageAlt: "Three-layer diagram: tools workspace, harness boundaries, skills playbooks",
     tags: ["Design Systems","Agentic Workflows","Figma","Storybook"],
+    engagement: "agent-pilot",
   },
   {
     title: "Agentic Design Systems Need Operating Models, Not More Components",
@@ -107,6 +113,7 @@ export const allPosts: BlogPostMeta[] = [
     mainImageUrl: "/blog/agentic-design-systems/hero-01-operating-models.png",
     mainImageAlt: "Circular diagram of the agentic operating loop: intent, rules, output, evidence, better rules",
     tags: ["Design Systems","AI","Agentic Workflows","DesignOps"],
+    engagement: "designops-pilot",
   },
   {
     title: "From Tokens to Thinking Systems: Making AI-Native Design Systems Actually Work",
@@ -118,6 +125,7 @@ export const allPosts: BlogPostMeta[] = [
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
     mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/6b129891b9e49f23f12d17b7822f66ea172548d1-900x512.png?w=1600",
+    engagement: "ai-ready-ops",
   },
   {
     title: "The Evolutionary Difference Between Constructive and Constrictive Criticism",
@@ -129,6 +137,7 @@ export const allPosts: BlogPostMeta[] = [
     seoDescription: "Feedback works like a biological signal that can guide, distort, expand or collapse what comes next. Why some criticism grows people and some shrinks them.",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
+    engagement: "design-system-workshop",
   },
   {
     title: "Branding Design Systems",
@@ -149,6 +158,7 @@ export const allPosts: BlogPostMeta[] = [
     seoDescription: "Part 2 of a series on design systems and AI: why AI as an enhancement layer changes nothing and how to build a system that intelligence can work inside.",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
+    engagement: "ai-ready-ops",
   },
   {
     title: "Design System Meets AI: Building the Self-Evolving Component Library Pt 1",
@@ -160,6 +170,7 @@ export const allPosts: BlogPostMeta[] = [
     seoDescription: "Part 1 of a series on design systems and AI: systems built for order and governance were never designed for intelligence. Here is what has to change.",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
+    engagement: "ai-ready-ops",
   },
   {
     title: "A Biography",
@@ -192,6 +203,7 @@ export const allPosts: BlogPostMeta[] = [
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
     mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/f89b3b77b080fe3d371cd0153eeb30d49429aaeb-1536x1024.webp?w=1600",
+    engagement: "design-system-mcp",
   },
   {
     title: "Workflow Tips",
@@ -215,6 +227,7 @@ export const allPosts: BlogPostMeta[] = [
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
     mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/2c4621941096cd03ba2299862b591692feaf5854-1024x1024.png?w=1600",
+    engagement: "embedded-partnership",
   },
   {
     title: "Designing in 2025",
