@@ -102,7 +102,9 @@ export function ValuesSection({
         {/* Values grid */}
         <div
           className={cn(
-            "grid gap-6",
+            // Equal rows and stretched cards: every card in a section is
+            // the same height, whatever its copy length or language.
+            "grid auto-rows-fr gap-6",
             gridColumnClasses[columns],
           )}
         >
@@ -112,6 +114,7 @@ export function ValuesSection({
               direction="up"
               delay={0.2 + index * 0.1}
               distance={30}
+              className="h-full"
             >
               <ValueCard
                 icon={value.icon}
@@ -119,7 +122,7 @@ export function ValuesSection({
                 description={value.description}
                 iconClassName={value.iconClassName}
                 variant={cardVariant}
-                className={value.className}
+                className={cn("h-full", value.className)}
               />
             </FadeIn>
           ))}
