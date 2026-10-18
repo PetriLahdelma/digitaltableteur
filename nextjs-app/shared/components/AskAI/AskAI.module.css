@@ -17,6 +17,24 @@
   transform: translateY(-50%);
 }
 
+/* Collapse controls exist for phones only; on wider screens the panel's
+   children lay out in the container as before. */
+
+.collapsedPill,
+.minimize {
+  display: none;
+}
+
+.panel {
+  display: contents;
+}
+
+.pillIcon {
+  block-size: var(--space-internal-24);
+  inline-size: var(--space-internal-24);
+  flex-shrink: 0;
+}
+
 .header {
   display: flex;
   padding-block-end: var(--space-internal-8, 0.5rem);
@@ -251,29 +269,113 @@
   align-items: center;
 }
 
-/* Mobile: bottom placement */
+/* Mobile: collapsed to a pill beside the AI assistant launcher (fixed 1rem
+   from the bottom and the right edge, 44px tall, lifted above the cookie
+   banner while it is open), on the same baseline and never overlapping it.
+   Expanded, the panel spans the width and sits just above the launcher, so
+   both stay visible. */
 @media (width < 768px) {
   .container {
+    --askai-pill-size: calc(var(--space-layout-40) + var(--space-internal-4));
+
     position: fixed;
-    inset-block: auto var(--space-layout-24, 1.5rem);
-    inset-inline-end: var(--space-layout-16, 1rem);
-    padding: var(--space-internal-12, 0.75rem);
-    max-inline-size: calc(100vi - var(--space-layout-32, 2rem));
+    inset-block: auto var(--space-layout-16);
+    inset-inline: var(--space-layout-16) auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
     transform: none;
     flex-flow: row wrap;
+  }
+
+  .expanded {
+    inset-block-end: calc(
+      var(--space-layout-16) + var(--askai-pill-size) + var(--space-internal-12)
+    );
+    inset-inline-end: var(--space-layout-16, 1rem);
+    padding: var(--space-internal-12, 0.75rem);
+    border: 1px solid var(--color-border);
+    background: var(--main-body-background-color);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .collapsedPill {
+    display: inline-flex;
+    padding-inline: var(--space-internal-16);
+    min-block-size: var(--askai-pill-size);
+    align-items: center;
+    gap: var(--space-internal-8);
+    border: 0;
+    border-radius: var(--radius-full);
+    background: var(--main-body-background-color);
+    box-shadow: var(--shadow-lg);
+    font-family: var(--font-body);
+    font-size: var(--font-size-text-s);
+    font-weight: 600;
+    color: var(--primary-text-color);
+    cursor: pointer;
+  }
+
+  .minimize {
+    display: inline-flex;
+    block-size: var(--askai-pill-size);
+    inline-size: var(--askai-pill-size);
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--primary-text-color);
+    cursor: pointer;
+  }
+
+  .collapsedPill:focus-visible,
+  .minimize:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: var(--space-internal-2);
+  }
+
+  .panel {
+    display: none;
+  }
+
+  .expanded .collapsedPill {
+    display: none;
+  }
+
+  .expanded .panel {
+    display: contents;
+  }
+
+  :global(body[data-cookie-banner-open="true"]) .container {
+    transform: translateY(
+      calc(-1 * (var(--cookie-banner-height, 8rem) + var(--space-internal-12)))
+    );
+  }
+
+  /* The dark-theme panel colours (below) outrank the reset above; the
+     collapsed container stays frameless so only the pill shows. */
+
+  :global(.themeDark) .container:not(.expanded),
+  :global(.dark) .container:not(.expanded) {
+    border: 0;
+    background: none;
   }
 
   .header {
     padding-block-end: var(--space-internal-8, 0.5rem);
     inline-size: 100%;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    gap: var(--space-internal-8);
     border-block-end: 1px solid var(--color-border);
   }
 
   .title {
+    flex: 1;
     font-size: var(--font-size-text-s);
+    text-align: start;
   }
 
   .splitButton {

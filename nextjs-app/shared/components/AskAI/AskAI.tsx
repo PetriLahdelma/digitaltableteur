@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useId, useState, useRef, useEffect } from "react";
+// Direct Phosphor imports, like ProjectList: Icon would pull its registry in.
+import { CaretDown, CaretUp, Sparkle } from "@phosphor-icons/react";
 import { createPortal } from "react-dom";
 import type { ReactElement } from "react";
 import { useTranslate } from "../../lib/translation";
@@ -40,8 +42,7 @@ const AI_MODELS: AIModel[] = [
     id: "claude",
     name: "Claude",
     icon: ClaudeIcon,
-    getUrl: (prompt) =>
-      `https://claude.ai/new?q=${encodeURIComponent(prompt)}`,
+    getUrl: (prompt) => `https://claude.ai/new?q=${encodeURIComponent(prompt)}`,
     supportsMemory: true,
   },
   {
@@ -77,6 +78,10 @@ export function AskAI({ className }: AskAIProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [personalizeContext, setPersonalizeContext] = useState(false);
   const [mounted, setMounted] = useState(false);
+  // Phones only: the block starts as a compact pill beside the AI assistant
+  // launcher and opens into the full panel. Desktop always shows the panel.
+  const [expanded, setExpanded] = useState(false);
+  const panelId = useId();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Portal needs document.body — wait for mount
@@ -103,7 +108,10 @@ export function AskAI({ className }: AskAIProps) {
   });
 
   const basePrompt = subject === "company" ? companyPrompt : founderPrompt;
-  const personalizedPrompt = subject === "company" ? personalizedCompanyPrompt : personalizedFounderPrompt;
+  const personalizedPrompt =
+    subject === "company"
+      ? personalizedCompanyPrompt
+      : personalizedFounderPrompt;
 
   const getPromptForModel = (model: AIModel) => {
     if (personalizeContext && model.supportsMemory) {
@@ -116,7 +124,10 @@ export function AskAI({ className }: AskAIProps) {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     };
@@ -149,102 +160,146 @@ export function AskAI({ className }: AskAIProps) {
   if (!mounted) return null;
 
   return createPortal(
-    <aside className={cn(styles.container, className)} aria-label={t("askAIAriaLabel", "Ask AI about Digitaltableteur")}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>{t("askAITitle", "Ask AI about")}</h2>
-        <div className={styles.splitButton} ref={dropdownRef}>
-          <span className={styles.splitButtonLabel}>
-            {t(currentSubject.labelKey, currentSubject.defaultLabel)}
-          </span>
+    <aside
+      className={cn(styles.container, expanded && styles.expanded, className)}
+      aria-label={t("askAIAriaLabel", "Ask AI about Digitaltableteur")}
+    >
+      <button
+        type="button"
+        className={styles.collapsedPill}
+        aria-expanded={false}
+        aria-controls={panelId}
+        onClick={() => setExpanded(true)}
+      >
+        <Sparkle className={styles.pillIcon} weight="fill" aria-hidden="true" />
+        {t("askAIOpen", "Ask AI")}
+        <CaretUp className={styles.pillIcon} weight="bold" aria-hidden="true" />
+      </button>
+
+      <div id={panelId} className={styles.panel}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>{t("askAITitle", "Ask AI about")}</h2>
+          <div className={styles.splitButton} ref={dropdownRef}>
+            <span className={styles.splitButtonLabel}>
+              {t(currentSubject.labelKey, currentSubject.defaultLabel)}
+            </span>
+            <button
+              type="button"
+              className={styles.splitButtonDropdown}
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              aria-expanded={dropdownOpen}
+              aria-haspopup="listbox"
+              aria-label={t("askAISubjectLabel", "Select subject")}
+            >
+              <svg
+                className={cn(
+                  styles.chevron,
+                  dropdownOpen && styles.chevronOpen,
+                )}
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2.5 4.5L6 8L9.5 4.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            {dropdownOpen && (
+              <ul
+                className={styles.dropdown}
+                role="listbox"
+                aria-label={t("askAISubjectLabel", "Select subject")}
+              >
+                {SUBJECTS.map((s) => (
+                  <li key={s.id} role="option" aria-selected={subject === s.id}>
+                    <button
+                      type="button"
+                      className={cn(
+                        styles.dropdownItem,
+                        subject === s.id && styles.dropdownItemActive,
+                      )}
+                      onClick={() => handleSubjectSelect(s.id)}
+                    >
+                      {t(s.labelKey, s.defaultLabel)}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <button
             type="button"
-            className={styles.splitButtonDropdown}
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            aria-expanded={dropdownOpen}
-            aria-haspopup="listbox"
-            aria-label={t("askAISubjectLabel", "Select subject")}
+            className={styles.minimize}
+            aria-expanded={true}
+            aria-controls={panelId}
+            aria-label={t("askAIMinimize", "Minimize Ask AI")}
+            onClick={() => setExpanded(false)}
           >
-            <svg
-              className={cn(styles.chevron, dropdownOpen && styles.chevronOpen)}
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
+            <CaretDown
+              className={styles.pillIcon}
+              weight="bold"
               aria-hidden="true"
-            >
-              <path
-                d="M2.5 4.5L6 8L9.5 4.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            />
           </button>
-          {dropdownOpen && (
-            <ul className={styles.dropdown} role="listbox" aria-label={t("askAISubjectLabel", "Select subject")}>
-              {SUBJECTS.map((s) => (
-                <li key={s.id} role="option" aria-selected={subject === s.id}>
-                  <button
-                    type="button"
+        </div>
+
+        <ul className={styles.iconList}>
+          {AI_MODELS.map((model) => {
+            const Icon = model.icon;
+            const prompt = getPromptForModel(model);
+            const isPersonalized = personalizeContext && model.supportsMemory;
+            return (
+              <li key={model.id} className={styles.iconItem}>
+                <a
+                  href={model.getUrl(prompt)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    styles.iconLink,
+                    isPersonalized && styles.iconLinkPersonalized,
+                  )}
+                  aria-label={t("askAIOpenWith", {
+                    model: model.name,
+                    defaultValue: `Ask ${model.name}`,
+                  })}
+                >
+                  <Icon
                     className={cn(
-                      styles.dropdownItem,
-                      subject === s.id && styles.dropdownItemActive
+                      styles.icon,
+                      model.id === "gemini" && styles.iconGemini,
+                      model.id === "perplexity" && styles.iconPerplexity,
                     )}
-                    onClick={() => handleSubjectSelect(s.id)}
-                  >
-                    {t(s.labelKey, s.defaultLabel)}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
+                    aria-hidden="true"
+                  />
+                </a>
+                <span className={styles.tooltip}>
+                  {model.name}
+                  {isPersonalized && ` ✨`}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className={styles.personalizeToggle}>
+          <Checkbox
+            id="askai-personalize"
+            size="sm"
+            label={t("askAIPersonalizeLabel", "Help me")}
+            checked={personalizeContext}
+            onCheckedChange={setPersonalizeContext}
+          />
         </div>
       </div>
-
-      <ul className={styles.iconList}>
-        {AI_MODELS.map((model) => {
-          const Icon = model.icon;
-          const prompt = getPromptForModel(model);
-          const isPersonalized = personalizeContext && model.supportsMemory;
-          return (
-            <li key={model.id} className={styles.iconItem}>
-              <a
-                href={model.getUrl(prompt)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(styles.iconLink, isPersonalized && styles.iconLinkPersonalized)}
-                aria-label={t("askAIOpenWith", { model: model.name, defaultValue: `Ask ${model.name}` })}
-              >
-                <Icon
-                  className={cn(
-                    styles.icon,
-                    model.id === "gemini" && styles.iconGemini,
-                    model.id === "perplexity" && styles.iconPerplexity,
-                  )}
-                  aria-hidden="true"
-                />
-              </a>
-              <span className={styles.tooltip}>
-                {model.name}
-                {isPersonalized && ` ✨`}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-
-      <div className={styles.personalizeToggle}>
-        <Checkbox
-          id="askai-personalize"
-          size="sm"
-          label={t("askAIPersonalizeLabel", "Help me")}
-          checked={personalizeContext}
-          onCheckedChange={setPersonalizeContext}
-        />
-      </div>
     </aside>,
-    document.body
+    document.body,
   );
 }
 

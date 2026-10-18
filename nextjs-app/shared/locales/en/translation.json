@@ -1365,6 +1365,8 @@
   "shareLinkedIn": "Share on LinkedIn",
   "shareFacebook": "Share on Facebook",
   "askAITitle": "Ask AI about",
+  "askAIOpen": "Ask AI",
+  "askAIMinimize": "Minimize Ask AI",
   "askAIAriaLabel": "Ask AI about Digitaltableteur",
   "askAISubjectLabel": "Select subject",
   "askAISubjectFounder": "Founder",

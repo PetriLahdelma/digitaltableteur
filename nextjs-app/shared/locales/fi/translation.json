@@ -1365,6 +1365,8 @@
   "shareLinkedIn": "Jaa LinkedInissä",
   "shareFacebook": "Jaa Facebookissa",
   "askAITitle": "Kysy tekoälyltä",
+  "askAIOpen": "Kysy tekoälyltä",
+  "askAIMinimize": "Pienennä tekoälykysely",
   "askAIAriaLabel": "Kysy tekoälyltä Digitaltableteurista",
   "askAISubjectLabel": "Valitse aihe",
   "askAISubjectFounder": "Perustaja",
