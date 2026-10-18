@@ -16,6 +16,8 @@
     - /url: /pricing
   - link "Blog":
     - /url: /blog
+  - link "Changelog":
+    - /url: /changelog
   - link "Contact":
     - /url: /contact
   - paragraph: Legal

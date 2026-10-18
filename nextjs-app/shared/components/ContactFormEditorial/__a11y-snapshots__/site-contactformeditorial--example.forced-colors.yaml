@@ -5,10 +5,30 @@
 - text: Your Message*
 - textbox "Your Message*":
   - /placeholder: Enter your message
-- button "Add project details"
+- button "Hide project details" [expanded]
+- text: Organisation
+- combobox "Organisation": Select...
+- button "Toggle options"
+- text: Package
+- combobox "Package": Not sure yet / custom
+- button "Toggle options"
+- text: Budget range
+- combobox "Budget range": Select...
+- button "Toggle options"
+- text: When should work start?
+- combobox "When should work start?": Select...
+- button "Toggle options"
+- text: What do you need?
+- combobox "What do you need?"
+- button "Toggle options"
+- text: Why Digitaltableteur?
+- textbox "Why Digitaltableteur?":
+  - /placeholder: What made you think of this studio for the work?
+- button "Add more details"
 - paragraph:
   - text: By pressing submit you agree for your information to be processed according to the
   - link "privacy policy":
     - /url: /privacy-policy
   - text: .
+- paragraph: A reply follows within one business day.
 - button "Submit"
