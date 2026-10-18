@@ -125,6 +125,7 @@ describe("BlogCategoryFilter", () => {
     const toggle = screen.getByRole("button", { name: "All topics" });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     expect(screen.getAllByRole("button")).toHaveLength(2);
+    expect(screen.getAllByRole("button")[0]).toBe(toggle);
     expect(screen.getByRole("button", { name: "Tooling" })).toHaveAttribute(
       "aria-pressed",
       "true",
@@ -134,6 +135,7 @@ describe("BlogCategoryFilter", () => {
     expect(toggle).toHaveAttribute("aria-expanded", "true");
     expect(toggle).toHaveFocus();
     expect(screen.getAllByRole("button")).toHaveLength(tags.length + 2);
+    expect(screen.getAllByRole("button")[0]).toBe(toggle);
 
     await user.click(screen.getByRole("button", { name: "Process" }));
     expect(onTagChange).toHaveBeenCalledWith("Process");

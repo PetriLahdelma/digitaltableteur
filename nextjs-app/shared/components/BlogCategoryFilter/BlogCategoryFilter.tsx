@@ -158,6 +158,21 @@ export function BlogCategoryFilter({
         className,
       )}
     >
+      {collapsible && (
+        // Always the first child: it stays in the same place open or
+        // closed, comes before the options it controls in the focus order,
+        // and expanding inserts chips after it without moving focus.
+        <button
+          type="button"
+          className={cn(styles.toggle, styles[size])}
+          aria-expanded={expanded}
+          aria-controls={groupId}
+          aria-label={t("blogFilterAllTopics", "All topics")}
+          onClick={() => withHeightTransition(() => setExpanded((v) => !v))}
+        >
+          <CaretDown className={styles.caret} aria-hidden="true" />
+        </button>
+      )}
       {visible.map((option) => (
         <FilterChip
           key={option.value ?? "all"}
@@ -170,20 +185,6 @@ export function BlogCategoryFilter({
           {option.label}
         </FilterChip>
       ))}
-      {collapsible && (
-        // Always the last child, so expanding inserts chips before it and
-        // never moves the focused button.
-        <button
-          type="button"
-          className={cn(styles.toggle, styles[size])}
-          aria-expanded={expanded}
-          aria-controls={groupId}
-          aria-label={t("blogFilterAllTopics", "All topics")}
-          onClick={() => withHeightTransition(() => setExpanded((v) => !v))}
-        >
-          <CaretDown className={styles.caret} aria-hidden="true" />
-        </button>
-      )}
     </div>
   );
 }
