@@ -37,11 +37,33 @@
   padding: var(--space-layout-16);
 }
 
+/* color-scheme: Cal.com's page declares none, so it counts as light.
+   Inheriting the site's dark scheme made Safari paint an opaque light
+   backdrop behind the iframe (white corners around the dark calendar).
+   Cal.com's CSS sets `color-scheme: unset !important` on the iframe, so it
+   inherits this wrapper's value. */
+
 .calEmbed {
+  --booking-frame-scheme: normal;
+
   display: block;
   min-block-size: 42rem;
   inline-size: 100%;
+  color-scheme: var(--booking-frame-scheme);
   overflow: auto;
+}
+
+/* Cal.com's host element inherits the reserved height above and lays its
+   iframe out as a wrapping flex row, which split the spare space above and
+   below the calendar. Pin the calendar to the top, and drop the reservation
+   once Cal.com has sized its iframe (it sets an inline height). */
+
+.calEmbed :global(cal-inline) {
+  align-content: flex-start;
+}
+
+.calEmbed:has(:global(iframe[style*="height"])) {
+  min-block-size: 0;
 }
 
 .frame {
