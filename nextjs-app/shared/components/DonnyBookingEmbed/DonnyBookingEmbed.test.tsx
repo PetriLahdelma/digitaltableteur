@@ -5,9 +5,25 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
 import { DonnyBookingEmbed } from "./DonnyBookingEmbed";
 
+const siteTheme = vi.hoisted(() => ({ current: "light" }));
+
+vi.mock("../ThemeProvider", () => ({
+  useTheme: () => ({ theme: siteTheme.current }),
+}));
+
 vi.mock("@calcom/embed-react", () => ({
-  default: function MockCal({ calLink }: { calLink: string }) {
-    return <div data-testid="cal-com-embed">{calLink}</div>;
+  default: function MockCal({
+    calLink,
+    config,
+  }: {
+    calLink: string;
+    config?: { theme?: string };
+  }) {
+    return (
+      <div data-testid="cal-com-embed" data-theme={config?.theme}>
+        {calLink}
+      </div>
+    );
   },
 }));
 
@@ -71,6 +87,30 @@ describe("DonnyBookingEmbed", () => {
     expect(
       screen.getByRole("heading", { level: 2, name: "Book a 30-minute call" }),
     ).toBeInTheDocument();
+  });
+
+  it.each([
+    ["light", "light"],
+    ["dark", "dark"],
+    ["hcb", "dark"],
+    ["hcw", "light"],
+  ])("gives Cal.com the site theme (%s -> %s), not the OS one", async (site, cal) => {
+    siteTheme.current = site;
+    renderEmbed({
+      configured: true,
+      provider: "calcom",
+      meetingLabel: "30min",
+      embedUrl: "https://app.cal.eu/digitaltableteur/30min/embed?embed=true",
+      fallbackUrl: "https://cal.eu/digitaltableteur/30min",
+      calLink: "digitaltableteur/30min",
+      calOrigin: "https://cal.eu",
+      embedJsUrl: "https://app.cal.eu/embed/embed.js",
+    });
+    expect(await screen.findByTestId("cal-com-embed")).toHaveAttribute(
+      "data-theme",
+      cal,
+    );
+    siteTheme.current = "light";
   });
 
   it("renders an iframe for Calendly URLs", () => {

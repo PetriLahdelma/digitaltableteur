@@ -12,6 +12,7 @@ import Button from "@dt/Button";
 import Progress from "@dt/Progress";
 import { isAllowedDonnyBookingEmbedUrl } from "../../lib/donny-booking";
 import { useLocalization } from "../../lib/translation";
+import { useTheme } from "../ThemeProvider";
 import styles from "./DonnyBookingEmbed.module.css";
 
 const Cal = lazy(() => import("@calcom/embed-react"));
@@ -89,6 +90,11 @@ export function DonnyBookingEmbed({
   headingLevel: Heading = "h4",
 }: DonnyBookingEmbedProps) {
   const { translate: t, language, resolvedLanguage } = useLocalization();
+  // Follow the site theme, not the OS: with "auto" a visitor who picked the
+  // light theme on a phone in dark mode got a dark calendar on a light page.
+  const { theme: siteTheme } = useTheme();
+  const calTheme =
+    siteTheme === "dark" || siteTheme === "hcb" ? "dark" : "light";
   const calLocale = useMemo(
     () => resolveCalEmbedLocale(resolvedLanguage || language),
     [language, resolvedLanguage],
@@ -180,14 +186,14 @@ export function DonnyBookingEmbed({
         {safeCalLink ? (
           <ClientOnly fallback={loadingFallback ?? defaultLoadingFallback}>
             <Cal
-              key={`${safeCalLink}-${calLocale}`}
+              key={`${safeCalLink}-${calLocale}-${calTheme}`}
               calLink={safeCalLink}
               calOrigin={calOrigin}
               embedJsUrl={embedJsUrl}
               config={{
                 layout: "month_view",
                 useSlotsViewOnSmallScreen: "true",
-                theme: "auto",
+                theme: calTheme,
                 lang: calLocale,
               }}
               className={styles.calEmbed}
