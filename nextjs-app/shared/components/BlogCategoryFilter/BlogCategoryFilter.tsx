@@ -154,6 +154,7 @@ export function BlogCategoryFilter({
       aria-label={t("blogFilterByTag", "Filter by topic")}
       className={cn(
         groupClassMap[variant],
+        collapsible && styles.collapsible,
         className,
       )}
     >

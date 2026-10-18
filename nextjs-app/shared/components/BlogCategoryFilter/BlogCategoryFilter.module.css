@@ -1,5 +1,14 @@
-/* Collapsible mode: the selected chip plus a round disclosure button that
-   matches the pill chip's border and height. Square, so the caret centres. */
+/* Collapsible mode. While the height animates, the group is taller (or
+   shorter) than its content; without these the flex row stretches to fill it
+   and the chips balloon into tall pills for a frame. */
+
+.collapsible {
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+/* The disclosure button matches the pill chip's border and height. Square,
+   so the caret centres. */
 
 .toggle {
   display: inline-flex;
