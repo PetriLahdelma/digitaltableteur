@@ -152,6 +152,13 @@
   font-weight: 600;
 }
 
+/* The standard rate when the partnership rate replaces it. */
+
+.rateSuperseded {
+  color: var(--color-muted);
+  text-decoration-thickness: 2px;
+}
+
 /* Right column — summary */
 
 .summary {

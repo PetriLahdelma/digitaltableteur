@@ -1453,6 +1453,7 @@
   "pricingCalcAllocationBasis": "{{days}} päivää/vko × {{hours}} h/pv",
   "pricingCalcTotalHoursLabel": "Tunnit yhteensä:",
   "pricingCalcStandardRateLabel": "Normaalihinta:",
+  "pricingCalcStandardRateReplaced": " (korvattu kumppanuushinnalla)",
   "pricingCalcRatePerHour": "{{rate}} €/tunti",
   "pricingCalcIncludedTitle": "Mitä investointisi sisältää:",
   "pricingCalcIncludedDuration": "Designkumppanuus: {{duration}}",

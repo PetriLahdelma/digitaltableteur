@@ -350,7 +350,23 @@ export function PricingCalculator({
                   {t("pricingCalcStandardRateLabel", "Standard rate:")}
                 </Text>
                 <Text as="span" size="s" className={styles.metaFigure}>
-                  {standardRatePhrase}
+                  {pricing.discount > 0 ? (
+                    // The partnership rate is in effect: strike the standard
+                    // rate so the lower price further down reads as applied.
+                    <>
+                      <s className={styles.rateSuperseded}>
+                        {standardRatePhrase}
+                      </s>
+                      <VisuallyHidden>
+                        {t(
+                          "pricingCalcStandardRateReplaced",
+                          " (replaced by the partnership rate)",
+                        )}
+                      </VisuallyHidden>
+                    </>
+                  ) : (
+                    standardRatePhrase
+                  )}
                 </Text>
               </div>
             </Card>

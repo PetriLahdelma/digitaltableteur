@@ -118,6 +118,22 @@ describe("PricingCalculator", () => {
     expect(screen.getByRole("status").textContent).toContain("75");
   });
 
+  it("strikes the standard rate only while the partnership rate applies", async () => {
+    const user = userEvent.setup();
+    render(<PricingCalculator />);
+    expect(document.querySelector("s")).toBeNull();
+
+    await user.click(screen.getByRole("radio", { name: /12\s*months/i }));
+    const struck = document.querySelector("s");
+    expect(struck).toHaveTextContent("120€/hour");
+    expect(
+      screen.getByText("(replaced by the partnership rate)", { exact: false }),
+    ).toBeInTheDocument();
+
+    await user.click(screen.getByRole("radio", { name: /3\s*days/i }));
+    expect(document.querySelector("s")).toBeNull();
+  });
+
   it("recomputes hours, rate, and included copy when the selection changes", async () => {
     const user = userEvent.setup();
     const format = new Intl.NumberFormat("en", { maximumFractionDigits: 0 });

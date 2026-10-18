@@ -1453,6 +1453,7 @@
   "pricingCalcAllocationBasis": "{{days}} dagar/vecka × {{hours}} h/dag",
   "pricingCalcTotalHoursLabel": "Timmar totalt:",
   "pricingCalcStandardRateLabel": "Standardpris:",
+  "pricingCalcStandardRateReplaced": " (ersatt av partnerskapspriset)",
   "pricingCalcRatePerHour": "{{rate}} €/timme",
   "pricingCalcIncludedTitle": "Vad din investering inkluderar:",
   "pricingCalcIncludedDuration": "Designpartnerskap i {{duration}}",

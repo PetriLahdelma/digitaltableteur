@@ -1453,6 +1453,7 @@
   "pricingCalcAllocationBasis": "{{days}} days/week × {{hours}} hrs/day",
   "pricingCalcTotalHoursLabel": "Total hours:",
   "pricingCalcStandardRateLabel": "Standard rate:",
+  "pricingCalcStandardRateReplaced": " (replaced by the partnership rate)",
   "pricingCalcRatePerHour": "{{rate}}€/hour",
   "pricingCalcIncludedTitle": "What's included in your investment:",
   "pricingCalcIncludedDuration": "{{duration}} design partnership",
