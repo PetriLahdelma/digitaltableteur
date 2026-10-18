@@ -86,6 +86,6 @@
   - heading "Ready to build something great?" [level=2]
   - paragraph: Let's discuss your next project and explore how to bring your vision to life.
   - link "Get in touch":
-    - /url: /contact
+    - /url: /contact?mode=book
   - link "See the work":
     - /url: /work

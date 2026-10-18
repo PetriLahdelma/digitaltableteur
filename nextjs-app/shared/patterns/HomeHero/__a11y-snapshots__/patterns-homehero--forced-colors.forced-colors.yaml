@@ -2,7 +2,7 @@
   - heading "Design intelligence, not decoration." [level=1]
   - paragraph: From concept to code, human-centered GenAI experiences.
   - link "Get in touch":
-    - /url: /contact
+    - /url: /contact?mode=book
   - link "About":
     - /url: /about
   - button "Scroll"

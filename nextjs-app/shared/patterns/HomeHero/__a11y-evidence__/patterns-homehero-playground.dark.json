@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-homehero-playground",
   "mode": "dark",
-  "sourceSHA": "a4dd297670b6a2f8c55f50ce5611c3115755c8fb",
-  "capturedAt": "2026-09-27T05:13:22.750Z",
-  "runner": "local-recapture-2026-09-27",
+  "sourceSHA": "a4b5dd852bb06ca1927e97f83082338bf661ac5c",
+  "capturedAt": "2026-10-18T08:15:26.413Z",
+  "runner": "local-2026-10-17",
   "checks": {
     "accessibility-tree": {
       "passed": true

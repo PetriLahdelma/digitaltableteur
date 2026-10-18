@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-contactinquirypanel-default",
   "mode": "forced-colors",
-  "sourceSHA": "57c7412ec1eae166b4c7b7bb5a3c873c6d57302d",
-  "capturedAt": "2026-09-27T06:17:37.094Z",
-  "runner": null,
+  "sourceSHA": "a4b5dd852bb06ca1927e97f83082338bf661ac5c",
+  "capturedAt": "2026-10-18T08:15:09.026Z",
+  "runner": "local-2026-10-17",
   "checks": {
     "accessibility-tree": {
       "passed": true
