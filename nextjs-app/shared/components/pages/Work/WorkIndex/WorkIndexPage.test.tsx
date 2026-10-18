@@ -84,4 +84,13 @@ describe("WorkIndexPage", () => {
       .map((heading) => heading.textContent);
     expect(headings.indexOf("Client work")).toBeLessThan(headings.indexOf("Self-initiated"));
   });
+
+  it("tags list rows with the engagement type they were delivered as", () => {
+    renderWithProviders(<WorkIndexPage />);
+    const rows = screen
+      .getAllByRole("list", { name: "Client work" })
+      .find((list) => list.tagName === "UL")!;
+    const hds = within(rows).getByRole("link", { name: /Helsinki Design System/ });
+    expect(within(hds).getByText("Embedded partnership")).toHaveAttribute("lang", "en");
+  });
 });

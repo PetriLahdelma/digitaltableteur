@@ -215,6 +215,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
           t("workPeriodOngoing", { start, defaultValue: "{{start}} – Present" }),
         )
       : undefined,
+    tag: englishPackageName(project),
     comingSoon: project.comingSoon,
   });
 
