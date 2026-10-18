@@ -5,13 +5,9 @@ import { ContactPageContentEditorial } from "../../../patterns/ContactPageConten
 import type { ContactInquiryMode } from "../../../patterns/ContactInquiryPanel";
 import type { SiteBookingConfig } from "../../../lib/donny-booking";
 
-/** A ?mode= deep link, or undefined so the panel picks its default (booking
- *  when scheduling is configured). */
-function readInquiryMode(
-  value: string | null | undefined,
-): ContactInquiryMode | undefined {
+function readInquiryMode(value: string | null | undefined): ContactInquiryMode {
   if (value === "book" || value === "message") return value;
-  return undefined;
+  return "message";
 }
 
 export interface ContactPageProps {

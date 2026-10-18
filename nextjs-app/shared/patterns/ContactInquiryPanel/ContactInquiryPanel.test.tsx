@@ -89,7 +89,7 @@ function renderPanel(initialMode: "message" | "book" = "message") {
 }
 
 describe("ContactInquiryPanel", () => {
-  it("opens on booking by default when scheduling is configured", () => {
+  it("opens on the message form by default even when scheduling is configured", () => {
     render(
       <TranslationProvider
         translate={createTranslate("en")}
@@ -112,7 +112,7 @@ describe("ContactInquiryPanel", () => {
         />
       </TranslationProvider>,
     );
-    expect(screen.getByRole("tab", { name: /Book a call/i })).toHaveAttribute(
+    expect(screen.getByRole("tab", { name: /Send a message/i })).toHaveAttribute(
       "aria-selected",
       "true",
     );
