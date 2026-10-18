@@ -153,7 +153,7 @@ export function HomeHero({
           <FadeIn delay={1.2} direction="up" distance={30}>
             <Stack direction="horizontal" gap="md" align="center" wrap>
               <Button
-                href="/contact"
+                href="/contact?mode=book"
                 variant="primary"
                 size="lg"
                 className="min-w-[160px]"

@@ -40,6 +40,22 @@ describe("DonnyBookingEmbed", () => {
     );
   });
 
+  it("names a duration slug by its length, not as a meeting name", () => {
+    renderEmbed({
+      configured: true,
+      provider: "calcom",
+      meetingLabel: "30min",
+      embedUrl: "https://app.cal.eu/digitaltableteur/30min/embed?embed=true",
+      fallbackUrl: "https://cal.eu/digitaltableteur/30min",
+      calLink: "digitaltableteur/30min",
+      calOrigin: "https://cal.eu",
+      embedJsUrl: "https://app.cal.eu/embed/embed.js",
+    });
+    expect(
+      screen.getByRole("heading", { name: "Book a 30-minute call" }),
+    ).toBeInTheDocument();
+  });
+
   it("renders an iframe for Calendly URLs", () => {
     renderEmbed({
       configured: true,

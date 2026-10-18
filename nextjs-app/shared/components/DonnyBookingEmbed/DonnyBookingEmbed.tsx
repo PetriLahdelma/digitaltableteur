@@ -142,13 +142,21 @@ export function DonnyBookingEmbed({
     );
   }
 
+  // Cal.com event slugs are often a duration ("30min"); read as a meeting
+  // name that gave "Book a 30min". Name the call by its length instead.
+  const durationMinutes = /^(\d+)\s*min(?:ute)?s?$/i.exec(meetingLabel.trim())?.[1];
+
   return (
     <div className={styles.donnyBookingEmbed} data-testid="donny-booking-embed">
       <div className={styles.header}>
         <h4 className={styles.title}>
-          {t("donnyBookingTitle", "Book a {{meeting}}", {
-            meeting: meetingLabel,
-          })}
+          {durationMinutes
+            ? t("donnyBookingDurationTitle", "Book a {{minutes}}-minute call", {
+                minutes: durationMinutes,
+              })
+            : t("donnyBookingTitle", "Book a {{meeting}}", {
+                meeting: meetingLabel,
+              })}
         </h4>
         <p className={styles.subtitle}>
           {prefillApplied

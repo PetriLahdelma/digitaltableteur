@@ -78,6 +78,7 @@
   "chatCopyDraft": "Kopiera utkast",
   "chatOpenCalculator": "Uppskatta ett eget uppdrag med kalkylatorn",
   "donnyBookingTitle": "Boka {{meeting}}",
+  "donnyBookingDurationTitle": "Boka ett samtal på {{minutes}} minuter",
   "donnyBookingHint": "Välj en tid nedan. Du får en kalenderinbjudan via e-post.",
   "donnyBookingPrefillHint": "Dina uppgifter är ifyllda där det gick. Välj en tid som passar.",
   "donnyBookingNotConfigured": "Bokning är inte kopplad ännu. Använd kontaktformuläret så kommer ett svar med tider.",
@@ -2132,7 +2133,7 @@
       {
         "id": "languages",
         "question": "Vilka arbetsspråk finns?",
-        "answer": "Engelska och finska, i workshops och i dokumentation."
+        "answer": "Engelska, finska och svenska, i workshops och i dokumentation."
       },
       {
         "id": "remote",

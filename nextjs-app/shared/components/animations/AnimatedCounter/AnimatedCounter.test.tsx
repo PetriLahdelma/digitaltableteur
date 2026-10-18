@@ -1,4 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AnimatedCounter, formatStatValue } from "./AnimatedCounter";
 
@@ -36,7 +37,15 @@ describe("AnimatedCounter", () => {
     });
   });
 
-  it("renders the animated value from zero while exposing the final stat to assistive tech", () => {
+  it("server-renders the final value, never zero", () => {
+    const html = renderToString(
+      <AnimatedCounter value={20} suffix="+" label="Years of experience" />,
+    );
+    expect(html).toContain(">20+<");
+    expect(html).not.toContain(">0+<");
+  });
+
+  it("renders the final value while exposing the stat to assistive tech", () => {
     render(
       <AnimatedCounter
         value={20}
@@ -46,7 +55,7 @@ describe("AnimatedCounter", () => {
       />,
     );
 
-    expect(screen.getByText("0+")).toBeInTheDocument();
+    expect(screen.getByText("20+")).toBeInTheDocument();
     expect(
       screen.getByRole("group", { name: "20+ Years of experience" }),
     ).toBeInTheDocument();
@@ -61,7 +70,7 @@ describe("AnimatedCounter", () => {
       name: "300+ Projects delivered",
     });
 
-    expect(within(counter).getByText("0+")).toHaveAttribute(
+    expect(within(counter).getByText("300+")).toHaveAttribute(
       "aria-hidden",
       "true",
     );

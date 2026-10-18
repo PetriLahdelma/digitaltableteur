@@ -53,6 +53,8 @@ The immature version asks for a screen, receives a screen, merges it and discove
 
 We do not run a numeric eval pipeline yet. We do run mechanical gates. Example: an agent-assisted PR renamed a Storybook story without updating `Button.contract.json`. `npm run validate:components -- --component Button` failed in CI: required story missing, drift caught before a human opened the diff. That is AgentOps at v1: failing commands as evaluation, not Slack vibes or fabricated scores.
 
+> **Update, October 2026:** this has changed since publication. [Agent Pilot](/engagements/agent-pilot) and [Design System MCP](/engagements/design-system-mcp) engagements now include an eval benchmark.
+
 Later maturity adds targeted evals: golden flows, forbidden composition checks, regression suites on pattern recipes. The principle stays: evidence before merge, not vibes after demo.
 
 ## Responsibilities that extend the role

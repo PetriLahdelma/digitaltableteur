@@ -65,6 +65,16 @@ export function AnimatedCounter({
         return;
       }
 
+      // The server renders the final value, so text extractors, crawlers and
+      // no-JS readers see "20+", never "0+". The count-up only runs for a
+      // counter still below its trigger: it resets to zero off screen, before
+      // anyone sees it. A counter already in view keeps its final value
+      // instead of flashing 20+ -> 0+ -> 20+.
+      const triggerLine = window.innerHeight * 0.85;
+      if (ref.current.getBoundingClientRect().top < triggerLine) {
+        numberRef.current.textContent = displayValue;
+        return;
+      }
       numberRef.current.textContent = initialVisibleValue;
 
       const counter = { val: 0 };
@@ -118,7 +128,7 @@ export function AnimatedCounter({
       aria-label={accessibleLabel}
     >
       <span ref={numberRef} className={styles.value} aria-hidden="true">
-        {initialVisibleValue}
+        {displayValue}
       </span>
       <span className={styles.label} aria-hidden="true">
         {label}

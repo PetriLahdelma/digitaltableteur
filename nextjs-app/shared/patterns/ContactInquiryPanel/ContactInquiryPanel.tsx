@@ -43,7 +43,7 @@ export const ContactInquiryPanel = forwardRef<
   ContactInquiryPanelHandle,
   ContactInquiryPanelProps
 >(function ContactInquiryPanel(
-  { initialMode = "message", packageId, messagePanel, bookingConfig },
+  { initialMode, packageId, messagePanel, bookingConfig },
   ref,
 ) {
   const {
@@ -52,7 +52,12 @@ export const ContactInquiryPanel = forwardRef<
     resolvedLanguage,
   } = useLocalization();
   const activeLanguage = resolvedLanguage || language;
-  const [mode, setMode] = useState<ContactInquiryMode>(initialMode);
+  // Booking is the default tab when scheduling is configured; the message
+  // form is the fallback. A ?mode= deep link always wins.
+  const defaultMode: ContactInquiryMode =
+    initialMode ??
+    ((bookingConfig ?? resolveSiteBookingConfig()).configured ? "book" : "message");
+  const [mode, setMode] = useState<ContactInquiryMode>(defaultMode);
 
   useEffect(() => {
     if (initialMode === "book" || initialMode === "message") {

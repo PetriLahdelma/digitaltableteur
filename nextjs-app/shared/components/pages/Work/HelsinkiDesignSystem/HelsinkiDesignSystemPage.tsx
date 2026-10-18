@@ -86,6 +86,10 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             href: project.liveUrl,
           },
           {
+            claim: "The Helsinki Design System won Best Design System at Grand One 2023",
+            source: "Grand One 2023",
+          },
+          {
             claim: "Regular reviews by third-party accessibility experts",
             source: "Self-reported, from project records",
           },

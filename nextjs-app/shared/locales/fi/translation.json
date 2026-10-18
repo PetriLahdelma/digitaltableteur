@@ -78,6 +78,7 @@
   "chatCopyDraft": "Kopioi luonnos",
   "chatOpenCalculator": "Arvioi oma toimeksianto laskurilla",
   "donnyBookingTitle": "Varaa {{meeting}}",
+  "donnyBookingDurationTitle": "Varaa {{minutes}} minuutin puhelu",
   "donnyBookingHint": "Valitse alla sopiva aika. Saat kalenterikutsun sähköpostilla.",
   "donnyBookingPrefillHint": "Tietosi on esitäytetty mahdollisuuksien mukaan. Valitse sopiva aika.",
   "donnyBookingNotConfigured": "Ajanvarausta ei ole vielä kytketty. Käytä yhteydenottolomaketta, niin saat vastauksena aikaehdotuksia.",
@@ -2132,7 +2133,7 @@
       {
         "id": "languages",
         "question": "Mitkä työkielet ovat käytössä?",
-        "answer": "Englanti ja suomi, työpajoissa ja dokumentaatiossa."
+        "answer": "Englanti, suomi ja ruotsi, työpajoissa ja dokumentaatiossa."
       },
       {
         "id": "remote",

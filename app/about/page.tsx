@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 import { AboutPage } from "@dt-pages/AboutPage";
 import {
   getBreadcrumbSchema,
-  getPersonSchema,
   getWebPageSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = "About Petri Lahdelma | Digitaltableteur";
+  // The studio, not a person: the author page carries the personal bio.
+  const title = "About the studio | Digitaltableteur";
   const description =
-    "Petri Lahdelma, design systems specialist and DesignOps engineer: React, TypeScript, Figma and AI-powered design workflows. Based in Finland, working globally.";
+    "Digitaltableteur is a Helsinki design systems and AI-powered DesignOps studio: senior hands-on delivery, fixed-scope engagements and evidence over promises.";
 
   return {
     title,
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      type: "profile",
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
@@ -37,18 +37,17 @@ export const revalidate = 3600;
 export default function About() {
   const structuredData = [
     getWebPageSchema({
-      name: "About Petri Lahdelma | Digitaltableteur",
+      name: "About the studio | Digitaltableteur",
       description:
-        "Design Systems Specialist and DesignOps Engineer. Expert in React, TypeScript, Figma and AI-powered design workflows.",
+        "Digitaltableteur is a Helsinki design systems and AI-powered DesignOps studio: senior hands-on delivery, fixed-scope engagements and evidence over promises.",
       url: "/about",
       keywords: [
-        "Petri Lahdelma",
-        "design systems specialist",
-        "DesignOps engineer",
-        "Helsinki design consultant",
+        "design systems studio",
+        "AI-powered DesignOps",
+        "design system consultancy",
+        "Helsinki design studio",
       ],
     }),
-    getPersonSchema(),
     getBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "About", url: "/about" },

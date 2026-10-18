@@ -27,7 +27,7 @@ export function WorkCTA({ title, description, className }: WorkCTAProps) {
       }
       primaryAction={{
         label: t("workCTAPrimary", "Get in touch"),
-        href: "/contact",
+        href: "/contact?mode=book",
       }}
       secondaryAction={{
         label: t("workCTASecondary", "View all work"),

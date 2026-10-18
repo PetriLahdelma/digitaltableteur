@@ -410,7 +410,7 @@ export function AboutPageContent({
           description={t("aboutCTADescription")}
           primaryAction={{
             label: t("aboutCTAPrimaryLabel"),
-            href: "/contact",
+            href: "/contact?mode=book",
           }}
           secondaryAction={{
             label: t("aboutCTASecondaryLabel"),

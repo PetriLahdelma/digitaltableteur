@@ -156,6 +156,16 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
   }, [t]);
 
   // Handle category change
+  // Card categories are marked as English content (contentLanguage "en"), so
+  // they use the English filter label ("UX Design", "Tools & OSS") rather
+  // than a title-cased slug ("Ux Design").
+  const englishCategory = (value: string) => {
+    const labelKey = categories.find((cat) => cat.value === value)?.labelKey;
+    return labelKey
+      ? t(labelKey, { lng: "en", defaultValue: formatCategory(value) })
+      : formatCategory(value);
+  };
+
   const listItems = useMemo<ProjectListItem[]>(() => {
     const labelFor = (value: string) =>
       translatedCategories.find((cat) => cat.value === value)?.label ??
@@ -317,7 +327,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
                         videoThumbnail={project.thumbnailVideo}
                         autoPlayVideo={project.autoPlayVideo}
                         description={project.description}
-                        category={formatCategory(project.category)}
+                        category={englishCategory(project.category)}
                         tags={project.tags}
                         aspectRatio="square"
                         showCategory={true}

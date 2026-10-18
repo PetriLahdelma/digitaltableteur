@@ -44,7 +44,10 @@ describe("StatsSection", () => {
       />,
     );
 
-    expect(container.querySelector('[aria-hidden="true"].grid')).toBeInTheDocument();
-    expect(screen.getByText("0+")).toBeInTheDocument();
+    const grid = container.querySelector('[aria-hidden="true"].grid');
+    expect(grid).toBeInTheDocument();
+    // The visible counter carries the real value in the rendered HTML.
+    expect(grid).toHaveTextContent("20+");
+    expect(grid).not.toHaveTextContent(/^0\+/);
   });
 });

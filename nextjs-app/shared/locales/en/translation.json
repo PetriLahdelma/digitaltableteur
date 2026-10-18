@@ -78,6 +78,7 @@
   "chatCopyDraft": "Copy draft",
   "chatOpenCalculator": "Estimate a custom engagement with the calculator",
   "donnyBookingTitle": "Book a {{meeting}}",
+  "donnyBookingDurationTitle": "Book a {{minutes}}-minute call",
   "donnyBookingHint": "Choose a slot below. You will get a calendar invite by email.",
   "donnyBookingPrefillHint": "Your details are prefilled where possible. Pick a time that works for you.",
   "donnyBookingNotConfigured": "Scheduling is not wired yet. Use the contact form and a reply with times will follow.",
@@ -2132,7 +2133,7 @@
       {
         "id": "languages",
         "question": "Which working languages are available?",
-        "answer": "English and Finnish, in workshops and in documentation."
+        "answer": "English, Finnish and Swedish, in workshops and in documentation."
       },
       {
         "id": "remote",

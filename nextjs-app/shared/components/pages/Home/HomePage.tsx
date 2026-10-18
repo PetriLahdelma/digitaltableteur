@@ -168,7 +168,7 @@ export function HomePage() {
         title={t("homeCtaTitle", "Ready to create something extraordinary?")}
         primaryAction={{
           label: t("homeCtaLink", "Let's talk"),
-          href: "/contact",
+          href: "/contact?mode=book",
         }}
         background="primary"
         align="center"
