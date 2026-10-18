@@ -14,6 +14,7 @@ import {
 } from "@digitaltableteur/react";
 import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
+import { NEXT_AVAILABLE_START } from "../../data/availability";
 import { ENGAGEMENTS, getEngagementPath, type EngagementId } from "../../data/engagements";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
@@ -74,6 +75,10 @@ export function EngagementPageContent({
   const list = (field: string) =>
     asStrings(t(key(field), { returnObjects: true, defaultValue: [] }) as unknown);
   const common = (field: string) => t(`engagementPages.common.${field}`);
+  const availability = t("nextAvailableStart", {
+    start: NEXT_AVAILABLE_START,
+    defaultValue: "Next available start: {{start}}",
+  });
   const price = t(config.priceKey);
   const faq = asQA(t(key("faq"), { returnObjects: true, defaultValue: [] }) as unknown);
   const proof = config.proof.map((slug) => ({
@@ -153,6 +158,9 @@ export function EngagementPageContent({
               {text("cta2")}
             </Button>
           </div>
+          <Text as="p" size="s" className={styles.availability}>
+            {availability}
+          </Text>
         </header>
 
         <section aria-labelledby={ids.signals} className={styles.section}>
@@ -340,6 +348,9 @@ export function EngagementPageContent({
               </Title>
               <Text as="p" size="l" className={styles.onPanel}>
                 {text("bookBody")}
+              </Text>
+              <Text as="p" size="s" className={styles.onPanel}>
+                {availability}
               </Text>
             </div>
             <div className={styles.bookActions}>

@@ -198,6 +198,7 @@
   "pricingTestimonialQuote": "A usable design system, with contracts, components, tokens and an adoption plan, in weeks rather than quarters.",
   "pricingDeliverablesTitle": "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k.",
   "pricingPackagesTitle": "Packages",
+  "nextAvailableStart": "Next available start: {{start}}",
   "pricingPackage1Title": "Design System Lift-Off",
   "pricingPackage1Price": "€14–20k",
   "pricingPackage1Duration": "4 weeks",
@@ -1836,10 +1837,6 @@
           "answer": "Yes, at the standard rate. Terms under six months or under four days a week are priced at 120 €/h or as a fixed package."
         },
         {
-          "question": "Who does the work?",
-          "answer": "A senior practitioner directly on the work, with specialists from a network added as the work needs them."
-        },
-        {
           "question": "Can the partnership run longer than six months?",
           "answer": "Yes. The twelve-month term keeps the 90 €/h partnership rate."
         }
@@ -2181,14 +2178,39 @@
         "answer": "Yes. Tax, pension and employer obligations are continuously verified through Vastuu Group's Reliable Partner programme, as the Finnish Contractor's Obligations Act requires. The report is public."
       },
       {
+        "id": "delivery-model",
+        "question": "Who does the work?",
+        "answer": "One senior practitioner leads and does the work, with a single point of contact throughout. When an engagement needs more hands, specialists join under subcontract: front-end engineering, accessibility testing, brand and visual design or motion and 3D."
+      },
+      {
         "id": "invoicing",
         "question": "How is invoicing handled?",
         "answer": "E-invoices go to address 003722644552 through APIX Messaging Oy, operator ID 003723327487. Payment terms are agreed in the engagement."
       },
       {
+        "id": "vat",
+        "question": "Do prices include VAT?",
+        "answer": "No. Prices exclude Finnish VAT, currently 25.5%."
+      },
+      {
+        "id": "insurance",
+        "question": "Is the work insured?",
+        "answer": "Yes. Liability insurance covers client engagements."
+      },
+      {
         "id": "nda",
         "question": "Can a client NDA or framework agreement be used?",
         "answer": "Yes. A short engagement agreement is also available."
+      },
+      {
+        "id": "data-processing",
+        "question": "How is personal data handled?",
+        "answer": "A GDPR data processing agreement (DPA) is available on request before work starts."
+      },
+      {
+        "id": "repository-access",
+        "question": "Where does the work happen?",
+        "answer": "In your repositories and accounts. Client code and data are not copied elsewhere."
       },
       {
         "id": "ownership",

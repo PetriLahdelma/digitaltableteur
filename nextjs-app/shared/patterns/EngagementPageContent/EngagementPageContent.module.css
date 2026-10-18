@@ -60,6 +60,11 @@
   color: var(--color-title);
 }
 
+.availability {
+  margin-block-start: var(--space-internal-12);
+  color: var(--color-muted);
+}
+
 .ctas {
   display: flex;
   flex-wrap: wrap;

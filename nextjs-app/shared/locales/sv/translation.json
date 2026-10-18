@@ -198,6 +198,7 @@
   "pricingTestimonialQuote": "Ett användbart designsystem, med kontrakt, komponenter, tokens och en införandeplan, på veckor i stället för kvartal.",
   "pricingDeliverablesTitle": "Inga gissningar. Ingen scope creep. Enastående designarbete, blixtsnabbt, från 7k €.",
   "pricingPackagesTitle": "Paket",
+  "nextAvailableStart": "Nästa lediga start: {{start}}",
   "pricingPackage1Title": "Design System Lift-Off",
   "pricingPackage1Price": "14–20k €",
   "pricingPackage1Duration": "4 veckor",
@@ -1836,10 +1837,6 @@
           "answer": "Ja, till standardpriset. Perioder under sex månader eller under fyra dagar i veckan prissätts till 120 €/timme eller som ett fast paket."
         },
         {
-          "question": "Vem gör arbetet?",
-          "answer": "En senior praktiker direkt i arbetet, med specialister från ett nätverk när arbetet kräver det."
-        },
-        {
           "question": "Kan partnerskapet pågå längre än sex månader?",
           "answer": "Ja. Perioden på tolv månader behåller partnerskapspriset 90 €/timme."
         }
@@ -2181,14 +2178,39 @@
         "answer": "Ja. Skatte-, pensions- och arbetsgivarförpliktelser verifieras kontinuerligt i Vastuu Groups program Pålitlig Partner, så som den finländska lagen om beställaransvar kräver. Rapporten är offentlig."
       },
       {
+        "id": "delivery-model",
+        "question": "Vem gör arbetet?",
+        "answer": "En senior praktiker leder och gör arbetet, med samma kontaktperson hela vägen. När ett uppdrag behöver fler händer kommer specialister in som underleverantörer: frontendutveckling, tillgänglighetstestning, varumärkes- och visuell design eller motion och 3D."
+      },
+      {
         "id": "invoicing",
         "question": "Hur sköts faktureringen?",
         "answer": "E-fakturor till adress 003722644552 via APIX Messaging Oy, operatörs-ID 003723327487. Betalningsvillkor avtalas i uppdraget."
       },
       {
+        "id": "vat",
+        "question": "Ingår moms i priserna?",
+        "answer": "Nej. Priserna är exklusive finsk moms, för närvarande 25,5 %."
+      },
+      {
+        "id": "insurance",
+        "question": "Är arbetet försäkrat?",
+        "answer": "Ja. En ansvarsförsäkring täcker kunduppdrag."
+      },
+      {
         "id": "nda",
         "question": "Kan kundens sekretessavtal eller ramavtal användas?",
         "answer": "Ja. Ett kort uppdragsavtal finns också."
+      },
+      {
+        "id": "data-processing",
+        "question": "Hur hanteras personuppgifter?",
+        "answer": "Ett personuppgiftsbiträdesavtal (DPA) enligt GDPR finns på begäran innan arbetet börjar."
+      },
+      {
+        "id": "repository-access",
+        "question": "Var sker arbetet?",
+        "answer": "I era repositorier och konton. Kundens kod och data kopieras inte någon annanstans."
       },
       {
         "id": "ownership",

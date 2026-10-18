@@ -252,6 +252,11 @@
   margin-block-start: var(--space-layout-48);
 }
 
+.packagesAvailability {
+  margin-block: calc(-1 * var(--space-internal-16)) 0;
+  color: var(--color-muted);
+}
+
 .packagesHeading {
   margin: 0;
 }

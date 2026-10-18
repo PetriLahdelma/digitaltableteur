@@ -11,6 +11,7 @@ import { ReliablePartnerBadge } from "../../components/ReliablePartnerBadge";
 import { ProcurementFaq } from "../ProcurementFaq";
 import { TextReveal } from "../../components/animations/TextReveal";
 import { FadeIn } from "../../components/animations/FadeIn";
+import { NEXT_AVAILABLE_START } from "../../data/availability";
 import styles from "./PricingPageContent.module.css";
 
 type ComparisonRow = {
@@ -528,6 +529,12 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
             >
               {t("pricingPackagesTitle", "Packages")}
             </Title>
+            <Text as="p" size="s" className={styles.packagesAvailability}>
+              {t("nextAvailableStart", {
+                start: NEXT_AVAILABLE_START,
+                defaultValue: "Next available start: {{start}}",
+              })}
+            </Text>
 
             <ul
               className={styles.packageList}

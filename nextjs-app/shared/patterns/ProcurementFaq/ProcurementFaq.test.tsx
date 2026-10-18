@@ -19,7 +19,7 @@ describe("ProcurementFaq", () => {
     const triggers = en.procurementFaq.items.map((item) =>
       screen.getByRole("button", { name: item.question }),
     );
-    expect(triggers).toHaveLength(9);
+    expect(triggers).toHaveLength(14);
     expect(triggers[0]).toHaveAttribute("aria-expanded", "true");
     expect(triggers[1]).toHaveAttribute("aria-expanded", "false");
   });

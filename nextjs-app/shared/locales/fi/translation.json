@@ -198,6 +198,7 @@
   "pricingTestimonialQuote": "Käyttökelpoinen design system sopimuksineen, komponentteineen, tokeneineen ja käyttöönottosuunnitelmineen viikoissa, ei vuosineljänneksissä.",
   "pricingDeliverablesTitle": "Ei arvailua. Ei paisuvaa laajuutta. Huippuluokan designia, salamannopeasti, alkaen 7k €.",
   "pricingPackagesTitle": "Paketit",
+  "nextAvailableStart": "Seuraava vapaa aloitus: {{start}}",
   "pricingPackage1Title": "Design System Lift-Off",
   "pricingPackage1Price": "14–20k €",
   "pricingPackage1Duration": "4 viikkoa",
@@ -1836,10 +1837,6 @@
           "answer": "Kyllä, normaalihinnalla. Alle kuuden kuukauden tai alle neljän päivän viikon toimeksiannot hinnoitellaan 120 €/tunti tai kiinteänä pakettina."
         },
         {
-          "question": "Kuka työn tekee?",
-          "answer": "Kokenut tekijä suoraan työn äärellä. Verkoston asiantuntijat tulevat mukaan työn niin vaatiessa."
-        },
-        {
           "question": "Voiko kumppanuus kestää yli kuusi kuukautta?",
           "answer": "Kyllä. Kahdentoista kuukauden jaksossa pätee sama 90 €/tunti kumppanuushinta."
         }
@@ -2181,14 +2178,39 @@
         "answer": "Kyllä. Vero-, eläke- ja työnantajavelvoitteet todennetaan jatkuvasti Vastuu Groupin Luotettava Kumppani -ohjelmassa tilaajavastuulain edellyttämällä tavalla. Raportti on julkinen."
       },
       {
+        "id": "delivery-model",
+        "question": "Kuka työn tekee?",
+        "answer": "Yksi kokenut tekijä vetää ja tekee työn, ja yhteyshenkilö pysyy samana koko ajan. Kun toimeksianto tarvitsee lisää käsiä, asiantuntijat tulevat mukaan alihankintana: front end -kehitys, saavutettavuustestaus, brändi- ja visuaalinen suunnittelu tai motion ja 3D."
+      },
+      {
         "id": "invoicing",
         "question": "Miten laskutus hoidetaan?",
         "answer": "Verkkolaskut osoitteeseen 003722644552, välittäjä APIX Messaging Oy, välittäjätunnus 003723327487. Maksuehdot sovitaan toimeksiannossa."
       },
       {
+        "id": "vat",
+        "question": "Sisältävätkö hinnat arvonlisäveron?",
+        "answer": "Eivät. Hinnat ovat ilman arvonlisäveroa, joka on tällä hetkellä 25,5 %."
+      },
+      {
+        "id": "insurance",
+        "question": "Onko työ vakuutettu?",
+        "answer": "Kyllä. Vastuuvakuutus kattaa asiakastoimeksiannot."
+      },
+      {
         "id": "nda",
         "question": "Voiko asiakkaan salassapitosopimusta tai puitesopimusta käyttää?",
         "answer": "Kyllä. Saatavilla on myös lyhyt toimeksiantosopimus."
+      },
+      {
+        "id": "data-processing",
+        "question": "Miten henkilötietoja käsitellään?",
+        "answer": "GDPR:n mukainen henkilötietojen käsittelysopimus (DPA) on saatavilla pyynnöstä ennen työn alkua."
+      },
+      {
+        "id": "repository-access",
+        "question": "Missä työ tehdään?",
+        "answer": "Teidän repositorioissanne ja tileillänne. Asiakkaan koodia tai dataa ei kopioida muualle."
       },
       {
         "id": "ownership",
