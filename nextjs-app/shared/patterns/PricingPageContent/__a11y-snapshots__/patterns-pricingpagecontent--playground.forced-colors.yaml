@@ -59,8 +59,8 @@
   - text: "Total Investment: 9,000 €"
   - link "Get in touch":
     - /url: /contact?mode=book&duration=2w&days=5
-- region "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k.":
-  - heading "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k." [level=2]
+- region "No guesswork. No scope creep. Scope, price and timeline agreed up front, from €7k.":
+  - heading "No guesswork. No scope creep. Scope, price and timeline agreed up front, from €7k." [level=2]
   - heading "Packages" [level=3]
   - paragraph: "Next available start: Q1 2027"
   - list "Packages":
