@@ -70,6 +70,12 @@ const meta: Meta<typeof BlogCategoryFilter> = {
       description: "Control size.",
       table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
+    collapsible: {
+      control: "boolean",
+      description:
+        "Show only the selected chip and a disclosure button that opens every topic.",
+      table: { category: "Behavior", defaultValue: { summary: "false" } },
+    },
     className: {
       control: "text",
       description: "Extra class names merged onto the filter group.",
