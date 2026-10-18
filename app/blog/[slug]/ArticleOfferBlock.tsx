@@ -5,7 +5,7 @@ import {
   getEngagementBySlug,
   getEngagementPath,
 } from "@/nextjs-app/shared/data/engagements";
-import { useTranslate } from "@/nextjs-app/shared/lib/translation";
+import { useTranslation } from "react-i18next";
 import styles from "./ArticleOfferBlock.module.css";
 
 /**
@@ -14,7 +14,7 @@ import styles from "./ArticleOfferBlock.module.css";
  * booking link. Copy comes from the same keys as the offer page.
  */
 export function ArticleOfferBlock({ engagementSlug }: { engagementSlug?: string }) {
-  const t = useTranslate();
+  const { t } = useTranslation();
   const engagement = engagementSlug ? getEngagementBySlug(engagementSlug) : undefined;
   if (!engagement) return null;
 
