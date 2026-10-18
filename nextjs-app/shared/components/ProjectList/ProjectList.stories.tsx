@@ -11,8 +11,10 @@ const workItems: ProjectListItem[] = [
     title: "DSharp Design System",
     href: "/work/dsharp-design-system",
     thumbnail: "/images/portfolio/dsharp-design-system/dsharp-thumbnail-logo.svg",
+    client: "DSharp",
     discipline: "Design systems",
     year: "2026–Present",
+    tag: "Embedded partnership",
   },
   {
     id: "vr",
@@ -31,6 +33,7 @@ const workItems: ProjectListItem[] = [
     client: "City of Helsinki",
     discipline: "Design systems",
     year: "2020–2022",
+    tag: "Embedded partnership",
   },
   {
     id: "sap",
@@ -40,6 +43,7 @@ const workItems: ProjectListItem[] = [
     client: "SAP",
     discipline: "Design systems",
     year: "Mar 2022 – Feb 2026",
+    tag: "Embedded partnership",
   },
   {
     id: "rhythmguard",

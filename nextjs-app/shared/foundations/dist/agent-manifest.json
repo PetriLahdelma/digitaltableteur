@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-17T09:06:06.980Z",
+  "generatedAt": "2026-10-18T09:59:37.243Z",
   "summary": {
     "componentCount": 184,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 91.5,
     "codebaseComponentCount": 201,
     "usageCoveragePercent": 93.5,
-    "componentsWithProductionUsage": 42,
+    "componentsWithProductionUsage": 41,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,7 +79,7 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 184,
     "withAnyUsage": 172,
-    "withProductionUsage": 42,
+    "withProductionUsage": 41,
     "uniqueImportedComponents": 172,
     "totalEvidenceRows": 891,
     "aliasImportFiles": 458,
@@ -27526,17 +27526,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 76,
-        "productionImportCount": 1,
+        "importCount": 75,
+        "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 38,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../Icon/Icon",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
             "importKind": "relative",
@@ -27599,6 +27593,12 @@
           },
           {
             "path": "nextjs-app/shared/components/ChatWidget/ChatToggle.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatToolResultSection.tsx",
             "importKind": "alias",
             "importPath": "@dt/Icon",
             "context": "component"
@@ -31286,13 +31286,19 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 16,
-        "productionImportCount": 1,
+        "importCount": 17,
+        "productionImportCount": 2,
         "patternImportCount": 3,
         "componentImportCount": 11,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../Link",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/StudioLog/StudioLogPage.tsx",
             "importKind": "relative",
             "importPath": "../../Link",
             "context": "production"
@@ -31353,12 +31359,6 @@
           },
           {
             "path": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
@@ -43964,7 +43964,7 @@
           }
         }
       },
-      "spec": "# ProjectList\n\n## Intent\n\nGet a visitor to a project fast. The card grid sells the work with images;\nthe list puts every project on one or two screens, scannable by name and\nclient.\n\n## Layouts\n\n- **Narrow** (under 40rem of the list's own width): thumbnail, title and one\n  meta line (client, or discipline when the record names no client, then the\n  period), with a trailing arrow.\n- **Wide**: aligned columns for project, client, discipline and period under a\n  visual column header.\n\n## Interaction contract\n\n- Keyboard: Tab reaches each row link in order; Enter follows it.\n- Screen readers: a named list; one link per row whose name starts with the\n  title; the column header is aria-hidden; thumbnails are decorative.\n- Touch: :hover styling sits in `@media (hover: hover)`, so one tap opens a row.\n\n## Do / don't\n\n- Do: copy client and period verbatim from the project record.\n- Do: keep the same order and filter as the card grid.\n- Don't: nest links or buttons inside a row.\n- Don't: use it for data the reader sorts; use Table.\n\n## Design notes\n\n- Tokens only; forced colours use Highlight for focus and CanvasText for the\n  teaser border.\n- Layout responds to the list's width through a container query.\n",
+      "spec": "# ProjectList\n\n## Intent\n\nGet a visitor to a project fast. The card grid sells the work with images;\nthe list puts every project on one or two screens, scannable by name and\nclient.\n\n## Layouts\n\n- **Narrow** (under 40rem of the list's own width): thumbnail, title and one\n  meta line (client, or discipline when the record names no client, then the\n  period), with a trailing arrow.\n- **Wide**: aligned columns for project, client, discipline and period under a\n  visual column header.\n- An optional `tag` (for example the engagement type) sits beside the title\n  in both layouts, as a small outlined chip that wraps under a long title.\n\n## Interaction contract\n\n- Keyboard: Tab reaches each row link in order; Enter follows it.\n- Screen readers: a named list; one link per row whose name starts with the\n  title; the column header is aria-hidden; thumbnails are decorative.\n- Touch: :hover styling sits in `@media (hover: hover)`, so one tap opens a row.\n\n## Do / don't\n\n- Do: copy client and period verbatim from the project record.\n- Do: keep the same order and filter as the card grid.\n- Don't: nest links or buttons inside a row.\n- Don't: put more than one tag on a row; the card grid carries the full tag\n  set.\n- Don't: use it for data the reader sorts; use Table.\n\n## Design notes\n\n- Tokens only; forced colours use Highlight for focus and CanvasText for the\n  teaser and tag borders.\n- Layout responds to the list's width through a container query.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectList",
@@ -44022,6 +44022,7 @@
         ],
         "avoidWhen": [
           "nest links or buttons inside a row.",
+          "put more than one tag on a row; the card grid carries the full tag set.",
           "use it for data the reader sorts; use Table."
         ],
         "requiredA11y": [
@@ -44047,6 +44048,7 @@
         "replacementFor": [],
         "forbiddenUse": [
           "nest links or buttons inside a row.",
+          "put more than one tag on a row; the card grid carries the full tag set.",
           "use it for data the reader sorts; use Table."
         ],
         "composesWith": [],
@@ -44070,6 +44072,13 @@
           {
             "level": "should-not",
             "guidance": "nest links or buttons inside a row.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "put more than one tag on a row; the card grid carries the full tag set.",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
@@ -76335,6 +76344,7 @@
             "type": "union",
             "values": [
               "audit",
+              "uxSprint",
               "liftoff",
               "aiops",
               "partnership",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T09:06:06.626Z",
+  "generatedAt": "2026-10-18T09:59:36.829Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -25535,6 +25535,7 @@
       ],
       "avoidWhen": [
         "nest links or buttons inside a row.",
+        "put more than one tag on a row; the card grid carries the full tag set.",
         "use it for data the reader sorts; use Table."
       ],
       "requiredA11y": [
@@ -25560,6 +25561,7 @@
       "replacementFor": [],
       "forbiddenUse": [
         "nest links or buttons inside a row.",
+        "put more than one tag on a row; the card grid carries the full tag set.",
         "use it for data the reader sorts; use Table."
       ],
       "composesWith": [],
@@ -25583,6 +25585,13 @@
         {
           "level": "should-not",
           "guidance": "nest links or buttons inside a row.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "put more than one tag on a row; the card grid carries the full tag set.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"
@@ -45906,6 +45915,7 @@
           "type": "union",
           "values": [
             "audit",
+            "uxSprint",
             "liftoff",
             "aiops",
             "partnership",

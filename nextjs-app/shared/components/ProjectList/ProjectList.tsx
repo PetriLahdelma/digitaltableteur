@@ -30,6 +30,11 @@ export interface ProjectListItem {
   discipline?: string;
   /** Period, as written in the project record (for example "2020–2022"). */
   year?: string;
+  /**
+   * Short content tag beside the title, such as the engagement type the work
+   * was delivered as ("Embedded partnership"). Takes `contentLanguage`.
+   */
+  tag?: string;
   /** Teaser without a page: muted, not a link, with the coming-soon label. */
   comingSoon?: boolean;
 }
@@ -94,8 +99,15 @@ export function ProjectList({
                 )}
               </span>
               <span className={styles.main}>
-                <span className={styles.title} lang={contentLanguage}>
-                  {item.title}
+                <span className={styles.titleLine}>
+                  <span className={styles.title} lang={contentLanguage}>
+                    {item.title}
+                  </span>
+                  {item.tag && (
+                    <span className={styles.tag} lang={contentLanguage}>
+                      {item.tag}
+                    </span>
+                  )}
                 </span>
                 {meta && (
                   // The discipline label is translated, so the line takes

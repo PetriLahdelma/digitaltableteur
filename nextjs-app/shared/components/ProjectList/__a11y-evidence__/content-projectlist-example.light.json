@@ -1,9 +1,9 @@
 {
   "storyId": "content-projectlist-example",
   "mode": "light",
-  "sourceSHA": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
-  "capturedAt": "2026-10-17T09:17:23.478Z",
-  "runner": "local-2026-10-17",
+  "sourceSHA": "35d34f5c1a92a562b305a61bcaf17d845caae171",
+  "capturedAt": "2026-10-18T10:02:14.836Z",
+  "runner": "local-2026-10-18",
   "checks": {
     "accessibility-tree": {
       "passed": true

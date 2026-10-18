@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.33 - 2026-10-18
+
+- `ProjectList`: new optional `tag` on items, a short content label beside
+  the title (for example the engagement type the work was delivered as).
+  Rendered as an outlined chip in both layouts, inside the row link, with
+  `contentLanguage`. Additive.
+
 ## 0.1.32 - 2026-10-17
 
 - `SegmentedControl`: pill-shaped (`radius-full`), matching the filter

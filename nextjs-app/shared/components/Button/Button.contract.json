@@ -105,6 +105,11 @@
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ArticleOfferBlock.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
             "since": "2026-06-04"
         },
@@ -156,11 +161,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/error.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
             "since": "2026-06-04"
         }
     ],

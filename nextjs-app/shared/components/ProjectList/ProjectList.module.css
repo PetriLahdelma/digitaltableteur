@@ -64,6 +64,14 @@
 /* Nothing truncates: long titles, clients and periods wrap and the row
    grows, so no project data is ever hidden. */
 
+.titleLine {
+  display: flex;
+  min-inline-size: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-internal-2) var(--space-internal-8);
+}
+
 .title {
   font-size: var(--font-size-text-m);
   font-weight: var(--font-weight-title);
@@ -102,6 +110,20 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   font-size: var(--font-size-text-xs);
+  white-space: nowrap;
+  color: var(--color-muted);
+}
+
+/* Same chip chrome as the teaser label, so a row carries one visual
+   vocabulary for its small annotations. */
+
+.tag {
+  padding-block: var(--space-internal-2);
+  padding-inline: var(--space-internal-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-text-xs);
+  line-height: 1.4;
   white-space: nowrap;
   color: var(--color-muted);
 }
@@ -173,7 +195,8 @@
     outline-color: Highlight;
   }
 
-  .soon {
+  .soon,
+  .tag {
     border-color: CanvasText;
   }
 }

@@ -14,6 +14,7 @@ const items: ProjectListItem[] = [
     client: "City of Helsinki",
     discipline: "Design systems",
     year: "2020–2022",
+    tag: "Embedded partnership",
   },
   {
     id: "rhythmguard",
@@ -92,5 +93,13 @@ describe("ProjectList", () => {
       />,
     );
     expect(screen.getByText("Oma projekti, 2025")).not.toHaveAttribute("lang");
+  });
+
+  it("shows a tag beside the title, inside the row link, in the content language", () => {
+    render(<ProjectList items={items} ariaLabel="Projektit" contentLanguage="en" />);
+    const tag = screen.getByText("Embedded partnership");
+    expect(tag).toHaveAttribute("lang", "en");
+    expect(tag.closest("a")).toHaveAttribute("href", "/work/helsinki-design-system");
+    expect(screen.getAllByText("Embedded partnership")).toHaveLength(1);
   });
 });
