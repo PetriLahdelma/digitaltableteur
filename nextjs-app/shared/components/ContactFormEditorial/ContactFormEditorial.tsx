@@ -304,7 +304,9 @@ export function ContactFormEditorial({
   // Expansion state
   // The brief (organisation, package, budget, start, needs, why us) is open
   // by default: it is the qualifying part of the form, not an extra.
-  const [tier2Expanded, setTier2Expanded] = useState(true);
+  // Closed on a direct visit; the effects above open it when a package or
+  // budget arrives prefilled from a deep link.
+  const [tier2Expanded, setTier2Expanded] = useState(false);
   const [tier3Expanded, setTier3Expanded] = useState(false);
 
   // Derived values

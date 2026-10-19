@@ -74,15 +74,17 @@
   }
 }
 
-/* Desktop: toggle beside the filters, the same height as a chip. The filter
-   row pads its chips by --space-internal-4; the toolbar matches that and
-   stretches the toggle, so tops, bottoms and centres line up. */
+/* Desktop: toggle beside the filters, the same height as a chip and level
+   with the FIRST chip row. The filter row pads its chips by
+   --space-internal-4; the toolbar matches that. It aligns to the start, so
+   when the expanded filters wrap to more rows the toggle keeps its height
+   instead of stretching to the full filter block. */
 
 @media (width >= 1024px) {
   .controls {
     flex-direction: row;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: flex-start;
   }
 
   .toolbar {
@@ -90,7 +92,13 @@
     flex: none;
   }
 
-  .toolbar > [role="radiogroup"] {
-    align-self: stretch;
+  /* A md pill chip's height: one line of text-s (body leading 1.5), its
+     padding and its two 1px borders. */
+
+  .toolbar > .wideOnly {
+    block-size: calc(
+      var(--font-size-text-s) * 1.5 + 2 * var(--space-internal-8) +
+        var(--space-internal-2)
+    );
   }
 }
