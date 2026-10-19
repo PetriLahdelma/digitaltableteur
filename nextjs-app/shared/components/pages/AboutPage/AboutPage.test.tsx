@@ -15,14 +15,22 @@ describe("AboutPage", () => {
     expect(screen.getByRole("heading", { name: "Scale" })).toBeInTheDocument();
   });
 
+  // The manifesto splits its words into boxes for the scroll reveal, so
+  // match the paragraph's whole text rather than a single text node.
+  const manifestoText = () =>
+    screen.getByText(
+      (_, el) =>
+        el?.tagName === "P" && /Digitaltableteur is/i.test(el.textContent ?? ""),
+    ).textContent;
+
   it("renders manifesto section", () => {
     renderWithProviders(<AboutPage />);
-    expect(screen.getByText(/Digitaltableteur is/i)).toBeInTheDocument();
+    expect(manifestoText()).toMatch(/^Digitaltableteur is /);
   });
 
   it("renders manifesto phrases", () => {
     renderWithProviders(<AboutPage />);
-    expect(screen.getByText(/No-Fluff Thinking/i)).toBeInTheDocument();
+    expect(manifestoText()).toMatch(/No-Fluff Thinking\u00a0× AI-Powered Craft/);
   });
 
   it("renders values section", () => {

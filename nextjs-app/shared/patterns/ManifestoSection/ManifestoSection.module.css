@@ -1,0 +1,118 @@
+/* Manifesto: one run of display type across the full width. Phrases
+   alternate bold and light so each reads as a unit; the intro and the
+   marks sit back in the muted colour. */
+
+/* 11vi of the viewport: about 158px at 1440 wide, past 128px from 1170px,
+   48px on a phone. Hyphenation stays off so words are never split. */
+
+.text {
+  --manifesto-size: clamp(3rem, 11vi, 12rem);
+  --manifesto-rise: 0.3em;
+
+  /* Satoshi draws × on the maths axis: its ink starts 0.111em above the
+     baseline (measured at the mark's weight, same in WebKit and
+     Chromium). */
+  --manifesto-mark-drop: 0.111em;
+
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--manifesto-size);
+  font-weight: var(--font-weight-title);
+  line-height: 0.95;
+  letter-spacing: var(--tracking-tighter);
+  overflow-wrap: normal;
+  hyphens: manual;
+  color: var(--color-text);
+  text-wrap: pretty;
+}
+
+.intro,
+.mark {
+  color: var(--color-muted);
+}
+
+.intro {
+  font-weight: var(--font-weight-medium);
+}
+
+/* Drop the mark onto the baseline with the letters, its top just under the
+   x-height. A relative offset leaves line height alone. */
+
+.mark {
+  position: relative;
+  font-weight: var(--font-weight-text);
+  inset-block-start: var(--manifesto-mark-drop);
+}
+
+.light {
+  font-weight: 300;
+}
+
+/* Scroll reveal. Words are boxes so they can rise; the hidden state only
+   applies once the component arms the paragraph (and only without a
+   reduced-motion preference). The transition lives on the shown state
+   alone, so arming hides off-screen words instantly. */
+
+/* One phrase and its mark: the unit that reveals. */
+
+.group {
+  display: inline;
+}
+
+.word {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .armed .word {
+    transform: translateY(var(--manifesto-rise));
+    opacity: 0;
+  }
+
+  .armed .shown .word {
+    transition:
+      transform 0.7s cubic-bezier(0.2, 0, 0, 1),
+      opacity 0.7s cubic-bezier(0.2, 0, 0, 1);
+    transform: none;
+    opacity: 1;
+  }
+
+  /* Words rise one after another within a phrase; the mark rides with the
+     last one. */
+
+  .armed .shown .word:nth-child(2) {
+    transition-delay: 70ms;
+  }
+
+  .armed .shown .word:nth-child(3) {
+    transition-delay: 140ms;
+  }
+
+  .armed .shown .word:nth-child(4) {
+    transition-delay: 210ms;
+  }
+
+  .armed .shown .word:nth-child(5) {
+    transition-delay: 280ms;
+  }
+
+  .armed .shown .word:nth-child(6) {
+    transition-delay: 350ms;
+  }
+
+  .armed .shown .word:nth-child(7) {
+    transition-delay: 420ms;
+  }
+
+  .armed .shown .word:nth-child(n + 8) {
+    transition-delay: 490ms;
+  }
+}
+
+/* Gradient background: everything takes the section's white text. */
+
+.onGradient .text,
+.onGradient .intro,
+.onGradient .mark {
+  color: inherit;
+}
