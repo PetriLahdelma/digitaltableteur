@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-18T18:03:31.901Z",
+  "generatedAt": "2026-10-19T19:20:04.562Z",
   "summary": {
     "componentCount": 184,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 172,
     "withProductionUsage": 41,
     "uniqueImportedComponents": 172,
-    "totalEvidenceRows": 891,
+    "totalEvidenceRows": 892,
     "aliasImportFiles": 458,
-    "relativeImportFiles": 468,
+    "relativeImportFiles": 469,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -63851,10 +63851,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ThemeProvider",
-        "importCount": 12,
+        "importCount": 13,
         "productionImportCount": 1,
         "patternImportCount": 2,
-        "componentImportCount": 2,
+        "componentImportCount": 3,
         "evidence": [
           {
             "path": "app/layout.tsx",
@@ -63873,6 +63873,12 @@
             "importKind": "relative",
             "importPath": "../../components/ThemeProvider",
             "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.tsx",
+            "importKind": "relative",
+            "importPath": "../ThemeProvider",
+            "context": "component"
           },
           {
             "path": "nextjs-app/shared/components/icons/Logo.tsx",
@@ -63921,12 +63927,6 @@
             "importKind": "relative",
             "importPath": "../components/ThemeProvider",
             "context": "test"
-          },
-          {
-            "path": "nextjs-app/shared/hooks/usePersistentTheme.ts",
-            "importKind": "relative",
-            "importPath": "../components/ThemeProvider",
-            "context": "other"
           }
         ]
       },

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.35 - 2026-10-19
+
+- `CategoryFilter`: the pills and minimal groups keep 4px of room on every
+  side from tablet up, offset by a matching negative margin, so a focused
+  chip's or disclosure button's focus ring is no longer clipped by the
+  scrolling group. Chips stay where they were. No API change.
+
 ## 0.1.34 - 2026-10-18
 
 - `CategoryFilter`: new optional `collapsible` (and `disclosureLabel`).

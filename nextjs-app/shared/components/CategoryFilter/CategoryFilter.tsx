@@ -49,7 +49,9 @@ const groupClassMap = {
   pills: cn(
     "flex flex-wrap gap-2",
     "overflow-x-auto overflow-y-visible scrollbar-hide",
-    "-mx-4 px-4 py-1 tablet:mx-0 tablet:px-0", // py-1 prevents focus ring clipping
+    // The group scrolls, so it clips: keep 4px (ring width + offset) of room
+    // on every side, pulled back by the negative margin so chips stay aligned.
+    "-mx-4 px-4 py-1 tablet:-mx-1 tablet:px-1",
   ),
   underline: cn(
     "flex gap-6 border-b border-border",
@@ -59,7 +61,7 @@ const groupClassMap = {
   minimal: cn(
     "flex flex-wrap gap-4",
     "overflow-x-auto overflow-y-visible scrollbar-hide",
-    "-mx-4 px-4 py-1 tablet:mx-0 tablet:px-0",
+    "-mx-4 px-4 py-1 tablet:-mx-1 tablet:px-1",
   ),
 } as const;
 
