@@ -1,9 +1,9 @@
 {
   "storyId": "site-contactformeditorial-playground",
   "mode": "light",
-  "sourceSHA": "a384181fd8f0113d62e8ec4350c57cfaf3982aa8",
-  "capturedAt": "2026-10-18T09:54:42.233Z",
-  "runner": "local-2026-10-18",
+  "sourceSHA": "7b5627a396ea551447ff7db87fdde4cd9f741d48",
+  "capturedAt": "2026-10-19T13:28:40.566Z",
+  "runner": "local-2026-10-19",
   "checks": {
     "accessibility-tree": {
       "passed": true
