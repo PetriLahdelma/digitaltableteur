@@ -38,8 +38,8 @@ export const ASCII_SCENES: Record<AsciiSceneName, AsciiScenePreset> = {
   glove: {
     modelUrl: "/models/data-glove.glb",
     colors: { fg: "--color-primary-foreground", bg: "--color-primary" },
-    // Centred behind the title and lede: held back so the text keeps its contrast.
-    strength: { default: 0.55, hcw: 0.35 },
+    // Centred behind the title and lede: held well back so the text reads.
+    strength: { default: 0.25, hcw: 0.2 },
     cell: 8,
     tone: { contrast: 1.3, brightness: 0.12, gamma: 0.7, floor: 0 },
     light: { keyAz: 25, keyEl: 35, key: 3, rim: 2.6, ambient: 0.8 },
