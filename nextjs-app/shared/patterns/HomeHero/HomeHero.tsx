@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, type ReactNode } from "react";
 import { useTranslate } from "../../lib/translation";
 import { HeroSection } from "../HeroSection";
 import { HeroBackground } from "../../components/HeroBackground";
@@ -30,6 +30,13 @@ export interface HomeHeroProps {
   scrollTargetId?: string;
   /** Custom className for styling */
   className?: string;
+  /**
+   * Replaces the default animated gradient behind the content. Drags on the
+   * background pass through the content layer; only the buttons capture them.
+   */
+  background?: ReactNode;
+  /** Show the "Scroll" cue at the bottom. @default true */
+  showScrollIndicator?: boolean;
 }
 
 /**
@@ -38,6 +45,8 @@ export interface HomeHeroProps {
 export function HomeHero({
   scrollTargetId = "services",
   className,
+  background,
+  showScrollIndicator = true,
 }: HomeHeroProps) {
   const t = useTranslate();
 
@@ -101,11 +110,12 @@ export function HomeHero({
       className={cn("text-center", className)}
       ariaLabel={t("homeHeroAriaLabel", "Homepage hero section")}
     >
-      {/* Animated background */}
-      <HeroBackground variant="gradient" animate colorScheme="primary" />
+      {/* Background */}
+      {background ?? <HeroBackground variant="gradient" animate colorScheme="primary" />}
 
-      {/* Content */}
-      <Container size="lg" className="relative z-10 py-20">
+      {/* Content. Pointer events pass through to the background (it may be
+          interactive); the buttons take them back. */}
+      <Container size="lg" className="relative z-10 py-20 pointer-events-none">
         <Stack
           direction="vertical"
           gap="lg"
@@ -150,7 +160,7 @@ export function HomeHero({
           </TextReveal>
 
           {/* CTA buttons with staggered entrance */}
-          <FadeIn delay={1.2} direction="up" distance={30}>
+          <FadeIn delay={1.2} direction="up" distance={30} className="pointer-events-auto">
             <Stack direction="horizontal" gap="md" align="center" wrap>
               <Button
                 href="/contact?mode=book"
@@ -176,12 +186,14 @@ export function HomeHero({
       </Container>
 
       {/* Scroll indicator */}
-      <ScrollIndicator
-        targetId={scrollTargetId}
-        variant="chevron"
-        position="center"
-        label={t("homeHeroScrollLabel", "Scroll to services")}
-      />
+      {showScrollIndicator && (
+        <ScrollIndicator
+          targetId={scrollTargetId}
+          variant="chevron"
+          position="center"
+          label={t("homeHeroScrollLabel", "Scroll to services")}
+        />
+      )}
     </HeroSection>
   );
 }

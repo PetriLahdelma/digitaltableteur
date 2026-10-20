@@ -1,0 +1,30 @@
+/* Full-bleed behind the hero content. Fades in once the first frame is
+   drawn so the page never flashes an empty canvas. Vertical swipes still
+   scroll the page; sideways drags rotate the head. */
+
+.canvas {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  block-size: 100%;
+  inline-size: 100%;
+  cursor: grab;
+  transition: opacity 0.8s ease;
+  opacity: 0;
+  touch-action: pan-y;
+}
+
+.canvas:active {
+  cursor: grabbing;
+}
+
+.ready {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas {
+    transition: none;
+  }
+}

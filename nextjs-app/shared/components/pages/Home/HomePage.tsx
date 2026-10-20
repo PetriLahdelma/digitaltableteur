@@ -7,6 +7,7 @@ import styles from "./Home.module.css";
 
 // Above-fold patterns (eager)
 import { HomeHero } from "../../../patterns/HomeHero";
+import { AsciiHeadBackground } from "./AsciiHeadBackground";
 import {
   ServicesSection,
   type ServiceItem,
@@ -111,7 +112,11 @@ export function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <HomeHero scrollTargetId="work" />
+      <HomeHero
+        scrollTargetId="work"
+        background={<AsciiHeadBackground />}
+        showScrollIndicator={false}
+      />
 
       {/* Work Preview Section */}
       <WorkMagneticField

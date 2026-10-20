@@ -60,7 +60,9 @@
             "since": "2026-06-04"
         }
     ],
-    "slots": [],
+    "slots": [
+        "background"
+    ],
     "schemaVersion": 2,
     "props": {
         "scrollTargetId": {
