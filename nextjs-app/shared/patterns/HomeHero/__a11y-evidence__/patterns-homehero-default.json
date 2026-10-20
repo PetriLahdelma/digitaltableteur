@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-homehero-default",
   "mode": "light",
-  "sourceSHA": "a4b5dd852bb06ca1927e97f83082338bf661ac5c",
-  "capturedAt": "2026-10-18T08:15:15.000Z",
-  "runner": "local-2026-10-17",
+  "sourceSHA": "c72ad9d61ad148ab249019e9ee19587df89a28da",
+  "capturedAt": "2026-10-20T10:10:56.685Z",
+  "runner": "local-2026-10-20",
   "checks": {
     "accessibility-tree": {
       "passed": true
