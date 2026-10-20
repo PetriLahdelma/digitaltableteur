@@ -27,6 +27,13 @@ export {
   type ServicesSectionProps,
   type ServiceItem,
 } from "./ServicesSection";
+export {
+  ServicesLedger,
+  type ServicesLedgerItem,
+  type ServicesLedgerLabels,
+  type ServicesLedgerLink,
+  type ServicesLedgerProps,
+} from "./ServicesLedger";
 
 // Work/Portfolio preview
 export {

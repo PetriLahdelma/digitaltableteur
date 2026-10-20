@@ -1,0 +1,233 @@
+/* Ruled services ledger. Theme tokens only, so it follows all four themes. */
+
+/* Hairline rule with the HUMAN / MACHINE switch at its end */
+
+.bar {
+  display: flex;
+  margin-block-end: var(--space-layout-24);
+  align-items: center;
+  gap: var(--space-layout-16);
+}
+
+.rule {
+  block-size: 1px;
+  flex: 1;
+  background: var(--color-border);
+}
+
+.switch {
+  display: flex;
+  gap: var(--space-layout-4);
+}
+
+.pill {
+  padding: var(--space-layout-6) var(--space-layout-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-xs);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.pill[aria-pressed="true"] {
+  border-color: var(--color-text);
+  background: var(--color-text);
+  color: var(--main-body-background-color);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: var(--space-internal-2);
+}
+
+/* Ledger rows */
+
+.ledger {
+  margin: 0;
+  padding: 0;
+  border-block-start: 1px solid var(--color-border);
+  list-style: none;
+}
+
+.ledger > li {
+  border-block-end: 1px solid var(--color-border);
+}
+
+.row {
+  display: grid;
+  padding-block: var(--space-layout-24);
+  grid-template-columns: var(--space-layout-48) minmax(0, 1fr);
+  gap: var(--space-layout-8) var(--space-layout-16);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: opacity 0.2s ease;
+}
+
+.row:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: var(--space-internal-4);
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-xs);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-muted);
+}
+
+.body {
+  min-inline-size: 0;
+}
+
+.rowTitle {
+  display: block;
+  font-family: var(--primary-heading-font);
+  font-size: var(--font-size-title-xs);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.rowText {
+  display: block;
+  margin-block-start: var(--space-layout-8);
+  max-inline-size: 56ch;
+  font-size: var(--font-size-text-s);
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.caps {
+  display: flex;
+  margin: var(--space-layout-8) 0 0;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: var(--space-layout-8) var(--space-layout-16);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  grid-column: 2;
+  list-style: none;
+}
+
+@media (width >= 1024px) {
+  .row {
+    grid-template-columns: var(--space-layout-48) minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: baseline;
+    gap: var(--space-layout-32);
+  }
+
+  .caps {
+    margin-block-start: 0;
+    grid-column: 3;
+  }
+
+  /* Rows not under the pointer step back. */
+
+  .ledger:hover .row:not(:hover) {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row {
+    transition: none;
+  }
+}
+
+/* Machine view */
+
+.machine {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-s);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.machine p {
+  margin: 0;
+}
+
+.machine a {
+  text-decoration: underline;
+  color: inherit;
+  text-underline-offset: 0.25em;
+}
+
+.machineTitle,
+.machineKey {
+  font-weight: 700;
+}
+
+.machineMuted {
+  color: var(--color-muted);
+}
+
+.machineIndex {
+  display: grid;
+  margin: var(--space-layout-24) 0;
+  gap: var(--space-layout-4);
+}
+
+.machineIndex div {
+  display: flex;
+  gap: var(--space-layout-8);
+}
+
+.machineIndex dt {
+  min-inline-size: 6ch;
+  color: var(--color-muted);
+}
+
+.machineIndex dt::after {
+  content: " ......";
+}
+
+.machineIndex dd {
+  margin: 0;
+}
+
+.machineRule {
+  display: flex;
+  margin-block: var(--space-layout-32) var(--space-layout-16);
+  align-items: center;
+  gap: var(--space-layout-16);
+  color: var(--color-muted);
+}
+
+.machineRule::before,
+.machineRule::after {
+  block-size: 1px;
+  background: var(--color-border);
+  content: "";
+}
+
+.machineRule::before {
+  inline-size: var(--space-layout-16);
+}
+
+.machineRule::after {
+  flex: 1;
+}
+
+.machineList {
+  display: grid;
+  margin: 0 0 var(--space-layout-32);
+  padding: 0;
+  max-inline-size: 80ch;
+  gap: var(--space-layout-24);
+  list-style: none;
+}
+
+/* stylelint-disable scale-unlimited/declaration-strict-value -- forced-colors system colours */
+@media (forced-colors: active) {
+  .pill[aria-pressed="true"] {
+    border-color: Highlight;
+    background: Highlight;
+    color: HighlightText;
+  }
+}
+/* stylelint-enable scale-unlimited/declaration-strict-value */

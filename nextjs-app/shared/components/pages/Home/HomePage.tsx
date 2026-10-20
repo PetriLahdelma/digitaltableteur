@@ -9,9 +9,9 @@ import styles from "./Home.module.css";
 import { HomeHero } from "../../../patterns/HomeHero";
 import { AsciiSceneBackground } from "../AsciiScene";
 import {
-  ServicesSection,
-  type ServiceItem,
-} from "../../../patterns/ServicesSection";
+  ServicesLedger,
+  type ServicesLedgerItem,
+} from "../../../patterns/ServicesLedger";
 
 // Below-fold patterns (lazy)
 import { type ProjectItem } from "../../../patterns/WorkMagneticField";
@@ -41,13 +41,13 @@ const ClientLogoMarquee = dynamic(() =>
   })),
 );
 
-// Service icons
-import {
-  UxInterfacesIcon,
-  BrandingStrategyIcon,
-  AiSolutionsIcon,
-  DesignSystemsIcon,
-} from "../../icons/service-icons";
+
+// Machine-readable endpoints shown in the services MACHINE view
+const MACHINE_LINKS = [
+  { label: "LLMS", href: "/llms.txt" },
+  { label: "FULL", href: "/llms-full.txt" },
+  { label: "MCP", href: "/mcp" },
+];
 
 // Featured projects for homepage
 const FEATURED_PROJECTS: ProjectItem[] = [
@@ -78,36 +78,44 @@ export function HomePage() {
   const { t } = useTranslation();
 
   // Four offers framed as problems, each linking to its strongest proof.
-  const services: ServiceItem[] = useMemo(
-    () => [
+  const services: ServicesLedgerItem[] = useMemo(() => {
+    const caps = (key: string) => t(key).split("|").filter(Boolean);
+    return [
       {
-        icon: <DesignSystemsIcon />,
+        index: "01",
+        machineKey: "BUILD_THE_SYSTEM",
         title: t("homeOfferSystemTitle"),
         description: t("homeOfferSystemDescription"),
+        capabilities: caps("homeOfferSystemCaps"),
         href: "/work/sap-build-apps",
         donnyTarget: "home.services.designSystems",
       },
       {
-        icon: <AiSolutionsIcon />,
+        index: "02",
+        machineKey: "IMPROVE_HOW_TEAMS_SHIP",
         title: t("homeOfferShipTitle"),
         description: t("homeOfferShipDescription"),
+        capabilities: caps("homeOfferShipCaps"),
         href: "/work/project-spine",
       },
       {
-        icon: <UxInterfacesIcon />,
+        index: "03",
+        machineKey: "DESIGN_THE_PRODUCT",
         title: t("homeOfferProductTitle"),
         description: t("homeOfferProductDescription"),
+        capabilities: caps("homeOfferProductCaps"),
         href: "/work/vertaaux",
       },
       {
-        icon: <BrandingStrategyIcon />,
+        index: "04",
+        machineKey: "BUILD_THE_IDENTITY",
         title: t("homeOfferIdentityTitle"),
         description: t("homeOfferIdentityDescription"),
+        capabilities: caps("homeOfferIdentityCaps"),
         href: "/work/new-things-co",
       },
-    ],
-    [t],
-  );
+    ];
+  }, [t]);
 
   return (
     <div>
@@ -155,12 +163,20 @@ export function HomePage() {
       </section>
 
       {/* Services Section */}
-      <ServicesSection
+      <ServicesLedger
         id="services"
         title={t("homeExpertiseTitle", "Services")}
         services={services}
-        columns={2}
-        cardVariant="bordered"
+        machineLinks={MACHINE_LINKS}
+        labels={{
+          view: t("homeServicesViewLabel"),
+          human: t("homeServicesHuman"),
+          machine: t("homeServicesMachine"),
+          machineTitle: `Digitaltableteur :: ${t("homeExpertiseTitle", "Services")}`,
+          machineComment: t("homeServicesMachineComment"),
+          copy: t("homeServicesCopy"),
+          copied: t("homeServicesCopied"),
+        }}
       />
 
       {/* Design Sprints Section */}
