@@ -24,6 +24,12 @@
   - text: Allocation 100%
   - paragraph: 5 days/week × 7.5 hrs/day
   - text: "Total hours: 75 Standard rate: 120€/hour"
+  - paragraph: Your price
+  - paragraph: 120€/hour
+  - paragraph: Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.
+  - text: "Total Investment: 9,000 €"
+  - link "Get in touch":
+    - /url: /contact?mode=book&duration=2w&days=5
   - paragraph: "What's included in your investment:"
   - list:
     - listitem: — 2 weeks design partnership
@@ -35,9 +41,3 @@
     - listitem: — Rapid UX sprints and POC/MVP validation
     - listitem: — Focused design audits with an actionable roadmap
     - listitem: — Hands-on, end-to-end design execution
-  - paragraph: Your price
-  - paragraph: 120€/hour
-  - paragraph: Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.
-  - text: "Total Investment: 9,000 €"
-  - link "Get in touch":
-    - /url: /contact?mode=book&duration=2w&days=5
