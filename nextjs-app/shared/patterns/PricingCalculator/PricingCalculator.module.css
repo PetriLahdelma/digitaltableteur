@@ -1,6 +1,8 @@
-/* PricingCalculator — duration × workload → total investment.
-   Two-column section: selection controls on the left, live summary on the
-   right; collapses to a single column below the content breakpoint. */
+/* PricingCalculator: duration × workload → total investment.
+   Title across the top; controls on the left with the price, total and CTA
+   beside them; the two descriptive lists in their own row below, so their
+   copy can grow or shrink without moving the calculator. One column below
+   the content breakpoint, in reading order. */
 
 .calculator {
   display: grid;
@@ -16,11 +18,22 @@
   .calculator {
     padding: var(--space-layout-32);
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: var(--space-layout-48);
+    gap: var(--space-layout-32) var(--space-layout-48);
+  }
+
+  .title {
+    grid-column: 1 / -1;
+  }
+
+  /* Start level with the first duration option, not its legend: the group
+     legend is 18px text at the normal line height plus an 8px gap. */
+
+  .summaryFooter {
+    padding-block-start: calc(var(--font-size-text-s) * var(--line-height-normal) + var(--space-internal-8));
   }
 }
 
-/* Left column — controls */
+/* Controls: duration, workload, meta cards */
 
 .controls {
   display: flex;
@@ -30,17 +43,7 @@
 }
 
 .title {
-  max-inline-size: 24ch;
-}
-
-/* Duration + workload + meta cards anchor to the bottom of the controls
-   column, mirroring the summary footer on the right. */
-
-.controlsBody {
-  display: flex;
-  margin-block-start: auto;
-  flex-direction: column;
-  gap: var(--space-layout-24);
+  max-inline-size: 28ch;
 }
 
 /* Option groups: two columns of equal cards. The group renders a fieldset
@@ -159,29 +162,23 @@
   text-decoration-thickness: 2px;
 }
 
-/* Right column — summary */
+/* Price + total + CTA beside the controls. The price card takes the spare
+   height so the CTA lines up with the bottom of the meta cards; its text
+   stays at the top. */
 
-.summary {
+.summaryFooter {
   display: flex;
   min-inline-size: 0;
   flex-direction: column;
   gap: var(--space-layout-16);
 }
 
-/* Price + total + CTA anchor to the bottom of the summary column; the
-   "Perfect for" block fills the space above them. */
+/* The two lists share a row and a top edge; their length only changes the
+   height of this row. */
 
-.summaryFooter {
-  display: flex;
-  margin-block-start: auto;
-  flex-direction: column;
-  gap: var(--space-layout-16);
-}
-
-/* Dynamic fit list between the included block and the summary footer. */
-
+.included,
 .perfectFor {
-  padding-block-start: var(--space-internal-12);
+  min-inline-size: 0;
 }
 
 .calculator .perfectForTitle {
@@ -255,6 +252,14 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-internal-8);
+}
+
+/* Beside the controls the price card takes the spare height (text stays at
+   the top) so the CTA lines up with the bottom of the meta cards. */
+
+.summaryFooter > .priceCard {
+  flex: 1 0 auto;
+  justify-content: flex-start;
 }
 
 .calculator .priceLabel {

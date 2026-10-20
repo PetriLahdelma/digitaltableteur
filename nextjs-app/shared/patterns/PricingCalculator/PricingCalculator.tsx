@@ -244,38 +244,64 @@ export function PricingCalculator({
         </div>
       </VisuallyHidden>
 
-      <div className={styles.controls}>
-        <Title
-          level={2}
-          size="m"
-          lineHeight="tight"
-          id={titleId}
-          className={styles.title}
-        >
-          {t(
-            "pricingCalcTitle",
-            "Adjust duration and workload to see your total investment.",
-          )}
-        </Title>
+      <Title
+        level={2}
+        size="m"
+        lineHeight="tight"
+        id={titleId}
+        className={styles.title}
+      >
+        {t(
+          "pricingCalcTitle",
+          "Adjust duration and workload to see your total investment.",
+        )}
+      </Title>
 
-        <div className={styles.controlsBody}>
+      <div className={styles.controls}>
+        <SelectableCardGroup
+          legend={t("pricingCalcDurationLegend", "Duration")}
+          value={durationId}
+          onValueChange={(value) => selectDuration(value as string)}
+          orientation="horizontal"
+          className={styles.optionGroup}
+        >
+          {DURATION_OPTIONS.map((option) => (
+            <SelectableCard key={option.id} value={option.id} padding="sm">
+              <span className={styles.optionContent}>
+                <Text as="span" size="m" className={styles.optionAmount}>
+                  {option.amount}
+                </Text>{" "}
+                <Text as="span" size="m" className={styles.optionUnit}>
+                  {unitLabel(option)}
+                </Text>{" "}
+                {option.partnership ? (
+                  <Badge size="xs" className={styles.partnershipBadge}>
+                    {t("pricingCalcPartnershipBadge", "Partnership")}
+                  </Badge>
+                ) : null}
+              </span>
+            </SelectableCard>
+          ))}
+        </SelectableCardGroup>
+
+        <div ref={workloadGroupRef}>
           <SelectableCardGroup
-            legend={t("pricingCalcDurationLegend", "Duration")}
-            value={durationId}
-            onValueChange={(value) => selectDuration(value as string)}
+            legend={t("pricingCalcWorkloadLegend", "Workload (per week)")}
+            value={String(daysPerWeek)}
+            onValueChange={(value) => setDaysPerWeek(Number(value))}
             orientation="horizontal"
             className={styles.optionGroup}
           >
-            {DURATION_OPTIONS.map((option) => (
-              <SelectableCard key={option.id} value={option.id} padding="sm">
+            {workloadOptions.map((days) => (
+              <SelectableCard key={days} value={String(days)} padding="sm">
                 <span className={styles.optionContent}>
                   <Text as="span" size="m" className={styles.optionAmount}>
-                    {option.amount}
+                    {days}
                   </Text>{" "}
                   <Text as="span" size="m" className={styles.optionUnit}>
-                    {unitLabel(option)}
+                    {t("pricingCalcUnitDays", "days")}
                   </Text>{" "}
-                  {option.partnership ? (
+                  {duration.partnership && days >= PARTNERSHIP_MIN_DAYS ? (
                     <Badge size="xs" className={styles.partnershipBadge}>
                       {t("pricingCalcPartnershipBadge", "Partnership")}
                     </Badge>
@@ -284,208 +310,175 @@ export function PricingCalculator({
               </SelectableCard>
             ))}
           </SelectableCardGroup>
+        </div>
 
-          <div ref={workloadGroupRef}>
-            <SelectableCardGroup
-              legend={t("pricingCalcWorkloadLegend", "Workload (per week)")}
-              value={String(daysPerWeek)}
-              onValueChange={(value) => setDaysPerWeek(Number(value))}
-              orientation="horizontal"
-              className={styles.optionGroup}
-            >
-              {workloadOptions.map((days) => (
-                <SelectableCard key={days} value={String(days)} padding="sm">
-                  <span className={styles.optionContent}>
-                    <Text as="span" size="m" className={styles.optionAmount}>
-                      {days}
-                    </Text>{" "}
-                    <Text as="span" size="m" className={styles.optionUnit}>
-                      {t("pricingCalcUnitDays", "days")}
-                    </Text>{" "}
-                    {duration.partnership && days >= PARTNERSHIP_MIN_DAYS ? (
-                      <Badge size="xs" className={styles.partnershipBadge}>
-                        {t("pricingCalcPartnershipBadge", "Partnership")}
-                      </Badge>
-                    ) : null}
-                  </span>
-                </SelectableCard>
-              ))}
-            </SelectableCardGroup>
-          </div>
-
-          <div className={styles.metaRow}>
-            <Card variant="muted" padding="md" className={styles.metaCard}>
-              <div className={styles.metaHeader}>
-                <Text as="span" size="s" className={styles.metaLabel}>
-                  {t("pricingCalcAllocationLabel", "Allocation")}
-                </Text>
-                <Text as="span" size="l" className={styles.metaValue}>
-                  {t("pricingCalcAllocationValue", "{{percent}}%", {
-                    percent: pricing.allocationPercent,
-                  })}
-                </Text>
-              </div>
-              <Text as="p" size="s" className={styles.metaFootnote}>
-                {t(
-                  "pricingCalcAllocationBasis",
-                  "{{days}} days/week × {{hours}} hrs/day",
-                  {
-                    days: daysPerWeek,
-                    hours: hoursFormat.format(HOURS_PER_DAY),
-                  },
-                )}
+        <div className={styles.metaRow}>
+          <Card variant="muted" padding="md" className={styles.metaCard}>
+            <div className={styles.metaHeader}>
+              <Text as="span" size="s" className={styles.metaLabel}>
+                {t("pricingCalcAllocationLabel", "Allocation")}
               </Text>
-            </Card>
-            <Card variant="muted" padding="md" className={styles.metaCard}>
-              <div className={styles.metaLine}>
-                <Text as="span" size="s" className={styles.metaLabel}>
-                  {t("pricingCalcTotalHoursLabel", "Total hours:")}
-                </Text>
-                <Text as="span" size="s" className={styles.metaFigure}>
-                  {numberFormat.format(pricing.totalHours)}
-                </Text>
-              </div>
-              <div className={styles.metaLine}>
-                <Text as="span" size="s" className={styles.metaLabel}>
-                  {t("pricingCalcStandardRateLabel", "Standard rate:")}
-                </Text>
-                <Text as="span" size="s" className={styles.metaFigure}>
-                  {pricing.discount > 0 ? (
-                    // The partnership rate is in effect: strike the standard
-                    // rate so the lower price further down reads as applied.
-                    <>
-                      <s className={styles.rateSuperseded}>
-                        {standardRatePhrase}
-                      </s>
-                      <VisuallyHidden>
-                        {t(
-                          "pricingCalcStandardRateReplaced",
-                          " (replaced by the partnership rate)",
-                        )}
-                      </VisuallyHidden>
-                    </>
-                  ) : (
-                    standardRatePhrase
-                  )}
-                </Text>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.summary}>
-        <div className={styles.included}>
-          <Text as="p" size="m" className={styles.includedTitle}>
-            {t(
-              "pricingCalcIncludedTitle",
-              "What's included in your investment:",
-            )}
-          </Text>
-          <List
-            size="m"
-            spacing="normal"
-            listStyleType="dash"
-            className={styles.includedList}
-            items={[
-              t(
-                "pricingCalcIncludedDuration",
-                "{{duration}} design partnership",
-                {
-                  duration: durationPhrase,
-                },
-              ),
-              t(
-                "pricingCalcIncludedWorkload",
-                "Dedicated design expertise for {{days}} days per week",
-                { days: daysPerWeek },
-              ),
-              t(
-                "pricingCalcIncludedProcess",
-                "Complete end-to-end design process and deliverables",
-              ),
-              t(
-                "pricingCalcIncludedCollaboration",
-                "Direct collaboration and strategic design guidance",
-              ),
-            ]}
-          />
-        </div>
-
-        <div className={styles.perfectFor}>
-          <Text as="p" size="m" className={styles.perfectForTitle}>
-            {t("pricingCalcPerfectForTitle", "Perfect for:")}
-          </Text>
-          <List
-            size="m"
-            spacing="normal"
-            listStyleType="dash"
-            className={styles.perfectForList}
-            items={[
-              ...PERFECT_FOR[durationId].map((item) =>
-                t(item.key, item.defaultText),
-              ),
-              t(
-                daysPerWeek <= 3
-                  ? WORKLOAD_FIT.advisory.key
-                  : WORKLOAD_FIT.delivery.key,
-                daysPerWeek <= 3
-                  ? WORKLOAD_FIT.advisory.defaultText
-                  : WORKLOAD_FIT.delivery.defaultText,
-              ),
-            ]}
-          />
-        </div>
-
-        <div className={styles.summaryFooter}>
-          <Card
-            variant="muted"
-            padding="lg"
-            className={cn(
-              styles.priceCard,
-              pricing.discount > 0 && styles.priceCardDiscounted,
-            )}
-          >
-            <Text as="p" size="s" className={styles.priceLabel}>
-              {t("pricingCalcYourPriceLabel", "Your price")}
-            </Text>
-            <Text as="p" size="l" className={styles.priceValue}>
-              {ratePhrase}
-            </Text>
-            <Text as="p" size="s" className={styles.priceHint}>
+              <Text as="span" size="l" className={styles.metaValue}>
+                {t("pricingCalcAllocationValue", "{{percent}}%", {
+                  percent: pricing.allocationPercent,
+                })}
+              </Text>
+            </div>
+            <Text as="p" size="s" className={styles.metaFootnote}>
               {t(
-                "pricingCalcPartnershipHint",
-                "Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.",
+                "pricingCalcAllocationBasis",
+                "{{days}} days/week × {{hours}} hrs/day",
+                {
+                  days: daysPerWeek,
+                  hours: hoursFormat.format(HOURS_PER_DAY),
+                },
               )}
             </Text>
           </Card>
-
-          <Card variant="muted" padding="lg" className={styles.totalCard}>
-            <Text as="span" size="m" className={styles.totalLabel}>
-              {t("pricingCalcTotalInvestmentLabel", "Total Investment:")}
-            </Text>
-            <Text as="span" size="l" className={styles.totalValue}>
-              {numberFormat.format(pricing.total)}&nbsp;€
-            </Text>
-            {pricing.discount > 0 ? (
-              <Text as="span" size="s" className={styles.totalNote}>
-                {t(
-                  "pricingCalcPartnershipFreeDay",
-                  "Partnership pricing: 1 day per week is free.",
+          <Card variant="muted" padding="md" className={styles.metaCard}>
+            <div className={styles.metaLine}>
+              <Text as="span" size="s" className={styles.metaLabel}>
+                {t("pricingCalcTotalHoursLabel", "Total hours:")}
+              </Text>
+              <Text as="span" size="s" className={styles.metaFigure}>
+                {numberFormat.format(pricing.totalHours)}
+              </Text>
+            </div>
+            <div className={styles.metaLine}>
+              <Text as="span" size="s" className={styles.metaLabel}>
+                {t("pricingCalcStandardRateLabel", "Standard rate:")}
+              </Text>
+              <Text as="span" size="s" className={styles.metaFigure}>
+                {pricing.discount > 0 ? (
+                  // The partnership rate is in effect: strike the standard
+                  // rate so the lower price further down reads as applied.
+                  <>
+                    <s className={styles.rateSuperseded}>
+                      {standardRatePhrase}
+                    </s>
+                    <VisuallyHidden>
+                      {t(
+                        "pricingCalcStandardRateReplaced",
+                        " (replaced by the partnership rate)",
+                      )}
+                    </VisuallyHidden>
+                  </>
+                ) : (
+                  standardRatePhrase
                 )}
               </Text>
-            ) : null}
+            </div>
           </Card>
-
-          <Button
-            href={`/contact?mode=book&duration=${durationId}&days=${daysPerWeek}`}
-            variant="primary"
-            size="lg"
-            className={styles.cta}
-          >
-            {t("pricingCalcCta", "Get in touch")}
-          </Button>
         </div>
+      </div>
+
+      <div className={styles.summaryFooter}>
+        <Card
+          variant="muted"
+          padding="lg"
+          className={cn(
+            styles.priceCard,
+            pricing.discount > 0 && styles.priceCardDiscounted,
+          )}
+        >
+          <Text as="p" size="s" className={styles.priceLabel}>
+            {t("pricingCalcYourPriceLabel", "Your price")}
+          </Text>
+          <Text as="p" size="l" className={styles.priceValue}>
+            {ratePhrase}
+          </Text>
+          <Text as="p" size="s" className={styles.priceHint}>
+            {t(
+              "pricingCalcPartnershipHint",
+              "Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.",
+            )}
+          </Text>
+        </Card>
+
+        <Card variant="muted" padding="lg" className={styles.totalCard}>
+          <Text as="span" size="m" className={styles.totalLabel}>
+            {t("pricingCalcTotalInvestmentLabel", "Total Investment:")}
+          </Text>
+          <Text as="span" size="l" className={styles.totalValue}>
+            {numberFormat.format(pricing.total)}&nbsp;€
+          </Text>
+          {pricing.discount > 0 ? (
+            <Text as="span" size="s" className={styles.totalNote}>
+              {t(
+                "pricingCalcPartnershipFreeDay",
+                "Partnership pricing: 1 day per week is free.",
+              )}
+            </Text>
+          ) : null}
+        </Card>
+
+        <Button
+          href={`/contact?mode=book&duration=${durationId}&days=${daysPerWeek}`}
+          variant="primary"
+          size="lg"
+          className={styles.cta}
+        >
+          {t("pricingCalcCta", "Get in touch")}
+        </Button>
+      </div>
+
+      <div className={styles.included}>
+        <Text as="p" size="m" className={styles.includedTitle}>
+          {t("pricingCalcIncludedTitle", "What's included in your investment:")}
+        </Text>
+        <List
+          size="m"
+          spacing="normal"
+          listStyleType="dash"
+          className={styles.includedList}
+          items={[
+            t(
+              "pricingCalcIncludedDuration",
+              "{{duration}} design partnership",
+              {
+                duration: durationPhrase,
+              },
+            ),
+            t(
+              "pricingCalcIncludedWorkload",
+              "Dedicated design expertise for {{days}} days per week",
+              { days: daysPerWeek },
+            ),
+            t(
+              "pricingCalcIncludedProcess",
+              "Complete end-to-end design process and deliverables",
+            ),
+            t(
+              "pricingCalcIncludedCollaboration",
+              "Direct collaboration and strategic design guidance",
+            ),
+          ]}
+        />
+      </div>
+
+      <div className={styles.perfectFor}>
+        <Text as="p" size="m" className={styles.perfectForTitle}>
+          {t("pricingCalcPerfectForTitle", "Perfect for:")}
+        </Text>
+        <List
+          size="m"
+          spacing="normal"
+          listStyleType="dash"
+          className={styles.perfectForList}
+          items={[
+            ...PERFECT_FOR[durationId].map((item) =>
+              t(item.key, item.defaultText),
+            ),
+            t(
+              daysPerWeek <= 3
+                ? WORKLOAD_FIT.advisory.key
+                : WORKLOAD_FIT.delivery.key,
+              daysPerWeek <= 3
+                ? WORKLOAD_FIT.advisory.defaultText
+                : WORKLOAD_FIT.delivery.defaultText,
+            ),
+          ]}
+        />
       </div>
     </section>
   );
