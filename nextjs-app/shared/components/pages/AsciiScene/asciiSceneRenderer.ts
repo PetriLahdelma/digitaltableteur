@@ -1,5 +1,5 @@
 /**
- * Rotating 3D head rendered as ASCII on the GPU, for the homepage hero.
+ * A rotating 3D model rendered as ASCII on the GPU, for hero backgrounds.
  *
  * The scene renders into a low-resolution target (two texels per character
  * cell); a fragment shader turns each cell's brightness into a glyph from a
@@ -30,35 +30,57 @@ import {
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-export interface AsciiHeadOptions {
+export interface AsciiSceneTone {
+  contrast: number;
+  brightness: number;
+  gamma: number;
+  /** Lowest ramp step for any cell the model covers, so pale surfaces keep their outline. */
+  floor: number;
+}
+
+export interface AsciiSceneLight {
+  /** Key light azimuth and elevation in degrees. */
+  keyAz: number;
+  keyEl: number;
+  key: number;
+  rim: number;
+  ambient: number;
+}
+
+export type AsciiSceneMotion =
+  /** A steady turn at `speed` degrees per second. */
+  | { kind: "spin"; speed: number }
+  /** A slow rock of up to `sway` degrees that never shows the model edge-on. */
+  | { kind: "tumble"; speed: number; sway: number };
+
+export interface AsciiSceneOptions {
   modelUrl: string;
-  /** Glyph colour and background, read from the theme. */
+  /** Glyph colour and background. */
   fg: string;
   bg: string;
   /** 0..1: how far glyphs go from the background toward fg (dims without touching tokens). */
   strength: number;
-  /** Spin speed in degrees per second; 0 holds the head still. */
-  speed: number;
   /** Character cell height in CSS pixels. */
   cell: number;
+  tone: AsciiSceneTone;
+  light: AsciiSceneLight;
+  /** Camera framing: larger is closer. */
+  zoom: number;
+  motion: AsciiSceneMotion;
 }
 
-export interface AsciiHeadHandle {
+export interface AsciiSceneHandle {
   setColors(fg: string, bg: string, strength: number): void;
   setRunning(running: boolean): void;
   destroy(): void;
 }
 
-// Tuned in the ASCII bench ("Ink on paper").
 const RAMP = " .:-=+*#%@";
-const TONE = { contrast: 1.6, brightness: 0.02, gamma: 0.9 };
-const LIGHT = { keyAz: 25, keyEl: 20, key: 3, rim: 2.6, ambient: 0.35 };
-const ZOOM = 1.35;
 const FONT_STACK = 'ui-monospace, "SF Mono", Menlo, Consolas, monospace';
 
 const FRAGMENT = /* glsl */ `
   uniform sampler2D tScene, tAtlas;
-  uniform float uGlyphs, uContrast, uBright, uGamma, uInvert, uStrength;
+  uniform float uGlyphs, uContrast, uBright, uGamma, uInvert, uStrength, uFloor;
   uniform vec2 uCell, uRes, uGrid;
   uniform vec3 uFg, uBg;
   varying vec2 vUv;
@@ -73,6 +95,7 @@ const FRAGMENT = /* glsl */ `
     lum = pow(lum, uGamma);
     if (uInvert > 0.5) lum = 1.0 - lum;
     float idx = floor(lum * (uGlyphs - 1.0) + 0.5);
+    idx = max(idx, uFloor);
     if (s.a < 0.35) idx = 0.0;
     float g = texture2D(tAtlas, vec2((idx + local.x) / uGlyphs, local.y)).a;
     gl_FragColor = vec4(mix(uBg, uFg, g * uStrength), 1.0);
@@ -82,23 +105,24 @@ const FRAGMENT = /* glsl */ `
 
 const luminance = (c: Color) => 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
 
-export async function createAsciiHead(
+export async function createAsciiScene(
   canvas: HTMLCanvasElement,
-  options: AsciiHeadOptions,
-): Promise<AsciiHeadHandle> {
+  options: AsciiSceneOptions,
+): Promise<AsciiSceneHandle> {
+  const { tone, light, motion } = options;
   const renderer = new WebGLRenderer({ canvas, antialias: false, alpha: false });
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   renderer.setPixelRatio(dpr);
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(30, 1, 0.01, 100);
-  camera.position.set(0, 0, 3.4 / ZOOM);
+  camera.position.set(0, 0, 3.4 / options.zoom);
 
-  const ambient = new AmbientLight(0xffffff, LIGHT.ambient);
-  const key = new DirectionalLight(0xffffff, LIGHT.key);
-  const rim = new DirectionalLight(0xffffff, LIGHT.rim);
-  const az = (LIGHT.keyAz * Math.PI) / 180;
-  const el = (LIGHT.keyEl * Math.PI) / 180;
+  const ambient = new AmbientLight(0xffffff, light.ambient);
+  const key = new DirectionalLight(0xffffff, light.key);
+  const rim = new DirectionalLight(0xffffff, light.rim);
+  const az = (light.keyAz * Math.PI) / 180;
+  const el = (light.keyEl * Math.PI) / 180;
   key.position.set(Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el)).multiplyScalar(5);
   rim.position.set(-key.position.x, key.position.y * 0.4 + 1, -Math.abs(key.position.z) - 2);
   scene.add(ambient, key, rim);
@@ -139,9 +163,10 @@ export async function createAsciiHead(
     uGrid: { value: new Vector2(1, 1) },
     uFg: { value: new Color() },
     uBg: { value: new Color() },
-    uContrast: { value: TONE.contrast },
-    uBright: { value: TONE.brightness },
-    uGamma: { value: TONE.gamma },
+    uContrast: { value: tone.contrast },
+    uBright: { value: tone.brightness },
+    uGamma: { value: tone.gamma },
+    uFloor: { value: tone.floor },
     uInvert: { value: 0 },
     uStrength: { value: 1 },
   };
@@ -182,7 +207,7 @@ export async function createAsciiHead(
     uniforms.uStrength.value = strength;
     uniforms.uFg.value.set(fg);
     uniforms.uBg.value.set(bg);
-    // Dark glyphs on a light ground: reverse the ramp so lit skin stays sparse.
+    // Dark glyphs on a light ground: reverse the ramp so lit surfaces stay sparse.
     uniforms.uInvert.value = luminance(uniforms.uFg.value) < luminance(uniforms.uBg.value) ? 1 : 0;
   };
   setColors(options.fg, options.bg, options.strength);
@@ -204,13 +229,19 @@ export async function createAsciiHead(
   observer.observe(canvas);
   resize();
 
-  // Rotation: a steady spin, overridden while the visitor drags.
+  // Rotation: the scene's own motion, plus whatever the visitor drags in.
+  // Spin: drag and fling, easing back to the steady turn. Tumble: the drag
+  // offsets the rock and its fling coasts to a stop.
+  const deg = Math.PI / 180;
   let yaw = 0;
+  let pitch = 0;
+  let offset = 0;
   let velocity = 0;
+  let clock = 0;
   let dragging = false;
   let lastX = 0;
   let lastMoveTime = 0;
-  const spin = (options.speed * Math.PI) / 180;
+  const spin = motion.kind === "spin" ? motion.speed * deg : 0;
   const onDown = (e: PointerEvent) => {
     dragging = true;
     lastX = e.clientX;
@@ -223,8 +254,9 @@ export async function createAsciiHead(
     const now = performance.now();
     const dx = e.clientX - lastX;
     const delta = (dx / Math.max(1, canvas.clientWidth)) * Math.PI * 2;
-    yaw += delta;
-    velocity = delta / Math.max(1, now - lastMoveTime) * 1000;
+    if (motion.kind === "spin") yaw += delta;
+    else offset += delta;
+    velocity = (delta / Math.max(1, now - lastMoveTime)) * 1000;
     lastX = e.clientX;
     lastMoveTime = now;
     if (!running) draw();
@@ -238,8 +270,16 @@ export async function createAsciiHead(
   canvas.addEventListener("pointerup", onUp);
   canvas.addEventListener("pointercancel", onUp);
 
+  const pose = () => {
+    if (motion.kind === "tumble") {
+      const f = motion.speed * deg;
+      yaw = Math.sin(clock * f * 1.6) * motion.sway * deg + offset;
+      pitch = Math.sin(clock * f * 1.1 + 1.3) * motion.sway * deg * 0.35;
+    }
+  };
   const draw = () => {
-    pivot.rotation.y = yaw;
+    pose();
+    pivot.rotation.set(pitch, yaw, 0);
     renderer.setRenderTarget(target);
     renderer.setClearColor(0x000000, 0);
     renderer.clear();
@@ -254,10 +294,12 @@ export async function createAsciiHead(
   const frame = (now: number) => {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
+    clock += dt;
     if (!dragging) {
-      // Fling momentum eases back into the steady spin.
+      // Fling momentum eases back into the scene's own motion.
       velocity += (spin - velocity) * Math.min(1, dt * 2.5);
-      yaw += velocity * dt;
+      if (motion.kind === "spin") yaw += velocity * dt;
+      else offset += velocity * dt;
     }
     draw();
     raf = requestAnimationFrame(frame);

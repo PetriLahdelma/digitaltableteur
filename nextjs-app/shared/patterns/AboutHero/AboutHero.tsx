@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { cn } from "../../lib/cn";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
@@ -18,6 +19,11 @@ export interface AboutHeroProps {
   backgroundImage?: string;
   /** Show scroll indicator at bottom */
   showScrollIndicator?: boolean;
+  /**
+   * Decorative layer drawn over the background and under the text. Drags on
+   * it pass through the text layer.
+   */
+  backdrop?: ReactNode;
   /** Custom className */
   className?: string;
 }
@@ -35,6 +41,7 @@ export function AboutHero({
   background = "minimal",
   backgroundImage,
   showScrollIndicator = true,
+  backdrop,
   className,
 }: AboutHeroProps) {
   const isImageBackground = background === "image" && backgroundImage;
@@ -63,7 +70,9 @@ export function AboutHero({
         <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
       )}
 
-      <Container size="lg" className="relative z-10 text-center py-16">
+      {backdrop}
+
+      <Container size="lg" className={cn("relative z-10 text-center py-16", backdrop && "pointer-events-none")}>
         {/* Title with animation */}
         <TextReveal
           type="words"

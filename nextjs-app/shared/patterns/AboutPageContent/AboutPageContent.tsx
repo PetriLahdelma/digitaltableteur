@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import {
@@ -71,6 +71,8 @@ export interface AboutPageContentProps {
   showCTA?: boolean;
   /** Custom className */
   className?: string;
+  /** Decorative layer behind the hero text (see AboutHero `backdrop`). */
+  heroBackdrop?: ReactNode;
 }
 
 /**
@@ -79,6 +81,7 @@ export interface AboutPageContentProps {
 export function AboutPageContent({
   showCTA = true,
   className,
+  heroBackdrop,
 }: AboutPageContentProps) {
   const { t, i18n } = useTranslation();
 
@@ -245,6 +248,7 @@ export function AboutPageContent({
         subtitle={t("aboutHeroSubtitle")}
         background="primary"
         showScrollIndicator
+        backdrop={heroBackdrop}
       />
 
       {/* Values/Expertise Section */}

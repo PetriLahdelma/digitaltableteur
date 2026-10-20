@@ -7,7 +7,7 @@ import styles from "./Home.module.css";
 
 // Above-fold patterns (eager)
 import { HomeHero } from "../../../patterns/HomeHero";
-import { AsciiHeadBackground } from "./AsciiHeadBackground";
+import { AsciiSceneBackground } from "../AsciiScene";
 import {
   ServicesSection,
   type ServiceItem,
@@ -114,7 +114,7 @@ export function HomePage() {
       {/* Hero Section */}
       <HomeHero
         scrollTargetId="work"
-        background={<AsciiHeadBackground />}
+        background={<AsciiSceneBackground scene="courier" />}
         showScrollIndicator={false}
       />
 

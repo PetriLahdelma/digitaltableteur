@@ -72,6 +72,11 @@
   }
 }
 
+.heroBleedContentPassThrough {
+  /* A drawn hero background takes the drags; the text lets them through. */
+  pointer-events: none;
+}
+
 .heroTitle {
   margin: 0;
   max-inline-size: min(28ch, 100%);

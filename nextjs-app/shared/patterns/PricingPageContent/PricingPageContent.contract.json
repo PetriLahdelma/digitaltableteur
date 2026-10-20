@@ -30,7 +30,9 @@
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
-    "slots": [],
+    "slots": [
+        "heroBackground"
+    ],
     "asChild": false,
     "subParts": [],
     "requiredStories": [

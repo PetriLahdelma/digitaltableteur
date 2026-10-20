@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useTranslate } from "../../lib/translation";
 import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 import { cn } from "../../lib/cn";
@@ -413,20 +414,27 @@ function PackageCard({
 export interface PricingPageContentProps {
   /** Optional wrapper class. */
   className?: string;
+  /**
+   * Decorative layer on the hero field, under the text. Drags on it pass
+   * through the text layer.
+   */
+  heroBackground?: ReactNode;
 }
 
 /**
  * PricingPageContent — productized offers, agency comparison, and deliverables.
  */
-export function PricingPageContent({ className }: PricingPageContentProps) {
+export function PricingPageContent({ className, heroBackground }: PricingPageContentProps) {
   const t = useTranslate();
   const { copiedKey: copiedField, copy: copyField } = useCopyToClipboard();
 
   return (
     <div className={cn(styles.page, className)}>
       <section className={styles.heroBleed} aria-labelledby="pricing-hero-title">
-        <div className={styles.heroBleedOverlay} aria-hidden="true" />
-        <div className={styles.heroBleedContent}>
+        <div className={styles.heroBleedOverlay} aria-hidden="true">
+          {heroBackground}
+        </div>
+        <div className={cn(styles.heroBleedContent, heroBackground && styles.heroBleedContentPassThrough)}>
           <Title
             level={1}
             size="xl"

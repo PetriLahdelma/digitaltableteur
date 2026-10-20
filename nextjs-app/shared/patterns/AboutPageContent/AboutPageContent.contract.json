@@ -65,7 +65,9 @@
             "since": "2026-06-04"
         }
     ],
-    "slots": [],
+    "slots": [
+        "heroBackdrop"
+    ],
     "schemaVersion": 2,
     "props": {
         "showCTA": {

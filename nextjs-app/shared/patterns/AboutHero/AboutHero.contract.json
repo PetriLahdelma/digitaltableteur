@@ -9,7 +9,9 @@
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
-    "slots": [],
+    "slots": [
+        "backdrop"
+    ],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
