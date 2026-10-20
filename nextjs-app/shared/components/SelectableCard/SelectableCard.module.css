@@ -67,14 +67,20 @@
   flex-direction: column;
   justify-content: center;
   border-color: var(--color-border-light);
-  transition: border-color 120ms ease, box-shadow 120ms ease;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
 }
 
-/* Hover only affects unselected cards; a selected card keeps its selected
-   look under the pointer. */
+/* Hover only affects unselected cards on pointer devices: the border darkens
+   halfway to the ink and the surface takes a faint primary tint (the
+   selected state keeps the full-ink double ring), so the card reads as
+   pressable. A selected card keeps its selected look under the pointer, and
+   touch never leaves a stuck hover. */
 
-.card:hover:not(.disabled, [data-selected="true"]) .surface {
-  border-color: var(--color-border);
+@media (hover: hover) {
+  .card:hover:not(.disabled, [data-selected="true"]) .surface {
+    border-color: color-mix(in srgb, var(--color-text) 50%, var(--color-border-light));
+    background-color: color-mix(in srgb, var(--color-primary) 5%, var(--color-surface));
+  }
 }
 
 .card[data-selected="true"] .surface {
@@ -82,15 +88,15 @@
   box-shadow: inset 0 0 0 1px var(--color-primary);
 }
 
+.card.disabled .surface {
+  opacity: 0.55;
+}
+
 /* Focus ring travels from the hidden input to the visible surface. */
 
 .card:has(.input:focus-visible) .surface {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
-}
-
-.card.disabled .surface {
-  opacity: 0.55;
 }
 
 @media (prefers-reduced-motion: reduce) {

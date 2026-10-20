@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.36 - 2026-10-20
+
+- `SelectableCard`: a visible hover. On pointer devices an unselected card's
+  border darkens halfway to the ink and its surface takes a faint primary
+  tint; the selected card keeps its full-ink double ring and is unchanged
+  under the pointer, and touch never leaves a stuck hover. The old hover
+  shifted the border by about 4% and read as none. No API change.
+
 ## 0.1.35 - 2026-10-19
 
 - `CategoryFilter`: the pills and minimal groups keep 4px of room on every

@@ -3739,7 +3739,7 @@
       "id": "packages/web-components/src/native/text-input.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
     },
     {
-      "column": 127,
+      "column": 176,
       "file": "packages/web-components/src/native/text-input.ts",
       "line": 30,
       "rule": "rhythmguard/prefer-token",
@@ -3766,7 +3766,7 @@
       "id": "packages/web-components/src/native/text-input.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
     },
     {
-      "column": 127,
+      "column": 176,
       "file": "packages/web-components/src/native/text-input.ts",
       "line": 30,
       "rule": "rhythmguard/use-scale",
