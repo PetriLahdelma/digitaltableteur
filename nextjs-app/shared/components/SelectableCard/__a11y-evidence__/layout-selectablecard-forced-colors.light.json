@@ -1,9 +1,9 @@
 {
   "storyId": "layout-selectablecard-forced-colors",
   "mode": "light",
-  "sourceSHA": "b454078d59a2ce7928c45dbb79e82f840172579f",
-  "capturedAt": "2026-10-15T18:18:52.651Z",
-  "runner": "local-2026-10-15p",
+  "sourceSHA": "998f818484929702348a92822e6f45613ac36b6f",
+  "capturedAt": "2026-10-20T20:02:05.457Z",
+  "runner": "local-2026-10-20",
   "checks": {
     "accessibility-tree": {
       "passed": true

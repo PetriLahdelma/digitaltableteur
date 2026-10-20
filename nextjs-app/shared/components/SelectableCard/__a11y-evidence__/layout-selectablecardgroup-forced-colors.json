@@ -1,0 +1,16 @@
+{
+  "storyId": "layout-selectablecardgroup-forced-colors",
+  "mode": "light",
+  "sourceSHA": "998f818484929702348a92822e6f45613ac36b6f",
+  "capturedAt": "2026-10-20T20:01:58.112Z",
+  "runner": "local-2026-10-20",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
