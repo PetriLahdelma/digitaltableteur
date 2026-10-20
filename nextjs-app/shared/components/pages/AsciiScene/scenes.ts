@@ -12,6 +12,8 @@ export interface AsciiScenePreset {
   tone: AsciiSceneTone;
   light: AsciiSceneLight;
   zoom: number;
+  /** Shift of the model in frame (scene units; the model spans about 1.6). Negative y moves it down. */
+  offset?: { x: number; y: number };
   motion: AsciiSceneMotion;
 }
 
@@ -42,6 +44,8 @@ export const ASCII_SCENES: Record<AsciiSceneName, AsciiScenePreset> = {
     tone: { contrast: 1.3, brightness: 0.12, gamma: 0.7, floor: 0 },
     light: { keyAz: 25, keyEl: 35, key: 3, rim: 2.6, ambient: 0.8 },
     zoom: 1.3,
+    // Fingertips clear the nav with room to breathe.
+    offset: { x: 0, y: -0.16 },
     motion: { kind: "spin", speed: 14 },
   },
   /** Pricing: three creased €500 specimen notes, rocking slowly. */

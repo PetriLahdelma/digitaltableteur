@@ -80,6 +80,7 @@ export function AsciiSceneBackground({ scene, className }: AsciiSceneBackgroundP
           tone: preset.tone,
           light: preset.light,
           zoom: preset.zoom,
+          offset: preset.offset,
           motion: preset.motion,
         });
         if (cancelled) {

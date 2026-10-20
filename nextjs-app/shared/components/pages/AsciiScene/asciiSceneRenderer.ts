@@ -66,6 +66,8 @@ export interface AsciiSceneOptions {
   light: AsciiSceneLight;
   /** Camera framing: larger is closer. */
   zoom: number;
+  /** Shift of the model in frame (scene units; the model spans about 1.6). */
+  offset?: { x: number; y: number };
   motion: AsciiSceneMotion;
 }
 
@@ -129,6 +131,7 @@ export async function createAsciiScene(
 
   const pivot = new Group();
   scene.add(pivot);
+  pivot.position.set(options.offset?.x ?? 0, options.offset?.y ?? 0, 0);
 
   // Embedded textures load through <img> (img-src allows blob:), not
   // fetch-based ImageBitmapLoader, which the site's connect-src blocks.
