@@ -156,4 +156,42 @@ describe("CookieConsentBanner", () => {
       inline: "nearest",
     });
   });
+  it("leaves the page alone when a mouse press moves focus", () => {
+    // Clicking a hero background focuses the whole section behind the banner;
+    // that must not scroll the page.
+    const section = document.createElement("section");
+    section.tabIndex = -1;
+    section.scrollIntoView = vi.fn();
+    document.body.appendChild(section);
+
+    render(<CookieConsentBanner onCustomize={vi.fn()} />);
+    const banner = screen.getByRole("region", { name: "Cookie preferences" });
+    vi.spyOn(banner, "getBoundingClientRect").mockReturnValue({
+      top: 620,
+      bottom: 844,
+      left: 0,
+      right: 390,
+      width: 390,
+      height: 224,
+      x: 0,
+      y: 620,
+      toJSON: () => ({}),
+    });
+    vi.spyOn(section, "getBoundingClientRect").mockReturnValue({
+      top: 0,
+      bottom: 900,
+      left: 0,
+      right: 390,
+      width: 390,
+      height: 900,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    });
+
+    section.dispatchEvent(new Event("pointerdown", { bubbles: true }));
+    section.focus();
+
+    expect(section.scrollIntoView).not.toHaveBeenCalled();
+  });
 });

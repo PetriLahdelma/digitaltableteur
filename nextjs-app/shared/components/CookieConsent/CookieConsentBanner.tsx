@@ -46,6 +46,15 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
       documentElement.style.scrollPaddingBlockEnd = `calc(${height}px + var(--space-layout-16))`;
     };
 
+    // Which input moved focus last: a pointer press, or the keyboard.
+    let focusFromPointer = false;
+    const markPointer = () => {
+      focusFromPointer = true;
+    };
+    const markKeyboard = () => {
+      focusFromPointer = false;
+    };
+
     const keepFocusedControlVisible = (event: FocusEvent) => {
       const target = event.target;
       if (
@@ -55,6 +64,12 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
       ) {
         return;
       }
+      // Keyboard focus only. A mouse click focuses the nearest focusable
+      // ancestor (a whole section), and scrolling that out from under the
+      // banner jumped the page by thousands of pixels.
+      if (focusFromPointer) return;
+      // A region taller than the space above the banner can never clear it.
+      if (target.offsetHeight > window.innerHeight * 0.6) return;
 
       const targetRect = target.getBoundingClientRect();
       const bannerRect = el.getBoundingClientRect();
@@ -86,10 +101,14 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
     const observer = new ResizeObserver(publishHeight);
     observer.observe(el);
     document.addEventListener("focusin", keepFocusedControlVisible);
+    document.addEventListener("pointerdown", markPointer, true);
+    document.addEventListener("keydown", markKeyboard, true);
 
     return () => {
       observer.disconnect();
       document.removeEventListener("focusin", keepFocusedControlVisible);
+      document.removeEventListener("pointerdown", markPointer, true);
+      document.removeEventListener("keydown", markKeyboard, true);
       delete body.dataset.cookieBannerOpen;
       body.style.removeProperty("--cookie-banner-height");
       if (originalBodyPadding) body.style.paddingBlockEnd = originalBodyPadding;
