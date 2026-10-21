@@ -13,6 +13,12 @@ export interface SiteChangelogEntry {
 export const SITE_CHANGELOG: SiteChangelogEntry[] = [
   {
     "date": "2026-10-22",
+    "sha": "acd9e64c9",
+    "area": "Site",
+    "text": "Workload as percentages, 25/50/75/100%"
+  },
+  {
+    "date": "2026-10-22",
     "sha": "98a3602ec",
     "area": "Site",
     "text": "Calculator heading, Create the identity, newest client work first"
