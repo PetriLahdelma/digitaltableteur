@@ -76,6 +76,12 @@ const logos: ClientLogo[] = [
   },
   { src: "/logos/clients/kesko.svg", alt: "Kesko" },
   {
+    src: "/logos/clients/process-genius.svg",
+    alt: "Process Genius",
+    mobileHeight: "h-5",
+    desktopHeight: "md:h-[34px]",
+  },
+  {
     src: "/logos/clients/intrum.svg",
     alt: "Intrum",
     mobileWidth: "w-[84px]",
@@ -91,6 +97,10 @@ const logos: ClientLogo[] = [
   },
   { src: "/logos/clients/seppo.svg", alt: "Seppo" },
 ];
+
+/* Object literals so build:icons registers both Phosphor glyphs. */
+const pauseControl = { icon: "pause" };
+const resumeControl = { icon: "play" };
 
 const marqueeTrackStyle = {
   "--marquee-width": "50%",
@@ -237,6 +247,7 @@ export function ClientLogoMarquee({
         <Button
           variant="tertiary"
           size="sm"
+          icon={(isPaused ? resumeControl : pauseControl).icon}
           aria-pressed={isPaused}
           onClick={() => setIsPaused((paused) => !paused)}
         >
