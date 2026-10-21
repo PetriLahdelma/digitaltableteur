@@ -66,6 +66,15 @@
   }
 }
 
+/* The way into the timeline: right under the years-of-experience figure it
+   backs up. */
+
+.timelineLink {
+  display: flex;
+  padding-block: var(--space-layout-16) 0;
+  justify-content: center;
+}
+
 .seeWorkCta {
   display: flex;
   justify-content: center;

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-import { StudioLogPage } from "@dt-pages/StudioLog";
+import { SiteChangelogPage } from "@dt-pages/SiteChangelog";
 
 const title = "Changelog | Digitaltableteur";
 const description =
-  "Every dated Digitaltableteur event since 2009: client design systems, case studies, articles, talks and @digitaltableteur/react releases, each linked to its proof.";
+  "Every feature shipped on digitaltableteur.com and its design system, month by month from git history, each linked to its commit.";
 
 export const metadata: Metadata = {
   title,
@@ -28,5 +28,5 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default function Changelog() {
-  return <StudioLogPage />;
+  return <SiteChangelogPage />;
 }

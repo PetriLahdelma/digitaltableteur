@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 
 import { STUDIO_LOG } from "../../../data/studio-log";
-import { StudioLogPage, formatLogDate } from "./StudioLogPage";
+import { StudioLogPage } from "./StudioLogPage";
+import { formatLogDate } from "./DatedLog";
 
 const ENTRIES = [
   { date: "2026-10-17", text: "Ships a release", href: "/blog" },

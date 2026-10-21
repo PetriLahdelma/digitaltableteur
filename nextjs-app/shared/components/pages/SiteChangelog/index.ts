@@ -1,0 +1,1 @@
+export { SiteChangelogPage } from "./SiteChangelogPage";

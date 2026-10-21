@@ -141,3 +141,10 @@
 .upcoming {
   composes: brandchip from "../../../styles/brand-chip.module.css";
 }
+
+/* Area label after a changelog line. */
+
+.tag {
+  font-size: var(--font-size-text-xs);
+  color: var(--color-muted);
+}

@@ -293,6 +293,13 @@ export function AboutPageContent({
         background="primary"
       />
 
+      <div className={styles.timelineLink}>
+        <DtLink underline="hover" href="/timeline" size="sm">
+          {t("aboutTimelineLink", "See two decades of work on the timeline")}
+          <span aria-hidden="true"> →</span>
+        </DtLink>
+      </div>
+
       {/* How delivery scales */}
       <ValuesSection
         title={t("aboutDeliveryTitle")}
