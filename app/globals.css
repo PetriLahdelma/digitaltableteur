@@ -119,12 +119,12 @@ code {
   font-family: var(--font-mono);
 }
 
-.themeDark .client-logo-marquee-image {
-  filter: brightness(0) invert(1);
-}
+/* Logos are single-colour SVGs: white on the dark and high-contrast black
+   (#000) themes, black elsewhere. */
 
+.themeDark .client-logo-marquee-image,
 .themeHCB .client-logo-marquee-image {
-  filter: brightness(0);
+  filter: brightness(0) invert(1);
 }
 
 .visuallyHidden {
