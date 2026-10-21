@@ -99,6 +99,11 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+        },
+        "heroBackground": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer on the hero field, under the text. Drags on it pass through the text layer."
         }
     },
     "forbiddenUse": [

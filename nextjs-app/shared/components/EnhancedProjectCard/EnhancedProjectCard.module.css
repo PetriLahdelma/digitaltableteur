@@ -1,4 +1,7 @@
 .card {
+  /* Hover lift, shared by the cover and its glow. */
+  --project-card-lift: calc(-1 * var(--space-internal-2));
+
   display: block;
   border-radius: var(--radius-lg);
   text-decoration: none;
@@ -28,6 +31,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transition: transform var(--duration-normal) var(--ease-out-cubic);
   isolation: isolate;
 }
 
@@ -47,13 +51,20 @@
   filter: blur(var(--space-internal-32)) saturate(1.8);
 }
 
+/* The whole frame lifts, not just the media: the frame carries the cover
+   as its background while hovered (the glow's source), so lifting only the
+   media bared a sliver of that unblurred copy under the cover's edge. The
+   coming-soon and :active rules below override this lift. */
+
 .card:focus-visible .mediaFrame {
   background-image: var(--project-card-cover, none);
+  transform: translateY(var(--project-card-lift));
 }
 
 @media (hover: hover) {
   .card:hover .mediaFrame {
     background-image: var(--project-card-cover, none);
+    transform: translateY(var(--project-card-lift));
   }
 }
 
@@ -203,6 +214,9 @@
 @media (hover: hover) {
   .comingSoon:hover .media {
     box-shadow: none;
+  }
+
+  .comingSoon:hover .mediaFrame {
     transform: none;
   }
 }
@@ -250,16 +264,6 @@
   text-transform: uppercase;
   white-space: nowrap;
   color: var(--color-text);
-}
-
-.card:focus-visible .media {
-  transform: translateY(calc(-1 * var(--space-internal-2)));
-}
-
-@media (hover: hover) {
-  .card:hover .media {
-    transform: translateY(calc(-1 * var(--space-internal-2)));
-  }
 }
 
 .card:focus-visible .title {
@@ -316,6 +320,9 @@
 
 .card:active .media {
   box-shadow: none;
+}
+
+.card:active .mediaFrame {
   transform: translateY(0);
 }
 
@@ -354,6 +361,7 @@
   .category,
   .description,
   .media,
+  .mediaFrame,
   .tag,
   .tags,
   .title {
@@ -362,15 +370,15 @@
   }
 
   .card:focus-visible .asset,
-  .card:focus-visible .media,
-  .card:active .media,
+  .card:focus-visible .mediaFrame,
+  .card:active .mediaFrame,
   .tags {
     transform: none;
   }
 
   @media (hover: hover) {
     .card:hover .asset,
-    .card:hover .media {
+    .card:hover .mediaFrame {
       transform: none;
     }
   }

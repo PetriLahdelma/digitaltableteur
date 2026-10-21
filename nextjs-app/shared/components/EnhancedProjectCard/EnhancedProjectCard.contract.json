@@ -191,6 +191,11 @@
             "type": "string",
             "description": "BCP 47 language tag for project-authored title and metadata"
         },
+        "coverGlow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Glow the cover in its own colours on hover. Off by default; the work index opts in, other surfaces (home, related work) stay quiet. Default false."
+        },
         "className": {
             "optional": true,
             "type": "string",

@@ -407,6 +407,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
                               comingSoon={project.comingSoon}
                               comingSoonLabel={t("workComingSoon", "Coming soon")}
                               contentLanguage="en"
+                              coverGlow
                             />
                           </div>
                         );

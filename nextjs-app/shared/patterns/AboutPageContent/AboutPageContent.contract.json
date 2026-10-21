@@ -79,6 +79,11 @@
             "optional": true,
             "type": "string",
             "description": "Custom className"
+        },
+        "heroBackdrop": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer behind the hero text (see AboutHero `backdrop`)."
         }
     },
     "forbiddenUse": [

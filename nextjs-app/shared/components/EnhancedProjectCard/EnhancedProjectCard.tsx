@@ -42,6 +42,12 @@ export interface EnhancedProjectCardProps {
   comingSoonLabel?: string;
   /** BCP 47 language tag for project-authored title and metadata */
   contentLanguage?: string;
+  /**
+   * Glow the cover in its own colours on hover. Off by default; the work
+   * index opts in, other surfaces (home, related work) stay quiet.
+   * @default false
+   */
+  coverGlow?: boolean;
   /** Custom className */
   className?: string;
 }
@@ -81,6 +87,7 @@ export function EnhancedProjectCard({
   comingSoon = false,
   comingSoonLabel = "Coming soon",
   contentLanguage,
+  coverGlow = false,
   className,
 }: EnhancedProjectCardProps) {
   const rawId = useId();
@@ -134,9 +141,8 @@ export function EnhancedProjectCard({
   // background (only while hovered, so the file is fetched on demand) and
   // a pseudo-element inherits that background, blurred and saturated. A
   // thumbnail that is itself a video has no image to glow with.
-  const glowSource = /\.(mov|mp4|webm)(\?|$)/i.test(thumbnail)
-    ? null
-    : thumbnail;
+  const glowSource =
+    !coverGlow || /\.(mov|mp4|webm)(\?|$)/i.test(thumbnail) ? null : thumbnail;
   const frameStyle = glowSource
     ? ({
         "--project-card-cover": `url(${JSON.stringify(glowSource)})`,

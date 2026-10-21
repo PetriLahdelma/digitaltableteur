@@ -231,6 +231,7 @@ describe("EnhancedProjectCard hover glow", () => {
         title="Spine"
         slug="project-spine"
         thumbnail="/images/a b.png"
+        coverGlow
       />,
     );
     const frame = container.querySelector("[data-project-card-glow]");
@@ -240,9 +241,16 @@ describe("EnhancedProjectCard hover glow", () => {
     ).toBe('url("/images/a b.png")');
   });
 
+  it("has no glow unless the surface opts in", () => {
+    const { container } = render(
+      <EnhancedProjectCard title="Spine" slug="project-spine" thumbnail="/images/a.png" />,
+    );
+    expect(container.querySelector("[data-project-card-glow]")).toBeNull();
+  });
+
   it("has no glow when the thumbnail itself is a video", () => {
     const { container } = render(
-      <EnhancedProjectCard title="Loop" slug="loop" thumbnail="/v/loop.mp4" />,
+      <EnhancedProjectCard title="Loop" slug="loop" thumbnail="/v/loop.mp4" coverGlow />,
     );
     expect(container.querySelector("[data-project-card-glow]")).toBeNull();
   });

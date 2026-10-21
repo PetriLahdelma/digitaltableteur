@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T18:03:31.606Z",
+  "generatedAt": "2026-10-21T20:14:10.363Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -10157,8 +10157,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -10172,8 +10172,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -10194,8 +10194,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -12354,6 +12354,11 @@
           "type": "string",
           "description": "BCP 47 language tag for project-authored title and metadata"
         },
+        "coverGlow": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Glow the cover in its own colours on hover. Off by default; the work\nindex opts in, other surfaces (home, related work) stay quiet."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -12396,7 +12401,7 @@
         "Section"
       ],
       "prefersOver": [],
-      "declaredPropCount": 15,
+      "declaredPropCount": 16,
       "guidelines": [
         {
           "level": "should",
@@ -42204,6 +42209,11 @@
           "type": "boolean",
           "description": "Show scroll indicator at bottom"
         },
+        "backdrop": {
+          "optional": true,
+          "type": "ReactNode",
+          "description": "Decorative layer drawn over the background and under the text. Drags on\nit pass through the text layer."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -42236,7 +42246,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 6,
+      "declaredPropCount": 7,
       "guidelines": [
         {
           "level": "should",
@@ -42426,6 +42436,11 @@
           "optional": true,
           "type": "string",
           "description": "Custom className"
+        },
+        "heroBackdrop": {
+          "optional": true,
+          "type": "ReactNode",
+          "description": "Decorative layer behind the hero text (see AboutHero `backdrop`)."
         }
       },
       "propRelationships": [],
@@ -42454,7 +42469,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 2,
+      "declaredPropCount": 3,
       "guidelines": [
         {
           "level": "should",
@@ -47820,6 +47835,16 @@
           "optional": true,
           "type": "string",
           "description": "Custom className for styling"
+        },
+        "background": {
+          "optional": true,
+          "type": "ReactNode",
+          "description": "Replaces the default animated gradient behind the content. Drags on the\nbackground pass through the content layer; only the buttons capture them."
+        },
+        "showScrollIndicator": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the \"Scroll\" cue at the bottom."
         }
       },
       "propRelationships": [],
@@ -47854,7 +47879,7 @@
         "DesignSprintsSection"
       ],
       "prefersOver": [],
-      "declaredPropCount": 2,
+      "declaredPropCount": 4,
       "guidelines": [
         {
           "level": "should",
@@ -49133,6 +49158,11 @@
           "optional": true,
           "type": "string",
           "description": "Optional wrapper class."
+        },
+        "heroBackground": {
+          "optional": true,
+          "type": "ReactNode",
+          "description": "Decorative layer on the hero field, under the text. Drags on it pass\nthrough the text layer."
         }
       },
       "propRelationships": [],
@@ -49171,7 +49201,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 1,
+      "declaredPropCount": 2,
       "guidelines": [
         {
           "level": "should",
@@ -51926,6 +51956,278 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "ServicesBlock.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        }
+      },
+      "governance": null,
+      "content": null,
+      "temporal": null,
+      "consequence": null
+    },
+    "ServicesLedger": {
+      "preferredImport": "@dt/ServicesLedger",
+      "intent": "Say what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A HUMAN / MACHINE switch re-renders the same offer…",
+      "props": {
+        "title": {
+          "optional": true,
+          "type": "string"
+        },
+        "description": {
+          "optional": true,
+          "type": "string"
+        },
+        "services": {
+          "optional": false,
+          "type": "ServicesLedgerItem[]"
+        },
+        "machineLinks": {
+          "optional": true,
+          "type": "ServicesLedgerLink[]",
+          "description": "Machine-readable endpoints listed at the top of the machine view"
+        },
+        "labels": {
+          "optional": false,
+          "type": "ServicesLedgerLabels"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "id": {
+          "optional": true,
+          "type": "string"
+        },
+        "donnyTarget": {
+          "optional": true,
+          "type": "string",
+          "description": "Donny site action target id for this section"
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "keep capability labels short nouns; keep the machine view to the same facts as the human view"
+      ],
+      "avoidWhen": [
+        "put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that"
+      ],
+      "requiredA11y": [
+        "The section is labelled by its heading.",
+        "The view buttons expose their state with aria-pressed and point at the panel with aria-controls.",
+        "Row index numbers are decorative (aria-hidden)."
+      ],
+      "keyboard": [
+        "Tab reaches each row link, then the HUMAN and MACHINE buttons; Enter or Space switches the view."
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that"
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 8,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "keep capability labels short nouns; keep the machine view to the same facts as the human view",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual",
+          "wcag": [
+            {
+              "sc": "2.1.1",
+              "name": "Keyboard",
+              "level": "A",
+              "en301549": "9.2.1.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "2.1.2",
+              "name": "No Keyboard Trap",
+              "level": "A",
+              "en301549": "9.2.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual"
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ServicesLedger.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ServicesLedger.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ServicesLedger.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ServicesLedger.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",
