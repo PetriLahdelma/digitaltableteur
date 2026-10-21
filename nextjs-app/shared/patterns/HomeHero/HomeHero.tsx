@@ -150,7 +150,7 @@ export function HomeHero({
             as="p"
             className={cn(
               "text-xl tablet:text-2xl desktop:text-3xl",
-              "text-foreground/70 max-w-3xl font-body leading-relaxed"
+              "text-foreground max-w-3xl font-body font-medium leading-relaxed"
             )}
           >
             {heroSubtext}
