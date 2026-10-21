@@ -1,8 +1,8 @@
 {
   "storyId": "site-clientlogomarquee-default",
   "mode": "dark",
-  "sourceSHA": "440125ba14be4f485c3655136ea3f55c1a4091da",
-  "capturedAt": "2026-10-21T23:15:17.996Z",
+  "sourceSHA": "cd2c6c8f37689c0b4a32511b860bbd2ccca3ff54",
+  "capturedAt": "2026-10-21T23:38:40.706Z",
   "runner": "local-2026-10-22",
   "checks": {
     "accessibility-tree": {
