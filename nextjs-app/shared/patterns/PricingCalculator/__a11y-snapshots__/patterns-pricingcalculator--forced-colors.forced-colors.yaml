@@ -1,6 +1,7 @@
-- region "Adjust duration and workload to see your total investment.":
+- region "Pricing calculator":
   - status: 75 hours at 5 days/week, 120€/hour, total 9,000 €
-  - heading "Adjust duration and workload to see your total investment." [level=2]
+  - heading "Pricing calculator" [level=2]
+  - paragraph: Adjust duration and workload to see your total investment.
   - group "Duration":
     - text: Duration
     - radio "2 weeks" [checked]
