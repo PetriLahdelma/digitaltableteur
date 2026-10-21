@@ -3,100 +3,21 @@
 import { useState, type CSSProperties } from "react";
 import Button from "@dt/Button";
 import styles from "./ClientLogoMarquee.module.css";
+import sizes from "./ClientLogoMarquee.sizes.module.css";
+import clientLogos from "./clientLogos.json";
 import { useAnimationContext } from "../../lib/animation";
 
 type ClientLogo = {
-  src: string;
+  /** File under /public/logos/clients/. */
+  file: string;
   alt: string;
-  mobileHeight?: string;
-  desktopHeight?: string;
-  mobileWidth?: string;
-  desktopWidth?: string;
+  /** Manual optical correction, read by build:logo-sizes only. */
+  optical?: number;
 };
 
-const logos: ClientLogo[] = [
-  {
-    src: "/logos/clients/abb.svg",
-    alt: "ABB",
-    mobileHeight: "h-4",
-    desktopHeight: "md:h-[28px]",
-  },
-  { src: "/logos/clients/aalto.svg", alt: "Aalto" },
-  { src: "/logos/clients/dna.svg", alt: "DNA" },
-  {
-    src: "/logos/clients/elisa.svg",
-    alt: "Elisa",
-    mobileHeight: "h-5",
-    desktopHeight: "md:h-[34px]",
-  },
-  { src: "/logos/clients/alma.svg", alt: "Alma" },
-  { src: "/logos/clients/a-lehdet.svg", alt: "A-lehdet" },
-  {
-    src: "/logos/clients/metso.svg",
-    alt: "Metso",
-    mobileHeight: "h-5",
-    desktopHeight: "md:h-[34px]",
-  },
-  {
-    src: "/logos/clients/nordea.svg",
-    alt: "Nordea",
-    mobileWidth: "w-[94px]",
-    desktopWidth: "w-[182px]",
-  },
-  { src: "/logos/clients/op.svg", alt: "OP" },
-  {
-    src: "/logos/clients/fiskars.svg",
-    alt: "Fiskars",
-    mobileWidth: "w-[96px]",
-    desktopWidth: "w-[186px]",
-  },
-  {
-    src: "/logos/clients/enerkey.svg",
-    alt: "Enerkey",
-    mobileHeight: "h-4",
-    desktopHeight: "md:h-[28px]",
-  },
-  {
-    src: "/logos/clients/finnair.svg",
-    alt: "Finnair",
-    mobileWidth: "w-[92px]",
-    desktopWidth: "w-[176px]",
-  },
-  {
-    src: "/logos/clients/vr.svg",
-    alt: "VR Group",
-    mobileHeight: "h-5",
-    desktopHeight: "md:h-[34px]",
-  },
-  {
-    src: "/logos/clients/nokia.svg",
-    alt: "Nokia",
-    mobileWidth: "w-[80px]",
-    desktopWidth: "w-[152px]",
-  },
-  { src: "/logos/clients/kesko.svg", alt: "Kesko" },
-  {
-    src: "/logos/clients/process-genius.svg",
-    alt: "Process Genius",
-    mobileHeight: "h-5",
-    desktopHeight: "md:h-[34px]",
-  },
-  {
-    src: "/logos/clients/intrum.svg",
-    alt: "Intrum",
-    mobileWidth: "w-[84px]",
-    desktopWidth: "w-[164px]",
-  },
-  { src: "/logos/clients/kone.svg", alt: "Kone" },
-  { src: "/logos/clients/sap.svg", alt: "SAP" },
-  {
-    src: "/logos/clients/dsharp.svg",
-    alt: "DSharp",
-    mobileWidth: "w-[97px]",
-    desktopWidth: "w-[185px]",
-  },
-  { src: "/logos/clients/seppo.svg", alt: "Seppo" },
-];
+/* Order and names live in clientLogos.json; each logo's optical size is
+   generated from it by npm run build:logo-sizes. */
+const logos: ClientLogo[] = clientLogos;
 
 /* Object literals so build:icons registers both Phosphor glyphs. */
 const pauseControl = { icon: "pause" };
@@ -110,50 +31,24 @@ function ClientLogoSemanticList() {
   return (
     <ul className="sr-only">
       {logos.map((logo) => (
-        <li key={logo.src}>{logo.alt}</li>
+        <li key={logo.file}>{logo.alt}</li>
       ))}
     </ul>
   );
 }
 
 function LogoItem({ logo }: { logo: ClientLogo }) {
-  const hasCustomWidth = Boolean(logo.mobileWidth && logo.desktopWidth);
-
-  const sizeClasses = [
-    "flex shrink-0 items-center",
-    logo.mobileHeight && logo.desktopHeight
-      ? `${logo.mobileHeight} ${logo.desktopHeight}`
-      : "h-6 md:h-10",
-    hasCustomWidth ? `${logo.mobileWidth} md:${logo.desktopWidth}` : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
   return (
-    <div className={sizeClasses}>
+    <div className="flex shrink-0 items-center">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={logo.src}
+        src={`/logos/clients/${logo.file}`}
         alt=""
         aria-hidden="true"
         role="presentation"
-        className="client-logo-marquee-image block"
+        className={`client-logo-marquee-image ${sizes.logo} ${sizes[logo.file.replace(/\.svg$/, "")]}`}
         loading="lazy"
         decoding="async"
-        style={
-          hasCustomWidth
-            ? {
-                height: "100%",
-                width: "100%",
-                maxHeight: "100%",
-                objectFit: "contain",
-              }
-            : {
-                height: "100%",
-                width: "auto",
-                maxHeight: "100%",
-              }
-        }
       />
     </div>
   );
@@ -174,7 +69,7 @@ function LogoMarqueeTrack({ laneLogos }: { laneLogos: ClientLogo[] }) {
             aria-hidden={duplicateIndex > 0 ? "true" : undefined}
           >
             {laneLogos.map((logo) => (
-              <LogoItem key={`${logo.src}-${duplicateIndex}`} logo={logo} />
+              <LogoItem key={`${logo.file}-${duplicateIndex}`} logo={logo} />
             ))}
           </div>
         ))}
@@ -222,9 +117,9 @@ export function ClientLogoMarquee({
         className={className ? `py-3 ${className}` : "py-3"}
       >
         <ClientLogoSemanticList />
-        <div className="grid grid-cols-3 items-center justify-items-center gap-4 md:grid-cols-6 md:gap-6 lg:grid-cols-9">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-5 md:gap-x-12 md:gap-y-8">
           {logos.map((logo) => (
-            <LogoItem key={logo.src} logo={logo} />
+            <LogoItem key={logo.file} logo={logo} />
           ))}
         </div>
       </section>

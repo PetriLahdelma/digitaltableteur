@@ -17,6 +17,14 @@
 - Run: `node scripts/og/render-og-images.mjs` (needs network for Google Fonts)
 - System doc: `docs/OG_SHARING_SYSTEM.md`
 
+### Client Logo Sizes
+
+**`scripts/design-system/build-client-logo-sizes.mjs`**
+
+- Optical sizing for the homepage client-logo marquee (Logo Soup method, run with sharp at build time)
+- Run: `npm run build:logo-sizes` after adding or changing a logo or `clientLogos.json`
+- Output: `nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.sizes.module.css` (generated, freshness-tested)
+
 ### Linear Automation
 
 **`scripts/linear/create-issue.ts`**

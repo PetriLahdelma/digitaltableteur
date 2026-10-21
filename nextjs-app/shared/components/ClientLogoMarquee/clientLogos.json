@@ -1,0 +1,89 @@
+[
+  {
+    "file": "abb.svg",
+    "alt": "ABB"
+  },
+  {
+    "file": "aalto.svg",
+    "alt": "Aalto",
+    "optical": 0.88
+  },
+  {
+    "file": "dna.svg",
+    "alt": "DNA"
+  },
+  {
+    "file": "elisa.svg",
+    "alt": "Elisa"
+  },
+  {
+    "file": "alma.svg",
+    "alt": "Alma"
+  },
+  {
+    "file": "a-lehdet.svg",
+    "alt": "A-lehdet"
+  },
+  {
+    "file": "metso.svg",
+    "alt": "Metso"
+  },
+  {
+    "file": "nordea.svg",
+    "alt": "Nordea"
+  },
+  {
+    "file": "op.svg",
+    "alt": "OP"
+  },
+  {
+    "file": "fiskars.svg",
+    "alt": "Fiskars"
+  },
+  {
+    "file": "enerkey.svg",
+    "alt": "Enerkey"
+  },
+  {
+    "file": "finnair.svg",
+    "alt": "Finnair"
+  },
+  {
+    "file": "vr.svg",
+    "alt": "VR Group"
+  },
+  {
+    "file": "nokia.svg",
+    "alt": "Nokia"
+  },
+  {
+    "file": "kesko.svg",
+    "alt": "Kesko",
+    "optical": 0.8
+  },
+  {
+    "file": "process-genius.svg",
+    "alt": "Process Genius",
+    "optical": 1.25
+  },
+  {
+    "file": "intrum.svg",
+    "alt": "Intrum"
+  },
+  {
+    "file": "kone.svg",
+    "alt": "Kone"
+  },
+  {
+    "file": "sap.svg",
+    "alt": "SAP"
+  },
+  {
+    "file": "dsharp.svg",
+    "alt": "DSharp"
+  },
+  {
+    "file": "seppo.svg",
+    "alt": "Seppo"
+  }
+]
