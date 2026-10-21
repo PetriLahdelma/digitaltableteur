@@ -59,7 +59,7 @@ export function StudioLogPage({
           className={styles.year}
           aria-labelledby={`log-${group.year}`}
         >
-          <Title level={2} id={`log-${group.year}`} className={styles.yearTitle}>
+          <Title level={2} size="s" id={`log-${group.year}`} className={styles.yearTitle}>
             {group.year}
           </Title>
           <ol className={styles.list}>

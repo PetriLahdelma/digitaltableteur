@@ -40,7 +40,8 @@
 }
 
 /* The year sits in its own column beside the entries from tablet up, so the
-   timeline reads down one edge. */
+   timeline reads down one edge. The year is set at title-s so it always fits
+   the column; at the default heading size it spilled over the dates. */
 
 @media (width >= 768px) {
   .year {
@@ -51,6 +52,7 @@
 
 .yearTitle {
   margin: 0;
+  line-height: 1.2;
   font-variant-numeric: tabular-nums;
 }
 
@@ -66,7 +68,7 @@
 
 .item {
   display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr);
+  grid-template-columns: 5rem minmax(0, 1fr);
   align-items: baseline;
   column-gap: var(--space-layout-16);
 }
@@ -83,6 +85,13 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-internal-8);
+
+  /* One size for every entry; linked and plain lines used to differ. */
+  font-size: var(--font-size-text-s);
+}
+
+.text a {
+  font-size: inherit;
 }
 
 .upcoming {
