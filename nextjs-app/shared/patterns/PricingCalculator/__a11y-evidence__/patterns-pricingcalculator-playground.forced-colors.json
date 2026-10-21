@@ -1,8 +1,8 @@
 {
   "storyId": "patterns-pricingcalculator-playground",
   "mode": "forced-colors",
-  "sourceSHA": "98a3602ec9f8264c95dede32a89ced8702f6defc",
-  "capturedAt": "2026-10-21T21:14:22.459Z",
+  "sourceSHA": "acd9e64c9dda793491876623ca436699b64cb77a",
+  "capturedAt": "2026-10-21T21:40:35.325Z",
   "runner": "local-2026-10-22",
   "checks": {
     "accessibility-tree": {

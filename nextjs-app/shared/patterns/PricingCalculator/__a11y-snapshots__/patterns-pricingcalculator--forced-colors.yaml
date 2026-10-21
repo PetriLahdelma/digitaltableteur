@@ -16,6 +16,8 @@
     - text: 6 months Partnership
     - radio "12 months Partnership"
     - text: 12 months Partnership
+  - text: Show as percentages
+  - switch "Show as percentages"
   - group "Workload (per week)":
     - text: Workload (per week)
     - radio "4 days"
@@ -27,7 +29,7 @@
   - text: "Total hours: 75 Standard rate: 120€/hour"
   - paragraph: Your price
   - paragraph: 120€/hour
-  - paragraph: Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.
+  - paragraph: Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.
   - text: "Total Investment: 9,000 €"
   - link "Get in touch":
     - /url: /contact?mode=book&duration=2w&days=5
