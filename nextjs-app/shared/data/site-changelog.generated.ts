@@ -12,6 +12,30 @@ export interface SiteChangelogEntry {
 
 export const SITE_CHANGELOG: SiteChangelogEntry[] = [
   {
+    "date": "2026-10-22",
+    "sha": "98a3602ec",
+    "area": "Site",
+    "text": "Calculator heading, Create the identity, newest client work first"
+  },
+  {
+    "date": "2026-10-21",
+    "sha": "426715778",
+    "area": "Site",
+    "text": "Ship Source Code Pro; service capabilities as code chips"
+  },
+  {
+    "date": "2026-10-21",
+    "sha": "0cf10ce24",
+    "area": "Site",
+    "text": "Organization schema names the studio unambiguously"
+  },
+  {
+    "date": "2026-10-21",
+    "sha": "eeac2c670",
+    "area": "Site",
+    "text": "2004, 2005 and 2024 entries from the archive, old CVs and SAP records"
+  },
+  {
     "date": "2026-10-21",
     "sha": "968811890",
     "area": "Site",
