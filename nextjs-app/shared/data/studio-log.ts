@@ -126,7 +126,7 @@ export const STUDIO_LOG: StudioLogEntry[] = [
   { date: "2010-09", text: "Designs a promotional brochure for Takkatekniikka" },
   { date: "2010-08", text: "Joins Grafia, the Association of Finnish Graphic Designers" },
   { date: "2010-06-08", text: "Launches the second studio website, built with Sofokus" },
-  { date: "2010-04", text: "Designs the website for CI City Image" },
+  { date: "2010-04", text: "Designs the identity and website for CI City Image" },
   { date: "2010-02", text: "Designs the Työnhakuopas job-seeking guide and its website for Sofokus" },
   { date: "2010-01", text: "Designs Arttu! magazine, later featured on Editorial Design Served" },
   { date: "2009-09", text: "Begins MA studies in Graphic Design at TaiK, the University of Art and Design Helsinki, now Aalto University" },
