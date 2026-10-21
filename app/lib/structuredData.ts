@@ -23,6 +23,9 @@ export interface OrganizationSchemaOptions {
   contactPhone?: string;
 }
 
+/** Stable node id, so other schemas (Person.worksFor) point at this entity. */
+const ORGANIZATION_ID = (siteUrl: string) => `${siteUrl}/#organization`;
+
 /**
  * Organization schema for root layout
  * Establishes site identity and contact information
@@ -41,6 +44,8 @@ export function getOrganizationSchema(
       "https://medium.com/digitaltableteur",
       "https://www.instagram.com/digitaltableteur/",
       "https://www.facebook.com/digitaltableteur",
+      "https://dribbble.com/digitaltableteur",
+      "https://dev.to/digitaltableteur",
     ],
     contactEmail = "mail@digitaltableteur.com",
     contactPhone = "+358 45 657 4469",
@@ -49,7 +54,11 @@ export function getOrganizationSchema(
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORGANIZATION_ID(siteUrl),
     name: "Digitaltableteur",
+    // "Digitaltableteur" alone reads as "digital tablet" to search engines and
+    // AI assistants; this field exists to tell same-named things apart.
+    disambiguatingDescription: "Helsinki design-system studio",
     url,
     logo: {
       "@type": "ImageObject",
@@ -73,7 +82,27 @@ export function getOrganizationSchema(
       availableLanguage: ["English", "Finnish", "Swedish"],
     },
     description:
-      "Design Systems & AI-Powered DesignOps studio specializing in scalable design operations and intelligent automation",
+      "Digitaltableteur is a Helsinki design-system studio working with product teams since 2009: design system audits, builds and governance, UX sprints and AI-native design systems.",
+    foundingDate: "2009-04-29",
+    foundingLocation: {
+      "@type": "Place",
+      name: "Helsinki, Finland",
+    },
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "Finnish Business ID (Y-tunnus)",
+      value: "2264455-2",
+    },
+    areaServed: ["FI", "EU"],
+    knowsAbout: [
+      "Design systems",
+      "Design system audits",
+      "Design tokens",
+      "Component libraries",
+      "Accessibility",
+      "DesignOps",
+      "AI-native design systems",
+    ],
   };
 }
 
@@ -123,6 +152,7 @@ export function getPersonSchema(
     description,
     worksFor: {
       "@type": "Organization",
+      "@id": ORGANIZATION_ID(getSiteUrl()),
       name: "Digitaltableteur",
     },
     knowsAbout: [

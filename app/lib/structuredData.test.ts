@@ -51,6 +51,27 @@ describe("structuredData", () => {
       expect(Array.isArray(schema.sameAs)).toBe(true);
     });
 
+    it("names the studio unambiguously and links every studio profile", () => {
+      const schema = getOrganizationSchema() as any;
+      expect(schema.disambiguatingDescription).toBe("Helsinki design-system studio");
+      expect(schema.description).toMatch(/^Digitaltableteur is a Helsinki design-system studio/);
+      expect(schema.identifier.value).toBe("2264455-2");
+      for (const profile of [
+        "https://www.linkedin.com/company/digitaltableteur/",
+        "https://dribbble.com/digitaltableteur",
+        "https://dev.to/digitaltableteur",
+      ]) {
+        expect(schema.sameAs).toContain(profile);
+      }
+    });
+
+    it("shares its @id with the Person schema's employer", () => {
+      const org = getOrganizationSchema() as any;
+      const person = getPersonSchema() as any;
+      expect(org["@id"]).toMatch(/\/#organization$/);
+      expect(person.worksFor["@id"]).toBe(org["@id"]);
+    });
+
     it("accepts custom options", () => {
       const schema = getOrganizationSchema({
         contactEmail: "custom@example.com",
