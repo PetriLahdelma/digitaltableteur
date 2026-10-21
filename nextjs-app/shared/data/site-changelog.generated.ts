@@ -13,6 +13,12 @@ export interface SiteChangelogEntry {
 export const SITE_CHANGELOG: SiteChangelogEntry[] = [
   {
     "date": "2026-10-22",
+    "sha": "7fd6a27a4",
+    "area": "Site",
+    "text": "Hero subtitle arrives as ASCII code and decodes into text"
+  },
+  {
+    "date": "2026-10-22",
     "sha": "acd9e64c9",
     "area": "Site",
     "text": "Workload as percentages, 25/50/75/100%"
