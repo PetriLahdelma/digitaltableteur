@@ -77,7 +77,7 @@ describe("ClientLogoMarquee", () => {
       container.querySelector(".client-logo-marquee-container"),
     ).not.toBeInTheDocument();
     expect(container.querySelectorAll("img[aria-hidden='true']")).toHaveLength(
-      19,
+      20,
     );
     expect(screen.getByText("DSharp")).toBeInTheDocument();
   });

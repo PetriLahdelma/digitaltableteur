@@ -254,7 +254,12 @@
   color: var(--selected-clients-label-color);
 }
 
+/* Solid 1px text-colour (white) edge so the panel separates from the black
+   page. Tailwind's white is remapped on this theme, so hcb:border-white
+   would draw black. */
+
 :global(.themeHCB) .selectedClientsPanel {
+  border-color: var(--color-text);
   background: var(--main-body-background-color);
 }
 

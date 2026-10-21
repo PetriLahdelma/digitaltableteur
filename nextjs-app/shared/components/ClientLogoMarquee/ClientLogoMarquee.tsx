@@ -63,6 +63,12 @@ const logos: ClientLogo[] = [
     desktopWidth: "w-[176px]",
   },
   {
+    src: "/logos/clients/vr.svg",
+    alt: "VR Group",
+    mobileHeight: "h-5",
+    desktopHeight: "md:h-[34px]",
+  },
+  {
     src: "/logos/clients/nokia.svg",
     alt: "Nokia",
     mobileWidth: "w-[80px]",
