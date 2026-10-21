@@ -84,7 +84,7 @@ export const projects: Project[] = [
     description:
       "Fully AI-powered and guardrailed design-system architecture for enterprise data products: tokens, contracts, Storybook, MCP, CLI and Rhythmguard enforcement.",
     thumbnail:
-      "/images/portfolio/dsharp-design-system/dsharp-thumbnail-logo.svg",
+      "/images/portfolio/dsharp-design-system/dsharp-thumbnail-logo.png",
     category: "design-systems",
     tags: [
       "Design Systems",
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     title: "VR Design System",
     description:
       "Industrialising VR's live design system into one agent-ready source of truth: DTCG tokens, an enforceable component contract and accessibility as a CI gate across web and mobile.",
-    thumbnail: "/images/portfolio/vr-design-system/thumbnail.svg",
+    thumbnail: "/images/portfolio/vr-design-system/thumbnail.png",
     category: "design-systems",
     tags: ["Design Systems", "Design Tokens", "Accessibility", "Agent-ready"],
     featured: false,
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     title: "Process Genius Design System",
     description:
       "A contract-driven design system for Genius Core, Process Genius's facility operations platform: modernised components, design tokens and machine-readable contracts, built alongside the existing library.",
-    thumbnail: "/images/portfolio/process-genius/thumbnail.svg",
+    thumbnail: "/images/portfolio/process-genius/thumbnail.png",
     category: "design-systems",
     tags: ["Design Systems", "Design Tokens", "Component Contracts", "Accessibility"],
     featured: false,
@@ -219,7 +219,7 @@ export const projects: Project[] = [
     title: "Home Remote",
     description:
       "A native macOS remote for TVs, home AV and audio equipment: local-first control with a design system for a fun clay interface.",
-    thumbnail: "/images/portfolio/home-remote/thumbnail.webp",
+    thumbnail: "/images/portfolio/home-remote/thumbnail.png",
     category: "ux-design",
     secondaryCategories: ["tools"],
     tags: ["Product Design", "macOS App", "Brand Identity", "3D Illustration"],
@@ -265,7 +265,7 @@ export const projects: Project[] = [
     title: "KnobSmith Audio",
     description:
       "Designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
-    thumbnail: "/images/portfolio/knobsmith-audio/thumbnail.webp",
+    thumbnail: "/images/portfolio/knobsmith-audio/thumbnail.png",
     category: "ux-design",
     tags: [
       "Product Design",
@@ -285,7 +285,7 @@ export const projects: Project[] = [
     title: "VertaaUX",
     description:
       "UX and accessibility auditing platform for dev teams who treat accessibility as craft, not compliance.",
-    thumbnail: "/images/portfolio/vertaaux/logo-on-white-thumb.svg?v=2",
+    thumbnail: "/images/portfolio/vertaaux/logo-on-white-thumb.png",
     category: "ux-design",
     tags: ["AI Product", "UX Intelligence", "Accessibility", "Startup"],
     featured: false,

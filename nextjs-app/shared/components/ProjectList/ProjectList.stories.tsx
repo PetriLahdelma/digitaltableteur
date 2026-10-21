@@ -10,7 +10,7 @@ const workItems: ProjectListItem[] = [
     id: "dsharp",
     title: "DSharp Design System",
     href: "/work/dsharp-design-system",
-    thumbnail: "/images/portfolio/dsharp-design-system/dsharp-thumbnail-logo.svg",
+    thumbnail: "/images/portfolio/dsharp-design-system/dsharp-thumbnail-logo.png",
     client: "DSharp",
     discipline: "Design systems",
     year: "2026–Present",
@@ -19,7 +19,7 @@ const workItems: ProjectListItem[] = [
   {
     id: "vr",
     title: "VR Design System",
-    thumbnail: "/images/portfolio/vr-design-system/thumbnail.svg",
+    thumbnail: "/images/portfolio/vr-design-system/thumbnail.png",
     client: "VR Group",
     discipline: "Design systems",
     year: "2026",
