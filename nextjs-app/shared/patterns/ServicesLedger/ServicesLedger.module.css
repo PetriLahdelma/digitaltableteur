@@ -107,8 +107,8 @@
   gap: var(--space-layout-8) var(--space-layout-16);
   font-family: var(--font-mono);
   font-size: var(--font-size-text-xs);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+
+  /* Mono alone marks these as tags; sentence case keeps them readable. */
   grid-column: 2;
   list-style: none;
 }
