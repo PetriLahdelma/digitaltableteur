@@ -5,7 +5,7 @@ import { useTranslate } from "../../lib/translation";
 import { HeroSection } from "../HeroSection";
 import { HeroBackground } from "../../components/HeroBackground";
 import { KineticTitle } from "../../components/animations/KineticTitle";
-import { TextReveal } from "../../components/animations/TextReveal";
+import { DecodeText } from "../../components/animations/DecodeText";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ScrollIndicator } from "../../components/ScrollIndicator";
 import { Container } from "../../components/Container";
@@ -143,21 +143,18 @@ export function HomeHero({
             {heroTitle}
           </KineticTitle>
 
-          {/* Subtitle with text reveal - randomly selected on mount */}
-          <TextReveal
+          {/* Subtitle, randomly selected on mount: arrives as ASCII code and
+              decodes into text, echoing the ASCII head behind it. */}
+          <DecodeText
             key={heroSubtext}
-            animation="fade"
-            type="words"
             as="p"
             className={cn(
               "text-xl tablet:text-2xl desktop:text-3xl",
               "text-foreground/70 max-w-3xl font-body leading-relaxed"
             )}
-            delay={0.5}
-            stagger={0.03}
           >
             {heroSubtext}
-          </TextReveal>
+          </DecodeText>
 
           {/* CTA buttons with staggered entrance */}
           <FadeIn delay={1.2} direction="up" distance={30} className="pointer-events-auto">

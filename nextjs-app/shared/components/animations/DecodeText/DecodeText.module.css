@@ -1,0 +1,106 @@
+/* DecodeText: text that arrives as code. Theme tokens only. */
+
+/* While decoding, the whole line carries a red/cyan split that fades as it
+   settles, timed to the default 0.5 s delay. */
+
+.root {
+  position: relative;
+  animation: decode-split var(--duration-slower) ease-out var(--duration-slow) both;
+}
+
+@keyframes decode-split {
+  from {
+    text-shadow:
+      calc(-1 * var(--space-internal-2)) 1px color-mix(in srgb, var(--color-error) 60%, transparent),
+      var(--space-internal-2) -1px color-mix(in srgb, var(--accent-cyan) 70%, transparent);
+  }
+
+  to {
+    text-shadow:
+      0 0 transparent,
+      0 0 transparent;
+  }
+}
+
+.srOnly {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  block-size: 1px;
+  inline-size: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+/* The real text, invisible, gives the box its settled size. */
+
+.sizer {
+  visibility: hidden;
+}
+
+/* The code layer sits exactly over it. */
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* A one-line final stays one line while decoding (cells lose kerning, so
+   the layer can be a hair wider than the text it becomes). */
+
+.singleLine {
+  white-space: nowrap;
+}
+
+/* A word never breaks between its cells. */
+
+.word {
+  white-space: nowrap;
+}
+
+/* The cell takes its final letter's width; the glyph sits centred on it. */
+
+.cell {
+  display: inline-block;
+  position: relative;
+}
+
+.ghost {
+  visibility: hidden;
+}
+
+.glyph {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+}
+
+/* The undecoded rest reads as the hero's ASCII field. */
+
+.ascii {
+  opacity: 0.45;
+}
+
+/* High-contrast themes and forced colours: no split, full-strength glyphs. */
+
+:global(.themeHCB) .root,
+:global(.themeHCW) .root {
+  animation: none;
+}
+
+:global(.themeHCB) .ascii,
+:global(.themeHCW) .ascii {
+  opacity: 1;
+}
+
+@media (forced-colors: active) {
+  .root {
+    animation: none;
+  }
+
+  .ascii {
+    opacity: 1;
+  }
+}
