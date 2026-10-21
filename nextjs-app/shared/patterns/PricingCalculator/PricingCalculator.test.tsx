@@ -8,6 +8,7 @@ import {
   STANDARD_RATE,
   computePricing,
   getWorkloadOptions,
+  nearestWorkload,
 } from "./pricingMath";
 
 expect.extend(toHaveNoViolations);
@@ -233,12 +234,65 @@ describe("PricingCalculator", () => {
   });
 });
 
+describe("workload as percentages", () => {
+  it("offers 25/50/75/100% as days per week, 75%+ on short engagements", () => {
+    expect(getWorkloadOptions("3m", "percent")).toEqual([1.25, 2.5, 3.75, 5]);
+    expect(getWorkloadOptions("2w", "percent")).toEqual([3.75, 5]);
+    expect(getWorkloadOptions("1m", "days")).toEqual([4, 5]);
+  });
+
+  it("grants the partnership rate from 75%, so 4+ days and 75% both qualify", () => {
+    expect(computePricing("6m", 3.75).effectiveRate).toBe(90);
+    expect(computePricing("12m", 2.5).effectiveRate).toBe(120);
+    expect(computePricing("6m", 3).effectiveRate).toBe(120);
+    expect(computePricing("6m", 3.75).allocationPercent).toBe(75);
+  });
+
+  it("prices quarter-day allocations exactly: 3 months at 25% = 122 hours", () => {
+    // 156/12 weeks × 1.25 days × 7.5 h = 121.875 → 122
+    expect(computePricing("3m", 1.25).totalHours).toBe(122);
+  });
+
+  it("maps a selection to the nearest option in the other view, ties going up", () => {
+    const percent = getWorkloadOptions("3m", "percent");
+    const days = getWorkloadOptions("3m", "days");
+    expect(nearestWorkload(2, percent)).toBe(2.5);
+    expect(nearestWorkload(4, percent)).toBe(3.75);
+    expect(nearestWorkload(5, percent)).toBe(5);
+    expect(nearestWorkload(2.5, days)).toBe(3);
+    expect(nearestWorkload(1.25, days)).toBe(2);
+    expect(nearestWorkload(3.75, days)).toBe(4);
+  });
+
+  it("switches the workload cards to percentages and keeps the price aligned", async () => {
+    const user = userEvent.setup();
+    render(<PricingCalculator />);
+    await user.click(screen.getByRole("radio", { name: /6/ }));
+    await user.click(screen.getByRole("radio", { name: /^4/ }));
+    await user.click(screen.getByRole("switch", { name: "Show as percentages" }));
+    expect(screen.getByRole("radio", { name: /^75%/ })).toBeChecked();
+    expect(screen.getByRole("radio", { name: /^25%/ })).toBeInTheDocument();
+    expect(screen.queryByRole("radio", { name: /days/ })).toBeNull();
+    expect(screen.getAllByText("90€/hour").length).toBeGreaterThan(0);
+  });
+
+  it("opens the percentage view for a percentage-only URL workload", async () => {
+    const { parseCalculatorSelection } = await import("./PricingCalculator");
+    expect(parseCalculatorSelection("?duration=6m&days=3.75")).toEqual({
+      durationId: "6m",
+      daysPerWeek: 3.75,
+      unit: "percent",
+    });
+  });
+});
+
 describe("PricingCalculator URL selection", () => {
   it("parses a valid duration and workload", async () => {
     const { parseCalculatorSelection } = await import("./PricingCalculator");
     expect(parseCalculatorSelection("?duration=6m&days=4")).toEqual({
       durationId: "6m",
       daysPerWeek: 4,
+      unit: "days",
     });
   });
 
@@ -249,6 +303,7 @@ describe("PricingCalculator URL selection", () => {
     expect(parseCalculatorSelection("?duration=12m&days=9")).toEqual({
       durationId: "12m",
       daysPerWeek: 5,
+      unit: "days",
     });
   });
 

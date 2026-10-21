@@ -68,6 +68,37 @@
   inline-size: 100%;
 }
 
+/* Workload: the days / percentages switch sits at the end of the legend
+   line when the column has room, and on its own line above it when not. */
+
+.workload {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+  container-type: inline-size;
+}
+
+.unitSwitch {
+  align-self: flex-end;
+}
+
+/* The Switch's left-label wrapper is full width with the label pushed away
+   from the toggle; here the label sits right beside it. */
+
+.unitSwitch > span {
+  inline-size: auto;
+  gap: var(--space-internal-8);
+}
+
+@container (width >= 26rem) {
+  .unitSwitch {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+  }
+}
+
 .optionGroup > div {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

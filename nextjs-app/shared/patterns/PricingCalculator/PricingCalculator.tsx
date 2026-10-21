@@ -8,6 +8,7 @@ import {
   List,
   SelectableCard,
   SelectableCardGroup,
+  Switch,
   Text,
   Title,
   VisuallyHidden,
@@ -20,16 +21,19 @@ import {
   PARTNERSHIP_MIN_DAYS,
   getWorkloadOptions,
   computePricing,
+  daysToPercent,
   getDurationOption,
+  nearestWorkload,
   type DurationId,
   type DurationOption,
+  type WorkloadUnit,
 } from "./pricingMath";
 import styles from "./PricingCalculator.module.css";
 
 type FitItem = { key: string; defaultText: string };
 
 /** Selection-dependent "Perfect for" copy: two duration-fit services plus one
- * workload-pace line (advisory ≤3 days/week, delivery ≥4). */
+ * workload-pace line (advisory below 75% of a week, delivery from 75%). */
 const PERFECT_FOR: Record<DurationId, FitItem[]> = {
   "2w": [
     {
@@ -117,19 +121,30 @@ export interface PricingCalculatorProps {
   selectionFromUrl?: boolean;
 }
 
-/** Reads a valid duration/workload pair from a query string, or null. */
-export function parseCalculatorSelection(
-  search: string,
-): { durationId: DurationId; daysPerWeek: number } | null {
+/** Reads a valid duration/workload pair from a query string, or null. A
+ * workload that only the percentage view offers (days=3.75) opens that view. */
+export function parseCalculatorSelection(search: string): {
+  durationId: DurationId;
+  daysPerWeek: number;
+  unit: WorkloadUnit;
+} | null {
   const params = new URLSearchParams(search);
   const durationParam = params.get("duration");
   const option = DURATION_OPTIONS.find((item) => item.id === durationParam);
   if (!option) return null;
-  const options = getWorkloadOptions(option.id);
+  const dayOptions = getWorkloadOptions(option.id, "days");
+  const percentOptions = getWorkloadOptions(option.id, "percent");
   const days = Number(params.get("days"));
+  if (dayOptions.includes(days)) {
+    return { durationId: option.id, daysPerWeek: days, unit: "days" };
+  }
+  if (percentOptions.includes(days)) {
+    return { durationId: option.id, daysPerWeek: days, unit: "percent" };
+  }
   return {
     durationId: option.id,
-    daysPerWeek: options.includes(days) ? days : Math.max(...options),
+    daysPerWeek: Math.max(...dayOptions),
+    unit: "days",
   };
 }
 
@@ -148,6 +163,9 @@ export function PricingCalculator({
   const workloadGroupRef = useRef<HTMLDivElement>(null);
   const [durationId, setDurationId] = useState<DurationId>("2w");
   const [daysPerWeek, setDaysPerWeek] = useState(5);
+  // Many clients order 25/50/75/100% allocations; the switch shows those
+  // instead of 2-5 days. Both views price the same days per week.
+  const [workloadUnit, setWorkloadUnit] = useState<WorkloadUnit>("days");
 
   // Applied after mount rather than in the initial state: the page is
   // statically rendered, so the server never sees the query string and the
@@ -158,16 +176,17 @@ export function PricingCalculator({
     if (!selection) return;
     setDurationId(selection.durationId);
     setDaysPerWeek(selection.daysPerWeek);
+    setWorkloadUnit(selection.unit);
   }, [selectionFromUrl]);
 
   const duration = getDurationOption(durationId);
-  const workloadOptions = getWorkloadOptions(durationId);
+  const workloadOptions = getWorkloadOptions(durationId, workloadUnit);
   const pricing = computePricing(durationId, daysPerWeek);
 
   const selectDuration = (value: string) => {
     const nextId = value as DurationId;
     setDurationId(nextId);
-    const options = getWorkloadOptions(nextId);
+    const options = getWorkloadOptions(nextId, workloadUnit);
     if (!options.includes(daysPerWeek)) {
       // Safari keeps focus on a label-clicked duration while a previously
       // arrow-focused workload radio unmounts with the clamp; if that radio
@@ -187,10 +206,25 @@ export function PricingCalculator({
     }
   };
 
+  const selectWorkloadUnit = (percent: boolean) => {
+    const nextUnit: WorkloadUnit = percent ? "percent" : "days";
+    setWorkloadUnit(nextUnit);
+    setDaysPerWeek(
+      nearestWorkload(daysPerWeek, getWorkloadOptions(durationId, nextUnit)),
+    );
+  };
+
   const numberFormat = useMemo(
     () =>
       new Intl.NumberFormat(resolvedLanguage || "en", {
         maximumFractionDigits: 0,
+      }),
+    [resolvedLanguage],
+  );
+  const daysFormat = useMemo(
+    () =>
+      new Intl.NumberFormat(resolvedLanguage || "en", {
+        maximumFractionDigits: 2,
       }),
     [resolvedLanguage],
   );
@@ -286,7 +320,17 @@ export function PricingCalculator({
           ))}
         </SelectableCardGroup>
 
-        <div ref={workloadGroupRef}>
+        <div ref={workloadGroupRef} className={styles.workload}>
+          {/* On the legend line from tablet width up; above it on phones. */}
+          <div className={styles.unitSwitch}>
+            <Switch
+              size="sm"
+              label={t("pricingCalcShowPercent", "Show as percentages")}
+              labelPlacement="left"
+              checked={workloadUnit === "percent"}
+              onCheckedChange={selectWorkloadUnit}
+            />
+          </div>
           <SelectableCardGroup
             legend={t("pricingCalcWorkloadLegend", "Workload (per week)")}
             value={String(daysPerWeek)}
@@ -297,12 +341,23 @@ export function PricingCalculator({
             {workloadOptions.map((days) => (
               <SelectableCard key={days} value={String(days)} padding="sm">
                 <span className={styles.optionContent}>
-                  <Text as="span" size="m" className={styles.optionAmount}>
-                    {days}
-                  </Text>{" "}
-                  <Text as="span" size="m" className={styles.optionUnit}>
-                    {t("pricingCalcUnitDays", "days")}
-                  </Text>{" "}
+                  {workloadUnit === "percent" ? (
+                    // Locale-aware: "25%" in English, "25 %" in Finnish.
+                    <Text as="span" size="m" className={styles.optionAmount}>
+                      {t("pricingCalcAllocationValue", "{{percent}}%", {
+                        percent: daysToPercent(days),
+                      })}
+                    </Text>
+                  ) : (
+                    <>
+                      <Text as="span" size="m" className={styles.optionAmount}>
+                        {daysFormat.format(days)}
+                      </Text>{" "}
+                      <Text as="span" size="m" className={styles.optionUnit}>
+                        {t("pricingCalcUnitDays", "days")}
+                      </Text>
+                    </>
+                  )}{" "}
                   {duration.partnership && days >= PARTNERSHIP_MIN_DAYS ? (
                     <Badge size="xs" className={styles.partnershipBadge}>
                       {t("pricingCalcPartnershipBadge", "Partnership")}
@@ -331,7 +386,7 @@ export function PricingCalculator({
                 "pricingCalcAllocationBasis",
                 "{{days}} days/week × {{hours}} hrs/day",
                 {
-                  days: daysPerWeek,
+                  days: daysFormat.format(daysPerWeek),
                   hours: hoursFormat.format(HOURS_PER_DAY),
                 },
               )}
@@ -392,7 +447,7 @@ export function PricingCalculator({
           <Text as="p" size="s" className={styles.priceHint}>
             {t(
               "pricingCalcPartnershipHint",
-              "Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.",
+              "Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.",
             )}
           </Text>
         </Card>
@@ -406,10 +461,17 @@ export function PricingCalculator({
           </Text>
           {pricing.discount > 0 ? (
             <Text as="span" size="s" className={styles.totalNote}>
-              {t(
-                "pricingCalcPartnershipFreeDay",
-                "Partnership pricing: 1 day per week is free.",
-              )}
+              {/* "1 day free" is the days framing (4+ days); at 75% the same
+                  25% discount is less than a day, so say it as a share. */}
+              {workloadUnit === "percent"
+                ? t(
+                    "pricingCalcPartnershipPercentOff",
+                    "Partnership pricing: 25% off the standard rate.",
+                  )
+                : t(
+                    "pricingCalcPartnershipFreeDay",
+                    "Partnership pricing: 1 day per week is free.",
+                  )}
             </Text>
           ) : null}
         </Card>
@@ -472,10 +534,10 @@ export function PricingCalculator({
               t(item.key, item.defaultText),
             ),
             t(
-              daysPerWeek <= 3
+              daysPerWeek < PARTNERSHIP_MIN_DAYS
                 ? WORKLOAD_FIT.advisory.key
                 : WORKLOAD_FIT.delivery.key,
-              daysPerWeek <= 3
+              daysPerWeek < PARTNERSHIP_MIN_DAYS
                 ? WORKLOAD_FIT.advisory.defaultText
                 : WORKLOAD_FIT.delivery.defaultText,
             ),

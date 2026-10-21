@@ -2,13 +2,20 @@
  * Pricing model for the /pricing calculator (owner-approved 2026-07-18):
  * standard rate 120 €/h at 7.5 h/day. Only the 6/12-month partnership tiers
  * discount, at a flat 90 €/h (−25%), and only at a partnership workload of
- * 4+ days/week; lighter workloads stay at the standard rate.
+ * 75%+ of a week (4+ days, or 75% / 100% allocation; owner-approved
+ * 2026-10-22); lighter workloads stay at the standard rate.
+ *
+ * Workload is one number, days per week. The days view offers 2–5 days; the
+ * percentage view offers the allocations clients order (25/50/75/100% of a
+ * 5-day week, so 1.25–5 days). Quarter days are exact binary fractions, so
+ * the hour totals stay exact.
  */
 
 export const STANDARD_RATE = 120;
 export const HOURS_PER_DAY = 7.5;
 export const FULL_WEEK_DAYS = 5;
-export const PARTNERSHIP_MIN_DAYS = 4;
+/** 75% of a 5-day week. 4 and 5 days qualify; so do 75% and 100%. */
+export const PARTNERSHIP_MIN_DAYS = 3.75;
 
 const WEEKS_PER_MONTH = 52 / 12;
 
@@ -41,15 +48,46 @@ export const DURATION_OPTIONS: DurationOption[] = [
 
 export const DAYS_PER_WEEK_OPTIONS = [2, 3, 4, 5] as const;
 
-/** Short engagements (2 weeks / 1 month) require a 4+ days/week workload;
- * lighter 2–3 day paces are only offered from 2 months up. */
+/** Allocations clients order, as a share of a full week. */
+export const ALLOCATION_PERCENT_OPTIONS = [25, 50, 75, 100] as const;
+
+export type WorkloadUnit = "days" | "percent";
+
+export function percentToDays(percent: number): number {
+  return (percent / 100) * FULL_WEEK_DAYS;
+}
+
+export function daysToPercent(days: number): number {
+  return Math.round((days / FULL_WEEK_DAYS) * 100);
+}
+
+/** Short engagements (2 weeks / 1 month) require a partnership-level
+ * workload (75%+); lighter paces are only offered from 2 months up. */
 const SHORT_DURATIONS: DurationId[] = ["2w", "1m"];
 
-export function getWorkloadOptions(durationId: DurationId): number[] {
+/** Workload choices for a duration, as days per week, in the given view. */
+export function getWorkloadOptions(
+  durationId: DurationId,
+  unit: WorkloadUnit = "days",
+): number[] {
   const short = SHORT_DURATIONS.includes(durationId);
-  return DAYS_PER_WEEK_OPTIONS.filter(
-    (days) => !short || days >= PARTNERSHIP_MIN_DAYS,
-  );
+  const days: number[] =
+    unit === "percent"
+      ? ALLOCATION_PERCENT_OPTIONS.map(percentToDays)
+      : [...DAYS_PER_WEEK_OPTIONS];
+  return days.filter((value) => !short || value >= PARTNERSHIP_MIN_DAYS);
+}
+
+/** The option closest to a workload (ties go to the heavier one), used when
+ * the view switches between days and percentages. */
+export function nearestWorkload(days: number, options: number[]): number {
+  return options.reduce((best, option) => {
+    const diff = Math.abs(option - days);
+    const bestDiff = Math.abs(best - days);
+    return diff < bestDiff || (diff === bestDiff && option > best)
+      ? option
+      : best;
+  }, options[0]);
 }
 
 export interface PricingBreakdown {
@@ -91,7 +129,7 @@ export function computePricing(
     standardRate: STANDARD_RATE,
     effectiveRate,
     discount,
-    allocationPercent: Math.round((daysPerWeek / FULL_WEEK_DAYS) * 100),
+    allocationPercent: daysToPercent(daysPerWeek),
     total,
     savings: totalHours * STANDARD_RATE - total,
   };
