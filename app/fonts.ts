@@ -1,3 +1,4 @@
+import { Source_Code_Pro } from "next/font/google";
 import localFont from "next/font/local";
 
 /**
@@ -23,6 +24,18 @@ export const satoshi = localFont({
 });
 
 /**
- * CSS class for applying the font variable to the document root.
+ * Source Code Pro: the code and monospace face (code, CodeSnippet, Kbd, mono
+ * labels). Variable font, self-hosted by next/font at build time (no request
+ * to Google at runtime). Exposed as --font-code; variables.css puts it first
+ * in --font-mono, so every monospace use resolves to it.
  */
-export const fontVariables = satoshi.variable;
+export const sourceCodePro = Source_Code_Pro({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-code",
+  display: "swap",
+});
+
+/**
+ * CSS classes for applying the font variables to the document root.
+ */
+export const fontVariables = `${satoshi.variable} ${sourceCodePro.variable}`;

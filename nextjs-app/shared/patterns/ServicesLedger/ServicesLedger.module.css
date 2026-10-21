@@ -104,13 +104,29 @@
   margin: var(--space-layout-8) 0 0;
   padding: 0;
   flex-wrap: wrap;
-  gap: var(--space-layout-8) var(--space-layout-16);
-  font-family: var(--font-mono);
-  font-size: var(--font-size-text-xs);
-
-  /* Mono alone marks these as tags; sentence case keeps them readable. */
+  align-items: flex-start;
+  gap: var(--space-internal-8);
   grid-column: 2;
   list-style: none;
+}
+
+/* Each capability reads as inline code, the same chip articles use for
+   <code>: mono, text-sm, semibold, the themed --muted surface, 2px 6px,
+   radius-md, lowercase like code. They stay list items (capabilities, not
+   code) and the strings keep normal case for the machine view. */
+
+.caps > li {
+  /* The global li margin would double the gap. */
+  margin: 0;
+  padding: var(--space-internal-2) var(--space-internal-6);
+  border-radius: var(--radius-md);
+  background-color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: var(--line-height-normal);
+  text-transform: lowercase;
+  color: var(--color-text);
 }
 
 @media (width >= 1024px) {

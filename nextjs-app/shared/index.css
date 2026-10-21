@@ -86,8 +86,7 @@ a:focus-visible {
 }
 
 code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: var(--font-mono);
 }
 
 /* Visually hidden utility for screen reader only content */

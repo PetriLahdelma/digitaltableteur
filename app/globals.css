@@ -116,8 +116,7 @@ article .prose :where(li)::marker {
 }
 
 code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: var(--font-mono);
 }
 
 .themeDark .client-logo-marquee-image {

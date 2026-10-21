@@ -113,8 +113,11 @@
   --color-text: var(--primary-text-color, #041b23);
 
   /* Font family aliases - mapped to new typography system */
+
+  /* --font-code is Source Code Pro, set by next/font on <html>; the rest is
+     the fallback stack (Storybook, packages, before the font loads). */
   --font-mono:
-    source-code-pro, menlo, monaco, consolas, "Courier New", monospace;
+    var(--font-code, source-code-pro), menlo, monaco, consolas, "Courier New", monospace;
   --primary-body-font: var(--font-body), system-ui, sans-serif;
   --secondary-body-font: var(--font-heading), system-ui, sans-serif;
   --primary-bold-font: var(--font-body), system-ui, sans-serif;
