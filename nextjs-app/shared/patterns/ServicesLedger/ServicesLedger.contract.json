@@ -14,12 +14,12 @@
   ],
   "lightDarkVerified": false,
   "name": "ServicesLedger",
-  "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a HUMAN / MACHINE switch that shows the same offers as plain text.",
+  "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a Human / Machine switch that shows the same offers as plain text.",
   "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-246",
   "element": "section",
   "a11y": {
     "keyboard": [
-      "Tab reaches each row link, then the HUMAN and MACHINE buttons; Enter or Space switches the view."
+      "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
     ],
     "ariaRequirements": [
       "The section is labelled by its heading.",
@@ -107,7 +107,7 @@
     "machine-readable",
     "agent-ready"
   ],
-  "dense": "Homepage services ledger: ruled rows (index, title, description, capabilities) plus a HUMAN / MACHINE text view",
+  "dense": "Homepage services ledger: ruled rows (index, title, description, capabilities) plus a Human / Machine text view",
   "usage": {
     "description": "Homepage services section since 2026-10-20 (replaces ServicesSection there). Labels and capability strings come from the page so all three locales apply."
   }

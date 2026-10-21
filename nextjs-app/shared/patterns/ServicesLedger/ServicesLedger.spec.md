@@ -1,7 +1,7 @@
 # ServicesLedger
 
 ## Intent
-Say what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A HUMAN / MACHINE switch re-renders the same offers as plain text with the site's machine endpoints, so the agent-ready positioning is shown rather than claimed.
+Say what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A Human / Machine switch re-renders the same offers as plain text with the site's machine endpoints, so the agent-ready positioning is shown rather than claimed.
 
 ## Interaction contract
 - Keyboard: Tab reaches each row link, then the two view buttons; Enter or Space switches the view

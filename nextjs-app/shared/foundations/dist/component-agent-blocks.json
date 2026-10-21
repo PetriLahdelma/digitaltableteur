@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T20:14:10.363Z",
+  "generatedAt": "2026-10-21T22:49:37.391Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -47900,8 +47900,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -47915,8 +47915,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -47937,8 +47937,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -52005,7 +52005,7 @@
     },
     "ServicesLedger": {
       "preferredImport": "@dt/ServicesLedger",
-      "intent": "Say what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A HUMAN / MACHINE switch re-renders the same offer…",
+      "intent": "Say what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A Human / Machine switch re-renders the same offer…",
       "props": {
         "title": {
           "optional": true,
@@ -52059,7 +52059,7 @@
         "Row index numbers are decorative (aria-hidden)."
       ],
       "keyboard": [
-        "Tab reaches each row link, then the HUMAN and MACHINE buttons; Enter or Space switches the view."
+        "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
       ],
       "compositionRules": [],
       "canonicalExamples": [

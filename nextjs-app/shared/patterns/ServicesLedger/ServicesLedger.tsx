@@ -29,7 +29,7 @@ export interface ServicesLedgerLink {
 }
 
 export interface ServicesLedgerLabels {
-  /** Accessible name of the HUMAN / MACHINE switch */
+  /** Accessible name of the Human / Machine switch */
   view: string;
   human: string;
   machine: string;
@@ -137,7 +137,7 @@ function MachineView({
 
 /**
  * Services as a ruled ledger: one row per offer with its index, title,
- * description and capabilities; the whole row links. A HUMAN / MACHINE switch
+ * description and capabilities; the whole row links. A Human / Machine switch
  * re-renders the same offers as plain text with the site's machine endpoints.
  */
 export function ServicesLedger({
@@ -191,7 +191,7 @@ export function ServicesLedger({
                 aria-controls={panelId}
                 onClick={() => setMode(m)}
               >
-                {(m === "human" ? labels.human : labels.machine).toUpperCase()}
+                {m === "human" ? labels.human : labels.machine}
               </button>
             ))}
           </div>
