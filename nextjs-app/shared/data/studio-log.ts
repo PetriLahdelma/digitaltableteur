@@ -137,6 +137,7 @@ export const STUDIO_LOG: StudioLogEntry[] = [
   { date: "2005-09", text: "Begins a BA in graphic design at the University of Cumbria" },
   { date: "2003-11", text: "Begins media studies at Turku University" },
   { date: "2003-08", text: "Studies cinematography at the Räisälä Institute of Arts" },
+  { date: "2003-01", text: "Studies fine art, printmaking and photography at the VS Fine Arts Center, Turku" },
   { date: "2003", text: "Begins working as Digitaltableteur" },
-  { date: "2003", text: "Studies fine art and printmaking at the VS Fine Arts Center, Turku" },
+  { date: "2002-08", text: "Begins teaching art as a substitute teacher at Turun normaalikoulu" },
 ];

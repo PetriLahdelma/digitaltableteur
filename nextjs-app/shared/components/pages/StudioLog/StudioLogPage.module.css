@@ -33,8 +33,31 @@
 
 /* Year index: with two decades of entries, a jump list beats scrolling. */
 
+.toolbar {
+  display: flex;
+  margin-block-end: var(--space-layout-32);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-internal-16);
+}
+
 .years {
-  margin-block-end: var(--space-layout-48);
+  min-inline-size: 0;
+  flex: 1 1 20rem;
+}
+
+/* On desktop every collapsed year row is already in view, so the jump list
+   only repeats them; phones keep it. */
+
+@media (width >= 1024px) {
+  .toolbar {
+    justify-content: flex-end;
+  }
+
+  .years {
+    display: none;
+  }
 }
 
 .yearsList {
@@ -64,38 +87,23 @@
   outline-offset: var(--space-internal-2);
 }
 
-.year {
-  display: grid;
-  margin-block-end: var(--space-layout-32);
-  padding-block-start: var(--space-layout-16);
-  gap: var(--space-layout-8);
-  border-block-start: 1px solid var(--color-border);
-}
+/* One divided accordion row per year. The year triggers read as headings:
+   title-s and tabular. They keep the Accordion's inline padding so the year,
+   chevron, hover tint and focus ring never touch the row edges. The reach-in
+   targets the package trigger button, which takes no className of its own. */
 
-/* The year sits in its own column beside the entries from tablet up, so the
-   timeline reads down one edge. The year is set at title-s so it always fits
-   the column; at the default heading size it spilled over the dates. */
-
-@media (width >= 768px) {
-  .year {
-    grid-template-columns: 6rem minmax(0, 1fr);
-    gap: var(--space-layout-24);
-  }
-}
-
-.yearTitle {
-  margin: 0;
-  line-height: 1.2;
+.log button {
+  font-size: var(--font-size-title-s);
   font-variant-numeric: tabular-nums;
 
-  /* The year index jumps to this heading; clear the fixed site header. */
+  /* The year index jumps to this trigger; clear the fixed site header. */
   scroll-margin-block-start: var(--space-layout-96);
 }
 
 .list {
   display: flex;
   margin: 0;
-  padding: 0;
+  padding: 0 var(--space-internal-16) var(--space-layout-24);
   flex-direction: column;
   gap: var(--space-layout-8);
   list-style: none;

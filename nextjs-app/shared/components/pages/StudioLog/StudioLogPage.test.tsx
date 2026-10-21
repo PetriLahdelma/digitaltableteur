@@ -1,30 +1,44 @@
 import { describe, expect, it } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 
 import { STUDIO_LOG } from "../../../data/studio-log";
 import { StudioLogPage, formatLogDate } from "./StudioLogPage";
 
+const ENTRIES = [
+  { date: "2026-10-17", text: "Ships a release", href: "/blog" },
+  { date: "2026-02", text: "Launches a tool" },
+  { date: "2009", text: "Registers the studio", href: "/work/finnish-transport-agency" },
+];
+
 describe("StudioLogPage", () => {
-  it("groups entries by year, newest first, as dated list items", () => {
-    render(
-      <StudioLogPage
-        entries={[
-          { date: "2026-10-17", text: "Ships a release", href: "/blog" },
-          { date: "2026-02", text: "Launches a tool" },
-          { date: "2009", text: "Starts a practice", href: "/work/illustrations" },
-        ]}
-      />,
-    );
+  it("groups entries into one collapsible row per year, newest open", () => {
+    render(<StudioLogPage entries={ENTRIES} />);
 
-    const years = screen.getAllByRole("heading", { level: 2 });
-    expect(years.map((h) => h.textContent)).toEqual(["2026", "2009"]);
+    const newest = screen.getByRole("button", { name: "2026" });
+    const oldest = screen.getByRole("button", { name: "2009" });
+    expect(newest).toHaveAttribute("aria-expanded", "true");
+    expect(oldest).toHaveAttribute("aria-expanded", "false");
 
-    const first = screen.getByRole("region", { name: "2026" });
-    const items = within(first).getAllByRole("listitem");
+    const items = within(screen.getByRole("region", { name: "2026" })).getAllByRole("listitem");
     expect(items).toHaveLength(2);
     expect(items[0].querySelector("time")).toHaveAttribute("dateTime", "2026-10-17");
     expect(screen.getByRole("link", { name: "Ships a release" })).toHaveAttribute("href", "/blog");
     expect(screen.queryByRole("link", { name: "Launches a tool" })).toBeNull();
+  });
+
+  it("opens a year from the year index and toggles every year at once", () => {
+    render(<StudioLogPage entries={ENTRIES} />);
+    const index = screen.getByRole("navigation", { name: "Years" });
+
+    const link = within(index).getByRole("link", { name: "2009" });
+    expect(link).toHaveAttribute("href", "#trigger-log-2009");
+    fireEvent.click(link);
+    expect(screen.getByRole("button", { name: "2009" })).toHaveAttribute("aria-expanded", "true");
+
+    fireEvent.click(screen.getByRole("button", { name: "Collapse all" }));
+    expect(screen.getByRole("button", { name: "2026" })).toHaveAttribute("aria-expanded", "false");
+    fireEvent.click(screen.getByRole("button", { name: "Expand all" }));
+    expect(screen.getByRole("button", { name: "2009" })).toHaveAttribute("aria-expanded", "true");
   });
 
   it("formats day, month and year-only dates", () => {

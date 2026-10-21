@@ -3,7 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { Text, Title } from "@digitaltableteur/react";
+import { Accordion, Button, Text, Title } from "@digitaltableteur/react";
 import DtLink from "../../Link";
 import { STUDIO_LOG, type StudioLogEntry } from "../../../data/studio-log";
 import styles from "./StudioLogPage.module.css";
@@ -33,6 +33,10 @@ function groupByYear(entries: StudioLogEntry[]) {
   return groups;
 }
 
+/** Accordion item id for a year; the trigger renders as `trigger-${id}`, which
+ *  the year index links to. */
+const yearId = (year: string) => `log-${year}`;
+
 export function StudioLogPage({
   entries = STUDIO_LOG,
 }: {
@@ -40,6 +44,20 @@ export function StudioLogPage({
 }) {
   const { t } = useTranslation();
   const groups = groupByYear(entries);
+  const allIds = groups.map((group) => yearId(group.year));
+
+  // Newest year open; the rest collapse so two decades stay navigable.
+  const [openIds, setOpenIds] = React.useState<string[]>(allIds.slice(0, 1));
+  const allOpen = openIds.length === allIds.length;
+
+  const openYear = (id: string) =>
+    setOpenIds((current) => (current.includes(id) ? current : [...current, id]));
+
+  // A shared link (/changelog#trigger-log-2014) opens its year on arrival.
+  React.useEffect(() => {
+    const match = window.location.hash.match(/^#(?:trigger-)?(log-\d{4})$/);
+    if (match) openYear(match[1]);
+  }, []);
 
   return (
     <article className={styles.page}>
@@ -48,61 +66,78 @@ export function StudioLogPage({
         <Text as="p" className={styles.intro}>
           {t(
             "studioLogIntro",
-            "Every dated event since 2003: roles, client work, launches, writing and talks. Linked lines lead to their proof: the case study, the article or the release.",
+            "Every dated event since 2002: roles, client work, launches, writing and talks. Linked lines lead to their proof: the case study, the article or the release.",
           )}
         </Text>
       </header>
 
       {groups.length > 1 ? (
-        <nav className={styles.years} aria-label={t("studioLogYears", "Years")}>
-          <ol className={styles.yearsList}>
-            {groups.map((group) => (
-              <li key={group.year}>
-                <a className={styles.yearLink} href={`#log-${group.year}`}>
-                  {group.year}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
+        <div className={styles.toolbar}>
+          <nav className={styles.years} aria-label={t("studioLogYears", "Years")}>
+            <ol className={styles.yearsList}>
+              {groups.map((group) => (
+                <li key={group.year}>
+                  <a
+                    className={styles.yearLink}
+                    href={`#trigger-${yearId(group.year)}`}
+                    onClick={() => openYear(yearId(group.year))}
+                  >
+                    {group.year}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <Button
+            variant="tertiary"
+            size="sm"
+            onClick={() => setOpenIds(allOpen ? [] : allIds)}
+          >
+            {allOpen
+              ? t("studioLogCollapseAll", "Collapse all")
+              : t("studioLogExpandAll", "Expand all")}
+          </Button>
+        </div>
       ) : null}
 
-      {groups.map((group) => (
-        <section
-          key={group.year}
-          className={styles.year}
-          aria-labelledby={`log-${group.year}`}
-        >
-          <Title level={2} size="s" id={`log-${group.year}`} className={styles.yearTitle}>
-            {group.year}
-          </Title>
-          <ol className={styles.list}>
-            {group.entries.map((entry) => (
-              <li key={`${entry.date}-${entry.text}`} className={styles.item}>
-                <time dateTime={entry.date} className={styles.date}>
-                  {formatLogDate(entry.date)}
-                </time>
-                <span className={styles.text}>
-                  <span lang="en">
-                    {entry.href ? (
-                      <DtLink underline="hover" href={entry.href}>
-                        {entry.text}
-                      </DtLink>
-                    ) : (
-                      entry.text
-                    )}
-                  </span>
-                  {entry.upcoming ? (
-                    <span className={styles.upcoming}>
-                      {t("studioLogUpcoming", "Upcoming")}
+      <Accordion
+        type="multiple"
+        variant="divided"
+        className={styles.log}
+        openIds={openIds}
+        onOpenChange={setOpenIds}
+        items={groups.map((group) => ({
+          id: yearId(group.year),
+          title: group.year,
+          content: (
+            <ol className={styles.list}>
+              {group.entries.map((entry) => (
+                <li key={`${entry.date}-${entry.text}`} className={styles.item}>
+                  <time dateTime={entry.date} className={styles.date}>
+                    {formatLogDate(entry.date)}
+                  </time>
+                  <span className={styles.text}>
+                    <span lang="en">
+                      {entry.href ? (
+                        <DtLink underline="hover" href={entry.href}>
+                          {entry.text}
+                        </DtLink>
+                      ) : (
+                        entry.text
+                      )}
                     </span>
-                  ) : null}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </section>
-      ))}
+                    {entry.upcoming ? (
+                      <span className={styles.upcoming}>
+                        {t("studioLogUpcoming", "Upcoming")}
+                      </span>
+                    ) : null}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          ),
+        }))}
+      />
     </article>
   );
 }
