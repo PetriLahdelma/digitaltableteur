@@ -1,18 +1,13 @@
 /* Ruled services ledger. Theme tokens only, so it follows all four themes. */
 
-/* Hairline rule with the HUMAN / MACHINE switch at its end */
+/* The HUMAN / MACHINE switch, at the end of the row. The ledger's own top
+   rule sits right under it, so the bar draws no line of its own. */
 
 .bar {
   display: flex;
   margin-block-end: var(--space-layout-24);
+  justify-content: flex-end;
   align-items: center;
-  gap: var(--space-layout-16);
-}
-
-.rule {
-  block-size: 1px;
-  flex: 1;
-  background: var(--color-border);
 }
 
 .switch {

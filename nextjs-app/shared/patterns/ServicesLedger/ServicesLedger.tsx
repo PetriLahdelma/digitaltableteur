@@ -181,7 +181,6 @@ export function ServicesLedger({
         )}
 
         <div className={styles.bar}>
-          <span className={styles.rule} aria-hidden="true" />
           <div className={styles.switch} role="group" aria-label={labels.view}>
             {(["human", "machine"] as const).map((m) => (
               <button

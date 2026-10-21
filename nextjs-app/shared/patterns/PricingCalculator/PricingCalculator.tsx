@@ -144,6 +144,7 @@ export function PricingCalculator({
 }: PricingCalculatorProps) {
   const { translate: t, resolvedLanguage } = useLocalization();
   const titleId = useId();
+  const introId = useId();
   const workloadGroupRef = useRef<HTMLDivElement>(null);
   const [durationId, setDurationId] = useState<DurationId>("2w");
   const [daysPerWeek, setDaysPerWeek] = useState(5);
@@ -222,6 +223,7 @@ export function PricingCalculator({
     <section
       className={cn(styles.calculator, className)}
       aria-labelledby={titleId}
+      aria-describedby={introId}
     >
       <VisuallyHidden as="div">
         <div role="status">
@@ -244,18 +246,18 @@ export function PricingCalculator({
         </div>
       </VisuallyHidden>
 
-      <Title
-        level={2}
-        size="m"
-        lineHeight="tight"
-        id={titleId}
-        className={styles.title}
-      >
-        {t(
-          "pricingCalcTitle",
-          "Adjust duration and workload to see your total investment.",
-        )}
-      </Title>
+      {/* The heading names the tool; the instruction sits under it. */}
+      <div className={styles.header}>
+        <Title level={2} size="m" lineHeight="tight" id={titleId}>
+          {t("pricingCalcHeading", "Pricing calculator")}
+        </Title>
+        <Text as="p" size="m" id={introId} className={styles.intro}>
+          {t(
+            "pricingCalcTitle",
+            "Adjust duration and workload to see your total investment.",
+          )}
+        </Text>
+      </div>
 
       <div className={styles.controls}>
         <SelectableCardGroup
