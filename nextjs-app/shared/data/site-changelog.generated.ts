@@ -13,6 +13,12 @@ export interface SiteChangelogEntry {
 export const SITE_CHANGELOG: SiteChangelogEntry[] = [
   {
     "date": "2026-10-22",
+    "sha": "cd2c6c8f3",
+    "area": "Site",
+    "text": "Process Genius in the client logos; pause and play icons on the marquee control"
+  },
+  {
+    "date": "2026-10-22",
     "sha": "440125ba1",
     "area": "Site",
     "text": "VR Group in the client logos; solid white panel edge on high-contrast black"
