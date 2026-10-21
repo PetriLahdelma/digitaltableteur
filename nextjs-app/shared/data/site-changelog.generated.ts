@@ -13,6 +13,12 @@ export interface SiteChangelogEntry {
 export const SITE_CHANGELOG: SiteChangelogEntry[] = [
   {
     "date": "2026-10-21",
+    "sha": "968811890",
+    "area": "Site",
+    "text": "Career history moves to /timeline; /changelog is the site changelog from git"
+  },
+  {
+    "date": "2026-10-21",
     "sha": "8bb31e6a2",
     "area": "Site",
     "text": "Years collapse, and the log now starts in 2002"
