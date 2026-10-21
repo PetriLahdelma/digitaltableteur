@@ -31,6 +31,39 @@
   color: var(--color-muted);
 }
 
+/* Year index: with two decades of entries, a jump list beats scrolling. */
+
+.years {
+  margin-block-end: var(--space-layout-48);
+}
+
+.yearsList {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: var(--space-internal-8) var(--space-internal-16);
+  list-style: none;
+  list-style-type: " ";
+}
+
+.yearLink {
+  font-size: var(--font-size-text-s);
+  text-decoration: none;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.yearLink:hover {
+  text-decoration: underline;
+  color: var(--color-text);
+}
+
+.yearLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: var(--space-internal-2);
+}
+
 .year {
   display: grid;
   margin-block-end: var(--space-layout-32);
@@ -54,6 +87,9 @@
   margin: 0;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
+
+  /* The year index jumps to this heading; clear the fixed site header. */
+  scroll-margin-block-start: var(--space-layout-96);
 }
 
 .list {

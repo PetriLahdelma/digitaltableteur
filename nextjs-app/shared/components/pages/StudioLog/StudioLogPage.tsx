@@ -48,10 +48,24 @@ export function StudioLogPage({
         <Text as="p" className={styles.intro}>
           {t(
             "studioLogIntro",
-            "Every dated event since day one, each linked to its proof: the case study, the article or the release.",
+            "Every dated event since 2003: roles, client work, launches, writing and talks. Linked lines lead to their proof: the case study, the article or the release.",
           )}
         </Text>
       </header>
+
+      {groups.length > 1 ? (
+        <nav className={styles.years} aria-label={t("studioLogYears", "Years")}>
+          <ol className={styles.yearsList}>
+            {groups.map((group) => (
+              <li key={group.year}>
+                <a className={styles.yearLink} href={`#log-${group.year}`}>
+                  {group.year}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      ) : null}
 
       {groups.map((group) => (
         <section
