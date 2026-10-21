@@ -452,7 +452,7 @@
   "studioLogTitle": "Changelog",
   "studioLogIntro": "Every dated event since day one, each linked to its proof: the case study, the article or the release.",
   "studioLogUpcoming": "Upcoming",
-  "footerChangelog": "Changelog",
+  "aboutChangelogLink": "See the changelog",
   "sitemapEmailSignature": "Email signature generator",
   "sitemapRssFeed": "Blog RSS feed",
   "sitemapXmlFeed": "XML sitemap (for search engines)",

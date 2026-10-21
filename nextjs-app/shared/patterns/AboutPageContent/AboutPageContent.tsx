@@ -409,6 +409,11 @@ export function AboutPageContent({
               </div>
             ))}
           </dl>
+
+          <DtLink underline="hover" href="/changelog" size="sm" className={styles.changelogLink}>
+            {t("aboutChangelogLink", "See the changelog")}
+            <span aria-hidden="true"> →</span>
+          </DtLink>
         </div>
       </section>
 

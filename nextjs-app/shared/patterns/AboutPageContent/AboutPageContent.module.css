@@ -146,6 +146,14 @@
   color: color-mix(in srgb, var(--color-text) 82%, transparent);
 }
 
+/* The only way into the changelog: a quiet line under the versions it
+   records. */
+
+.changelogLink {
+  margin-block-start: var(--space-layout-8);
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+}
+
 .packageVersionWrapper {
   display: inline-flex;
   margin: 0;

@@ -449,7 +449,7 @@
   "studioLogTitle": "Ändringslogg",
   "studioLogIntro": "Varje daterad händelse sedan första dagen, länkad till sitt belägg: fallstudien, artikeln eller releasen.",
   "studioLogUpcoming": "Kommande",
-  "footerChangelog": "Ändringslogg",
+  "aboutChangelogLink": "Se ändringsloggen",
   "sitemapEmailSignature": "Generator för e-postsignatur",
   "sitemapRssFeed": "Bloggens RSS-flöde",
   "sitemapXmlFeed": "XML-webbplatskarta (för sökmotorer)",

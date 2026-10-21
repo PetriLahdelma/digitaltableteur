@@ -147,9 +147,6 @@ export function SiteFooter({ className }: SiteFooterProps) {
               <DtLink underline="hover" href="/blog" size="sm">
                 {t("navBlog")}
               </DtLink>
-              <DtLink underline="hover" href="/changelog" size="sm">
-                {t("footerChangelog")}
-              </DtLink>
               <DtLink underline="hover" href="/contact" size="sm">
                 {t("navContact")}
               </DtLink>

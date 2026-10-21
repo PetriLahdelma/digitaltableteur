@@ -449,7 +449,7 @@
   "studioLogTitle": "Muutosloki",
   "studioLogIntro": "Jokainen päivätty tapahtuma ensimmäisestä päivästä lähtien, linkitettynä todisteeseensa: tapaustutkimukseen, artikkeliin tai julkaisuun.",
   "studioLogUpcoming": "Tulossa",
-  "footerChangelog": "Muutosloki",
+  "aboutChangelogLink": "Katso muutosloki",
   "sitemapEmailSignature": "Sähköpostin allekirjoitusgeneraattori",
   "sitemapRssFeed": "Blogin RSS-syöte",
   "sitemapXmlFeed": "XML-sivukartta (hakukoneille)",

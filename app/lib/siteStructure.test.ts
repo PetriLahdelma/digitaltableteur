@@ -19,7 +19,6 @@ const labels = {
   pricing: "Pricing",
   blog: "Blog",
   colophon: "Colophon",
-  changelog: "Changelog",
   privacyPolicy: "Privacy",
   imprint: "Imprint",
   aiUse: "AI use",
