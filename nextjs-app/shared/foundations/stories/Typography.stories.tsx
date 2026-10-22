@@ -148,6 +148,14 @@ const scale = [
     },
   },
   {
+    token: "--font-size-disclaimer",
+    sample: "Disclaimer (legal small print only)",
+    style: {
+      fontSize: "var(--font-size-disclaimer)",
+      fontFamily: "var(--font-text)",
+    },
+  },
+  {
     token: "--font-size-button-m",
     sample: "Button M",
     style: {

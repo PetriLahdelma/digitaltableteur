@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T22:49:37.391Z",
+  "generatedAt": "2026-10-22T00:25:59.730Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -44013,7 +44013,7 @@
       ],
       "composesWith": [
         "HomeHero",
-        "ServicesSection",
+        "ServicesLedger",
         "WorkMagneticField",
         "NewsBulletin",
         "DesignSprintsSection"
@@ -45776,7 +45776,7 @@
       ],
       "composesWith": [
         "HomeHero",
-        "ServicesSection",
+        "ServicesLedger",
         "WorkMagneticField",
         "CTASection",
         "NewsBulletin"
@@ -47872,7 +47872,7 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "ServicesSection",
+        "ServicesLedger",
         "WorkMagneticField",
         "CTASection",
         "NewsBulletin",
@@ -47900,8 +47900,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -47915,8 +47915,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -47937,8 +47937,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "human-a11y-review",
@@ -48340,7 +48340,7 @@
       ],
       "composesWith": [
         "HomeHero",
-        "ServicesSection",
+        "ServicesLedger",
         "WorkMagneticField",
         "CTASection",
         "DesignSprintsSection"
@@ -52069,7 +52069,13 @@
       "forbiddenUse": [
         "put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that"
       ],
-      "composesWith": [],
+      "composesWith": [
+        "HomeHero",
+        "WorkMagneticField",
+        "CTASection",
+        "NewsBulletin",
+        "DesignSprintsSection"
+      ],
       "prefersOver": [],
       "declaredPropCount": 8,
       "guidelines": [
@@ -52350,13 +52356,7 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "HomeHero",
-        "WorkMagneticField",
-        "CTASection",
-        "NewsBulletin",
-        "DesignSprintsSection"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 8,
       "guidelines": [
@@ -54670,7 +54670,7 @@
       ],
       "composesWith": [
         "HomeHero",
-        "ServicesSection",
+        "ServicesLedger",
         "CTASection",
         "NewsBulletin",
         "DesignSprintsSection"

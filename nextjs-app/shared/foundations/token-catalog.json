@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-15T06:35:23.388Z",
-  "tokenCount": 200,
-  "usageCoverage": 164,
+  "generatedAt": "2026-10-22T00:25:50.508Z",
+  "tokenCount": 201,
+  "usageCoverage": 165,
   "themes": [
     {
       "id": "light",
@@ -1990,7 +1990,7 @@
         },
         {
           "name": "--font-mono",
-          "value": "source-code-pro, menlo, monaco, consolas, \"Courier New\", monospace",
+          "value": "var(--font-code, source-code-pro), menlo, monaco, consolas, \"Courier New\", monospace",
           "usage": "Monospace font stack for code and technical UI.",
           "category": "typography",
           "subgroup": "Families & aliases"
@@ -2139,6 +2139,13 @@
           "name": "--font-size-text-xxl",
           "value": "clamp(2rem, 0.833vi + 1.8333rem, 2.5rem)",
           "usage": "Fluid type size token (text-xxl); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-disclaimer",
+          "value": "0.75rem",
+          "usage": "12px, for disclaimer copy only (price terms, legal small print). Below the 14px text-scale floor on purpose; never for body, UI or captions.",
           "category": "typography",
           "subgroup": "Type scale"
         },

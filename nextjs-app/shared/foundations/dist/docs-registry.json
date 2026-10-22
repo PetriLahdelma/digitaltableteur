@@ -6221,6 +6221,11 @@
           "type": "string",
           "description": "BCP 47 language tag for project-authored title and metadata"
         },
+        "coverGlow": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Glow the cover in its own colours on hover. Off by default; the work index opts in, other surfaces (home, related work) stay quiet. Default false."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -19762,6 +19767,11 @@
           "name": "className",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "heroBackdrop",
+          "type": "ReactNode",
+          "required": false
         }
       ],
       "props": {
@@ -19774,6 +19784,11 @@
           "optional": true,
           "type": "string",
           "description": "Custom className"
+        },
+        "heroBackdrop": {
+          "optional": true,
+          "type": "ReactNode",
+          "description": "Decorative layer behind the hero text (see AboutHero `backdrop`)."
         }
       },
       "composesWith": [],
@@ -21919,6 +21934,16 @@
           "name": "className",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "background",
+          "type": "ReactNode",
+          "required": false
+        },
+        {
+          "name": "showScrollIndicator",
+          "type": "boolean",
+          "required": false
         }
       ],
       "props": {
@@ -21931,6 +21956,16 @@
           "optional": true,
           "type": "string",
           "description": "Custom className for styling"
+        },
+        "background": {
+          "optional": true,
+          "type": "ReactNode",
+          "description": "Replaces the default animated gradient behind the content. Drags on the background pass through the content layer; only the buttons capture them."
+        },
+        "showScrollIndicator": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the \"Scroll\" cue at the bottom. Default true."
         }
       },
       "composesWith": [
@@ -22368,6 +22403,11 @@
           "name": "className",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "heroBackground",
+          "type": "ReactNode",
+          "required": false
         }
       ],
       "props": {
@@ -22375,6 +22415,11 @@
           "optional": true,
           "type": "string",
           "description": "Optional wrapper class."
+        },
+        "heroBackground": {
+          "optional": true,
+          "type": "ReactNode",
+          "description": "Decorative layer on the hero field, under the text. Drags on it pass through the text layer."
         }
       },
       "composesWith": [],
@@ -23471,6 +23516,129 @@
       "tokens": {
         "colors": [],
         "spacing": []
+      },
+      "examples": []
+    },
+    "ServicesLedger": {
+      "name": "ServicesLedger",
+      "group": "marketing",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a Human / Machine switch that shows the same offers as plain text.",
+      "dense": "Homepage services ledger: ruled rows (index, title, description, capabilities) plus a Human / Machine text view",
+      "keywords": [
+        "services",
+        "ledger",
+        "homepage",
+        "machine-readable",
+        "agent-ready"
+      ],
+      "importLine": "import { ServicesLedger } from \"@dt/ServicesLedger\";",
+      "keyProps": [
+        {
+          "name": "services",
+          "type": "ServicesLedgerItem[]",
+          "required": true
+        },
+        {
+          "name": "labels",
+          "type": "ServicesLedgerLabels",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "machineLinks",
+          "type": "ServicesLedgerLink[]",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "title": {
+          "optional": true,
+          "type": "string",
+          "description": "Section heading"
+        },
+        "description": {
+          "optional": true,
+          "type": "string",
+          "description": "Lead text under the heading"
+        },
+        "services": {
+          "optional": false,
+          "type": "ServicesLedgerItem[]",
+          "description": "Rows: index, machineKey, title, description, capabilities, href, optional donnyTarget"
+        },
+        "machineLinks": {
+          "optional": true,
+          "type": "ServicesLedgerLink[]",
+          "description": "Machine-readable endpoints listed at the top of the machine view"
+        },
+        "labels": {
+          "optional": false,
+          "type": "ServicesLedgerLabels",
+          "description": "Localised strings for the view switch and the machine view"
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Additional class name on the section"
+        },
+        "id": {
+          "optional": true,
+          "type": "string",
+          "description": "Section id, for in-page links"
+        },
+        "donnyTarget": {
+          "optional": true,
+          "type": "string",
+          "description": "Donny site action target id for this section"
+        }
+      },
+      "composesWith": [
+        "Section",
+        "Container",
+        "FadeIn",
+        "Link"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "Put portfolio images or case-study art in the ledger; the homepage work section shows the work.",
+        "Show facts in the machine view that the human view does not."
+      ],
+      "usage": {
+        "description": "Homepage services section since 2026-10-20 (replaces ServicesSection there). Labels and capability strings come from the page so all three locales apply."
+      },
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted",
+          "--color-border",
+          "--color-focus-ring",
+          "--main-body-background-color"
+        ],
+        "spacing": [
+          "--space-layout-4",
+          "--space-layout-6",
+          "--space-layout-8",
+          "--space-layout-16",
+          "--space-layout-24",
+          "--space-layout-32",
+          "--space-layout-48"
+        ]
       },
       "examples": []
     },

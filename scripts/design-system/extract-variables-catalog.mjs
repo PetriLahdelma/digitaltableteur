@@ -33,6 +33,7 @@ const USAGE_OVERRIDES = {
   "--font-text": "Body/UI font stack (Satoshi via next/font).",
   "--selection-background": "Text selection highlight background.",
   "--selection-color": "Text selection foreground.",
+  "--font-size-disclaimer": "12px, for disclaimer copy only (price terms, legal small print). Below the 14px text-scale floor on purpose; never for body, UI or captions.",
 };
 
 function inferUsage(name) {

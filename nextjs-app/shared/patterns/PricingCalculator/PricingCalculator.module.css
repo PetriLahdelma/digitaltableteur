@@ -318,7 +318,7 @@
 
 .calculator .priceHint {
   margin: 0;
-  color: var(--color-muted);
+  color: var(--color-text);
 }
 
 /* Terms sit at the foot of the card, in the space it takes beside the
@@ -327,6 +327,9 @@
 .calculator .priceTerms {
   margin-block-start: auto;
   padding-block-start: var(--space-internal-16);
+  font-size: var(--font-size-disclaimer);
+  line-height: var(--line-height-normal);
+  color: var(--color-muted);
 }
 
 .priceCard.priceCardDiscounted .priceHint {

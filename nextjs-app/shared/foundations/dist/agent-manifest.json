@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-19T19:20:04.562Z",
+  "generatedAt": "2026-10-22T00:26:00.063Z",
   "summary": {
-    "componentCount": 184,
+    "componentCount": 185,
     "statusCounts": {
       "beta": 44,
       "stable": 111,
-      "alpha": 28,
+      "alpha": 29,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 91.5,
-    "codebaseComponentCount": 201,
+    "catalogCompletenessPercent": 91.6,
+    "codebaseComponentCount": 202,
     "usageCoveragePercent": 93.5,
     "componentsWithProductionUsage": 41,
     "notReadyForStablePromotion": false
@@ -25,8 +25,8 @@
   },
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
-    "tokenCount": 200,
-    "usageCoverage": 164,
+    "tokenCount": 201,
+    "usageCoverage": 165,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 201,
-    "inCatalog": 184,
+    "totalComponentsInCodebase": 202,
+    "inCatalog": 185,
     "outOfCatalog": 17,
-    "catalogCompletenessPercent": 91.5,
+    "catalogCompletenessPercent": 91.6,
     "artifactCoverage": {
-      "stories": 168,
-      "tests": 180,
+      "stories": 169,
+      "tests": 181,
       "mdx": 4,
-      "spec": 184
+      "spec": 185
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,13 +77,13 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 184,
-    "withAnyUsage": 172,
+    "catalogedComponents": 185,
+    "withAnyUsage": 173,
     "withProductionUsage": 41,
-    "uniqueImportedComponents": 172,
-    "totalEvidenceRows": 892,
+    "uniqueImportedComponents": 173,
+    "totalEvidenceRows": 895,
     "aliasImportFiles": 458,
-    "relativeImportFiles": 469,
+    "relativeImportFiles": 472,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 184,
+      "digitaltableteur": 185,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 44,
         "stable": 111,
-        "alpha": 28,
+        "alpha": 29,
         "deprecated": 1
       },
       "dsharp": {
@@ -13350,7 +13350,7 @@
           "description": "Homepage social-proof marquee of client logos; visitors can pause it and reduced-motion users receive a static grid. The visual logos are decorative because one semantic list names every client."
         }
       },
-      "spec": "# ClientLogoMarquee\n\n## Intent\n\nDocuments how **ClientLogoMarquee** is used in production layouts and Storybook examples.\n\n## Interaction contract\n\n- Keyboard: The pause/resume button is reachable and activates with Enter or Space.\n- Pointer: Pause/resume is available without relying on hover.\n- Screen readers: One hidden list names each client once; visual logo images are decorative.\n- Reduced motion: Render a static logo grid and omit the animation control.\n\n## Do / don't\n\n- Do: Match the **Example** story composition on ClientLogoMarquee pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
+      "spec": "# ClientLogoMarquee\n\n## Intent\n\nDocuments how **ClientLogoMarquee** is used in production layouts and Storybook examples.\n\n## Interaction contract\n\n- Keyboard: The pause/resume button is reachable and activates with Enter or Space.\n- Pointer: Pause/resume is available without relying on hover.\n- Screen readers: One hidden list names each client once; visual logo images are decorative.\n- Reduced motion: Render a static, centred, wrapping logo row and omit the animation control.\n\n## Do / don't\n\n- Do: Match the **Example** story composition on ClientLogoMarquee pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Optical sizing: logos are listed in `clientLogos.json`. `npm run build:logo-sizes` measures each SVG (ink box, aspect, ink density, centre of mass, Logo Soup method) and writes `ClientLogoMarquee.sizes.module.css`; `optical` in the JSON corrects a mark the formula misjudges. `ClientLogoMarquee.sizes.test.ts` fails while the generated file is stale.\n- Adding a logo: single-colour black SVG in `public/logos/clients/`, an entry in `clientLogos.json`, then `npm run build:logo-sizes`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ClientLogoMarquee",
@@ -17129,9 +17129,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Container",
-        "importCount": 29,
+        "importCount": 30,
         "productionImportCount": 2,
-        "patternImportCount": 23,
+        "patternImportCount": 24,
         "componentImportCount": 3,
         "evidence": [
           {
@@ -17784,8 +17784,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -17799,8 +17799,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -17821,8 +17821,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -21478,6 +21478,11 @@
             "type": "string",
             "description": "BCP 47 language tag for project-authored title and metadata"
           },
+          "coverGlow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Glow the cover in its own colours on hover. Off by default; the work index opts in, other surfaces (home, related work) stay quiet. Default false."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -21626,6 +21631,11 @@
             "type": "string",
             "description": "BCP 47 language tag for project-authored title and metadata"
           },
+          "coverGlow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Glow the cover in its own colours on hover. Off by default; the work\nindex opts in, other surfaces (home, related work) stay quiet."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -21668,7 +21678,7 @@
           "Section"
         ],
         "prefersOver": [],
-        "declaredPropCount": 15,
+        "declaredPropCount": 16,
         "guidelines": [
           {
             "level": "should",
@@ -31344,7 +31354,7 @@
             "context": "production"
           },
           {
-            "path": "nextjs-app/shared/components/pages/StudioLog/StudioLogPage.tsx",
+            "path": "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
             "importKind": "relative",
             "importPath": "../../Link",
             "context": "production"
@@ -48118,9 +48128,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Section",
-        "importCount": 20,
+        "importCount": 21,
         "productionImportCount": 0,
-        "patternImportCount": 20,
+        "patternImportCount": 21,
         "componentImportCount": 0,
         "evidence": [
           {
@@ -50632,11 +50642,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
@@ -57821,6 +57826,36 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -70684,7 +70719,9 @@
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
-        "slots": [],
+        "slots": [
+          "backdrop"
+        ],
         "asChild": false,
         "subParts": [],
         "requiredStories": [
@@ -70804,6 +70841,11 @@
             "type": "boolean",
             "description": "Show scroll indicator at bottom"
           },
+          "backdrop": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer drawn over the background and under the text. Drags on\nit pass through the text layer."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -70836,7 +70878,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 6,
+        "declaredPropCount": 7,
         "guidelines": [
           {
             "level": "should",
@@ -71083,7 +71125,9 @@
             "since": "2026-06-04"
           }
         ],
-        "slots": [],
+        "slots": [
+          "heroBackdrop"
+        ],
         "schemaVersion": 2,
         "props": {
           "showCTA": {
@@ -71095,6 +71139,11 @@
             "optional": true,
             "type": "string",
             "description": "Custom className"
+          },
+          "heroBackdrop": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer behind the hero text (see AboutHero `backdrop`)."
           }
         },
         "forbiddenUse": [
@@ -71137,6 +71186,11 @@
             "optional": true,
             "type": "string",
             "description": "Custom className"
+          },
+          "heroBackdrop": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer behind the hero text (see AboutHero `backdrop`)."
           }
         },
         "propRelationships": [],
@@ -71165,7 +71219,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 2,
+        "declaredPropCount": 3,
         "guidelines": [
           {
             "level": "should",
@@ -73505,7 +73559,7 @@
         ],
         "composesWith": [
           "HomeHero",
-          "ServicesSection",
+          "ServicesLedger",
           "WorkMagneticField",
           "NewsBulletin",
           "DesignSprintsSection"
@@ -76078,7 +76132,7 @@
         ],
         "composesWith": [
           "HomeHero",
-          "ServicesSection",
+          "ServicesLedger",
           "WorkMagneticField",
           "CTASection",
           "NewsBulletin"
@@ -79450,7 +79504,9 @@
             "since": "2026-06-04"
           }
         ],
-        "slots": [],
+        "slots": [
+          "background"
+        ],
         "schemaVersion": 2,
         "props": {
           "scrollTargetId": {
@@ -79462,6 +79518,16 @@
             "optional": true,
             "type": "string",
             "description": "Custom className for styling"
+          },
+          "background": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Replaces the default animated gradient behind the content. Drags on the background pass through the content layer; only the buttons capture them."
+          },
+          "showScrollIndicator": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the \"Scroll\" cue at the bottom. Default true."
           }
         },
         "forbiddenUse": [
@@ -79512,6 +79578,16 @@
             "optional": true,
             "type": "string",
             "description": "Custom className for styling"
+          },
+          "background": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Replaces the default animated gradient behind the content. Drags on the\nbackground pass through the content layer; only the buttons capture them."
+          },
+          "showScrollIndicator": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the \"Scroll\" cue at the bottom."
           }
         },
         "propRelationships": [],
@@ -79539,14 +79615,14 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "ServicesSection",
+          "ServicesLedger",
           "WorkMagneticField",
           "CTASection",
           "NewsBulletin",
           "DesignSprintsSection"
         ],
         "prefersOver": [],
-        "declaredPropCount": 2,
+        "declaredPropCount": 4,
         "guidelines": [
           {
             "level": "should",
@@ -80234,7 +80310,7 @@
         ],
         "composesWith": [
           "HomeHero",
-          "ServicesSection",
+          "ServicesLedger",
           "WorkMagneticField",
           "CTASection",
           "DesignSprintsSection"
@@ -81227,7 +81303,7 @@
           }
         ]
       },
-      "spec": "# PricingCalculator\n\n## Intent\nInteractive duration × workload pricing calculator for the pricing page: two\nselectable option groups drive a live summary of total hours, allocation,\neffective hourly rate, and total investment, closing with a booking CTA.\n\n## Pricing model\n- Standard rate 120 €/h, 7.5 hours/day (owner-approved 2026-07-18).\n- Weeks per duration: 2 weeks = 2; months × 52/12 otherwise.\n- Only the 6/12-month partnership tiers discount, at a flat 90 €/h (−25%),\n  and only at a partnership workload of 4+ days/week; every other combination\n  is standard rate. The partnership tiers carry the Partnership badge\n  (straddling the card's top edge, pointer-events none so it never blocks\n  selections).\n- Total investment = round(weeks × days × 7.5) × effective rate; partnership\n  selections show \"Partnership pricing: 1 day per week is free.\" under the total\n  (the −25% rate exactly cancels the 3→4 day step, so a savings-amount claim\n  would not survive comparison against the 3-day configuration).\n- Short engagements (2 weeks / 1 month) only offer 4–5 days/week; switching to\n  them clamps a lighter selection up to 4 days.\n- Defaults: 2 weeks × 5 days/week (≈ €9,000 — first figure stays credible\n  against the page's \"from €7k\" floor).\n- Model lives in `pricingMath.ts`; the component only renders its output.\n\n## Interaction contract\n- Keyboard: Tab into each group; Arrow keys/Space change the native radio\n  selection (SelectableCardGroup); Enter activates the CTA link\n- Pointer: whole option cards are labels for their radios\n- Screen readers: fieldset/legend names each group; a visually hidden\n  `role=\"status\"` region announces the recomputed hours/rate/total (and\n  savings) politely on every selection change, including the workload clamp\n- Focus: if the focused workload radio unmounts with the short-duration clamp,\n  focus is restored to the newly checked workload radio\n- The partnership pricing rule is stated in visible copy under the price card;\n  the CTA carries the configured duration/days as query params\n\n## Do / don't\n- Do: keep all price maths in `pricingMath.ts`\n- Do: format totals via `Intl.NumberFormat` on the active language\n- Don't: use for fixed-scope package pricing (packages section owns that)\n- Don't: duplicate the pricing model in other components\n\n## Design notes\n- Tokens: `--color-surface`, `--color-border-light`, `--color-muted`,\n  `--color-primary`, layout/internal space tokens, text/title size tokens\n- Figma: none yet (code-first pattern, 2026-07-18)\n",
+      "spec": "# PricingCalculator\n\n## Intent\nInteractive duration × workload pricing calculator for the pricing page: two\nselectable option groups drive a live summary of total hours, allocation,\neffective hourly rate, and total investment, closing with a booking CTA.\n\n## Pricing model\n- Standard rate 120 €/h, 7.5 hours/day (owner-approved 2026-07-18).\n- Weeks per duration: 2 weeks = 2; months × 52/12 otherwise.\n- Only the 6/12-month partnership tiers discount, at a flat 90 €/h (−25%),\n  and only at a partnership workload of 75%+ of a week (4+ days, or 75% /\n  100% allocation; owner-approved 2026-10-22); every other combination is\n  standard rate. The partnership tiers carry the Partnership badge\n  (straddling the card's top edge, pointer-events none so it never blocks\n  selections).\n- Total investment = round(weeks × days × 7.5) × effective rate; partnership\n  selections show \"Partnership pricing: 1 day per week is free.\" under the total\n  (the −25% rate exactly cancels the 3→4 day step, so a savings-amount claim\n  would not survive comparison against the 3-day configuration).\n- Workload has two views over one value (days per week). Days: 2, 3, 4, 5.\n  Percentages (\"Show as percentages\" switch on the workload legend line, above\n  it on narrow columns): 25, 50, 75, 100% of a 5-day week, so 1.25–5 days.\n  Switching views moves the selection to the nearest option (ties go up). In\n  the percentage view the partnership note reads \"25% off the standard rate\",\n  since at 75% the discount is less than a whole day.\n- Short engagements (2 weeks / 1 month) only offer the partnership-level\n  workloads (4–5 days, 75–100%); switching to them clamps a lighter selection\n  up to the lightest of those.\n- Defaults: 2 weeks × 5 days/week (≈ €9,000 — first figure stays credible\n  against the page's \"from €7k\" floor).\n- Model lives in `pricingMath.ts`; the component only renders its output.\n\n## Interaction contract\n- Keyboard: Tab into each group; Arrow keys/Space change the native radio\n  selection (SelectableCardGroup); Enter activates the CTA link\n- Pointer: whole option cards are labels for their radios\n- Screen readers: fieldset/legend names each group; a visually hidden\n  `role=\"status\"` region announces the recomputed hours/rate/total (and\n  savings) politely on every selection change, including the workload clamp\n- Focus: if the focused workload radio unmounts with the short-duration clamp,\n  focus is restored to the newly checked workload radio\n- The partnership pricing rule is stated in visible copy under the price card;\n  the CTA carries the configured duration/days as query params, and a\n  percentage-only workload in the URL (days=3.75) opens the percentage view\n\n## Do / don't\n- Do: keep all price maths in `pricingMath.ts`\n- Do: format totals via `Intl.NumberFormat` on the active language\n- Don't: use for fixed-scope package pricing (packages section owns that)\n- Don't: duplicate the pricing model in other components\n\n## Design notes\n- Tokens: `--color-surface`, `--color-border-light`, `--color-muted`,\n  `--color-primary`, layout/internal space tokens, text/title size tokens\n- Figma: none yet (code-first pattern, 2026-07-18)\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PricingCalculator",
@@ -81557,7 +81633,9 @@
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
-        "slots": [],
+        "slots": [
+          "heroBackground"
+        ],
         "asChild": false,
         "subParts": [],
         "requiredStories": [
@@ -81624,6 +81702,11 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+          },
+          "heroBackground": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer on the hero field, under the text. Drags on it pass through the text layer."
           }
         },
         "forbiddenUse": [
@@ -81656,6 +81739,11 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+          },
+          "heroBackground": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer on the hero field, under the text. Drags on it pass\nthrough the text layer."
           }
         },
         "propRelationships": [],
@@ -81694,7 +81782,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 1,
+        "declaredPropCount": 2,
         "guidelines": [
           {
             "level": "should",
@@ -86026,6 +86114,424 @@
       }
     },
     {
+      "name": "ServicesLedger",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "tier": "pattern",
+        "group": "marketing",
+        "status": "alpha",
+        "radixPrimitive": null,
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default"
+        ],
+        "lightDarkVerified": false,
+        "name": "ServicesLedger",
+        "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a Human / Machine switch that shows the same offers as plain text.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-246",
+        "element": "section",
+        "a11y": {
+          "keyboard": [
+            "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
+          ],
+          "ariaRequirements": [
+            "The section is labelled by its heading.",
+            "The view buttons expose their state with aria-pressed and point at the panel with aria-controls.",
+            "Row index numbers are decorative (aria-hidden)."
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-border",
+            "--color-focus-ring",
+            "--main-body-background-color"
+          ],
+          "spacing": [
+            "--space-layout-4",
+            "--space-layout-6",
+            "--space-layout-8",
+            "--space-layout-16",
+            "--space-layout-24",
+            "--space-layout-32",
+            "--space-layout-48"
+          ]
+        },
+        "props": {
+          "title": {
+            "optional": true,
+            "type": "string",
+            "description": "Section heading"
+          },
+          "description": {
+            "optional": true,
+            "type": "string",
+            "description": "Lead text under the heading"
+          },
+          "services": {
+            "optional": false,
+            "type": "ServicesLedgerItem[]",
+            "description": "Rows: index, machineKey, title, description, capabilities, href, optional donnyTarget"
+          },
+          "machineLinks": {
+            "optional": true,
+            "type": "ServicesLedgerLink[]",
+            "description": "Machine-readable endpoints listed at the top of the machine view"
+          },
+          "labels": {
+            "optional": false,
+            "type": "ServicesLedgerLabels",
+            "description": "Localised strings for the view switch and the machine view"
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional class name on the section"
+          },
+          "id": {
+            "optional": true,
+            "type": "string",
+            "description": "Section id, for in-page links"
+          },
+          "donnyTarget": {
+            "optional": true,
+            "type": "string",
+            "description": "Donny site action target id for this section"
+          }
+        },
+        "composesWith": [
+          "Section",
+          "Container",
+          "FadeIn",
+          "Link"
+        ],
+        "forbiddenUse": [
+          "Put portfolio images or case-study art in the ledger; the homepage work section shows the work.",
+          "Show facts in the machine view that the human view does not."
+        ],
+        "keywords": [
+          "services",
+          "ledger",
+          "homepage",
+          "machine-readable",
+          "agent-ready"
+        ],
+        "dense": "Homepage services ledger: ruled rows (index, title, description, capabilities) plus a Human / Machine text view",
+        "usage": {
+          "description": "Homepage services section since 2026-10-20 (replaces ServicesSection there). Labels and capability strings come from the page so all three locales apply."
+        }
+      },
+      "spec": "# ServicesLedger\n\n## Intent\nSay what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A Human / Machine switch re-renders the same offers as plain text with the site's machine endpoints, so the agent-ready positioning is shown rather than claimed.\n\n## Interaction contract\n- Keyboard: Tab reaches each row link, then the two view buttons; Enter or Space switches the view\n- Screen readers: section labelled by its heading; the view buttons report their state with aria-pressed and control the panel; index numbers are decorative\n\n## Do / don't\n- Do: keep capability labels short nouns; keep the machine view to the same facts as the human view\n- Don't: put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that\n\n## Design notes\n- Benchmarked against Koto, Evil Martians and basement.studio (HUMAN / MACHINE); chosen as option A on 2026-10-20\n- Replaces ServicesSection on the homepage; ServicesSection stays for other uses\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/ServicesLedger",
+        "importCount": 2,
+        "productionImportCount": 1,
+        "patternImportCount": 1,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../patterns/ServicesLedger",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "importKind": "relative",
+            "importPath": "./ServicesLedger",
+            "context": "pattern"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/ServicesLedger",
+        "intent": "Say what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A Human / Machine switch re-renders the same offer…",
+        "props": {
+          "title": {
+            "optional": true,
+            "type": "string"
+          },
+          "description": {
+            "optional": true,
+            "type": "string"
+          },
+          "services": {
+            "optional": false,
+            "type": "ServicesLedgerItem[]"
+          },
+          "machineLinks": {
+            "optional": true,
+            "type": "ServicesLedgerLink[]",
+            "description": "Machine-readable endpoints listed at the top of the machine view"
+          },
+          "labels": {
+            "optional": false,
+            "type": "ServicesLedgerLabels"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          },
+          "id": {
+            "optional": true,
+            "type": "string"
+          },
+          "donnyTarget": {
+            "optional": true,
+            "type": "string",
+            "description": "Donny site action target id for this section"
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "keep capability labels short nouns; keep the machine view to the same facts as the human view"
+        ],
+        "avoidWhen": [
+          "put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that"
+        ],
+        "requiredA11y": [
+          "The section is labelled by its heading.",
+          "The view buttons expose their state with aria-pressed and point at the panel with aria-controls.",
+          "Row index numbers are decorative (aria-hidden)."
+        ],
+        "keyboard": [
+          "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that"
+        ],
+        "composesWith": [
+          "HomeHero",
+          "WorkMagneticField",
+          "CTASection",
+          "NewsBulletin",
+          "DesignSprintsSection"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 8,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "keep capability labels short nouns; keep the machine view to the same facts as the human view",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual"
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ServicesLedger.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ServicesLedger.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ServicesLedger.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ServicesLedger.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "ServicesSection",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -86073,11 +86579,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
@@ -86155,17 +86656,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ServicesSection",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../patterns/ServicesSection",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/index.ts",
             "importKind": "relative",
@@ -86249,13 +86744,7 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "HomeHero",
-          "WorkMagneticField",
-          "CTASection",
-          "NewsBulletin",
-          "DesignSprintsSection"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 8,
         "guidelines": [
@@ -89835,7 +90324,7 @@
         ],
         "composesWith": [
           "HomeHero",
-          "ServicesSection",
+          "ServicesLedger",
           "CTASection",
           "NewsBulletin",
           "DesignSprintsSection"

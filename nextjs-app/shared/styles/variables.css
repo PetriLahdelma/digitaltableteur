@@ -50,6 +50,11 @@
   --font-size-text-l: clamp(1.25rem, 0.417vi + 1.1667rem, 1.5rem);
   --font-size-text-xl: clamp(1.5rem, 0.833vi + 1.3333rem, 2rem);
   --font-size-text-xxl: clamp(2rem, 0.833vi + 1.8333rem, 2.5rem);
+
+  /* Disclaimer copy only (price terms, legal small print): 12px, below the
+     14px floor of the text scale on purpose. Not a general small size; body,
+     UI and captions stay on the scale above. */
+  --font-size-disclaimer: 0.75rem;
   --font-size-title: clamp(2.25rem, 3.5vi + 1.5rem, 3.75rem);
 
   /* Title ladder. xxs/xs added below s, xxl above xl (2026-06-20). Fixes

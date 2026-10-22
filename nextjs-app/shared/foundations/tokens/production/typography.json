@@ -144,7 +144,7 @@
   "font": {
     "mono": {
       "$value": [
-        "source-code-pro",
+        "var(--font-code, source-code-pro)",
         "menlo",
         "monaco",
         "consolas",
@@ -158,7 +158,7 @@
           "cssVar": "--font-mono",
           "category": "typography",
           "subgroup": "Families & aliases",
-          "css": "source-code-pro, menlo, monaco, consolas, \"Courier New\", monospace"
+          "css": "var(--font-code, source-code-pro), menlo, monaco, consolas, \"Courier New\", monospace"
         }
       }
     },
@@ -178,6 +178,22 @@
               "subgroup": "Type scale",
               "css": "0.875rem"
             }
+          }
+        }
+      },
+      "disclaimer": {
+        "$value": {
+          "value": 0.75,
+          "unit": "rem"
+        },
+        "$type": "dimension",
+        "$description": "12px, for disclaimer copy only (price terms, legal small print). Below the 14px text-scale floor on purpose; never for body, UI or captions.",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--font-size-disclaimer",
+            "category": "typography",
+            "subgroup": "Type scale",
+            "css": "0.75rem"
           }
         }
       }
