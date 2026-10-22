@@ -273,7 +273,7 @@ export function ContactPageContentEditorial({
                       className={styles.newBusinessCta}
                       onClick={handleScrollToContactForm}
                     >
-                      <span className={styles.email}>
+                      <span className={cn(styles.email, styles.bookLabel, "wavyUnderline")}>
                         {t("contactNewBusinessBookLink", "Book a call")}
                       </span>
                       <span className={styles.newBusinessLinkIcon} aria-hidden>

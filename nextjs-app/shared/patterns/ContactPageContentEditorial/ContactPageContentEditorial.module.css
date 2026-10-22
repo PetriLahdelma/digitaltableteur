@@ -253,11 +253,23 @@
   transition: gap var(--duration-fast) var(--ease-out-cubic);
 }
 
+/* Same reveal as the email link: the global .wavyUnderline wave sits under
+   the label only (not the arrow) and shows on hover and keyboard focus.
+   .newBusinessCta .bookLabel outranks the global .wavyUnderline::after. */
+
+.newBusinessCta .bookLabel::after {
+  transition: opacity var(--duration-fast) var(--ease-out-cubic);
+  opacity: 0;
+}
+
 .newBusinessCta:hover .email,
 .newBusinessCta:focus-visible .email {
-  text-decoration: underline;
   color: var(--color-primary);
-  text-underline-offset: 3px;
+}
+
+.newBusinessCta:hover .bookLabel::after,
+.newBusinessCta:focus-visible .bookLabel::after {
+  opacity: 0.9;
 }
 
 .newBusinessCta:hover .newBusinessLinkIcon {
@@ -284,7 +296,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .newBusinessCta {
+  .newBusinessCta,
+  .newBusinessCta .bookLabel::after {
     transition: none;
   }
 
