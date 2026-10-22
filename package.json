@@ -262,7 +262,7 @@
     "@sanity/code-input": "^7.3.12",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^6.18.0",
-    "@sentry/nextjs": "^10.75.0",
+    "@sentry/nextjs": "^10.75.2",
     "@storybook/addon-vitest": "^10.6.1",
     "@swc/helpers": "^0.5.23",
     "@vercel/analytics": "^2.0.1",
