@@ -1,6 +1,6 @@
 import withMDX from "@next/mdx";
 import bundleAnalyzer from "@next/bundle-analyzer";
-import { withSentryConfig } from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs/config";
 import type { NextConfig } from "next";
 import path from "path";
 import webpack from "webpack";
@@ -431,7 +431,7 @@ export default withSentryConfig(withBundleAnalyzer(withMdx(nextConfig)), {
   // Route browser events through a same-origin path (server forwards to Sentry
   // ingest) so the strict CSP connect-src and ad blockers don't drop them.
   tunnelRoute: "/monitoring",
-  // Tree-shake Sentry debug logging out of the client bundle (v10 API).
+  // Tree-shake Sentry debug logging out of the client bundle.
   bundleSizeOptimizations: { excludeDebugStatements: true },
   telemetry: false,
 });

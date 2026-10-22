@@ -1,4 +1,5 @@
 import * as Sentry from "@sentry/nextjs";
+import { dataCollection } from "./sentry.data-collection";
 
 const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
 
@@ -28,8 +29,8 @@ if (dsn && process.env.NODE_ENV === "production") {
         block: ["iframe"],
       }),
     ],
-    // Do not attach PII (IP, cookies) to events.
-    sendDefaultPii: false,
+    // No PII (IP, cookies, headers, bodies); see sentry.data-collection.ts.
+    dataCollection,
     // Third-party noise that is not ours to fix. Browser extensions inject
     // scripts (e.g. `executors/200.js` reading `M_ID`) and Microsoft
     // Outlook/Edge SafeLinks previews reject with "Object Not Found Matching
