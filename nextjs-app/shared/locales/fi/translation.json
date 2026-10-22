@@ -1501,6 +1501,7 @@
   "pricingCalcPartnershipFreeDay": "Kumppanuushinnoittelu: yksi päivä viikossa on ilmainen.",
   "pricingCalcLiveSummary": "{{hours}} tuntia, {{days}} päivää viikossa, {{rate}}, yhteensä {{total}} €",
   "pricingCalcPartnershipHint": "Kumppanuushinta 90 €/tunti koskee 6 ja 12 kuukauden toimeksiantoja, joissa työmäärä on vähintään 4 päivää viikossa (75 %).",
+  "pricingCalcTerms": "Hinnat ilman Suomen arvonlisäveroa. Laskelma on arvio eikä sitova tarjous: laajuus, aikataulu ja hinta vahvistetaan kirjallisessa tarjouksessa.",
   "pricingCalcAllocationValue": "{{percent}} %",
   "reliablePartnerAlt": "Luotettava Kumppani, Vastuu Groupin todentama",
   "reliablePartnerTitle": "Avaa Luotettava Kumppani -raportti (PDF, avautuu uuteen välilehteen)",

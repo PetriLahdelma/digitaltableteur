@@ -1501,6 +1501,7 @@
   "pricingCalcPartnershipFreeDay": "Partnership pricing: 1 day per week is free.",
   "pricingCalcLiveSummary": "{{hours}} hours at {{days}} days/week, {{rate}}, total {{total}} €",
   "pricingCalcPartnershipHint": "Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.",
+  "pricingCalcTerms": "Prices exclude Finnish VAT. This is an estimate, not an offer: scope, schedule and price are confirmed in a written proposal.",
   "pricingCalcAllocationValue": "{{percent}}%",
   "reliablePartnerAlt": "Reliable Partner, verified by Vastuu Group",
   "reliablePartnerTitle": "Open the Reliable Partner report (PDF, opens in a new tab)",

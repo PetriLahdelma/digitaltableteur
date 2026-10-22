@@ -1501,6 +1501,7 @@
   "pricingCalcPartnershipFreeDay": "Partnerskapspris: en dag i veckan är gratis.",
   "pricingCalcLiveSummary": "{{hours}} timmar, {{days}} dagar i veckan, {{rate}}, totalt {{total}} €",
   "pricingCalcPartnershipHint": "Partnerskapspriset 90 €/timme gäller uppdrag på 6 och 12 månader med en arbetsmängd på minst 4 dagar per vecka (75 %).",
+  "pricingCalcTerms": "Priserna exkluderar finsk moms. Detta är en uppskattning, inte en offert: omfattning, tidsplan och pris bekräftas i ett skriftligt förslag.",
   "pricingCalcAllocationValue": "{{percent}} %",
   "reliablePartnerAlt": "Pålitlig Partner, verifierad av Vastuu Group",
   "reliablePartnerTitle": "Öppna Pålitlig Partner-rapporten (PDF, öppnas i en ny flik)",

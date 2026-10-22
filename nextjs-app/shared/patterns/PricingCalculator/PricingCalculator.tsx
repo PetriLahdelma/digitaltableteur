@@ -450,6 +450,12 @@ export function PricingCalculator({
               "Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.",
             )}
           </Text>
+          <Text as="p" size="xs" className={cn(styles.priceHint, styles.priceTerms)}>
+            {t(
+              "pricingCalcTerms",
+              "Prices exclude Finnish VAT. This is an estimate, not an offer: scope, schedule and price are confirmed in a written proposal.",
+            )}
+          </Text>
         </Card>
 
         <Card variant="muted" padding="lg" className={styles.totalCard}>
