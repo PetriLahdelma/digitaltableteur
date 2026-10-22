@@ -6,7 +6,7 @@ import { useTranslate } from "../../lib/translation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useHydrationSafeMotion } from "../../hooks/useHydrationSafeMotion";
 import { cn } from "../../lib/cn";
-import { Icon, Text, Title } from "@digitaltableteur/react";
+import { Icon, Link, Text, Title } from "@digitaltableteur/react";
 import {
   ContactInquiryPanel,
   type ContactInquiryMode,
@@ -149,12 +149,14 @@ export function ContactPageContentEditorial({
                 </span>
               </address>
 
-              <a
+              <Link
                 href="mailto:mail@digitaltableteur.com"
-                className={styles.email}
+                size="inherit"
+                underline="hover"
+                className={styles.mailLink}
               >
                 mail@digitaltableteur.com
-              </a>
+              </Link>
             </motion.div>
           </div>
 

@@ -143,10 +143,20 @@
   transition: color var(--duration-fast) var(--ease-out-cubic);
 }
 
-.email:hover {
-  text-decoration: underline;
+/* The address is a DS Link (underline="hover"): the wavy underline appears
+   on hover and keyboard focus. */
+
+.mailLink {
+  /* The column stretches its children; the wave must end with the text. */
+  inline-size: fit-content;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
+}
+
+.mailLink:hover {
   color: var(--color-primary);
-  text-underline-offset: 3px;
 }
 
 .newBusiness {
