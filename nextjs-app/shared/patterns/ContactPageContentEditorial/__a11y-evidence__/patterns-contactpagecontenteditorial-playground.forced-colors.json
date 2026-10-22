@@ -1,8 +1,8 @@
 {
   "storyId": "patterns-contactpagecontenteditorial-playground",
   "mode": "forced-colors",
-  "sourceSHA": "06aad8faa8115e2b2db19b65b238e4e83b7c9071",
-  "capturedAt": "2026-10-22T00:51:21.370Z",
+  "sourceSHA": "5728ccdad6490d997419d036301fcec134d5b5ca",
+  "capturedAt": "2026-10-22T00:59:22.978Z",
   "runner": "local-2026-10-22",
   "checks": {
     "accessibility-tree": {
