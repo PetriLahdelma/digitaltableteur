@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import styles from "./Gallery.module.css";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export interface GalleryImage {
   src: string;
