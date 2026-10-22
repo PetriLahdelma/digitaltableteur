@@ -13,6 +13,12 @@ export interface SiteChangelogEntry {
 export const SITE_CHANGELOG: SiteChangelogEntry[] = [
   {
     "date": "2026-10-22",
+    "sha": "5cdcb65c1",
+    "area": "Design system",
+    "text": "--font-size-disclaimer (12px) for legal small print; pricing terms use it, partnership hint at full text colour"
+  },
+  {
+    "date": "2026-10-22",
     "sha": "7d6d2ee3c",
     "area": "Site",
     "text": "VAT and estimate terms at the foot of the price card"
