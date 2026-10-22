@@ -54,6 +54,11 @@ updates:
       # subpackage (react-icons/si) used on Work pages. Do not bump without
       # re-verifying those imports (see CLAUDE.md gotchas).
       - dependency-name: "react-icons"
+      # mermaid 12 re-lays out and resizes the case-study diagrams (declined
+      # 2026-10-14, again 2026-10-22). Revisit with a per-diagram SVG parity
+      # check on /work before allowing the major.
+      - dependency-name: "mermaid"
+        update-types: ["version-update:semver-major"]
 
   # Sanity CMS studio (still used via npm run sanity:dev)
   - package-ecosystem: "npm"
