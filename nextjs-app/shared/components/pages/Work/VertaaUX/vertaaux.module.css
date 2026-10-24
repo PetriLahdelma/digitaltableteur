@@ -526,7 +526,9 @@
    * hit their maximum, and nowrap lines were cut mid-word ("The quick browr").
    * The column is a size container, and each size is also capped in cqi at the
    * width its longest nowrap line needs, so wide layouts keep their sizes and
-   * narrow columns shrink instead of clipping.
+   * narrow columns shrink instead of clipping. The sentence-length Md and
+   * specimen lines are .waterfallWrap instead: a cqi cap would take them to
+   * about 9px, so they keep their size and wrap at word boundaries.
    */
   display: flex;
   min-inline-size: 0;

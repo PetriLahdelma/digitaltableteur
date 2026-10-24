@@ -1,13 +1,61 @@
+/* The bar is its own size container so the labels collapse by the space the
+   bar actually gets, not by viewport. Full labels need about 380px in FI and
+   SV (Edellinen/Seuraava, Föregående), so below 25rem the back button drops
+   to its icon, and below 20rem (320px phones) all three do. The text stays in
+   the accessibility tree either way: it is clipped, not removed. */
+
 .workNavBar {
   display: flex;
   position: relative;
   z-index: 40;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-internal-8);
+  container-type: inline-size;
 }
 
 .rightNavGroup {
   display: flex;
-  gap: 1rem;
+  margin-inline-start: auto;
+  gap: var(--space-internal-16);
+}
+
+@container (width < 25rem) {
+  .rightNavGroup {
+    gap: var(--space-internal-8);
+  }
+
+  /* Icon-only, so the label-width side padding goes. The element selector
+     outranks Button's own .button.md padding regardless of CSS chunk order. */
+
+  .workNavBar button.backButton {
+    padding-inline: var(--space-internal-12);
+  }
+
+  .backButton [data-button-slot="text"] {
+    position: absolute;
+    margin: -1px;
+    padding: 0;
+    block-size: 1px;
+    inline-size: 1px;
+    border: 0;
+    white-space: nowrap;
+    clip-path: inset(50%);
+    overflow: hidden;
+  }
+}
+
+@container (width < 20rem) {
+  .rightNavGroup [data-button-slot="text"] {
+    position: absolute;
+    margin: -1px;
+    padding: 0;
+    block-size: 1px;
+    inline-size: 1px;
+    border: 0;
+    white-space: nowrap;
+    clip-path: inset(50%);
+    overflow: hidden;
+  }
 }

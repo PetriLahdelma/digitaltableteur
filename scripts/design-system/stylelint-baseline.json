@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1850,
+  "warningCount": 1848,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -9463,7 +9463,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 620,
+      "line": 622,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -9553,7 +9553,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 552,
+      "line": 554,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -9580,7 +9580,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 544,
+      "line": 546,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9589,7 +9589,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 552,
+      "line": 554,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9886,7 +9886,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 655,
+      "line": 657,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9895,7 +9895,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 656,
+      "line": 658,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9904,7 +9904,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 684,
+      "line": 686,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -9913,7 +9913,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 704,
+      "line": 706,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -12322,24 +12322,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/WorkNav/worknav.module.css",
-      "line": 7,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/WorkNav/worknav.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/WorkNav/worknav.module.css",
-      "line": 12,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/WorkNav/worknav.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::2"
     },
     {
       "file": "nextjs-app/shared/foundations/doc/FoundationDoc.module.css",

@@ -586,6 +586,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             {
               sizeClass: styles.waterfallSizeMd,
               text: "Audit completed in 2.7 s, 91 checks passed, 4 dimensions analyzed",
+              wrap: true,
             },
             {
               sizeClass: styles.waterfallSizeSpecimen,
@@ -614,6 +615,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             {
               sizeClass: styles.waterfallSizeMd,
               text: "div.hero > section.cta > button.primary { color: #00E5A0 }",
+              wrap: true,
             },
             {
               sizeClass: styles.waterfallSizeSpecimen,

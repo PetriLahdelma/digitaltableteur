@@ -58,6 +58,7 @@ const WorkNav: React.FC<WorkNavProps> = ({
   return (
     <nav className={styles.workNavBar} aria-label={t("workNavLabel")}>
       <Button
+        className={styles.backButton}
         variant="tertiary"
         size="md"
         icon={<Icon name="briefcase" ariaLabel={t("workNavBackToWork")} />}
