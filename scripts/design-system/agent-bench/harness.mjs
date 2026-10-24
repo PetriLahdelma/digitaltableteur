@@ -29,7 +29,7 @@
  * - "claude": pinned headless Claude Code runtime with token metering
  */
 import { execFile, spawn } from "node:child_process";
-import { mkdtemp, rm, symlink, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -117,8 +117,75 @@ export function workspaceGuidance(arm) {
  * reads CLAUDE.md, Codex reads AGENTS.md. Only that file is replaced, so
  * Claude runs keep exactly the environment of earlier batches.
  */
+/**
+ * Bench internals the agent under test must not read: task definitions,
+ * graders, oracle and naive solutions, fixtures, published results and the
+ * measurement plan. Fixtures and graders load from the repo root, so the run
+ * worktree does not need them. The published result JSON keeps its keys (the
+ * design-system agent page imports it) but loses its content.
+ *
+ * This removes, it cannot prevent: the worktree shares the repo's object
+ * store, so `git show HEAD:<path>` still works. Tool telemetry flags any
+ * touch of these paths (`benchTouches`); held-out tasks outside the repo are
+ * the real control.
+ */
+export const BENCH_PRIVATE_PATHS = [
+  "scripts/design-system/agent-bench",
+  "docs/AGENT_BENCH_METHODOLOGY.md",
+  "docs/evals",
+];
+export const BENCH_RESULT_ARTIFACTS = [
+  "public/ds-health/agent-bench.json",
+  "public/ds-health/agent-bench-2026-08.json",
+];
+const BENCH_PATH_PATTERN = /agent-bench|AGENT_BENCH|docs\/evals|dt-evals-private/i;
+
+export async function scrubBenchInternals(worktree) {
+  for (const path of BENCH_PRIVATE_PATHS) {
+    await rm(join(worktree, path), { recursive: true, force: true });
+  }
+  for (const path of BENCH_RESULT_ARTIFACTS) {
+    const file = join(worktree, path);
+    let shape;
+    try {
+      shape = JSON.parse(await readFile(file, "utf8"));
+    } catch {
+      continue;
+    }
+    const blank = Object.fromEntries(
+      Object.entries(shape).map(([key, value]) => [
+        key,
+        Array.isArray(value) ? [] : value && typeof value === "object" ? {} : typeof value === "number" ? 0 : null,
+      ]),
+    );
+    await writeFile(file, `${JSON.stringify(blank, null, 2)}\n`);
+  }
+}
+
+/**
+ * Per-run read telemetry: the files an agent opened (capped) and every tool
+ * input that reached for bench internals.
+ */
+export function createReadLog() {
+  const reads = new Set();
+  const benchTouches = [];
+  return {
+    note(tool, values) {
+      for (const value of values) {
+        if (typeof value !== "string" || !value) continue;
+        if (tool === "Read" && reads.size < 300) reads.add(value);
+        if (BENCH_PATH_PATTERN.test(value)) benchTouches.push(`${tool}: ${value.slice(0, 200)}`);
+      }
+    },
+    toJSON() {
+      return { readPaths: [...reads], benchTouches };
+    },
+  };
+}
+
 export async function prepareWorkspace(worktree, task, arm, agent = "claude") {
   await task.prep(worktree);
+  await scrubBenchInternals(worktree);
   await writeFile(join(worktree, "TASK.md"), `# ${task.title}\n\n${task.brief}\n`);
   await writeFile(
     join(worktree, agent === "codex" ? "AGENTS.md" : "CLAUDE.md"),
@@ -150,6 +217,7 @@ function runCodex(args, { cwd, timeoutMs, env }) {
       stdio: ["ignore", "pipe", "pipe"],
     });
     const toolCalls = {};
+    const readLog = createReadLog();
     const usage = { input_tokens: 0, cached_input_tokens: 0, output_tokens: 0, reasoning_output_tokens: 0 };
     let items = 0;
     let lastMessage = null;
@@ -170,6 +238,7 @@ function runCodex(args, { cwd, timeoutMs, env }) {
         const item = event.item;
         items += 1;
         if (item.type === "command_execution") {
+          readLog.note("Bash", [item.command]);
           count(/packages\/cli\/src\/cli\.mjs|\bdt\s/.test(item.command ?? "") ? "Bash(dt-cli)" : "Bash");
         } else if (item.type === "mcp_tool_call") {
           count(`mcp__${item.server ?? "unknown"}__${item.tool ?? "unknown"}`);
@@ -200,7 +269,7 @@ function runCodex(args, { cwd, timeoutMs, env }) {
     child.on("close", (code) => {
       clearTimeout(timer);
       consume(buffer);
-      resolvePromise({ toolCalls, usage, items, lastMessage, failed, code });
+      resolvePromise({ toolCalls, usage, items, lastMessage, failed, code, reads: readLog.toJSON() });
     });
   });
 }
@@ -233,6 +302,7 @@ function runClaude(args, { cwd, timeoutMs }) {
   return new Promise((resolvePromise) => {
     const child = spawn("claude", args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
     const toolCalls = {};
+    const readLog = createReadLog();
     let result = null;
     let mcpServers = [];
     let buffer = "";
@@ -257,6 +327,8 @@ function runClaude(args, { cwd, timeoutMs }) {
               ? "Bash(dt-cli)"
               : block.name;
           toolCalls[name] = (toolCalls[name] ?? 0) + 1;
+          const input = block.input ?? {};
+          readLog.note(block.name, [input.file_path, input.path, input.pattern, input.command, input.glob]);
         }
       }
     };
@@ -272,7 +344,7 @@ function runClaude(args, { cwd, timeoutMs }) {
     child.on("close", () => {
       clearTimeout(timer);
       consume(buffer);
-      resolvePromise({ result, toolCalls, mcpServers });
+      resolvePromise({ result, toolCalls, mcpServers, reads: readLog.toJSON() });
     });
   });
 }
@@ -325,6 +397,7 @@ export async function runAgent(worktree, task, agent, options = {}) {
       isolation: "CODEX_HOME=temp (auth only)",
       toolCalls: result.toolCalls,
       mcpServers: null,
+      ...result.reads,
       turns: result.items,
       costUsd: null,
       usage: result.usage,
@@ -360,7 +433,7 @@ export async function runAgent(worktree, task, agent, options = {}) {
     args.push("--mcp-config", await writeMcpConfig(worktree));
   }
   const startedAt = Date.now();
-  const { result: parsed, toolCalls, mcpServers } = await runClaude(args, {
+  const { result: parsed, toolCalls, mcpServers, reads } = await runClaude(args, {
     cwd: worktree,
     timeoutMs: options.timeoutMs ?? 20 * 60 * 1000,
   });
@@ -370,6 +443,7 @@ export async function runAgent(worktree, task, agent, options = {}) {
     isolation: "strict-mcp-config;setting-sources=project,local",
     toolCalls,
     mcpServers,
+    ...reads,
     turns: parsed?.num_turns ?? null,
     costUsd: parsed?.total_cost_usd ?? null,
     usage: parsed?.usage ?? null,

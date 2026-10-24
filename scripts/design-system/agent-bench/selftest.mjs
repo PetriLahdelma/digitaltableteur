@@ -14,6 +14,36 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { TASKS } from "./tasks.mjs";
 import { runOnce } from "./run.mjs";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import {
+  BENCH_PRIVATE_PATHS,
+  BENCH_RESULT_ARTIFACTS,
+  createWorktree,
+  prepareWorkspace,
+} from "./harness.mjs";
+
+const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
+
+test("the agent's workspace carries no bench internals", async () => {
+  const { worktree, destroy } = await createWorktree(REPO_ROOT);
+  try {
+    await prepareWorkspace(worktree, TASKS[0], "with", "claude");
+    for (const path of BENCH_PRIVATE_PATHS) {
+      assert.equal(existsSync(join(worktree, path)), false, `${path} still readable`);
+    }
+    for (const path of BENCH_RESULT_ARTIFACTS) {
+      const file = join(worktree, path);
+      if (!existsSync(file)) continue;
+      const json = JSON.parse(readFileSync(file, "utf8"));
+      assert.deepEqual(json.tasks ?? [], [], `${path} still carries task results`);
+      assert.deepEqual(json.notes ?? [], [], `${path} still carries findings`);
+    }
+  } finally {
+    await destroy();
+  }
+});
 
 const options = { repairLoop: false, keep: false };
 

@@ -148,6 +148,29 @@ discovery affordance, same repo access"). It biases the measured lift
 *downward* (the control can stumble into the affordances), so a positive
 result under-claims rather than over-claims.
 
+### Bench internals are scrubbed (2026-10-24)
+
+Through v3 every run's worktree was created at `HEAD`, so the agent could read
+the bench itself: `agent-bench/tasks.mjs` (graders, oracle and naive
+solutions), the fixtures, the published results and this document. Whether any
+agent did is unknown; run records counted tool calls but not the paths read.
+
+From 2026-10-24 `prepareWorkspace` removes `scripts/design-system/agent-bench`,
+this document and `docs/evals` from the run worktree, and empties the published
+result JSON while keeping its keys (a page imports it). Graders and fixtures
+load from the repo root, so grading is unaffected: the self-test (null, naive
+and oracle agents on every task) passes on scrubbed worktrees, and a dedicated
+test asserts the scrub.
+
+This removes, it does not prevent: the worktree shares the repository's object
+store, so `git show HEAD:<path>` still reaches the files. Each run therefore
+records `readPaths` (files opened with Read, capped at 300) and `benchTouches`
+(any tool input naming bench internals, including shell commands). A run with
+a non-empty `benchTouches` is reported, not silently counted. Held-out tasks
+kept outside the repository (`~/SAPDevelop/dt-evals-private`) are the real
+control. v1 to v3 results predate the scrub and should be read with this in
+mind.
+
 ## Fairness rules for acceptance
 
 - Acceptance is **affordance-neutral**: every check tests user-visible
