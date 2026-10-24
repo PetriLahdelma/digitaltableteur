@@ -46,7 +46,13 @@ export const ASCII_SCENES: Record<AsciiSceneName, AsciiScenePreset> = {
     modelUrl: "/models/data-glove.glb",
     colors: { fg: "--color-primary-foreground", bg: "--color-primary" },
     // Centred behind the title and lede: held well back so the text reads.
-    strength: { light: 0.25, dark: 0.4, hcb: 0.4, hcw: 0.2 },
+    // The shader blends glyph into ground in linear light, so a step toward
+    // black on a light ground reads far weaker than the same step toward white
+    // on a dark one: dark and HC dark need much higher values for similar
+    // presence. Peak glyph contrast: light 5.2:1, HC light 5.0:1, HC dark
+    // 5.0:1 (0.84); dark stays at 2.1:1 (0.6) so the dark title keeps clear
+    // of the dark glyphs it sits on.
+    strength: { light: 0.25, dark: 0.6, hcb: 0.84, hcw: 0.2 },
     cell: 8,
     tone: { contrast: 1.3, brightness: 0.12, gamma: 0.7, floor: 0 },
     light: { keyAz: 25, keyEl: 35, key: 3, rim: 2.6, ambient: 0.8 },
