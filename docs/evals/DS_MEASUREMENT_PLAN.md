@@ -235,6 +235,39 @@ Plus my time: about 1.5 hours labelling 40 runs and 30 judge-calibration outputs
 5. Full ladder run, then blind review, then replication.
 6. Conformance crawl attribution and the first page report.
 
+## 9. Backtest results (2026-10-24)
+
+Graders: `scripts/design-system/agent-bench/backtest/` (inside the bench scrub). Raw results: `~/SAPDevelop/dt-evals-private/backtest/results.json`. Method:
+- *Static cases:* grade the buggy parent and the fix.
+- *Storybook and production cases:* reverse-apply the fix to current main to re-introduce the bug, grade, restore, grade again.
+
+**Scores.**
+- **First pass: 4 of 12 caught** (lockfile, breadcrumb semantics, filter focus clip, FI hydration).
+- **After fixing the graders: 12 of 12.** This number is fitted to its own test set and does **not** validate H5.
+
+**Grader fixes made while looking at these bugs:**
+- *Scope bug:* `git ls-tree` paths are prefixes, not globs, so file lists came back empty.
+- *Logic bugs:*
+  - opaque black `rgb(0, 0, 0)` matched an "alpha is 0" regex and was skipped as transparent;
+  - soft drop shadows were counted as solid rings;
+  - localised client names were flagged as missing.
+- *Wrong targets:* the ProofBlock default story has no dark cards; the "in modal" contact story has no dialog.
+- *Redesigns:*
+  - a container grader that fell back to the whole page (fail-open) now fails closed and plants a canary;
+  - the iOS icon check now compares WebKit with Chromium, because a declared `width="1em"` moves with the bug.
+
+**Held-out check, graders frozen.** Of the 10 most recent UI fixes, **0 fall within these graders' reach**:
+- 2 looked applicable but were not the defect class (a label colour choice that passes AA in both states; a package import guard).
+- The rest were style choices, credit text outside proof cards, clipping at specific widths, label-in-name and dark-mode visual corners.
+
+The twelve modes describe the summer's failures better than this month's. Generic additions with a real chance on held-out bugs: a full axe pass per theme (label-in-name), a width-sweep clipping check plus attribution across all credit copy, not only proof cards.
+
+**Live defects the graders found on main:**
+- **Donny's email error showed raw keys** (`emailWorkflow.error.unknown`, `.edit`) in all three languages. Its test passed because `/Edit/i` matched the raw key. Fixed alongside this section.
+- **Switch, HCB, on state, under the pointer:** the hover shadow replaced the HC ring, so the white handle vanished into the white track (1:1). Fixed.
+- **Switch, dark theme, on state:** handle against track is 2.41:1 (below WCAG 1.4.11's 3:1). Not changed: a design decision for the owner.
+- **Playwright WebKit reproduces the iOS menu-icon bug** (12px against Chromium's 32px), so it can stand in for the iOS simulator for this class.
+
 ## What I could not verify
 
 - Whether bench agents ever opened the grader files (no path telemetry).
