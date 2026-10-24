@@ -34,7 +34,10 @@ describe("AsciiSceneBackground", () => {
       expect(preset.modelUrl).toMatch(/^\/models\/.+\.glb$/);
       expect(preset.colors.fg).toMatch(/^--/);
       expect(preset.colors.bg).toMatch(/^--/);
-      expect(preset.strength.default).toBeGreaterThan(0);
+      for (const theme of ["light", "dark", "hcb", "hcw"] as const) {
+        expect(preset.strength[theme]).toBeGreaterThan(0);
+        expect(preset.strength[theme]).toBeLessThanOrEqual(1);
+      }
     }
   });
 });

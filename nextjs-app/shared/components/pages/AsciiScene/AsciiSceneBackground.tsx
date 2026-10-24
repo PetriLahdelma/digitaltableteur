@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { AsciiSceneHandle } from "./asciiSceneRenderer";
-import { ASCII_SCENES, type AsciiSceneName, type AsciiScenePreset } from "./scenes";
+import { ASCII_SCENES, type AsciiSceneName, type AsciiScenePreset, type AsciiSceneTheme } from "./scenes";
 import styles from "./AsciiSceneBackground.module.css";
 
 /** Any CSS colour as rgb(), via a 1px canvas (tokens may be hex, rgb, oklch, ...). */
@@ -22,7 +22,8 @@ function readColors(el: HTMLElement, preset: AsciiScenePreset, probe: CanvasRend
   const fg = toRgb(css.getPropertyValue(preset.colors.fg).trim() || css.color, probe);
   const bg = toRgb(css.getPropertyValue(preset.colors.bg).trim() || css.backgroundColor, probe);
   const theme = document.documentElement.dataset.theme ?? "";
-  const strength = preset.strength[theme] ?? preset.strength.default;
+  const strength =
+    theme in preset.strength ? preset.strength[theme as AsciiSceneTheme] : preset.strength.light;
   return { fg, bg, strength };
 }
 
