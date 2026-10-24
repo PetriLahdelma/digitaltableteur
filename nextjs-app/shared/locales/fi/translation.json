@@ -515,6 +515,7 @@
   "emailWorkflow.success.body": "Odotettavissa vastaus pian.",
   "emailWorkflow.error.title": "Lähetys epäonnistui",
   "emailWorkflow.error.retry": "Yritä uudelleen",
+  "emailWorkflow.error.edit": "Muokkaa viestiä",
   "emailWorkflow.error.body": "Sähköpostia ei voitu lähettää. Yritä uudelleen tai peruuta.",
   "emailWorkflow.done": "Valmis",
   "emailWorkflow.triggerFallback": "Voit pyytää 'lähetä sähköposti' milloin vain.",

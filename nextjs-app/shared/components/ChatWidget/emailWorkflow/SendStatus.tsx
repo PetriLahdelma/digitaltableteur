@@ -57,9 +57,9 @@ const SendStatus: React.FC<SendStatusProps> = ({
       <p>
         {errorCode
           ? t(`emailWorkflow.error.${errorCode}`, {
-              defaultValue: t("emailWorkflow.error.unknown"),
+              defaultValue: t("emailWorkflow.error.body"),
             })
-          : t("emailWorkflow.error.unknown")}
+          : t("emailWorkflow.error.body")}
       </p>
       <div className={styles.workflowActions}>
         <Button

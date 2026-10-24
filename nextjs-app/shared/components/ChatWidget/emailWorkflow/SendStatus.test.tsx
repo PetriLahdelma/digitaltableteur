@@ -49,7 +49,10 @@ describe("SendStatus", () => {
     const dispatch = vi.fn();
     renderStatus({ step: "error", dispatch });
 
-    expect(screen.getByRole("button", { name: /Edit/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Edit message" })).toBeInTheDocument();
+    expect(screen.getByText(/The email could not be sent/i)).toBeInTheDocument();
+    // A loose /Edit/i also matched the raw key "emailWorkflow.error.edit".
+    expect(document.body.textContent).not.toMatch(/emailWorkflow\./);
   });
 
   it("renders cancel button on error", () => {

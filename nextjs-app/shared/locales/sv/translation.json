@@ -515,6 +515,7 @@
   "emailWorkflow.success.body": "Du får svar snart.",
   "emailWorkflow.error.title": "Kunde inte skicka",
   "emailWorkflow.error.retry": "Försök igen",
+  "emailWorkflow.error.edit": "Redigera meddelandet",
   "emailWorkflow.error.body": "E-postmeddelandet kunde inte skickas. Försök igen eller avbryt.",
   "emailWorkflow.done": "Klar",
   "emailWorkflow.triggerFallback": "Du kan när som helst be att 'skicka e-post'.",

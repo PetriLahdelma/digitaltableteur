@@ -515,6 +515,7 @@
   "emailWorkflow.success.body": "Expect a reply soon.",
   "emailWorkflow.error.title": "Unable to send",
   "emailWorkflow.error.retry": "Retry",
+  "emailWorkflow.error.edit": "Edit message",
   "emailWorkflow.error.body": "The email could not be sent. Please try again or cancel.",
   "emailWorkflow.done": "Done",
   "emailWorkflow.triggerFallback": "You can ask to 'send email' any time.",
