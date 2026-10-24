@@ -1,9 +1,9 @@
 {
   "storyId": "site-sitetree-example",
   "mode": "dark",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:38:52.084Z",
-  "runner": null,
+  "sourceSHA": "9bac6107b729751c03b94fe24d32a70d03b154e4",
+  "capturedAt": "2026-10-24T19:22:08.301Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
