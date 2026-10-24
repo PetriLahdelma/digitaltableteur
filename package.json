@@ -311,7 +311,7 @@
     "simple-icons": "^16.35.0",
     "styled-components": "^6.6.0",
     "tailwind-merge": "^3.7.0",
-    "three": "0.170.0",
+    "three": "0.186.1",
     "typescript-eslint": "^8.71.1",
     "zod": "^4.6.7"
   },
@@ -399,7 +399,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/sanitize-html": "^2.16.2",
-    "@types/three": "0.170.0",
+    "@types/three": "0.186.0",
     "@types/webpack": "^5.28.5",
     "@vercel/node": "^5.10.2",
     "@vitejs/plugin-react": "^6.1.2",
