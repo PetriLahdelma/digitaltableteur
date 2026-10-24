@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 - Validate input before side effects
 - Rate limit sensitive endpoints
 - `mongo-sanitize` for MongoDB queries
-- `isomorphic-dompurify` for HTML sanitization
+- `sanitize-html` (via `app/lib/sanitize.ts`) for HTML sanitization
 - Never return stack traces or secrets to clients
 
 ---

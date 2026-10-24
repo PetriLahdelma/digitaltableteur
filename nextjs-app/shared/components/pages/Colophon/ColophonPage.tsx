@@ -325,7 +325,7 @@ export function ColophonPage() {
         <Text as="p">
           Strict Content Security Policy in production. HSTS with two-year
           max-age and preload. Input sanitized via mongo-sanitize and
-          isomorphic-dompurify. Rate limiting on AI chat and contact endpoints.
+          sanitize-html. Rate limiting on AI chat and contact endpoints.
           GDPR-compliant data deletion API with automated weekly cleanup.
           Permissions-Policy disables camera, microphone and geolocation.
         </Text>

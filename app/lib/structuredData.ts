@@ -662,7 +662,7 @@ export function getOfferCatalogSchema(
 
 /**
  * Safely stringify JSON-LD for script tag injection
- * Uses DOMPurify for defense-in-depth XSS protection
+ * Runs the sanitize-html JSON-LD helper for defense-in-depth XSS protection
  */
 export function stringifyJsonLd(obj: unknown): string {
   const jsonString = JSON.stringify(obj)
@@ -670,6 +670,6 @@ export function stringifyJsonLd(obj: unknown): string {
     .replace(/>/g, "\\u003e")
     .replace(/&/g, "\\u0026");
 
-  // Additional sanitization layer with DOMPurify
+  // Additional sanitization layer (sanitize-html)
   return sanitizeJsonLd(jsonString);
 }

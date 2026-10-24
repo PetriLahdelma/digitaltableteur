@@ -1,6 +1,6 @@
 /**
  * Test suite for HTML sanitization utilities
- * Verifies DOMPurify integration prevents XSS attacks
+ * Verifies the sanitize-html helpers prevent XSS attacks
  */
 
 import { describe, it, expect } from "vitest";

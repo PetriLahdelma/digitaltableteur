@@ -317,7 +317,7 @@ export function checkPromptInjection(
 
 /**
  * Sanitizes AI output before storing in database
- * Delegates to DOMPurify-based sanitization for defense-in-depth
+ * Delegates to the sanitize-html helpers for defense-in-depth
  */
 export function sanitizeAiOutput(output: string): string {
   return sanitizeHTML(output);
