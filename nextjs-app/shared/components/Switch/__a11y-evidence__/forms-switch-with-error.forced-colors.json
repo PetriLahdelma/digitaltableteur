@@ -1,0 +1,16 @@
+{
+  "storyId": "forms-switch-with-error",
+  "mode": "forced-colors",
+  "sourceSHA": "e67ce1891af3c14ee52330aa24b70ec3308b48ec",
+  "capturedAt": "2026-10-24T18:47:04.544Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

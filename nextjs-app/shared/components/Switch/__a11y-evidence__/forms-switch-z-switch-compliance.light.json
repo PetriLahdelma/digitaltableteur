@@ -1,0 +1,16 @@
+{
+  "storyId": "forms-switch-z-switch-compliance",
+  "mode": "light",
+  "sourceSHA": "e67ce1891af3c14ee52330aa24b70ec3308b48ec",
+  "capturedAt": "2026-10-24T18:46:48.636Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
