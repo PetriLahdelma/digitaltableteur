@@ -268,6 +268,24 @@ The twelve modes describe the summer's failures better than this month's. Generi
 - **Switch, dark theme, on state:** handle against track is 2.41:1 (below WCAG 1.4.11's 3:1). Not changed: a design decision for the owner.
 - **Playwright WebKit reproduces the iOS menu-icon bug** (12px against Chromium's 32px), so it can stand in for the iOS simulator for this class.
 
+### 9b. Generic graders, second held-out set (2026-10-24)
+
+Three generic graders were added: axe WCAG A/AA per theme (with label-in-name), a width-sweep clipping check plus attribution across all locale copy. All 15 graders were then frozen (blob `cb644129d52a`).
+
+**Sample.** 12 fix commits from 15 Jul to 30 Sep touching site code, ordered by commit hash and taken without reading, excluding every commit examined before.
+
+**Reach: 0 of 12.**
+- *Classes:* behaviour (failed-submit toast), tooling (publish preflight, dogfood ratchet, MCP schemas), content (duration, pull quote, alt text that is wrong but present), visual alignment (card rest state, badge centring) and notice UX.
+- *Borderline cases, run and missed for structural reasons:*
+  - 026edbfcb (heading outline): axe's heading-order rule is a best practice, outside the WCAG-tagged set.
+  - 150ec5106 (case-study insets lost): the token was defined in source but dropped by Turbopack's CSS Module `@import` handling, so static analysis sees identical findings before and after.
+
+**What the frozen graders found on current main in one smoke run:**
+- **VertaaUX font waterfall:** the two sentence-length Md lines are still cut mid-word from 640px to 1280px. The mono line is 34.8em in a 528px column at 1280px. The Md size is the only one without a cqi cap; capping it would shrink it to about 9px, so wrapping those two lines is the likely fix (owner's call).
+- **Case-study nav bar:** overflows the page by 8px at 360px wide ("Next" clipped).
+
+**Conclusion across both held-out sets (0 of 22 in reach).** Per-mode graders are regression catchers for known classes, not discovery tools. Discovery comes from broad rendered sweeps over every page, theme and width, which is the conformance crawl in section 5. Most of the remaining classes need the human or calibrated-judge layer: visual, content, UX. That matches the transcript analysis, where 49% of pushbacks needed judgement. H5 should be re-scoped to "graders catch re-introduced known defects", with recall on new bugs measured by the crawl.
+
 ## What I could not verify
 
 - Whether bench agents ever opened the grader files (no path telemetry).

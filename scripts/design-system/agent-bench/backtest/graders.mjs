@@ -258,6 +258,75 @@ export async function containerRulesDoNotRepaint(browser, { storyId, container, 
 }
 
 // ---------------------------------------------------------------------------
+// generic browser graders (story or page)
+
+async function openTarget(browser, target, { theme, viewport } = {}) {
+  if (target.storyId) return openStory(browser, target.storyId, { theme: theme ?? "light", viewport });
+  const opened = await openPage(browser, target.url, { theme, contextOptions: viewport ? { viewport } : {} });
+  return { page: opened.page, close: opened.close };
+}
+
+/**
+ * F3 (broad): the WCAG 2.x A/AA axe rules per theme, plus label-in-name
+ * (experimental in axe, so enabled explicitly). One grader instead of a rule
+ * per defect: held-out bugs rarely match the rule a grader was built around.
+ */
+export async function axeInThemes(browser, { themes = ["light", "dark", "hcb", "hcw"], ...target }) {
+  const failures = [];
+  for (const theme of themes) {
+    const { page, close } = await openTarget(browser, target, { theme });
+    await page.addScriptTag({ content: readFileSync(AXE_SOURCE, "utf8") });
+    const violations = await page.evaluate(async (scope) => {
+      const result = await window.axe.run(document.querySelector(scope) ?? document, {
+        runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"] },
+        rules: { "label-content-name-mismatch": { enabled: true } },
+      });
+      return result.violations.map((v) => `${v.id}(${v.nodes.length})`);
+    }, target.storyId ? "#storybook-root" : "body");
+    await close();
+    for (const v of violations) failures.push(`${theme}:${v}`);
+  }
+  return { pass: failures.length === 0, findings: failures, detail: failures.length ? failures.slice(0, 6).join(", ") : `no WCAG A/AA violations in ${themes.join("/")}` };
+}
+
+/**
+ * F9/F11 (layout): no text is cut off by an overflow-hidden or clip box at any
+ * width in the sweep. Intentional truncation (text-overflow: ellipsis,
+ * line-clamp) and scrolling containers are allowed.
+ */
+export async function textNotClipped(browser, { widths = [360, 480, 640, 768, 900, 1024, 1280], ...target }) {
+  const clipped = new Map();
+  for (const width of widths) {
+    const { page, close } = await openTarget(browser, target, { viewport: { width, height: 900 } });
+    const hits = await page.evaluate((scope) => {
+      const root = document.querySelector(scope) ?? document.body;
+      const out = [];
+      for (const el of root.querySelectorAll("*")) {
+        const cs = getComputedStyle(el);
+        const clipsX = cs.overflowX === "hidden" || cs.overflowX === "clip";
+        const clipsY = cs.overflowY === "hidden" || cs.overflowY === "clip";
+        if (!clipsX && !clipsY) continue;
+        if (cs.textOverflow === "ellipsis" || (cs.webkitLineClamp && cs.webkitLineClamp !== "none")) continue;
+        const hasText = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) || el.innerText?.trim();
+        if (!hasText || el.getClientRects().length === 0) continue;
+        const overX = clipsX && el.scrollWidth > el.clientWidth + 1;
+        const overY = clipsY && el.scrollHeight > el.clientHeight + 1;
+        if (!overX && !overY) continue;
+        // Visually hidden helpers (1px boxes) and media frames are not text clipping.
+        if (el.clientWidth <= 2 || el.clientHeight <= 2) continue;
+        if (el.querySelector("img, video, canvas, svg, iframe") && !el.innerText.trim()) continue;
+        out.push(`${el.tagName.toLowerCase()}.${[...el.classList].find((c) => c.includes("module__") || c.includes("_")) ?? ""}`.slice(0, 60));
+      }
+      return out;
+    }, target.storyId ? "#storybook-root" : "main");
+    await close();
+    for (const hit of hits) clipped.set(hit, [...(clipped.get(hit) ?? []), width]);
+  }
+  const findings = [...clipped.entries()].map(([el, ws]) => `${el}@${ws.join("/")}`);
+  return { pass: findings.length === 0, findings, detail: findings.length ? `clipped: ${findings.slice(0, 4).join(", ")}` : `no clipped text at ${widths.join("/")}px` };
+}
+
+// ---------------------------------------------------------------------------
 // browser graders (pages, production build)
 
 async function openPage(browser, url, { theme, contextOptions = {}, cookies = [] } = {}) {
@@ -476,3 +545,34 @@ export function lockfileInstallsOnLinux({ rev }) {
     rmSync(dir, { recursive: true, force: true });
   }
 }
+
+/**
+ * F5 (broad): any copy whose key path names a project slug (kebab or camel
+ * case) must not name another project's client, in any locale.
+ */
+export function attributionInAllCopy({ rev, locales = ["en", "fi", "sv"] }) {
+  const source = gitShow(rev, "nextjs-app/shared/data/projects.ts");
+  const records = [...source.matchAll(/slug:\s*"([^"]+)"[\s\S]*?(?=slug:|$)/g)]
+    .map((m) => ({ slug: m[1], client: (m[0].match(/\bclient:\s*"([^"]+)"/) ?? [])[1] }))
+    .filter((r) => r.client);
+  const camel = (slug) => slug.replace(/-([a-z0-9])/g, (_, c) => c.toUpperCase());
+  const problems = [];
+  for (const locale of locales) {
+    const walk = (node, path) => {
+      if (typeof node === "string") {
+        const lower = path.toLowerCase();
+        for (const own of records) {
+          if (!lower.includes(own.slug) && !lower.includes(camel(own.slug).toLowerCase())) continue;
+          for (const other of records) {
+            if (other.client !== own.client && node.includes(other.client)) problems.push(`${locale}:${path} (${own.slug}) names ${other.client}`);
+          }
+        }
+        return;
+      }
+      if (node && typeof node === "object") for (const [k, v] of Object.entries(node)) walk(v, path ? `${path}.${k}` : k);
+    };
+    walk(JSON.parse(gitShow(rev, `nextjs-app/shared/locales/${locale}/translation.json`)), "");
+  }
+  return { pass: problems.length === 0, findings: problems, detail: problems.length ? problems.slice(0, 3).join(" | ") : "no copy names another project's client" };
+}
+
