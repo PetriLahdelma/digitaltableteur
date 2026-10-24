@@ -1,9 +1,9 @@
 {
   "storyId": "site-gallery-playground",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:25:54.210Z",
-  "runner": null,
+  "sourceSHA": "a8056e578d356b59f2772ea38a1462f2e129eec2",
+  "capturedAt": "2026-10-24T15:53:56.249Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

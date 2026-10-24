@@ -1,0 +1,16 @@
+{
+  "storyId": "site-gallery-playground",
+  "mode": "light",
+  "sourceSHA": "a8056e578d356b59f2772ea38a1462f2e129eec2",
+  "capturedAt": "2026-10-24T15:53:50.969Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
