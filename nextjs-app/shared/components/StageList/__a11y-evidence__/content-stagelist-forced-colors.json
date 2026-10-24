@@ -1,9 +1,9 @@
 {
   "storyId": "content-stagelist-forced-colors",
   "mode": "light",
-  "sourceSHA": "4761b895fef5b7921b6dea2004b1c9fe16315941",
-  "capturedAt": "2026-10-15T22:45:51.241Z",
-  "runner": "local-2026-10-16b",
+  "sourceSHA": "f4f4f30c6b818e0a19c3dca1843768d73f36d129",
+  "capturedAt": "2026-10-24T18:12:18.486Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
