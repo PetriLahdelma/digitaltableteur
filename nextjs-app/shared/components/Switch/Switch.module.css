@@ -147,7 +147,11 @@
 
 @media (hover: hover) and (pointer: fine) {
   .switch:hover:not([data-disabled="true"]) .handle {
-    box-shadow: var(--shadow-md);
+    /* Keep the HC ring: replacing the whole shadow dropped it, so the on-state
+       handle vanished into the #fff track in HCB under the pointer. */
+    box-shadow:
+      var(--shadow-md),
+      0 0 0 1px var(--switch-handle-ring-color, transparent);
   }
 }
 
