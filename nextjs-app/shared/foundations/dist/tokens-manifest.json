@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "source": "nextjs-app/shared/styles/variables.css",
-  "tokenCount": 201,
+  "tokenCount": 202,
   "usageCoverage": 165,
   "dtcgFiles": [
     "tokens/production/color.json",
@@ -159,6 +159,7 @@
     "--primary-heading-font",
     "--secondary-heading-font",
     "--wavy-underline-mask",
+    "--wavy-underline-depth",
     "--radius-sm",
     "--radius-md",
     "--radius-lg",
@@ -231,5 +232,5 @@
     "--font-size-button-m",
     "--font-size-button-l"
   ],
-  "generatedAt": "2026-10-22T00:25:50.586Z"
+  "generatedAt": "2026-10-24T19:19:07.047Z"
 }

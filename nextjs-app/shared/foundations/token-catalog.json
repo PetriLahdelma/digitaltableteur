@@ -1,7 +1,7 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-22T00:25:50.508Z",
-  "tokenCount": 201,
+  "generatedAt": "2026-10-24T19:19:06.983Z",
+  "tokenCount": 202,
   "usageCoverage": 165,
   "themes": [
     {
@@ -1627,6 +1627,13 @@
         {
           "name": "--wavy-underline-mask",
           "value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E\")",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--wavy-underline-depth",
+          "value": "6px",
           "usage": "",
           "category": "other",
           "subgroup": "General"

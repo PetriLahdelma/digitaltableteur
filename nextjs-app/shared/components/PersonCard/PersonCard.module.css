@@ -103,8 +103,8 @@
   color: var(--color-primary);
 }
 
-.socialLink::after {
-  display: none;
+a.socialLink {
+  background-image: none;
 }
 
 /* stylelint-disable selector-pseudo-class-no-unknown, selector-class-pattern -- Intentional :global escape for Storybook demos */

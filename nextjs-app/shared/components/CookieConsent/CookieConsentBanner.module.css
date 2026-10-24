@@ -71,16 +71,10 @@
   line-height: inherit;
 }
 
-/* Global wavyUnderline adds padding-bottom — exclude from layout metrics here */
-
-.copyText :global(.wavyUnderline) {
-  padding-block-end: 0;
-}
-
-.copyText :global(.wavyUnderline::after) {
-  inset-block-end: calc(-1 * var(--cookie-banner-underline-depth));
-  block-size: var(--cookie-banner-underline-depth);
-}
+/* The policy link is a text Link, so it flows inline: the global wavy
+   underline's padding-bottom paints the wave just below the text without
+   changing the line box, where the old inline-flex box needed its padding
+   zeroed and the bar pulled out of flow. */
 
 .actions {
   display: flex;

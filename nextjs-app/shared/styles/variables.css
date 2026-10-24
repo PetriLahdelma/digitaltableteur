@@ -231,6 +231,9 @@
   );
   --wavy-underline-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
 
+  /* Height of the wavy underline stripe below a link's text. */
+  --wavy-underline-depth: 6px;
+
   /* Storybook Helper Colors */
   --storybook-blue: #041b23; /* Storybook Helper Color: Blue */
   --storybook-cyan: #71efff; /* Storybook Helper Color: Cyan */
@@ -816,33 +819,38 @@ h6 {
   hyphens: auto;
 }
 
+/* The wavy underline is a background on the link itself, not an ::after bar:
+   with box-decoration-break: clone an inline link that wraps draws one wave
+   under each line, where a bar spanned the whole box. Two radial-gradient
+   rings, each kept to its band of the 6px stripe, trace the same 16px wave as
+   --wavy-underline-mask (pixel overlap 0.94 Chromium, 0.99 WebKit) while still
+   following currentcolor; a mask on the link would also clip its focus ring.
+   --wavy-ink is a registered colour so the hover-reveal mode can fade it. */
+
+@property --wavy-ink {
+  inherits: false;
+  initial-value: transparent;
+  syntax: "<color>";
+}
+
 .wavyUnderline,
 .readMore,
 .link,
 .cookieConsent a,
 .privacyPolicy a,
 .privacyPolicy a:hover {
-  position: relative;
-  text-decoration: none;
-  padding-block-end: 6px;
-}
+  --wavy-ink-on: color-mix(in srgb, var(--underline-accent-color, currentcolor) 90%, transparent);
+  --wavy-ink: var(--wavy-ink-on);
 
-.wavyUnderline::after,
-.readMore::after,
-.link::after,
-.cookieConsent a::after,
-.privacyPolicy a::after,
-.privacyPolicy a:hover::after {
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: 0;
-  block-size: 6px;
-  background-color: var(--underline-accent-color, currentcolor);
-  opacity: 0.9;
-  content: "";
-  mask-image: var(--wavy-underline-mask);
-  mask-repeat: repeat-x;
-  mask-size: 16px 6px;
+  padding-block-end: var(--wavy-underline-depth);
+  background-image:
+    radial-gradient(circle at 4px 7.5px, transparent 4.8px, var(--wavy-ink) 5.15px 6.85px, transparent 7.2px),
+    radial-gradient(circle at 12px -3.5px, transparent 4.8px, var(--wavy-ink) 5.15px 6.85px, transparent 7.2px);
+  background-position: 0 calc(100% - 2px), 0 100%;
+  background-size: 16px 4px;
+  background-repeat: repeat-x;
+  text-decoration: none;
+  box-decoration-break: clone;
 }
 
 /* Language-specific hyphenation */

@@ -185,11 +185,7 @@
 
 .similarList :global(.wavyUnderline) {
   padding-block-end: 0;
-}
-
-.similarList :global(.wavyUnderline::after) {
-  display: none;
-  content: none;
+  background-image: none;
 }
 
 .embedWrapper {

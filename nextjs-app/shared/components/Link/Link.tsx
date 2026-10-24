@@ -112,6 +112,9 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       () => analyzeHref(href, getCurrentOrigin()),
       [href],
     );
+    // Plain text children flow inline, so a wrapping link underlines each
+    // line (see .textLink); element children keep inline-flex alignment.
+    const isPlainText = typeof children === "string" || typeof children === "number";
     const hasTextContent = React.useMemo(
       () => extractTextContent(children).trim().length > 0,
       [children],
@@ -127,7 +130,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
             ? [rest.rel, "noopener", "noreferrer"].filter(Boolean).join(" ")
             : rest.rel
         }
-        className={`${styles.link} ${SIZE_CLASS[size]} ${UNDERLINE_CLASS[underline]} ${className}`
+        className={`${styles.link} ${isPlainText ? styles.textLink : ""} ${SIZE_CLASS[size]} ${UNDERLINE_CLASS[underline]} ${className}`
           .replace(/\s+/g, " ")
           .trim()}
       >

@@ -110,11 +110,7 @@
 
 .root :global(.wavyUnderline) {
   padding-block-end: 0;
-}
-
-.root :global(.wavyUnderline::after) {
-  display: none;
-  content: none;
+  background-image: none;
 }
 
 .leaf .row {

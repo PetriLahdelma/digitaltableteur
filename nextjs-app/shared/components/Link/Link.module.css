@@ -42,27 +42,48 @@
 /* underline="hover": keep the wavy underline's reserved space (padding-bottom
    from the global .wavyUnderline rule) so nothing shifts, but reveal the wave
    only on hover / keyboard focus. .link.underlineHover outranks the global
-   .wavyUnderline::after regardless of stylesheet order. */
+   rule regardless of stylesheet order. */
 
-.link.underlineHover::after {
-  transition: opacity var(--duration-fast) var(--ease-out-cubic);
-  opacity: 0;
+.link.underlineHover {
+  --wavy-ink: transparent;
+
+  transition:
+    color var(--duration-fast) var(--ease-out-cubic),
+    --wavy-ink var(--duration-fast) var(--ease-out-cubic);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .link.underlineHover:hover::after {
-    opacity: 0.9;
+  .link.underlineHover:hover {
+    --wavy-ink: var(--wavy-ink-on);
   }
 }
 
-.link.underlineHover:focus-visible::after {
-  opacity: 0.9;
+.link.underlineHover:focus-visible {
+  --wavy-ink: var(--wavy-ink-on);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .link.underlineHover::after {
+  .link.underlineHover {
     transition: none;
   }
+}
+
+/* Text-only links flow inline so a link that wraps underlines each line; an
+   inline-flex box drew one wave under the whole box. Links holding icons or
+   other elements keep inline-flex alignment. */
+
+.link.textLink {
+  display: inline;
+
+  /* An inline box's padding starts at the font's content area (1.25em for
+     Satoshi), not the line box an inline-flex link filled, so add the
+     half-leading back: the wave keeps its place below the line. */
+  padding-block-end: calc(var(--wavy-underline-depth) + (1lh - 1.25em) / 2);
+}
+
+.link.textLink .externalIcon {
+  margin-inline-start: var(--space-internal-4);
+  vertical-align: middle;
 }
 
 /* In-copy links inherit the surrounding text's size (raw-anchor parity on

@@ -37,6 +37,11 @@
           "cssVar": "--wavy-underline-mask",
           "css": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E\")",
           "reason": "no DTCG 2025.10 type fits \"url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E\")\""
+        },
+        {
+          "cssVar": "--wavy-underline-depth",
+          "css": "6px",
+          "reason": "no DTCG 2025.10 type fits \"6px\""
         }
       ]
     }
