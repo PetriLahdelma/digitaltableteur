@@ -759,7 +759,6 @@ Before creating a PR:
 **Setup & Guides**:
 
 - [Storybook Deployment](docs/STORYBOOK_DEPLOYMENT.md) - Visual regression setup
-- [EmailJS Setup](docs/EMAILJS_SETUP.md) - Contact form configuration
 - [Branch Naming](docs/BRANCH_NAMING.md) - Branch naming conventions
 - [Sanity Migration](docs/SANITY_MIGRATION.md) - Blog migration workflow
 

@@ -146,9 +146,6 @@
 - **`CACHE_BUSTING.md`**
   - Deployment cache strategy
 
-- **`EMAILJS_SETUP.md`**
-  - Contact form integration guide
-
 - **`STORYBOOK_DEPLOYMENT.md`**
   - Visual regression deployment
 
