@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.40 - 2026-10-25
+
+- `CodeBlock`: without a header, the body stays full width so its scrollbar
+  runs along the card edge under the floating copy button; rows end before
+  the button instead. The scrollbar used to sit about 40px in from the edge
+  with an empty strip beside it.
+
 ## 0.1.39 - 2026-10-25
 
 - `CodeBlock`: a Shiki tree in the `diff` language gets the same added and

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-25T18:09:22.873Z",
+  "generatedAt": "2026-10-25T19:15:13.833Z",
   "summary": {
     "componentCount": 189,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 178,
     "withProductionUsage": 42,
     "uniqueImportedComponents": 178,
-    "totalEvidenceRows": 903,
-    "aliasImportFiles": 459,
-    "relativeImportFiles": 483,
+    "totalEvidenceRows": 905,
+    "aliasImportFiles": 460,
+    "relativeImportFiles": 485,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -14421,8 +14421,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -14436,8 +14436,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -14458,8 +14458,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -14486,8 +14486,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -14769,7 +14769,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/CodeBlockWindow",
-        "importCount": 3,
+        "importCount": 4,
         "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 1,
@@ -14785,6 +14785,12 @@
             "importKind": "relative",
             "importPath": "./CodeBlockWindow/CodeBlockWindow",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/stories/WebComponents/CodeBlock/CodeBlock.stories.tsx",
+            "importKind": "relative",
+            "importPath": "../../../components/CodeBlockWindow/codeBlockFixtures",
+            "context": "story"
           },
           {
             "path": "nextjs-app/shared/stories/WebComponents/CodeBlockWindow/CodeBlockWindow.stories.tsx",
@@ -57348,8 +57354,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -57363,8 +57369,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -57385,8 +57391,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -57413,8 +57419,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -63971,7 +63977,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 61,
+        "importCount": 62,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 29,
@@ -77260,8 +77266,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -77275,8 +77281,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -77297,8 +77303,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",

@@ -41,6 +41,15 @@
   --code-gutter: var(--code-sign-size);
 }
 
+/* Headerless: the copy button floats over the top-end corner. The body stays
+   full width so its scrollbar runs along the card edge under the button;
+   rows end before the button instead, and its opaque chip covers anything
+   scrolled sideways beneath it. */
+
+.card[data-copyable]:not([data-header]) {
+  --code-line-end: calc(var(--space-internal-32) + var(--space-internal-12));
+}
+
 .header {
   display: flex;
   padding-block: var(--space-internal-6);
@@ -110,14 +119,6 @@
 
 .card[data-wrap] .capped {
   overflow: hidden auto;
-}
-
-/* Headerless: the copy button floats top-end in a column of its own. The
-   scroll area ends before it, so a long line scrolled sideways never runs
-   under the button (Astryx snippet layout). */
-
-.card[data-copyable]:not([data-header]) .body {
-  margin-inline-end: calc(var(--space-internal-32) + var(--space-internal-8));
 }
 
 .pre.pre {
