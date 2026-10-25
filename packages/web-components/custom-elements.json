@@ -8796,7 +8796,7 @@
           ],
           "dtSourceComponent": "CodeSnippet",
           "dtBackend": "native",
-          "dtContractStatus": "stable",
+          "dtContractStatus": "deprecated",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
@@ -8899,7 +8899,7 @@
           ],
           "dtSourceComponent": "CodeBlockWindow",
           "dtBackend": "native",
-          "dtContractStatus": "stable",
+          "dtContractStatus": "deprecated",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
