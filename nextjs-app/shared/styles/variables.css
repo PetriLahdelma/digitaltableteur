@@ -211,6 +211,7 @@
   --color-placeholder-dark: #222;
   --color-placeholder-dark-fg: #fff;
   --switch-handle-ring-color: transparent;
+  --switch-track-off: var(--color-muted-light); /* 3.19:1 on white: the white handle and the page both need 3:1 (WCAG 1.4.11) */
   --color-error: #dc3545;
   --color-warning: #ffc107;
   --color-warning-contrast: #8d5a00;
@@ -454,6 +455,7 @@
   --color-placeholder-dark: #2a2c2d;
   --color-placeholder-dark-fg: #fff;
   --switch-handle-ring-color: transparent;
+  --switch-track-off: var(--color-border-light);
   --color-error: #ff6b6b;
   --color-warning: #ffb366;
   --color-warning-contrast: #ffb366;
@@ -535,6 +537,7 @@
   --color-placeholder-dark: #2a2a2a;
   --color-placeholder-dark-fg: #fff;
   --switch-handle-ring-color: var(--color-border);
+  --switch-track-off: var(--color-border-light);
   --color-error: #fff;
   --color-warning: #fff;
   --color-warning-contrast: #fff;
@@ -652,6 +655,7 @@
   --color-placeholder-dark: #1a1a1a;
   --color-placeholder-dark-fg: #fff;
   --switch-handle-ring-color: transparent;
+  --switch-track-off: var(--color-border-light);
   --color-error: #000;
   --color-warning: #000;
   --color-warning-contrast: #000;

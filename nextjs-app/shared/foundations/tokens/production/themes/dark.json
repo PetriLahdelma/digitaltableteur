@@ -1005,6 +1005,20 @@
       }
     }
   },
+  "switch": {
+    "track": {
+      "off": {
+        "$value": "{color.border.light}",
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--switch-track-off",
+            "css": "var(--color-border-light)"
+          }
+        }
+      }
+    }
+  },
   "storybook": {
     "blue": {
       "$value": {

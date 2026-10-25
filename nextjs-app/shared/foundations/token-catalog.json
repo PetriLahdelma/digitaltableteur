@@ -1,7 +1,7 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-25T15:13:20.049Z",
-  "tokenCount": 202,
+  "generatedAt": "2026-10-25T16:40:47.075Z",
+  "tokenCount": 203,
   "usageCoverage": 165,
   "themes": [
     {
@@ -1704,6 +1704,13 @@
         {
           "name": "--switch-handle-ring-color",
           "value": "transparent",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--switch-track-off",
+          "value": "var(--color-muted-light)",
           "usage": "",
           "category": "other",
           "subgroup": "General"

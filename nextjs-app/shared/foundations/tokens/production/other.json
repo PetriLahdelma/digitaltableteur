@@ -197,6 +197,21 @@
           }
         }
       }
+    },
+    "track": {
+      "off": {
+        "$value": "{color.muted.light}",
+        "$type": "color",
+        "$description": "Production token --switch-track-off",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--switch-track-off",
+            "category": "other",
+            "subgroup": "General",
+            "css": "var(--color-muted-light)"
+          }
+        }
+      }
     }
   },
   "storybook": {

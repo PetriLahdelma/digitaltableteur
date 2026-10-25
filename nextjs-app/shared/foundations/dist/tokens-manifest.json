@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "source": "nextjs-app/shared/styles/variables.css",
-  "tokenCount": 202,
+  "tokenCount": 203,
   "usageCoverage": 165,
   "dtcgFiles": [
     "tokens/production/color.json",
@@ -140,6 +140,7 @@
     "--code-toolbar-text",
     "--shortcut-hint-color",
     "--switch-handle-ring-color",
+    "--switch-track-off",
     "--storybook-blue",
     "--storybook-cyan",
     "--storybook-pink",
@@ -232,5 +233,5 @@
     "--font-size-button-m",
     "--font-size-button-l"
   ],
-  "generatedAt": "2026-10-24T19:19:07.047Z"
+  "generatedAt": "2026-10-25T16:40:47.151Z"
 }
