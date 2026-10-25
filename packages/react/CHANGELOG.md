@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.1.37 - 2026-10-25
+
+- `Table`: while the table is wider than its wrapper, the wrapper becomes
+  a focusable `role="region"` named by the caption, so keyboard users can
+  scroll it (WCAG 2.1.1); a table that fits gets no extra tab stop. The
+  component is now a client component. No API change.
+- `Switch`: the on-state handle takes the theme's on-primary ink
+  (`--color-white`), 7.25:1 against the dark theme's track instead of
+  2.41:1; the light theme's off track uses `--color-muted-light`, 3.19:1
+  against the handle and the page instead of 1.61:1 (WCAG 1.4.11). The
+  high-contrast ring also stays visible under the pointer. New optional
+  hooks: `--switch-handle-on-bg`, `--switch-track-off`.
+- `ResizablePanelGroup`: panels shrink so the separators fit; the last
+  panel was clipped by the separator width. Ratios are unchanged.
+- `Link`: the wavy underline is a background drawn per line
+  (`box-decoration-break: clone`), so a wrapping link gets a wave under
+  every line; text-only links are inline. New token
+  `--wavy-underline-depth`.
+- `StageList`: the label-width hook has a zero-specificity default, so a
+  consumer's value always wins.
+- `Gallery`: imports `motion` from `framer-motion` like the rest of the
+  package (one motion copy).
+- `Icon`: `pause` and `play` registered.
+
 ## 0.1.36 - 2026-10-20
 
 - `SelectableCard`: a visible hover. On pointer devices an unselected card's
