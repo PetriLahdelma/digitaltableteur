@@ -92,7 +92,10 @@
   font-family: var(--font-body);
   font-size: var(--font-size-text-l);
   line-height: var(--line-height-relaxed);
-  color: var(--color-muted);
+
+  /* Full ink, not muted: the intro is the page's lead sentence. Not
+     --color-primary: in the dark theme that is the link blue. */
+  color: var(--color-text);
 }
 
 /* Contact Details */
