@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-contactpagecontenteditorial-playground",
   "mode": "light",
-  "sourceSHA": "9bac6107b729751c03b94fe24d32a70d03b154e4",
-  "capturedAt": "2026-10-24T19:22:17.140Z",
-  "runner": "local",
+  "sourceSHA": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
+  "capturedAt": "2026-10-25T19:19:59.328Z",
+  "runner": "local-claude",
   "checks": {
     "accessibility-tree": {
       "passed": true
