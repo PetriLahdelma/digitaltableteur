@@ -89,6 +89,20 @@
   color: inherit;
 }
 
+/* Jump links to the calculator and the packages: natural width, side by
+   side, left-aligned with the title. Clickable when a drawn hero background
+   takes the drags (heroBleedContentPassThrough). */
+
+.heroActions {
+  display: flex;
+  margin-block-start: var(--space-layout-32);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-internal-16);
+  pointer-events: auto;
+}
+
 /* Legacy hero block removed — kept selector out of cascade */
 
 .value {
@@ -255,6 +269,9 @@
   flex-direction: column;
   gap: var(--space-layout-24);
   margin-block-start: var(--space-layout-48);
+
+  /* The hero's Packages link lands the heading below the sticky header. */
+  scroll-margin-block-start: var(--space-layout-120);
 }
 
 .packagesAvailability {

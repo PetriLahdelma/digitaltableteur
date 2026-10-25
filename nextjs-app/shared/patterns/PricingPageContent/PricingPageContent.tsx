@@ -451,6 +451,16 @@ export function PricingPageContent({ className, heroBackground }: PricingPageCon
               {t("pricingHeroSubtitle")}
             </Text>
           </FadeIn>
+          <FadeIn direction="up" delay={0.7} distance={30}>
+            <div className={styles.heroActions}>
+              <Button href="#calculator" variant="primary" surface="onBrand" size="lg">
+                {t("pricingHeroCalculatorCta", "Calculator")}
+              </Button>
+              <Button href="#packages" variant="secondary" surface="onBrand" size="lg">
+                {t("pricingHeroPackagesCta", "Packages")}
+              </Button>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -525,6 +535,7 @@ export function PricingPageContent({ className, heroBackground }: PricingPageCon
           </Title>
 
           <div
+            id="packages"
             className={styles.packagesSection}
             data-donny-target="pricing.packages"
           >
