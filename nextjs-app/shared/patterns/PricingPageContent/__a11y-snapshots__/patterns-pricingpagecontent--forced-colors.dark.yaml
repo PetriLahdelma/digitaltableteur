@@ -1,6 +1,10 @@
 - region "Transparent price tags.":
   - heading "Transparent price tags." [level=1]
   - paragraph: Packaged engagements with the scope, timeline and deliverables stated up front
+  - link "Calculator":
+    - /url: "#calculator"
+  - link "Packages":
+    - /url: "#packages"
 - region "Digitaltableteur / Large delivery team":
   - heading "Digitaltableteur" [level=2]
   - list:
@@ -48,6 +52,7 @@
   - paragraph: Your price
   - paragraph: 120€/hour
   - paragraph: Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.
+  - paragraph: "Prices exclude Finnish VAT. This is an estimate, not an offer: scope, schedule and price are confirmed in a written proposal."
   - text: "Total Investment: 9,000 €"
   - link "Get in touch":
     - /url: /contact?mode=book&duration=2w&days=5
