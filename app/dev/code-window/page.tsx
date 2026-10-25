@@ -1,6 +1,8 @@
 import {
-  CodeBlockWindow,
+  Code,
+  CodeBlock,
   Container,
+  Snippet,
   Text,
   Title,
 } from "@digitaltableteur/react";
@@ -10,73 +12,83 @@ import styles from "./page.module.css";
 
 const fixture = {
   tsx: renderCodeBlockFixtureNode(codeBlockFixtures.tsx.pre),
-  bash: renderCodeBlockFixtureNode(codeBlockFixtures.bash.pre),
   json: renderCodeBlockFixtureNode(codeBlockFixtures.json.pre),
   longLine: renderCodeBlockFixtureNode(codeBlockFixtures.longLine.pre),
 };
+
+const configDiff = `module.exports = {
+-  experimental: {
+-    appDir: true,
+-  },
++  reactStrictMode: true,
+ }`;
+
+const installSteps = `npm i -D stylelint stylelint-plugin-rhythmguard
+npx stylelint "src/**/*.css"`;
 
 export default function CodeWindowDemoPage() {
   return (
     <Container size="lg" className={styles.page}>
       <header className={styles.header}>
         <Title level={1} size="l">
-          Code Window Demo
+          Code components
         </Title>
         <Text as="p" size="m">
-          This page showcases the macOS-style code block window with Shiki-ready
-          markup, copy controls and line numbers.
+          CodeBlock, Snippet and Code with Shiki markup from the MDX pipeline
+          and strings highlighted at runtime: headers, line numbers, callout
+          and diff rows, copy and the terminal theme.
         </Text>
       </header>
 
       <section className={styles.section}>
         <Title level={2} size="m">
-          TypeScript + Title
+          Shiki tree with filename and line numbers
         </Title>
-        <CodeBlockWindow
-          title="components/Greeting.tsx"
-          language="tsx"
-          showLineNumbers
-        >
+        <CodeBlock filename="components/Greeting.tsx" lineNumbers>
           {fixture.tsx}
-        </CodeBlockWindow>
+        </CodeBlock>
       </section>
 
       <section className={styles.section}>
         <Title level={2} size="m">
-          Bash / Curl
+          Diff
         </Title>
-        <CodeBlockWindow language="bash">{fixture.bash}</CodeBlockWindow>
+        <CodeBlock
+          code={configDiff}
+          language="diff"
+          filename="next.config.js"
+          lineNumbers
+          caption="Copy leaves the removed lines out."
+        />
       </section>
 
       <section className={styles.section}>
         <Title level={2} size="m">
-          JSON Payload
+          JSON payload
         </Title>
-        <CodeBlockWindow title="payload.json" language="json">
-          {fixture.json}
-        </CodeBlockWindow>
+        <CodeBlock filename="payload.json">{fixture.json}</CodeBlock>
       </section>
 
       <section className={styles.section}>
         <Title level={2} size="m">
-          Long Line (Scroll)
+          Long line: scroll and wrap
         </Title>
-        <CodeBlockWindow title="long-line.ts" language="ts">
+        <CodeBlock filename="long-line.ts">{fixture.longLine}</CodeBlock>
+        <CodeBlock filename="long-line.ts" wrap>
           {fixture.longLine}
-        </CodeBlockWindow>
+        </CodeBlock>
       </section>
 
-      <section className={`${styles.section} ${styles.darkPreview} themeDark`}>
+      <section className={styles.section}>
         <Title level={2} size="m">
-          Dark Mode Preview
+          Terminal and Snippet
         </Title>
-        <CodeBlockWindow
-          title="theme-dark.tsx"
-          language="tsx"
-          showLineNumbers
-        >
-          {fixture.tsx}
-        </CodeBlockWindow>
+        <CodeBlock code={installSteps} language="bash" theme="terminal" />
+        <Snippet command="npm install @digitaltableteur/react" />
+        <Snippet command="npx @digitaltableteur/cli init" theme="inverted" />
+        <Text as="p" size="s">
+          Inline: run <Code>init</Code>, then <Code>doctor</Code>.
+        </Text>
       </section>
     </Container>
   );

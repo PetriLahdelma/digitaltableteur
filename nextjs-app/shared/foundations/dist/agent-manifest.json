@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-25T17:40:33.553Z",
+  "generatedAt": "2026-10-25T18:09:22.873Z",
   "summary": {
     "componentCount": 189,
     "statusCounts": {
-      "beta": 48,
-      "stable": 111,
-      "alpha": 29,
-      "deprecated": 1
+      "beta": 49,
+      "stable": 108,
+      "deprecated": 3,
+      "alpha": 29
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 91.7,
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 111,
+    "stableCount": 108,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -107,10 +107,10 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 48,
-        "stable": 111,
-        "alpha": 29,
-        "deprecated": 1
+        "beta": 49,
+        "stable": 108,
+        "deprecated": 3,
+        "alpha": 29
       },
       "dsharp": {
         "beta": 110,
@@ -7808,12 +7808,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/code-window/page.tsx",
+            "path": "app/error.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/error.tsx",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -13818,8 +13818,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -13833,8 +13833,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -13855,14 +13855,14 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -14421,8 +14421,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -14436,8 +14436,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -14458,8 +14458,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -14486,8 +14486,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -14615,7 +14615,7 @@
         "name": "CodeBlockWindow",
         "tier": "organism",
         "group": "structure",
-        "status": "stable",
+        "status": "deprecated",
         "description": "Framed code block with a title bar, language label, optional line numbers, and copy button; renders pre-highlighted Shiki output with theme-aware syntax colors.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1164-257",
         "radixPrimitive": null,
@@ -14645,58 +14645,7 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleMain.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/code-window/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "since": "2026-06-04"
-          }
-        ],
+        "consumers": [],
         "schemaVersion": 2,
         "props": {
           "title": {
@@ -14813,7 +14762,8 @@
             "language": "ts",
             "caption": "Layer 0: DTCG source of truth."
           }
-        }
+        },
+        "deprecatedReason": "Superseded by CodeBlock (2026-10-25, react 0.1.38). CodeBlockWindow drew macOS window chrome (traffic-light dots, centred title, text Copy button) around a Shiki tree and had one layout switch (context=\"article\"). CodeBlock keeps what worked (Flight-lazy unwrapping before introspecting server children, copy with an execCommand fallback, the Lenis wheel opt-out for scrollable bodies, translated region label) and adds a filename header or floating copy column, line numbers, highlighted/added/removed rows with signs, a terminal theme, wrap and maxHeight, and runtime highlighting for code strings. Migrated consumers: ArticlePageTemplate MDX figures, /dev/code-window."
       },
       "spec": "# CodeBlockWindow\n\n## Intent\nDocuments how **CodeBlockWindow** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on CodeBlockWindow pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
@@ -14933,8 +14883,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -14948,8 +14898,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -14970,8 +14920,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -15327,8 +15277,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -15342,8 +15292,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -15364,8 +15314,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -15392,8 +15342,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -15521,7 +15471,7 @@
         "name": "CodeSnippet",
         "tier": "molecule",
         "group": "structure",
-        "status": "stable",
+        "status": "deprecated",
         "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1161-2809",
         "radixPrimitive": null,
@@ -15561,18 +15511,7 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "since": "2026-06-04"
-          }
-        ],
+        "consumers": [],
         "schemaVersion": 2,
         "props": {
           "code": {
@@ -15685,7 +15624,8 @@
             "language": "bash",
             "allowCopy": true
           }
-        }
+        },
+        "deprecatedReason": "Superseded by Snippet (copyable commands; the $ prompt is never copied), Code (inline code, sm/md/lg) and CodeBlock (multi-line code with header, callout rows and terminal theme), 2026-10-25, react 0.1.38. CodeSnippet folded three jobs into one variant prop (inline/single/multi) with a SplitButton copy menu, show-more truncation and component-local Prism colours that never followed the theme tokens. Migrated consumer: the Rhythmguard case study (install steps now a terminal CodeBlock)."
       },
       "spec": "# CodeSnippet\n\n## Intent\nDocuments how **CodeSnippet** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on CodeSnippet pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
@@ -15877,8 +15817,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -15892,8 +15832,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -15914,8 +15854,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -34326,16 +34266,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
             "since": "2026-06-04"
           },
@@ -37131,16 +37061,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
             "since": "2026-06-04"
           },
           {
@@ -55036,8 +54956,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -55051,8 +54971,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -55073,8 +54993,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -55101,8 +55021,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -57052,7 +56972,7 @@
         "name": "SplitButton",
         "tier": "molecule",
         "group": "actions",
-        "status": "stable",
+        "status": "beta",
         "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1052-2084",
         "radixPrimitive": null,
@@ -57118,7 +57038,7 @@
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. 2026-07-06 — alpha→beta: Figma variant set built (Variant×Size, node 1052-2084, DT-Site-stuff Molecules). Light/dark AND forced-colors verified for real on the closed control AND the open menu via Playwright (globals=theme + forcedColors:active): theme flips both segments and the portaled Menu surface correctly; in forced-colors the menu draws a visible CanvasText border (not shadow-only), segment outlines and caret/option icons stay distinguishable. forcedColorsVerified + lightDarkVerified now true. 2026-07-12 — beta→stable: 4-mode AT recaptured at stable (WIP badge dropped) via the story runner (plays open the Menu); accessibility tree and real-browser forced-colors confirmed; exported from @digitaltableteur/react. 2 production consumers."
+          "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. 2026-07-06 — alpha→beta: Figma variant set built (Variant×Size, node 1052-2084, DT-Site-stuff Molecules). Light/dark AND forced-colors verified for real on the closed control AND the open menu via Playwright (globals=theme + forcedColors:active): theme flips both segments and the portaled Menu surface correctly; in forced-colors the menu draws a visible CanvasText border (not shadow-only), segment outlines and caret/option icons stay distinguishable. forcedColorsVerified + lightDarkVerified now true. 2026-07-12 — beta→stable: 4-mode AT recaptured at stable (WIP badge dropped) via the story runner (plays open the Menu); accessibility tree and real-browser forced-colors confirmed; exported from @digitaltableteur/react. 2 production consumers. 2026-10-25: demoted to beta. Its only production consumer was CodeSnippet's copy menu on the Rhythmguard case study; CodeSnippet is deprecated and the page now uses CodeBlock, whose copy is a single CodeCopyButton. Re-promote when a production surface uses SplitButton again."
         },
         "tokens": {
           "colors": [
@@ -57288,18 +57208,7 @@
           "Icon",
           "Menu"
         ],
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "since": "2026-06-04"
-          }
-        ]
+        "consumers": []
       },
       "spec": "# SplitButton\n\n## Intent\nPrimary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.\n\n## Interaction contract\n- Keyboard: ArrowDown/Enter/Space on the toggle opens the menu; ArrowUp/ArrowDown navigate items; Home/End jump to first/last enabled item; ArrowRight/ArrowLeft open/close a nested submenu; Tab is trapped inside the open menu; Escape closes the menu and returns focus to the toggle.\n- Pointer: click the primary segment to fire `onPrimaryClick`; click the toggle segment to open/close the menu; click a menu item to fire its `onSelect`; click outside closes the menu.\n- Screen readers: toggle exposes `aria-haspopup=\"menu\"`, `aria-expanded`, and `aria-controls`; menu items use `role=\"menuitem\"`; disabled items are excluded from roving-tabindex navigation.\n\n## Do / don't\n- Do: use for a primary action that has closely related alternate actions (Save / Save as, Export PDF / Export CSV).\n- Do: pass `usePortal` when the trigger sits inside an `overflow: hidden` container.\n- Don't: use for unrelated actions; prefer separate Buttons.\n- Don't: promote past alpha without a11y review, forced-colors verification, and light/dark verification (see roadmap below).\n\n## Design notes\n- Tokens: inherits from the composed Button and Icon components; own menu chrome tokens are listed in the contract (colors --color-dark/muted/neutral-bg/primary/white, spacing --space-internal-4/6/8, radii --radius-sm/md).\n- i18n: the toggle's default accessible name is `t(\"splitButton.moreOptions\")`; keys exist in en/fi/sv (added 2026-07-03 — they were missing, so the toggle used to announce the literal key).\n- Status: alpha. Doc data (usage, best practices, anatomy, playground) authored in the Astryx Phase 3 batch 1 sweep on 2026-07-03; forced-colors and light/dark verification still pending before beta.\n",
       "documentationDebt": false,
@@ -57520,7 +57429,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. 2026-07-06 — alpha→beta: Figma variant set built (Variant×Size, node 1052-2084, DT-Site-stuff Molecules). Light/dark AND forced-colors verified for real on the closed control AND the open menu via Playwright (globals=theme + forcedColors:active): theme flips both segments and the portaled Menu surface correctly; in forced-colors the menu draws a visible CanvasText border (not shadow-only), segment outlines and caret/option icons stay distinguishable. forcedColorsVerified + lightDarkVerified now true. 2026-07-12 — beta→stable: 4-mode AT recaptured at stable (WIP badge dropped) via the story runner (plays open the Menu); accessibility tree and real-browser forced-colors confirmed; exported from @digitaltableteur/react. 2 production consumers."
+            "note": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. 2026-07-06 — alpha→beta: Figma variant set built (Variant×Size, node 1052-2084, DT-Site-stuff Molecules). Light/dark AND forced-colors verified for real on the closed control AND the open menu via Playwright (globals=theme + forcedColors:active): theme flips both segments and the portaled Menu surface correctly; in forced-colors the menu draws a visible CanvasText border (not shadow-only), segment outlines and caret/option icons stay distinguishable. forcedColorsVerified + lightDarkVerified now true. 2026-07-12 — beta→stable: 4-mode AT recaptured at stable (WIP badge dropped) via the story runner (plays open the Menu); accessibility tree and real-browser forced-colors confirmed; exported from @digitaltableteur/react. 2 production consumers. 2026-10-25: demoted to beta. Its only production consumer was CodeSnippet's copy menu on the Rhythmguard case study; CodeSnippet is deprecated and the page now uses CodeBlock, whose copy is a single CodeCopyButton. Re-promote when a production surface uses SplitButton again."
           }
         ],
         "docOrigin": {
@@ -67482,16 +67391,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
             "since": "2026-06-04"
           },
           {

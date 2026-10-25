@@ -24,8 +24,8 @@ export const satoshi = localFont({
 });
 
 /**
- * Source Code Pro: the code and monospace face (code, CodeSnippet, Kbd, mono
- * labels). Variable font, self-hosted by next/font at build time (no request
+ * Source Code Pro: the code and monospace face (CodeBlock, Snippet, Code, Kbd,
+ * mono labels). Variable font, self-hosted by next/font at build time (no request
  * to Google at runtime). Exposed as --font-code; variables.css puts it first
  * in --font-mono, so every monospace use resolves to it.
  */

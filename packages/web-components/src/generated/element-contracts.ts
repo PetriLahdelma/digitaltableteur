@@ -963,7 +963,7 @@ export const elementMigrationManifest = [
   { tagName: "dt-modal", sourceComponent: "Modal", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-tooltip", sourceComponent: "Tooltip", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-menu", sourceComponent: "Menu", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
-  { tagName: "dt-split-button", sourceComponent: "SplitButton", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-split-button", sourceComponent: "SplitButton", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-tabs", sourceComponent: "Tabs", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-segmented-control", sourceComponent: "SegmentedControl", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-accordion", sourceComponent: "Accordion", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },

@@ -2,7 +2,8 @@
 
 import React from "react";
 import {
-  CodeSnippet,
+  Code,
+  CodeBlock,
   ProcessBlock,
   Text,
   Title,
@@ -123,7 +124,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             <p className={styles.metaOverview}>
               <strong>Every design system ships a spacing scale.</strong> Almost
               none enforce it. Documentation says &ldquo;use{" "}
-              <code>--space-16</code>&rdquo; but <code>padding: 14px</code>{" "}
+              <Code>--space-16</Code>&rdquo; but <Code>padding: 14px</Code>{" "}
               compiles just fine. Over months, the codebase drifts from the
               system. Auditing manually doesn&apos;t scale. Existing linters
               check syntax, not semantics.
@@ -201,19 +202,17 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="2" size="s">
             Shared config replaces ad-hoc spacing rules spread across files. The
-            strict preset ships with sensible defaults; <code>init</code> and{" "}
-            <code>doctor</code> pick up from there when the team wants
+            strict preset ships with sensible defaults; <Code>init</Code> and{" "}
+            <Code>doctor</Code> pick up from there when the team wants
             stack-specific configuration.
           </Text>,
-          <CodeSnippet
+          <CodeBlock
             key="strict-config-snippet"
             code={RHYTHMGUARD_STRICT_CONFIG_SNIPPET}
             language="bash"
-            variant="multi"
-            allowCopy
-            showLineNumbers={false}
-            maxLines={0}
-            aria-label="Rhythmguard strict config install commands"
+            theme="terminal"
+            wrap
+            copyLabel="Copy the install commands"
           />,
         ]}
         images={{
@@ -238,20 +237,20 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="1" size="s">
             <span className={caseStudy.leadIn}>use-scale</span>. Every spacing
             value must be on the configured scale. Write{" "}
-            <code>margin-top: 13px</code>, get autofixed to <code>12px</code>.
+            <Code>margin-top: 13px</Code>, get autofixed to <Code>12px</Code>.
             Supports 17 built-in scales including 4pt grid, 8pt grid, Material
             8dp, Atlassian, Carbon 2x, Fibonacci and golden ratio.
           </Text>,
           <Text key="2" size="s">
             <span className={caseStudy.leadIn}>prefer-token</span>. Raw literal
-            values must use design tokens. Write <code>padding: 16px</code>, get
-            autofixed to <code>var(--spacing-4)</code>. Builds token maps from
+            values must use design tokens. Write <Code>padding: 16px</Code>, get
+            autofixed to <Code>var(--spacing-4)</Code>. Builds token maps from
             four sources with cascade precedence.
           </Text>,
           <Text key="3" size="s">
             <span className={caseStudy.leadIn}>no-offscale-transform</span>.
             Transform translations must be on scale. The same discipline applied
-            to <code>translateX</code> and <code>translateY</code> values, which
+            to <Code>translateX</Code> and <Code>translateY</Code> values, which
             are easy to miss in manual review.
           </Text>,
         ]}
@@ -278,15 +277,15 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             <span className={caseStudy.leadIn}>
               Rhythmguard reads tokens from wherever your team defines them
             </span>
-            , not just one format. DTCG JSON with nested <code>$value</code>{" "}
-            groups? Parsed recursively. Tailwind v4 <code>@theme</code> blocks?
+            , not just one format. DTCG JSON with nested <Code>$value</Code>{" "}
+            groups? Parsed recursively. Tailwind v4 <Code>@theme</Code> blocks?
             PostCSS traverses them natively. CSS custom properties? Scanned from
             your stylesheet.
           </Text>,
           <Text key="2" size="s">
-            Autofix output is source-aware: tokens from <code>@theme</code> emit{" "}
-            <code>var(--spacing-4)</code>, tokens from Tailwind JS config emit{" "}
-            <code>theme(spacing.4)</code>. The developer gets the right
+            Autofix output is source-aware: tokens from <Code>@theme</Code> emit{" "}
+            <Code>var(--spacing-4)</Code>, tokens from Tailwind JS config emit{" "}
+            <Code>theme(spacing.4)</Code>. The developer gets the right
             reference for their stack without knowing the underlying token
             format.
           </Text>,
@@ -323,16 +322,16 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             <span className={caseStudy.leadIn}>
               The ESLint companion catches drift in JSX too.
             </span>{" "}
-            A separate export provides the <code>tailwind-class-use-scale</code>{" "}
+            A separate export provides the <Code>tailwind-class-use-scale</Code>{" "}
             rule. It checks every string literal, automatically covering{" "}
-            <code>cn()</code>, <code>clsx()</code>, <code>cva()</code>,{" "}
-            <code>twMerge()</code> and JSX <code>className</code>.{" "}
-            <code>p-[13px]</code> becomes <code>p-[12px]</code>.
+            <Code>cn()</Code>, <Code>clsx()</Code>, <Code>cva()</Code>,{" "}
+            <Code>twMerge()</Code> and JSX <Code>className</Code>.{" "}
+            <Code>p-[13px]</Code> becomes <Code>p-[12px]</Code>.
           </Text>,
           <Text key="2" size="s">
-            Seven shipped config presets, from <code>migration</code> (lenient)
-            to <code>strict</code> (scale + tokens + transforms) to{" "}
-            <code>react-tailwind</code> (Tailwind + CSS Modules + Next.js
+            Seven shipped config presets, from <Code>migration</Code> (lenient)
+            to <Code>strict</Code> (scale + tokens + transforms) to{" "}
+            <Code>react-tailwind</Code> (Tailwind + CSS Modules + Next.js
             ignores). Framework snippets for Vue, Lit, Astro and SvelteKit.
           </Text>,
         ]}
@@ -457,7 +456,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             </span>{" "}
             It&apos;s the only tool that governs actual values in both CSS
             declarations and Tailwind arbitrary brackets. Where Project Spine
-            says &ldquo;use <code>--spacing-4</code>&rdquo;, Rhythmguard catches
+            says &ldquo;use <Code>--spacing-4</Code>&rdquo;, Rhythmguard catches
             developers who don&apos;t.
           </Text>,
         ]}

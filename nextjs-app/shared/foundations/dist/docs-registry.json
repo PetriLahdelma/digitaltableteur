@@ -4150,7 +4150,7 @@
       "name": "CodeBlockWindow",
       "group": "structure",
       "tier": 1,
-      "status": "stable",
+      "status": "deprecated",
       "description": "Framed code block with a title bar, language label, optional line numbers, and copy button; renders pre-highlighted Shiki output with theme-aware syntax colors.",
       "dense": "Framed code: header w/ title (filename) + language label, caption below, context default|article (prose width, 35vh scroll); children expect highlighted pre/code (Shiki), not raw strings",
       "keywords": [
@@ -4433,7 +4433,7 @@
       "name": "CodeSnippet",
       "group": "structure",
       "tier": 1,
-      "status": "stable",
+      "status": "deprecated",
       "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
       "dense": "Prism-highlighted code block: language set (ts/js/html/python/go/rust/json/bash/...), showLineNumbers, allowCopy button w/ onCopy hook, maxLines clamp, variant surface; aria-label for AT context",
       "keywords": [
@@ -15934,7 +15934,7 @@
       "name": "SplitButton",
       "group": "actions",
       "tier": 1,
-      "status": "stable",
+      "status": "beta",
       "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
       "dense": "primary action + menu toggle for related actions; Button-matched variant/size/surface, collision-aware menu, nested submenus, roving-tabindex keyboard model",
       "keywords": [

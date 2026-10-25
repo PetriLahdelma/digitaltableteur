@@ -14,7 +14,7 @@ import type { BlogPostEntry } from "../../data/blogPosts";
 
 // MDX component imports preserved from original
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
-import { CodeBlockWindow, Link, Text } from "@digitaltableteur/react";
+import { Code, CodeBlock, Link, Text } from "@digitaltableteur/react";
 import { DashLeadList } from "@dt/DashLeadList";
 import List from "@dt/List";
 import { StageList, type StageListProps } from "@dt/StageList";
@@ -27,6 +27,7 @@ import { cn } from "../../lib/cn";
 import React from "react";
 import figureStyles from "./ArticleFigure.module.css";
 import stageListStyles from "./ArticleStageList.module.css";
+import codeStyles from "./ArticleCode.module.css";
 
 type WithChildrenProps = { children?: React.ReactNode };
 type DataProps = { [key: string]: unknown; children?: React.ReactNode };
@@ -366,17 +367,32 @@ const MdxFigure = ({
     );
   }
 
+  // A fenced block's title="..." is its file name. Article blocks wrap and
+  // cap their height so a long listing never outruns the prose around it.
   return (
-    <CodeBlockWindow
-      title={title}
+    <CodeBlock
+      filename={title}
       caption={caption}
       language={languageValue}
-      context="article"
-      className={className}
+      wrap
+      maxHeight="35vb"
+      className={cn(codeStyles.codeBlock, className)}
     >
       {preElement}
-    </CodeBlockWindow>
+    </CodeBlock>
   );
+};
+
+/**
+ * Inline code in prose renders as the Code chip. rehype-pretty-code leaves
+ * inline code alone (bypassInlineCode) and marks block code with
+ * data-language, so a block's <code> passes through untouched for CodeBlock.
+ */
+const MdxCode = (props: React.ComponentPropsWithoutRef<"code">) => {
+  if (Object.prototype.hasOwnProperty.call(props, "data-language")) {
+    return <code {...props} />;
+  }
+  return <Code {...props} />;
 };
 
 /** MDX lower-case `<figure>` bypasses MDXProvider; use `<ArticleFigure>` in content. */
@@ -417,6 +433,7 @@ const mdxComponents = {
   img: MdxImageWrapper,
   figcaption: MdxFigcaption,
   figure: MdxFigure,
+  code: MdxCode,
 };
 
 /** Shared MDX component map for blog article bodies (App Router + Storybook). */

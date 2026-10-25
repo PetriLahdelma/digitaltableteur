@@ -155,12 +155,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/code-window/page.tsx",
+            "path": "app/error.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/error.tsx",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
         }
     ],

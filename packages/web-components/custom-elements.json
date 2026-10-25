@@ -6628,7 +6628,7 @@
           ],
           "dtSourceComponent": "SplitButton",
           "dtBackend": "native",
-          "dtContractStatus": "stable",
+          "dtContractStatus": "beta",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },

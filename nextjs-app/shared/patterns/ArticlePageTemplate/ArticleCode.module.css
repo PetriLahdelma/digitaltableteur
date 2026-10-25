@@ -1,0 +1,17 @@
+/* Article code blocks: set off from the prose by a wider margin, and held to
+   80% of the measure on wider screens so they read as figures, not text.
+   Phones get the full width; 80% there left long lines a few words wide.
+   Doubled class: the package's margin reset on the block root must lose. */
+
+.codeBlock.codeBlock {
+  margin-block: var(--space-layout-48);
+  margin-inline: auto;
+  inline-size: 100%;
+}
+
+@media (width >= 768px) {
+  .codeBlock.codeBlock {
+    margin-block: var(--space-layout-64);
+    max-inline-size: 80%;
+  }
+}

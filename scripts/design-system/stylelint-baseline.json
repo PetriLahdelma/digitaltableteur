@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1898,
+  "warningCount": 1896,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -9660,24 +9660,6 @@
       "id": "nextjs-app/shared/components/pages/Work/RawView/rawView.module.css::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
-      "file": "nextjs-app/shared/components/pages/Work/Rhythmguard/rhythmguard.module.css",
-      "line": 87,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"overflow-inline\" to come before \"overflow-x\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/pages/Work/Rhythmguard/rhythmguard.module.css::order/properties-order::Expected \"overflow-inline\" to come before \"overflow-x\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/Rhythmguard/rhythmguard.module.css",
-      "line": 9,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/Work/Rhythmguard/rhythmguard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9em\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
       "line": 308,
       "column": 3,
@@ -17059,7 +17041,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 428,
+      "line": 463,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -17068,7 +17050,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 516,
+      "line": 569,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -17077,7 +17059,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 726,
+      "line": 815,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
