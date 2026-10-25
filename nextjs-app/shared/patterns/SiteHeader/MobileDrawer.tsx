@@ -11,6 +11,7 @@ import { useFocusTrap } from "../../hooks/useFocusTrap";
 import { X, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import type { NavItem } from "./SiteHeader";
 import type { Theme } from "../../components/ThemeProvider";
+import styles from "./SiteHeader.module.css";
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -142,21 +143,32 @@ export function MobileDrawer({
           <span className="font-heading text-title-s font-semibold">
             {t("navMenuTitle", "Menu")}
           </span>
-          <IconButton
-            icon={<X weight="bold" />}
-            label={t("navMenuClose")}
-            onClick={onClose}
-            variant="tertiary"
-          />
+          {/* Theme sits beside close so it is reachable without scrolling:
+              on a 375x667 phone the old footer row fell below the fold. */}
+          <div className={styles.drawerHeaderActions}>
+            <IconButton
+              icon={<ThemeIcon weight="bold" />}
+              label={t("navMenuThemeToggle")}
+              onClick={onThemeToggle}
+              variant="tertiary"
+            />
+            <IconButton
+              icon={<X weight="bold" />}
+              label={t("navMenuClose")}
+              onClick={onClose}
+              variant="tertiary"
+            />
+          </div>
         </div>
 
         <div
           className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
           data-mobile-drawer-scroll-region
+          data-lenis-prevent=""
         >
           {/* Navigation */}
-          <nav className="p-4" aria-label={t("navMenuLinks")}>
-            <ul className="space-y-1">
+          <nav className={styles.drawerNav} aria-label={t("navMenuLinks")}>
+            <ul className={styles.drawerNavList}>
               {navItems.map((item) => (
                 <li key={item.href} data-nav-item>
                   <NavLink
@@ -167,7 +179,7 @@ export function MobileDrawer({
                     // connection left the drawer open with no feedback for
                     // seconds (Sentry rage-click on /blog).
                     onClick={onClose}
-                    className="block py-3 px-4 rounded-md text-title-s font-medium hover:bg-muted"
+                    className="block py-3 px-2 rounded-md text-title-s font-medium hover:bg-muted"
                     activeClassName="bg-muted text-foreground"
                     inactiveClassName="text-muted-foreground"
                   >
@@ -181,11 +193,14 @@ export function MobileDrawer({
           {/* Footer Controls */}
           <div className="p-4 border-t border-border space-y-4">
             {/* Language */}
+            {/* The EN/FI/SV codes explain themselves, so the visible label
+                went to keep this row above the fold; the group keeps the name. */}
             <div>
-              <span className="block font-body text-text-s text-muted-foreground mb-2">
-                {t("navMenuLanguages")}
-              </span>
-              <div className="flex gap-2">
+              <div
+                className="flex gap-2"
+                role="group"
+                aria-label={t("navMenuLanguages")}
+              >
                 {[
                   // Each language's own name, the same in every UI locale.
                   { code: "en", nativeName: "English" },
@@ -213,21 +228,9 @@ export function MobileDrawer({
               </div>
             </div>
 
-            {/* Theme */}
-            <div className="flex items-center justify-between">
-              <span className="font-body text-text-s text-muted-foreground">
-                {t("navMenuTheme")}
-              </span>
-              <IconButton
-                icon={<ThemeIcon weight="bold" />}
-                label={t("navMenuThemeToggle")}
-                onClick={onThemeToggle}
-                variant="secondary"
-              />
-            </div>
-
-            {/* Legal Links */}
-            <div className="flex gap-4 pt-2">
+            {/* Legal links stack: side by side at 280px, "Tietosuojakäytäntö"
+                broke mid-word. */}
+            <div className={styles.drawerLegalLinks}>
               <RouterLink
                 href="/privacy-policy"
                 className="font-body text-text-s text-muted-foreground hover:text-foreground"
