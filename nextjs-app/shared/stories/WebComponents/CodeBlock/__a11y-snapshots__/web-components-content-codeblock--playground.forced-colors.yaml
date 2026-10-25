@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- figure "Caption":
+  - text: DemoButton.tsx tsx
+  - button "Copy code"
+  - status
+  - code: "type Props = { label: string; }; export function DemoButton({ label }: Props) { return ( <button type=\"button\" aria-label={label}> Removed line {label} Added line </button> ); }"
+  - text: Caption

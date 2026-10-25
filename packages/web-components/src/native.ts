@@ -31,6 +31,10 @@ import { DtGroupLabelElement } from "./native/group-label";
 import { DtIconElement } from "./native/icon";
 import { DtIconButtonElement } from "./native/icon-button";
 import { DtKbdElement } from "./native/kbd";
+import { DtCodeElement } from "./native/code";
+import { DtCodeBlockElement } from "./native/code-block";
+import { DtCodeCopyButtonElement } from "./native/code-copy-button";
+import { DtSnippetElement } from "./native/snippet";
 import { DtLanguageSwitcherElement } from "./native/language-switcher";
 import { DtLinkElement } from "./native/link";
 import { DtListElement } from "./native/list";
@@ -220,6 +224,14 @@ export type {
 } from "./native/icon-button";
 export { DtKbdElement } from "./native/kbd";
 export type { DtKbdSize, DtKbdVariant } from "./native/kbd";
+export { DtCodeElement } from "./native/code";
+export type { DtCodeSize } from "./native/code";
+export { DtCodeBlockElement } from "./native/code-block";
+export type { DtCodeBlockTheme } from "./native/code-block";
+export { DtCodeCopyButtonElement } from "./native/code-copy-button";
+export type { DtCodeCopyButtonStatus } from "./native/code-copy-button";
+export { DtSnippetElement } from "./native/snippet";
+export type { DtSnippetTheme } from "./native/snippet";
 export { DtLanguageSwitcherElement } from "./native/language-switcher";
 export type { DtLanguageSwitcherOption } from "./native/language-switcher";
 export { DtLinkElement } from "./native/link";
@@ -430,6 +442,10 @@ export const nativeElementDefinitions = [
   ["dt-kbd", DtKbdElement],
   ["dt-code-snippet", DtCodeSnippetElement],
   ["dt-code-block-window", DtCodeBlockWindowElement],
+  ["dt-code", DtCodeElement],
+  ["dt-code-block", DtCodeBlockElement],
+  ["dt-code-copy-button", DtCodeCopyButtonElement],
+  ["dt-snippet", DtSnippetElement],
   ["dt-timestamp", DtTimestampElement],
   ["dt-section", DtSectionElement],
   ["dt-stack", DtStackElement],

@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.11.0 - 2026-10-25
+
+- New elements, native twins of the React code components, pixel-identical
+  to them in the rendered-parity matrix (light, mobile, dark, forced
+  colours) and enrolled in the parity roster:
+  - `dt-code-block`: filename header (file glyph by language) or a floating
+    copy button, line numbers, highlighted/added/removed rows with signs
+    whose alternative text names the change, caption, `theme="terminal"`,
+    `wrap`, `max-height`. Takes `code` or a host-highlighted Shiki `pre`;
+    `language="diff"` and Shiki diff blocks become rows, and copy leaves
+    removed lines out.
+  - `dt-snippet`: copyable command(s); the `$` prompt is aria-hidden and
+    never copied; `theme="inverted"`.
+  - `dt-code`: inline code, `size` sm, md or lg.
+  - `dt-code-copy-button`: 28px copy control with a live-region result.
+- `dt-code-block-window` and `dt-code-snippet` follow their deprecated
+  React sources; use the new elements.
+- `dt-split-button` is beta again with its source component.
+
 ## 0.10.3 - 2026-10-15
 
 - `dt-language-switcher`: the trigger keeps one accessible name in both

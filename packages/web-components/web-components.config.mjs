@@ -2159,6 +2159,130 @@ const elementDefinitions = [
     ],
   },
   {
+    tagName: "dt-code",
+    sourceComponent: "Code",
+    contract: "Code",
+    defaultBackend: "native",
+    nativeClassName: "DtCodeElement",
+    description:
+      "Inline code chip for identifiers, paths and flags inside prose.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("size"),
+      nativeProp("content", "string", "Text fallback for the default slot."),
+    ],
+    slots: [slot("", "The inline code text.")],
+    events: [],
+  },
+  {
+    tagName: "dt-code-copy-button",
+    sourceComponent: "CodeCopyButton",
+    contract: "CodeCopyButton",
+    defaultBackend: "native",
+    nativeClassName: "DtCodeCopyButtonElement",
+    description:
+      "28px icon-only copy control; the glyph turns to a check and a live region announces the result.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("value"),
+      stringProp("label"),
+      numberProp("resetAfterMs"),
+      nativeProp("disabled", "boolean", "Disables the button."),
+    ],
+    events: [
+      {
+        callbackProp: "onCopy",
+        name: "copy",
+        description: "Dispatched with detail.text after a successful copy.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-snippet",
+    sourceComponent: "Snippet",
+    contract: "Snippet",
+    defaultBackend: "native",
+    nativeClassName: "DtSnippetElement",
+    description:
+      "Copyable shell command(s); the $ prompt is aria-hidden and never copied.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "command",
+        "command",
+        "One command, or several separated by newlines (or the commands property).",
+      ),
+      booleanValueProperty(
+        "prompt",
+        "prompt",
+        "Show the $ prompt; the attribute value false hides it.",
+      ),
+      stringProp("theme"),
+      booleanValueProperty(
+        "copyable",
+        "copyable",
+        "Show the copy button; the attribute value false hides it.",
+      ),
+      stringProp("copyLabel"),
+    ],
+    events: [
+      {
+        callbackProp: "onCopy",
+        name: "copy",
+        description:
+          "Dispatched with detail.text (commands joined by newlines) after a copy.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-code-block",
+    sourceComponent: "CodeBlock",
+    contract: "CodeBlock",
+    defaultBackend: "native",
+    nativeClassName: "DtCodeBlockElement",
+    description:
+      "Multi-line code with filename header, line numbers, highlighted/added/removed rows, copy, caption and terminal theme.",
+    storyParity: storyParity(),
+    slots: [
+      slot(
+        "",
+        "A host-highlighted Shiki pre/code tree; without it the code attribute is highlighted in the element.",
+      ),
+    ],
+    props: [
+      stringProp("code"),
+      stringProp("language"),
+      stringProp("filename"),
+      booleanValueProperty(
+        "header",
+        "header",
+        "Header bar; defaults to on when a filename is set.",
+      ),
+      booleanValueProperty("lineNumbers", "lineNumbers"),
+      stringProp("highlightLines"),
+      stringProp("addedLines"),
+      stringProp("removedLines"),
+      stringProp("caption"),
+      stringProp("theme"),
+      booleanProp("wrap"),
+      stringProp("maxHeight"),
+      booleanValueProperty(
+        "copyable",
+        "copyable",
+        "Show the copy button; the attribute value false hides it.",
+      ),
+      stringProp("copyLabel"),
+    ],
+    events: [
+      {
+        callbackProp: "onCopy",
+        name: "copy",
+        description:
+          "Dispatched with detail.text (removed lines left out) after a copy.",
+      },
+    ],
+  },
+  {
     tagName: "dt-code-block-window",
     sourceComponent: "CodeBlockWindow",
     contract: "CodeBlockWindow",

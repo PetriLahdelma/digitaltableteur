@@ -34,7 +34,11 @@ export const enforced = [
   "SplitButton",
   "Testimonial",
   "Text",
-  "VisuallyHidden"
+  "VisuallyHidden",
+  "Code",
+  "CodeBlock",
+  "CodeCopyButton",
+  "Snippet"
 ];
 
 export const exceptions = [];

@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- paragraph:
+  - text: The strict preset ships with sensible defaults;
+  - code: init
+  - text: and
+  - code: doctor
+  - text: pick up from there when the team wants stack-specific configuration.

@@ -195,7 +195,16 @@ const maxPackedFiles = 40 + tags.length * 2;
 // +2 kB for the Pause and Play icons (2026-10-25, the marquee pause control):
 // six inline SVG weights each in native-icon-data; measured 1,897,042 bytes
 // unpacked, 767 bytes over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_348_000;
+// +61 kB for the code twins dt-code-block, dt-snippet, dt-code and
+// dt-code-copy-button (2026-10-25, successors of dt-code-block-window and
+// dt-code-snippet): a full runtime highlighter with diff/callout rows and
+// Shiki-tree handling (~22 kB source), 21 regular-weight Phosphor glyphs the
+// React CodeBlock picks by language (~16 kB, generated), the JSX/TSX/YAML
+// Prism grammars React highlights with, four transcribed stylesheets, ~9 kB
+// of manifest entries and their declarations; measured 1,983,072 bytes
+// unpacked, ~59.5 kB over the per-tag-scaled ceiling. The old twins go when
+// their React sources are removed after react 0.1.39.
+const sharedBundleAndManifestCeiling = 1_409_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.

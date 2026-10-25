@@ -695,6 +695,43 @@ export type DtCodeSnippetElementContract = HTMLElement & {
   maxLines?: number;
 };
 
+export type DtCodeElementContract = HTMLElement & {
+  size?: string;
+  content?: string;
+};
+
+export type DtCodeCopyButtonElementContract = HTMLElement & {
+  value?: string;
+  label?: string;
+  resetAfterMs?: number;
+  disabled?: boolean;
+};
+
+export type DtSnippetElementContract = HTMLElement & {
+  command?: string;
+  prompt?: boolean;
+  theme?: string;
+  copyable?: boolean;
+  copyLabel?: string;
+};
+
+export type DtCodeBlockElementContract = HTMLElement & {
+  code?: string;
+  language?: string;
+  filename?: string;
+  header?: boolean;
+  lineNumbers?: boolean;
+  highlightLines?: string;
+  addedLines?: string;
+  removedLines?: string;
+  caption?: string;
+  theme?: string;
+  wrap?: boolean;
+  maxHeight?: string;
+  copyable?: boolean;
+  copyLabel?: string;
+};
+
 export type DtCodeBlockWindowElementContract = HTMLElement & {
   windowTitle?: string;
   caption?: string;
@@ -978,6 +1015,10 @@ export const elementMigrationManifest = [
   { tagName: "dt-multi-combobox", sourceComponent: "MultiCombobox", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-cookie-consent", sourceComponent: "CookieConsent", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-code-snippet", sourceComponent: "CodeSnippet", backend: "native", contractStatus: "deprecated", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-code", sourceComponent: "Code", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-code-copy-button", sourceComponent: "CodeCopyButton", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-snippet", sourceComponent: "Snippet", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-code-block", sourceComponent: "CodeBlock", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-code-block-window", sourceComponent: "CodeBlockWindow", backend: "native", contractStatus: "deprecated", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-breadcrumb", sourceComponent: "Breadcrumb", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-pagination", sourceComponent: "Pagination", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
@@ -1069,6 +1110,10 @@ declare global {
     "dt-multi-combobox": DtMultiComboboxElementContract;
     "dt-cookie-consent": DtCookieConsentElementContract;
     "dt-code-snippet": DtCodeSnippetElementContract;
+    "dt-code": DtCodeElementContract;
+    "dt-code-copy-button": DtCodeCopyButtonElementContract;
+    "dt-snippet": DtSnippetElementContract;
+    "dt-code-block": DtCodeBlockElementContract;
     "dt-code-block-window": DtCodeBlockWindowElementContract;
     "dt-breadcrumb": DtBreadcrumbElementContract;
     "dt-pagination": DtPaginationElementContract;

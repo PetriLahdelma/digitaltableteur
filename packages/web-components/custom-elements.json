@@ -8802,6 +8802,474 @@
         },
         {
           "kind": "class",
+          "name": "DtCodeElement",
+          "description": "Inline code chip for identifiers, paths and flags inside prose.",
+          "customElement": true,
+          "tagName": "dt-code",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The inline code text."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Code",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtCodeCopyButtonElement",
+          "description": "28px icon-only copy control; the glyph turns to a check and a live region announces the result.",
+          "customElement": true,
+          "tagName": "dt-code-copy-button",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "resetAfterMs",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "description": "Disables the button.",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "reset-after-ms",
+              "fieldName": "resetAfterMs",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "description": "Disables the button.",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "copy",
+              "description": "Dispatched with detail.text after a successful copy.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "CodeCopyButton",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtSnippetElement",
+          "description": "Copyable shell command(s); the $ prompt is aria-hidden and never copied.",
+          "customElement": true,
+          "tagName": "dt-snippet",
+          "members": [
+            {
+              "kind": "field",
+              "name": "command",
+              "description": "One command, or several separated by newlines (or the commands property).",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "prompt",
+              "description": "Show the $ prompt; the attribute value false hides it.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "copyable",
+              "description": "Show the copy button; the attribute value false hides it.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "copyLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "command",
+              "fieldName": "command",
+              "description": "One command, or several separated by newlines (or the commands property).",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "prompt",
+              "fieldName": "prompt",
+              "description": "Show the $ prompt; the attribute value false hides it.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "theme",
+              "fieldName": "theme",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "copyable",
+              "fieldName": "copyable",
+              "description": "Show the copy button; the attribute value false hides it.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "copy-label",
+              "fieldName": "copyLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "copy",
+              "description": "Dispatched with detail.text (commands joined by newlines) after a copy.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Snippet",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtCodeBlockElement",
+          "description": "Multi-line code with filename header, line numbers, highlighted/added/removed rows, copy, caption and terminal theme.",
+          "customElement": true,
+          "tagName": "dt-code-block",
+          "members": [
+            {
+              "kind": "field",
+              "name": "code",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "language",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "filename",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "header",
+              "description": "Header bar; defaults to on when a filename is set.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lineNumbers",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "highlightLines",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "addedLines",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "removedLines",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "caption",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wrap",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxHeight",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "copyable",
+              "description": "Show the copy button; the attribute value false hides it.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "copyLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "A host-highlighted Shiki pre/code tree; without it the code attribute is highlighted in the element."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "code",
+              "fieldName": "code",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "language",
+              "fieldName": "language",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "filename",
+              "fieldName": "filename",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "header",
+              "fieldName": "header",
+              "description": "Header bar; defaults to on when a filename is set.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "line-numbers",
+              "fieldName": "lineNumbers",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "highlight-lines",
+              "fieldName": "highlightLines",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "added-lines",
+              "fieldName": "addedLines",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "removed-lines",
+              "fieldName": "removedLines",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "caption",
+              "fieldName": "caption",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "theme",
+              "fieldName": "theme",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wrap",
+              "fieldName": "wrap",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "max-height",
+              "fieldName": "maxHeight",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "copyable",
+              "fieldName": "copyable",
+              "description": "Show the copy button; the attribute value false hides it.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "copy-label",
+              "fieldName": "copyLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "copy",
+              "description": "Dispatched with detail.text (removed lines left out) after a copy.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "CodeBlock",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
           "name": "DtCodeBlockWindowElement",
           "description": "Framed presentation for host-highlighted pre/code markup with metadata and caption.",
           "customElement": true,
