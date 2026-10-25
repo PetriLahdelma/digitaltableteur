@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-25T16:40:54.889Z",
+  "generatedAt": "2026-10-25T17:40:33.553Z",
   "summary": {
-    "componentCount": 185,
+    "componentCount": 189,
     "statusCounts": {
-      "beta": 44,
+      "beta": 48,
       "stable": 111,
       "alpha": 29,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 91.6,
-    "codebaseComponentCount": 202,
-    "usageCoveragePercent": 94.1,
+    "catalogCompletenessPercent": 91.7,
+    "codebaseComponentCount": 206,
+    "usageCoveragePercent": 94.2,
     "componentsWithProductionUsage": 42,
     "notReadyForStablePromotion": false
   },
@@ -25,8 +25,8 @@
   },
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
-    "tokenCount": 203,
-    "usageCoverage": 165,
+    "tokenCount": 227,
+    "usageCoverage": 172,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 202,
-    "inCatalog": 185,
+    "totalComponentsInCodebase": 206,
+    "inCatalog": 189,
     "outOfCatalog": 17,
-    "catalogCompletenessPercent": 91.6,
+    "catalogCompletenessPercent": 91.7,
     "artifactCoverage": {
-      "stories": 169,
-      "tests": 181,
+      "stories": 173,
+      "tests": 185,
       "mdx": 4,
-      "spec": 185
+      "spec": 189
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,13 +77,13 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 185,
-    "withAnyUsage": 174,
+    "catalogedComponents": 189,
+    "withAnyUsage": 178,
     "withProductionUsage": 42,
-    "uniqueImportedComponents": 174,
-    "totalEvidenceRows": 896,
-    "aliasImportFiles": 458,
-    "relativeImportFiles": 473,
+    "uniqueImportedComponents": 178,
+    "totalEvidenceRows": 903,
+    "aliasImportFiles": 459,
+    "relativeImportFiles": 483,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -102,12 +102,12 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 185,
+      "digitaltableteur": 189,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 44,
+        "beta": 48,
         "stable": 111,
         "alpha": 29,
         "deprecated": 1
@@ -13590,6 +13590,1025 @@
       }
     },
     {
+      "name": "Code",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "Code",
+        "tier": "atom",
+        "group": "display",
+        "status": "beta",
+        "description": "Inline code for a function name, prop, file path or CLI flag inside prose.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7364",
+        "radixPrimitive": null,
+        "element": "code",
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "none: static text with code semantics"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet.",
+          "forcedColorsVerified": true
+        },
+        "tokens": {
+          "colors": [
+            "--color-light-bg",
+            "--color-border-light",
+            "--color-text"
+          ],
+          "spacing": [
+            "--space-internal-2",
+            "--space-internal-4",
+            "--space-internal-6"
+          ],
+          "typography": [
+            "--font-mono"
+          ]
+        },
+        "lightDarkVerified": true,
+        "consumers": [],
+        "composesWith": [
+          "Text",
+          "Kbd",
+          "Snippet",
+          "CodeBlock"
+        ],
+        "prefersOver": [
+          "CodeSnippet variant inline"
+        ],
+        "forbiddenUse": [
+          "Use for a multi-line block or a command meant to be copied; use CodeBlock or Snippet."
+        ],
+        "displayName": "Code",
+        "keywords": [
+          "inline code",
+          "code",
+          "monospace",
+          "identifier",
+          "flag",
+          "path"
+        ],
+        "dense": "inline <code> chip on the light surface; sm/md/lg match the surrounding text size",
+        "usage": {
+          "description": "Code marks a short literal inside running text. Match its size to the text around it: sm beside Body xxs and xs, md beside s and m, lg beside l.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Use for identifiers, props, file paths, environment variables and CLI flags inside a sentence."
+            },
+            {
+              "guidance": true,
+              "description": "Keep it to a few words; a line of code belongs in Snippet or CodeBlock."
+            },
+            {
+              "guidance": false,
+              "description": "Do not add a copy button or make it a link target; it is static text."
+            },
+            {
+              "guidance": false,
+              "description": "Do not use for keyboard keys; that is Kbd."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "children": "useCodeBlock()",
+            "size": "md"
+          }
+        },
+        "props": {
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Match the surrounding text: `sm` beside Body xxs/xs, `md` beside s/m,\n`lg` beside l."
+          }
+        }
+      },
+      "spec": "# Code\n\n## Intent\nInline code for a function name, prop, file path or CLI flag inside prose.\nRenders a semantic `<code>` on the light surface with a hairline border.\n\n## Interaction contract\n- Static, non-interactive; no keyboard or pointer behavior of its own.\n- Screen readers: announced as regular text; `<code>` conveys the semantic.\n\n## Do / don't\n- Do: match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).\n- Do: keep it to a few words inside a sentence.\n- Don't: add a copy affordance; a copyable command is a Snippet.\n- Don't: use it for keyboard keys; that is Kbd.\n\n## Design notes\n- Tokens: `--color-light-bg`, `--color-border-light`, `--color-text`, `--radius-md`, `--font-mono`.\n- Rules are doubled on the class so article prose styles never outrank them.\n- Figma: Code (1976:7364). Replaces CodeSnippet `variant=\"inline\"`.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/Code",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./Code/Code",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/Code",
+        "intent": "Inline code for a function name, prop, file path or CLI flag inside prose. Renders a semantic `<code>` on the light surface with a hairline border.",
+        "props": {
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Match the surrounding text: `sm` beside Body xxs/xs, `md` beside s/m,\n`lg` beside l."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "sm"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).",
+          "keep it to a few words inside a sentence."
+        ],
+        "avoidWhen": [
+          "add a copy affordance; a copyable command is a Snippet.",
+          "use it for keyboard keys; that is Kbd."
+        ],
+        "requiredA11y": [
+          "none: static text with code semantics"
+        ],
+        "keyboard": [],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "add a copy affordance; a copyable command is a Snippet.",
+          "use it for keyboard keys; that is Kbd."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 1,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "keep it to a few words inside a sentence.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "add a copy affordance; a copyable command is a Snippet.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it for keyboard keys; that is Kbd.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Code.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Code.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Code.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Code.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
+      "name": "CodeBlock",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "CodeBlock",
+        "tier": "organism",
+        "group": "structure",
+        "status": "beta",
+        "description": "Multi-line source with an optional filename header, line numbers, highlighted, added and removed rows, copy and a caption.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7307",
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {
+          "theme": {
+            "values": [
+              "light",
+              "terminal"
+            ],
+            "default": "light",
+            "propSourced": true
+          }
+        },
+        "slots": [
+          "caption"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab reaches the copy button, then the code body when it scrolls; arrow keys scroll the focused body."
+          ],
+          "ariaRequirements": [
+            "The body becomes a named, focusable region only when it overflows, so a short block adds no tab stop.",
+            "Added and removed rows carry a sign with translated alternative text (Added line, Removed line); state never rests on colour alone.",
+            "Line numbers are generated content with empty alternative text, so screen readers read the code only.",
+            "With a caption the block is a figure and the caption its figcaption."
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet.",
+          "forcedColorsVerified": true
+        },
+        "tokens": {
+          "colors": [
+            "--main-body-background-color",
+            "--color-light-bg",
+            "--color-border-light",
+            "--color-text",
+            "--color-muted",
+            "--code-line-number",
+            "--code-line-highlight-bg",
+            "--code-line-added-bg",
+            "--code-line-removed-bg",
+            "--code-line-added-fg",
+            "--code-line-removed-fg",
+            "--code-shiki-text",
+            "--code-shiki-comment",
+            "--code-shiki-keyword",
+            "--code-shiki-entity",
+            "--code-shiki-variable",
+            "--code-shiki-constant",
+            "--code-shiki-function",
+            "--code-shiki-tag",
+            "--code-shiki-attr",
+            "--code-shiki-string",
+            "--code-shiki-jsx-brace",
+            "--focus-ring-color"
+          ],
+          "spacing": [
+            "--space-internal-2",
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24",
+            "--space-internal-32"
+          ],
+          "typography": [
+            "--font-mono",
+            "--font-body",
+            "--font-size-text-xxs"
+          ]
+        },
+        "lightDarkVerified": true,
+        "consumers": [],
+        "composesWith": [
+          "CodeCopyButton",
+          "Snippet",
+          "Code"
+        ],
+        "prefersOver": [
+          "CodeBlockWindow",
+          "CodeSnippet variant multi"
+        ],
+        "forbiddenUse": [
+          "Use for a single command the reader pastes into a terminal; use Snippet.",
+          "Use for one identifier inside a sentence; use Code."
+        ],
+        "displayName": "CodeBlock",
+        "keywords": [
+          "code block",
+          "code",
+          "syntax highlighting",
+          "diff",
+          "line numbers",
+          "source",
+          "filename",
+          "terminal",
+          "shiki"
+        ],
+        "dense": "flat code card: optional header (file icon, filename, language, copy) or floating copy; line numbers; highlighted/added/removed rows; caption; light or terminal theme; code string or Shiki tree",
+        "usage": {
+          "description": "CodeBlock shows source the reader will scan or paste. Pass code as a string (highlighted at runtime) or a Shiki tree from the MDX pipeline. Give a filename when the code has a paste destination, highlight only the lines under discussion and mark diffs as added and removed rows instead of comments, so copy-paste still yields working code.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Always set language; highlighting is the reason to choose CodeBlock over a plain pre."
+            },
+            {
+              "guidance": true,
+              "description": "Show a filename when the snippet belongs in a specific file; leave it out for throwaway examples."
+            },
+            {
+              "guidance": true,
+              "description": "Mark changes with addedLines and removedLines or language=\"diff\"; copy leaves removed lines out."
+            },
+            {
+              "guidance": false,
+              "description": "Do not highlight most of the block; a block where every line is highlighted reads like no highlight."
+            },
+            {
+              "guidance": false,
+              "description": "Do not turn on line numbers for blocks under five lines."
+            },
+            {
+              "guidance": false,
+              "description": "Do not nest it in another scroll container; use maxHeight."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "code": "export function greet(name: string) {\n  return `Hello, ${name}!`;\n}",
+            "language": "ts",
+            "filename": "greet.ts",
+            "theme": "light"
+          }
+        },
+        "props": {
+          "code": {
+            "optional": true,
+            "type": "string",
+            "description": "Source to show. Highlighted at runtime for the common languages; with\n`language=\"diff\"` the leading +/- of each line become added and removed\nrows. Pass either `code` or a pre-highlighted Shiki tree as `children`."
+          },
+          "children": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "A Shiki `<pre><code>` tree (rehype-pretty-code output). Callouts come\nfrom the MDX meta string: a line range highlights, and a range with the\nid \"added\" or \"removed\" marks a diff."
+          },
+          "language": {
+            "optional": true,
+            "type": "string",
+            "description": "Language of the code; shown in the header and drives highlighting."
+          },
+          "filename": {
+            "optional": true,
+            "type": "string",
+            "description": "File name shown in the header. Giving one turns the header on."
+          },
+          "header": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the header bar."
+          },
+          "lineNumbers": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Number the lines."
+          },
+          "highlightLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to highlight: `[2, 3]` or `\"2-3,7\"`. 1-based."
+          },
+          "addedLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to mark as added."
+          },
+          "removedLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to mark as removed. Copy leaves them out."
+          },
+          "caption": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Caption under the card."
+          },
+          "theme": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "light",
+              "terminal"
+            ],
+            "description": "`terminal` renders the block in the dark theme on any page. In the\nhigh-contrast themes it follows the page so contrast stays at the\nhigh-contrast level."
+          },
+          "wrap": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Wrap long lines instead of scrolling sideways."
+          },
+          "maxHeight": {
+            "optional": true,
+            "type": "string | number",
+            "description": "Cap the body height (any CSS length, or pixels) and scroll inside it."
+          },
+          "copyable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the copy button."
+          },
+          "copyLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name for the copy button."
+          },
+          "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text."
+          }
+        }
+      },
+      "spec": "# CodeBlock\n\n## Intent\nMulti-line source the reader will scan or paste: optional filename header,\nline numbers, highlighted, added and removed rows, copy and a caption.\nReplaces CodeBlockWindow.\n\n## Interaction contract\n- Keyboard: Tab reaches the copy button, then the code body when it\n  overflows; arrow keys scroll the focused body.\n- The body is a named region with a tab stop only while it scrolls.\n- Screen readers: line numbers have empty alternative text; added and\n  removed rows announce \"Added line\" / \"Removed line\" via the sign column.\n- Copy leaves removed lines and the sign column out, so a copied diff\n  pastes as the code after the change.\n\n## Inputs\n- `code` string: highlighted at runtime (Prism, mapped to the code-shiki\n  tokens). `language=\"diff\"` turns leading +/- into added and removed rows.\n- `children`: a Shiki tree from rehype-pretty-code. In the MDX meta string\n  a line range highlights, a range with the id `added` or `removed` marks a\n  diff, and `showLineNumbers` turns numbers on.\n\n## Do / don't\n- Do: always set `language`.\n- Do: give a `filename` when the code has a paste destination.\n- Do: mark changes as added and removed rows, never with comments.\n- Don't: highlight most of the block.\n- Don't: number blocks under five lines.\n- Don't: nest it in another scroll container; use `maxHeight`.\n\n## Design notes\n- Flat card: radius-lg, `--color-border-light` hairline, no window chrome.\n- Rows: 14/22 mono; 2px state bar; 30px number column and 22px sign column.\n- Terminal applies the global `themeDark` class; high-contrast themes keep\n  their own tokens.\n- Figma: CodeBlock (1976:7307) and CodeLine (1976:7282).\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/CodeBlock",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./CodeBlock/CodeBlock",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/CodeBlock",
+        "intent": "Multi-line source the reader will scan or paste: optional filename header, line numbers, highlighted, added and removed rows, copy and a caption. Replaces CodeBlockWindow.",
+        "props": {
+          "code": {
+            "optional": true,
+            "type": "string",
+            "description": "Source to show. Highlighted at runtime for the common languages; with\n`language=\"diff\"` the leading +/- of each line become added and removed\nrows. Pass either `code` or a pre-highlighted Shiki tree as `children`."
+          },
+          "children": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "A Shiki `<pre><code>` tree (rehype-pretty-code output). Callouts come\nfrom the MDX meta string: a line range highlights, and a range with the\nid \"added\" or \"removed\" marks a diff."
+          },
+          "language": {
+            "optional": true,
+            "type": "string",
+            "description": "Language of the code; shown in the header and drives highlighting."
+          },
+          "filename": {
+            "optional": true,
+            "type": "string",
+            "description": "File name shown in the header. Giving one turns the header on."
+          },
+          "header": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the header bar."
+          },
+          "lineNumbers": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Number the lines."
+          },
+          "highlightLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to highlight: `[2, 3]` or `\"2-3,7\"`. 1-based."
+          },
+          "addedLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to mark as added."
+          },
+          "removedLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to mark as removed. Copy leaves them out."
+          },
+          "caption": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Caption under the card."
+          },
+          "theme": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "light",
+              "terminal"
+            ],
+            "description": "`terminal` renders the block in the dark theme on any page. In the\nhigh-contrast themes it follows the page so contrast stays at the\nhigh-contrast level."
+          },
+          "wrap": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Wrap long lines instead of scrolling sideways."
+          },
+          "maxHeight": {
+            "optional": true,
+            "type": "string | number",
+            "description": "Cap the body height (any CSS length, or pixels) and scroll inside it."
+          },
+          "copyable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the copy button."
+          },
+          "copyLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name for the copy button."
+          },
+          "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "always set `language`.",
+          "give a `filename` when the code has a paste destination.",
+          "mark changes as added and removed rows, never with comments."
+        ],
+        "avoidWhen": [
+          "highlight most of the block.",
+          "number blocks under five lines.",
+          "nest it in another scroll container; use `maxHeight`."
+        ],
+        "requiredA11y": [
+          "The body becomes a named, focusable region only when it overflows, so a short block adds no tab stop.",
+          "Added and removed rows carry a sign with translated alternative text (Added line, Removed line); state never rests on colour alone.",
+          "Line numbers are generated content with empty alternative text, so screen readers read the code only.",
+          "With a caption the block is a figure and the caption its figcaption."
+        ],
+        "keyboard": [
+          "Tab reaches the copy button, then the code body when it scrolls; arrow keys scroll the focused body."
+        ],
+        "compositionRules": [
+          "nest it in another scroll container; use `maxHeight`."
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "highlight most of the block.",
+          "number blocks under five lines.",
+          "nest it in another scroll container; use `maxHeight`."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 16,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "always set `language`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "give a `filename` when the code has a paste destination.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "mark changes as added and removed rows, never with comments.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "highlight most of the block.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "number blocks under five lines.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "nest it in another scroll container; use `maxHeight`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CodeBlock.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CodeBlock.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CodeBlock.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CodeBlock.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "CodeBlockWindow",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -14016,6 +15035,437 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "CodeBlockWindow.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
+      "name": "CodeCopyButton",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "CodeCopyButton",
+        "tier": "atom",
+        "group": "actions",
+        "status": "beta",
+        "description": "Icon-only copy control for code surfaces: the copy glyph swaps to a check after a successful copy and a live region announces the result.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7275",
+        "radixPrimitive": null,
+        "element": "button",
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab focuses the button; Enter or Space copies."
+          ],
+          "ariaRequirements": [
+            "The button is named by label (default \"Copy code\", translated).",
+            "A polite live region announces Copied or Copy failed; the glyph swap alone is silent."
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet.",
+          "forcedColorsVerified": true
+        },
+        "tokens": {
+          "colors": [
+            "--color-muted",
+            "--color-text",
+            "--color-neutral-bg",
+            "--color-success",
+            "--color-disabled-text",
+            "--focus-ring-color"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-24"
+          ],
+          "typography": []
+        },
+        "lightDarkVerified": true,
+        "consumers": [],
+        "composesWith": [
+          "CodeBlock",
+          "Snippet"
+        ],
+        "prefersOver": [
+          "IconButton for copy-to-clipboard on code surfaces"
+        ],
+        "forbiddenUse": [
+          "Use as a general action button; it only copies."
+        ],
+        "displayName": "CodeCopyButton",
+        "keywords": [
+          "copy",
+          "clipboard",
+          "copy code",
+          "copy button",
+          "code"
+        ],
+        "dense": "28px icon-only copy button; copy glyph to check on success; value string or getter; live-region announcement",
+        "usage": {
+          "description": "CodeCopyButton copies a string to the clipboard and confirms it in place. CodeBlock and Snippet use it; reach for it directly only when building another code surface.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Pass value as a getter when the text is expensive to build or changes after render."
+            },
+            {
+              "guidance": true,
+              "description": "Keep the default label unless the surface copies something other than code, such as a command or a URL."
+            },
+            {
+              "guidance": false,
+              "description": "Do not put it on plain prose; selection already covers copying text."
+            },
+            {
+              "guidance": false,
+              "description": "Do not rely on the check mark alone to report success; the live region is part of the control."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "value": "npm install @digitaltableteur/react"
+          }
+        },
+        "props": {
+          "value": {
+            "optional": false,
+            "type": "string | (() => string)",
+            "description": "Text to copy, or a function that returns it at click time."
+          },
+          "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name."
+          },
+          "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text after a successful copy."
+          },
+          "resetAfterMs": {
+            "optional": true,
+            "type": "number",
+            "description": "How long the check mark stays, in milliseconds."
+          }
+        }
+      },
+      "spec": "# CodeCopyButton\n\n## Intent\nIcon-only copy control for code surfaces. The copy glyph swaps to a check\nafter a successful copy; a polite live region announces Copied or Copy failed.\n\n## Interaction contract\n- Keyboard: Tab focuses; Enter or Space copies.\n- Pointer: click copies; hover shows the neutral surface.\n- Screen readers: named by `label` (default \"Copy code\", translated); the\n  result is announced through the live region, not the glyph swap.\n\n## Do / don't\n- Do: pass `value` as a getter when the text is built late.\n- Do: keep the default label for code; rename it for other content.\n- Don't: use it as a general action button.\n- Don't: report success with the check mark alone.\n\n## Design notes\n- 28px square, radius-md; glyph `--color-muted`, hover `--color-neutral-bg`,\n  copied `--color-success`. HC themes outline the hover state.\n- A refused clipboard (insecure origin, denied permission) falls back to\n  execCommand, then reports failure instead of a false success.\n- Figma: CodeCopyButton (1976:7275), State Idle / Hover / Copied.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/CodeCopyButton",
+        "importCount": 3,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 3,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/CodeBlock/CodeBlock.tsx",
+            "importKind": "relative",
+            "importPath": "../CodeCopyButton",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./CodeCopyButton/CodeCopyButton",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Snippet/Snippet.tsx",
+            "importKind": "relative",
+            "importPath": "../CodeCopyButton",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/CodeCopyButton",
+        "intent": "Icon-only copy control for code surfaces. The copy glyph swaps to a check after a successful copy; a polite live region announces Copied or Copy failed.",
+        "props": {
+          "value": {
+            "optional": false,
+            "type": "string | (() => string)",
+            "description": "Text to copy, or a function that returns it at click time."
+          },
+          "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name."
+          },
+          "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text after a successful copy."
+          },
+          "resetAfterMs": {
+            "optional": true,
+            "type": "number",
+            "description": "How long the check mark stays, in milliseconds."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "pass `value` as a getter when the text is built late.",
+          "keep the default label for code; rename it for other content."
+        ],
+        "avoidWhen": [
+          "use it as a general action button.",
+          "report success with the check mark alone."
+        ],
+        "requiredA11y": [
+          "The button is named by label (default \"Copy code\", translated).",
+          "A polite live region announces Copied or Copy failed; the glyph swap alone is silent."
+        ],
+        "keyboard": [
+          "Tab focuses the button; Enter or Space copies."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use it as a general action button.",
+          "report success with the check mark alone."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 4,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "pass `value` as a getter when the text is built late.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "keep the default label for code; rename it for other content.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it as a general action button.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "report success with the check mark alone.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CodeCopyButton.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CodeCopyButton.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CodeCopyButton.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "CodeCopyButton.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
@@ -27681,8 +29131,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "thin",
               "light",
+              "thin",
               "regular",
               "bold",
               "fill",
@@ -27694,8 +29144,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "thin",
               "light",
+              "thin",
               "regular",
               "duotone",
               "solid",
@@ -53311,6 +54761,469 @@
       }
     },
     {
+      "name": "Snippet",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "Snippet",
+        "tier": "molecule",
+        "group": "structure",
+        "status": "beta",
+        "description": "A copyable shell command with a prompt that stays out of the copy.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7371",
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {
+          "theme": {
+            "values": [
+              "default",
+              "inverted"
+            ],
+            "default": "default",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab reaches the copy button; Enter or Space copies the commands without the prompt."
+          ],
+          "ariaRequirements": [
+            "The $ prompt is aria-hidden chrome; screen readers hear only the command.",
+            "Each command is a code element; the copy button is named \"Copy code\" by default."
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet.",
+          "forcedColorsVerified": true
+        },
+        "tokens": {
+          "colors": [
+            "--main-body-background-color",
+            "--color-border-light",
+            "--color-text",
+            "--color-muted"
+          ],
+          "spacing": [
+            "--space-internal-2",
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12"
+          ],
+          "typography": [
+            "--font-mono"
+          ]
+        },
+        "lightDarkVerified": true,
+        "consumers": [],
+        "composesWith": [
+          "CodeCopyButton",
+          "CodeBlock",
+          "Code"
+        ],
+        "prefersOver": [
+          "CodeSnippet variant single"
+        ],
+        "forbiddenUse": [
+          "Use for multi-line source code or command output; use CodeBlock."
+        ],
+        "displayName": "Snippet",
+        "keywords": [
+          "snippet",
+          "command",
+          "shell",
+          "terminal",
+          "install",
+          "copy command",
+          "cli"
+        ],
+        "dense": "copyable shell command(s) with a $ prompt excluded from copy; default or inverted (dark) theme",
+        "usage": {
+          "description": "Snippet holds a command the reader will paste into a terminal. Pass the bare command: the prompt is drawn for you and never copied. Several commands render one per line and copy together.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Write the command only; the component draws the $ prompt."
+            },
+            {
+              "guidance": true,
+              "description": "Use inverted for terminal emphasis on a light page."
+            },
+            {
+              "guidance": false,
+              "description": "Do not type $ into command; it would copy and render twice."
+            },
+            {
+              "guidance": false,
+              "description": "Do not put source files or output in a Snippet; use CodeBlock."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "command": "npm install @digitaltableteur/react",
+            "theme": "default",
+            "prompt": true
+          }
+        },
+        "props": {
+          "command": {
+            "optional": false,
+            "type": "string | readonly string[]",
+            "description": "The command, or several commands shown one per line. Write the command\nonly: the prompt is chrome and never part of the text."
+          },
+          "prompt": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the `$` prompt before each command. Copy always leaves it out."
+          },
+          "theme": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "default",
+              "inverted"
+            ],
+            "description": "`inverted` renders the snippet in the dark theme on any page, for\nterminal emphasis. In the high-contrast themes it follows the page so\ncontrast stays at the high-contrast level."
+          },
+          "copyable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the copy button."
+          },
+          "copyLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name for the copy button."
+          },
+          "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text (commands joined by newlines)."
+          }
+        }
+      },
+      "spec": "# Snippet\n\n## Intent\nA copyable shell command. The `$` prompt is chrome: aria-hidden and left out\nof the copy, so the clipboard holds exactly what runs.\n\n## Interaction contract\n- Keyboard: Tab reaches the copy button; Enter or Space copies.\n- Screen readers: hear each command as code, never the prompt.\n- Several commands render one per line and copy joined by newlines.\n\n## Do / don't\n- Do: pass the bare command; the prompt is drawn for you.\n- Do: use `theme=\"inverted\"` for terminal emphasis on light pages.\n- Don't: type `$` into `command`.\n- Don't: use it for source files or output; that is CodeBlock.\n\n## Design notes\n- Hairline card, radius-lg, 14px start and 6px end padding around the 28px copy button.\n- Inverted applies the global `themeDark` class to its subtree; the\n  high-contrast themes take their own tokens back so contrast never drops.\n- Figma: Snippet (1976:7371). Replaces CodeSnippet `variant=\"single\"`.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/Snippet",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./Snippet/Snippet",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/Snippet",
+        "intent": "A copyable shell command. The `$` prompt is chrome: aria-hidden and left out of the copy, so the clipboard holds exactly what runs.",
+        "props": {
+          "command": {
+            "optional": false,
+            "type": "string | readonly string[]",
+            "description": "The command, or several commands shown one per line. Write the command\nonly: the prompt is chrome and never part of the text."
+          },
+          "prompt": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the `$` prompt before each command. Copy always leaves it out."
+          },
+          "theme": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "default",
+              "inverted"
+            ],
+            "description": "`inverted` renders the snippet in the dark theme on any page, for\nterminal emphasis. In the high-contrast themes it follows the page so\ncontrast stays at the high-contrast level."
+          },
+          "copyable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the copy button."
+          },
+          "copyLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name for the copy button."
+          },
+          "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text (commands joined by newlines)."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "pass the bare command; the prompt is drawn for you.",
+          "use `theme=\"inverted\"` for terminal emphasis on light pages."
+        ],
+        "avoidWhen": [
+          "type `$` into `command`.",
+          "use it for source files or output; that is CodeBlock."
+        ],
+        "requiredA11y": [
+          "The $ prompt is aria-hidden chrome; screen readers hear only the command.",
+          "Each command is a code element; the copy button is named \"Copy code\" by default."
+        ],
+        "keyboard": [
+          "Tab reaches the copy button; Enter or Space copies the commands without the prompt."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "type `$` into `command`.",
+          "use it for source files or output; that is CodeBlock."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 6,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "pass the bare command; the prompt is drawn for you.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "use `theme=\"inverted\"` for terminal emphasis on light pages.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "type `$` into `command`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it for source files or output; that is CodeBlock.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Snippet.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Snippet.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Snippet.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Snippet.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "SocialIconLink",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -62149,7 +64062,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 60,
+        "importCount": 61,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 29,

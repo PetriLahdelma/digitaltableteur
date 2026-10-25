@@ -144,6 +144,375 @@
           }
         }
       }
+    },
+    "line": {
+      "number": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.2941,
+            0.3333,
+            0.3882
+          ],
+          "hex": "#4b5563"
+        },
+        "$type": "color",
+        "$description": "Production token --code-line-number",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-line-number",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#4b5563"
+          }
+        }
+      },
+      "highlight": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9451,
+              0.9608,
+              0.9765
+            ],
+            "hex": "#f1f5f9"
+          },
+          "$type": "color",
+          "$description": "Production token --code-line-highlight-bg",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-highlight-bg",
+              "category": "other",
+              "subgroup": "General",
+              "css": "#f1f5f9"
+            }
+          }
+        }
+      },
+      "added": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9569,
+              0.9804,
+              0.9647
+            ],
+            "hex": "#f4faf6"
+          },
+          "$type": "color",
+          "$description": "Production token --code-line-added-bg",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-added-bg",
+              "category": "other",
+              "subgroup": "General",
+              "css": "#f4faf6"
+            }
+          }
+        },
+        "fg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.102,
+              0.498,
+              0.2157
+            ],
+            "hex": "#1a7f37"
+          },
+          "$type": "color",
+          "$description": "Production token --code-line-added-fg",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-added-fg",
+              "category": "other",
+              "subgroup": "General",
+              "css": "#1a7f37"
+            }
+          }
+        }
+      },
+      "removed": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9922,
+              0.9608,
+              0.9608
+            ],
+            "hex": "#fdf5f5"
+          },
+          "$type": "color",
+          "$description": "Production token --code-line-removed-bg",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-removed-bg",
+              "category": "other",
+              "subgroup": "General",
+              "css": "#fdf5f5"
+            }
+          }
+        },
+        "fg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.7451,
+              0.1647,
+              0.2039
+            ],
+            "hex": "#be2a34"
+          },
+          "$type": "color",
+          "$description": "Production token --code-line-removed-fg",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-removed-fg",
+              "category": "other",
+              "subgroup": "General",
+              "css": "#be2a34"
+            }
+          }
+        }
+      }
+    },
+    "shiki": {
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0549,
+            0.0667,
+            0.0863
+          ],
+          "hex": "#0e1116"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-text",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-text",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#0e1116"
+          }
+        }
+      },
+      "comment": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4,
+            0.4392,
+            0.4824
+          ],
+          "hex": "#66707b"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-comment",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-comment",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#66707b"
+          }
+        }
+      },
+      "keyword": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6275,
+            0.0667,
+            0.1216
+          ],
+          "hex": "#a0111f"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-keyword",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-keyword",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#a0111f"
+          }
+        }
+      },
+      "entity": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4392,
+            0.1725,
+            0
+          ],
+          "hex": "#702c00"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-entity",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-entity",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#702c00"
+          }
+        }
+      },
+      "variable": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4392,
+            0.1725,
+            0
+          ],
+          "hex": "#702c00"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-variable",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-variable",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#702c00"
+          }
+        }
+      },
+      "constant": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0078,
+            0.2314,
+            0.5843
+          ],
+          "hex": "#023b95"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-constant",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-constant",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#023b95"
+          }
+        }
+      },
+      "function": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3843,
+            0.1725,
+            0.7373
+          ],
+          "hex": "#622cbc"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-function",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-function",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#622cbc"
+          }
+        }
+      },
+      "tag": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0078,
+            0.298,
+            0.102
+          ],
+          "hex": "#024c1a"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-tag",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-tag",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#024c1a"
+          }
+        }
+      },
+      "attr": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0078,
+            0.2314,
+            0.5843
+          ],
+          "hex": "#023b95"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-attr",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-attr",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#023b95"
+          }
+        }
+      },
+      "string": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0118,
+            0.1451,
+            0.3882
+          ],
+          "hex": "#032563"
+        },
+        "$type": "color",
+        "$description": "Production token --code-shiki-string",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-string",
+            "category": "other",
+            "subgroup": "General",
+            "css": "#032563"
+          }
+        }
+      },
+      "jsx": {
+        "brace": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6275,
+              0.0667,
+              0.1216
+            ],
+            "hex": "#a0111f"
+          },
+          "$type": "color",
+          "$description": "Production token --code-shiki-jsx-brace",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-shiki-jsx-brace",
+              "category": "other",
+              "subgroup": "General",
+              "css": "#a0111f"
+            }
+          }
+        }
+      }
     }
   },
   "shortcut": {

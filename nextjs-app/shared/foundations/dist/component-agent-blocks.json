@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T15:13:27.861Z",
+  "generatedAt": "2026-10-25T17:40:33.262Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -7817,6 +7817,625 @@
       "temporal": null,
       "consequence": null
     },
+    "Code": {
+      "preferredImport": "@dt/Code",
+      "intent": "Inline code for a function name, prop, file path or CLI flag inside prose. Renders a semantic `<code>` on the light surface with a hairline border.",
+      "props": {
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Match the surrounding text: `sm` beside Body xxs/xs, `md` beside s/m,\n`lg` beside l."
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "sm"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).",
+        "keep it to a few words inside a sentence."
+      ],
+      "avoidWhen": [
+        "add a copy affordance; a copyable command is a Snippet.",
+        "use it for keyboard keys; that is Kbd."
+      ],
+      "requiredA11y": [
+        "none: static text with code semantics"
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "add a copy affordance; a copyable command is a Snippet.",
+        "use it for keyboard keys; that is Kbd."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 1,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "keep it to a few words inside a sentence.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "add a copy affordance; a copyable command is a Snippet.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it for keyboard keys; that is Kbd.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Code.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Code.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Code.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Code.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        }
+      },
+      "governance": null,
+      "content": null,
+      "temporal": null,
+      "consequence": null
+    },
+    "CodeBlock": {
+      "preferredImport": "@dt/CodeBlock",
+      "intent": "Multi-line source the reader will scan or paste: optional filename header, line numbers, highlighted, added and removed rows, copy and a caption. Replaces CodeBlockWindow.",
+      "props": {
+        "code": {
+          "optional": true,
+          "type": "string",
+          "description": "Source to show. Highlighted at runtime for the common languages; with\n`language=\"diff\"` the leading +/- of each line become added and removed\nrows. Pass either `code` or a pre-highlighted Shiki tree as `children`."
+        },
+        "children": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "A Shiki `<pre><code>` tree (rehype-pretty-code output). Callouts come\nfrom the MDX meta string: a line range highlights, and a range with the\nid \"added\" or \"removed\" marks a diff."
+        },
+        "language": {
+          "optional": true,
+          "type": "string",
+          "description": "Language of the code; shown in the header and drives highlighting."
+        },
+        "filename": {
+          "optional": true,
+          "type": "string",
+          "description": "File name shown in the header. Giving one turns the header on."
+        },
+        "header": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the header bar."
+        },
+        "lineNumbers": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Number the lines."
+        },
+        "highlightLines": {
+          "optional": true,
+          "type": "CodeLineSpec",
+          "description": "Lines to highlight: `[2, 3]` or `\"2-3,7\"`. 1-based."
+        },
+        "addedLines": {
+          "optional": true,
+          "type": "CodeLineSpec",
+          "description": "Lines to mark as added."
+        },
+        "removedLines": {
+          "optional": true,
+          "type": "CodeLineSpec",
+          "description": "Lines to mark as removed. Copy leaves them out."
+        },
+        "caption": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Caption under the card."
+        },
+        "theme": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "light",
+            "terminal"
+          ],
+          "description": "`terminal` renders the block in the dark theme on any page. In the\nhigh-contrast themes it follows the page so contrast stays at the\nhigh-contrast level."
+        },
+        "wrap": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Wrap long lines instead of scrolling sideways."
+        },
+        "maxHeight": {
+          "optional": true,
+          "type": "string | number",
+          "description": "Cap the body height (any CSS length, or pixels) and scroll inside it."
+        },
+        "copyable": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the copy button."
+        },
+        "copyLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name for the copy button."
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void",
+          "description": "Called with the copied text."
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "always set `language`.",
+        "give a `filename` when the code has a paste destination.",
+        "mark changes as added and removed rows, never with comments."
+      ],
+      "avoidWhen": [
+        "highlight most of the block.",
+        "number blocks under five lines.",
+        "nest it in another scroll container; use `maxHeight`."
+      ],
+      "requiredA11y": [
+        "The body becomes a named, focusable region only when it overflows, so a short block adds no tab stop.",
+        "Added and removed rows carry a sign with translated alternative text (Added line, Removed line); state never rests on colour alone.",
+        "Line numbers are generated content with empty alternative text, so screen readers read the code only.",
+        "With a caption the block is a figure and the caption its figcaption."
+      ],
+      "keyboard": [
+        "Tab reaches the copy button, then the code body when it scrolls; arrow keys scroll the focused body."
+      ],
+      "compositionRules": [
+        "nest it in another scroll container; use `maxHeight`."
+      ],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "highlight most of the block.",
+        "number blocks under five lines.",
+        "nest it in another scroll container; use `maxHeight`."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 16,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "always set `language`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "give a `filename` when the code has a paste destination.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "mark changes as added and removed rows, never with comments.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "highlight most of the block.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "number blocks under five lines.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "nest it in another scroll container; use `maxHeight`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "2.1.1",
+              "name": "Keyboard",
+              "level": "A",
+              "en301549": "9.2.1.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "2.1.2",
+              "name": "No Keyboard Trap",
+              "level": "A",
+              "en301549": "9.2.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CodeBlock.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CodeBlock.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CodeBlock.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CodeBlock.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        }
+      },
+      "governance": null,
+      "content": null,
+      "temporal": null,
+      "consequence": null
+    },
     "CodeBlockWindow": {
       "preferredImport": "@dt/CodeBlockWindow",
       "intent": "Documents how **CodeBlockWindow** is used in production layouts and Storybook examples.",
@@ -8008,6 +8627,286 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "CodeBlockWindow.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        }
+      },
+      "governance": null,
+      "content": null,
+      "temporal": null,
+      "consequence": null
+    },
+    "CodeCopyButton": {
+      "preferredImport": "@dt/CodeCopyButton",
+      "intent": "Icon-only copy control for code surfaces. The copy glyph swaps to a check after a successful copy; a polite live region announces Copied or Copy failed.",
+      "props": {
+        "value": {
+          "optional": false,
+          "type": "string | (() => string)",
+          "description": "Text to copy, or a function that returns it at click time."
+        },
+        "label": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name."
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void",
+          "description": "Called with the copied text after a successful copy."
+        },
+        "resetAfterMs": {
+          "optional": true,
+          "type": "number",
+          "description": "How long the check mark stays, in milliseconds."
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "pass `value` as a getter when the text is built late.",
+        "keep the default label for code; rename it for other content."
+      ],
+      "avoidWhen": [
+        "use it as a general action button.",
+        "report success with the check mark alone."
+      ],
+      "requiredA11y": [
+        "The button is named by label (default \"Copy code\", translated).",
+        "A polite live region announces Copied or Copy failed; the glyph swap alone is silent."
+      ],
+      "keyboard": [
+        "Tab focuses the button; Enter or Space copies."
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "use it as a general action button.",
+        "report success with the check mark alone."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 4,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "pass `value` as a getter when the text is built late.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "keep the default label for code; rename it for other content.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it as a general action button.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "report success with the check mark alone.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "2.1.1",
+              "name": "Keyboard",
+              "level": "A",
+              "en301549": "9.2.1.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "2.1.2",
+              "name": "No Keyboard Trap",
+              "level": "A",
+              "en301549": "9.2.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CodeCopyButton.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CodeCopyButton.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CodeCopyButton.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "CodeCopyButton.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",
@@ -15732,8 +16631,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "thin",
             "light",
+            "thin",
             "regular",
             "bold",
             "fill",
@@ -15745,8 +16644,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "thin",
             "light",
+            "thin",
             "regular",
             "duotone",
             "solid",
@@ -31764,6 +32663,300 @@
         },
         "notes": "The label is required and is the control's accessible name. The icon disc is decorative."
       },
+      "temporal": null,
+      "consequence": null
+    },
+    "Snippet": {
+      "preferredImport": "@dt/Snippet",
+      "intent": "A copyable shell command. The `$` prompt is chrome: aria-hidden and left out of the copy, so the clipboard holds exactly what runs.",
+      "props": {
+        "command": {
+          "optional": false,
+          "type": "string | readonly string[]",
+          "description": "The command, or several commands shown one per line. Write the command\nonly: the prompt is chrome and never part of the text."
+        },
+        "prompt": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the `$` prompt before each command. Copy always leaves it out."
+        },
+        "theme": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "default",
+            "inverted"
+          ],
+          "description": "`inverted` renders the snippet in the dark theme on any page, for\nterminal emphasis. In the high-contrast themes it follows the page so\ncontrast stays at the high-contrast level."
+        },
+        "copyable": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the copy button."
+        },
+        "copyLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name for the copy button."
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void",
+          "description": "Called with the copied text (commands joined by newlines)."
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "pass the bare command; the prompt is drawn for you.",
+        "use `theme=\"inverted\"` for terminal emphasis on light pages."
+      ],
+      "avoidWhen": [
+        "type `$` into `command`.",
+        "use it for source files or output; that is CodeBlock."
+      ],
+      "requiredA11y": [
+        "The $ prompt is aria-hidden chrome; screen readers hear only the command.",
+        "Each command is a code element; the copy button is named \"Copy code\" by default."
+      ],
+      "keyboard": [
+        "Tab reaches the copy button; Enter or Space copies the commands without the prompt."
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "type `$` into `command`.",
+        "use it for source files or output; that is CodeBlock."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 6,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "pass the bare command; the prompt is drawn for you.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "use `theme=\"inverted\"` for terminal emphasis on light pages.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "type `$` into `command`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it for source files or output; that is CodeBlock.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "2.1.1",
+              "name": "Keyboard",
+              "level": "A",
+              "en301549": "9.2.1.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "2.1.2",
+              "name": "No Keyboard Trap",
+              "level": "A",
+              "en301549": "9.2.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Snippet.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Snippet.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Snippet.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Snippet.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        }
+      },
+      "governance": null,
+      "content": null,
       "temporal": null,
       "consequence": null
     },

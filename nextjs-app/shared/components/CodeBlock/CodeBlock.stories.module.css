@@ -1,0 +1,8 @@
+.column {
+  max-inline-size: var(--size-width-form);
+}
+
+.stack {
+  display: grid;
+  gap: var(--space-internal-24);
+}

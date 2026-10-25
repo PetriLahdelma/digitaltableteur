@@ -1,0 +1,120 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "Code",
+    "tier": "atom",
+    "group": "display",
+    "status": "beta",
+    "description": "Inline code for a function name, prop, file path or CLI flag inside prose.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7364",
+    "radixPrimitive": null,
+    "element": "code",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "none: static text with code semantics"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-light-bg",
+            "--color-border-light",
+            "--color-text"
+        ],
+        "spacing": [
+            "--space-internal-2",
+            "--space-internal-4",
+            "--space-internal-6"
+        ],
+        "typography": [
+            "--font-mono"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "composesWith": [
+        "Text",
+        "Kbd",
+        "Snippet",
+        "CodeBlock"
+    ],
+    "prefersOver": [
+        "CodeSnippet variant inline"
+    ],
+    "forbiddenUse": [
+        "Use for a multi-line block or a command meant to be copied; use CodeBlock or Snippet."
+    ],
+    "displayName": "Code",
+    "keywords": [
+        "inline code",
+        "code",
+        "monospace",
+        "identifier",
+        "flag",
+        "path"
+    ],
+    "dense": "inline <code> chip on the light surface; sm/md/lg match the surrounding text size",
+    "usage": {
+        "description": "Code marks a short literal inside running text. Match its size to the text around it: sm beside Body xxs and xs, md beside s and m, lg beside l.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use for identifiers, props, file paths, environment variables and CLI flags inside a sentence."
+            },
+            {
+                "guidance": true,
+                "description": "Keep it to a few words; a line of code belongs in Snippet or CodeBlock."
+            },
+            {
+                "guidance": false,
+                "description": "Do not add a copy button or make it a link target; it is static text."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use for keyboard keys; that is Kbd."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "useCodeBlock()",
+            "size": "md"
+        }
+    },
+    "props": {
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "description": "Match the surrounding text: `sm` beside Body xxs/xs, `md` beside s/m,\n`lg` beside l."
+        }
+    }
+}

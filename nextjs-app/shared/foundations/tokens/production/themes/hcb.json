@@ -1099,6 +1099,324 @@
           }
         }
       }
+    },
+    "line": {
+      "number": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.702,
+            0.702,
+            0.702
+          ],
+          "hex": "#b3b3b3"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-line-number",
+            "css": "#b3b3b3"
+          }
+        }
+      },
+      "highlight": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1216,
+              0.1216,
+              0.1216
+            ],
+            "hex": "#1f1f1f"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-highlight-bg",
+              "css": "#1f1f1f"
+            }
+          }
+        }
+      },
+      "added": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0.102,
+              0.0392
+            ],
+            "hex": "#001a0a"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-added-bg",
+              "css": "#001a0a"
+            }
+          }
+        },
+        "fg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.4,
+              1,
+              0.6
+            ],
+            "hex": "#66ff99"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-added-fg",
+              "css": "#6f9"
+            }
+          }
+        }
+      },
+      "removed": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1216,
+              0,
+              0.0157
+            ],
+            "hex": "#1f0004"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-removed-bg",
+              "css": "#1f0004"
+            }
+          }
+        },
+        "fg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              0.502,
+              0.502
+            ],
+            "hex": "#ff8080"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-removed-fg",
+              "css": "#ff8080"
+            }
+          }
+        }
+      }
+    },
+    "shiki": {
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9412,
+            0.9529,
+            0.9647
+          ],
+          "hex": "#f0f3f6"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-text",
+            "css": "#f0f3f6"
+          }
+        }
+      },
+      "comment": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7412,
+            0.7686,
+            0.8
+          ],
+          "hex": "#bdc4cc"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-comment",
+            "css": "#bdc4cc"
+          }
+        }
+      },
+      "keyword": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.5804,
+            0.5725
+          ],
+          "hex": "#ff9492"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-keyword",
+            "css": "#ff9492"
+          }
+        }
+      },
+      "entity": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.7176,
+            0.3412
+          ],
+          "hex": "#ffb757"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-entity",
+            "css": "#ffb757"
+          }
+        }
+      },
+      "variable": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.7176,
+            0.3412
+          ],
+          "hex": "#ffb757"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-variable",
+            "css": "#ffb757"
+          }
+        }
+      },
+      "constant": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5686,
+            0.7961,
+            1
+          ],
+          "hex": "#91cbff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-constant",
+            "css": "#91cbff"
+          }
+        }
+      },
+      "function": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8588,
+            0.7176,
+            1
+          ],
+          "hex": "#dbb7ff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-function",
+            "css": "#dbb7ff"
+          }
+        }
+      },
+      "tag": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4471,
+            0.9412,
+            0.5333
+          ],
+          "hex": "#72f088"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-tag",
+            "css": "#72f088"
+          }
+        }
+      },
+      "attr": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5686,
+            0.7961,
+            1
+          ],
+          "hex": "#91cbff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-attr",
+            "css": "#91cbff"
+          }
+        }
+      },
+      "string": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6784,
+            0.8627,
+            1
+          ],
+          "hex": "#addcff"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--code-shiki-string",
+            "css": "#addcff"
+          }
+        }
+      },
+      "jsx": {
+        "brace": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              0.5804,
+              0.5725
+            ],
+            "hex": "#ff9492"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-shiki-jsx-brace",
+              "css": "#ff9492"
+            }
+          }
+        }
+      }
     }
   },
   "shortcut": {

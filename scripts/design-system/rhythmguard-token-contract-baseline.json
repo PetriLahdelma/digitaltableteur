@@ -2,6 +2,24 @@
   "generatedBy": "npm run audit:rhythm:update",
   "ladderProblems": [
     {
+      "end": "both",
+      "ladder": "--font-size-code",
+      "tokens": [
+        "--font-size-code-s",
+        "--font-size-code-m"
+      ],
+      "type": "too-close"
+    },
+    {
+      "end": "both",
+      "ladder": "--font-size-code",
+      "tokens": [
+        "--font-size-code-xs",
+        "--font-size-code-s"
+      ],
+      "type": "too-close"
+    },
+    {
       "end": "min",
       "ladder": "--font-size-text",
       "tokens": [

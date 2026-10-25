@@ -55,6 +55,15 @@
      14px floor of the text scale on purpose. Not a general small size; body,
      UI and captions stay on the scale above. */
   --font-size-disclaimer: 0.75rem;
+
+  /* Code type (Figma Code, Snippet, CodeBlock; Source Code Pro). */
+  --font-size-code-xs: 0.75rem; /* 12px: language label */
+  --font-size-code-s: 0.8125rem; /* 13px: filename, line numbers, Code sm */
+  --font-size-code-m: 0.875rem; /* 14px: code rows, Code md */
+  --font-size-code-l: 1rem; /* 16px: Code lg */
+  --line-height-code-s: 1.125rem; /* 18px */
+  --line-height-code-m: 1.25rem; /* 20px */
+  --line-height-code-row: 1.375rem; /* 22px: one code row */
   --font-size-title: clamp(2.25rem, 3.5vi + 1.5rem, 3.75rem);
 
   /* Title ladder. xxs/xs added below s, xxl above xl (2026-06-20). Fixes
@@ -145,6 +154,31 @@
      native shadow-DOM twins (custom props inherit through shadow roots)
      resolve it per theme. */
   --code-toolbar-text: #2b3a45; /* 10.9:1 on #fff */
+
+  /* Code surfaces (CodeBlock, Snippet, Code; Figma DT / Color code/*).
+     Line states tint the row and mark it with a 2px bar; added and removed
+     rows also carry a +/- sign in the -fg colour, so state never rests on
+     the tint alone. The code-shiki set mirrors the Shiki palettes the MDX
+     pipeline uses (github-light-high-contrast here), so blocks highlighted
+     at runtime from a string match blocks highlighted at build time. Every
+     syntax token clears 4.5:1 on the surface and on all three row tints. */
+  --code-line-number: #4b5563; /* 7.56:1 on #fff */
+  --code-line-highlight-bg: #f1f5f9;
+  --code-line-added-bg: #f4faf6;
+  --code-line-removed-bg: #fdf5f5;
+  --code-line-added-fg: #1a7f37;
+  --code-line-removed-fg: #be2a34;
+  --code-shiki-text: #0e1116;
+  --code-shiki-comment: #66707b; /* 4.6:1 on the highlight tint */
+  --code-shiki-keyword: #a0111f;
+  --code-shiki-entity: #702c00;
+  --code-shiki-variable: #702c00;
+  --code-shiki-constant: #023b95;
+  --code-shiki-function: #622cbc;
+  --code-shiki-tag: #024c1a;
+  --code-shiki-attr: #023b95;
+  --code-shiki-string: #032563;
+  --code-shiki-jsx-brace: #a0111f;
 
   /* Chat composer keyboard hint. Was an undefined token whose #4b5563
      fallback applied in every theme (2.31:1 on the dark background). */
@@ -443,6 +477,23 @@
   --secondary-text-color: #aaa;
   --inverted-text-color: #181a1b;
   --code-toolbar-text: #cbd5e0; /* matches the old .themeDark component override; 11.4:1 on #181a1b */
+  --code-line-number: #999; /* 5.22:1 on the highlight tint; Figma's #858585 was 4.03:1 */
+  --code-line-highlight-bg: #23282d;
+  --code-line-added-bg: #18261e;
+  --code-line-removed-bg: #2a1a1c;
+  --code-line-added-fg: #57c978;
+  --code-line-removed-fg: #ff7b7b;
+  --code-shiki-text: #e6edf3; /* github-dark-default, the MDX dark theme since 10-25 */
+  --code-shiki-comment: #8b949e; /* 4.83:1 on the highlight tint */
+  --code-shiki-keyword: #ff7b72;
+  --code-shiki-entity: #ffa657;
+  --code-shiki-variable: #ffa657;
+  --code-shiki-constant: #79c0ff;
+  --code-shiki-function: #d2a8ff;
+  --code-shiki-tag: #7ee787;
+  --code-shiki-attr: #79c0ff;
+  --code-shiki-string: #a5d6ff;
+  --code-shiki-jsx-brace: #ff7b72;
   --shortcut-hint-color: #9ca3af; /* 6.7:1 on #181a1b */
   --link-color: var(--color-primary); /* links use the interactive accent, not info-cyan; matches light theme where link == primary */
   --color-primary: #6fa8ff;
@@ -525,6 +576,23 @@
   --secondary-text-color: #fff;
   --inverted-text-color: #000;
   --code-toolbar-text: #fff; /* max contrast on #000 chrome */
+  --code-line-number: #b3b3b3; /* 7.86:1 on the highlight tint; Figma's #7c6f64 was 4.31:1 on black */
+  --code-line-highlight-bg: #1f1f1f;
+  --code-line-added-bg: #001a0a;
+  --code-line-removed-bg: #1f0004;
+  --code-line-added-fg: #6f9;
+  --code-line-removed-fg: #ff8080;
+  --code-shiki-text: #f0f3f6; /* github-dark-high-contrast */
+  --code-shiki-comment: #bdc4cc;
+  --code-shiki-keyword: #ff9492;
+  --code-shiki-entity: #ffb757;
+  --code-shiki-variable: #ffb757;
+  --code-shiki-constant: #91cbff;
+  --code-shiki-function: #dbb7ff;
+  --code-shiki-tag: #72f088;
+  --code-shiki-attr: #91cbff;
+  --code-shiki-string: #addcff;
+  --code-shiki-jsx-brace: #ff9492;
   --shortcut-hint-color: #fff;
   --link-color: #fff;
   --color-primary: #fff;
@@ -643,6 +711,23 @@
   --secondary-text-color: #000;
   --inverted-text-color: #fff;
   --code-toolbar-text: #000; /* max contrast on #fff chrome */
+  --code-line-number: #4b5563;
+  --code-line-highlight-bg: #f4f4f4; /* comments 4.58:1; Figma's #f0f0f0 left them at 4.42:1 */
+  --code-line-added-bg: #f0faf3;
+  --code-line-removed-bg: #fdf0f0;
+  --code-line-added-fg: #00641e;
+  --code-line-removed-fg: #a00014;
+  --code-shiki-text: #0e1116; /* github-light-high-contrast */
+  --code-shiki-comment: #66707b;
+  --code-shiki-keyword: #a0111f;
+  --code-shiki-entity: #702c00;
+  --code-shiki-variable: #702c00;
+  --code-shiki-constant: #023b95;
+  --code-shiki-function: #622cbc;
+  --code-shiki-tag: #024c1a;
+  --code-shiki-attr: #023b95;
+  --code-shiki-string: #032563;
+  --code-shiki-jsx-brace: #a0111f;
   --shortcut-hint-color: #000;
   --link-color: #000;
   --color-primary: #000;
@@ -742,6 +827,12 @@
     --color-border-light: GrayText;
     --color-muted: CanvasText;
     --code-toolbar-text: CanvasText;
+    --code-line-number: CanvasText;
+    --code-line-highlight-bg: Canvas;
+    --code-line-added-bg: Canvas;
+    --code-line-removed-bg: Canvas;
+    --code-line-added-fg: CanvasText;
+    --code-line-removed-fg: CanvasText;
     --color-disabled-placeholder: GrayText;
     --color-disabled-bg: Canvas;
     --color-disabled-bg-light: Canvas;

@@ -1314,6 +1314,17 @@
     "regionLabel": "Koodilohko ({{language}})",
     "languageFallback": "Koodi"
   },
+  "codeBlock": {
+    "regionLabel": "Koodi, {{language}}",
+    "languageFallback": "pelkkä teksti",
+    "addedLine": "Lisätty rivi",
+    "removedLine": "Poistettu rivi"
+  },
+  "codeCopyButton": {
+    "copy": "Kopioi koodi",
+    "copied": "Kopioitu",
+    "copyFailed": "Kopiointi epäonnistui"
+  },
   "downloadResumeValid": "Salasana kelpaa",
   "articleCard": {
     "loadingTitle": "Ladataan artikkelin otsikkoa",

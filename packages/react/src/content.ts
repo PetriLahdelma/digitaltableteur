@@ -8,6 +8,22 @@ export type {
   CodeSnippetVariant,
   SupportedLanguage,
 } from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";
+export { default as Code } from "../../../nextjs-app/shared/components/Code/Code";
+export type { CodeProps, CodeSize } from "../../../nextjs-app/shared/components/Code/Code";
+export { default as CodeBlock } from "../../../nextjs-app/shared/components/CodeBlock/CodeBlock";
+export type {
+  CodeBlockProps,
+  CodeBlockTheme,
+  CodeLineSpec,
+  CodeLineState,
+} from "../../../nextjs-app/shared/components/CodeBlock/CodeBlock";
+export { default as CodeCopyButton } from "../../../nextjs-app/shared/components/CodeCopyButton/CodeCopyButton";
+export type {
+  CodeCopyButtonProps,
+  CodeCopyButtonStatus,
+} from "../../../nextjs-app/shared/components/CodeCopyButton/CodeCopyButton";
+export { default as Snippet } from "../../../nextjs-app/shared/components/Snippet/Snippet";
+export type { SnippetProps, SnippetTheme } from "../../../nextjs-app/shared/components/Snippet/Snippet";
 export {
   Timestamp,
   formatTimestamp,

@@ -1,0 +1,360 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+/* Figma CodeBlock 1976:7307 + CodeLine 1976:7282. A flat card (radius-lg,
+   hairline, no window chrome) with an optional header, CodeLine rows and a
+   caption under the card. Shiki trees (MDX) and runtime-highlighted strings
+   render the same DOM: <pre><code><span data-line> rows with
+   data-highlighted-line[-id] callouts, so one set of rules styles both. */
+
+.root {
+  display: grid;
+  margin: 0;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  gap: var(--space-internal-8);
+}
+
+.card {
+  /* Gutter geometry per row: a 2px state bar, then the number column (30px)
+     and the sign column (22px) when they are on. */
+  --code-number-size: 0px;
+  --code-sign-size: 0px;
+  --code-gutter: calc(var(--space-internal-12) + var(--space-internal-2));
+  --code-line-end: var(--space-internal-16);
+
+  position: relative;
+  min-inline-size: 0;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--main-body-background-color);
+  overflow: clip;
+}
+
+.card[data-line-numbers] {
+  --code-number-size: calc(var(--space-internal-24) + var(--space-internal-6));
+  --code-sign-size: calc(var(--space-internal-16) + var(--space-internal-6));
+  --code-gutter: calc(var(--code-number-size) + var(--code-sign-size));
+}
+
+.card[data-diff]:not([data-line-numbers]) {
+  --code-sign-size: calc(var(--space-internal-16) + var(--space-internal-6));
+  --code-gutter: var(--code-sign-size);
+}
+
+.header {
+  display: flex;
+  padding-block: var(--space-internal-6);
+  padding-inline: var(--space-internal-16) var(--space-internal-6);
+  min-inline-size: 0;
+  align-items: center;
+  gap: var(--space-internal-8);
+  border-block-end: 1px solid var(--color-border-light);
+  background-color: var(--color-light-bg);
+}
+
+.fileIcon {
+  flex-shrink: 0;
+  color: var(--color-muted);
+}
+
+.filename {
+  min-inline-size: 0;
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-code-s);
+  line-height: var(--line-height-code-m);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+.language {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-code-xs);
+  line-height: var(--line-height-code-m);
+  color: var(--color-muted);
+}
+
+.floatingCopy {
+  position: absolute;
+  z-index: 1;
+  border-radius: var(--radius-md);
+  background-color: var(--main-body-background-color);
+  inset-block-start: calc(var(--space-internal-6) + 1px);
+  inset-inline-end: calc(var(--space-internal-6) + 1px);
+}
+
+.body {
+  padding-block: var(--space-internal-12);
+  min-inline-size: 0;
+  overflow: auto hidden;
+}
+
+.capped {
+  max-block-size: var(--code-block-max-height);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.body:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, var(--color-primary));
+  outline-offset: calc(-1 * var(--focus-ring-width, 2px));
+}
+
+.card[data-wrap] .body {
+  overflow: hidden;
+}
+
+.card[data-wrap] .capped {
+  overflow: hidden auto;
+}
+
+/* Headerless: the copy button floats top-end in a column of its own. The
+   scroll area ends before it, so a long line scrolled sideways never runs
+   under the button (Astryx snippet layout). */
+
+.card[data-copyable]:not([data-header]) .body {
+  margin-inline-end: calc(var(--space-internal-32) + var(--space-internal-8));
+}
+
+.pre.pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  white-space: pre;
+  overflow: visible;
+}
+
+/* A grid, so the newline text nodes between Shiki's line spans render as
+   nothing. max-content lets every row (and its tint) span the longest line
+   when the body scrolls sideways. */
+
+.code.code {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  inline-size: max-content;
+  min-inline-size: 100%;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-code-m);
+  line-height: var(--line-height-code-row);
+  white-space: pre;
+  color: var(--code-shiki-text);
+  counter-reset: line;
+  tab-size: 2;
+}
+
+.code.code::before,
+.code.code::after {
+  content: none;
+}
+
+.card[data-wrap] .pre.pre,
+.card[data-wrap] .code.code {
+  inline-size: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.code :global([data-line]) {
+  display: block;
+  position: relative;
+  padding-inline: var(--code-gutter) var(--code-line-end);
+  min-block-size: var(--line-height-code-row); /* an empty line keeps its row */
+  border-inline-start: 2px solid transparent;
+  counter-increment: line;
+}
+
+[data-line-numbers] .code :global([data-line])::before {
+  position: absolute;
+  inline-size: var(--code-number-size);
+  font-size: var(--font-size-code-s);
+  line-height: var(--line-height-code-row);
+  text-align: end;
+  color: var(--code-line-number);
+  content: counter(line) / "";
+  font-variant-numeric: tabular-nums;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  user-select: none;
+}
+
+/* Callout rows. State is never tint-only: a 2px bar marks every callout and
+   added/removed rows add a sign whose alternative text names the change. */
+
+.code :global([data-line][data-highlighted-line]) {
+  background-color: var(--code-line-highlight-bg);
+  border-inline-start-color: var(--color-text);
+}
+
+.code :global([data-line][data-highlighted-line-id="added"]) {
+  background-color: var(--code-line-added-bg);
+  border-inline-start-color: var(--code-line-added-fg);
+}
+
+.code :global([data-line][data-highlighted-line-id="removed"]) {
+  background-color: var(--code-line-removed-bg);
+  border-inline-start-color: var(--code-line-removed-fg);
+}
+
+.code :global([data-line][data-highlighted-line-id="added"])::after,
+.code :global([data-line][data-highlighted-line-id="removed"])::after {
+  position: absolute;
+  inline-size: var(--code-sign-size);
+  font-weight: 500;
+  line-height: var(--line-height-code-row);
+  text-align: center;
+  inset-block-start: 0;
+  inset-inline-start: var(--code-number-size);
+  user-select: none;
+}
+
+.code :global([data-line][data-highlighted-line-id="added"])::after {
+  color: var(--code-line-added-fg);
+  content: "+" / attr(data-sign-label);
+}
+
+.code :global([data-line][data-highlighted-line-id="removed"])::after {
+  color: var(--code-line-removed-fg);
+  content: "\2212" / attr(data-sign-label);
+}
+
+/* Syntax colours. Shiki spans carry --shiki-<theme> custom properties; the
+   high-contrast rules come last so they win inside a terminal block on a
+   high-contrast page. Runtime-highlighted spans carry data-syntax. */
+
+.code :global(span[style]) {
+  color: var(--shiki-light, inherit);
+}
+
+:global(.themeDark) .code :global(span[style]) {
+  color: var(--shiki-dark, inherit);
+}
+
+:global(.themeHCB) .code :global(span[style]) {
+  color: var(--shiki-hcb, inherit);
+}
+
+:global(.themeHCW) .code :global(span[style]) {
+  color: var(--shiki-hcw, inherit);
+}
+
+.code :global([data-syntax="comment"]) {
+  color: var(--code-shiki-comment);
+}
+
+.code :global([data-syntax="keyword"]) {
+  color: var(--code-shiki-keyword);
+}
+
+.code :global([data-syntax="entity"]) {
+  color: var(--code-shiki-entity);
+}
+
+.code :global([data-syntax="variable"]) {
+  color: var(--code-shiki-variable);
+}
+
+.code :global([data-syntax="constant"]) {
+  color: var(--code-shiki-constant);
+}
+
+.code :global([data-syntax="function"]) {
+  color: var(--code-shiki-function);
+}
+
+.code :global([data-syntax="tag"]) {
+  color: var(--code-shiki-tag);
+}
+
+.code :global([data-syntax="attr"]) {
+  color: var(--code-shiki-attr);
+}
+
+.code :global([data-syntax="string"]) {
+  color: var(--code-shiki-string);
+}
+
+.code :global([data-syntax="jsx-brace"]) {
+  color: var(--code-shiki-jsx-brace);
+}
+
+.caption {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-xxs);
+  line-height: var(--line-height-normal);
+  color: var(--color-muted);
+}
+
+/* Terminal carries the global themeDark class, which re-declares the dark
+   tokens for this subtree. The high-contrast themes take their own values
+   back, so a terminal block never drops below the page's contrast. */
+
+:global(.themeHCB) .terminal,
+:global(.themeHCW) .terminal {
+  --main-body-background-color: inherit;
+  --color-light-bg: inherit;
+  --color-border-light: inherit;
+  --color-text: inherit;
+  --color-muted: inherit;
+  --color-neutral-bg: inherit;
+  --color-success: inherit;
+  --color-primary: inherit;
+  --focus-ring-color: inherit;
+  --code-line-number: inherit;
+  --code-line-highlight-bg: inherit;
+  --code-line-added-bg: inherit;
+  --code-line-removed-bg: inherit;
+  --code-line-added-fg: inherit;
+  --code-line-removed-fg: inherit;
+  --code-shiki-text: inherit;
+  --code-shiki-comment: inherit;
+  --code-shiki-keyword: inherit;
+  --code-shiki-entity: inherit;
+  --code-shiki-variable: inherit;
+  --code-shiki-constant: inherit;
+  --code-shiki-function: inherit;
+  --code-shiki-tag: inherit;
+  --code-shiki-attr: inherit;
+  --code-shiki-string: inherit;
+  --code-shiki-jsx-brace: inherit;
+}
+
+/* Storybook emulates forced colours with a class, which cannot trigger the
+   media query; mirror the system-colour mapping so axe tests what a real
+   forced-colours user sees. */
+
+:global(html.sb-forced-colors-active) .code :global(span),
+:global(html.sb-forced-colors-active) .code :global([data-line])::before,
+:global(html.sb-forced-colors-active) .code :global([data-line])::after {
+  color: CanvasText;
+}
+
+@media (forced-colors: active) {
+  .card,
+  .header {
+    border-color: CanvasText;
+  }
+
+  .code :global(span),
+  .code :global([data-line])::before,
+  .code :global([data-line])::after {
+    color: CanvasText;
+  }
+
+  .code :global([data-line][data-highlighted-line]) {
+    border-inline-start-color: Highlight;
+  }
+
+  .body:focus-visible {
+    outline: 3px solid Highlight;
+  }
+}

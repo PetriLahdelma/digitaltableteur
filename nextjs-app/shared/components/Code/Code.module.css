@@ -1,0 +1,49 @@
+/* Inline code (Figma Code 1976:7364): mono on the light surface with a
+   hairline and radius-md. Rules are doubled on the class so article prose
+   (.prose code, typography plugin backticks) never outranks them. */
+
+.code.code {
+  display: inline;
+  margin: 0;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background-color: var(--color-light-bg);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  overflow-wrap: anywhere;
+  color: var(--color-text);
+  box-decoration-break: clone;
+}
+
+.code.code::before,
+.code.code::after {
+  content: none;
+}
+
+.sm.sm {
+  padding-block: 1px;
+  padding-inline: var(--space-internal-4);
+  font-size: var(--font-size-code-s);
+  line-height: var(--line-height-code-s);
+}
+
+.md.md {
+  padding-block: 1px;
+  padding-inline: calc(var(--space-internal-4) + 1px);
+  font-size: var(--font-size-code-m);
+  line-height: var(--line-height-code-m);
+}
+
+.lg.lg {
+  padding-block: var(--space-internal-2);
+  padding-inline: var(--space-internal-6);
+  font-size: var(--font-size-code-l);
+  line-height: var(--line-height-code-m);
+}
+
+@media (forced-colors: active) {
+  .code.code {
+    border-color: CanvasText;
+    color: CanvasText;
+  }
+}

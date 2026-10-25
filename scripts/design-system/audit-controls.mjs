@@ -34,6 +34,9 @@ const EFFECTS = process.argv.includes('--effects')
 // story's default state — every entry carries its justification and how the
 // effect was verified instead.
 const EFFECT_EXEMPT = {
+    CodeCopyButton: {
+        resetAfterMs: 'timing-only: how long the check mark stays after a copy; the idle canvas has no DOM signature for it; verified by the reset-delay unit test (fake timers, copied -> idle after resetAfterMs)',
+    },
     FormFieldEditorial: {
         children: 'the <option> list feeds the select-mode Combobox popover, which is closed in the static canvas — swapping the preset changes options that only render once the popover opens; verified by the select-variant unit test (open popover → pick option → onChange payload) and the Playground mapping presets',
     },
@@ -166,6 +169,9 @@ const SKIP = PLUMBING
 // shared hiddenByDesign() predicate cannot express. Every entry carries its
 // justification, mirroring EFFECT_EXEMPT.
 const HIDDEN_EXEMPT = {
+    CodeBlock: {
+        children: 'takes a pre-highlighted Shiki <pre><code> tree from the MDX pipeline, which no panel widget can express; the `code` string control drives the same rendering; demoed by the ShikiTree story and the Shiki-tree unit test',
+    },
     Switch: {
         defaultChecked: 'mount-only in Storybook: React useState ignores prop changes after mount, so a defaultChecked knob is inert. The live on/off is the controlled `checked` prop (driven by ControlledTemplate), matching the dt-switch web-component surface.',
     },

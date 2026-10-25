@@ -14,6 +14,21 @@
           "reason": "font stack starts from --font-body, which next/font sets at runtime (not in variables.css)"
         },
         {
+          "cssVar": "--line-height-code-s",
+          "css": "1.125rem",
+          "reason": "\"1.125rem\" is not a unitless number"
+        },
+        {
+          "cssVar": "--line-height-code-m",
+          "css": "1.25rem",
+          "reason": "\"1.25rem\" is not a unitless number"
+        },
+        {
+          "cssVar": "--line-height-code-row",
+          "css": "1.375rem",
+          "reason": "\"1.375rem\" is not a unitless number"
+        },
+        {
           "cssVar": "--tracking-tighter",
           "css": "-0.05em",
           "reason": "\"-0.05em\" is not a px/rem dimension"
@@ -194,6 +209,72 @@
             "category": "typography",
             "subgroup": "Type scale",
             "css": "0.75rem"
+          }
+        }
+      },
+      "code": {
+        "xs": {
+          "$value": {
+            "value": 0.75,
+            "unit": "rem"
+          },
+          "$type": "dimension",
+          "$description": "Fluid type size token (code-xs); uses clamp().",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--font-size-code-xs",
+              "category": "typography",
+              "subgroup": "Type scale",
+              "css": "0.75rem"
+            }
+          }
+        },
+        "s": {
+          "$value": {
+            "value": 0.8125,
+            "unit": "rem"
+          },
+          "$type": "dimension",
+          "$description": "Fluid type size token (code-s); uses clamp().",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--font-size-code-s",
+              "category": "typography",
+              "subgroup": "Type scale",
+              "css": "0.8125rem"
+            }
+          }
+        },
+        "m": {
+          "$value": {
+            "value": 0.875,
+            "unit": "rem"
+          },
+          "$type": "dimension",
+          "$description": "Fluid type size token (code-m); uses clamp().",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--font-size-code-m",
+              "category": "typography",
+              "subgroup": "Type scale",
+              "css": "0.875rem"
+            }
+          }
+        },
+        "l": {
+          "$value": {
+            "value": 1,
+            "unit": "rem"
+          },
+          "$type": "dimension",
+          "$description": "Fluid type size token (code-l); uses clamp().",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--font-size-code-l",
+              "category": "typography",
+              "subgroup": "Type scale",
+              "css": "1rem"
+            }
           }
         }
       }

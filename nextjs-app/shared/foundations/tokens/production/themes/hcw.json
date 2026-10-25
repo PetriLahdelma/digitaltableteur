@@ -979,6 +979,104 @@
           }
         }
       }
+    },
+    "line": {
+      "highlight": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9569,
+              0.9569,
+              0.9569
+            ],
+            "hex": "#f4f4f4"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-highlight-bg",
+              "css": "#f4f4f4"
+            }
+          }
+        }
+      },
+      "added": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9412,
+              0.9804,
+              0.9529
+            ],
+            "hex": "#f0faf3"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-added-bg",
+              "css": "#f0faf3"
+            }
+          }
+        },
+        "fg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0.3922,
+              0.1176
+            ],
+            "hex": "#00641e"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-added-fg",
+              "css": "#00641e"
+            }
+          }
+        }
+      },
+      "removed": {
+        "bg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9922,
+              0.9412,
+              0.9412
+            ],
+            "hex": "#fdf0f0"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-removed-bg",
+              "css": "#fdf0f0"
+            }
+          }
+        },
+        "fg": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6275,
+              0,
+              0.0784
+            ],
+            "hex": "#a00014"
+          },
+          "$type": "color",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--code-line-removed-fg",
+              "css": "#a00014"
+            }
+          }
+        }
+      }
     }
   },
   "shortcut": {

@@ -1314,6 +1314,17 @@
     "regionLabel": "Kodblock ({{language}})",
     "languageFallback": "Kod"
   },
+  "codeBlock": {
+    "regionLabel": "Kod, {{language}}",
+    "languageFallback": "oformaterad text",
+    "addedLine": "Tillagd rad",
+    "removedLine": "Borttagen rad"
+  },
+  "codeCopyButton": {
+    "copy": "Kopiera kod",
+    "copied": "Kopierad",
+    "copyFailed": "Kopieringen misslyckades"
+  },
   "downloadResumeValid": "Lösenordet godkändes",
   "articleCard": {
     "loadingTitle": "Laddar artikelrubrik",

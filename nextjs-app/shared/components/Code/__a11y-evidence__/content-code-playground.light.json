@@ -1,0 +1,16 @@
+{
+  "storyId": "content-code-playground",
+  "mode": "light",
+  "sourceSHA": "51f66f775200951d795c357e76ad71aaf3012857",
+  "capturedAt": "2026-10-25T17:37:21.414Z",
+  "runner": "local-claude",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

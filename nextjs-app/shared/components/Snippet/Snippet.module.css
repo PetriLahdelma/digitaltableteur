@@ -1,0 +1,94 @@
+/* Figma Snippet 1976:7371: hairline card, radius-lg, 14px start / 6px end
+   padding so the 28px copy button sits 6px from the edge. */
+
+.snippet {
+  display: flex;
+  margin: 0;
+  padding-block: var(--space-internal-6);
+  padding-inline: calc(var(--space-internal-12) + var(--space-internal-2))
+    var(--space-internal-6);
+  box-sizing: border-box;
+  max-inline-size: 100%;
+  align-items: center;
+  gap: var(--space-internal-8);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--main-body-background-color);
+  color: var(--color-text);
+}
+
+.multi {
+  align-items: flex-start;
+}
+
+.commands {
+  display: grid;
+  padding-block: var(--space-internal-2);
+  min-inline-size: 0;
+  flex: 1;
+}
+
+.line {
+  display: flex;
+  min-inline-size: 0;
+  gap: var(--space-internal-8);
+}
+
+.prompt {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-code-m);
+  line-height: var(--line-height-code-row);
+  color: var(--color-muted);
+  user-select: none;
+}
+
+.command.command {
+  margin: 0;
+  padding: 0;
+  min-inline-size: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-code-m);
+  line-height: var(--line-height-code-row);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--color-text);
+}
+
+.command.command::before,
+.command.command::after {
+  content: none;
+}
+
+.copy {
+  flex-shrink: 0;
+}
+
+/* Inverted carries the global themeDark class, which re-declares the dark
+   tokens for this subtree. The high-contrast themes take their own values
+   back, so an inverted snippet never drops below the page's contrast. */
+
+:global(.themeHCB) .inverted,
+:global(.themeHCW) .inverted {
+  --main-body-background-color: inherit;
+  --color-border-light: inherit;
+  --color-text: inherit;
+  --color-muted: inherit;
+  --color-neutral-bg: inherit;
+  --color-success: inherit;
+  --color-primary: inherit;
+  --focus-ring-color: inherit;
+}
+
+@media (forced-colors: active) {
+  .snippet {
+    border-color: CanvasText;
+  }
+
+  .prompt,
+  .command.command {
+    color: CanvasText;
+  }
+}

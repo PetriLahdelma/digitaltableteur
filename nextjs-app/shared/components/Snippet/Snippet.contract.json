@@ -1,0 +1,149 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "Snippet",
+    "tier": "molecule",
+    "group": "structure",
+    "status": "beta",
+    "description": "A copyable shell command with a prompt that stays out of the copy.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7371",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "theme": {
+            "values": [
+                "default",
+                "inverted"
+            ],
+            "default": "default",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab reaches the copy button; Enter or Space copies the commands without the prompt."
+        ],
+        "ariaRequirements": [
+            "The $ prompt is aria-hidden chrome; screen readers hear only the command.",
+            "Each command is a code element; the copy button is named \"Copy code\" by default."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--main-body-background-color",
+            "--color-border-light",
+            "--color-text",
+            "--color-muted"
+        ],
+        "spacing": [
+            "--space-internal-2",
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "typography": [
+            "--font-mono"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "composesWith": [
+        "CodeCopyButton",
+        "CodeBlock",
+        "Code"
+    ],
+    "prefersOver": [
+        "CodeSnippet variant single"
+    ],
+    "forbiddenUse": [
+        "Use for multi-line source code or command output; use CodeBlock."
+    ],
+    "displayName": "Snippet",
+    "keywords": [
+        "snippet",
+        "command",
+        "shell",
+        "terminal",
+        "install",
+        "copy command",
+        "cli"
+    ],
+    "dense": "copyable shell command(s) with a $ prompt excluded from copy; default or inverted (dark) theme",
+    "usage": {
+        "description": "Snippet holds a command the reader will paste into a terminal. Pass the bare command: the prompt is drawn for you and never copied. Several commands render one per line and copy together.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Write the command only; the component draws the $ prompt."
+            },
+            {
+                "guidance": true,
+                "description": "Use inverted for terminal emphasis on a light page."
+            },
+            {
+                "guidance": false,
+                "description": "Do not type $ into command; it would copy and render twice."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put source files or output in a Snippet; use CodeBlock."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "command": "npm install @digitaltableteur/react",
+            "theme": "default",
+            "prompt": true
+        }
+    },
+    "props": {
+        "command": {
+            "optional": false,
+            "type": "string | readonly string[]",
+            "description": "The command, or several commands shown one per line. Write the command\nonly: the prompt is chrome and never part of the text."
+        },
+        "prompt": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the `$` prompt before each command. Copy always leaves it out."
+        },
+        "theme": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "inverted"
+            ],
+            "description": "`inverted` renders the snippet in the dark theme on any page, for\nterminal emphasis. In the high-contrast themes it follows the page so\ncontrast stays at the high-contrast level."
+        },
+        "copyable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the copy button."
+        },
+        "copyLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name for the copy button."
+        },
+        "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text (commands joined by newlines)."
+        }
+    }
+}

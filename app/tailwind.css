@@ -177,6 +177,10 @@
   --text-dt-button-l: var(--font-size-button-l);
   --text-dt-button-m: var(--font-size-button-m);
   --text-dt-button-s: var(--font-size-button-s);
+  --text-dt-code-l: var(--font-size-code-l);
+  --text-dt-code-m: var(--font-size-code-m);
+  --text-dt-code-s: var(--font-size-code-s);
+  --text-dt-code-xs: var(--font-size-code-xs);
   --text-dt-disclaimer: var(--font-size-disclaimer);
   --text-dt-display: var(--font-size-display);
   --text-dt-display-xl: var(--font-size-display-xl);

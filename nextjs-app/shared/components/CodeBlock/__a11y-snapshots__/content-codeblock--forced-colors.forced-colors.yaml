@@ -1,0 +1,12 @@
+- status: Work in progress (beta)
+- text: DemoButton.tsx tsx
+- button "Copy code"
+- status
+- code: "type Props = { label: string; }; export function DemoButton({ label }: Props) { return ( <button type=\"button\" aria-label={label}> {label} </button> ); }"
+- text: next.config.js diff
+- button "Copy code"
+- status
+- code: "module.exports = { experimental: { Removed line appDir: true, Removed line }, Removed line reactStrictMode: true, Added line }"
+- button "Copy code"
+- status
+- code: "npm i -D stylelint stylelint-plugin-rhythmguard # .stylelintrc.json { \"extends\": [\"stylelint-plugin-rhythmguard/configs/strict\"] } npx stylelint \"src/**/*.css\""

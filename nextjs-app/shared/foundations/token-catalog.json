@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-25T16:40:47.075Z",
-  "tokenCount": 203,
-  "usageCoverage": 165,
+  "generatedAt": "2026-10-25T17:18:24.399Z",
+  "tokenCount": 227,
+  "usageCoverage": 172,
   "themes": [
     {
       "id": "light",
@@ -1695,6 +1695,125 @@
           "subgroup": "General"
         },
         {
+          "name": "--code-line-number",
+          "value": "#4b5563",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-line-highlight-bg",
+          "value": "#f1f5f9",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-line-added-bg",
+          "value": "#f4faf6",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-line-removed-bg",
+          "value": "#fdf5f5",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-line-added-fg",
+          "value": "#1a7f37",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-line-removed-fg",
+          "value": "#be2a34",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-text",
+          "value": "#0e1116",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-comment",
+          "value": "#66707b",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-keyword",
+          "value": "#a0111f",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-entity",
+          "value": "#702c00",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-variable",
+          "value": "#702c00",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-constant",
+          "value": "#023b95",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-function",
+          "value": "#622cbc",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-tag",
+          "value": "#024c1a",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-attr",
+          "value": "#023b95",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-string",
+          "value": "#032563",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-shiki-jsx-brace",
+          "value": "#a0111f",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
           "name": "--shortcut-hint-color",
           "value": "#4b5563",
           "usage": "",
@@ -2101,6 +2220,27 @@
       "title": "Rhythm",
       "tokens": [
         {
+          "name": "--line-height-code-s",
+          "value": "1.125rem",
+          "usage": "Line-height for code-s typography rhythm.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--line-height-code-m",
+          "value": "1.25rem",
+          "usage": "Line-height for code-m typography rhythm.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--line-height-code-row",
+          "value": "1.375rem",
+          "usage": "Line-height for code-row typography rhythm.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
           "name": "--tracking-tighter",
           "value": "-0.05em",
           "usage": "Letter-spacing for tighter display/heading styles.",
@@ -2244,6 +2384,34 @@
           "name": "--font-size-disclaimer",
           "value": "0.75rem",
           "usage": "12px, for disclaimer copy only (price terms, legal small print). Below the 14px text-scale floor on purpose; never for body, UI or captions.",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-code-xs",
+          "value": "0.75rem",
+          "usage": "Fluid type size token (code-xs); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-code-s",
+          "value": "0.8125rem",
+          "usage": "Fluid type size token (code-s); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-code-m",
+          "value": "0.875rem",
+          "usage": "Fluid type size token (code-m); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-code-l",
+          "value": "1rem",
+          "usage": "Fluid type size token (code-l); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
         },

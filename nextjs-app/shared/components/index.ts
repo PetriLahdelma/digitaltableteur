@@ -78,6 +78,19 @@ export { default as CookieConsent } from "./CookieConsent/CookieConsent";
 export type { CookieConsentProps } from "./CookieConsent";
 export { default as CodeBlockWindow } from "./CodeBlockWindow/CodeBlockWindow";
 export type { CodeBlockWindowProps } from "./CodeBlockWindow/CodeBlockWindow";
+export { default as Code } from "./Code/Code";
+export type { CodeProps, CodeSize } from "./Code";
+export { default as CodeBlock } from "./CodeBlock/CodeBlock";
+export type {
+  CodeBlockProps,
+  CodeBlockTheme,
+  CodeLineSpec,
+  CodeLineState,
+} from "./CodeBlock";
+export { default as CodeCopyButton } from "./CodeCopyButton/CodeCopyButton";
+export type { CodeCopyButtonProps, CodeCopyButtonStatus } from "./CodeCopyButton";
+export { default as Snippet } from "./Snippet/Snippet";
+export type { SnippetProps, SnippetTheme } from "./Snippet";
 export { Container, type ContainerProps } from "./Container";
 export {
   DonnyAvatar,

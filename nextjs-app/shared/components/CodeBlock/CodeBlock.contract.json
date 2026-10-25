@@ -1,0 +1,240 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "CodeBlock",
+    "tier": "organism",
+    "group": "structure",
+    "status": "beta",
+    "description": "Multi-line source with an optional filename header, line numbers, highlighted, added and removed rows, copy and a caption.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7307",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "theme": {
+            "values": [
+                "light",
+                "terminal"
+            ],
+            "default": "light",
+            "propSourced": true
+        }
+    },
+    "slots": [
+        "caption"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab reaches the copy button, then the code body when it scrolls; arrow keys scroll the focused body."
+        ],
+        "ariaRequirements": [
+            "The body becomes a named, focusable region only when it overflows, so a short block adds no tab stop.",
+            "Added and removed rows carry a sign with translated alternative text (Added line, Removed line); state never rests on colour alone.",
+            "Line numbers are generated content with empty alternative text, so screen readers read the code only.",
+            "With a caption the block is a figure and the caption its figcaption."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--main-body-background-color",
+            "--color-light-bg",
+            "--color-border-light",
+            "--color-text",
+            "--color-muted",
+            "--code-line-number",
+            "--code-line-highlight-bg",
+            "--code-line-added-bg",
+            "--code-line-removed-bg",
+            "--code-line-added-fg",
+            "--code-line-removed-fg",
+            "--code-shiki-text",
+            "--code-shiki-comment",
+            "--code-shiki-keyword",
+            "--code-shiki-entity",
+            "--code-shiki-variable",
+            "--code-shiki-constant",
+            "--code-shiki-function",
+            "--code-shiki-tag",
+            "--code-shiki-attr",
+            "--code-shiki-string",
+            "--code-shiki-jsx-brace",
+            "--focus-ring-color"
+        ],
+        "spacing": [
+            "--space-internal-2",
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24",
+            "--space-internal-32"
+        ],
+        "typography": [
+            "--font-mono",
+            "--font-body",
+            "--font-size-text-xxs"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "composesWith": [
+        "CodeCopyButton",
+        "Snippet",
+        "Code"
+    ],
+    "prefersOver": [
+        "CodeBlockWindow",
+        "CodeSnippet variant multi"
+    ],
+    "forbiddenUse": [
+        "Use for a single command the reader pastes into a terminal; use Snippet.",
+        "Use for one identifier inside a sentence; use Code."
+    ],
+    "displayName": "CodeBlock",
+    "keywords": [
+        "code block",
+        "code",
+        "syntax highlighting",
+        "diff",
+        "line numbers",
+        "source",
+        "filename",
+        "terminal",
+        "shiki"
+    ],
+    "dense": "flat code card: optional header (file icon, filename, language, copy) or floating copy; line numbers; highlighted/added/removed rows; caption; light or terminal theme; code string or Shiki tree",
+    "usage": {
+        "description": "CodeBlock shows source the reader will scan or paste. Pass code as a string (highlighted at runtime) or a Shiki tree from the MDX pipeline. Give a filename when the code has a paste destination, highlight only the lines under discussion and mark diffs as added and removed rows instead of comments, so copy-paste still yields working code.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Always set language; highlighting is the reason to choose CodeBlock over a plain pre."
+            },
+            {
+                "guidance": true,
+                "description": "Show a filename when the snippet belongs in a specific file; leave it out for throwaway examples."
+            },
+            {
+                "guidance": true,
+                "description": "Mark changes with addedLines and removedLines or language=\"diff\"; copy leaves removed lines out."
+            },
+            {
+                "guidance": false,
+                "description": "Do not highlight most of the block; a block where every line is highlighted reads like no highlight."
+            },
+            {
+                "guidance": false,
+                "description": "Do not turn on line numbers for blocks under five lines."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest it in another scroll container; use maxHeight."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "code": "export function greet(name: string) {\n  return `Hello, ${name}!`;\n}",
+            "language": "ts",
+            "filename": "greet.ts",
+            "theme": "light"
+        }
+    },
+    "props": {
+        "code": {
+            "optional": true,
+            "type": "string",
+            "description": "Source to show. Highlighted at runtime for the common languages; with\n`language=\"diff\"` the leading +/- of each line become added and removed\nrows. Pass either `code` or a pre-highlighted Shiki tree as `children`."
+        },
+        "children": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "A Shiki `<pre><code>` tree (rehype-pretty-code output). Callouts come\nfrom the MDX meta string: a line range highlights, and a range with the\nid \"added\" or \"removed\" marks a diff."
+        },
+        "language": {
+            "optional": true,
+            "type": "string",
+            "description": "Language of the code; shown in the header and drives highlighting."
+        },
+        "filename": {
+            "optional": true,
+            "type": "string",
+            "description": "File name shown in the header. Giving one turns the header on."
+        },
+        "header": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the header bar."
+        },
+        "lineNumbers": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Number the lines."
+        },
+        "highlightLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to highlight: `[2, 3]` or `\"2-3,7\"`. 1-based."
+        },
+        "addedLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to mark as added."
+        },
+        "removedLines": {
+            "optional": true,
+            "type": "CodeLineSpec",
+            "description": "Lines to mark as removed. Copy leaves them out."
+        },
+        "caption": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Caption under the card."
+        },
+        "theme": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "light",
+                "terminal"
+            ],
+            "description": "`terminal` renders the block in the dark theme on any page. In the\nhigh-contrast themes it follows the page so contrast stays at the\nhigh-contrast level."
+        },
+        "wrap": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Wrap long lines instead of scrolling sideways."
+        },
+        "maxHeight": {
+            "optional": true,
+            "type": "string | number",
+            "description": "Cap the body height (any CSS length, or pixels) and scroll inside it."
+        },
+        "copyable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Show the copy button."
+        },
+        "copyLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name for the copy button."
+        },
+        "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text."
+        }
+    }
+}

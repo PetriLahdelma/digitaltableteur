@@ -1,0 +1,119 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "CodeCopyButton",
+    "tier": "atom",
+    "group": "actions",
+    "status": "beta",
+    "description": "Icon-only copy control for code surfaces: the copy glyph swaps to a check after a successful copy and a live region announces the result.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7275",
+    "radixPrimitive": null,
+    "element": "button",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab focuses the button; Enter or Space copies."
+        ],
+        "ariaRequirements": [
+            "The button is named by label (default \"Copy code\", translated).",
+            "A polite live region announces Copied or Copy failed; the glyph swap alone is silent."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-10-25: built from the Figma component (Astryx Code/CodeBlock and Geist code/code-block/snippet benchmarks) to replace CodeBlockWindow and CodeSnippet.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-muted",
+            "--color-text",
+            "--color-neutral-bg",
+            "--color-success",
+            "--color-disabled-text",
+            "--focus-ring-color"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-24"
+        ],
+        "typography": []
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "composesWith": [
+        "CodeBlock",
+        "Snippet"
+    ],
+    "prefersOver": [
+        "IconButton for copy-to-clipboard on code surfaces"
+    ],
+    "forbiddenUse": [
+        "Use as a general action button; it only copies."
+    ],
+    "displayName": "CodeCopyButton",
+    "keywords": [
+        "copy",
+        "clipboard",
+        "copy code",
+        "copy button",
+        "code"
+    ],
+    "dense": "28px icon-only copy button; copy glyph to check on success; value string or getter; live-region announcement",
+    "usage": {
+        "description": "CodeCopyButton copies a string to the clipboard and confirms it in place. CodeBlock and Snippet use it; reach for it directly only when building another code surface.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Pass value as a getter when the text is expensive to build or changes after render."
+            },
+            {
+                "guidance": true,
+                "description": "Keep the default label unless the surface copies something other than code, such as a command or a URL."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put it on plain prose; selection already covers copying text."
+            },
+            {
+                "guidance": false,
+                "description": "Do not rely on the check mark alone to report success; the live region is part of the control."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "value": "npm install @digitaltableteur/react"
+        }
+    },
+    "props": {
+        "value": {
+            "optional": false,
+            "type": "string | (() => string)",
+            "description": "Text to copy, or a function that returns it at click time."
+        },
+        "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name."
+        },
+        "onCopy": {
+            "optional": true,
+            "type": "(text: string) => void",
+            "description": "Called with the copied text after a successful copy."
+        },
+        "resetAfterMs": {
+            "optional": true,
+            "type": "number",
+            "description": "How long the check mark stays, in milliseconds."
+        }
+    }
+}

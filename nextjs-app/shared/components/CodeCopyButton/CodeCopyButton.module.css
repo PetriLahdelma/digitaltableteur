@@ -1,0 +1,94 @@
+.root {
+  display: inline-flex;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 28px square, radius-md (Figma CodeCopyButton 1976:7275). Hover takes the
+   neutral surface; the glyph stays muted until a copy turns it success. */
+
+.button {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  block-size: calc(var(--space-internal-24) + var(--space-internal-4));
+  inline-size: calc(var(--space-internal-24) + var(--space-internal-4));
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    color var(--duration-fast) var(--ease-out-cubic);
+}
+
+.button:hover {
+  background-color: var(--color-neutral-bg);
+  color: var(--color-text);
+}
+
+.button:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, var(--color-primary));
+  outline-offset: 0;
+}
+
+.button[data-status="copied"] {
+  color: var(--color-success);
+}
+
+.button:disabled {
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+}
+
+.button:disabled:hover {
+  background-color: transparent;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.visuallyHidden {
+  position: absolute;
+  padding: 0;
+  block-size: 1px;
+  inline-size: 1px;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+/* HC themes: the neutral hover surface equals the page; outline it instead. */
+
+:global(.themeHCB) .button:hover,
+:global(.themeHCW) .button:hover {
+  outline: 1px solid var(--color-text);
+  outline-offset: -1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .button {
+    color: ButtonText;
+  }
+
+  .button:hover {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+
+  .button:focus-visible {
+    outline: 3px solid Highlight;
+    forced-color-adjust: none;
+  }
+}

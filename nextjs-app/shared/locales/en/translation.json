@@ -1314,6 +1314,17 @@
     "regionLabel": "Code block in {{language}}",
     "languageFallback": "Code"
   },
+  "codeBlock": {
+    "regionLabel": "Code, {{language}}",
+    "languageFallback": "plain text",
+    "addedLine": "Added line",
+    "removedLine": "Removed line"
+  },
+  "codeCopyButton": {
+    "copy": "Copy code",
+    "copied": "Copied",
+    "copyFailed": "Copy failed"
+  },
   "downloadResumeValid": "Valid password",
   "articleCard": {
     "loadingTitle": "Loading article title",

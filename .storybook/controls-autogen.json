@@ -111,6 +111,10 @@
     "PersonCard",
     "Designerman",
     "StageList",
-    "ProjectList"
+    "ProjectList",
+    "Code",
+    "CodeBlock",
+    "CodeCopyButton",
+    "Snippet"
   ]
 }

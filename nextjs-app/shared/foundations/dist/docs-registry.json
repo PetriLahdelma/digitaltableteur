@@ -3802,6 +3802,350 @@
       },
       "examples": []
     },
+    "Code": {
+      "name": "Code",
+      "group": "display",
+      "tier": 2,
+      "status": "beta",
+      "description": "Inline code for a function name, prop, file path or CLI flag inside prose.",
+      "dense": "inline <code> chip on the light surface; sm/md/lg match the surrounding text size",
+      "keywords": [
+        "inline code",
+        "code",
+        "monospace",
+        "identifier",
+        "flag",
+        "path"
+      ],
+      "importLine": "import Code from \"@dt/Code\";",
+      "keyProps": [
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        }
+      ],
+      "props": {
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Match the surrounding text: `sm` beside Body xxs/xs, `md` beside s/m,\n`lg` beside l."
+        }
+      },
+      "composesWith": [
+        "Text",
+        "Kbd",
+        "Snippet",
+        "CodeBlock"
+      ],
+      "prefersOver": [
+        "CodeSnippet variant inline"
+      ],
+      "forbiddenUse": [
+        "Use for a multi-line block or a command meant to be copied; use CodeBlock or Snippet."
+      ],
+      "usage": {
+        "description": "Code marks a short literal inside running text. Match its size to the text around it: sm beside Body xxs and xs, md beside s and m, lg beside l.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Use for identifiers, props, file paths, environment variables and CLI flags inside a sentence."
+          },
+          {
+            "guidance": true,
+            "description": "Keep it to a few words; a line of code belongs in Snippet or CodeBlock."
+          },
+          {
+            "guidance": false,
+            "description": "Do not add a copy button or make it a link target; it is static text."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use for keyboard keys; that is Kbd."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-light-bg",
+          "--color-border-light",
+          "--color-text"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-4",
+          "--space-internal-6"
+        ],
+        "typography": [
+          "--font-mono"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Sizes",
+          "description": null,
+          "source": "export const Sizes: Story = {\n  tags: [\"example\"],\n  render: () => (\n    <div>\n      <Text size=\"xs\">\n        Small beside xs text: <Code size=\"sm\">--prebuilt</Code>\n      </Text>\n      <Text size=\"m\">\n        Medium beside body text: <Code size=\"md\">useCodeBlock()</Code>\n      </Text>\n      <Text size=\"l\">\n        Large beside large text: <Code size=\"lg\">app/page.tsx</Code>\n      </Text>\n    </div>\n  ),\n};"
+        }
+      ]
+    },
+    "CodeBlock": {
+      "name": "CodeBlock",
+      "group": "structure",
+      "tier": 2,
+      "status": "beta",
+      "description": "Multi-line source with an optional filename header, line numbers, highlighted, added and removed rows, copy and a caption.",
+      "dense": "flat code card: optional header (file icon, filename, language, copy) or floating copy; line numbers; highlighted/added/removed rows; caption; light or terminal theme; code string or Shiki tree",
+      "keywords": [
+        "code block",
+        "code",
+        "syntax highlighting",
+        "diff",
+        "line numbers",
+        "source",
+        "filename",
+        "terminal",
+        "shiki"
+      ],
+      "importLine": "import CodeBlock from \"@dt/CodeBlock\";",
+      "keyProps": [
+        {
+          "name": "theme",
+          "type": "light | terminal",
+          "required": false
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false
+        },
+        {
+          "name": "language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "filename",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "header",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "code": {
+          "optional": true,
+          "type": "string",
+          "description": "Source to show. Highlighted at runtime for the common languages; with\n`language=\"diff\"` the leading +/- of each line become added and removed\nrows. Pass either `code` or a pre-highlighted Shiki tree as `children`."
+        },
+        "children": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "A Shiki `<pre><code>` tree (rehype-pretty-code output). Callouts come\nfrom the MDX meta string: a line range highlights, and a range with the\nid \"added\" or \"removed\" marks a diff."
+        },
+        "language": {
+          "optional": true,
+          "type": "string",
+          "description": "Language of the code; shown in the header and drives highlighting."
+        },
+        "filename": {
+          "optional": true,
+          "type": "string",
+          "description": "File name shown in the header. Giving one turns the header on."
+        },
+        "header": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the header bar."
+        },
+        "lineNumbers": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Number the lines."
+        },
+        "highlightLines": {
+          "optional": true,
+          "type": "CodeLineSpec",
+          "description": "Lines to highlight: `[2, 3]` or `\"2-3,7\"`. 1-based."
+        },
+        "addedLines": {
+          "optional": true,
+          "type": "CodeLineSpec",
+          "description": "Lines to mark as added."
+        },
+        "removedLines": {
+          "optional": true,
+          "type": "CodeLineSpec",
+          "description": "Lines to mark as removed. Copy leaves them out."
+        },
+        "caption": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Caption under the card."
+        },
+        "theme": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "light",
+            "terminal"
+          ],
+          "description": "`terminal` renders the block in the dark theme on any page. In the\nhigh-contrast themes it follows the page so contrast stays at the\nhigh-contrast level."
+        },
+        "wrap": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Wrap long lines instead of scrolling sideways."
+        },
+        "maxHeight": {
+          "optional": true,
+          "type": "string | number",
+          "description": "Cap the body height (any CSS length, or pixels) and scroll inside it."
+        },
+        "copyable": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the copy button."
+        },
+        "copyLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name for the copy button."
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void",
+          "description": "Called with the copied text."
+        }
+      },
+      "composesWith": [
+        "CodeCopyButton",
+        "Snippet",
+        "Code"
+      ],
+      "prefersOver": [
+        "CodeBlockWindow",
+        "CodeSnippet variant multi"
+      ],
+      "forbiddenUse": [
+        "Use for a single command the reader pastes into a terminal; use Snippet.",
+        "Use for one identifier inside a sentence; use Code."
+      ],
+      "usage": {
+        "description": "CodeBlock shows source the reader will scan or paste. Pass code as a string (highlighted at runtime) or a Shiki tree from the MDX pipeline. Give a filename when the code has a paste destination, highlight only the lines under discussion and mark diffs as added and removed rows instead of comments, so copy-paste still yields working code.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Always set language; highlighting is the reason to choose CodeBlock over a plain pre."
+          },
+          {
+            "guidance": true,
+            "description": "Show a filename when the snippet belongs in a specific file; leave it out for throwaway examples."
+          },
+          {
+            "guidance": true,
+            "description": "Mark changes with addedLines and removedLines or language=\"diff\"; copy leaves removed lines out."
+          },
+          {
+            "guidance": false,
+            "description": "Do not highlight most of the block; a block where every line is highlighted reads like no highlight."
+          },
+          {
+            "guidance": false,
+            "description": "Do not turn on line numbers for blocks under five lines."
+          },
+          {
+            "guidance": false,
+            "description": "Do not nest it in another scroll container; use maxHeight."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--main-body-background-color",
+          "--color-light-bg",
+          "--color-border-light",
+          "--color-text",
+          "--color-muted",
+          "--code-line-number",
+          "--code-line-highlight-bg",
+          "--code-line-added-bg",
+          "--code-line-removed-bg",
+          "--code-line-added-fg",
+          "--code-line-removed-fg",
+          "--code-shiki-text",
+          "--code-shiki-comment",
+          "--code-shiki-keyword",
+          "--code-shiki-entity",
+          "--code-shiki-variable",
+          "--code-shiki-constant",
+          "--code-shiki-function",
+          "--code-shiki-tag",
+          "--code-shiki-attr",
+          "--code-shiki-string",
+          "--code-shiki-jsx-brace",
+          "--focus-ring-color"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24",
+          "--space-internal-32"
+        ],
+        "typography": [
+          "--font-mono",
+          "--font-body",
+          "--font-size-text-xxs"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Highlighted",
+          "description": "Highlight only the lines under discussion; the 2px bar carries the callout where the tint is faint.",
+          "source": "export const Highlighted: Story = {\n  tags: [\"example\"],\n  args: { lineNumbers: true, highlightLines: [6, 7, 8] },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Highlight only the lines under discussion; the 2px bar carries the callout where the tint is faint.\",\n      },\n    },\n  },\n};"
+        },
+        {
+          "story": "Diff",
+          "description": "With language=\\\"diff\\\" the leading +/- become added and removed rows with a sign column. Copy leaves removed lines out, so the clipboard holds the code after the change.",
+          "source": "export const Diff: Story = {\n  tags: [\"example\"],\n  args: {\n    code: nextConfigDiff,\n    language: \"diff\",\n    filename: \"next.config.js\",\n    lineNumbers: true,\n  },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"With language=\\\"diff\\\" the leading +/- become added and removed rows with a sign column. Copy leaves removed lines out, so the clipboard holds the code after the change.\",\n      },\n    },\n  },\n};"
+        },
+        {
+          "story": "Headerless",
+          "description": null,
+          "source": "export const Headerless: Story = {\n  tags: [\"example\"],\n  args: {\n    filename: undefined,\n    header: false,\n    code: \"npm run build:tokens\\nnpm run check:contract-props\",\n    language: \"bash\",\n  },\n};"
+        },
+        {
+          "story": "Terminal",
+          "description": "Terminal renders the block in the dark theme on any page. In the high-contrast themes it follows the page.",
+          "source": "export const Terminal: Story = {\n  tags: [\"example\"],\n  args: {\n    code: rhythmguardSetup,\n    language: \"bash\",\n    filename: undefined,\n    header: false,\n    theme: \"terminal\",\n  },\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Terminal renders the block in the dark theme on any page. In the high-contrast themes it follows the page.\",\n      },\n    },\n  },\n};"
+        },
+        {
+          "story": "Scrollable",
+          "description": null,
+          "source": "export const Scrollable: Story = {\n  tags: [\"example\"],\n  args: { code: longFile, language: \"ts\", filename: \"tokens.ts\", lineNumbers: true, maxHeight: 240 },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const region = await canvas.findByRole(\"region\", { name: \"tokens.ts\" });\n    await userEvent.tab();\n    await userEvent.tab();\n    await expect(region).toHaveFocus();\n  },\n};"
+        },
+        {
+          "story": "ShikiTree",
+          "description": "A pre-highlighted Shiki tree, as the MDX pipeline (rehype-pretty-code) hands it over. The language comes from the tree.",
+          "source": "export const ShikiTree: Story = {\n  tags: [\"example\"],\n  args: { code: undefined, language: undefined, filename: \"DemoButton.tsx\" },\n  render: (args) => (\n    <CodeBlock {...args}>\n      {renderCodeBlockFixtureNode(codeBlockFixtures.tsx.pre)}\n    </CodeBlock>\n  ),\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"A pre-highlighted Shiki tree, as the MDX pipeline (rehype-pretty-code) hands it over. The language comes from the tree.\",\n      },\n    },\n  },\n};"
+        }
+      ]
+    },
     "CodeBlockWindow": {
       "name": "CodeBlockWindow",
       "group": "structure",
@@ -3969,6 +4313,119 @@
           "story": "LongLine",
           "description": "Long lines scroll horizontally inside the frame; in article context the block also caps its height.",
           "source": "export const LongLine: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Long lines scroll horizontally inside the frame; in article context the block also caps its height.\" } },\n  },\n  args: { title: \"long-line.ts\", language: \"ts\", children: fixture.longLine },\n};"
+        }
+      ]
+    },
+    "CodeCopyButton": {
+      "name": "CodeCopyButton",
+      "group": "actions",
+      "tier": 2,
+      "status": "beta",
+      "description": "Icon-only copy control for code surfaces: the copy glyph swaps to a check after a successful copy and a live region announces the result.",
+      "dense": "28px icon-only copy button; copy glyph to check on success; value string or getter; live-region announcement",
+      "keywords": [
+        "copy",
+        "clipboard",
+        "copy code",
+        "copy button",
+        "code"
+      ],
+      "importLine": "import CodeCopyButton from \"@dt/CodeCopyButton\";",
+      "keyProps": [
+        {
+          "name": "value",
+          "type": "string | (() => string)",
+          "required": true
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "resetAfterMs",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "props": {
+        "value": {
+          "optional": false,
+          "type": "string | (() => string)",
+          "description": "Text to copy, or a function that returns it at click time."
+        },
+        "label": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name."
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void",
+          "description": "Called with the copied text after a successful copy."
+        },
+        "resetAfterMs": {
+          "optional": true,
+          "type": "number",
+          "description": "How long the check mark stays, in milliseconds."
+        }
+      },
+      "composesWith": [
+        "CodeBlock",
+        "Snippet"
+      ],
+      "prefersOver": [
+        "IconButton for copy-to-clipboard on code surfaces"
+      ],
+      "forbiddenUse": [
+        "Use as a general action button; it only copies."
+      ],
+      "usage": {
+        "description": "CodeCopyButton copies a string to the clipboard and confirms it in place. CodeBlock and Snippet use it; reach for it directly only when building another code surface.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Pass value as a getter when the text is expensive to build or changes after render."
+          },
+          {
+            "guidance": true,
+            "description": "Keep the default label unless the surface copies something other than code, such as a command or a URL."
+          },
+          {
+            "guidance": false,
+            "description": "Do not put it on plain prose; selection already covers copying text."
+          },
+          {
+            "guidance": false,
+            "description": "Do not rely on the check mark alone to report success; the live region is part of the control."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-text",
+          "--color-neutral-bg",
+          "--color-success",
+          "--color-disabled-text",
+          "--focus-ring-color"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-24"
+        ],
+        "typography": []
+      },
+      "examples": [
+        {
+          "story": "CustomLabel",
+          "description": null,
+          "source": "export const CustomLabel: Story = {\n  tags: [\"example\"],\n  args: { label: \"Copy install command\" },\n};"
+        },
+        {
+          "story": "Disabled",
+          "description": null,
+          "source": "export const Disabled: Story = {\n  tags: [\"example\"],\n  args: { disabled: true },\n};"
         }
       ]
     },
@@ -14852,6 +15309,153 @@
           "story": "InContext",
           "description": null,
           "source": "export const InContext: Story = {\n  tags: [\"example\"],\n  parameters: { layout: \"fullscreen\", controls: { disable: true } },\n  render: () => (\n    <div\n      style={{\n        display: \"grid\",\n        placeItems: \"center\",\n        minBlockSize: \"40vh\",\n        padding: \"2rem\",\n        background: \"var(--color-surface)\",\n      }}\n    >\n      <SlideButton label=\"Start your sprint\" href=\"#sprint\" icon=\"Lightning\" />\n    </div>\n  ),\n};"
+        }
+      ]
+    },
+    "Snippet": {
+      "name": "Snippet",
+      "group": "structure",
+      "tier": 2,
+      "status": "beta",
+      "description": "A copyable shell command with a prompt that stays out of the copy.",
+      "dense": "copyable shell command(s) with a $ prompt excluded from copy; default or inverted (dark) theme",
+      "keywords": [
+        "snippet",
+        "command",
+        "shell",
+        "terminal",
+        "install",
+        "copy command",
+        "cli"
+      ],
+      "importLine": "import Snippet from \"@dt/Snippet\";",
+      "keyProps": [
+        {
+          "name": "command",
+          "type": "string | readonly string[]",
+          "required": true
+        },
+        {
+          "name": "theme",
+          "type": "default | inverted",
+          "required": false
+        },
+        {
+          "name": "prompt",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "copyable",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "copyLabel",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "command": {
+          "optional": false,
+          "type": "string | readonly string[]",
+          "description": "The command, or several commands shown one per line. Write the command\nonly: the prompt is chrome and never part of the text."
+        },
+        "prompt": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the `$` prompt before each command. Copy always leaves it out."
+        },
+        "theme": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "default",
+            "inverted"
+          ],
+          "description": "`inverted` renders the snippet in the dark theme on any page, for\nterminal emphasis. In the high-contrast themes it follows the page so\ncontrast stays at the high-contrast level."
+        },
+        "copyable": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Show the copy button."
+        },
+        "copyLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name for the copy button."
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void",
+          "description": "Called with the copied text (commands joined by newlines)."
+        }
+      },
+      "composesWith": [
+        "CodeCopyButton",
+        "CodeBlock",
+        "Code"
+      ],
+      "prefersOver": [
+        "CodeSnippet variant single"
+      ],
+      "forbiddenUse": [
+        "Use for multi-line source code or command output; use CodeBlock."
+      ],
+      "usage": {
+        "description": "Snippet holds a command the reader will paste into a terminal. Pass the bare command: the prompt is drawn for you and never copied. Several commands render one per line and copy together.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Write the command only; the component draws the $ prompt."
+          },
+          {
+            "guidance": true,
+            "description": "Use inverted for terminal emphasis on a light page."
+          },
+          {
+            "guidance": false,
+            "description": "Do not type $ into command; it would copy and render twice."
+          },
+          {
+            "guidance": false,
+            "description": "Do not put source files or output in a Snippet; use CodeBlock."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--main-body-background-color",
+          "--color-border-light",
+          "--color-text",
+          "--color-muted"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12"
+        ],
+        "typography": [
+          "--font-mono"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Inverted",
+          "description": null,
+          "source": "export const Inverted: Story = {\n  tags: [\"example\"],\n  args: { theme: \"inverted\" },\n};"
+        },
+        {
+          "story": "MultipleCommands",
+          "description": "Several commands render one per line and copy together, joined by newlines.",
+          "source": "export const MultipleCommands: Story = {\n  tags: [\"example\"],\n  args: {\n    command: [\n      \"npm i -D stylelint stylelint-plugin-rhythmguard\",\n      \"npx stylelint \\\"src/**/*.css\\\"\",\n    ],\n  },\n  parameters: {\n    docs: {\n      description: {\n        story: \"Several commands render one per line and copy together, joined by newlines.\",\n      },\n    },\n  },\n};"
+        },
+        {
+          "story": "WithoutPrompt",
+          "description": null,
+          "source": "export const WithoutPrompt: Story = {\n  tags: [\"example\"],\n  args: { prompt: false, command: \"NEXT_PUBLIC_SENTRY_DSN=https://example.ingest.sentry.io/1\" },\n};"
         }
       ]
     },
