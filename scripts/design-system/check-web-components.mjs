@@ -192,7 +192,10 @@ const maxPackedFiles = 40 + tags.length * 2;
 // a hierarchy glyph, and every curated icon ships six inline SVG weights in the
 // shared native-icon-data chunk; measured 1,895,539 bytes unpacked, ~3.2 kB
 // over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_346_000;
+// +2 kB for the Pause and Play icons (2026-10-25, the marquee pause control):
+// six inline SVG weights each in native-icon-data; measured 1,897,042 bytes
+// unpacked, 767 bytes over the prior ceiling.
+const sharedBundleAndManifestCeiling = 1_348_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
