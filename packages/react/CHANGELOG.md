@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.38 - 2026-10-25
+
+- New `CodeBlock` (beta): multi-line source in a flat card with an optional
+  header (file glyph by language, filename, language, copy) or a floating
+  copy column; `lineNumbers`; `highlightLines`, `addedLines` and
+  `removedLines` (or `language="diff"`) for callout and diff rows marked by
+  a bar, a tint and a +/- sign with translated alternative text;
+  `caption`; `theme="terminal"`; `wrap`; `maxHeight`. Takes a `code` string
+  (highlighted at runtime) or a Shiki `<pre><code>` tree as `children`.
+  Copy leaves removed lines out. Successor to `CodeBlockWindow`.
+- New `Snippet` (beta): a copyable shell command with a `$` prompt that is
+  hidden from assistive tech and never copied; several commands, one per
+  line; `theme="inverted"`. Successor to `CodeSnippet` single.
+- New `Code` (beta): inline code, `size` sm, md or lg. Successor to
+  `CodeSnippet` inline.
+- New `CodeCopyButton` (beta): the 28px copy control both use; announces
+  the result in a live region and reports a refused clipboard as a failure.
+- Tokens: `--code-line-*` (number, highlight, added and removed rows) and
+  `--code-shiki-*` syntax colours in all four themes; code type sizes
+  `--font-size-code-xs|s|m|l` and `--line-height-code-s|m|row`.
+
 ## 0.1.37 - 2026-10-25
 
 - `Table`: while the table is wider than its wrapper, the wrapper becomes

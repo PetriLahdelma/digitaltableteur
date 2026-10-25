@@ -74,6 +74,30 @@
       "level": "additive",
       "detail": "prop `disclosureLabel` added",
       "bump": "patch"
+    },
+    {
+      "component": "Code",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
+    },
+    {
+      "component": "CodeBlock",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
+    },
+    {
+      "component": "CodeCopyButton",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
+    },
+    {
+      "component": "Snippet",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -1093,6 +1117,101 @@
         "Tab"
       ]
     },
+    "Code": {
+      "element": "code",
+      "props": {
+        "size": {
+          "optional": true,
+          "values": [
+            "lg",
+            "md",
+            "sm"
+          ]
+        }
+      },
+      "slots": [],
+      "subParts": [],
+      "keyboard": []
+    },
+    "CodeBlock": {
+      "element": "div",
+      "props": {
+        "addedLines": {
+          "optional": true,
+          "type": "CodeLineSpec"
+        },
+        "caption": {
+          "optional": true,
+          "type": "React.ReactNode"
+        },
+        "children": {
+          "optional": true,
+          "type": "React.ReactNode"
+        },
+        "code": {
+          "optional": true,
+          "type": "string"
+        },
+        "copyable": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "copyLabel": {
+          "optional": true,
+          "type": "string"
+        },
+        "filename": {
+          "optional": true,
+          "type": "string"
+        },
+        "header": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "highlightLines": {
+          "optional": true,
+          "type": "CodeLineSpec"
+        },
+        "language": {
+          "optional": true,
+          "type": "string"
+        },
+        "lineNumbers": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "maxHeight": {
+          "optional": true,
+          "type": "string | number"
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void"
+        },
+        "removedLines": {
+          "optional": true,
+          "type": "CodeLineSpec"
+        },
+        "theme": {
+          "optional": true,
+          "values": [
+            "light",
+            "terminal"
+          ]
+        },
+        "wrap": {
+          "optional": true,
+          "type": "boolean"
+        }
+      },
+      "slots": [
+        "caption"
+      ],
+      "subParts": [],
+      "keyboard": [
+        "Tab reaches the copy button, then the code body when it scrolls; arrow keys scroll the focused body."
+      ]
+    },
     "CodeBlockWindow": {
       "element": "div",
       "props": {
@@ -1131,6 +1250,32 @@
       "slots": [],
       "subParts": [],
       "keyboard": []
+    },
+    "CodeCopyButton": {
+      "element": "button",
+      "props": {
+        "label": {
+          "optional": true,
+          "type": "string"
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void"
+        },
+        "resetAfterMs": {
+          "optional": true,
+          "type": "number"
+        },
+        "value": {
+          "optional": false,
+          "type": "string | (() => string)"
+        }
+      },
+      "slots": [],
+      "subParts": [],
+      "keyboard": [
+        "Tab focuses the button; Enter or Space copies."
+      ]
     },
     "CodeSnippet": {
       "element": "div",
@@ -3958,6 +4103,43 @@
       "keyboard": [
         "Enter",
         "Tab"
+      ]
+    },
+    "Snippet": {
+      "element": "div",
+      "props": {
+        "command": {
+          "optional": false,
+          "type": "string | readonly string[]"
+        },
+        "copyable": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "copyLabel": {
+          "optional": true,
+          "type": "string"
+        },
+        "onCopy": {
+          "optional": true,
+          "type": "(text: string) => void"
+        },
+        "prompt": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "theme": {
+          "optional": true,
+          "values": [
+            "default",
+            "inverted"
+          ]
+        }
+      },
+      "slots": [],
+      "subParts": [],
+      "keyboard": [
+        "Tab reaches the copy button; Enter or Space copies the commands without the prompt."
       ]
     },
     "Spacer": {
