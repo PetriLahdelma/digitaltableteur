@@ -70,7 +70,7 @@ vi.mock("framer-motion", async () => {
   };
 });
 
-describe.sequential("Page-level Accessibility Tests", () => {
+describe("Page-level Accessibility Tests", { concurrent: false }, () => {
   // WorkIndex + portfolio pages run axe over large DOM trees.
   const pageAxeTimeout = 30_000;
   describe("HomePage", () => {

@@ -1,12 +1,11 @@
 /// <reference types="vitest" />
 
-import type { Assertion, AsymmetricMatchersContaining } from "vitest";
-
-interface CustomMatchers<R = unknown> {
-  toHaveNoViolations(): R;
-}
-
+// Vitest 5 reads custom matcher types from `Matchers<R, T>` (R is the matcher
+// return type, T the received value); it covers instance and asymmetric use.
 declare module "vitest" {
-  interface Assertion<T = any> extends CustomMatchers<T> {}
-  interface AsymmetricMatchersContaining extends CustomMatchers {}
+  interface Matchers<R = unknown, T = unknown> {
+    toHaveNoViolations(): R;
+  }
 }
+
+export {};
