@@ -20,6 +20,7 @@ import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
 import { HtmlLangSync } from "./components/HtmlLangSync";
 import { DeferredAnalytics } from "./components/DeferredAnalytics";
+import { SSR_SNAPSHOT_SCRIPT } from "./lib/ssr-snapshot-script";
 import "@digitaltableteur/react/style.css";
 import "./globals.css";
 
@@ -185,6 +186,10 @@ export default function RootLayout({
             </NextLinkProvider>
           </NextThemeProvider>
         </WebMcpProvider>
+        {/* Last in <body>, before hydration: saves the server-rendered page
+            so a chunk that fails to load (a coverage dropout) restores it
+            instead of replacing it with the error screen. */}
+        <script dangerouslySetInnerHTML={{ __html: SSR_SNAPSHOT_SCRIPT }} />
       </body>
     </html>
   );

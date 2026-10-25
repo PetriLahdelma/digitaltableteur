@@ -1,6 +1,13 @@
 "use client";
 
 import React from "react";
+import {
+  isChunkLoadError,
+  readDocumentAttributes,
+  readSsrSnapshot,
+  useReloadWhenReachable,
+  useRestoreDocumentAttributes,
+} from "./lib/ssr-snapshot";
 
 export default function GlobalError({
   error,
@@ -9,6 +16,27 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  // A chunk that failed to download (a dropped connection) is not a broken
+  // page: put the server-rendered document back and reload once the site
+  // answers. Read once, before React replaces the DOM.
+  const [snapshot] = React.useState(() => readSsrSnapshot(error));
+  const [attributes] = React.useState(() =>
+    snapshot ? readDocumentAttributes() : null,
+  );
+  useRestoreDocumentAttributes(attributes);
+  useReloadWhenReachable(isChunkLoadError(error));
+
+  if (snapshot) {
+    return (
+      <html lang="en" suppressHydrationWarning>
+        <body
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: snapshot.body }}
+        />
+      </html>
+    );
+  }
+
   return (
     <html lang="en">
       <body>

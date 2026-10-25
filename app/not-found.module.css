@@ -74,3 +74,10 @@
   margin-block-start: var(--space-layout-8);
   gap: var(--space-layout-16);
 }
+
+/* app/error.tsx: the restored server-rendered page segment after a chunk
+   failed to load. No box of its own, so the page lays out as it did. */
+
+.restoredPage {
+  display: contents;
+}
