@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-24T19:19:13.217Z",
+  "generatedAt": "2026-10-25T15:13:28.168Z",
   "summary": {
     "componentCount": 185,
     "statusCounts": {
@@ -12,8 +12,8 @@
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 91.6,
     "codebaseComponentCount": 202,
-    "usageCoveragePercent": 93.5,
-    "componentsWithProductionUsage": 41,
+    "usageCoveragePercent": 94.1,
+    "componentsWithProductionUsage": 42,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -53,7 +53,7 @@
         "label": "High contrast (white)"
       }
     ],
-    "contrastPairCount": 11
+    "contrastPairCount": 12
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
@@ -78,12 +78,12 @@
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 185,
-    "withAnyUsage": 173,
-    "withProductionUsage": 41,
-    "uniqueImportedComponents": 173,
-    "totalEvidenceRows": 895,
+    "withAnyUsage": 174,
+    "withProductionUsage": 42,
+    "uniqueImportedComponents": 174,
+    "totalEvidenceRows": 896,
     "aliasImportFiles": 458,
-    "relativeImportFiles": 472,
+    "relativeImportFiles": 473,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -13354,11 +13354,18 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ClientLogoMarquee",
-        "importCount": 0,
-        "productionImportCount": 0,
+        "importCount": 1,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": []
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "importKind": "relative",
+            "importPath": "../../ClientLogoMarquee/ClientLogoMarquee",
+            "context": "production"
+          }
+        ]
       },
       "agent": {
         "preferredImport": "@dt/ClientLogoMarquee",
@@ -40651,8 +40658,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -40666,8 +40673,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -40688,8 +40695,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",

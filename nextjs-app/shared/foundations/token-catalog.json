@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-24T19:19:06.983Z",
+  "generatedAt": "2026-10-25T15:13:20.049Z",
   "tokenCount": 202,
   "usageCoverage": 165,
   "themes": [
@@ -99,6 +99,18 @@
         "dark": 3,
         "hcb": 4.3,
         "hcw": 4.3
+      }
+    },
+    {
+      "id": "switch-handle-on-track",
+      "fg": "--color-white",
+      "bg": "--color-primary",
+      "label": "Switch on-state handle on track",
+      "minRatioByTheme": {
+        "light": 3,
+        "dark": 3,
+        "hcb": 3,
+        "hcw": 3
       }
     },
     {
@@ -248,6 +260,24 @@
         "fgRaw": "#858585",
         "bgRaw": "#e8e8e8",
         "ratio": 3.01,
+        "level": "DS ≥3:1",
+        "pass": true
+      },
+      {
+        "id": "switch-handle-on-track",
+        "fg": "--color-white",
+        "bg": "--color-primary",
+        "label": "Switch on-state handle on track",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 3,
+          "hcw": 3
+        },
+        "themeId": "light",
+        "fgRaw": "#fff",
+        "bgRaw": "#041b23",
+        "ratio": 17.7,
         "level": "DS ≥3:1",
         "pass": true
       },
@@ -407,6 +437,24 @@
         "pass": true
       },
       {
+        "id": "switch-handle-on-track",
+        "fg": "--color-white",
+        "bg": "--color-primary",
+        "label": "Switch on-state handle on track",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 3,
+          "hcw": 3
+        },
+        "themeId": "dark",
+        "fgRaw": "#181a1b",
+        "bgRaw": "#6fa8ff",
+        "ratio": 7.25,
+        "level": "DS ≥3:1",
+        "pass": true
+      },
+      {
         "id": "disabled-text-on-disabled-bg-light",
         "fg": "--color-disabled-placeholder",
         "bg": "--color-disabled-bg-light",
@@ -562,6 +610,24 @@
         "pass": true
       },
       {
+        "id": "switch-handle-on-track",
+        "fg": "--color-white",
+        "bg": "--color-primary",
+        "label": "Switch on-state handle on track",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 3,
+          "hcw": 3
+        },
+        "themeId": "hcb",
+        "fgRaw": "#000",
+        "bgRaw": "#fff",
+        "ratio": 21,
+        "level": "DS ≥3:1",
+        "pass": true
+      },
+      {
         "id": "disabled-text-on-disabled-bg-light",
         "fg": "--color-disabled-placeholder",
         "bg": "--color-disabled-bg-light",
@@ -714,6 +780,24 @@
         "bgRaw": "#e8e8e8",
         "ratio": 4.35,
         "level": "DS ≥4.3:1",
+        "pass": true
+      },
+      {
+        "id": "switch-handle-on-track",
+        "fg": "--color-white",
+        "bg": "--color-primary",
+        "label": "Switch on-state handle on track",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 3,
+          "hcw": 3
+        },
+        "themeId": "hcw",
+        "fgRaw": "#fff",
+        "bgRaw": "#000",
+        "ratio": 21,
+        "level": "DS ≥3:1",
         "pass": true
       },
       {

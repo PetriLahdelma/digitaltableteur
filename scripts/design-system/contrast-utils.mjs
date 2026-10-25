@@ -64,5 +64,9 @@ export const SEMANTIC_CONTRAST_PAIRS = [
   // high-contrast themes. Guards against the silent 1.7-2.6:1 regressions
   // fixed in #1099.
   { id: "disabled-text-on-disabled-bg", fg: "--color-disabled-placeholder", bg: "--color-disabled-bg", label: "Disabled text on disabled fill", minRatioByTheme: { light: 3, dark: 3, hcb: 4.3, hcw: 4.3 } },
+  // Switch on-state handle (--color-white, the theme's on-primary ink) on its
+  // track (--color-primary). WCAG 1.4.11: the handle shows the state, so it
+  // needs 3:1 against the track; a fixed #fff handle was 2.41:1 in dark.
+  { id: "switch-handle-on-track", fg: "--color-white", bg: "--color-primary", label: "Switch on-state handle on track", minRatioByTheme: { light: 3, dark: 3, hcb: 3, hcw: 3 } },
   { id: "disabled-text-on-disabled-bg-light", fg: "--color-disabled-placeholder", bg: "--color-disabled-bg-light", label: "Disabled text on disabled field", minRatioByTheme: { light: 3, dark: 3, hcb: 4.3, hcw: 4.3 } },
 ];

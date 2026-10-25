@@ -131,7 +131,14 @@
     box-shadow var(--duration-fast) var(--ease-out-cubic);
 }
 
+/* The on-state handle takes the theme's on-primary ink, as primary buttons
+   do (--color-white is remapped per theme). A fixed #fff handle sat at 2.41:1
+   on the dark theme's #6fa8ff track, below the 3:1 WCAG 1.4.11 asks for the
+   part that shows the state; it is now 7.25:1. Guarded by the
+   switch-handle-on-track pair in check:contrast. */
+
 .switch[data-checked="true"] .handle {
+  background-color: var(--switch-handle-on-bg, var(--color-white));
   transform: translateX(
     calc(var(--switch-width) - var(--switch-handle-size) - 0.3rem)
   );
