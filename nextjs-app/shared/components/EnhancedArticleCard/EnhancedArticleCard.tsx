@@ -93,10 +93,9 @@ export function EnhancedArticleCard({
 
   if (isCompact) {
     return (
-      <Link
-        href={`/blog/${slug}`}
-        aria-labelledby={titleId}
+      <article
         className={cn(
+          styles.card,
           "group flex gap-4 p-4 rounded-lg",
           "bg-card hover:bg-accent/50",
           "border border-border hover:border-foreground/20",
@@ -130,24 +129,30 @@ export function EnhancedArticleCard({
               "group-hover:text-primary transition-colors",
             )}
           >
-            {title}
+            <Link href={`/blog/${slug}`} className={styles.titleLink}>
+              {title}
+            </Link>
           </h3>
           <p className="text-xs text-muted-foreground">
             {formattedDate}
             {readTime && `, ${readTime}`}
           </p>
         </div>
-      </Link>
+      </article>
     );
   }
 
+  /* One small link, stretched over the card by its ::after, so the whole card
+     stays clickable: "Read article" when it shows (named title + "Read
+     article", so voice users can say either), else the title. A card-wide
+     link made the whole card one link whose visible text (tag, excerpt, date)
+     was missing from its name, which failed WCAG 2.5.3 on every blog page;
+     and keeping the link out of the heading keeps the heading's name the
+     title alone. */
   return (
-    <Link
-      href={`/blog/${slug}`}
-      aria-labelledby={showReadMore ? `${titleId} ${readMoreId}` : titleId}
-      aria-describedby={excerpt ? excerptId : undefined}
+    <article
       className={cn(
-        styles.cardLink,
+        styles.card,
         "group flex h-full min-h-0 w-full flex-col rounded-lg overflow-hidden",
         hideImage && !isFeatured && "min-h-[12rem]",
         "border border-border bg-card",
@@ -242,7 +247,17 @@ export function EnhancedArticleCard({
             isFeatured ? "text-xl tablet:text-2xl" : "text-lg",
           )}
         >
-          {title}
+          {showReadMore ? (
+            title
+          ) : (
+            <Link
+              href={`/blog/${slug}`}
+              className={styles.titleLink}
+              aria-describedby={excerpt ? excerptId : undefined}
+            >
+              {title}
+            </Link>
+          )}
         </h3>
 
         {/* Excerpt */}
@@ -292,34 +307,41 @@ export function EnhancedArticleCard({
             </div>
 
             {showReadMore && (
-              <span
+              <Link
+                href={`/blog/${slug}`}
                 id={readMoreId}
+                aria-labelledby={`${titleId} ${readMoreId}`}
+                aria-describedby={excerpt ? excerptId : undefined}
                 className={cn(
-                  styles.readMore,
-                  "inline-flex shrink-0 items-center gap-1 text-sm font-body font-medium text-primary",
+                  styles.titleLink,
+                  "shrink-0 text-sm font-body font-medium text-primary",
                 )}
               >
-                {t("blogReadMore", "Read article")}
-                <svg
-                  className="size-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </span>
+                {/* The reveal animates this span, not the link: a transform
+                    on the link would trap its ::after inside it. */}
+                <span className={styles.readMore}>
+                  {t("blogReadMore", "Read article")}
+                  <svg
+                    className="size-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </span>
+              </Link>
             )}
           </div>
         )}
       </div>
-    </Link>
+    </article>
   );
 }
 

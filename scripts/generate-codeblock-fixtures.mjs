@@ -41,10 +41,11 @@ const samples = [
 // Light uses github-light-high-contrast (not plain github-light): the standard
 // github-light palette ships tokens like #E36209 that are only ~3.48:1 on the
 // white code surface, below WCAG AA. The high-contrast variant keeps the same
-// GitHub look while meeting 4.5:1.
+// GitHub look while meeting 4.5:1. Dark uses github-dark-default for the same
+// reason: github-dark colours comments #6a737d, 3.62:1 on the #181a1b canvas.
 const themes = {
   light: "github-light-high-contrast",
-  dark: "github-dark",
+  dark: "github-dark-default",
   hcw: "github-light-high-contrast",
   hcb: "github-dark-high-contrast",
 };

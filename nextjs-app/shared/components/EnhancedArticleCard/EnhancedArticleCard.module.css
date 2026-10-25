@@ -1,9 +1,9 @@
-.cardLink {
+.card {
   display: flex;
-  flex-direction: column;
+  position: relative;
   block-size: 100%;
   inline-size: 100%;
-  text-decoration: none;
+  flex-direction: column;
   color: inherit;
   cursor: pointer;
   transition:
@@ -13,48 +13,72 @@
     transform 0.2s ease;
 }
 
-.cardLink:hover {
+/* The title link covers the whole card, so the card is one click target
+   while the link's name stays the title. */
+
+.titleLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.titleLink::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+}
+
+.titleLink:focus-visible {
+  outline: none;
+}
+
+.card:hover {
   border-color: color-mix(in srgb, var(--color-foreground) 25%, var(--color-border));
   box-shadow: 0 0.5rem 1.25rem color-mix(in srgb, var(--color-foreground) 8%, transparent);
 }
 
-.cardLink:focus-visible {
+/* The focus ring belongs to the card, the visible target, not the title. */
+
+.card:has(.titleLink:focus-visible) {
   outline: 2px solid var(--color-ring);
   outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .cardLink:hover {
-    transform: translateY(-0.125rem);
+  .card:hover {
+    transform: translateY(calc(-1 * var(--space-internal-2)));
   }
 }
 
 .readMore {
-  opacity: 0;
-  transform: translateY(0.5rem);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-4);
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
+  transform: translateY(0.5rem);
+  opacity: 0;
 }
 
-.cardLink:hover .readMore,
-.cardLink:focus-visible .readMore {
+.card:hover .readMore,
+.card:has(.titleLink:focus-visible) .readMore {
+  transform: translateY(0) translateX(var(--space-internal-2));
   opacity: 1;
-  transform: translateY(0) translateX(0.125rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cardLink:hover {
+  .card:hover {
     transform: none;
   }
 
   .readMore {
-    opacity: 1;
     transform: none;
+    opacity: 1;
   }
 
-  .cardLink:hover .readMore,
-  .cardLink:focus-visible .readMore {
+  .card:hover .readMore,
+  .card:has(.titleLink:focus-visible) .readMore {
     transform: none;
   }
 }

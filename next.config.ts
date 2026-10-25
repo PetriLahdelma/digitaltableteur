@@ -30,9 +30,13 @@ const mdxRehypePlugins = [
   [
     "rehype-pretty-code",
     {
+      // Same palettes as scripts/generate-codeblock-fixtures.mjs. Plain
+      // github-light has tokens near 3.5:1 on white, and github-dark colours
+      // comments #6a737d, 3.62:1 on the site's #181a1b (axe crawl,
+      // 2026-10-25); github-dark-default keeps every token above 4.5:1.
       theme: {
-        light: "github-light",
-        dark: "github-dark",
+        light: "github-light-high-contrast",
+        dark: "github-dark-default",
         hcw: "github-light-high-contrast",
         hcb: "github-dark-high-contrast",
       },

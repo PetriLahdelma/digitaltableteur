@@ -166,6 +166,13 @@
   outline-offset: var(--focus-ring-offset);
 }
 
+/* The scroll wrapper takes focus only while the table overflows it. */
+
+.wrapper:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
 /* Density scale. */
 
 .sm .headerCell {

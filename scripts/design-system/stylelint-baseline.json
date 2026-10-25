@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1907,
+  "warningCount": 1898,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -724,7 +724,7 @@
     },
     {
       "file": "app/globals.css",
-      "line": 234,
+      "line": 241,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -733,7 +733,7 @@
     },
     {
       "file": "app/globals.css",
-      "line": 235,
+      "line": 242,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -5188,88 +5188,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 4,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"flex-direction\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::order/properties-order::Expected \"block-size\" to come before \"flex-direction\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 34,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"transform\" to come before \"opacity\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::order/properties-order::Expected \"transform\" to come before \"opacity\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 43,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"transform\" to come before \"opacity\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::order/properties-order::Expected \"transform\" to come before \"opacity\" (order/properties-order)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 53,
-      "column": 5,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"transform\" to come before \"opacity\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::order/properties-order::Expected \"transform\" to come before \"opacity\" (order/properties-order)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 35,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"transition\" to come before \"transform\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::order/properties-order::Expected \"transition\" to come before \"transform\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 28,
-      "column": 27,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"-0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"-0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 43,
-      "column": 39,
-      "rule": "rhythmguard/no-offscale-transform",
-      "severity": "warning",
-      "text": "Unexpected transform translation value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::rhythmguard/no-offscale-transform::Unexpected transform translation value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/no-offscale-transform)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 28,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"-0.125rem\". Use calc(-1 * var(--space-internal-2)) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-0.125rem\". Use calc(-1 * var(--space-internal-2)) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 43,
-      "column": 39,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.125rem\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.125rem\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 34,
+      "line": 60,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -5278,7 +5197,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css",
-      "line": 23,
+      "line": 44,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11902,7 +11821,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Switch/Switch.module.css",
-      "line": 174,
+      "line": 181,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12010,7 +11929,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Switch/Switch.module.css",
-      "line": 173,
+      "line": 180,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12019,7 +11938,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Switch/Switch.module.css",
-      "line": 174,
+      "line": 181,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12028,7 +11947,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Switch/Switch.module.css",
-      "line": 182,
+      "line": 189,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",

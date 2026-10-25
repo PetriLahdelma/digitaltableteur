@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { Table } from "./Table";
 import { TableRow } from "@dt/TableRow";
@@ -100,6 +100,42 @@ describe("Table primitives", () => {
       "Who",
     );
     expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("makes an overflowing wrapper a focusable region named by the caption", async () => {
+    const scrollWidth = vi
+      .spyOn(HTMLElement.prototype, "scrollWidth", "get")
+      .mockReturnValue(900);
+    const clientWidth = vi
+      .spyOn(HTMLElement.prototype, "clientWidth", "get")
+      .mockReturnValue(320);
+    render(
+      <Table caption="Wide table">
+        <tbody>
+          <TableRow>
+            <TableCell>Cell</TableCell>
+          </TableRow>
+        </tbody>
+      </Table>,
+    );
+    const region = await screen.findByRole("region", { name: "Wide table" });
+    expect(region).toHaveAttribute("tabindex", "0");
+    scrollWidth.mockRestore();
+    clientWidth.mockRestore();
+  });
+
+  it("adds no tab stop when the table fits", () => {
+    const { container } = render(
+      <Table caption="Narrow table">
+        <tbody>
+          <TableRow>
+            <TableCell>Cell</TableCell>
+          </TableRow>
+        </tbody>
+      </Table>,
+    );
+    expect(container.firstElementChild).not.toHaveAttribute("tabindex");
+    expect(screen.queryByRole("region")).toBeNull();
   });
 
   it("has no axe violations", async () => {
