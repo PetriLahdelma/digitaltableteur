@@ -12,11 +12,16 @@
   flex-direction: column;
 }
 
+/* Panels shrink so the separators fit: flex-basis is each panel's share of
+   100%, and with flex-shrink: 0 the 8px separator pushed the last panel past
+   the group's clipped edge (found by the 2026-10-25 page crawl). Shrinking
+   is weighted by basis, so the panels keep their ratio. */
+
 .panel {
   min-block-size: 0;
   min-inline-size: 0;
   flex-grow: 0;
-  flex-shrink: 0;
+  flex-shrink: 1;
   overflow: auto;
 }
 
