@@ -294,6 +294,7 @@ Production, every sitemap URL (69) in light and dark at 1440 and 390 px: 276 loa
 - **Defects found:** EnhancedArticleCard link naming on every blog page (WCAG 2.5.3, 252 nodes); syntax-theme comment contrast in dark (1.4.3); Table scroll wrapper not keyboard-scrollable (2.1.1); ResizablePanelGroup clipping its last panel by the separator width. Fixed in faa199500 and d7454bd10.
 - **Reading:** three of the four were invisible to per-component evidence because they only appear with real content and layout. This confirms 9b: the crawl is the discovery layer; per-mode graders stay as regression catchers.
 - **Not yet built:** component attribution (share of elements with a DS ancestor, token conformance per page). It needs the measurement build in section 5.
+- **Re-crawl after react 0.1.37 and 0.1.39 (2026-10-25, evening):** 276/276 loads axe-clean on production. The Table fix cleared the last four, and the /design-system/agent clipping finding went with it. No new findings: the failed requests are the same aborted `.webm` range loads in headless Chromium, and the homepage card clipping is the existing hover crop. Raw results: `crawl/2026-10-25b/` in the private repo.
 
 ## What I could not verify
 
