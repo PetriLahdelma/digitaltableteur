@@ -1,7 +1,7 @@
 {
   "generatedBy": "npm run lint:css:update",
   "templateCount": 86,
-  "warningCount": 434,
+  "warningCount": 482,
   "warnings": [
     {
       "column": 21,
@@ -22,6 +22,15 @@
       "id": "packages/web-components/src/native/accordion.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". Use var(--space-internal-12) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
     },
     {
+      "column": 37,
+      "file": "packages/web-components/src/native/accordion.ts",
+      "line": 35,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1rem\". Use var(--radius-2xl) (node_modules/tailwindcss/theme.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/accordion.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use var(--radius-2xl) (node_modules/tailwindcss/theme.css). (rhythmguard/prefer-token)::1"
+    },
+    {
       "column": 23,
       "file": "packages/web-components/src/native/accordion.ts",
       "line": 121,
@@ -38,6 +47,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/alert-banner.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 198,
+      "file": "packages/web-components/src/native/alert-banner.ts",
+      "line": 22,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/alert-banner.ts::rhythmguard/prefer-token::Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
     },
     {
       "column": 54,
@@ -85,6 +103,15 @@
       "id": "packages/web-components/src/native/avatar.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
     },
     {
+      "column": 154,
+      "file": "packages/web-components/src/native/avatar.ts",
+      "line": 44,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/avatar.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+    },
+    {
       "column": 59,
       "file": "packages/web-components/src/native/avatar.ts",
       "line": 44,
@@ -92,6 +119,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/avatar.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 295,
+      "file": "packages/web-components/src/native/avatar.ts",
+      "line": 42,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/avatar.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 68,
@@ -254,6 +290,24 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.25rem\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/breadcrumb.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)::2"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/breadcrumb.ts",
+      "line": 93,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/breadcrumb.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/breadcrumb.ts",
+      "line": 115,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/breadcrumb.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
     },
     {
       "column": 10,
@@ -472,6 +526,15 @@
       "id": "packages/web-components/src/native/checkbox-group.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::2"
     },
     {
+      "column": 168,
+      "file": "packages/web-components/src/native/checkbox.ts",
+      "line": 17,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/checkbox.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
       "column": 22,
       "file": "packages/web-components/src/native/checkbox.ts",
       "line": 29,
@@ -562,6 +625,15 @@
       "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.08em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
+      "column": 38,
+      "file": "packages/web-components/src/native/code-block-window.ts",
+      "line": 106,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-block-window.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
       "column": 42,
       "file": "packages/web-components/src/native/code-block-window.ts",
       "line": 78,
@@ -634,6 +706,15 @@
       "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use one of the tokens that hold it: var(--space-internal-6) or var(--space-layout-6). (rhythmguard/prefer-token)::1"
     },
     {
+      "column": 71,
+      "file": "packages/web-components/src/native/code-snippet.ts",
+      "line": 164,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
       "column": 21,
       "file": "packages/web-components/src/native/code-snippet.ts",
       "line": 64,
@@ -659,6 +740,24 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
       "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 38,
+      "file": "packages/web-components/src/native/code-snippet.ts",
+      "line": 129,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "column": 71,
+      "file": "packages/web-components/src/native/code-snippet.ts",
+      "line": 164,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 42,
@@ -731,6 +830,24 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"44px\". Use scale values (nearest: 40px or 48px). (rhythmguard/use-scale)",
       "id": "packages/web-components/src/native/code-snippet.ts::rhythmguard/use-scale::Unexpected off-scale value \"44px\". Use scale values (nearest: 40px or 48px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 189,
+      "file": "packages/web-components/src/native/combobox.ts",
+      "line": 31,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/combobox.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 167,
+      "file": "packages/web-components/src/native/combobox.ts",
+      "line": 37,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/combobox.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
     },
     {
       "column": 51,
@@ -952,6 +1069,15 @@
       "column": 37,
       "file": "packages/web-components/src/native/command-palette.ts",
       "line": 81,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"6px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/command-palette.ts::rhythmguard/prefer-token::Unexpected raw scale value \"6px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/command-palette.ts",
+      "line": 81,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
@@ -1055,6 +1181,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.1875rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.1875rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "column": 122,
+      "file": "packages/web-components/src/native/cookie-consent.ts",
+      "line": 150,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 61,
@@ -1165,6 +1300,15 @@
       "id": "packages/web-components/src/native/cookie-consent.ts::rhythmguard/use-scale::Unexpected off-scale value \"999px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
+      "column": 37,
+      "file": "packages/web-components/src/native/expandable-section.ts",
+      "line": 35,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/expandable-section.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
       "column": 21,
       "file": "packages/web-components/src/native/expandable-section.ts",
       "line": 76,
@@ -1181,6 +1325,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/expandable-section.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/file-upload.ts",
+      "line": 217,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/file-upload.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 19,
@@ -1271,6 +1424,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/filter-chip.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 65,
+      "file": "packages/web-components/src/native/filter-chip.ts",
+      "line": 30,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"4px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/filter-chip.ts::rhythmguard/prefer-token::Unexpected raw scale value \"4px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 127,
@@ -1390,13 +1552,31 @@
       "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/no-offscale-transform::Unexpected transform translation value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/no-offscale-transform)::1"
     },
     {
+      "column": 37,
+      "file": "packages/web-components/src/native/language-switcher.ts",
+      "line": 65,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 32,
+      "file": "packages/web-components/src/native/language-switcher.ts",
+      "line": 61,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
       "column": 46,
       "file": "packages/web-components/src/native/language-switcher.ts",
       "line": 107,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+      "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
     },
     {
       "column": 21,
@@ -1417,13 +1597,31 @@
       "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::2"
     },
     {
+      "column": 38,
+      "file": "packages/web-components/src/native/language-switcher.ts",
+      "line": 60,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 32,
+      "file": "packages/web-components/src/native/language-switcher.ts",
+      "line": 61,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+    },
+    {
       "column": 46,
       "file": "packages/web-components/src/native/language-switcher.ts",
       "line": 107,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+      "id": "packages/web-components/src/native/language-switcher.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 83,
@@ -1476,8 +1674,8 @@
       "line": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"2px\". Use var(--radius-sm) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "packages/web-components/src/native/link.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--radius-sm) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+      "text": "Unexpected raw scale value \"2px\". Use var(--radius-xs) (node_modules/tailwindcss/theme.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/link.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--radius-xs) (node_modules/tailwindcss/theme.css). (rhythmguard/prefer-token)::1"
     },
     {
       "column": 132,
@@ -1537,6 +1735,15 @@
       "column": 37,
       "file": "packages/web-components/src/native/list-item.ts",
       "line": 43,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/list-item.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/list-item.ts",
+      "line": 43,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
@@ -1577,6 +1784,33 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.5em\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/list.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.5em\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/mac-window-frame.ts",
+      "line": 128,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/mac-window-frame.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/mac-window-frame.ts",
+      "line": 28,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1rem\". Use var(--radius-2xl) (node_modules/tailwindcss/theme.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/mac-window-frame.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use var(--radius-2xl) (node_modules/tailwindcss/theme.css). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/mac-window-frame.ts",
+      "line": 134,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1rem\". Use var(--radius-2xl) (node_modules/tailwindcss/theme.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/mac-window-frame.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use var(--radius-2xl) (node_modules/tailwindcss/theme.css). (rhythmguard/prefer-token)::2"
     },
     {
       "column": 46,
@@ -1786,6 +2020,24 @@
       "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/prefer-token::Unexpected raw scale value \"-3px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
+      "column": 157,
+      "file": "packages/web-components/src/native/multi-combobox.ts",
+      "line": 48,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 283,
+      "file": "packages/web-components/src/native/multi-combobox.ts",
+      "line": 60,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
+    },
+    {
       "column": 126,
       "file": "packages/web-components/src/native/multi-combobox.ts",
       "line": 56,
@@ -1795,13 +2047,22 @@
       "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"-3px\". Use scale values (nearest: 2px or 4px). (rhythmguard/use-scale)::1"
     },
     {
+      "column": 212,
+      "file": "packages/web-components/src/native/multi-combobox.ts",
+      "line": 47,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
       "column": 157,
       "file": "packages/web-components/src/native/multi-combobox.ts",
       "line": 48,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
     },
     {
       "column": 283,
@@ -1810,7 +2071,7 @@
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
+      "id": "packages/web-components/src/native/multi-combobox.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::3"
     },
     {
       "column": 27,
@@ -1912,6 +2173,15 @@
       "id": "packages/web-components/src/native/nav-link.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
     },
     {
+      "column": 77,
+      "file": "packages/web-components/src/native/nav-link.ts",
+      "line": 14,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"4px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/nav-link.ts::rhythmguard/prefer-token::Unexpected raw scale value \"4px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
       "column": 76,
       "file": "packages/web-components/src/native/nav-link.ts",
       "line": 21,
@@ -2000,6 +2270,15 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "packages/web-components/src/native/pagination.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "column": 101,
+      "file": "packages/web-components/src/native/person-card.ts",
+      "line": 42,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \".375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/person-card.ts::rhythmguard/prefer-token::Unexpected raw scale value \".375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 48,
@@ -2295,8 +2574,8 @@
       "line": 51,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"0.25rem\". Use var(--radius-sm) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". Use var(--radius-sm) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+      "text": "Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 10,
@@ -2434,6 +2713,51 @@
       "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"12rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
+      "column": 47,
+      "file": "packages/web-components/src/native/section.ts",
+      "line": 22,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 49,
+      "file": "packages/web-components/src/native/section.ts",
+      "line": 32,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "column": 51,
+      "file": "packages/web-components/src/native/section.ts",
+      "line": 34,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "column": 55,
+      "file": "packages/web-components/src/native/section.ts",
+      "line": 35,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "column": 49,
+      "file": "packages/web-components/src/native/section.ts",
+      "line": 39,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/section.ts::rhythmguard/use-scale::Unexpected off-scale value \"6rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::5"
+    },
+    {
       "column": 26,
       "file": "packages/web-components/src/native/section.ts",
       "line": 33,
@@ -2477,6 +2801,24 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"-2px\". Use calc(-1 * var(--space-internal-2)) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/segmented-control.ts::rhythmguard/prefer-token::Unexpected raw scale value \"-2px\". Use calc(-1 * var(--space-internal-2)) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/segmented-control.ts",
+      "line": 38,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/segmented-control.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/segmented-control.ts",
+      "line": 28,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/segmented-control.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 46,
@@ -2799,8 +3141,8 @@
       "line": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"12px\". Use var(--radius-xl) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "packages/web-components/src/native/selectable-card.ts::rhythmguard/prefer-token::Unexpected raw scale value \"12px\". Use var(--radius-xl) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+      "text": "Unexpected raw scale value \"12px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/selectable-card.ts::rhythmguard/prefer-token::Unexpected raw scale value \"12px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 118,
@@ -2817,8 +3159,8 @@
       "line": 30,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"4px\". Use var(--radius-md) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "packages/web-components/src/native/skeleton.ts::rhythmguard/prefer-token::Unexpected raw scale value \"4px\". Use var(--radius-md) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+      "text": "Unexpected raw scale value \"4px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/skeleton.ts::rhythmguard/prefer-token::Unexpected raw scale value \"4px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 20,
@@ -2826,8 +3168,8 @@
       "line": 76,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"4px\". Use var(--radius-md) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "packages/web-components/src/native/skeleton.ts::rhythmguard/prefer-token::Unexpected raw scale value \"4px\". Use var(--radius-md) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::2"
+      "text": "Unexpected raw scale value \"4px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/skeleton.ts::rhythmguard/prefer-token::Unexpected raw scale value \"4px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
     },
     {
       "column": 10,
@@ -2882,6 +3224,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"-4rem\". Use calc(-1 * var(--space-layout-64)) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/skip-link.ts::rhythmguard/prefer-token::Unexpected raw scale value \"-4rem\". Use calc(-1 * var(--space-layout-64)) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 177,
+      "file": "packages/web-components/src/native/skip-link.ts",
+      "line": 9,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/skip-link.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
       "column": 128,
@@ -3514,6 +3865,51 @@
       "id": "packages/web-components/src/native/tabs.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.4em\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
     },
     {
+      "column": 37,
+      "file": "packages/web-components/src/native/tabs.ts",
+      "line": 96,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/tabs.ts",
+      "line": 170,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::2"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/tabs.ts",
+      "line": 178,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::3"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/tabs.ts",
+      "line": 55,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/tabs.ts",
+      "line": 62,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
+    },
+    {
       "column": 20,
       "file": "packages/web-components/src/native/tabs.ts",
       "line": 199,
@@ -3521,6 +3917,33 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"999px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/tabs.ts::rhythmguard/prefer-token::Unexpected raw scale value \"999px\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 34,
+      "file": "packages/web-components/src/native/tabs.ts",
+      "line": 106,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 38,
+      "file": "packages/web-components/src/native/tabs.ts",
+      "line": 109,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "column": 34,
+      "file": "packages/web-components/src/native/tabs.ts",
+      "line": 110,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/tabs.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::3"
     },
     {
       "column": 21,
@@ -3782,6 +4205,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
       "id": "packages/web-components/src/native/toast.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 37,
+      "file": "packages/web-components/src/native/toast.ts",
+      "line": 45,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/toast.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
     },
     {
       "column": 18,
