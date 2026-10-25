@@ -1,9 +1,9 @@
 {
   "storyId": "site-clientlogomarquee-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "7d6d2ee3c5cede372b9dbb1203afe3f8403704ce",
-  "capturedAt": "2026-10-22T00:15:43.043Z",
-  "runner": "local-2026-10-22",
+  "sourceSHA": "4896f7a5d3035c6fdb1ae9c86bb20a5b8c91f225",
+  "capturedAt": "2026-10-25T13:52:54.550Z",
+  "runner": "local-claude",
   "checks": {
     "accessibility-tree": {
       "passed": true

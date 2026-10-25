@@ -1,14 +1,14 @@
 {
   "storyId": "patterns-siteheader-default",
   "mode": "forced-colors",
-  "sourceSHA": "abaee71d8df5ab6350c3b56faa9b5ccea3634afa",
-  "capturedAt": "2026-10-25T09:34:49.420Z",
+  "sourceSHA": "4896f7a5d3035c6fdb1ae9c86bb20a5b8c91f225",
+  "capturedAt": "2026-10-25T13:55:35.100Z",
   "runner": "local-claude",
   "checks": {
     "accessibility-tree": {
       "passed": true
     },
-    "axe-no-violations": {
+    "forced-colors-real-browser": {
       "passed": true,
       "axeViolations": 0
     }

@@ -1,14 +1,14 @@
 {
   "storyId": "site-worknav-example",
   "mode": "forced-colors",
-  "sourceSHA": "51cea6dd896d1621a3f94b60422273a8fbca43dc",
-  "capturedAt": "2026-10-25T09:16:25.537Z",
+  "sourceSHA": "4896f7a5d3035c6fdb1ae9c86bb20a5b8c91f225",
+  "capturedAt": "2026-10-25T13:55:30.472Z",
   "runner": "local-claude",
   "checks": {
     "accessibility-tree": {
       "passed": true
     },
-    "axe-no-violations": {
+    "forced-colors-real-browser": {
       "passed": true,
       "axeViolations": 0
     }
