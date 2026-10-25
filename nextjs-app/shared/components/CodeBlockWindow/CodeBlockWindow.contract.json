@@ -3,7 +3,7 @@
     "name": "CodeBlockWindow",
     "tier": "organism",
     "group": "structure",
-    "status": "stable",
+    "status": "deprecated",
     "description": "Framed code block with a title bar, language label, optional line numbers, and copy button; renders pre-highlighted Shiki output with theme-aware syntax colors.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1164-257",
     "radixPrimitive": null,
@@ -33,58 +33,7 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleMain.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/code-window/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "since": "2026-06-04"
-        }
-    ],
+    "consumers": [],
     "schemaVersion": 2,
     "props": {
         "title": {
@@ -201,5 +150,6 @@
             "language": "ts",
             "caption": "Layer 0: DTCG source of truth."
         }
-    }
+    },
+    "deprecatedReason": "Superseded by CodeBlock (2026-10-25, react 0.1.38). CodeBlockWindow drew macOS window chrome (traffic-light dots, centred title, text Copy button) around a Shiki tree and had one layout switch (context=\"article\"). CodeBlock keeps what worked (Flight-lazy unwrapping before introspecting server children, copy with an execCommand fallback, the Lenis wheel opt-out for scrollable bodies, translated region label) and adds a filename header or floating copy column, line numbers, highlighted/added/removed rows with signs, a terminal theme, wrap and maxHeight, and runtime highlighting for code strings. Migrated consumers: ArticlePageTemplate MDX figures, /dev/code-window."
 }

@@ -69,8 +69,10 @@ export { default as Checkbox } from "../../../nextjs-app/shared/components/Check
 export type { CheckboxProps } from "../../../nextjs-app/shared/components/Checkbox";
 export { default as CheckboxGroup } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
 export type { CheckboxGroupProps } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
+/** @deprecated since 0.1.39. Use CodeBlock; removed after the next release. */
 export { default as CodeBlockWindow } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
 export type { CodeBlockWindowProps } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
+/** @deprecated since 0.1.39. Use Snippet for commands, Code inline, CodeBlock for multi-line code; removed after the next release. */
 export { default as CodeSnippet } from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";
 export type {
   CodeSnippetProps,

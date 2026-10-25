@@ -3,7 +3,7 @@
     "name": "CodeSnippet",
     "tier": "molecule",
     "group": "structure",
-    "status": "stable",
+    "status": "deprecated",
     "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1161-2809",
     "radixPrimitive": null,
@@ -43,18 +43,7 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "since": "2026-06-04"
-        }
-    ],
+    "consumers": [],
     "schemaVersion": 2,
     "props": {
         "code": {
@@ -167,5 +156,6 @@
             "language": "bash",
             "allowCopy": true
         }
-    }
+    },
+    "deprecatedReason": "Superseded by Snippet (copyable commands; the $ prompt is never copied), Code (inline code, sm/md/lg) and CodeBlock (multi-line code with header, callout rows and terminal theme), 2026-10-25, react 0.1.38. CodeSnippet folded three jobs into one variant prop (inline/single/multi) with a SplitButton copy menu, show-more truncation and component-local Prism colours that never followed the theme tokens. Migrated consumer: the Rhythmguard case study (install steps now a terminal CodeBlock)."
 }

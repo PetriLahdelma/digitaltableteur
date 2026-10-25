@@ -68,8 +68,51 @@ const textOf = (node: React.ReactNode): string => {
   return element ? textOf(element.props.children) : "";
 };
 
+/** The <code> inside the <pre>, even when MDX maps `code` to a component. */
+const isCodeElement = (element: React.ReactElement<DataProps>) =>
+  element.type === "code" || has(element.props, "data-language");
+
+/**
+ * A unified-diff line's state from its leading character. Shiki colours a
+ * `diff` block but leaves the +/- in the text; the block turns them into
+ * added and removed rows like it does for a `language="diff"` string.
+ */
+const diffState = (text: string): CodeLineState => {
+  if (text.startsWith("+") && !text.startsWith("+++")) return "added";
+  if (text.startsWith("-") && !text.startsWith("---")) return "removed";
+  return "default";
+};
+
+const hasDiffMarker = (text: string) =>
+  diffState(text) !== "default" || text.startsWith(" ");
+
+/** Drops the first character of a line's text (the diff marker). */
+const dropFirstChar = (node: React.ReactNode): [React.ReactNode, boolean] => {
+  const resolved = resolveFlightNode(node);
+  if (typeof resolved === "string") {
+    return resolved.length ? [resolved.slice(1), true] : [resolved, false];
+  }
+  if (Array.isArray(resolved)) {
+    let done = false;
+    const next = resolved.map((child) => {
+      if (done) return child;
+      const [result, dropped] = dropFirstChar(child);
+      done = dropped;
+      return result;
+    });
+    return [next, done];
+  }
+  const element = elementOf(resolved);
+  if (!element) return [node, false];
+  const [children, dropped] = dropFirstChar(element.props.children);
+  return [
+    dropped ? React.cloneElement(element, undefined, children) : element,
+    dropped,
+  ];
+};
+
 export interface ShikiSummary {
-  /** Copy text: every line but removed ones. */
+  /** Copy text: every line but removed ones, without diff markers. */
   text: string;
   /** data-language on the <pre>, if any. */
   language?: string;
@@ -96,16 +139,19 @@ export function summarizeShikiTree(root: React.ReactNode): ShikiSummary {
     if (element.type === "pre" && typeof props["data-language"] === "string") {
       summary.language = props["data-language"] as string;
     }
-    if (element.type === "code" && has(props, "data-line-numbers")) {
+    if (element.type !== "pre" && has(props, "data-line-numbers")) {
       summary.lineNumbers = true;
     }
     if (has(props, "data-line")) {
-      const state = shikiLineState(props);
-      if (state === "added" || state === "removed") summary.hasDiff = true;
-      if (state !== "removed") {
-        const text = textOf(props.children);
-        lines.push(text === " " ? "" : text);
+      let text = textOf(props.children);
+      if (text === " ") text = "";
+      let state = shikiLineState(props);
+      if (summary.language === "diff" && state === "default") {
+        state = diffState(text);
+        if (hasDiffMarker(text)) text = text.slice(1);
       }
+      if (state === "added" || state === "removed") summary.hasDiff = true;
+      if (state !== "removed") lines.push(text);
       return;
     }
     visit(props.children);
@@ -123,7 +169,8 @@ export interface ShikiClassNames {
 
 /**
  * Adds the block's classes to the <pre> and <code>, and a localized label to
- * added and removed lines for the sign column's alternative text.
+ * added and removed lines for the sign column's alternative text. In a
+ * `diff` block the +/- markers become row states and leave the text.
  */
 export function decorateShikiTree(
   root: React.ReactNode,
@@ -132,20 +179,37 @@ export function decorateShikiTree(
 ): React.ReactNode {
   const pre = elementOf(root);
   if (!pre || pre.type !== "pre") return root;
+  const isDiff = pre.props["data-language"] === "diff";
 
   const decorateLine = (rawLine: React.ReactNode) => {
     const line = elementOf(rawLine);
     if (!line || !has(line.props, "data-line")) return rawLine;
-    const state = shikiLineState(line.props);
-    if (state !== "added" && state !== "removed") return rawLine;
-    return React.cloneElement(line, {
-      "data-sign-label": signLabels[state],
-    } as DataProps);
+    let state = shikiLineState(line.props);
+    let children = line.props.children;
+    if (isDiff && state === "default") {
+      const text = textOf(children);
+      state = diffState(text);
+      if (hasDiffMarker(text)) [children] = dropFirstChar(children);
+    }
+    if (state !== "added" && state !== "removed") {
+      return children === line.props.children
+        ? rawLine
+        : React.cloneElement(line, undefined, children);
+    }
+    return React.cloneElement(
+      line,
+      {
+        "data-highlighted-line": "",
+        "data-highlighted-line-id": state,
+        "data-sign-label": signLabels[state],
+      } as DataProps,
+      children,
+    );
   };
 
   const children = React.Children.map(pre.props.children, (rawChild) => {
     const child = elementOf(rawChild);
-    if (!child || child.type !== "code") return rawChild;
+    if (!child || !isCodeElement(child)) return rawChild;
     return React.cloneElement(
       child,
       {

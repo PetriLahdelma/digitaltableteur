@@ -54,7 +54,7 @@ const meta: Meta<typeof CodeSnippet> = {
 },
   title: "Content/CodeSnippet",
   component: CodeSnippet,
-  tags: ["stable", "autodocs"],
+  tags: ["deprecated", "autodocs"],
   parameters: {
     design: {
       type: "figma",

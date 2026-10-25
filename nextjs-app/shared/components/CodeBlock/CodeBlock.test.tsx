@@ -114,6 +114,44 @@ describe("CodeBlock", () => {
     );
   });
 
+  it("turns the markers of a Shiki diff block into rows", async () => {
+    const user = setup();
+    const diffTree = (
+      <pre data-language="diff">
+        <code data-language="diff">
+          <span data-line=""><span style={{ "--shiki-light": "#000" } as React.CSSProperties}>{" keep"}</span></span>
+          <span data-line=""><span style={{ "--shiki-light": "#a0111f" } as React.CSSProperties}>{"-old"}</span></span>
+          <span data-line=""><span style={{ "--shiki-light": "#024c1a" } as React.CSSProperties}>{"+new"}</span></span>
+        </code>
+      </pre>
+    );
+    const { container } = render(<CodeBlock>{diffTree}</CodeBlock>);
+    const rows = lines(container);
+    expect(rows.map((row) => row.getAttribute("data-highlighted-line-id"))).toEqual([
+      null,
+      "removed",
+      "added",
+    ]);
+    expect(rows.map((row) => row.textContent)).toEqual(["keep", "old", "new"]);
+    await user.click(screen.getByRole("button", { name: "Copy code" }));
+    await waitFor(() => expect(writeText).toHaveBeenCalledWith("keep\nnew"));
+  });
+
+  it("finds the code element when MDX maps code to a component", () => {
+    const MdxCode = (props: React.ComponentProps<"code">) => <code {...props} />;
+    const { container } = render(
+      <CodeBlock>
+        <pre data-language="ts">
+          <MdxCode data-language="ts" data-line-numbers="">
+            <span data-line="">const a = 1;</span>
+          </MdxCode>
+        </pre>
+      </CodeBlock>,
+    );
+    expect(container.querySelector("code")?.className).toMatch(/code/);
+    expect(container.querySelector("[data-line-numbers]")).not.toBeNull();
+  });
+
   it("renders a figure with a caption", () => {
     render(<CodeBlock code="x" language="text" caption="What it does" />);
     expect(screen.getByRole("figure")).toBeInTheDocument();

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.39 - 2026-10-25
+
+- `CodeBlock`: a Shiki tree in the `diff` language gets the same added and
+  removed rows as a `language="diff"` string; the +/- markers move to the
+  sign column and leave the text and the copy. The `<code>` element is also
+  found when MDX maps `code` to a component.
+- Deprecated: `CodeBlockWindow` (use `CodeBlock`) and `CodeSnippet` (use
+  `Snippet` for commands, `Code` inline, `CodeBlock` for multi-line code).
+  Both still ship in this version and are removed in the next one.
+
 ## 0.1.38 - 2026-10-25
 
 - New `CodeBlock` (beta): multi-line source in a flat card with an optional

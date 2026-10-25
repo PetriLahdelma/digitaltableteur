@@ -21,7 +21,7 @@ const meta: Meta<typeof CodeBlockWindow> = {
     a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["stable", "autodocs"],
+  tags: ["deprecated", "autodocs"],
 };
 
 export default meta;
