@@ -1217,3 +1217,14 @@
   cursor: not-allowed;
   opacity: 0.5;
 }
+
+/* The mobile menu is modal, so the launcher is inert behind it, but its
+   z-index put it above the backdrop. MobileDrawer sets this flag while open.
+   Shaped like the cookie-banner rule and kept last, so it outranks the
+   other .toggle states. */
+
+:root[data-mobile-menu-open] .toggle:not([data-open="true"]) {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}

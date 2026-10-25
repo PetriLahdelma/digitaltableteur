@@ -64,6 +64,17 @@ export function MobileDrawer({
 
   useFocusTrap(panelRef, isOpen);
 
+  // Flag the open menu on <html> so page-level chrome that floats above the
+  // backdrop (the chat launcher, z-index 1002) can step aside. The launcher is
+  // inert behind the modal anyway; left visible it looked tappable and did
+  // nothing.
+  useEffect(() => {
+    if (!isOpen) return;
+    const root = document.documentElement;
+    root.setAttribute("data-mobile-menu-open", "");
+    return () => root.removeAttribute("data-mobile-menu-open");
+  }, [isOpen]);
+
   // GSAP animations
   useEffect(() => {
     if (!isOpen) return;
@@ -132,7 +143,10 @@ export function MobileDrawer({
     >
       <div
         ref={panelRef}
-        className="absolute right-0 top-0 h-dvh max-h-dvh w-[280px] max-w-[80vw] overflow-hidden bg-background border-l border-border flex flex-col"
+        className={cn(
+          "absolute right-0 top-0 h-dvh max-h-dvh overflow-hidden bg-background border-l border-border flex flex-col",
+          styles.drawerPanel,
+        )}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

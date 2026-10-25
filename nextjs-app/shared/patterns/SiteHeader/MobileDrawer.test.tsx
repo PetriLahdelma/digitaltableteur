@@ -232,6 +232,26 @@ describe("MobileDrawer focus trap (#6)", () => {
     });
   });
 
+  it("flags the open menu on <html> so the chat launcher can hide", () => {
+    const { rerender } = renderDrawer();
+    expect(document.documentElement).toHaveAttribute("data-mobile-menu-open");
+
+    rerender(
+      <MobileDrawer
+        isOpen={false}
+        onClose={vi.fn()}
+        navItems={navItems}
+        currentLang="en"
+        onLanguageChange={vi.fn()}
+        onThemeToggle={vi.fn()}
+        theme="light"
+      />,
+    );
+    expect(document.documentElement).not.toHaveAttribute(
+      "data-mobile-menu-open",
+    );
+  });
+
   // Regression guard. Button sizes its glyphs from --btn-icon-size, but the
   // rule lives in @layer components, so a Tailwind size-* utility on the icon
   // (emitted into @layer utilities) silently wins by layer order. The drawer

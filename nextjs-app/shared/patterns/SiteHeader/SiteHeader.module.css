@@ -90,6 +90,23 @@
 
 /* Mobile drawer */
 
+/* Full width on phones: with the chat launcher hidden while the menu is
+   open, the dimmed strip beside the old 280px panel only showed half-covered
+   page. Tablets keep a side panel; a full-width sheet would stretch six short
+   links. No start border at full width: it read as a hairline on the edge. */
+
+.drawerPanel {
+  inline-size: 100%;
+  border-inline-start-width: 0;
+}
+
+@media (width >= 768px) {
+  .drawerPanel {
+    inline-size: var(--size-width-md);
+    border-inline-start-width: 1px;
+  }
+}
+
 .drawerHeaderActions {
   display: flex;
   align-items: center;
