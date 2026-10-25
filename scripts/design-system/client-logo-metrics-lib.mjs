@@ -11,6 +11,10 @@ export const LOGO_LIST = "nextjs-app/shared/components/ClientLogoMarquee/clientL
 export const LOGO_DIR = "public/logos/clients";
 export const SIZES_CSS =
   "nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.sizes.module.css";
+export const SPRITE_TS =
+  "nextjs-app/shared/components/ClientLogoMarquee/clientLogoSprite.generated.ts";
+/** Served as /logos/client-logo-sprite.svg, outside the clients folder. */
+export const SPRITE_SVG = "public/logos/client-logo-sprite.svg";
 
 /**
  * Logo Soup (sanity-labs/logo-soup) defaults, applied at build time:
@@ -27,7 +31,12 @@ export const TUNING = {
   densityClamp: [0.5, 2],
   irradiation: 0.08,
   /** Phones render at this share of the desktop size. */
-  mobileScale: 0.6,
+  mobileScale: 0.8,
+  /** Phone marquee speed, in px per second. The duration is derived from the
+      lane's computed width, so it stays right when logos change. */
+  mobileSpeed: 48,
+  /** Gap after each logo on phones, in px (the lane's gap-5 / pr-5). */
+  mobileGap: 20,
   /** Raster height for measuring, in px. */
   rasterHeight: 400,
 };

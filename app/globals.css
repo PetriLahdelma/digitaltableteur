@@ -202,14 +202,21 @@ code {
     will-change: transform;
   }
 
-  @media (width <= 768px) {
+  /* Phones (below the md breakpoint where logos switch to full size): the
+     duration comes from build:logo-sizes, which derives it from the lane's
+     width so the speed holds when logos change. */
+  @media (width < 768px) {
     .client-logo-marquee-track {
-      animation-duration: 48s;
+      animation-duration: var(--client-logo-marquee-duration-mobile, 36s);
     }
   }
 
-  .client-logo-marquee-container:hover .client-logo-marquee-track {
-    animation-play-state: paused;
+  /* Hover pause only where hover is real: iOS keeps :hover after a tap, which
+     froze the marquee until the visitor tapped somewhere else. */
+  @media (hover: hover) {
+    .client-logo-marquee-container:hover .client-logo-marquee-track {
+      animation-play-state: paused;
+    }
   }
 
   .client-logo-marquee-container[data-paused="true"]

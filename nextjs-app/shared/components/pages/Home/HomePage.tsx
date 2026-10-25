@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import styles from "./Home.module.css";
 
 // Above-fold patterns (eager)
+import { ClientLogoMarquee } from "../../ClientLogoMarquee/ClientLogoMarquee";
 import { HomeHero } from "../../../patterns/HomeHero";
 import { AsciiSceneBackground } from "../AsciiScene";
 import {
@@ -33,11 +34,6 @@ const NewsBulletin = dynamic(() =>
 const DesignSprintsSection = dynamic(() =>
   import("../../../patterns/DesignSprintsSection").then((m) => ({
     default: m.DesignSprintsSection,
-  })),
-);
-const ClientLogoMarquee = dynamic(() =>
-  import("../../ClientLogoMarquee").then((m) => ({
-    default: m.ClientLogoMarquee,
   })),
 );
 

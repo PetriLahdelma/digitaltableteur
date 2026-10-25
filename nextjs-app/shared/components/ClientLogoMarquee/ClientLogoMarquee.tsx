@@ -5,6 +5,7 @@ import Button from "@dt/Button";
 import styles from "./ClientLogoMarquee.module.css";
 import sizes from "./ClientLogoMarquee.sizes.module.css";
 import clientLogos from "./clientLogos.json";
+import { CLIENT_LOGO_SPRITE_URL } from "./clientLogoSprite.generated";
 import { useAnimationContext } from "../../lib/animation";
 
 type ClientLogo = {
@@ -37,19 +38,24 @@ function ClientLogoSemanticList() {
   );
 }
 
+/* Each logo is a <use> of one shared sprite file: a single request, found
+   while the HTML parses and cached immutably, instead of 21 lazy <img>
+   requests that only started as each logo neared the viewport, so a dropped
+   connection on a phone left slots blank. A fixed aspect ratio per logo
+   (sizes CSS) gives the lane its final width before paint; late image loads
+   used to widen it and make the percentage-based scroll jump. The symbol's
+   own viewBox scales it into the box, so the outer svg needs none. */
 function LogoItem({ logo }: { logo: ClientLogo }) {
+  const name = logo.file.replace(/\.svg$/, "");
   return (
     <div className="flex shrink-0 items-center">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`/logos/clients/${logo.file}`}
-        alt=""
+      <svg
         aria-hidden="true"
-        role="presentation"
-        className={`client-logo-marquee-image ${sizes.logo} ${sizes[logo.file.replace(/\.svg$/, "")]}`}
-        loading="lazy"
-        decoding="async"
-      />
+        focusable="false"
+        className={`client-logo-marquee-image ${sizes.logo} ${sizes[name]}`}
+      >
+        <use href={`${CLIENT_LOGO_SPRITE_URL}#client-logo-${name}`} />
+      </svg>
     </div>
   );
 }
@@ -58,7 +64,7 @@ function LogoMarqueeTrack({ laneLogos }: { laneLogos: ClientLogo[] }) {
   return (
     <div className="overflow-hidden">
       <div
-        className="client-logo-marquee-track flex w-max items-center py-3"
+        className={`client-logo-marquee-track ${sizes.track} flex w-max items-center py-3`}
         style={marqueeTrackStyle}
       >
         {[0, 1].map((duplicateIndex) => (

@@ -279,6 +279,18 @@ const nextConfig: NextConfig = {
         headers: securityHeaders,
       },
       {
+        // The client logo sprite is requested with ?v=<input hash>, which
+        // changes whenever a logo does, so it can be cached for good: a
+        // repeat visit draws the marquee without touching the network.
+        source: "/logos/client-logo-sprite.svg",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
         // Later rules override earlier ones for the same header key, so this
         // replaces the site-wide CSP on Studio routes only.
         source: "/studio/:path*",
