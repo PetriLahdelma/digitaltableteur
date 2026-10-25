@@ -286,6 +286,15 @@ Three generic graders were added: axe WCAG A/AA per theme (with label-in-name), 
 
 **Conclusion across both held-out sets (0 of 22 in reach).** Per-mode graders are regression catchers for known classes, not discovery tools. Discovery comes from broad rendered sweeps over every page, theme and width, which is the conformance crawl in section 5. Most of the remaining classes need the human or calibrated-judge layer: visual, content, UX. That matches the transcript analysis, where 49% of pushbacks needed judgement. H5 should be re-scoped to "graders catch re-introduced known defects", with recall on new bugs measured by the crawl.
 
+### 9c. First discovery crawl (2026-10-25)
+
+Production, every sitemap URL (69) in light and dark at 1440 and 390 px: 276 loads, axe WCAG 2.2 A/AA plus overflow, clipping, errors, failed requests and broken images. Script, raw results and report: `~/SAPDevelop/dt-evals-private/crawl/` (private repo PetriLahdelma/dt-evals-private).
+
+- **Accessibility rate:** 196/276 loads axe-clean (71%) on production; 272/276 on a local build after the fixes. The remaining 4 are one DS Table defect that ships with the next package release.
+- **Defects found:** EnhancedArticleCard link naming on every blog page (WCAG 2.5.3, 252 nodes); syntax-theme comment contrast in dark (1.4.3); Table scroll wrapper not keyboard-scrollable (2.1.1); ResizablePanelGroup clipping its last panel by the separator width. Fixed in faa199500 and d7454bd10.
+- **Reading:** three of the four were invisible to per-component evidence because they only appear with real content and layout. This confirms 9b: the crawl is the discovery layer; per-mode graders stay as regression catchers.
+- **Not yet built:** component attribution (share of elements with a DS ancestor, token conformance per page). It needs the measurement build in section 5.
+
 ## What I could not verify
 
 - Whether bench agents ever opened the grader files (no path telemetry).
