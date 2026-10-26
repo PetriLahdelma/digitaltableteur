@@ -1,9 +1,10 @@
 # Client intake system: design for review
 
-**Status: review gate.** Nothing user-facing is built. Committed so far are the
-versioned questionnaire definitions and schema (`app/lib/intake/`), the
-generated field-level [data map](./data-map.md) and this document. Building
-starts after the owner answers the [open questions](#10-open-questions).
+**Status: decided 2026-10-26, building.** The owner's answers are recorded in
+[section 10](#10-decisions-2026-10-26) and the build runs in the phases of
+[section 11](#11-build-plan). Committed so far: the versioned questionnaire
+definitions and schema (`app/lib/intake/`), the generated field-level
+[data map](./data-map.md) and this document.
 
 The two Figma forms (`2000:451` Client intake & brand discovery, `2003:654`
 Design systems intake & discovery, plus their Finnish versions `2012:842` and
@@ -12,16 +13,17 @@ the definitions in `app/lib/intake/questionnaires/` are the source.
 
 ## 1. What the system does
 
-1. The owner, or an automation, invites a client to one questionnaire in one
-   language.
+1. The owner invites a client to one questionnaire in one language. Only the
+   owner can create invites.
 2. The client opens the invite link, proves access to the invited inbox with a
    one-time code and gets a session.
 3. The client fills the form in a site area built only from design-system
    components. Answers autosave; the client can leave and resume.
 4. On submit the answers freeze into an immutable, hashed snapshot. A tagged
    PDF is rendered from that snapshot with the same components and archived.
-5. The owner reviews, exports or deletes the submission in an admin area.
-   Every admin action is audit logged.
+5. The owner receives the PDF by email and can also review, download or
+   delete the submission in an admin area. The client can view past
+   submissions and download their PDFs. Every admin action is audit logged.
 
 ## 2. Architecture and data flow
 
@@ -33,38 +35,39 @@ flowchart LR
   subgraph Owner["Owner device"]
     AB[Browser: admin pages + passkey]
   end
-  AUTO[Automation: invite API token]
   subgraph Vercel["Vercel (TLS edge global, functions EU per route)"]
     IF[Intake functions]
     PF[PDF renderer function: headless Chromium]
   end
-  subgraph Data["EU data stores (to confirm)"]
-    DB[(MongoDB: invites, sessions, encrypted answers, encrypted PDFs, audit log)]
+  subgraph Data["EU data store"]
+    DB[(Postgres on Neon, Frankfurt: clients, invites, sessions, encrypted answers, encrypted PDFs, audit log)]
   end
   RS[Resend via Amazon SES eu-west-1]
   SE[Sentry EU: errors without bodies]
 
   CB -- "answers (TLS), session cookie" --> IF
   AB -- "admin actions, passkey assertion" --> IF
-  AUTO -- "invite request: name, email, questionnaire" --> IF
   IF -- "encrypted answer document, hashes" --> DB
   IF -- "snapshot id + signed render URL" --> PF
   PF -- "encrypted PDF + SHA-256" --> DB
   IF -- "name, link or code, never answers" --> RS
-  RS -- "invite and code emails" --> CB
+  IF -- "owner notification with PDF attached" --> RS
+  RS -- "invite, code and confirmation emails" --> CB
+  RS -- "PDF copy" --> OM[Owner mailbox: Microsoft 365]
   IF -- "errors, allowlisted metadata only" --> SE
 ```
 
 Trust boundaries: every arrow into `Intake functions` is untrusted input
-validated with zod. Answers leave the functions only to MongoDB (encrypted),
-the PDF renderer (same region, in memory) and the owner's admin view.
+validated with zod. Answers leave the functions only to Postgres (encrypted),
+the PDF renderer (same region, in memory), the owner's admin view and the
+owner's own mailbox, which receives the PDF.
 
 ### Residency findings
 
 | Component | Today | Needed for intake |
 | --- | --- | --- |
 | Vercel functions | Production deployments run in `iad1` (Washington DC). | Intake routes set `export const preferredRegion` to an EU region (`arn1` Stockholm or `fra1` Frankfurt). The rest of the site is unchanged. Vercel's edge still terminates TLS worldwide under Vercel's DPA. |
-| MongoDB | Region not visible in the repo. | Must be an EU region. If the current cluster is not, intake gets its own EU cluster. **Open question.** |
+| Database | The site's MongoDB region is not visible in the repo. | Intake uses its own Postgres database on Neon in Frankfurt (`aws-eu-central-1`), provisioned through the Vercel Marketplace. Existing MongoDB features are unchanged. |
 | Email | Resend domain verified: DKIM at `resend._domainkey`, return path `send.digitaltableteur.com` through Amazon SES eu-west-1 (Ireland), DMARC `p=reject`. | Fine as is. Emails carry a name, a link or a code and an expiry, never answers. The contact route still falls back to `onboarding@resend.dev`; intake must send from the verified domain. |
 | Sentry | EU region (`de.sentry.io`); request bodies off via the allowlist in `sentry.data-collection.ts`. | Fine as is. A canary test proves answer text never reaches Sentry. |
 | Third-party scripts | The site loads Google Analytics, Ahrefs analytics and Cal.com; the production CSP allows `'unsafe-inline'` scripts. | **Largest existing-stack risk.** Intake pages use their own layout with no third-party scripts and a strict nonce-based CSP, so no analytics script can read answers from the page. |
@@ -96,7 +99,9 @@ Fields that need care beyond their class:
 
 **At rest.** The whole answer document is encrypted with AES-256-GCM using a
 per-document data key wrapped by a master key held outside the database
-(`INTAKE_DATA_KEY`, with a key id for rotation). Only routing metadata stays in
+(`INTAKE_DATA_KEYS`, with a key id for rotation). The record id is bound in as
+additional authenticated data, so a ciphertext copied onto another record
+fails to decrypt. Only routing metadata stays in
 clear: invite id, questionnaire id and version, status, timestamps, locale and
 an HMAC of the email for lookup.
 
@@ -113,7 +118,6 @@ intake it opens a deletion request the owner confirms.
 | S1 | Invite link forwarded or leaked | Link alone grants nothing: a one-time code to the invited inbox is required; link consumed on first successful login; 72 h expiry | e2e: reused link fails |
 | S2 | Mail security scanners prefetch the link (Microsoft Safe Links) | GET never consumes anything; the token is redeemed only by a POST after a user action | e2e: GET twice, then login succeeds |
 | S3 | Someone poses as the owner in admin | Admin requires a WebAuthn passkey registered by a CLI bootstrap; no email login for admin | e2e + ZAP: admin routes 401 without passkey session |
-| S4 | Automation token stolen | Token scoped to `invite:create` only, stored hashed, rotatable, rate limited; cannot read answers | unit: token scope tests |
 | T1 | Answers altered in transit or at rest | TLS; AES-GCM authentication tag; snapshot SHA-256 written to the audit log | unit: tampered ciphertext rejected |
 | T2 | Edits after submission | Status machine; every write is conditional on `status: draft` | e2e: PATCH after submit returns 409 |
 | T3 | Mass assignment, unknown fields, oversized input | Strict zod schemas (`app/lib/intake/schema.ts`), body limit 256 KB, field limits | unit tests (done) |
@@ -122,10 +126,10 @@ intake it opens a deletion request the owner confirms.
 | I1 | Answers leak through logs or Sentry | No body logging; Sentry allowlist; intake errors carry ids only | canary string never found in Sentry or logs |
 | I2 | Third-party scripts read the DOM | Dedicated layout without analytics; strict CSP on intake routes | Observatory and CSP header test |
 | I3 | Probing whether an email has an invite | Identical responses and timing for known and unknown addresses | unit + e2e |
-| I4 | PDF archive exposure | PDFs stored encrypted in MongoDB, served only through authenticated routes; no public blob URLs | ZAP + e2e |
+| I4 | PDF archive exposure | PDFs stored encrypted in Postgres, served only through authenticated routes; no public blob URLs | ZAP + e2e |
 | I5 | CDN or browser caches personal pages | `Cache-Control: no-store`, dynamic rendering | header test |
 | I6 | Session theft through XSS | HttpOnly cookie, nonce CSP, components escape output | ZAP baseline, CSP test |
-| D1 | Code flooding or email bombing | Per-invite and per-IP limits through `app/lib/rate-limit.ts` in fail-closed mode | unit + e2e |
+| D1 | Code flooding or email bombing | Per-invite and per-IP limits in the intake database, failing closed | unit + e2e |
 | D2 | PDF rendering exhausts the function | Rendered once per submission, size caps, timeout, retry queue | load test of one render |
 | E1 | A client reads another client's intake (IDOR) | Every query is scoped by the session's invite id; ids in URLs are opaque | e2e: cross-session access 404 |
 | E2 | A client reaches admin routes | Separate cookie and session type; admin route guard | e2e |
@@ -138,8 +142,8 @@ point, and asking clients to type one adds friction for no security gain.
 
 ### Flows
 
-1. **Invite.** Admin UI or automation creates an invite: questionnaire,
-   locale, client name, email. The server creates a 256-bit random token,
+1. **Invite.** The owner creates an invite in admin: questionnaire, locale,
+   client name, email. The server creates a 256-bit random token,
    stores only its SHA-256 and emails the link with its expiry (72 h).
 2. **Open.** `GET /intake/i/[token]` shows a page with one Continue button and
    consumes nothing. The POST behind it checks the token hash, status and
@@ -157,9 +161,10 @@ point, and asking clients to type one adds friction for no security gain.
 6. **Admin.** `/intake/admin` needs a passkey session under its own cookie
    `__Host-intake-admin`. The owner's passkey is registered once through a CLI
    bootstrap script; there is no admin sign-up.
-7. **Automation.** `POST /api/intake/invites` with a bearer token stored
-   hashed, scope `invite:create` only. This is the hook for the "something"
-   that triggers a new intake (contact form, booking, Donny).
+7. **No automated invites.** Invites are manual by decision: at this volume an
+   invite API adds attack surface and removes the owner's fit check. The
+   invite service is one module, so an API can be added later without
+   touching the client flow.
 
 ### OWASP ASVS 5.0 level 2
 
@@ -169,7 +174,7 @@ Requirement numbers in V6 are checked against the ASVS 5.0 source
 
 | Req. | Requirement | Design | Status |
 | --- | --- | --- | --- |
-| 6.3.3 (L2) | Multi-factor, or a combination of single-factor mechanisms | Link plus code both prove access to the same inbox: **one factor** | **Deviation, needs owner decision** |
+| 6.3.3 (L2) | Multi-factor, or a combination of single-factor mechanisms | Link plus code both prove access to the same inbox: **one factor** | **Deviation, accepted by the owner 2026-10-26 (option A)** |
 | 6.3.6 (L3) | Email not used as an authentication mechanism | Email is the client factor | Not met; L3 is out of scope |
 | 6.5.1 (L2) | Out-of-band codes usable once | Code and invite token are single use | Met |
 | 6.5.2 (L2) | Low-entropy secrets stored hashed with salt | Codes stored as keyed HMACs; tokens are 256-bit and hashed | Met |
@@ -190,7 +195,8 @@ inbox can open the intake. Options:
 - **C. SMS code** as a second channel. Restricted under 6.6.1 and needs a
   phone number most clients do not want to give.
 
-Recommendation: **A**, with passkeys offered.
+Decision: **A**. Client passkeys are a later improvement; the admin passkey
+is required from day one.
 
 ## 6. Lifecycle: draft, submit, PDF
 
@@ -203,13 +209,15 @@ Recommendation: **A**, with passkeys offered.
   sees, and the result becomes canonical JSON (sorted keys, NFC) with a
   SHA-256. The snapshot stores questionnaire id, version, locale, answers,
   submission time and hash. Drafts are deleted; the client keeps read-only
-  access.
+  access to every past submission and its PDF until the 12-month deletion.
 - **PDF.** The renderer opens an internal print route with a signed,
   short-lived URL and prints it with headless Chromium (`tagged` PDF,
   document language and title set). The page renders the DS components at web
   size on a 952 x 1347 px canvas and prints at `scale: 0.625`, which lands on
   the A4 print scale the Figma pages use. The PDF is hashed, encrypted and
-  archived; the owner gets an email with a link, never the PDF.
+  archived. The owner gets it as an email attachment, sent only to the
+  owner's verified address; the client's confirmation email carries no
+  attachment and links to the client area.
 - **Function size risk.** Chromium for Vercel (`@sparticuz/chromium`) is
   about 60 MB compressed, and this project has hit Vercel's 250 MB function
   limit before (routes bundling the repo through file tracing). The renderer
@@ -256,8 +264,9 @@ about half a day a month for dependency updates, key rotation and reviews.
 2. The system is itself a case study: a design system that drives a real
    product, Figma and code in parity, versioned contracts. That is what the
    site sells.
-3. Data stays with processors already in the privacy notice (Vercel,
-   MongoDB, Resend, Sentry) instead of adding a new one.
+3. Data stays with processors the site already uses (Vercel, Resend,
+   Sentry) plus one EU database added to the intake privacy notice, instead
+   of a form vendor that sees every answer.
 4. EN, FI and SV from one versioned schema, with old submissions always
    resolving against their own version.
 
@@ -285,43 +294,73 @@ Proposed pixel threshold: at most 1% differing pixels per page at 150 dpi,
 pixelmatch threshold 0.1 with anti-aliasing ignored, compared with the Figma
 page exported at the same size.
 
-## 10. Open questions
+## 10. Decisions (2026-10-26)
 
-The prompt's must-answer questions come first:
+| # | Question | Decision | Why |
+| --- | --- | --- | --- |
+| 1 | Retention | Invite link 72 h, login code 10 min, session 30 min idle and 12 h absolute, drafts 90 days after the last edit, submissions and PDFs 12 months, audit log 12 months | The owner keeps every PDF locally, so the server keeps data only while the client area needs it |
+| 2 | After submit | Client area lists past submissions with PDF download. Owner receives the PDF as an email attachment. Client confirmation email has no attachment | The owner's mailbox already holds client correspondence; the client copy stays behind login |
+| 3 | Who invites | The owner only, manually in admin. No invite API in v1 | Less attack surface and a human fit check before anyone gets access |
+| 4 | Database | Postgres on Neon, Frankfurt, through the Vercel Marketplace; Drizzle ORM; PGlite (in-process Postgres) for tests | Relational records with a status lifecycle need transactions, foreign keys and unique constraints; the region is explicit; preview branches give e2e a clean database. MongoDB stays for the existing contact features |
+| 5 | Client login | Option A: invite link plus emailed 8-digit code | Lowest friction for invite-only, time-boxed access; deviation recorded |
+| 6 | Admin login | Owner passkey | Approved |
+| 7 | Access after submit | Read-only submissions and PDF downloads until the 12-month deletion | Matches decision 1 |
+| 8 | Languages | EN and FI. SV copy stays in the definitions, switched off by `ENABLED_INTAKE_LOCALES` until reviewed | Owner decision |
+| 9 | Privacy notice | An intake-specific notice in EN and FI, shown before the code step and linked from every intake page. Controller wording reused from the site's privacy policy, without a business ID | Collection needs its own notice: purpose, legal basis (pre-contractual steps; legitimate interest for third-party names), processors, retention, rights |
+| 10 | PDF accuracy | Each PDF page may differ from the Figma page by at most 1% of its pixels at 150 dpi | A measurable "looks the same" check |
+| 11 | Hosting limits | The first build spike measures the PDF renderer's function size; above the limit it moves to a small EU container | Settled by measurement, not assumption |
+| 12 | Pilot | The owner pilots page 1 against the 8-minute target | Owner decision |
 
-1. **Retention.** Accept invite 72 h, drafts 90 days after last edit,
-   submissions 24 months and audit log 12 months
-   (`app/lib/intake/data-policy.ts`)? Or shorter?
-2. **After submit.** Admin area plus a notification email only, or also an
-   export (JSON or CSV) into a CRM or Notion? The PDF is not emailed by
-   default.
-3. **Who triggers invites.** Owner only through admin, or also automation
-   (contact form, booking, Donny)?
+Found on the way: the site's privacy policy does not list MongoDB, which
+already stores contact form submissions. That is a separate fix.
 
-Then the ones the design depends on:
+## 11. Build plan
 
-4. MongoDB Atlas region: EU?
-5. ASVS 6.3.3: option A, B or C?
-6. Owner admin login with a passkey on your devices: OK?
-7. Client access after submit: read-only with PDF download, for how long?
-8. Languages for v1: EN and FI (Figma exists) plus SV (copy drafted, needs a
-   native review)?
-9. Privacy notice: the actual text or URL to show at collection.
-10. Pixel threshold: accept the proposal?
-11. Vercel plan: confirm function size and duration limits for the PDF
-    renderer, or approve the EU container fallback.
-12. Is there a pilot client for the page-1 timing test?
+Each phase ends with the local gate and its own commit.
+
+1. **Security core. Done.** Tokens, 8-digit codes, envelope encryption with
+   record binding and key rotation, canonical snapshot hashing in
+   `app/lib/intake/security/`, pure `node:crypto`, unit tested.
+2. **Data layer. Done.** Drizzle schema (`app/lib/intake/db/schema.ts`) for
+   clients, invites, login codes, sessions, drafts, submissions, PDFs, rate
+   limits and the audit log; migration `0000_init.sql`; retention purge;
+   tests on PGlite. Remaining owner step: add Neon from the Vercel
+   Marketplace in Frankfurt (`aws-eu-central-1`), then set the variables
+   below and run `npm run intake:db:migrate` once.
+3. **Design-system gaps.** Scale, Form with error summary, step navigation and
+   the print page shell, one tribunal trial each, with Figma parity.
+4. **Client area.** Invite landing, code step, session, form pages with
+   autosave, submit, past submissions; EN and FI; strict CSP layout.
+5. **Admin.** Passkey bootstrap and login, invite, resend, revoke, expire,
+   status, download, delete, audit log view.
+6. **PDF.** Print route, Chromium renderer spike, tagging, archive, owner
+   email with attachment.
+7. **Verification.** e2e journey, axe, VoiceOver script, veraPDF, PAC (needs
+   Windows), pixel diff, ZAP, ASVS checklist, Observatory, mail-tester,
+   Sentry canary, owner pilot.
+
+### Environment variables (server only)
+
+| Variable | Content |
+| --- | --- |
+| `INTAKE_DATABASE_URL` | Neon pooled connection string (Frankfurt) |
+| `INTAKE_DATA_KEYS` | `keyId:base64` pairs of 32-byte keys; the first is active, later ones only decrypt (rotation) |
+| `INTAKE_HMAC_KEY` | base64, at least 32 bytes; keys email lookup and code digests |
+
+Generate a key with `openssl rand -base64 32`. Keys never go into the
+database, the repo or Preview environments shared with other projects.
 
 ## Appendix: what is committed now
 
 - `app/lib/intake/types.ts`: definition types and data classes.
 - `app/lib/intake/questionnaires/*.v1.ts`: both questionnaires, version
-  1.0.0, EN, FI and SV copy, conditions and required fields. Generated once
+  1.0.0, EN and FI copy (SV drafted, switched off), conditions and required
+  fields. Generated once
   from the Figma inventory and owned by hand from now on.
 - `app/lib/intake/schema.ts`: draft and submission zod schemas, visibility
   rules and pruning of hidden answers.
-- `app/lib/intake/data-policy.ts`: retention and encryption proposal, data
-  map renderer.
+- `app/lib/intake/data-policy.ts`: decided retention, enabled locales,
+  encryption classes and the data map renderer.
 - Tests: Figma field coverage, copy completeness and house style, schema
   behaviour, conditions, data map in sync.
 

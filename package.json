@@ -226,7 +226,9 @@
     "agent:bench": "node scripts/design-system/agent-bench/run.mjs",
     "agent:bench:selftest": "node --test scripts/design-system/agent-bench/selftest.mjs",
     "generate:site-changelog": "node scripts/generate-site-changelog.mjs",
-    "generate:intake-data-map": "tsx scripts/generate-intake-data-map.ts"
+    "generate:intake-data-map": "tsx scripts/generate-intake-data-map.ts",
+    "intake:db:generate": "drizzle-kit generate --config drizzle.intake.config.ts",
+    "intake:db:migrate": "drizzle-kit migrate --config drizzle.intake.config.ts"
   },
   "dependencies": {
     "@ai-sdk/mcp": "^2.0.81",
@@ -244,6 +246,7 @@
     "@mdx-js/react": "^3.1.1",
     "@modelcontextprotocol/client": "^2.3.1",
     "@modelcontextprotocol/server": "^2.3.1",
+    "@neondatabase/serverless": "1.2.0",
     "@next/mdx": "^16.4.2",
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/react-accordion": "^1.2.21",
@@ -271,6 +274,7 @@
     "clsx": "^2.1.1",
     "dompurify": "^3.4.15",
     "dotenv": "^18.0.9",
+    "drizzle-orm": "0.45.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "framer-motion": "^14.6.0",
@@ -372,6 +376,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
+    "@electric-sql/pglite": "0.5.8",
     "@lhci/cli": "^0.15.1",
     "@next/bundle-analyzer": "^16.4.2",
     "@phosphor-icons/core": "^2.1.1",
@@ -411,6 +416,7 @@
     "chart.js": "^4.5.1",
     "commander": "^15.0.0",
     "concurrently": "^10.0.6",
+    "drizzle-kit": "0.31.11",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.2",
     "eslint-config-prettier": "^10.1.8",
