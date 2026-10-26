@@ -149,6 +149,11 @@
                 "off"
             ],
             "description": "Live region politeness for assistive tech (an explicit value wins over the tone default)."
+        },
+        "focusOnMount": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Moves focus to the banner when it mounts, for form error summaries: keyboard\nand screen reader users land on the list of problems after a failed submit."
         }
     },
     "forbiddenUse": [
@@ -201,6 +206,10 @@
             {
                 "guidance": false,
                 "description": "Do not stack multiple banners on one page; consolidate into the single most severe message."
+            },
+            {
+                "guidance": true,
+                "description": "For a form error summary, use tone=error with a List of Links to the fields as the description and focusOnMount, so focus lands on the summary after a failed submit."
             }
         ],
         "anatomy": [

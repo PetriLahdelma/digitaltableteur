@@ -18,6 +18,10 @@ quiet middle option.
   the tone (`info` / `success` / `warning` / `error`) so colour is not
   the only signal.
 
+## Error summary
+- Pass the problems as a `List` of `Link`s in `description` and set `focusOnMount`: the banner takes focus (tabIndex -1, shared focus ring) so keyboard and screen reader users land on it after a failed submit.
+- Rich descriptions render in a block container, so a list is valid markup; plain strings stay a paragraph.
+
 ## Do / don't
 - Do: pass `aria-live="assertive"` for `tone="error"` so the AT user is
   interrupted. The default `polite` is correct for `info` and

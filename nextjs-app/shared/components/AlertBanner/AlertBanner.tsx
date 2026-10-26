@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useTranslate } from "../../lib/translation";
 import styles from "./AlertBanner.module.css";
 import Icon from "@dt/Icon";
@@ -26,6 +26,12 @@ export type AlertBannerProps = {
   onDismiss?: () => void;
   /** Live region politeness for assistive tech (an explicit value wins over the tone default). */
   "aria-live"?: "polite" | "assertive" | "off";
+  /**
+   * Moves focus to the banner when it mounts, for form error summaries: keyboard
+   * and screen reader users land on the list of problems after a failed submit.
+   * @default false
+   */
+  focusOnMount?: boolean;
 };
 
 const toneIcon: Record<Tone, string> = {
@@ -45,8 +51,13 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
   dismissible = false,
   onDismiss,
   "aria-live": ariaLive,
+  focusOnMount = false,
 }) => {
   const t = useTranslate();
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (focusOnMount) ref.current?.focus();
+  }, [focusOnMount]);
   // Error banners must interrupt assistive tech (role=alert / assertive);
   // other tones are polite status updates. An explicit aria-live prop wins.
   const isError = tone === "error";
@@ -54,15 +65,15 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
   const liveRegion = ariaLive ?? (isError ? "assertive" : "polite");
   return (
     <div
+      ref={ref}
       className={`${styles.banner} ${styles[tone]}`.trim()}
       role={role}
       aria-live={liveRegion}
+      tabIndex={focusOnMount ? -1 : undefined}
     >
       {/* The icon is always the semantic tone icon; showIcon only toggles its
           presence (there is no per-instance icon override — the tone owns it). */}
-      {showIcon && (
-        <Icon name={toneIcon[tone]} ariaLabel={tone} size="md" />
-      )}
+      {showIcon && <Icon name={toneIcon[tone]} ariaLabel={tone} size="md" />}
       <div className={styles.content}>
         {title && (
           // A status/alert label, not a document heading: rendering it as a
@@ -74,7 +85,17 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
           </Text>
         )}
         {description && (
-          <Text size="m" className={styles.description}>
+          // Rich descriptions (an error summary's list of links) need a block
+          // container: a paragraph cannot hold a list.
+          <Text
+            as={
+              typeof description === "string" || typeof description === "number"
+                ? "p"
+                : "div"
+            }
+            size="m"
+            className={styles.description}
+          >
             {description}
           </Text>
         )}

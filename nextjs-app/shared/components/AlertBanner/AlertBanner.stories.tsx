@@ -4,6 +4,8 @@ import React from "react";
 import { expect, fn, userEvent, within } from "storybook/test";
 import AlertBanner from "@dt/AlertBanner";
 import Button from "@dt/Button";
+import Link from "@dt/Link";
+import List from "@dt/List";
 
 const meta: Meta<typeof AlertBanner> = {
   title: "Feedback/AlertBanner",
@@ -127,6 +129,43 @@ export const WithAction: Story = {
         Review settings
       </Button>
     ),
+  },
+};
+
+export const ErrorSummary: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      // Rendered in its own frame: focusOnMount would otherwise pull focus
+      // and scroll on the docs page.
+      story: { inline: false, height: "180px" },
+      description: {
+        story:
+          "Form error summary: after a failed submit the banner takes focus (focusOnMount), so keyboard and screen reader users land on the problems. Each item links to its field. A rich description renders in a block, so it can hold the list.",
+      },
+    },
+  },
+  args: {
+    tone: "error",
+    title: "Fix 2 problems to continue",
+    focusOnMount: true,
+    description: (
+      <List
+        items={[
+          <Link key="name" href="#contact_name">
+            Enter your full name
+          </Link>,
+          <Link key="email" href="#email">
+            Enter an email address in the right format
+          </Link>,
+        ]}
+      />
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const banner = within(canvasElement).getByRole("alert");
+    await expect(banner).toHaveFocus();
   },
 };
 

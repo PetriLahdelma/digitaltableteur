@@ -157,4 +157,39 @@ describe("AlertBanner", () => {
     );
     expect(missing).toEqual([]);
   });
+
+  it("moves focus to the banner on mount when focusOnMount is set", () => {
+    render(<AlertBanner tone="error" title="Fix 2 problems" focusOnMount />);
+    const banner = screen.getByRole("alert");
+    expect(banner).toHaveAttribute("tabindex", "-1");
+    expect(banner).toHaveFocus();
+  });
+
+  it("does not take focus by default", () => {
+    render(<AlertBanner tone="error" title="Problem" />);
+    const banner = screen.getByRole("alert");
+    expect(banner).not.toHaveAttribute("tabindex");
+    expect(banner).not.toHaveFocus();
+  });
+
+  it("wraps a rich description in a block so it can hold a list", () => {
+    render(
+      <AlertBanner
+        tone="error"
+        title="Fix 1 problem"
+        description={
+          <ul>
+            <li>
+              <a href="#email">Enter an email address</a>
+            </li>
+          </ul>
+        }
+      />,
+    );
+    const list = screen.getByRole("list");
+    expect(list.parentElement?.tagName).toBe("DIV");
+    expect(
+      screen.getByRole("link", { name: "Enter an email address" }),
+    ).toHaveAttribute("href", "#email");
+  });
 });

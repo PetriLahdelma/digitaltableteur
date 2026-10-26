@@ -76,3 +76,11 @@
   border: 1px solid color-mix(in srgb, var(--color-error) 40%, var(--color-surface));
   background: color-mix(in srgb, var(--color-error) 12%, var(--color-surface));
 }
+
+/* focusOnMount: the banner is programmatically focused (tabIndex -1), so it
+   shows the shared focus ring instead of the browser default. */
+
+.banner:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
