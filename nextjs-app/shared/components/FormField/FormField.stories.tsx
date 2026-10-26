@@ -4,6 +4,7 @@ import { FormField } from "./FormField";
 import Checkbox from "@dt/Checkbox";
 import Radio from "@dt/Radio";
 import TextInput from "@dt/TextInput";
+import Title from "@dt/Title";
 import contract from "./FormField.contract.json";
 
 const channels = (
@@ -104,6 +105,28 @@ export const GroupError: Story = {
       <Checkbox label="Email" />
       <Checkbox label="SMS" />
     </FormField>
+  ),
+};
+
+export const HiddenLegend: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "When a visible section heading already names the group, `hideLegend` keeps the legend as the group's accessible name without printing it twice.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "grid", gap: "1rem" }}>
+      <Title level={3} size="xs">
+        Notification channels
+      </Title>
+      <FormField legend="Notification channels" hideLegend>
+        {channels}
+      </FormField>
+    </div>
   ),
 };
 

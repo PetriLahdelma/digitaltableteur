@@ -82,6 +82,27 @@ describe("FormField", () => {
     expect(screen.getByRole("checkbox", { name: "SMS" })).toBeDisabled();
   });
 
+  it("hides the legend visually but keeps it as the group name", () => {
+    render(
+      <FormField legend="Notification channels" hideLegend>
+        <Checkbox label="Email" />
+      </FormField>,
+    );
+    const group = screen.getByRole("group", { name: "Notification channels" });
+    const legend = group.querySelector("legend");
+    expect(legend?.className).toMatch(/hiddenLegend/);
+  });
+
+  it("shows the legend by default", () => {
+    render(
+      <FormField legend="Notification channels">
+        <Checkbox label="Email" />
+      </FormField>,
+    );
+    const legend = screen.getByRole("group", { name: "Notification channels" }).querySelector("legend");
+    expect(legend?.className ?? "").not.toMatch(/hiddenLegend/);
+  });
+
   it("has no accessibility violations", async () => {
     const { container } = render(
       <FormField legend="Notification channels" groupDescription="Pick at least one">

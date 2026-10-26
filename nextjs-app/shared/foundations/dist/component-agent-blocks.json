@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T20:22:02.843Z",
+  "generatedAt": "2026-10-26T20:47:18.237Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -7318,6 +7318,11 @@
           "type": "string",
           "description": "Label for the select-all master checkbox"
         },
+        "hideLegend": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Keeps the legend as the accessible name but hides it visually, for a group whose section heading already names it."
+        },
         "defaultSelected": {
           "optional": true,
           "type": "string[]",
@@ -7373,7 +7378,7 @@
         "TextArea"
       ],
       "prefersOver": [],
-      "declaredPropCount": 8,
+      "declaredPropCount": 9,
       "guidelines": [
         {
           "level": "should",
@@ -14871,6 +14876,11 @@
           "type": "boolean",
           "description": "Disables every contained control via the fieldset."
         },
+        "hideLegend": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Keeps the legend as the group's accessible name but hides it visually, for a group whose visible heading already names it."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -14918,7 +14928,7 @@
         "HelperText"
       ],
       "prefersOver": [],
-      "declaredPropCount": 7,
+      "declaredPropCount": 8,
       "guidelines": [
         {
           "level": "should",

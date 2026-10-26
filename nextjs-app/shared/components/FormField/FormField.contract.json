@@ -113,6 +113,11 @@
             "type": "boolean",
             "description": "Disables every contained control via the fieldset."
         },
+        "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the group's accessible name but hides it visually, for a group whose visible heading already names it."
+        },
         "className": {
             "optional": true,
             "type": "string",

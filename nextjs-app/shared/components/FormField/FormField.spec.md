@@ -16,6 +16,8 @@ Name a GROUP of controls with a fieldset legend: radio sets, checkbox clusters, 
 ## API notes
 - 2026-07-03 (Astryx Phase 3 batch 2): single-control mode removed (`label`, `helperText`, `id`, and the cloneElement aria wiring). `legend` is now required. There were no production consumers of single-control mode.
 
+- 2026-10-26: `hideLegend` keeps the legend as the group's accessible name but hides it visually, for a group under a visible heading that already names it (questionnaire sections). Screen readers still announce the legend on every control.
+
 ## Design notes
 - Colors: --color-error, --color-muted, --color-text
 - Spacing: --space-internal-8, --space-internal-16

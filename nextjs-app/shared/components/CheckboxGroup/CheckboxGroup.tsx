@@ -17,6 +17,8 @@ export interface CheckboxGroupProps {
   showMasterCheckbox?: boolean;
   /** Label for the select-all master checkbox */
   masterLabel?: string;
+  /** Keeps the legend as the accessible name but hides it visually, for a group whose section heading already names it. @default false */
+  hideLegend?: boolean;
   /** Initially selected option values (uncontrolled) */
   defaultSelected?: string[];
   // eslint-disable-next-line no-unused-vars
@@ -30,6 +32,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   className,
   options = [],
   showMasterCheckbox = true,
+  hideLegend = false,
   defaultSelected,
   masterLabel,
   onChange,
@@ -100,6 +103,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   return (
     <FormField
       legend={label}
+      hideLegend={hideLegend}
       className={`${styles["checkboxGroup"]} ${className || ""}`.trim()}
     >
       {showMasterCheckbox && (

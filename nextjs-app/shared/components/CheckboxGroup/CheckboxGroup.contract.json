@@ -103,6 +103,11 @@
             "type": "string",
             "description": "Label for the select-all master checkbox"
         },
+        "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the accessible name but hides it visually, for a group whose section heading already names it."
+        },
         "defaultSelected": {
             "optional": true,
             "type": "string[]",

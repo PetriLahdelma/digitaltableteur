@@ -11,6 +11,10 @@
   border: 0;
 }
 
+.hiddenLegend {
+  composes: root from "../VisuallyHidden/VisuallyHidden.module.css";
+}
+
 .groupDescription {
   margin: calc(var(--space-internal-8) * -1) 0 0;
   font-family: var(--font-body);

@@ -124,4 +124,11 @@ describe("CheckboxGroup", () => {
       screen.getByRole("checkbox", { name: "All topics" }),
     ).toBeInTheDocument();
   });
+
+  it("keeps a hidden legend as the group name", () => {
+    render(<CheckboxGroup id="h" label="Services" hideLegend showMasterCheckbox={false} options={options} />);
+    const group = screen.getByRole("group", { name: "Services" });
+    expect(group.querySelector("legend")?.className).toMatch(/hiddenLegend/);
+    expect(screen.getAllByRole("checkbox")).toHaveLength(3);
+  });
 });

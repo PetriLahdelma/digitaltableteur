@@ -8,6 +8,7 @@ import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import CheckboxGroup, { CheckboxGroupProps } from "@dt/CheckboxGroup";
 import CodeSnippet from "@dt/CodeSnippet";
+import Title from "@dt/Title";
 import schema from "./schema.json";
 const checkboxGroupComplianceRules: ComplianceRule[] = [
   {
@@ -287,6 +288,30 @@ export const Playground: Story = {
       "firstTwo" as unknown as CheckboxGroupProps["defaultSelected"],
   },
   render: (args) => <CheckboxGroupStory {...args} />,
+};
+
+export const UnderSectionHeading: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A questionnaire section whose heading is the question: `hideLegend` keeps the legend as the group's accessible name and shows the heading once.",
+      },
+    },
+  },
+  render: (args) => {
+    const { t } = useTranslation();
+    return (
+      <div style={{ display: "grid", gap: "1rem" }}>
+        <Title level={3} size="xs">
+          {t("storyCheckboxGroupLabel")}
+        </Title>
+        <CheckboxGroupStory {...args} hideLegend showMasterCheckbox={false} />
+      </div>
+    );
+  },
+  args: Default.args,
 };
 
 export const Example: Story = {

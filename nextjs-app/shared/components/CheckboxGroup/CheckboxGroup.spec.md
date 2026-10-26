@@ -32,6 +32,9 @@ booleans, the master-state derivation, and the indeterminate visual
   i18n fallback. The component falls back to the literal "All" if the
   key isn't resolved — tests must verify the resolved label they
   expect.
+- Do: pass `hideLegend` when a visible section heading is the question
+  the group answers. The legend stays the group's accessible name; the
+  heading is not printed twice.
 
 ## Design notes
 - Tokens: group spacing uses `--space-internal-8` between options.

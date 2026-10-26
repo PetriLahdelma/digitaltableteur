@@ -21,6 +21,8 @@ export interface FormFieldProps {
   required?: boolean;
   /** Disables every contained control via the fieldset. */
   disabled?: boolean;
+  /** Keeps the legend as the group's accessible name but hides it visually, for a group whose visible heading already names it. @default false */
+  hideLegend?: boolean;
   /** Merged onto the fieldset. */
   className?: string;
 }
@@ -43,11 +45,17 @@ export function FormField({
   error,
   required,
   disabled,
+  hideLegend = false,
   className,
 }: FormFieldProps) {
   return (
     <fieldset className={cn(styles.fieldset, className)} disabled={disabled}>
-      <GroupLabel as="legend" required={required} disabled={disabled}>
+      <GroupLabel
+        as="legend"
+        required={required}
+        disabled={disabled}
+        className={hideLegend ? styles.hiddenLegend : undefined}
+      >
         {legend}
       </GroupLabel>
       {groupDescription ? (
