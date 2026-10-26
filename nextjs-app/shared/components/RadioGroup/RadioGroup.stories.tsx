@@ -53,6 +53,9 @@ const meta = {
     size: "md",
     helperText: "Choose the closest match.",
     disabled: false,
+    startLabel: "",
+    endLabel: "",
+    hideLegend: false,
   },
 } satisfies Meta<typeof RadioGroup>;
 
@@ -109,6 +112,30 @@ export const Horizontal: Story = {
     },
   },
   args: { orientation: "horizontal" },
+};
+
+const SCALE = ["1", "2", "3", "4", "5"].map((value) => ({ value, label: value }));
+
+export const Scale: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Rating scale: numbered options between two anchors. The legend stays the accessible name while hidden, and the anchors are announced once, paired with the first and last option.",
+      },
+    },
+  },
+  args: {
+    legend: "Tone of voice",
+    options: SCALE,
+    defaultValue: undefined,
+    orientation: "horizontal",
+    startLabel: "Serious",
+    endLabel: "Playful",
+    hideLegend: true,
+    helperText: "",
+  },
 };
 
 export const WithError: Story = {

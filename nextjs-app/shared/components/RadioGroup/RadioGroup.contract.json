@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "form",
     "status": "beta",
-    "description": "Accessible radio button group with legend and validation.",
+    "description": "Accessible radio button group with legend and validation; with startLabel and endLabel it is a rating scale.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1227-2963",
     "radixPrimitive": null,
     "element": "div",
@@ -133,6 +133,21 @@
             "type": "string",
             "description": "Helper copy below the group; always rendered, alongside error when both are set"
         },
+        "startLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Anchor shown before the first option, for rating scales (\"Serious\" in\nSerious 1 to 5 Playful). Announced paired with its option, not on its own."
+        },
+        "endLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Anchor shown after the last option; pairs with startLabel"
+        },
+        "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the accessible name but hides it visually."
+        },
         "className": {
             "optional": true,
             "type": "string",
@@ -169,6 +184,10 @@
             {
                 "guidance": true,
                 "description": "Use orientation=horizontal only for a few short options that still fit one line on mobile."
+            },
+            {
+                "guidance": true,
+                "description": "For a rating scale, give numbered options with startLabel and endLabel (Serious 1 to 5 Playful) and hideLegend when the anchors already say what is rated; the legend stays the accessible name."
             },
             {
                 "guidance": false,
