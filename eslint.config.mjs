@@ -110,6 +110,23 @@ export default [
       "prettier/prettier": "off",
     },
   },
+  {
+    // Client intake: every control, label and heading comes from the design
+    // system, so the web form and its PDF stay in parity
+    // (docs/intake/README.md section 7).
+    files: ["app/intake/**/*.tsx"],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector:
+            "JSXOpeningElement[name.name=/^(input|textarea|select|button|label|fieldset|legend|h[1-6]|p)$/]",
+          message:
+            "Intake pages use design-system components only: TextInput, TextArea, Checkbox(Group), RadioGroup, Button, Label, FormField, Title, Text.",
+        },
+      ],
+    },
+  },
   ...storybook.configs["flat/recommended"],
   {
     files: DT_USAGE_ESLINT_FILE_GLOBS,

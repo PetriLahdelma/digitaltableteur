@@ -1,0 +1,169 @@
+/* Intake client area. Layout only: type, color and controls come from the
+   design-system components (docs/intake/README.md section 7). */
+
+.shell {
+  display: flex;
+  min-block-size: 100dvb;
+  flex-direction: column;
+}
+
+.header {
+  border-block-end: 1px solid var(--color-border-light);
+}
+
+.headerInner,
+.footerInner {
+  display: flex;
+  padding-block: var(--space-internal-16);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-16);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-internal-12);
+}
+
+.headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-16);
+}
+
+.languages {
+  display: flex;
+  gap: var(--space-internal-8);
+}
+
+.main {
+  padding-block: var(--space-layout-48) var(--space-layout-64);
+  flex: 1;
+}
+
+.footer {
+  border-block-start: 1px solid var(--color-border-light);
+}
+
+/* Reading column for sign-in, notices and the client home. */
+
+.narrow {
+  display: flex;
+  max-inline-size: var(--container-sm);
+  flex-direction: column;
+  gap: var(--space-internal-24);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-16);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-16);
+}
+
+.intakeList {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: var(--space-internal-16);
+  list-style: none;
+}
+
+/* Form */
+
+.formHeader {
+  display: flex;
+  margin-block-end: var(--space-layout-32);
+  flex-direction: column;
+  gap: var(--space-internal-12);
+}
+
+.section {
+  display: flex;
+  padding-block: var(--space-layout-24);
+  flex-direction: column;
+  gap: var(--space-internal-24);
+  border-block-start: 1px solid var(--color-border-light);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-internal-24) var(--space-internal-32);
+}
+
+@media (width >= 48rem) {
+  .fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.formFooter {
+  display: flex;
+  margin-block-start: var(--space-layout-32);
+  padding-block-start: var(--space-layout-24);
+  flex-direction: column;
+  gap: var(--space-internal-24);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-16);
+}
+
+.status {
+  min-block-size: 1.5em;
+  color: var(--color-muted);
+}
+
+/* Read-only answers */
+
+.answers {
+  display: grid;
+  margin: 0;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-internal-16) var(--space-internal-32);
+}
+
+@media (width >= 48rem) {
+  .answers {
+    grid-template-columns: minmax(12rem, 1fr) minmax(0, 2fr);
+  }
+}
+
+.answerRow {
+  display: contents;
+}
+
+.answerTerm {
+  color: var(--color-muted);
+}
+
+.answerValue {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.digest {
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+}

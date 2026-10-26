@@ -83,6 +83,11 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
         },
@@ -103,12 +108,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/AnswerSheet.tsx",
             "since": "2026-06-04"
         }
     ],

@@ -104,17 +104,17 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/ComponentTaxonomyTree.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
             "since": "2026-06-04"
         }
     ],

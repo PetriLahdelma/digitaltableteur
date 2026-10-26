@@ -128,3 +128,6 @@ nextjs-app/shared/data/*.d.ts
 nextjs-app/shared/data/*.d.ts.map
 nextjs-app/shared/lib/*.d.ts
 nextjs-app/shared/lib/*.d.ts.map
+
+# Local intake sandbox (scripts/intake-dev.mjs): dev-only database and keys
+.intake-dev/

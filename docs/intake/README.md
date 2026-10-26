@@ -145,8 +145,10 @@ point, and asking clients to type one adds friction for no security gain.
 1. **Invite.** The owner creates an invite in admin: questionnaire, locale,
    client name, email. The server creates a 256-bit random token,
    stores only its SHA-256 and emails the link with its expiry (72 h).
-2. **Open.** `GET /intake/i/[token]` shows a page with one Continue button and
-   consumes nothing. The POST behind it checks the token hash, status and
+2. **Open.** The link is `/intake/start#t=<token>`: the token rides in the
+   URL fragment, which browsers never send to a server, a log or an
+   analytics beacon. The page shows one Continue button and consumes
+   nothing. The POST behind it checks the token hash, status and
    expiry, sets a short-lived pre-auth cookie and emails an 8-digit code.
 3. **Code.** The client enters the code (DS `TextInput`, `inputMode="numeric"`,
    `autocomplete="one-time-code"`). Codes live 10 minutes, are stored as HMACs
@@ -156,8 +158,9 @@ point, and asking clients to type one adds friction for no security gain.
    every login.
 4. **Return.** `/intake` asks for the email and always answers "If this
    address has an active intake, we have sent a code". Then step 3.
-5. **End.** Logout, idle or absolute expiry, admin revoke and submission all
-   end sessions server-side.
+5. **End.** Logout, idle or absolute expiry and admin revoke end sessions
+   server-side. Submitting does not: the client lands on the read-only
+   submission and can still open past submissions in the same session.
 6. **Admin.** `/intake/admin` needs a passkey session under its own cookie
    `__Host-intake-admin`. The owner's passkey is registered once through a CLI
    bootstrap script; there is no admin sign-up.
@@ -328,10 +331,24 @@ Each phase ends with the local gate and its own commit.
    (Free plan, Frankfurt `fra1`, Neon Auth off) connected to Production only,
    with sensitive variables. Migrations run on every Vercel production build
    (`scripts/intake-migrate.mjs` in `vercel-build`).
-3. **Design-system gaps.** Scale, Form with error summary, step navigation and
-   the print page shell, one tribunal trial each, with Figma parity.
-4. **Client area.** Invite landing, code step, session, form pages with
-   autosave, submit, past submissions; EN and FI; strict CSP layout.
+3. **Design-system gaps. Done (react 0.1.41, 0.1.42).** No new components:
+   RadioGroup `startLabel`/`endLabel`/`hideLegend` is the scale;
+   AlertBanner `focusOnMount` with a List of Links is the error summary;
+   Pagination `label` names the page navigation; FormField and
+   CheckboxGroup `hideLegend` keep a section heading from printing twice.
+   The print shell is composed in the phase 6 route. Figma RadioGroup has
+   the matching properties.
+4. **Client area. Done.** Invite landing (`/intake/start`), sign-in by email
+   (`/intake`), code step, client home (`/intake/forms`), form pages with
+   autosave and revision conflicts, error summary, submit, read-only past
+   submissions (`/intake/submissions/[id]`) and the privacy notice
+   (`/intake/privacy`), EN and FI. Services in `app/lib/intake/service/`
+   with PGlite tests; routes under `app/api/intake/`. Intake pages drop the
+   site chrome and analytics (`app/components/SiteChrome.tsx`), get a
+   per-request nonce CSP, `no-store` and `no-referrer` from `proxy.ts`, and
+   `data-sentry-block`. A lint rule bans raw form and heading elements in
+   `app/intake/**`. Walk it locally with `npm run intake:dev` (PGlite,
+   development keys, mail printed to the terminal; see the script header).
 5. **Admin.** Passkey bootstrap and login, invite, resend, revoke, expire,
    status, download, delete, audit log view.
 6. **PDF.** Print route, Chromium renderer spike, tagging, archive, owner
@@ -348,6 +365,9 @@ Each phase ends with the local gate and its own commit.
 | `INTAKE_DATABASE_DATABASE_URL_UNPOOLED` | Direct connection, used only by the build-time migration |
 | `INTAKE_DATA_KEYS` | `keyId:base64` pairs of 32-byte keys; the first is active, later ones only decrypt (rotation) |
 | `INTAKE_HMAC_KEY` | base64, at least 32 bytes; keys email lookup and code digests |
+| `RESEND_API_KEY` | Existing site key; intake mail goes through the verified domain |
+| `INTAKE_EMAIL_FROM` | Optional sender, default `Digitaltableteur <intake@digitaltableteur.com>` |
+| `INTAKE_ORIGIN` | Optional link origin for emails; only the local sandbox sets it |
 
 All are Production-only and marked sensitive; Preview deployments never see
 client data. The two keys were generated on 2026-10-26 straight into Vercel

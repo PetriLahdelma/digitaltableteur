@@ -6,6 +6,7 @@ import {
   getAgentDiscoveryLinkHeader,
   markdownNegotiationHeader,
 } from "@/app/lib/agent-discovery";
+import { INTAKE_RESPONSE_HEADERS, createNonce, intakeCsp, isIntakePath } from "@/app/lib/intake/csp";
 import { PREVIEW_DRAFTS_COOKIE } from "@/lib/blog/postVisibility";
 import { isRoutableProject, projects } from "@/nextjs-app/shared/data/projects";
 
@@ -65,11 +66,32 @@ export function prefersMarkdown(accept: string): boolean {
 }
 
 /**
+ * Intake pages get their own policy: a per-request nonce, no third-party
+ * hosts, never cached (docs/intake/README.md, STRIDE I2/I5/I6). Next reads
+ * the nonce from the request's CSP header and stamps it on its scripts,
+ * which is why the header goes on the request as well as the response.
+ */
+function handleIntake(request: NextRequest) {
+  const csp = intakeCsp(createNonce(), {
+    dev: process.env.NODE_ENV === "development",
+    https: process.env.VERCEL === "1" || process.env.FORCE_HTTPS_CSP === "1",
+  });
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("Content-Security-Policy", csp);
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
+  response.headers.set("Content-Security-Policy", csp);
+  for (const [key, value] of Object.entries(INTAKE_RESPONSE_HEADERS)) response.headers.set(key, value);
+  return response;
+}
+
+/**
  * Markdown content negotiation for AI agents (Cloudflare Agent Readiness / llmstxt.org).
  * Homepage requests with Accept: text/markdown receive llms.txt content;
  * offer pages, blog posts and case studies receive their Markdown version.
  */
 export function proxy(request: NextRequest) {
+  if (isIntakePath(request.nextUrl.pathname)) return handleIntake(request);
+
   const draftPreview = handleBlogDraftPreview(request);
   if (draftPreview) return draftPreview;
 
@@ -120,5 +142,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/blog", "/blog/:path*", "/engagements/:slug", "/work/:slug"],
+  matcher: ["/", "/blog", "/blog/:path*", "/engagements/:slug", "/work/:slug", "/intake", "/intake/:path*"],
 };

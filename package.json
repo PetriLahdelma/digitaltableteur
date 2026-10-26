@@ -228,6 +228,7 @@
     "generate:site-changelog": "node scripts/generate-site-changelog.mjs",
     "generate:intake-data-map": "tsx scripts/generate-intake-data-map.ts",
     "intake:db:generate": "drizzle-kit generate --config drizzle.intake.config.ts",
+    "intake:dev": "node scripts/intake-dev.mjs",
     "intake:db:migrate": "drizzle-kit migrate --config drizzle.intake.config.ts"
   },
   "dependencies": {

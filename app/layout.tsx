@@ -16,10 +16,10 @@ import { NextLinkProvider } from "../providers/NextLinkProvider";
 import { NextImageProvider } from "../providers/NextImageProvider";
 import { NextNavigationProvider } from "../providers/NextNavigationProvider";
 import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
-import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
 import { HtmlLangSync } from "./components/HtmlLangSync";
 import { DeferredAnalytics } from "./components/DeferredAnalytics";
+import { SiteChrome, SiteOnly } from "./components/SiteChrome";
 import { SSR_SNAPSHOT_SCRIPT } from "./lib/ssr-snapshot-script";
 import "@digitaltableteur/react/style.css";
 import "./globals.css";
@@ -162,7 +162,9 @@ export default function RootLayout({
             ),
           }}
         />
-        <Analytics />
+        <SiteOnly>
+          <Analytics />
+        </SiteOnly>
         <WebMcpProvider>
           <NextThemeProvider>
             <NextLinkProvider>
@@ -173,10 +175,12 @@ export default function RootLayout({
                     <AnimationProvider>
                         <ToastProvider>
                           <CookieConsentProvider autoShow={true}>
-                            <DeferredAnalytics
-                              gaMeasurementId={gaMeasurementId}
-                            />
-                            <NextLayout>{children}</NextLayout>
+                            <SiteOnly>
+                              <DeferredAnalytics
+                                gaMeasurementId={gaMeasurementId}
+                              />
+                            </SiteOnly>
+                            <SiteChrome>{children}</SiteChrome>
                           </CookieConsentProvider>
                         </ToastProvider>
                     </AnimationProvider>

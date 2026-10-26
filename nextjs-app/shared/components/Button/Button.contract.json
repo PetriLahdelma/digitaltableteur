@@ -145,6 +145,11 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
         },
@@ -156,11 +161,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/error.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
             "since": "2026-06-04"
         }
     ],

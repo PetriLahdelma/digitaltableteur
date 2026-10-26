@@ -13,6 +13,9 @@
 | `app/api/chat/route.ts` | POST | AI chat (Vercel AI SDK, streaming) |
 | `app/api/contact/route.ts` | POST | Contact form → MongoDB + email |
 | `app/api/gdpr/delete-data/route.ts` | POST | GDPR deletion by email |
+| `app/api/intake/auth/{invite,email,code,logout}/route.ts` | POST | Client intake sign-in: invite link, returning email, 8-digit code, sign-out ([docs/intake](../../docs/intake/README.md)) |
+| `app/api/intake/forms/[inviteId]/{draft,submit}/route.ts` | PUT, POST | Intake autosave with revisions; submit freezes a hashed snapshot |
+| `app/api/intake/dev/invite/route.ts` | POST | Local sandbox only (`npm run intake:dev`); 404 everywhere else |
 
 ---
 
