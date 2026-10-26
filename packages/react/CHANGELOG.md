@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.42 - 2026-10-26
+
+- `FormField` and `CheckboxGroup`: `hideLegend` keeps the legend as the
+  group's accessible name but hides it visually, for a group under a
+  visible heading that already asks the question. Screen readers still
+  announce the legend on every control.
+
 ## 0.1.41 - 2026-10-26
 
 - `RadioGroup`: `startLabel` and `endLabel` anchor a rating scale

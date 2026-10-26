@@ -128,6 +128,18 @@
       "level": "additive",
       "detail": "prop `startLabel` added",
       "bump": "patch"
+    },
+    {
+      "component": "CheckboxGroup",
+      "level": "additive",
+      "detail": "prop `hideLegend` added",
+      "bump": "patch"
+    },
+    {
+      "component": "FormField",
+      "level": "additive",
+      "detail": "prop `hideLegend` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -1118,6 +1130,10 @@
         "defaultSelected": {
           "optional": true,
           "type": "string[]"
+        },
+        "hideLegend": {
+          "optional": true,
+          "type": "boolean"
         },
         "id": {
           "optional": true,
@@ -2126,6 +2142,10 @@
         "groupDescription": {
           "optional": true,
           "type": "string"
+        },
+        "hideLegend": {
+          "optional": true,
+          "type": "boolean"
         },
         "legend": {
           "optional": false,

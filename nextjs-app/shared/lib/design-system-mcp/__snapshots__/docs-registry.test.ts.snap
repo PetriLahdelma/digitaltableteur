@@ -418,6 +418,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
       "WithMasterCheckbox",
       "WithoutMasterCheckbox",
       "WithIndeterminateState",
+      "UnderSectionHeading",
     ],
     "fields": [
       "composesWith",
@@ -785,6 +786,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "exampleStories": [
       "CheckboxCluster",
       "GroupError",
+      "HiddenLegend",
       "CompositeField",
       "CustomRadioSet",
     ],

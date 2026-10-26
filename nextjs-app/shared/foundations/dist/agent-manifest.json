@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-26T20:22:03.161Z",
+  "generatedAt": "2026-10-26T21:14:35.625Z",
   "summary": {
     "componentCount": 189,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 178,
     "withProductionUsage": 42,
     "uniqueImportedComponents": 178,
-    "totalEvidenceRows": 909,
-    "aliasImportFiles": 464,
+    "totalEvidenceRows": 911,
+    "aliasImportFiles": 466,
     "relativeImportFiles": 485,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -12505,9 +12505,9 @@
           "TextInput",
           "Label",
           "Text",
+          "Title",
           "Button",
-          "Grid",
-          "ArticleCard"
+          "Grid"
         ],
         "prefersOver": [],
         "declaredPropCount": 11,
@@ -12839,6 +12839,11 @@
             "type": "string",
             "description": "Label for the select-all master checkbox"
           },
+          "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the accessible name but hides it visually, for a group whose section heading already names it."
+          },
           "defaultSelected": {
             "optional": true,
             "type": "string[]",
@@ -12922,7 +12927,7 @@
           }
         }
       },
-      "spec": "# CheckboxGroup\n\n## Intent\nBundle related checkboxes into a single labelled group with a working\nindeterminate master. Consumers stop hand-managing the array of\nbooleans, the master-state derivation, and the indeterminate visual\n— all of which are easy to get wrong.\n\n## Interaction contract\n- Keyboard: Tab moves through master, then each option. Space toggles\n  the focused checkbox. Shift+Tab walks back. No arrow-key contract —\n  each checkbox is independently focusable.\n- Pointer: click anywhere on a row toggles the option. The master\n  selects or deselects every option in one action.\n- Screen readers: the group label announces first, then the master\n  (\"All, checked / mixed / not checked\"), then each option in order.\n  The master's `aria-checked=\"mixed\"` is announced when a subset is\n  selected.\n\n## Do / don't\n- Do: derive `defaultSelected` from server-known state; the component\n  resets its internal array when `defaultSelected` changes by\n  composition (deep value comparison via `.join(',')`).\n- Do: keep option `value`s stable across renders. The internal state\n  uses `value` as identity; switching mid-flight loses the user's\n  selection.\n- Don't: render a CheckboxGroup with one option. It's an awkward\n  master + one row — collapse to a single Checkbox.\n- Don't: nest a CheckboxGroup inside another CheckboxGroup. AT\n  navigation becomes ambiguous; flatten the option list.\n- Don't: rely on the master label translation key without testing the\n  i18n fallback. The component falls back to the literal \"All\" if the\n  key isn't resolved — tests must verify the resolved label they\n  expect.\n\n## Design notes\n- Tokens: group spacing uses `--space-internal-8` between options.\n  The group label uses `<GroupLabel>` which inherits its own\n  typography from `--font-size-text-m` + bold weight. Master row\n  shares the same row height as options.\n- Figma: https://www.figma.com/design/digitaltableteur/checkbox-group\n  — variants: with-master and without-master.\n- The component maintains its own array of booleans rather than a\n  Set of values because the order needs to mirror the `options` order\n  for consistent re-renders.\n- `prevOptionValuesRef` and `prevDefaultRef` guard against resetting\n  state when only labels change (e.g. language switch). That's the\n  edge case the implementation pays for; without it, switching\n  languages on a page would clear the user's selection.\n",
+      "spec": "# CheckboxGroup\n\n## Intent\nBundle related checkboxes into a single labelled group with a working\nindeterminate master. Consumers stop hand-managing the array of\nbooleans, the master-state derivation, and the indeterminate visual\n— all of which are easy to get wrong.\n\n## Interaction contract\n- Keyboard: Tab moves through master, then each option. Space toggles\n  the focused checkbox. Shift+Tab walks back. No arrow-key contract —\n  each checkbox is independently focusable.\n- Pointer: click anywhere on a row toggles the option. The master\n  selects or deselects every option in one action.\n- Screen readers: the group label announces first, then the master\n  (\"All, checked / mixed / not checked\"), then each option in order.\n  The master's `aria-checked=\"mixed\"` is announced when a subset is\n  selected.\n\n## Do / don't\n- Do: derive `defaultSelected` from server-known state; the component\n  resets its internal array when `defaultSelected` changes by\n  composition (deep value comparison via `.join(',')`).\n- Do: keep option `value`s stable across renders. The internal state\n  uses `value` as identity; switching mid-flight loses the user's\n  selection.\n- Don't: render a CheckboxGroup with one option. It's an awkward\n  master + one row — collapse to a single Checkbox.\n- Don't: nest a CheckboxGroup inside another CheckboxGroup. AT\n  navigation becomes ambiguous; flatten the option list.\n- Don't: rely on the master label translation key without testing the\n  i18n fallback. The component falls back to the literal \"All\" if the\n  key isn't resolved — tests must verify the resolved label they\n  expect.\n- Do: pass `hideLegend` when a visible section heading is the question\n  the group answers. The legend stays the group's accessible name; the\n  heading is not printed twice.\n\n## Design notes\n- Tokens: group spacing uses `--space-internal-8` between options.\n  The group label uses `<GroupLabel>` which inherits its own\n  typography from `--font-size-text-m` + bold weight. Master row\n  shares the same row height as options.\n- Figma: https://www.figma.com/design/digitaltableteur/checkbox-group\n  — variants: with-master and without-master.\n- The component maintains its own array of booleans rather than a\n  Set of values because the order needs to mirror the `options` order\n  for consistent re-renders.\n- `prevOptionValuesRef` and `prevDefaultRef` guard against resetting\n  state when only labels change (e.g. language switch). That's the\n  edge case the implementation pays for; without it, switching\n  languages on a page would clear the user's selection.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/CheckboxGroup",
@@ -12997,6 +13002,11 @@
             "type": "string",
             "description": "Label for the select-all master checkbox"
           },
+          "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the accessible name but hides it visually, for a group whose section heading already names it."
+          },
           "defaultSelected": {
             "optional": true,
             "type": "string[]",
@@ -13014,7 +13024,8 @@
         "variantsFnName": null,
         "useWhen": [
           "derive `defaultSelected` from server-known state; the component resets its internal array when `defaultSelected` changes by composition (deep value comparison via `.join(',')`).",
-          "keep option `value`s stable across renders. The internal state uses `value` as identity; switching mid-flight loses the user's selection."
+          "keep option `value`s stable across renders. The internal state uses `value` as identity; switching mid-flight loses the user's selection.",
+          "pass `hideLegend` when a visible section heading is the question the group answers. The legend stays the group's accessible name; the heading is not printed twice."
         ],
         "avoidWhen": [
           "render a CheckboxGroup with one option. It's an awkward master + one row — collapse to a single Checkbox.",
@@ -13052,7 +13063,7 @@
           "TextArea"
         ],
         "prefersOver": [],
-        "declaredPropCount": 8,
+        "declaredPropCount": 9,
         "guidelines": [
           {
             "level": "should",
@@ -13086,6 +13097,13 @@
             "level": "should-not",
             "guidance": "rely on the master label translation key without testing the i18n fallback",
             "rationale": "The component falls back to the literal \"All\" if the key isn't resolved — tests must verify the resolved label they expect.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "pass `hideLegend` when a visible section heading is the question the group answers",
+            "rationale": "The legend stays the group's accessible name; the heading is not printed twice.",
             "rationaleSource": "inferred",
             "source": "spec.md#do-dont"
           }
@@ -15813,6 +15831,7 @@
         "composesWith": [
           "Icon",
           "ComplianceCard",
+          "Title",
           "Button"
         ],
         "prefersOver": [],
@@ -17274,6 +17293,7 @@
         "composesWith": [
           "Icon",
           "CodeSnippet",
+          "Title",
           "Button"
         ],
         "prefersOver": [],
@@ -25667,6 +25687,11 @@
             "type": "boolean",
             "description": "Disables every contained control via the fieldset."
           },
+          "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the group's accessible name but hides it visually, for a group whose visible heading already names it."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -25750,7 +25775,7 @@
           }
         }
       },
-      "spec": "# FormField\n\n## Intent\nName a GROUP of controls with a fieldset legend: radio sets, checkbox clusters, composite fields (a date range, opening hours). Per the field-wrapper convention (decided 2026-07-03), individual controls own their own label / error / helperText chrome; FormField exists only for the group case, adding a legend, an optional group description, and a group-level error.\n\n## Interaction contract\n- Keyboard: focus reaches the contained controls; the fieldset itself is non-focusable. `disabled` disables every contained control natively.\n- Screen readers: the `<legend>` is the group's accessible name and is announced on every control inside. `groupDescription` renders under the legend; the group `error` renders after the controls with `role=\"alert\"`.\n\n## Do / don't\n- Do: use it whenever two or more controls answer one question; write the legend as the question.\n- Do: put cross-control validation in the group `error`; per-control failures belong on each control's own `error` prop.\n- Don't: wrap a single labeled control; TextInput, Select, Checkbox and friends carry their own label/error/helperText.\n- Don't: use it as a layout box; it renders a real fieldset with announcement semantics.\n\n## API notes\n- 2026-07-03 (Astryx Phase 3 batch 2): single-control mode removed (`label`, `helperText`, `id`, and the cloneElement aria wiring). `legend` is now required. There were no production consumers of single-control mode.\n\n## Design notes\n- Colors: --color-error, --color-muted, --color-text\n- Spacing: --space-internal-8, --space-internal-16\n- Typography: --font-body, --font-size-text-s, --font-size-text-l\n- Figma: pending — link at beta → stable promotion.\n- Catalog status: **beta**; group-mode re-scope and doc data authored in the Astryx Phase 3 batch 2 sweep on 2026-07-03.\n",
+      "spec": "# FormField\n\n## Intent\nName a GROUP of controls with a fieldset legend: radio sets, checkbox clusters, composite fields (a date range, opening hours). Per the field-wrapper convention (decided 2026-07-03), individual controls own their own label / error / helperText chrome; FormField exists only for the group case, adding a legend, an optional group description, and a group-level error.\n\n## Interaction contract\n- Keyboard: focus reaches the contained controls; the fieldset itself is non-focusable. `disabled` disables every contained control natively.\n- Screen readers: the `<legend>` is the group's accessible name and is announced on every control inside. `groupDescription` renders under the legend; the group `error` renders after the controls with `role=\"alert\"`.\n\n## Do / don't\n- Do: use it whenever two or more controls answer one question; write the legend as the question.\n- Do: put cross-control validation in the group `error`; per-control failures belong on each control's own `error` prop.\n- Don't: wrap a single labeled control; TextInput, Select, Checkbox and friends carry their own label/error/helperText.\n- Don't: use it as a layout box; it renders a real fieldset with announcement semantics.\n\n## API notes\n- 2026-07-03 (Astryx Phase 3 batch 2): single-control mode removed (`label`, `helperText`, `id`, and the cloneElement aria wiring). `legend` is now required. There were no production consumers of single-control mode.\n\n- 2026-10-26: `hideLegend` keeps the legend as the group's accessible name but hides it visually, for a group under a visible heading that already names it (questionnaire sections). Screen readers still announce the legend on every control.\n\n## Design notes\n- Colors: --color-error, --color-muted, --color-text\n- Spacing: --space-internal-8, --space-internal-16\n- Typography: --font-body, --font-size-text-s, --font-size-text-l\n- Figma: pending — link at beta → stable promotion.\n- Catalog status: **beta**; group-mode re-scope and doc data authored in the Astryx Phase 3 batch 2 sweep on 2026-07-03.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/FormField",
@@ -25807,6 +25832,11 @@
             "type": "boolean",
             "description": "Disables every contained control via the fieldset."
           },
+          "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the group's accessible name but hides it visually, for a group whose visible heading already names it."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -25854,7 +25884,7 @@
           "HelperText"
         ],
         "prefersOver": [],
-        "declaredPropCount": 7,
+        "declaredPropCount": 8,
         "guidelines": [
           {
             "level": "should",
@@ -29240,8 +29270,8 @@
           "Button",
           "Text",
           "Badge",
-          "ComplianceCard",
           "Title",
+          "ComplianceCard",
           "HelperText"
         ],
         "prefersOver": [],
@@ -40658,7 +40688,7 @@
         "componentImportCount": 1,
         "evidence": [
           {
-            "path": "app/layout.tsx",
+            "path": "app/components/SiteChrome.tsx",
             "importKind": "alias",
             "importPath": "@dt/NextLayout",
             "context": "production"
@@ -66961,7 +66991,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 33,
+        "importCount": 35,
         "productionImportCount": 0,
         "patternImportCount": 6,
         "componentImportCount": 15,
@@ -67158,8 +67188,8 @@
           "Text",
           "Button",
           "TextInput",
-          "Link",
           "Icon",
+          "Link",
           "Badge"
         ],
         "prefersOver": [

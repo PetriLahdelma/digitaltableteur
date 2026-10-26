@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T20:47:18.237Z",
+  "generatedAt": "2026-10-26T21:14:35.317Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -7058,9 +7058,9 @@
         "TextInput",
         "Label",
         "Text",
+        "Title",
         "Button",
-        "Grid",
-        "ArticleCard"
+        "Grid"
       ],
       "prefersOver": [],
       "declaredPropCount": 11,
@@ -7340,7 +7340,8 @@
       "variantsFnName": null,
       "useWhen": [
         "derive `defaultSelected` from server-known state; the component resets its internal array when `defaultSelected` changes by composition (deep value comparison via `.join(',')`).",
-        "keep option `value`s stable across renders. The internal state uses `value` as identity; switching mid-flight loses the user's selection."
+        "keep option `value`s stable across renders. The internal state uses `value` as identity; switching mid-flight loses the user's selection.",
+        "pass `hideLegend` when a visible section heading is the question the group answers. The legend stays the group's accessible name; the heading is not printed twice."
       ],
       "avoidWhen": [
         "render a CheckboxGroup with one option. It's an awkward master + one row — collapse to a single Checkbox.",
@@ -7412,6 +7413,13 @@
           "level": "should-not",
           "guidance": "rely on the master label translation key without testing the i18n fallback",
           "rationale": "The component falls back to the literal \"All\" if the key isn't resolved — tests must verify the resolved label they expect.",
+          "rationaleSource": "inferred",
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "pass `hideLegend` when a visible section heading is the question the group answers",
+          "rationale": "The legend stays the group's accessible name; the heading is not printed twice.",
           "rationaleSource": "inferred",
           "source": "spec.md#do-dont"
         }
@@ -9059,6 +9067,7 @@
       "composesWith": [
         "Icon",
         "ComplianceCard",
+        "Title",
         "Button"
       ],
       "prefersOver": [],
@@ -9908,6 +9917,7 @@
       "composesWith": [
         "Icon",
         "CodeSnippet",
+        "Title",
         "Button"
       ],
       "prefersOver": [],
@@ -16795,8 +16805,8 @@
         "Button",
         "Text",
         "Badge",
-        "ComplianceCard",
         "Title",
+        "ComplianceCard",
         "HelperText"
       ],
       "prefersOver": [],
@@ -39671,8 +39681,8 @@
         "Text",
         "Button",
         "TextInput",
-        "Link",
         "Icon",
+        "Link",
         "Badge"
       ],
       "prefersOver": [

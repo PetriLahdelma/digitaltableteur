@@ -3668,6 +3668,11 @@
           "type": "string",
           "description": "Label for the select-all master checkbox"
         },
+        "hideLegend": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Keeps the legend as the accessible name but hides it visually, for a group whose section heading already names it."
+        },
         "defaultSelected": {
           "optional": true,
           "type": "string[]",
@@ -3740,6 +3745,11 @@
           "story": "WithIndeterminateState",
           "description": "Seeded via defaultSelected: the master checkbox reads indeterminate until the set is uniform.",
           "source": "export const WithIndeterminateState = Template.bind({});\nWithIndeterminateState.args = {\n  label: \"storyCheckboxGroupLabel\",\n  showMasterCheckbox: true,\n  options: [\n    { label: \"storyCheckboxOption1\", value: \"option1\" },\n    { label: \"storyCheckboxOption2\", value: \"option2\" },\n    { label: \"storyCheckboxOption3\", value: \"option3\" },\n    { label: \"storyCheckboxOption4\", value: \"option4\" },\n    { label: \"storyCheckboxOption5\", value: \"option5\" },\n  ],\n  // Pre-select option1 and option2 so the master checkbox starts as indeterminate\n  defaultSelected: [\"option1\", \"option2\"],\n};\n\nWithIndeterminateState.play = async ({\n  canvasElement,\n}: {\n  canvasElement: HTMLElement;\n}) => {\n  const canvas = within(canvasElement);\n  const checkboxes = await canvas.findAllByRole(\"checkbox\");\n  const [, firstOption, secondOption] = checkboxes;\n  if (firstOption) await firstOption.click();\n  if (secondOption) await secondOption.click();\n};\nDefault.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {\n  const canvas = within(canvasElement);\n  await canvas.findAllByRole(\"checkbox\");\n};\n\nWithIndeterminateState.tags = [\"example\"];\nWithIndeterminateState.parameters = {\n  docs: {\n    description: {\n      story:\n        \"Seeded via defaultSelected: the master checkbox reads indeterminate until the set is uniform.\",\n    },\n  },\n};"
+        },
+        {
+          "story": "UnderSectionHeading",
+          "description": "A questionnaire section whose heading is the question: `hideLegend` keeps the legend as the group's accessible name and shows the heading once.",
+          "source": "export const UnderSectionHeading: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"A questionnaire section whose heading is the question: `hideLegend` keeps the legend as the group's accessible name and shows the heading once.\",\n      },\n    },\n  },\n  render: (args) => {\n    const { t } = useTranslation();\n    return (\n      <div style={{ display: \"grid\", gap: \"1rem\" }}>\n        <Title level={3} size=\"xs\">\n          {t(\"storyCheckboxGroupLabel\")}\n        </Title>\n        <CheckboxGroupStory {...args} hideLegend showMasterCheckbox={false} />\n      </div>\n    );\n  },\n  args: Default.args,\n};"
         }
       ]
     },
@@ -7518,6 +7528,11 @@
           "type": "boolean",
           "description": "Disables every contained control via the fieldset."
         },
+        "hideLegend": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Keeps the legend as the group's accessible name but hides it visually, for a group whose visible heading already names it."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -7610,6 +7625,11 @@
           "story": "GroupError",
           "description": "Cross-control validation lives on the group; per-control failures belong on each control's own error prop.",
           "source": "export const GroupError: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Cross-control validation lives on the group; per-control failures belong on each control's own error prop.\",\n      },\n    },\n  },\n  render: () => (\n    <FormField\n      legend=\"Notification channels\"\n      error=\"Pick at least one channel\"\n      required\n    >\n      <Checkbox label=\"Email\" />\n      <Checkbox label=\"SMS\" />\n    </FormField>\n  ),\n};"
+        },
+        {
+          "story": "HiddenLegend",
+          "description": "When a visible section heading already names the group, `hideLegend` keeps the legend as the group's accessible name without printing it twice.",
+          "source": "export const HiddenLegend: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"When a visible section heading already names the group, `hideLegend` keeps the legend as the group's accessible name without printing it twice.\",\n      },\n    },\n  },\n  render: () => (\n    <div style={{ display: \"grid\", gap: \"1rem\" }}>\n      <Title level={3} size=\"xs\">\n        Notification channels\n      </Title>\n      <FormField legend=\"Notification channels\" hideLegend>\n        {channels}\n      </FormField>\n    </div>\n  ),\n};"
         },
         {
           "story": "CompositeField",
