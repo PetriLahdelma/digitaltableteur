@@ -101,6 +101,11 @@
             "type": "number",
             "description": "Number of page buttons to show on each side of current page"
         },
+        "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name of the navigation landmark, for pages with several\nnavs (for example \"Questionnaire pages\"). Defaults to the localized\n\"Page navigation\"."
+        },
         "className": {
             "optional": true,
             "type": "string",

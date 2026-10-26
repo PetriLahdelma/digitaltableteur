@@ -24,6 +24,7 @@ function PaginationDemo(args: React.ComponentProps<typeof Pagination>) {
 }
 
 const defaultArgs = {
+  label: "",
   currentPage: 2,
   totalPages: 8,
   onPageChange: fn(),
@@ -82,6 +83,20 @@ export const ForcedColors: Story = {
 };
 
 /** Deep in a long collection: ellipsis appears on both sides of the window. */
+export const QuestionnairePages: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Steps through a multi-page form. label names the landmark (\"Questionnaire pages\") so it is distinguishable from the site navigation; pair it with Progress for completion.",
+      },
+    },
+  },
+  args: { totalPages: 7, currentPage: 3, label: "Questionnaire pages" },
+  render: (args) => <PaginationDemo {...args} />,
+};
+
 export const ManyPages: Story = {
   tags: ["example"],
   globals: { forcedColors: "none" },

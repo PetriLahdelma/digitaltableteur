@@ -21,3 +21,6 @@ Render a familiar paged-list navigation surface with the announcements, current-
 - Figma: TODO — to be linked during the alpha → beta promotion.
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.
+
+## Naming the landmark
+- `label` sets the navigation landmark's accessible name. Use it whenever a page has more than one nav, for example "Questionnaire pages" on a multi-page form, so screen reader users can tell the landmarks apart. Without it the localized "Page navigation" applies.

@@ -77,6 +77,15 @@ describe("Pagination", () => {
     }
   });
 
+  it("names the landmark with label and falls back to the localized default", () => {
+    const { rerender } = render(
+      <Pagination currentPage={1} totalPages={7} onPageChange={() => {}} label="Questionnaire pages" />,
+    );
+    expect(screen.getByRole("navigation", { name: "Questionnaire pages" })).toBeInTheDocument();
+    rerender(<Pagination currentPage={1} totalPages={7} onPageChange={() => {}} label="" />);
+    expect(screen.getByRole("navigation", { name: "Page navigation" })).toBeInTheDocument();
+  });
+
   it("has no axe violations", async () => {
     const { container } = render(
       <Pagination currentPage={3} totalPages={12} onPageChange={vi.fn()} />,

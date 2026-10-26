@@ -14,6 +14,12 @@ export interface PaginationProps {
   onPageChange: (page: number) => void;
   /** Number of page buttons to show on each side of current page */
   siblingCount?: number;
+  /**
+   * Accessible name of the navigation landmark, for pages with several
+   * navs (for example "Questionnaire pages"). Defaults to the localized
+   * "Page navigation".
+   */
+  label?: string;
   /** Custom className */
   className?: string;
 }
@@ -74,6 +80,7 @@ export function Pagination({
   totalPages,
   onPageChange,
   siblingCount = 1,
+  label,
   className,
 }: PaginationProps) {
   const t = useTranslate();
@@ -93,7 +100,8 @@ export function Pagination({
 
   return (
     <nav
-      aria-label={t("blogPageNavigation", "Page navigation")}
+      // Controls convention: "" means absent.
+      aria-label={label || t("blogPageNavigation", "Page navigation")}
       className={cn("flex items-center justify-center gap-1", className)}
     >
       {/* Previous button */}
