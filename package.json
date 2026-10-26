@@ -376,9 +376,9 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
-    "@electric-sql/pglite": "0.5.8",
+    "@electric-sql/pglite": "0.5.11",
     "@lhci/cli": "^0.15.1",
-    "@next/bundle-analyzer": "^16.4.2",
+    "@next/bundle-analyzer": "^16.4.3",
     "@phosphor-icons/core": "^2.1.1",
     "@playwright/test": "^1.64.0",
     "@r2wc/react-to-web-component": "^2.1.1",
@@ -409,16 +409,16 @@
     "@vitejs/plugin-react": "^6.1.2",
     "@vitest/browser-playwright": "^5.0.5",
     "@vitest/coverage-v8": "^5.0.5",
-    "agent-browser": "0.39.1",
+    "agent-browser": "0.39.2",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "axe-core": "^4.14.0",
-    "chart.js": "^4.5.1",
+    "chart.js": "^4.6.1",
     "commander": "^15.0.0",
     "concurrently": "^10.0.6",
     "drizzle-kit": "0.31.11",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^16.4.2",
+    "eslint-config-next": "^16.4.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.7",
     "eslint-plugin-storybook": "^10.6.3",
@@ -448,6 +448,6 @@
     "vitest": "^5.0.5",
     "vitest-axe": "^0.1.0",
     "wait-on": "^9.5.1",
-    "webpack": "^5.112.0"
+    "webpack": "^5.112.2"
   }
 }
