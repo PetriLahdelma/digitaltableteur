@@ -1,8 +1,8 @@
 {
   "storyId": "templates-nextlayout-forced-colors",
   "mode": "light",
-  "sourceSHA": "084fb1b71cca7709f0e49b52af36025299e51584",
-  "capturedAt": "2026-10-26T21:45:19.709Z",
+  "sourceSHA": "19e642e52007af2c789bf30cef0766557fc819c3",
+  "capturedAt": "2026-10-26T22:37:58.593Z",
   "runner": "local-claude",
   "checks": {
     "accessibility-tree": {

@@ -1,0 +1,17 @@
+- status: Work in progress (alpha)
+- navigation "Intake parts":
+  - list:
+    - listitem:
+      - button "Client intake Needed before our call Completed"
+    - listitem:
+      - button "Project and investment In progress"
+      - list:
+        - listitem:
+          - button "Goals and scope done"
+        - listitem:
+          - button "Investment"
+    - listitem:
+      - button "Business and audience Not started"
+    - listitem:
+      - button "Positioning and today Not started"
+    - listitem: Check and submit Cannot start yet

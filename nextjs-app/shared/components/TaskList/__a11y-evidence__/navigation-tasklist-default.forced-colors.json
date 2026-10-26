@@ -1,0 +1,16 @@
+{
+  "storyId": "navigation-tasklist-default",
+  "mode": "forced-colors",
+  "sourceSHA": "19e642e52007af2c789bf30cef0766557fc819c3",
+  "capturedAt": "2026-10-26T22:36:48.968Z",
+  "runner": "local-claude",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
