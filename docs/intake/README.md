@@ -125,7 +125,7 @@ intake it opens a deletion request the owner confirms.
 | R2 | Admin action denied | Append-only audit log of invite, resend, revoke, expire, export and delete | e2e: each action writes one entry |
 | I1 | Answers leak through logs or Sentry | No body logging; Sentry allowlist; intake errors carry ids only | canary string never found in Sentry or logs |
 | I2 | Third-party scripts read the DOM | Dedicated layout without analytics; strict CSP on intake routes | Observatory and CSP header test |
-| I3 | Probing whether an email has an invite | Identical responses and timing for known and unknown addresses | unit + e2e |
+| I3 | Probing whether an email has an invite | Identical responses for known and unknown addresses; the lookup and the code run after the response | unit + e2e |
 | I4 | PDF archive exposure | PDFs stored encrypted in Postgres, served only through authenticated routes; no public blob URLs | ZAP + e2e |
 | I5 | CDN or browser caches personal pages | `Cache-Control: no-store`, dynamic rendering | header test |
 | I6 | Session theft through XSS | HttpOnly cookie, nonce CSP, components escape output | ZAP baseline, CSP test |
@@ -133,7 +133,7 @@ intake it opens a deletion request the owner confirms.
 | D2 | PDF rendering exhausts the function | Rendered once per submission, size caps, timeout, retry queue | load test of one render |
 | E1 | A client reads another client's intake (IDOR) | Every query is scoped by the session's invite id; ids in URLs are opaque | e2e: cross-session access 404 |
 | E2 | A client reaches admin routes | Separate cookie and session type; admin route guard | e2e |
-| E3 | Brute-forcing the one-time code | 8 digits, 5 attempts per code, 10 per invite then lock | unit |
+| E3 | Brute-forcing the one-time code | 8 digits; 5 attempts per code, spent atomically before the comparison; one code per pre-auth cookie, so a stranger cannot replace or lock the client's code; at most 5 codes an hour per client and network and 20 per client | unit |
 
 ## 5. Access design
 

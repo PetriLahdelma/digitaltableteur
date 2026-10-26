@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
   try {
     const result = await requestCodeForEmail(await intakeContext(), body.data.email, body.data.locale, networkKey(request));
     if (result.status !== "sent") return json({ status: "rate_limited" }, 429);
-    deliverAfterResponse(result.mail, "auth.email");
+    deliverAfterResponse(result.issue, "auth.email");
     const response = json({ status: "sent" });
     setPreauthCookie(response, result.preauthToken);
     return response;

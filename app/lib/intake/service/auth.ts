@@ -1,4 +1,4 @@
-import { and, eq, gt, inArray, isNull, or, sql } from "drizzle-orm";
+import { and, eq, gt, inArray, isNull, lt, or, sql } from "drizzle-orm";
 
 import { RETENTION } from "../data-policy";
 import { auditLog, clients, invites, loginCodes, sessions } from "../db/schema";
@@ -7,7 +7,7 @@ import type { IntakeLocale } from "../types";
 import { HOUR, MINUTE, type IntakeContext, type IntakeMail } from "./context";
 import { openContact } from "./invites";
 import { codeMail } from "./mail";
-import { hit, isOver } from "./rate-limit";
+import { hit } from "./rate-limit";
 
 /** `__Host-` pins the cookie to this host, HTTPS and path `/` (no Domain attribute). */
 export const PREAUTH_COOKIE = "__Host-intake-pre";
@@ -20,6 +20,15 @@ export type CodeRequest =
   | Readonly<{ status: "invalid_invite" }>
   | Readonly<{ status: "rate_limited" }>;
 
+/**
+ * The returning-client answer. The lookup and the code are deferred to run
+ * after the response, so the request does the same work whether or not the
+ * address is known (STRIDE I3).
+ */
+export type DeferredCodeRequest =
+  | Readonly<{ status: "sent"; preauthToken: string; issue: () => Promise<IntakeMail | null> }>
+  | Readonly<{ status: "rate_limited" }>;
+
 function codeBinding(clientId: string, preauthHash: string): string {
   return `${clientId}:${preauthHash}`;
 }
@@ -29,27 +38,27 @@ async function issueCode(
   client: { id: string; contactSealed: unknown },
   inviteId: string | null,
   locale: IntakeLocale,
-): Promise<{ preauthToken: string; mail: IntakeMail | null }> {
-  const preauthToken = generateToken();
+  preauthToken: string,
+  networkKey: string,
+): Promise<IntakeMail | null> {
+  // Over a send limit: the caller answers exactly as if a code went out.
+  if (!(await hit(ctx, "codesPerClientNetwork", `${client.id}:${networkKey}`))) return null;
+  if (!(await hit(ctx, "codesPerClient", client.id))) return null;
   const preauthHash = hashToken(preauthToken);
-  // Over the per-client send limit: answer exactly as if a code went out.
-  if (!(await hit(ctx, "codesPerClient", client.id))) return { preauthToken, mail: null };
   const code = generateCode();
   const now = ctx.now();
-  const values = {
+  await ctx.db.insert(loginCodes).values({
+    preauthHash,
     clientId: client.id,
     inviteId,
-    preauthHash,
     digest: codeDigest(code, codeBinding(client.id, preauthHash), ctx.hmacKey),
     attempts: 0,
     expiresAt: new Date(now.getTime() + RETENTION.loginCodeMinutes * MINUTE),
     createdAt: now,
-  };
-  // One live code per client: a new request replaces the old one.
-  await ctx.db.insert(loginCodes).values(values).onConflictDoUpdate({ target: loginCodes.clientId, set: values });
+  });
   await ctx.db.insert(auditLog).values({ actor: "client", action: "code.sent", clientId: client.id, inviteId });
   const contact = openContact(ctx, client);
-  return { preauthToken, mail: codeMail({ to: contact.email, locale, code }) };
+  return codeMail({ to: contact.email, locale, code });
 }
 
 /**
@@ -66,8 +75,9 @@ export async function requestCodeForInvite(ctx: IntakeContext, token: string, ne
     .where(and(eq(invites.tokenHash, hashToken(token)), eq(invites.status, "invited"), gt(invites.tokenExpiresAt, ctx.now())));
   if (!row) return { status: "invalid_invite" };
   const locale = row.invite.locale as IntakeLocale;
-  const issued = await issueCode(ctx, row.client, row.invite.id, locale);
-  return { status: "sent", locale, ...issued };
+  const preauthToken = generateToken();
+  const mail = await issueCode(ctx, row.client, row.invite.id, locale, preauthToken, networkKey);
+  return { status: "sent", locale, preauthToken, mail };
 }
 
 /** Invites a returning client may open: redeemed ones, plus links still inside their 72 hours. */
@@ -80,52 +90,66 @@ function accessibleInvites(ctx: IntakeContext, clientId: string) {
 
 /**
  * The returning-client flow. Known and unknown addresses get the same answer
- * and a pre-auth cookie either way (STRIDE I3); mail is sent after the
- * response, so its latency does not reveal anything either.
+ * and a pre-auth cookie either way (STRIDE I3): the request only counts the
+ * network limit and makes a token; `issue` looks the address up and creates
+ * the code after the response has been sent.
  */
-export async function requestCodeForEmail(ctx: IntakeContext, email: string, locale: IntakeLocale, networkKey: string): Promise<CodeRequest> {
+export async function requestCodeForEmail(
+  ctx: IntakeContext,
+  email: string,
+  locale: IntakeLocale,
+  networkKey: string,
+): Promise<DeferredCodeRequest> {
   if (!(await hit(ctx, "codeRequestsPerIp", networkKey))) return { status: "rate_limited" };
-  const [client] = await ctx.db.select().from(clients).where(eq(clients.emailLookup, emailLookupKey(email, ctx.hmacKey)));
-  const open = client ? await ctx.db.select({ id: invites.id }).from(invites).where(accessibleInvites(ctx, client.id)).limit(1) : [];
-  if (!client || open.length === 0) return { status: "sent", preauthToken: generateToken(), mail: null, locale };
-  const issued = await issueCode(ctx, client, null, locale);
-  return { status: "sent", locale, ...issued };
+  const preauthToken = generateToken();
+  return {
+    status: "sent",
+    preauthToken,
+    issue: async () => {
+      const [client] = await ctx.db.select().from(clients).where(eq(clients.emailLookup, emailLookupKey(email, ctx.hmacKey)));
+      if (!client) return null;
+      const open = await ctx.db.select({ id: invites.id }).from(invites).where(accessibleInvites(ctx, client.id)).limit(1);
+      if (open.length === 0) return null;
+      return issueCode(ctx, client, null, locale, preauthToken, networkKey);
+    },
+  };
 }
 
 export type CodeCheck =
   | Readonly<{ status: "ok"; sessionToken: string; expiresAt: Date }>
   | Readonly<{ status: "wrong" | "expired" | "locked" }>;
 
-/** Step 3: redeem the code. Success consumes the invite token and starts a fresh session. */
+/**
+ * Step 3: redeem the code. The attempt is spent before the comparison, in
+ * one conditional update, so parallel guesses cannot exceed the 5 per code.
+ * Success spends every pending code and invite link of the client and
+ * starts a fresh session.
+ */
 export async function verifyLoginCode(ctx: IntakeContext, preauthToken: string, code: string): Promise<CodeCheck> {
   const preauthHash = hashToken(preauthToken);
   const now = ctx.now();
-  const [pending] = await ctx.db.select().from(loginCodes).where(eq(loginCodes.preauthHash, preauthHash));
-  if (!pending || pending.expiresAt <= now) return { status: "expired" };
-  if (pending.attempts >= MAX_CODE_ATTEMPTS || (await isOver(ctx, "codeFailuresPerClient", pending.clientId))) {
-    await ctx.db.delete(loginCodes).where(eq(loginCodes.clientId, pending.clientId));
-    return { status: "locked" };
+  const [pending] = await ctx.db
+    .update(loginCodes)
+    .set({ attempts: sql`${loginCodes.attempts} + 1` })
+    .where(and(eq(loginCodes.preauthHash, preauthHash), lt(loginCodes.attempts, MAX_CODE_ATTEMPTS), gt(loginCodes.expiresAt, now)))
+    .returning();
+  if (!pending) {
+    const [spent] = await ctx.db.select({ attempts: loginCodes.attempts }).from(loginCodes).where(eq(loginCodes.preauthHash, preauthHash));
+    return { status: spent && spent.attempts >= MAX_CODE_ATTEMPTS ? "locked" : "expired" };
   }
 
   if (!verifyCode(code, codeBinding(pending.clientId, preauthHash), ctx.hmacKey, pending.digest)) {
-    await ctx.db
-      .update(loginCodes)
-      .set({ attempts: sql`${loginCodes.attempts} + 1` })
-      .where(eq(loginCodes.clientId, pending.clientId));
-    await hit(ctx, "codeFailuresPerClient", pending.clientId);
     await ctx.db.insert(auditLog).values({ actor: "client", action: "code.failed", clientId: pending.clientId });
-    return { status: pending.attempts + 1 >= MAX_CODE_ATTEMPTS ? "locked" : "wrong" };
+    return { status: pending.attempts >= MAX_CODE_ATTEMPTS ? "locked" : "wrong" };
   }
 
   const sessionToken = generateToken();
   const expiresAt = new Date(now.getTime() + RETENTION.sessionAbsoluteHours * HOUR);
   await ctx.db.transaction(async (tx) => {
     // Delete first and check the row count: two parallel redemptions of one code cannot both win.
-    const consumed = await tx
-      .delete(loginCodes)
-      .where(and(eq(loginCodes.clientId, pending.clientId), eq(loginCodes.preauthHash, preauthHash)))
-      .returning({ id: loginCodes.clientId });
+    const consumed = await tx.delete(loginCodes).where(eq(loginCodes.preauthHash, preauthHash)).returning({ id: loginCodes.clientId });
     if (consumed.length !== 1) throw new CodeRaceError();
+    await tx.delete(loginCodes).where(eq(loginCodes.clientId, pending.clientId));
     // Every link the client could still use is spent once they are in.
     await tx
       .update(invites)

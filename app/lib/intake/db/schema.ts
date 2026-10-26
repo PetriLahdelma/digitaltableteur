@@ -60,23 +60,27 @@ export const invites = pgTable(
   ],
 );
 
-/** Pending one-time codes. One live code per client; a new code replaces it. */
+/**
+ * Pending one-time codes, one per pre-auth cookie. Keyed by the cookie, not
+ * the client, so a stranger who knows a client's address cannot replace or
+ * lock the code the client is about to type.
+ */
 export const loginCodes = pgTable(
   "intake_login_codes",
   {
+    /** SHA-256 of the pre-auth cookie the code is bound to (ASVS 6.6.2). */
+    preauthHash: text("preauth_hash").primaryKey(),
     clientId: uuid("client_id")
-      .primaryKey()
+      .notNull()
       .references(() => clients.id, { onDelete: "cascade" }),
     /** Invite redeemed by this code, when it was sent from an invite link. */
     inviteId: uuid("invite_id").references(() => invites.id, { onDelete: "cascade" }),
-    /** SHA-256 of the pre-auth cookie the code is bound to (ASVS 6.6.2). */
-    preauthHash: text("preauth_hash").notNull(),
     digest: text("digest").notNull(),
     attempts: integer("attempts").notNull().default(0),
     expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
     createdAt: created(),
   },
-  (t) => [check("intake_login_codes_attempts", sql`${t.attempts} >= 0`)],
+  (t) => [check("intake_login_codes_attempts", sql`${t.attempts} >= 0`), index("intake_login_codes_client").on(t.clientId)],
 );
 
 export const SESSION_KINDS = ["client", "admin"] as const;

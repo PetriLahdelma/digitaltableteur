@@ -122,18 +122,18 @@ describe("invite and sign-in", () => {
     expect((await verifyLoginCode(ctx, request.preauthToken, codeFrom(request.mail))).status).toBe("expired");
   });
 
-  it("answers known and unknown addresses the same way", async () => {
+  it("answers known and unknown addresses the same way and defers the lookup", async () => {
     await invite();
     const created = await invite("second@example.test");
     await signIn(created.token);
     const known = await requestCodeForEmail(ctx, "SECOND@example.test ", "en", "net-2");
     const unknown = await requestCodeForEmail(ctx, "nobody@example.test", "en", "net-2");
-    expect(known.status).toBe("sent");
-    expect(unknown.status).toBe("sent");
     if (known.status !== "sent" || unknown.status !== "sent") throw new Error();
-    expect(known.mail?.to).toBe("second@example.test");
-    expect(unknown.mail).toBeNull();
-    expect(typeof unknown.preauthToken).toBe("string");
+    // Nothing about the address is read until after the response.
+    expect(await db.select().from(loginCodes)).toHaveLength(0);
+    expect(Object.keys(known).sort()).toEqual(Object.keys(unknown).sort());
+    expect((await known.issue())?.to).toBe("second@example.test");
+    expect(await unknown.issue()).toBeNull();
   });
 
   it("rate limits code requests from one network address", async () => {
@@ -152,7 +152,7 @@ describe("invite and sign-in", () => {
 
     const again = await requestCodeForEmail(ctx, "client@example.test", "fi", "net-1");
     if (again.status !== "sent") throw new Error();
-    const check = await verifyLoginCode(ctx, again.preauthToken, codeFrom(again.mail));
+    const check = await verifyLoginCode(ctx, again.preauthToken, codeFrom(await again.issue()));
     if (check.status !== "ok") throw new Error();
     advance(29 * MINUTE);
     expect(await readSession(ctx, check.sessionToken)).not.toBeNull();
@@ -253,12 +253,44 @@ describe("drafts and submission", () => {
     expect(view?.snapshot.answers).not.toHaveProperty(hiddenField.id);
   });
 
-  it("keeps a pending code from outliving its replacement", async () => {
+  it("keeps each pending code bound to its own pre-auth cookie", async () => {
     const created = await invite();
-    const first = await requestCodeForInvite(ctx, created.token, "net-1");
-    const second = await requestCodeForInvite(ctx, created.token, "net-1");
-    if (first.status !== "sent" || second.status !== "sent") throw new Error();
-    expect((await verifyLoginCode(ctx, first.preauthToken, codeFrom(first.mail))).status).toBe("expired");
-    expect(await db.select().from(loginCodes)).toHaveLength(1);
+    const mine = await requestCodeForInvite(ctx, created.token, "net-1");
+    // A stranger who knows the address requests codes and guesses wrong.
+    const stranger = await requestCodeForEmail(ctx, "client@example.test", "en", "net-evil");
+    if (mine.status !== "sent" || stranger.status !== "sent") throw new Error();
+    await stranger.issue();
+    for (let i = 0; i < 6; i += 1) await verifyLoginCode(ctx, stranger.preauthToken, "00000000");
+    // The client's own code still works, and signing in spends every pending code.
+    expect((await verifyLoginCode(ctx, mine.preauthToken, codeFrom(mine.mail))).status).toBe("ok");
+    expect(await db.select().from(loginCodes)).toHaveLength(0);
+  });
+
+  it("spends attempts atomically, so parallel guesses stop at five", async () => {
+    const created = await invite();
+    const request = await requestCodeForInvite(ctx, created.token, "net-1");
+    if (request.status !== "sent") throw new Error();
+    const right = codeFrom(request.mail);
+    const wrong = right === "00000000" ? "11111111" : "00000000";
+    const results = await Promise.all(Array.from({ length: 12 }, () => verifyLoginCode(ctx, request.preauthToken, wrong)));
+    const [row] = await db.select().from(loginCodes);
+    expect(row.attempts).toBe(5);
+    expect(results.filter((result) => result.status === "wrong").length).toBeLessThanOrEqual(4);
+    expect((await verifyLoginCode(ctx, request.preauthToken, right)).status).toBe("locked");
+  });
+
+  it("caps codes per client and network without blocking the client elsewhere", async () => {
+    const created = await invite();
+    await signIn(created.token);
+    const mails = [];
+    for (let i = 0; i < 6; i += 1) {
+      const request = await requestCodeForEmail(ctx, "client@example.test", "en", "net-evil");
+      if (request.status !== "sent") throw new Error();
+      mails.push(await request.issue());
+    }
+    expect(mails.filter(Boolean)).toHaveLength(5);
+    const own = await requestCodeForEmail(ctx, "client@example.test", "en", "net-home");
+    if (own.status !== "sent") throw new Error();
+    expect(await own.issue()).not.toBeNull();
   });
 });

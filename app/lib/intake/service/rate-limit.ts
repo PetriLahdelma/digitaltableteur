@@ -12,10 +12,16 @@ import type { IntakeContext, Tx } from "./context";
 export const LIMITS = {
   /** Code requests from one network address. */
   codeRequestsPerIp: { limit: 20, windowMs: 60 * 60 * 1000 },
-  /** Codes emailed to one client. */
-  codesPerClient: { limit: 5, windowMs: 60 * 60 * 1000 },
-  /** Wrong codes for one client before sign-in locks for the window. */
-  codeFailuresPerClient: { limit: 10, windowMs: 24 * 60 * 60 * 1000 },
+  /**
+   * Codes emailed to one client from one network address. Keyed on both, so
+   * a stranger spending the quota does not stop the client's own requests.
+   */
+  codesPerClientNetwork: { limit: 5, windowMs: 60 * 60 * 1000 },
+  /**
+   * Codes emailed to one client in total. With 5 attempts per code this
+   * bounds guessing at 100 tries an hour against 10^8 codes.
+   */
+  codesPerClient: { limit: 20, windowMs: 60 * 60 * 1000 },
   /** Draft saves for one session, generous for autosave. */
   savesPerSession: { limit: 600, windowMs: 60 * 60 * 1000 },
 } as const;
@@ -41,13 +47,4 @@ export async function hit(ctx: Pick<IntakeContext, "db" | "now">, name: LimitNam
     })
     .returning({ count: rateLimits.count });
   return row.count <= limit;
-}
-
-/** Reads a bucket without counting. */
-export async function isOver(ctx: Pick<IntakeContext, "db" | "now">, name: LimitName, key: string): Promise<boolean> {
-  const { limit } = LIMITS[name];
-  const bucket = `${name}:${sha256Hex(key)}`;
-  const rows = await ctx.db.select().from(rateLimits).where(sql`${rateLimits.bucket} = ${bucket}`);
-  const row = rows[0];
-  return Boolean(row && row.resetAt > ctx.now() && row.count >= limit);
 }
