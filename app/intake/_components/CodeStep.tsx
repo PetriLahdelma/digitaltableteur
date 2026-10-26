@@ -5,14 +5,13 @@ import {
   AlertBanner,
   Button,
   FlexBox,
-  Text,
   TextInput,
-  Title,
 } from "@digitaltableteur/react";
 
 import type { IntakeCopyTable } from "@/app/lib/intake/copy";
 
 import { postJson } from "./api";
+import { IntakeColumns } from "./IntakePage";
 
 type Problem =
   "codeWrong" | "codeExpired" | "codeLocked" | "codeFormat" | "genericError";
@@ -58,52 +57,50 @@ export function CodeStep({
 
   const mustRestart = problem === "codeExpired" || problem === "codeLocked";
   return (
-    <form onSubmit={submit} noValidate>
-      <FlexBox direction="column" gap="var(--space-internal-16)">
-        <Title level={1} size="l">
-          {copy.codeTitle}
-        </Title>
-        <Text>{intro}</Text>
-        {mustRestart ? (
-          <AlertBanner
-            tone="warning"
-            description={copy[problem]}
-            focusOnMount
-            action={
-              <Button variant="secondary" size="sm" onClick={onRestart}>
-                {copy.requestNewCode}
-              </Button>
-            }
+    <IntakeColumns title={copy.codeTitle} intro={intro}>
+      <form onSubmit={submit} noValidate>
+        <FlexBox direction="column" gap="var(--space-internal-24)">
+          {mustRestart ? (
+            <AlertBanner
+              tone="warning"
+              description={copy[problem]}
+              focusOnMount
+              action={
+                <Button variant="secondary" size="sm" onClick={onRestart}>
+                  {copy.requestNewCode}
+                </Button>
+              }
+            />
+          ) : null}
+          <TextInput
+            label={copy.codeLabel}
+            type="text"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            maxLength={9}
+            value={code}
+            onValueChange={(value) => {
+              setCode(String(value));
+              if (problem && !mustRestart) setProblem(null);
+            }}
+            error={problem && !mustRestart ? copy[problem] : undefined}
+            disabled={mustRestart}
           />
-        ) : null}
-        <TextInput
-          label={copy.codeLabel}
-          type="text"
-          inputMode="numeric"
-          autoComplete="one-time-code"
-          maxLength={9}
-          value={code}
-          onValueChange={(value) => {
-            setCode(String(value));
-            if (problem && !mustRestart) setProblem(null);
-          }}
-          error={problem && !mustRestart ? copy[problem] : undefined}
-          disabled={mustRestart}
-        />
-        <FlexBox
-          direction="row"
-          gap="var(--space-internal-8)"
-          align="center"
-          wrap="wrap"
-        >
-          <Button submits loading={busy} disabled={mustRestart}>
-            {copy.verifyCode}
-          </Button>
-          <Button variant="tertiary" onClick={onRestart}>
-            {copy.requestNewCode}
-          </Button>
+          <FlexBox
+            direction="row"
+            gap="var(--space-internal-8)"
+            align="center"
+            wrap="wrap"
+          >
+            <Button submits loading={busy} disabled={mustRestart}>
+              {copy.verifyCode}
+            </Button>
+            <Button variant="tertiary" onClick={onRestart}>
+              {copy.requestNewCode}
+            </Button>
+          </FlexBox>
         </FlexBox>
-      </FlexBox>
-    </form>
+      </form>
+    </IntakeColumns>
   );
 }

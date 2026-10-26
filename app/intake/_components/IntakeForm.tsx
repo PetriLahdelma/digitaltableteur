@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
+  Accordion,
   AlertBanner,
   Button,
   Divider,
@@ -9,11 +10,11 @@ import {
   Grid,
   Link,
   List,
-  Pagination,
   Section,
   Text,
   Title,
 } from "@digitaltableteur/react";
+import TaskList, { type TaskListStatus, type TaskListTask } from "@dt/TaskList";
 
 import { format, type IntakeCopyTable } from "@/app/lib/intake/copy";
 import {
@@ -26,18 +27,28 @@ import type {
   Answers,
   IntakeField as Field,
   IntakeLocale,
+  IntakePage,
   IntakeSection,
   Questionnaire,
 } from "@/app/lib/intake/types";
+import { useMediaQuery } from "@/nextjs-app/shared/hooks/useMediaQuery";
 
+import { answerDisplay, answerLabel } from "./AnswerSheet";
 import { postJson } from "./api";
-import { IntakeField, fieldAnchor, isWideField } from "./IntakeField";
-import { IntakeToolbar } from "./IntakePage";
+import { IntakeField, fieldAnchor } from "./IntakeField";
 
 const AUTOSAVE_DELAY_MS = 1500;
+const REVIEW = "check-and-submit";
 
 type SaveState =
   "idle" | "saving" | "saved" | "failed" | "conflict" | "signed_out";
+
+type Step = Readonly<{
+  page: IntakePage;
+  section: IntakeSection;
+  indexInPage: number;
+  sectionsInPage: number;
+}>;
 
 function isEmpty(value: AnswerValue | undefined): boolean {
   return (
@@ -48,25 +59,35 @@ function isEmpty(value: AnswerValue | undefined): boolean {
   );
 }
 
-function fieldLabel(
-  field: Field,
-  locale: IntakeLocale,
-  copy: IntakeCopyTable,
-): string {
-  if (field.kind === "scale")
-    return format(copy.scaleLegend, {
-      min: field.minLabel[locale],
-      max: field.maxLabel[locale],
-    });
-  return field.label[locale];
+/** Definitions keep section titles in capitals for the PDF; on screen they read in sentence case. */
+function sentenceCase(text: string): string {
+  const lower = text.toLocaleLowerCase();
+  return lower.charAt(0).toLocaleUpperCase() + lower.slice(1);
 }
 
-/** Consecutive half-width fields share a two-column row; wide fields stand alone. */
+/** Every section the client can currently see, in order: one screen each. */
+function visibleSteps(questionnaire: Questionnaire, answers: Answers): Step[] {
+  return questionnaire.pages
+    .filter((page) => isVisible(page, answers))
+    .flatMap((page) => {
+      const sections = page.sections.filter((section) =>
+        isVisible(section, answers),
+      );
+      return sections.map((section, indexInPage) => ({
+        page,
+        section,
+        indexInPage,
+        sectionsInPage: sections.length,
+      }));
+    });
+}
+
+/** Consecutive half-width fields share a responsive row; wide fields take a row each. */
 function fieldRows(section: IntakeSection): Field[][] {
   const rows: Field[][] = [];
   for (const field of section.fields) {
     const last = rows.at(-1);
-    if (!isWideField(field) && last && !isWideField(last[0]) && last.length < 2)
+    if (field.width === "half" && last && last[0].width === "half")
       last.push(field);
     else rows.push([field]);
   }
@@ -74,9 +95,11 @@ function fieldRows(section: IntakeSection): Field[][] {
 }
 
 /**
- * The questionnaire, one page at a time. Answers autosave 1.5 s after the
- * last change and on every page change; each save carries the revision it
- * was based on, so a second tab cannot silently overwrite newer answers.
+ * The questionnaire as a task list (GOV.UK "complete multiple tasks"): a
+ * rail of parts with their status beside one short screen per section.
+ * Answers autosave 1.5 s after the last change and on every step change;
+ * each save carries the revision it was based on, so a second tab cannot
+ * silently overwrite newer answers.
  */
 export function IntakeForm({
   inviteId,
@@ -85,6 +108,7 @@ export function IntakeForm({
   copy,
   initialAnswers,
   initialRevision,
+  initialCompleted,
 }: {
   inviteId: string;
   questionnaire: Questionnaire;
@@ -92,29 +116,47 @@ export function IntakeForm({
   copy: IntakeCopyTable;
   initialAnswers: Answers;
   initialRevision: number;
+  initialCompleted: string[];
 }) {
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({
     ...initialAnswers,
   });
-  const [pageIndex, setPageIndex] = useState(0);
+  const [completed, setCompleted] = useState<string[]>(initialCompleted);
+  const steps = useMemo(
+    () => visibleSteps(questionnaire, answers),
+    [questionnaire, answers],
+  );
+  const [current, setCurrent] = useState<string>(() => {
+    const firstOpen = steps.find(
+      (step) => !initialCompleted.includes(step.page.id),
+    );
+    return (firstOpen ?? steps[0]).section.id;
+  });
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  // Bumped on every failed submit, so the summary re-mounts and takes focus again.
   const [summaryAttempt, setSummaryAttempt] = useState(0);
   const [submitting, setSubmitting] = useState(false);
+  const narrow = useMediaQuery("(width < 64rem)");
 
   const revision = useRef(initialRevision);
-  const latest = useRef(answers);
-  const dirty = useRef(false);
+  const latest = useRef({ answers, completed });
+  // Pre-filled answers (name and email from the invite) exist only here until saved.
+  const dirty = useRef(initialRevision === 0 && Object.keys(initialAnswers).length > 0);
   const inFlight = useRef<Promise<boolean> | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const focusAfterRender = useRef<string | null>(null);
 
-  const pages = useMemo(
-    () => questionnaire.pages.filter((page) => isVisible(page, answers)),
-    [questionnaire, answers],
-  );
-  const page = pages[Math.min(pageIndex, pages.length - 1)];
+  // Resume on the step in the URL, so a reload lands where the client was.
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get("step");
+    if (
+      fromUrl &&
+      (fromUrl === REVIEW || steps.some((step) => step.section.id === fromUrl))
+    )
+      setCurrent(fromUrl);
+    // Only on arrival.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const save = useCallback(async (): Promise<boolean> => {
     if (inFlight.current) await inFlight.current;
@@ -124,7 +166,11 @@ export function IntakeForm({
     const run = (async () => {
       const { httpStatus, data } = await postJson(
         `/api/intake/forms/${inviteId}/draft`,
-        { revision: revision.current, answers: latest.current },
+        {
+          revision: revision.current,
+          answers: latest.current.answers,
+          completedParts: latest.current.completed,
+        },
         "PUT",
       );
       if (httpStatus === 200 && typeof data.revision === "number") {
@@ -154,14 +200,14 @@ export function IntakeForm({
 
   const update = useCallback(
     (fieldId: string, value: AnswerValue) => {
-      setAnswers((current) => {
-        const next = { ...current, [fieldId]: value };
-        latest.current = next;
+      setAnswers((previous) => {
+        const next = { ...previous, [fieldId]: value };
+        latest.current = { ...latest.current, answers: next };
         return next;
       });
-      setErrors((current) => {
-        if (!current[fieldId]) return current;
-        const { [fieldId]: _removed, ...rest } = current;
+      setErrors((previous) => {
+        if (!previous[fieldId]) return previous;
+        const { [fieldId]: _removed, ...rest } = previous;
         return rest;
       });
       dirty.current = true;
@@ -171,7 +217,6 @@ export function IntakeForm({
     [save],
   );
 
-  // Retry failed saves, and save before the tab closes.
   useEffect(() => {
     if (saveState !== "failed") return undefined;
     const retry = setTimeout(() => void save(), 5000);
@@ -188,61 +233,85 @@ export function IntakeForm({
     return () => window.removeEventListener("beforeunload", beforeUnload);
   }, [flush]);
 
-  // After a page change, move focus to the page heading or the field a summary link points at.
+  // After a step change, focus the new heading (or the field an error link points at).
   useEffect(() => {
     const target = focusAfterRender.current;
     if (!target) return;
     focusAfterRender.current = null;
     const element = document.getElementById(target);
-    const focusable = element?.matches("h2")
+    const focusable = element?.matches("h1")
       ? element
       : element?.querySelector<HTMLElement>(
-          "input, textarea, button, [tabindex]",
+          "input, textarea, select, button, [tabindex]",
         );
     focusable?.focus();
-    if (element?.matches("h2")) window.scrollTo({ top: 0 });
-  }, [pageIndex, page]);
+    if (element?.matches("h1")) window.scrollTo({ top: 0 });
+  }, [current]);
 
-  async function goToPage(index: number) {
+  function goTo(stepId: string, focusId = "intake-step-title") {
     void flush();
-    focusAfterRender.current = "intake-page-title";
-    setPageIndex(index);
+    focusAfterRender.current = focusId;
+    setCurrent(stepId);
+    const url = new URL(window.location.href);
+    url.searchParams.set("step", stepId);
+    window.history.replaceState(
+      null,
+      "",
+      `${url.pathname}${url.search}${url.hash}`,
+    );
+  }
+
+  function markCompleted(pageId: string) {
+    if (latest.current.completed.includes(pageId)) return;
+    const next = [...latest.current.completed, pageId];
+    latest.current = { ...latest.current, completed: next };
+    setCompleted(next);
+    dirty.current = true;
+  }
+
+  const stepIndex = steps.findIndex(
+    (candidate) => candidate.section.id === current,
+  );
+  const step = stepIndex >= 0 ? steps[stepIndex] : null;
+  const nextStep = stepIndex >= 0 ? steps[stepIndex + 1] : undefined;
+  const firstPageId = steps[0]?.page.id;
+  const canReview = firstPageId ? completed.includes(firstPageId) : false;
+
+  function continueFrom(from: Step) {
+    if (from.indexInPage === from.sectionsInPage - 1)
+      markCompleted(from.page.id);
+    const next = steps[steps.indexOf(from) + 1];
+    goTo(next ? next.section.id : REVIEW);
+  }
+
+  function goBack() {
+    if (current === REVIEW) goTo(steps[steps.length - 1].section.id);
+    else if (stepIndex > 0) goTo(steps[stepIndex - 1].section.id);
+    else window.location.assign("/intake/forms");
   }
 
   function goToField(fieldId: string) {
-    const index = pages.findIndex((candidate) =>
-      candidate.sections.some(
-        (section) =>
-          isVisible(section, answers) &&
-          section.fields.some((field) => field.id === fieldId),
-      ),
+    const target = steps.find((candidate) =>
+      candidate.section.fields.some((field) => field.id === fieldId),
     );
-    focusAfterRender.current = fieldAnchor(fieldId);
-    if (index >= 0 && index !== pageIndex) setPageIndex(index);
-    else {
-      const element = document.getElementById(fieldAnchor(fieldId));
-      element?.querySelector<HTMLElement>("input, textarea, button")?.focus();
-      focusAfterRender.current = null;
-    }
+    if (target) goTo(target.section.id, fieldAnchor(fieldId));
   }
 
-  function missingRequired(): string[] {
-    return visibleFields(questionnaire, answers)
-      .filter(
-        (field) => field.required === "submit" && isEmpty(answers[field.id]),
-      )
-      .map((field) => field.id);
-  }
-
-  function showProblems(fieldIds: string[], message: string) {
-    setErrors(Object.fromEntries(fieldIds.map((id) => [id, message])));
+  function showProblems(fieldIds: string[]) {
+    setErrors(
+      Object.fromEntries(fieldIds.map((id) => [id, copy.requiredError])),
+    );
     setSummaryAttempt((attempt) => attempt + 1);
   }
 
   async function submit() {
-    const missing = missingRequired();
+    const missing = visibleFields(questionnaire, answers)
+      .filter(
+        (field) => field.required === "submit" && isEmpty(answers[field.id]),
+      )
+      .map((field) => field.id);
     if (missing.length > 0) {
-      showProblems(missing, copy.requiredError);
+      showProblems(missing);
       return;
     }
     setSubmitting(true);
@@ -261,23 +330,81 @@ export function IntakeForm({
     }
     setSubmitting(false);
     if (httpStatus === 422 && Array.isArray(data.fields))
-      showProblems(data.fields as string[], copy.requiredError);
+      showProblems(data.fields as string[]);
     else if (httpStatus === 409) setSaveState("conflict");
     else if (httpStatus === 401) setSaveState("signed_out");
     else setSaveState("failed");
   }
 
+  // The rail: one task per visible part, then check and submit.
+  const pages = questionnaire.pages.filter((page) => isVisible(page, answers));
+  const partStatus = (page: IntakePage): TaskListStatus => {
+    if (completed.includes(page.id)) return "completed";
+    const answered = page.sections.some((section) =>
+      section.fields.some(
+        (field) => isInputField(field) && !isEmpty(answers[field.id]),
+      ),
+    );
+    return answered ? "inProgress" : "notStarted";
+  };
+  const tasks: TaskListTask[] = [
+    ...pages.map((page, index) => {
+      const pageSteps = steps.filter(
+        (candidate) => candidate.page.id === page.id,
+      );
+      const currentIndex = pageSteps.findIndex(
+        (candidate) => candidate.section.id === current,
+      );
+      return {
+        id: page.id,
+        label: page.title[locale],
+        hint: index === 0 ? copy.neededBeforeCall : undefined,
+        status: partStatus(page),
+        steps: pageSteps.map((candidate, sectionIndex) => ({
+          id: candidate.section.id,
+          label: sentenceCase(candidate.section.title[locale]),
+          done:
+            completed.includes(page.id) ||
+            (currentIndex >= 0 && sectionIndex < currentIndex),
+        })),
+      };
+    }),
+    {
+      id: REVIEW,
+      label: copy.checkAndSubmit,
+      status: canReview ? "notStarted" : "cannotStart",
+    },
+  ];
+  const rail = (
+    <TaskList
+      label={copy.partsLabel}
+      tasks={tasks}
+      currentTaskId={current === REVIEW ? REVIEW : step?.page.id}
+      currentStepId={current === REVIEW ? undefined : current}
+      statusLabels={{
+        notStarted: copy.statusNotStarted,
+        inProgress: copy.statusInProgress,
+        completed: copy.statusCompleted,
+        cannotStart: copy.statusAfterFirstPart,
+      }}
+      onSelect={(taskId, sectionId) => {
+        if (taskId === REVIEW) return goTo(REVIEW);
+        const first = steps.find((candidate) => candidate.page.id === taskId);
+        goTo(sectionId ?? first?.section.id ?? current);
+      }}
+    />
+  );
+
   const fieldsById = useMemo(
     () =>
       new Map(
         questionnaire.pages
-          .flatMap((p) => p.sections.flatMap((s) => s.fields))
+          .flatMap((page) => page.sections.flatMap((section) => section.fields))
           .map((field) => [field.id, field]),
       ),
     [questionnaire],
   );
   const errorIds = Object.keys(errors);
-  const isLast = pageIndex >= pages.length - 1;
   const statusText =
     saveState === "saving"
       ? copy.saving
@@ -299,20 +426,8 @@ export function IntakeForm({
     />
   );
 
-  return (
-    <FlexBox direction="column" gap="var(--space-internal-24)">
-      <IntakeToolbar
-        start={
-          <Link href="/intake/forms" size="sm">
-            {copy.backToIntakes}
-          </Link>
-        }
-        signOutLabel={copy.signOut}
-      />
-      <Title level={1} size="l">
-        {questionnaire.title[locale]}
-      </Title>
-
+  const alerts = (
+    <>
       {saveState === "conflict" || saveState === "signed_out" ? (
         <AlertBanner
           tone="warning"
@@ -332,7 +447,6 @@ export function IntakeForm({
           }
         />
       ) : null}
-
       {summaryAttempt > 0 && errorIds.length > 0 ? (
         <AlertBanner
           key={summaryAttempt}
@@ -354,7 +468,7 @@ export function IntakeForm({
                         goToField(id);
                       }}
                     >
-                      {field ? fieldLabel(field, locale, copy) : id}
+                      {field ? answerLabel(field, locale) : id}
                     </Link>
                   );
                 })}
@@ -363,92 +477,196 @@ export function IntakeForm({
           }
         />
       ) : null}
+    </>
+  );
 
-      <Section spacing="none" aria-labelledby="intake-page-title">
-        <FlexBox direction="column" gap="var(--space-internal-16)">
-          <Text size="xs">{page.part[locale]}</Text>
-          <Title level={2} size="m" id="intake-page-title" tabIndex={-1}>
-            {page.title[locale]}
-          </Title>
-          <Text>{page.intro[locale]}</Text>
-        </FlexBox>
-      </Section>
+  const back = (
+    <FlexBox direction="row">
+      <Link
+        href="#"
+        size="sm"
+        onClick={(event: React.MouseEvent) => {
+          event.preventDefault();
+          goBack();
+        }}
+      >
+        {copy.back}
+      </Link>
+    </FlexBox>
+  );
 
-      {page.sections
-        .filter((section) => isVisible(section, answers))
-        .map((section) => (
+  const saveStatus = (
+    <Text as="span" size="s" role="status" aria-live="polite">
+      {statusText}
+    </Text>
+  );
+
+  const content =
+    current === REVIEW || !step ? (
+      <FlexBox direction="column" gap="var(--space-internal-24)">
+        {back}
+        {alerts}
+        <Title level={1} size="m" id="intake-step-title" tabIndex={-1}>
+          {copy.checkAndSubmit}
+        </Title>
+        <Text>{copy.checkIntro}</Text>
+        {steps.map((candidate) => (
           <Section
+            key={candidate.section.id}
             spacing="none"
-            key={section.id}
-            aria-labelledby={`section-${section.id}`}
+            aria-labelledby={`review-${candidate.section.id}`}
           >
-            <FlexBox direction="column" gap="var(--space-internal-16)">
+            <FlexBox direction="column" gap="var(--space-internal-12)">
               <Divider />
-              <Title level={3} size="xs" id={`section-${section.id}`}>
-                {section.title[locale]}
-              </Title>
-              {section.description ? (
-                <Text size="s">{section.description[locale]}</Text>
-              ) : null}
-              {fieldRows(section).map((row) =>
-                row.length === 1 && isWideField(row[0]) ? (
-                  renderField(row[0])
-                ) : (
-                  <Grid
-                    key={row[0].id}
-                    columns={1}
-                    tabletColumns={2}
-                    gap="var(--space-internal-24)"
+              <FlexBox
+                direction="row"
+                justify="space-between"
+                align="baseline"
+                gap="var(--space-internal-16)"
+              >
+                <Title
+                  level={2}
+                  size="xs"
+                  id={`review-${candidate.section.id}`}
+                >
+                  {sentenceCase(candidate.section.title[locale])}
+                </Title>
+                <Link
+                  href="#"
+                  size="sm"
+                  onClick={(event: React.MouseEvent) => {
+                    event.preventDefault();
+                    goTo(candidate.section.id);
+                  }}
+                >
+                  {copy.change}
+                </Link>
+              </FlexBox>
+              <Grid
+                columns={1}
+                tabletColumns={2}
+                gap="var(--space-internal-16)"
+              >
+                {candidate.section.fields.filter(isInputField).map((field) => (
+                  <FlexBox
+                    key={field.id}
+                    direction="column"
+                    gap="var(--space-internal-4)"
                   >
-                    {row.map(renderField)}
-                  </Grid>
-                ),
-              )}
-              {section.closing ? (
-                <Text size="s">{section.closing[locale]}</Text>
-              ) : null}
+                    <Text as="span" size="s">
+                      {answerLabel(field, locale)}
+                    </Text>
+                    <Text as="span">
+                      {answerDisplay(field, answers[field.id], locale)}
+                    </Text>
+                  </FlexBox>
+                ))}
+              </Grid>
             </FlexBox>
           </Section>
         ))}
-      {page.closing ? <Text size="s">{page.closing[locale]}</Text> : null}
-
-      <Divider />
-      <FlexBox
-        direction="row"
-        gap="var(--space-internal-16)"
-        justify="space-between"
-        align="center"
-        wrap="wrap"
-      >
-        <Text size="s">
-          {format(copy.pageOf, { page: pageIndex + 1, total: pages.length })}
-        </Text>
-        <Text as="span" size="s" role="status" aria-live="polite">
-          {statusText}
-        </Text>
-      </FlexBox>
-      <Pagination
-        label={copy.pagesLabel}
-        currentPage={pageIndex + 1}
-        totalPages={pages.length}
-        onPageChange={(next: number) => void goToPage(next - 1)}
-      />
-      {isLast ? (
-        <FlexBox direction="column" gap="var(--space-internal-8)">
-          <Text size="s">{copy.submitHint}</Text>
-          <FlexBox direction="row" gap="var(--space-internal-8)" wrap="wrap">
-            <Button onClick={submit} loading={submitting}>
-              {copy.submit}
-            </Button>
-          </FlexBox>
-        </FlexBox>
-      ) : (
-        <FlexBox direction="row" gap="var(--space-internal-8)" wrap="wrap">
-          <Button onClick={() => void goToPage(pageIndex + 1)}>
-            {copy.nextPage}
+        <Divider />
+        <Text size="s">{copy.submitHint}</Text>
+        <FlexBox
+          direction="row"
+          align="center"
+          gap="var(--space-internal-16)"
+          wrap="wrap"
+        >
+          <Button onClick={submit} loading={submitting}>
+            {copy.submit}
           </Button>
+          {saveStatus}
         </FlexBox>
-      )}
-    </FlexBox>
+      </FlexBox>
+    ) : (
+      <FlexBox direction="column" gap="var(--space-internal-24)">
+        {back}
+        {alerts}
+        <FlexBox direction="column" gap="var(--space-internal-8)">
+          <Text size="s">
+            {format(copy.sectionCaption, {
+              part: step.page.title[locale],
+              n: step.indexInPage + 1,
+              total: step.sectionsInPage,
+            })}
+          </Text>
+          <Title level={1} size="m" id="intake-step-title" tabIndex={-1}>
+            {sentenceCase(step.section.title[locale])}
+          </Title>
+        </FlexBox>
+        {step.indexInPage === 0 ? <Text>{step.page.intro[locale]}</Text> : null}
+        {step.section.description ? (
+          <Text size="s">{step.section.description[locale]}</Text>
+        ) : null}
+        {fieldRows(step.section).map((row) =>
+          row[0].width === "half" ? (
+            <Grid
+              key={row[0].id}
+              columns={1}
+              tabletColumns={2}
+              desktopColumns={3}
+              gap="var(--space-internal-24)"
+            >
+              {row.map(renderField)}
+            </Grid>
+          ) : (
+            renderField(row[0])
+          ),
+        )}
+        {step.section.closing ? (
+          <Text size="s">{step.section.closing[locale]}</Text>
+        ) : null}
+        {step.indexInPage === step.sectionsInPage - 1 && step.page.closing ? (
+          <Text size="s">{step.page.closing[locale]}</Text>
+        ) : null}
+        <FlexBox
+          direction="row"
+          align="center"
+          gap="var(--space-internal-16)"
+          wrap="wrap"
+        >
+          <Button onClick={() => continueFrom(step)}>
+            {format(copy.continueTo, {
+              next: nextStep
+                ? sentenceCase(nextStep.section.title[locale])
+                : copy.checkAndSubmit,
+            })}
+          </Button>
+          {saveStatus}
+        </FlexBox>
+      </FlexBox>
+    );
+
+  if (narrow) {
+    return (
+      <FlexBox direction="column" gap="var(--space-internal-24)">
+        <Accordion
+          items={[
+            {
+              id: "parts",
+              title: `${copy.partsLabel}: ${questionnaire.title[locale]}`,
+              content: rail,
+            },
+          ]}
+          variant="divided"
+        />
+        {content}
+      </FlexBox>
+    );
+  }
+
+  return (
+    <Grid
+      columns="minmax(16rem, 21rem) minmax(0, 1fr)"
+      gap="var(--space-layout-64)"
+      align="start"
+    >
+      <FlexBox direction="column" gap="var(--space-internal-16)">
+        <Text size="s">{questionnaire.title[locale]}</Text>
+        {rail}
+      </FlexBox>
+      {content}
+    </Grid>
   );
 }

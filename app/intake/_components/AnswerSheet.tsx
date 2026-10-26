@@ -1,7 +1,6 @@
 import {
   Divider,
   FlexBox,
-  Grid,
   Section,
   Text,
   Title,
@@ -17,7 +16,7 @@ import type {
   Questionnaire,
 } from "@/app/lib/intake/types";
 
-function label(field: IntakeField, locale: IntakeLocale): string {
+export function answerLabel(field: IntakeField, locale: IntakeLocale): string {
   const t = intakeCopy(locale);
   if (field.kind === "scale")
     return t("scaleLegend", {
@@ -27,7 +26,7 @@ function label(field: IntakeField, locale: IntakeLocale): string {
   return field.label[locale];
 }
 
-function display(
+export function answerDisplay(
   field: IntakeField,
   value: AnswerValue | undefined,
   locale: IntakeLocale,
@@ -48,6 +47,11 @@ function display(
             id,
         )
         .join(", ");
+    case "select":
+      return (
+        field.options.find((option) => option.id === value)?.label[locale] ??
+        String(value)
+      );
     case "confirm":
       return value === true ? t("yes") : t("no");
     case "scale":
@@ -57,7 +61,7 @@ function display(
   }
 }
 
-/** Read-only answers, page by page: each answer under its question, two to a row from tablet width. */
+/** Read-only answers, page by page: each answer under its question. */
 export function AnswerSheet({
   questionnaire,
   answers,
@@ -93,11 +97,7 @@ export function AnswerSheet({
                     <Title level={3} size="xs">
                       {section.title[locale]}
                     </Title>
-                    <Grid
-                      columns={1}
-                      tabletColumns={2}
-                      gap="var(--space-internal-16)"
-                    >
+                    <FlexBox direction="column" gap="var(--space-internal-16)">
                       {section.fields.filter(isInputField).map((field) => (
                         <FlexBox
                           key={field.id}
@@ -105,14 +105,14 @@ export function AnswerSheet({
                           gap="var(--space-internal-4)"
                         >
                           <Text as="span" size="s">
-                            {label(field, locale)}
+                            {answerLabel(field, locale)}
                           </Text>
                           <Text as="span">
-                            {display(field, answers[field.id], locale)}
+                            {answerDisplay(field, answers[field.id], locale)}
                           </Text>
                         </FlexBox>
                       ))}
-                    </Grid>
+                    </FlexBox>
                   </FlexBox>
                 ))}
             </FlexBox>

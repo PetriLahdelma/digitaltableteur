@@ -21,8 +21,8 @@ Generated from `app/lib/intake` by `npm run generate:intake-data-map`. Do not ed
 | Client intake | `contact_role` | text | no | Personal |
 | Client intake | `email` | email | on submit | Personal |
 | Client intake | `phone` | tel | no | Personal |
-| Client intake | `timezone` | text | no | Personal |
-| Client intake | `contact_method` | text | no | Personal |
+| Client intake | `timezone` | select | no | Personal |
+| Client intake | `contact_method` | select | no | Personal |
 | Client intake | `services` | choices | no | Operational |
 | Client intake | `project_summary` | longText | on submit | Business confidential |
 | Client intake | `success` | longText | on submit | Business confidential |
@@ -95,7 +95,8 @@ Generated from `app/lib/intake` by `npm run generate:intake-data-map`. Do not ed
 | Design systems intake | `email` | email | on submit | Personal |
 | Design systems intake | `role` | text | no | Personal |
 | Design systems intake | `phone` | tel | no | Personal |
-| Design systems intake | `timezone` | text | no | Personal |
+| Design systems intake | `timezone` | select | no | Personal |
+| Design systems intake | `contact_method` | select | no | Personal |
 | Design systems intake | `system_links` | text | no | Business confidential |
 | Design systems intake | `services` | choices | no | Operational |
 | Design systems intake | `main_problem` | longText | on submit | Business confidential |

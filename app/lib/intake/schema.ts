@@ -43,6 +43,10 @@ function valueSchema(field: InputField): z.ZodType {
         .max(ids.length)
         .refine((values) => new Set(values).size === values.length, "Duplicate option");
     }
+    case "select": {
+      const ids = field.options.map((option) => option.id) as [string, ...string[]];
+      return z.union([z.literal(""), z.enum(ids)]);
+    }
     case "scale":
       return z.number().int().min(field.min).max(field.max);
     case "confirm":

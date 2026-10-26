@@ -1,4 +1,5 @@
 import type { Questionnaire } from "../types";
+import { CONTACT_METHOD_OPTIONS, TIME_ZONE_OPTIONS } from "./shared-options";
 
 /**
  * Client intake & brand discovery, schema version 1.0.0.
@@ -74,14 +75,16 @@ export const CLIENT_BRAND_DISCOVERY_V1 = {
               id: "timezone",
               label: { en: "Location / time zone", fi: "Sijainti / aikavyöhyke", sv: "Ort / tidszon" },
               width: "half",
-              kind: "text",
+              kind: "select",
+              options: TIME_ZONE_OPTIONS,
               sensitivity: "personal",
             },
             {
               id: "contact_method",
               label: { en: "Preferred contact method", fi: "Toivottu yhteydenottotapa", sv: "Önskat kontaktsätt" },
               width: "half",
-              kind: "text",
+              kind: "select",
+              options: CONTACT_METHOD_OPTIONS,
               sensitivity: "personal",
             },
           ],

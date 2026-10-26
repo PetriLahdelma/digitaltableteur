@@ -4,16 +4,16 @@ import { useEffect, useState } from "react";
 import {
   AlertBanner,
   Button,
-  Link,
   FlexBox,
+  Link,
   Text,
-  Title,
 } from "@digitaltableteur/react";
 
 import type { IntakeCopyTable } from "@/app/lib/intake/copy";
 import type { IntakeLocale } from "@/app/lib/intake/types";
 
 import { postJson } from "./api";
+import { IntakeColumns } from "./IntakePage";
 import { CodeStep } from "./CodeStep";
 
 const TOKEN = /^[A-Za-z0-9_-]{43}$/;
@@ -65,62 +65,36 @@ export function InviteFlow({
     </Button>
   );
 
+  if (step === "invalid" || token === null) {
+    return (
+      <IntakeColumns title={copy.inviteTitle}>
+        <AlertBanner
+          tone={step === "invalid" ? "warning" : "info"}
+          description={
+            step === "invalid" ? copy.inviteInvalid : copy.inviteMissing
+          }
+          focusOnMount={step === "invalid"}
+        />
+        <FlexBox direction="row">{signInLink}</FlexBox>
+      </IntakeColumns>
+    );
+  }
+
   return (
-    <FlexBox direction="column" gap="var(--space-internal-16)">
-      <Title level={1} size="l">
-        {copy.inviteTitle}
-      </Title>
-      {step === "invalid" ? (
-        <>
-          <AlertBanner
-            tone="warning"
-            description={copy.inviteInvalid}
-            focusOnMount
-          />
-          <FlexBox
-            direction="row"
-            gap="var(--space-internal-8)"
-            align="center"
-            wrap="wrap"
-          >
-            {signInLink}
-          </FlexBox>
-        </>
-      ) : token === null ? (
-        <>
-          <AlertBanner tone="info" description={copy.inviteMissing} />
-          <FlexBox
-            direction="row"
-            gap="var(--space-internal-8)"
-            align="center"
-            wrap="wrap"
-          >
-            {signInLink}
-          </FlexBox>
-        </>
-      ) : (
-        <>
-          <Text>{copy.inviteIntro}</Text>
-          {problem ? (
-            <AlertBanner tone="error" description={problem} focusOnMount />
-          ) : null}
-          <Text size="s">
-            <Link href={`/intake/privacy?lang=${locale}`}>
-              {copy.privacyBeforeCode}
-            </Link>
-          </Text>
-          <FlexBox
-            direction="row"
-            gap="var(--space-internal-8)"
-            align="center"
-            wrap="wrap"
-          >
-            <Button onClick={proceed} loading={busy} disabled={!token}>
-              {copy.continue}
-            </Button>
-          </FlexBox>
-        </>
-      )}
-    </FlexBox>
+    <IntakeColumns title={copy.inviteTitle} intro={copy.inviteIntro}>
+      <Text size="s">
+        <Link href={`/intake/privacy?lang=${locale}`}>
+          {copy.privacyBeforeCode}
+        </Link>
+      </Text>
+      {problem ? (
+        <AlertBanner tone="error" description={problem} focusOnMount />
+      ) : null}
+      <FlexBox direction="row">
+        <Button onClick={proceed} loading={busy} disabled={!token}>
+          {copy.continue}
+        </Button>
+      </FlexBox>
+    </IntakeColumns>
   );
 }

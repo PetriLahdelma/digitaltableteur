@@ -48,13 +48,19 @@ export type ChoicesField = FieldBase &
     /** The section title doubles as the group legend. */
     labelIsSectionTitle?: true;
   }>;
+/** One choice from a fixed list, shown as a dropdown. */
+export type SelectField = FieldBase &
+  Readonly<{
+    kind: "select";
+    options: readonly Readonly<{ id: string; label: LocalizedCopy }>[];
+  }>;
 export type ScaleField = Omit<FieldBase, "label" | "help"> &
   Readonly<{ kind: "scale"; min: 1; max: 5; minLabel: LocalizedCopy; maxLabel: LocalizedCopy }>;
 export type ConfirmField = FieldBase & Readonly<{ kind: "confirm" }>;
 /** Display only: the server stamps the submission date. Never an answer. */
 export type SubmissionDateField = FieldBase & Readonly<{ kind: "submissionDate" }>;
 
-export type IntakeField = TextField | LongTextField | ChoicesField | ScaleField | ConfirmField | SubmissionDateField;
+export type IntakeField = TextField | LongTextField | ChoicesField | SelectField | ScaleField | ConfirmField | SubmissionDateField;
 
 export type IntakeSection = Readonly<{
   id: string;

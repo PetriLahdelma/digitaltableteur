@@ -22,7 +22,11 @@ export function IntakeLanguage({ locale }: { locale: IntakeLocale }) {
   useEffect(() => {
     if (!arrived.current) {
       arrived.current = true;
-      if (language !== locale) void changeLanguage(locale);
+      // Always, not only when different: this also saves the page's language
+      // as the site preference before I18nProvider (a parent, so its effect
+      // runs after this one) applies the previously saved language, which
+      // would otherwise look like a switch in the header.
+      void changeLanguage(locale);
       return;
     }
     // Swedish is not offered for intake yet (ENABLED_INTAKE_LOCALES): it falls back to English.

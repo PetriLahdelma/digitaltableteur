@@ -37,7 +37,7 @@ const FIGMA_FIELDS: Record<string, string[]> = {
     "acknowledgement_name",
   ],
   "design-systems-discovery": [
-    "contact_name", "company", "email", "role", "phone", "timezone", "system_links", "services", "main_problem",
+    "contact_name", "company", "email", "role", "phone", "timezone", "contact_method", "system_links", "services", "main_problem",
     "desired_change", "budget", "timing", "trigger", "purpose", "scope", "users", "reach", "sources",
     "current_state", "mismatch", "evidence", "token_source", "themes", "foundations", "coverage", "a11y",
     "behaviour", "priority_components", "stack", "distribution", "parity", "verification", "documentation",

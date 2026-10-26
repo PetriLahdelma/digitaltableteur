@@ -61,6 +61,10 @@ export type DraftState = Readonly<{
   locale: IntakeLocale;
   answers: Answers;
   revision: number;
+  /** Page ids the client has finished. */
+  completedParts: string[];
+  /** Name and email from the invite, offered as answers before the first save. */
+  contact: Readonly<{ name: string; email: string }>;
 }>;
 
 async function activeInvite(ctx: IntakeContext, clientId: string, inviteId: string) {
@@ -73,16 +77,23 @@ async function activeInvite(ctx: IntakeContext, clientId: string, inviteId: stri
 
 /** Null when the invite is not this client's or is no longer editable. */
 export async function loadDraft(ctx: IntakeContext, clientId: string, inviteId: string): Promise<DraftState | null> {
-  const invite = await activeInvite(ctx, clientId, inviteId);
-  const questionnaire = invite && getQuestionnaire(invite.questionnaireId, invite.questionnaireVersion);
-  if (!invite || !questionnaire) return null;
+  const [row] = await ctx.db
+    .select({ invite: invites, client: clients })
+    .from(invites)
+    .innerJoin(clients, eq(clients.id, invites.clientId))
+    .where(and(eq(invites.id, inviteId), eq(invites.clientId, clientId), eq(invites.status, "active")));
+  const questionnaire = row && getQuestionnaire(row.invite.questionnaireId, row.invite.questionnaireVersion);
+  if (!row || !questionnaire) return null;
   const [draft] = await ctx.db.select().from(drafts).where(eq(drafts.inviteId, inviteId));
+  const contact = openContact(ctx, row.client);
   return {
     inviteId,
     questionnaire,
-    locale: invite.locale as IntakeLocale,
+    locale: row.invite.locale as IntakeLocale,
     answers: draft ? openJson<Answers>(draft.answersSealed, ctx.ring, draftAad(inviteId)) : {},
     revision: draft?.revision ?? 0,
+    completedParts: draft?.completedParts ?? [],
+    contact: { name: contact.name, email: contact.email },
   };
 }
 
@@ -100,7 +111,7 @@ export async function saveDraft(
   ctx: IntakeContext,
   clientId: string,
   inviteId: string,
-  input: { revision: number; answers: unknown },
+  input: { revision: number; answers: unknown; completedParts?: string[] },
 ): Promise<SaveResult> {
   const invite = await activeInvite(ctx, clientId, inviteId);
   const questionnaire = invite && getQuestionnaire(invite.questionnaireId, invite.questionnaireVersion);
@@ -108,20 +119,24 @@ export async function saveDraft(
   const parsed = draftSchema(questionnaire).safeParse(input.answers);
   if (!parsed.success) return { status: "invalid", fields: [...new Set(parsed.error.issues.map((issue) => String(issue.path[0] ?? "")))] };
 
+  const pageIds = new Set(questionnaire.pages.map((page) => page.id));
+  const completedParts = [...new Set(input.completedParts ?? [])];
+  if (completedParts.some((id) => !pageIds.has(id))) return { status: "invalid", fields: ["completedParts"] };
+
   const sealed = sealJson(parsed.data, ctx.ring, draftAad(inviteId));
   const now = ctx.now();
   const next = input.revision + 1;
   if (input.revision === 0) {
     const inserted = await ctx.db
       .insert(drafts)
-      .values({ inviteId, revision: 1, answersSealed: sealed, updatedAt: now })
+      .values({ inviteId, revision: 1, answersSealed: sealed, completedParts, updatedAt: now })
       .onConflictDoNothing()
       .returning({ revision: drafts.revision });
     return inserted.length === 1 ? { status: "saved", revision: 1 } : { status: "conflict" };
   }
   const updated = await ctx.db
     .update(drafts)
-    .set({ revision: next, answersSealed: sealed, updatedAt: now })
+    .set({ revision: next, answersSealed: sealed, completedParts, updatedAt: now })
     .where(and(eq(drafts.inviteId, inviteId), eq(drafts.revision, input.revision)))
     .returning({ revision: drafts.revision });
   return updated.length === 1 ? { status: "saved", revision: next } : { status: "conflict" };

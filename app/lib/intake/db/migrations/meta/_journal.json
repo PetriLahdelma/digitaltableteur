@@ -15,6 +15,13 @@
       "when": 1793049917067,
       "tag": "0001_login_codes_per_preauth",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793053040384,
+      "tag": "0002_draft_completed_parts",
+      "breakpoints": true
     }
   ]
 }

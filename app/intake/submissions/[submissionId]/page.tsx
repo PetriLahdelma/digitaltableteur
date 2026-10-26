@@ -13,7 +13,7 @@ import { getSubmission } from "@/app/lib/intake/service/forms";
 import { currentClient } from "@/app/lib/intake/service/session";
 
 import { AnswerSheet } from "../../_components/AnswerSheet";
-import { IntakePage, IntakeToolbar } from "../../_components/IntakePage";
+import { IntakeColumns, IntakePage } from "../../_components/IntakePage";
 import { requestLocale } from "../../_components/locale";
 
 export const preferredRegion = "fra1";
@@ -41,39 +41,39 @@ export default async function IntakeSubmissionPage({
   const t = intakeCopy(locale);
 
   return (
-    <IntakePage locale={locale} wide>
-      <IntakeToolbar
-        start={
-          <Link href="/intake/forms" size="sm">
-            {t("backToIntakes")}
-          </Link>
+    <IntakePage locale={locale}>
+      <IntakeColumns
+        title={view.questionnaire.title[locale]}
+        intro={
+          <>
+            <Link href="/intake/forms" size="sm">
+              {t("backToIntakes")}
+            </Link>
+            <AlertBanner
+              tone="success"
+              title={t("submittedTitle")}
+              description={t("submittedIntro")}
+            />
+            <Text size="s">
+              {t("submittedOn")}{" "}
+              <Timestamp
+                value={view.submittedAt}
+                format="date_time"
+                locale={locale}
+              />
+            </Text>
+            <Text size="s">
+              {t("fingerprint")}: <Code>{view.digest}</Code>
+            </Text>
+          </>
         }
-        signOutLabel={t("signOut")}
-      />
-      <Title level={1} size="l">
-        {view.questionnaire.title[locale]}
-      </Title>
-      <AlertBanner
-        tone="success"
-        title={t("submittedTitle")}
-        description={t("submittedIntro")}
-      />
-      <Text size="s">
-        {t("submittedOn")}{" "}
-        <Timestamp
-          value={view.submittedAt}
-          format="date_time"
+      >
+        <AnswerSheet
+          questionnaire={view.questionnaire}
+          answers={view.snapshot.answers}
           locale={locale}
         />
-      </Text>
-      <Text size="s">
-        {t("fingerprint")}: <Code>{view.digest}</Code>
-      </Text>
-      <AnswerSheet
-        questionnaire={view.questionnaire}
-        answers={view.snapshot.answers}
-        locale={locale}
-      />
+      </IntakeColumns>
     </IntakePage>
   );
 }

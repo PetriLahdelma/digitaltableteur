@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 
 import { copyTable } from "@/app/lib/intake/copy";
+import { inputFields } from "@/app/lib/intake/schema";
 import { loadDraft } from "@/app/lib/intake/service/forms";
 import { currentClient } from "@/app/lib/intake/service/session";
 
@@ -28,16 +29,29 @@ export default async function IntakeFormPage({ params, searchParams }: Props) {
   if (!draft) redirect("/intake/forms");
   // Every questionnaire carries all its copy in every language, so the form follows the header's language switcher.
   const locale = await requestLocale(searchParams, draft.locale);
+  // Before the first save, the invite's name and email stand in as answers (Mercury pre-fills what it knows).
+  const fieldIds = new Set(
+    inputFields(draft.questionnaire).map((field) => field.id),
+  );
+  const prefill = Object.fromEntries(
+    [
+      ["contact_name", draft.contact.name],
+      ["email", draft.contact.email],
+    ].filter(([id]) => fieldIds.has(id)),
+  );
+  const initialAnswers =
+    draft.revision === 0 ? { ...prefill, ...draft.answers } : draft.answers;
 
   return (
-    <IntakePage locale={locale} wide>
+    <IntakePage locale={locale}>
       <IntakeForm
         inviteId={inviteId}
         questionnaire={draft.questionnaire}
         locale={locale}
         copy={copyTable(locale)}
-        initialAnswers={draft.answers}
+        initialAnswers={initialAnswers}
         initialRevision={draft.revision}
+        initialCompleted={draft.completedParts}
       />
     </IntakePage>
   );

@@ -1,4 +1,5 @@
 import type { Questionnaire } from "../types";
+import { CONTACT_METHOD_OPTIONS, TIME_ZONE_OPTIONS } from "./shared-options";
 
 /**
  * Design systems intake & discovery, schema version 1.0.0.
@@ -65,9 +66,18 @@ export const DESIGN_SYSTEMS_DISCOVERY_V1 = {
             },
             {
               id: "timezone",
-              label: { en: "Time zone / preferred contact method", fi: "Aikavyöhyke / toivottu yhteydenottotapa", sv: "Tidszon / önskat kontaktsätt" },
+              label: { en: "Location / time zone", fi: "Sijainti / aikavyöhyke", sv: "Ort / tidszon" },
               width: "half",
-              kind: "text",
+              kind: "select",
+              options: TIME_ZONE_OPTIONS,
+              sensitivity: "personal",
+            },
+            {
+              id: "contact_method",
+              label: { en: "Preferred contact method", fi: "Toivottu yhteydenottotapa", sv: "Önskat kontaktsätt" },
+              width: "half",
+              kind: "select",
+              options: CONTACT_METHOD_OPTIONS,
               sensitivity: "personal",
             },
             {

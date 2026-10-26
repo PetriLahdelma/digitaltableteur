@@ -1,0 +1,1 @@
+ALTER TABLE "intake_drafts" ADD COLUMN "completed_parts" jsonb DEFAULT '[]'::jsonb NOT NULL;

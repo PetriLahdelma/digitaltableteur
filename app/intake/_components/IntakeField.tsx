@@ -3,8 +3,10 @@
 import {
   Checkbox,
   CheckboxGroup,
+  Combobox,
   FlexBox,
   RadioGroup,
+  Select,
   Text,
   TextArea,
   TextInput,
@@ -28,16 +30,6 @@ const AUTOCOMPLETE: Record<string, string> = {
 
 export function fieldAnchor(fieldId: string): string {
   return `field-${fieldId}`;
-}
-
-/** Full-width fields take a row of their own; half-width ones pair up in a two-column grid. */
-export function isWideField(field: Field): boolean {
-  return (
-    field.width === "full" ||
-    field.kind === "longText" ||
-    field.kind === "choices" ||
-    field.kind === "scale"
-  );
 }
 
 const SCALE_OPTIONS = [1, 2, 3, 4, 5].map((value) => ({
@@ -113,6 +105,41 @@ export function IntakeField({
           onChange={(selected) => onChange(selected)}
         />
       );
+      break;
+    case "select":
+      // A long list (every time zone) gets type-to-filter; a short one stays a native select.
+      control =
+        field.options.length > 12 ? (
+          <Combobox
+            label={field.label[locale]}
+            options={field.options.map((option) => ({
+              value: option.id,
+              label: option.label[locale],
+            }))}
+            value={typeof value === "string" ? value : ""}
+            onValueChange={(next) => onChange(next)}
+            placeholder={copy.selectPlaceholder}
+            required={required}
+            helperText={help}
+            error={error}
+          />
+        ) : (
+          <Select
+            label={field.label[locale]}
+            value={typeof value === "string" ? value : ""}
+            onValueChange={(next) => onChange(next)}
+            options={[
+              { value: "", label: copy.selectPlaceholder },
+              ...field.options.map((option) => ({
+                value: option.id,
+                label: option.label[locale],
+              })),
+            ]}
+            required={required}
+            helperText={help}
+            error={error}
+          />
+        );
       break;
     case "scale":
       control = (

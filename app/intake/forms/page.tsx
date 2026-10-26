@@ -13,7 +13,7 @@ import { intakeCopy } from "@/app/lib/intake/copy";
 import { listClientIntakes } from "@/app/lib/intake/service/forms";
 import { currentClient } from "@/app/lib/intake/service/session";
 
-import { IntakePage, IntakeToolbar } from "../_components/IntakePage";
+import { IntakeColumns, IntakePage } from "../_components/IntakePage";
 import { requestLocale } from "../_components/locale";
 
 export const preferredRegion = "fra1";
@@ -31,30 +31,28 @@ export default async function IntakeHomePage({ searchParams }: Props) {
   const locale = await requestLocale(searchParams, intakes[0]?.locale);
   const t = intakeCopy(locale);
 
+  const status = (intake: (typeof intakes)[number]) =>
+    intake.status === "submitted"
+      ? { tone: "success" as const, label: t("statusSubmitted") }
+      : intake.updatedAt
+        ? { tone: "info" as const, label: t("statusInProgress") }
+        : { tone: "neutral" as const, label: t("statusNotStarted") };
+
   return (
     <IntakePage locale={locale}>
-      <IntakeToolbar signOutLabel={t("signOut")} />
-      <Title level={1} size="l">
-        {t("homeTitle")}
-      </Title>
-      <Text>{t("homeIntro")}</Text>
-      {intakes.length === 0 ? (
-        <Text>{t("noIntakes")}</Text>
-      ) : (
-        <FlexBox direction="column" gap="var(--space-internal-16)">
-          {intakes.map((intake) => (
+      <IntakeColumns title={t("homeTitle")} intro={t("homeIntro")}>
+        {intakes.length === 0 ? (
+          <Text>{t("noIntakes")}</Text>
+        ) : (
+          intakes.map((intake) => (
             <Card
               key={intake.inviteId}
               as="article"
               title={intake.title}
               titleProps={{ level: 2 }}
               headerEnd={
-                <Badge
-                  tone={intake.status === "submitted" ? "success" : "info"}
-                >
-                  {intake.status === "submitted"
-                    ? t("statusSubmitted")
-                    : t("statusInProgress")}
+                <Badge variant="secondary" size="sm" tone={status(intake).tone}>
+                  {status(intake).label}
                 </Badge>
               }
               footerStart={
@@ -94,9 +92,9 @@ export default async function IntakeHomePage({ searchParams }: Props) {
                 )
               }
             />
-          ))}
-        </FlexBox>
-      )}
+          ))
+        )}
+      </IntakeColumns>
     </IntakePage>
   );
 }

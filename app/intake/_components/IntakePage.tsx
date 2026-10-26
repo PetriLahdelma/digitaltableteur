@@ -1,65 +1,64 @@
 import type { ReactNode } from "react";
-import { Button, Container, FlexBox, Section } from "@digitaltableteur/react";
+import {
+  Button,
+  Container,
+  FlexBox,
+  Grid,
+  Section,
+  Text,
+  Title,
+} from "@digitaltableteur/react";
 
 import type { IntakeLocale } from "@/app/lib/intake/types";
 
 import { IntakeLanguage } from "./LanguageControls";
 
 /**
- * Content column for intake pages inside the site layout. The site header
- * and footer come from NextLayout; this adds only the page's width and the
- * link to the header's language switcher.
+ * Page body for intake pages inside the site layout. Same width as the site
+ * header (Container lg), so content lines up with the logo and navigation.
  */
 export function IntakePage({
   locale,
-  wide = false,
   children,
 }: {
   locale: IntakeLocale;
-  wide?: boolean;
   children: ReactNode;
 }) {
   return (
-    <Container size={wide ? "md" : "sm"}>
+    <Container size="lg">
       <Section spacing="lg">
         <IntakeLanguage locale={locale} />
-        <FlexBox direction="column" gap="var(--space-internal-24)">
-          {children}
-        </FlexBox>
+        {children}
       </Section>
     </Container>
   );
 }
 
-/** Plain form POST, so signing out works without JavaScript. */
-export function SignOut({ label }: { label: string }) {
-  return (
-    <form method="post" action="/api/intake/auth/logout">
-      <Button submits variant="secondary" size="sm">
-        {label}
-      </Button>
-    </form>
-  );
-}
-
-/** Back link on the left, sign-out on the right. */
-export function IntakeToolbar({
-  start,
-  signOutLabel,
+/**
+ * One reading column for the intake's own pages (sign-in, code, home,
+ * submission, privacy): title, intro, content. Left-aligned with the site
+ * header, about two thirds of its width, as GOV.UK question pages are.
+ */
+export function IntakeColumns({
+  title,
+  intro,
+  children,
 }: {
-  start?: ReactNode;
-  signOutLabel: string;
+  title: string;
+  intro?: ReactNode;
+  children?: ReactNode;
 }) {
   return (
-    <FlexBox
-      direction="row"
-      gap="var(--space-internal-16)"
-      justify="space-between"
-      align="center"
-      wrap="wrap"
-    >
-      {start ?? <span />}
-      <SignOut label={signOutLabel} />
-    </FlexBox>
+    <Grid columns="minmax(0, 52rem)">
+      <FlexBox direction="column" gap="var(--space-internal-32)">
+        <FlexBox direction="column" gap="var(--space-internal-16)">
+          <Title level={1} size="l">
+            {title}
+          </Title>
+          {typeof intro === "string" ? <Text>{intro}</Text> : intro}
+        </FlexBox>
+        {children}
+      </FlexBox>
+    </Grid>
   );
 }

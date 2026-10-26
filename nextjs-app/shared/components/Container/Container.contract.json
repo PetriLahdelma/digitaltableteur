@@ -88,12 +88,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeChrome.tsx",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeForm.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
         },
         {
@@ -103,7 +103,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
         }
     ],

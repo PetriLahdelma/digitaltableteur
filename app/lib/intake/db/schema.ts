@@ -112,6 +112,8 @@ export const drafts = pgTable("intake_drafts", {
   revision: integer("revision").notNull().default(0),
   /** Answers sealed with aad `draft:<inviteId>`. */
   answersSealed: jsonb("answers_sealed").$type<Sealed>().notNull(),
+  /** Page ids the client has finished (navigation state, no answer content). */
+  completedParts: jsonb("completed_parts").$type<string[]>().notNull().default([]),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

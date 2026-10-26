@@ -80,3 +80,9 @@ export async function createInvite(
     }),
   };
 }
+
+/** The client's display name for the site header's account menu. */
+export async function getClientName(ctx: IntakeContext, clientId: string): Promise<string | null> {
+  const [row] = await ctx.db.select().from(clients).where(eq(clients.id, clientId));
+  return row ? openContact(ctx, row).name : null;
+}

@@ -10,7 +10,13 @@ export const runtime = "nodejs";
 export const preferredRegion = "fra1";
 export const dynamic = "force-dynamic";
 
-const Body = z.object({ revision: z.number().int().min(0), answers: z.record(z.string(), z.unknown()) }).strict();
+const Body = z
+  .object({
+    revision: z.number().int().min(0),
+    answers: z.record(z.string(), z.unknown()),
+    completedParts: z.array(z.string().max(64)).max(32).optional(),
+  })
+  .strict();
 const InviteId = z.uuid();
 
 /** Autosave. 409 means another tab saved first; the page offers a reload. */
