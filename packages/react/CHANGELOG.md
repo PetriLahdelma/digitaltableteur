@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.41 - 2026-10-26
+
+- `RadioGroup`: `startLabel` and `endLabel` anchor a rating scale
+  ("Serious" 1 to 5 "Playful"). The anchors are shown beside the first and
+  last option and announced once, paired with their options, through the
+  group description. `hideLegend` keeps the legend as the accessible name
+  while hiding it visually. Without anchors the markup is unchanged.
+- `AlertBanner`: `focusOnMount` moves focus to the banner when it mounts,
+  for form error summaries that list links to the invalid fields. The
+  focused banner shows the standard focus ring.
+- `Pagination`: `label` names the navigation landmark, so a questionnaire
+  pager and a blog pager on the same page can be told apart. Defaults to
+  the translated "Page navigation".
+
 ## 0.1.40 - 2026-10-25
 
 - `CodeBlock`: without a header, the body stays full width so its scrollbar

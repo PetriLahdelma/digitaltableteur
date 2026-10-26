@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-25T19:15:13.833Z",
+  "generatedAt": "2026-10-26T20:22:03.161Z",
   "summary": {
     "componentCount": 189,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 178,
     "withProductionUsage": 42,
     "uniqueImportedComponents": 178,
-    "totalEvidenceRows": 905,
-    "aliasImportFiles": 460,
+    "totalEvidenceRows": 909,
+    "aliasImportFiles": 464,
     "relativeImportFiles": 485,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -866,6 +866,11 @@
               "off"
             ],
             "description": "Live region politeness for assistive tech (an explicit value wins over the tone default)."
+          },
+          "focusOnMount": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Moves focus to the banner when it mounts, for form error summaries: keyboard\nand screen reader users land on the list of problems after a failed submit."
           }
         },
         "forbiddenUse": [
@@ -918,6 +923,10 @@
             {
               "guidance": false,
               "description": "Do not stack multiple banners on one page; consolidate into the single most severe message."
+            },
+            {
+              "guidance": true,
+              "description": "For a form error summary, use tone=error with a List of Links to the fields as the description and focusOnMount, so focus lands on the summary after a failed submit."
             }
           ],
           "anatomy": [
@@ -961,7 +970,7 @@
           "Text"
         ]
       },
-      "spec": "# AlertBanner\n\n## Intent\nCarry persistent, page-level status messages that the user must read\nbefore they can confidently continue. AlertBanner is the only component\nin the system that sits \"in the flow\" of content as a status — Toast is\ntransient, HelperText is field-scoped, Modal interrupts. Banner is the\nquiet middle option.\n\n## Interaction contract\n- Keyboard: the banner itself is not focusable. The dismiss button (when\n  present) is in the tab sequence and activates on Enter / Space.\n- Pointer: only the dismiss button responds to clicks. Clicking the\n  body is a no-op.\n- Screen readers: announced via `role=\"status\"` with `aria-live=\"polite\"`\n  by default. Errors should pass `aria-live=\"assertive\"` so the\n  announcement interrupts. The leading icon adds an accessible word for\n  the tone (`info` / `success` / `warning` / `error`) so colour is not\n  the only signal.\n\n## Do / don't\n- Do: pass `aria-live=\"assertive\"` for `tone=\"error\"` so the AT user is\n  interrupted. The default `polite` is correct for `info` and\n  `success`.\n- Do: keep the description short — banners that scroll vertically lose\n  the user's attention. If the message needs paragraphs, link out to\n  a docs page from the description.\n- Don't: make errors dismissable. Letting the user hide a blocking\n  problem leads to confused support tickets.\n- Don't: stack more than one banner on the same page. Two competing\n  announcements collide in the AT queue.\n- Don't: animate the banner in on every render. AlertBanner is for\n  persistent state, not transient feedback.\n\n## Design notes\n- Tokens: tone-mapped surfaces use `--color-info-surface` /\n  `--color-success-surface` / `--color-warning-surface` /\n  `--color-error-surface`; text uses the matching `*-text` token.\n  Spacing is `--space-internal-12` (block) / `--space-internal-16`\n  (inline). Radius is `--radius-md`.\n- Figma: https://www.figma.com/design/digitaltableteur/alert-banner —\n  variants map 1:1 to the `tone` prop.\n- The icon is intentionally `aria-label`led, not `aria-hidden`, because\n  AlertBanner is the canonical place to validate WCAG 1.4.1 (colour is\n  not the only signal). If a downstream design ever hides the icon, the\n  AT contract still has the tone word.\n- Dismiss is a `Button variant=\"tertiary\" size=\"s\"` so it doesn't\n  compete with primary actions on the page. The button is positioned\n  trailing so the message reads \"tone, title, description, dismiss\".\n  Its strings are localized (`alertBanner.dismissLabel` / `alertBanner.close`).\n- The `action` slot renders one follow-up under the description (Astryx\n  Banner parity); the `icon` prop overrides the tone glyph without\n  changing the announced tone word.\n",
+      "spec": "# AlertBanner\n\n## Intent\nCarry persistent, page-level status messages that the user must read\nbefore they can confidently continue. AlertBanner is the only component\nin the system that sits \"in the flow\" of content as a status — Toast is\ntransient, HelperText is field-scoped, Modal interrupts. Banner is the\nquiet middle option.\n\n## Interaction contract\n- Keyboard: the banner itself is not focusable. The dismiss button (when\n  present) is in the tab sequence and activates on Enter / Space.\n- Pointer: only the dismiss button responds to clicks. Clicking the\n  body is a no-op.\n- Screen readers: announced via `role=\"status\"` with `aria-live=\"polite\"`\n  by default. Errors should pass `aria-live=\"assertive\"` so the\n  announcement interrupts. The leading icon adds an accessible word for\n  the tone (`info` / `success` / `warning` / `error`) so colour is not\n  the only signal.\n\n## Error summary\n- Pass the problems as a `List` of `Link`s in `description` and set `focusOnMount`: the banner takes focus (tabIndex -1, shared focus ring) so keyboard and screen reader users land on it after a failed submit.\n- Rich descriptions render in a block container, so a list is valid markup; plain strings stay a paragraph.\n\n## Do / don't\n- Do: pass `aria-live=\"assertive\"` for `tone=\"error\"` so the AT user is\n  interrupted. The default `polite` is correct for `info` and\n  `success`.\n- Do: keep the description short — banners that scroll vertically lose\n  the user's attention. If the message needs paragraphs, link out to\n  a docs page from the description.\n- Don't: make errors dismissable. Letting the user hide a blocking\n  problem leads to confused support tickets.\n- Don't: stack more than one banner on the same page. Two competing\n  announcements collide in the AT queue.\n- Don't: animate the banner in on every render. AlertBanner is for\n  persistent state, not transient feedback.\n\n## Design notes\n- Tokens: tone-mapped surfaces use `--color-info-surface` /\n  `--color-success-surface` / `--color-warning-surface` /\n  `--color-error-surface`; text uses the matching `*-text` token.\n  Spacing is `--space-internal-12` (block) / `--space-internal-16`\n  (inline). Radius is `--radius-md`.\n- Figma: https://www.figma.com/design/digitaltableteur/alert-banner —\n  variants map 1:1 to the `tone` prop.\n- The icon is intentionally `aria-label`led, not `aria-hidden`, because\n  AlertBanner is the canonical place to validate WCAG 1.4.1 (colour is\n  not the only signal). If a downstream design ever hides the icon, the\n  AT contract still has the tone word.\n- Dismiss is a `Button variant=\"tertiary\" size=\"s\"` so it doesn't\n  compete with primary actions on the page. The button is positioned\n  trailing so the message reads \"tone, title, description, dismiss\".\n  Its strings are localized (`alertBanner.dismissLabel` / `alertBanner.close`).\n- The `action` slot renders one follow-up under the description (Astryx\n  Banner parity); the `icon` prop overrides the tone glyph without\n  changing the announced tone word.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/AlertBanner",
@@ -1038,6 +1047,11 @@
               "off"
             ],
             "description": "Live region politeness for assistive tech (an explicit value wins over the tone default)."
+          },
+          "focusOnMount": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Moves focus to the banner when it mounts, for form error summaries: keyboard\nand screen reader users land on the list of problems after a failed submit."
           }
         },
         "propRelationships": [],
@@ -1099,7 +1113,7 @@
         "prefersOver": [
           "Toast for non-persistent status"
         ],
-        "declaredPropCount": 8,
+        "declaredPropCount": 9,
         "guidelines": [
           {
             "level": "should",
@@ -27950,8 +27964,10 @@
         ],
         "composesWith": [
           "HelperText",
-          "Card",
-          "Radio"
+          "Radio",
+          "Text",
+          "VisuallyHidden",
+          "Card"
         ],
         "prefersOver": [],
         "declaredPropCount": 6,
@@ -28494,7 +28510,7 @@
           "Button",
           "GroupLabel",
           "Kbd",
-          "Card"
+          "Radio"
         ],
         "prefersOver": [
           "AlertBanner for field-level hints"
@@ -32745,7 +32761,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 17,
+        "importCount": 18,
         "productionImportCount": 2,
         "patternImportCount": 3,
         "componentImportCount": 11,
@@ -33809,7 +33825,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 4,
+        "importCount": 5,
         "productionImportCount": 0,
         "patternImportCount": 3,
         "componentImportCount": 1,
@@ -33837,6 +33853,12 @@
             "importKind": "relative",
             "importPath": "./List/List",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/AlertBanner/AlertBanner.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "story"
           }
         ]
       },
@@ -41299,6 +41321,11 @@
             "type": "number",
             "description": "Number of page buttons to show on each side of current page"
           },
+          "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name of the navigation landmark, for pages with several\nnavs (for example \"Questionnaire pages\"). Defaults to the localized\n\"Page navigation\"."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -41359,7 +41386,7 @@
           }
         }
       },
-      "spec": "# Pagination\n\n## Intent\nRender a familiar paged-list navigation surface with the announcements, current-page state, and edge-case behaviour (long ranges, missing pages) handled once.\n\n## Interaction contract\n- Keyboard: Tab through Previous → numbered pages → Next. Enter / Space activates. Arrow keys are intentionally not bound — pagination is rare-use and Tab is the predictable path.\n- Pointer: Click on a page number, previous, or next.\n- Screen readers: The `<nav>` landmark is announced as 'Pagination, navigation'. The current page is announced with 'current page'.\n\n## Do / don't\n- Do: Show 5 to 7 page numbers max; truncate the middle with an ellipsis.\n- Do: Always include Previous and Next so keyboard users have one-step neighbour navigation.\n- Don't: Remove Previous/Next on edges — use `aria-disabled` so the visual stays stable.\n- Don't: Render more than ~10 page numbers inline — switch to a 'Page X of Y' label with prev/next only.\n\n## Design notes\n- Colors: --color-text, --color-accent, --color-surface-elevated\n- Spacing: --space-internal-4, --space-internal-8\n- Typography: --font-size-sm, --font-size-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
+      "spec": "# Pagination\n\n## Intent\nRender a familiar paged-list navigation surface with the announcements, current-page state, and edge-case behaviour (long ranges, missing pages) handled once.\n\n## Interaction contract\n- Keyboard: Tab through Previous → numbered pages → Next. Enter / Space activates. Arrow keys are intentionally not bound — pagination is rare-use and Tab is the predictable path.\n- Pointer: Click on a page number, previous, or next.\n- Screen readers: The `<nav>` landmark is announced as 'Pagination, navigation'. The current page is announced with 'current page'.\n\n## Do / don't\n- Do: Show 5 to 7 page numbers max; truncate the middle with an ellipsis.\n- Do: Always include Previous and Next so keyboard users have one-step neighbour navigation.\n- Don't: Remove Previous/Next on edges — use `aria-disabled` so the visual stays stable.\n- Don't: Render more than ~10 page numbers inline — switch to a 'Page X of Y' label with prev/next only.\n\n## Design notes\n- Colors: --color-text, --color-accent, --color-surface-elevated\n- Spacing: --space-internal-4, --space-internal-8\n- Typography: --font-size-sm, --font-size-md\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n\n## Naming the landmark\n- `label` sets the navigation landmark's accessible name. Use it whenever a page has more than one nav, for example \"Questionnaire pages\" on a multi-page form, so screen reader users can tell the landmarks apart. Without it the localized \"Page navigation\" applies.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Pagination",
@@ -41405,6 +41432,11 @@
             "optional": true,
             "type": "number",
             "description": "Number of page buttons to show on each side of current page"
+          },
+          "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Accessible name of the navigation landmark, for pages with several\nnavs (for example \"Questionnaire pages\"). Defaults to the localized\n\"Page navigation\"."
           },
           "className": {
             "optional": true,
@@ -41454,7 +41486,7 @@
           "EnhancedArticleCard"
         ],
         "prefersOver": [],
-        "declaredPropCount": 5,
+        "declaredPropCount": 6,
         "guidelines": [
           {
             "level": "should",
@@ -46481,10 +46513,12 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Checkbox",
-          "TextInput",
           "HelperText",
-          "GroupLabel"
+          "GroupLabel",
+          "Text",
+          "VisuallyHidden",
+          "Checkbox",
+          "TextInput"
         ],
         "prefersOver": [],
         "declaredPropCount": 9,
@@ -46666,7 +46700,7 @@
         "tier": "molecule",
         "group": "form",
         "status": "beta",
-        "description": "Accessible radio button group with legend and validation.",
+        "description": "Accessible radio button group with legend and validation; with startLabel and endLabel it is a rating scale.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1227-2963",
         "radixPrimitive": null,
         "element": "div",
@@ -46795,6 +46829,21 @@
             "type": "string",
             "description": "Helper copy below the group; always rendered, alongside error when both are set"
           },
+          "startLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Anchor shown before the first option, for rating scales (\"Serious\" in\nSerious 1 to 5 Playful). Announced paired with its option, not on its own."
+          },
+          "endLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Anchor shown after the last option; pairs with startLabel"
+          },
+          "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the accessible name but hides it visually."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -46833,6 +46882,10 @@
               "description": "Use orientation=horizontal only for a few short options that still fit one line on mobile."
             },
             {
+              "guidance": true,
+              "description": "For a rating scale, give numbered options with startLabel and endLabel (Serious 1 to 5 Playful) and hideLegend when the anchors already say what is rated; the legend stays the accessible name."
+            },
+            {
               "guidance": false,
               "description": "Do not leave a required group unselected without a recovery plan; users cannot un-pick a radio once one is chosen."
             },
@@ -46863,7 +46916,7 @@
           }
         }
       },
-      "spec": "# RadioGroup\n\n## Intent\nDocuments how **RadioGroup** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on RadioGroup pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
+      "spec": "# RadioGroup\n\n## Intent\nDocuments how **RadioGroup** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Rating scale\n- `startLabel` and `endLabel` place anchors either side of the options (Serious 1 to 5 Playful). They stack on narrow screens.\n- Screen readers hear the group name, then one description that pairs each anchor with its option (\"1: Serious; 5: Playful\"). The visible anchors are `aria-hidden` so they are not read twice.\n- `hideLegend` keeps the legend as the accessible name while hiding it, for rows where the anchors already say what is being rated.\n\n## Do / don't\n- Do: Match the **Example** story composition on RadioGroup pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/RadioGroup",
@@ -46951,6 +47004,21 @@
             "type": "string",
             "description": "Helper copy below the group; always rendered, alongside error when both are set"
           },
+          "startLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Anchor shown before the first option, for rating scales (\"Serious\" in\nSerious 1 to 5 Playful). Announced paired with its option, not on its own."
+          },
+          "endLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Anchor shown after the last option; pairs with startLabel"
+          },
+          "hideLegend": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Keeps the legend as the accessible name but hides it visually."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -47011,7 +47079,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 12,
+        "declaredPropCount": 15,
         "guidelines": [
           {
             "level": "should",
@@ -63977,10 +64045,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 62,
+        "importCount": 63,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 29,
+        "componentImportCount": 30,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
@@ -71472,10 +71540,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/VisuallyHidden",
-        "importCount": 5,
+        "importCount": 6,
         "productionImportCount": 1,
         "patternImportCount": 2,
-        "componentImportCount": 2,
+        "componentImportCount": 3,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
@@ -71499,6 +71567,12 @@
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./VisuallyHidden",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/RadioGroup/RadioGroup.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/VisuallyHidden",
             "context": "component"
           },
           {
@@ -71559,7 +71633,11 @@
         ],
         "composesWith": [
           "ReliablePartnerBadge",
-          "IconButton"
+          "IconButton",
+          "Radio",
+          "HelperText",
+          "GroupLabel",
+          "Text"
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
@@ -77266,8 +77344,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -77281,8 +77359,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -77303,8 +77381,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "human-a11y-review",

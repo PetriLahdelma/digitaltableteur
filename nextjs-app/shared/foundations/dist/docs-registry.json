@@ -309,6 +309,11 @@
             "off"
           ],
           "description": "Live region politeness for assistive tech (an explicit value wins over the tone default)."
+        },
+        "focusOnMount": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Moves focus to the banner when it mounts, for form error summaries: keyboard\nand screen reader users land on the list of problems after a failed submit."
         }
       },
       "composesWith": [
@@ -355,6 +360,10 @@
           {
             "guidance": false,
             "description": "Do not stack multiple banners on one page; consolidate into the single most severe message."
+          },
+          {
+            "guidance": true,
+            "description": "For a form error summary, use tone=error with a List of Links to the fields as the description and focusOnMount, so focus lands on the summary after a failed submit."
           }
         ],
         "anatomy": [
@@ -409,6 +418,11 @@
           "story": "WithAction",
           "description": "The action slot carries one follow-up under the description — a tertiary Button, not a link buried in prose.",
           "source": "export const WithAction: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The action slot carries one follow-up under the description — a tertiary Button, not a link buried in prose.\",\n      },\n    },\n  },\n  args: {\n    tone: \"info\",\n    title: \"Cookie preferences updated\",\n    description: \"Analytics stays off until you opt back in.\",\n    action: (\n      <Button variant=\"tertiary\" size=\"sm\">\n        Review settings\n      </Button>\n    ),\n  },\n};"
+        },
+        {
+          "story": "ErrorSummary",
+          "description": "Form error summary: after a failed submit the banner takes focus (focusOnMount), so keyboard and screen reader users land on the problems. Each item links to its field. A rich description renders in a block, so it can hold the list.",
+          "source": "export const ErrorSummary: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      // Rendered in its own frame: focusOnMount would otherwise pull focus\n      // and scroll on the docs page.\n      story: { inline: false, height: \"180px\" },\n      description: {\n        story:\n          \"Form error summary: after a failed submit the banner takes focus (focusOnMount), so keyboard and screen reader users land on the problems. Each item links to its field. A rich description renders in a block, so it can hold the list.\",\n      },\n    },\n  },\n  args: {\n    tone: \"error\",\n    title: \"Fix 2 problems to continue\",\n    focusOnMount: true,\n    description: (\n      <List\n        items={[\n          <Link key=\"name\" href=\"#contact_name\">\n            Enter your full name\n          </Link>,\n          <Link key=\"email\" href=\"#email\">\n            Enter an email address in the right format\n          </Link>,\n        ]}\n      />\n    ),\n  },\n  play: async ({ canvasElement }) => {\n    const banner = within(canvasElement).getByRole(\"alert\");\n    await expect(banner).toHaveFocus();\n  },\n};"
         },
         {
           "story": "TextOnly",
@@ -11760,6 +11774,11 @@
           "required": false
         },
         {
+          "name": "label",
+          "type": "string",
+          "required": false
+        },
+        {
           "name": "className",
           "type": "string",
           "required": false
@@ -11785,6 +11804,11 @@
           "optional": true,
           "type": "number",
           "description": "Number of page buttons to show on each side of current page"
+        },
+        "label": {
+          "optional": true,
+          "type": "string",
+          "description": "Accessible name of the navigation landmark, for pages with several\nnavs (for example \"Questionnaire pages\"). Defaults to the localized\n\"Page navigation\"."
         },
         "className": {
           "optional": true,
@@ -11845,6 +11869,11 @@
         ]
       },
       "examples": [
+        {
+          "story": "QuestionnairePages",
+          "description": "Steps through a multi-page form. label names the landmark (\\\"Questionnaire pages\\\") so it is distinguishable from the site navigation; pair it with Progress for completion.",
+          "source": "export const QuestionnairePages: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Steps through a multi-page form. label names the landmark (\\\"Questionnaire pages\\\") so it is distinguishable from the site navigation; pair it with Progress for completion.\",\n      },\n    },\n  },\n  args: { totalPages: 7, currentPage: 3, label: \"Questionnaire pages\" },\n  render: (args) => <PaginationDemo {...args} />,\n};"
+        },
         {
           "story": "ManyPages",
           "description": "First and last pages always render; the siblingCount window travels with the current page and ellipsis fills the gaps. This preview is live — click around.",
@@ -13338,7 +13367,7 @@
       "group": "form",
       "tier": 1,
       "status": "beta",
-      "description": "Accessible radio button group with legend and validation.",
+      "description": "Accessible radio button group with legend and validation; with startLabel and endLabel it is a rating scale.",
       "dense": "exclusive choice set: fieldset legend, vertical/horizontal, sm/md/lg, own error + helperText; controlled or uncontrolled via onValueChange(value)",
       "keywords": [
         "radio group",
@@ -13448,6 +13477,21 @@
           "type": "string",
           "description": "Helper copy below the group; always rendered, alongside error when both are set"
         },
+        "startLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Anchor shown before the first option, for rating scales (\"Serious\" in\nSerious 1 to 5 Playful). Announced paired with its option, not on its own."
+        },
+        "endLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Anchor shown after the last option; pairs with startLabel"
+        },
+        "hideLegend": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Keeps the legend as the accessible name but hides it visually."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -13477,6 +13521,10 @@
           {
             "guidance": true,
             "description": "Use orientation=horizontal only for a few short options that still fit one line on mobile."
+          },
+          {
+            "guidance": true,
+            "description": "For a rating scale, give numbered options with startLabel and endLabel (Serious 1 to 5 Playful) and hideLegend when the anchors already say what is rated; the legend stays the accessible name."
           },
           {
             "guidance": false,
@@ -13510,7 +13558,12 @@
         {
           "story": "Horizontal",
           "description": "Horizontal orientation for a few short options that fit one line on mobile.",
-          "source": "export const Horizontal: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"Horizontal orientation for a few short options that fit one line on mobile.\",\n      },\n    },\n  },\n  args: { orientation: \"horizontal\" },\n};"
+          "source": "export const Horizontal: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"Horizontal orientation for a few short options that fit one line on mobile.\",\n      },\n    },\n  },\n  args: { orientation: \"horizontal\" },\n};\n\nconst SCALE = [\"1\", \"2\", \"3\", \"4\", \"5\"].map((value) => ({ value, label: value }));"
+        },
+        {
+          "story": "Scale",
+          "description": "Rating scale: numbered options between two anchors. The legend stays the accessible name while hidden, and the anchors are announced once, paired with the first and last option.",
+          "source": "export const Scale: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rating scale: numbered options between two anchors. The legend stays the accessible name while hidden, and the anchors are announced once, paired with the first and last option.\",\n      },\n    },\n  },\n  args: {\n    legend: \"Tone of voice\",\n    options: SCALE,\n    defaultValue: undefined,\n    orientation: \"horizontal\",\n    startLabel: \"Serious\",\n    endLabel: \"Playful\",\n    hideLegend: true,\n    helperText: \"\",\n  },\n};"
         },
         {
           "story": "WithError",

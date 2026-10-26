@@ -98,6 +98,36 @@
       "level": "additive",
       "detail": "component added to the public API",
       "bump": "patch"
+    },
+    {
+      "component": "AlertBanner",
+      "level": "additive",
+      "detail": "prop `focusOnMount` added",
+      "bump": "patch"
+    },
+    {
+      "component": "Pagination",
+      "level": "additive",
+      "detail": "prop `label` added",
+      "bump": "patch"
+    },
+    {
+      "component": "RadioGroup",
+      "level": "additive",
+      "detail": "prop `endLabel` added",
+      "bump": "patch"
+    },
+    {
+      "component": "RadioGroup",
+      "level": "additive",
+      "detail": "prop `hideLegend` added",
+      "bump": "patch"
+    },
+    {
+      "component": "RadioGroup",
+      "level": "additive",
+      "detail": "prop `startLabel` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -175,6 +205,10 @@
           "type": "React.ReactNode"
         },
         "dismissible": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "focusOnMount": {
           "optional": true,
           "type": "boolean"
         },
@@ -3149,6 +3183,10 @@
           "optional": false,
           "type": "number"
         },
+        "label": {
+          "optional": true,
+          "type": "string"
+        },
         "onPageChange": {
           "optional": false,
           "type": "(page: number) => void"
@@ -3679,6 +3717,10 @@
           "optional": true,
           "type": "boolean"
         },
+        "endLabel": {
+          "optional": true,
+          "type": "string"
+        },
         "error": {
           "optional": true,
           "type": "string"
@@ -3686,6 +3728,10 @@
         "helperText": {
           "optional": true,
           "type": "string"
+        },
+        "hideLegend": {
+          "optional": true,
+          "type": "boolean"
         },
         "legend": {
           "optional": false,
@@ -3720,6 +3766,10 @@
             "md",
             "sm"
           ]
+        },
+        "startLabel": {
+          "optional": true,
+          "type": "string"
         },
         "value": {
           "optional": true,
