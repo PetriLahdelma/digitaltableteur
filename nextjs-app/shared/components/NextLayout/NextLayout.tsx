@@ -11,6 +11,7 @@ import React, {
 } from "react";
 
 import { SiteHeader, SiteFooter, SkipLink } from "../../patterns/navigation";
+import type { SiteHeaderAccount } from "../../patterns/SiteHeader/SiteHeader";
 import { useTranslate } from "../../lib/translation";
 import { PageTransition } from "../animations/PageTransition";
 import { DonnyActionProvider } from "../DonnyActionProvider";
@@ -67,6 +68,25 @@ export function useLimitedLanguages(codes: readonly string[]): void {
   }, [setCodes, key]);
 }
 
+/** Lets an account area show the signed-in person in the site header. */
+const HeaderAccountContext = createContext<
+  ((account: SiteHeaderAccount | undefined) => void) | null
+>(null);
+
+/**
+ * Show this person, with their account menu, in the site header while the
+ * calling component is mounted. Removed again on unmount.
+ */
+export function useHeaderAccount(account: SiteHeaderAccount | undefined): void {
+  const setAccount = useContext(HeaderAccountContext);
+
+  useEffect(() => {
+    if (!setAccount) return undefined;
+    setAccount(account);
+    return () => setAccount(undefined);
+  }, [setAccount, account]);
+}
+
 function ClientOnly({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
@@ -94,6 +114,7 @@ export function NextLayout({ children, className }: NextLayoutProps) {
   // speak the visitor's language (EN/FI/SV) rather than the SkipLink default.
   const t = useTranslate();
   const [chatHidden, setChatHidden] = useState(false);
+  const [account, setAccount] = useState<SiteHeaderAccount | undefined>();
   const [languageCodes, setLanguageCodes] = useState<
     readonly string[] | undefined
   >();
@@ -101,35 +122,37 @@ export function NextLayout({ children, className }: NextLayoutProps) {
   return (
     <ChatVisibilityContext.Provider value={setChatHidden}>
       <LanguageOptionsContext.Provider value={setLanguageCodes}>
-        <DonnyActionProvider>
-          <div
-            className={
-              className ? `${styles.layout} ${className}` : styles.layout
-            }
-          >
-            <SkipLink href="#main-content">
-              {t("skipToMainContent", "Skip to main content")}
-            </SkipLink>
-            <SiteHeader languageCodes={languageCodes} />
-            {/* tabIndex=-1 makes the skip-link target programmatically
+        <HeaderAccountContext.Provider value={setAccount}>
+          <DonnyActionProvider>
+            <div
+              className={
+                className ? `${styles.layout} ${className}` : styles.layout
+              }
+            >
+              <SkipLink href="#main-content">
+                {t("skipToMainContent", "Skip to main content")}
+              </SkipLink>
+              <SiteHeader languageCodes={languageCodes} account={account} />
+              {/* tabIndex=-1 makes the skip-link target programmatically
               focusable, so activating the skip link moves focus INTO main
               (not just scrolls). Without it the browser leaves focus on
               <body> and the next Tab restarts from the header — defeating
               the skip link (WCAG 2.4.1). */}
-            <main id="main-content" tabIndex={-1} className={styles.main}>
-              <PageTransition>{children}</PageTransition>
-            </main>
-            <SiteFooter />
-            {!chatHidden && (
-              <ClientOnly>
-                <ChatWidget />
-              </ClientOnly>
-            )}
-          </div>
-        </DonnyActionProvider>
-        <ClientOnly>
-          <CookieConsentModal />
-        </ClientOnly>
+              <main id="main-content" tabIndex={-1} className={styles.main}>
+                <PageTransition>{children}</PageTransition>
+              </main>
+              <SiteFooter />
+              {!chatHidden && (
+                <ClientOnly>
+                  <ChatWidget />
+                </ClientOnly>
+              )}
+            </div>
+          </DonnyActionProvider>
+          <ClientOnly>
+            <CookieConsentModal />
+          </ClientOnly>
+        </HeaderAccountContext.Provider>
       </LanguageOptionsContext.Provider>
     </ChatVisibilityContext.Provider>
   );

@@ -140,6 +140,11 @@
             "optional": true,
             "type": "readonly string[]",
             "description": "Limits the language switchers to these codes, for an area offered in\nfewer languages than the site (the client intake: EN and FI). All site\nlanguages when unset."
+        },
+        "account": {
+            "optional": true,
+            "type": "SiteHeaderAccount",
+            "description": "The signed-in person in an account area (the client intake): an avatar\nwith their initials that opens a menu of account actions such as\nsigning out. Nothing renders when unset."
         }
     },
     "forbiddenUse": [

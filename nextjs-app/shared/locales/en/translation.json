@@ -2312,5 +2312,10 @@
   "contactNeedsLabel": "What do you need?",
   "contactWhyUsLabel": "Why Digitaltableteur?",
   "contactWhyUsPlaceholder": "What made you think of this studio for the work?",
-  "contactReplyPromise": "A reply follows within one business day."
+  "contactReplyPromise": "A reply follows within one business day.",
+  "taskListStatusNotStarted": "Not started",
+  "taskListStatusInProgress": "In progress",
+  "taskListStatusCompleted": "Completed",
+  "taskListStatusCannotStart": "Cannot start yet",
+  "taskListStepDone": "done"
 }

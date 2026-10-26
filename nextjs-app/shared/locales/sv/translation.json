@@ -2312,5 +2312,10 @@
   "contactNeedsLabel": "Vad behöver du?",
   "contactWhyUsLabel": "Varför Digitaltableteur?",
   "contactWhyUsPlaceholder": "Vad fick dig att tänka på just den här studion?",
-  "contactReplyPromise": "Svar inom en arbetsdag."
+  "contactReplyPromise": "Svar inom en arbetsdag.",
+  "taskListStatusNotStarted": "Inte påbörjad",
+  "taskListStatusInProgress": "Pågår",
+  "taskListStatusCompleted": "Klar",
+  "taskListStatusCannotStart": "Kan inte börja än",
+  "taskListStepDone": "klar"
 }

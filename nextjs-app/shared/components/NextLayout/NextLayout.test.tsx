@@ -1,6 +1,12 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { NextLayout, useHideChatWidget } from "./NextLayout";
+import { useMemo } from "react";
+import {
+  NextLayout,
+  useHeaderAccount,
+  useHideChatWidget,
+  useLimitedLanguages,
+} from "./NextLayout";
 
 vi.mock("../ChatWidget/ChatWidget", () => ({
   default: () => <div>Mocked chat</div>,
@@ -130,5 +136,42 @@ describe("NextLayout", () => {
       );
       expect(await screen.findByText("Mocked chat")).toBeInTheDocument();
     });
+  });
+
+  it("shows the account an area sets, with its menu trigger, in the header", () => {
+    function Account() {
+      const account = useMemo(
+        () => ({
+          name: "Aino Virtanen",
+          menuLabel: "Account menu for Aino Virtanen",
+          items: [{ id: "out", label: "Sign out" }],
+        }),
+        [],
+      );
+      useHeaderAccount(account);
+      return null;
+    }
+    const { container } = render(
+      <NextLayout>
+        <Account />
+      </NextLayout>,
+    );
+    expect(container.querySelector("header")).toHaveTextContent("AV");
+    expect(
+      screen.getByRole("button", { name: "Account menu for Aino Virtanen" }),
+    ).toBeInTheDocument();
+  });
+
+  it("limits the header's language switcher while an area asks for it", () => {
+    function TwoLanguages() {
+      useLimitedLanguages(["en", "fi"]);
+      return null;
+    }
+    const { container } = render(
+      <NextLayout>
+        <TwoLanguages />
+      </NextLayout>,
+    );
+    expect(container.querySelector("header [lang='sv']")).toBeNull();
   });
 });

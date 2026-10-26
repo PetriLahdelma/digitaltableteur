@@ -2312,5 +2312,10 @@
   "contactNeedsLabel": "Mitä tarvitset?",
   "contactWhyUsLabel": "Miksi Digitaltableteur?",
   "contactWhyUsPlaceholder": "Mikä sai sinut ajattelemaan juuri tätä studiota?",
-  "contactReplyPromise": "Vastaus tulee yhden arkipäivän kuluessa."
+  "contactReplyPromise": "Vastaus tulee yhden arkipäivän kuluessa.",
+  "taskListStatusNotStarted": "Ei aloitettu",
+  "taskListStatusInProgress": "Kesken",
+  "taskListStatusCompleted": "Valmis",
+  "taskListStatusCannotStart": "Ei voi vielä aloittaa",
+  "taskListStepDone": "valmis"
 }

@@ -12,6 +12,7 @@ import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 import { useToast } from "../../lib/toast";
 import { IconButton } from "../../components/IconButton";
 import { LanguageSwitcher } from "../../components/LanguageSwitcher";
+import Avatar, { type AvatarMenuItem } from "../../components/Avatar/Avatar";
 import { List, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import { MobileDrawer } from "./MobileDrawer";
 import styles from "./SiteHeader.module.css";
@@ -35,6 +36,22 @@ export interface SiteHeaderProps {
    * languages when unset.
    */
   languageCodes?: readonly string[];
+  /**
+   * The signed-in person in an account area (the client intake): an avatar
+   * with their initials that opens a menu of account actions such as
+   * signing out. Nothing renders when unset.
+   */
+  account?: SiteHeaderAccount;
+}
+
+/** The signed-in person shown at the end of the header. */
+export interface SiteHeaderAccount {
+  /** Display name; the avatar shows its initials. */
+  name: string;
+  /** Accessible name of the menu trigger, for example "Account menu for Aino". */
+  menuLabel: string;
+  /** Account actions, in order. */
+  items: AvatarMenuItem[];
 }
 
 const defaultNavItems: NavItem[] = [
@@ -91,6 +108,7 @@ export function SiteHeader({
   navItems = defaultNavItems,
   className,
   languageCodes,
+  account,
 }: SiteHeaderProps) {
   const offeredLanguages = languageCodes
     ? languages.filter((lang) => languageCodes.includes(lang.code))
@@ -266,6 +284,16 @@ export function SiteHeader({
                 />
               </div>
             </div>
+
+            {account ? (
+              <Avatar
+                name={account.name}
+                variant="initials"
+                size="sm"
+                menuItems={account.items}
+                menuLabel={account.menuLabel}
+              />
+            ) : null}
 
             {/* Mobile Menu Button */}
             <IconButton

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T21:43:51.442Z",
+  "generatedAt": "2026-10-26T22:26:30.786Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -23623,8 +23623,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -23638,8 +23638,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -23660,8 +23660,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -37699,6 +37699,296 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "Tabs.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        }
+      },
+      "governance": null,
+      "content": null,
+      "temporal": null,
+      "consequence": null
+    },
+    "TaskList": {
+      "preferredImport": "@dt/TaskList",
+      "intent": "Orients people in a long form that is done in parts, in any order and over several sessions (a client intake, an application). It lists every part with its status and the open part's steps, and lets people move to any o…",
+      "props": {
+        "tasks": {
+          "optional": false,
+          "type": "TaskListTask[]",
+          "description": "Tasks in order."
+        },
+        "label": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible name of the navigation landmark, for example \"Intake parts\"."
+        },
+        "currentTaskId": {
+          "optional": true,
+          "type": "string",
+          "description": "The task the person is working on; its steps are listed."
+        },
+        "currentStepId": {
+          "optional": true,
+          "type": "string",
+          "description": "The step on screen, marked with aria-current=\"step\"."
+        },
+        "onSelect": {
+          "optional": true,
+          "type": "(taskId: string, stepId?: string) => void",
+          "description": "Called when a task or step is chosen. Every task can be opened, so past\nsteps stay reachable (Baymard: people click step indicators to go back).\nTasks with status \"cannotStart\" are not interactive."
+        },
+        "statusLabels": {
+          "optional": true,
+          "type": "Partial<Record<TaskListStatus, string>>",
+          "description": "Overrides the translated status words."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Merged onto the nav element."
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "keep part names short; one-line hints only.",
+        "map the rail 1:1 to the real steps and keep past steps selectable (Baymard: people click step indicators to go back)."
+      ],
+      "avoidWhen": [
+        "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+        "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another."
+      ],
+      "requiredA11y": [
+        "Renders a <nav> landmark named by `label`.",
+        "The step on screen carries aria-current=\"step\"; with no step, the open part does.",
+        "Each part's status (and hint) describes its button through aria-describedby.",
+        "Completed steps add a visually hidden \"done\"; the check icon is decorative."
+      ],
+      "keyboard": [
+        "Tab moves through the parts and the open part's steps in order.",
+        "Enter / Space opens the focused part or step."
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+        "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 7,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "keep part names short; one-line hints only.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "map the rail 1:1 to the real steps and keep past steps selectable (Baymard: people click step indicators to go back).",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual",
+          "wcag": [
+            {
+              "sc": "2.1.1",
+              "name": "Keyboard",
+              "level": "A",
+              "en301549": "9.2.1.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "2.1.2",
+              "name": "No Keyboard Trap",
+              "level": "A",
+              "en301549": "9.2.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TaskList.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TaskList.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TaskList.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TaskList.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",
@@ -54067,6 +54357,11 @@
           "optional": true,
           "type": "readonly string[]",
           "description": "Limits the language switchers to these codes, for an area offered in\nfewer languages than the site (the client intake: EN and FI). All site\nlanguages when unset."
+        },
+        "account": {
+          "optional": true,
+          "type": "SiteHeaderAccount",
+          "description": "The signed-in person in an account area (the client intake): an avatar\nwith their initials that opens a menu of account actions such as\nsigning out. Nothing renders when unset."
         }
       },
       "propRelationships": [],
@@ -54109,7 +54404,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 3,
+      "declaredPropCount": 4,
       "guidelines": [
         {
           "level": "should",
@@ -54151,8 +54446,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -54166,8 +54461,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -54188,8 +54483,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -54217,8 +54512,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "4.1.2",

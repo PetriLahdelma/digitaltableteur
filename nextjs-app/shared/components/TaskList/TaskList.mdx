@@ -1,0 +1,39 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "./TaskList.stories.tsx";
+
+<Meta of={Stories} />
+
+# TaskList
+
+**Status:** alpha, **Tier:** molecule, **Group:** navigation
+
+## In use
+
+The client intake's rail: seven parts, the open part with its sections.
+
+<Canvas of={Stories.Example} />
+
+## How to use
+
+```tsx
+import { TaskList } from "@dt/TaskList";
+
+<TaskList
+  label="Intake parts"
+  tasks={[{ id: "a", label: "Client intake", status: "completed" }]}
+  currentTaskId="a"
+  onSelect={(taskId, stepId) => go(taskId, stepId)}
+/>;
+```
+
+## When to use
+
+- Long forms done in parts, in any order, over more than one sitting.
+
+## When not to use
+
+- Short linear flows that must be done in order; show "Step 2 of 3" instead.
+
+## Accessibility
+
+- A `nav` landmark; the step on screen is `aria-current="step"`; statuses describe their part.

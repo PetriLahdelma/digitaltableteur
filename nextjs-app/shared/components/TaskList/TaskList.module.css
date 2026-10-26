@@ -1,0 +1,153 @@
+/* TaskList: a rail of tasks with statuses; the open task lists its steps. */
+
+.root {
+  inline-size: 100%;
+}
+
+.tasks,
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task {
+  border-block-start: 1px solid var(--color-border-light);
+}
+
+.task:last-child {
+  border-block-end: 1px solid var(--color-border-light);
+}
+
+.row {
+  display: flex;
+  padding-block: var(--space-internal-12);
+  inline-size: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-internal-12);
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: start;
+  color: var(--color-text);
+}
+
+button.row {
+  cursor: pointer;
+}
+
+.name {
+  display: flex;
+  min-inline-size: 0;
+  gap: var(--space-internal-8);
+}
+
+.number {
+  min-inline-size: 1.5em;
+  flex: none;
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
+}
+
+.nameText {
+  display: flex;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: var(--space-internal-2);
+}
+
+.label {
+  font-size: var(--font-size-text-s);
+  font-weight: var(--font-weight-medium);
+}
+
+.taskCurrent .label {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+button.row:hover .label {
+  text-decoration: underline;
+}
+
+.hint {
+  font-size: var(--font-size-text-xs);
+  color: var(--color-muted);
+}
+
+.status {
+  flex: none;
+}
+
+.completed {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-4);
+  font-size: var(--font-size-text-xs);
+  color: var(--color-text);
+}
+
+.muted {
+  font-size: var(--font-size-text-xs);
+  color: var(--color-muted);
+}
+
+.steps {
+  display: flex;
+  padding-block-end: var(--space-internal-12);
+  padding-inline-start: calc(1.5em + var(--space-internal-8));
+  flex-direction: column;
+  gap: var(--space-internal-2);
+}
+
+.step {
+  display: flex;
+  padding-block: var(--space-internal-6);
+  padding-inline: var(--space-internal-8);
+  inline-size: 100%;
+  align-items: center;
+  gap: var(--space-internal-8);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  font: inherit;
+  font-size: var(--font-size-text-s);
+  text-align: start;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.step:hover {
+  color: var(--color-text);
+}
+
+.step[aria-current="step"] {
+  background: var(--color-neutral-bg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.stepMark {
+  display: inline-flex;
+  block-size: 16px;
+  inline-size: 16px;
+  flex: none;
+}
+
+.visuallyHidden {
+  composes: root from "../VisuallyHidden/VisuallyHidden.module.css";
+}
+
+.row:focus-visible,
+.step:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+@media (forced-colors: active) {
+  .step[aria-current="step"] {
+    outline: 2px solid CanvasText;
+    outline-offset: calc(-1 * var(--space-internal-2));
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "TaskList",
+  "tier": "molecule",
+  "group": "navigation",
+  "status": "alpha",
+  "description": "Navigation rail for a long form done in parts, in any order and over several sessions: each part with its status, the open part with its steps.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "nav",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": [
+      "Tab moves through the parts and the open part's steps in order.",
+      "Enter / Space opens the focused part or step."
+    ],
+    "ariaRequirements": [
+      "Renders a <nav> landmark named by `label`.",
+      "The step on screen carries aria-current=\"step\"; with no step, the open part does.",
+      "Each part's status (and hint) describes its button through aria-describedby.",
+      "Completed steps add a visually hidden \"done\"; the check icon is decorative."
+    ],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [
+      "--color-text",
+      "--color-muted",
+      "--color-border-light",
+      "--color-neutral-bg"
+    ],
+    "spacing": [
+      "--space-internal-2",
+      "--space-internal-4",
+      "--space-internal-6",
+      "--space-internal-8",
+      "--space-internal-12"
+    ]
+  },
+  "lightDarkVerified": false,
+  "props": {
+    "tasks": {
+      "optional": false,
+      "type": "TaskListTask[]",
+      "description": "Tasks in order."
+    },
+    "label": {
+      "optional": false,
+      "type": "string",
+      "description": "Accessible name of the navigation landmark, for example \"Intake parts\"."
+    },
+    "currentTaskId": {
+      "optional": true,
+      "type": "string",
+      "description": "The task the person is working on; its steps are listed."
+    },
+    "currentStepId": {
+      "optional": true,
+      "type": "string",
+      "description": "The step on screen, marked with aria-current=\"step\"."
+    },
+    "onSelect": {
+      "optional": true,
+      "type": "(taskId: string, stepId?: string) => void",
+      "description": "Called when a task or step is chosen. Every task can be opened, so past\nsteps stay reachable (Baymard: people click step indicators to go back).\nTasks with status \"cannotStart\" are not interactive."
+    },
+    "statusLabels": {
+      "optional": true,
+      "type": "Partial<Record<TaskListStatus, string>>",
+      "description": "Overrides the translated status words."
+    },
+    "className": {
+      "optional": true,
+      "type": "string",
+      "description": "Merged onto the nav element."
+    }
+  },
+  "forbiddenUse": [
+    "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+    "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another."
+  ],
+  "schemaVersion": 2
+}
