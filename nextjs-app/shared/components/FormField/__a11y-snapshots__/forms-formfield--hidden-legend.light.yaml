@@ -1,0 +1,9 @@
+- heading "Notification channels" [level=3]
+- group "Notification channels":
+  - text: Notification channels
+  - checkbox "Email" [checked]
+  - text: Email
+  - checkbox "SMS"
+  - text: SMS
+  - checkbox "Push"
+  - text: Push
