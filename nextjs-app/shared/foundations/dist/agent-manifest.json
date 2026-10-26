@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-26T21:14:35.625Z",
+  "generatedAt": "2026-10-26T21:31:25.543Z",
   "summary": {
     "componentCount": 189,
     "statusCounts": {
@@ -775,6 +775,46 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/InviteFlow.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/SignInFlow.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/start/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/submissions/[submissionId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
           },
@@ -791,26 +831,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/RingStats/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/RingStats/RingStatsPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/VertaaUX/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -5033,6 +5053,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -5059,16 +5089,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -7812,6 +7832,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
@@ -7823,11 +7848,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/error.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -9478,6 +9498,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
             "since": "2026-06-04"
           },
@@ -9509,11 +9534,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -12159,6 +12179,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
@@ -12169,32 +12194,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -12776,6 +12796,26 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -18268,27 +18308,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/code-window/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/IntakeFrame.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "path": "app/intake/forms/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -20851,6 +20891,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -21278,6 +21323,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -23888,6 +23938,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -25626,6 +25681,26 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -27016,6 +27091,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -27067,11 +27147,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -27745,6 +27820,26 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -27781,26 +27876,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -28268,6 +28343,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
@@ -28278,32 +28358,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "path": "app/intake/_components/SignInFlow.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -28853,17 +28928,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/ComponentTaxonomyTree.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -29557,6 +29632,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
@@ -29608,11 +29688,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -30706,6 +30781,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -31088,6 +31168,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
@@ -31098,32 +31183,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "path": "app/intake/_components/SignInFlow.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -31601,6 +31681,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -32663,6 +32748,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
           },
@@ -32678,27 +32768,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/lib/siteStructure.ts",
+            "path": "app/intake/_components/IntakeFrame.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "path": "app/intake/_components/LanguageControls.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -33655,6 +33740,21 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/privacy/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
             "since": "2026-06-04"
           },
@@ -33666,21 +33766,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -35255,6 +35340,46 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeFrame.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/privacy/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/start/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/submissions/[submissionId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -35271,21 +35396,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/navigation/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -36505,6 +36615,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -37999,6 +38114,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -39438,6 +39558,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -41305,6 +41430,16 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
             "since": "2026-06-04"
           },
@@ -42300,6 +42435,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -50844,6 +50984,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -53290,6 +53435,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
             "since": "2026-06-04"
           },
@@ -53321,11 +53471,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -53805,6 +53950,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -56644,6 +56794,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -57690,6 +57845,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -59310,6 +59470,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -59336,16 +59506,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -59751,6 +59911,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -63927,6 +64092,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
           },
@@ -63947,12 +64117,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/AnswerSheet.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -64503,6 +64668,26 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -65019,6 +65204,51 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/InviteFlow.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/SignInFlow.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/start/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -65030,46 +65260,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -66192,6 +66382,16 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/submissions/[submissionId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
             "since": "2026-06-04"
           },
@@ -66827,6 +67027,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
           },
@@ -66847,17 +67052,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/AnswerSheet.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -67475,6 +67675,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -71470,6 +71675,21 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
             "since": "2026-06-04"
           },
@@ -71511,21 +71731,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -88907,6 +89112,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -89338,6 +89548,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/components/SiteChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -89364,11 +89579,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
             "since": "2026-06-04"
           }
         ],

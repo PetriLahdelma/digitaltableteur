@@ -90,7 +90,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
         },
         {
@@ -117,11 +122,6 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
             "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
-            "since": "2026-06-04"
         }
     ],
     "schemaVersion": 2,
@@ -135,6 +135,11 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+        },
+        "languageCodes": {
+            "optional": true,
+            "type": "readonly string[]",
+            "description": "Limits the language switchers to these codes, for an area offered in\nfewer languages than the site (the client intake: EN and FI). All site\nlanguages when unset."
         }
     },
     "forbiddenUse": [

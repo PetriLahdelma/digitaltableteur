@@ -18,6 +18,8 @@ interface MobileDrawerProps {
   onClose: () => void;
   navItems: NavItem[];
   currentLang: string;
+  /** Language codes offered; all site languages when unset. */
+  languageCodes?: readonly string[];
   onLanguageChange: (code: string) => void;
   onThemeToggle: () => void;
   theme: Theme;
@@ -35,6 +37,7 @@ export function MobileDrawer({
   onClose,
   navItems,
   currentLang,
+  languageCodes,
   onLanguageChange,
   onThemeToggle,
   theme,
@@ -58,8 +61,7 @@ export function MobileDrawer({
     }
 
     desktopQuery.addEventListener("change", closeAtDesktop);
-    return () =>
-      desktopQuery.removeEventListener("change", closeAtDesktop);
+    return () => desktopQuery.removeEventListener("change", closeAtDesktop);
   }, [isOpen, onClose]);
 
   useFocusTrap(panelRef, isOpen);
@@ -81,7 +83,7 @@ export function MobileDrawer({
 
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     const ctx = gsap.context(() => {
@@ -95,21 +97,21 @@ export function MobileDrawer({
         gsap.fromTo(
           backdropRef.current,
           { opacity: 0 },
-          { opacity: 1, duration: 0.2 }
+          { opacity: 1, duration: 0.2 },
         );
 
         // Panel slide in
         gsap.fromTo(
           panelRef.current,
           { x: "100%" },
-          { x: "0%", duration: 0.3, ease: "power2.out" }
+          { x: "0%", duration: 0.3, ease: "power2.out" },
         );
 
         // Stagger nav items
         gsap.fromTo(
           "[data-nav-item]",
           { opacity: 0, x: 20 },
-          { opacity: 1, x: 0, duration: 0.2, stagger: 0.05, delay: 0.15 }
+          { opacity: 1, x: 0, duration: 0.2, stagger: 0.05, delay: 0.15 },
         );
       }
     });
@@ -220,25 +222,30 @@ export function MobileDrawer({
                   { code: "en", nativeName: "English" },
                   { code: "fi", nativeName: "Suomi" },
                   { code: "sv", nativeName: "Svenska" },
-                ].map((lang) => (
-                  <button
-                    key={lang.code}
-                    type="button"
-                    onClick={() => onLanguageChange(lang.code)}
-                    // Visible code first (WCAG 2.5.3); lang for pronunciation.
-                    aria-label={`${lang.code.toUpperCase()}, ${lang.nativeName}`}
-                    lang={lang.code}
-                    aria-pressed={currentLang === lang.code}
-                    className={cn(
-                      "flex-1 py-2 px-3 rounded-md text-text-m font-body uppercase transition-colors",
-                      currentLang === lang.code
-                        ? "bg-foreground text-background font-medium"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
-                    )}
-                  >
-                    {lang.code.toUpperCase()}
-                  </button>
-                ))}
+                ]
+                  .filter(
+                    (lang) =>
+                      !languageCodes || languageCodes.includes(lang.code),
+                  )
+                  .map((lang) => (
+                    <button
+                      key={lang.code}
+                      type="button"
+                      onClick={() => onLanguageChange(lang.code)}
+                      // Visible code first (WCAG 2.5.3); lang for pronunciation.
+                      aria-label={`${lang.code.toUpperCase()}, ${lang.nativeName}`}
+                      lang={lang.code}
+                      aria-pressed={currentLang === lang.code}
+                      className={cn(
+                        "flex-1 py-2 px-3 rounded-md text-text-m font-body uppercase transition-colors",
+                        currentLang === lang.code
+                          ? "bg-foreground text-background font-medium"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80",
+                      )}
+                    >
+                      {lang.code.toUpperCase()}
+                    </button>
+                  ))}
               </div>
             </div>
 

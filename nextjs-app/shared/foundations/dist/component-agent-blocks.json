@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T21:14:35.317Z",
+  "generatedAt": "2026-10-26T21:43:51.442Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -54062,6 +54062,11 @@
           "optional": true,
           "type": "string",
           "description": "Optional wrapper class."
+        },
+        "languageCodes": {
+          "optional": true,
+          "type": "readonly string[]",
+          "description": "Limits the language switchers to these codes, for an area offered in\nfewer languages than the site (the client intake: EN and FI). All site\nlanguages when unset."
         }
       },
       "propRelationships": [],
@@ -54104,7 +54109,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 2,
+      "declaredPropCount": 3,
       "guidelines": [
         {
           "level": "should",

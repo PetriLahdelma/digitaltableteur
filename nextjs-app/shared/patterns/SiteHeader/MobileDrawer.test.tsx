@@ -279,3 +279,17 @@ describe("MobileDrawer focus trap (#6)", () => {
     });
   });
 });
+
+describe("MobileDrawer language options", () => {
+  it("offers every site language by default", () => {
+    renderDrawer();
+    const group = screen.getByRole("group", { name: "navMenuLanguages" });
+    expect(group.querySelectorAll("button")).toHaveLength(3);
+  });
+
+  it("offers only languageCodes when an area limits them", () => {
+    renderDrawer({ languageCodes: ["en", "fi"] });
+    const group = screen.getByRole("group", { name: "navMenuLanguages" });
+    expect([...group.querySelectorAll("button")].map((button) => button.getAttribute("lang"))).toEqual(["en", "fi"]);
+  });
+});

@@ -24,9 +24,9 @@ const CookieConsentModal = lazy(() => import("../CookieConsent/CookieConsent"));
  * mounted. Provided by NextLayout, consumed by app/not-found.tsx: offering a
  * chat assistant on an error page is noise, not help.
  */
-const ChatVisibilityContext = createContext<
-  ((hidden: boolean) => void) | null
->(null);
+const ChatVisibilityContext = createContext<((hidden: boolean) => void) | null>(
+  null,
+);
 
 /**
  * Hide the floating chat widget while the calling component is mounted.
@@ -43,6 +43,30 @@ export function useHideChatWidget(): void {
   }, [setHidden]);
 }
 
+/**
+ * Lets a routed area narrow the header's language switchers while it is
+ * mounted. Provided by NextLayout, consumed by the client intake, which is
+ * offered in EN and FI only.
+ */
+const LanguageOptionsContext = createContext<
+  ((codes: readonly string[] | undefined) => void) | null
+>(null);
+
+/**
+ * Offer only these languages in the site header while the calling component
+ * is mounted. Restores every site language on unmount.
+ */
+export function useLimitedLanguages(codes: readonly string[]): void {
+  const setCodes = useContext(LanguageOptionsContext);
+  const key = codes.join(",");
+
+  useEffect(() => {
+    if (!setCodes) return undefined;
+    setCodes(key.split(","));
+    return () => setCodes(undefined);
+  }, [setCodes, key]);
+}
+
 function ClientOnly({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
@@ -54,7 +78,6 @@ function ClientOnly({ children }: { children: ReactNode }) {
 
   return <Suspense fallback={null}>{children}</Suspense>;
 }
-
 
 /** Props for NextLayout. */
 export interface NextLayoutProps {
@@ -71,38 +94,43 @@ export function NextLayout({ children, className }: NextLayoutProps) {
   // speak the visitor's language (EN/FI/SV) rather than the SkipLink default.
   const t = useTranslate();
   const [chatHidden, setChatHidden] = useState(false);
+  const [languageCodes, setLanguageCodes] = useState<
+    readonly string[] | undefined
+  >();
 
   return (
     <ChatVisibilityContext.Provider value={setChatHidden}>
-      <DonnyActionProvider>
-        <div
-          className={
-            className ? `${styles.layout} ${className}` : styles.layout
-          }
-        >
-          <SkipLink href="#main-content">
-            {t("skipToMainContent", "Skip to main content")}
-          </SkipLink>
-          <SiteHeader />
-          {/* tabIndex=-1 makes the skip-link target programmatically
+      <LanguageOptionsContext.Provider value={setLanguageCodes}>
+        <DonnyActionProvider>
+          <div
+            className={
+              className ? `${styles.layout} ${className}` : styles.layout
+            }
+          >
+            <SkipLink href="#main-content">
+              {t("skipToMainContent", "Skip to main content")}
+            </SkipLink>
+            <SiteHeader languageCodes={languageCodes} />
+            {/* tabIndex=-1 makes the skip-link target programmatically
               focusable, so activating the skip link moves focus INTO main
               (not just scrolls). Without it the browser leaves focus on
               <body> and the next Tab restarts from the header — defeating
               the skip link (WCAG 2.4.1). */}
-          <main id="main-content" tabIndex={-1} className={styles.main}>
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <SiteFooter />
-          {!chatHidden && (
-            <ClientOnly>
-              <ChatWidget />
-            </ClientOnly>
-          )}
-        </div>
-      </DonnyActionProvider>
-      <ClientOnly>
-        <CookieConsentModal />
-      </ClientOnly>
+            <main id="main-content" tabIndex={-1} className={styles.main}>
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <SiteFooter />
+            {!chatHidden && (
+              <ClientOnly>
+                <ChatWidget />
+              </ClientOnly>
+            )}
+          </div>
+        </DonnyActionProvider>
+        <ClientOnly>
+          <CookieConsentModal />
+        </ClientOnly>
+      </LanguageOptionsContext.Provider>
     </ChatVisibilityContext.Provider>
   );
 }

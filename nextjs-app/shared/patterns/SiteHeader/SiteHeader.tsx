@@ -29,6 +29,12 @@ export interface SiteHeaderProps {
   navItems?: NavItem[];
   /** Optional wrapper class. */
   className?: string;
+  /**
+   * Limits the language switchers to these codes, for an area offered in
+   * fewer languages than the site (the client intake: EN and FI). All site
+   * languages when unset.
+   */
+  languageCodes?: readonly string[];
 }
 
 const defaultNavItems: NavItem[] = [
@@ -84,7 +90,11 @@ const themeNames: Record<Theme, string> = {
 export function SiteHeader({
   navItems = defaultNavItems,
   className,
+  languageCodes,
 }: SiteHeaderProps) {
+  const offeredLanguages = languageCodes
+    ? languages.filter((lang) => languageCodes.includes(lang.code))
+    : languages;
   const {
     translate: t,
     resolvedLanguage,
@@ -134,7 +144,10 @@ export function SiteHeader({
     }
     const nextTheme = cycleTheme() as Theme;
     const label = t(themeNames[nextTheme], nextTheme);
-    showToast(t("themeChanged", { theme: label }), { tone: "neutral", duration: 3000 });
+    showToast(t("themeChanged", { theme: label }), {
+      tone: "neutral",
+      duration: 3000,
+    });
   };
 
   const handleLanguageChange = (code: string) => {
@@ -142,8 +155,7 @@ export function SiteHeader({
 
     const langLabel = languages.find((lang) => lang.code === code);
     const bundle = getResourceBundle(code, "translation") as
-      | Record<string, unknown>
-      | undefined;
+      Record<string, unknown> | undefined;
     const labelKey = langLabel?.announcementKey ?? `languageName.${code}`;
     const label =
       typeof bundle?.[labelKey] === "string" ? bundle[labelKey] : code;
@@ -172,104 +184,104 @@ export function SiteHeader({
           className,
         )}
       >
-      <Container size="lg" className="flex h-20 items-center justify-between">
-        {/* Logo */}
-        <RouterLink
-          href="/"
-          // rounded-sm matches the LanguageSwitcher so the focus outline
-          // renders with the same corner rounding as the other header controls.
-          className="flex items-center gap-3 group rounded-sm"
-          onMouseEnter={() => setIsLogoHovered(true)}
-          onMouseLeave={() => setIsLogoHovered(false)}
-        >
-          <div
-            className={cn(
-              "flex items-center justify-center rounded-full transition-transform group-hover:scale-110",
-              "h-10 w-10 lg:h-11 lg:w-11",
-              "bg-[var(--logo-background)] text-[var(--logo-color)]",
-            )}
+        <Container size="lg" className="flex h-20 items-center justify-between">
+          {/* Logo */}
+          <RouterLink
+            href="/"
+            // rounded-sm matches the LanguageSwitcher so the focus outline
+            // renders with the same corner rounding as the other header controls.
+            className="flex items-center gap-3 group rounded-sm"
+            onMouseEnter={() => setIsLogoHovered(true)}
+            onMouseLeave={() => setIsLogoHovered(false)}
           >
-            <Logo
-              size={24}
-              animated={isLogoHovered}
-              decorative
-              className="h-6 w-6 lg:h-6.5 lg:w-6.5"
+            <div
+              className={cn(
+                "flex items-center justify-center rounded-full transition-transform group-hover:scale-110",
+                "h-10 w-10 lg:h-11 lg:w-11",
+                "bg-[var(--logo-background)] text-[var(--logo-color)]",
+              )}
+            >
+              <Logo
+                size={24}
+                animated={isLogoHovered}
+                decorative
+                className="h-6 w-6 lg:h-6.5 lg:w-6.5"
+              />
+            </div>
+            <span className="font-heading text-lg lg:text-[1.375rem] font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
+              Digitaltableteur
+            </span>
+          </RouterLink>
+
+          {/* Desktop Navigation */}
+          <nav
+            className="hidden lg:flex items-center gap-6"
+            aria-label={t("navMenuAccessibleLabel")}
+          >
+            {navItems.map((item) => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                exact={item.exact}
+                className="text-base font-semibold tracking-wide hover:text-primary transition-colors"
+              >
+                {t(item.label)}
+              </NavLink>
+            ))}
+          </nav>
+
+          {/* Controls */}
+          <div className="flex items-center gap-2 ml-4">
+            <div className="hidden lg:flex items-center">
+              {/* pr-4 / pl-4 — equal inset on both sides of the divider */}
+              <div className="pr-4">
+                <LanguageSwitcher
+                  languages={offeredLanguages.map((lang) => ({
+                    code: lang.code,
+                    label: lang.code.toUpperCase(),
+                    ariaLabel: lang.nativeName,
+                  }))}
+                  currentLang={currentLang}
+                  onLanguageChange={handleLanguageChange}
+                />
+              </div>
+
+              <div className="flex items-center gap-2 border-l border-border/40 pl-4">
+                <IconButton
+                  icon={
+                    <span
+                      className={cn(
+                        styles.themeIcon,
+                        isThemeAnimating && styles.themeIconAnimating,
+                      )}
+                      aria-hidden
+                    >
+                      <ThemeIcon weight="bold" />
+                    </span>
+                  }
+                  label={t("toggleDarkMode")}
+                  onClick={handleThemeToggle}
+                  variant="tertiary"
+                  className="cursor-pointer"
+                />
+              </div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <IconButton
+              // 32px glyph (the scale step above Button's 26px phone default):
+              // Phosphor's List draws in the middle ~70% of its box, so at 26px
+              // the lines read as an 18px icon.
+              icon={<List weight="bold" className="size-8" />}
+              label={t("navMenuOpen", "Open navigation menu")}
+              onClick={openMobileMenu}
+              className="lg:hidden"
+              variant="tertiary"
             />
           </div>
-          <span className="font-heading text-lg lg:text-[1.375rem] font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
-            Digitaltableteur
-          </span>
-        </RouterLink>
-
-        {/* Desktop Navigation */}
-        <nav
-          className="hidden lg:flex items-center gap-6"
-          aria-label={t("navMenuAccessibleLabel")}
-        >
-          {navItems.map((item) => (
-            <NavLink
-              key={item.href}
-              href={item.href}
-              exact={item.exact}
-              className="text-base font-semibold tracking-wide hover:text-primary transition-colors"
-            >
-              {t(item.label)}
-            </NavLink>
-          ))}
-        </nav>
-
-        {/* Controls */}
-        <div className="flex items-center gap-2 ml-4">
-          <div className="hidden lg:flex items-center">
-            {/* pr-4 / pl-4 — equal inset on both sides of the divider */}
-            <div className="pr-4">
-              <LanguageSwitcher
-                languages={languages.map((lang) => ({
-                  code: lang.code,
-                  label: lang.code.toUpperCase(),
-                  ariaLabel: lang.nativeName,
-                }))}
-                currentLang={currentLang}
-                onLanguageChange={handleLanguageChange}
-              />
-            </div>
-
-            <div className="flex items-center gap-2 border-l border-border/40 pl-4">
-              <IconButton
-                icon={
-                  <span
-                    className={cn(
-                      styles.themeIcon,
-                      isThemeAnimating && styles.themeIconAnimating,
-                    )}
-                    aria-hidden
-                  >
-                    <ThemeIcon weight="bold" />
-                  </span>
-                }
-                label={t("toggleDarkMode")}
-                onClick={handleThemeToggle}
-                variant="tertiary"
-                className="cursor-pointer"
-              />
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <IconButton
-            // 32px glyph (the scale step above Button's 26px phone default):
-            // Phosphor's List draws in the middle ~70% of its box, so at 26px
-            // the lines read as an 18px icon.
-            icon={<List weight="bold" className="size-8" />}
-            label={t("navMenuOpen", "Open navigation menu")}
-            onClick={openMobileMenu}
-            className="lg:hidden"
-            variant="tertiary"
-          />
-        </div>
-      </Container>
-      {/* Phone-only slot: SiteSubnav portals the page nav bar here on scroll up. */}
-      <div id={SITE_SUBNAV_SLOT_ID} className={styles.subnavSlot} />
+        </Container>
+        {/* Phone-only slot: SiteSubnav portals the page nav bar here on scroll up. */}
+        <div id={SITE_SUBNAV_SLOT_ID} className={styles.subnavSlot} />
       </header>
 
       {/* Mobile Drawer - outside header to avoid inheriting transparent background */}
@@ -278,6 +290,7 @@ export function SiteHeader({
         onClose={closeMobileMenu}
         navItems={navItems}
         currentLang={currentLang}
+        languageCodes={offeredLanguages.map((lang) => lang.code)}
         onLanguageChange={handleLanguageChange}
         onThemeToggle={handleThemeToggle}
         theme={theme}
