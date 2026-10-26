@@ -7,7 +7,7 @@ import type { IntakeLocale } from "../types";
 import { HOUR, MINUTE, type IntakeContext, type IntakeMail } from "./context";
 import { openContact } from "./invites";
 import { codeMail } from "./mail";
-import { hit } from "./rate-limit";
+import { hit, isOver } from "./rate-limit";
 
 /** `__Host-` pins the cookie to this host, HTTPS and path `/` (no Domain attribute). */
 export const PREAUTH_COOKIE = "__Host-intake-pre";
@@ -125,7 +125,7 @@ export type CodeCheck =
  * Success spends every pending code and invite link of the client and
  * starts a fresh session.
  */
-export async function verifyLoginCode(ctx: IntakeContext, preauthToken: string, code: string): Promise<CodeCheck> {
+export async function verifyLoginCode(ctx: IntakeContext, preauthToken: string, code: string, networkKey: string): Promise<CodeCheck> {
   const preauthHash = hashToken(preauthToken);
   const now = ctx.now();
   const [pending] = await ctx.db
@@ -137,8 +137,15 @@ export async function verifyLoginCode(ctx: IntakeContext, preauthToken: string, 
     const [spent] = await ctx.db.select({ attempts: loginCodes.attempts }).from(loginCodes).where(eq(loginCodes.preauthHash, preauthHash));
     return { status: spent && spent.attempts >= MAX_CODE_ATTEMPTS ? "locked" : "expired" };
   }
+  // Daily failure caps across all codes, checked before the comparison.
+  const clientNetwork = `${pending.clientId}:${networkKey}`;
+  if ((await isOver(ctx, "codeFailuresPerClientNetwork", clientNetwork)) || (await isOver(ctx, "codeFailuresPerClient", pending.clientId))) {
+    return { status: "locked" };
+  }
 
   if (!verifyCode(code, codeBinding(pending.clientId, preauthHash), ctx.hmacKey, pending.digest)) {
+    await hit(ctx, "codeFailuresPerClientNetwork", clientNetwork);
+    await hit(ctx, "codeFailuresPerClient", pending.clientId);
     await ctx.db.insert(auditLog).values({ actor: "client", action: "code.failed", clientId: pending.clientId });
     return { status: pending.attempts >= MAX_CODE_ATTEMPTS ? "locked" : "wrong" };
   }

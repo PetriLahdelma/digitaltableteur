@@ -22,6 +22,13 @@ export const LIMITS = {
    * bounds guessing at 100 tries an hour against 10^8 codes.
    */
   codesPerClient: { limit: 20, windowMs: 60 * 60 * 1000 },
+  /**
+   * Wrong codes for one client from one network address in a day. Keyed on
+   * both, so a stranger guessing locks out only their own network.
+   */
+  codeFailuresPerClientNetwork: { limit: 10, windowMs: 24 * 60 * 60 * 1000 },
+  /** Wrong codes for one client in a day from everywhere: the backstop. */
+  codeFailuresPerClient: { limit: 100, windowMs: 24 * 60 * 60 * 1000 },
   /** Draft saves for one session, generous for autosave. */
   savesPerSession: { limit: 600, windowMs: 60 * 60 * 1000 },
 } as const;
@@ -47,4 +54,11 @@ export async function hit(ctx: Pick<IntakeContext, "db" | "now">, name: LimitNam
     })
     .returning({ count: rateLimits.count });
   return row.count <= limit;
+}
+
+/** True when a bucket has reached its limit, without counting a hit. */
+export async function isOver(ctx: Pick<IntakeContext, "db" | "now">, name: LimitName, key: string): Promise<boolean> {
+  const bucket = `${name}:${sha256Hex(key)}`;
+  const [row] = await ctx.db.select().from(rateLimits).where(sql`${rateLimits.bucket} = ${bucket}`);
+  return Boolean(row && row.resetAt > ctx.now() && row.count >= LIMITS[name].limit);
 }

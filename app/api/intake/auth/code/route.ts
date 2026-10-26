@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { NextRequest } from "next/server";
 
 import { CodeRaceError, PREAUTH_COOKIE, verifyLoginCode } from "@/app/lib/intake/service/auth";
-import { clearCookie, json, readJsonBody, serverError, setSessionCookie } from "@/app/lib/intake/service/http";
+import { clearCookie, json, networkKey, readJsonBody, serverError, setSessionCookie } from "@/app/lib/intake/service/http";
 import { intakeContext } from "@/app/lib/intake/service/runtime";
 
 export const runtime = "nodejs";
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
   const preauth = request.cookies.get(PREAUTH_COOKIE)?.value;
   if (!preauth) return json({ status: "expired" }, 400);
   try {
-    const result = await verifyLoginCode(await intakeContext(), preauth, body.data.code);
+    const result = await verifyLoginCode(await intakeContext(), preauth, body.data.code, networkKey(request));
     if (result.status !== "ok") return json({ status: result.status }, 400);
     const response = json({ status: "ok" });
     clearCookie(response, PREAUTH_COOKIE);

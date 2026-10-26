@@ -51,7 +51,7 @@ async function invite(email = "client@example.test") {
 async function signIn(token: string) {
   const request = await requestCodeForInvite(ctx, token, "net-1");
   if (request.status !== "sent") throw new Error(request.status);
-  const check = await verifyLoginCode(ctx, request.preauthToken, codeFrom(request.mail));
+  const check = await verifyLoginCode(ctx, request.preauthToken, codeFrom(request.mail), "net-1");
   if (check.status !== "ok") throw new Error(check.status);
   const session = await readSession(ctx, check.sessionToken);
   if (!session) throw new Error("no session");
@@ -99,7 +99,7 @@ describe("invite and sign-in", () => {
     const created = await invite();
     const request = await requestCodeForInvite(ctx, created.token, "net-1");
     if (request.status !== "sent") throw new Error();
-    expect((await verifyLoginCode(ctx, "another-cookie", codeFrom(request.mail))).status).toBe("expired");
+    expect((await verifyLoginCode(ctx, "another-cookie", codeFrom(request.mail), "net-1")).status).toBe("expired");
   });
 
   it("locks after five wrong codes and the right code no longer works", async () => {
@@ -109,9 +109,9 @@ describe("invite and sign-in", () => {
     const right = codeFrom(request.mail);
     const wrong = right === "00000000" ? "11111111" : "00000000";
     const results = [];
-    for (let i = 0; i < 5; i += 1) results.push((await verifyLoginCode(ctx, request.preauthToken, wrong)).status);
+    for (let i = 0; i < 5; i += 1) results.push((await verifyLoginCode(ctx, request.preauthToken, wrong, "net-1")).status);
     expect(results).toEqual(["wrong", "wrong", "wrong", "wrong", "locked"]);
-    expect((await verifyLoginCode(ctx, request.preauthToken, right)).status).not.toBe("ok");
+    expect((await verifyLoginCode(ctx, request.preauthToken, right, "net-1")).status).not.toBe("ok");
   });
 
   it("expires codes after 10 minutes", async () => {
@@ -119,7 +119,7 @@ describe("invite and sign-in", () => {
     const request = await requestCodeForInvite(ctx, created.token, "net-1");
     if (request.status !== "sent") throw new Error();
     advance(11 * MINUTE);
-    expect((await verifyLoginCode(ctx, request.preauthToken, codeFrom(request.mail))).status).toBe("expired");
+    expect((await verifyLoginCode(ctx, request.preauthToken, codeFrom(request.mail), "net-1")).status).toBe("expired");
   });
 
   it("answers known and unknown addresses the same way and defers the lookup", async () => {
@@ -152,7 +152,7 @@ describe("invite and sign-in", () => {
 
     const again = await requestCodeForEmail(ctx, "client@example.test", "fi", "net-1");
     if (again.status !== "sent") throw new Error();
-    const check = await verifyLoginCode(ctx, again.preauthToken, codeFrom(await again.issue()));
+    const check = await verifyLoginCode(ctx, again.preauthToken, codeFrom(await again.issue()), "net-1");
     if (check.status !== "ok") throw new Error();
     advance(29 * MINUTE);
     expect(await readSession(ctx, check.sessionToken)).not.toBeNull();
@@ -260,9 +260,9 @@ describe("drafts and submission", () => {
     const stranger = await requestCodeForEmail(ctx, "client@example.test", "en", "net-evil");
     if (mine.status !== "sent" || stranger.status !== "sent") throw new Error();
     await stranger.issue();
-    for (let i = 0; i < 6; i += 1) await verifyLoginCode(ctx, stranger.preauthToken, "00000000");
+    for (let i = 0; i < 6; i += 1) await verifyLoginCode(ctx, stranger.preauthToken, "00000000", "net-evil");
     // The client's own code still works, and signing in spends every pending code.
-    expect((await verifyLoginCode(ctx, mine.preauthToken, codeFrom(mine.mail))).status).toBe("ok");
+    expect((await verifyLoginCode(ctx, mine.preauthToken, codeFrom(mine.mail), "net-1")).status).toBe("ok");
     expect(await db.select().from(loginCodes)).toHaveLength(0);
   });
 
@@ -272,11 +272,28 @@ describe("drafts and submission", () => {
     if (request.status !== "sent") throw new Error();
     const right = codeFrom(request.mail);
     const wrong = right === "00000000" ? "11111111" : "00000000";
-    const results = await Promise.all(Array.from({ length: 12 }, () => verifyLoginCode(ctx, request.preauthToken, wrong)));
+    const results = await Promise.all(Array.from({ length: 12 }, () => verifyLoginCode(ctx, request.preauthToken, wrong, "net-1")));
     const [row] = await db.select().from(loginCodes);
     expect(row.attempts).toBe(5);
     expect(results.filter((result) => result.status === "wrong").length).toBeLessThanOrEqual(4);
-    expect((await verifyLoginCode(ctx, request.preauthToken, right)).status).toBe("locked");
+    expect((await verifyLoginCode(ctx, request.preauthToken, right, "net-1")).status).toBe("locked");
+  });
+
+  it("caps wrong codes per day per client and network, and per client overall", async () => {
+    const created = await invite();
+    await signIn(created.token);
+    const statuses: string[] = [];
+    for (let round = 0; round < 3; round += 1) {
+      const request = await requestCodeForEmail(ctx, "client@example.test", "en", "net-evil");
+      if (request.status !== "sent") throw new Error();
+      await request.issue();
+      for (let i = 0; i < 4; i += 1) statuses.push((await verifyLoginCode(ctx, request.preauthToken, "00000000", "net-evil")).status);
+    }
+    // Ten failures from one network lock that network for the day.
+    expect(statuses.slice(10)).toEqual(["locked", "locked"]);
+    const own = await requestCodeForEmail(ctx, "client@example.test", "en", "net-home");
+    if (own.status !== "sent") throw new Error();
+    expect((await verifyLoginCode(ctx, own.preauthToken, codeFrom(await own.issue()), "net-home")).status).toBe("ok");
   });
 
   it("caps codes per client and network without blocking the client elsewhere", async () => {
