@@ -867,6 +867,7 @@
   "privacyPolicySharingItem2": "Vercel: webbplatshosting och leverans av innehåll",
   "privacyPolicySharingItem3": "Google Analytics: anonymiserad analys av webbplatstrafik",
   "privacyPolicySharingItem4": "OpenAI, direkt eller via Vercel AI Gateway: för att behandla meddelanden i webbplatschatten och generera svar",
+  "privacyPolicySharingItem5": "MongoDB Atlas: för att lagra meddelanden från kontaktformuläret och uppgifter om begäranden om radering",
   "privacyPolicySharingFooter": "Alla dessa tjänsteleverantörer behandlar data i enlighet med databehandlingsavtal och GDPR-efterlevnad.",
   "privacyPolicyTransfersTitle": "Internationella dataöverföringar",
   "privacyPolicyTransfersBody": "Vissa tredjepartstjänster (t.ex. OpenAI, Resend) kan behandla data utanför EU/EES. Det säkerställs att sådana överföringar omfattas av lämpliga skyddsåtgärder, inklusive standardavtalsklausuler (SCC) eller EU-USA Data Privacy Framework när det är lämpligt.",

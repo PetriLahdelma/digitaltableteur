@@ -867,6 +867,7 @@
   "privacyPolicySharingItem2": "Vercel: for website hosting and analytics",
   "privacyPolicySharingItem3": "Google Analytics: for website usage statistics (with your consent)",
   "privacyPolicySharingItem4": "OpenAI, directly or through Vercel AI Gateway: to process website-chat messages and generate replies",
+  "privacyPolicySharingItem5": "MongoDB Atlas: for storing contact form submissions and records of data deletion requests",
   "privacyPolicySharingFooter": "All service providers are bound by data processing agreements and comply with GDPR requirements. Your data is not shared outside these purposes unless required by law or public authorities.",
   "privacyPolicyTransfersTitle": "Transfers outside the EEA",
   "privacyPolicyTransfersBody": "Some service providers (Vercel, OpenAI) may process data outside the European Economic Area. Lawful transfers are ensured through appropriate safeguards including standard contractual clauses approved by the European Commission, adequacy decisions or equivalent mechanisms compliant with GDPR Article 46.",

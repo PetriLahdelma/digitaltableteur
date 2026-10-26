@@ -867,6 +867,7 @@
   "privacyPolicySharingItem2": "Vercel: verkkosivuston isännöintiin ja analytiikkaan",
   "privacyPolicySharingItem3": "Google Analytics: verkkosivuston käyttötilastoihin (suostumuksellasi)",
   "privacyPolicySharingItem4": "OpenAI suoraan tai Vercel AI Gatewayn kautta: verkkosivuston chat-viestien käsittelyyn ja vastausten tuottamiseen",
+  "privacyPolicySharingItem5": "MongoDB Atlas: yhteydenottolomakkeiden viestien ja tietojen poistopyyntöjen tallentamiseen",
   "privacyPolicySharingFooter": "Kaikki palveluntarjoajat ovat sitoutuneet tietojenkäsittelysopimuksiin ja noudattavat GDPR-vaatimuksia. Tietojasi ei jaeta näiden tarkoitusten ulkopuolelle, ellei laki tai viranomaiset sitä vaadi.",
   "privacyPolicyTransfersTitle": "Siirrot ETA:n ulkopuolelle",
   "privacyPolicyTransfersBody": "Jotkin palveluntarjoajat (Vercel, OpenAI) saattavat käsitellä tietoja Euroopan talousalueen ulkopuolella. Lailliset siirrot varmistetaan asianmukaisilla suojatoimilla, kuten Euroopan komission hyväksymillä vakiosopimuslausekkeilla, riittävyyttä koskevilla päätöksillä tai vastaavilla GDPR:n 46 artiklan mukaisilla mekanismeilla.",

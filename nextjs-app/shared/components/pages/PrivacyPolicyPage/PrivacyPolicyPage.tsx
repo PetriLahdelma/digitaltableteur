@@ -73,6 +73,7 @@ export function PrivacyPolicyPage() {
     "privacyPolicySharingItem2",
     "privacyPolicySharingItem3",
     "privacyPolicySharingItem4",
+    "privacyPolicySharingItem5",
   ];
 
   const cookiesItems = [
@@ -108,7 +109,7 @@ export function PrivacyPolicyPage() {
       </Text>
       <Text as="p" size="xs">
         {t("privacyPolicyLastUpdatedLabel")}{" "}
-        <Timestamp value="2026-09-23" format="date" size="xs" />
+        <Timestamp value="2026-10-26" format="date" size="xs" />
       </Text>
 
       <Section spacing="none">
