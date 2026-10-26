@@ -109,10 +109,10 @@ describe("retention purge", () => {
     await db.insert(drafts).values([
       { inviteId: live.id, answersSealed: sealJson({}, ring, `draft:${live.id}`), updatedAt: new Date(now.getTime() - 89 * DAY) },
     ]);
-    const old = await addInvite(keepClient.id, { status: "active", tokenHash: null });
+    const old = await addInvite(keepClient.id, { status: "active", tokenHash: null, createdAt: new Date(now.getTime() - 120 * DAY) });
     await db.insert(drafts).values({ inviteId: old.id, answersSealed: sealJson({}, ring, `draft:${old.id}`), updatedAt: new Date(now.getTime() - 91 * DAY) });
 
-    const submitted = await addInvite(keepClient.id, { status: "submitted", tokenHash: null });
+    const submitted = await addInvite(keepClient.id, { status: "submitted", tokenHash: null, createdAt: new Date("2025-09-20T00:00:00Z") });
     await db.insert(submissions).values({
       inviteId: submitted.id,
       clientId: keepClient.id,
@@ -131,11 +131,67 @@ describe("retention purge", () => {
 
     const counts = await purgeExpired(db, now);
 
-    expect(counts).toEqual({ codes: 1, sessions: 1, rateLimits: 0, unusedInvites: 1, drafts: 1, submissions: 1, clients: 1, auditEntries: 1 });
+    // Gone: the unredeemed invite, the stale draft (and then its abandoned
+    // invite), the year-old submission (and then its invite).
+    expect(counts).toEqual({ codes: 1, sessions: 1, rateLimits: 0, drafts: 1, submissions: 1, invites: 3, clients: 1, auditEntries: 1 });
     expect((await db.select().from(drafts)).map((row) => row.inviteId)).toEqual([live.id]);
+    expect((await db.select().from(invites)).map((row) => row.id)).toEqual([live.id]);
     expect((await db.select().from(clients)).map((row) => row.id)).toEqual([keepClient.id]);
     const [entry] = await db.select().from(auditLog).where(eq(auditLog.action, "retention.purge"));
     expect(entry.detail).toEqual(counts);
+  });
+
+  async function addSubmission(clientId: string, inviteId: string, submittedAt: Date) {
+    await db.insert(submissions).values({
+      inviteId,
+      clientId,
+      questionnaireId: "client-brand-discovery",
+      questionnaireVersion: "1.0.0",
+      locale: "en",
+      snapshotSealed: sealJson({}, ring, `submission:${inviteId}`),
+      snapshotDigest: "d",
+      submittedAt,
+      deleteAfter: submissionDeleteAfter(submittedAt),
+    });
+  }
+
+  it("removes a submitted client completely once the submission reaches 12 months", async () => {
+    const client = await addClient();
+    const invite = await addInvite(client.id, { status: "submitted", tokenHash: null });
+    await addSubmission(client.id, invite.id, new Date("2025-10-15T00:00:00Z"));
+    await db.insert(sessions).values({ idHash: "s", kind: "client", clientId: client.id, expiresAt: new Date(now.getTime() + DAY) });
+
+    await purgeExpired(db, now);
+
+    expect(await db.select().from(submissions)).toHaveLength(0);
+    expect(await db.select().from(invites)).toHaveLength(0);
+    expect(await db.select().from(clients)).toHaveLength(0);
+    expect(await db.select().from(sessions)).toHaveLength(0);
+  });
+
+  it("keeps a submitted client inside the 12 months", async () => {
+    const client = await addClient();
+    const invite = await addInvite(client.id, { status: "submitted", tokenHash: null });
+    await addSubmission(client.id, invite.id, new Date("2026-01-15T00:00:00Z"));
+    await purgeExpired(db, now);
+    expect(await db.select().from(clients)).toHaveLength(1);
+  });
+
+  it("removes revoked invites and then the client", async () => {
+    const client = await addClient();
+    await addInvite(client.id, { status: "revoked", tokenHash: null, revokedAt: now });
+    await purgeExpired(db, now);
+    expect(await db.select().from(invites)).toHaveLength(0);
+    expect(await db.select().from(clients)).toHaveLength(0);
+  });
+
+  it("keeps an active invite with a recent draft and a new invite with no draft yet", async () => {
+    const client = await addClient();
+    const old = await addInvite(client.id, { status: "active", tokenHash: null, createdAt: new Date(now.getTime() - 200 * DAY) });
+    await db.insert(drafts).values({ inviteId: old.id, answersSealed: sealJson({}, ring, `draft:${old.id}`), updatedAt: new Date(now.getTime() - DAY) });
+    await addInvite(client.id, { status: "active", tokenHash: null, createdAt: new Date(now.getTime() - 2 * DAY) });
+    await purgeExpired(db, now);
+    expect(await db.select().from(invites)).toHaveLength(2);
   });
 
   it("keeps submissions for 12 months", () => {

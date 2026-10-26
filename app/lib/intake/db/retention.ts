@@ -13,53 +13,74 @@ function monthsBefore(now: Date, months: number): Date {
 }
 
 export type PurgeCounts = Record<
-  "codes" | "sessions" | "rateLimits" | "unusedInvites" | "drafts" | "submissions" | "clients" | "auditEntries",
+  "codes" | "sessions" | "rateLimits" | "drafts" | "submissions" | "invites" | "clients" | "auditEntries",
   number
 >;
 
 /**
  * Deletes everything past its retention window (decisions in
- * app/lib/intake/data-policy.ts). Run daily by a cron route. Writes one audit
- * entry with counts only.
+ * app/lib/intake/data-policy.ts). Run daily by a cron route. Order matters:
+ * drafts and submissions go first, then every invite with nothing live left
+ * on it, then every client with no invites, so a client's sealed contact
+ * details never outlive their last submission. Writes one audit entry with
+ * counts only.
  */
 export async function purgeExpired(db: IntakeDb, now = new Date()): Promise<PurgeCounts> {
   return db.transaction(async (tx) => {
     const count = async (rows: Promise<unknown[]>) => (await rows).length;
-    const counts: PurgeCounts = {
-      codes: await count(tx.delete(loginCodes).where(lt(loginCodes.expiresAt, now)).returning({ id: loginCodes.clientId })),
-      sessions: await count(
-        tx
-          .delete(sessions)
-          .where(or(lt(sessions.expiresAt, now), sql`${sessions.revokedAt} is not null`))
-          .returning({ id: sessions.idHash }),
-      ),
-      rateLimits: await count(tx.delete(rateLimits).where(lt(rateLimits.resetAt, now)).returning({ id: rateLimits.bucket })),
-      // Links never redeemed before they expired: nothing was entered yet.
-      unusedInvites: await count(
-        tx
-          .delete(invites)
-          .where(and(eq(invites.status, "invited"), lt(invites.tokenExpiresAt, now)))
-          .returning({ id: invites.id }),
-      ),
-      drafts: await count(
-        tx
-          .delete(drafts)
-          .where(lt(drafts.updatedAt, new Date(now.getTime() - RETENTION.draftDaysSinceLastEdit * DAY)))
-          .returning({ id: drafts.inviteId }),
-      ),
-      submissions: await count(tx.delete(submissions).where(lt(submissions.deleteAfter, now)).returning({ id: submissions.id })),
-      clients: 0,
-      auditEntries: await count(
-        tx.delete(auditLog).where(lt(auditLog.at, monthsBefore(now, RETENTION.auditLogMonths))).returning({ id: auditLog.id }),
-      ),
-    };
-    // A client with no invites left has nothing to come back to.
-    counts.clients = await count(
+    const draftCutoff = new Date(now.getTime() - RETENTION.draftDaysSinceLastEdit * DAY);
+    const hasDraft = tx.select({ one: sql`1` }).from(drafts).where(eq(drafts.inviteId, invites.id));
+    const hasSubmission = tx.select({ one: sql`1` }).from(submissions).where(eq(submissions.inviteId, invites.id));
+
+    const codesCount = await count(tx.delete(loginCodes).where(lt(loginCodes.expiresAt, now)).returning({ id: loginCodes.clientId }));
+    const sessionsCount = await count(
+      tx
+        .delete(sessions)
+        .where(or(lt(sessions.expiresAt, now), sql`${sessions.revokedAt} is not null`))
+        .returning({ id: sessions.idHash }),
+    );
+    const rateLimitsCount = await count(tx.delete(rateLimits).where(lt(rateLimits.resetAt, now)).returning({ id: rateLimits.bucket }));
+    const draftsCount = await count(tx.delete(drafts).where(lt(drafts.updatedAt, draftCutoff)).returning({ id: drafts.inviteId }));
+    const submissionsCount = await count(
+      tx.delete(submissions).where(lt(submissions.deleteAfter, now)).returning({ id: submissions.id }),
+    );
+    const invitesCount = await count(
+      tx
+        .delete(invites)
+        .where(
+          or(
+            // Link never redeemed before it expired: nothing was entered.
+            and(eq(invites.status, "invited"), lt(invites.tokenExpiresAt, now)),
+            // Submitted, and the submission has reached its retention limit.
+            and(eq(invites.status, "submitted"), notExists(hasSubmission)),
+            // Revoked by the owner; the audit log keeps the record of it.
+            and(eq(invites.status, "revoked"), notExists(hasSubmission)),
+            // Redeemed but abandoned: no draft left and older than the draft window.
+            and(eq(invites.status, "active"), notExists(hasDraft), notExists(hasSubmission), lt(invites.createdAt, draftCutoff)),
+          ),
+        )
+        .returning({ id: invites.id }),
+    );
+    const clientsCount = await count(
       tx
         .delete(clients)
         .where(notExists(tx.select({ one: sql`1` }).from(invites).where(eq(invites.clientId, clients.id))))
         .returning({ id: clients.id }),
     );
+    const auditCount = await count(
+      tx.delete(auditLog).where(lt(auditLog.at, monthsBefore(now, RETENTION.auditLogMonths))).returning({ id: auditLog.id }),
+    );
+
+    const counts: PurgeCounts = {
+      codes: codesCount,
+      sessions: sessionsCount,
+      rateLimits: rateLimitsCount,
+      drafts: draftsCount,
+      submissions: submissionsCount,
+      invites: invitesCount,
+      clients: clientsCount,
+      auditEntries: auditCount,
+    };
     await tx.insert(auditLog).values({ actor: "system", action: "retention.purge", detail: counts });
     return counts;
   });
