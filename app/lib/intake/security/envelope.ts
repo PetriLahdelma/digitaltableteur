@@ -20,19 +20,41 @@ export type Sealed = Readonly<{
   key: Part;
 }>;
 
+const IV_BYTES = 12;
+/** Pinned: without it Node accepts truncated tags down to 4 bytes, which makes forgery feasible. */
+const TAG_BYTES = 16;
+const BASE64URL = /^[A-Za-z0-9_-]*$/;
+
 function seal(plain: Buffer, key: Buffer, aad: string): Part {
-  const iv = randomBytes(12);
-  const cipher = createCipheriv("aes-256-gcm", key, iv);
+  const iv = randomBytes(IV_BYTES);
+  const cipher = createCipheriv("aes-256-gcm", key, iv, { authTagLength: TAG_BYTES });
   cipher.setAAD(Buffer.from(aad, "utf8"));
   const ct = Buffer.concat([cipher.update(plain), cipher.final()]);
   return { iv: iv.toString("base64url"), tag: cipher.getAuthTag().toString("base64url"), ct: ct.toString("base64url") };
 }
 
+function decode(value: unknown, name: string): Buffer {
+  if (typeof value !== "string" || !BASE64URL.test(value)) throw new Error(`Invalid sealed ${name}`);
+  return Buffer.from(value, "base64url");
+}
+
 function open(part: Part, key: Buffer, aad: string): Buffer {
-  const decipher = createDecipheriv("aes-256-gcm", key, Buffer.from(part.iv, "base64url"));
+  const iv = decode(part?.iv, "iv");
+  const tag = decode(part?.tag, "tag");
+  const ct = decode(part?.ct, "ciphertext");
+  if (iv.length !== IV_BYTES) throw new Error("Invalid sealed iv length");
+  if (tag.length !== TAG_BYTES) throw new Error("Invalid sealed tag length");
+  const decipher = createDecipheriv("aes-256-gcm", key, iv, { authTagLength: TAG_BYTES });
   decipher.setAAD(Buffer.from(aad, "utf8"));
-  decipher.setAuthTag(Buffer.from(part.tag, "base64url"));
-  return Buffer.concat([decipher.update(Buffer.from(part.ct, "base64url")), decipher.final()]);
+  decipher.setAuthTag(tag);
+  return Buffer.concat([decipher.update(ct), decipher.final()]);
+}
+
+const KID = /^[a-z0-9-]{1,16}$/;
+
+function assertSealed(sealed: Sealed): void {
+  if (sealed?.v !== 1) throw new Error("Unsupported sealed version");
+  if (typeof sealed.kid !== "string" || !KID.test(sealed.kid)) throw new Error("Invalid sealed key id");
 }
 
 function masterKey(keyring: DataKeyring, kid: string): Buffer {
@@ -56,7 +78,7 @@ export function sealBytes(plain: Buffer, keyring: DataKeyring, aad: string): Sea
 }
 
 export function openBytes(sealed: Sealed, keyring: DataKeyring, aad: string): Buffer {
-  if (sealed.v !== 1) throw new Error("Unsupported sealed version");
+  assertSealed(sealed);
   const dataKey = open(sealed.key, masterKey(keyring, sealed.kid), `key:${sealed.kid}:${aad}`);
   try {
     return open(sealed.data, dataKey, `data:${aad}`);
@@ -75,6 +97,7 @@ export function openJson<T>(sealed: Sealed, keyring: DataKeyring, aad: string): 
 
 /** Key rotation: re-seal only the data key under the active master key. */
 export function rewrap(sealed: Sealed, keyring: DataKeyring, aad: string): Sealed {
+  assertSealed(sealed);
   if (sealed.kid === keyring.activeId) return sealed;
   const dataKey = open(sealed.key, masterKey(keyring, sealed.kid), `key:${sealed.kid}:${aad}`);
   try {

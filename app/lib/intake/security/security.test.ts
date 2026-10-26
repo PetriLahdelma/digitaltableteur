@@ -90,6 +90,24 @@ describe("envelope encryption", () => {
     expect(() => openBytes({ ...sealed, data: { ...sealed.data, ct: ct.toString("base64url") } }, ring, "pdf:1")).toThrow();
   });
 
+  it("rejects truncated authentication tags and wrong IV lengths", () => {
+    const sealed = sealBytes(Buffer.from("pdf bytes"), ring, "pdf:1");
+    const tag = Buffer.from(sealed.data.tag, "base64url");
+    const shortTag = { ...sealed, data: { ...sealed.data, tag: tag.subarray(0, 4).toString("base64url") } };
+    expect(() => openBytes(shortTag, ring, "pdf:1")).toThrow(/tag length/);
+    const shortIv = { ...sealed, data: { ...sealed.data, iv: Buffer.alloc(8).toString("base64url") } };
+    expect(() => openBytes(shortIv, ring, "pdf:1")).toThrow(/iv length/);
+    const wrappedShortTag = { ...sealed, key: { ...sealed.key, tag: tag.subarray(0, 8).toString("base64url") } };
+    expect(() => openBytes(wrappedShortTag, ring, "pdf:1")).toThrow(/tag length/);
+  });
+
+  it("rejects malformed sealed records", () => {
+    const sealed = sealJson({ a: 1 }, ring, "draft:1");
+    expect(() => openJson({ ...sealed, v: 2 as 1 }, ring, "draft:1")).toThrow(/version/);
+    expect(() => openJson({ ...sealed, kid: "../k1" }, ring, "draft:1")).toThrow(/key id/);
+    expect(() => openJson({ ...sealed, data: { ...sealed.data, ct: "not base64url!" } }, ring, "draft:1")).toThrow(/ciphertext/);
+  });
+
   it("rotates keys by re-wrapping without touching the payload", () => {
     const oldRing = parseDataKeys([...ring.keys].reverse().map(([id, key]) => `${id}:${key.toString("base64")}`).join(","));
     const sealed = sealJson(answers, oldRing, "submission:9");
