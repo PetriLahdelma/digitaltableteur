@@ -80,9 +80,9 @@
     - listitem "Storybook 10"
     - listitem "npm"
   - term: react
-  - definition: 0.1.36
+  - definition: 0.1.41
   - term: web-components
-  - definition: 0.10.3
+  - definition: 0.11.0
   - term: tokens
   - definition: 0.2.0
   - term: tokens-css
