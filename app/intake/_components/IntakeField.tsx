@@ -1,12 +1,22 @@
 "use client";
 
-import { Checkbox, CheckboxGroup, RadioGroup, Text, TextArea, TextInput } from "@digitaltableteur/react";
+import {
+  Checkbox,
+  CheckboxGroup,
+  FlexBox,
+  RadioGroup,
+  Text,
+  TextArea,
+  TextInput,
+} from "@digitaltableteur/react";
 
 import { format, type IntakeCopyTable } from "@/app/lib/intake/copy";
 import { INTAKE_LIMITS } from "@/app/lib/intake/schema";
-import type { AnswerValue, IntakeField as Field, IntakeLocale } from "@/app/lib/intake/types";
-
-import styles from "./intake.module.css";
+import type {
+  AnswerValue,
+  IntakeField as Field,
+  IntakeLocale,
+} from "@/app/lib/intake/types";
 
 const AUTOCOMPLETE: Record<string, string> = {
   contact_name: "name",
@@ -20,7 +30,20 @@ export function fieldAnchor(fieldId: string): string {
   return `field-${fieldId}`;
 }
 
-const SCALE_OPTIONS = [1, 2, 3, 4, 5].map((value) => ({ value: String(value), label: String(value) }));
+/** Full-width fields take a row of their own; half-width ones pair up in a two-column grid. */
+export function isWideField(field: Field): boolean {
+  return (
+    field.width === "full" ||
+    field.kind === "longText" ||
+    field.kind === "choices" ||
+    field.kind === "scale"
+  );
+}
+
+const SCALE_OPTIONS = [1, 2, 3, 4, 5].map((value) => ({
+  value: String(value),
+  label: String(value),
+}));
 
 /** One questionnaire field, rendered with the design-system control for its kind. */
 export function IntakeField({
@@ -38,7 +61,6 @@ export function IntakeField({
   error?: string;
   onChange: (value: AnswerValue) => void;
 }) {
-  const wide = field.width === "full" || field.kind === "longText" || field.kind === "choices" || field.kind === "scale";
   const required = field.required === "submit";
   const help = "help" in field && field.help ? field.help[locale] : undefined;
 
@@ -83,7 +105,10 @@ export function IntakeField({
           label={field.label[locale]}
           hideLegend={field.labelIsSectionTitle}
           showMasterCheckbox={false}
-          options={field.options.map((option) => ({ value: option.id, label: option.label[locale] }))}
+          options={field.options.map((option) => ({
+            value: option.id,
+            label: option.label[locale],
+          }))}
           defaultSelected={Array.isArray(value) ? [...value] : []}
           onChange={(selected) => onChange(selected)}
         />
@@ -93,7 +118,10 @@ export function IntakeField({
       control = (
         <RadioGroup
           name={field.id}
-          legend={format(copy.scaleLegend, { min: field.minLabel[locale], max: field.maxLabel[locale] })}
+          legend={format(copy.scaleLegend, {
+            min: field.minLabel[locale],
+            max: field.maxLabel[locale],
+          })}
           hideLegend
           orientation="horizontal"
           options={SCALE_OPTIONS}
@@ -118,21 +146,17 @@ export function IntakeField({
       break;
     case "submissionDate":
       control = (
-        <span className={styles.stack}>
+        <FlexBox direction="column" gap="var(--space-internal-4)">
           <Text as="span" size="s">
             {field.label[locale]}
           </Text>
-          <Text as="span" size="s" className={styles.status}>
+          <Text as="span" size="s">
             {copy.submissionDatePending}
           </Text>
-        </span>
+        </FlexBox>
       );
       break;
   }
 
-  return (
-    <div id={fieldAnchor(field.id)} className={wide ? styles.full : undefined}>
-      {control}
-    </div>
-  );
+  return <div id={fieldAnchor(field.id)}>{control}</div>;
 }

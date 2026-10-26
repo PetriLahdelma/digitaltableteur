@@ -1,48 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Link } from "@digitaltableteur/react";
+import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
-import { useLocalization } from "@/nextjs-app/shared/lib/translation";
+import { isEnabledLocale } from "@/app/lib/intake/copy";
 import type { IntakeLocale } from "@/app/lib/intake/types";
-
-const LANGUAGE_NAMES: Record<IntakeLocale, string> = { en: "English", fi: "Suomi", sv: "Svenska" };
+import { useLocalization } from "@/nextjs-app/shared/lib/translation";
 
 /**
- * Keeps the design-system components' own strings (validation messages,
- * clear buttons) in the language of the intake page they sit on.
+ * Ties intake pages to the site's own language switcher in the header. The
+ * page is rendered on the server in `locale`; on arrival the site language
+ * follows it (an emailed link says ?lang=fi), and when the visitor switches
+ * language in the header the page re-renders in that language, keeping the
+ * URL fragment (the invite token) and any unsaved form state.
  */
-export function LanguageSync({ locale }: { locale: IntakeLocale }) {
+export function IntakeLanguage({ locale }: { locale: IntakeLocale }) {
   const { language, changeLanguage } = useLocalization();
-  useEffect(() => {
-    if (language !== locale) void changeLanguage(locale);
-  }, [language, locale, changeLanguage]);
-  return null;
-}
+  const router = useRouter();
+  const arrived = useRef(false);
 
-/**
- * Language links that keep the current path and fragment, so switching
- * language on the invite page does not drop the invitation token.
- */
-export function LanguageSwitch({ locale, locales, label }: { locale: IntakeLocale; locales: readonly IntakeLocale[]; label: string }) {
-  const [hash, setHash] = useState("");
-  useEffect(() => setHash(window.location.hash), []);
-  return (
-    <nav aria-label={label}>
-      {locales.map((option, index) => (
-        <span key={option}>
-          {index > 0 ? " / " : null}
-          {option === locale ? (
-            <Link href={`?lang=${option}${hash}`} aria-current="true" underline="none" lang={option}>
-              {LANGUAGE_NAMES[option]}
-            </Link>
-          ) : (
-            <Link href={`?lang=${option}${hash}`} lang={option} hrefLang={option}>
-              {LANGUAGE_NAMES[option]}
-            </Link>
-          )}
-        </span>
-      ))}
-    </nav>
-  );
+  useEffect(() => {
+    if (!arrived.current) {
+      arrived.current = true;
+      if (language !== locale) void changeLanguage(locale);
+      return;
+    }
+    // Swedish is not offered for intake yet (ENABLED_INTAKE_LOCALES): it falls back to English.
+    const target = isEnabledLocale(language) ? language : "en";
+    if (target === locale) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", target);
+    router.replace(`${url.pathname}${url.search}${url.hash}`, {
+      scroll: false,
+    });
+  }, [language, locale, changeLanguage, router]);
+
+  return null;
 }

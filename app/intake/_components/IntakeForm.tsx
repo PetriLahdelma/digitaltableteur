@@ -1,27 +1,76 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { AlertBanner, Button, Link, List, Pagination, Text, Title } from "@digitaltableteur/react";
+import {
+  AlertBanner,
+  Button,
+  Divider,
+  FlexBox,
+  Grid,
+  Link,
+  List,
+  Pagination,
+  Section,
+  Text,
+  Title,
+} from "@digitaltableteur/react";
 
 import { format, type IntakeCopyTable } from "@/app/lib/intake/copy";
-import { isInputField, isVisible, visibleFields } from "@/app/lib/intake/schema";
-import type { AnswerValue, Answers, IntakeField as Field, IntakeLocale, Questionnaire } from "@/app/lib/intake/types";
+import {
+  isInputField,
+  isVisible,
+  visibleFields,
+} from "@/app/lib/intake/schema";
+import type {
+  AnswerValue,
+  Answers,
+  IntakeField as Field,
+  IntakeLocale,
+  IntakeSection,
+  Questionnaire,
+} from "@/app/lib/intake/types";
 
 import { postJson } from "./api";
-import { IntakeField, fieldAnchor } from "./IntakeField";
-import styles from "./intake.module.css";
+import { IntakeField, fieldAnchor, isWideField } from "./IntakeField";
+import { IntakeToolbar } from "./IntakePage";
 
 const AUTOSAVE_DELAY_MS = 1500;
 
-type SaveState = "idle" | "saving" | "saved" | "failed" | "conflict" | "signed_out";
+type SaveState =
+  "idle" | "saving" | "saved" | "failed" | "conflict" | "signed_out";
 
 function isEmpty(value: AnswerValue | undefined): boolean {
-  return value === undefined || value === false || (typeof value === "string" && value.trim() === "") || (Array.isArray(value) && value.length === 0);
+  return (
+    value === undefined ||
+    value === false ||
+    (typeof value === "string" && value.trim() === "") ||
+    (Array.isArray(value) && value.length === 0)
+  );
 }
 
-function fieldLabel(field: Field, locale: IntakeLocale, copy: IntakeCopyTable): string {
-  if (field.kind === "scale") return format(copy.scaleLegend, { min: field.minLabel[locale], max: field.maxLabel[locale] });
+function fieldLabel(
+  field: Field,
+  locale: IntakeLocale,
+  copy: IntakeCopyTable,
+): string {
+  if (field.kind === "scale")
+    return format(copy.scaleLegend, {
+      min: field.minLabel[locale],
+      max: field.maxLabel[locale],
+    });
   return field.label[locale];
+}
+
+/** Consecutive half-width fields share a two-column row; wide fields stand alone. */
+function fieldRows(section: IntakeSection): Field[][] {
+  const rows: Field[][] = [];
+  for (const field of section.fields) {
+    const last = rows.at(-1);
+    if (!isWideField(field) && last && !isWideField(last[0]) && last.length < 2)
+      last.push(field);
+    else rows.push([field]);
+  }
+  return rows;
 }
 
 /**
@@ -44,7 +93,9 @@ export function IntakeForm({
   initialAnswers: Answers;
   initialRevision: number;
 }) {
-  const [answers, setAnswers] = useState<Record<string, AnswerValue>>({ ...initialAnswers });
+  const [answers, setAnswers] = useState<Record<string, AnswerValue>>({
+    ...initialAnswers,
+  });
   const [pageIndex, setPageIndex] = useState(0);
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -59,7 +110,10 @@ export function IntakeForm({
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const focusAfterRender = useRef<string | null>(null);
 
-  const pages = useMemo(() => questionnaire.pages.filter((page) => isVisible(page, answers)), [questionnaire, answers]);
+  const pages = useMemo(
+    () => questionnaire.pages.filter((page) => isVisible(page, answers)),
+    [questionnaire, answers],
+  );
   const page = pages[Math.min(pageIndex, pages.length - 1)];
 
   const save = useCallback(async (): Promise<boolean> => {
@@ -140,7 +194,11 @@ export function IntakeForm({
     if (!target) return;
     focusAfterRender.current = null;
     const element = document.getElementById(target);
-    const focusable = element?.matches("h2") ? element : element?.querySelector<HTMLElement>("input, textarea, button, [tabindex]");
+    const focusable = element?.matches("h2")
+      ? element
+      : element?.querySelector<HTMLElement>(
+          "input, textarea, button, [tabindex]",
+        );
     focusable?.focus();
     if (element?.matches("h2")) window.scrollTo({ top: 0 });
   }, [pageIndex, page]);
@@ -153,7 +211,11 @@ export function IntakeForm({
 
   function goToField(fieldId: string) {
     const index = pages.findIndex((candidate) =>
-      candidate.sections.some((section) => isVisible(section, answers) && section.fields.some((field) => field.id === fieldId)),
+      candidate.sections.some(
+        (section) =>
+          isVisible(section, answers) &&
+          section.fields.some((field) => field.id === fieldId),
+      ),
     );
     focusAfterRender.current = fieldAnchor(fieldId);
     if (index >= 0 && index !== pageIndex) setPageIndex(index);
@@ -166,7 +228,9 @@ export function IntakeForm({
 
   function missingRequired(): string[] {
     return visibleFields(questionnaire, answers)
-      .filter((field) => field.required === "submit" && isEmpty(answers[field.id]))
+      .filter(
+        (field) => field.required === "submit" && isEmpty(answers[field.id]),
+      )
       .map((field) => field.id);
   }
 
@@ -187,46 +251,82 @@ export function IntakeForm({
       setSubmitting(false);
       return;
     }
-    const { httpStatus, data } = await postJson(`/api/intake/forms/${inviteId}/submit`, { revision: revision.current });
+    const { httpStatus, data } = await postJson(
+      `/api/intake/forms/${inviteId}/submit`,
+      { revision: revision.current },
+    );
     if (httpStatus === 200 && typeof data.submissionId === "string") {
       window.location.assign(`/intake/submissions/${data.submissionId}`);
       return;
     }
     setSubmitting(false);
-    if (httpStatus === 422 && Array.isArray(data.fields)) showProblems(data.fields as string[], copy.requiredError);
+    if (httpStatus === 422 && Array.isArray(data.fields))
+      showProblems(data.fields as string[], copy.requiredError);
     else if (httpStatus === 409) setSaveState("conflict");
     else if (httpStatus === 401) setSaveState("signed_out");
     else setSaveState("failed");
   }
 
   const fieldsById = useMemo(
-    () => new Map(questionnaire.pages.flatMap((p) => p.sections.flatMap((s) => s.fields)).map((field) => [field.id, field])),
+    () =>
+      new Map(
+        questionnaire.pages
+          .flatMap((p) => p.sections.flatMap((s) => s.fields))
+          .map((field) => [field.id, field]),
+      ),
     [questionnaire],
   );
   const errorIds = Object.keys(errors);
   const isLast = pageIndex >= pages.length - 1;
   const statusText =
-    saveState === "saving" ? copy.saving : saveState === "saved" ? copy.saved : saveState === "failed" ? copy.saveFailed : "";
+    saveState === "saving"
+      ? copy.saving
+      : saveState === "saved"
+        ? copy.saved
+        : saveState === "failed"
+          ? copy.saveFailed
+          : "";
+
+  const renderField = (field: Field) => (
+    <IntakeField
+      key={field.id}
+      field={field}
+      locale={locale}
+      copy={copy}
+      value={isInputField(field) ? answers[field.id] : undefined}
+      error={errors[field.id]}
+      onChange={(value) => update(field.id, value)}
+    />
+  );
 
   return (
-    <div>
-      <header className={styles.formHeader}>
-        <Link href="/intake/forms" size="sm">
-          {copy.backToIntakes}
-        </Link>
-        <Title level={1} size="l">
-          {questionnaire.title[locale]}
-        </Title>
-      </header>
+    <FlexBox direction="column" gap="var(--space-internal-24)">
+      <IntakeToolbar
+        start={
+          <Link href="/intake/forms" size="sm">
+            {copy.backToIntakes}
+          </Link>
+        }
+        signOutLabel={copy.signOut}
+      />
+      <Title level={1} size="l">
+        {questionnaire.title[locale]}
+      </Title>
 
       {saveState === "conflict" || saveState === "signed_out" ? (
         <AlertBanner
           tone="warning"
           title={saveState === "conflict" ? copy.conflictTitle : undefined}
-          description={saveState === "conflict" ? copy.conflictBody : copy.codeExpired}
+          description={
+            saveState === "conflict" ? copy.conflictBody : copy.codeExpired
+          }
           focusOnMount
           action={
-            <Button variant="secondary" size="sm" onClick={() => window.location.reload()}>
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => window.location.reload()}
+            >
               {copy.reload}
             </Button>
           }
@@ -264,68 +364,91 @@ export function IntakeForm({
         />
       ) : null}
 
-      <section aria-labelledby="intake-page-title">
-        <Text size="xs">{page.part[locale]}</Text>
-        <Title level={2} size="m" id="intake-page-title" tabIndex={-1}>
-          {page.title[locale]}
-        </Title>
-        <Text>{page.intro[locale]}</Text>
+      <Section spacing="none" aria-labelledby="intake-page-title">
+        <FlexBox direction="column" gap="var(--space-internal-16)">
+          <Text size="xs">{page.part[locale]}</Text>
+          <Title level={2} size="m" id="intake-page-title" tabIndex={-1}>
+            {page.title[locale]}
+          </Title>
+          <Text>{page.intro[locale]}</Text>
+        </FlexBox>
+      </Section>
 
-        {page.sections
-          .filter((section) => isVisible(section, answers))
-          .map((section) => (
-            <section key={section.id} className={styles.section} aria-labelledby={`section-${section.id}`}>
+      {page.sections
+        .filter((section) => isVisible(section, answers))
+        .map((section) => (
+          <Section
+            spacing="none"
+            key={section.id}
+            aria-labelledby={`section-${section.id}`}
+          >
+            <FlexBox direction="column" gap="var(--space-internal-16)">
+              <Divider />
               <Title level={3} size="xs" id={`section-${section.id}`}>
                 {section.title[locale]}
               </Title>
-              {section.description ? <Text size="s">{section.description[locale]}</Text> : null}
-              <div className={styles.fields}>
-                {section.fields.map((field) => (
-                  <IntakeField
-                    key={field.id}
-                    field={field}
-                    locale={locale}
-                    copy={copy}
-                    value={isInputField(field) ? answers[field.id] : undefined}
-                    error={errors[field.id]}
-                    onChange={(value) => update(field.id, value)}
-                  />
-                ))}
-              </div>
-              {section.closing ? <Text size="s">{section.closing[locale]}</Text> : null}
-            </section>
-          ))}
-        {page.closing ? <Text size="s">{page.closing[locale]}</Text> : null}
-      </section>
+              {section.description ? (
+                <Text size="s">{section.description[locale]}</Text>
+              ) : null}
+              {fieldRows(section).map((row) =>
+                row.length === 1 && isWideField(row[0]) ? (
+                  renderField(row[0])
+                ) : (
+                  <Grid
+                    key={row[0].id}
+                    columns={1}
+                    tabletColumns={2}
+                    gap="var(--space-internal-24)"
+                  >
+                    {row.map(renderField)}
+                  </Grid>
+                ),
+              )}
+              {section.closing ? (
+                <Text size="s">{section.closing[locale]}</Text>
+              ) : null}
+            </FlexBox>
+          </Section>
+        ))}
+      {page.closing ? <Text size="s">{page.closing[locale]}</Text> : null}
 
-      <footer className={styles.formFooter}>
-        <span className={styles.pager}>
-          <Text size="s">{format(copy.pageOf, { page: pageIndex + 1, total: pages.length })}</Text>
-          <Text as="span" size="s" className={styles.status} role="status" aria-live="polite">
-            {statusText}
-          </Text>
-        </span>
-        <Pagination
-          label={copy.pagesLabel}
-          currentPage={pageIndex + 1}
-          totalPages={pages.length}
-          onPageChange={(next: number) => void goToPage(next - 1)}
-        />
-        {isLast ? (
-          <span className={styles.stack}>
-            <Text size="s">{copy.submitHint}</Text>
-            <span className={styles.actions}>
-              <Button onClick={submit} loading={submitting}>
-                {copy.submit}
-              </Button>
-            </span>
-          </span>
-        ) : (
-          <span className={styles.actions}>
-            <Button onClick={() => void goToPage(pageIndex + 1)}>{copy.nextPage}</Button>
-          </span>
-        )}
-      </footer>
-    </div>
+      <Divider />
+      <FlexBox
+        direction="row"
+        gap="var(--space-internal-16)"
+        justify="space-between"
+        align="center"
+        wrap="wrap"
+      >
+        <Text size="s">
+          {format(copy.pageOf, { page: pageIndex + 1, total: pages.length })}
+        </Text>
+        <Text as="span" size="s" role="status" aria-live="polite">
+          {statusText}
+        </Text>
+      </FlexBox>
+      <Pagination
+        label={copy.pagesLabel}
+        currentPage={pageIndex + 1}
+        totalPages={pages.length}
+        onPageChange={(next: number) => void goToPage(next - 1)}
+      />
+      {isLast ? (
+        <FlexBox direction="column" gap="var(--space-internal-8)">
+          <Text size="s">{copy.submitHint}</Text>
+          <FlexBox direction="row" gap="var(--space-internal-8)" wrap="wrap">
+            <Button onClick={submit} loading={submitting}>
+              {copy.submit}
+            </Button>
+          </FlexBox>
+        </FlexBox>
+      ) : (
+        <FlexBox direction="row" gap="var(--space-internal-8)" wrap="wrap">
+          <Button onClick={() => void goToPage(pageIndex + 1)}>
+            {copy.nextPage}
+          </Button>
+        </FlexBox>
+      )}
+    </FlexBox>
   );
 }

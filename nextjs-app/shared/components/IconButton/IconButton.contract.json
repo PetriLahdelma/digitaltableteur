@@ -93,17 +93,22 @@
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
         },
         {
@@ -144,11 +149,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/navigation/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
             "since": "2026-06-04"
         }
     ],

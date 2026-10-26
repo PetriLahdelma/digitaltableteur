@@ -50,9 +50,19 @@ export async function readJsonBody(request: NextRequest): Promise<BodyResult> {
   }
 }
 
-/** Rate-limit key for the caller's network address; hashed before storage. */
+/**
+ * Rate-limit key for the caller's network address; hashed before storage.
+ * On Vercel the edge sets x-vercel-forwarded-for and x-real-ip itself, so a
+ * client cannot pick its own key; x-forwarded-for is only the local fallback.
+ */
 export function networkKey(request: NextRequest): string {
-  return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "unknown";
+  const first = (value: string | null) => value?.split(",")[0]?.trim() || null;
+  return (
+    first(request.headers.get("x-vercel-forwarded-for")) ??
+    first(request.headers.get("x-real-ip")) ??
+    (process.env.VERCEL === "1" ? null : first(request.headers.get("x-forwarded-for"))) ??
+    "unknown"
+  );
 }
 
 const cookieBase = { httpOnly: true, secure: true, sameSite: "strict" as const, path: "/" };

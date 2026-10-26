@@ -125,7 +125,13 @@ export type CodeCheck =
  * Success spends every pending code and invite link of the client and
  * starts a fresh session.
  */
-export async function verifyLoginCode(ctx: IntakeContext, preauthToken: string, code: string, networkKey: string): Promise<CodeCheck> {
+export async function verifyLoginCode(
+  ctx: IntakeContext,
+  preauthToken: string,
+  code: string,
+  networkKey: string,
+  onSecurityAlert?: (message: string) => void,
+): Promise<CodeCheck> {
   const preauthHash = hashToken(preauthToken);
   const now = ctx.now();
   const [pending] = await ctx.db
@@ -137,16 +143,19 @@ export async function verifyLoginCode(ctx: IntakeContext, preauthToken: string, 
     const [spent] = await ctx.db.select({ attempts: loginCodes.attempts }).from(loginCodes).where(eq(loginCodes.preauthHash, preauthHash));
     return { status: spent && spent.attempts >= MAX_CODE_ATTEMPTS ? "locked" : "expired" };
   }
-  // Daily failure caps across all codes, checked before the comparison.
+  // Daily failure cap for this network across all codes, checked before the comparison.
   const clientNetwork = `${pending.clientId}:${networkKey}`;
-  if ((await isOver(ctx, "codeFailuresPerClientNetwork", clientNetwork)) || (await isOver(ctx, "codeFailuresPerClient", pending.clientId))) {
-    return { status: "locked" };
-  }
+  if (await isOver(ctx, "codeFailuresPerClientNetwork", clientNetwork)) return { status: "locked" };
 
   if (!verifyCode(code, codeBinding(pending.clientId, preauthHash), ctx.hmacKey, pending.digest)) {
     await hit(ctx, "codeFailuresPerClientNetwork", clientNetwork);
-    await hit(ctx, "codeFailuresPerClient", pending.clientId);
     await ctx.db.insert(auditLog).values({ actor: "client", action: "code.failed", clientId: pending.clientId });
+    // Many failures from many networks: tell the owner, never lock the client out.
+    if (!(await hit(ctx, "codeFailuresPerClient", pending.clientId)) && !(await isOver(ctx, "codeFailureAlerts", pending.clientId))) {
+      await hit(ctx, "codeFailureAlerts", pending.clientId);
+      await ctx.db.insert(auditLog).values({ actor: "system", action: "code.failures.alert", clientId: pending.clientId });
+      onSecurityAlert?.(`intake: wrong-code threshold reached for client ${pending.clientId}`);
+    }
     return { status: pending.attempts >= MAX_CODE_ATTEMPTS ? "locked" : "wrong" };
   }
 

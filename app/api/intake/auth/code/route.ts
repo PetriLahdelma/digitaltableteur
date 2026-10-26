@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { z } from "zod";
 import type { NextRequest } from "next/server";
 
@@ -20,7 +21,9 @@ export async function POST(request: NextRequest) {
   const preauth = request.cookies.get(PREAUTH_COOKIE)?.value;
   if (!preauth) return json({ status: "expired" }, 400);
   try {
-    const result = await verifyLoginCode(await intakeContext(), preauth, body.data.code, networkKey(request));
+    const result = await verifyLoginCode(await intakeContext(), preauth, body.data.code, networkKey(request), (message) =>
+      Sentry.captureMessage(message, { level: "warning", tags: { area: "intake" } }),
+    );
     if (result.status !== "ok") return json({ status: result.status }, 400);
     const response = json({ status: "ok" });
     clearCookie(response, PREAUTH_COOKIE);

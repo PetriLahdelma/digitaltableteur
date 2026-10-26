@@ -27,8 +27,14 @@ export const LIMITS = {
    * both, so a stranger guessing locks out only their own network.
    */
   codeFailuresPerClientNetwork: { limit: 10, windowMs: 24 * 60 * 60 * 1000 },
-  /** Wrong codes for one client in a day from everywhere: the backstop. */
+  /**
+   * Wrong codes for one client in a day from everywhere. Reaching it raises
+   * an alert instead of refusing codes, so nobody can lock a client out;
+   * guessing stays bounded by codesPerClient (20 codes x 5 attempts an hour).
+   */
   codeFailuresPerClient: { limit: 100, windowMs: 24 * 60 * 60 * 1000 },
+  /** One owner alert per client per day when codeFailuresPerClient is reached. */
+  codeFailureAlerts: { limit: 1, windowMs: 24 * 60 * 60 * 1000 },
   /** Draft saves for one session, generous for autosave. */
   savesPerSession: { limit: 600, windowMs: 60 * 60 * 1000 },
 } as const;

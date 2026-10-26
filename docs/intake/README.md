@@ -133,7 +133,7 @@ intake it opens a deletion request the owner confirms.
 | D2 | PDF rendering exhausts the function | Rendered once per submission, size caps, timeout, retry queue | load test of one render |
 | E1 | A client reads another client's intake (IDOR) | Every query is scoped by the session's invite id; ids in URLs are opaque | e2e: cross-session access 404 |
 | E2 | A client reaches admin routes | Separate cookie and session type; admin route guard | e2e |
-| E3 | Brute-forcing the one-time code | 8 digits; 5 attempts per code, spent atomically before the comparison; one code per pre-auth cookie, so a stranger cannot replace or lock the client's code; at most 5 codes an hour per client and network and 20 per client; 10 wrong codes a day per client and network, 100 per client | unit |
+| E3 | Brute-forcing the one-time code | 8 digits; 5 attempts per code, spent atomically before the comparison; one code per pre-auth cookie, so a stranger cannot replace or lock the client's code; at most 5 codes an hour per client and network and 20 per client; 10 wrong codes a day per client and network; 100 a day per client raises an owner alert instead of a lockout; network keys come from headers Vercel sets | unit |
 
 ## 5. Access design
 

@@ -53,7 +53,12 @@
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
         },
         {

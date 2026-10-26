@@ -1,10 +1,24 @@
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 
-import { resolveIntakeLocale } from "@/app/lib/intake/copy";
+import { isEnabledLocale, resolveIntakeLocale } from "@/app/lib/intake/copy";
 import type { IntakeLocale } from "@/app/lib/intake/types";
 
-/** Locale for pages that are not tied to an invite: ?lang= first, then the browser's languages. */
-export async function requestLocale(searchParams: Promise<Record<string, string | string[] | undefined>>): Promise<IntakeLocale> {
+/** The site's language preference cookie, written by the header's language switcher (providers/I18nProvider.tsx). */
+const SITE_LANGUAGE_COOKIE = "i18next";
+
+/**
+ * Interface locale for an intake page: an explicit ?lang= (emailed links),
+ * then the language chosen in the site header, then the invite's language,
+ * then the browser's.
+ */
+export async function requestLocale(
+  searchParams: Promise<Record<string, string | string[] | undefined>>,
+  fallback?: IntakeLocale,
+): Promise<IntakeLocale> {
   const lang = (await searchParams).lang;
-  return resolveIntakeLocale(typeof lang === "string" ? lang : null, (await headers()).get("accept-language"));
+  if (isEnabledLocale(lang)) return lang;
+  const site = (await cookies()).get(SITE_LANGUAGE_COOKIE)?.value;
+  if (isEnabledLocale(site)) return site;
+  if (fallback) return fallback;
+  return resolveIntakeLocale(null, (await headers()).get("accept-language"));
 }

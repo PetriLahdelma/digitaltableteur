@@ -1,17 +1,32 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { AlertBanner, Button, Text, TextInput, Title } from "@digitaltableteur/react";
+import {
+  AlertBanner,
+  Button,
+  FlexBox,
+  Text,
+  TextInput,
+  Title,
+} from "@digitaltableteur/react";
 
 import type { IntakeCopyTable } from "@/app/lib/intake/copy";
 
 import { postJson } from "./api";
-import styles from "./intake.module.css";
 
-type Problem = "codeWrong" | "codeExpired" | "codeLocked" | "codeFormat" | "genericError";
+type Problem =
+  "codeWrong" | "codeExpired" | "codeLocked" | "codeFormat" | "genericError";
 
 /** Step 3: the 8-digit code. Success lands on the client home with a fresh session. */
-export function CodeStep({ copy, intro, onRestart }: { copy: IntakeCopyTable; intro: string; onRestart: () => void }) {
+export function CodeStep({
+  copy,
+  intro,
+  onRestart,
+}: {
+  copy: IntakeCopyTable;
+  intro: string;
+  onRestart: () => void;
+}) {
   const [code, setCode] = useState("");
   const [problem, setProblem] = useState<Problem | null>(null);
   const [busy, setBusy] = useState(false);
@@ -31,51 +46,64 @@ export function CodeStep({ copy, intro, onRestart }: { copy: IntakeCopyTable; in
     }
     setBusy(false);
     setProblem(
-      data.status === "wrong" ? "codeWrong" : data.status === "expired" ? "codeExpired" : data.status === "locked" ? "codeLocked" : "genericError",
+      data.status === "wrong"
+        ? "codeWrong"
+        : data.status === "expired"
+          ? "codeExpired"
+          : data.status === "locked"
+            ? "codeLocked"
+            : "genericError",
     );
   }
 
   const mustRestart = problem === "codeExpired" || problem === "codeLocked";
   return (
-    <form className={styles.narrow} onSubmit={submit} noValidate>
-      <Title level={1} size="l">
-        {copy.codeTitle}
-      </Title>
-      <Text>{intro}</Text>
-      {mustRestart ? (
-        <AlertBanner
-          tone="warning"
-          description={copy[problem]}
-          focusOnMount
-          action={
-            <Button variant="secondary" size="sm" onClick={onRestart}>
-              {copy.requestNewCode}
-            </Button>
-          }
+    <form onSubmit={submit} noValidate>
+      <FlexBox direction="column" gap="var(--space-internal-16)">
+        <Title level={1} size="l">
+          {copy.codeTitle}
+        </Title>
+        <Text>{intro}</Text>
+        {mustRestart ? (
+          <AlertBanner
+            tone="warning"
+            description={copy[problem]}
+            focusOnMount
+            action={
+              <Button variant="secondary" size="sm" onClick={onRestart}>
+                {copy.requestNewCode}
+              </Button>
+            }
+          />
+        ) : null}
+        <TextInput
+          label={copy.codeLabel}
+          type="text"
+          inputMode="numeric"
+          autoComplete="one-time-code"
+          maxLength={9}
+          value={code}
+          onValueChange={(value) => {
+            setCode(String(value));
+            if (problem && !mustRestart) setProblem(null);
+          }}
+          error={problem && !mustRestart ? copy[problem] : undefined}
+          disabled={mustRestart}
         />
-      ) : null}
-      <TextInput
-        label={copy.codeLabel}
-        type="text"
-        inputMode="numeric"
-        autoComplete="one-time-code"
-        maxLength={9}
-        value={code}
-        onValueChange={(value) => {
-          setCode(String(value));
-          if (problem && !mustRestart) setProblem(null);
-        }}
-        error={problem && !mustRestart ? copy[problem] : undefined}
-        disabled={mustRestart}
-      />
-      <span className={styles.actions}>
-        <Button submits loading={busy} disabled={mustRestart}>
-          {copy.verifyCode}
-        </Button>
-        <Button variant="tertiary" onClick={onRestart}>
-          {copy.requestNewCode}
-        </Button>
-      </span>
+        <FlexBox
+          direction="row"
+          gap="var(--space-internal-8)"
+          align="center"
+          wrap="wrap"
+        >
+          <Button submits loading={busy} disabled={mustRestart}>
+            {copy.verifyCode}
+          </Button>
+          <Button variant="tertiary" onClick={onRestart}>
+            {copy.requestNewCode}
+          </Button>
+        </FlexBox>
+      </FlexBox>
     </form>
   );
 }

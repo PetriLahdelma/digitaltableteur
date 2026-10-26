@@ -1,14 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AlertBanner, Button, Link, Text, Title } from "@digitaltableteur/react";
+import {
+  AlertBanner,
+  Button,
+  Link,
+  FlexBox,
+  Text,
+  Title,
+} from "@digitaltableteur/react";
 
 import type { IntakeCopyTable } from "@/app/lib/intake/copy";
 import type { IntakeLocale } from "@/app/lib/intake/types";
 
 import { postJson } from "./api";
 import { CodeStep } from "./CodeStep";
-import styles from "./intake.module.css";
 
 const TOKEN = /^[A-Za-z0-9_-]{43}$/;
 
@@ -17,7 +23,13 @@ const TOKEN = /^[A-Za-z0-9_-]{43}$/;
  * browsers never send to a server; nothing happens until the client presses
  * Continue, so link scanners that open the page change nothing.
  */
-export function InviteFlow({ copy, locale }: { copy: IntakeCopyTable; locale: IntakeLocale }) {
+export function InviteFlow({
+  copy,
+  locale,
+}: {
+  copy: IntakeCopyTable;
+  locale: IntakeLocale;
+}) {
   const [token, setToken] = useState<string | null | undefined>(undefined);
   const [step, setStep] = useState<"landing" | "code" | "invalid">("landing");
   const [problem, setProblem] = useState<string | undefined>();
@@ -38,7 +50,14 @@ export function InviteFlow({ copy, locale }: { copy: IntakeCopyTable; locale: In
     else setProblem(httpStatus === 429 ? copy.rateLimited : copy.genericError);
   }
 
-  if (step === "code") return <CodeStep copy={copy} intro={copy.codeSentTo} onRestart={() => setStep("landing")} />;
+  if (step === "code")
+    return (
+      <CodeStep
+        copy={copy}
+        intro={copy.codeSentTo}
+        onRestart={() => setStep("landing")}
+      />
+    );
 
   const signInLink = (
     <Button href={`/intake?lang=${locale}`} variant="secondary">
@@ -47,34 +66,61 @@ export function InviteFlow({ copy, locale }: { copy: IntakeCopyTable; locale: In
   );
 
   return (
-    <div className={styles.narrow}>
+    <FlexBox direction="column" gap="var(--space-internal-16)">
       <Title level={1} size="l">
         {copy.inviteTitle}
       </Title>
       {step === "invalid" ? (
         <>
-          <AlertBanner tone="warning" description={copy.inviteInvalid} focusOnMount />
-          <span className={styles.actions}>{signInLink}</span>
+          <AlertBanner
+            tone="warning"
+            description={copy.inviteInvalid}
+            focusOnMount
+          />
+          <FlexBox
+            direction="row"
+            gap="var(--space-internal-8)"
+            align="center"
+            wrap="wrap"
+          >
+            {signInLink}
+          </FlexBox>
         </>
       ) : token === null ? (
         <>
           <AlertBanner tone="info" description={copy.inviteMissing} />
-          <span className={styles.actions}>{signInLink}</span>
+          <FlexBox
+            direction="row"
+            gap="var(--space-internal-8)"
+            align="center"
+            wrap="wrap"
+          >
+            {signInLink}
+          </FlexBox>
         </>
       ) : (
         <>
           <Text>{copy.inviteIntro}</Text>
-          {problem ? <AlertBanner tone="error" description={problem} focusOnMount /> : null}
+          {problem ? (
+            <AlertBanner tone="error" description={problem} focusOnMount />
+          ) : null}
           <Text size="s">
-            <Link href={`/intake/privacy?lang=${locale}`}>{copy.privacyBeforeCode}</Link>
+            <Link href={`/intake/privacy?lang=${locale}`}>
+              {copy.privacyBeforeCode}
+            </Link>
           </Text>
-          <span className={styles.actions}>
+          <FlexBox
+            direction="row"
+            gap="var(--space-internal-8)"
+            align="center"
+            wrap="wrap"
+          >
             <Button onClick={proceed} loading={busy} disabled={!token}>
               {copy.continue}
             </Button>
-          </span>
+          </FlexBox>
         </>
       )}
-    </div>
+    </FlexBox>
   );
 }
