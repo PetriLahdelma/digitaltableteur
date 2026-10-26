@@ -324,9 +324,10 @@ Each phase ends with the local gate and its own commit.
 2. **Data layer. Done.** Drizzle schema (`app/lib/intake/db/schema.ts`) for
    clients, invites, login codes, sessions, drafts, submissions, PDFs, rate
    limits and the audit log; migration `0000_init.sql`; retention purge;
-   tests on PGlite. Remaining owner step: add Neon from the Vercel
-   Marketplace in Frankfurt (`aws-eu-central-1`), then set the variables
-   below and run `npm run intake:db:migrate` once.
+   tests on PGlite. Provisioned 2026-10-26: Neon `digitaltableteur-intake`
+   (Free plan, Frankfurt `fra1`, Neon Auth off) connected to Production only,
+   with sensitive variables. Migrations run on every Vercel production build
+   (`scripts/intake-migrate.mjs` in `vercel-build`).
 3. **Design-system gaps.** Scale, Form with error summary, step navigation and
    the print page shell, one tribunal trial each, with Figma parity.
 4. **Client area.** Invite landing, code step, session, form pages with
@@ -343,9 +344,15 @@ Each phase ends with the local gate and its own commit.
 
 | Variable | Content |
 | --- | --- |
-| `INTAKE_DATABASE_URL` | Neon pooled connection string (Frankfurt) |
+| `INTAKE_DATABASE_DATABASE_URL` | Pooled Neon connection string, injected by the integration (prefix `INTAKE_DATABASE`) |
+| `INTAKE_DATABASE_DATABASE_URL_UNPOOLED` | Direct connection, used only by the build-time migration |
 | `INTAKE_DATA_KEYS` | `keyId:base64` pairs of 32-byte keys; the first is active, later ones only decrypt (rotation) |
 | `INTAKE_HMAC_KEY` | base64, at least 32 bytes; keys email lookup and code digests |
+
+All are Production-only and marked sensitive; Preview deployments never see
+client data. The two keys were generated on 2026-10-26 straight into Vercel
+and exist nowhere else: losing them makes stored drafts and submissions
+unreadable, which is acceptable because the owner keeps every PDF locally.
 
 Generate a key with `openssl rand -base64 32`. Keys never go into the
 database, the repo or Preview environments shared with other projects.

@@ -16,8 +16,9 @@ let db: IntakeDb | null = null;
  */
 export function getIntakeDb(): IntakeDb {
   if (db) return db;
-  const url = process.env.INTAKE_DATABASE_URL;
-  if (!url) throw new Error("INTAKE_DATABASE_URL is not set");
+  // Pooled connection, injected by the Neon integration under the INTAKE_DATABASE prefix.
+  const url = process.env.INTAKE_DATABASE_DATABASE_URL;
+  if (!url) throw new Error("INTAKE_DATABASE_DATABASE_URL is not set");
   pool = new Pool({ connectionString: url });
   db = drizzle({ client: pool, schema }) as unknown as IntakeDb;
   return db;
