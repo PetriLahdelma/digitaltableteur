@@ -1,20 +1,23 @@
 import { isInputField } from "./schema";
-import type { Questionnaire, Sensitivity } from "./types";
+import type { IntakeLocale, Questionnaire, Sensitivity } from "./types";
 
 /**
- * Proposed data handling for the intake system. PROPOSAL, pending the owner's
- * decisions in docs/intake/README.md (open questions). Nothing reads these
- * values at runtime yet.
+ * Data handling for the intake system, decided 2026-10-26 (docs/intake/
+ * README.md section 10). The owner keeps every submitted PDF locally, so the
+ * server keeps data only as long as the client area needs it.
  */
-export const RETENTION_PROPOSAL = {
+export const RETENTION = {
   inviteLinkHours: 72,
   loginCodeMinutes: 10,
   sessionIdleMinutes: 30,
   sessionAbsoluteHours: 12,
   draftDaysSinceLastEdit: 90,
-  submissionMonths: 24,
+  submissionMonths: 12,
   auditLogMonths: 12,
 } as const;
+
+/** Swedish copy stays in the definitions but is not offered until reviewed. */
+export const ENABLED_INTAKE_LOCALES: readonly IntakeLocale[] = ["en", "fi"];
 
 type ClassPolicy = Readonly<{
   atRest: string;
@@ -23,31 +26,32 @@ type ClassPolicy = Readonly<{
   retention: string;
 }>;
 
-const ANSWER_STORE = "AES-256-GCM answer document in MongoDB (key outside the database)";
+const ANSWER_STORE = "AES-256-GCM answer document in Postgres (Neon, EU; key outside the database)";
 const NEVER = "email bodies, Sentry, Vercel logs, analytics";
+const ROUTE = "browser, intake function (EU), Postgres, PDF renderer, owner mailbox (PDF attachment)";
 
 export const CLASS_POLICY: Readonly<Record<Sensitivity, ClassPolicy>> = {
   personal: {
     atRest: `${ANSWER_STORE}; email also kept as an HMAC for lookup`,
-    travelsTo: "browser, intake function, MongoDB, PDF renderer, admin export",
+    travelsTo: ROUTE,
     neverIn: NEVER,
-    retention: "draft 90 d after last edit; submission 24 mo",
+    retention: "draft 90 d after last edit; submission and PDF 12 mo",
   },
   third_party_personal: {
     atRest: ANSWER_STORE,
-    travelsTo: "browser, intake function, MongoDB, PDF renderer, admin export",
+    travelsTo: ROUTE,
     neverIn: NEVER,
-    retention: "draft 90 d after last edit; submission 24 mo",
+    retention: "draft 90 d after last edit; submission and PDF 12 mo",
   },
   business_confidential: {
     atRest: ANSWER_STORE,
-    travelsTo: "browser, intake function, MongoDB, PDF renderer, admin export",
+    travelsTo: ROUTE,
     neverIn: NEVER,
-    retention: "draft 90 d after last edit; submission 24 mo",
+    retention: "draft 90 d after last edit; submission and PDF 12 mo",
   },
   operational: {
     atRest: ANSWER_STORE,
-    travelsTo: "browser, intake function, MongoDB, PDF renderer, admin export",
+    travelsTo: ROUTE,
     neverIn: "Sentry, Vercel logs, analytics",
     retention: "same as the submission it belongs to",
   },
@@ -69,7 +73,7 @@ export function renderDataMap(questionnaires: readonly Questionnaire[]): string 
     "",
     "## Classes",
     "",
-    "| Class | At rest | Travels to | Never in | Retention (proposal) |",
+    "| Class | At rest | Travels to | Never in | Retention |",
     "| --- | --- | --- | --- | --- |",
     ...(Object.keys(CLASS_POLICY) as Sensitivity[]).map((key) => {
       const policy = CLASS_POLICY[key];
