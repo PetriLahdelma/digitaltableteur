@@ -1,0 +1,13 @@
+- status: Work in progress (beta)
+- group "Tone of voice":
+  - text: "Tone of voice 1: Serious; 5: Playful"
+  - radio "1"
+  - text: "1"
+  - radio "2"
+  - text: "2"
+  - radio "3"
+  - text: "3"
+  - radio "4"
+  - text: "4"
+  - radio "5"
+  - text: "5"

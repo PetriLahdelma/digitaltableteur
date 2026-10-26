@@ -1,0 +1,10 @@
+- alert:
+  - img "error"
+  - strong: Fix 2 problems to continue
+  - list:
+    - listitem:
+      - link "Enter your full name":
+        - /url: "#contact_name"
+    - listitem:
+      - link "Enter an email address in the right format":
+        - /url: "#email"

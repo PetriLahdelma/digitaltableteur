@@ -1,9 +1,9 @@
 {
   "storyId": "feedback-alertbanner-info",
   "mode": "dark",
-  "sourceSHA": "4debcb7ea521112660b29c9fcb2857548d470a28",
-  "capturedAt": "2026-10-15T19:34:13.426Z",
-  "runner": "local-2026-10-15u",
+  "sourceSHA": "4799078362967bef666a937f8d7c886cc6726604",
+  "capturedAt": "2026-10-26T20:13:31.079Z",
+  "runner": "local-claude",
   "checks": {
     "accessibility-tree": {
       "passed": true

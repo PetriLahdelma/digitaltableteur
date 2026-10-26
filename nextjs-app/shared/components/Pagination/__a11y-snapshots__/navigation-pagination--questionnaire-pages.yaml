@@ -1,0 +1,10 @@
+- navigation "Questionnaire pages":
+  - button "Previous"
+  - button "Page 1": "1"
+  - button "Page 2": "2"
+  - button "Page 3": "3"
+  - button "Page 4": "4"
+  - button "Page 5": "5"
+  - button "Page 6": "6"
+  - button "Page 7": "7"
+  - button "Next"
