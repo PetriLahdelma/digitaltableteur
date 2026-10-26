@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import type { IntakeDb } from "./client";
@@ -23,14 +23,16 @@ export function devIntakeDb(dataDir: string): Promise<IntakeDb> {
   const global = globalThis as DevGlobal;
   global.__intakeDevDb ??= (async () => {
     const [{ PGlite }, { drizzle }] = await Promise.all([load(["@electric-sql", "pglite"].join("/")), load(["drizzle-orm", "pglite"].join("/"))]);
-    const fresh = !existsSync(dataDir);
     const pg = new PGlite(dataDir);
-    if (fresh) {
-      for (const file of readdirSync(MIGRATIONS).filter((name) => name.endsWith(".sql")).sort()) {
-        for (const statement of readFileSync(join(MIGRATIONS, file), "utf8").split("--> statement-breakpoint")) {
-          if (statement.trim()) await pg.exec(statement);
-        }
+    // Applies migrations the sandbox has not seen yet, so it follows schema changes.
+    await pg.exec("create table if not exists __intake_dev_migrations (name text primary key)");
+    const applied = new Set(((await pg.query("select name from __intake_dev_migrations")).rows as { name: string }[]).map((row) => row.name));
+    for (const file of readdirSync(MIGRATIONS).filter((name) => name.endsWith(".sql")).sort()) {
+      if (applied.has(file)) continue;
+      for (const statement of readFileSync(join(MIGRATIONS, file), "utf8").split("--> statement-breakpoint")) {
+        if (statement.trim()) await pg.exec(statement);
       }
+      await pg.query("insert into __intake_dev_migrations (name) values ($1)", [file]);
     }
     return drizzle({ client: pg, schema }) as IntakeDb;
   })();
