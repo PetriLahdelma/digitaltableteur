@@ -403,11 +403,11 @@
     "@vitejs/plugin-react": "^6.1.2",
     "@vitest/browser-playwright": "^5.0.5",
     "@vitest/coverage-v8": "^5.0.5",
-    "agent-browser": "0.39.1",
+    "agent-browser": "0.39.2",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "axe-core": "^4.14.0",
-    "chart.js": "^4.5.1",
+    "chart.js": "^4.6.1",
     "commander": "^15.0.0",
     "concurrently": "^10.0.6",
     "eslint": "^9.39.5",
@@ -441,6 +441,6 @@
     "vitest": "^5.0.5",
     "vitest-axe": "^0.1.0",
     "wait-on": "^9.5.1",
-    "webpack": "^5.112.0"
+    "webpack": "^5.112.1"
   }
 }
