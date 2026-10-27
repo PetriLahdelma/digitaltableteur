@@ -1,9 +1,9 @@
 {
   "storyId": "site-mcpactionbutton-forced-colors",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:33:15.420Z",
-  "runner": null,
+  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+  "capturedAt": "2026-10-27T18:42:13.408Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "layout-macwindowframe-forced-colors",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:13:42.358Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+  "capturedAt": "2026-10-27T18:42:36.054Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,3 +1,4 @@
+- status: Deprecated
 - figure:
   - text: components/DemoButton.tsx
   - button "Copy code to clipboard": Copy

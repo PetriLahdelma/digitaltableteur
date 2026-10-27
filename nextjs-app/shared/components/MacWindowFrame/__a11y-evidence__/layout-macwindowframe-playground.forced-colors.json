@@ -1,8 +1,8 @@
 {
   "storyId": "layout-macwindowframe-playground",
   "mode": "forced-colors",
-  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-  "capturedAt": "2026-09-29T19:09:53.816Z",
+  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+  "capturedAt": "2026-10-27T18:43:17.679Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

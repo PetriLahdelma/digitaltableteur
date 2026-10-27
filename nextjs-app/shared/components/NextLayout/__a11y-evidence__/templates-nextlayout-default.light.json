@@ -1,9 +1,9 @@
 {
   "storyId": "templates-nextlayout-default",
   "mode": "light",
-  "sourceSHA": "19e642e52007af2c789bf30cef0766557fc819c3",
-  "capturedAt": "2026-10-26T22:37:42.428Z",
-  "runner": "local-claude",
+  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+  "capturedAt": "2026-10-27T18:39:48.155Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

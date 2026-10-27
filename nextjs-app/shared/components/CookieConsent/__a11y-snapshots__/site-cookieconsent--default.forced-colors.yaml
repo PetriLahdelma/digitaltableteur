@@ -1,7 +1,7 @@
 - status: Work in progress (beta)
 - region "Cookie preferences":
   - paragraph:
-    - text: Cookies improve your experience. Read our
+    - text: Cookies improve your experience. Read the
     - link "cookie policy":
       - /url: /privacy-policy
   - button "Customize settings"

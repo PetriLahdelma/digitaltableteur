@@ -1,9 +1,9 @@
 {
   "storyId": "site-cookieconsent-example",
   "mode": "forced-colors",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:08:48.266Z",
-  "runner": null,
+  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+  "capturedAt": "2026-10-27T18:43:04.063Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

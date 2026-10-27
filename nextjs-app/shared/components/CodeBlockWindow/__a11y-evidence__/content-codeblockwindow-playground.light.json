@@ -1,9 +1,9 @@
 {
   "storyId": "content-codeblockwindow-playground",
   "mode": "light",
-  "sourceSHA": "faa1995004c152aded324d541697d265e374eb22",
-  "capturedAt": "2026-10-25T15:43:50.947Z",
-  "runner": "local-claude",
+  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+  "capturedAt": "2026-10-27T18:42:00.163Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-27T18:28:34.046Z",
+  "generatedAt": "2026-10-27T18:33:28.183Z",
   "summary": {
     "componentCount": 192,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 91.9,
     "codebaseComponentCount": 209,
     "usageCoveragePercent": 94.3,
-    "componentsWithProductionUsage": 46,
+    "componentsWithProductionUsage": 45,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,10 +79,10 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 192,
     "withAnyUsage": 181,
-    "withProductionUsage": 46,
+    "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 925,
-    "aliasImportFiles": 475,
+    "totalEvidenceRows": 924,
+    "aliasImportFiles": 474,
     "relativeImportFiles": 490,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -36109,17 +36109,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Logo",
-        "importCount": 3,
-        "productionImportCount": 1,
+        "importCount": 2,
+        "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
-          {
-            "path": "app/intake/print/[submissionId]/page.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Logo",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
             "importKind": "relative",
