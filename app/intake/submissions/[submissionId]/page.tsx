@@ -2,7 +2,6 @@ import { notFound, redirect } from "next/navigation";
 import {
   AlertBanner,
   Code,
-  Link,
   Text,
   Timestamp,
   Title,
@@ -12,7 +11,8 @@ import { intakeCopy } from "@/app/lib/intake/copy";
 import { getSubmission } from "@/app/lib/intake/service/forms";
 import { currentClient } from "@/app/lib/intake/service/session";
 
-import { AnswerSheet } from "../../_components/AnswerSheet";
+import { AnswerSummary } from "../../_components/AnswerSummary";
+import { DownloadPdfButton } from "../../_components/DownloadPdfButton";
 import { IntakeColumns, IntakePage } from "../../_components/IntakePage";
 import { requestLocale } from "../../_components/locale";
 
@@ -46,9 +46,6 @@ export default async function IntakeSubmissionPage({
         title={view.questionnaire.title[locale]}
         intro={
           <>
-            <Link href="/intake/forms" size="sm">
-              {t("backToIntakes")}
-            </Link>
             <AlertBanner
               tone="success"
               title={t("submittedTitle")}
@@ -65,10 +62,15 @@ export default async function IntakeSubmissionPage({
             <Text size="s">
               {t("fingerprint")}: <Code>{view.digest}</Code>
             </Text>
+            <DownloadPdfButton
+              submissionId={view.submissionId}
+              label={t("downloadPdf")}
+              errorText={t("genericError")}
+            />
           </>
         }
       >
-        <AnswerSheet
+        <AnswerSummary
           questionnaire={view.questionnaire}
           answers={view.snapshot.answers}
           locale={locale}

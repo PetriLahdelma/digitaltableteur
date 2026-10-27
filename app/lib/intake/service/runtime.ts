@@ -28,10 +28,29 @@ export async function intakeContext(): Promise<IntakeContext> {
 }
 
 export function intakeMailer(): Mailer {
-  if (process.env.INTAKE_MAIL === "console" && process.env.NODE_ENV !== "production") return consoleMailer;
+  const devMail = process.env.NODE_ENV !== "production" ? process.env.INTAKE_MAIL : undefined;
+  if (devMail === "console") return consoleMailer;
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) throw new Error("RESEND_API_KEY is not set");
-  return resendMailer(apiKey, process.env.INTAKE_EMAIL_FROM || "Digitaltableteur <intake@digitaltableteur.com>");
+  const resend = resendMailer(apiKey, process.env.INTAKE_EMAIL_FROM || "Digitaltableteur <intake@digitaltableteur.com>");
+  // The local sandbox sends real mail and also prints it, so a slow inbox never blocks a test.
+  if (devMail === "resend+console")
+    return {
+      async send(mail) {
+        await consoleMailer.send(mail);
+        await resend.send(mail);
+      },
+    };
+  return resend;
+}
+
+/**
+ * True when this deployment has the intake's keys and database: production
+ * (sensitive Vercel variables) and `npm run intake:dev`. A plain `npm run dev`
+ * has neither, and the intake then does not exist (404), as before launch.
+ */
+export function isIntakeConfigured(): boolean {
+  return Boolean(process.env.INTAKE_DATA_KEYS && process.env.INTAKE_HMAC_KEY && process.env.INTAKE_DATABASE_DATABASE_URL);
 }
 
 /** True only for the local PGlite setup started by `npm run intake:dev`. */

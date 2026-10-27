@@ -208,7 +208,17 @@ const nextConfig: NextConfig = {
     "import-in-the-middle",
     "@modelcontextprotocol/sdk",
     "mcp-handler",
+    // The intake PDF renderer: a headless Chromium binary and its driver,
+    // loaded from node_modules at runtime, never bundled.
+    "@sparticuz/chromium",
+    "playwright-core",
   ],
+  // The Chromium binary is read from disk at runtime, so file tracing cannot
+  // see it; include it for the PDF route only (docs/intake/README.md §6).
+  // Keys are globs: "[submissionId]" would be a character class, so "*".
+  outputFileTracingIncludes: {
+    "/api/intake/submissions/*/pdf": ["./node_modules/@sparticuz/chromium/**"],
+  },
   // Image optimization configuration
   images: {
     // Local images with cache-busting query strings (e.g. ?v=2) require explicit patterns in Next 16.

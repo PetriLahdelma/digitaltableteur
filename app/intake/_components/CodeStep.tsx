@@ -66,13 +66,15 @@ export function CodeStep({
               description={copy[problem]}
               focusOnMount
               action={
-                <Button variant="secondary" size="sm" onClick={onRestart}>
+                <Button variant="secondary" onClick={onRestart}>
                   {copy.requestNewCode}
                 </Button>
               }
             />
           ) : null}
           <TextInput
+            size="lg"
+            width="10ch"
             label={copy.codeLabel}
             type="text"
             inputMode="numeric"

@@ -26,7 +26,7 @@ export function IntakePage({
 }) {
   return (
     <Container size="lg">
-      <Section spacing="lg">
+      <Section spacing="sm">
         <IntakeLanguage locale={locale} />
         {children}
       </Section>

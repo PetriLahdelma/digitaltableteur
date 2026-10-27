@@ -5,7 +5,9 @@
  * Starts `next dev` on port 3002 with a file-backed PGlite database in
  * .intake-dev/, development-only keys and mail printed to the console, so
  * the client flow can be walked end to end without Neon, Resend or any
- * production secret. Create an invite with:
+ * production secret. Mail goes to the console; with .intake-dev/mail.json
+ * ({"resendApiKey": "..."}, pulled from Vercel) it is also sent for real
+ * through Resend, so codes reach the inbox. Create an invite with:
  *
  *   curl -s localhost:3002/api/intake/dev/invite -H 'content-type: application/json' \
  *     -H 'origin: http://localhost:3002' \
@@ -29,6 +31,9 @@ if (!existsSync(keysFile)) {
 }
 const keys = JSON.parse(readFileSync(keysFile, "utf8"));
 
+const mailFile = join(dir, "mail.json");
+const resendApiKey = existsSync(mailFile) ? JSON.parse(readFileSync(mailFile, "utf8")).resendApiKey : "";
+
 const child = spawn("npx", ["next", "dev", "--port", port], {
   stdio: "inherit",
   env: {
@@ -36,7 +41,8 @@ const child = spawn("npx", ["next", "dev", "--port", port], {
     INTAKE_DATABASE_DATABASE_URL: `pglite:${join(dir, "db")}`,
     INTAKE_DATA_KEYS: keys.data,
     INTAKE_HMAC_KEY: keys.hmac,
-    INTAKE_MAIL: "console",
+    INTAKE_MAIL: resendApiKey ? "resend+console" : "console",
+    ...(resendApiKey ? { RESEND_API_KEY: resendApiKey } : {}),
     INTAKE_ORIGIN: `http://localhost:${port}`,
   },
 });

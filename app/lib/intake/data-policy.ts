@@ -28,7 +28,7 @@ type ClassPolicy = Readonly<{
 
 const ANSWER_STORE = "AES-256-GCM answer document in Postgres (Neon, EU; key outside the database)";
 const NEVER = "email bodies, Sentry, Vercel logs, analytics";
-const ROUTE = "browser, intake function (EU), Postgres, PDF renderer, owner mailbox (PDF attachment)";
+const ROUTE = "browser, intake function (EU), Postgres, PDF renderer (EU, in memory), owner admin view";
 
 export const CLASS_POLICY: Readonly<Record<Sensitivity, ClassPolicy>> = {
   personal: {

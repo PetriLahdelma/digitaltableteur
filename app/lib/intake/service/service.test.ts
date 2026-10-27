@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import type { IntakeDb } from "../db/client";
-import { auditLog, drafts, invites, loginCodes, submissions } from "../db/schema";
+import { auditLog, drafts, invites, loginCodes, pdfs, submissions } from "../db/schema";
 import { createTestIntakeDb } from "../db/test-db";
 import { getQuestionnaire, visibleFields } from "../index";
 import { openJson } from "../security/envelope";
@@ -15,6 +15,7 @@ import { endSession, readSession, requestCodeForEmail, requestCodeForInvite, ver
 import { HOUR, MINUTE, type IntakeContext, type IntakeMail } from "./context";
 import { getSubmission, listClientIntakes, loadDraft, saveDraft, submissionAad, submitIntake } from "./forms";
 import { createInvite } from "./invites";
+import { submissionPdf } from "./pdf";
 
 const ring = parseDataKeys(`k1:${randomBytes(32).toString("base64")}`);
 const hmacKey = parseHmacKey(randomBytes(32).toString("base64"));
@@ -233,6 +234,46 @@ describe("drafts and submission", () => {
     expect(home).toMatchObject([{ status: "submitted", submissionId: result.submissionId }]);
   });
 
+  it("submits in the language on screen, not the invite's", async () => {
+    const created = await invite(); // invited in Finnish
+    const { session } = await signIn(created.token);
+    await saveDraft(ctx, session.clientId, created.inviteId, { revision: 0, answers: completeAnswers() });
+    const result = await submitIntake(ctx, session.clientId, created.inviteId, 1, "en");
+    if (result.status !== "submitted") throw new Error(result.status);
+    expect(result.mail.subject).toBe("We received your intake");
+    const view = await getSubmission(ctx, session.clientId, result.submissionId);
+    expect(view?.snapshot.locale).toBe("en");
+  });
+
+  it("renders the PDF once, stores it and serves the same bytes to its own client only", async () => {
+    const created = await invite();
+    const { session } = await signIn(created.token);
+    await saveDraft(ctx, session.clientId, created.inviteId, { revision: 0, answers: completeAnswers() });
+    const result = await submitIntake(ctx, session.clientId, created.inviteId, 1);
+    if (result.status !== "submitted") throw new Error(result.status);
+
+    let renders = 0;
+    const render = async () => {
+      renders += 1;
+      return Buffer.from(`%PDF-1.7 render ${renders}`);
+    };
+    const first = await submissionPdf(ctx, session.clientId, result.submissionId, render);
+    const second = await submissionPdf(ctx, session.clientId, result.submissionId, render);
+    expect(renders).toBe(1);
+    expect(second?.bytes.equals(first!.bytes)).toBe(true);
+    const [row] = await db.select().from(pdfs);
+    expect(row.byteLength).toBe(first!.bytes.length);
+    expect(JSON.stringify(row.pdfSealed)).not.toContain("render 1");
+
+    const other = await invite("someone@example.test");
+    const stranger = await signIn(other.token);
+    expect(await submissionPdf(ctx, stranger.session.clientId, result.submissionId, render)).toBeNull();
+
+    const actions = (await db.select().from(auditLog)).map((entry) => entry.action);
+    expect(actions.filter((action) => action === "pdf.render")).toHaveLength(1);
+    expect(actions.filter((action) => action === "pdf.download")).toHaveLength(2);
+  });
+
   it("drops answers to sections the client can no longer see", async () => {
     const created = await invite();
     const { session } = await signIn(created.token);
@@ -310,4 +351,16 @@ describe("drafts and submission", () => {
     if (own.status !== "sent") throw new Error();
     expect(await own.issue()).not.toBeNull();
   });
+
+  it("keeps one initial intake per client: a second invite re-sends the first", async () => {
+    const first = await invite();
+    const again = await invite();
+    expect(again.inviteId).toBe(first.inviteId);
+    expect(await db.select().from(invites)).toHaveLength(1);
+    // The new link works and the old one no longer does.
+    expect((await requestCodeForInvite(ctx, first.token, "net-1")).status).toBe("invalid_invite");
+    await signIn(again.token);
+    await expect(invite()).rejects.toThrow("already has this intake");
+  });
 });
+

@@ -74,7 +74,7 @@ export const INTAKE_COPY = {
   genericError: { en: "Something went wrong on our side. Try again in a moment.", fi: "Jokin meni vikaan meidän päässämme. Yritä hetken päästä uudelleen.", sv: "Något gick fel hos oss. Försök igen om en stund." },
 
   // Client home
-  homeTitle: { en: "Your intakes", fi: "Esitietolomakkeesi", sv: "Dina förhandsuppgifter" },
+  homeTitle: { en: "Your intake", fi: "Esitietolomakkeesi", sv: "Dina förhandsuppgifter" },
   homeIntro: {
     en: "Your answers save as you type. You can leave and come back at any time before you submit.",
     fi: "Vastauksesi tallentuvat kirjoittaessasi. Voit poistua ja palata milloin tahansa ennen lähettämistä.",
@@ -98,6 +98,18 @@ export const INTAKE_COPY = {
   partsLabel: { en: "Intake parts", fi: "Lomakkeen osat", sv: "Formulärets delar" },
   sectionCaption: { en: "{part}: section {n} of {total}", fi: "{part}: osio {n}/{total}", sv: "{part}: avsnitt {n} av {total}" },
   back: { en: "Back", fi: "Takaisin", sv: "Tillbaka" },
+  cancel: { en: "Cancel", fi: "Peruuta", sv: "Avbryt" },
+  clearSection: { en: "Clear answers", fi: "Tyhjennä vastaukset", sv: "Rensa svaren" },
+  clearSectionTitle: {
+    en: "Clear the answers in this section?",
+    fi: "Tyhjennetäänkö tämän osion vastaukset?",
+    sv: "Rensa svaren i det här avsnittet?",
+  },
+  clearSectionDescription: {
+    en: "Everything you entered on this screen is removed. This cannot be undone.",
+    fi: "Kaikki tälle sivulle syöttämäsi poistetaan. Toimintoa ei voi perua.",
+    sv: "Allt du har fyllt i på den här sidan tas bort. Det går inte att ångra.",
+  },
   continueTo: { en: "Continue: {next}", fi: "Jatka: {next}", sv: "Fortsätt: {next}" },
   checkAndSubmit: { en: "Check and submit", fi: "Tarkista ja lähetä", sv: "Kontrollera och skicka" },
   checkIntro: {
@@ -127,6 +139,8 @@ export const INTAKE_COPY = {
   errorSummaryIntro: { en: "Fix these before submitting:", fi: "Korjaa nämä ennen lähettämistä:", sv: "Rätta dessa innan du skickar:" },
   selectPlaceholder: { en: "Choose", fi: "Valitse", sv: "Välj" },
   scaleLegend: { en: "From {min} to {max}", fi: "Ääripäät: {min} ja {max}", sv: "Från {min} till {max}" },
+  scaleAnswer: { en: "{value} of {max}, closer to {side}", fi: "{value}/{max}, lähempänä: {side}", sv: "{value} av {max}, närmare {side}" },
+  scaleAnswerMiddle: { en: "{value} of {max}, in the middle", fi: "{value}/{max}, keskellä", sv: "{value} av {max}, i mitten" },
   submit: { en: "Submit", fi: "Lähetä", sv: "Skicka" },
   submitHint: {
     en: "After you submit, your answers are locked. You can still view them here for 12 months.",
@@ -134,7 +148,6 @@ export const INTAKE_COPY = {
     sv: "När du har skickat låses svaren. Du kan fortfarande se dem här i 12 månader.",
   },
   submissionDatePending: { en: "Set when you submit", fi: "Asetetaan lähetettäessä", sv: "Sätts när du skickar" },
-  backToIntakes: { en: "Back to your intakes", fi: "Takaisin lomakkeisiin", sv: "Tillbaka till dina förhandsuppgifter" },
 
   // Submission
   submittedTitle: { en: "Thank you, your answers are in", fi: "Kiitos, vastauksesi on vastaanotettu", sv: "Tack, dina svar har kommit fram" },
@@ -145,27 +158,89 @@ export const INTAKE_COPY = {
   },
   fingerprint: { en: "Fingerprint (SHA-256)", fi: "Tunniste (SHA-256)", sv: "Fingeravtryck (SHA-256)" },
   notAnswered: { en: "Not answered", fi: "Ei vastausta", sv: "Inget svar" },
+  downloadPdf: { en: "Download PDF", fi: "Lataa PDF", sv: "Ladda ner PDF" },
+  pdfPage: { en: "Page", fi: "Sivu", sv: "Sida" },
+  pdfSubmitted: { en: "Submitted", fi: "Lähetetty", sv: "Skickat" },
+  pdfClient: { en: "Client", fi: "Asiakas", sv: "Kund" },
   yes: { en: "Yes", fi: "Kyllä", sv: "Ja" },
   no: { en: "No", fi: "Ei", sv: "Nej" },
 
-  // Emails (never carry answers)
+  // Emails (never carry answers). Each mail is built from these parts in
+  // service/mail.ts, as HTML and as the plain-text alternative.
+  mailBrand: { en: "Digitaltableteur", fi: "Digitaltableteur", sv: "Digitaltableteur" },
+  mailSignature: { en: "Petri Lahdelma\nDigitaltableteur", fi: "Petri Lahdelma\nDigitaltableteur", sv: "Petri Lahdelma\nDigitaltableteur" },
+  mailLinkFallback: {
+    en: "If the button does not work, copy this link into your browser:",
+    fi: "Jos painike ei toimi, kopioi tämä linkki selaimeesi:",
+    sv: "Om knappen inte fungerar, kopiera den här länken till webbläsaren:",
+  },
+  mailFooter: {
+    en: "You are receiving this email because Digitaltableteur invited this address to its client intake.",
+    fi: "Saat tämän viestin, koska Digitaltableteur kutsui tämän osoitteen esitietolomakkeelleen.",
+    sv: "Du får det här mejlet eftersom Digitaltableteur bjöd in den här adressen till sina förhandsuppgifter.",
+  },
+
   mailInviteSubject: { en: "Your intake for Digitaltableteur", fi: "Esitietolomakkeesi Digitaltableteurille", sv: "Dina förhandsuppgifter till Digitaltableteur" },
-  mailInviteBody: {
-    en: "Hello {name},\n\nhere is your link to the {questionnaire} form. It opens a short sign-in step that emails you a one-time code.\n\n{link}\n\nThe link is valid until {expires}. Your answers save as you go, so you can fill the form in more than one sitting.\n\nPetri Lahdelma\nDigitaltableteur",
-    fi: "Hei {name},\n\ntässä linkki lomakkeeseen {questionnaire}. Linkki avaa lyhyen kirjautumisen, jossa saat kertakäyttöisen koodin sähköpostiisi.\n\n{link}\n\nLinkki on voimassa {expires} asti. Vastauksesi tallentuvat, joten voit täyttää lomakkeen useammassa osassa.\n\nPetri Lahdelma\nDigitaltableteur",
-    sv: "Hej {name},\n\nhär är din länk till formuläret {questionnaire}. Länken öppnar en kort inloggning som mejlar dig en engångskod.\n\n{link}\n\nLänken gäller till {expires}. Dina svar sparas, så du kan fylla i formuläret i flera omgångar.\n\nPetri Lahdelma\nDigitaltableteur",
+  mailInvitePreheader: {
+    en: "Your {questionnaire} form is ready. Answers save as you go.",
+    fi: "Lomakkeesi {questionnaire} on valmiina. Vastaukset tallentuvat sitä mukaa.",
+    sv: "Ditt formulär {questionnaire} är klart. Svaren sparas medan du fyller i.",
   },
+  mailInviteHeading: { en: "Your intake is ready", fi: "Esitietolomakkeesi on valmiina", sv: "Dina förhandsuppgifter är klara" },
+  mailInviteGreeting: { en: "Hello {name},", fi: "Hei {name},", sv: "Hej {name}," },
+  mailInviteLead: {
+    en: "here is your link to the {questionnaire} form. Your answers save as you go, so you can fill it in over more than one sitting.",
+    fi: "tässä on linkkisi lomakkeeseen {questionnaire}. Vastauksesi tallentuvat sitä mukaa, joten voit täyttää lomakkeen useammassa osassa.",
+    sv: "här är din länk till formuläret {questionnaire}. Dina svar sparas medan du fyller i, så du kan göra det i flera omgångar.",
+  },
+  mailInviteButton: { en: "Open your intake", fi: "Avaa esitietolomake", sv: "Öppna förhandsuppgifterna" },
+  mailInviteNote: {
+    en: "The link is valid until {expires}. When you open it, we email you a one-time code. There is no password.",
+    fi: "Linkki on voimassa {expires} asti. Kun avaat sen, lähetämme sinulle kertakäyttöisen koodin. Salasanaa ei tarvita.",
+    sv: "Länken gäller till {expires}. När du öppnar den mejlar vi dig en engångskod. Inget lösenord behövs.",
+  },
+
   mailCodeSubject: { en: "Your sign-in code: {code}", fi: "Kirjautumiskoodisi: {code}", sv: "Din inloggningskod: {code}" },
-  mailCodeBody: {
-    en: "Your code for the Digitaltableteur client intake is\n\n{code}\n\nIt is valid for 10 minutes. If you did not ask for it, you can ignore this email.",
-    fi: "Koodisi Digitaltableteurin esitietolomakkeeseen on\n\n{code}\n\nKoodi on voimassa 10 minuuttia. Jos et pyytänyt koodia, voit jättää viestin huomiotta.",
-    sv: "Din kod till Digitaltableteurs förhandsuppgifter är\n\n{code}\n\nKoden gäller i 10 minuter. Om du inte bad om den kan du strunta i mejlet.",
+  mailCodePreheader: {
+    en: "{code} is your code for the Digitaltableteur client intake.",
+    fi: "{code} on koodisi Digitaltableteurin esitietolomakkeeseen.",
+    sv: "{code} är din kod till Digitaltableteurs förhandsuppgifter.",
   },
+  mailCodeHeading: { en: "Your sign-in code", fi: "Kirjautumiskoodisi", sv: "Din inloggningskod" },
+  mailCodeLead: {
+    en: "Enter this code on the sign-in page to open your client intake.",
+    fi: "Syötä tämä koodi kirjautumissivulle avataksesi esitietolomakkeesi.",
+    sv: "Ange koden på inloggningssidan för att öppna dina förhandsuppgifter.",
+  },
+  mailCodeLabel: { en: "Sign-in code", fi: "Kirjautumiskoodi", sv: "Inloggningskod" },
+  mailCodeNote: {
+    en: "The code is valid for 10 minutes and works once.",
+    fi: "Koodi on voimassa 10 minuuttia, ja sen voi käyttää kerran.",
+    sv: "Koden gäller i 10 minuter och kan användas en gång.",
+  },
+  mailCodeIgnore: {
+    en: "Did not ask for a code? You can ignore this email. Nobody can sign in without the code.",
+    fi: "Etkö pyytänyt koodia? Voit jättää viestin huomiotta. Kukaan ei voi kirjautua ilman koodia.",
+    sv: "Bad du inte om en kod? Då kan du strunta i mejlet. Ingen kan logga in utan koden.",
+  },
+
   mailSubmittedSubject: { en: "We received your intake", fi: "Vastaanotimme esitietosi", sv: "Vi har fått dina förhandsuppgifter" },
-  mailSubmittedBody: {
-    en: "Thank you. Your answers to {questionnaire} arrived on {date}.\n\nYou can view them for 12 months in the client area:\n{link}\n\nPetri Lahdelma\nDigitaltableteur",
-    fi: "Kiitos. Vastauksesi lomakkeeseen {questionnaire} saapuivat {date}.\n\nVoit katsoa niitä 12 kuukauden ajan asiakasalueella:\n{link}\n\nPetri Lahdelma\nDigitaltableteur",
-    sv: "Tack. Dina svar på {questionnaire} kom fram {date}.\n\nDu kan se dem i 12 månader i kundområdet:\n{link}\n\nPetri Lahdelma\nDigitaltableteur",
+  mailSubmittedPreheader: {
+    en: "Your answers arrived on {date}. Thank you.",
+    fi: "Vastauksesi saapuivat {date}. Kiitos.",
+    sv: "Dina svar kom fram {date}. Tack.",
+  },
+  mailSubmittedHeading: { en: "We received your intake", fi: "Vastaanotimme esitietosi", sv: "Vi har fått dina förhandsuppgifter" },
+  mailSubmittedLead: {
+    en: "Thank you. Your answers to {questionnaire} arrived on {date}. We will read them before our first conversation.",
+    fi: "Kiitos. Vastauksesi lomakkeeseen {questionnaire} saapuivat {date}. Luemme ne ennen ensimmäistä keskusteluamme.",
+    sv: "Tack. Dina svar på {questionnaire} kom fram {date}. Vi läser dem före vårt första samtal.",
+  },
+  mailSubmittedButton: { en: "View your answers", fi: "Katso vastauksesi", sv: "Se dina svar" },
+  mailSubmittedNote: {
+    en: "Your answers stay in the client area for 12 months.",
+    fi: "Vastauksesi säilyvät asiakasalueella 12 kuukautta.",
+    sv: "Dina svar finns kvar i kundområdet i 12 månader.",
   },
 } as const satisfies Record<string, LocalizedCopy>;
 

@@ -4,6 +4,8 @@ import {
   Checkbox,
   CheckboxGroup,
   Combobox,
+  MultiCombobox,
+  PhoneInput,
   FlexBox,
   RadioGroup,
   Select,
@@ -58,13 +60,28 @@ export function IntakeField({
 
   let control: React.ReactNode;
   switch (field.kind) {
+    case "tel":
+      control = (
+        <PhoneInput
+          label={field.label[locale]}
+          defaultCountry="FI"
+          size="lg"
+          value={typeof value === "string" ? value : ""}
+          onChange={(next) => onChange(next ?? "")}
+          required={required}
+          helperText={help}
+          error={error}
+        />
+      );
+      break;
     case "text":
     case "email":
-    case "tel":
       control = (
         <TextInput
           label={field.label[locale]}
           type={field.kind}
+          size="lg"
+          width={field.kind === "email" ? "30ch" : "full"}
           value={typeof value === "string" ? value : ""}
           onValueChange={(next) => onChange(String(next))}
           maxLength={INTAKE_LIMITS[field.kind]}
@@ -91,20 +108,37 @@ export function IntakeField({
       );
       break;
     case "choices":
-      control = (
-        <CheckboxGroup
-          id={field.id}
-          label={field.label[locale]}
-          hideLegend={field.labelIsSectionTitle}
-          showMasterCheckbox={false}
-          options={field.options.map((option) => ({
-            value: option.id,
-            label: option.label[locale],
-          }))}
-          defaultSelected={Array.isArray(value) ? [...value] : []}
-          onChange={(selected) => onChange(selected)}
-        />
-      );
+      // A short list stays as checkboxes, all visible at once; a long one
+      // (every service on offer) becomes a multi-select with type-to-filter.
+      control =
+        field.options.length > 8 ? (
+          <MultiCombobox
+            label={field.label[locale]}
+            options={field.options.map((option) => ({
+              value: option.id,
+              label: option.label[locale],
+            }))}
+            value={Array.isArray(value) ? [...value] : []}
+            onValueChange={(next) => onChange(next)}
+            placeholder={copy.selectPlaceholder}
+            required={required}
+            helperText={help}
+            error={error}
+          />
+        ) : (
+          <CheckboxGroup
+            id={field.id}
+            label={field.label[locale]}
+            hideLegend={field.labelIsSectionTitle}
+            showMasterCheckbox={false}
+            options={field.options.map((option) => ({
+              value: option.id,
+              label: option.label[locale],
+            }))}
+            defaultSelected={Array.isArray(value) ? [...value] : []}
+            onChange={(selected) => onChange(selected)}
+          />
+        );
       break;
     case "select":
       // A long list (every time zone) gets type-to-filter; a short one stays a native select.
@@ -126,6 +160,7 @@ export function IntakeField({
         ) : (
           <Select
             label={field.label[locale]}
+            size="lg"
             value={typeof value === "string" ? value : ""}
             onValueChange={(next) => onChange(next)}
             options={[

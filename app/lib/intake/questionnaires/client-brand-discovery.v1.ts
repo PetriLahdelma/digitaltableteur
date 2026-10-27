@@ -2,7 +2,7 @@ import type { Questionnaire } from "../types";
 import { CONTACT_METHOD_OPTIONS, TIME_ZONE_OPTIONS } from "./shared-options";
 
 /**
- * Client intake & brand discovery, schema version 1.0.0.
+ * Client intake & project discovery, schema version 1.0.0.
  *
  * Content source: Figma file PC2UPdYwm8qGt6ZTg0AakF, sections 2000:451 (EN)
  * and 2012:842 (FI). Swedish copy is a first translation awaiting native
@@ -13,8 +13,8 @@ import { CONTACT_METHOD_OPTIONS, TIME_ZONE_OPTIONS } from "./shared-options";
 export const CLIENT_BRAND_DISCOVERY_V1 = {
   id: "client-brand-discovery",
   version: "1.0.0",
-  title: { en: "Client intake & brand discovery", fi: "Asiakkaan esitiedot ja brändikartoitus", sv: "Förhandsuppgifter och varumärkeskartläggning" },
-  documentName: { en: "CLIENT INTAKE & BRAND DISCOVERY", fi: "ASIAKKAAN ESITIEDOT JA BRÄNDIKARTOITUS", sv: "FÖRHANDSUPPGIFTER OCH VARUMÄRKESKARTLÄGGNING" },
+  title: { en: "Client intake & project discovery", fi: "Asiakkaan esitiedot ja projektikartoitus", sv: "Förhandsuppgifter och projektkartläggning" },
+  documentName: { en: "CLIENT INTAKE & PROJECT DISCOVERY", fi: "ASIAKKAAN ESITIEDOT JA PROJEKTIKARTOITUS", sv: "FÖRHANDSUPPGIFTER OCH PROJEKTKARTLÄGGNING" },
   pages: [
     {
       id: "client_intake",
@@ -24,7 +24,7 @@ export const CLIENT_BRAND_DISCOVERY_V1 = {
       sections: [
         {
           id: "your_contact_details",
-          title: { en: "YOUR CONTACT DETAILS", fi: "YHTEYSTIETOSI", sv: "DINA KONTAKTUPPGIFTER" },
+          title: { en: "CONTACT DETAILS", fi: "YHTEYSTIEDOT", sv: "KONTAKTUPPGIFTER" },
           fields: [
             {
               id: "contact_name",
@@ -118,14 +118,55 @@ export const CLIENT_BRAND_DISCOVERY_V1 = {
                   id: "research",
                   label: { en: "Research / audit", fi: "Tutkimus / auditointi", sv: "Research / granskning" },
                 },
+                // The packages on /pricing, named as they are there.
+                {
+                  id: "ds_audit",
+                  label: { en: "Design System Audit", fi: "Design systemin auditointi", sv: "Granskning av designsystem" },
+                },
+                {
+                  id: "ux_sprint",
+                  label: { en: "UX Sprint", fi: "UX Sprint", sv: "UX Sprint" },
+                },
+                {
+                  id: "ds_liftoff",
+                  label: { en: "Design System Lift-Off", fi: "Design System Lift-Off", sv: "Design System Lift-Off" },
+                },
+                {
+                  id: "ai_ready_ops",
+                  label: { en: "AI-Ready Ops", fi: "AI-Ready Ops", sv: "AI-Ready Ops" },
+                },
+                {
+                  id: "embedded_partnership",
+                  label: { en: "Embedded partnership", fi: "Integroitu kumppanuus", sv: "Integrerat partnerskap" },
+                },
+                {
+                  id: "ds_workshop",
+                  label: { en: "Design System Workshop", fi: "Design system -työpaja", sv: "Designsystem-workshop" },
+                },
+                {
+                  id: "designops_pilot",
+                  label: { en: "DesignOps Pilot", fi: "DesignOps Pilot", sv: "DesignOps Pilot" },
+                },
+                {
+                  id: "agent_pilot",
+                  label: { en: "Agent Pilot", fi: "Agent Pilot", sv: "Agent Pilot" },
+                },
+                {
+                  id: "ds_mcp",
+                  label: { en: "Design System MCP", fi: "Design System MCP", sv: "Design System MCP" },
+                },
+                {
+                  id: "agent_workforce",
+                  label: { en: "Agent Workforce", fi: "Agent Workforce", sv: "Agent Workforce" },
+                },
                 {
                   id: "other",
                   label: { en: "Other / not sure", fi: "Muu / en ole varma", sv: "Annat / vet inte" },
                 },
               ],
               width: "full",
-              label: { en: "WHAT WOULD YOU LIKE TO DO?", fi: "MITÄ HALUAISIT TEHDÄ?", sv: "VAD VILL DU GÖRA?" },
-              labelIsSectionTitle: true,
+              label: { en: "Services", fi: "Palvelut", sv: "Tjänster" },
+              help: { en: "Choose all that apply.", fi: "Valitse kaikki sopivat.", sv: "Välj alla som passar." },
               sensitivity: "operational",
             },
             {

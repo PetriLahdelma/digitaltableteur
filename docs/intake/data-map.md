@@ -6,12 +6,12 @@ Generated from `app/lib/intake` by `npm run generate:intake-data-map`. Do not ed
 
 | Class | At rest | Travels to | Never in | Retention |
 | --- | --- | --- | --- | --- |
-| Personal | AES-256-GCM answer document in Postgres (Neon, EU; key outside the database); email also kept as an HMAC for lookup | browser, intake function (EU), Postgres, PDF renderer, owner mailbox (PDF attachment) | email bodies, Sentry, Vercel logs, analytics | draft 90 d after last edit; submission and PDF 12 mo |
-| Third-party personal | AES-256-GCM answer document in Postgres (Neon, EU; key outside the database) | browser, intake function (EU), Postgres, PDF renderer, owner mailbox (PDF attachment) | email bodies, Sentry, Vercel logs, analytics | draft 90 d after last edit; submission and PDF 12 mo |
-| Business confidential | AES-256-GCM answer document in Postgres (Neon, EU; key outside the database) | browser, intake function (EU), Postgres, PDF renderer, owner mailbox (PDF attachment) | email bodies, Sentry, Vercel logs, analytics | draft 90 d after last edit; submission and PDF 12 mo |
-| Operational | AES-256-GCM answer document in Postgres (Neon, EU; key outside the database) | browser, intake function (EU), Postgres, PDF renderer, owner mailbox (PDF attachment) | Sentry, Vercel logs, analytics | same as the submission it belongs to |
+| Personal | AES-256-GCM answer document in Postgres (Neon, EU; key outside the database); email also kept as an HMAC for lookup | browser, intake function (EU), Postgres, PDF renderer (EU, in memory), owner admin view | email bodies, Sentry, Vercel logs, analytics | draft 90 d after last edit; submission and PDF 12 mo |
+| Third-party personal | AES-256-GCM answer document in Postgres (Neon, EU; key outside the database) | browser, intake function (EU), Postgres, PDF renderer (EU, in memory), owner admin view | email bodies, Sentry, Vercel logs, analytics | draft 90 d after last edit; submission and PDF 12 mo |
+| Business confidential | AES-256-GCM answer document in Postgres (Neon, EU; key outside the database) | browser, intake function (EU), Postgres, PDF renderer (EU, in memory), owner admin view | email bodies, Sentry, Vercel logs, analytics | draft 90 d after last edit; submission and PDF 12 mo |
+| Operational | AES-256-GCM answer document in Postgres (Neon, EU; key outside the database) | browser, intake function (EU), Postgres, PDF renderer (EU, in memory), owner admin view | Sentry, Vercel logs, analytics | same as the submission it belongs to |
 
-## Client intake & brand discovery (v1.0.0)
+## Client intake & project discovery (v1.0.0)
 
 | Page | Field | Kind | Required | Class |
 | --- | --- | --- | --- | --- |

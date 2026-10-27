@@ -94,9 +94,9 @@ export const PRIVACY_NOTICE: readonly NoticeSection[] = [
         sv: "Sentry (Tyskland): felrapporter, som aldrig innehåller dina svar.",
       },
       {
-        en: "Microsoft 365: Digitaltableteur's mailbox receives a PDF of your submitted answers.",
-        fi: "Microsoft 365: Digitaltableteurin sähköposti vastaanottaa PDF-kopion lähettämistäsi vastauksista.",
-        sv: "Microsoft 365: Digitaltableteurs e-post tar emot en PDF med dina inskickade svar.",
+        en: "Microsoft 365: Digitaltableteur's mailbox receives a notice with a link when you submit, never your answers.",
+        fi: "Microsoft 365: Digitaltableteurin sähköposti saa lähettäessäsi ilmoituksen ja linkin, ei koskaan vastauksiasi.",
+        sv: "Microsoft 365: Digitaltableteurs e-post får ett meddelande med en länk när du skickar in, aldrig dina svar.",
       },
     ],
   },

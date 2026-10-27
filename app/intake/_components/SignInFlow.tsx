@@ -70,6 +70,8 @@ export function SignInFlow({
             <AlertBanner tone="error" description={problem} focusOnMount />
           ) : null}
           <TextInput
+            size="lg"
+            width="30ch"
             label={copy.emailLabel}
             type="email"
             autoComplete="email"

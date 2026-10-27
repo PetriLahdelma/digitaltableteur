@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-import { eq } from "drizzle-orm";
+import { and, eq, ne } from "drizzle-orm";
 
 import { RETENTION } from "../data-policy";
 import { auditLog, clients, invites } from "../db/schema";
@@ -10,6 +10,13 @@ import { emailLookupKey, generateToken, hashToken, normaliseEmail } from "../sec
 import type { IntakeLocale } from "../types";
 import { HOUR, type IntakeContext, type IntakeMail } from "./context";
 import { inviteMail } from "./mail";
+
+/** The client already has this intake in progress or submitted. */
+export class IntakeExistsError extends Error {
+  constructor() {
+    super("The client already has this intake");
+  }
+}
 
 export type ClientContact = Readonly<{ email: string; name: string }>;
 
@@ -52,6 +59,21 @@ export async function createInvite(
         emailLookup: lookup,
         contactSealed: sealJson({ email, name: input.name.trim() }, ctx.ring, clientAad(clientId)),
       });
+    }
+    // One initial intake per client and questionnaire: inviting again re-sends
+    // the open invite instead of starting a second intake.
+    const [open] = await tx
+      .select()
+      .from(invites)
+      .where(and(eq(invites.clientId, clientId), eq(invites.questionnaireId, questionnaire.id), ne(invites.status, "revoked")));
+    if (open && open.status !== "invited") throw new IntakeExistsError();
+    if (open) {
+      await tx
+        .update(invites)
+        .set({ tokenHash: hashToken(token), tokenExpiresAt: expires, locale: input.locale })
+        .where(eq(invites.id, open.id));
+      await tx.insert(auditLog).values({ actor: "owner", action: "invite.resend", clientId, inviteId: open.id });
+      return { inviteId: open.id, clientId };
     }
     const inviteId = randomUUID();
     await tx.insert(invites).values({

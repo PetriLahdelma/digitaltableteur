@@ -161,7 +161,14 @@ export type SubmissionSnapshot = Readonly<{
  * what the server has stored at `revision`, so the client cannot submit
  * answers it has not saved. Hidden sections are pruned (data minimisation).
  */
-export async function submitIntake(ctx: IntakeContext, clientId: string, inviteId: string, revision: number): Promise<SubmitResult> {
+export async function submitIntake(
+  ctx: IntakeContext,
+  clientId: string,
+  inviteId: string,
+  revision: number,
+  /** The language on screen when the client submitted; the invite's language otherwise. */
+  screenLocale?: IntakeLocale,
+): Promise<SubmitResult> {
   const now = ctx.now();
   return ctx.db.transaction(async (tx) => {
     const [row] = await tx
@@ -180,7 +187,7 @@ export async function submitIntake(ctx: IntakeContext, clientId: string, inviteI
       return { status: "incomplete", fields: [...new Set(checked.error.issues.map((issue) => String(issue.path[0] ?? "")))] } as const;
     }
 
-    const locale = row.invite.locale as IntakeLocale;
+    const locale = screenLocale ?? (row.invite.locale as IntakeLocale);
     const snapshot: SubmissionSnapshot = {
       questionnaireId: questionnaire.id,
       questionnaireVersion: questionnaire.version,
@@ -239,10 +246,28 @@ export type SubmissionView = Readonly<{
 
 /** Read-only view of one past submission, scoped to the session's client. */
 export async function getSubmission(ctx: IntakeContext, clientId: string, submissionId: string): Promise<SubmissionView | null> {
+  return readSubmission(ctx, submissionId, clientId);
+}
+
+/**
+ * The same view without a client scope, for the PDF print page only. That
+ * page is authorised by a one-minute print token instead of a session.
+ */
+export async function getSubmissionForPrint(ctx: IntakeContext, submissionId: string): Promise<SubmissionView | null> {
+  return readSubmission(ctx, submissionId);
+}
+
+async function readSubmission(ctx: IntakeContext, submissionId: string, clientId?: string): Promise<SubmissionView | null> {
   const [row] = await ctx.db
     .select()
     .from(submissions)
-    .where(and(eq(submissions.id, submissionId), eq(submissions.clientId, clientId), gt(submissions.deleteAfter, ctx.now())));
+    .where(
+      and(
+        eq(submissions.id, submissionId),
+        clientId ? eq(submissions.clientId, clientId) : undefined,
+        gt(submissions.deleteAfter, ctx.now()),
+      ),
+    );
   const questionnaire = row && getQuestionnaire(row.questionnaireId, row.questionnaireVersion);
   if (!row || !questionnaire) return null;
   return {

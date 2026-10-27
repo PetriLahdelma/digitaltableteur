@@ -5,6 +5,7 @@ import {
   Accordion,
   AlertBanner,
   Button,
+  ConfirmPopover,
   Divider,
   FlexBox,
   Grid,
@@ -33,7 +34,7 @@ import type {
 } from "@/app/lib/intake/types";
 import { useMediaQuery } from "@/nextjs-app/shared/hooks/useMediaQuery";
 
-import { answerDisplay, answerLabel } from "./AnswerSheet";
+import { AnswerSummary, answerLabel, sentenceCase } from "./AnswerSummary";
 import { postJson } from "./api";
 import { IntakeField, fieldAnchor } from "./IntakeField";
 
@@ -57,12 +58,6 @@ function isEmpty(value: AnswerValue | undefined): boolean {
     (typeof value === "string" && value.trim() === "") ||
     (Array.isArray(value) && value.length === 0)
   );
-}
-
-/** Definitions keep section titles in capitals for the PDF; on screen they read in sentence case. */
-function sentenceCase(text: string): string {
-  const lower = text.toLocaleLowerCase();
-  return lower.charAt(0).toLocaleUpperCase() + lower.slice(1);
 }
 
 /** Every section the client can currently see, in order: one screen each. */
@@ -141,7 +136,9 @@ export function IntakeForm({
   const revision = useRef(initialRevision);
   const latest = useRef({ answers, completed });
   // Pre-filled answers (name and email from the invite) exist only here until saved.
-  const dirty = useRef(initialRevision === 0 && Object.keys(initialAnswers).length > 0);
+  const dirty = useRef(
+    initialRevision === 0 && Object.keys(initialAnswers).length > 0,
+  );
   const inFlight = useRef<Promise<boolean> | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const focusAfterRender = useRef<string | null>(null);
@@ -198,16 +195,23 @@ export function IntakeForm({
     return save();
   }, [save]);
 
-  const update = useCallback(
-    (fieldId: string, value: AnswerValue) => {
+  /** Applies answer changes and schedules a save; undefined removes an answer. */
+  const updateMany = useCallback(
+    (changes: Record<string, AnswerValue | undefined>) => {
       setAnswers((previous) => {
-        const next = { ...previous, [fieldId]: value };
+        const next = { ...previous };
+        for (const [fieldId, value] of Object.entries(changes)) {
+          if (value === undefined) delete next[fieldId];
+          else next[fieldId] = value;
+        }
         latest.current = { ...latest.current, answers: next };
         return next;
       });
       setErrors((previous) => {
-        if (!previous[fieldId]) return previous;
-        const { [fieldId]: _removed, ...rest } = previous;
+        if (!Object.keys(changes).some((fieldId) => previous[fieldId]))
+          return previous;
+        const rest = { ...previous };
+        for (const fieldId of Object.keys(changes)) delete rest[fieldId];
         return rest;
       });
       dirty.current = true;
@@ -215,6 +219,10 @@ export function IntakeForm({
       timer.current = setTimeout(() => void save(), AUTOSAVE_DELAY_MS);
     },
     [save],
+  );
+  const update = useCallback(
+    (fieldId: string, value: AnswerValue) => updateMany({ [fieldId]: value }),
+    [updateMany],
   );
 
   useEffect(() => {
@@ -284,10 +292,20 @@ export function IntakeForm({
     goTo(next ? next.section.id : REVIEW);
   }
 
+  /** Empties the answers on this screen, after the person confirms. */
+  function clearStep(from: Step) {
+    updateMany(
+      Object.fromEntries(
+        from.section.fields
+          .filter(isInputField)
+          .map((field) => [field.id, undefined]),
+      ),
+    );
+  }
+
   function goBack() {
     if (current === REVIEW) goTo(steps[steps.length - 1].section.id);
     else if (stepIndex > 0) goTo(steps[stepIndex - 1].section.id);
-    else window.location.assign("/intake/forms");
   }
 
   function goToField(fieldId: string) {
@@ -322,7 +340,7 @@ export function IntakeForm({
     }
     const { httpStatus, data } = await postJson(
       `/api/intake/forms/${inviteId}/submit`,
-      { revision: revision.current },
+      { revision: revision.current, locale },
     );
     if (httpStatus === 200 && typeof data.submissionId === "string") {
       window.location.assign(`/intake/submissions/${data.submissionId}`);
@@ -439,7 +457,6 @@ export function IntakeForm({
           action={
             <Button
               variant="secondary"
-              size="sm"
               onClick={() => window.location.reload()}
             >
               {copy.reload}
@@ -480,20 +497,12 @@ export function IntakeForm({
     </>
   );
 
-  const back = (
-    <FlexBox direction="row">
-      <Link
-        href="#"
-        size="sm"
-        onClick={(event: React.MouseEvent) => {
-          event.preventDefault();
-          goBack();
-        }}
-      >
+  const backButton =
+    current !== REVIEW && stepIndex <= 0 ? null : (
+      <Button variant="secondary" size="lg" icon="arrow-left" onClick={goBack}>
         {copy.back}
-      </Link>
-    </FlexBox>
-  );
+      </Button>
+    );
 
   const saveStatus = (
     <Text as="span" size="s" role="status" aria-live="polite">
@@ -504,93 +513,61 @@ export function IntakeForm({
   const content =
     current === REVIEW || !step ? (
       <FlexBox direction="column" gap="var(--space-internal-24)">
-        {back}
         {alerts}
         <Title level={1} size="m" id="intake-step-title" tabIndex={-1}>
           {copy.checkAndSubmit}
         </Title>
         <Text>{copy.checkIntro}</Text>
-        {steps.map((candidate) => (
-          <Section
-            key={candidate.section.id}
-            spacing="none"
-            aria-labelledby={`review-${candidate.section.id}`}
-          >
-            <FlexBox direction="column" gap="var(--space-internal-12)">
-              <Divider />
-              <FlexBox
-                direction="row"
-                justify="space-between"
-                align="baseline"
-                gap="var(--space-internal-16)"
-              >
-                <Title
-                  level={2}
-                  size="xs"
-                  id={`review-${candidate.section.id}`}
-                >
-                  {sentenceCase(candidate.section.title[locale])}
-                </Title>
-                <Link
-                  href="#"
-                  size="sm"
-                  onClick={(event: React.MouseEvent) => {
-                    event.preventDefault();
-                    goTo(candidate.section.id);
-                  }}
-                >
-                  {copy.change}
-                </Link>
-              </FlexBox>
-              <Grid
-                columns={1}
-                tabletColumns={2}
-                gap="var(--space-internal-16)"
-              >
-                {candidate.section.fields.filter(isInputField).map((field) => (
-                  <FlexBox
-                    key={field.id}
-                    direction="column"
-                    gap="var(--space-internal-4)"
-                  >
-                    <Text as="span" size="s">
-                      {answerLabel(field, locale)}
-                    </Text>
-                    <Text as="span">
-                      {answerDisplay(field, answers[field.id], locale)}
-                    </Text>
-                  </FlexBox>
-                ))}
-              </Grid>
-            </FlexBox>
-          </Section>
-        ))}
+        <AnswerSummary
+          questionnaire={questionnaire}
+          answers={answers}
+          locale={locale}
+          onChange={(sectionId) => goTo(sectionId)}
+        />
         <Divider />
-        <Text size="s">{copy.submitHint}</Text>
         <FlexBox
           direction="row"
-          align="center"
+          justify="space-between"
+          align="baseline"
           gap="var(--space-internal-16)"
           wrap="wrap"
         >
-          <Button onClick={submit} loading={submitting}>
+          <Text size="s">{copy.submitHint}</Text>
+          {saveStatus}
+        </FlexBox>
+        <FlexBox
+          direction="row"
+          align="center"
+          justify="flex-end"
+          gap="var(--space-internal-16)"
+          wrap="wrap"
+        >
+          {backButton}
+          <Button size="lg" onClick={submit} loading={submitting}>
             {copy.submit}
           </Button>
-          {saveStatus}
         </FlexBox>
       </FlexBox>
     ) : (
       <FlexBox direction="column" gap="var(--space-internal-24)">
-        {back}
         {alerts}
         <FlexBox direction="column" gap="var(--space-internal-8)">
-          <Text size="s">
-            {format(copy.sectionCaption, {
-              part: step.page.title[locale],
-              n: step.indexInPage + 1,
-              total: step.sectionsInPage,
-            })}
-          </Text>
+          <FlexBox
+            direction="row"
+            justify="space-between"
+            align="baseline"
+            gap="var(--space-internal-16)"
+            wrap="wrap"
+          >
+            <Text size="s">
+              {format(copy.sectionCaption, {
+                part: step.page.title[locale],
+                n: step.indexInPage + 1,
+                total: step.sectionsInPage,
+              })}
+            </Text>
+            {saveStatus}
+          </FlexBox>
           <Title level={1} size="m" id="intake-step-title" tabIndex={-1}>
             {sentenceCase(step.section.title[locale])}
           </Title>
@@ -599,21 +576,25 @@ export function IntakeForm({
         {step.section.description ? (
           <Text size="s">{step.section.description[locale]}</Text>
         ) : null}
-        {fieldRows(step.section).map((row) =>
-          row[0].width === "half" ? (
-            <Grid
-              key={row[0].id}
-              columns={1}
-              tabletColumns={2}
-              desktopColumns={3}
-              gap="var(--space-internal-24)"
-            >
-              {row.map(renderField)}
-            </Grid>
-          ) : (
-            renderField(row[0])
-          ),
-        )}
+        {/* Fields carry about 24px of space below themselves (label, margins,
+            room for a helper line), so rows only add a small gap. */}
+        <FlexBox direction="column" gap="var(--space-internal-8)">
+          {fieldRows(step.section).map((row) =>
+            row[0].width === "half" ? (
+              <Grid
+                key={row[0].id}
+                columns={1}
+                tabletColumns={2}
+                rowGap="var(--space-internal-8)"
+                colGap="var(--space-internal-24)"
+              >
+                {row.map(renderField)}
+              </Grid>
+            ) : (
+              renderField(row[0])
+            ),
+          )}
+        </FlexBox>
         {step.section.closing ? (
           <Text size="s">{step.section.closing[locale]}</Text>
         ) : null}
@@ -623,17 +604,44 @@ export function IntakeForm({
         <FlexBox
           direction="row"
           align="center"
+          justify="space-between"
           gap="var(--space-internal-16)"
           wrap="wrap"
         >
-          <Button onClick={() => continueFrom(step)}>
-            {format(copy.continueTo, {
-              next: nextStep
-                ? sentenceCase(nextStep.section.title[locale])
-                : copy.checkAndSubmit,
-            })}
-          </Button>
-          {saveStatus}
+          <ConfirmPopover
+            title={copy.clearSectionTitle}
+            description={copy.clearSectionDescription}
+            confirmLabel={copy.clearSection}
+            cancelLabel={copy.cancel}
+            tone="error"
+            onConfirm={() => clearStep(step)}
+          >
+            <Button
+              variant="tertiary"
+              size="lg"
+              disabled={step.section.fields.every(
+                (field) => !isInputField(field) || isEmpty(answers[field.id]),
+              )}
+            >
+              {copy.clearSection}
+            </Button>
+          </ConfirmPopover>
+          <FlexBox
+            direction="row"
+            align="center"
+            justify="flex-end"
+            gap="var(--space-internal-16)"
+            wrap="wrap"
+          >
+            {backButton}
+            <Button size="lg" onClick={() => continueFrom(step)}>
+              {format(copy.continueTo, {
+                next: nextStep
+                  ? sentenceCase(nextStep.section.title[locale])
+                  : copy.checkAndSubmit,
+              })}
+            </Button>
+          </FlexBox>
         </FlexBox>
       </FlexBox>
     );
@@ -656,10 +664,14 @@ export function IntakeForm({
     );
   }
 
+  // Check and submit takes the full width, as GOV.UK's "Check your answers"
+  // does: every section has its own Change link, so the rail adds nothing.
+  if (current === REVIEW) return content;
+
   return (
     <Grid
-      columns="minmax(16rem, 21rem) minmax(0, 1fr)"
-      gap="var(--space-layout-64)"
+      columns="minmax(14rem, 15rem) minmax(0, 1fr)"
+      gap="var(--space-layout-48)"
       align="start"
     >
       <FlexBox direction="column" gap="var(--space-internal-16)">

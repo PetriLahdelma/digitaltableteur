@@ -28,6 +28,16 @@ export default async function IntakeHomePage({ searchParams }: Props) {
   const { ctx, session } = await currentClient();
   if (!session) redirect("/intake");
   const intakes = await listClientIntakes(ctx, session.clientId);
+  // A client has one initial intake: take them straight to it. The list is for
+  // clients with more than one (later projects).
+  if (intakes.length === 1) {
+    const [only] = intakes;
+    redirect(
+      only.status === "submitted" && only.submissionId
+        ? `/intake/submissions/${only.submissionId}`
+        : `/intake/forms/${only.inviteId}`,
+    );
+  }
   const locale = await requestLocale(searchParams, intakes[0]?.locale);
   const t = intakeCopy(locale);
 
@@ -81,12 +91,11 @@ export default async function IntakeHomePage({ searchParams }: Props) {
                   <Button
                     href={`/intake/submissions/${intake.submissionId}`}
                     variant="secondary"
-                    size="sm"
                   >
                     {t("viewSubmission")}
                   </Button>
                 ) : (
-                  <Button href={`/intake/forms/${intake.inviteId}`} size="sm">
+                  <Button href={`/intake/forms/${intake.inviteId}`}>
                     {intake.updatedAt ? t("openIntake") : t("startIntake")}
                   </Button>
                 )

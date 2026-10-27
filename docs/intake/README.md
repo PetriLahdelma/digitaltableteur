@@ -19,11 +19,13 @@ the definitions in `app/lib/intake/questionnaires/` are the source.
    one-time code and gets a session.
 3. The client fills the form in a site area built only from design-system
    components. Answers autosave; the client can leave and resume.
-4. On submit the answers freeze into an immutable, hashed snapshot. A tagged
-   PDF is rendered from that snapshot with the same components and archived.
-5. The owner receives the PDF by email and can also review, download or
-   delete the submission in an admin area. The client can view past
-   submissions and download their PDFs. Every admin action is audit logged.
+4. On submit the answers freeze into an immutable, hashed snapshot, in the
+   language the client was using on screen. A tagged PDF is rendered from that
+   snapshot with the same components on its first download and archived.
+5. The client's confirmation email links to the submission page, where they
+   read their answers and download the PDF. The owner is notified by email
+   with a link, never an attachment, and reviews, downloads or deletes the
+   submission in the admin area. Every admin action is audit logged.
 
 ## 2. Architecture and data flow
 
@@ -48,19 +50,18 @@ flowchart LR
   CB -- "answers (TLS), session cookie" --> IF
   AB -- "admin actions, passkey assertion" --> IF
   IF -- "encrypted answer document, hashes" --> DB
-  IF -- "snapshot id + signed render URL" --> PF
+  IF -- "submission id + one-minute print token" --> PF
   PF -- "encrypted PDF + SHA-256" --> DB
   IF -- "name, link or code, never answers" --> RS
-  IF -- "owner notification with PDF attached" --> RS
   RS -- "invite, code and confirmation emails" --> CB
-  RS -- "PDF copy" --> OM[Owner mailbox: Microsoft 365]
+  RS -- "owner notification: a link, no answers" --> OM[Owner mailbox: Microsoft 365]
   IF -- "errors, allowlisted metadata only" --> SE
 ```
 
 Trust boundaries: every arrow into `Intake functions` is untrusted input
 validated with zod. Answers leave the functions only to Postgres (encrypted),
-the PDF renderer (same region, in memory), the owner's admin view and the
-owner's own mailbox, which receives the PDF.
+the PDF renderer (same region, in memory), the client's own submission page
+and the owner's admin view. No email carries answers or a PDF.
 
 ### Residency findings
 
@@ -213,20 +214,29 @@ is required from day one.
   SHA-256. The snapshot stores questionnaire id, version, locale, answers,
   submission time and hash. Drafts are deleted; the client keeps read-only
   access to every past submission and its PDF until the 12-month deletion.
-- **PDF.** The renderer opens an internal print route with a signed,
-  short-lived URL and prints it with headless Chromium (`tagged` PDF,
-  document language and title set). The page renders the DS components at web
-  size on a 952 x 1347 px canvas and prints at `scale: 0.625`, which lands on
-  the A4 print scale the Figma pages use. The PDF is hashed, encrypted and
-  archived. The owner gets it as an email attachment, sent only to the
-  owner's verified address; the client's confirmation email carries no
-  attachment and links to the client area.
-- **Function size risk.** Chromium for Vercel (`@sparticuz/chromium`) is
-  about 60 MB compressed, and this project has hit Vercel's 250 MB function
-  limit before (routes bundling the repo through file tracing). The renderer
-  gets its own route with strict tracing includes. Fallback: render in a small
-  EU container triggered by a signed webhook. The first build spike measures
-  the function size before anything else depends on it.
+- **PDF.** `GET /api/intake/submissions/[id]/pdf` checks the session owns
+  the submission, then serves the stored PDF. The first download renders it:
+  headless Chromium (`@sparticuz/chromium` on Vercel, Playwright's Chromium
+  locally) opens `/intake/print/[id]`, authorised by an HMAC print token that
+  lives one minute and travels in a request header (headers stay out of
+  request logs; query strings do not). The print page renders the snapshot
+  with the same DS components as the submission page (`SummaryList`), and the
+  site's print styles drop the header, footer and banners. Printed A4 at
+  `scale: 0.75`, `tagged` and with an outline; headings keep with their
+  content, rows never split, the footer numbers the pages. The bytes are
+  hashed, encrypted (`pdf:<id>`) and stored once; every later download serves
+  the same file, so the PDF stays evidence of what was submitted. It is
+  deleted with its submission (cascade).
+- **No attachments.** The client's confirmation links to the submission page.
+  The owner's notification (phase 5, with the admin area) also carries a link
+  only: an attachment would leave every answer in a mailbox outside the
+  12-month deletion and outside the audit log.
+- **Function size (measured 2026-10-27).** The PDF route traces to 89.7 MB
+  uncompressed (Chromium 70.1, playwright-core 11.7, Next and Sentry runtime
+  the rest), well inside Vercel's 250 MB. `outputFileTracingIncludes` adds
+  Chromium to that route only (its key is a glob, so `*` for the dynamic
+  segment); no other intake route carries it. Fallback if it ever grows: a
+  small EU container behind a signed webhook.
 
 ## 7. Design-system only, enforced
 

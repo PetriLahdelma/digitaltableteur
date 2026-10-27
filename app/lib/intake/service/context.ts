@@ -5,7 +5,10 @@ import type { DataKeyring } from "../security/keys";
 export type IntakeMail = Readonly<{
   to: string;
   subject: string;
+  /** Plain-text alternative, the same words as the HTML. */
   text: string;
+  /** Branded HTML (service/mail-html.ts); the brand mark rides along as an inline attachment. */
+  html: string;
 }>;
 
 export type Mailer = Readonly<{ send: (mail: IntakeMail) => Promise<void> }>;
