@@ -164,7 +164,7 @@ point, and asking clients to type one adds friction for no security gain.
    submission and can still open past submissions in the same session.
 6. **Admin.** `/intake/admin` needs a passkey session under its own cookie
    `__Host-intake-admin`. The owner's passkey is registered once through a CLI
-   bootstrap script; there is no admin sign-up.
+   bootstrap script; there is no admin sign-up. Phase 5 design: section 6a.
 7. **No automated invites.** Invites are manual by decision: at this volume an
    invite API adds attack surface and removes the owner's fit check. The
    invite service is one module, so an API can be added later without
@@ -237,6 +237,48 @@ is required from day one.
   Chromium to that route only (its key is a glob, so `*` for the dynamic
   segment); no other intake route carries it. Fallback if it ever grows: a
   small EU container behind a signed webhook.
+
+## 6a. Admin area (phase 5, decided 2026-10-27)
+
+Owner answers: preview the invite email, then the system sends it; email the
+owner when a client submits, first signs in, or an invite is a day from
+expiring unused; two passkeys plus the CLI for recovery; the owner can reopen
+a submission; notifications go to the contact form inbox
+(`CONTACT_EMAIL_TO`); the home is one table of intakes; a client can have one
+intake per questionnaire.
+
+- **Sign-in.** Passkey only (WebAuthn via `@simplewebauthn/server` and
+  `/browser`), user verification required, discoverable credentials, RP ID
+  from `INTAKE_ORIGIN`. Challenges live 5 minutes in `intake_admin_challenges`,
+  keyed by a pre-auth cookie hash and spent once. A verified assertion starts
+  an `admin` row in `intake_sessions` (cookie `__Host-intake-admin`, 30 min
+  idle, 12 h absolute), with the signature counter checked and stored.
+- **Enrolment.** `npm run intake:admin-enrol` creates a one-time enrolment
+  token (SHA-256 stored, 15 minutes) and prints `/intake/admin/enrol#t=`.
+  Registering a passkey needs that token or an admin session, so the second
+  passkey is added from inside admin and recovery is rerunning the script,
+  which needs the database credentials (Vercel access). In the sandbox the
+  dev endpoint creates the token. Passkeys are listed and removable in admin;
+  the last one cannot be removed.
+- **Pages.** `/intake/admin` is one DS `Table` of intakes (client, company,
+  form, status, last activity) with a status filter and New invite.
+  `/intake/admin/invite` fills name, email, form, language and an optional
+  personal line, shows the email exactly as it will be sent, then Send.
+  `/intake/admin/intakes/[id]` shows the contact, status history, the answers
+  (`AnswerSummary`), every submitted version with its PDF and fingerprint, the
+  audit entries, and the actions: resend invite, revoke, reopen, delete
+  (`ConfirmPopover`, tone error). Site chrome stays (NextLayout).
+- **Versions.** Reopening keeps the submitted snapshot and its PDF as a
+  locked version, seeds a new draft from it and sets the invite back to
+  `active`; the client's next submit is version 2. Submissions get a
+  `version` column, unique per invite and version.
+- **Notifications.** Plain links to admin, never answers: on submit, on the
+  first sign-in of an invite, and a day before an unused invite expires (a
+  daily Vercel cron calling `/api/intake/cron/reminders` with `CRON_SECRET`;
+  each reminder is sent once, recorded on the invite).
+- **Audit.** Every admin action writes one entry (`actor: owner`): sign-in,
+  enrol, passkey removal, invite, resend, revoke, reopen, delete, PDF
+  download.
 
 ## 7. Design-system only, enforced
 
@@ -312,7 +354,7 @@ page exported at the same size.
 | # | Question | Decision | Why |
 | --- | --- | --- | --- |
 | 1 | Retention | Invite link 72 h, login code 10 min, session 30 min idle and 12 h absolute, drafts 90 days after the last edit, submissions and PDFs 12 months, audit log 12 months | The owner keeps every PDF locally, so the server keeps data only while the client area needs it |
-| 2 | After submit | Client area lists past submissions with PDF download. Owner receives the PDF as an email attachment. Client confirmation email has no attachment | The owner's mailbox already holds client correspondence; the client copy stays behind login |
+| 2 | After submit | Client area lists past submissions with PDF download. No email carries an attachment: the owner gets a link to admin (changed 2026-10-27) | One copy under one retention rule; every download is audit logged |
 | 3 | Who invites | The owner only, manually in admin. No invite API in v1 | Less attack surface and a human fit check before anyone gets access |
 | 4 | Database | Postgres on Neon, Frankfurt, through the Vercel Marketplace; Drizzle ORM; PGlite (in-process Postgres) for tests | Relational records with a status lifecycle need transactions, foreign keys and unique constraints; the region is explicit; preview branches give e2e a clean database. MongoDB stays for the existing contact features |
 | 5 | Client login | Option A: invite link plus emailed 8-digit code | Lowest friction for invite-only, time-boxed access; deviation recorded |

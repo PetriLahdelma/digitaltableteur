@@ -229,6 +229,7 @@
     "generate:intake-data-map": "tsx scripts/generate-intake-data-map.ts",
     "intake:db:generate": "drizzle-kit generate --config drizzle.intake.config.ts",
     "intake:dev": "node scripts/intake-dev.mjs",
+    "intake:admin-enrol": "node scripts/intake-admin-enrol.mjs",
     "intake:db:migrate": "drizzle-kit migrate --config drizzle.intake.config.ts"
   },
   "dependencies": {
@@ -268,6 +269,8 @@
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^6.20.0",
     "@sentry/nextjs": "^11.8.0",
+    "@simplewebauthn/browser": "14.0.0",
+    "@simplewebauthn/server": "14.0.3",
     "@sparticuz/chromium": "153.0.0",
     "@storybook/addon-vitest": "^10.6.3",
     "@swc/helpers": "^0.5.23",

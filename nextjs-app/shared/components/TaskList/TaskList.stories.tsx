@@ -24,7 +24,7 @@ const intakeTasks: TaskListTask[] = [
   },
   { id: "c", label: "Business and audience", status: "notStarted" },
   { id: "d", label: "Positioning and today", status: "notStarted" },
-  { id: "e", label: "Check and submit", status: "cannotStart" },
+  { id: "e", label: "Check and submit", status: "cannotStart", unnumbered: true },
 ];
 
 const meta = {

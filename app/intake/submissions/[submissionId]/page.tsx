@@ -63,7 +63,7 @@ export default async function IntakeSubmissionPage({
               {t("fingerprint")}: <Code>{view.digest}</Code>
             </Text>
             <DownloadPdfButton
-              submissionId={view.submissionId}
+              href={`/api/intake/submissions/${view.submissionId}/pdf`}
               label={t("downloadPdf")}
               errorText={t("genericError")}
             />

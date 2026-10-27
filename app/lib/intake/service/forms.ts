@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-import { and, desc, eq, gt, inArray } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, max } from "drizzle-orm";
 
 import { submissionDeleteAfter } from "../db/retention";
 import { auditLog, clients, drafts, invites, submissions } from "../db/schema";
@@ -11,6 +11,7 @@ import type { Answers, IntakeLocale, Questionnaire } from "../types";
 import type { IntakeContext, IntakeMail } from "./context";
 import { openContact } from "./invites";
 import { submittedMail } from "./mail";
+import { ownerSubmittedMail } from "./owner-mail";
 
 export const draftAad = (inviteId: string) => `draft:${inviteId}`;
 export const submissionAad = (submissionId: string) => `submission:${submissionId}`;
@@ -29,13 +30,22 @@ export type IntakeSummary = Readonly<{
 /** The client home: every intake this client can open, newest first. Scoped by the session's client id (STRIDE E1). */
 export async function listClientIntakes(ctx: IntakeContext, clientId: string): Promise<IntakeSummary[]> {
   const rows = await ctx.db
-    .select({ invite: invites, draftUpdatedAt: drafts.updatedAt, submissionId: submissions.id, submittedAt: submissions.submittedAt })
+    .select({ invite: invites, draftUpdatedAt: drafts.updatedAt })
     .from(invites)
     .leftJoin(drafts, eq(drafts.inviteId, invites.id))
-    .leftJoin(submissions, eq(submissions.inviteId, invites.id))
     .where(and(eq(invites.clientId, clientId), inArray(invites.status, ["active", "submitted"])))
     .orderBy(desc(invites.createdAt));
-  return rows.flatMap(({ invite, draftUpdatedAt, submissionId, submittedAt }) => {
+  // A reopened intake has several versions; the home shows the latest.
+  const latest = new Map<string, { id: string; submittedAt: Date }>();
+  const versions = await ctx.db
+    .select({ inviteId: submissions.inviteId, id: submissions.id, submittedAt: submissions.submittedAt })
+    .from(submissions)
+    .where(and(eq(submissions.clientId, clientId), gt(submissions.deleteAfter, ctx.now())))
+    .orderBy(desc(submissions.version));
+  for (const row of versions) if (!latest.has(row.inviteId)) latest.set(row.inviteId, row);
+  return rows.flatMap(({ invite, draftUpdatedAt }) => {
+    const submissionId = latest.get(invite.id)?.id ?? null;
+    const submittedAt = latest.get(invite.id)?.submittedAt ?? null;
     const questionnaire = getQuestionnaire(invite.questionnaireId, invite.questionnaireVersion);
     // A submitted invite whose submission reached its retention limit has nothing left to show.
     if (!questionnaire || (invite.status === "submitted" && !submissionId)) return [];
@@ -143,7 +153,7 @@ export async function saveDraft(
 }
 
 export type SubmitResult =
-  | Readonly<{ status: "submitted"; submissionId: string; digest: string; mail: IntakeMail }>
+  | Readonly<{ status: "submitted"; submissionId: string; digest: string; version: number; mail: IntakeMail; ownerMail: IntakeMail }>
   | Readonly<{ status: "conflict" | "not_found" }>
   | Readonly<{ status: "incomplete"; fields: string[] }>;
 
@@ -197,8 +207,15 @@ export async function submitIntake(
     };
     const digest = snapshotDigest(snapshot);
     const submissionId = randomUUID();
+    // Each reopen and resubmit adds a version; earlier ones stay locked.
+    const [{ previous }] = await tx
+      .select({ previous: max(submissions.version) })
+      .from(submissions)
+      .where(eq(submissions.inviteId, inviteId));
+    const version = (previous ?? 0) + 1;
     await tx.insert(submissions).values({
       id: submissionId,
+      version,
       inviteId,
       clientId,
       questionnaireId: questionnaire.id,
@@ -221,10 +238,20 @@ export async function submitIntake(
     });
 
     const contact = openContact(ctx, row.client);
+    const company = typeof snapshot.answers.business_name === "string" ? snapshot.answers.business_name : undefined;
     return {
       status: "submitted",
       submissionId,
       digest,
+      version,
+      ownerMail: ownerSubmittedMail({
+        name: contact.name,
+        company,
+        questionnaire: questionnaire.title.en,
+        version,
+        submittedAt: now,
+        adminLink: `${ctx.origin}/intake/admin/intakes/${inviteId}`,
+      }),
       mail: submittedMail({
         to: contact.email,
         locale,
@@ -238,6 +265,9 @@ export async function submitIntake(
 
 export type SubmissionView = Readonly<{
   submissionId: string;
+  clientId: string;
+  inviteId: string;
+  version: number;
   questionnaire: Questionnaire;
   snapshot: SubmissionSnapshot;
   digest: string;
@@ -272,6 +302,9 @@ async function readSubmission(ctx: IntakeContext, submissionId: string, clientId
   if (!row || !questionnaire) return null;
   return {
     submissionId,
+    clientId: row.clientId,
+    inviteId: row.inviteId,
+    version: row.version,
     questionnaire,
     snapshot: openJson<SubmissionSnapshot>(row.snapshotSealed, ctx.ring, submissionAad(submissionId)),
     digest: row.snapshotDigest,

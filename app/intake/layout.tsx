@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { currentAdmin } from "@/app/lib/intake/service/admin-http";
 import { getClientName } from "@/app/lib/intake/service/invites";
 import { isIntakeConfigured } from "@/app/lib/intake/service/runtime";
 import { currentClient } from "@/app/lib/intake/service/session";
@@ -16,6 +17,15 @@ export function generateMetadata(): Metadata {
     robots: { index: false, follow: false, nocache: true },
     referrer: "no-referrer",
   };
+}
+
+/** Whether the owner's admin session is present (false when the database is unreachable). */
+async function adminSignedIn(): Promise<boolean> {
+  try {
+    return Boolean((await currentAdmin()).admin);
+  } catch {
+    return false;
+  }
 }
 
 /** The signed-in client's name for the header, or null (signed out, or the database is unreachable). */
@@ -42,7 +52,7 @@ export default async function IntakeLayout({
   if (!isIntakeConfigured()) notFound();
   return (
     <div data-sentry-block>
-      <IntakeChrome accountName={await accountName()} />
+      <IntakeChrome accountName={await accountName()} adminSignedIn={await adminSignedIn()} />
       {children}
     </div>
   );

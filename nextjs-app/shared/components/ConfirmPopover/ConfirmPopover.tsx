@@ -7,21 +7,37 @@ import Button from "../Button/Button";
 import { useTranslate } from "../../lib/translation";
 import styles from "./ConfirmPopover.module.css";
 
+/** One of several actions offered before the confirmation. */
+export interface ConfirmPopoverChoice {
+  /** Stable key, passed to onConfirm. */
+  id: string;
+  /** Button label in the first step, for example "Clear this section". */
+  label: string;
+  /** The confirming question for this choice, for example "Clear the answers in this section?". */
+  title: string;
+  /** What happens if the person confirms this choice. */
+  description?: string;
+  /** Label of the confirming button for this choice. */
+  confirmLabel: string;
+}
+
 export interface ConfirmPopoverProps {
   /** The control that opens the confirmation, usually a Button. It keeps its own label and styling. */
   children: React.ReactElement;
-  /** The question, for example "Clear the answers in this section?". Names the dialog. */
+  /** The question, for example "Clear the answers in this section?". Names the dialog. With choices, it asks which one, for example "What do you want to clear?". */
   title: string;
   /** What happens if the person confirms; describes the dialog. */
   description?: string;
-  /** Label of the confirming button; repeat the action, for example "Clear answers". */
-  confirmLabel: string;
+  /** Label of the confirming button; repeat the action, for example "Clear answers". Not used with choices, where each choice has its own. */
+  confirmLabel?: string;
+  /** Several actions to pick from first; picking one asks "are you sure?" with that choice's question and labels. */
+  choices?: ConfirmPopoverChoice[];
   /** Label of the cancelling button. @default translated "Cancel" */
   cancelLabel?: string;
   /** "error" for actions that remove or destroy something. @default "neutral" */
   tone?: "neutral" | "error";
-  /** Called when the person confirms; the popover then closes. */
-  onConfirm: () => void;
+  /** Called when the person confirms, with the picked choice's id when there are choices; the popover then closes. */
+  onConfirm: (choiceId?: string) => void;
   /** Called when the popover opens or closes, whichever way. */
   onOpenChange?: (open: boolean) => void;
   /** Preferred side of the trigger; flips when out of room. @default "top" */
@@ -37,13 +53,15 @@ export interface ConfirmPopoverProps {
  * Design's Popconfirm. A non-modal alertdialog anchored to the trigger: focus
  * starts on Cancel (the safe choice), Escape or a click outside cancels, and
  * focus returns to the trigger. Use it for a single action that is costly to
- * undo; for flows that need more explanation, use Modal.
+ * undo, or with `choices` for a few related ones (pick, then confirm); for
+ * flows that need more explanation, use Modal.
  */
 export function ConfirmPopover({
   children,
   title,
   description,
   confirmLabel,
+  choices,
   cancelLabel,
   tone = "neutral",
   onConfirm,
@@ -58,10 +76,22 @@ export function ConfirmPopover({
   const titleId = React.useId();
   const descriptionId = React.useId();
 
+  const [picked, setPicked] = React.useState<ConfirmPopoverChoice | null>(null);
+
   const change = (next: boolean) => {
     setOpen(next);
+    if (!next) setPicked(null);
     onOpenChange?.(next);
   };
+
+  // Picking a choice swaps the content; focus goes back to the safe choice.
+  React.useEffect(() => {
+    if (picked) cancelRef.current?.focus();
+  }, [picked]);
+
+  const choosing = Boolean(choices?.length) && !picked;
+  const shownTitle = picked ? picked.title : title;
+  const shownDescription = picked ? picked.description : description;
 
   return (
     <PopoverPrimitive.Root open={open} onOpenChange={change}>
@@ -70,7 +100,7 @@ export function ConfirmPopover({
         <PopoverPrimitive.Content
           role="alertdialog"
           aria-labelledby={titleId}
-          aria-describedby={description ? descriptionId : undefined}
+          aria-describedby={shownDescription ? descriptionId : undefined}
           side={side}
           align={align}
           sideOffset={8}
@@ -82,12 +112,26 @@ export function ConfirmPopover({
           }}
         >
           <p id={titleId} className={styles.title}>
-            {title}
+            {shownTitle}
           </p>
-          {description ? (
+          {shownDescription ? (
             <p id={descriptionId} className={styles.description}>
-              {description}
+              {shownDescription}
             </p>
+          ) : null}
+          {choosing ? (
+            <div className={styles.choices}>
+              {choices?.map((choice) => (
+                <Button
+                  key={choice.id}
+                  variant="secondary"
+                  tone={tone}
+                  onClick={() => setPicked(choice)}
+                >
+                  {choice.label}
+                </Button>
+              ))}
+            </div>
           ) : null}
           <div className={styles.actions}>
             <PopoverPrimitive.Close asChild>
@@ -95,15 +139,18 @@ export function ConfirmPopover({
                 {cancelLabel || t("confirmPopoverCancel", "Cancel")}
               </Button>
             </PopoverPrimitive.Close>
-            <Button
-              tone={tone}
-              onClick={() => {
-                change(false);
-                onConfirm();
-              }}
-            >
-              {confirmLabel}
-            </Button>
+            {choosing ? null : (
+              <Button
+                tone={tone}
+                onClick={() => {
+                  const choiceId = picked?.id;
+                  change(false);
+                  onConfirm(choiceId);
+                }}
+              >
+                {picked ? picked.confirmLabel : confirmLabel}
+              </Button>
+            )}
           </div>
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Portal>

@@ -51,14 +51,46 @@ button.row {
   display: flex;
   min-inline-size: 0;
   align-items: flex-start;
-  gap: var(--space-internal-8);
+  gap: var(--space-internal-12);
 }
 
-.number {
-  min-inline-size: 1.5em;
+/* The task number in a circle; a completed task's circle fills and shows a
+   check instead. */
+
+.marker {
+  display: inline-flex;
+
+  /* Centre the circle on the label's first line, which is trimmed to cap
+     height and so shorter than the circle. */
+  margin-block: calc(-1 * var(--space-internal-6));
+  block-size: 1.5rem;
+  inline-size: 1.5rem;
   flex: none;
-  font-size: var(--font-size-text-s);
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-circle);
+  font-size: var(--font-size-text-xs);
+  line-height: 1;
   color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* An unnumbered task keeps the space, so its name lines up with the rest. */
+
+.markerEmpty {
+  border-color: transparent;
+}
+
+.markerDone {
+  border-color: var(--color-success);
+  background: var(--color-success);
+  color: var(--color-surface);
+}
+
+.taskCurrent .marker:not(.markerDone) {
+  border-color: var(--color-text);
+  color: var(--color-text);
 }
 
 .nameText {
@@ -68,17 +100,14 @@ button.row {
   gap: var(--space-internal-8);
 }
 
+/* The line box is trimmed to cap height and baseline, so the letters
+   themselves sit in the middle of the row (the font's ascender space
+   otherwise makes them ride high). Browsers without text-box keep the full
+   line box. */
+
 .label {
   font-size: var(--font-size-text-s);
   font-weight: var(--font-weight-medium);
-}
-
-/* Trim the line box to cap height and baseline, so the letters themselves
-   sit in the middle of the row (the font's ascender space otherwise makes
-   them ride high). Browsers without text-box keep the full line box. */
-
-.number,
-.label {
   text-box: trim-both cap alphabetic;
 }
 
@@ -100,12 +129,10 @@ button.row:hover .label {
   flex: none;
 }
 
-.completed {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-internal-4);
-  font-size: var(--font-size-text-xs);
-  color: var(--color-text);
+/* The step checks carry the success colour too. */
+
+.check {
+  color: var(--color-success);
 }
 
 .muted {
@@ -116,7 +143,7 @@ button.row:hover .label {
 .steps {
   display: flex;
   padding-block-end: var(--space-internal-12);
-  padding-inline-start: calc(1.5em + var(--space-internal-8));
+  padding-inline-start: calc(1.5rem + var(--space-internal-12));
   flex-direction: column;
   gap: var(--space-internal-8);
 }
@@ -129,7 +156,7 @@ button.row:hover .label {
   align-items: center;
   gap: var(--space-internal-8);
   border: 0;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
   background: none;
   font: inherit;
   font-size: var(--font-size-text-s);
@@ -142,8 +169,11 @@ button.row:hover .label {
   color: var(--color-text);
 }
 
+/* Half-strength neutral: the open step reads as selected without the row
+   turning into a filled chip. */
+
 .step[aria-current="step"] {
-  background: var(--color-neutral-bg);
+  background: color-mix(in srgb, var(--color-neutral-bg) 50%, transparent);
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
 }
@@ -166,6 +196,13 @@ button.row:hover .label {
 }
 
 @media (forced-colors: active) {
+  /* Forced colours drop the fill; the outlined circle and check remain. */
+
+  .markerDone {
+    border-color: CanvasText;
+    color: CanvasText;
+  }
+
   .step[aria-current="step"] {
     outline: 2px solid CanvasText;
     outline-offset: calc(-1 * var(--space-internal-2));

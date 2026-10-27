@@ -23,7 +23,7 @@ const tasks: TaskListTask[] = [
       { id: "b2", label: "Investment" },
     ],
   },
-  { id: "c", label: "Check and submit", status: "cannotStart" },
+  { id: "c", label: "Check and submit", status: "cannotStart", unnumbered: true },
 ];
 
 describe("TaskList", () => {
@@ -123,5 +123,13 @@ describe("TaskList", () => {
       />,
     );
     expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("numbers the tasks in a circle, a check once done, none on an unnumbered task", () => {
+    const { container } = render(<TaskList label="Intake parts" tasks={tasks} />);
+    const markers = Array.from(container.querySelectorAll("li > div > span > span[aria-hidden='true'], li > span > span[aria-hidden='true']"));
+    expect(markers.map((marker) => marker.textContent)).toEqual(["", "2", ""]);
+    expect(markers[0].querySelector("svg")).not.toBeNull();
+    expect(screen.getByText("Completed")).toBeInTheDocument();
   });
 });

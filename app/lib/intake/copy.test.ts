@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
 
 import { SSR_SNAPSHOT_SCRIPT } from "../ssr-snapshot-script";
+import { ADMIN_COPY } from "./admin-copy";
 import { INTAKE_COPY, copyTable, format, resolveIntakeLocale } from "./copy";
 import { INTAKE_RESPONSE_HEADERS, SSR_SNAPSHOT_SCRIPT_HASH, intakeCsp, isIntakePath } from "./csp";
 import { PRIVACY_NOTICE, PRIVACY_NOTICE_TITLE } from "./privacy-notice";
@@ -22,6 +23,14 @@ function checkCopy(copy: LocalizedCopy, where: string) {
 describe("intake copy", () => {
   it("has every string in every locale and follows the house style", () => {
     for (const [key, copy] of Object.entries(INTAKE_COPY)) checkCopy(copy, key);
+  });
+
+  it("has every admin string in every locale, in the house style, with matching placeholders", () => {
+    for (const [key, copy] of Object.entries(ADMIN_COPY)) {
+      checkCopy(copy, `admin.${key}`);
+      const placeholders = (text: string) => [...text.matchAll(/\{(\w+)\}/g)].map((match) => match[1]).sort();
+      for (const locale of INTAKE_LOCALES) expect(placeholders(copy[locale]), `admin.${key} ${locale}`).toEqual(placeholders(copy.en));
+    }
   });
 
   it("uses the same placeholders in every locale", () => {

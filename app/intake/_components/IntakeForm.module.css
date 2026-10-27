@@ -1,0 +1,5 @@
+/* The asterisk in page intros matches the one on required field labels. */
+
+.requiredMark {
+  composes: required from "../../../nextjs-app/shared/components/Label/Label.module.css";
+}

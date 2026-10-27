@@ -22,6 +22,13 @@
       "when": 1793053040384,
       "tag": "0002_draft_completed_parts",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793128915392,
+      "tag": "0003_admin_area",
+      "breakpoints": true
     }
   ]
 }

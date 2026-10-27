@@ -61,11 +61,24 @@
   color: var(--color-muted);
 }
 
+/* Choices stack full width, one action per line, above Cancel. */
+
+.choices {
+  display: flex;
+  margin-block-start: var(--space-internal-24);
+  flex-direction: column;
+  gap: var(--space-internal-8);
+}
+
 .actions {
   display: flex;
   margin-block-start: var(--space-internal-32);
   justify-content: flex-end;
   gap: var(--space-internal-8);
+}
+
+.choices + .actions {
+  margin-block-start: var(--space-internal-16);
 }
 
 @media (prefers-reduced-motion: reduce) {

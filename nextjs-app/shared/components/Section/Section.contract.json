@@ -110,12 +110,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/admin/enrol/page.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/page.tsx",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
             "since": "2026-06-04"
         }
     ],

@@ -5,7 +5,10 @@ import { eq } from "drizzle-orm";
 import { auditLog, pdfs } from "../db/schema";
 import { openBytes, sealBytes } from "../security/envelope";
 import type { IntakeContext } from "./context";
-import { getSubmission, type SubmissionView } from "./forms";
+import { getSubmission, getSubmissionForPrint, type SubmissionView } from "./forms";
+
+/** The owner's scope for submissionPdf: any submission, from admin. */
+export const OWNER = "owner";
 
 export const pdfAad = (submissionId: string) => `pdf:${submissionId}`;
 
@@ -20,12 +23,14 @@ export type PdfRenderer = (view: SubmissionView) => Promise<Buffer>;
  */
 export async function submissionPdf(
   ctx: IntakeContext,
-  clientId: string,
+  /** A client id (their own submissions only), or "owner" from admin. */
+  scope: string,
   submissionId: string,
   render: PdfRenderer,
 ): Promise<{ bytes: Buffer; view: SubmissionView } | null> {
-  const view = await getSubmission(ctx, clientId, submissionId);
+  const view = scope === OWNER ? await getSubmissionForPrint(ctx, submissionId) : await getSubmission(ctx, scope, submissionId);
   if (!view) return null;
+  const clientId = view.clientId;
 
   const stored = async () => {
     const [row] = await ctx.db.select().from(pdfs).where(eq(pdfs.submissionId, submissionId));
@@ -55,6 +60,6 @@ export async function submissionPdf(
       bytes = await stored();
     }
   }
-  await ctx.db.insert(auditLog).values({ actor: "client", action: "pdf.download", clientId, submissionId });
+  await ctx.db.insert(auditLog).values({ actor: scope === OWNER ? "owner" : "client", action: "pdf.download", clientId, submissionId });
   return bytes ? { bytes, view } : null;
 }

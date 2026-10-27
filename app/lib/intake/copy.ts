@@ -17,7 +17,7 @@ export const INTAKE_COPY = {
   languageLabel: { en: "Language", fi: "Kieli", sv: "Språk" },
 
   // Sign in by email
-  signInTitle: { en: "Sign in to your intake", fi: "Kirjaudu esitietolomakkeeseesi", sv: "Logga in till dina förhandsuppgifter" },
+  signInTitle: { en: "Sign in to your intake form", fi: "Kirjaudu esitietolomakkeeseesi", sv: "Logga in på ditt formulär för förhandsuppgifter" },
   signInIntro: {
     en: "Enter the email address your invitation was sent to. We will email you an 8-digit code. There is no password.",
     fi: "Anna sähköpostiosoite, johon kutsusi lähetettiin. Lähetämme sinulle 8-numeroisen koodin. Salasanaa ei ole.",
@@ -99,7 +99,21 @@ export const INTAKE_COPY = {
   sectionCaption: { en: "{part}: section {n} of {total}", fi: "{part}: osio {n}/{total}", sv: "{part}: avsnitt {n} av {total}" },
   back: { en: "Back", fi: "Takaisin", sv: "Tillbaka" },
   cancel: { en: "Cancel", fi: "Peruuta", sv: "Avbryt" },
-  clearSection: { en: "Clear answers", fi: "Tyhjennä vastaukset", sv: "Rensa svaren" },
+  clear: { en: "Clear", fi: "Tyhjennä", sv: "Rensa" },
+  clearWhich: { en: "What do you want to clear?", fi: "Mitä haluat tyhjentää?", sv: "Vad vill du rensa?" },
+  clearSection: { en: "Clear this section", fi: "Tyhjennä tämä osio", sv: "Rensa avsnittet" },
+  clearAll: { en: "Clear all", fi: "Tyhjennä kaikki", sv: "Rensa allt" },
+  clearAllTitle: {
+    en: "Clear every answer in the form?",
+    fi: "Tyhjennetäänkö kaikki lomakkeen vastaukset?",
+    sv: "Rensa alla svar i formuläret?",
+  },
+  clearAllDescription: {
+    en: "Every part of the form starts empty again. This cannot be undone.",
+    fi: "Lomakkeen kaikki osat tyhjenevät. Toimintoa ei voi perua.",
+    sv: "Alla delar av formuläret blir tomma igen. Det går inte att ångra.",
+  },
+  clearAllConfirm: { en: "Clear all answers", fi: "Tyhjennä kaikki vastaukset", sv: "Rensa alla svar" },
   clearSectionTitle: {
     en: "Clear the answers in this section?",
     fi: "Tyhjennetäänkö tämän osion vastaukset?",
@@ -110,7 +124,7 @@ export const INTAKE_COPY = {
     fi: "Kaikki tälle sivulle syöttämäsi poistetaan. Toimintoa ei voi perua.",
     sv: "Allt du har fyllt i på den här sidan tas bort. Det går inte att ångra.",
   },
-  continueTo: { en: "Continue: {next}", fi: "Jatka: {next}", sv: "Fortsätt: {next}" },
+  nextUp: { en: "Next:", fi: "Seuraavaksi:", sv: "Nästa:" },
   checkAndSubmit: { en: "Check and submit", fi: "Tarkista ja lähetä", sv: "Kontrollera och skicka" },
   checkIntro: {
     en: "Check your answers and change anything that needs it. After you submit, the answers are locked.",
@@ -193,7 +207,7 @@ export const INTAKE_COPY = {
     fi: "tässä on linkkisi lomakkeeseen {questionnaire}. Vastauksesi tallentuvat sitä mukaa, joten voit täyttää lomakkeen useammassa osassa.",
     sv: "här är din länk till formuläret {questionnaire}. Dina svar sparas medan du fyller i, så du kan göra det i flera omgångar.",
   },
-  mailInviteButton: { en: "Open your intake", fi: "Avaa esitietolomake", sv: "Öppna förhandsuppgifterna" },
+  mailInviteButton: { en: "Open your intake form", fi: "Avaa esitietolomake", sv: "Öppna formuläret" },
   mailInviteNote: {
     en: "The link is valid until {expires}. When you open it, we email you a one-time code. There is no password.",
     fi: "Linkki on voimassa {expires} asti. Kun avaat sen, lähetämme sinulle kertakäyttöisen koodin. Salasanaa ei tarvita.",
@@ -222,6 +236,20 @@ export const INTAKE_COPY = {
     en: "Did not ask for a code? You can ignore this email. Nobody can sign in without the code.",
     fi: "Etkö pyytänyt koodia? Voit jättää viestin huomiotta. Kukaan ei voi kirjautua ilman koodia.",
     sv: "Bad du inte om en kod? Då kan du strunta i mejlet. Ingen kan logga in utan koden.",
+  },
+
+  mailReopenedSubject: { en: "Your intake is open again", fi: "Esitietolomakkeesi on taas auki", sv: "Dina förhandsuppgifter är öppna igen" },
+  mailReopenedHeading: { en: "Your intake is open again", fi: "Esitietolomakkeesi on taas auki", sv: "Dina förhandsuppgifter är öppna igen" },
+  mailReopenedLead: {
+    en: "Digitaltableteur has reopened your {questionnaire} form, so you can change your answers and submit it again.",
+    fi: "Digitaltableteur avasi lomakkeesi {questionnaire} uudelleen, joten voit muuttaa vastauksiasi ja lähettää sen uudestaan.",
+    sv: "Digitaltableteur har öppnat ditt formulär {questionnaire} igen, så du kan ändra dina svar och skicka in det på nytt.",
+  },
+  mailReopenedButton: { en: "Sign in to your intake form", fi: "Kirjaudu esitietolomakkeeseen", sv: "Logga in på formuläret" },
+  mailReopenedNote: {
+    en: "Your earlier answers are kept as they were, with their PDF.",
+    fi: "Aiemmat vastauksesi säilyvät ennallaan PDF-tiedostoineen.",
+    sv: "Dina tidigare svar finns kvar som de var, med sin PDF.",
   },
 
   mailSubmittedSubject: { en: "We received your intake", fi: "Vastaanotimme esitietosi", sv: "Vi har fått dina förhandsuppgifter" },

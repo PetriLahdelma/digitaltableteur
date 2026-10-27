@@ -1,1 +1,1 @@
-export { default, ConfirmPopover, type ConfirmPopoverProps } from "./ConfirmPopover";
+export { default, ConfirmPopover, type ConfirmPopoverChoice, type ConfirmPopoverProps } from "./ConfirmPopover";

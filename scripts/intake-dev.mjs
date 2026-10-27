@@ -5,7 +5,8 @@
  * Starts `next dev` on port 3002 with a file-backed PGlite database in
  * .intake-dev/, development-only keys and mail printed to the console, so
  * the client flow can be walked end to end without Neon, Resend or any
- * production secret. Mail goes to the console; with .intake-dev/mail.json
+ * production secret. Owner notices go to Resend's test inbox. An admin
+ * passkey link: `npm run intake:admin-enrol -- --local`. Mail goes to the console; with .intake-dev/mail.json
  * ({"resendApiKey": "..."}, pulled from Vercel) it is also sent for real
  * through Resend, so codes reach the inbox. Create an invite with:
  *
@@ -44,6 +45,8 @@ const child = spawn("npx", ["next", "dev", "--port", port], {
     INTAKE_MAIL: resendApiKey ? "resend+console" : "console",
     ...(resendApiKey ? { RESEND_API_KEY: resendApiKey } : {}),
     INTAKE_ORIGIN: `http://localhost:${port}`,
+    // Owner notices go to Resend's test inbox (and the console), never the real one.
+    INTAKE_OWNER_EMAIL: process.env.INTAKE_OWNER_EMAIL || "delivered@resend.dev",
   },
 });
 child.on("exit", (code) => process.exit(code ?? 0));

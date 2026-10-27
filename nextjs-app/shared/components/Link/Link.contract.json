@@ -116,7 +116,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
             "since": "2026-06-04"
         }
     ],

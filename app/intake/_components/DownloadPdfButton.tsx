@@ -8,11 +8,12 @@ import { AlertBanner, Button, FlexBox } from "@digitaltableteur/react";
  * a few seconds, so the button shows that it is working instead of a bare link.
  */
 export function DownloadPdfButton({
-  submissionId,
+  href,
   label,
   errorText,
 }: {
-  submissionId: string;
+  /** The PDF route: the client's own, or the owner's in admin. */
+  href: string;
   label: string;
   errorText: string;
 }) {
@@ -23,7 +24,7 @@ export function DownloadPdfButton({
     setBusy(true);
     setFailed(false);
     try {
-      const response = await fetch(`/api/intake/submissions/${submissionId}/pdf`, { credentials: "same-origin" });
+      const response = await fetch(href, { credentials: "same-origin" });
       if (!response.ok) throw new Error(String(response.status));
       const name = /filename="([^"]+)"/.exec(response.headers.get("content-disposition") ?? "")?.[1] ?? "intake.pdf";
       const url = URL.createObjectURL(await response.blob());

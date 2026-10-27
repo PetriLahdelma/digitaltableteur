@@ -35,6 +35,8 @@ export const LIMITS = {
   codeFailuresPerClient: { limit: 100, windowMs: 24 * 60 * 60 * 1000 },
   /** One owner alert per client per day when codeFailuresPerClient is reached. */
   codeFailureAlerts: { limit: 1, windowMs: 24 * 60 * 60 * 1000 },
+  /** Admin passkey ceremonies (options and verify) from one network address. */
+  adminAuthPerNetwork: { limit: 30, windowMs: 60 * 60 * 1000 },
   /** Draft saves for one session, generous for autosave. */
   savesPerSession: { limit: 600, windowMs: 60 * 60 * 1000 },
 } as const;

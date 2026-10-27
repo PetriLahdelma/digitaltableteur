@@ -34,6 +34,8 @@ export interface TaskListTask {
   status: TaskListStatus;
   /** Steps shown while this task is the current one. */
   steps?: TaskListStep[];
+  /** Leaves the number out, for a closing task such as "Check and submit". @default false */
+  unnumbered?: boolean;
 }
 
 export interface TaskListProps {
@@ -92,8 +94,9 @@ export function TaskList({
           const status = (
             <span id={statusId} className={styles.status}>
               {task.status === "completed" ? (
-                <span className={styles.completed}>
-                  <Icon name="check" size={16} decorative />
+                // The marker on the left turns into a check; the word is for
+                // screen readers, so the row stays on one line in a narrow rail.
+                <span className={styles.visuallyHidden}>
                   {statusText(task.status)}
                 </span>
               ) : task.status === "cannotStart" ? (
@@ -113,8 +116,21 @@ export function TaskList({
           );
           const name = (
             <span className={styles.name}>
-              <span className={styles.number} aria-hidden="true">
-                {index + 1}
+              <span
+                className={cn(
+                  styles.marker,
+                  task.status === "completed" && styles.markerDone,
+                  task.unnumbered &&
+                    task.status !== "completed" &&
+                    styles.markerEmpty,
+                )}
+                aria-hidden="true"
+              >
+                {task.status === "completed" ? (
+                  <Icon name="check" size={14} decorative />
+                ) : task.unnumbered ? null : (
+                  index + 1
+                )}
               </span>
               <span className={styles.nameText}>
                 <span className={styles.label}>{task.label}</span>
@@ -166,7 +182,7 @@ export function TaskList({
                       >
                         <span className={styles.stepMark} aria-hidden="true">
                           {step.done ? (
-                            <Icon name="check" size={16} decorative />
+                            <Icon name="check" size={16} decorative className={styles.check} />
                           ) : null}
                         </span>
                         <span>{step.label}</span>

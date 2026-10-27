@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   Accordion,
   AlertBanner,
@@ -37,6 +44,7 @@ import type {
 import { AnswerSummary, answerLabel, sentenceCase } from "./AnswerSummary";
 import { postJson } from "./api";
 import { IntakeField, fieldAnchor } from "./IntakeField";
+import styles from "./IntakeForm.module.css";
 
 const AUTOSAVE_DELAY_MS = 1500;
 const REVIEW = "check-and-submit";
@@ -50,6 +58,20 @@ type Step = Readonly<{
   indexInPage: number;
   sectionsInPage: number;
 }>;
+
+/** Colours each "*" in a page intro like the required marker on field labels. */
+function withRequiredMarks(text: string) {
+  return text.split("*").flatMap((part, index) =>
+    index === 0
+      ? [part]
+      : [
+          <span key={index} className={styles.requiredMark}>
+            *
+          </span>,
+          part,
+        ],
+  );
+}
 
 function isEmpty(value: AnswerValue | undefined): boolean {
   return (
@@ -131,6 +153,7 @@ export function IntakeForm({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [summaryAttempt, setSummaryAttempt] = useState(0);
   const [submitting, setSubmitting] = useState(false);
+  const nextHintId = useId();
   const narrow = useMediaQuery("(width < 64rem)");
 
   const revision = useRef(initialRevision);
@@ -303,6 +326,19 @@ export function IntakeForm({
     );
   }
 
+  /** Empties every answer in the form, after the person confirms. */
+  function clearAll() {
+    updateMany(
+      Object.fromEntries(
+        questionnaire.pages
+          .flatMap((page) => page.sections.flatMap((section) => section.fields))
+          .filter(isInputField)
+          .map((field) => [field.id, undefined]),
+      ),
+    );
+    goTo(steps[0].section.id);
+  }
+
   function goBack() {
     if (current === REVIEW) goTo(steps[steps.length - 1].section.id);
     else if (stepIndex > 0) goTo(steps[stepIndex - 1].section.id);
@@ -391,26 +427,71 @@ export function IntakeForm({
       id: REVIEW,
       label: copy.checkAndSubmit,
       status: canReview ? "notStarted" : "cannotStart",
+      unnumbered: true,
     },
   ];
+  // Clearing is rare and destructive, so it sits under the rail, away from
+  // Back and Continue: pick this section or everything, then confirm.
+  const hasAnswers = (fields: readonly Field[]) =>
+    fields.some((field) => isInputField(field) && !isEmpty(answers[field.id]));
+  const allFields = steps.flatMap((candidate) => candidate.section.fields);
+  const clearButton = step ? (
+    <ConfirmPopover
+      title={copy.clearWhich}
+      cancelLabel={copy.cancel}
+      tone="error"
+      choices={[
+        ...(hasAnswers(step.section.fields)
+          ? [
+              {
+                id: "section",
+                label: copy.clearSection,
+                title: copy.clearSectionTitle,
+                description: copy.clearSectionDescription,
+                confirmLabel: copy.clearSection,
+              },
+            ]
+          : []),
+        {
+          id: "all",
+          label: copy.clearAll,
+          title: copy.clearAllTitle,
+          description: copy.clearAllDescription,
+          confirmLabel: copy.clearAllConfirm,
+        },
+      ]}
+      onConfirm={(choice) => (choice === "all" ? clearAll() : clearStep(step))}
+    >
+      <Button variant="tertiary" size="lg" disabled={!hasAnswers(allFields)}>
+        {copy.clear}
+      </Button>
+    </ConfirmPopover>
+  ) : null;
   const rail = (
-    <TaskList
-      label={copy.partsLabel}
-      tasks={tasks}
-      currentTaskId={current === REVIEW ? REVIEW : step?.page.id}
-      currentStepId={current === REVIEW ? undefined : current}
-      statusLabels={{
-        notStarted: copy.statusNotStarted,
-        inProgress: copy.statusInProgress,
-        completed: copy.statusCompleted,
-        cannotStart: copy.statusAfterFirstPart,
-      }}
-      onSelect={(taskId, sectionId) => {
-        if (taskId === REVIEW) return goTo(REVIEW);
-        const first = steps.find((candidate) => candidate.page.id === taskId);
-        goTo(sectionId ?? first?.section.id ?? current);
-      }}
-    />
+    <FlexBox
+      direction="column"
+      align="flex-start"
+      gap="var(--space-internal-24)"
+    >
+      <TaskList
+        label={copy.partsLabel}
+        tasks={tasks}
+        currentTaskId={current === REVIEW ? REVIEW : step?.page.id}
+        currentStepId={current === REVIEW ? undefined : current}
+        statusLabels={{
+          notStarted: copy.statusNotStarted,
+          inProgress: copy.statusInProgress,
+          completed: copy.statusCompleted,
+          cannotStart: copy.statusAfterFirstPart,
+        }}
+        onSelect={(taskId, sectionId) => {
+          if (taskId === REVIEW) return goTo(REVIEW);
+          const first = steps.find((candidate) => candidate.page.id === taskId);
+          goTo(sectionId ?? first?.section.id ?? current);
+        }}
+      />
+      {clearButton}
+    </FlexBox>
   );
 
   const fieldsById = useMemo(
@@ -572,7 +653,12 @@ export function IntakeForm({
             {sentenceCase(step.section.title[locale])}
           </Title>
         </FlexBox>
-        {step.indexInPage === 0 ? <Text>{step.page.intro[locale]}</Text> : null}
+        {step.indexInPage === 0 ? (
+          <AlertBanner
+            tone="info"
+            description={withRequiredMarks(step.page.intro[locale])}
+          />
+        ) : null}
         {step.section.description ? (
           <Text size="s">{step.section.description[locale]}</Text>
         ) : null}
@@ -601,31 +687,12 @@ export function IntakeForm({
         {step.indexInPage === step.sectionsInPage - 1 && step.page.closing ? (
           <Text size="s">{step.page.closing[locale]}</Text>
         ) : null}
+        {/* The button stays one word; where it leads is a line below it. */}
         <FlexBox
-          direction="row"
-          align="center"
-          justify="space-between"
-          gap="var(--space-internal-16)"
-          wrap="wrap"
+          direction="column"
+          align="flex-end"
+          gap="var(--space-internal-8)"
         >
-          <ConfirmPopover
-            title={copy.clearSectionTitle}
-            description={copy.clearSectionDescription}
-            confirmLabel={copy.clearSection}
-            cancelLabel={copy.cancel}
-            tone="error"
-            onConfirm={() => clearStep(step)}
-          >
-            <Button
-              variant="tertiary"
-              size="lg"
-              disabled={step.section.fields.every(
-                (field) => !isInputField(field) || isEmpty(answers[field.id]),
-              )}
-            >
-              {copy.clearSection}
-            </Button>
-          </ConfirmPopover>
           <FlexBox
             direction="row"
             align="center"
@@ -634,14 +701,21 @@ export function IntakeForm({
             wrap="wrap"
           >
             {backButton}
-            <Button size="lg" onClick={() => continueFrom(step)}>
-              {format(copy.continueTo, {
-                next: nextStep
-                  ? sentenceCase(nextStep.section.title[locale])
-                  : copy.checkAndSubmit,
-              })}
+            <Button
+              size="lg"
+              endIcon="arrow-right"
+              aria-describedby={nextHintId}
+              onClick={() => continueFrom(step)}
+            >
+              {copy.continue}
             </Button>
           </FlexBox>
+          <Text size="s" id={nextHintId}>
+            <strong>{copy.nextUp}</strong>{" "}
+            {nextStep
+              ? sentenceCase(nextStep.section.title[locale])
+              : copy.checkAndSubmit}
+          </Text>
         </FlexBox>
       </FlexBox>
     );

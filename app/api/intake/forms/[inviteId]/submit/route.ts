@@ -30,6 +30,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     const result = await submitIntake(ctx, session.clientId, inviteId.data, body.data.revision, body.data.locale as IntakeLocale | undefined);
     if (result.status === "submitted") {
       deliverAfterResponse(result.mail, "forms.submit");
+      deliverAfterResponse(result.ownerMail, "forms.submit.owner");
       return json({ status: "submitted", submissionId: result.submissionId });
     }
     const status = { conflict: 409, not_found: 404, incomplete: 422 }[result.status];

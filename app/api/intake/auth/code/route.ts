@@ -3,6 +3,7 @@ import { z } from "zod";
 import type { NextRequest } from "next/server";
 
 import { CodeRaceError, PREAUTH_COOKIE, verifyLoginCode } from "@/app/lib/intake/service/auth";
+import { deliverAfterResponse } from "@/app/lib/intake/service/deliver";
 import { clearCookie, json, networkKey, readJsonBody, serverError, setSessionCookie } from "@/app/lib/intake/service/http";
 import { intakeContext } from "@/app/lib/intake/service/runtime";
 
@@ -25,6 +26,7 @@ export async function POST(request: NextRequest) {
       Sentry.captureMessage(message, { level: "warning", tags: { area: "intake" } }),
     );
     if (result.status !== "ok") return json({ status: result.status }, 400);
+    for (const mail of result.ownerMails) deliverAfterResponse(mail, "auth.code.owner");
     const response = json({ status: "ok" });
     clearCookie(response, PREAUTH_COOKIE);
     setSessionCookie(response, result.sessionToken);

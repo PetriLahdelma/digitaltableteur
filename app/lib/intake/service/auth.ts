@@ -6,7 +6,9 @@ import { codeDigest, emailLookupKey, generateCode, generateToken, hashToken, ver
 import type { IntakeLocale } from "../types";
 import { HOUR, MINUTE, type IntakeContext, type IntakeMail } from "./context";
 import { openContact } from "./invites";
+import { getQuestionnaire } from "../index";
 import { codeMail } from "./mail";
+import { ownerFirstSignInMail } from "./owner-mail";
 import { hit, isOver } from "./rate-limit";
 
 /** `__Host-` pins the cookie to this host, HTTPS and path `/` (no Domain attribute). */
@@ -116,7 +118,7 @@ export async function requestCodeForEmail(
 }
 
 export type CodeCheck =
-  | Readonly<{ status: "ok"; sessionToken: string; expiresAt: Date }>
+  | Readonly<{ status: "ok"; sessionToken: string; expiresAt: Date; ownerMails: IntakeMail[] }>
   | Readonly<{ status: "wrong" | "expired" | "locked" }>;
 
 /**
@@ -161,16 +163,19 @@ export async function verifyLoginCode(
 
   const sessionToken = generateToken();
   const expiresAt = new Date(now.getTime() + RETENTION.sessionAbsoluteHours * HOUR);
+  let started: { id: string; questionnaireId: string; questionnaireVersion: string }[] = [];
   await ctx.db.transaction(async (tx) => {
     // Delete first and check the row count: two parallel redemptions of one code cannot both win.
     const consumed = await tx.delete(loginCodes).where(eq(loginCodes.preauthHash, preauthHash)).returning({ id: loginCodes.clientId });
     if (consumed.length !== 1) throw new CodeRaceError();
     await tx.delete(loginCodes).where(eq(loginCodes.clientId, pending.clientId));
-    // Every link the client could still use is spent once they are in.
-    await tx
+    // Every link the client could still use is spent once they are in; the
+    // invites opened for the first time tell the owner (README 6a).
+    started = await tx
       .update(invites)
-      .set({ status: "active", tokenHash: null })
-      .where(and(accessibleInvites(ctx, pending.clientId), eq(invites.status, "invited")));
+      .set({ status: "active", tokenHash: null, firstSignedInAt: now })
+      .where(and(accessibleInvites(ctx, pending.clientId), eq(invites.status, "invited")))
+      .returning({ id: invites.id, questionnaireId: invites.questionnaireId, questionnaireVersion: invites.questionnaireVersion });
     await tx.insert(sessions).values({
       idHash: hashToken(sessionToken),
       kind: "client",
@@ -181,7 +186,20 @@ export async function verifyLoginCode(
     });
     await tx.insert(auditLog).values({ actor: "client", action: "session.start", clientId: pending.clientId, inviteId: pending.inviteId });
   });
-  return { status: "ok", sessionToken, expiresAt };
+  let ownerMails: IntakeMail[] = [];
+  if (started.length > 0) {
+    const [client] = await ctx.db.select().from(clients).where(eq(clients.id, pending.clientId));
+    const name = client ? openContact(ctx, client).name : "A client";
+    ownerMails = started.map((invite) =>
+      ownerFirstSignInMail({
+        name,
+        questionnaire: getQuestionnaire(invite.questionnaireId, invite.questionnaireVersion)?.title.en ?? invite.questionnaireId,
+        at: now,
+        adminLink: `${ctx.origin}/intake/admin/intakes/${invite.id}`,
+      }),
+    );
+  }
+  return { status: "ok", sessionToken, expiresAt, ownerMails };
 }
 
 export class CodeRaceError extends Error {

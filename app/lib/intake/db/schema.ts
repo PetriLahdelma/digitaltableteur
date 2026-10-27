@@ -52,6 +52,12 @@ export const invites = pgTable(
     createdAt: created(),
     submittedAt: timestamp("submitted_at", { withTimezone: true }),
     revokedAt: timestamp("revoked_at", { withTimezone: true }),
+    /** First code sign-in from this invite; the owner is told once. */
+    firstSignedInAt: timestamp("first_signed_in_at", { withTimezone: true }),
+    /** The owner's "expires tomorrow" reminder went out; sent once per link. */
+    expiryReminderSentAt: timestamp("expiry_reminder_sent_at", { withTimezone: true }),
+    /** Last time the owner reopened a submitted intake. */
+    reopenedAt: timestamp("reopened_at", { withTimezone: true }),
   },
   (t) => [
     check("intake_invites_status", sql`${t.status} in ('invited', 'active', 'submitted', 'revoked')`),
@@ -133,10 +139,15 @@ export const submissions = pgTable(
     /** Snapshot sealed with aad `submission:<id>`. */
     snapshotSealed: jsonb("snapshot_sealed").$type<Sealed>().notNull(),
     snapshotDigest: text("snapshot_digest").notNull(),
+    /** 1 for the first submit; each reopen and resubmit adds a locked version. */
+    version: integer("version").notNull().default(1),
     submittedAt: timestamp("submitted_at", { withTimezone: true }).notNull(),
     deleteAfter: timestamp("delete_after", { withTimezone: true }).notNull(),
   },
-  (t) => [uniqueIndex("intake_submissions_invite").on(t.inviteId), index("intake_submissions_client").on(t.clientId)],
+  (t) => [
+    uniqueIndex("intake_submissions_invite_version").on(t.inviteId, t.version),
+    index("intake_submissions_client").on(t.clientId),
+  ],
 );
 
 export const pdfs = pgTable("intake_pdfs", {
@@ -149,6 +160,44 @@ export const pdfs = pgTable("intake_pdfs", {
   byteLength: integer("byte_length").notNull(),
   renderedAt: timestamp("rendered_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+/** The owner's passkeys (WebAuthn). Public keys only; nothing here is secret. */
+export const adminCredentials = pgTable("intake_admin_credentials", {
+  /** Credential id, base64url. */
+  id: text("id").primaryKey(),
+  /** COSE public key, base64url. */
+  publicKey: text("public_key").notNull(),
+  counter: integer("counter").notNull().default(0),
+  transports: jsonb("transports").$type<string[]>().notNull().default([]),
+  /** The owner's name for the device, e.g. "MacBook". */
+  label: text("label").notNull(),
+  createdAt: created(),
+  lastUsedAt: timestamp("last_used_at", { withTimezone: true }),
+});
+
+/** One-time enrolment links from `npm run intake:admin-enrol`: SHA-256 only. */
+export const adminEnrolments = pgTable("intake_admin_enrolments", {
+  tokenHash: text("token_hash").primaryKey(),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  usedAt: timestamp("used_at", { withTimezone: true }),
+  createdAt: created(),
+});
+
+export const ADMIN_CHALLENGE_PURPOSES = ["register", "authenticate"] as const;
+export type AdminChallengePurpose = (typeof ADMIN_CHALLENGE_PURPOSES)[number];
+
+/** WebAuthn challenges, bound to a pre-auth cookie and spent once. */
+export const adminChallenges = pgTable(
+  "intake_admin_challenges",
+  {
+    /** SHA-256 of the pre-auth cookie. */
+    preauthHash: text("preauth_hash").primaryKey(),
+    purpose: text("purpose").$type<AdminChallengePurpose>().notNull(),
+    challenge: text("challenge").notNull(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  },
+  (t) => [check("intake_admin_challenges_purpose", sql`${t.purpose} in ('register', 'authenticate')`)],
+);
 
 export const rateLimits = pgTable("intake_rate_limits", {
   /** `<scope>:<hashed key>`, never a raw IP or email. */

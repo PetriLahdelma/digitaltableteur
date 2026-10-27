@@ -39,7 +39,7 @@ export function inviteLink(origin: string, token: string, locale: IntakeLocale):
  */
 export async function createInvite(
   ctx: IntakeContext,
-  input: { email: string; name: string; questionnaireId: string; locale: IntakeLocale },
+  input: { email: string; name: string; questionnaireId: string; locale: IntakeLocale; note?: string },
 ): Promise<{ inviteId: string; clientId: string; token: string; mail: IntakeMail }> {
   const questionnaire = getQuestionnaire(input.questionnaireId);
   if (!questionnaire) throw new Error(`Unknown questionnaire ${input.questionnaireId}`);
@@ -99,6 +99,7 @@ export async function createInvite(
       questionnaire: questionnaire.title[input.locale],
       link: inviteLink(ctx.origin, token, input.locale),
       expires,
+      note: input.note,
     }),
   };
 }

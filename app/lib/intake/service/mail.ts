@@ -56,14 +56,18 @@ export function inviteMail(input: {
   questionnaire: string;
   link: string;
   expires: Date;
+  /** The owner's optional personal line, shown under the greeting. */
+  note?: string;
 }): IntakeMail {
   const t = intakeCopy(input.locale);
+  const note = input.note?.trim();
   return compose(input.to, input.locale, {
     subject: t("mailInviteSubject"),
     preheader: t("mailInvitePreheader", { questionnaire: input.questionnaire }),
     blocks: [
       { kind: "heading", text: t("mailInviteHeading") },
       { kind: "paragraph", text: `${t("mailInviteGreeting", { name: input.name })}\n${t("mailInviteLead", { questionnaire: input.questionnaire })}` },
+      ...(note ? [{ kind: "paragraph", text: note } as const] : []),
       { kind: "button", label: t("mailInviteButton"), href: input.link, fallback: t("mailLinkFallback") },
       { kind: "note", text: t("mailInviteNote", { expires: formatIntakeDate(input.expires, input.locale) }) },
       { kind: "signature", text: t("mailSignature") },
@@ -84,6 +88,22 @@ export function codeMail(input: { to: string; locale: IntakeLocale; code: string
       { kind: "note", text: t("mailCodeNote") },
     ],
     footer: [t("mailCodeIgnore"), t("mailFooter")],
+  });
+}
+
+export function reopenedMail(input: { to: string; locale: IntakeLocale; questionnaire: string; link: string }): IntakeMail {
+  const t = intakeCopy(input.locale);
+  return compose(input.to, input.locale, {
+    subject: t("mailReopenedSubject"),
+    preheader: t("mailReopenedLead", { questionnaire: input.questionnaire }),
+    blocks: [
+      { kind: "heading", text: t("mailReopenedHeading") },
+      { kind: "paragraph", text: t("mailReopenedLead", { questionnaire: input.questionnaire }) },
+      { kind: "button", label: t("mailReopenedButton"), href: input.link, fallback: t("mailLinkFallback") },
+      { kind: "note", text: t("mailReopenedNote") },
+      { kind: "signature", text: t("mailSignature") },
+    ],
+    footer: [t("mailFooter")],
   });
 }
 

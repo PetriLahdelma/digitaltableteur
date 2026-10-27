@@ -93,4 +93,30 @@ describe("ConfirmPopover", () => {
     await screen.findByRole("alertdialog");
     expect(await axe(document.body)).toHaveNoViolations();
   });
+
+  it("with choices, asks which one first, then confirms the picked one", async () => {
+    const onConfirm = vi.fn();
+    render(
+      <ConfirmPopover
+        title="What do you want to clear?"
+        tone="error"
+        choices={[
+          { id: "section", label: "Clear this section", title: "Clear the answers in this section?", confirmLabel: "Clear section" },
+          { id: "all", label: "Clear all", title: "Clear every answer in the form?", description: "Every part starts empty.", confirmLabel: "Clear all answers" },
+        ]}
+        onConfirm={onConfirm}
+      >
+        <button type="button">Clear</button>
+      </ConfirmPopover>,
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Clear" }));
+    await screen.findByRole("alertdialog", { name: "What do you want to clear?" });
+    await userEvent.click(screen.getByRole("button", { name: "Clear all" }));
+    const dialog = await screen.findByRole("alertdialog", { name: "Clear every answer in the form?" });
+    expect(dialog).toHaveAccessibleDescription("Every part starts empty.");
+    await waitFor(() => expect(screen.getByRole("button", { name: "Cancel" })).toHaveFocus());
+    expect(await axe(dialog)).toHaveNoViolations();
+    await userEvent.click(screen.getByRole("button", { name: "Clear all answers" }));
+    expect(onConfirm).toHaveBeenCalledWith("all");
+  });
 });

@@ -95,32 +95,32 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
+            "path": "app/intake/admin/_components/PasskeyFlows.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/page.tsx",
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/start/page.tsx",
+            "path": "app/intake/admin/enrol/page.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/admin/invite/page.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/admin/page.tsx",
             "since": "2026-06-04"
         }
     ],

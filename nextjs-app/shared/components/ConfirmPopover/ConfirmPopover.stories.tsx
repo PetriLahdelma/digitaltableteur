@@ -28,6 +28,7 @@ const meta = {
     children: { table: { disable: true } },
     onConfirm: { table: { disable: true } },
     onOpenChange: { table: { disable: true } },
+    choices: { table: { disable: true } },
   },
 } satisfies Meta<typeof ConfirmPopover>;
 
@@ -60,6 +61,48 @@ export const Example: Story = {
     await expect(within(dialog).getByRole("button", { name: "Cancel" })).toHaveFocus();
     await userEvent.keyboard("{Escape}");
     await expect(canvas.getByRole("button", { name: "Clear answers" })).toHaveFocus();
+  },
+};
+
+export const WithChoices: Story = {
+  args: {
+    title: "What do you want to clear?",
+    description: "",
+    choices: [
+      {
+        id: "section",
+        label: "Clear this section",
+        title: "Clear the answers in this section?",
+        description: "Everything you entered on this screen is removed. This cannot be undone.",
+        confirmLabel: "Clear this section",
+      },
+      {
+        id: "all",
+        label: "Clear all",
+        title: "Clear every answer in the form?",
+        description: "Every part of the form starts empty again. This cannot be undone.",
+        confirmLabel: "Clear all answers",
+      },
+    ],
+    children: <Button variant="tertiary">Clear</Button>,
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story: "Pick an action first, then confirm it; Cancel closes from either step.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button", { name: "Clear" }));
+    await screen.findByRole("alertdialog", { name: "What do you want to clear?" });
+    await userEvent.click(screen.getByRole("button", { name: "Clear all" }));
+    const dialog = await screen.findByRole("alertdialog", {
+      name: "Clear every answer in the form?",
+    });
+    await expect(within(dialog).getByRole("button", { name: "Cancel" })).toHaveFocus();
   },
 };
 
