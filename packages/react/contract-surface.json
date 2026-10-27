@@ -158,18 +158,6 @@
       "level": "additive",
       "detail": "prop `width` added",
       "bump": "patch"
-    },
-    {
-      "component": "ConfirmPopover",
-      "level": "additive",
-      "detail": "component added to the public API",
-      "bump": "patch"
-    },
-    {
-      "component": "SummaryList",
-      "level": "additive",
-      "detail": "component added to the public API",
-      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -1511,74 +1499,6 @@
         "Enter runs the active command and closes",
         "Escape closes the palette",
         "Focus is trapped within the dialog while open"
-      ]
-    },
-    "ConfirmPopover": {
-      "element": "div",
-      "props": {
-        "align": {
-          "optional": true,
-          "values": [
-            "center",
-            "end",
-            "start"
-          ]
-        },
-        "cancelLabel": {
-          "optional": true,
-          "type": "string"
-        },
-        "children": {
-          "optional": false,
-          "type": "React.ReactElement"
-        },
-        "className": {
-          "optional": true,
-          "type": "string"
-        },
-        "confirmLabel": {
-          "optional": false,
-          "type": "string"
-        },
-        "description": {
-          "optional": true,
-          "type": "string"
-        },
-        "onConfirm": {
-          "optional": false,
-          "type": "() => void"
-        },
-        "onOpenChange": {
-          "optional": true,
-          "type": "(open: boolean) => void"
-        },
-        "side": {
-          "optional": true,
-          "values": [
-            "bottom",
-            "left",
-            "right",
-            "top"
-          ]
-        },
-        "title": {
-          "optional": false,
-          "type": "string"
-        },
-        "tone": {
-          "optional": true,
-          "values": [
-            "error",
-            "neutral"
-          ]
-        }
-      },
-      "slots": [],
-      "subParts": [],
-      "keyboard": [
-        "Enter / Space on the trigger opens the popover.",
-        "Escape cancels and returns focus to the trigger.",
-        "Focus starts on Cancel, the safe choice; Tab moves between Cancel and confirm."
       ]
     },
     "Container": {
@@ -4749,31 +4669,6 @@
       "slots": [],
       "subParts": [],
       "keyboard": []
-    },
-    "SummaryList": {
-      "element": "dl",
-      "props": {
-        "className": {
-          "optional": true,
-          "type": "string"
-        },
-        "layout": {
-          "optional": true,
-          "values": [
-            "auto",
-            "stacked"
-          ]
-        },
-        "rows": {
-          "optional": false,
-          "type": "SummaryListRow[]"
-        }
-      },
-      "slots": [],
-      "subParts": [],
-      "keyboard": [
-        "Not interactive itself; row actions are reached with Tab in reading order."
-      ]
     },
     "Switch": {
       "element": "button",
