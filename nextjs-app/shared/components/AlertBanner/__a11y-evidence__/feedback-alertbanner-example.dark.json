@@ -1,8 +1,8 @@
 {
   "storyId": "feedback-alertbanner-example",
   "mode": "dark",
-  "sourceSHA": "defb87e9d57ae487e3588bb15c7603745a8389e6",
-  "capturedAt": "2026-10-27T21:13:04.841Z",
+  "sourceSHA": "c51dcafc26a78331e63aaabe913df229446a86d3",
+  "capturedAt": "2026-10-27T21:43:13.187Z",
   "runner": "local-claude",
   "checks": {
     "accessibility-tree": {
