@@ -1,7 +1,7 @@
 import { intakeCopy } from "../copy";
 import type { IntakeLocale } from "../types";
 import type { IntakeMail, Mailer } from "./context";
-import { renderMailHtml, type MailBlock } from "./mail-html";
+import { mailBlockText, renderMailHtml, type MailBlock } from "./mail-html";
 import { MAIL_LOGO } from "./mail-logo";
 
 const DATE_LOCALE: Record<IntakeLocale, string> = { en: "en-GB", fi: "fi-FI", sv: "sv-SE" };
@@ -21,16 +21,7 @@ type Composed = Readonly<{
 function compose(to: string, locale: IntakeLocale, mail: Composed): IntakeMail {
   const t = intakeCopy(locale);
   const text = [
-    ...mail.blocks.map((item) => {
-      switch (item.kind) {
-        case "code":
-          return `${item.label}: ${item.code}`;
-        case "button":
-          return `${item.label}:\n${item.href}`;
-        default:
-          return item.text;
-      }
-    }),
+    ...mail.blocks.map(mailBlockText),
     "--",
     ...mail.footer,
   ].join("\n\n");
@@ -149,6 +140,7 @@ export function resendMailer(apiKey: string, from: string): Mailer {
               content_type: MAIL_LOGO.contentType,
               content_id: MAIL_LOGO.contentId,
             },
+            ...(mail.attachments ?? []).map((file) => ({ content: file.base64, filename: file.filename, content_type: file.contentType })),
           ],
         }),
       });
@@ -160,6 +152,7 @@ export function resendMailer(apiKey: string, from: string): Mailer {
 /** Development only: prints the mail so the flow can be walked locally. */
 export const consoleMailer: Mailer = {
   async send(mail) {
-    console.info(`[intake mail] to ${mail.to}\nSubject: ${mail.subject}\n\n${mail.text}\n`);
+    const files = (mail.attachments ?? []).map((file) => `\nAttached: ${file.filename} (${Math.round((file.base64.length * 3) / 4 / 1024)} KB)`).join("");
+    console.info(`[intake mail] to ${mail.to}\nSubject: ${mail.subject}\n\n${mail.text}\n${files}`);
   },
 };

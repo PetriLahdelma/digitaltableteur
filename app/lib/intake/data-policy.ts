@@ -27,27 +27,28 @@ type ClassPolicy = Readonly<{
 }>;
 
 const ANSWER_STORE = "AES-256-GCM answer document in Postgres (Neon, EU; key outside the database)";
-const NEVER = "email bodies, Sentry, Vercel logs, analytics";
-const ROUTE = "browser, intake function (EU), Postgres, PDF renderer (EU, in memory), owner admin view";
+const NEVER = "client emails, Sentry, Vercel logs, analytics";
+const ROUTE =
+  "browser, intake function (EU), Postgres, PDF renderer (EU, in memory), owner admin view, owner's copy by email at submit (Resend/SES Ireland to Microsoft 365, answers and PDF)";
 
 export const CLASS_POLICY: Readonly<Record<Sensitivity, ClassPolicy>> = {
   personal: {
     atRest: `${ANSWER_STORE}; email also kept as an HMAC for lookup`,
     travelsTo: ROUTE,
     neverIn: NEVER,
-    retention: "draft 90 d after last edit; submission and PDF 12 mo",
+    retention: "draft 90 d after last edit; submission and PDF 12 mo; the owner's emailed copy stays with the project correspondence",
   },
   third_party_personal: {
     atRest: ANSWER_STORE,
     travelsTo: ROUTE,
     neverIn: NEVER,
-    retention: "draft 90 d after last edit; submission and PDF 12 mo",
+    retention: "draft 90 d after last edit; submission and PDF 12 mo; the owner's emailed copy stays with the project correspondence",
   },
   business_confidential: {
     atRest: ANSWER_STORE,
     travelsTo: ROUTE,
     neverIn: NEVER,
-    retention: "draft 90 d after last edit; submission and PDF 12 mo",
+    retention: "draft 90 d after last edit; submission and PDF 12 mo; the owner's emailed copy stays with the project correspondence",
   },
   operational: {
     atRest: ANSWER_STORE,

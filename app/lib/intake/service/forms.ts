@@ -11,6 +11,7 @@ import type { Answers, IntakeLocale, Questionnaire } from "../types";
 import type { IntakeContext, IntakeMail } from "./context";
 import { openContact } from "./invites";
 import { submittedMail } from "./mail";
+import { answerOutline } from "../answer-text";
 import { ownerSubmittedMail } from "./owner-mail";
 
 export const draftAad = (inviteId: string) => `draft:${inviteId}`;
@@ -153,7 +154,17 @@ export async function saveDraft(
 }
 
 export type SubmitResult =
-  | Readonly<{ status: "submitted"; submissionId: string; digest: string; version: number; mail: IntakeMail; ownerMail: IntakeMail }>
+  | Readonly<{
+      status: "submitted";
+      submissionId: string;
+      digest: string;
+      version: number;
+      mail: IntakeMail;
+      /** The owner's copy with every answer; pass the rendered PDF to attach it. */
+      ownerMail: (pdf: { filename: string; bytes: Buffer } | null) => IntakeMail;
+      /** The attachment's file name, as the admin download names it. */
+      pdfFilename: string;
+    }>
   | Readonly<{ status: "conflict" | "not_found" }>
   | Readonly<{ status: "incomplete"; fields: string[] }>;
 
@@ -247,13 +258,19 @@ export async function submitIntake(
       submissionId,
       digest,
       version,
-      ownerMail: ownerSubmittedMail({
-        name: contact.name,
-        questionnaire: questionnaire.title.en,
-        version,
-        submittedAt: now,
-        adminLink: `${ctx.origin}/intake/admin/intakes/${inviteId}`,
-      }),
+      // Labels in English like every owner mail; the answers as the client wrote them.
+      ownerMail: (pdf) =>
+        ownerSubmittedMail({
+          name: contact.name,
+          email: contact.email,
+          questionnaire: questionnaire.title.en,
+          version,
+          submittedAt: now,
+          adminLink: `${ctx.origin}/intake/admin/intakes/${inviteId}`,
+          answers: answerOutline(questionnaire, snapshot.answers, "en", { answeredOnly: true }),
+          pdf,
+        }),
+      pdfFilename: `intake-${now.toISOString().slice(0, 10)}-v${version}.pdf`,
       mail: submittedMail({
         to: contact.email,
         locale,

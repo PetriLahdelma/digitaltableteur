@@ -217,7 +217,10 @@ const nextConfig: NextConfig = {
   // see it; include it for the PDF route only (docs/intake/README.md §6).
   // Keys are globs: "[submissionId]" would be a character class, so "*".
   outputFileTracingIncludes: {
+    // Every route that renders a submission PDF needs the Chromium binary.
     "/api/intake/submissions/*/pdf": ["./node_modules/@sparticuz/chromium/**"],
+    "/api/intake/admin/submissions/*/pdf": ["./node_modules/@sparticuz/chromium/**"],
+    "/api/intake/forms/*/submit": ["./node_modules/@sparticuz/chromium/**"],
   },
   // Image optimization configuration
   images: {

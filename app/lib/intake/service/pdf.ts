@@ -29,6 +29,8 @@ export async function submissionPdf(
   scope: PdfScope,
   submissionId: string,
   render: PdfRenderer,
+  /** "mail" for the owner's emailed copy: audited as pdf.mail, not as a download. */
+  purpose: "download" | "mail" = "download",
 ): Promise<{ bytes: Buffer; view: SubmissionView } | null> {
   const view = "owner" in scope ? await getSubmissionForPrint(ctx, submissionId) : await getSubmission(ctx, scope.clientId, submissionId);
   if (!view) return null;
@@ -62,6 +64,10 @@ export async function submissionPdf(
       bytes = await stored();
     }
   }
-  await ctx.db.insert(auditLog).values({ actor: "owner" in scope ? "owner" : "client", action: "pdf.download", clientId, inviteId, submissionId });
+  await ctx.db.insert(auditLog).values(
+    purpose === "mail"
+      ? { actor: "system", action: "pdf.mail", clientId, inviteId, submissionId }
+      : { actor: "owner" in scope ? "owner" : "client", action: "pdf.download", clientId, inviteId, submissionId },
+  );
   return bytes ? { bytes, view } : null;
 }

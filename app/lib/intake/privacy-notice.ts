@@ -84,9 +84,9 @@ export const PRIVACY_NOTICE: readonly NoticeSection[] = [
       { en: "Neon: the database, in Frankfurt, Germany.", fi: "Neon: tietokanta, Frankfurt, Saksa.", sv: "Neon: databasen, i Frankfurt, Tyskland." },
       { en: "Vercel: hosting; the intake runs in Frankfurt.", fi: "Vercel: palvelin; lomake toimii Frankfurtissa.", sv: "Vercel: drift; formuläret körs i Frankfurt." },
       {
-        en: "Resend with Amazon SES (Ireland): sign-in and confirmation emails. Emails never contain your answers.",
-        fi: "Resend ja Amazon SES (Irlanti): kirjautumis- ja vahvistusviestit. Viestit eivät koskaan sisällä vastauksiasi.",
-        sv: "Resend med Amazon SES (Irland): inloggnings- och bekräftelsemejl. Mejlen innehåller aldrig dina svar.",
+        en: "Resend with Amazon SES (Ireland): delivers the emails. Your sign-in codes and confirmation never contain your answers; Digitaltableteur's copy of your submission does.",
+        fi: "Resend ja Amazon SES (Irlanti): toimittavat sähköpostit. Kirjautumiskoodisi ja vahvistusviestisi eivät sisällä vastauksiasi, Digitaltableteurille lähtevä kopio lähetyksestäsi sisältää.",
+        sv: "Resend med Amazon SES (Irland): levererar mejlen. Dina inloggningskoder och din bekräftelse innehåller aldrig dina svar, Digitaltableteurs kopia av din inskickning gör det.",
       },
       {
         en: "Sentry (Germany): error reports, which never include your answers.",
@@ -94,9 +94,9 @@ export const PRIVACY_NOTICE: readonly NoticeSection[] = [
         sv: "Sentry (Tyskland): felrapporter, som aldrig innehåller dina svar.",
       },
       {
-        en: "Microsoft 365: Digitaltableteur's mailbox receives a notice with a link when you submit, never your answers.",
-        fi: "Microsoft 365: Digitaltableteurin sähköposti saa lähettäessäsi ilmoituksen ja linkin, ei koskaan vastauksiasi.",
-        sv: "Microsoft 365: Digitaltableteurs e-post får ett meddelande med en länk när du skickar in, aldrig dina svar.",
+        en: "Microsoft 365: when you submit, Digitaltableteur's mailbox receives your answers and their PDF.",
+        fi: "Microsoft 365: kun lähetät lomakkeen, Digitaltableteurin sähköpostiin tulevat vastauksesi ja niiden PDF.",
+        sv: "Microsoft 365: när du skickar in får Digitaltableteurs e-post dina svar och deras PDF.",
       },
     ],
   },
@@ -119,9 +119,9 @@ export const PRIVACY_NOTICE: readonly NoticeSection[] = [
         sv: `Inskickade svar och deras PDF raderas från tjänsten efter ${RETENTION.submissionMonths} månader, inloggningsuppgifter efter ${RETENTION.auditLogMonths} månader.`,
       },
       {
-        en: "Digitaltableteur keeps the PDF with the project correspondence for as long as the business relationship needs it.",
-        fi: "Digitaltableteur säilyttää PDF:n projektin kirjeenvaihdon yhteydessä niin kauan kuin asiakassuhde sitä edellyttää.",
-        sv: "Digitaltableteur sparar PDF:en med projektkorrespondensen så länge affärsrelationen kräver det.",
+        en: "Digitaltableteur keeps the emailed copy of your answers and the PDF with the project correspondence for as long as the business relationship needs it.",
+        fi: "Digitaltableteur säilyttää sähköpostilla saamansa kopion vastauksistasi ja PDF:n projektin kirjeenvaihdon yhteydessä niin kauan kuin asiakassuhde sitä edellyttää.",
+        sv: "Digitaltableteur sparar den mejlade kopian av dina svar och PDF:en med projektkorrespondensen så länge affärsrelationen kräver det.",
       },
     ],
   },

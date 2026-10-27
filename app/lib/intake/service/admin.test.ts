@@ -104,7 +104,7 @@ describe("admin intakes", () => {
     expect(rows[0]).toMatchObject({ status: "submitted", company: "Northwind", versions: 1 });
   });
 
-  it("tells the owner on the first sign-in and on submit, never with an answer in it", async () => {
+  it("tells the owner on the first sign-in, and sends them every answer and the PDF on submit", async () => {
     const created = await invite();
     const first = await signIn(created.token);
     expect(first.ownerMails).toHaveLength(1);
@@ -113,10 +113,23 @@ describe("admin intakes", () => {
     await saveDraft(ctx, first.session.clientId, created.inviteId, { revision: 0, answers: completeAnswers() });
     const result = await submitIntake(ctx, first.session.clientId, created.inviteId, 1);
     if (result.status !== "submitted") throw new Error(result.status);
-    expect(result.ownerMail.subject).toBe("Intake submitted: Aino");
-    expect(result.ownerMail.subject).not.toContain("Northwind");
-    expect(result.ownerMail.text).not.toContain("zq-private-answer");
-    expect(result.ownerMail.html).not.toContain("zq-private-answer");
+    const withPdf = result.ownerMail({ filename: result.pdfFilename, bytes: Buffer.from("%PDF-1.7 test") });
+    // The subject never carries an answer; the body carries all of them.
+    expect(withPdf.subject).toBe("Intake submitted: Aino");
+    expect(withPdf.subject).not.toContain("Northwind");
+    expect(withPdf.text).toContain("zq-private-answer");
+    expect(withPdf.text).toContain("Northwind");
+    expect(withPdf.html).toContain("zq-private-answer");
+    expect(withPdf.text).toContain("The PDF of the full form is attached");
+    // Blank questions are left out of the email (the PDF has the full form).
+    expect(withPdf.text).not.toContain("Not answered");
+    expect(withPdf.attachments).toEqual([{ filename: result.pdfFilename, contentType: "application/pdf", base64: Buffer.from("%PDF-1.7 test").toString("base64") }]);
+    expect(result.pdfFilename).toMatch(/^intake-\d{4}-\d{2}-\d{2}-v1\.pdf$/);
+    // Without a PDF the mail still goes, with every answer and a pointer to admin.
+    const withoutPdf = result.ownerMail(null);
+    expect(withoutPdf.attachments).toBeUndefined();
+    expect(withoutPdf.text).toContain("zq-private-answer");
+    expect(withoutPdf.text).toContain("download it in admin");
   });
 
   it("reopens a submission as a new draft and keeps version 1 locked", async () => {
@@ -129,7 +142,7 @@ describe("admin intakes", () => {
     const again = await submitIntake(ctx, session.clientId, created.inviteId, 1);
     if (again.status !== "submitted") throw new Error(again.status);
     expect(again.version).toBe(2);
-    expect(again.ownerMail.subject).toContain("Intake resubmitted");
+    expect(again.ownerMail(null).subject).toContain("Intake resubmitted");
     const detail = await getIntake(ctx, created.inviteId);
     expect(detail?.versionList.map((version) => version.version)).toEqual([2, 1]);
     expect(detail?.versionList[1].submissionId).toBe(result.submissionId);

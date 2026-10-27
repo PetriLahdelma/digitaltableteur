@@ -23,9 +23,10 @@ the definitions in `app/lib/intake/questionnaires/` are the source.
    language the client was using on screen. A tagged PDF is rendered from that
    snapshot with the same components on its first download and archived.
 5. The client's confirmation email links to the submission page, where they
-   read their answers and download the PDF. The owner is notified by email
-   with a link, never an attachment, and reviews, downloads or deletes the
-   submission in the admin area. Every admin action is audit logged.
+   read their answers and download the PDF. The owner receives the intake by
+   email: every answer in the body and the PDF attached, plus a link to the
+   admin area, where they review, download or delete the submission. Every
+   admin action is audit logged.
 
 ## 2. Architecture and data flow
 
@@ -52,9 +53,9 @@ flowchart LR
   IF -- "encrypted answer document, hashes" --> DB
   IF -- "submission id + one-minute print token" --> PF
   PF -- "encrypted PDF + SHA-256" --> DB
-  IF -- "name, link or code, never answers" --> RS
-  RS -- "invite, code and confirmation emails" --> CB
-  RS -- "owner notification: a link, no answers" --> OM[Owner mailbox: Microsoft 365]
+  IF -- "client mail: name, link or code; owner copy: answers + PDF" --> RS
+  RS -- "invite, code and confirmation emails (no answers)" --> CB
+  RS -- "owner's copy at submit: every answer + PDF" --> OM[Owner mailbox: Microsoft 365]
   IF -- "errors, allowlisted metadata only" --> SE
 ```
 
@@ -69,7 +70,7 @@ and the owner's admin view. No email carries answers or a PDF.
 | --- | --- | --- |
 | Vercel functions | Production deployments run in `iad1` (Washington DC). | Intake routes set `export const preferredRegion` to an EU region (`arn1` Stockholm or `fra1` Frankfurt). The rest of the site is unchanged. Vercel's edge still terminates TLS worldwide under Vercel's DPA. |
 | Database | The site's MongoDB region is not visible in the repo. | Intake uses its own Postgres database on Neon in Frankfurt (`aws-eu-central-1`), provisioned through the Vercel Marketplace. Existing MongoDB features are unchanged. |
-| Email | Resend domain verified: DKIM at `resend._domainkey`, return path `send.digitaltableteur.com` through Amazon SES eu-west-1 (Ireland), DMARC `p=reject`. | Fine as is. Emails carry a name, a link or a code and an expiry, never answers. The contact route still falls back to `onboarding@resend.dev`; intake must send from the verified domain. |
+| Email | Resend domain verified: DKIM at `resend._domainkey`, return path `send.digitaltableteur.com` through Amazon SES eu-west-1 (Ireland), DMARC `p=reject`. | Fine as is. Client emails carry a name, a link or a code and an expiry, never answers; the owner's copy at submit carries every answer and the PDF (decision 2). The contact route still falls back to `onboarding@resend.dev`; intake must send from the verified domain. |
 | Sentry | EU region (`de.sentry.io`); request bodies off via the allowlist in `sentry.data-collection.ts`. | Fine as is. A canary test proves answer text never reaches Sentry. |
 | Third-party scripts | The site loads Google Analytics, Ahrefs analytics and Cal.com; the production CSP allows `'unsafe-inline'` scripts. | **Largest existing-stack risk.** Intake pages use their own layout with no third-party scripts and a strict nonce-based CSP, so no analytics script can read answers from the page. |
 
@@ -227,10 +228,13 @@ is required from day one.
   hashed, encrypted (`pdf:<id>`) and stored once; every later download serves
   the same file, so the PDF stays evidence of what was submitted. It is
   deleted with its submission (cascade).
-- **No attachments.** The client's confirmation links to the submission page.
-  The owner's notification (phase 5, with the admin area) also carries a link
-  only: an attachment would leave every answer in a mailbox outside the
-  12-month deletion and outside the audit log.
+- **Who gets what by email.** The client's confirmation links to the
+  submission page (no attachment). The owner's copy at submit carries every
+  answer in the body and the PDF attached: receiving the form is the point of
+  the intake (owner, 2026-10-28). That copy lives in the owner's mailbox
+  outside the 12-month deletion and the audit log; the privacy notice says
+  so, and the send is audited as `pdf.mail`. If the PDF fails to render, the
+  mail still goes with every answer and a pointer to admin.
 - **Function size (measured 2026-10-27).** The PDF route traces to 89.7 MB
   uncompressed (Chromium 70.1, playwright-core 11.7, Next and Sentry runtime
   the rest), well inside Vercel's 250 MB. `outputFileTracingIncludes` adds
@@ -282,10 +286,11 @@ intake per questionnaire.
   locked version, seeds a new draft from it and sets the invite back to
   `active`; the client's next submit is version 2. Submissions get a
   `version` column, unique per invite and version.
-- **Notifications.** Plain links to admin, never answers (the subject names
-  the client by the name typed on the invite, never by an answer): on
-  submit, on the first sign-in of an invite, about a day before an unused
-  invite expires, and on every passkey change. Mail the owner triggers
+- **Owner mail.** On submit: the owner's copy of the intake, every answer
+  grouped by part and section plus the PDF attached and a link to admin.
+  Plain notices with a link on the first sign-in of an invite, about a day
+  before an unused invite expires, and on every passkey change. Subjects name
+  the client by the name typed on the invite, never by an answer. Mail the owner triggers
   (invite, resend, reopen) is sent while they wait, so a failure shows in
   admin; notices sent after a response report failures to Sentry by route
   and error name only.
@@ -382,7 +387,7 @@ page exported at the same size.
 | # | Question | Decision | Why |
 | --- | --- | --- | --- |
 | 1 | Retention | Invite link 72 h, login code 10 min, session 30 min idle and 12 h absolute, drafts 90 days after the last edit, submissions and PDFs 12 months, audit log 12 months | The owner keeps every PDF locally, so the server keeps data only while the client area needs it |
-| 2 | After submit | Client area lists past submissions with PDF download. No email carries an attachment: the owner gets a link to admin (changed 2026-10-27) | One copy under one retention rule; every download is audit logged |
+| 2 | After submit | Client area lists past submissions with PDF download; the client's email links there. The owner gets every answer and the PDF by email at submit (2026-10-28, correcting a 10-27 link-only change) | The owner must receive the form; the mailbox copy is named in the privacy notice |
 | 3 | Who invites | The owner only, manually in admin. No invite API in v1 | Less attack surface and a human fit check before anyone gets access |
 | 4 | Database | Postgres on Neon, Frankfurt, through the Vercel Marketplace; Drizzle ORM; PGlite (in-process Postgres) for tests | Relational records with a status lifecycle need transactions, foreign keys and unique constraints; the region is explicit; preview branches give e2e a clean database. MongoDB stays for the existing contact features |
 | 5 | Client login | Option A: invite link plus emailed 8-digit code | Lowest friction for invite-only, time-boxed access; deviation recorded |

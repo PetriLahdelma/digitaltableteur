@@ -29,7 +29,27 @@ export type MailBlock =
   | { kind: "note"; text: string }
   | { kind: "code"; label: string; code: string }
   | { kind: "button"; label: string; href: string; fallback: string }
-  | { kind: "signature"; text: string };
+  | { kind: "signature"; text: string }
+  /** A part's title over its sections of question and answer pairs (the owner's copy of a submission). */
+  | { kind: "answers"; title: string; sections: ReadonlyArray<{ title: string; rows: ReadonlyArray<{ label: string; value: string }> }> };
+
+/** The plain-text alternative of one block, the same words as its HTML. */
+export function mailBlockText(item: MailBlock): string {
+  switch (item.kind) {
+    case "code":
+      return `${item.label}: ${item.code}`;
+    case "button":
+      return `${item.label}:\n${item.href}`;
+    case "answers":
+      return [
+        item.title.toLocaleUpperCase(),
+        // Label on its own line: questions already end in "?" or ".".
+        ...item.sections.map((section) => [`## ${section.title}`, ...section.rows.map((row) => `${row.label}\n${row.value}`)].join("\n\n")),
+      ].join("\n\n");
+    default:
+      return item.text;
+  }
+}
 
 const lines = (text: string) => escapeHTML(text).replace(/\n/g, "<br />");
 
@@ -60,6 +80,28 @@ function block(item: MailBlock): string {
   </tr>
 </table>
 <p class="dt-muted" style="margin:0 0 24px 0;font-family:${FONT};font-size:13px;line-height:1.6;color:${COLOR.muted};">${escapeHTML(item.fallback)}<br /><a class="dt-link" href="${escapeHTML(item.href)}" style="color:${COLOR.primary};text-decoration:underline;word-break:break-all;">${escapeHTML(item.href)}</a></p>`;
+    case "answers": {
+      const sections = item.sections
+        .map((section) => {
+          const rows = section.rows
+            .map(
+              (row) => `  <tr>
+    <td class="dt-rule" style="padding:10px 0;border-top:1px solid ${COLOR.border};">
+      <p class="dt-muted" style="margin:0 0 4px 0;font-family:${FONT};font-size:13px;line-height:1.4;color:${COLOR.muted};">${escapeHTML(row.label)}</p>
+      <p class="dt-text" style="margin:0;font-family:${FONT};font-size:15px;line-height:1.5;color:${COLOR.primary};">${lines(row.value)}</p>
+    </td>
+  </tr>`,
+            )
+            .join("\n");
+          return `<p class="dt-text" style="margin:16px 0 4px 0;font-family:${FONT};font-size:15px;line-height:1.4;font-weight:600;color:${COLOR.primary};">${escapeHTML(section.title)}</p>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 8px 0;">
+${rows}
+</table>`;
+        })
+        .join("\n");
+      return `<h2 class="dt-text" style="margin:24px 0 4px 0;font-family:${FONT};font-size:20px;line-height:1.3;font-weight:600;color:${COLOR.primary};">${escapeHTML(item.title)}</h2>
+${sections}`;
+    }
     case "signature":
       return `<p class="dt-text" style="margin:8px 0 0 0;font-family:${FONT};font-size:16px;line-height:1.6;color:${COLOR.primary};">${lines(item.text)}</p>`;
   }

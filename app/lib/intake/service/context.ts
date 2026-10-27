@@ -9,6 +9,8 @@ export type IntakeMail = Readonly<{
   text: string;
   /** Branded HTML (service/mail-html.ts); the brand mark rides along as an inline attachment. */
   html: string;
+  /** Files sent with the mail: only the owner's copy of a submission carries one (its PDF). */
+  attachments?: ReadonlyArray<Readonly<{ filename: string; contentType: string; base64: string }>>;
 }>;
 
 export type Mailer = Readonly<{ send: (mail: IntakeMail) => Promise<void> }>;
