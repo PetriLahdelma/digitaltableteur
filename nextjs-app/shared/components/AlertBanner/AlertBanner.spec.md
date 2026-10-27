@@ -45,6 +45,11 @@ quiet middle option.
   (inline). Radius is `--radius-md`.
 - Figma: https://www.figma.com/design/digitaltableteur/alert-banner —
   variants map 1:1 to the `tone` prop.
+- Width: as wide as the content plus padding, at most the container
+  (`inline-size: fit-content; max-inline-size: 100%`). A short notice hugs its
+  text; a long one wraps and fills the width.
+- Links inside a banner use a plain underline (thicker on hover), not the
+  site's wavy underline.
 - The icon is intentionally `aria-label`led, not `aria-hidden`, because
   AlertBanner is the canonical place to validate WCAG 1.4.1 (colour is
   not the only signal). If a downstream design ever hides the icon, the

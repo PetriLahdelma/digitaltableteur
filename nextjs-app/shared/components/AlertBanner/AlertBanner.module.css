@@ -1,6 +1,13 @@
+/* As wide as its content plus padding, never wider than its container: a
+   short notice hugs its text, a long one wraps and fills the width. Never a
+   box stopping somewhere in between. */
+
 .banner {
   display: flex;
   padding: var(--space-internal-12, 0.75rem) var(--space-internal-16, 1rem);
+  box-sizing: border-box;
+  inline-size: fit-content;
+  max-inline-size: 100%;
   align-items: flex-start;
   gap: var(--space-internal-8, 0.5rem);
   border-radius: var(--radius-md, 8px);
@@ -42,6 +49,23 @@
   font-weight: 400;
   line-height: 1.45;
   color: inherit;
+}
+
+/* Links in a banner get a plain underline, not the site's wave: the wave is
+   for running page text; inside a tinted box it competes with the message.
+   (0,2,1) beats the global .link / .wavyUnderline rules (0,1,0) and Link's
+   own .link.textLink padding for the wave (0,2,0). */
+
+.banner .content a {
+  padding-block-end: 0;
+  background-image: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.banner .content a:hover {
+  text-decoration-thickness: 2px;
 }
 
 .action {
