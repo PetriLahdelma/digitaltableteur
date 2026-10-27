@@ -13,6 +13,7 @@ import {
   Section,
   Text,
   Title,
+  useMediaQuery,
 } from "@digitaltableteur/react";
 import ConfirmPopover from "@dt/ConfirmPopover";
 import TaskList, { type TaskListStatus, type TaskListTask } from "@dt/TaskList";
@@ -32,7 +33,6 @@ import type {
   IntakeSection,
   Questionnaire,
 } from "@/app/lib/intake/types";
-import { useMediaQuery } from "@/nextjs-app/shared/hooks/useMediaQuery";
 
 import { AnswerSummary, answerLabel, sentenceCase } from "./AnswerSummary";
 import { postJson } from "./api";

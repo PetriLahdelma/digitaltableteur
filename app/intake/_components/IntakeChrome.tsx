@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import { useLocalization } from "@digitaltableteur/react";
 import {
   useHeaderAccount,
   useHideChatWidget,
@@ -9,7 +10,6 @@ import {
 
 import { format, intakeCopy, isEnabledLocale } from "@/app/lib/intake/copy";
 import { ENABLED_INTAKE_LOCALES } from "@/app/lib/intake/data-policy";
-import { useLocalization } from "@/nextjs-app/shared/lib/translation";
 
 async function signOut() {
   await fetch("/api/intake/auth/logout", {

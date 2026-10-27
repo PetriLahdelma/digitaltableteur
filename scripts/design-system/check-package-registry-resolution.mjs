@@ -53,6 +53,18 @@ const ALLOWED_APP_LOCAL_IMPORTS = new Map([
   ["@dt/SiteTree", "site structure type; intentionally outside @digitaltableteur/react"],
   ["@dt/SocialShare", "blog/social sharing surface; intentionally outside @digitaltableteur/react"],
   [
+    "@dt/TaskList",
+    "alpha component, not yet a package export; migrate this import to @digitaltableteur/react when TaskList reaches the published surface",
+  ],
+  [
+    "@dt/SummaryList",
+    "alpha component, not yet a package export; migrate this import to @digitaltableteur/react when SummaryList reaches the published surface",
+  ],
+  [
+    "@dt/ConfirmPopover",
+    "alpha component, not yet a package export; migrate this import to @digitaltableteur/react when ConfirmPopover reaches the published surface",
+  ],
+  [
     "@dt/ToastStack",
     "alpha component, not yet a package export; migrate this import to @digitaltableteur/react when ToastStack reaches the published surface",
   ],

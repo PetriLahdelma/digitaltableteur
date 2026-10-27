@@ -13,21 +13,13 @@
       "rawElements": 1,
       "utilityLines": 10
     },
-    "app/blog/[slug]/ServerArticleMain.tsx": {
-      "rawElements": 0,
-      "utilityLines": 6
-    },
     "app/blog/[slug]/ServerRelatedPosts.tsx": {
       "rawElements": 2,
       "utilityLines": 6
     },
     "app/design-system/agent/page.tsx": {
-      "rawElements": 11,
-      "utilityLines": 23
-    },
-    "app/error.tsx": {
-      "rawElements": 1,
-      "utilityLines": 0
+      "rawElements": 10,
+      "utilityLines": 22
     },
     "app/global-error.tsx": {
       "rawElements": 2,
@@ -54,7 +46,7 @@
       "utilityLines": 12
     },
     "nextjs-app/shared/components/AskAI/AskAI.tsx": {
-      "rawElements": 6,
+      "rawElements": 8,
       "utilityLines": 0
     },
     "nextjs-app/shared/components/AspectRatio/AspectRatio.tsx": {
@@ -74,8 +66,8 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/BlogCategoryFilter/BlogCategoryFilter.tsx": {
-      "rawElements": 0,
-      "utilityLines": 6
+      "rawElements": 1,
+      "utilityLines": 8
     },
     "nextjs-app/shared/components/BlogMediaImage/BlogMediaImage.tsx": {
       "rawElements": 2,
@@ -94,7 +86,7 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/CategoryFilter/CategoryFilter.tsx": {
-      "rawElements": 0,
+      "rawElements": 1,
       "utilityLines": 8
     },
     "nextjs-app/shared/components/Center/Center.tsx": {
@@ -123,7 +115,11 @@
     },
     "nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.tsx": {
       "rawElements": 2,
-      "utilityLines": 7
+      "utilityLines": 6
+    },
+    "nextjs-app/shared/components/CodeCopyButton/CodeCopyButton.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
     },
     "nextjs-app/shared/components/Combobox/Combobox.tsx": {
       "rawElements": 4,
@@ -166,7 +162,7 @@
       "utilityLines": 1
     },
     "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.tsx": {
-      "rawElements": 2,
+      "rawElements": 1,
       "utilityLines": 0
     },
     "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.tsx": {
@@ -281,13 +277,21 @@
       "rawElements": 1,
       "utilityLines": 0
     },
+    "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
     "nextjs-app/shared/components/ProjectCard/ProjectCard.tsx": {
       "rawElements": 2,
       "utilityLines": 18
     },
     "nextjs-app/shared/components/ProjectGallery/ProjectGallery.tsx": {
       "rawElements": 1,
-      "utilityLines": 11
+      "utilityLines": 12
+    },
+    "nextjs-app/shared/components/ProjectList/ProjectList.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
     },
     "nextjs-app/shared/components/ProjectNav/ProjectNav.tsx": {
       "rawElements": 0,
@@ -349,6 +353,10 @@
       "rawElements": 1,
       "utilityLines": 0
     },
+    "nextjs-app/shared/components/StageList/StageList.tsx": {
+      "rawElements": 8,
+      "utilityLines": 0
+    },
     "nextjs-app/shared/components/StudioMap/StudioMap.tsx": {
       "rawElements": 1,
       "utilityLines": 11
@@ -371,6 +379,10 @@
     },
     "nextjs-app/shared/components/Tabs/Tabs.tsx": {
       "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/TaskList/TaskList.tsx": {
+      "rawElements": 4,
       "utilityLines": 0
     },
     "nextjs-app/shared/components/Testimonial/Testimonial.tsx": {
@@ -423,13 +435,17 @@
     },
     "nextjs-app/shared/components/pages/Home/HomePage.tsx": {
       "rawElements": 0,
-      "utilityLines": 3
+      "utilityLines": 4
     },
     "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx": {
       "rawElements": 1,
       "utilityLines": 0
     },
     "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx": {
+      "rawElements": 3,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx": {
       "rawElements": 3,
       "utilityLines": 0
     },
@@ -442,7 +458,7 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx": {
-      "rawElements": 3,
+      "rawElements": 2,
       "utilityLines": 0
     },
     "nextjs-app/shared/components/pages/Work/ProjectSpine/ProjectSpinePage.tsx": {
@@ -467,7 +483,7 @@
     },
     "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx": {
       "rawElements": 2,
-      "utilityLines": 20
+      "utilityLines": 21
     },
     "nextjs-app/shared/patterns/ArticleHero/ArticleHero.tsx": {
       "rawElements": 0,
@@ -502,7 +518,7 @@
       "utilityLines": 9
     },
     "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx": {
-      "rawElements": 2,
+      "rawElements": 1,
       "utilityLines": 0
     },
     "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx": {
@@ -511,6 +527,10 @@
     },
     "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx": {
       "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx": {
+      "rawElements": 6,
       "utilityLines": 0
     },
     "nextjs-app/shared/patterns/Footer/Footer.tsx": {
@@ -531,7 +551,7 @@
     },
     "nextjs-app/shared/patterns/ManifestoSection/ManifestoSection.tsx": {
       "rawElements": 1,
-      "utilityLines": 13
+      "utilityLines": 6
     },
     "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx": {
       "rawElements": 3,
@@ -542,7 +562,7 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx": {
-      "rawElements": 4,
+      "rawElements": 3,
       "utilityLines": 0
     },
     "nextjs-app/shared/patterns/ProjectDetailLayout/ProjectDetailLayout.tsx": {
@@ -565,6 +585,10 @@
       "rawElements": 0,
       "utilityLines": 7
     },
+    "nextjs-app/shared/patterns/ServicesLedger/ServicesLedger.tsx": {
+      "rawElements": 8,
+      "utilityLines": 4
+    },
     "nextjs-app/shared/patterns/ServicesSection/ServicesSection.tsx": {
       "rawElements": 1,
       "utilityLines": 8
@@ -575,11 +599,15 @@
     },
     "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx": {
       "rawElements": 2,
-      "utilityLines": 18
+      "utilityLines": 14
     },
     "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx": {
       "rawElements": 0,
       "utilityLines": 14
+    },
+    "nextjs-app/shared/patterns/SiteHeader/SiteSubnav.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
     },
     "nextjs-app/shared/patterns/StatsSection/StatsSection.tsx": {
       "rawElements": 1,

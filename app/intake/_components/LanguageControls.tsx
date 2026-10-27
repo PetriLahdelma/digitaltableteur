@@ -2,10 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { useLocalization } from "@digitaltableteur/react";
 
 import { isEnabledLocale } from "@/app/lib/intake/copy";
 import type { IntakeLocale } from "@/app/lib/intake/types";
-import { useLocalization } from "@/nextjs-app/shared/lib/translation";
 
 /**
  * Ties intake pages to the site's own language switcher in the header. The
