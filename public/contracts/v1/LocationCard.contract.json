@@ -54,59 +54,59 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:57.513Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:01.635Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:52.766Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:27:56.734Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:58.015Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:02.076Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:53.276Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:27:57.181Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:58.251Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:02.288Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:53.515Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:27:57.394Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:57.768Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:01.861Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:53.021Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:27:56.958Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           }
         ]
       },
@@ -122,87 +122,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:57.513Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:01.635Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:02.092Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:06.408Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:52.766Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:27:56.734Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:58.015Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:02.076Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:02.590Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:06.816Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:53.276Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:27:57.181Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:58.251Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:02.288Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:02.812Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:07.026Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:53.515Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:27:57.394Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:57.768Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:01.861Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:02.329Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:06.613Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:53.021Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:27:56.958Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           }
         ]
       },
@@ -214,31 +214,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-default.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:02.092Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:06.408Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-example.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:02.590Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:06.816Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-forced-colors.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:02.812Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:07.026Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LocationCard/__a11y-evidence__/site-locationcard-playground.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:02.329Z",
+            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
+            "capturedAt": "2026-10-15T19:28:06.613Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           }
         ]
       },

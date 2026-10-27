@@ -18,51 +18,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:48.311Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:18.567Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-default.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:09.143Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:28:21.468Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:13.804Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:48.758Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:19.013Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-example.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:09.565Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:28:22.229Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:14.270Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:48.981Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:19.214Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-forced-colors.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:09.761Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:28:22.662Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:14.474Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:48.555Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:18.774Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-playground.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:09.347Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:28:21.854Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:14.020Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           }
         ]
       },
@@ -78,79 +114,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:48.311Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:18.567Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:39.776Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:23.210Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-default.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:09.143Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:28:21.468Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:13.804Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:48.758Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:19.013Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:40.282Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:23.604Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-example.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:09.565Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:28:22.229Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:14.270Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:48.981Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:19.214Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:40.528Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:23.793Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-forced-colors.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:09.761Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:28:22.662Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:14.474Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:48.555Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:18.774Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:40.033Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:23.409Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-playground.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:09.347Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:28:21.854Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:14.020Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           }
         ]
       },
@@ -162,31 +234,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:39.776Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:23.210Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:40.282Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:23.604Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:40.528Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:23.793Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/animations/FadeIn/__a11y-evidence__/site-animations-fadein-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:40.033Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:32:23.409Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-14b"
           }
         ]
       },

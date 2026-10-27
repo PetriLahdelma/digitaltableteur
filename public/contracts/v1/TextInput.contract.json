@@ -22,15 +22,15 @@
         "text",
         "tel",
         "email",
-        "password",
         "date",
-        "datetime-local",
         "time",
+        "password",
+        "datetime-local",
         "month",
         "week"
       ],
       "optional": false,
-      "description": "Native HTML input type; tel formats, email validates, and date/time variants retain the browser's localized picker and ISO-compatible value"
+      "description": "Native HTML input type. Telephone values format and email values validate\nas the user types; date/time variants retain the browser's localized\npicker and ISO-compatible submitted value."
     },
     "size": {
       "type": "union",
@@ -90,6 +90,21 @@
       "optional": true,
       "description": "Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance"
     },
+    "width": {
+      "type": "union",
+      "values": [
+        "full",
+        "2ch",
+        "3ch",
+        "4ch",
+        "5ch",
+        "10ch",
+        "20ch",
+        "30ch"
+      ],
+      "optional": true,
+      "description": "Widest the field grows, in characters of the expected answer (after the\nGOV.UK input widths): \"10ch\" for a code, \"30ch\" for an email address. The\nfield still shrinks with its container."
+    },
     "onChange": {
       "type": "(value: string | number) => void",
       "optional": true,
@@ -112,15 +127,17 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:48.319Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:52.658Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:32.637Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:44.103Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -136,79 +153,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:48.319Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:52.658Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:12:00.355Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:11:01.782Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:32.637Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:44.103Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:48.380Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:52.734Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:12:00.445Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:11:01.872Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:32.699Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:44.170Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:48.405Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:52.760Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:12:00.486Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:11:01.900Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:32.725Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:44.209Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:48.346Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:52.687Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:12:00.403Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:11:01.838Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:32.669Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:44.134Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -220,8 +245,8 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:12:00.355Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:11:01.782Z",
             "passed": true,
             "runner": "local"
           }

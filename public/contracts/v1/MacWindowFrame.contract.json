@@ -49,193 +49,28 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "2.5.8"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.348Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:51.588Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.925Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:52.066Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:42.358Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:52.302Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.621Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:51.845Z",
-            "passed": true
-          }
-        ]
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.348Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:09:53.469Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:51.588Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.925Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:09:54.299Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:52.066Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:42.358Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:09:54.833Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:52.302Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:13:41.621Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:09:53.816Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:31:51.845Z",
-            "passed": true
-          }
-        ]
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "automated",
-        "check": "npm run test:stories:hc",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:09:53.469Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:09:54.299Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:09:54.833Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/MacWindowFrame/__a11y-evidence__/layout-macwindowframe-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:09:53.816Z",
-            "passed": true,
-            "runner": "local"
-          }
-        ]
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-28"
       },
       {
         "id": "human-a11y-review",

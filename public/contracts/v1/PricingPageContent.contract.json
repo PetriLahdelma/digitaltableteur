@@ -9,6 +9,11 @@
       "type": "string",
       "optional": true,
       "description": "Optional wrapper class."
+    },
+    "heroBackground": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Decorative layer on the hero field, under the text. Drags on it pass\nthrough the text layer."
     }
   },
   "accessibility": {
@@ -24,87 +29,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-default.dark.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:32.550Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:16.164Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-default.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:19.772Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:02.896Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-default.light.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:27.040Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:09.423Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-example.dark.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:33.407Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:17.525Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-example.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:20.964Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:04.113Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-example.light.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:27.905Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:10.630Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-forced-colors.dark.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:33.827Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:18.159Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:21.685Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:04.679Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-forced-colors.light.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:28.332Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:11.193Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-playground.dark.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:32.994Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:16.939Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-playground.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:20.314Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:03.532Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-playground.light.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:27.481Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:10.051Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           }
         ]
       },
@@ -120,115 +125,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-default.dark.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:32.550Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:16.164Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-default.forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:37.636Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:22.712Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-default.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:19.772Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:02.896Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-default.light.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:27.040Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:09.423Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-example.dark.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:33.407Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:17.525Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-example.forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:38.290Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:23.583Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-example.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:20.964Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:04.113Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-example.light.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:27.905Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:10.630Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-forced-colors.dark.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:33.827Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:18.159Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-forced-colors.forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:38.595Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:24.015Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:21.685Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:04.679Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-forced-colors.light.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:28.332Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:11.193Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-playground.dark.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:32.994Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:16.939Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-playground.forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:37.935Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:23.157Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-playground.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:20.314Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:03.532Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-playground.light.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:27.481Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:10.051Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           }
         ]
       },
@@ -240,31 +245,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-default.forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:37.636Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:22.712Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-example.forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:38.290Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:23.583Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-forced-colors.forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:38.595Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:24.015Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingPageContent/__a11y-evidence__/patterns-pricingpagecontent-playground.forced-colors.json",
-            "sourceCommit": "6369c90aa9b01bd4f1d4f0a000b7cc4a442ae266",
-            "capturedAt": "2026-09-27T17:09:37.935Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:14:23.157Z",
             "passed": true,
-            "runner": "local-recapture-2026-09-27"
+            "runner": "local-claude"
           }
         ]
       },

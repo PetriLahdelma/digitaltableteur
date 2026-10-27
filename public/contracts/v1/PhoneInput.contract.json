@@ -301,6 +301,16 @@
       "optional": true,
       "description": "ISO 3166-1 alpha-2 code used when the value has no country prefix."
     },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Field size, matching TextInput; lg is the 3rem height every lg field shares."
+    },
     "onChange": {
       "type": "(value: string | undefined) => void",
       "optional": true
@@ -319,16 +329,17 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:36.707Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:49.536Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:32:03.903Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:40.639Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -344,43 +355,45 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:36.707Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:49.536Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-example.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:13:05.509Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:11:01.965Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:32:03.903Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:40.639Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:59:36.752Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:49.587Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-forced-colors.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:13:05.574Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:11:02.013Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:32:03.958Z",
-            "passed": true
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:10:40.712Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -392,8 +405,8 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/PhoneInput/__a11y-evidence__/forms-phoneinput-example.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:13:05.509Z",
+            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+            "capturedAt": "2026-10-27T18:11:01.965Z",
             "passed": true,
             "runner": "local"
           }

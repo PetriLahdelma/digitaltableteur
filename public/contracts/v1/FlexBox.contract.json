@@ -107,51 +107,59 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:40.129Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:23.055Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:08.805Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:17.545Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:40.563Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:23.502Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:09.257Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:17.983Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:40.798Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:23.719Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:09.531Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:18.200Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:40.349Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:23.279Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:09.041Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:17.763Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           }
         ]
       },
@@ -167,79 +175,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:40.129Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:23.055Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.forced-colors.json",
-            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-            "capturedAt": "2026-09-29T17:38:16.747Z",
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:28.462Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:08.805Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:17.545Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:40.563Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:23.502Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.forced-colors.json",
-            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-            "capturedAt": "2026-09-29T17:38:17.224Z",
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:28.916Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:09.257Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:17.983Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:40.798Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:23.719Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.forced-colors.json",
-            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-            "capturedAt": "2026-09-29T17:38:17.445Z",
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:29.119Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:09.531Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:18.200Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:40.349Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:23.279Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.forced-colors.json",
-            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-            "capturedAt": "2026-09-29T17:38:17.009Z",
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:28.691Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:09.041Z",
-            "passed": true
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:17.763Z",
+            "passed": true,
+            "runner": "local-2026-10-15t"
           }
         ]
       },
@@ -251,31 +267,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-default.forced-colors.json",
-            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-            "capturedAt": "2026-09-29T17:38:16.747Z",
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:28.462Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-example.forced-colors.json",
-            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-            "capturedAt": "2026-09-29T17:38:17.224Z",
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:28.916Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-forced-colors.forced-colors.json",
-            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-            "capturedAt": "2026-09-29T17:38:17.445Z",
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:29.119Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FlexBox/__a11y-evidence__/layout-flexbox-playground.forced-colors.json",
-            "sourceCommit": "8bffd4ee29a3fd192d5e7c8b7b5521458b42b447",
-            "capturedAt": "2026-09-29T17:38:17.009Z",
+            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
+            "capturedAt": "2026-10-15T19:24:28.691Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-15t"
           }
         ]
       },

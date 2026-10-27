@@ -2,7 +2,7 @@
   "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
   "specVersion": "1.0",
   "name": "SplitButton",
-  "status": "stable",
+  "status": "beta",
   "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
   "package": {
     "name": "@digitaltableteur/react",
@@ -54,173 +54,28 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "2.5.8"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:30.462Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:45.724Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:30.711Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:45.969Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:30.988Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:46.193Z",
-            "passed": true
-          }
-        ]
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:30.462Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:49.015Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:45.724Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:30.711Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:49.276Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:45.969Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:30.988Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:49.581Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:46.193Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:31.073Z",
-            "passed": true,
-            "runner": "local-farm-parity"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:49.612Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:46.237Z",
-            "passed": true
-          }
-        ]
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "automated",
-        "check": "npm run test:stories:hc",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:49.015Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:49.276Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/SplitButton/__a11y-evidence__/actions-splitbutton-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:03:49.581Z",
-            "passed": true,
-            "runner": "local"
-          }
-        ]
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-07-03"
       },
       {
         "id": "keyboard-contract",
@@ -239,13 +94,13 @@
         "wcag": [
           "4.1.2"
         ],
-        "note": "No exportable evidence record for this check; re-run the check to capture one."
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "human-a11y-review",
         "statement": "A human completed an end-to-end accessibility review of this component.",
         "verification": "manual",
-        "note": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. 2026-07-06 — alpha→beta: Figma variant set built (Variant×Size, node 1052-2084, DT-Site-stuff Molecules). Light/dark AND forced-colors verified for real on the closed control AND the open menu via Playwright (globals=theme + forcedColors:active): theme flips both segments and the portaled Menu surface correctly; in forced-colors the menu draws a visible CanvasText border (not shadow-only), segment outlines and caret/option icons stay distinguishable. forcedColorsVerified + lightDarkVerified now true. 2026-07-12 — beta→stable: 4-mode AT recaptured at stable (WIP badge dropped) via the story runner (plays open the Menu); accessibility tree and real-browser forced-colors confirmed; exported from @digitaltableteur/react. 2 production consumers.",
+        "note": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. 2026-07-06 — alpha→beta: Figma variant set built (Variant×Size, node 1052-2084, DT-Site-stuff Molecules). Light/dark AND forced-colors verified for real on the closed control AND the open menu via Playwright (globals=theme + forcedColors:active): theme flips both segments and the portaled Menu surface correctly; in forced-colors the menu draws a visible CanvasText border (not shadow-only), segment outlines and caret/option icons stay distinguishable. forcedColorsVerified + lightDarkVerified now true. 2026-07-12 — beta→stable: 4-mode AT recaptured at stable (WIP badge dropped) via the story runner (plays open the Menu); accessibility tree and real-browser forced-colors confirmed; exported from @digitaltableteur/react. 2 production consumers. 2026-10-25: demoted to beta. Its only production consumer was CodeSnippet's copy menu on the Rhythmguard case study; CodeSnippet is deprecated and the page now uses CodeBlock, whose copy is a single CodeCopyButton. Re-promote when a production surface uses SplitButton again.",
         "reviewedAt": "2026-07-03"
       }
     ]

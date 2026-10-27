@@ -3,7 +3,7 @@
   "specVersion": "1.0",
   "name": "SegmentedControl",
   "status": "beta",
-  "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
+  "description": "Single-select segmented control: a compact, pill-shaped row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation. The selection indicator slides between options.",
   "package": {
     "name": "@digitaltableteur/react",
     "import": "import { SegmentedControl } from \"@digitaltableteur/react\";"
@@ -58,39 +58,66 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:10.753Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:07.325Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.json",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:16:55.928Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:31.653Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:01.859Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:11.209Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:07.829Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.json",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:16:56.479Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:32.117Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:02.382Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:10.986Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:07.591Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.json",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:16:56.233Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:31.898Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:02.126Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           }
         ]
       },
@@ -106,79 +133,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:10.753Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:07.325Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:10.375Z",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:12.606Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-17"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.json",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:16:55.928Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:31.653Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:01.859Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:11.209Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:07.829Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:10.942Z",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:13.059Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-17"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.json",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:16:56.479Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:32.117Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:02.382Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:11.241Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:07.859Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:10.984Z",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:13.091Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-17"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.json",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:16:56.504Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:32.150Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:02.413Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:10.986Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:07.591Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:10.623Z",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:12.836Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-17"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.json",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:16:56.233Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:31.898Z",
-            "passed": true
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:02.126Z",
+            "passed": true,
+            "runner": "local-2026-10-17"
           }
         ]
       },
@@ -190,24 +253,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:10.375Z",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:12.606Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:10.942Z",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:13.059Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-17"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SegmentedControl/__a11y-evidence__/navigation-segmentedcontrol-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:10.623Z",
+            "sourceCommit": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
+            "capturedAt": "2026-10-17T09:17:12.836Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-17"
           }
         ]
       },
@@ -234,7 +297,7 @@
         "id": "human-a11y-review",
         "statement": "A human completed an end-to-end accessibility review of this component.",
         "verification": "manual",
-        "note": "2026-07-12 — alpha→beta: code-level a11y review. Container is role=radiogroup with a required aria-label; each segment is role=radio with aria-checked reflecting selection. Roving tabindex keeps exactly one segment tabbable (the selection, else the first enabled); Arrow keys move selection wrapping and skip disabled segments; Home/End jump to first/last enabled. Selection shown by a raised neutral surface (not brand fill) so it reads across light/dark; forced-colors maps the selected segment to a Highlight outline. Motion respects prefers-reduced-motion. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook.",
+        "note": "2026-07-12 — alpha→beta: code-level a11y review. Container is role=radiogroup with a required aria-label; each segment is role=radio with aria-checked reflecting selection. Roving tabindex keeps exactly one segment tabbable (the selection, else the first enabled); Arrow keys move selection wrapping and skip disabled segments; Home/End jump to first/last enabled. Selection shown by a raised neutral surface (not brand fill) so it reads across light/dark; forced-colors maps the selected segment to a Highlight outline. Motion respects prefers-reduced-motion. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook. 2026-10-17: pill shape (radius-full) and a sliding selection indicator (aria-hidden span positioned from the selected segment; the segment paints its own background until measured, so server render and no-JS always show the selection). Reduced motion: no slide. Forced colours: indicator hidden, Highlight outline on the selected segment. Hover colour gated to (hover: hover).",
         "reviewedAt": "2026-07-12"
       }
     ]

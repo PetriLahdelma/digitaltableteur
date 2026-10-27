@@ -51,8 +51,8 @@
         "sm",
         "md",
         "lg",
-        "xl",
-        "full"
+        "full",
+        "xl"
       ],
       "optional": true,
       "description": "Max width constraint for the section"

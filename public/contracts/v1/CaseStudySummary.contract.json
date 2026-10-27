@@ -4,7 +4,55 @@
   "name": "CaseStudySummary",
   "status": "alpha",
   "description": "Decision-first case study summary: outcome, role, constraints, key decisions and evidence with source labels.",
-  "props": {},
+  "props": {
+    "outcome": {
+      "type": "string",
+      "optional": false,
+      "description": "What changed because of the work, in one or two sentences."
+    },
+    "role": {
+      "type": "string",
+      "optional": false,
+      "description": "Role and scope of the engagement."
+    },
+    "constraints": {
+      "type": "string[]",
+      "optional": false,
+      "description": "What made the problem hard."
+    },
+    "decisions": {
+      "type": "CaseStudyDecision[]",
+      "optional": false,
+      "description": "The decisions that shaped the result."
+    },
+    "evidence": {
+      "type": "CaseStudyEvidence[]",
+      "optional": false,
+      "description": "Claims with an explicit source label; nothing is presented unsourced."
+    },
+    "title": {
+      "type": "string",
+      "optional": true,
+      "description": "Section heading. Defaults to the translated \"At a glance\"."
+    },
+    "maxWidth": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "full",
+        "xl"
+      ],
+      "optional": true,
+      "description": "Maximum content width."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional class name applied to the section root."
+    }
+  },
   "accessibility": {
     "criteria": [
       {

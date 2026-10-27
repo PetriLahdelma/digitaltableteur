@@ -1,0 +1,79 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "SummaryList",
+  "status": "alpha",
+  "description": "Questions and their answers as a description list, one row per question with an optional action: for checking answers before submitting and for showing a submitted record.",
+  "props": {
+    "rows": {
+      "type": "SummaryListRow[]",
+      "optional": false,
+      "description": "Rows in order."
+    },
+    "layout": {
+      "type": "union",
+      "values": [
+        "auto",
+        "stacked"
+      ],
+      "optional": true,
+      "description": "\"auto\" stacks the label above the value in narrow containers and puts\nthem side by side once the list is wide enough (about 40rem)."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Merged onto the dl element."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "Marked reviewed, but no review date was recorded."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/SummaryList/SummaryList.module.css",
+    "../../../nextjs-app/shared/components/SummaryList/SummaryList.tsx"
+  ]
+}

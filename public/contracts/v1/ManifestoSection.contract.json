@@ -15,15 +15,10 @@
       "optional": false,
       "description": "Array of manifesto tokens"
     },
-    "interval": {
-      "type": "number",
-      "optional": true,
-      "description": "Timing input used to bound the one-time emphasis pulse"
-    },
     "separator": {
       "type": "string",
       "optional": true,
-      "description": "Separator character between highlightable tokens"
+      "description": "Separator character between phrases"
     },
     "background": {
       "type": "union",
@@ -70,6 +65,7 @@
     ]
   },
   "source": [
+    "../../../nextjs-app/shared/patterns/ManifestoSection/ManifestoSection.module.css",
     "../../../nextjs-app/shared/patterns/ManifestoSection/ManifestoSection.tsx"
   ]
 }

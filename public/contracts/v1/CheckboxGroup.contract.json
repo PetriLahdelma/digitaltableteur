@@ -39,6 +39,11 @@
       "optional": true,
       "description": "Label for the select-all master checkbox"
     },
+    "hideLegend": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Keeps the legend as the accessible name but hides it visually, for a group whose section heading already names it."
+    },
     "defaultSelected": {
       "type": "string[]",
       "optional": true,
@@ -62,17 +67,17 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-default.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:01:53.629Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:01.273Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-default.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:40.346Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:11:55.903Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },
@@ -88,87 +93,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-default.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:01:53.629Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:01.273Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-default.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:03.467Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:06.399Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-default.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:40.346Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:11:55.903Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-example.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:01:53.695Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:02.284Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-example.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:03.530Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:07.354Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-example.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:40.406Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:11:56.902Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-forced-colors.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:01:53.719Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:02.311Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-forced-colors.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:03.553Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:07.381Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-forced-colors.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:40.430Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:11:56.922Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-playground.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:01:53.667Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:02.034Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-playground.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:03.501Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:07.115Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-playground.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:04:40.380Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:11:56.653Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },
@@ -180,10 +185,10 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/CheckboxGroup/__a11y-evidence__/forms-checkboxgroup-default.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:03.467Z",
+            "sourceCommit": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
+            "capturedAt": "2026-10-26T21:12:06.399Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },

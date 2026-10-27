@@ -39,60 +39,66 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:33.603Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:40.073Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.480Z",
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:30.498Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:25.770Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:35.311Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:33.954Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:40.322Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.709Z",
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:30.754Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:26.018Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:35.585Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:34.271Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:40.588Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.960Z",
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:31.031Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:26.273Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:35.843Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           }
         ]
       },
@@ -108,60 +114,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:33.603Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:40.073Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.480Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:44.661Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:30.498Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:25.770Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:35.311Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:33.954Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:40.322Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.709Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:44.910Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:30.754Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:26.018Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:35.585Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:34.271Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:40.588Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.960Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:45.177Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.json",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:31.031Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:25:26.273Z",
-            "passed": true
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:35.843Z",
+            "passed": true,
+            "runner": "local-2026-10-14b"
           }
         ]
       },
@@ -173,24 +206,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.480Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:44.661Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.709Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:44.910Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/EmailSignatureGenerator/__a11y-evidence__/site-emailsignaturegenerator-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:08.960Z",
+            "sourceCommit": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
+            "capturedAt": "2026-10-14T20:31:45.177Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-14b"
           }
         ]
       },

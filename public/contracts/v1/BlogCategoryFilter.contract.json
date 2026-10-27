@@ -3,7 +3,7 @@
   "specVersion": "1.0",
   "name": "BlogCategoryFilter",
   "status": "stable",
-  "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
+  "description": "Single-select tag filter for the blog archive: a labelled group of toggle chips with an implicit All, three visual treatments, optional per-tag counts and an optional collapsed mode.",
   "props": {
     "tags": {
       "type": "string[]",
@@ -50,6 +50,11 @@
       "optional": true,
       "description": "Size variant"
     },
+    "collapsible": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Collapse to the selected chip and a disclosure button; expanding shows every chip and picking one collapses back to it."
+    },
     "className": {
       "type": "string",
       "optional": true,
@@ -69,60 +74,66 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:33.578Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:38.264Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:16.666Z",
+            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.json",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:02.514Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:20.394Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:20.058Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:33.869Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:38.759Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:16.899Z",
+            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.json",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:03.104Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:20.676Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:20.924Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:34.143Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:39.297Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:17.099Z",
+            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.json",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:03.938Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:20.932Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:21.565Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           }
         ]
       },
@@ -138,60 +149,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:33.578Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:38.264Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:16.666Z",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:49.963Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.json",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:02.514Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:20.394Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:20.058Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:33.869Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:38.759Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:16.899Z",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:50.898Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.json",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:03.104Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:20.676Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:20.924Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:38:34.143Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:39.297Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:17.099Z",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:51.420Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.json",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:03.938Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:20.932Z",
-            "passed": true
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:21.565Z",
+            "passed": true,
+            "runner": "local-2026-10-20"
           }
         ]
       },
@@ -203,24 +241,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:16.666Z",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:49.963Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:16.899Z",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:50.898Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:41:17.099Z",
+            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
+            "capturedAt": "2026-10-19T22:09:51.420Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-20"
           }
         ]
       },

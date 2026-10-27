@@ -2,7 +2,7 @@
   "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
   "specVersion": "1.0",
   "name": "Table",
-  "status": "beta",
+  "status": "stable",
   "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
   "package": {
     "name": "@digitaltableteur/react",
@@ -43,6 +43,11 @@
       "type": "string",
       "optional": true,
       "description": "Class applied to the scroll wrapper."
+    },
+    "stackOnNarrow": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Below a 40rem container width, stack each body row as a block instead of squeezing columns, with every cell prefixed by its TableCell label. Adds explicit table roles so assistive technology keeps table semantics."
     }
   },
   "accessibility": {
@@ -58,59 +63,108 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:17.435Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:32.667Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-default.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:18.824Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-default.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:26.503Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:25.720Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:17.983Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:33.253Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-example.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:19.469Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-example.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:27.056Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:26.388Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:18.258Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:33.798Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-forced-colors.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:20.026Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-forced-colors.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:27.344Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:26.938Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:17.708Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:32.975Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-playground.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:19.154Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-playground.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:26.773Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:26.045Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-stacked-on-narrow.dark.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:33.548Z",
+            "passed": true,
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-stacked-on-narrow.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:19.775Z",
+            "passed": true,
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-stacked-on-narrow.light.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:26.684Z",
+            "passed": true,
+            "runner": "local-claude"
           }
         ]
       },
@@ -126,87 +180,143 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:17.435Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:32.667Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:41.843Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:39.327Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-default.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:18.824Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-default.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:26.503Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:25.720Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:17.983Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:33.253Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:42.331Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:39.862Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-example.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:19.469Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-example.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:27.056Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:26.388Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:18.258Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:33.798Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:42.601Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:40.373Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-forced-colors.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:20.026Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-forced-colors.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:27.344Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:26.938Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:17.708Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:32.975Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:42.094Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:39.590Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-playground.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:19.154Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-playground.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:26.773Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:26.045Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-stacked-on-narrow.dark.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:33.548Z",
+            "passed": true,
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-stacked-on-narrow.forced-colors.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:40.131Z",
+            "passed": true,
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-stacked-on-narrow.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:19.775Z",
+            "passed": true,
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-stacked-on-narrow.light.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:26.684Z",
+            "passed": true,
+            "runner": "local-claude"
           }
         ]
       },
@@ -218,31 +328,38 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:41.843Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:39.327Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:42.331Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:39.862Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:42.601Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:40.373Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:42.094Z",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:39.590Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Table/__a11y-evidence__/data-display-table-stacked-on-narrow.forced-colors.json",
+            "sourceCommit": "faa1995004c152aded324d541697d265e374eb22",
+            "capturedAt": "2026-10-25T15:43:40.131Z",
+            "passed": true,
+            "runner": "local-claude"
           }
         ]
       },
@@ -269,7 +386,7 @@
         "id": "human-a11y-review",
         "statement": "A human completed an end-to-end accessibility review of this component.",
         "verification": "manual",
-        "note": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+        "note": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level. 2026-10-15: promoted to stable. Production consumers per audit:consumers; evidence recaptured in light, dark and forced-colors (real Chromium forced-colors pass) against 1b3b7d94a, every record passing with axe clean.",
         "reviewedAt": "2026-07-27"
       }
     ]

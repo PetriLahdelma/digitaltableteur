@@ -1,0 +1,130 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ConfirmPopover",
+  "status": "alpha",
+  "description": "Asks \"are you sure?\" next to the control that triggered it: a non-modal alertdialog anchored to the trigger with a question, an optional consequence and Cancel / confirm buttons.",
+  "props": {
+    "children": {
+      "type": "React.ReactElement",
+      "optional": false,
+      "description": "The control that opens the confirmation, usually a Button. It keeps its own label and styling."
+    },
+    "title": {
+      "type": "string",
+      "optional": false,
+      "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+    },
+    "description": {
+      "type": "string",
+      "optional": true,
+      "description": "What happens if the person confirms; describes the dialog."
+    },
+    "confirmLabel": {
+      "type": "string",
+      "optional": false,
+      "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+    },
+    "cancelLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Label of the cancelling button."
+    },
+    "tone": {
+      "type": "union",
+      "values": [
+        "error",
+        "neutral"
+      ],
+      "optional": true,
+      "description": "\"error\" for actions that remove or destroy something."
+    },
+    "onConfirm": {
+      "type": "() => void",
+      "optional": false,
+      "description": "Called when the person confirms; the popover then closes."
+    },
+    "onOpenChange": {
+      "type": "(open: boolean) => void",
+      "optional": true,
+      "description": "Called when the popover opens or closes, whichever way."
+    },
+    "side": {
+      "type": "union",
+      "values": [
+        "top",
+        "right",
+        "bottom",
+        "left"
+      ],
+      "optional": true,
+      "description": "Preferred side of the trigger; flips when out of room."
+    },
+    "align": {
+      "type": "union",
+      "values": [
+        "center",
+        "start",
+        "end"
+      ],
+      "optional": true,
+      "description": "Alignment along that side."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Extra class on the popover surface."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "Marked reviewed, but no review date was recorded."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ConfirmPopover/ConfirmPopover.module.css",
+    "../../../nextjs-app/shared/components/ConfirmPopover/ConfirmPopover.tsx"
+  ]
+}

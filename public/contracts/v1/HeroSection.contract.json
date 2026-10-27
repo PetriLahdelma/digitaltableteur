@@ -41,8 +41,8 @@
       "type": "union",
       "values": [
         "center",
-        "end",
-        "start"
+        "start",
+        "end"
       ],
       "optional": true,
       "description": "Content vertical alignment"
@@ -51,8 +51,8 @@
       "type": "union",
       "values": [
         "center",
-        "end",
-        "start"
+        "start",
+        "end"
       ],
       "optional": true,
       "description": "Content horizontal alignment"

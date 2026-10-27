@@ -70,7 +70,9 @@
     ]
   },
   "source": [
+    "../../../nextjs-app/shared/patterns/ArticlePageTemplate/ArticleCode.module.css",
     "../../../nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-    "../../../nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx"
+    "../../../nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+    "../../../nextjs-app/shared/patterns/ArticlePageTemplate/ArticleStageList.module.css"
   ]
 }

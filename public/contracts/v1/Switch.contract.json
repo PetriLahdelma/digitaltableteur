@@ -83,17 +83,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:58.249Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:55.871Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.json",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:41.994Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:51.162Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:48.200Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },
@@ -109,87 +116,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:58.249Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:55.871Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:04.995Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:20:03.822Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.json",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:41.994Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:51.162Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:48.200Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:58.321Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:56.005Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:05.096Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:20:03.943Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.json",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:42.089Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-example.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:51.240Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:48.298Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:58.351Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:56.044Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:05.120Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:20:03.985Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.json",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:42.130Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-forced-colors.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:51.262Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:48.330Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.dark.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:58.297Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:55.942Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:05.063Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:20:03.886Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.json",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:42.048Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-playground.light.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:02:51.217Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:19:48.252Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },
@@ -201,10 +236,10 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Switch/__a11y-evidence__/forms-switch-default.forced-colors.json",
-            "sourceCommit": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-            "capturedAt": "2026-09-29T20:03:04.995Z",
+            "sourceCommit": "9a8f62755cf38b1e4df6327322f32437ee3461a6",
+            "capturedAt": "2026-10-25T15:20:03.822Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },

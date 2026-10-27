@@ -48,7 +48,7 @@
     "lang": {
       "type": "string",
       "optional": true,
-      "description": "Language applied to the project hero and authored case-study body (defaults to English); navigation, CTA, and related-project chrome keep the UI language"
+      "description": "Language of the case-study content"
     }
   },
   "accessibility": {

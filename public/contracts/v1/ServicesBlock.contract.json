@@ -51,8 +51,8 @@
         "sm",
         "md",
         "lg",
-        "xl",
-        "full"
+        "full",
+        "xl"
       ],
       "optional": true,
       "description": "Maximum content width"
@@ -60,8 +60,8 @@
     "spacing": {
       "type": "union",
       "values": [
-        "default",
         "compact",
+        "default",
         "comfortable",
         "spacious"
       ],

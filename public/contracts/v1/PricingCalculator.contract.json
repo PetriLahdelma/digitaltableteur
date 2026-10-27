@@ -13,7 +13,7 @@
     "selectionFromUrl": {
       "type": "boolean",
       "optional": true,
-      "description": "Start from the ?duration=&days= selection in the page URL, so a link can arrive with a tier already chosen. Invalid or missing values keep the defaults."
+      "description": "Start from the `?duration=6m&days=4` selection in the page URL (the same\nparameters the calculator's own CTA emits), so a link can arrive with a\ntier already chosen. Invalid or missing values keep the defaults."
     }
   },
   "accessibility": {
@@ -29,59 +29,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:55:42.344Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:18.049Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.json",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:01.958Z",
+            "passed": true,
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:23.953Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:10.315Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:55:42.993Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:18.706Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.json",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:02.663Z",
+            "passed": true,
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:24.567Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:11.013Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:55:43.370Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:19.029Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.json",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:03.057Z",
+            "passed": true,
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:24.899Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:11.504Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:55:42.649Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:18.383Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.json",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:02.289Z",
+            "passed": true,
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:24.251Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:10.682Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           }
         ]
       },
@@ -97,87 +125,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:55:42.344Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:18.049Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:49.142Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:25.505Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.json",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:01.958Z",
+            "passed": true,
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:23.953Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:10.315Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:55:42.993Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:18.706Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:49.787Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:26.085Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.json",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:02.663Z",
+            "passed": true,
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:24.567Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:11.013Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:55:43.370Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:19.029Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:50.121Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:26.370Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.json",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:03.057Z",
+            "passed": true,
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:24.899Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:11.504Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:55:42.649Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:18.383Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:49.462Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:25.798Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.json",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:02.289Z",
+            "passed": true,
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:24.251Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:10.682Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           }
         ]
       },
@@ -189,31 +245,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:49.142Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:25.505Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:49.787Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:26.085Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:50.121Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:26.370Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/PricingCalculator/__a11y-evidence__/patterns-pricingcalculator-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:49.462Z",
+            "sourceCommit": "5cdcb65c124ddc3afba2277d8db81b110468166c",
+            "capturedAt": "2026-10-22T00:38:25.798Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-2026-10-22"
           }
         ]
       },

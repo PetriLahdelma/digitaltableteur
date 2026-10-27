@@ -36,60 +36,66 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:59.845Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:24.816Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.031Z",
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.json",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:15.389Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:13.488Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:20.074Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:00.154Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:25.101Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.246Z",
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.json",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:15.621Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:14.002Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:20.316Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:00.415Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:25.344Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.471Z",
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.json",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:15.851Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:14.564Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:20.545Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           }
         ]
       },
@@ -105,60 +111,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:59.845Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:24.816Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.031Z",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:29.447Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.json",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:15.389Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:13.488Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:20.074Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:00.154Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:25.101Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.246Z",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:29.664Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.json",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:15.621Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:14.002Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:20.316Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:00.415Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:25.344Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.471Z",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:29.867Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.json",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:15.851Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:14.564Z",
-            "passed": true
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:20.545Z",
+            "passed": true,
+            "runner": "local-2026-10-15e"
           }
         ]
       },
@@ -170,24 +203,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.031Z",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:29.447Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.246Z",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:29.664Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:44:53.471Z",
+            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
+            "capturedAt": "2026-10-15T15:04:29.867Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-2026-10-15e"
           }
         ]
       },

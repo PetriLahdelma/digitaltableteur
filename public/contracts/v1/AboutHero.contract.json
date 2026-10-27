@@ -19,6 +19,7 @@
       "type": "union",
       "values": [
         "image",
+        "primary",
         "minimal",
         "gradient"
       ],
@@ -34,6 +35,11 @@
       "type": "boolean",
       "optional": true,
       "description": "Show scroll indicator at bottom"
+    },
+    "backdrop": {
+      "type": "ReactNode",
+      "optional": true,
+      "description": "Decorative layer drawn over the background and under the text. Drags on\nit pass through the text layer."
     },
     "className": {
       "type": "string",

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "ProjectList",
+  "status": "beta",
+  "description": "A compact project index: one row per project, the whole row a link to its case study. Narrow, a thumbnail, the title and one meta line; wide, aligned columns for project, client, discipline and period.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { ProjectList } from \"@digitaltableteur/react\";"
+  },
+  "props": {
+    "items": {
+      "type": "ProjectListItem[]",
+      "optional": false,
+      "description": "Projects in display order; items without href (or marked comingSoon) render as muted teaser rows."
+    },
+    "ariaLabel": {
+      "type": "string",
+      "optional": false,
+      "description": "Accessible name for the list."
+    },
+    "comingSoonLabel": {
+      "type": "string",
+      "optional": true,
+      "description": "Label on teaser rows; defaults to the translated \"Coming soon\"."
+    },
+    "contentLanguage": {
+      "type": "string",
+      "optional": true,
+      "description": "Language of titles and clients when it differs from the page."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Additional className for the root element."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-10-17"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-10-17: built for the /work index list view. Reviewed: list semantics and name, one link per row with label-in-name order, aria-hidden column header, decorative thumbnails, teaser rows without links, keyboard path (Tab, Enter) via play function, :hover gated to (hover: hover) so one tap opens a row on touch screens, light and dark themes, forced colours (focus outline Highlight, teaser border CanvasText), 390px width with no horizontal overflow, axe clean in unit tests.",
+        "reviewedAt": "2026-10-17"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/ProjectList/ProjectList.module.css",
+    "../../../nextjs-app/shared/components/ProjectList/ProjectList.tsx"
+  ]
+}

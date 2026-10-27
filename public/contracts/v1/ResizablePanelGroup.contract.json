@@ -51,59 +51,59 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:56:17.155Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:12.026Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-default.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:17.443Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:04.396Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:56:17.672Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:12.737Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-example.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:18.001Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:04.978Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:56:17.953Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:13.103Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-forced-colors.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:18.283Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:05.270Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:56:17.410Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:12.375Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-playground.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:17.686Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:04.685Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },
@@ -119,87 +119,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:56:17.155Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:12.026Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:04:16.003Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:23.497Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-default.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:17.443Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:04.396Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:56:17.672Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:12.737Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:04:16.523Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:24.255Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-example.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:18.001Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:04.978Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:56:17.953Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:13.103Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:04:16.779Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:24.625Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-forced-colors.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:18.283Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:05.270Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:56:17.410Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:12.375Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:04:16.252Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:23.877Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-playground.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:44:17.686Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:04.685Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },
@@ -211,31 +211,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:04:16.003Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:23.497Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:04:16.523Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:24.255Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:04:16.779Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:24.625Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ResizablePanelGroup/__a11y-evidence__/layout-resizablepanelgroup-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:04:16.252Z",
+            "sourceCommit": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
+            "capturedAt": "2026-10-25T15:51:23.877Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },

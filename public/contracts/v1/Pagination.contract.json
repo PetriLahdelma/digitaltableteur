@@ -29,6 +29,11 @@
       "optional": true,
       "description": "Number of page buttons to show on each side of current page"
     },
+    "label": {
+      "type": "string",
+      "optional": true,
+      "description": "Accessible name of the navigation landmark, for pages with several\nnavs (for example \"Questionnaire pages\"). Defaults to the localized\n\"Page navigation\"."
+    },
     "className": {
       "type": "string",
       "optional": true,
@@ -48,55 +53,59 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:26.688Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:52.138Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:06.807Z",
-            "passed": true
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:46.912Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:27.264Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:52.717Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:07.522Z",
-            "passed": true
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:47.445Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:27.565Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:52.992Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:07.876Z",
-            "passed": true
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:47.717Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:26.949Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:52.435Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:07.166Z",
-            "passed": true
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:47.183Z",
+            "passed": true,
+            "runner": "local-claude"
           }
         ]
       },
@@ -112,83 +121,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:26.688Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:52.138Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:16.492Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:57.215Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:06.807Z",
-            "passed": true
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:46.912Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:27.264Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:52.717Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:17.096Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:57.736Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:07.522Z",
-            "passed": true
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:47.445Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:27.565Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:52.992Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:17.417Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:57.996Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:07.876Z",
-            "passed": true
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:47.717Z",
+            "passed": true,
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:14:26.949Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:52.435Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:16.804Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:57.469Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:30:07.166Z",
-            "passed": true
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:47.183Z",
+            "passed": true,
+            "runner": "local-claude"
           }
         ]
       },
@@ -200,31 +213,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:16.492Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:57.215Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:17.096Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:57.736Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:17.417Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:57.996Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Pagination/__a11y-evidence__/navigation-pagination-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:16.804Z",
+            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
+            "capturedAt": "2026-10-26T20:13:57.469Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-claude"
           }
         ]
       },
