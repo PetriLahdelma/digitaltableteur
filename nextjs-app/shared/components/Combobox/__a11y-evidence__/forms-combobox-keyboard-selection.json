@@ -1,9 +1,9 @@
 {
   "storyId": "forms-combobox-keyboard-selection",
   "mode": "light",
-  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
-  "capturedAt": "2026-08-05T09:38:32.690Z",
-  "runner": "beta-flip-dt1412",
+  "sourceSHA": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+  "capturedAt": "2026-10-27T18:10:33.928Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

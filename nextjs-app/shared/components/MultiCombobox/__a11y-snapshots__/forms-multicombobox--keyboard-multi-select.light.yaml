@@ -1,6 +1,9 @@
 - text: Disciplines Accessibility
 - button "Remove badge"
-- combobox "Disciplines" [expanded]: acc
+- combobox "Disciplines" [expanded]
 - button "Toggle options" [expanded]
 - listbox "Disciplines":
+  - option "Research"
+  - option "Design"
+  - option "Frontend"
   - option "Accessibility" [selected]

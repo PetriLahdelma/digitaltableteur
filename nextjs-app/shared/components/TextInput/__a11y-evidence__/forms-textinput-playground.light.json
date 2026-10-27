@@ -1,9 +1,9 @@
 {
   "storyId": "forms-textinput-playground",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:25:32.669Z",
-  "runner": null,
+  "sourceSHA": "574da8a311255bd9ec6bb5446a098b457dd7b207",
+  "capturedAt": "2026-10-27T18:10:44.134Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
