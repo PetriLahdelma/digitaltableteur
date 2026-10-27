@@ -14,6 +14,7 @@ import type { IntakeLocale } from "@/app/lib/intake/types";
 
 import { postJson } from "./api";
 import { IntakeColumns } from "./IntakePage";
+import { PrivacyNotice } from "./PrivacyNotice";
 import { CodeStep } from "./CodeStep";
 
 const TOKEN = /^[A-Za-z0-9_-]{43}$/;
@@ -82,11 +83,7 @@ export function InviteFlow({
 
   return (
     <IntakeColumns title={copy.inviteTitle} intro={copy.inviteIntro}>
-      <Text size="s">
-        <Link href={`/intake/privacy?lang=${locale}`}>
-          {copy.privacyBeforeCode}
-        </Link>
-      </Text>
+      <PrivacyNotice copy={copy} locale={locale} />
       {problem ? (
         <AlertBanner tone="error" description={problem} focusOnMount />
       ) : null}

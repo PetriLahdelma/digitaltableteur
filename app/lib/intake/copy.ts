@@ -65,11 +65,10 @@ export const INTAKE_COPY = {
   codeLocked: { en: "Too many attempts. Request a new code.", fi: "Liian monta yritystä. Pyydä uusi koodi.", sv: "För många försök. Begär en ny kod." },
   codeFormat: { en: "Enter the 8 digits from the email.", fi: "Anna viestin 8 numeroa.", sv: "Ange de 8 siffrorna i mejlet." },
   requestNewCode: { en: "Request a new code", fi: "Pyydä uusi koodi", sv: "Begär en ny kod" },
-  privacyBeforeCode: {
-    en: "Before you continue: read how we handle your answers.",
-    fi: "Ennen kuin jatkat: lue, miten käsittelemme vastauksesi.",
-    sv: "Innan du fortsätter: läs hur vi hanterar dina svar.",
-  },
+  // One sentence with the link in the middle: lead, link text, end.
+  privacyNoticeLead: { en: "Before you continue, ", fi: "Ennen kuin jatkat, ", sv: "Innan du fortsätter, " },
+  privacyNoticeLink: { en: "read how we handle your answers", fi: "lue, miten käsittelemme vastauksesi", sv: "läs hur vi hanterar dina svar" },
+  privacyNoticeEnd: { en: ".", fi: ".", sv: "." },
   rateLimited: { en: "Too many requests. Wait a few minutes and try again.", fi: "Liian monta pyyntöä. Odota hetki ja yritä uudelleen.", sv: "För många förfrågningar. Vänta några minuter och försök igen." },
   genericError: { en: "Something went wrong on our side. Try again in a moment.", fi: "Jokin meni vikaan meidän päässämme. Yritä hetken päästä uudelleen.", sv: "Något gick fel hos oss. Försök igen om en stund." },
 

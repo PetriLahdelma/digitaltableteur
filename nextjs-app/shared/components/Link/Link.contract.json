@@ -111,12 +111,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/SignInFlow.tsx",
+            "path": "app/intake/_components/PrivacyNotice.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "path": "app/intake/_components/SignInFlow.tsx",
             "since": "2026-06-04"
         }
     ],

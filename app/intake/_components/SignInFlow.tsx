@@ -16,6 +16,7 @@ import type { IntakeLocale } from "@/app/lib/intake/types";
 import { postJson } from "./api";
 import { CodeStep } from "./CodeStep";
 import { IntakeColumns } from "./IntakePage";
+import { PrivacyNotice } from "./PrivacyNotice";
 
 /** Returning clients: email address, then the emailed code. No password anywhere. */
 export function SignInFlow({
@@ -61,11 +62,7 @@ export function SignInFlow({
     <IntakeColumns title={copy.signInTitle} intro={copy.signInIntro}>
       <form onSubmit={submit} noValidate>
         <FlexBox direction="column" gap="var(--space-internal-24)">
-          <Text size="s">
-            <Link href={`/intake/privacy?lang=${locale}`}>
-              {copy.privacyBeforeCode}
-            </Link>
-          </Text>
+          <PrivacyNotice copy={copy} locale={locale} />
           {problem ? (
             <AlertBanner tone="error" description={problem} focusOnMount />
           ) : null}
