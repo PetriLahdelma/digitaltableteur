@@ -5067,13 +5067,115 @@
       "dense": "",
       "keywords": [],
       "importLine": "import ConfirmPopover from \"@dt/ConfirmPopover\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "children",
+          "type": "React.ReactElement",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "confirmLabel",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tone",
+          "type": "error | neutral",
+          "required": false
+        },
+        {
+          "name": "side",
+          "type": "top | right | bottom | left",
+          "required": false
+        },
+        {
+          "name": "align",
+          "type": "center | start | end",
+          "required": false
+        }
+      ],
+      "props": {
+        "children": {
+          "optional": false,
+          "type": "React.ReactElement",
+          "description": "The control that opens the confirmation, usually a Button. It keeps its own label and styling."
+        },
+        "title": {
+          "optional": false,
+          "type": "string",
+          "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+        },
+        "description": {
+          "optional": true,
+          "type": "string",
+          "description": "What happens if the person confirms; describes the dialog."
+        },
+        "confirmLabel": {
+          "optional": false,
+          "type": "string",
+          "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+        },
+        "cancelLabel": {
+          "optional": true,
+          "type": "string",
+          "description": "Label of the cancelling button."
+        },
+        "tone": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "error",
+            "neutral"
+          ],
+          "description": "\"error\" for actions that remove or destroy something."
+        },
+        "onConfirm": {
+          "optional": false,
+          "type": "() => void",
+          "description": "Called when the person confirms; the popover then closes."
+        },
+        "onOpenChange": {
+          "optional": true,
+          "type": "(open: boolean) => void",
+          "description": "Called when the popover opens or closes, whichever way."
+        },
+        "side": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "description": "Preferred side of the trigger; flips when out of room."
+        },
+        "align": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "center",
+            "start",
+            "end"
+          ],
+          "description": "Alignment along that side."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Extra class on the popover surface."
+        }
+      },
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "use it for a flow that needs more explanation or input than one question; use Modal.",
-        "confirm an action that can simply be undone; offer Undo instead."
+        "use it when the action can be undone; offer Undo instead.",
+        "put forms or long explanations inside; use Modal."
       ],
       "usage": null,
       "tokens": {
@@ -16992,13 +17094,49 @@
       "dense": "",
       "keywords": [],
       "importLine": "import SummaryList from \"@dt/SummaryList\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "rows",
+          "type": "SummaryListRow[]",
+          "required": true
+        },
+        {
+          "name": "layout",
+          "type": "auto | stacked",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "rows": {
+          "optional": false,
+          "type": "SummaryListRow[]",
+          "description": "Rows in order."
+        },
+        "layout": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "auto",
+            "stacked"
+          ],
+          "description": "\"auto\" stacks the label above the value in narrow containers and puts\nthem side by side once the list is wide enough (about 40rem)."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Merged onto the dl element."
+        }
+      },
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "use it for tabular data with several values per row; use Table.",
-        "use it for an editable form; it shows answers, not inputs."
+        "squeeze answers into columns side by side; one row per question.",
+        "use it for tables of several values per row."
       ],
       "usage": null,
       "tokens": {
@@ -18475,7 +18613,7 @@
       "keyProps": [
         {
           "name": "type",
-          "type": "number | search | text | tel | email | password | date | datetime-local | time | month | week",
+          "type": "number | search | text | tel | email | date | time | password | datetime-local | month | week",
           "required": true
         },
         {
@@ -18489,6 +18627,11 @@
           "required": false
         },
         {
+          "name": "width",
+          "type": "full | 2ch | 3ch | 4ch | 5ch | 10ch | 20ch | 30ch",
+          "required": false
+        },
+        {
           "name": "defaultValue",
           "type": "string | number",
           "required": false
@@ -18496,11 +18639,6 @@
         {
           "name": "value",
           "type": "string | number",
-          "required": false
-        },
-        {
-          "name": "error",
-          "type": "string",
           "required": false
         }
       ],
@@ -18519,14 +18657,14 @@
             "text",
             "tel",
             "email",
-            "password",
             "date",
-            "datetime-local",
             "time",
+            "password",
+            "datetime-local",
             "month",
             "week"
           ],
-          "description": "Native HTML input type; tel formats, email validates, and date/time variants retain the browser's localized picker and ISO-compatible value"
+          "description": "Native HTML input type. Telephone values format and email values validate\nas the user types; date/time variants retain the browser's localized\npicker and ISO-compatible submitted value."
         },
         "size": {
           "optional": true,
@@ -18585,6 +18723,21 @@
           "optional": true,
           "type": "boolean",
           "description": "Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance"
+        },
+        "width": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "full",
+            "2ch",
+            "3ch",
+            "4ch",
+            "5ch",
+            "10ch",
+            "20ch",
+            "30ch"
+          ],
+          "description": "Widest the field grows, in characters of the expected answer (after the\nGOV.UK input widths): \"10ch\" for a code, \"30ch\" for an email address. The\nfield still shrinks with its container."
         },
         "onChange": {
           "optional": true,
@@ -22255,7 +22408,7 @@
         },
         {
           "name": "variant",
-          "type": "minimal | default | centered | split | stacked",
+          "type": "minimal | default | stacked | centered | split",
           "required": false
         },
         {
@@ -22265,7 +22418,7 @@
         },
         {
           "name": "align",
-          "type": "center | left | right",
+          "type": "center | right | left",
           "required": false
         },
         {
@@ -22331,9 +22484,9 @@
           "values": [
             "minimal",
             "default",
+            "stacked",
             "centered",
-            "split",
-            "stacked"
+            "split"
           ],
           "description": "Layout variant"
         },
@@ -22354,8 +22507,8 @@
           "type": "union",
           "values": [
             "center",
-            "left",
-            "right"
+            "right",
+            "left"
           ],
           "description": "Content alignment"
         },
@@ -22440,12 +22593,12 @@
         },
         {
           "name": "align",
-          "type": "center | end | start",
+          "type": "center | start | end",
           "required": false
         },
         {
           "name": "justify",
-          "type": "center | end | start",
+          "type": "center | start | end",
           "required": false
         },
         {
@@ -22492,8 +22645,8 @@
           "type": "union",
           "values": [
             "center",
-            "end",
-            "start"
+            "start",
+            "end"
           ],
           "description": "Content vertical alignment"
         },
@@ -22502,8 +22655,8 @@
           "type": "union",
           "values": [
             "center",
-            "end",
-            "start"
+            "start",
+            "end"
           ],
           "description": "Content horizontal alignment"
         },

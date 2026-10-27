@@ -140,6 +140,24 @@
       "level": "additive",
       "detail": "prop `hideLegend` added",
       "bump": "patch"
+    },
+    {
+      "component": "Combobox",
+      "level": "additive",
+      "detail": "keyboard gained \"Printable characters (typeahead): open the list and move the highlight to the first option whose label, or any word in it, starts with what was typed; the search clears after a 0.7 s pause, and a space inside a search is part of it.\"",
+      "bump": "patch"
+    },
+    {
+      "component": "PhoneInput",
+      "level": "additive",
+      "detail": "prop `size` added",
+      "bump": "patch"
+    },
+    {
+      "component": "TextInput",
+      "level": "additive",
+      "detail": "prop `width` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -1437,6 +1455,7 @@
         "ArrowUp",
         "Enter",
         "Escape",
+        "Printable characters (typeahead): open the list and move the highlight to the first option whose label, or any word in it, starts with what was typed; the search clears after a 0.7 s pause, and a space inside a search is part of it.",
         "Space",
         "Tab"
       ]
@@ -3512,6 +3531,14 @@
           "optional": true,
           "type": "boolean"
         },
+        "size": {
+          "optional": true,
+          "values": [
+            "lg",
+            "md",
+            "sm"
+          ]
+        },
         "value": {
           "optional": true,
           "type": "string"
@@ -5048,6 +5075,19 @@
         "value": {
           "optional": true,
           "type": "string | number"
+        },
+        "width": {
+          "optional": true,
+          "values": [
+            "10ch",
+            "20ch",
+            "2ch",
+            "30ch",
+            "3ch",
+            "4ch",
+            "5ch",
+            "full"
+          ]
         }
       },
       "slots": [],

@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.43 - 2026-10-27
+
+- `SummaryList` (new, alpha): questions and their answers as a description
+  list, one row per question with an optional action, after the GOV.UK
+  summary list. Label and value sit side by side once the list is about
+  40rem wide and stack below that; string answers keep their line breaks;
+  rows do not split across printed pages.
+- `ConfirmPopover` (new, alpha): asks "are you sure?" next to the control
+  that triggered it. A non-modal alertdialog named by the question, focus on
+  Cancel, Escape or an outside click cancels; `tone="error"` for actions
+  that remove something.
+- `TextInput`: `width` caps the field at the expected answer in characters
+  ("2ch" to "30ch"); the field still shrinks with its container.
+- `PhoneInput`: `size`; the country select reads "Finland +358" with no flag
+  images (nothing is fetched); the number shows in national format and is
+  still stored as E.164; a stored number written with spaces is accepted.
+- `Combobox`: typeahead on the closed field, a white field surface and a
+  list at least 320px wide that stays inside the viewport.
+- `MultiCombobox`: chips that do not fit collapse into a "+N" badge, with
+  the hidden choices in its tooltip and announced to screen readers; Enter
+  clears the filter after a pick.
+- `Button`: secondary buttons are now exactly as tall and wide as primary
+  and tertiary ones, with or without an icon.
+- `TaskList`: only started and completed tasks show a status; rows centre
+  their text optically and ignore global list-item margins.
+- `Title`, `CookieConsentBanner`: print styles (headings keep with what
+  follows; the banner does not print).
+
 ## 0.1.42 - 2026-10-26
 
 - `FormField` and `CheckboxGroup`: `hideLegend` keeps the legend as the

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-27T17:21:30.320Z",
+  "generatedAt": "2026-10-27T18:10:38.745Z",
   "summary": {
     "componentCount": 192,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 91.9,
     "codebaseComponentCount": 209,
     "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 43,
+    "componentsWithProductionUsage": 44,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,10 +79,10 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 192,
     "withAnyUsage": 179,
-    "withProductionUsage": 43,
+    "withProductionUsage": 44,
     "uniqueImportedComponents": 179,
-    "totalEvidenceRows": 921,
-    "aliasImportFiles": 471,
+    "totalEvidenceRows": 922,
+    "aliasImportFiles": 472,
     "relativeImportFiles": 490,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -780,6 +780,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/DownloadPdfButton.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
@@ -826,11 +831,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -7898,7 +7898,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/CodeStep.tsx",
+            "path": "app/intake/_components/AnswerSummary.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -16571,8 +16571,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -17642,10 +17642,82 @@
         },
         "lightDarkVerified": false,
         "forbiddenUse": [
-          "use it for a flow that needs more explanation or input than one question; use Modal.",
-          "confirm an action that can simply be undone; offer Undo instead."
+          "use it when the action can be undone; offer Undo instead.",
+          "put forms or long explanations inside; use Modal."
         ],
-        "schemaVersion": 2
+        "schemaVersion": 2,
+        "props": {
+          "children": {
+            "optional": false,
+            "type": "React.ReactElement",
+            "description": "The control that opens the confirmation, usually a Button. It keeps its own label and styling."
+          },
+          "title": {
+            "optional": false,
+            "type": "string",
+            "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+          },
+          "description": {
+            "optional": true,
+            "type": "string",
+            "description": "What happens if the person confirms; describes the dialog."
+          },
+          "confirmLabel": {
+            "optional": false,
+            "type": "string",
+            "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+          },
+          "cancelLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label of the cancelling button."
+          },
+          "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "error",
+              "neutral"
+            ],
+            "description": "\"error\" for actions that remove or destroy something."
+          },
+          "onConfirm": {
+            "optional": false,
+            "type": "() => void",
+            "description": "Called when the person confirms; the popover then closes."
+          },
+          "onOpenChange": {
+            "optional": true,
+            "type": "(open: boolean) => void",
+            "description": "Called when the popover opens or closes, whichever way."
+          },
+          "side": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "top",
+              "right",
+              "bottom",
+              "left"
+            ],
+            "description": "Preferred side of the trigger; flips when out of room."
+          },
+          "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "center",
+              "start",
+              "end"
+            ],
+            "description": "Alignment along that side."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Extra class on the popover surface."
+          }
+        }
       },
       "spec": "# ConfirmPopover\n\n## Intent\nAsks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.\n\n## Interaction contract\n- Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.\n- Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.\n- Screen readers: `role=\"alertdialog\"`, named by `title`, described by `description`.\n\n## Do / don't\n- Do: repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.\n- Do: use `tone=\"error\"` for actions that remove something.\n- Don't: use it when the action can be undone; offer Undo instead.\n- Don't: put forms or long explanations inside; use Modal.\n\n## Design notes\n- Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.\n- Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.\n- Figma: not yet drawn.\n",
       "documentationDebt": false,
@@ -21384,11 +21456,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/AnswerSheet.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
@@ -21405,11 +21472,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/submissions/[submissionId]/page.tsx",
             "since": "2026-06-04"
           },
           {
@@ -35914,6 +35976,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/print/[submissionId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -36035,11 +36102,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Logo",
-        "importCount": 2,
-        "productionImportCount": 0,
+        "importCount": 3,
+        "productionImportCount": 1,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
+          {
+            "path": "app/intake/print/[submissionId]/page.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Logo",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
             "importKind": "relative",
@@ -39952,8 +40025,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -41505,8 +41578,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -41520,8 +41593,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -41542,8 +41615,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -43956,8 +44029,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -50259,7 +50332,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/AnswerSheet.tsx",
+            "path": "app/intake/_components/AnswerSummary.tsx",
             "since": "2026-06-04"
           },
           {
@@ -60597,10 +60670,31 @@
         },
         "lightDarkVerified": false,
         "forbiddenUse": [
-          "use it for tabular data with several values per row; use Table.",
-          "use it for an editable form; it shows answers, not inputs."
+          "squeeze answers into columns side by side; one row per question.",
+          "use it for tables of several values per row."
         ],
-        "schemaVersion": 2
+        "schemaVersion": 2,
+        "props": {
+          "rows": {
+            "optional": false,
+            "type": "SummaryListRow[]",
+            "description": "Rows in order."
+          },
+          "layout": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "auto",
+              "stacked"
+            ],
+            "description": "\"auto\" stacks the label above the value in narrow containers and puts\nthem side by side once the list is wide enough (about 40rem)."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the dl element."
+          }
+        }
       },
       "spec": "# SummaryList\n\n## Intent\nShows questions and their answers so a person can check them before submitting, or read back a submitted record. After the GOV.UK summary list.\n\n## Interaction contract\n- Keyboard: the list itself is not interactive; row actions follow in reading order.\n- Pointer: row actions are ordinary buttons or links.\n- Screen readers: a description list; each label is a term and each answer its definition.\n\n## Do / don't\n- Do: keep line breaks in long answers (string values render with `white-space: pre-line`).\n- Do: name what a row action changes (\"Change\" plus a visually hidden label).\n- Don't: squeeze answers into columns side by side; one row per question.\n- Don't: use it for tables of several values per row.\n\n## Design notes\n- Narrow: label above value. From about 40rem (container query) label, value and action sit side by side in a 1 : 2 : auto grid, baseline aligned.\n- Tokens: `--color-muted` label, `--color-text` value, `--color-border-light` row rule; 16px row padding.\n- Figma: not yet drawn.\n",
       "documentationDebt": false,
@@ -64938,8 +65032,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -64953,8 +65047,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -64975,8 +65069,7 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "unverified"
           },
           {
             "id": "keyboard-contract",
@@ -65002,8 +65095,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -65566,7 +65659,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/AnswerSheet.tsx",
+            "path": "app/error.tsx",
             "since": "2026-06-04"
           },
           {
@@ -66738,14 +66831,14 @@
               "text",
               "tel",
               "email",
-              "password",
               "date",
-              "datetime-local",
               "time",
+              "password",
+              "datetime-local",
               "month",
               "week"
             ],
-            "description": "Native HTML input type; tel formats, email validates, and date/time variants retain the browser's localized picker and ISO-compatible value"
+            "description": "Native HTML input type. Telephone values format and email values validate\nas the user types; date/time variants retain the browser's localized\npicker and ISO-compatible submitted value."
           },
           "size": {
             "optional": true,
@@ -66804,6 +66897,21 @@
             "optional": true,
             "type": "boolean",
             "description": "Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance"
+          },
+          "width": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "full",
+              "2ch",
+              "3ch",
+              "4ch",
+              "5ch",
+              "10ch",
+              "20ch",
+              "30ch"
+            ],
+            "description": "Widest the field grows, in characters of the expected answer (after the\nGOV.UK input widths): \"10ch\" for a code, \"30ch\" for an email address. The\nfield still shrinks with its container."
           },
           "onChange": {
             "optional": true,
@@ -67252,8 +67360,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -68522,17 +68630,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/AnswerSheet.tsx",
+            "path": "app/error.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/AnswerSummary.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/CodeStep.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -73155,6 +73263,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/AnswerSummary.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
           },
@@ -73166,6 +73279,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/print/[submissionId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/submissions/[submissionId]/page.tsx",
             "since": "2026-06-04"
           },
           {
@@ -73196,21 +73319,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/EngagementPageContent/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -81344,9 +81452,9 @@
             "values": [
               "minimal",
               "default",
+              "stacked",
               "centered",
-              "split",
-              "stacked"
+              "split"
             ],
             "description": "Layout variant"
           },
@@ -81367,8 +81475,8 @@
             "type": "union",
             "values": [
               "center",
-              "left",
-              "right"
+              "right",
+              "left"
             ],
             "description": "Content alignment"
           },
@@ -81883,8 +81991,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Content vertical alignment"
           },
@@ -81893,8 +82001,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Content horizontal alignment"
           },
