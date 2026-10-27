@@ -8,7 +8,7 @@ import {
   type PublicKeyCredentialRequestOptionsJSON,
   type RegistrationResponseJSON,
 } from "@simplewebauthn/server";
-import { and, asc, count, eq, gt, isNull } from "drizzle-orm";
+import { and, asc, count, eq, gt, isNull, ne } from "drizzle-orm";
 
 import { RETENTION } from "../data-policy";
 import { adminChallenges, adminCredentials, adminEnrolments, auditLog, sessions, type AdminChallengePurpose } from "../db/schema";
@@ -144,7 +144,24 @@ export async function finishRegistration(
   if (!verification.verified) return { status: "invalid" };
   const { credential } = verification.registrationInfo;
   const now = ctx.now();
-  await ctx.db.transaction(async (tx) => {
+  const stored = await ctx.db.transaction(async (tx) => {
+    // The enrolment token is spent first, in one conditional update: of two
+    // registrations racing with the same link, only one gets the row.
+    if (!input.adminSession) {
+      if (!input.enrolmentToken) return false;
+      const spent = await tx
+        .update(adminEnrolments)
+        .set({ usedAt: now })
+        .where(
+          and(
+            eq(adminEnrolments.tokenHash, hashToken(input.enrolmentToken)),
+            isNull(adminEnrolments.usedAt),
+            gt(adminEnrolments.expiresAt, now),
+          ),
+        )
+        .returning({ tokenHash: adminEnrolments.tokenHash });
+      if (spent.length !== 1) return false;
+    }
     await tx.insert(adminCredentials).values({
       id: credential.id,
       publicKey: toBase64Url(credential.publicKey),
@@ -153,11 +170,10 @@ export async function finishRegistration(
       label: input.label.trim().slice(0, 60) || "Passkey",
       createdAt: now,
     });
-    if (!input.adminSession && input.enrolmentToken) {
-      await tx.update(adminEnrolments).set({ usedAt: now }).where(eq(adminEnrolments.tokenHash, hashToken(input.enrolmentToken)));
-    }
     await tx.insert(auditLog).values({ actor: "owner", action: "admin.passkey.add" });
+    return true;
   });
+  if (!stored) return { status: "forbidden" };
   return { status: "ok", session: input.adminSession ? null : await startAdminSession(ctx) };
 }
 
@@ -244,14 +260,32 @@ export async function listPasskeys(ctx: IntakeContext): Promise<AdminPasskey[]> 
     .orderBy(asc(adminCredentials.createdAt));
 }
 
-/** Removes a passkey, never the last one: the owner would be locked out. */
-export async function removePasskey(ctx: IntakeContext, id: string): Promise<"removed" | "last" | "not_found"> {
+/**
+ * Removes a passkey, never the last one: the owner would be locked out. A
+ * removed passkey is usually a lost device, so every other admin session ends
+ * with it; the session doing the removal (`keepSessionHash`) stays signed in.
+ */
+export async function removePasskey(
+  ctx: IntakeContext,
+  id: string,
+  keepSessionHash?: string,
+): Promise<"removed" | "last" | "not_found"> {
   return ctx.db.transaction(async (tx) => {
     const [target] = await tx.select({ id: adminCredentials.id }).from(adminCredentials).where(eq(adminCredentials.id, id));
     if (!target) return "not_found";
     const [{ total }] = await tx.select({ total: count() }).from(adminCredentials);
     if (total <= 1) return "last";
     await tx.delete(adminCredentials).where(eq(adminCredentials.id, id));
+    await tx
+      .update(sessions)
+      .set({ revokedAt: ctx.now() })
+      .where(
+        and(
+          eq(sessions.kind, "admin"),
+          isNull(sessions.revokedAt),
+          ...(keepSessionHash ? [ne(sessions.idHash, keepSessionHash)] : []),
+        ),
+      );
     await tx.insert(auditLog).values({ actor: "owner", action: "admin.passkey.remove" });
     return "removed";
   });

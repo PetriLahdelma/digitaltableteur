@@ -258,8 +258,11 @@ intake per questionnaire.
   Registering a passkey needs that token or an admin session, so the second
   passkey is added from inside admin and recovery is rerunning the script,
   which needs the database credentials (Vercel access). In the sandbox the
-  dev endpoint creates the token. Passkeys are listed and removable in admin;
-  the last one cannot be removed.
+  dev endpoint creates the token, which is spent in the same transaction
+  that stores the passkey (a conditional update, so a link registers one
+  passkey however many tabs race). Passkeys are listed and removable in
+  admin; the last one cannot be removed, and removing one (usually a lost
+  device) ends every other admin session.
 - **Pages.** `/intake/admin` is one DS `Table` of intakes (client, company,
   form, status, last activity) with a status filter and New invite.
   `/intake/admin/invite` fills name, email, form, language and an optional

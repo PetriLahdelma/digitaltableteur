@@ -4,13 +4,13 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import type { IntakeDb } from "../db/client";
-import { adminCredentials, auditLog, clients, invites, sessions, submissions } from "../db/schema";
+import { adminCredentials, adminEnrolments, auditLog, clients, invites, sessions, submissions } from "../db/schema";
 import { createTestIntakeDb } from "../db/test-db";
 import { getQuestionnaire, visibleFields } from "../index";
 import { parseDataKeys, parseHmacKey } from "../security/keys";
 import type { Answers } from "../types";
 import { deleteIntake, dueExpiryReminders, getIntake, listIntakes, previewInvite, reopenIntake, resendInvite, revokeInvite } from "./admin";
-import { createEnrolment, finishAuthentication, readAdminSession, removePasskey, startAuthentication, startRegistration } from "./admin-auth";
+import { createEnrolment, finishAuthentication, finishRegistration, readAdminSession, removePasskey, startAuthentication, startRegistration } from "./admin-auth";
 import { readSession, requestCodeForInvite, verifyLoginCode } from "./auth";
 import { HOUR, type IntakeContext, type IntakeMail } from "./context";
 import { saveDraft, submitIntake } from "./forms";
@@ -178,6 +178,33 @@ describe("admin passkeys", () => {
     expect((await finishAuthentication(ctx, preauthToken, fake)).status).toBe("invalid");
     expect((await finishAuthentication(ctx, preauthToken, fake)).status).toBe("invalid");
     expect(await readAdminSession(ctx, "not-a-session")).toBeNull();
+  });
+
+  it("refuses a spent or expired enrolment token at the finish, before verifying", async () => {
+    const { token } = await createEnrolment(ctx);
+    const start = await startRegistration(ctx, { enrolmentToken: token });
+    if (start.status !== "ok") throw new Error(start.status);
+    // Another registration spent the link between this one's start and finish.
+    await db.update(adminEnrolments).set({ usedAt: clock });
+    const fake = { id: "x", rawId: "x", type: "public-key", response: {}, clientExtensionResults: {} } as never;
+    expect((await finishRegistration(ctx, { preauthToken: start.preauthToken, response: fake, label: "Mac", enrolmentToken: token })).status).toBe("forbidden");
+    expect(await db.select().from(adminCredentials)).toHaveLength(0);
+  });
+
+  it("ends every other admin session when a passkey is removed", async () => {
+    await db.insert(adminCredentials).values([
+      { id: "one", publicKey: "a", label: "Mac" },
+      { id: "two", publicKey: "b", label: "iPhone" },
+    ]);
+    const expiresAt = new Date(clock.getTime() + 8 * HOUR);
+    await db.insert(sessions).values([
+      { idHash: "current", kind: "admin", clientId: null, createdAt: clock, lastSeenAt: clock, expiresAt },
+      { idHash: "lost-phone", kind: "admin", clientId: null, createdAt: clock, lastSeenAt: clock, expiresAt },
+    ]);
+    expect(await removePasskey(ctx, "two", "current")).toBe("removed");
+    const rows = await db.select({ idHash: sessions.idHash, revokedAt: sessions.revokedAt }).from(sessions);
+    expect(rows.find((row) => row.idHash === "current")?.revokedAt).toBeNull();
+    expect(rows.find((row) => row.idHash === "lost-phone")?.revokedAt).not.toBeNull();
   });
 
   it("never removes the last passkey", async () => {

@@ -16,7 +16,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
   const passkeyId = (await params).passkeyId;
   if (!/^[A-Za-z0-9_-]{1,1024}$/.test(passkeyId)) return json({ status: "not_found" }, 404);
   try {
-    const result = await removePasskey(auth.ctx, passkeyId);
+    const result = await removePasskey(auth.ctx, passkeyId, auth.admin.idHash);
     return json({ status: result }, result === "removed" ? 200 : result === "last" ? 409 : 404);
   } catch (error) {
     return serverError("admin.passkey.remove", error);
