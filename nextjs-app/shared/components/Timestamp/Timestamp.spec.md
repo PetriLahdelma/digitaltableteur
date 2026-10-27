@@ -35,6 +35,9 @@ surface hand-rolling `Intl` calls.
 - Locale: defaults to the active site language (`useLocalization`); pass
   `locale` to override. All formatting goes through `Intl`, so it localizes
   without translation keys.
+- Time zone: defaults to the runtime's zone, which is UTC when the page is
+  rendered on a server. Pass `timeZone` (IANA, e.g. "Europe/Helsinki") when a
+  moment must read the same for everyone, such as a business's local time.
 - Date-only ISO values are parsed as calendar dates rather than UTC instants,
   preventing users west of UTC from seeing the previous day.
 - Figma: none — presentation is entirely the type scale + text color roles,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T21:13:50.022Z",
+  "generatedAt": "2026-10-27T22:59:40.149Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -40264,6 +40264,11 @@
           "type": "string",
           "description": "Locale override; defaults to the active site language."
         },
+        "timeZone": {
+          "optional": true,
+          "type": "string",
+          "description": "IANA time zone for the shown date and time, for example \"Europe/Helsinki\".\nDefaults to the runtime's zone, which is UTC on a server render: set it\nwhen the moment must read the same everywhere (a business's local time)."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -40320,7 +40325,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 11,
+      "declaredPropCount": 12,
       "guidelines": [
         {
           "level": "should",

@@ -50,6 +50,12 @@ export interface TimestampProps {
   now?: string | number | Date;
   /** Locale override; defaults to the active site language. */
   locale?: string;
+  /**
+   * IANA time zone for the shown date and time, for example "Europe/Helsinki".
+   * Defaults to the runtime's zone, which is UTC on a server render: set it
+   * when the moment must read the same everywhere (a business's local time).
+   */
+  timeZone?: string;
   /** Optional className passthrough. */
   className?: string;
 }
@@ -124,13 +130,53 @@ const parseTimestampValue = (
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-const systemDate = (d: Date) =>
-  `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-const systemTime = (d: Date) =>
-  `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+/** Calendar fields in `timeZone`, or in the runtime's zone without one. */
+const zonedParts = (d: Date, timeZone?: string) => {
+  if (!timeZone)
+    return {
+      year: d.getFullYear(),
+      month: d.getMonth() + 1,
+      day: d.getDate(),
+      hour: d.getHours(),
+      minute: d.getMinutes(),
+      second: d.getSeconds(),
+    };
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    hourCycle: "h23",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  }).formatToParts(d);
+  const get = (type: string) =>
+    Number(parts.find((p) => p.type === type)?.value ?? 0);
+  return {
+    year: get("year"),
+    month: get("month"),
+    day: get("day"),
+    hour: get("hour"),
+    minute: get("minute"),
+    second: get("second"),
+  };
+};
 
-const timezoneAbbreviation = (d: Date, locale: string) => {
-  const part = new Intl.DateTimeFormat(locale, { timeZoneName: "short" })
+const systemDate = (d: Date, timeZone?: string) => {
+  const p = zonedParts(d, timeZone);
+  return `${p.year}-${pad(p.month)}-${pad(p.day)}`;
+};
+const systemTime = (d: Date, timeZone?: string) => {
+  const p = zonedParts(d, timeZone);
+  return `${pad(p.hour)}:${pad(p.minute)}:${pad(p.second)}`;
+};
+
+const timezoneAbbreviation = (d: Date, locale: string, timeZone?: string) => {
+  const part = new Intl.DateTimeFormat(locale, {
+    timeZoneName: "short",
+    timeZone,
+  })
     .formatToParts(d)
     .find((p) => p.type === "timeZoneName");
   return part ? part.value : "";
@@ -169,6 +215,7 @@ export const formatTimestamp = (
   locale: string,
   showTimezone: boolean,
   autoThreshold: number,
+  timeZone?: string,
 ): string => {
   if (Number.isNaN(date.getTime())) return "";
   if (
@@ -185,7 +232,9 @@ export const formatTimestamp = (
         : "date_time"
       : format;
 
-  const tz = showTimezone ? ` ${timezoneAbbreviation(date, locale)}` : "";
+  const tz = showTimezone
+    ? ` ${timezoneAbbreviation(date, locale, timeZone)}`
+    : "";
 
   switch (resolved) {
     case "relative":
@@ -195,6 +244,7 @@ export const formatTimestamp = (
         day: "numeric",
         month: "short",
         year: "numeric",
+        timeZone,
       }).format(date);
     case "date_time":
       return (
@@ -204,6 +254,7 @@ export const formatTimestamp = (
           year: "numeric",
           hour: "2-digit",
           minute: "2-digit",
+          timeZone,
         }).format(date) + tz
       );
     case "time":
@@ -211,14 +262,15 @@ export const formatTimestamp = (
         new Intl.DateTimeFormat(locale, {
           hour: "2-digit",
           minute: "2-digit",
+          timeZone,
         }).format(date) + tz
       );
     case "system_date":
-      return systemDate(date);
+      return systemDate(date, timeZone);
     case "system_date_time":
-      return `${systemDate(date)} ${systemTime(date)}${tz}`;
+      return `${systemDate(date, timeZone)} ${systemTime(date, timeZone)}${tz}`;
     case "system_time":
-      return `${systemTime(date)}${tz}`;
+      return `${systemTime(date, timeZone)}${tz}`;
   }
 };
 
@@ -241,12 +293,15 @@ export const Timestamp = React.forwardRef<HTMLTimeElement, TimestampProps>(
       live = false,
       now,
       locale,
+      timeZone,
       className = "",
     },
     ref,
   ) {
     const { resolvedLanguage } = useLocalization();
     const activeLocale = locale || resolvedLanguage || "en";
+    // An empty string (an unset Storybook text control) means "no zone", not an invalid one.
+    const zone = timeZone || undefined;
     const parsedValue = parseTimestampValue(value);
     const date = parsedValue.date;
 
@@ -278,6 +333,7 @@ export const Timestamp = React.forwardRef<HTMLTimeElement, TimestampProps>(
           activeLocale,
           showTimezone,
           autoThreshold,
+          zone,
         )
       : "";
 
@@ -292,6 +348,7 @@ export const Timestamp = React.forwardRef<HTMLTimeElement, TimestampProps>(
         ? new Intl.DateTimeFormat(activeLocale, {
             dateStyle: "medium",
             timeStyle: "short",
+            timeZone: zone,
           }).format(date)
         : undefined;
 

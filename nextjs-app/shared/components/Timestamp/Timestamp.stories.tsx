@@ -92,6 +92,12 @@ const meta = {
       description: "Locale override; defaults to the active site language.",
       table: { category: "Advanced", type: { summary: "string" } },
     },
+    timeZone: {
+      control: "text",
+      description:
+        "IANA time zone for the shown date and time, for example Europe/Helsinki. Defaults to the runtime's zone (UTC on a server render).",
+      table: { category: "Advanced", type: { summary: "string" } },
+    },
     className: {
       control: "text",
       description: "Optional className passthrough.",
@@ -109,6 +115,7 @@ const meta = {
     tooltip: true,
     live: false,
     locale: "",
+    timeZone: "",
     className: "",
   },
 } satisfies Meta<typeof Timestamp>;

@@ -196,6 +196,11 @@
             "type": "string",
             "description": "Locale override; defaults to the active site language."
         },
+        "timeZone": {
+            "optional": true,
+            "type": "string",
+            "description": "IANA time zone for the shown date and time, for example \"Europe/Helsinki\". Defaults to the runtime's zone, which is UTC on a server render: set it when the moment must read the same everywhere (a business's local time)."
+        },
         "className": {
             "optional": true,
             "type": "string",

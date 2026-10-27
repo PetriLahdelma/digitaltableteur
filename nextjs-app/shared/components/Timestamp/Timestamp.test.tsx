@@ -26,9 +26,9 @@ const OLDER = new Date("2025-11-29T12:00:00Z");
 
 describe("formatTimestamp", () => {
   it("renders relative labels for recent values", () => {
-    expect(formatTimestamp(TWO_HOURS_AGO, NOW, "relative", "en", false, 604800)).toBe(
-      "2 hours ago",
-    );
+    expect(
+      formatTimestamp(TWO_HOURS_AGO, NOW, "relative", "en", false, 604800),
+    ).toBe("2 hours ago");
   });
 
   it("auto switches from relative to date_time at the threshold", () => {
@@ -47,9 +47,9 @@ describe("formatTimestamp", () => {
   });
 
   it("formats system variants as ISO-style local time", () => {
-    expect(formatTimestamp(OLDER, NOW, "system_date", "en", false, 604800)).toMatch(
-      /^\d{4}-\d{2}-\d{2}$/,
-    );
+    expect(
+      formatTimestamp(OLDER, NOW, "system_date", "en", false, 604800),
+    ).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     expect(
       formatTimestamp(OLDER, NOW, "system_date_time", "en", false, 604800),
     ).toMatch(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
@@ -87,9 +87,7 @@ describe("Timestamp", () => {
   });
 
   it("shows a full-date tooltip on relative output and none on absolute", () => {
-    render(
-      <Timestamp value={TWO_HOURS_AGO} format="relative" now={NOW} />,
-    );
+    render(<Timestamp value={TWO_HOURS_AGO} format="relative" now={NOW} />);
     expect(screen.getByText("2 hours ago")).toHaveAttribute("title");
 
     render(<Timestamp value={OLDER} format="date" now={NOW} />);
@@ -119,9 +117,7 @@ describe("Timestamp", () => {
   });
 
   it("accepts practical millisecond timestamps before 2001", () => {
-    render(
-      <Timestamp value={946684800000} format="system_date" now={NOW} />,
-    );
+    render(<Timestamp value={946684800000} format="system_date" now={NOW} />);
     const time = document.querySelector("time");
 
     expect(time).toHaveAttribute("dateTime", "2000-01-01T00:00:00.000Z");
@@ -146,11 +142,7 @@ describe("Timestamp", () => {
   it("renders nothing readable for an invalid relative reference time", () => {
     expect(() =>
       render(
-        <Timestamp
-          value={TWO_HOURS_AGO}
-          format="relative"
-          now="not-a-date"
-        />,
+        <Timestamp value={TWO_HOURS_AGO} format="relative" now="not-a-date" />,
       ),
     ).not.toThrow();
     const time = document.querySelector("time");
@@ -161,10 +153,59 @@ describe("Timestamp", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(
       <p>
-        Last updated:{" "}
-        <Timestamp value={OLDER} format="date" now={NOW} />
+        Last updated: <Timestamp value={OLDER} format="date" now={NOW} />
       </p>,
     );
     expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("shows the moment in the given time zone, not the runtime's", () => {
+    const moment = new Date("2026-10-27T22:54:19Z");
+    expect(
+      formatTimestamp(
+        moment,
+        moment,
+        "date_time",
+        "en",
+        false,
+        0,
+        "Europe/Helsinki",
+      ),
+    ).toBe("Oct 28, 2026, 12:54 AM");
+    expect(
+      formatTimestamp(moment, moment, "date_time", "en", false, 0, "UTC"),
+    ).toBe("Oct 27, 2026, 10:54 PM");
+    expect(
+      formatTimestamp(
+        moment,
+        moment,
+        "system_date_time",
+        "en",
+        false,
+        0,
+        "Europe/Helsinki",
+      ),
+    ).toBe("2026-10-28 00:54:19");
+    render(
+      <Timestamp
+        value={moment}
+        format="date_time"
+        locale="fi"
+        timeZone="Europe/Helsinki"
+      />,
+    );
+    expect(screen.getByText(/28\.10\.2026/)).toBeInTheDocument();
+  });
+
+  it("treats an empty time zone as none", () => {
+    expect(() =>
+      render(
+        <Timestamp
+          value="2026-10-27T22:54:19Z"
+          format="date_time"
+          timeZone=""
+        />,
+      ),
+    ).not.toThrow();
   });
 });
