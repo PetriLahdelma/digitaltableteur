@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Button, Icon } from "@digitaltableteur/react";
+import { Button, FlexBox, Icon, Text, Title } from "@digitaltableteur/react";
 import styles from "./not-found.module.css";
 import {
   isChunkLoadError,
@@ -39,10 +39,20 @@ export default function Error({
   }
 
   return (
+    // Same composition as not-found.tsx, so both pages read as one design.
     <div className={styles.notFoundPage}>
-      <h2>{t("errorTitle", "Something went wrong!")}</h2>
-      <p>{t("errorDescription", "An unexpected error occurred.")}</p>
-      <div className={styles.actions}>
+      <Title level={1} size="xl">
+        {t("errorTitle", "Something went wrong!")}
+      </Title>
+      <Text className={styles.notFoundBody}>
+        {t("errorDescription", "An unexpected error occurred.")}
+      </Text>
+      <FlexBox
+        wrap="wrap"
+        justify="center"
+        align="center"
+        className={styles.actions}
+      >
         <Button
           variant="primary"
           size="lg"
@@ -51,10 +61,16 @@ export default function Error({
         >
           {t("errorRetry", "Try again")}
         </Button>
-        <Button variant="secondary" size="lg" href="/" icon={<Icon name="house" />}>
+        <Button
+          variant="secondary"
+          size="lg"
+          href="/"
+          icon={<Icon name="house" />}
+          className={styles.secondaryAction}
+        >
           {t("notFoundButton", "Go home")}
         </Button>
-      </div>
+      </FlexBox>
     </div>
   );
 }
