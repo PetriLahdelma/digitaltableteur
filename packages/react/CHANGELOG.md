@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.45 - 2026-10-27
+
+- `AlertBanner`: as wide as its content plus padding, never wider than its
+  container (a short notice hugs its text, a long one wraps to full width).
+  Links inside a banner use a plain underline instead of the wavy one. No
+  API change.
+
 ## 0.1.44 - 2026-10-27
 
 - `AlertBanner`: the tone icon's accessible name is a word in the page's
