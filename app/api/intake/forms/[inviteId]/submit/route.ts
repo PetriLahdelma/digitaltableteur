@@ -4,7 +4,6 @@ import type { NextRequest } from "next/server";
 
 import { intakeCopy, isEnabledLocale } from "@/app/lib/intake/copy";
 import { signPrintToken } from "@/app/lib/intake/pdf/print-token";
-import { renderSubmissionPdf } from "@/app/lib/intake/pdf/render";
 import { deliverAfterResponse } from "@/app/lib/intake/service/deliver";
 import { submitIntake } from "@/app/lib/intake/service/forms";
 import { json, readJsonBody, serverError } from "@/app/lib/intake/service/http";
@@ -41,6 +40,9 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
       // mail still goes, with every answer and a pointer to admin.
       deliverAfterResponse(async () => {
         try {
+          // Loaded here, not at the top: the headless browser must never be
+          // able to stop a submit from going through.
+          const { renderSubmissionPdf } = await import("@/app/lib/intake/pdf/render");
           const pdf = await submissionPdf(
             ctx,
             OWNER,

@@ -217,10 +217,12 @@ const nextConfig: NextConfig = {
   // see it; include it for the PDF route only (docs/intake/README.md §6).
   // Keys are globs: "[submissionId]" would be a character class, so "*".
   outputFileTracingIncludes: {
-    // Every route that renders a submission PDF needs the Chromium binary.
-    "/api/intake/submissions/*/pdf": ["./node_modules/@sparticuz/chromium/**"],
-    "/api/intake/admin/submissions/*/pdf": ["./node_modules/@sparticuz/chromium/**"],
-    "/api/intake/forms/*/submit": ["./node_modules/@sparticuz/chromium/**"],
+    // Every route that renders a submission PDF needs the Chromium binary and
+    // all of playwright-core: it reads files such as browsers.json at run
+    // time, which tracing does not follow.
+    "/api/intake/submissions/*/pdf": ["./node_modules/@sparticuz/chromium/**", "./node_modules/playwright-core/**"],
+    "/api/intake/admin/submissions/*/pdf": ["./node_modules/@sparticuz/chromium/**", "./node_modules/playwright-core/**"],
+    "/api/intake/forms/*/submit": ["./node_modules/@sparticuz/chromium/**", "./node_modules/playwright-core/**"],
   },
   // Image optimization configuration
   images: {
