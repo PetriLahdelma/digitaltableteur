@@ -2,15 +2,6 @@
 
 ## 0.1.43 - 2026-10-27
 
-- `SummaryList` (new, alpha): questions and their answers as a description
-  list, one row per question with an optional action, after the GOV.UK
-  summary list. Label and value sit side by side once the list is about
-  40rem wide and stack below that; string answers keep their line breaks;
-  rows do not split across printed pages.
-- `ConfirmPopover` (new, alpha): asks "are you sure?" next to the control
-  that triggered it. A non-modal alertdialog named by the question, focus on
-  Cancel, Escape or an outside click cancels; `tone="error"` for actions
-  that remove something.
 - `TextInput`: `width` caps the field at the expected answer in characters
   ("2ch" to "30ch"); the field still shrinks with its container.
 - `PhoneInput`: `size`; the country select reads "Finland +358" with no flag
@@ -27,6 +18,8 @@
   their text optically and ignore global list-item margins.
 - `Title`, `CookieConsentBanner`: print styles (headings keep with what
   follows; the banner does not print).
+- Not exported yet: `SummaryList` and `ConfirmPopover` are alpha in the
+  design system and join the package once promoted to beta.
 
 ## 0.1.42 - 2026-10-26
 

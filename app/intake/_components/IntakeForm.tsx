@@ -5,7 +5,6 @@ import {
   Accordion,
   AlertBanner,
   Button,
-  ConfirmPopover,
   Divider,
   FlexBox,
   Grid,
@@ -15,6 +14,7 @@ import {
   Text,
   Title,
 } from "@digitaltableteur/react";
+import ConfirmPopover from "@dt/ConfirmPopover";
 import TaskList, { type TaskListStatus, type TaskListTask } from "@dt/TaskList";
 
 import { format, type IntakeCopyTable } from "@/app/lib/intake/copy";

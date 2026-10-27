@@ -198,8 +198,6 @@ export {
 export { default as Link } from "../../../nextjs-app/shared/components/Link/Link";
 export type { LinkProps } from "../../../nextjs-app/shared/components/Link/Link";
 export { default as List } from "../../../nextjs-app/shared/components/List/List";
-export { default as SummaryList } from "../../../nextjs-app/shared/components/SummaryList/SummaryList";
-export type { SummaryListProps, SummaryListRow } from "../../../nextjs-app/shared/components/SummaryList/SummaryList";
 export type { ListProps } from "../../../nextjs-app/shared/components/List/List";
 export { default as ListItem } from "../../../nextjs-app/shared/components/ListItem/ListItem";
 export type { ListItemProps } from "../../../nextjs-app/shared/components/ListItem/ListItem";
@@ -225,8 +223,6 @@ export type {
   MenuSubTriggerProps,
   MenuTriggerProps,
 } from "../../../nextjs-app/shared/components/Menu";
-export { default as ConfirmPopover } from "../../../nextjs-app/shared/components/ConfirmPopover/ConfirmPopover";
-export type { ConfirmPopoverProps } from "../../../nextjs-app/shared/components/ConfirmPopover/ConfirmPopover";
 export { default as Modal } from "../../../nextjs-app/shared/components/Modal/Modal";
 export type {
   ModalAnimation,

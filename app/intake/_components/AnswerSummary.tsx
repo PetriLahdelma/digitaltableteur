@@ -5,10 +5,11 @@ import {
   Button,
   FlexBox,
   Section,
-  SummaryList,
   Title,
   VisuallyHidden,
 } from "@digitaltableteur/react";
+// Alpha: imported from source until promoted into the package.
+import SummaryList from "@dt/SummaryList";
 
 import { format, intakeCopy } from "@/app/lib/intake/copy";
 import { isInputField, isVisible } from "@/app/lib/intake/schema";

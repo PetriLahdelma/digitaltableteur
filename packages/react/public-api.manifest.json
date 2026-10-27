@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.1.37",
+  "packageVersion": "0.1.43",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -565,7 +565,8 @@
       "TextArea",
       "TextAreaProps",
       "TextInput",
-      "TextInputProps"
+      "TextInputProps",
+      "TextInputWidth"
     ],
     "hooks": [
       "OverflowState",

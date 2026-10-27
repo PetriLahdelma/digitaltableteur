@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-27T18:10:38.745Z",
+  "generatedAt": "2026-10-27T18:28:34.046Z",
   "summary": {
     "componentCount": 192,
     "statusCounts": {
@@ -12,8 +12,8 @@
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 91.9,
     "codebaseComponentCount": 209,
-    "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 44,
+    "usageCoveragePercent": 94.3,
+    "componentsWithProductionUsage": 46,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -78,11 +78,11 @@
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 192,
-    "withAnyUsage": 179,
-    "withProductionUsage": 44,
-    "uniqueImportedComponents": 179,
-    "totalEvidenceRows": 922,
-    "aliasImportFiles": 472,
+    "withAnyUsage": 181,
+    "withProductionUsage": 46,
+    "uniqueImportedComponents": 181,
+    "totalEvidenceRows": 925,
+    "aliasImportFiles": 475,
     "relativeImportFiles": 490,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -16571,8 +16571,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -17723,11 +17723,18 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ConfirmPopover",
-        "importCount": 0,
-        "productionImportCount": 0,
+        "importCount": 1,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": []
+        "evidence": [
+          {
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/ConfirmPopover",
+            "context": "production"
+          }
+        ]
       },
       "agent": {
         "preferredImport": "@dt/ConfirmPopover",
@@ -40025,8 +40032,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -44029,8 +44036,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",
@@ -60700,11 +60707,24 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SummaryList",
-        "importCount": 0,
-        "productionImportCount": 0,
+        "importCount": 2,
+        "productionImportCount": 2,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": []
+        "evidence": [
+          {
+            "path": "app/intake/_components/AnswerSummary.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/SummaryList",
+            "context": "production"
+          },
+          {
+            "path": "app/intake/print/[submissionId]/page.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/SummaryList",
+            "context": "production"
+          }
+        ]
       },
       "agent": {
         "preferredImport": "@dt/SummaryList",
@@ -67360,8 +67380,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "keyboard-contract",

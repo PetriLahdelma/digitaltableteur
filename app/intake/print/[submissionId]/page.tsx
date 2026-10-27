@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
-import { Code, Container, FlexBox, SummaryList, Text, Title } from "@digitaltableteur/react";
+import { Code, Container, FlexBox, Text, Title } from "@digitaltableteur/react";
+import SummaryList from "@dt/SummaryList";
 import Logo from "@dt/Logo";
 
 import { intakeCopy } from "@/app/lib/intake/copy";

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T18:10:38.317Z",
+  "generatedAt": "2026-10-27T18:28:33.566Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -9415,8 +9415,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -22945,8 +22945,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -25394,8 +25394,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
@@ -39804,8 +39804,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "keyboard-contract",
