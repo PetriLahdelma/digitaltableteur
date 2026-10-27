@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.46 - 2026-10-28
+
+- `Timestamp`: `timeZone` (IANA, for example "Europe/Helsinki") for every
+  format, so a server-rendered page need not show UTC. Without it the
+  runtime's zone applies, as before. Additive.
+
 ## 0.1.45 - 2026-10-27
 
 - `AlertBanner`: as wide as its content plus padding, never wider than its
