@@ -227,4 +227,36 @@ describe("MultiCombobox", () => {
       "project-type-helper",
     );
   });
+
+  it("collapses chips that do not fit into a +N badge", () => {
+    // jsdom has no layout: give the field 200px and every chip 80px, the
+    // "+N" badge 40px. Two chips fit beside the badge; the third collapses.
+    const clientWidth = vi
+      .spyOn(HTMLElement.prototype, "clientWidth", "get")
+      .mockReturnValue(200);
+    const offsetWidth = vi
+      .spyOn(HTMLElement.prototype, "offsetWidth", "get")
+      .mockImplementation(function (this: HTMLElement) {
+        return this.hasAttribute("data-measure-more") ? 40 : 80;
+      });
+
+    render(
+      <MultiCombobox
+        label="Project type"
+        options={OPTIONS}
+        value={["website", "brand-identity", "other"]}
+        onValueChange={() => {}}
+      />,
+    );
+
+    const control = screen.getByRole("combobox").parentElement as HTMLElement;
+    expect(within(control).getByText("Website")).toBeInTheDocument();
+    expect(within(control).getByText("Brand & Identity")).toBeInTheDocument();
+    expect(within(control).queryByText("Other")).not.toBeInTheDocument();
+    expect(within(control).getByText("+1")).toBeInTheDocument();
+    expect(within(control).getByText("1 more selected: Other")).toBeInTheDocument();
+
+    clientWidth.mockRestore();
+    offsetWidth.mockRestore();
+  });
 });

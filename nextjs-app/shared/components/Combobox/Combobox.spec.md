@@ -8,6 +8,9 @@ Single-select combobox for editorial forms. Replaces native `<select>` with a po
 - Pointer: click trigger toggles list; click option selects and closes; click outside closes.
 - Screen readers: combobox + listbox + option `aria-selected` semantics.
 
+- Typeahead: typing jumps to the first option whose label, or any word in it, starts with the typed text ("hel" finds "Europe / Helsinki"). The search clears after a 0.7 s pause; a space inside a search is part of it. Long lists such as time zones depend on this.
+- The list is at least 320px wide (kept 16px inside the viewport), so long labels in a narrow field stay on one line. The control is the same white surface and 3rem height as the lg text fields.
+
 ## Do / don't
 - Do: use via `FormFieldEditorial` `type="select"` on editorial contact forms.
 - Do: pass stable `value` / `onValueChange` pairs for controlled usage.

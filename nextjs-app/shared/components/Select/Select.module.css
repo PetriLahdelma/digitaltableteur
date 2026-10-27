@@ -39,9 +39,10 @@
 }
 
 .select--lg {
-  padding: 0.625rem 2.75rem 0.625rem 0.875rem;
+  padding: 0 2.75rem 0 0.875rem;
+  block-size: 3rem;
   font-size: 1.125rem;
-  line-height: 1.75;
+  line-height: 1.5;
 }
 
 /* Error state (v1.1.0) */

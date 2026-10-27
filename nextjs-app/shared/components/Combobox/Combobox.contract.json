@@ -25,7 +25,8 @@
             "Space",
             "Escape",
             "ArrowDown",
-            "ArrowUp"
+            "ArrowUp",
+            "Printable characters (typeahead): open the list and move the highlight to the first option whose label, or any word in it, starts with what was typed; the search clears after a 0.7 s pause, and a space inside a search is part of it."
         ],
         "ariaRequirements": [
             "trigger role=combobox with aria-expanded/aria-controls/aria-activedescendant",

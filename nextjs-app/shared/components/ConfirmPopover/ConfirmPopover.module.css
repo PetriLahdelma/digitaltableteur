@@ -1,0 +1,94 @@
+.content {
+  z-index: 6000;
+  padding: var(--space-internal-24);
+  box-sizing: border-box;
+  inline-size: max-content;
+  max-inline-size: min(26rem, calc(100vi - 2rem));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-lg);
+  transform-origin: var(--radix-popover-content-transform-origin);
+}
+
+/* Enter / exit motion driven by Radix data-state, as in Menu. */
+
+.content[data-state="open"] {
+  animation: popoverIn var(--duration-fast) var(--ease-out-cubic);
+}
+
+.content[data-state="closed"] {
+  animation: popoverOut var(--duration-instant) var(--ease-out-cubic);
+}
+
+@keyframes popoverIn {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popoverOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-primary);
+}
+
+.description {
+  margin: 0;
+  margin-block-start: var(--space-internal-8);
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-xxs);
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.actions {
+  display: flex;
+  margin-block-start: var(--space-internal-32);
+  justify-content: flex-end;
+  gap: var(--space-internal-8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content[data-state="open"],
+  .content[data-state="closed"] {
+    animation: none;
+  }
+}
+
+/* Forced colors: a real border instead of the shadow, system colors for text. */
+@media (forced-colors: active) {
+  .content {
+    border: 1px solid CanvasText;
+    background-color: Canvas;
+  }
+
+  .title,
+  .description {
+    color: CanvasText;
+  }
+}
+
+:global(html.sb-forced-colors-active) .content {
+  border: 1px solid CanvasText;
+  background-color: Canvas;
+}

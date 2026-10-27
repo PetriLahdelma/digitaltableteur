@@ -8,7 +8,7 @@ import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import styles from "./TaskList.module.css";
 
-/** Where a task stands. Completed reads as plain text so tasks that still need work stand out. */
+/** Where a task stands. Only started and completed tasks show a mark; "not started" is announced to screen readers only. */
 export type TaskListStatus =
   "notStarted" | "inProgress" | "completed" | "cannotStart";
 
@@ -98,12 +98,14 @@ export function TaskList({
                 </span>
               ) : task.status === "cannotStart" ? (
                 <span className={styles.muted}>{statusText(task.status)}</span>
+              ) : task.status === "notStarted" ? (
+                // Only started and completed tasks are marked; a column of
+                // "Not started" badges is noise. Screen readers still hear it.
+                <span className={styles.visuallyHidden}>
+                  {statusText(task.status)}
+                </span>
               ) : (
-                <Badge
-                  size="sm"
-                  variant="secondary"
-                  tone={task.status === "inProgress" ? "info" : "neutral"}
-                >
+                <Badge size="sm" variant="secondary" tone="info">
                   {statusText(task.status)}
                 </Badge>
               )}

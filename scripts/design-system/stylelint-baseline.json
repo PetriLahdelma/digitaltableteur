@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1896,
+  "warningCount": 1874,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -1525,7 +1525,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 247,
+      "line": 253,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1534,7 +1534,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 358,
+      "line": 364,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1543,7 +1543,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 371,
+      "line": 377,
       "column": 16,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1552,7 +1552,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 44,
+      "line": 48,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1561,7 +1561,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 50,
+      "line": 54,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1570,7 +1570,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 246,
+      "line": 252,
       "column": 39,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1579,7 +1579,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 247,
+      "line": 253,
       "column": 38,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1588,7 +1588,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 330,
+      "line": 336,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1597,7 +1597,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 335,
+      "line": 341,
       "column": 17,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1606,7 +1606,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 336,
+      "line": 342,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1615,7 +1615,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 337,
+      "line": 343,
       "column": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1624,7 +1624,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 364,
+      "line": 370,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1633,7 +1633,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 146,
+      "line": 152,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -3550,7 +3550,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 170,
+      "line": 161,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -3559,7 +3559,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 201,
+      "line": 192,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -3568,7 +3568,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 159,
+      "line": 150,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3577,7 +3577,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 180,
+      "line": 171,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3586,7 +3586,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 226,
+      "line": 217,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -10227,123 +10227,6 @@
       "id": "nextjs-app/shared/components/PersonCard/PersonCard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"28px\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)::2"
     },
     {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 87,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 5,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-block-end\" to come before \"flex-direction\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::order/properties-order::Expected \"margin-block-end\" to come before \"flex-direction\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 89,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-inline-end\" to come before \"box-shadow\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::order/properties-order::Expected \"margin-inline-end\" to come before \"box-shadow\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 80,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.25rem\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 11,
-      "column": 17,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 12,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 16,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 79,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 80,
-      "column": 27,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::5"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 89,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::6"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 5,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 105,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css",
-      "line": 87,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/PhoneInput/PhoneInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"18px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/PhoneInput/PhoneInput.stories.module.css",
       "line": 14,
       "column": 21,
@@ -10525,7 +10408,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 80,
+      "line": 81,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10606,24 +10489,6 @@
     },
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 42,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 42,
-      "column": 29,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
       "line": 17,
       "column": 33,
       "rule": "rhythmguard/prefer-token",
@@ -10643,7 +10508,7 @@
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
       "line": 42,
-      "column": 38,
+      "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.875rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
@@ -10651,7 +10516,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 79,
+      "line": 80,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -10688,7 +10553,7 @@
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
       "line": 42,
-      "column": 21,
+      "column": 14,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
@@ -10696,7 +10561,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 55,
+      "line": 56,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -10705,7 +10570,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 61,
+      "line": 62,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -10714,7 +10579,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 67,
+      "line": 68,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -10751,25 +10616,7 @@
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
       "line": 42,
-      "column": 12,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 42,
-      "column": 29,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 42,
-      "column": 38,
+      "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
@@ -10787,7 +10634,7 @@
     {
       "file": "nextjs-app/shared/components/Select/Select.module.css",
       "line": 42,
-      "column": 21,
+      "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 40px or 48px). (rhythmguard/use-scale)",
@@ -12190,42 +12037,6 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 128,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 162,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 5,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-block-end\" to come before \"flex-direction\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::order/properties-order::Expected \"margin-block-end\" to come before \"flex-direction\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 50,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-block-start\" to come before \"color\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::order/properties-order::Expected \"margin-block-start\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
       "line": 29,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
@@ -12262,7 +12073,7 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 50,
+      "line": 47,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -12298,21 +12109,12 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 5,
+      "line": 3,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 120,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2.5rem\". Use var(--space-layout-40) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.5rem\". Use var(--space-layout-40) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
@@ -12973,34 +12775,34 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 239,
+      "line": 242,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".newBusinessLineMuted\" to come before selector \".newBusinessContent .newBusinessLineMuted\", at line 234 (no-descending-specificity)",
+      "text": "Expected selector \".newBusinessLineMuted\" to come before selector \".newBusinessContent .newBusinessLineMuted\", at line 237 (no-descending-specificity)",
       "id": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css::no-descending-specificity::Expected selector \".newBusinessLineMuted\" to come before selector \".newBusinessContent .newBusinessLineMuted\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 286,
+      "line": 289,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".newBusinessLinkIcon\" to come before selector \".newBusinessCta:hover .newBusinessLinkIcon\", at line 276 (no-descending-specificity)",
+      "text": "Expected selector \".newBusinessLinkIcon\" to come before selector \".newBusinessCta:hover .newBusinessLinkIcon\", at line 279 (no-descending-specificity)",
       "id": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css::no-descending-specificity::Expected selector \".newBusinessLinkIcon\" to come before selector \".newBusinessCta:hover .newBusinessLinkIcon\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 309,
+      "line": 312,
       "column": 3,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".newBusinessLinkIcon\" to come before selector \".newBusinessCta:hover .newBusinessLinkIcon\", at line 305 (no-descending-specificity)",
+      "text": "Expected selector \".newBusinessLinkIcon\" to come before selector \".newBusinessCta:hover .newBusinessLinkIcon\", at line 308 (no-descending-specificity)",
       "id": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css::no-descending-specificity::Expected selector \".newBusinessLinkIcon\" to come before selector \".newBusinessCta:hover .newBusinessLinkIcon\" (no-descending-specificity)::2"
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 114,
+      "line": 117,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13009,7 +12811,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 350,
+      "line": 353,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13018,7 +12820,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 188,
+      "line": 191,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13027,7 +12829,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 173,
+      "line": 176,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13036,7 +12838,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 186,
+      "line": 189,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13045,7 +12847,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 200,
+      "line": 203,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13054,7 +12856,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 292,
+      "line": 295,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13063,7 +12865,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 374,
+      "line": 377,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13081,7 +12883,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 283,
+      "line": 286,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13090,7 +12892,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 373,
+      "line": 376,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13099,7 +12901,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 249,
+      "line": 252,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13117,7 +12919,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 291,
+      "line": 294,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13126,7 +12928,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 319,
+      "line": 322,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13135,7 +12937,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 211,
+      "line": 214,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13144,7 +12946,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 290,
+      "line": 293,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13162,7 +12964,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 375,
+      "line": 378,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13171,7 +12973,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 250,
+      "line": 253,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13180,7 +12982,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 330,
+      "line": 333,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13189,7 +12991,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 277,
+      "line": 280,
       "column": 25,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -13198,7 +13000,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 375,
+      "line": 378,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -13207,7 +13009,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 375,
+      "line": 378,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -13216,7 +13018,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 359,
+      "line": 362,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -13225,7 +13027,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 283,
+      "line": 286,
       "column": 35,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -13234,7 +13036,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 277,
+      "line": 280,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -13243,7 +13045,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 282,
+      "line": 285,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -13252,7 +13054,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 375,
+      "line": 378,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -13261,7 +13063,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 375,
+      "line": 378,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -13270,7 +13072,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 359,
+      "line": 362,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -13288,7 +13090,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 193,
+      "line": 196,
       "column": 17,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -13306,7 +13108,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css",
-      "line": 110,
+      "line": 113,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14098,7 +13900,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 154,
+      "line": 168,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14107,7 +13909,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 169,
+      "line": 183,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14116,7 +13918,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 178,
+      "line": 192,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14125,7 +13927,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 163,
+      "line": 177,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14143,7 +13945,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 147,
+      "line": 161,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14152,7 +13954,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 275,
+      "line": 292,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14170,7 +13972,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 112,
+      "line": 126,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14179,7 +13981,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 162,
+      "line": 176,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14188,7 +13990,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 161,
+      "line": 175,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14197,7 +13999,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 257,
+      "line": 271,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14206,7 +14008,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 344,
+      "line": 361,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14233,7 +14035,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 143,
+      "line": 157,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14242,7 +14044,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 99,
+      "line": 113,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14260,7 +14062,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 238,
+      "line": 252,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14269,7 +14071,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 191,
+      "line": 205,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14287,7 +14089,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 100,
+      "line": 114,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14305,7 +14107,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 206,
+      "line": 220,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14314,7 +14116,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 288,
+      "line": 305,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14323,7 +14125,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 224,
+      "line": 238,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -14332,7 +14134,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 162,
+      "line": 176,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14341,7 +14143,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 163,
+      "line": 177,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14350,7 +14152,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 334,
+      "line": 351,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14359,7 +14161,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 335,
+      "line": 352,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",

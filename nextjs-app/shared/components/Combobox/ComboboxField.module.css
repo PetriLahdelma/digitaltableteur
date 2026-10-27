@@ -35,11 +35,7 @@
   border-radius: var(--radius-lg);
   outline: var(--focus-ring-width) solid transparent;
   outline-offset: 0;
-  background: color-mix(
-    in srgb,
-    var(--main-body-background-color) 96%,
-    var(--color-primary)
-  );
+  background: var(--color-white);
   box-shadow: inset 0 0 0 0 transparent;
   cursor: pointer;
   transition:
@@ -65,11 +61,6 @@
     var(--color-primary) 44%,
     var(--color-border)
   );
-  background: color-mix(
-    in srgb,
-    var(--main-body-background-color) 92%,
-    var(--color-primary)
-  );
 }
 
 .controlError {
@@ -78,7 +69,7 @@
 
 .trigger {
   display: flex;
-  padding-block: var(--space-internal-12);
+  padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16)
     calc(var(--space-internal-32) + var(--space-internal-8));
   min-inline-size: 0;
@@ -88,7 +79,7 @@
   outline: none;
   background: transparent;
   font-family: var(--font-body);
-  font-size: var(--font-size-text);
+  font-size: 1.125rem;
   line-height: 1.4;
   text-align: start;
   color: var(--color-text);
@@ -185,7 +176,7 @@
   border-radius: var(--radius-md);
   background: transparent;
   font-family: var(--font-body);
-  font-size: var(--font-size-text);
+  font-size: 1.125rem;
   line-height: 1.4;
   text-align: start;
   color: var(--color-text);

@@ -1,6 +1,7 @@
 "use client";
 
 import React, {
+  useRef,
   forwardRef,
   useCallback,
   useEffect,
@@ -74,6 +75,10 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
 
     const [open, setOpen] = useState(false);
     const [highlightedIndex, setHighlightedIndex] = useState(0);
+    // Typeahead (WAI-ARIA select-only combobox): typed characters build a
+    // search string that clears after a pause; the highlight jumps to the
+    // first option whose label, or any word in it, starts with the string.
+    const typeahead = useRef<{ text: string; timer: ReturnType<typeof setTimeout> | null }>({ text: "", timer: null });
 
     const selectedLabel = useMemo(
       () => options.find((option) => option.value === value)?.label,
@@ -140,10 +145,49 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       highlighted?.scrollIntoView?.({ block: "nearest" });
     }, [highlightedIndex, listRef, open]);
 
+    const findTypeaheadMatch = (search: string): number => {
+      const query = search.toLocaleLowerCase();
+      const startsWith = (label: string) => label.toLocaleLowerCase().startsWith(query);
+      const wordStartsWith = (label: string) =>
+        label
+          .toLocaleLowerCase()
+          .split(/[\s/()_,.-]+/)
+          .some((word) => word.startsWith(query));
+      const enabled = (index: number) => !options[index].disabled;
+      const byLabel = options.findIndex((option, index) => enabled(index) && startsWith(option.label));
+      if (byLabel >= 0) return byLabel;
+      return options.findIndex((option, index) => enabled(index) && wordStartsWith(option.label));
+    };
+
+    const handleTypeahead = (character: string) => {
+      const state = typeahead.current;
+      if (state.timer) clearTimeout(state.timer);
+      state.text += character;
+      state.timer = setTimeout(() => {
+        state.text = "";
+        state.timer = null;
+      }, 700);
+      const match = findTypeaheadMatch(state.text);
+      if (!open) openDropdown();
+      if (match >= 0) setHighlightedIndex(match);
+    };
+
+    useEffect(() => () => {
+      if (typeahead.current.timer) clearTimeout(typeahead.current.timer);
+    }, []);
+
     const handleTriggerKeyDown = (
       event: React.KeyboardEvent<HTMLButtonElement>,
     ) => {
       if (disabled) return;
+
+      const isPrintable = event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
+      // A space while a search is being typed is part of it ("new y").
+      if (isPrintable && (event.key !== " " || typeahead.current.text)) {
+        event.preventDefault();
+        handleTypeahead(event.key);
+        return;
+      }
 
       switch (event.key) {
         case "ArrowDown": {

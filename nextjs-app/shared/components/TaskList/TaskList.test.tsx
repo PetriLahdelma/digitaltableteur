@@ -27,6 +27,19 @@ const tasks: TaskListTask[] = [
 ];
 
 describe("TaskList", () => {
+  it("marks only started and completed tasks; not started is for screen readers", () => {
+    render(
+      <TaskList
+        label="Parts"
+        tasks={[{ id: "n", label: "Business and audience", status: "notStarted" }]}
+        onSelect={vi.fn()}
+      />,
+    );
+    const button = screen.getByRole("button", { name: /Business and audience/ });
+    expect(button).toHaveAccessibleDescription("Not started");
+    expect(screen.getByText("Not started").className).toMatch(/visuallyHidden/);
+  });
+
   it("is a named navigation landmark with every task in order", () => {
     render(<TaskList label="Intake parts" tasks={tasks} onSelect={vi.fn()} />);
     const nav = screen.getByRole("navigation", { name: "Intake parts" });

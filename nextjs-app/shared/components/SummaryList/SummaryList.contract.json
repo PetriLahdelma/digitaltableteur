@@ -1,0 +1,81 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "SummaryList",
+    "tier": "molecule",
+    "group": "display",
+    "status": "alpha",
+    "description": "Questions and their answers as a description list, one row per question with an optional action: for checking answers before submitting and for showing a submitted record.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "dl",
+    "variants": {
+        "layout": {
+            "values": [
+                "auto",
+                "stacked"
+            ],
+            "default": "auto",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Not interactive itself; row actions are reached with Tab in reading order."
+        ],
+        "ariaRequirements": [
+            "Renders a <dl>; each row is a <dt> label and a <dd> value, and an optional <dd> action.",
+            "Row actions should name what they change (\"Change\" plus a visually hidden label)."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-border-light"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-16",
+            "--space-internal-24"
+        ]
+    },
+    "lightDarkVerified": false,
+    "forbiddenUse": [
+        "squeeze answers into columns side by side; one row per question.",
+        "use it for tables of several values per row."
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "rows": {
+            "optional": false,
+            "type": "SummaryListRow[]",
+            "description": "Rows in order."
+        },
+        "layout": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "auto",
+                "stacked"
+            ],
+            "description": "\"auto\" stacks the label above the value in narrow containers and puts\nthem side by side once the list is wide enough (about 40rem)."
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the dl element."
+        }
+    }
+}

@@ -1,8 +1,8 @@
 .inputContainer {
   display: flex;
+  margin-block-end: 1rem;
   box-sizing: border-box;
   flex-direction: column;
-  margin-block-end: 1rem;
 }
 
 .label {
@@ -39,15 +39,15 @@
 
 .input--lg {
   padding: 0.625rem;
-  min-block-size: 3rem;
+  block-size: 3rem;
   font-size: 1.125rem;
 }
 
 .errorMessage {
+  margin-block-start: 0.5rem;
   font-family: var(--font-text);
   font-size: 1rem;
   color: var(--color-error);
-  margin-block-start: 0.5rem;
 }
 
 .input::placeholder {
@@ -117,15 +117,15 @@
 }
 
 .inputClearable {
-  padding-inline-end: 2.5rem;
+  padding-inline-end: var(--space-layout-40);
 }
 
 .clearButton {
   display: flex;
   position: absolute;
   padding: 0;
-  inline-size: 1.5rem;
   block-size: 1.5rem;
+  inline-size: 1.5rem;
   justify-content: center;
   align-items: center;
   border: none;
@@ -158,10 +158,52 @@
   position: absolute;
   margin: -1px;
   padding: 0;
-  inline-size: 1px;
   block-size: 1px;
+  inline-size: 1px;
   border: 0;
   white-space: nowrap;
   clip-path: inset(50%);
   overflow: hidden;
+}
+
+/* Character widths (v1.3.0): the field fits the expected answer, after the
+   GOV.UK input widths, and still shrinks with its container. ch is measured
+   in the field's own font; the extra room covers padding and border. */
+
+.capped {
+  max-inline-size: calc(var(--input-width) + 1.5rem);
+}
+
+/* The clearable shell also holds the clear button. */
+
+.inputShell.capped {
+  max-inline-size: calc(var(--input-width) + 4rem);
+}
+
+.width--2ch {
+  --input-width: 2ch;
+}
+
+.width--3ch {
+  --input-width: 3ch;
+}
+
+.width--4ch {
+  --input-width: 4ch;
+}
+
+.width--5ch {
+  --input-width: 5ch;
+}
+
+.width--10ch {
+  --input-width: 10ch;
+}
+
+.width--20ch {
+  --input-width: 20ch;
+}
+
+.width--30ch {
+  --input-width: 30ch;
 }

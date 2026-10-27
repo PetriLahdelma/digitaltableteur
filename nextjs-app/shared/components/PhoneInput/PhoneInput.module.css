@@ -1,22 +1,32 @@
 .phone-input-container {
   display: flex;
+  margin-block-end: var(--space-internal-16);
   inline-size: 100%;
   flex-direction: column;
-  margin-block-end: 1rem;
 }
 
 .phone-input {
   composes: field from "../../styles/field.module.css";
   display: flex;
-  margin-block: 0.5rem;
-  padding: 0.5rem;
+  margin-block: var(--space-internal-8);
+  padding: var(--space-internal-8);
   inline-size: 100%;
   min-block-size: 2.5rem;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-internal-8);
   font-family: var(--font-text);
   font-size: 1rem;
   color: var(--color-primary);
+}
+
+.phone-input--sm {
+  min-block-size: 2rem;
+  font-size: 0.875rem;
+}
+
+.phone-input--lg {
+  block-size: 3rem;
+  font-size: 1.125rem;
 }
 
 .phone-input:focus-within {
@@ -46,7 +56,7 @@
   outline: none;
   background: transparent;
   font-family: var(--font-text);
-  font-size: 1rem;
+  font-size: inherit;
   color: var(--color-primary);
 }
 
@@ -74,37 +84,50 @@
   opacity: 1;
 }
 
-.phone-input :global(.PhoneInputCountry) {
+/* Country code picker: the visible value with a native select over it. */
+
+.country {
   display: flex;
-  margin-inline-end: 0.5rem;
-  padding-inline: 0.25rem 0.5rem;
+  position: relative;
+  margin-inline-end: var(--space-internal-8);
+  padding-inline: var(--space-internal-4) var(--space-internal-8);
   align-items: center;
-  border-inline-end: 1px solid var(--color-primary);
+  align-self: stretch;
+  border-inline-end: 1px solid var(--color-border);
 }
 
-.phone-input :global(.PhoneInputCountryIcon) {
-  inline-size: 24px;
-  block-size: 18px;
-  box-shadow: var(--shadow-sm);
-  margin-inline-end: 0.5rem;
+.countryValue {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-4);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
-.phone-input :global(.PhoneInputCountrySelect) {
-  padding: 0;
-  border: none;
-  background: transparent;
-  font-family: var(--font-text);
+/* The native select covers the visible value, so a click or tap anywhere on
+   it opens the full country list. */
+
+.countrySelect {
+  position: absolute;
+  inset: 0;
+  block-size: 100%;
+  inline-size: 100%;
+  border: 0;
   font-size: 1rem;
-  color: var(--color-primary);
   cursor: pointer;
-  appearance: none;
+  opacity: 0;
 }
 
-.phone-input :global(.PhoneInputCountrySelect):focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.countrySelect:disabled {
+  cursor: not-allowed;
 }
 
-.phone-input :global(.PhoneInputCountrySelectArrow) {
-  display: none;
+.country:has(.countrySelect:focus-visible) {
+  border-radius: var(--radius-sm);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.country:has(.countrySelect:disabled) .countryValue {
+  color: var(--color-disabled-placeholder);
 }

@@ -78,12 +78,12 @@
         "background": {
             "optional": true,
             "type": "ReactNode",
-            "description": "Replaces the default animated gradient behind the content. Drags on the background pass through the content layer; only the buttons capture them."
+            "description": "Replaces the default animated gradient behind the content. Drags on the\nbackground pass through the content layer; only the buttons capture them."
         },
         "showScrollIndicator": {
             "optional": true,
             "type": "boolean",
-            "description": "Show the \"Scroll\" cue at the bottom. Default true."
+            "description": "Show the \"Scroll\" cue at the bottom."
         }
     },
     "forbiddenUse": [

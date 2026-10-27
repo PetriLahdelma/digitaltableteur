@@ -1,0 +1,39 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "./SummaryList.stories.tsx";
+
+<Meta of={Stories} />
+
+# SummaryList
+
+**Status:** alpha, **Tier:** molecule, **Group:** display
+
+## In use
+
+The client intake's Check and submit page and the submitted answers page.
+
+<Canvas of={Stories.Example} />
+
+## How to use
+
+```tsx
+import { SummaryList } from "@dt/SummaryList";
+
+<SummaryList
+  rows={[
+    { id: "name", label: "Full name", value: "Aino Virtanen" },
+    { id: "goals", label: "Goals", value: "One library\nAccessible forms" },
+  ]}
+/>;
+```
+
+## When to use
+
+- Checking answers before submitting; reading back a submitted record.
+
+## When not to use
+
+- Tabular data with several values per row: use Table. Editable fields: use the form inputs.
+
+## Accessibility
+
+- A description list; row actions should name what they change.

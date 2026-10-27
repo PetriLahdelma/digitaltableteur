@@ -26,7 +26,25 @@ describe("PhoneInput", () => {
   it("renders with value", () => {
     render(<PhoneInput label="Phone" value="+358401234567" />);
     const input = screen.getByRole("textbox") as HTMLInputElement;
-    expect(input.value.replace(/\s/g, "")).toBe("+358401234567");
+    // The country select carries +358; the input shows the national number.
+    expect(input.value.replace(/\s/g, "")).toBe("0401234567");
+  });
+
+  it("lists countries with their calling codes, the default first", () => {
+    render(<PhoneInput label="Phone" />);
+    const country = screen.getByRole("combobox") as HTMLSelectElement;
+    expect(country).toHaveAccessibleName(/country/i);
+    expect(country.value).toBe("FI");
+    expect(country.options[0].textContent).toBe("Finland +358");
+  });
+
+  it("formats the number for the chosen country", async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(<PhoneInput label="Phone" onChange={onChange} />);
+    await user.selectOptions(screen.getByRole("combobox"), "SE");
+    await user.type(screen.getByRole("textbox"), "0701234567");
+    expect(onChange).toHaveBeenLastCalledWith("+46701234567");
   });
 
   it("renders helper text when provided", () => {
@@ -125,7 +143,7 @@ describe("PhoneInput", () => {
   it("handles undefined value", () => {
     render(<PhoneInput label="Phone" value={undefined} />);
     const input = screen.getByRole("textbox") as HTMLInputElement;
-    expect(input.value.replace(/\s/g, "")).toMatch(/^\+?358?$/);
+    expect(input.value).toBe("");
   });
 
   it("calls onChange with undefined when input is cleared", async () => {
@@ -139,5 +157,10 @@ describe("PhoneInput", () => {
     await user.clear(input);
 
     expect(onChange).toHaveBeenCalledWith(undefined);
+  });
+
+  it("accepts a stored number written with spaces", () => {
+    render(<PhoneInput label="Phone" value="+358 40 123 4567" />);
+    expect(screen.getByLabelText(/^Phone/, { selector: "input" })).toHaveValue("040 1234567");
   });
 });

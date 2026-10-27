@@ -1,0 +1,42 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "./ConfirmPopover.stories.tsx";
+
+<Meta of={Stories} />
+
+# ConfirmPopover
+
+**Status:** alpha, **Tier:** molecule, **Group:** overlay
+
+## In use
+
+The client intake's Clear answers button.
+
+<Canvas of={Stories.Example} />
+
+## How to use
+
+```tsx
+import { ConfirmPopover } from "@dt/ConfirmPopover";
+
+<ConfirmPopover
+  title="Clear the answers in this section?"
+  description="Everything you entered on this screen is removed. This cannot be undone."
+  confirmLabel="Clear answers"
+  tone="error"
+  onConfirm={clear}
+>
+  <Button variant="tertiary">Clear answers</Button>
+</ConfirmPopover>;
+```
+
+## When to use
+
+- One costly action that needs a second look, next to the control that started it.
+
+## When not to use
+
+- Actions that can be undone: offer Undo. Flows that need more than one question: use Modal.
+
+## Accessibility
+
+- An alertdialog named by the question; focus starts on Cancel; Escape cancels and returns focus to the trigger.

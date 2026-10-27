@@ -1,86 +1,82 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "schemaVersion": 2,
-  "tier": "pattern",
-  "group": "content",
-  "status": "alpha",
-  "radixPrimitive": null,
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default"
-  ],
-  "lightDarkVerified": false,
-  "name": "ProcurementFaq",
-  "description": "Visible answers for procurement, legal and finance teams: contracting party, supplier verification, invoicing, agreements, ownership, languages, location, accessibility law and AI use.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1910-223",
-  "element": "section",
-  "a11y": {
-    "keyboard": [
-      "Tab reaches each question trigger; Enter or Space toggles its answer."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "tier": "pattern",
+    "group": "content",
+    "status": "alpha",
+    "radixPrimitive": null,
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
     ],
-    "ariaRequirements": [
-      "The section is labelled by its heading.",
-      "Answers stay in the DOM when collapsed (inert and hidden from assistive technology) so the visible content matches the FAQ structured data."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": false
-  },
-  "tokens": {
-    "colors": [
-      "--color-muted"
-    ],
-    "spacing": [
-      "--space-internal-4",
-      "--space-internal-12",
-      "--space-internal-16",
-      "--space-layout-24",
-      "--space-layout-48"
-    ]
-  },
-  "props": {
-    "headingLevel": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "2",
-        "3"
-      ],
-      "description": "Heading level of the section title"
+    "lightDarkVerified": false,
+    "name": "ProcurementFaq",
+    "description": "Visible answers for procurement, legal and finance teams: contracting party, supplier verification, invoicing, agreements, ownership, languages, location, accessibility law and AI use.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1910-223",
+    "element": "section",
+    "a11y": {
+        "keyboard": [
+            "Tab reaches each question trigger; Enter or Space toggles its answer."
+        ],
+        "ariaRequirements": [
+            "The section is labelled by its heading.",
+            "Answers stay in the DOM when collapsed (inert and hidden from assistive technology) so the visible content matches the FAQ structured data."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": false
     },
-    "id": {
-      "optional": true,
-      "type": "string",
-      "description": "Section id, for in-page links"
+    "tokens": {
+        "colors": [
+            "--color-muted"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24",
+            "--space-layout-48"
+        ]
     },
-    "className": {
-      "optional": true,
-      "type": "string",
-      "description": "Additional class name on the section"
+    "props": {
+        "headingLevel": {
+            "optional": true,
+            "type": "2 | 3",
+            "description": "Heading level of the section title."
+        },
+        "id": {
+            "optional": true,
+            "type": "string",
+            "description": "Section id, for in-page links."
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional class name on the section."
+        }
+    },
+    "composesWith": [
+        "Accordion",
+        "ReliablePartnerBadge",
+        "Link"
+    ],
+    "forbiddenUse": [
+        "Publish a policy answer the owner has not confirmed.",
+        "Emit FAQ structured data for questions that are not rendered on the page."
+    ],
+    "keywords": [
+        "faq",
+        "procurement",
+        "legal",
+        "invoicing",
+        "supplier",
+        "nda"
+    ],
+    "dense": "Visible procurement FAQ (9 locale items, Accordion divided); its English items feed the FAQPage data of the pages that render it",
+    "usage": {
+        "description": "Shown on the engagement pages and Pricing (not the homepage, owner decision 2026-10-16). app/lib/procurementFaq.ts reads the same English items for FAQPage structured data."
     }
-  },
-  "composesWith": [
-    "Accordion",
-    "ReliablePartnerBadge",
-    "Link"
-  ],
-  "forbiddenUse": [
-    "Publish a policy answer the owner has not confirmed.",
-    "Emit FAQ structured data for questions that are not rendered on the page."
-  ],
-  "keywords": [
-    "faq",
-    "procurement",
-    "legal",
-    "invoicing",
-    "supplier",
-    "nda"
-  ],
-  "dense": "Visible procurement FAQ (9 locale items, Accordion divided); its English items feed the FAQPage data of the pages that render it",
-  "usage": {
-    "description": "Shown on the engagement pages and Pricing (not the homepage, owner decision 2026-10-16). app/lib/procurementFaq.ts reads the same English items for FAQPage structured data."
-  }
 }

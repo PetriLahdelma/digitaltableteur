@@ -188,3 +188,11 @@
     animation: none;
   }
 }
+
+/* A consent banner is never part of a printed page. */
+
+@media print {
+  .banner {
+    display: none;
+  }
+}

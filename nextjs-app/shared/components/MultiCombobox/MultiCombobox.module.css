@@ -1,7 +1,6 @@
 /* One row, always: chips and the filter input share the field's single-line
-   height like every other field. Extra chips scroll sideways inside the
-   field instead of growing it; focus and typing scroll their target into
-   view. */
+   height like every other field. Chips that do not fit collapse into a "+N"
+   badge (measured in the component), so the field never scrolls or clips. */
 
 .inner {
   display: flex;
@@ -13,23 +12,23 @@
   align-items: center;
   gap: var(--space-internal-6);
 
-  /* A mask reads alpha only; any opaque token works. */
-  mask-image: linear-gradient(
-    to left,
-    transparent,
-    var(--color-text) var(--space-internal-24)
-  );
-  overflow-x: auto;
-  /* stylelint-disable-next-line order/properties-order -- logical fallback pair must follow the physical property */
-  overflow-inline: auto;
-  overscroll-behavior-x: contain;
-  /* stylelint-disable-next-line order/properties-order -- logical fallback pair must follow the physical property */
-  overscroll-behavior-inline: contain;
-  scrollbar-width: none;
+  /* clip, not hidden: the caret must not scroll the row sideways. */
+  overflow: clip;
 }
 
-.inner::-webkit-scrollbar {
-  display: none;
+/* Off-screen copy of every chip, measured to decide how many fit. */
+
+.measure {
+  display: flex;
+  position: absolute;
+  inline-size: 0;
+  gap: var(--space-internal-6);
+  white-space: nowrap;
+  pointer-events: none;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 .control {
@@ -90,8 +89,20 @@
   flex: 0 0 auto;
 }
 
+/* A lone chip that is wider than the field truncates instead of hiding. */
+
+.badgeWrapShrink {
+  min-inline-size: 0;
+  flex: 0 1 auto;
+}
+
 .badge {
   max-inline-size: 100%;
+}
+
+.measure .badgeWrap,
+.measure .badge {
+  max-inline-size: none;
 }
 
 .badgeLabel {

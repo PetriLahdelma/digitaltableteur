@@ -31,7 +31,55 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "props": {},
+    "props": {
+        "outcome": {
+            "optional": false,
+            "type": "string",
+            "description": "What changed because of the work, in one or two sentences."
+        },
+        "role": {
+            "optional": false,
+            "type": "string",
+            "description": "Role and scope of the engagement."
+        },
+        "constraints": {
+            "optional": false,
+            "type": "string[]",
+            "description": "What made the problem hard."
+        },
+        "decisions": {
+            "optional": false,
+            "type": "CaseStudyDecision[]",
+            "description": "The decisions that shaped the result."
+        },
+        "evidence": {
+            "optional": false,
+            "type": "CaseStudyEvidence[]",
+            "description": "Claims with an explicit source label; nothing is presented unsourced."
+        },
+        "title": {
+            "optional": true,
+            "type": "string",
+            "description": "Section heading. Defaults to the translated \"At a glance\"."
+        },
+        "maxWidth": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "full",
+                "xl"
+            ],
+            "description": "Maximum content width."
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional class name applied to the section root."
+        }
+    },
     "forbiddenUse": [
         "present a claim without a source label",
         "invent metrics that are not on record"

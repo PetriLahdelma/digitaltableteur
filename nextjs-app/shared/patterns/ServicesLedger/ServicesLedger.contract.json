@@ -1,114 +1,108 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "schemaVersion": 2,
-  "tier": "pattern",
-  "group": "marketing",
-  "status": "alpha",
-  "radixPrimitive": null,
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default"
-  ],
-  "lightDarkVerified": false,
-  "name": "ServicesLedger",
-  "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a Human / Machine switch that shows the same offers as plain text.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-246",
-  "element": "section",
-  "a11y": {
-    "keyboard": [
-      "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "alpha",
+    "radixPrimitive": null,
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
     ],
-    "ariaRequirements": [
-      "The section is labelled by its heading.",
-      "The view buttons expose their state with aria-pressed and point at the panel with aria-controls.",
-      "Row index numbers are decorative (aria-hidden)."
+    "lightDarkVerified": false,
+    "name": "ServicesLedger",
+    "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a Human / Machine switch that shows the same offers as plain text.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-246",
+    "element": "section",
+    "a11y": {
+        "keyboard": [
+            "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
+        ],
+        "ariaRequirements": [
+            "The section is labelled by its heading.",
+            "The view buttons expose their state with aria-pressed and point at the panel with aria-controls.",
+            "Row index numbers are decorative (aria-hidden)."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-border",
+            "--color-focus-ring",
+            "--main-body-background-color"
+        ],
+        "spacing": [
+            "--space-layout-4",
+            "--space-layout-6",
+            "--space-layout-8",
+            "--space-layout-16",
+            "--space-layout-24",
+            "--space-layout-32",
+            "--space-layout-48"
+        ]
+    },
+    "props": {
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "services": {
+            "optional": false,
+            "type": "ServicesLedgerItem[]"
+        },
+        "machineLinks": {
+            "optional": true,
+            "type": "ServicesLedgerLink[]",
+            "description": "Machine-readable endpoints listed at the top of the machine view"
+        },
+        "labels": {
+            "optional": false,
+            "type": "ServicesLedgerLabels"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string",
+            "description": "Donny site action target id for this section"
+        }
+    },
+    "composesWith": [
+        "Section",
+        "Container",
+        "FadeIn",
+        "Link"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": false
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-muted",
-      "--color-border",
-      "--color-focus-ring",
-      "--main-body-background-color"
+    "forbiddenUse": [
+        "Put portfolio images or case-study art in the ledger; the homepage work section shows the work.",
+        "Show facts in the machine view that the human view does not."
     ],
-    "spacing": [
-      "--space-layout-4",
-      "--space-layout-6",
-      "--space-layout-8",
-      "--space-layout-16",
-      "--space-layout-24",
-      "--space-layout-32",
-      "--space-layout-48"
-    ]
-  },
-  "props": {
-    "title": {
-      "optional": true,
-      "type": "string",
-      "description": "Section heading"
-    },
-    "description": {
-      "optional": true,
-      "type": "string",
-      "description": "Lead text under the heading"
-    },
-    "services": {
-      "optional": false,
-      "type": "ServicesLedgerItem[]",
-      "description": "Rows: index, machineKey, title, description, capabilities, href, optional donnyTarget"
-    },
-    "machineLinks": {
-      "optional": true,
-      "type": "ServicesLedgerLink[]",
-      "description": "Machine-readable endpoints listed at the top of the machine view"
-    },
-    "labels": {
-      "optional": false,
-      "type": "ServicesLedgerLabels",
-      "description": "Localised strings for the view switch and the machine view"
-    },
-    "className": {
-      "optional": true,
-      "type": "string",
-      "description": "Additional class name on the section"
-    },
-    "id": {
-      "optional": true,
-      "type": "string",
-      "description": "Section id, for in-page links"
-    },
-    "donnyTarget": {
-      "optional": true,
-      "type": "string",
-      "description": "Donny site action target id for this section"
+    "keywords": [
+        "services",
+        "ledger",
+        "homepage",
+        "machine-readable",
+        "agent-ready"
+    ],
+    "dense": "Homepage services ledger: ruled rows (index, title, description, capabilities) plus a Human / Machine text view",
+    "usage": {
+        "description": "Homepage services section since 2026-10-20 (replaces ServicesSection there). Labels and capability strings come from the page so all three locales apply."
     }
-  },
-  "composesWith": [
-    "Section",
-    "Container",
-    "FadeIn",
-    "Link"
-  ],
-  "forbiddenUse": [
-    "Put portfolio images or case-study art in the ledger; the homepage work section shows the work.",
-    "Show facts in the machine view that the human view does not."
-  ],
-  "keywords": [
-    "services",
-    "ledger",
-    "homepage",
-    "machine-readable",
-    "agent-ready"
-  ],
-  "dense": "Homepage services ledger: ruled rows (index, title, description, capabilities) plus a Human / Machine text view",
-  "usage": {
-    "description": "Homepage services section since 2026-10-20 (replaces ServicesSection there). Labels and capability strings come from the page so all three locales apply."
-  }
 }

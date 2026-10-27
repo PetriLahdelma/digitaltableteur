@@ -42,6 +42,8 @@ export {
 export { default as Gallery } from "../../../nextjs-app/shared/components/Gallery/Gallery";
 export type { GalleryProps } from "../../../nextjs-app/shared/components/Gallery";
 export { default as List } from "../../../nextjs-app/shared/components/List/List";
+export { default as SummaryList } from "../../../nextjs-app/shared/components/SummaryList/SummaryList";
+export type { SummaryListProps, SummaryListRow } from "../../../nextjs-app/shared/components/SummaryList/SummaryList";
 export type { ListProps } from "../../../nextjs-app/shared/components/List/List";
 export { default as ProjectList } from "../../../nextjs-app/shared/components/ProjectList/ProjectList";
 export type {

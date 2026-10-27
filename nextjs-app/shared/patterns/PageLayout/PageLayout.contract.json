@@ -120,8 +120,8 @@
                 "sm",
                 "md",
                 "lg",
-                "xl",
-                "full"
+                "full",
+                "xl"
             ],
             "description": "Maximum width constraint for the content"
         },
@@ -139,8 +139,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "default",
                 "compact",
+                "default",
                 "comfortable",
                 "spacious"
             ],

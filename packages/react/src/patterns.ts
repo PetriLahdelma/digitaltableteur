@@ -3,6 +3,8 @@ export {
   type CategoryFilterProps,
   type CategoryOption,
 } from "../../../nextjs-app/shared/components/CategoryFilter";
+export { default as ConfirmPopover } from "../../../nextjs-app/shared/components/ConfirmPopover/ConfirmPopover";
+export type { ConfirmPopoverProps } from "../../../nextjs-app/shared/components/ConfirmPopover/ConfirmPopover";
 export { default as Modal } from "../../../nextjs-app/shared/components/Modal/Modal";
 export type {
   ModalAnimation,

@@ -5058,6 +5058,39 @@
       },
       "examples": []
     },
+    "ConfirmPopover": {
+      "name": "ConfirmPopover",
+      "group": "overlay",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Asks \"are you sure?\" next to the control that triggered it: a non-modal alertdialog anchored to the trigger with a question, an optional consequence and Cancel / confirm buttons.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import ConfirmPopover from \"@dt/ConfirmPopover\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "use it for a flow that needs more explanation or input than one question; use Modal.",
+        "confirm an action that can simply be undone; offer Undo instead."
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-white",
+          "--color-border",
+          "--color-primary",
+          "--color-muted"
+        ],
+        "spacing": [
+          "--space-internal-8",
+          "--space-internal-24",
+          "--space-internal-32"
+        ]
+      },
+      "examples": []
+    },
     "ContactForm": {
       "name": "ContactForm",
       "group": "form",
@@ -12121,6 +12154,11 @@
           "required": false
         },
         {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
           "name": "value",
           "type": "string",
           "required": false
@@ -12132,11 +12170,6 @@
         },
         {
           "name": "helperText",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "placeholder",
           "type": "string",
           "required": false
         }
@@ -12434,6 +12467,16 @@
           ],
           "description": "ISO 3166-1 alpha-2 code used when the value has no country prefix."
         },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Field size, matching TextInput; lg is the 3rem height every lg field shares."
+        },
         "onChange": {
           "optional": true,
           "type": "(value: string | undefined) => void"
@@ -12516,7 +12559,7 @@
         {
           "story": "Default",
           "description": "Formats as you type for the default country (FI) and emits the E.164 value through onChange.",
-          "source": "export const Default = Template.bind({});\nDefault.args = {\n  label: \"storyPhoneInputLabel\",\n  placeholder: \"storyPhoneInputPlaceholder\",\n};\nDefault.tags = [\"example\"];\nDefault.parameters = {\n  docs: {\n    description: {\n      story:\n        \"Formats as you type for the default country (FI) and emits the E.164 value through onChange.\",\n    },\n  },\n};\nDefault.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const input = canvas.getByRole(\"textbox\");\n\n  // Type a Finnish phone number (default country already adds +358)\n  await userEvent.type(input, \"401234567\");\n\n  await waitFor(() => {\n    const normalized = (input as HTMLInputElement).value.replace(/\\s+/g, \"\");\n    expect(normalized).toBe(\"+358401234567\");\n  });\n};"
+          "source": "export const Default = Template.bind({});\nDefault.args = {\n  label: \"storyPhoneInputLabel\",\n  placeholder: \"storyPhoneInputPlaceholder\",\n};\nDefault.tags = [\"example\"];\nDefault.parameters = {\n  docs: {\n    description: {\n      story:\n        \"Formats as you type for the default country (FI) and emits the E.164 value through onChange.\",\n    },\n  },\n};\nDefault.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const input = canvas.getByRole(\"textbox\");\n\n  // Type a Finnish number; the country select already carries +358\n  await userEvent.type(input, \"0401234567\");\n\n  await waitFor(() => {\n    const normalized = (input as HTMLInputElement).value.replace(/\\s+/g, \"\");\n    expect(normalized).toBe(\"0401234567\");\n  });\n};"
         },
         {
           "story": "WithError",
@@ -16940,6 +16983,38 @@
         }
       ]
     },
+    "SummaryList": {
+      "name": "SummaryList",
+      "group": "display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Questions and their answers as a description list, one row per question with an optional action: for checking answers before submitting and for showing a submitted record.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import SummaryList from \"@dt/SummaryList\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "use it for tabular data with several values per row; use Table.",
+        "use it for an editable form; it shows answers, not inputs."
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted",
+          "--color-border-light"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-16",
+          "--space-internal-24"
+        ]
+      },
+      "examples": []
+    },
     "Switch": {
       "name": "Switch",
       "group": "form",
@@ -17859,6 +17934,108 @@
           "source": "export const ControlledTabs: StoryFn = () => {\n  const [activeTab, setActiveTab] = React.useState(\"tab1\");\n  const tabs = [\n    { key: \"tab1\", label: \"First\" },\n    { key: \"tab2\", label: \"Second\" },\n    { key: \"tab3\", label: \"Third\" },\n  ];\n  return (\n    <div>\n      <p className={styles.demoText}>\n        Active tab (v1.1.0): <strong>{activeTab}</strong>\n      </p>\n      <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />\n      {tabs.map((tab) => (\n        <div\n          key={tab.key}\n          {...getTabPanelProps(tab.key, tab.key === activeTab)}\n        >\n          <p>{tab.label} content</p>\n        </div>\n      ))}\n    </div>\n  );\n};\n\nControlledTabs.tags = [\"example\"];\nControlledTabs.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"Controlled mode: pass activeTab + onTabChange and the parent owns selection — the pattern used by the contact form's Personal/Company switch and the CV page's rendered-vs-source toggle. Panels pair up via getTabPanelProps.\",\n    },\n  },\n};"
         }
       ]
+    },
+    "TaskList": {
+      "name": "TaskList",
+      "group": "navigation",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Navigation rail for a long form done in parts, in any order and over several sessions: each part with its status, the open part with its steps.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { TaskList } from \"@dt/TaskList\";",
+      "keyProps": [
+        {
+          "name": "tasks",
+          "type": "TaskListTask[]",
+          "required": true
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "currentTaskId",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "currentStepId",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "statusLabels",
+          "type": "Partial<Record<TaskListStatus, string>>",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "tasks": {
+          "optional": false,
+          "type": "TaskListTask[]",
+          "description": "Tasks in order."
+        },
+        "label": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible name of the navigation landmark, for example \"Intake parts\"."
+        },
+        "currentTaskId": {
+          "optional": true,
+          "type": "string",
+          "description": "The task the person is working on; its steps are listed."
+        },
+        "currentStepId": {
+          "optional": true,
+          "type": "string",
+          "description": "The step on screen, marked with aria-current=\"step\"."
+        },
+        "onSelect": {
+          "optional": true,
+          "type": "(taskId: string, stepId?: string) => void",
+          "description": "Called when a task or step is chosen. Every task can be opened, so past\nsteps stay reachable (Baymard: people click step indicators to go back).\nTasks with status \"cannotStart\" are not interactive."
+        },
+        "statusLabels": {
+          "optional": true,
+          "type": "Partial<Record<TaskListStatus, string>>",
+          "description": "Overrides the translated status words."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Merged onto the nav element."
+        }
+      },
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+        "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another."
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted",
+          "--color-border-light",
+          "--color-neutral-bg"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-4",
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12"
+        ]
+      },
+      "examples": []
     },
     "Testimonial": {
       "name": "Testimonial",
@@ -20344,7 +20521,7 @@
         },
         {
           "name": "background",
-          "type": "image | minimal | gradient | primary",
+          "type": "image | primary | minimal | gradient",
           "required": false
         },
         {
@@ -20363,8 +20540,8 @@
           "required": false
         },
         {
-          "name": "className",
-          "type": "string",
+          "name": "backdrop",
+          "type": "ReactNode",
           "required": false
         }
       ],
@@ -20384,11 +20561,11 @@
           "type": "union",
           "values": [
             "image",
+            "primary",
             "minimal",
-            "gradient",
-            "primary"
+            "gradient"
           ],
-          "description": "Background variant; primary fills the hero with the primary colour and sets inverse text"
+          "description": "Background variant"
         },
         "backgroundImage": {
           "optional": true,
@@ -20399,6 +20576,11 @@
           "optional": true,
           "type": "boolean",
           "description": "Show scroll indicator at bottom"
+        },
+        "backdrop": {
+          "optional": true,
+          "type": "ReactNode",
+          "description": "Decorative layer drawn over the background and under the text. Drags on\nit pass through the text layer."
         },
         "className": {
           "optional": true,
@@ -20668,7 +20850,7 @@
         "lang": {
           "optional": true,
           "type": "string",
-          "description": "Language applied to the article hero and body (defaults to English); navigation and related-post chrome keep the UI language"
+          "description": "Document language for the article root"
         }
       },
       "composesWith": [],
@@ -21211,8 +21393,87 @@
         "role"
       ],
       "importLine": "import { CaseStudySummary } from \"@dt/CaseStudySummary\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "outcome",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "role",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "constraints",
+          "type": "string[]",
+          "required": true
+        },
+        {
+          "name": "decisions",
+          "type": "CaseStudyDecision[]",
+          "required": true
+        },
+        {
+          "name": "evidence",
+          "type": "CaseStudyEvidence[]",
+          "required": true
+        },
+        {
+          "name": "maxWidth",
+          "type": "sm | md | lg | full | xl",
+          "required": false
+        }
+      ],
+      "props": {
+        "outcome": {
+          "optional": false,
+          "type": "string",
+          "description": "What changed because of the work, in one or two sentences."
+        },
+        "role": {
+          "optional": false,
+          "type": "string",
+          "description": "Role and scope of the engagement."
+        },
+        "constraints": {
+          "optional": false,
+          "type": "string[]",
+          "description": "What made the problem hard."
+        },
+        "decisions": {
+          "optional": false,
+          "type": "CaseStudyDecision[]",
+          "description": "The decisions that shaped the result."
+        },
+        "evidence": {
+          "optional": false,
+          "type": "CaseStudyEvidence[]",
+          "description": "Claims with an explicit source label; nothing is presented unsourced."
+        },
+        "title": {
+          "optional": true,
+          "type": "string",
+          "description": "Section heading. Defaults to the translated \"At a glance\"."
+        },
+        "maxWidth": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg",
+            "full",
+            "xl"
+          ],
+          "description": "Maximum content width."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Additional class name applied to the section root."
+        }
+      },
       "composesWith": [
         "ProjectHero",
         "ProjectMetaSection",
@@ -21694,7 +21955,7 @@
       "keyProps": [
         {
           "name": "engagementId",
-          "type": "audit | liftoff | aiops | partnership | workshop | designopsPilot | agentPilot | dsMcp | agentWorkforce",
+          "type": "audit | uxSprint | liftoff | aiops | partnership | workshop | designopsPilot | agentPilot | dsMcp | agentWorkforce",
           "required": true
         },
         {
@@ -21709,6 +21970,7 @@
           "type": "union",
           "values": [
             "audit",
+            "uxSprint",
             "liftoff",
             "aiops",
             "partnership",
@@ -21718,12 +21980,12 @@
             "dsMcp",
             "agentWorkforce"
           ],
-          "description": "Which engagement page to render"
+          "description": "Which engagement to render."
         },
         "className": {
           "optional": true,
           "type": "string",
-          "description": "Additional class name on the root"
+          "description": "Additional class name on the root."
         }
       },
       "composesWith": [
@@ -21861,12 +22123,12 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | xl | full",
+          "type": "sm | md | lg | full | xl",
           "required": false
         },
         {
           "name": "spacing",
-          "type": "default | compact | comfortable | spacious",
+          "type": "compact | default | comfortable | spacious",
           "required": false
         },
         {
@@ -21914,8 +22176,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint"
         },
@@ -21923,8 +22185,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -22008,12 +22270,12 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | xl | full",
+          "type": "sm | md | lg | full | xl",
           "required": false
         },
         {
           "name": "spacing",
-          "type": "default | compact | comfortable | spacious",
+          "type": "compact | default | comfortable | spacious",
           "required": false
         }
       ],
@@ -22104,8 +22366,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum content width"
         },
@@ -22113,8 +22375,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -22637,12 +22899,12 @@
         "background": {
           "optional": true,
           "type": "ReactNode",
-          "description": "Replaces the default animated gradient behind the content. Drags on the background pass through the content layer; only the buttons capture them."
+          "description": "Replaces the default animated gradient behind the content. Drags on the\nbackground pass through the content layer; only the buttons capture them."
         },
         "showScrollIndicator": {
           "optional": true,
           "type": "boolean",
-          "description": "Show the \"Scroll\" cue at the bottom. Default true."
+          "description": "Show the \"Scroll\" cue at the bottom."
         }
       },
       "composesWith": [
@@ -22845,12 +23107,12 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | xl | full",
+          "type": "sm | md | lg | full | xl",
           "required": false
         },
         {
           "name": "spacing",
-          "type": "default | compact | comfortable | spacious",
+          "type": "compact | default | comfortable | spacious",
           "required": false
         },
         {
@@ -22882,8 +23144,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint for the content"
         },
@@ -22901,8 +23163,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -23001,7 +23263,7 @@
         "selectionFromUrl": {
           "optional": true,
           "type": "boolean",
-          "description": "Start from the ?duration=&days= selection in the page URL, so a link can arrive with a tier already chosen. Invalid or missing values keep the defaults."
+          "description": "Start from the `?duration=6m&days=4` selection in the page URL (the same\nparameters the calculator's own CTA emits), so a link can arrive with a\ntier already chosen. Invalid or missing values keep the defaults."
         }
       },
       "composesWith": [
@@ -23096,7 +23358,7 @@
         "heroBackground": {
           "optional": true,
           "type": "ReactNode",
-          "description": "Decorative layer on the hero field, under the text. Drags on it pass through the text layer."
+          "description": "Decorative layer on the hero field, under the text. Drags on it pass\nthrough the text layer."
         }
       },
       "composesWith": [],
@@ -23154,12 +23416,12 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | xl | full",
+          "type": "sm | md | lg | full | xl",
           "required": false
         },
         {
           "name": "spacing",
-          "type": "default | compact | comfortable | spacious",
+          "type": "compact | default | comfortable | spacious",
           "required": false
         },
         {
@@ -23206,8 +23468,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint"
         },
@@ -23215,8 +23477,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -23308,22 +23570,18 @@
       "props": {
         "headingLevel": {
           "optional": true,
-          "type": "union",
-          "values": [
-            "2",
-            "3"
-          ],
-          "description": "Heading level of the section title"
+          "type": "2 | 3",
+          "description": "Heading level of the section title."
         },
         "id": {
           "optional": true,
           "type": "string",
-          "description": "Section id, for in-page links"
+          "description": "Section id, for in-page links."
         },
         "className": {
           "optional": true,
           "type": "string",
-          "description": "Additional class name on the section"
+          "description": "Additional class name on the section."
         }
       },
       "composesWith": [
@@ -23438,7 +23696,7 @@
         "lang": {
           "optional": true,
           "type": "string",
-          "description": "Language applied to the project hero and authored case-study body (defaults to English); navigation, CTA, and related-project chrome keep the UI language"
+          "description": "Language of the case-study content"
         }
       },
       "composesWith": [
@@ -23447,7 +23705,7 @@
         "RelatedProjects",
         "GridBlock",
         "ProjectMetaSection",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -23669,7 +23927,7 @@
         "RelatedProjects",
         "GridBlock",
         "ProjectMetaSection",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -23705,7 +23963,7 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | xl | full",
+          "type": "sm | md | lg | full | xl",
           "required": false
         },
         {
@@ -23772,8 +24030,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Max width constraint for the section"
         },
@@ -23794,7 +24052,7 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -24036,7 +24294,7 @@
         "ProjectHero",
         "GridBlock",
         "ProjectMetaSection",
-        "TeamBlock"
+        "CaseStudySummary"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -24073,12 +24331,12 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | xl | full",
+          "type": "sm | md | lg | full | xl",
           "required": false
         },
         {
           "name": "spacing",
-          "type": "default | compact | comfortable | spacious",
+          "type": "compact | default | comfortable | spacious",
           "required": false
         },
         {
@@ -24145,8 +24403,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum content width"
         },
@@ -24154,8 +24412,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -24246,18 +24504,15 @@
       "props": {
         "title": {
           "optional": true,
-          "type": "string",
-          "description": "Section heading"
+          "type": "string"
         },
         "description": {
           "optional": true,
-          "type": "string",
-          "description": "Lead text under the heading"
+          "type": "string"
         },
         "services": {
           "optional": false,
-          "type": "ServicesLedgerItem[]",
-          "description": "Rows: index, machineKey, title, description, capabilities, href, optional donnyTarget"
+          "type": "ServicesLedgerItem[]"
         },
         "machineLinks": {
           "optional": true,
@@ -24266,18 +24521,15 @@
         },
         "labels": {
           "optional": false,
-          "type": "ServicesLedgerLabels",
-          "description": "Localised strings for the view switch and the machine view"
+          "type": "ServicesLedgerLabels"
         },
         "className": {
           "optional": true,
-          "type": "string",
-          "description": "Additional class name on the section"
+          "type": "string"
         },
         "id": {
           "optional": true,
-          "type": "string",
-          "description": "Section id, for in-page links"
+          "type": "string"
         },
         "donnyTarget": {
           "optional": true,
@@ -24493,6 +24745,16 @@
           "name": "className",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "languageCodes",
+          "type": "readonly string[]",
+          "required": false
+        },
+        {
+          "name": "account",
+          "type": "SiteHeaderAccount",
+          "required": false
         }
       ],
       "props": {
@@ -24505,6 +24767,16 @@
           "optional": true,
           "type": "string",
           "description": "Optional wrapper class."
+        },
+        "languageCodes": {
+          "optional": true,
+          "type": "readonly string[]",
+          "description": "Limits the language switchers to these codes, for an area offered in\nfewer languages than the site (the client intake: EN and FI). All site\nlanguages when unset."
+        },
+        "account": {
+          "optional": true,
+          "type": "SiteHeaderAccount",
+          "description": "The signed-in person in an account area (the client intake): an avatar\nwith their initials that opens a menu of account actions such as\nsigning out. Nothing renders when unset."
         }
       },
       "composesWith": [],
@@ -24581,7 +24853,9 @@
         }
       },
       "composesWith": [
-        "SlideButton"
+        "SlideButton",
+        "ReliablePartnerBadge",
+        "Link"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -24633,12 +24907,12 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | xl | full",
+          "type": "sm | md | lg | full | xl",
           "required": false
         },
         {
           "name": "spacing",
-          "type": "default | compact | comfortable | spacious",
+          "type": "compact | default | comfortable | spacious",
           "required": false
         }
       ],
@@ -24690,8 +24964,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint"
         },
@@ -24699,8 +24973,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],
@@ -24729,7 +25003,7 @@
         "headingLevel": {
           "optional": true,
           "type": "2 | 3 | 4",
-          "description": "Heading level for the section title; visual size is unchanged. Pages whose outline places StoryBlock sections directly under the h1 should pass 2."
+          "description": "Heading level for the section title; visual size is unchanged. Pages whose\noutline places StoryBlock sections directly under the h1 should pass 2."
         }
       },
       "composesWith": [
@@ -24785,12 +25059,12 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | xl | full",
+          "type": "sm | md | lg | full | xl",
           "required": false
         },
         {
           "name": "spacing",
-          "type": "default | compact | comfortable | spacious",
+          "type": "compact | default | comfortable | spacious",
           "required": false
         },
         {
@@ -24842,8 +25116,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
-            "full"
+            "full",
+            "xl"
           ],
           "description": "Maximum width constraint"
         },
@@ -24851,8 +25125,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "default",
             "compact",
+            "default",
             "comfortable",
             "spacious"
           ],

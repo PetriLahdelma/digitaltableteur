@@ -57,6 +57,8 @@
         "promote to stable without production consumer evidence"
     ],
     "composesWith": [
-        "SlideButton"
+        "SlideButton",
+        "ReliablePartnerBadge",
+        "Link"
     ]
 }

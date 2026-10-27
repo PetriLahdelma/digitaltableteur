@@ -76,8 +76,8 @@
                 "sm",
                 "md",
                 "lg",
-                "xl",
-                "full"
+                "full",
+                "xl"
             ],
             "description": "Max width constraint for the section"
         },
@@ -102,6 +102,6 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "TeamBlock"
+        "CaseStudySummary"
     ]
 }

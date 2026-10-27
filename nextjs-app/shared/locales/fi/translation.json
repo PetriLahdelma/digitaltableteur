@@ -983,6 +983,8 @@
   "buttonMedium": "Keskikokoinen",
   "buttonLarge": "Suuri",
   "badgeRemove": "Poista tunniste",
+  "multiComboboxMoreSelected": "{{count}} muuta valittu: {{labels}}",
+  "confirmPopoverCancel": "Peruuta",
   "multiComboboxNoResults": "Ei vastaavia vaihtoehtoja",
   "multiComboboxToggleOptions": "Avaa vaihtoehdot",
   "fileUploadSizeError": "Tiedosto on liian suuri. Enintään {{maxSize}} Mt. Tiedosto poistettu.",

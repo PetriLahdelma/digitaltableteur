@@ -11,6 +11,15 @@
   list-style: none;
 }
 
+/* The site's global stylesheet gives every li a bottom margin; inside the
+   task list it would sit under each row's content, above the next divider,
+   and push the text off centre. Spacing here comes from padding and gap. */
+
+.tasks > li,
+.steps > li {
+  margin: 0;
+}
+
 .task {
   border-block-start: 1px solid var(--color-border-light);
 }
@@ -23,8 +32,9 @@
   display: flex;
   padding-block: var(--space-internal-12);
   inline-size: 100%;
+  min-block-size: 3rem;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-internal-12);
   border: 0;
   background: none;
@@ -40,6 +50,7 @@ button.row {
 .name {
   display: flex;
   min-inline-size: 0;
+  align-items: flex-start;
   gap: var(--space-internal-8);
 }
 
@@ -54,12 +65,21 @@ button.row {
   display: flex;
   min-inline-size: 0;
   flex-direction: column;
-  gap: var(--space-internal-2);
+  gap: var(--space-internal-8);
 }
 
 .label {
   font-size: var(--font-size-text-s);
   font-weight: var(--font-weight-medium);
+}
+
+/* Trim the line box to cap height and baseline, so the letters themselves
+   sit in the middle of the row (the font's ascender space otherwise makes
+   them ride high). Browsers without text-box keep the full line box. */
+
+.number,
+.label {
+  text-box: trim-both cap alphabetic;
 }
 
 .taskCurrent .label {
@@ -98,7 +118,7 @@ button.row:hover .label {
   padding-block-end: var(--space-internal-12);
   padding-inline-start: calc(1.5em + var(--space-internal-8));
   flex-direction: column;
-  gap: var(--space-internal-2);
+  gap: var(--space-internal-8);
 }
 
 .step {

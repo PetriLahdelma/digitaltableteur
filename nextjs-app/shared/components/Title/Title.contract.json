@@ -98,17 +98,17 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/AnswerSheet.tsx",
+            "path": "app/error.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/AnswerSummary.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/CodeStep.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
         }
     ],

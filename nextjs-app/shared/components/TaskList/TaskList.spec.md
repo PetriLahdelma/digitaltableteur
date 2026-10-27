@@ -9,6 +9,7 @@ Orients people in a long form that is done in parts, in any order and over sever
 - Keyboard: Tab moves through parts and the open part's steps; Enter or Space opens one.
 - Pointer: the whole row of a part is the target, not just its name.
 - Screen readers: a `nav` landmark named by `label`; the step on screen is `aria-current="step"`; each part's status and hint describe its button.
+- Status marks: only "In progress" (badge) and "Completed" (check) show. "Not started" is visually hidden so the rail does not repeat the same badge on every untouched part; it still describes the button for screen readers.
 
 ## Do / don't
 

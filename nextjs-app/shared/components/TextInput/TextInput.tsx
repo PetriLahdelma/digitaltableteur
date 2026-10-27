@@ -22,6 +22,10 @@ import {
 } from "../../utils/sizeNormalization";
 import { suggestEmailCorrection } from "../../utils/emailSuggestion";
 
+/** Character widths a field can be capped to; "full" fills the container. */
+export type TextInputWidth =
+  "full" | "2ch" | "3ch" | "4ch" | "5ch" | "10ch" | "20ch" | "30ch";
+
 export interface TextInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "onChange" | "size"
@@ -72,6 +76,14 @@ export interface TextInputProps extends Omit<
   /** Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance */
   hideLabel?: boolean;
 
+  // NEW PROPS (v1.3.0)
+  /**
+   * Widest the field grows, in characters of the expected answer (after the
+   * GOV.UK input widths): "10ch" for a code, "30ch" for an email address. The
+   * field still shrinks with its container. @default "full"
+   */
+  width?: TextInputWidth;
+
   // DEPRECATED PROPS
   /** @deprecated Use onValueChange instead. Will be removed in v2.0.0 */
   onChange?: (value: string | number) => void;
@@ -92,6 +104,7 @@ const TextInput: React.FC<TextInputProps> = ({
   clearable = false,
   onClear,
   hideLabel = false,
+  width = "full",
   // Deprecated props
   onChange,
   disabled = false,
@@ -211,13 +224,17 @@ const TextInput: React.FC<TextInputProps> = ({
   };
 
   const showClearButton = clearable && !disabled && inputValue !== "";
+  // The cap sits on the outermost field box: the shell when clearable, so the
+  // clear button stays inside the narrowed field.
+  const widthClass =
+    width === "full" ? "" : `${styles.capped} ${styles[`width--${width}`]}`;
 
   const inputElement = (
     <input
       ref={inputRef}
       id={inputId}
       name={label.replace(/\s+/g, "-").toLowerCase()}
-      className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${clearable ? styles.inputClearable : ""} ${hasError ? styles.error : ""}`}
+      className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${clearable ? styles.inputClearable : widthClass} ${hasError ? styles.error : ""}`}
       type={type}
       placeholder={placeholder}
       value={inputValue}
@@ -241,7 +258,7 @@ const TextInput: React.FC<TextInputProps> = ({
       </Label>
       {/* Non-clearable consumers keep the exact previous DOM (no wrapper). */}
       {clearable ? (
-        <div className={styles.inputShell}>
+        <div className={`${styles.inputShell} ${widthClass}`}>
           {inputElement}
           {showClearButton && (
             <button

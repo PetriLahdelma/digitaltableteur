@@ -107,8 +107,8 @@
                 "sm",
                 "md",
                 "lg",
-                "xl",
-                "full"
+                "full",
+                "xl"
             ],
             "description": "Maximum content width"
         },
@@ -116,8 +116,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "default",
                 "compact",
+                "default",
                 "comfortable",
                 "spacious"
             ],

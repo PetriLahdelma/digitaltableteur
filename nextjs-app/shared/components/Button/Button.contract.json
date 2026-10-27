@@ -160,7 +160,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/CodeStep.tsx",
+            "path": "app/intake/_components/AnswerSummary.tsx",
             "since": "2026-06-04"
         }
     ],

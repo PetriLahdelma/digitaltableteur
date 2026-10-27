@@ -72,7 +72,7 @@
         "lang": {
             "optional": true,
             "type": "string",
-            "description": "Language applied to the article hero and body (defaults to English); navigation and related-post chrome keep the UI language"
+            "description": "Document language for the article root"
         }
     },
     "forbiddenUse": [

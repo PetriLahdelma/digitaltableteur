@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-26T21:31:25.543Z",
+  "generatedAt": "2026-10-27T17:21:30.320Z",
   "summary": {
-    "componentCount": 189,
+    "componentCount": 192,
     "statusCounts": {
       "beta": 49,
       "stable": 108,
       "deprecated": 3,
-      "alpha": 29
+      "alpha": 32
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 91.7,
-    "codebaseComponentCount": 206,
-    "usageCoveragePercent": 94.2,
-    "componentsWithProductionUsage": 42,
+    "catalogCompletenessPercent": 91.9,
+    "codebaseComponentCount": 209,
+    "usageCoveragePercent": 93.2,
+    "componentsWithProductionUsage": 43,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 206,
-    "inCatalog": 189,
+    "totalComponentsInCodebase": 209,
+    "inCatalog": 192,
     "outOfCatalog": 17,
-    "catalogCompletenessPercent": 91.7,
+    "catalogCompletenessPercent": 91.9,
     "artifactCoverage": {
-      "stories": 173,
-      "tests": 185,
-      "mdx": 4,
-      "spec": 189
+      "stories": 176,
+      "tests": 188,
+      "mdx": 7,
+      "spec": 192
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,13 +77,13 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 189,
-    "withAnyUsage": 178,
-    "withProductionUsage": 42,
-    "uniqueImportedComponents": 178,
-    "totalEvidenceRows": 911,
-    "aliasImportFiles": 466,
-    "relativeImportFiles": 485,
+    "catalogedComponents": 192,
+    "withAnyUsage": 179,
+    "withProductionUsage": 43,
+    "uniqueImportedComponents": 179,
+    "totalEvidenceRows": 921,
+    "aliasImportFiles": 471,
+    "relativeImportFiles": 490,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -102,7 +102,7 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 189,
+      "digitaltableteur": 192,
       "dsharp": 112
     },
     "statusMix": {
@@ -110,7 +110,7 @@
         "beta": 49,
         "stable": 108,
         "deprecated": 3,
-        "alpha": 29
+        "alpha": 32
       },
       "dsharp": {
         "beta": 110,
@@ -4000,6 +4000,51 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/ServerArticleHero.tsx",
             "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "since": "2026-06-04"
           }
         ],
         "schemaVersion": 2,
@@ -4130,11 +4175,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Avatar",
-        "importCount": 5,
+        "importCount": 6,
         "productionImportCount": 0,
-        "patternImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Avatar/Avatar",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/Author/Author.tsx",
             "importKind": "alias",
@@ -5053,12 +5104,32 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -5069,26 +5140,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -5252,10 +5303,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
-        "importCount": 14,
+        "importCount": 15,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 5,
+        "componentImportCount": 6,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
@@ -5283,6 +5334,12 @@
           },
           {
             "path": "nextjs-app/shared/components/StageList/StageList.tsx",
+            "importKind": "relative",
+            "importPath": "../Badge/Badge",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/TaskList/TaskList.tsx",
             "importKind": "relative",
             "importPath": "../Badge/Badge",
             "context": "component"
@@ -5319,12 +5376,6 @@
           },
           {
             "path": "nextjs-app/shared/components/VirtualListItem/VirtualListItem.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Badge",
-            "context": "story"
-          },
-          {
-            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Badge",
             "context": "story"
@@ -5480,8 +5531,8 @@
         "composesWith": [
           "TextInput",
           "Icon",
-          "Text",
           "Button",
+          "Text",
           "Grid",
           "FlexBox"
         ],
@@ -7832,11 +7883,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
@@ -7848,6 +7894,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/error.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -8255,10 +8306,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 65,
+        "importCount": 68,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 38,
+        "componentImportCount": 39,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
@@ -12179,17 +12230,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -12209,12 +12260,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -12798,7 +12849,7 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -12814,6 +12865,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -16075,7 +16131,8 @@
             "Space",
             "Escape",
             "ArrowDown",
-            "ArrowUp"
+            "ArrowUp",
+            "Printable characters (typeahead): open the list and move the highlight to the first option whose label, or any word in it, starts with what was typed; the search clears after a 0.7 s pause, and a space inside a search is part of it."
           ],
           "ariaRequirements": [
             "trigger role=combobox with aria-expanded/aria-controls/aria-activedescendant",
@@ -16116,6 +16173,21 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
@@ -16302,7 +16374,7 @@
           "Icon"
         ]
       },
-      "spec": "# Combobox\n\n## Intent\nSingle-select combobox for editorial forms. Replaces native `<select>` with a portaled dropdown, shared field styling, and Lenis-safe list scrolling.\n\n## Interaction contract\n- Keyboard: Tab focuses trigger; Enter/Space opens; Arrow keys move highlight; Enter selects; Escape closes.\n- Pointer: click trigger toggles list; click option selects and closes; click outside closes.\n- Screen readers: combobox + listbox + option `aria-selected` semantics.\n\n## Do / don't\n- Do: use via `FormFieldEditorial` `type=\"select\"` on editorial contact forms.\n- Do: pass stable `value` / `onValueChange` pairs for controlled usage.\n- Don't: nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`).\n\n## Design notes\n- Shares `ComboboxField.module.css` with MultiCombobox for label, control, trigger, and option styling.\n- Chevron uses `@dt/Icon` `caret-down` aligned with other editorial fields.\n",
+      "spec": "# Combobox\n\n## Intent\nSingle-select combobox for editorial forms. Replaces native `<select>` with a portaled dropdown, shared field styling, and Lenis-safe list scrolling.\n\n## Interaction contract\n- Keyboard: Tab focuses trigger; Enter/Space opens; Arrow keys move highlight; Enter selects; Escape closes.\n- Pointer: click trigger toggles list; click option selects and closes; click outside closes.\n- Screen readers: combobox + listbox + option `aria-selected` semantics.\n\n- Typeahead: typing jumps to the first option whose label, or any word in it, starts with the typed text (\"hel\" finds \"Europe / Helsinki\"). The search clears after a 0.7 s pause; a space inside a search is part of it. Long lists such as time zones depend on this.\n- The list is at least 320px wide (kept 16px inside the viewport), so long labels in a narrow field stay on one line. The control is the same white surface and 3rem height as the lg text fields.\n\n## Do / don't\n- Do: use via `FormFieldEditorial` `type=\"select\"` on editorial contact forms.\n- Do: pass stable `value` / `onValueChange` pairs for controlled usage.\n- Don't: nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`).\n\n## Design notes\n- Shares `ComboboxField.module.css` with MultiCombobox for label, control, trigger, and option styling.\n- Chevron uses `@dt/Icon` `caret-down` aligned with other editorial fields.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Combobox",
@@ -16410,7 +16482,8 @@
           "Space",
           "Escape",
           "ArrowDown",
-          "ArrowUp"
+          "ArrowUp",
+          "Printable characters (typeahead): open the list and move the highlight to the first option whose label, or any word in it, starts with what was typed; the search clears after a 0.7 s pause, and a space inside a search is part of it."
         ],
         "compositionRules": [
           "nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`)."
@@ -17509,6 +17582,426 @@
       }
     },
     {
+      "name": "ConfirmPopover",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "ConfirmPopover",
+        "tier": "molecule",
+        "group": "overlay",
+        "status": "alpha",
+        "description": "Asks \"are you sure?\" next to the control that triggered it: a non-modal alertdialog anchored to the trigger with a question, an optional consequence and Cancel / confirm buttons.",
+        "figma": null,
+        "radixPrimitive": "@radix-ui/react-popover",
+        "element": "div",
+        "variants": {
+          "tone": {
+            "values": [
+              "neutral",
+              "error"
+            ],
+            "default": "neutral",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Enter / Space on the trigger opens the popover.",
+            "Focus starts on Cancel, the safe choice; Tab moves between Cancel and confirm.",
+            "Escape cancels and returns focus to the trigger."
+          ],
+          "ariaRequirements": [
+            "The popover is role=\"alertdialog\", named by `title` and described by `description`.",
+            "The trigger exposes aria-expanded and aria-controls (Radix Popover).",
+            "A click outside cancels; focus returns to the trigger."
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-white",
+            "--color-border",
+            "--color-primary",
+            "--color-muted"
+          ],
+          "spacing": [
+            "--space-internal-8",
+            "--space-internal-24",
+            "--space-internal-32"
+          ]
+        },
+        "lightDarkVerified": false,
+        "forbiddenUse": [
+          "use it for a flow that needs more explanation or input than one question; use Modal.",
+          "confirm an action that can simply be undone; offer Undo instead."
+        ],
+        "schemaVersion": 2
+      },
+      "spec": "# ConfirmPopover\n\n## Intent\nAsks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.\n\n## Interaction contract\n- Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.\n- Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.\n- Screen readers: `role=\"alertdialog\"`, named by `title`, described by `description`.\n\n## Do / don't\n- Do: repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.\n- Do: use `tone=\"error\"` for actions that remove something.\n- Don't: use it when the action can be undone; offer Undo instead.\n- Don't: put forms or long explanations inside; use Modal.\n\n## Design notes\n- Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.\n- Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.\n- Figma: not yet drawn.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/ConfirmPopover",
+        "importCount": 0,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": []
+      },
+      "agent": {
+        "preferredImport": "@dt/ConfirmPopover",
+        "intent": "Asks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.",
+        "props": {
+          "children": {
+            "optional": false,
+            "type": "React.ReactElement",
+            "description": "The control that opens the confirmation, usually a Button. It keeps its own label and styling."
+          },
+          "title": {
+            "optional": false,
+            "type": "string",
+            "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+          },
+          "description": {
+            "optional": true,
+            "type": "string",
+            "description": "What happens if the person confirms; describes the dialog."
+          },
+          "confirmLabel": {
+            "optional": false,
+            "type": "string",
+            "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+          },
+          "cancelLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Label of the cancelling button."
+          },
+          "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "error",
+              "neutral"
+            ],
+            "description": "\"error\" for actions that remove or destroy something."
+          },
+          "onConfirm": {
+            "optional": false,
+            "type": "() => void",
+            "description": "Called when the person confirms; the popover then closes."
+          },
+          "onOpenChange": {
+            "optional": true,
+            "type": "(open: boolean) => void",
+            "description": "Called when the popover opens or closes, whichever way."
+          },
+          "side": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "top",
+              "right",
+              "bottom",
+              "left"
+            ],
+            "description": "Preferred side of the trigger; flips when out of room."
+          },
+          "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "center",
+              "start",
+              "end"
+            ],
+            "description": "Alignment along that side."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Extra class on the popover surface."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {
+          "tone": {
+            "values": [
+              "error",
+              "neutral"
+            ],
+            "default": "error"
+          },
+          "align": {
+            "values": [
+              "center",
+              "start",
+              "end"
+            ],
+            "default": "center"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.",
+          "use `tone=\"error\"` for actions that remove something."
+        ],
+        "avoidWhen": [
+          "use it when the action can be undone; offer Undo instead.",
+          "put forms or long explanations inside; use Modal."
+        ],
+        "requiredA11y": [
+          "The popover is role=\"alertdialog\", named by `title` and described by `description`.",
+          "The trigger exposes aria-expanded and aria-controls (Radix Popover).",
+          "A click outside cancels; focus returns to the trigger."
+        ],
+        "keyboard": [
+          "Enter / Space on the trigger opens the popover.",
+          "Focus starts on Cancel, the safe choice; Tab moves between Cancel and confirm.",
+          "Escape cancels and returns focus to the trigger."
+        ],
+        "compositionRules": [
+          "put forms or long explanations inside; use Modal."
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use it when the action can be undone; offer Undo instead.",
+          "put forms or long explanations inside; use Modal."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 11,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "use `tone=\"error\"` for actions that remove something.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it when the action can be undone; offer Undo instead.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "put forms or long explanations inside; use Modal.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ConfirmPopover.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ConfirmPopover.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ConfirmPopover.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ConfirmPopover.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "ContactForm",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -18308,27 +18801,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/code-window/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeFrame.tsx",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/page.tsx",
+            "path": "app/intake/_components/IntakePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -18944,8 +19437,8 @@
           "ScrollIndicator",
           "Title",
           "Stack",
-          "EnhancedProjectCard",
-          "BlogCategoryFilter"
+          "NavLink",
+          "Logo"
         ],
         "prefersOver": [],
         "declaredPropCount": 5,
@@ -20891,7 +21384,32 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/AnswerSheet.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/submissions/[submissionId]/page.tsx",
             "since": "2026-06-04"
           },
           {
@@ -21325,7 +21843,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -23938,7 +24461,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -25681,7 +26209,7 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -25697,6 +26225,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -27091,62 +27624,62 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "path": "app/intake/_components/IntakePage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "path": "app/intake/_components/SignInFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
+            "path": "app/intake/forms/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
+            "path": "app/intake/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
+            "path": "app/intake/privacy/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
+            "path": "app/intake/start/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -27470,6 +28003,8 @@
             "values": [
               "inherit",
               "center",
+              "start",
+              "end",
               "flex-start",
               "flex-end",
               "stretch",
@@ -27479,10 +28014,8 @@
               "revert",
               "revert-layer",
               "unset",
-              "end",
               "self-end",
               "self-start",
-              "start",
               "anchor-center",
               "normal"
             ],
@@ -27494,6 +28027,10 @@
             "values": [
               "inherit",
               "center",
+              "right",
+              "left",
+              "start",
+              "end",
               "flex-start",
               "flex-end",
               "stretch",
@@ -27503,15 +28040,11 @@
               "revert",
               "revert-layer",
               "unset",
-              "end",
               "self-end",
               "self-start",
-              "start",
               "anchor-center",
               "normal",
-              "left",
-              "legacy",
-              "right"
+              "legacy"
             ],
             "description": "justify-items."
           },
@@ -27532,6 +28065,8 @@
             "values": [
               "inherit",
               "center",
+              "start",
+              "end",
               "flex-start",
               "flex-end",
               "stretch",
@@ -27541,10 +28076,8 @@
               "revert",
               "revert-layer",
               "unset",
-              "end",
               "self-end",
               "self-start",
-              "start",
               "anchor-center",
               "normal"
             ],
@@ -27820,7 +28353,7 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -27836,6 +28369,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -27871,11 +28409,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -28343,11 +28876,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
@@ -28359,6 +28887,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -28928,17 +29461,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/ComponentTaxonomyTree.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/EvidencePerPublishSection.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -29106,10 +29639,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 75,
+        "importCount": 77,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 38,
+        "componentImportCount": 40,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
@@ -29632,17 +30165,22 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -29683,11 +30221,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/navigation/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -30000,10 +30533,10 @@
         "composesWith": [
           "NavLink",
           "ThemeProvider",
-          "Table",
-          "TableRow",
-          "TableHeaderCell",
-          "TableCell"
+          "Container",
+          "Logo",
+          "LanguageSwitcher",
+          "Avatar"
         ],
         "prefersOver": [],
         "declaredPropCount": 7,
@@ -30781,7 +31314,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -31168,11 +31706,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/GoldenIntentsTable.tsx",
             "since": "2026-06-04"
           },
@@ -31184,6 +31717,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -31428,10 +31966,10 @@
         "composesWith": [
           "HelperText",
           "Button",
+          "Icon",
           "Text",
           "Checkbox",
-          "TextInput",
-          "Icon"
+          "TextInput"
         ],
         "prefersOver": [],
         "declaredPropCount": 4,
@@ -31683,7 +32221,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -31938,6 +32481,7 @@
           "Container",
           "Logo",
           "IconButton",
+          "Avatar",
           "ThemeProvider"
         ],
         "prefersOver": [],
@@ -32748,11 +33292,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
           },
@@ -32768,12 +33307,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeForm.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeFrame.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
           {
@@ -32783,7 +33322,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/LanguageControls.tsx",
+            "path": "app/intake/_components/SignInFlow.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -34394,6 +34938,26 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
             "since": "2026-06-04"
           },
@@ -35340,42 +35904,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeFrame.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/privacy/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/start/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/submissions/[submissionId]/page.tsx",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -35396,6 +35930,21 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -35615,6 +36164,7 @@
           "Container",
           "IconButton",
           "LanguageSwitcher",
+          "Avatar",
           "ThemeProvider"
         ],
         "prefersOver": [],
@@ -36617,7 +37167,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -37223,6 +37778,26 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
             "since": "2026-06-04"
           },
@@ -37306,10 +37881,10 @@
             "optional": true,
             "type": "union",
             "values": [
-              "left",
-              "right",
               "top",
-              "bottom"
+              "right",
+              "bottom",
+              "left"
             ],
             "description": "Preferred side relative to the trigger; flips when out of room."
           },
@@ -37318,8 +37893,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Alignment along the trigger edge."
           },
@@ -37335,8 +37910,8 @@
           "align": {
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "default": "center"
           }
@@ -38114,7 +38689,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -38983,6 +39563,21 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
           },
@@ -39168,7 +39763,7 @@
           }
         }
       },
-      "spec": "# MultiCombobox\n\n## Intent\nMulti-select combobox with inline Badge chips, type-to-filter dropdown, and editorial field styling for contact and similar forms.\n\n## Interaction contract\n- Keyboard: Tab focuses input; typing filters; Arrow keys move highlight; Enter toggles option; Backspace removes last chip when input empty; Escape closes list.\n- Pointer: click chevron toggles list; click option toggles selection; click chip remove clears one value.\n- Screen readers: combobox with `aria-multiselectable` listbox; selected options announced.\n\n## Do / don't\n- Do: pass `string[]` value and `onValueChange` for controlled multi-select state.\n- Do: localise option labels via i18n before passing `options`.\n- Don't: use for single-select — use `Combobox` instead.\n\n## Design notes\n- Selected values render as `@dt/Badge` chips (secondary, neutral, size `s`, removable).\n- Dropdown portals to `document.body` with Lenis wheel prevention on the list.\n",
+      "spec": "# MultiCombobox\n\n## Intent\nMulti-select combobox with inline Badge chips, type-to-filter dropdown, and editorial field styling for contact and similar forms.\n\n## Interaction contract\n- Keyboard: Tab focuses input; typing filters; Arrow keys move highlight; Enter toggles option and clears the filter; Backspace removes last chip when input empty; Escape closes list.\n- Pointer: click chevron toggles list; click option toggles selection; click chip remove clears one value.\n- Screen readers: combobox with `aria-multiselectable` listbox; selected options announced. The \"+N\" badge reads \"N more selected: <labels>\".\n\n## Do / don't\n- Do: pass `string[]` value and `onValueChange` for controlled multi-select state.\n- Do: localise option labels via i18n before passing `options`.\n- Don't: use for single-select — use `Combobox` instead.\n\n## Design notes\n- Selected values render as `@dt/Badge` chips (secondary, neutral, size `s`, removable).\n- Chips stay on one line. The ones that do not fit beside the filter input collapse into a \"+N\" badge (after Ant Design `maxTagCount=\"responsive\"` and MUI `limitTags`), measured from an off-screen copy on every value change and resize; its tooltip lists the hidden labels. A lone chip wider than the field truncates.\n- Dropdown portals to `document.body` with Lenis wheel prevention on the list.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/MultiCombobox",
@@ -39560,7 +40155,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -39802,7 +40402,7 @@
           "Container",
           "Logo",
           "LanguageSwitcher",
-          "SkipLink"
+          "Avatar"
         ],
         "prefersOver": [],
         "declaredPropCount": 7,
@@ -40807,13 +41407,19 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/NextLayout",
-        "importCount": 4,
-        "productionImportCount": 2,
+        "importCount": 5,
+        "productionImportCount": 3,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
           {
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/NextLayout",
+            "context": "production"
+          },
+          {
+            "path": "app/layout.tsx",
             "importKind": "alias",
             "importPath": "@dt/NextLayout",
             "context": "production"
@@ -41428,16 +42034,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeForm.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
@@ -42393,7 +42989,19 @@
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1428-2164",
         "radixPrimitive": null,
         "element": "div",
-        "variants": {},
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md",
+            "forwarded": true,
+            "forwardedTo": "CSS module size classes",
+            "propSourced": true
+          }
+        },
         "slots": [],
         "asChild": false,
         "subParts": [],
@@ -42437,7 +43045,27 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -42765,6 +43393,16 @@
             ],
             "description": "ISO 3166-1 alpha-2 code used when the value has no country prefix."
           },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Field size, matching TextInput; lg is the 3rem height every lg field shares."
+          },
           "onChange": {
             "optional": true,
             "type": "(value: string | undefined) => void"
@@ -42848,7 +43486,7 @@
           }
         }
       },
-      "spec": "# PhoneInput\n\n## Intent\nInternational phone entry without making users think about calling codes:\nwraps `react-phone-number-input` (country flag + select + formatting input)\nin the design-system field chrome (Label, HelperText, error wiring). Emits\nE.164 (`+358401234567`) — the interchange format — via `onChange`.\n\n## Interaction contract\n- Keyboard: Tab reaches the country select, then the number input. Arrow\n  keys change country in the select; digits format live in the input.\n- Pointer: click the flag to open the native country select; type in the\n  input to format for the chosen country.\n- Screen readers: label associated via `htmlFor`/generated id; error and\n  helper text linked with `aria-describedby`; `aria-invalid` set while\n  `error` is present. The country select carries the library's own\n  accessible name.\n\n## Do / don't\n- Do: validate with `isValidPhoneNumber` from `react-phone-number-input`\n  on blur or submit; the field formats but never blocks input.\n- Do: treat `onChange(undefined)` as \"incomplete\", not as an error.\n- Do: set `defaultCountry` for the audience (defaults to `FI`).\n- Don't: read the DOM input value — it is the national display format,\n  not the E.164 value.\n- Don't: split country code and number into two fields.\n\n## Design notes\n- Library chrome is restyled via `:global(.PhoneInput*)` overrides in\n  `PhoneInput.module.css` using design tokens (`--color-primary`,\n  `--color-error`, `--font-text`).\n- Error state colors the control with `--color-error` / `--color-error-bg`\n  and renders the message through `HelperText state=\"error\"`.\n- The required marker on the Label reflects the `required` prop.\n",
+      "spec": "# PhoneInput\n\n## Intent\nInternational phone entry without making users think about calling codes:\nwraps `react-phone-number-input` (country code select + formatting input)\nin the design-system field chrome (Label, HelperText, error wiring). Emits\nE.164 (`+358401234567`) — the interchange format — via `onChange`.\n\n## Interaction contract\n- Keyboard: Tab reaches the country select, then the number input. Arrow\n  keys or typing a country name (\"swe\") change country in the select;\n  digits format live in the input, in the national format (\"040 123 4567\").\n- Pointer: click the code (\"FI +358\") to open the native country list,\n  which reads \"Finland +358\" with the default country first.\n- Screen readers: label associated via `htmlFor`/generated id; error and\n  helper text linked with `aria-describedby`; `aria-invalid` set while\n  `error` is present. The country select is named \"<label> country\"\n  (localized in EN/FI/SV from the library's locale files).\n\n## Do / don't\n- Do: validate with `isValidPhoneNumber` from `react-phone-number-input`\n  on blur or submit; the field formats but never blocks input.\n- Do: treat `onChange(undefined)` as \"incomplete\", not as an error.\n- Do: set `defaultCountry` for the audience (defaults to `FI`).\n- Don't: read the DOM input value — it is the national display format,\n  not the E.164 value.\n- Don't: split country code and number into two fields.\n\n## Design notes\n- No flag images: the library loads them from a third-party host, which a\n  strict CSP (the client intake area) blocks and which leaks the visit.\n- `size=\"lg\"` gives the 3rem height every lg field shares (TextInput,\n  Select, Combobox).\n- Library chrome is restyled via `:global(.PhoneInput*)` overrides in\n  `PhoneInput.module.css` using design tokens (`--color-primary`,\n  `--color-error`, `--font-text`).\n- Error state colors the control with `--color-error` / `--color-error-bg`\n  and renders the message through `HelperText state=\"error\"`.\n- The required marker on the Label reflects the `required` prop.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PhoneInput",
@@ -42879,7 +43517,7 @@
       },
       "agent": {
         "preferredImport": "@dt/PhoneInput",
-        "intent": "International phone entry without making users think about calling codes: wraps `react-phone-number-input` (country flag + select + formatting input) in the design-system field chrome (Label, HelperText, error wiring). …",
+        "intent": "International phone entry without making users think about calling codes: wraps `react-phone-number-input` (country code select + formatting input) in the design-system field chrome (Label, HelperText, error wiring). Em…",
         "props": {
           "label": {
             "optional": false,
@@ -43173,6 +43811,16 @@
             ],
             "description": "ISO 3166-1 alpha-2 code used when the value has no country prefix."
           },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Field size, matching TextInput; lg is the 3rem height every lg field shares."
+          },
           "onChange": {
             "optional": true,
             "type": "(value: string | undefined) => void"
@@ -43180,7 +43828,16 @@
         },
         "propRelationships": [],
         "forbiddenCombos": [],
-        "variants": {},
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "sm"
+          }
+        },
         "cvaVariants": {},
         "variantsFnName": null,
         "useWhen": [
@@ -43220,7 +43877,7 @@
           "Toast"
         ],
         "prefersOver": [],
-        "declaredPropCount": 10,
+        "declaredPropCount": 11,
         "guidelines": [
           {
             "level": "should",
@@ -49137,8 +49794,8 @@
             "type": "union",
             "values": [
               "center",
-              "left",
-              "right"
+              "right",
+              "left"
             ],
             "description": "Horizontal position"
           },
@@ -49602,42 +50259,42 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "path": "app/intake/_components/AnswerSheet.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
+            "path": "app/intake/_components/IntakePage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
+            "path": "app/intake/_components/SignInFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "path": "app/intake/forms/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -50984,7 +51641,27 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -52412,8 +53089,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "left",
-              "top"
+              "top",
+              "left"
             ],
             "description": "Icon position"
           },
@@ -53952,7 +54629,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -54597,8 +55279,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "left",
-              "right"
+              "right",
+              "left"
             ],
             "description": "Side the icon rests on before it slides across on hover. \"left\" starts at the\nleading edge and travels to the trailing edge; \"right\" is the mirror."
           }
@@ -56794,7 +57476,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -57509,8 +58196,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Alignment of the dropdown menu along the toggle edge"
           },
@@ -57847,7 +58534,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -58265,9 +58957,9 @@
             "type": "union",
             "values": [
               "center",
-              "stretch",
+              "start",
               "end",
-              "start"
+              "stretch"
             ],
             "description": "Cross-axis alignment."
           },
@@ -58276,8 +58968,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
               "start",
+              "end",
               "between",
               "around"
             ],
@@ -58485,9 +59177,9 @@
           "align": {
             "values": [
               "center",
-              "stretch",
+              "start",
               "end",
-              "start"
+              "stretch"
             ],
             "default": "center"
           }
@@ -59470,12 +60162,32 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -59486,26 +60198,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -59849,6 +60541,358 @@
       }
     },
     {
+      "name": "SummaryList",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "SummaryList",
+        "tier": "molecule",
+        "group": "display",
+        "status": "alpha",
+        "description": "Questions and their answers as a description list, one row per question with an optional action: for checking answers before submitting and for showing a submitted record.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "dl",
+        "variants": {
+          "layout": {
+            "values": [
+              "auto",
+              "stacked"
+            ],
+            "default": "auto",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Not interactive itself; row actions are reached with Tab in reading order."
+          ],
+          "ariaRequirements": [
+            "Renders a <dl>; each row is a <dt> label and a <dd> value, and an optional <dd> action.",
+            "Row actions should name what they change (\"Change\" plus a visually hidden label)."
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-border-light"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-16",
+            "--space-internal-24"
+          ]
+        },
+        "lightDarkVerified": false,
+        "forbiddenUse": [
+          "use it for tabular data with several values per row; use Table.",
+          "use it for an editable form; it shows answers, not inputs."
+        ],
+        "schemaVersion": 2
+      },
+      "spec": "# SummaryList\n\n## Intent\nShows questions and their answers so a person can check them before submitting, or read back a submitted record. After the GOV.UK summary list.\n\n## Interaction contract\n- Keyboard: the list itself is not interactive; row actions follow in reading order.\n- Pointer: row actions are ordinary buttons or links.\n- Screen readers: a description list; each label is a term and each answer its definition.\n\n## Do / don't\n- Do: keep line breaks in long answers (string values render with `white-space: pre-line`).\n- Do: name what a row action changes (\"Change\" plus a visually hidden label).\n- Don't: squeeze answers into columns side by side; one row per question.\n- Don't: use it for tables of several values per row.\n\n## Design notes\n- Narrow: label above value. From about 40rem (container query) label, value and action sit side by side in a 1 : 2 : auto grid, baseline aligned.\n- Tokens: `--color-muted` label, `--color-text` value, `--color-border-light` row rule; 16px row padding.\n- Figma: not yet drawn.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/SummaryList",
+        "importCount": 0,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": []
+      },
+      "agent": {
+        "preferredImport": "@dt/SummaryList",
+        "intent": "Shows questions and their answers so a person can check them before submitting, or read back a submitted record. After the GOV.UK summary list.",
+        "props": {
+          "rows": {
+            "optional": false,
+            "type": "SummaryListRow[]",
+            "description": "Rows in order."
+          },
+          "layout": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "auto",
+              "stacked"
+            ],
+            "description": "\"auto\" stacks the label above the value in narrow containers and puts\nthem side by side once the list is wide enough (about 40rem)."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the dl element."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {
+          "layout": {
+            "values": [
+              "auto",
+              "stacked"
+            ],
+            "default": "auto"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "keep line breaks in long answers (string values render with `white-space: pre-line`).",
+          "name what a row action changes (\"Change\" plus a visually hidden label)."
+        ],
+        "avoidWhen": [
+          "squeeze answers into columns side by side; one row per question.",
+          "use it for tables of several values per row."
+        ],
+        "requiredA11y": [
+          "Renders a <dl>; each row is a <dt> label and a <dd> value, and an optional <dd> action.",
+          "Row actions should name what they change (\"Change\" plus a visually hidden label)."
+        ],
+        "keyboard": [
+          "Not interactive itself; row actions are reached with Tab in reading order."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "squeeze answers into columns side by side; one row per question.",
+          "use it for tables of several values per row."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 3,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "keep line breaks in long answers (string values render with `white-space: pre-line`).",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "name what a row action changes (\"Change\" plus a visually hidden label).",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "squeeze answers into columns side by side; one row per question.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it for tables of several values per row.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "SummaryList.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "SummaryList.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "SummaryList.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "SummaryList.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "Switch",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -59913,7 +60957,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -60156,9 +61205,9 @@
             "optional": true,
             "type": "union",
             "values": [
-              "left",
+              "top",
               "right",
-              "top"
+              "left"
             ],
             "description": "Where the label sits relative to the control."
           },
@@ -61337,8 +62386,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Cell content alignment."
           },
@@ -61359,8 +62408,8 @@
           "align": {
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "default": "center"
           }
@@ -61870,8 +62919,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Cell content alignment."
           },
@@ -61911,8 +62960,8 @@
           "align": {
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "default": "center"
           }
@@ -63665,6 +64714,411 @@
       }
     },
     {
+      "name": "TaskList",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "TaskList",
+        "tier": "molecule",
+        "group": "navigation",
+        "status": "alpha",
+        "description": "Navigation rail for a long form done in parts, in any order and over several sessions: each part with its status, the open part with its steps.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "nav",
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab moves through the parts and the open part's steps in order.",
+            "Enter / Space opens the focused part or step."
+          ],
+          "ariaRequirements": [
+            "Renders a <nav> landmark named by `label`.",
+            "The step on screen carries aria-current=\"step\"; with no step, the open part does.",
+            "Each part's status (and hint) describes its button through aria-describedby.",
+            "Completed steps add a visually hidden \"done\"; the check icon is decorative."
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-border-light",
+            "--color-neutral-bg"
+          ],
+          "spacing": [
+            "--space-internal-2",
+            "--space-internal-4",
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12"
+          ]
+        },
+        "lightDarkVerified": false,
+        "props": {
+          "tasks": {
+            "optional": false,
+            "type": "TaskListTask[]",
+            "description": "Tasks in order."
+          },
+          "label": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible name of the navigation landmark, for example \"Intake parts\"."
+          },
+          "currentTaskId": {
+            "optional": true,
+            "type": "string",
+            "description": "The task the person is working on; its steps are listed."
+          },
+          "currentStepId": {
+            "optional": true,
+            "type": "string",
+            "description": "The step on screen, marked with aria-current=\"step\"."
+          },
+          "onSelect": {
+            "optional": true,
+            "type": "(taskId: string, stepId?: string) => void",
+            "description": "Called when a task or step is chosen. Every task can be opened, so past\nsteps stay reachable (Baymard: people click step indicators to go back).\nTasks with status \"cannotStart\" are not interactive."
+          },
+          "statusLabels": {
+            "optional": true,
+            "type": "Partial<Record<TaskListStatus, string>>",
+            "description": "Overrides the translated status words."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the nav element."
+          }
+        },
+        "forbiddenUse": [
+          "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+          "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another."
+        ],
+        "schemaVersion": 2
+      },
+      "spec": "# TaskList\n\n## Intent\n\nOrients people in a long form that is done in parts, in any order and over several sessions (a client intake, an application). It lists every part with its status and the open part's steps, and lets people move to any of them. Modelled on the GOV.UK task list, placed as a persistent rail beside the form as in Stripe's onboarding view.\n\n## Interaction contract\n\n- Keyboard: Tab moves through parts and the open part's steps; Enter or Space opens one.\n- Pointer: the whole row of a part is the target, not just its name.\n- Screen readers: a `nav` landmark named by `label`; the step on screen is `aria-current=\"step\"`; each part's status and hint describe its button.\n- Status marks: only \"In progress\" (badge) and \"Completed\" (check) show. \"Not started\" is visually hidden so the rail does not repeat the same badge on every untouched part; it still describes the button for screen readers.\n\n## Do / don't\n\n- Do: keep part names short; one-line hints only.\n- Do: map the rail 1:1 to the real steps and keep past steps selectable (Baymard: people click step indicators to go back).\n- Don't: use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.\n- Don't: show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another.\n\n## Design notes\n\n- Completed reads as plain text with a check, so parts that still need work stand out (GOV.UK research).\n- Statuses use Badge; the check uses Icon.\n- Tokens: --color-text, --color-muted, --color-border-light, --color-neutral-bg, --space-internal-*.\n- Figma: not yet built.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/TaskList",
+        "importCount": 1,
+        "productionImportCount": 1,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TaskList",
+            "context": "production"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/TaskList",
+        "intent": "Orients people in a long form that is done in parts, in any order and over several sessions (a client intake, an application). It lists every part with its status and the open part's steps, and lets people move to any o…",
+        "props": {
+          "tasks": {
+            "optional": false,
+            "type": "TaskListTask[]",
+            "description": "Tasks in order."
+          },
+          "label": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible name of the navigation landmark, for example \"Intake parts\"."
+          },
+          "currentTaskId": {
+            "optional": true,
+            "type": "string",
+            "description": "The task the person is working on; its steps are listed."
+          },
+          "currentStepId": {
+            "optional": true,
+            "type": "string",
+            "description": "The step on screen, marked with aria-current=\"step\"."
+          },
+          "onSelect": {
+            "optional": true,
+            "type": "(taskId: string, stepId?: string) => void",
+            "description": "Called when a task or step is chosen. Every task can be opened, so past\nsteps stay reachable (Baymard: people click step indicators to go back).\nTasks with status \"cannotStart\" are not interactive."
+          },
+          "statusLabels": {
+            "optional": true,
+            "type": "Partial<Record<TaskListStatus, string>>",
+            "description": "Overrides the translated status words."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the nav element."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "keep part names short; one-line hints only.",
+          "map the rail 1:1 to the real steps and keep past steps selectable (Baymard: people click step indicators to go back)."
+        ],
+        "avoidWhen": [
+          "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+          "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another."
+        ],
+        "requiredA11y": [
+          "Renders a <nav> landmark named by `label`.",
+          "The step on screen carries aria-current=\"step\"; with no step, the open part does.",
+          "Each part's status (and hint) describes its button through aria-describedby.",
+          "Completed steps add a visually hidden \"done\"; the check icon is decorative."
+        ],
+        "keyboard": [
+          "Tab moves through the parts and the open part's steps in order.",
+          "Enter / Space opens the focused part or step."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+          "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 7,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "keep part names short; one-line hints only.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "map the rail 1:1 to the real steps and keep past steps selectable (Baymard: people click step indicators to go back).",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TaskList.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TaskList.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TaskList.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TaskList.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "Testimonial",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -64092,11 +65546,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
           },
@@ -64118,6 +65567,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/AnswerSheet.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -64668,7 +66122,7 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -64684,6 +66138,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -65204,12 +66663,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/CodeStep.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/CodeStep.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
@@ -65239,6 +66698,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/page.tsx",
             "since": "2026-06-04"
           },
@@ -65255,11 +66719,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/not-found.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -65587,6 +67046,21 @@
             "type": "boolean",
             "description": "Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance"
           },
+          "width": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "full",
+              "2ch",
+              "3ch",
+              "4ch",
+              "5ch",
+              "10ch",
+              "20ch",
+              "30ch"
+            ],
+            "description": "Widest the field grows, in characters of the expected answer (after the\nGOV.UK input widths): \"10ch\" for a code, \"30ch\" for an email address. The\nfield still shrinks with its container."
+          },
           "onChange": {
             "optional": true,
             "type": "(value: string | number) => void",
@@ -65685,7 +67159,7 @@
           "Title"
         ],
         "prefersOver": [],
-        "declaredPropCount": 13,
+        "declaredPropCount": 14,
         "guidelines": [
           {
             "level": "should",
@@ -66138,7 +67612,8 @@
           "IconButton",
           "Container",
           "Logo",
-          "LanguageSwitcher"
+          "LanguageSwitcher",
+          "Avatar"
         ],
         "prefersOver": [],
         "declaredPropCount": 2,
@@ -67027,11 +68502,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/AgentBenchSection.tsx",
             "since": "2026-06-04"
           },
@@ -67058,6 +68528,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -67679,7 +69154,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -68945,10 +70425,10 @@
             "optional": true,
             "type": "union",
             "values": [
-              "left",
-              "right",
               "top",
-              "bottom"
+              "right",
+              "bottom",
+              "left"
             ],
             "description": "Preferred placement relative to the trigger; flips when out of room."
           },
@@ -72894,11 +74374,11 @@
             "type": "union",
             "values": [
               "image",
+              "primary",
               "minimal",
-              "gradient",
-              "primary"
+              "gradient"
             ],
-            "description": "Background variant; primary fills the hero with the primary colour and sets inverse text"
+            "description": "Background variant"
           },
           "backgroundImage": {
             "optional": true,
@@ -72909,6 +74389,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Show scroll indicator at bottom"
+          },
+          "backdrop": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer drawn over the background and under the text. Drags on\nit pass through the text layer."
           },
           "className": {
             "optional": true,
@@ -73984,7 +75469,7 @@
           "lang": {
             "optional": true,
             "type": "string",
-            "description": "Language applied to the article hero and body (defaults to English); navigation and related-post chrome keep the UI language"
+            "description": "Document language for the article root"
           }
         },
         "forbiddenUse": [
@@ -76234,7 +77719,55 @@
         },
         "lightDarkVerified": false,
         "schemaVersion": 2,
-        "props": {},
+        "props": {
+          "outcome": {
+            "optional": false,
+            "type": "string",
+            "description": "What changed because of the work, in one or two sentences."
+          },
+          "role": {
+            "optional": false,
+            "type": "string",
+            "description": "Role and scope of the engagement."
+          },
+          "constraints": {
+            "optional": false,
+            "type": "string[]",
+            "description": "What made the problem hard."
+          },
+          "decisions": {
+            "optional": false,
+            "type": "CaseStudyDecision[]",
+            "description": "The decisions that shaped the result."
+          },
+          "evidence": {
+            "optional": false,
+            "type": "CaseStudyEvidence[]",
+            "description": "Claims with an explicit source label; nothing is presented unsourced."
+          },
+          "title": {
+            "optional": true,
+            "type": "string",
+            "description": "Section heading. Defaults to the translated \"At a glance\"."
+          },
+          "maxWidth": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg",
+              "full",
+              "xl"
+            ],
+            "description": "Maximum content width."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Additional class name applied to the section root."
+          }
+        },
         "forbiddenUse": [
           "present a claim without a source label",
           "invent metrics that are not on record"
@@ -78513,6 +80046,7 @@
             "type": "union",
             "values": [
               "audit",
+              "uxSprint",
               "liftoff",
               "aiops",
               "partnership",
@@ -78522,12 +80056,12 @@
               "dsMcp",
               "agentWorkforce"
             ],
-            "description": "Which engagement page to render"
+            "description": "Which engagement to render."
           },
           "className": {
             "optional": true,
             "type": "string",
-            "description": "Additional class name on the root"
+            "description": "Additional class name on the root."
           }
         },
         "composesWith": [
@@ -79286,8 +80820,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint"
           },
@@ -79295,8 +80829,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -79845,8 +81379,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum content width"
           },
@@ -79854,8 +81388,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -79949,9 +81483,9 @@
             "values": [
               "minimal",
               "default",
+              "stacked",
               "centered",
-              "split",
-              "stacked"
+              "split"
             ],
             "description": "Layout variant"
           },
@@ -79972,8 +81506,8 @@
             "type": "union",
             "values": [
               "center",
-              "left",
-              "right"
+              "right",
+              "left"
             ],
             "description": "Content alignment"
           },
@@ -80018,17 +81552,17 @@
             "values": [
               "minimal",
               "default",
+              "stacked",
               "centered",
-              "split",
-              "stacked"
+              "split"
             ],
             "default": "minimal"
           },
           "align": {
             "values": [
               "center",
-              "left",
-              "right"
+              "right",
+              "left"
             ],
             "default": "center"
           }
@@ -80668,8 +82202,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Content vertical alignment"
           },
@@ -80678,8 +82212,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Content horizontal alignment"
           },
@@ -80924,8 +82458,8 @@
           "align": {
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "default": "center"
           }
@@ -81660,12 +83194,12 @@
           "background": {
             "optional": true,
             "type": "ReactNode",
-            "description": "Replaces the default animated gradient behind the content. Drags on the background pass through the content layer; only the buttons capture them."
+            "description": "Replaces the default animated gradient behind the content. Drags on the\nbackground pass through the content layer; only the buttons capture them."
           },
           "showScrollIndicator": {
             "optional": true,
             "type": "boolean",
-            "description": "Show the \"Scroll\" cue at the bottom. Default true."
+            "description": "Show the \"Scroll\" cue at the bottom."
           }
         },
         "forbiddenUse": [
@@ -82801,8 +84335,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint for the content"
           },
@@ -82820,8 +84354,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -83397,7 +84931,7 @@
           "selectionFromUrl": {
             "optional": true,
             "type": "boolean",
-            "description": "Start from the ?duration=&days= selection in the page URL, so a link can arrive with a tier already chosen. Invalid or missing values keep the defaults."
+            "description": "Start from the `?duration=6m&days=4` selection in the page URL (the same\nparameters the calculator's own CTA emits), so a link can arrive with a\ntier already chosen. Invalid or missing values keep the defaults."
           }
         },
         "composesWith": [
@@ -83844,7 +85378,7 @@
           "heroBackground": {
             "optional": true,
             "type": "ReactNode",
-            "description": "Decorative layer on the hero field, under the text. Drags on it pass through the text layer."
+            "description": "Decorative layer on the hero field, under the text. Drags on it pass\nthrough the text layer."
           }
         },
         "forbiddenUse": [
@@ -84292,8 +85826,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint"
           },
@@ -84301,8 +85835,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -84704,22 +86238,18 @@
         "props": {
           "headingLevel": {
             "optional": true,
-            "type": "union",
-            "values": [
-              "2",
-              "3"
-            ],
-            "description": "Heading level of the section title"
+            "type": "2 | 3",
+            "description": "Heading level of the section title."
           },
           "id": {
             "optional": true,
             "type": "string",
-            "description": "Section id, for in-page links"
+            "description": "Section id, for in-page links."
           },
           "className": {
             "optional": true,
             "type": "string",
-            "description": "Additional class name on the section"
+            "description": "Additional class name on the section."
           }
         },
         "composesWith": [
@@ -85096,7 +86626,7 @@
           "lang": {
             "optional": true,
             "type": "string",
-            "description": "Language applied to the project hero and authored case-study body (defaults to English); navigation, CTA, and related-project chrome keep the UI language"
+            "description": "Language of the case-study content"
           }
         },
         "forbiddenUse": [
@@ -85109,7 +86639,7 @@
           "RelatedProjects",
           "GridBlock",
           "ProjectMetaSection",
-          "TeamBlock"
+          "CaseStudySummary"
         ]
       },
       "spec": "# ProjectDetailLayout\n\n## Intent\nCase study detail layout shell.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: the shell contributes the page's sole `main`; the project\n  hero and authored body are English by default, while localized navigation,\n  CTA, and related-project chrome keep the selected UI language\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-layout\n",
@@ -85918,7 +87448,7 @@
           "RelatedProjects",
           "GridBlock",
           "ProjectMetaSection",
-          "TeamBlock"
+          "CaseStudySummary"
         ]
       },
       "spec": "# ProjectHero\n\n## Intent\nCase study hero with project title and summary.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-hero\n",
@@ -86372,8 +87902,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Max width constraint for the section"
           },
@@ -86398,7 +87928,7 @@
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
-          "TeamBlock"
+          "CaseStudySummary"
         ]
       },
       "spec": "# ProjectMetaSection\n\n## Intent\nCase study metadata (client, role, year).\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-meta-section\n",
@@ -87477,7 +89007,7 @@
           "ProjectHero",
           "GridBlock",
           "ProjectMetaSection",
-          "TeamBlock"
+          "CaseStudySummary"
         ]
       },
       "spec": "# RelatedProjects\n\n## Intent\nRelated case studies grid at project footer.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-related-projects\n",
@@ -87910,8 +89440,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum content width"
           },
@@ -87919,8 +89449,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -88306,18 +89836,15 @@
         "props": {
           "title": {
             "optional": true,
-            "type": "string",
-            "description": "Section heading"
+            "type": "string"
           },
           "description": {
             "optional": true,
-            "type": "string",
-            "description": "Lead text under the heading"
+            "type": "string"
           },
           "services": {
             "optional": false,
-            "type": "ServicesLedgerItem[]",
-            "description": "Rows: index, machineKey, title, description, capabilities, href, optional donnyTarget"
+            "type": "ServicesLedgerItem[]"
           },
           "machineLinks": {
             "optional": true,
@@ -88326,18 +89853,15 @@
           },
           "labels": {
             "optional": false,
-            "type": "ServicesLedgerLabels",
-            "description": "Localised strings for the view switch and the machine view"
+            "type": "ServicesLedgerLabels"
           },
           "className": {
             "optional": true,
-            "type": "string",
-            "description": "Additional class name on the section"
+            "type": "string"
           },
           "id": {
             "optional": true,
-            "type": "string",
-            "description": "Section id, for in-page links"
+            "type": "string"
           },
           "donnyTarget": {
             "optional": true,
@@ -89112,7 +90636,12 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -89548,7 +91077,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/components/SiteChrome.tsx",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -89575,11 +91109,6 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
             "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
-            "since": "2026-06-04"
           }
         ],
         "schemaVersion": 2,
@@ -89593,6 +91122,16 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+          },
+          "languageCodes": {
+            "optional": true,
+            "type": "readonly string[]",
+            "description": "Limits the language switchers to these codes, for an area offered in\nfewer languages than the site (the client intake: EN and FI). All site\nlanguages when unset."
+          },
+          "account": {
+            "optional": true,
+            "type": "SiteHeaderAccount",
+            "description": "The signed-in person in an account area (the client intake): an avatar\nwith their initials that opens a menu of account actions such as\nsigning out. Nothing renders when unset."
           }
         },
         "forbiddenUse": [
@@ -89605,10 +91144,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SiteHeader",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 0,
+        "componentImportCount": 1,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/index.ts",
@@ -89621,6 +91160,12 @@
             "importKind": "relative",
             "importPath": "../SiteHeader",
             "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/components/NextLayout/NextLayout.tsx",
+            "importKind": "relative",
+            "importPath": "../../patterns/SiteHeader/SiteHeader",
+            "context": "component"
           }
         ]
       },
@@ -89637,6 +91182,16 @@
             "optional": true,
             "type": "string",
             "description": "Optional wrapper class."
+          },
+          "languageCodes": {
+            "optional": true,
+            "type": "readonly string[]",
+            "description": "Limits the language switchers to these codes, for an area offered in\nfewer languages than the site (the client intake: EN and FI). All site\nlanguages when unset."
+          },
+          "account": {
+            "optional": true,
+            "type": "SiteHeaderAccount",
+            "description": "The signed-in person in an account area (the client intake): an avatar\nwith their initials that opens a menu of account actions such as\nsigning out. Nothing renders when unset."
           }
         },
         "propRelationships": [],
@@ -89679,7 +91234,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 2,
+        "declaredPropCount": 4,
         "guidelines": [
           {
             "level": "should",
@@ -89970,7 +91525,9 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "SlideButton"
+          "SlideButton",
+          "ReliablePartnerBadge",
+          "Link"
         ]
       },
       "spec": "# StatsSection\n\n## Intent\nMetrics/stats grid for case study or about pages.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-stats-section\n",
@@ -90389,8 +91946,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint"
           },
@@ -90398,8 +91955,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],
@@ -90428,7 +91985,7 @@
           "headingLevel": {
             "optional": true,
             "type": "2 | 3 | 4",
-            "description": "Heading level for the section title; visual size is unchanged. Pages whose outline places StoryBlock sections directly under the h1 should pass 2."
+            "description": "Heading level for the section title; visual size is unchanged. Pages whose\noutline places StoryBlock sections directly under the h1 should pass 2."
           }
         },
         "forbiddenUse": [
@@ -90938,8 +92495,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
-              "full"
+              "full",
+              "xl"
             ],
             "description": "Maximum width constraint"
           },
@@ -90947,8 +92504,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "default",
               "compact",
+              "default",
               "comfortable",
               "spacious"
             ],

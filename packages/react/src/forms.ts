@@ -61,5 +61,5 @@ export {
   type TextAreaProps,
 } from "../../../nextjs-app/shared/components/TextArea";
 export { default as TextInput } from "../../../nextjs-app/shared/components/TextInput/TextInput";
-export type { TextInputProps } from "../../../nextjs-app/shared/components/TextInput/TextInput";
+export type { TextInputProps, TextInputWidth } from "../../../nextjs-app/shared/components/TextInput/TextInput";
 

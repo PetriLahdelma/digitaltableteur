@@ -1,0 +1,68 @@
+.root {
+  margin: 0;
+  container-type: inline-size;
+}
+
+/* Narrow: label above value, the action at the end of the label line. */
+
+.row {
+  display: grid;
+  padding-block: var(--space-internal-16);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-internal-4) var(--space-internal-16);
+  border-block-end: 1px solid var(--color-border-light);
+  grid-template-areas:
+    "label action"
+    "value value";
+}
+
+.row:first-child {
+  padding-block-start: 0;
+}
+
+.label {
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  color: var(--color-muted);
+  grid-area: label;
+}
+
+.value {
+  margin: 0;
+  min-inline-size: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s);
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  color: var(--color-text);
+  grid-area: value;
+}
+
+.action {
+  margin: 0;
+  white-space: nowrap;
+  grid-area: action;
+  justify-self: end;
+}
+
+/* Wide: label, value and action side by side, as GOV.UK does on desktop. */
+
+@container (min-width: 40rem) {
+  .root:not(.stacked) .row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto;
+    align-items: baseline;
+    column-gap: var(--space-internal-24);
+    grid-template-areas: "label value action";
+  }
+}
+
+/* Printed, a question and its answer stay on one page. */
+
+@media print {
+  .row {
+    break-inside: avoid;
+  }
+}

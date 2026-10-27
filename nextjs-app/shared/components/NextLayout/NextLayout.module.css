@@ -17,3 +17,12 @@
   /* stylelint-disable-next-line a11y/no-outline-none -- main is not interactive; focus is only set programmatically as the skip-link scroll target */
   outline: none;
 }
+
+/* Printed pages (Ctrl+P, and the intake's PDF) are the page content only:
+   no skip link, site header, footer or chat widget. */
+
+@media print {
+  .layout > :not(.main) {
+    display: none;
+  }
+}

@@ -60,6 +60,11 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/print/[submissionId]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
         },

@@ -2,19 +2,20 @@
 
 ## Intent
 International phone entry without making users think about calling codes:
-wraps `react-phone-number-input` (country flag + select + formatting input)
+wraps `react-phone-number-input` (country code select + formatting input)
 in the design-system field chrome (Label, HelperText, error wiring). Emits
 E.164 (`+358401234567`) — the interchange format — via `onChange`.
 
 ## Interaction contract
 - Keyboard: Tab reaches the country select, then the number input. Arrow
-  keys change country in the select; digits format live in the input.
-- Pointer: click the flag to open the native country select; type in the
-  input to format for the chosen country.
+  keys or typing a country name ("swe") change country in the select;
+  digits format live in the input, in the national format ("040 123 4567").
+- Pointer: click the code ("FI +358") to open the native country list,
+  which reads "Finland +358" with the default country first.
 - Screen readers: label associated via `htmlFor`/generated id; error and
   helper text linked with `aria-describedby`; `aria-invalid` set while
-  `error` is present. The country select carries the library's own
-  accessible name.
+  `error` is present. The country select is named "<label> country"
+  (localized in EN/FI/SV from the library's locale files).
 
 ## Do / don't
 - Do: validate with `isValidPhoneNumber` from `react-phone-number-input`
@@ -26,6 +27,10 @@ E.164 (`+358401234567`) — the interchange format — via `onChange`.
 - Don't: split country code and number into two fields.
 
 ## Design notes
+- No flag images: the library loads them from a third-party host, which a
+  strict CSP (the client intake area) blocks and which leaks the visit.
+- `size="lg"` gives the 3rem height every lg field shares (TextInput,
+  Select, Combobox).
 - Library chrome is restyled via `:global(.PhoneInput*)` overrides in
   `PhoneInput.module.css` using design tokens (`--color-primary`,
   `--color-error`, `--font-text`).

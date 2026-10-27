@@ -103,7 +103,7 @@
         "selectionFromUrl": {
             "optional": true,
             "type": "boolean",
-            "description": "Start from the ?duration=&days= selection in the page URL, so a link can arrive with a tier already chosen. Invalid or missing values keep the defaults."
+            "description": "Start from the `?duration=6m&days=4` selection in the page URL (the same\nparameters the calculator's own CTA emits), so a link can arrive with a\ntier already chosen. Invalid or missing values keep the defaults."
         }
     },
     "composesWith": [

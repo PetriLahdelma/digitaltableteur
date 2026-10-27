@@ -8,7 +8,19 @@
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1428-2164",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {},
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "forwarded": true,
+            "forwardedTo": "CSS module size classes",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -53,6 +65,21 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
         },
         {
@@ -384,6 +411,16 @@
                 "ZW"
             ],
             "description": "ISO 3166-1 alpha-2 code used when the value has no country prefix."
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "description": "Field size, matching TextInput; lg is the 3rem height every lg field shares."
         },
         "onChange": {
             "optional": true,

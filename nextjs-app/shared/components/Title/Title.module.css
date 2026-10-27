@@ -82,3 +82,11 @@
     overflow-wrap: anywhere;
   }
 }
+
+/* Printed, a heading never ends a page apart from what it introduces. */
+
+@media print {
+  .title {
+    break-after: avoid;
+  }
+}

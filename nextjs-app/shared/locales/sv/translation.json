@@ -983,6 +983,8 @@
   "buttonMedium": "Medium",
   "buttonLarge": "Stor",
   "badgeRemove": "Ta bort märke",
+  "multiComboboxMoreSelected": "{{count}} till valda: {{labels}}",
+  "confirmPopoverCancel": "Avbryt",
   "multiComboboxNoResults": "Inga matchande alternativ",
   "multiComboboxToggleOptions": "Visa alternativ",
   "fileUploadSizeError": "Filen är för stor. Max {{maxSize}} MB. Filen togs bort.",

@@ -103,7 +103,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/AnswerSheet.tsx",
+            "path": "app/error.tsx",
             "since": "2026-06-04"
         },
         {

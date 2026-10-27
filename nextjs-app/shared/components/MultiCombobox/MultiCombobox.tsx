@@ -4,7 +4,9 @@ import React, {
   useCallback,
   useEffect,
   useId,
+  useLayoutEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { createPortal } from "react-dom";
@@ -89,10 +91,7 @@ export function MultiCombobox({
     );
   }, [options, query]);
 
-  const describedBy = [
-    error ? errorId : null,
-    helperText ? helperId : null,
-  ]
+  const describedBy = [error ? errorId : null, helperText ? helperId : null]
     .filter(Boolean)
     .join(" ");
 
@@ -120,6 +119,8 @@ export function MultiCombobox({
 
   const toggleOption = useCallback(
     (optionValue: string) => {
+      // A pick ends the search, so the next one starts from the full list.
+      setQuery("");
       if (value.includes(optionValue)) {
         onValueChange(value.filter((entry) => entry !== optionValue));
         return;
@@ -139,13 +140,70 @@ export function MultiCombobox({
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const {
-    mounted,
-    dropdownStyle,
-    controlRef,
-    listRef,
-    containerRef,
-  } = useComboboxDropdown(open, filteredOptions.length, closeDropdown);
+  // Chips stay on one line: the ones that do not fit collapse into a "+N"
+  // badge. A hidden copy of every chip (and of the widest "+N") is measured
+  // against the room left beside the filter input.
+  const innerRef = useRef<HTMLDivElement>(null);
+  const measureRef = useRef<HTMLDivElement>(null);
+  const [visibleCount, setVisibleCount] = useState(Number.POSITIVE_INFINITY);
+  const [measurable, setMeasurable] = useState(false);
+
+  const measure = useCallback(() => {
+    const inner = innerRef.current;
+    // Not laid out (hidden, or a test DOM): show every chip, skip the ruler.
+    if (!inner || inner.clientWidth === 0) {
+      setMeasurable(false);
+      setVisibleCount(Number.POSITIVE_INFINITY);
+      return;
+    }
+    setMeasurable(true);
+    const ruler = measureRef.current;
+    if (!ruler) return;
+    const chips = Array.from(
+      ruler.querySelectorAll<HTMLElement>("[data-measure-chip]"),
+    );
+    const more = ruler.querySelector<HTMLElement>("[data-measure-more]");
+    const innerStyle = getComputedStyle(inner);
+    const gap = parseFloat(innerStyle.columnGap) || 0;
+    const room =
+      inner.clientWidth -
+      (parseFloat(innerStyle.paddingInlineStart) || 0) -
+      (parseFloat(innerStyle.paddingInlineEnd) || 0) -
+      (inputRef.current
+        ? parseFloat(getComputedStyle(inputRef.current).minInlineSize) || 0
+        : 0) -
+      gap;
+    let used = 0;
+    let fits = 0;
+    for (let index = 0; index < chips.length; index += 1) {
+      const isLast = index === chips.length - 1;
+      const reserve = isLast ? 0 : (more?.offsetWidth ?? 0) + gap;
+      const next = used + chips[index].offsetWidth + (index > 0 ? gap : 0);
+      if (next + reserve > room) break;
+      used = next;
+      fits = index + 1;
+    }
+    // Always show one chip (it truncates) so the field never reads as empty.
+    setVisibleCount(chips.length > 0 ? Math.max(1, fits) : 0);
+  }, []);
+
+  useLayoutEffect(() => {
+    measure();
+  }, [measure, value, labelByValue, measurable]);
+
+  useEffect(() => {
+    const inner = innerRef.current;
+    if (!inner || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(() => measure());
+    observer.observe(inner);
+    return () => observer.disconnect();
+  }, [measure]);
+
+  const shownValues = value.slice(0, visibleCount);
+  const hiddenValues = value.slice(visibleCount);
+
+  const { mounted, dropdownStyle, controlRef, listRef, containerRef } =
+    useComboboxDropdown(open, filteredOptions.length, closeDropdown);
 
   useEffect(() => {
     setHighlightedIndex(0);
@@ -285,7 +343,11 @@ export function MultiCombobox({
 
   return (
     <div className={cn(fieldStyles.field, className)} ref={containerRef}>
-      <label id={`${fieldId}-label`} htmlFor={fieldId} className={fieldStyles.label}>
+      <label
+        id={`${fieldId}-label`}
+        htmlFor={fieldId}
+        className={fieldStyles.label}
+      >
         {label}
         {required && (
           <>
@@ -312,7 +374,9 @@ export function MultiCombobox({
             if ((event.target as HTMLElement).closest("[data-chip-remove]")) {
               return;
             }
-            if ((event.target as HTMLElement).closest("[data-chevron-toggle]")) {
+            if (
+              (event.target as HTMLElement).closest("[data-chevron-toggle]")
+            ) {
               return;
             }
             event.preventDefault();
@@ -320,14 +384,17 @@ export function MultiCombobox({
             openDropdown();
           }}
         >
-          <div className={styles.inner}>
-            {value.map((selectedValue) => {
+          <div className={styles.inner} ref={innerRef}>
+            {shownValues.map((selectedValue) => {
               const optionLabel =
                 labelByValue.get(selectedValue) ?? selectedValue;
               return (
                 <span
                   key={selectedValue}
-                  className={styles.badgeWrap}
+                  className={cn(
+                    styles.badgeWrap,
+                    shownValues.length === 1 && styles.badgeWrapShrink,
+                  )}
                   data-chip-remove
                   onMouseDown={(event) => event.stopPropagation()}
                 >
@@ -344,6 +411,31 @@ export function MultiCombobox({
                 </span>
               );
             })}
+
+            {hiddenValues.length > 0 ? (
+              <span
+                className={styles.badgeWrap}
+                title={hiddenValues
+                  .map((entry) => labelByValue.get(entry) ?? entry)
+                  .join(", ")}
+              >
+                <Badge variant="secondary" tone="neutral" size="sm">
+                  <span aria-hidden="true">+{hiddenValues.length}</span>
+                  <span className="sr-only">
+                    {t(
+                      "multiComboboxMoreSelected",
+                      "{{count}} more selected: {{labels}}",
+                      {
+                        count: hiddenValues.length,
+                        labels: hiddenValues
+                          .map((entry) => labelByValue.get(entry) ?? entry)
+                          .join(", "),
+                      },
+                    )}
+                  </span>
+                </Badge>
+              </span>
+            ) : null}
 
             <input
               ref={inputRef}
@@ -374,6 +466,35 @@ export function MultiCombobox({
             />
           </div>
 
+          {measurable ? (
+            <div ref={measureRef} className={styles.measure} aria-hidden="true">
+              {value.map((selectedValue) => (
+                <span
+                  key={selectedValue}
+                  className={styles.badgeWrap}
+                  data-measure-chip
+                >
+                  <Badge
+                    variant="secondary"
+                    tone="neutral"
+                    size="sm"
+                    removable={!disabled}
+                    className={styles.badge}
+                  >
+                    <span className={styles.badgeLabel}>
+                      {labelByValue.get(selectedValue) ?? selectedValue}
+                    </span>
+                  </Badge>
+                </span>
+              ))}
+              <span className={styles.badgeWrap} data-measure-more>
+                <Badge variant="secondary" tone="neutral" size="sm">
+                  +{value.length}
+                </Badge>
+              </span>
+            </div>
+          ) : null}
+
           <button
             type="button"
             data-chevron-toggle
@@ -392,7 +513,10 @@ export function MultiCombobox({
           >
             <Icon
               name="caret-down"
-              className={cn(fieldStyles.chevron, open && fieldStyles.chevronOpen)}
+              className={cn(
+                fieldStyles.chevron,
+                open && fieldStyles.chevronOpen,
+              )}
               ariaLabel=""
             />
           </button>
@@ -406,9 +530,7 @@ export function MultiCombobox({
           {error}
         </HelperText>
       )}
-      {helperText && (
-        <HelperText id={helperId}>{helperText}</HelperText>
-      )}
+      {helperText && <HelperText id={helperId}>{helperText}</HelperText>}
     </div>
   );
 }

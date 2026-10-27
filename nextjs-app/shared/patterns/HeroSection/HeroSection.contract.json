@@ -120,8 +120,8 @@
             "type": "union",
             "values": [
                 "center",
-                "end",
-                "start"
+                "start",
+                "end"
             ],
             "description": "Content vertical alignment"
         },
@@ -130,8 +130,8 @@
             "type": "union",
             "values": [
                 "center",
-                "end",
-                "start"
+                "start",
+                "end"
             ],
             "description": "Content horizontal alignment"
         },

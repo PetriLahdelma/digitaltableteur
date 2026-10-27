@@ -6,6 +6,9 @@ export interface ComboboxDropdownPosition {
   width: number;
 }
 
+const MIN_LIST_WIDTH = 320;
+const VIEWPORT_GUTTER = 16;
+
 export function useComboboxDropdown(
   open: boolean,
   optionCount: number,
@@ -28,10 +31,21 @@ export function useComboboxDropdown(
     if (!control) return;
 
     const rect = control.getBoundingClientRect();
+    // A narrow field still gets a list wide enough for long option labels
+    // (for example "America / Argentina / Buenos Aires"), kept on screen.
+    const viewport = document.documentElement.clientWidth;
+    const width = Math.max(
+      rect.width,
+      Math.min(MIN_LIST_WIDTH, viewport - 2 * VIEWPORT_GUTTER),
+    );
+    const left = Math.max(
+      VIEWPORT_GUTTER,
+      Math.min(rect.left, viewport - VIEWPORT_GUTTER - width),
+    );
     setDropdownStyle({
       top: rect.bottom + 4,
-      left: rect.left,
-      width: rect.width,
+      left,
+      width,
     });
   }, []);
 

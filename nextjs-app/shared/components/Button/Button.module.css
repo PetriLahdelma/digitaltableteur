@@ -5,6 +5,10 @@
   --btn-accent: var(--color-primary);
   --btn-on-accent: var(--color-white);
 
+  /* Border width the padding gives back, so a bordered (secondary) button is
+     exactly as tall and wide as a borderless one, icon or not. */
+  --btn-border: 0rem;
+
   display: inline-flex;
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16);
@@ -98,7 +102,9 @@
 }
 
 .button.secondary {
-  border: 0.125rem solid var(--btn-accent);
+  --btn-border: 0.125rem;
+
+  border: var(--btn-border) solid var(--btn-accent);
   background-color: transparent;
   color: var(--btn-accent);
 }
@@ -266,8 +272,8 @@
 /* Sizes. */
 
 .button.sm {
-  padding-block: var(--space-internal-4);
-  padding-inline: var(--space-internal-12);
+  padding-block: calc(var(--space-internal-4) - var(--btn-border));
+  padding-inline: calc(var(--space-internal-12) - var(--btn-border));
   min-block-size: 2rem;
   gap: var(--space-internal-4);
   font-size: var(--font-size-button-s);
@@ -276,8 +282,8 @@
 }
 
 .button.md {
-  padding-block: var(--space-internal-8);
-  padding-inline: var(--space-internal-16);
+  padding-block: calc(var(--space-internal-8) - var(--btn-border));
+  padding-inline: calc(var(--space-internal-16) - var(--btn-border));
   min-block-size: 2.5rem;
   font-size: var(--font-size-button-m);
 
@@ -285,8 +291,8 @@
 }
 
 .button.lg {
-  padding-block: var(--space-internal-12);
-  padding-inline: var(--space-internal-24);
+  padding-block: calc(var(--space-internal-12) - var(--btn-border));
+  padding-inline: calc(var(--space-internal-24) - var(--btn-border));
   min-block-size: 3rem;
   font-size: var(--font-size-button-l);
 

@@ -82,12 +82,12 @@ Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const input = canvas.getByRole("textbox");
 
-  // Type a Finnish phone number (default country already adds +358)
-  await userEvent.type(input, "401234567");
+  // Type a Finnish number; the country select already carries +358
+  await userEvent.type(input, "0401234567");
 
   await waitFor(() => {
     const normalized = (input as HTMLInputElement).value.replace(/\s+/g, "");
-    expect(normalized).toBe("+358401234567");
+    expect(normalized).toBe("0401234567");
   });
 };
 

@@ -983,6 +983,8 @@
   "buttonMedium": "Medium",
   "buttonLarge": "Large",
   "badgeRemove": "Remove badge",
+  "multiComboboxMoreSelected": "{{count}} more selected: {{labels}}",
+  "confirmPopoverCancel": "Cancel",
   "multiComboboxNoResults": "No matching options",
   "multiComboboxToggleOptions": "Toggle options",
   "fileUploadSizeError": "File is too large. Max {{maxSize}} MB. File removed.",

@@ -46,11 +46,11 @@
             "type": "union",
             "values": [
                 "image",
+                "primary",
                 "minimal",
-                "gradient",
-                "primary"
+                "gradient"
             ],
-            "description": "Background variant; primary fills the hero with the primary colour and sets inverse text"
+            "description": "Background variant"
         },
         "backgroundImage": {
             "optional": true,
@@ -61,6 +61,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Show scroll indicator at bottom"
+        },
+        "backdrop": {
+            "optional": true,
+            "type": "ReactNode",
+            "description": "Decorative layer drawn over the background and under the text. Drags on\nit pass through the text layer."
         },
         "className": {
             "optional": true,

@@ -199,4 +199,34 @@ describe("Combobox", () => {
       "inline-timeline-option-flexible",
     );
   });
+
+  it("jumps to an option by typing, matching any word of the label", () => {
+    const onValueChange = vi.fn();
+    const zones = [
+      { value: "Europe/Berlin", label: "Europe / Berlin" },
+      { value: "Europe/Helsinki", label: "Europe / Helsinki" },
+      { value: "America/New_York", label: "America / New York" },
+    ];
+    render(<Combobox label="Time zone" options={zones} value="" onValueChange={onValueChange} />);
+    const trigger = screen.getByRole("combobox");
+    for (const key of "hel") fireEvent.keyDown(trigger, { key });
+    expect(screen.getByRole("listbox")).toBeInTheDocument();
+    expect(trigger).toHaveAttribute("aria-activedescendant", expect.stringContaining("Europe/Helsinki"));
+    fireEvent.keyDown(trigger, { key: "Enter" });
+    expect(onValueChange).toHaveBeenCalledWith("Europe/Helsinki");
+  });
+
+  it("keeps a space inside a typed search instead of selecting", () => {
+    const onValueChange = vi.fn();
+    const zones = [
+      { value: "America/New_York", label: "America / New York" },
+      { value: "Europe/Helsinki", label: "Europe / Helsinki" },
+    ];
+    render(<Combobox label="Time zone" options={zones} value="" onValueChange={onValueChange} />);
+    const trigger = screen.getByRole("combobox");
+    for (const key of "new y") fireEvent.keyDown(trigger, { key });
+    expect(onValueChange).not.toHaveBeenCalled();
+    expect(trigger).toHaveAttribute("aria-activedescendant", expect.stringContaining("America/New_York"));
+  });
 });
+
