@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.44 - 2026-10-27
+
+- `AlertBanner`: the tone icon's accessible name is a word in the page's
+  language ("Information", "Success", "Warning", "Error"; translation keys
+  `alertBanner.tone.*`) instead of the English tone code, so Finnish and
+  Swedish pages no longer announce "info" or "error" in English. No API
+  change.
+
 ## 0.1.43 - 2026-10-27
 
 - `TextInput`: `width` caps the field at the expected answer in characters
