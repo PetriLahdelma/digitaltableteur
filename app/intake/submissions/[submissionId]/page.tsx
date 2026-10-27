@@ -60,9 +60,6 @@ export default async function IntakeSubmissionPage({
                 locale={locale}
               />
             </Text>
-            <Text size="s">
-              {t("fingerprint")}: <Code>{view.digest}</Code>
-            </Text>
             <DownloadPdfButton
               href={`/api/intake/submissions/${view.submissionId}/pdf`}
               label={t("downloadPdf")}
@@ -76,6 +73,10 @@ export default async function IntakeSubmissionPage({
           answers={view.snapshot.answers}
           locale={locale}
         />
+        {/* The fingerprint closes the record, after the answers it seals. */}
+        <Text size="s">
+          {t("fingerprint")}: <Code>{view.digest}</Code>
+        </Text>
       </IntakeColumns>
     </IntakePage>
   );
