@@ -1,9 +1,9 @@
 {
   "storyId": "content-timestamp-playground",
   "mode": "dark",
-  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-  "capturedAt": "2026-09-29T18:56:38.193Z",
-  "runner": "local",
+  "sourceSHA": "8d1ed3064aaa260c13437d90296b08154f49a741",
+  "capturedAt": "2026-10-27T23:01:25.845Z",
+  "runner": "local-claude",
   "checks": {
     "accessibility-tree": {
       "passed": true
