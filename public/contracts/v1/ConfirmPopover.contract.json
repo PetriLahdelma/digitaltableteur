@@ -13,7 +13,7 @@
     "title": {
       "type": "string",
       "optional": false,
-      "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+      "description": "The question, for example \"Clear the answers in this section?\". Names the dialog. With choices, it asks which one, for example \"What do you want to clear?\"."
     },
     "description": {
       "type": "string",
@@ -22,8 +22,13 @@
     },
     "confirmLabel": {
       "type": "string",
-      "optional": false,
-      "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+      "optional": true,
+      "description": "Label of the confirming button; repeat the action, for example \"Clear answers\". Not used with choices, where each choice has its own."
+    },
+    "choices": {
+      "type": "ConfirmPopoverChoice[]",
+      "optional": true,
+      "description": "Several actions to pick from first; picking one asks \"are you sure?\" with that choice's question and labels."
     },
     "cancelLabel": {
       "type": "string",
@@ -40,9 +45,9 @@
       "description": "\"error\" for actions that remove or destroy something."
     },
     "onConfirm": {
-      "type": "() => void",
+      "type": "(choiceId?: string) => void",
       "optional": false,
-      "description": "Called when the person confirms; the popover then closes."
+      "description": "Called when the person confirms, with the picked choice's id when there are choices; the popover then closes."
     },
     "onOpenChange": {
       "type": "(open: boolean) => void",

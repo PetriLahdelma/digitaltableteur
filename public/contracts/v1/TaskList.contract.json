@@ -8,7 +8,7 @@
     "tasks": {
       "type": "TaskListTask[]",
       "optional": false,
-      "description": "Tasks in order."
+      "description": "Tasks in order. Each has id, label, status, an optional hint and steps, and `unnumbered` to leave a closing task such as \"Check and submit\" without a number."
     },
     "label": {
       "type": "string",

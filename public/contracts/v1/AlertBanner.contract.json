@@ -71,138 +71,28 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "2.5.8"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-info.dark.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:31.079Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-info.light.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:26.777Z",
-            "passed": true,
-            "runner": "local-claude"
-          }
-        ]
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-example.dark.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:31.133Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-example.forced-colors.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:35.304Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-example.light.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:26.831Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-forced-colors.dark.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:31.155Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-forced-colors.forced-colors.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:35.328Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-forced-colors.light.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:26.854Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-info.dark.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:31.079Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-info.forced-colors.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:35.242Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-info.light.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:26.777Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-playground.dark.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:31.103Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-playground.forced-colors.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:35.270Z",
-            "passed": true,
-            "runner": "local-claude"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-playground.light.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:26.801Z",
-            "passed": true,
-            "runner": "local-claude"
-          }
-        ]
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "automated",
-        "check": "npm run test:stories:hc",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/AlertBanner/__a11y-evidence__/feedback-alertbanner-info.forced-colors.json",
-            "sourceCommit": "4799078362967bef666a937f8d7c886cc6726604",
-            "capturedAt": "2026-10-26T20:13:35.242Z",
-            "passed": true,
-            "runner": "local-claude"
-          }
-        ]
+        "verification": "manual",
+        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
+        "reviewedAt": "2026-05-26"
       },
       {
         "id": "keyboard-contract",
@@ -221,7 +111,7 @@
         "wcag": [
           "4.1.2"
         ],
-        "note": "No exportable evidence record for this check; re-run the check to capture one."
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "human-a11y-review",
