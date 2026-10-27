@@ -43,6 +43,7 @@ export default async function IntakeSubmissionPage({
   return (
     <IntakePage locale={locale}>
       <IntakeColumns
+        wide
         title={view.questionnaire.title[locale]}
         intro={
           <>
