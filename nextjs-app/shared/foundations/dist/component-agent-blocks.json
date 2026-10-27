@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T18:44:45.783Z",
+  "generatedAt": "2026-10-27T21:06:50.947Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -10104,7 +10104,7 @@
         "title": {
           "optional": false,
           "type": "string",
-          "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+          "description": "The question, for example \"Clear the answers in this section?\". Names the dialog. With choices, it asks which one, for example \"What do you want to clear?\"."
         },
         "description": {
           "optional": true,
@@ -10112,9 +10112,14 @@
           "description": "What happens if the person confirms; describes the dialog."
         },
         "confirmLabel": {
-          "optional": false,
+          "optional": true,
           "type": "string",
-          "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+          "description": "Label of the confirming button; repeat the action, for example \"Clear answers\". Not used with choices, where each choice has its own."
+        },
+        "choices": {
+          "optional": true,
+          "type": "ConfirmPopoverChoice[]",
+          "description": "Several actions to pick from first; picking one asks \"are you sure?\" with that choice's question and labels."
         },
         "cancelLabel": {
           "optional": true,
@@ -10132,8 +10137,8 @@
         },
         "onConfirm": {
           "optional": false,
-          "type": "() => void",
-          "description": "Called when the person confirms; the popover then closes."
+          "type": "(choiceId?: string) => void",
+          "description": "Called when the person confirms, with the picked choice's id when there are choices; the popover then closes."
         },
         "onOpenChange": {
           "optional": true,
@@ -10190,7 +10195,8 @@
       "variantsFnName": null,
       "useWhen": [
         "repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.",
-        "use `tone=\"error\"` for actions that remove something."
+        "use `tone=\"error\"` for actions that remove something.",
+        "keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\"."
       ],
       "avoidWhen": [
         "use it when the action can be undone; offer Undo instead.",
@@ -10222,7 +10228,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 11,
+      "declaredPropCount": 12,
       "guidelines": [
         {
           "level": "should",
@@ -10241,6 +10247,13 @@
         {
           "level": "should-not",
           "guidance": "use it when the action can be undone; offer Undo instead.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\".",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"

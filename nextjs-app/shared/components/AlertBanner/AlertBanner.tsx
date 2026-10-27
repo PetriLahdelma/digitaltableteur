@@ -41,6 +41,17 @@ const toneIcon: Record<Tone, string> = {
   error: "x-circle",
 };
 
+/**
+ * The icon's accessible name, in the page's language: it tells screen reader
+ * users which kind of message this is, which the colour shows everyone else.
+ */
+const toneLabel: Record<Tone, readonly [key: string, fallback: string]> = {
+  info: ["alertBanner.tone.info", "Information"],
+  success: ["alertBanner.tone.success", "Success"],
+  warning: ["alertBanner.tone.warning", "Warning"],
+  error: ["alertBanner.tone.error", "Error"],
+};
+
 /** Inline alert banner with semantic tones, action slot, and optional dismiss. */
 const AlertBanner: React.FC<AlertBannerProps> = ({
   tone = "info",
@@ -73,7 +84,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
     >
       {/* The icon is always the semantic tone icon; showIcon only toggles its
           presence (there is no per-instance icon override — the tone owns it). */}
-      {showIcon && <Icon name={toneIcon[tone]} ariaLabel={tone} size="md" />}
+      {showIcon && <Icon name={toneIcon[tone]} ariaLabel={t(...toneLabel[tone])} size="md" />}
       <div className={styles.content}>
         {title && (
           // A status/alert label, not a document heading: rendering it as a

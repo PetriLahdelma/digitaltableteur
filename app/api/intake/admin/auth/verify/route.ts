@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { NextRequest } from "next/server";
 
-import { ADMIN_PREAUTH_COOKIE, finishAuthentication } from "@/app/lib/intake/service/admin-auth";
+import { ADMIN_COOKIE, ADMIN_PREAUTH_COOKIE, endAdminSession, finishAuthentication } from "@/app/lib/intake/service/admin-auth";
 import { adminAuthAllowed, setAdminCookie } from "@/app/lib/intake/service/admin-http";
 import { clearCookie, json, readJsonBody, serverError } from "@/app/lib/intake/service/http";
 import { intakeContext } from "@/app/lib/intake/service/runtime";
@@ -23,6 +23,9 @@ export async function POST(request: NextRequest) {
     if (!(await adminAuthAllowed(ctx, request))) return json({ status: "rate_limited" }, 429);
     const result = await finishAuthentication(ctx, request.cookies.get(ADMIN_PREAUTH_COOKIE)?.value, body.data.response as never);
     if (result.status !== "ok") return json({ status: "invalid" }, 400);
+    // A confirmation (step-up) replaces the session it was made from; the old
+    // one ends, so a copy of its cookie stops working too.
+    await endAdminSession(ctx, request.cookies.get(ADMIN_COOKIE)?.value);
     const response = json({ status: "ok" });
     clearCookie(response, ADMIN_PREAUTH_COOKIE);
     setAdminCookie(response, result.sessionToken);

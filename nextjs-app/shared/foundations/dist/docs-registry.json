@@ -5079,11 +5079,6 @@
           "required": true
         },
         {
-          "name": "confirmLabel",
-          "type": "string",
-          "required": true
-        },
-        {
           "name": "tone",
           "type": "error | neutral",
           "required": false
@@ -5097,6 +5092,11 @@
           "name": "align",
           "type": "center | start | end",
           "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
         }
       ],
       "props": {
@@ -5108,7 +5108,7 @@
         "title": {
           "optional": false,
           "type": "string",
-          "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+          "description": "The question, for example \"Clear the answers in this section?\". Names the dialog. With choices, it asks which one, for example \"What do you want to clear?\"."
         },
         "description": {
           "optional": true,
@@ -5116,9 +5116,14 @@
           "description": "What happens if the person confirms; describes the dialog."
         },
         "confirmLabel": {
-          "optional": false,
+          "optional": true,
           "type": "string",
-          "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+          "description": "Label of the confirming button; repeat the action, for example \"Clear answers\". Not used with choices, where each choice has its own."
+        },
+        "choices": {
+          "optional": true,
+          "type": "ConfirmPopoverChoice[]",
+          "description": "Several actions to pick from first; picking one asks \"are you sure?\" with that choice's question and labels."
         },
         "cancelLabel": {
           "optional": true,
@@ -5136,8 +5141,8 @@
         },
         "onConfirm": {
           "optional": false,
-          "type": "() => void",
-          "description": "Called when the person confirms; the popover then closes."
+          "type": "(choiceId?: string) => void",
+          "description": "Called when the person confirms, with the picked choice's id when there are choices; the popover then closes."
         },
         "onOpenChange": {
           "optional": true,
@@ -18118,7 +18123,7 @@
         "tasks": {
           "optional": false,
           "type": "TaskListTask[]",
-          "description": "Tasks in order."
+          "description": "Tasks in order. Each has id, label, status, an optional hint and steps, and `unnumbered` to leave a closing task such as \"Check and submit\" without a number."
         },
         "label": {
           "optional": false,

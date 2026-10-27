@@ -34,12 +34,15 @@ export function InviteForm({
   const previewHeading = useRef<HTMLHeadingElement>(null);
   const formTop = useRef<HTMLFormElement>(null);
   const shown = useRef(false);
+  // Back from a refused send, the error banner takes focus instead.
+  const keepFocus = useRef(false);
 
   // Each view replaces the other, taking the pressed button with it: focus
   // goes to the preview's heading, and back to the first field on Edit.
   useEffect(() => {
     if (preview) previewHeading.current?.focus();
-    else if (shown.current) formTop.current?.querySelector("input")?.focus();
+    else if (shown.current && !keepFocus.current) formTop.current?.querySelector("input")?.focus();
+    keepFocus.current = false;
     shown.current = true;
   }, [preview]);
 
@@ -80,6 +83,7 @@ export function InviteForm({
     setBusy(false);
     if (httpStatus === 409) setProblem(t("exists", { email: form.email.trim() }));
     else if (httpStatus === 422) {
+      keepFocus.current = true;
       setPreview(null);
       invalid(data.fields);
     } else setProblem(t("genericError"));

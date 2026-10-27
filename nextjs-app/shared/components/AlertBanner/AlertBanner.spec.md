@@ -15,7 +15,8 @@ quiet middle option.
 - Screen readers: announced via `role="status"` with `aria-live="polite"`
   by default. Errors should pass `aria-live="assertive"` so the
   announcement interrupts. The leading icon adds an accessible word for
-  the tone (`info` / `success` / `warning` / `error`) so colour is not
+  the tone in the page's language ("Information", "Success", "Warning",
+  "Error"; keys `alertBanner.tone.*` in EN, FI and SV) so colour is not
   the only signal.
 
 ## Error summary

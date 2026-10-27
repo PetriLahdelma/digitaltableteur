@@ -1,4 +1,4 @@
-import { and, desc, eq, gt, isNull, lte, ne } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, isNull, lte, ne } from "drizzle-orm";
 
 import { auditLog, clients, drafts, invites, pdfs, sessions, submissions } from "../db/schema";
 import { getQuestionnaire, isVisible } from "../index";
@@ -139,12 +139,13 @@ export async function getIntake(ctx: IntakeContext, inviteId: string): Promise<A
     .orderBy(desc(submissions.version));
   let answers: Answers = {};
   let answersSource: AdminIntakeDetail["answersSource"] = "none";
+  // An unreadable record shows as no answers instead of failing the page.
   if (draft) {
-    answers = openJson<Answers>(draft.answersSealed, ctx.ring, draftAad(inviteId));
+    answers = tryOpen(() => openJson<Answers>(draft.answersSealed, ctx.ring, draftAad(inviteId))) ?? {};
     answersSource = "draft";
   } else if (versionRows[0]) {
     const latest = versionRows[0].submission;
-    answers = openJson<SubmissionSnapshot>(latest.snapshotSealed, ctx.ring, submissionAad(latest.id)).answers;
+    answers = tryOpen(() => openJson<SubmissionSnapshot>(latest.snapshotSealed, ctx.ring, submissionAad(latest.id)).answers) ?? {};
     answersSource = "submission";
   }
   await ctx.db.insert(auditLog).values({ actor: "owner", action: "intake.view", clientId: invite.clientId, inviteId });
@@ -224,8 +225,15 @@ export async function revokeInvite(ctx: IntakeContext, inviteId: string): Promis
   if (!found) return null;
   if (found.invite.status === "revoked" || found.invite.status === "submitted") return "not_allowed";
   const now = ctx.now();
-  await ctx.db.transaction(async (tx) => {
-    await tx.update(invites).set({ status: "revoked", tokenHash: null, revokedAt: now }).where(eq(invites.id, inviteId));
+  const revoked = await ctx.db.transaction(async (tx) => {
+    // Only an invite that is still open: a submit that committed after the
+    // check above keeps its submission instead of being revoked over it.
+    const moved = await tx
+      .update(invites)
+      .set({ status: "revoked", tokenHash: null, revokedAt: now })
+      .where(and(eq(invites.id, inviteId), inArray(invites.status, ["invited", "active"])))
+      .returning({ id: invites.id });
+    if (moved.length !== 1) return false;
     const open = await tx
       .select({ id: invites.id })
       .from(invites)
@@ -234,8 +242,9 @@ export async function revokeInvite(ctx: IntakeContext, inviteId: string): Promis
       await tx.update(sessions).set({ revokedAt: now }).where(and(eq(sessions.clientId, found.invite.clientId), isNull(sessions.revokedAt)));
     }
     await tx.insert(auditLog).values({ actor: "owner", action: "invite.revoke", clientId: found.invite.clientId, inviteId });
+    return true;
   });
-  return "revoked";
+  return revoked ? "revoked" : "not_allowed";
 }
 
 /**

@@ -1,5 +1,5 @@
 - alert:
-  - img "error"
+  - img "Error"
   - strong: Fix 2 problems to continue
   - list:
     - listitem:

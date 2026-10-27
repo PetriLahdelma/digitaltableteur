@@ -49,6 +49,12 @@ describe("AlertBanner", () => {
     ).toBeInTheDocument();
   });
 
+  it("names the tone icon in words, not with the tone's code", () => {
+    render(<AlertBanner tone="error" title="Payment failed" />);
+    expect(screen.getByRole("img", { name: "Error" })).toBeInTheDocument();
+    expect(screen.queryByRole("img", { name: "error" })).not.toBeInTheDocument();
+  });
+
   it("hides the icon when showIcon is false", () => {
     const { container } = render(
       <AlertBanner tone="success" title="Saved" showIcon={false} />,

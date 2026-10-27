@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 import { ADMIN_PREAUTH_COOKIE, finishRegistration } from "@/app/lib/intake/service/admin-auth";
 import { adminAuthAllowed, currentAdmin, setAdminCookie } from "@/app/lib/intake/service/admin-http";
-import { deliverAfterResponse } from "@/app/lib/intake/service/deliver";
+import { deliverNow } from "@/app/lib/intake/service/deliver";
 import { clearCookie, json, readJsonBody, serverError } from "@/app/lib/intake/service/http";
 
 export const runtime = "nodejs";
@@ -35,7 +35,8 @@ export async function POST(request: NextRequest) {
       adminSession: admin,
     });
     if (result.status !== "ok") return json({ status: result.status }, result.status === "invalid" ? 400 : 403);
-    deliverAfterResponse(result.ownerMail, "admin.passkey.add");
+    // A security notice: sent while the owner waits, so a failed send is reported.
+    await deliverNow(result.ownerMail, "admin.passkey.add");
     const response = json({ status: "ok" });
     clearCookie(response, ADMIN_PREAUTH_COOKIE);
     if (result.session) setAdminCookie(response, result.session.sessionToken);

@@ -78,7 +78,8 @@ export function PasskeyList({ locale, passkeys, fresh }: { locale: IntakeLocale;
       />
       {stale ? (
         <FlexBox direction="column" gap="var(--space-internal-16)">
-          <AlertBanner tone="info" description={t("reauthIntro")} />
+          {/* Takes focus when a removal turned out to need it, so focus is not lost. */}
+          <AlertBanner tone="info" description={t("reauthIntro")} focusOnMount={fresh} />
           <AdminSignIn locale={locale} hasPasskeys returnTo="/intake/admin/passkeys" buttonLabel={t("reauthButton")} />
         </FlexBox>
       ) : adding ? (

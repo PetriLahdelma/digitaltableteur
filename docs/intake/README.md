@@ -292,8 +292,9 @@ intake per questionnaire.
 - **Daily cron.** Vercel calls `/api/intake/cron/daily` at 07:00 UTC with
   `CRON_SECRET` (refused while unset). It runs `purgeExpired` (section 5
   windows, plus expired passkey challenges and enrolment links), then the
-  expiry reminders for links that expire in 24 to 48 hours; each reminder is
-  claimed once and released again if its send fails.
+  expiry reminders for unopened links that expire within 48 hours (with
+  72-hour links and one run a day, each is first seen 24 to 48 hours ahead);
+  each reminder is claimed once and released again if its send fails.
 - **Retention in admin.** Admin reads leave out versions past their
   `delete_after`, like the client side, and an expired version cannot be
   reopened. One undecryptable row shows as unreadable instead of failing the

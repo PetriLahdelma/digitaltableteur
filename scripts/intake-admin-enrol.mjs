@@ -45,7 +45,8 @@ function databaseUrl() {
     const url = execFileSync(
       "npx",
       ["-y", NEONCTL, "connection-string", "--project-id", NEON_PROJECT, "--org-id", NEON_ORG],
-      { stdio: ["ignore", "pipe", "ignore"], encoding: "utf8" },
+      // stdout (the URL) stays in memory; stderr shows Neon's own prompts and errors.
+      { stdio: ["inherit", "pipe", "inherit"], encoding: "utf8" },
     ).trim();
     return url.startsWith("postgres") ? url : null;
   } catch {

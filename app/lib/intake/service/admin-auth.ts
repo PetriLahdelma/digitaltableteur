@@ -177,7 +177,9 @@ export async function finishRegistration(
   if (!verification.verified) return { status: "invalid" };
   const { credential } = verification.registrationInfo;
   const now = ctx.now();
-  const label = input.label.trim().slice(0, 60) || "Passkey";
+  // The label reaches the owner's email subject: no control characters.
+  const printable = Array.from(input.label, (char) => (char.charCodeAt(0) < 32 || char.charCodeAt(0) === 127 ? " " : char)).join("");
+  const label = printable.replace(/\s+/g, " ").trim().slice(0, 60) || "Passkey";
   const stored = await ctx.db.transaction(async (tx) => {
     // The enrolment token is spent first, in one conditional update: of two
     // registrations racing with the same link, only one gets the row.

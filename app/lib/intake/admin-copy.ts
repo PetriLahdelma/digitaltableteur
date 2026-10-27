@@ -159,6 +159,10 @@ export const ADMIN_COPY = {
   audit_intake_reopen: { en: "Reopened", fi: "Avattu uudelleen", sv: "Öppnad igen" },
   audit_pdf_render: { en: "PDF created", fi: "PDF luotu", sv: "PDF skapad" },
   audit_pdf_download: { en: "PDF downloaded", fi: "PDF ladattu", sv: "PDF nedladdad" },
+  audit_code_failed: { en: "Wrong code entered", fi: "Väärä koodi syötetty", sv: "Fel kod angiven" },
+  audit_code_failures_alert: { en: "Many wrong codes, you were alerted", fi: "Paljon vääriä koodeja, sinulle ilmoitettiin", sv: "Många fel koder, du fick en varning" },
+  audit_session_end: { en: "Signed out", fi: "Kirjautui ulos", sv: "Loggade ut" },
+  audit_other: { en: "Other activity", fi: "Muu tapahtuma", sv: "Annan händelse" },
   passkeysIntro: {
     en: "Keep at least two, on different devices. The last one cannot be removed.",
     fi: "Pidä vähintään kaksi eri laitteilla. Viimeistä ei voi poistaa.",

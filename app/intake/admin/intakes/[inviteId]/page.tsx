@@ -42,7 +42,7 @@ export default async function IntakeAdminDetailPage({ params, searchParams }: Pr
   const actor = (value: string) => t(value === "owner" ? "actorOwner" : value === "client" ? "actorClient" : "actorSystem");
   const auditLabel = (action: string) => {
     const key = `audit_${action.replace(/\./g, "_")}` as AdminCopyKey;
-    return key in ADMIN_COPY ? t(key) : action;
+    return key in ADMIN_COPY ? t(key) : t("audit_other");
   };
 
   return (

@@ -1,5 +1,5 @@
 - status:
-  - img "success"
+  - img "Success"
   - strong: Saved
   - paragraph: Your changes have been stored.
   - button "Close alert": Close

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-27T18:44:46.244Z",
+  "generatedAt": "2026-10-27T21:06:51.302Z",
   "summary": {
     "componentCount": 192,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 181,
     "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 924,
-    "aliasImportFiles": 474,
+    "totalEvidenceRows": 929,
+    "aliasImportFiles": 479,
     "relativeImportFiles": 490,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -800,37 +800,37 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/admin/_components/IntakeActions.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/page.tsx",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/start/page.tsx",
+            "path": "app/intake/admin/_components/PasskeyFlows.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/submissions/[submissionId]/page.tsx",
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "path": "app/intake/admin/enrol/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
+            "path": "app/intake/admin/invite/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -990,7 +990,7 @@
           "Text"
         ]
       },
-      "spec": "# AlertBanner\n\n## Intent\nCarry persistent, page-level status messages that the user must read\nbefore they can confidently continue. AlertBanner is the only component\nin the system that sits \"in the flow\" of content as a status — Toast is\ntransient, HelperText is field-scoped, Modal interrupts. Banner is the\nquiet middle option.\n\n## Interaction contract\n- Keyboard: the banner itself is not focusable. The dismiss button (when\n  present) is in the tab sequence and activates on Enter / Space.\n- Pointer: only the dismiss button responds to clicks. Clicking the\n  body is a no-op.\n- Screen readers: announced via `role=\"status\"` with `aria-live=\"polite\"`\n  by default. Errors should pass `aria-live=\"assertive\"` so the\n  announcement interrupts. The leading icon adds an accessible word for\n  the tone (`info` / `success` / `warning` / `error`) so colour is not\n  the only signal.\n\n## Error summary\n- Pass the problems as a `List` of `Link`s in `description` and set `focusOnMount`: the banner takes focus (tabIndex -1, shared focus ring) so keyboard and screen reader users land on it after a failed submit.\n- Rich descriptions render in a block container, so a list is valid markup; plain strings stay a paragraph.\n\n## Do / don't\n- Do: pass `aria-live=\"assertive\"` for `tone=\"error\"` so the AT user is\n  interrupted. The default `polite` is correct for `info` and\n  `success`.\n- Do: keep the description short — banners that scroll vertically lose\n  the user's attention. If the message needs paragraphs, link out to\n  a docs page from the description.\n- Don't: make errors dismissable. Letting the user hide a blocking\n  problem leads to confused support tickets.\n- Don't: stack more than one banner on the same page. Two competing\n  announcements collide in the AT queue.\n- Don't: animate the banner in on every render. AlertBanner is for\n  persistent state, not transient feedback.\n\n## Design notes\n- Tokens: tone-mapped surfaces use `--color-info-surface` /\n  `--color-success-surface` / `--color-warning-surface` /\n  `--color-error-surface`; text uses the matching `*-text` token.\n  Spacing is `--space-internal-12` (block) / `--space-internal-16`\n  (inline). Radius is `--radius-md`.\n- Figma: https://www.figma.com/design/digitaltableteur/alert-banner —\n  variants map 1:1 to the `tone` prop.\n- The icon is intentionally `aria-label`led, not `aria-hidden`, because\n  AlertBanner is the canonical place to validate WCAG 1.4.1 (colour is\n  not the only signal). If a downstream design ever hides the icon, the\n  AT contract still has the tone word.\n- Dismiss is a `Button variant=\"tertiary\" size=\"s\"` so it doesn't\n  compete with primary actions on the page. The button is positioned\n  trailing so the message reads \"tone, title, description, dismiss\".\n  Its strings are localized (`alertBanner.dismissLabel` / `alertBanner.close`).\n- The `action` slot renders one follow-up under the description (Astryx\n  Banner parity); the `icon` prop overrides the tone glyph without\n  changing the announced tone word.\n",
+      "spec": "# AlertBanner\n\n## Intent\nCarry persistent, page-level status messages that the user must read\nbefore they can confidently continue. AlertBanner is the only component\nin the system that sits \"in the flow\" of content as a status — Toast is\ntransient, HelperText is field-scoped, Modal interrupts. Banner is the\nquiet middle option.\n\n## Interaction contract\n- Keyboard: the banner itself is not focusable. The dismiss button (when\n  present) is in the tab sequence and activates on Enter / Space.\n- Pointer: only the dismiss button responds to clicks. Clicking the\n  body is a no-op.\n- Screen readers: announced via `role=\"status\"` with `aria-live=\"polite\"`\n  by default. Errors should pass `aria-live=\"assertive\"` so the\n  announcement interrupts. The leading icon adds an accessible word for\n  the tone in the page's language (\"Information\", \"Success\", \"Warning\",\n  \"Error\"; keys `alertBanner.tone.*` in EN, FI and SV) so colour is not\n  the only signal.\n\n## Error summary\n- Pass the problems as a `List` of `Link`s in `description` and set `focusOnMount`: the banner takes focus (tabIndex -1, shared focus ring) so keyboard and screen reader users land on it after a failed submit.\n- Rich descriptions render in a block container, so a list is valid markup; plain strings stay a paragraph.\n\n## Do / don't\n- Do: pass `aria-live=\"assertive\"` for `tone=\"error\"` so the AT user is\n  interrupted. The default `polite` is correct for `info` and\n  `success`.\n- Do: keep the description short — banners that scroll vertically lose\n  the user's attention. If the message needs paragraphs, link out to\n  a docs page from the description.\n- Don't: make errors dismissable. Letting the user hide a blocking\n  problem leads to confused support tickets.\n- Don't: stack more than one banner on the same page. Two competing\n  announcements collide in the AT queue.\n- Don't: animate the banner in on every render. AlertBanner is for\n  persistent state, not transient feedback.\n\n## Design notes\n- Tokens: tone-mapped surfaces use `--color-info-surface` /\n  `--color-success-surface` / `--color-warning-surface` /\n  `--color-error-surface`; text uses the matching `*-text` token.\n  Spacing is `--space-internal-12` (block) / `--space-internal-16`\n  (inline). Radius is `--radius-md`.\n- Figma: https://www.figma.com/design/digitaltableteur/alert-banner —\n  variants map 1:1 to the `tone` prop.\n- The icon is intentionally `aria-label`led, not `aria-hidden`, because\n  AlertBanner is the canonical place to validate WCAG 1.4.1 (colour is\n  not the only signal). If a downstream design ever hides the icon, the\n  AT contract still has the tone word.\n- Dismiss is a `Button variant=\"tertiary\" size=\"s\"` so it doesn't\n  compete with primary actions on the page. The button is positioned\n  trailing so the message reads \"tone, title, description, dismiss\".\n  Its strings are localized (`alertBanner.dismissLabel` / `alertBanner.close`).\n- The `action` slot renders one follow-up under the description (Astryx\n  Banner parity); the `icon` prop overrides the tone glyph without\n  changing the announced tone word.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/AlertBanner",
@@ -5119,27 +5119,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -12255,17 +12255,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/admin/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -17655,7 +17655,7 @@
           "title": {
             "optional": false,
             "type": "string",
-            "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+            "description": "The question, for example \"Clear the answers in this section?\". Names the dialog. With choices, it asks which one, for example \"What do you want to clear?\"."
           },
           "description": {
             "optional": true,
@@ -17663,9 +17663,14 @@
             "description": "What happens if the person confirms; describes the dialog."
           },
           "confirmLabel": {
-            "optional": false,
+            "optional": true,
             "type": "string",
-            "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+            "description": "Label of the confirming button; repeat the action, for example \"Clear answers\". Not used with choices, where each choice has its own."
+          },
+          "choices": {
+            "optional": true,
+            "type": "ConfirmPopoverChoice[]",
+            "description": "Several actions to pick from first; picking one asks \"are you sure?\" with that choice's question and labels."
           },
           "cancelLabel": {
             "optional": true,
@@ -17683,8 +17688,8 @@
           },
           "onConfirm": {
             "optional": false,
-            "type": "() => void",
-            "description": "Called when the person confirms; the popover then closes."
+            "type": "(choiceId?: string) => void",
+            "description": "Called when the person confirms, with the picked choice's id when there are choices; the popover then closes."
           },
           "onOpenChange": {
             "optional": true,
@@ -17719,17 +17724,29 @@
           }
         }
       },
-      "spec": "# ConfirmPopover\n\n## Intent\nAsks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.\n\n## Interaction contract\n- Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.\n- Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.\n- Screen readers: `role=\"alertdialog\"`, named by `title`, described by `description`.\n\n## Do / don't\n- Do: repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.\n- Do: use `tone=\"error\"` for actions that remove something.\n- Don't: use it when the action can be undone; offer Undo instead.\n- Don't: put forms or long explanations inside; use Modal.\n\n## Design notes\n- Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.\n- Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.\n- Figma: not yet drawn.\n",
+      "spec": "# ConfirmPopover\n\n## Intent\nAsks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.\n\n## Interaction contract\n- Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.\n- Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.\n- Screen readers: `role=\"alertdialog\"`, named by `title`, described by `description`.\n- With `choices`: the first step asks which action (`title`) and lists one button per choice; focus starts on the first choice (a confirmation always follows). Picking one mounts a new alertdialog with that choice's question, description and confirm label, so screen readers announce it, and focus starts on Cancel. `onConfirm` receives the choice's `id`.\n\n## Do / don't\n- Do: repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.\n- Do: use `tone=\"error\"` for actions that remove something.\n- Don't: use it when the action can be undone; offer Undo instead.\n- Do: keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\".\n- Don't: put forms or long explanations inside; use Modal.\n\n## Design notes\n- Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.\n- Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.\n- Figma: not yet drawn.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ConfirmPopover",
-        "importCount": 1,
-        "productionImportCount": 1,
+        "importCount": 3,
+        "productionImportCount": 3,
         "patternImportCount": 0,
         "componentImportCount": 0,
         "evidence": [
           {
             "path": "app/intake/_components/IntakeForm.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/ConfirmPopover",
+            "context": "production"
+          },
+          {
+            "path": "app/intake/admin/_components/IntakeActions.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/ConfirmPopover",
+            "context": "production"
+          },
+          {
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
             "importKind": "alias",
             "importPath": "@dt/ConfirmPopover",
             "context": "production"
@@ -17748,7 +17765,7 @@
           "title": {
             "optional": false,
             "type": "string",
-            "description": "The question, for example \"Clear the answers in this section?\". Names the dialog."
+            "description": "The question, for example \"Clear the answers in this section?\". Names the dialog. With choices, it asks which one, for example \"What do you want to clear?\"."
           },
           "description": {
             "optional": true,
@@ -17756,9 +17773,14 @@
             "description": "What happens if the person confirms; describes the dialog."
           },
           "confirmLabel": {
-            "optional": false,
+            "optional": true,
             "type": "string",
-            "description": "Label of the confirming button; repeat the action, for example \"Clear answers\"."
+            "description": "Label of the confirming button; repeat the action, for example \"Clear answers\". Not used with choices, where each choice has its own."
+          },
+          "choices": {
+            "optional": true,
+            "type": "ConfirmPopoverChoice[]",
+            "description": "Several actions to pick from first; picking one asks \"are you sure?\" with that choice's question and labels."
           },
           "cancelLabel": {
             "optional": true,
@@ -17776,8 +17798,8 @@
           },
           "onConfirm": {
             "optional": false,
-            "type": "() => void",
-            "description": "Called when the person confirms; the popover then closes."
+            "type": "(choiceId?: string) => void",
+            "description": "Called when the person confirms, with the picked choice's id when there are choices; the popover then closes."
           },
           "onOpenChange": {
             "optional": true,
@@ -17834,7 +17856,8 @@
         "variantsFnName": null,
         "useWhen": [
           "repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.",
-          "use `tone=\"error\"` for actions that remove something."
+          "use `tone=\"error\"` for actions that remove something.",
+          "keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\"."
         ],
         "avoidWhen": [
           "use it when the action can be undone; offer Undo instead.",
@@ -17866,7 +17889,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 11,
+        "declaredPropCount": 12,
         "guidelines": [
           {
             "level": "should",
@@ -17885,6 +17908,13 @@
           {
             "level": "should-not",
             "guidance": "use it when the action can be undone; offer Undo instead.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\".",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
@@ -25222,6 +25252,21 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
             "since": "2026-06-04"
           },
@@ -27723,32 +27768,32 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/enrol/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/invite/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/passkeys/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/privacy/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/start/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -28437,6 +28482,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/invite/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
@@ -28468,16 +28523,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -30249,6 +30294,21 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
@@ -30275,21 +30335,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/navigation/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -33396,7 +33441,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -50363,12 +50408,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/admin/enrol/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/page.tsx",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -51726,6 +51771,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/invite/page.tsx",
             "since": "2026-06-04"
           },
           {
@@ -60251,27 +60306,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ]
@@ -60701,13 +60756,31 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SummaryList",
-        "importCount": 2,
-        "productionImportCount": 2,
+        "importCount": 5,
+        "productionImportCount": 5,
         "patternImportCount": 0,
         "componentImportCount": 0,
         "evidence": [
           {
             "path": "app/intake/_components/AnswerSummary.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/SummaryList",
+            "context": "production"
+          },
+          {
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/SummaryList",
+            "context": "production"
+          },
+          {
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/SummaryList",
+            "context": "production"
+          },
+          {
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
             "importKind": "alias",
             "importPath": "@dt/SummaryList",
             "context": "production"
@@ -61837,22 +61910,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -62412,22 +62485,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -62945,22 +63018,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -63878,22 +63951,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -64878,7 +64951,7 @@
           "tasks": {
             "optional": false,
             "type": "TaskListTask[]",
-            "description": "Tasks in order."
+            "description": "Tasks in order. Each has id, label, status, an optional hint and steps, and `unnumbered` to leave a closing task such as \"Check and submit\" without a number."
           },
           "label": {
             "optional": false,
@@ -64917,7 +64990,7 @@
         ],
         "schemaVersion": 2
       },
-      "spec": "# TaskList\n\n## Intent\n\nOrients people in a long form that is done in parts, in any order and over several sessions (a client intake, an application). It lists every part with its status and the open part's steps, and lets people move to any of them. Modelled on the GOV.UK task list, placed as a persistent rail beside the form as in Stripe's onboarding view.\n\n## Interaction contract\n\n- Keyboard: Tab moves through parts and the open part's steps; Enter or Space opens one.\n- Pointer: the whole row of a part is the target, not just its name.\n- Screen readers: a `nav` landmark named by `label`; the step on screen is `aria-current=\"step\"`; each part's status and hint describe its button.\n- Status marks: only \"In progress\" (badge) and \"Completed\" (check) show. \"Not started\" is visually hidden so the rail does not repeat the same badge on every untouched part; it still describes the button for screen readers.\n\n## Do / don't\n\n- Do: keep part names short; one-line hints only.\n- Do: map the rail 1:1 to the real steps and keep past steps selectable (Baymard: people click step indicators to go back).\n- Don't: use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.\n- Don't: show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another.\n\n## Design notes\n\n- Completed reads as plain text with a check, so parts that still need work stand out (GOV.UK research).\n- Statuses use Badge; the check uses Icon.\n- Tokens: --color-text, --color-muted, --color-border-light, --color-neutral-bg, --space-internal-*.\n- Figma: not yet built.\n",
+      "spec": "# TaskList\n\n## Intent\n\nOrients people in a long form that is done in parts, in any order and over several sessions (a client intake, an application). It lists every part with its status and the open part's steps, and lets people move to any of them. Modelled on the GOV.UK task list, placed as a persistent rail beside the form as in Stripe's onboarding view.\n\n## Interaction contract\n\n- Keyboard: Tab moves through parts and the open part's steps; Enter or Space opens one.\n- Pointer: the whole row of a part is the target, not just its name.\n- Screen readers: a `nav` landmark named by `label`; the step on screen is `aria-current=\"step\"`; each part's status and hint describe its button.\n- Status marks: only \"In progress\" (badge) and \"Completed\" (check) show. \"Not started\" is visually hidden so the rail does not repeat the same badge on every untouched part; it still describes the button for screen readers.\n\n## Do / don't\n\n- Do: keep part names short; one-line hints only.\n- Do: map the rail 1:1 to the real steps and keep past steps selectable (Baymard: people click step indicators to go back).\n- Don't: use it for a short linear flow that must be done in order; a simple \"Step 2 of 3\" caption is enough there.\n- Don't: show a status nobody can act on; \"Cannot start yet\" is for a part that depends on another.\n\n## Design notes\n\n- Each task's number sits in a circle (--color-muted outline); a completed task's circle fills with --color-success and shows a check instead, so parts that still need work stand out (GOV.UK research). The word \"Completed\" is visually hidden and stays in the row's description for screen readers; \"In progress\" shows as a Badge, \"Not started\" is screen-reader only.\n- `unnumbered` leaves a closing task such as \"Check and submit\" without a number (its space is kept so names line up); later tasks are numbered as if it were not there.\n- The open step has a half-strength --color-neutral-bg fill with an 8px radius (--radius-lg); its check uses --color-success.\n- Tokens: --color-text, --color-muted, --color-success, --color-surface, --color-border-light, --color-neutral-bg, --radius-lg, --radius-circle, --space-internal-*.\n- Figma: not yet built.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TaskList",
@@ -66244,6 +66317,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/invite/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
@@ -66800,32 +66883,32 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
+            "path": "app/intake/admin/_components/PasskeyFlows.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/page.tsx",
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/start/page.tsx",
+            "path": "app/intake/admin/enrol/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/admin/invite/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/admin/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -67979,6 +68062,31 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakesTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/passkeys/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/page.tsx",
             "since": "2026-06-04"
           },
@@ -68010,11 +68118,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -73292,6 +73395,21 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/invite/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
@@ -73318,21 +73436,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ImprintPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
             "since": "2026-06-04"
           }
         ],
