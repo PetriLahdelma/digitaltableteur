@@ -54,28 +54,201 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "2.5.8"
         ],
-        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.129Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:59.788Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.705Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.544Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:39.016Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.845Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.415Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.163Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.129Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:03.593Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:59.788Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.705Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:04.137Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.544Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:39.016Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:04.394Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.845Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.415Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:03.881Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.163Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-07-06"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-default.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:03.593Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-example.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:04.137Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-forced-colors.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:04.394Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeBlockWindow/__a11y-evidence__/content-codeblockwindow-playground.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:03.881Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

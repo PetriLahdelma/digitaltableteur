@@ -40,28 +40,257 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "2.5.8"
         ],
-        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-default.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.152Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-default.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:35.474Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-default.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.088Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-example.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.725Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-example.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:36.090Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-example.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.793Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-forced-colors.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:39.102Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:36.444Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-forced-colors.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:01.121Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-playground.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.434Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-playground.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:35.778Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-playground.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.487Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-default.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.152Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-default.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:06.435Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-default.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:35.474Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-default.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.088Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-example.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.725Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-example.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:06.957Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-example.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:36.090Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-example.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.793Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-forced-colors.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:39.102Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-forced-colors.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:07.247Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:36.444Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-forced-colors.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:01.121Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-playground.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:38.434Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-playground.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:06.699Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-playground.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:35.778Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-playground.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:00.487Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-10-17"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-default.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:06.435Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-example.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:06.957Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-forced-colors.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:07.247Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectList/__a11y-evidence__/content-projectlist-playground.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:06.699Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",
@@ -80,7 +309,7 @@
         "wcag": [
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
       },
       {
         "id": "human-a11y-review",

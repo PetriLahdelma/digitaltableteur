@@ -129,28 +129,159 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "2.5.8"
         ],
-        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:44.815Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:12.289Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:45.170Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:12.645Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:44.434Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:11.919Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:44.815Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:12.540Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:12.289Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:45.170Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:12.890Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:12.645Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.dark.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:44.434Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:12.168Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.light.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:11.919Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-05-28"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-example.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:12.540Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-forced-colors.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:12.890Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/PersonCard/__a11y-evidence__/site-personcard-playground.forced-colors.json",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:12.168Z",
+            "passed": true,
+            "runner": "local"
+          }
+        ]
       },
       {
         "id": "human-a11y-review",

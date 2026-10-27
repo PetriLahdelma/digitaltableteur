@@ -107,87 +107,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-default.dark.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:13.988Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:29.200Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-default.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:03.270Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:46.695Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-default.light.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:08.654Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:06.240Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-example.dark.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:14.504Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:29.750Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-example.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:03.798Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:47.234Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-example.light.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:09.186Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:07.017Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-forced-colors.dark.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:14.781Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:30.048Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:04.090Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:47.515Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-forced-colors.light.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:09.469Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:07.459Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-playground.dark.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:14.257Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:29.487Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-playground.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:03.543Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:46.973Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-playground.light.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:08.918Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:06.620Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           }
         ]
       },
@@ -203,115 +203,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-default.dark.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:13.988Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:29.200Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-default.forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:19.188Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:00.609Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-default.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:03.270Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:46.695Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-default.light.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:08.654Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:06.240Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-example.dark.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:14.504Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:29.750Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-example.forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:19.672Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:01.191Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-example.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:03.798Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:47.234Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-example.light.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:09.186Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:07.017Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-forced-colors.dark.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:14.781Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:30.048Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-forced-colors.forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:19.924Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:01.459Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:04.090Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:47.515Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-forced-colors.light.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:09.469Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:07.459Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-playground.dark.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:14.257Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:29.487Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-playground.forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:19.427Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:00.916Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-playground.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:03.543Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:41:46.973Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-playground.light.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:08.918Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:42:06.620Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           }
         ]
       },
@@ -323,31 +323,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-default.forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:19.188Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:00.609Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-example.forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:19.672Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:01.191Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-forced-colors.forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:19.924Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:01.459Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeBlock/__a11y-evidence__/content-codeblock-playground.forced-colors.json",
-            "sourceCommit": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-            "capturedAt": "2026-10-25T19:14:19.427Z",
+            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
+            "capturedAt": "2026-10-27T18:43:00.916Z",
             "passed": true,
-            "runner": "local-claude"
+            "runner": "local"
           }
         ]
       },
