@@ -1,3 +1,5 @@
+import { parsePhoneNumberFromString } from "libphonenumber-js";
+
 import { intakeCopy } from "./copy";
 import { isInputField, isVisible } from "./schema";
 import type { AnswerValue, Answers, IntakeField, IntakeLocale, Questionnaire } from "./types";
@@ -40,6 +42,9 @@ export function answerDisplay(field: IntakeField, value: AnswerValue | undefined
       return field.options.find((option) => option.id === value)?.label[locale] ?? String(value);
     case "confirm":
       return value === true ? t("yes") : t("no");
+    case "tel":
+      // Stored as E.164 (+358456574469); read as +358 45 6574469.
+      return parsePhoneNumberFromString(String(value))?.formatInternational() ?? String(value);
     case "scale": {
       const n = Number(value);
       const middle = (field.min + field.max) / 2;

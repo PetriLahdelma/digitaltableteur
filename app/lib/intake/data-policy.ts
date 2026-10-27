@@ -16,6 +16,12 @@ export const RETENTION = {
   auditLogMonths: 12,
 } as const;
 
+/**
+ * Times in the intake read in the business's zone everywhere: pages, emails
+ * and the PDF. Server renders would otherwise show UTC.
+ */
+export const INTAKE_TIME_ZONE = "Europe/Helsinki";
+
 /** Swedish copy stays in the definitions but is not offered until reviewed. */
 export const ENABLED_INTAKE_LOCALES: readonly IntakeLocale[] = ["en", "fi"];
 

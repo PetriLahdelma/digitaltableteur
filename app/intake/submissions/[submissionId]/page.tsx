@@ -15,6 +15,7 @@ import { AnswerSummary } from "../../_components/AnswerSummary";
 import { DownloadPdfButton } from "../../_components/DownloadPdfButton";
 import { IntakeColumns, IntakePage } from "../../_components/IntakePage";
 import { requestLocale } from "../../_components/locale";
+import { INTAKE_TIME_ZONE } from "@/app/lib/intake/data-policy";
 
 export const preferredRegion = "fra1";
 export const dynamic = "force-dynamic";
@@ -55,6 +56,7 @@ export default async function IntakeSubmissionPage({
             <Text size="s">
               {t("submittedOn")}{" "}
               <Timestamp
+                timeZone={INTAKE_TIME_ZONE}
                 value={view.submittedAt}
                 format="date_time"
                 locale={locale}

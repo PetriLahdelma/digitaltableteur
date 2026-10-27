@@ -6,6 +6,7 @@ import { Badge, Button, DataTable, FilterChip, FlexBox, Link, Text, Timestamp, T
 import { adminCopy, type AdminCopyKey } from "@/app/lib/intake/admin-copy";
 import type { AdminIntakeRow, AdminIntakeStatus } from "@/app/lib/intake/service/admin";
 import type { IntakeLocale } from "@/app/lib/intake/types";
+import { INTAKE_TIME_ZONE } from "@/app/lib/intake/data-policy";
 
 export type IntakeTableRow = Omit<AdminIntakeRow, "lastActivity"> & Readonly<{ lastActivity: string }>;
 
@@ -70,7 +71,7 @@ export function IntakesTable({ rows, locale }: { rows: IntakeTableRow[]; locale:
       header: t("colActivity"),
       sortable: true,
       sortValue: (row) => row.lastActivity,
-      cell: (row) => <Timestamp value={row.lastActivity} format="auto" locale={locale} />,
+      cell: (row) => <Timestamp timeZone={INTAKE_TIME_ZONE} value={row.lastActivity} format="auto" locale={locale} />,
     },
   ];
 

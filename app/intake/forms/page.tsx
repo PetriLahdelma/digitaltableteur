@@ -15,6 +15,7 @@ import { currentClient } from "@/app/lib/intake/service/session";
 
 import { IntakeColumns, IntakePage } from "../_components/IntakePage";
 import { requestLocale } from "../_components/locale";
+import { INTAKE_TIME_ZONE } from "@/app/lib/intake/data-policy";
 
 export const preferredRegion = "fra1";
 export const dynamic = "force-dynamic";
@@ -70,6 +71,7 @@ export default async function IntakeHomePage({ searchParams }: Props) {
                   <Text as="span" size="s">
                     {t("submittedOn")}{" "}
                     <Timestamp
+                      timeZone={INTAKE_TIME_ZONE}
                       value={intake.submittedAt}
                       format="date"
                       locale={locale}
@@ -79,6 +81,7 @@ export default async function IntakeHomePage({ searchParams }: Props) {
                   <Text as="span" size="s">
                     {t("lastSaved")}{" "}
                     <Timestamp
+                      timeZone={INTAKE_TIME_ZONE}
                       value={intake.updatedAt}
                       format="date_time"
                       locale={locale}

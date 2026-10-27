@@ -12,6 +12,7 @@ import { IntakePage } from "../../../_components/IntakePage";
 import { requestLocale } from "../../../_components/locale";
 import { IntakeActions } from "../../_components/IntakeActions";
 import { StatusBadge } from "../../_components/IntakesTable";
+import { INTAKE_TIME_ZONE } from "@/app/lib/intake/data-policy";
 
 export const preferredRegion = "fra1";
 export const dynamic = "force-dynamic";
@@ -76,14 +77,14 @@ export default async function IntakeAdminDetailPage({ params, searchParams }: Pr
                 { id: "email", label: t("detailEmail"), value: intake.email },
                 ...(intake.company ? [{ id: "company", label: t("colCompany"), value: intake.company }] : []),
                 { id: "form", label: t("colForm"), value: intake.questionnaire },
-                { id: "invited", label: t("detailInvited"), value: <Timestamp value={intake.invitedAt} format="date_time" locale={locale} /> },
+                { id: "invited", label: t("detailInvited"), value: <Timestamp timeZone={INTAKE_TIME_ZONE} value={intake.invitedAt} format="date_time" locale={locale} /> },
                 ...(intake.status === "invited" || intake.status === "expired"
-                  ? [{ id: "expires", label: t("detailLinkExpires"), value: <Timestamp value={intake.linkExpiresAt} format="date_time" locale={locale} /> }]
+                  ? [{ id: "expires", label: t("detailLinkExpires"), value: <Timestamp timeZone={INTAKE_TIME_ZONE} value={intake.linkExpiresAt} format="date_time" locale={locale} /> }]
                   : []),
                 {
                   id: "first",
                   label: t("detailFirstSignIn"),
-                  value: intake.firstSignedInAt ? <Timestamp value={intake.firstSignedInAt} format="date_time" locale={locale} /> : t("detailNotYet"),
+                  value: intake.firstSignedInAt ? <Timestamp timeZone={INTAKE_TIME_ZONE} value={intake.firstSignedInAt} format="date_time" locale={locale} /> : t("detailNotYet"),
                 },
               ]}
             />
@@ -113,7 +114,7 @@ export default async function IntakeAdminDetailPage({ params, searchParams }: Pr
                   label: t("version", { n: version.version }),
                   value: (
                     <FlexBox direction="column" gap="var(--space-internal-4)">
-                      <Timestamp value={version.submittedAt} format="date_time" locale={locale} />
+                      <Timestamp timeZone={INTAKE_TIME_ZONE} value={version.submittedAt} format="date_time" locale={locale} />
                       <Text as="span" size="s">
                         {t("fingerprint")}: <Code>{version.digest}</Code>
                       </Text>
@@ -156,7 +157,7 @@ export default async function IntakeAdminDetailPage({ params, searchParams }: Pr
             <SummaryList
               rows={intake.audit.map((entry, index) => ({
                 id: `${entry.at.toISOString()}-${index}`,
-                label: <Timestamp value={entry.at} format="date_time" locale={locale} />,
+                label: <Timestamp timeZone={INTAKE_TIME_ZONE} value={entry.at} format="date_time" locale={locale} />,
                 value: `${auditLabel(entry.action)} (${actor(entry.actor)})`,
               }))}
             />

@@ -10,6 +10,7 @@ import type { IntakeLocale } from "@/app/lib/intake/types";
 
 import { postJson } from "../../_components/api";
 import { AdminEnrol, AdminSignIn } from "./PasskeyFlows";
+import { INTAKE_TIME_ZONE } from "@/app/lib/intake/data-policy";
 
 /** Dates as ISO strings, so the row crosses the server/client boundary. */
 export type PasskeyRow = Readonly<{ id: string; label: string; created: string; used: string | null }>;
@@ -49,11 +50,11 @@ export function PasskeyList({ locale, passkeys, fresh }: { locale: IntakeLocale;
           label: passkey.label,
           value: (
             <>
-              {t("passkeyAdded")} <Timestamp value={passkey.created} format="date_time" locale={locale} />
+              {t("passkeyAdded")} <Timestamp timeZone={INTAKE_TIME_ZONE} value={passkey.created} format="date_time" locale={locale} />
               <br />
               {passkey.used ? (
                 <>
-                  {t("passkeyUsed")} <Timestamp value={passkey.used} format="date_time" locale={locale} />
+                  {t("passkeyUsed")} <Timestamp timeZone={INTAKE_TIME_ZONE} value={passkey.used} format="date_time" locale={locale} />
                 </>
               ) : (
                 t("passkeyUnused")

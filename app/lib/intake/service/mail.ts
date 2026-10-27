@@ -3,11 +3,12 @@ import type { IntakeLocale } from "../types";
 import type { IntakeMail, Mailer } from "./context";
 import { mailBlockText, renderMailHtml, type MailBlock } from "./mail-html";
 import { MAIL_LOGO } from "./mail-logo";
+import { INTAKE_TIME_ZONE } from "../data-policy";
 
 const DATE_LOCALE: Record<IntakeLocale, string> = { en: "en-GB", fi: "fi-FI", sv: "sv-SE" };
 
 export function formatIntakeDate(date: Date, locale: IntakeLocale): string {
-  return new Intl.DateTimeFormat(DATE_LOCALE[locale], { dateStyle: "long", timeStyle: "short", timeZone: "Europe/Helsinki" }).format(date);
+  return new Intl.DateTimeFormat(DATE_LOCALE[locale], { dateStyle: "long", timeStyle: "short", timeZone: INTAKE_TIME_ZONE }).format(date);
 }
 
 type Composed = Readonly<{
