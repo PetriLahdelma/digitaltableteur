@@ -326,8 +326,12 @@ export function IntakeForm({
     );
   }
 
-  /** Empties every answer in the form, after the person confirms. */
+  /** Empties every answer in the form and every part's done mark, after the person confirms. */
   function clearAll() {
+    // Before updateMany, which copies latest.current when it applies.
+    latest.current = { ...latest.current, completed: [] };
+    setCompleted([]);
+    dirty.current = true;
     updateMany(
       Object.fromEntries(
         questionnaire.pages
@@ -430,28 +434,31 @@ export function IntakeForm({
       unnumbered: true,
     },
   ];
-  // Clearing is rare and destructive, so it sits under the rail, away from
-  // Back and Continue: pick this section or everything, then confirm.
+  // Clearing is rare and destructive, so it sits under the rail (below the
+  // form on narrow screens), away from Back and Continue: pick this section
+  // or everything, then confirm. With nothing on this screen, only "all" is
+  // left, so it goes straight to the confirmation.
   const hasAnswers = (fields: readonly Field[]) =>
     fields.some((field) => isInputField(field) && !isEmpty(answers[field.id]));
   const allFields = steps.flatMap((candidate) => candidate.section.fields);
-  const clearButton = step ? (
+  const clearTrigger = (
+    <Button variant="tertiary" size="lg" disabled={!hasAnswers(allFields)}>
+      {copy.clear}
+    </Button>
+  );
+  const clearButton = !step ? null : hasAnswers(step.section.fields) ? (
     <ConfirmPopover
       title={copy.clearWhich}
       cancelLabel={copy.cancel}
       tone="error"
       choices={[
-        ...(hasAnswers(step.section.fields)
-          ? [
-              {
-                id: "section",
-                label: copy.clearSection,
-                title: copy.clearSectionTitle,
-                description: copy.clearSectionDescription,
-                confirmLabel: copy.clearSection,
-              },
-            ]
-          : []),
+        {
+          id: "section",
+          label: copy.clearSection,
+          title: copy.clearSectionTitle,
+          description: copy.clearSectionDescription,
+          confirmLabel: copy.clearSection,
+        },
         {
           id: "all",
           label: copy.clearAll,
@@ -462,36 +469,38 @@ export function IntakeForm({
       ]}
       onConfirm={(choice) => (choice === "all" ? clearAll() : clearStep(step))}
     >
-      <Button variant="tertiary" size="lg" disabled={!hasAnswers(allFields)}>
-        {copy.clear}
-      </Button>
+      {clearTrigger}
     </ConfirmPopover>
-  ) : null;
-  const rail = (
-    <FlexBox
-      direction="column"
-      align="flex-start"
-      gap="var(--space-internal-24)"
+  ) : (
+    <ConfirmPopover
+      title={copy.clearAllTitle}
+      description={copy.clearAllDescription}
+      confirmLabel={copy.clearAllConfirm}
+      cancelLabel={copy.cancel}
+      tone="error"
+      onConfirm={clearAll}
     >
-      <TaskList
-        label={copy.partsLabel}
-        tasks={tasks}
-        currentTaskId={current === REVIEW ? REVIEW : step?.page.id}
-        currentStepId={current === REVIEW ? undefined : current}
-        statusLabels={{
-          notStarted: copy.statusNotStarted,
-          inProgress: copy.statusInProgress,
-          completed: copy.statusCompleted,
-          cannotStart: copy.statusAfterFirstPart,
-        }}
-        onSelect={(taskId, sectionId) => {
-          if (taskId === REVIEW) return goTo(REVIEW);
-          const first = steps.find((candidate) => candidate.page.id === taskId);
-          goTo(sectionId ?? first?.section.id ?? current);
-        }}
-      />
-      {clearButton}
-    </FlexBox>
+      {clearTrigger}
+    </ConfirmPopover>
+  );
+  const taskList = (
+    <TaskList
+      label={copy.partsLabel}
+      tasks={tasks}
+      currentTaskId={current === REVIEW ? REVIEW : step?.page.id}
+      currentStepId={current === REVIEW ? undefined : current}
+      statusLabels={{
+        notStarted: copy.statusNotStarted,
+        inProgress: copy.statusInProgress,
+        completed: copy.statusCompleted,
+        cannotStart: copy.statusAfterFirstPart,
+      }}
+      onSelect={(taskId, sectionId) => {
+        if (taskId === REVIEW) return goTo(REVIEW);
+        const first = steps.find((candidate) => candidate.page.id === taskId);
+        goTo(sectionId ?? first?.section.id ?? current);
+      }}
+    />
   );
 
   const fieldsById = useMemo(
@@ -657,6 +666,8 @@ export function IntakeForm({
           <AlertBanner
             tone="info"
             description={withRequiredMarks(step.page.intro[locale])}
+            // Static guidance, not news: no live region announcing it on each part.
+            aria-live="off"
           />
         ) : null}
         {step.section.description ? (
@@ -728,12 +739,13 @@ export function IntakeForm({
             {
               id: "parts",
               title: `${copy.partsLabel}: ${questionnaire.title[locale]}`,
-              content: rail,
+              content: taskList,
             },
           ]}
           variant="divided"
         />
         {content}
+        {clearButton ? <FlexBox direction="row">{clearButton}</FlexBox> : null}
       </FlexBox>
     );
   }
@@ -750,7 +762,14 @@ export function IntakeForm({
     >
       <FlexBox direction="column" gap="var(--space-internal-16)">
         <Text size="s">{questionnaire.title[locale]}</Text>
-        {rail}
+        <FlexBox
+          direction="column"
+          align="flex-start"
+          gap="var(--space-internal-24)"
+        >
+          {taskList}
+          {clearButton}
+        </FlexBox>
       </FlexBox>
       {content}
     </Grid>

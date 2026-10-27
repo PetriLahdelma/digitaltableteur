@@ -8,7 +8,10 @@ import type { IntakeContext } from "./context";
 import { getSubmission, getSubmissionForPrint, type SubmissionView } from "./forms";
 
 /** The owner's scope for submissionPdf: any submission, from admin. */
-export const OWNER = "owner";
+export const OWNER = { owner: true } as const;
+
+/** Whose PDF: one client's own submissions, or the owner from admin. */
+export type PdfScope = { clientId: string } | typeof OWNER;
 
 export const pdfAad = (submissionId: string) => `pdf:${submissionId}`;
 
@@ -23,14 +26,13 @@ export type PdfRenderer = (view: SubmissionView) => Promise<Buffer>;
  */
 export async function submissionPdf(
   ctx: IntakeContext,
-  /** A client id (their own submissions only), or "owner" from admin. */
-  scope: string,
+  scope: PdfScope,
   submissionId: string,
   render: PdfRenderer,
 ): Promise<{ bytes: Buffer; view: SubmissionView } | null> {
-  const view = scope === OWNER ? await getSubmissionForPrint(ctx, submissionId) : await getSubmission(ctx, scope, submissionId);
+  const view = "owner" in scope ? await getSubmissionForPrint(ctx, submissionId) : await getSubmission(ctx, scope.clientId, submissionId);
   if (!view) return null;
-  const clientId = view.clientId;
+  const { clientId, inviteId } = view;
 
   const stored = async () => {
     const [row] = await ctx.db.select().from(pdfs).where(eq(pdfs.submissionId, submissionId));
@@ -53,13 +55,13 @@ export async function submissionPdf(
       .onConflictDoNothing()
       .returning({ submissionId: pdfs.submissionId });
     if (inserted.length === 1) {
-      await ctx.db.insert(auditLog).values({ actor: "system", action: "pdf.render", clientId, submissionId, detail: { digest, bytes: rendered.length } });
+      await ctx.db.insert(auditLog).values({ actor: "system", action: "pdf.render", clientId, inviteId, submissionId, detail: { digest, bytes: rendered.length } });
       bytes = rendered;
     } else {
       // Another request rendered it first: serve that one, so there is only ever one PDF.
       bytes = await stored();
     }
   }
-  await ctx.db.insert(auditLog).values({ actor: scope === OWNER ? "owner" : "client", action: "pdf.download", clientId, submissionId });
+  await ctx.db.insert(auditLog).values({ actor: "owner" in scope ? "owner" : "client", action: "pdf.download", clientId, inviteId, submissionId });
   return bytes ? { bytes, view } : null;
 }

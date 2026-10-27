@@ -27,11 +27,13 @@ function ownerMail(subject: string, heading: string, lines: string[], button: { 
   };
 }
 
-const who = (name: string, company?: string) => (company ? `${name}, ${company}` : name);
-
+/**
+ * The subject names the client by the name the owner typed on the invite,
+ * never by an answer such as the company: answers stay out of mail (README
+ * 6a), and the client cannot write into the owner's inbox.
+ */
 export function ownerSubmittedMail(input: {
   name: string;
-  company?: string;
   questionnaire: string;
   version: number;
   submittedAt: Date;
@@ -39,7 +41,7 @@ export function ownerSubmittedMail(input: {
 }): IntakeMail {
   const resubmitted = input.version > 1;
   return ownerMail(
-    `${resubmitted ? "Intake resubmitted" : "Intake submitted"}: ${who(input.name, input.company)}`,
+    `${resubmitted ? "Intake resubmitted" : "Intake submitted"}: ${input.name}`,
     resubmitted ? `${input.name} resubmitted their intake` : `${input.name} submitted their intake`,
     [
       `${input.questionnaire}${resubmitted ? `, version ${input.version}` : ""}, ${formatIntakeDate(input.submittedAt, "en")}.`,
@@ -60,12 +62,39 @@ export function ownerFirstSignInMail(input: { name: string; questionnaire: strin
 
 export function ownerExpiringMail(input: { name: string; questionnaire: string; expiresAt: Date; adminLink: string }): IntakeMail {
   return ownerMail(
-    `Invite expires tomorrow: ${input.name}`,
+    `Invite expires soon: ${input.name}`,
     `${input.name} has not opened their invite yet`,
     [
       `The link to ${input.questionnaire} expires ${formatIntakeDate(input.expiresAt, "en")}.`,
       "Resend it from admin to give them a fresh 72 hours.",
     ],
     { label: "Open in admin", href: input.adminLink },
+  );
+}
+
+/**
+ * Every passkey change and enrolment-link sign-in, so a change the owner did
+ * not make is noticed (a stolen session or a leaked enrolment link).
+ */
+export function ownerPasskeyMail(input: {
+  change: "added" | "removed";
+  label: string;
+  via: "link" | "admin";
+  at: Date;
+  adminLink: string;
+}): IntakeMail {
+  const added = input.change === "added";
+  return ownerMail(
+    added ? `Passkey added: ${input.label}` : `Passkey removed: ${input.label}`,
+    added ? "A passkey was added to intake admin" : "A passkey was removed from intake admin",
+    [
+      `${input.label}, ${formatIntakeDate(input.at, "en")}${added && input.via === "link" ? ", through an enrolment link" : ""}.`,
+      !added
+        ? "Other admin sessions were signed out. If this was not you, run npm run intake:admin-enrol to get back in."
+        : input.via === "admin"
+          ? "If this was not you, remove this passkey in admin; that also signs out every other session. Run npm run intake:admin-enrol if you are locked out."
+          : "Other admin sessions were signed out. If this was not you, run npm run intake:admin-enrol to get back in, then remove this passkey.",
+    ],
+    { label: "Open passkeys", href: input.adminLink },
   );
 }

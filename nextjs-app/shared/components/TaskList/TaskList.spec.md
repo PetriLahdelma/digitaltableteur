@@ -20,7 +20,8 @@ Orients people in a long form that is done in parts, in any order and over sever
 
 ## Design notes
 
-- Completed reads as plain text with a check, so parts that still need work stand out (GOV.UK research).
-- Statuses use Badge; the check uses Icon.
-- Tokens: --color-text, --color-muted, --color-border-light, --color-neutral-bg, --space-internal-*.
+- Each task's number sits in a circle (--color-muted outline); a completed task's circle fills with --color-success and shows a check instead, so parts that still need work stand out (GOV.UK research). The word "Completed" is visually hidden and stays in the row's description for screen readers; "In progress" shows as a Badge, "Not started" is screen-reader only.
+- `unnumbered` leaves a closing task such as "Check and submit" without a number (its space is kept so names line up); later tasks are numbered as if it were not there.
+- The open step has a half-strength --color-neutral-bg fill with an 8px radius (--radius-lg); its check uses --color-success.
+- Tokens: --color-text, --color-muted, --color-success, --color-surface, --color-border-light, --color-neutral-bg, --radius-lg, --radius-circle, --space-internal-*.
 - Figma: not yet built.

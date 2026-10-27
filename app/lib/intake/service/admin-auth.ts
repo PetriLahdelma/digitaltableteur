@@ -8,12 +8,13 @@ import {
   type PublicKeyCredentialRequestOptionsJSON,
   type RegistrationResponseJSON,
 } from "@simplewebauthn/server";
-import { and, asc, count, eq, gt, isNull, ne } from "drizzle-orm";
+import { and, asc, eq, gt, isNull, lte, ne, or } from "drizzle-orm";
 
 import { RETENTION } from "../data-policy";
 import { adminChallenges, adminCredentials, adminEnrolments, auditLog, sessions, type AdminChallengePurpose } from "../db/schema";
 import { generateToken, hashToken } from "../security/tokens";
-import { HOUR, MINUTE, type IntakeContext } from "./context";
+import { HOUR, MINUTE, type IntakeContext, type IntakeMail } from "./context";
+import { ownerPasskeyMail } from "./owner-mail";
 
 /**
  * Owner sign-in to the intake admin area: passkeys only (README 6a). There is
@@ -25,6 +26,12 @@ export const ADMIN_PREAUTH_COOKIE = "__Host-intake-admin-pre";
 
 const CHALLENGE_MINUTES = 5;
 export const ENROLMENT_MINUTES = 15;
+/**
+ * Adding or removing a passkey from inside admin needs a sign-in this
+ * recent, so a stolen session cookie alone cannot swap the owner's passkeys
+ * for the attacker's (step-up).
+ */
+export const STEP_UP_MINUTES = 10;
 const RP_NAME = "Digitaltableteur intake admin";
 /** One owner, so one fixed WebAuthn user handle. */
 const OWNER_USER_ID = new TextEncoder().encode("digitaltableteur-owner");
@@ -75,6 +82,16 @@ async function takeChallenge(ctx: IntakeContext, preauthToken: string | undefine
   return row && row.expiresAt > ctx.now() ? row.challenge : null;
 }
 
+/** Short, non-reversible tag for audit entries: which passkey, without storing its id twice. */
+const credentialTag = (id: string) => id.slice(0, 12);
+
+const passkeysLink = (ctx: Pick<IntakeContext, "origin">) => `${ctx.origin}/intake/admin/passkeys`;
+
+/** True when the session was started recently enough to change passkeys. */
+export function isFreshAdminSession(ctx: Pick<IntakeContext, "now">, session: AdminSession): boolean {
+  return ctx.now().getTime() - session.createdAt.getTime() <= STEP_UP_MINUTES * MINUTE;
+}
+
 async function startAdminSession(ctx: IntakeContext): Promise<{ sessionToken: string; expiresAt: Date }> {
   const sessionToken = generateToken();
   const now = ctx.now();
@@ -85,14 +102,28 @@ async function startAdminSession(ctx: IntakeContext): Promise<{ sessionToken: st
 
 export type RegistrationStart =
   | Readonly<{ status: "ok"; options: PublicKeyCredentialCreationOptionsJSON; preauthToken: string }>
-  | Readonly<{ status: "forbidden" }>;
+  | Readonly<{ status: "forbidden" | "reauth" }>;
 
-/** Passkey creation options, for an enrolment token or a signed-in owner. */
+/**
+ * Who may register: an enrolment token wins when one is given (and is then
+ * spent, even by a signed-in owner); otherwise a freshly signed-in session.
+ */
+async function registrationAccess(
+  ctx: IntakeContext,
+  access: { enrolmentToken?: string; adminSession?: AdminSession | null },
+): Promise<"link" | "admin" | "forbidden" | "reauth"> {
+  if (access.enrolmentToken) return (await enrolmentIsValid(ctx, access.enrolmentToken)) ? "link" : "forbidden";
+  if (!access.adminSession) return "forbidden";
+  return isFreshAdminSession(ctx, access.adminSession) ? "admin" : "reauth";
+}
+
+/** Passkey creation options, for an enrolment token or a freshly signed-in owner. */
 export async function startRegistration(
   ctx: IntakeContext,
   access: { enrolmentToken?: string; adminSession?: AdminSession | null },
 ): Promise<RegistrationStart> {
-  if (!access.adminSession && !(await enrolmentIsValid(ctx, access.enrolmentToken))) return { status: "forbidden" };
+  const via = await registrationAccess(ctx, access);
+  if (via === "forbidden" || via === "reauth") return { status: via };
   const existing = await ctx.db.select({ id: adminCredentials.id, transports: adminCredentials.transports }).from(adminCredentials);
   const options = await generateRegistrationOptions({
     rpName: RP_NAME,
@@ -108,12 +139,13 @@ export async function startRegistration(
 }
 
 export type RegistrationFinish =
-  | Readonly<{ status: "ok"; session: { sessionToken: string; expiresAt: Date } | null }>
-  | Readonly<{ status: "forbidden" | "invalid" }>;
+  | Readonly<{ status: "ok"; session: { sessionToken: string; expiresAt: Date } | null; ownerMail: IntakeMail }>
+  | Readonly<{ status: "forbidden" | "invalid" | "reauth" }>;
 
 /**
- * Stores the new passkey. Through an enrolment token the token is spent and
- * the owner is signed in; from an admin session the session simply continues.
+ * Stores the new passkey and tells the owner by email. Through an enrolment
+ * link the token is spent, every other admin session ends and the owner is
+ * signed in with a new one; from a fresh admin session it simply continues.
  */
 export async function finishRegistration(
   ctx: IntakeContext,
@@ -127,7 +159,8 @@ export async function finishRegistration(
 ): Promise<RegistrationFinish> {
   const challenge = await takeChallenge(ctx, input.preauthToken, "register");
   if (!challenge) return { status: "invalid" };
-  if (!input.adminSession && !(await enrolmentIsValid(ctx, input.enrolmentToken))) return { status: "forbidden" };
+  const via = await registrationAccess(ctx, input);
+  if (via === "forbidden" || via === "reauth") return { status: via };
   const { rpID, origin } = relyingParty(ctx);
   let verification;
   try {
@@ -144,11 +177,11 @@ export async function finishRegistration(
   if (!verification.verified) return { status: "invalid" };
   const { credential } = verification.registrationInfo;
   const now = ctx.now();
+  const label = input.label.trim().slice(0, 60) || "Passkey";
   const stored = await ctx.db.transaction(async (tx) => {
     // The enrolment token is spent first, in one conditional update: of two
     // registrations racing with the same link, only one gets the row.
-    if (!input.adminSession) {
-      if (!input.enrolmentToken) return false;
+    if (via === "link" && input.enrolmentToken) {
       const spent = await tx
         .update(adminEnrolments)
         .set({ usedAt: now })
@@ -167,14 +200,24 @@ export async function finishRegistration(
       publicKey: toBase64Url(credential.publicKey),
       counter: credential.counter,
       transports: credential.transports ?? [],
-      label: input.label.trim().slice(0, 60) || "Passkey",
+      label,
       createdAt: now,
     });
-    await tx.insert(auditLog).values({ actor: "owner", action: "admin.passkey.add" });
+    if (via === "link") {
+      // Whoever held a session before the link was used is signed out.
+      await tx.update(sessions).set({ revokedAt: now }).where(and(eq(sessions.kind, "admin"), isNull(sessions.revokedAt)));
+    }
+    await tx.insert(auditLog).values({ actor: "owner", action: "admin.passkey.add", detail: { via, label, credential: credentialTag(credential.id) } });
     return true;
   });
   if (!stored) return { status: "forbidden" };
-  return { status: "ok", session: input.adminSession ? null : await startAdminSession(ctx) };
+  const session = via === "link" ? await startAdminSession(ctx) : null;
+  if (session) await ctx.db.insert(auditLog).values({ actor: "owner", action: "admin.session.start", detail: { via: "enrolment", credential: credentialTag(credential.id) } });
+  return {
+    status: "ok",
+    session,
+    ownerMail: ownerPasskeyMail({ change: "added", label, via, at: now, adminLink: passkeysLink(ctx) }),
+  };
 }
 
 /** Sign-in options. No allow list: the passkey is discoverable. */
@@ -211,16 +254,18 @@ export async function finishAuthentication(
     return { status: "invalid" };
   }
   if (!verification.verified) return { status: "invalid" };
+  const { newCounter } = verification.authenticationInfo;
+  // Never write an older counter over a newer one from a parallel sign-in.
   await ctx.db
     .update(adminCredentials)
-    .set({ counter: verification.authenticationInfo.newCounter, lastUsedAt: ctx.now() })
-    .where(eq(adminCredentials.id, row.id));
+    .set({ counter: newCounter, lastUsedAt: ctx.now() })
+    .where(and(eq(adminCredentials.id, row.id), or(eq(adminCredentials.counter, 0), lte(adminCredentials.counter, newCounter))));
   const session = await startAdminSession(ctx);
-  await ctx.db.insert(auditLog).values({ actor: "owner", action: "admin.session.start" });
+  await ctx.db.insert(auditLog).values({ actor: "owner", action: "admin.session.start", detail: { via: "passkey", label: row.label, credential: credentialTag(row.id) } });
   return { status: "ok", ...session };
 }
 
-export type AdminSession = Readonly<{ idHash: string; expiresAt: Date }>;
+export type AdminSession = Readonly<{ idHash: string; createdAt: Date; expiresAt: Date }>;
 
 /** The owner's session, with the same idle and absolute limits as a client's. */
 export async function readAdminSession(ctx: IntakeContext, sessionToken: string | undefined): Promise<AdminSession | null> {
@@ -243,7 +288,7 @@ export async function readAdminSession(ctx: IntakeContext, sessionToken: string 
   if (now.getTime() - row.lastSeenAt.getTime() > MINUTE) {
     await ctx.db.update(sessions).set({ lastSeenAt: now }).where(eq(sessions.idHash, idHash));
   }
-  return { idHash, expiresAt: row.expiresAt };
+  return { idHash, createdAt: row.createdAt, expiresAt: row.expiresAt };
 }
 
 export async function endAdminSession(ctx: IntakeContext, sessionToken: string | undefined): Promise<void> {
@@ -263,36 +308,38 @@ export async function listPasskeys(ctx: IntakeContext): Promise<AdminPasskey[]> 
 /**
  * Removes a passkey, never the last one: the owner would be locked out. A
  * removed passkey is usually a lost device, so every other admin session ends
- * with it; the session doing the removal (`keepSessionHash`) stays signed in.
+ * with it; the session doing the removal stays signed in. Needs a fresh
+ * sign-in, and the owner is told by email.
  */
 export async function removePasskey(
   ctx: IntakeContext,
   id: string,
-  keepSessionHash?: string,
-): Promise<"removed" | "last" | "not_found"> {
+  session: AdminSession,
+): Promise<{ status: "removed"; ownerMail: IntakeMail } | { status: "last" | "not_found" | "reauth" }> {
+  if (!isFreshAdminSession(ctx, session)) return { status: "reauth" };
+  const now = ctx.now();
   return ctx.db.transaction(async (tx) => {
-    const [target] = await tx.select({ id: adminCredentials.id }).from(adminCredentials).where(eq(adminCredentials.id, id));
-    if (!target) return "not_found";
-    const [{ total }] = await tx.select({ total: count() }).from(adminCredentials);
-    if (total <= 1) return "last";
+    // Every credential row is locked, so two removals at once cannot both
+    // see two passkeys and leave none.
+    const all = await tx.select({ id: adminCredentials.id, label: adminCredentials.label }).from(adminCredentials).for("update");
+    const target = all.find((row) => row.id === id);
+    if (!target) return { status: "not_found" } as const;
+    if (all.length <= 1) return { status: "last" } as const;
     await tx.delete(adminCredentials).where(eq(adminCredentials.id, id));
     await tx
       .update(sessions)
-      .set({ revokedAt: ctx.now() })
-      .where(
-        and(
-          eq(sessions.kind, "admin"),
-          isNull(sessions.revokedAt),
-          ...(keepSessionHash ? [ne(sessions.idHash, keepSessionHash)] : []),
-        ),
-      );
-    await tx.insert(auditLog).values({ actor: "owner", action: "admin.passkey.remove" });
-    return "removed";
+      .set({ revokedAt: now })
+      .where(and(eq(sessions.kind, "admin"), isNull(sessions.revokedAt), ne(sessions.idHash, session.idHash)));
+    await tx.insert(auditLog).values({ actor: "owner", action: "admin.passkey.remove", detail: { label: target.label, credential: credentialTag(id) } });
+    return {
+      status: "removed",
+      ownerMail: ownerPasskeyMail({ change: "removed", label: target.label, via: "admin", at: now, adminLink: passkeysLink(ctx) }),
+    } as const;
   });
 }
 
 /** True once at least one passkey exists (the sign-in page says how to enrol otherwise). */
 export async function hasPasskeys(ctx: IntakeContext): Promise<boolean> {
-  const [{ total }] = await ctx.db.select({ total: count() }).from(adminCredentials);
-  return total > 0;
+  const [row] = await ctx.db.select({ id: adminCredentials.id }).from(adminCredentials).limit(1);
+  return Boolean(row);
 }

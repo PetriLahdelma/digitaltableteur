@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 
 import { ADMIN_PREAUTH_COOKIE, finishRegistration } from "@/app/lib/intake/service/admin-auth";
 import { adminAuthAllowed, currentAdmin, setAdminCookie } from "@/app/lib/intake/service/admin-http";
+import { deliverAfterResponse } from "@/app/lib/intake/service/deliver";
 import { clearCookie, json, readJsonBody, serverError } from "@/app/lib/intake/service/http";
 
 export const runtime = "nodejs";
@@ -33,7 +34,8 @@ export async function POST(request: NextRequest) {
       enrolmentToken: body.data.enrolmentToken,
       adminSession: admin,
     });
-    if (result.status !== "ok") return json({ status: result.status }, result.status === "forbidden" ? 403 : 400);
+    if (result.status !== "ok") return json({ status: result.status }, result.status === "invalid" ? 400 : 403);
+    deliverAfterResponse(result.ownerMail, "admin.passkey.add");
     const response = json({ status: "ok" });
     clearCookie(response, ADMIN_PREAUTH_COOKIE);
     if (result.session) setAdminCookie(response, result.session.sessionToken);

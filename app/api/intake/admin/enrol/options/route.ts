@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     const { ctx, admin } = await currentAdmin();
     if (!(await adminAuthAllowed(ctx, request))) return json({ status: "rate_limited" }, 429);
     const result = await startRegistration(ctx, { enrolmentToken: body.data.enrolmentToken, adminSession: admin });
-    if (result.status !== "ok") return json({ status: "forbidden" }, 403);
+    if (result.status !== "ok") return json({ status: result.status }, 403);
     const response = json({ status: "ok", options: result.options });
     setAdminPreauthCookie(response, result.preauthToken);
     return response;

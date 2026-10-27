@@ -120,9 +120,9 @@ export const INTAKE_COPY = {
     sv: "Rensa svaren i det här avsnittet?",
   },
   clearSectionDescription: {
-    en: "Everything you entered on this screen is removed. This cannot be undone.",
-    fi: "Kaikki tälle sivulle syöttämäsi poistetaan. Toimintoa ei voi perua.",
-    sv: "Allt du har fyllt i på den här sidan tas bort. Det går inte att ångra.",
+    en: "Everything you entered in this section is removed. This cannot be undone.",
+    fi: "Kaikki tähän osioon syöttämäsi poistetaan. Toimintoa ei voi perua.",
+    sv: "Allt du har fyllt i i det här avsnittet tas bort. Det går inte att ångra.",
   },
   nextUp: { en: "Next:", fi: "Seuraavaksi:", sv: "Nästa:" },
   checkAndSubmit: { en: "Check and submit", fi: "Tarkista ja lähetä", sv: "Kontrollera och skicka" },
@@ -170,7 +170,7 @@ export const INTAKE_COPY = {
     fi: "Luemme ne ennen ensimmäistä keskusteluamme. Tämä kopio säilyy täällä 12 kuukautta.",
     sv: "Vi läser dem före vårt första samtal. Den här kopian finns kvar här i 12 månader.",
   },
-  fingerprint: { en: "Fingerprint (SHA-256)", fi: "Tunniste (SHA-256)", sv: "Fingeravtryck (SHA-256)" },
+  fingerprint: { en: "Fingerprint (SHA-256)", fi: "Tiiviste (SHA-256)", sv: "Fingeravtryck (SHA-256)" },
   notAnswered: { en: "Not answered", fi: "Ei vastausta", sv: "Inget svar" },
   downloadPdf: { en: "Download PDF", fi: "Lataa PDF", sv: "Ladda ner PDF" },
   pdfPage: { en: "Page", fi: "Sivu", sv: "Sida" },
@@ -238,8 +238,8 @@ export const INTAKE_COPY = {
     sv: "Bad du inte om en kod? Då kan du strunta i mejlet. Ingen kan logga in utan koden.",
   },
 
-  mailReopenedSubject: { en: "Your intake is open again", fi: "Esitietolomakkeesi on taas auki", sv: "Dina förhandsuppgifter är öppna igen" },
-  mailReopenedHeading: { en: "Your intake is open again", fi: "Esitietolomakkeesi on taas auki", sv: "Dina förhandsuppgifter är öppna igen" },
+  mailReopenedSubject: { en: "Your intake form is open again", fi: "Esitietolomakkeesi on taas auki", sv: "Ditt formulär är öppet igen" },
+  mailReopenedHeading: { en: "Your intake form is open again", fi: "Esitietolomakkeesi on taas auki", sv: "Ditt formulär är öppet igen" },
   mailReopenedLead: {
     en: "Digitaltableteur has reopened your {questionnaire} form, so you can change your answers and submit it again.",
     fi: "Digitaltableteur avasi lomakkeesi {questionnaire} uudelleen, joten voit muuttaa vastauksiasi ja lähettää sen uudestaan.",

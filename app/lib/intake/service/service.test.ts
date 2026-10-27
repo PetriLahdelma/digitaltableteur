@@ -257,8 +257,8 @@ describe("drafts and submission", () => {
       renders += 1;
       return Buffer.from(`%PDF-1.7 render ${renders}`);
     };
-    const first = await submissionPdf(ctx, session.clientId, result.submissionId, render);
-    const second = await submissionPdf(ctx, session.clientId, result.submissionId, render);
+    const first = await submissionPdf(ctx, { clientId: session.clientId }, result.submissionId, render);
+    const second = await submissionPdf(ctx, { clientId: session.clientId }, result.submissionId, render);
     expect(renders).toBe(1);
     expect(second?.bytes.equals(first!.bytes)).toBe(true);
     const [row] = await db.select().from(pdfs);
@@ -267,7 +267,7 @@ describe("drafts and submission", () => {
 
     const other = await invite("someone@example.test");
     const stranger = await signIn(other.token);
-    expect(await submissionPdf(ctx, stranger.session.clientId, result.submissionId, render)).toBeNull();
+    expect(await submissionPdf(ctx, { clientId: stranger.session.clientId }, result.submissionId, render)).toBeNull();
 
     const actions = (await db.select().from(auditLog)).map((entry) => entry.action);
     expect(actions.filter((action) => action === "pdf.render")).toHaveLength(1);

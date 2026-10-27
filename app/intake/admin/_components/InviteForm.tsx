@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AlertBanner, Button, FlexBox, RadioGroup, Select, Text, TextArea, TextInput, Title } from "@digitaltableteur/react";
 import SummaryList from "@dt/SummaryList";
 
@@ -31,6 +31,17 @@ export function InviteForm({
   const [preview, setPreview] = useState<Preview | null>(null);
   const [problem, setProblem] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const previewHeading = useRef<HTMLHeadingElement>(null);
+  const formTop = useRef<HTMLFormElement>(null);
+  const shown = useRef(false);
+
+  // Each view replaces the other, taking the pressed button with it: focus
+  // goes to the preview's heading, and back to the first field on Edit.
+  useEffect(() => {
+    if (preview) previewHeading.current?.focus();
+    else if (shown.current) formTop.current?.querySelector("input")?.focus();
+    shown.current = true;
+  }, [preview]);
 
   const set = (key: keyof Form) => (value: string) => {
     setForm((previous) => ({ ...previous, [key]: value }));
@@ -43,7 +54,8 @@ export function InviteForm({
 
   function invalid(fields: unknown) {
     const list = Array.isArray(fields) ? (fields as string[]) : [];
-    setErrors(Object.fromEntries(list.map((field) => [field, t("required")])));
+    // A filled email that was refused is malformed, not missing.
+    setErrors(Object.fromEntries(list.map((field) => [field, field === "email" && form.email.trim() ? t("invalidEmail") : t("required")])));
     setProblem(t("invalid"));
   }
 
@@ -62,7 +74,7 @@ export function InviteForm({
     setProblem(null);
     const { httpStatus, data } = await postJson("/api/intake/admin/invites", payload());
     if (httpStatus === 200 && typeof data.inviteId === "string") {
-      window.location.assign(`/intake/admin/intakes/${data.inviteId}?sent=1`);
+      window.location.assign(`/intake/admin/intakes/${data.inviteId}?sent=1${data.status === "mail_failed" ? "&mail=failed" : ""}`);
       return;
     }
     setBusy(false);
@@ -76,7 +88,7 @@ export function InviteForm({
   if (preview) {
     return (
       <FlexBox direction="column" gap="var(--space-internal-24)">
-        <Title level={2} size="s">
+        <Title level={2} size="s" ref={previewHeading} tabIndex={-1}>
           {t("previewTitle")}
         </Title>
         {problem ? <AlertBanner tone="error" description={problem} focusOnMount /> : null}
@@ -102,6 +114,7 @@ export function InviteForm({
 
   return (
     <form
+      ref={formTop}
       noValidate
       onSubmit={(event) => {
         event.preventDefault();

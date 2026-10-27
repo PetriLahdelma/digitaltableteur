@@ -110,9 +110,12 @@ describe("ConfirmPopover", () => {
       </ConfirmPopover>,
     );
     await userEvent.click(screen.getByRole("button", { name: "Clear" }));
-    await screen.findByRole("alertdialog", { name: "What do you want to clear?" });
+    const first = await screen.findByRole("alertdialog", { name: "What do you want to clear?" });
+    await waitFor(() => expect(screen.getByRole("button", { name: "Clear this section" })).toHaveFocus());
     await userEvent.click(screen.getByRole("button", { name: "Clear all" }));
     const dialog = await screen.findByRole("alertdialog", { name: "Clear every answer in the form?" });
+    // A fresh dialog element, so assistive tech announces the new question.
+    expect(dialog).not.toBe(first);
     expect(dialog).toHaveAccessibleDescription("Every part starts empty.");
     await waitFor(() => expect(screen.getByRole("button", { name: "Cancel" })).toHaveFocus());
     expect(await axe(dialog)).toHaveNoViolations();

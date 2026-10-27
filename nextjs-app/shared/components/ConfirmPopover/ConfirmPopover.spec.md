@@ -7,7 +7,7 @@ Asks for confirmation right where the person acted, for one costly action ("Clea
 - Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.
 - Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.
 - Screen readers: `role="alertdialog"`, named by `title`, described by `description`.
-- With `choices`: the first step asks which action (`title`) and lists one button per choice; picking one swaps in that choice's question, description and confirm label, and focus moves back to Cancel. `onConfirm` receives the choice's `id`.
+- With `choices`: the first step asks which action (`title`) and lists one button per choice; focus starts on the first choice (a confirmation always follows). Picking one mounts a new alertdialog with that choice's question, description and confirm label, so screen readers announce it, and focus starts on Cancel. `onConfirm` receives the choice's `id`.
 
 ## Do / don't
 - Do: repeat the action in `confirmLabel` ("Clear answers", not "Yes"); say what happens in `description`.

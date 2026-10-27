@@ -73,6 +73,10 @@ export function ConfirmPopover({
   const t = useTranslate();
   const [open, setOpen] = React.useState(false);
   const cancelRef = React.useRef<HTMLButtonElement>(null);
+  const firstChoiceRef = React.useRef<HTMLButtonElement>(null);
+  // Set while the first step gives way to the confirmation, so its unmount
+  // does not send focus back to the trigger.
+  const swapping = React.useRef(false);
   const titleId = React.useId();
   const descriptionId = React.useId();
 
@@ -84,7 +88,8 @@ export function ConfirmPopover({
     onOpenChange?.(next);
   };
 
-  // Picking a choice swaps the content; focus goes back to the safe choice.
+  // The confirmation step mounts as a new dialog without Radix's open
+  // auto-focus, so focus is moved to its Cancel here.
   React.useEffect(() => {
     if (picked) cancelRef.current?.focus();
   }, [picked]);
@@ -98,6 +103,10 @@ export function ConfirmPopover({
       <PopoverPrimitive.Trigger asChild>{children}</PopoverPrimitive.Trigger>
       <PopoverPrimitive.Portal>
         <PopoverPrimitive.Content
+          // A new dialog per step: picking a choice mounts the confirmation
+          // afresh, so screen readers announce its question and consequence
+          // when focus lands on Cancel, as they did for the first step.
+          key={picked?.id ?? "choose"}
           role="alertdialog"
           aria-labelledby={titleId}
           aria-describedby={shownDescription ? descriptionId : undefined}
@@ -106,9 +115,16 @@ export function ConfirmPopover({
           sideOffset={8}
           collisionPadding={16}
           className={[styles.content, className].filter(Boolean).join(" ")}
+          onCloseAutoFocus={(event) => {
+            if (!swapping.current) return;
+            swapping.current = false;
+            event.preventDefault();
+          }}
           onOpenAutoFocus={(event) => {
             event.preventDefault();
-            cancelRef.current?.focus();
+            // Choosing is safe (a confirmation follows), so it starts on the
+            // first choice; the confirmation starts on Cancel.
+            (choosing ? firstChoiceRef.current : cancelRef.current)?.focus();
           }}
         >
           <p id={titleId} className={styles.title}>
@@ -121,12 +137,16 @@ export function ConfirmPopover({
           ) : null}
           {choosing ? (
             <div className={styles.choices}>
-              {choices?.map((choice) => (
+              {choices?.map((choice, index) => (
                 <Button
                   key={choice.id}
+                  ref={index === 0 ? firstChoiceRef : undefined}
                   variant="secondary"
                   tone={tone}
-                  onClick={() => setPicked(choice)}
+                  onClick={() => {
+                    swapping.current = true;
+                    setPicked(choice);
+                  }}
                 >
                   {choice.label}
                 </Button>

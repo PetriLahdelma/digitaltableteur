@@ -2,7 +2,7 @@ import { and, eq, lt, notExists, or, sql } from "drizzle-orm";
 
 import { RETENTION } from "../data-policy";
 import type { IntakeDb } from "./client";
-import { auditLog, clients, drafts, invites, loginCodes, rateLimits, sessions, submissions } from "./schema";
+import { adminChallenges, adminEnrolments, auditLog, clients, drafts, invites, loginCodes, rateLimits, sessions, submissions } from "./schema";
 
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -13,7 +13,16 @@ function monthsBefore(now: Date, months: number): Date {
 }
 
 export type PurgeCounts = Record<
-  "codes" | "sessions" | "rateLimits" | "drafts" | "submissions" | "invites" | "clients" | "auditEntries",
+  | "codes"
+  | "sessions"
+  | "rateLimits"
+  | "adminChallenges"
+  | "adminEnrolments"
+  | "drafts"
+  | "submissions"
+  | "invites"
+  | "clients"
+  | "auditEntries",
   number
 >;
 
@@ -40,6 +49,13 @@ export async function purgeExpired(db: IntakeDb, now = new Date()): Promise<Purg
         .returning({ id: sessions.idHash }),
     );
     const rateLimitsCount = await count(tx.delete(rateLimits).where(lt(rateLimits.resetAt, now)).returning({ id: rateLimits.bucket }));
+    // Passkey ceremonies and enrolment links are minutes long; expired ones are noise.
+    const challengesCount = await count(
+      tx.delete(adminChallenges).where(lt(adminChallenges.expiresAt, now)).returning({ id: adminChallenges.preauthHash }),
+    );
+    const enrolmentsCount = await count(
+      tx.delete(adminEnrolments).where(lt(adminEnrolments.expiresAt, now)).returning({ id: adminEnrolments.tokenHash }),
+    );
     const draftsCount = await count(tx.delete(drafts).where(lt(drafts.updatedAt, draftCutoff)).returning({ id: drafts.inviteId }));
     const submissionsCount = await count(
       tx.delete(submissions).where(lt(submissions.deleteAfter, now)).returning({ id: submissions.id }),
@@ -75,6 +91,8 @@ export async function purgeExpired(db: IntakeDb, now = new Date()): Promise<Purg
       codes: codesCount,
       sessions: sessionsCount,
       rateLimits: rateLimitsCount,
+      adminChallenges: challengesCount,
+      adminEnrolments: enrolmentsCount,
       drafts: draftsCount,
       submissions: submissionsCount,
       invites: invitesCount,

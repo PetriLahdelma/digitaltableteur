@@ -4,13 +4,24 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import type { IntakeDb } from "../db/client";
-import { adminCredentials, adminEnrolments, auditLog, clients, invites, sessions, submissions } from "../db/schema";
+import { adminChallenges, adminCredentials, adminEnrolments, auditLog, clients, invites, sessions, submissions } from "../db/schema";
+import { purgeExpired } from "../db/retention";
 import { createTestIntakeDb } from "../db/test-db";
 import { getQuestionnaire, visibleFields } from "../index";
 import { parseDataKeys, parseHmacKey } from "../security/keys";
 import type { Answers } from "../types";
-import { deleteIntake, dueExpiryReminders, getIntake, listIntakes, previewInvite, reopenIntake, resendInvite, revokeInvite } from "./admin";
-import { createEnrolment, finishAuthentication, finishRegistration, readAdminSession, removePasskey, startAuthentication, startRegistration } from "./admin-auth";
+import { deleteIntake, dueExpiryReminders, getIntake, listIntakes, previewInvite, releaseExpiryReminder, reopenIntake, resendInvite, revokeInvite } from "./admin";
+import {
+  createEnrolment,
+  finishAuthentication,
+  finishRegistration,
+  readAdminSession,
+  removePasskey,
+  STEP_UP_MINUTES,
+  startAuthentication,
+  startRegistration,
+  type AdminSession,
+} from "./admin-auth";
 import { readSession, requestCodeForInvite, verifyLoginCode } from "./auth";
 import { HOUR, type IntakeContext, type IntakeMail } from "./context";
 import { saveDraft, submitIntake } from "./forms";
@@ -42,6 +53,11 @@ function codeFrom(mail: IntakeMail | null): string {
   const match = mail?.text.match(/\b(\d{8})\b/);
   if (!match) throw new Error("No code in mail");
   return match[1];
+}
+
+/** An admin session that has just signed in (step-up satisfied). */
+function freshSession(): AdminSession {
+  return { idHash: "fresh-session", createdAt: clock, expiresAt: new Date(clock.getTime() + 8 * HOUR) };
 }
 
 async function invite(email = "client@example.test") {
@@ -88,7 +104,7 @@ describe("admin intakes", () => {
     expect(rows[0]).toMatchObject({ status: "submitted", company: "Northwind", versions: 1 });
   });
 
-  it("tells the owner on the first sign-in only, and on submit", async () => {
+  it("tells the owner on the first sign-in and on submit, never with an answer in it", async () => {
     const created = await invite();
     const first = await signIn(created.token);
     expect(first.ownerMails).toHaveLength(1);
@@ -97,7 +113,8 @@ describe("admin intakes", () => {
     await saveDraft(ctx, first.session.clientId, created.inviteId, { revision: 0, answers: completeAnswers() });
     const result = await submitIntake(ctx, first.session.clientId, created.inviteId, 1);
     if (result.status !== "submitted") throw new Error(result.status);
-    expect(result.ownerMail.subject).toBe("Intake submitted: Aino, Northwind");
+    expect(result.ownerMail.subject).toBe("Intake submitted: Aino");
+    expect(result.ownerMail.subject).not.toContain("Northwind");
     expect(result.ownerMail.text).not.toContain("zq-private-answer");
     expect(result.ownerMail.html).not.toContain("zq-private-answer");
   });
@@ -105,7 +122,9 @@ describe("admin intakes", () => {
   it("reopens a submission as a new draft and keeps version 1 locked", async () => {
     const { created, session, result } = await submitted();
     const mail = await reopenIntake(ctx, created.inviteId);
-    expect(typeof mail === "object" && mail?.subject).toBe("Your intake is open again");
+    expect(typeof mail === "object" && mail?.subject).toBe("Your intake form is open again");
+    // A second click finds it open already: one reopen, one email.
+    expect(await reopenIntake(ctx, created.inviteId)).toBe("not_allowed");
     expect((await getIntake(ctx, created.inviteId))?.status).toBe("reopened");
     const again = await submitIntake(ctx, session.clientId, created.inviteId, 1);
     if (again.status !== "submitted") throw new Error(again.status);
@@ -114,7 +133,23 @@ describe("admin intakes", () => {
     const detail = await getIntake(ctx, created.inviteId);
     expect(detail?.versionList.map((version) => version.version)).toEqual([2, 1]);
     expect(detail?.versionList[1].submissionId).toBe(result.submissionId);
-    expect(await reopenIntake(ctx, created.inviteId)).not.toBe("not_allowed");
+    expect(typeof (await reopenIntake(ctx, created.inviteId))).toBe("object");
+  });
+
+  it("hides versions past their retention date and will not reopen them", async () => {
+    const { created } = await submitted();
+    await db.update(submissions).set({ deleteAfter: new Date(clock.getTime() - 1000) });
+    expect((await listIntakes(ctx))[0].versions).toBe(0);
+    expect((await getIntake(ctx, created.inviteId))?.versionList).toHaveLength(0);
+    expect(await reopenIntake(ctx, created.inviteId)).toBeNull();
+  });
+
+  it("records opening an intake in admin without listing it as activity", async () => {
+    const { created } = await submitted();
+    const detail = await getIntake(ctx, created.inviteId);
+    expect(detail?.audit.map((entry) => entry.action)).not.toContain("intake.view");
+    const views = await db.select().from(auditLog).where(eq(auditLog.action, "intake.view"));
+    expect(views).toHaveLength(1);
   });
 
   it("revokes an open intake and ends the client's sessions", async () => {
@@ -139,11 +174,14 @@ describe("admin intakes", () => {
   it("reminds the owner once about an invite that expires within a day", async () => {
     const created = await invite();
     expect(await dueExpiryReminders(ctx)).toHaveLength(0);
-    advance(49 * HOUR);
+    advance(25 * HOUR);
     const due = await dueExpiryReminders(ctx);
     expect(due).toHaveLength(1);
-    expect(due[0].subject).toBe("Invite expires tomorrow: Aino");
+    expect(due[0].mail.subject).toBe("Invite expires soon: Aino");
     expect(await dueExpiryReminders(ctx)).toHaveLength(0);
+    // A send that failed is released and tried again on the next run.
+    await releaseExpiryReminder(ctx, due[0].inviteId);
+    expect(await dueExpiryReminders(ctx)).toHaveLength(1);
     // Resending gives a new link and a new reminder later.
     expect(typeof (await resendInvite(ctx, created.inviteId))).toBe("object");
     advance(49 * HOUR);
@@ -201,17 +239,50 @@ describe("admin passkeys", () => {
       { idHash: "current", kind: "admin", clientId: null, createdAt: clock, lastSeenAt: clock, expiresAt },
       { idHash: "lost-phone", kind: "admin", clientId: null, createdAt: clock, lastSeenAt: clock, expiresAt },
     ]);
-    expect(await removePasskey(ctx, "two", "current")).toBe("removed");
+    expect((await removePasskey(ctx, "two", { idHash: "current", createdAt: clock, expiresAt })).status).toBe("removed");
     const rows = await db.select({ idHash: sessions.idHash, revokedAt: sessions.revokedAt }).from(sessions);
     expect(rows.find((row) => row.idHash === "current")?.revokedAt).toBeNull();
     expect(rows.find((row) => row.idHash === "lost-phone")?.revokedAt).not.toBeNull();
   });
 
   it("never removes the last passkey", async () => {
+    const session = freshSession();
     await db.insert(adminCredentials).values({ id: "one", publicKey: "a", label: "Mac" });
-    expect(await removePasskey(ctx, "one")).toBe("last");
+    expect((await removePasskey(ctx, "one", session)).status).toBe("last");
     await db.insert(adminCredentials).values({ id: "two", publicKey: "b", label: "iPhone" });
-    expect(await removePasskey(ctx, "one")).toBe("removed");
-    expect(await removePasskey(ctx, "one")).toBe("not_found");
+    const removed = await removePasskey(ctx, "one", session);
+    expect(removed.status).toBe("removed");
+    if (removed.status === "removed") expect(removed.ownerMail.subject).toBe("Passkey removed: Mac");
+    expect((await removePasskey(ctx, "one", session)).status).toBe("not_found");
+  });
+
+  it("asks for a fresh sign-in before passkeys change from a session", async () => {
+    await db.insert(adminCredentials).values([
+      { id: "one", publicKey: "a", label: "Mac" },
+      { id: "two", publicKey: "b", label: "iPhone" },
+    ]);
+    const session = freshSession();
+    advance((STEP_UP_MINUTES + 1) * 60 * 1000);
+    expect((await removePasskey(ctx, "two", session)).status).toBe("reauth");
+    expect((await startRegistration(ctx, { adminSession: session })).status).toBe("reauth");
+    expect(await db.select().from(adminCredentials)).toHaveLength(2);
+  });
+
+  it("spends an enrolment link even when the owner is signed in", async () => {
+    const { token } = await createEnrolment(ctx);
+    const start = await startRegistration(ctx, { enrolmentToken: token, adminSession: freshSession() });
+    expect(start.status).toBe("ok");
+    // A made-up token is refused even alongside a valid session.
+    expect((await startRegistration(ctx, { enrolmentToken: "made-up", adminSession: freshSession() })).status).toBe("forbidden");
+  });
+
+  it("purges expired passkey challenges and enrolment links", async () => {
+    await createEnrolment(ctx);
+    await startAuthentication(ctx);
+    advance(16 * 60 * 1000);
+    const counts = await purgeExpired(db, clock);
+    expect(counts).toMatchObject({ adminChallenges: 1, adminEnrolments: 1 });
+    expect(await db.select().from(adminChallenges)).toHaveLength(0);
+    expect(await db.select().from(adminEnrolments)).toHaveLength(0);
   });
 });

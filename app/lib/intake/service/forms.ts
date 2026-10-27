@@ -181,11 +181,15 @@ export async function submitIntake(
 ): Promise<SubmitResult> {
   const now = ctx.now();
   return ctx.db.transaction(async (tx) => {
+    // The invite row is locked for the whole submit, so a second submit (a
+    // double click, two tabs) or a revoke waits, then finds it no longer
+    // active, instead of both writing a version.
     const [row] = await tx
       .select({ invite: invites, client: clients })
       .from(invites)
       .innerJoin(clients, eq(clients.id, invites.clientId))
-      .where(and(eq(invites.id, inviteId), eq(invites.clientId, clientId), eq(invites.status, "active")));
+      .where(and(eq(invites.id, inviteId), eq(invites.clientId, clientId), eq(invites.status, "active")))
+      .for("update", { of: invites });
     const questionnaire = row && getQuestionnaire(row.invite.questionnaireId, row.invite.questionnaireVersion);
     if (!row || !questionnaire) return { status: "not_found" } as const;
     const [draft] = await tx.select().from(drafts).where(eq(drafts.inviteId, inviteId));
@@ -238,7 +242,6 @@ export async function submitIntake(
     });
 
     const contact = openContact(ctx, row.client);
-    const company = typeof snapshot.answers.business_name === "string" ? snapshot.answers.business_name : undefined;
     return {
       status: "submitted",
       submissionId,
@@ -246,7 +249,6 @@ export async function submitIntake(
       version,
       ownerMail: ownerSubmittedMail({
         name: contact.name,
-        company,
         questionnaire: questionnaire.title.en,
         version,
         submittedAt: now,
@@ -276,7 +278,7 @@ export type SubmissionView = Readonly<{
 
 /** Read-only view of one past submission, scoped to the session's client. */
 export async function getSubmission(ctx: IntakeContext, clientId: string, submissionId: string): Promise<SubmissionView | null> {
-  return readSubmission(ctx, submissionId, clientId);
+  return readSubmission(ctx, submissionId, { clientId });
 }
 
 /**
@@ -284,17 +286,22 @@ export async function getSubmission(ctx: IntakeContext, clientId: string, submis
  * page is authorised by a one-minute print token instead of a session.
  */
 export async function getSubmissionForPrint(ctx: IntakeContext, submissionId: string): Promise<SubmissionView | null> {
-  return readSubmission(ctx, submissionId);
+  return readSubmission(ctx, submissionId, "unscoped");
 }
 
-async function readSubmission(ctx: IntakeContext, submissionId: string, clientId?: string): Promise<SubmissionView | null> {
+/** `scope` is explicit, so a missing client id can never widen the read. */
+async function readSubmission(
+  ctx: IntakeContext,
+  submissionId: string,
+  scope: { clientId: string } | "unscoped",
+): Promise<SubmissionView | null> {
   const [row] = await ctx.db
     .select()
     .from(submissions)
     .where(
       and(
         eq(submissions.id, submissionId),
-        clientId ? eq(submissions.clientId, clientId) : undefined,
+        scope === "unscoped" ? undefined : eq(submissions.clientId, scope.clientId),
         gt(submissions.deleteAfter, ctx.now()),
       ),
     );

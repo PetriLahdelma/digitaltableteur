@@ -23,7 +23,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
   try {
     const { ctx, session } = await currentClient();
     if (!session) return json({ status: "signed_out" }, 401);
-    const result = await submissionPdf(ctx, session.clientId, submissionId.data, (view) =>
+    const result = await submissionPdf(ctx, { clientId: session.clientId }, submissionId.data, (view) =>
       renderSubmissionPdf({
         origin: ctx.origin,
         submissionId: view.submissionId,

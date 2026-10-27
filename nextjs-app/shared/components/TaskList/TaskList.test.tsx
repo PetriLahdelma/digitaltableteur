@@ -127,7 +127,7 @@ describe("TaskList", () => {
 
   it("numbers the tasks in a circle, a check once done, none on an unnumbered task", () => {
     const { container } = render(<TaskList label="Intake parts" tasks={tasks} />);
-    const markers = Array.from(container.querySelectorAll("li > div > span > span[aria-hidden='true'], li > span > span[aria-hidden='true']"));
+    const markers = Array.from(container.querySelectorAll("[data-tasklist-marker]"));
     expect(markers.map((marker) => marker.textContent)).toEqual(["", "2", ""]);
     expect(markers[0].querySelector("svg")).not.toBeNull();
     expect(screen.getByText("Completed")).toBeInTheDocument();

@@ -88,6 +88,8 @@ export function TaskList({
     <nav aria-label={label} className={cn(styles.root, className)}>
       <ol className={styles.tasks}>
         {tasks.map((task, index) => {
+          // Unnumbered tasks do not take a number, wherever they sit.
+          const number = tasks.slice(0, index + 1).filter((candidate) => !candidate.unnumbered).length;
           const isCurrent = task.id === currentTaskId;
           const statusId = `tasklist-${task.id}-status`;
           const hintId = task.hint ? `tasklist-${task.id}-hint` : undefined;
@@ -117,19 +119,18 @@ export function TaskList({
           const name = (
             <span className={styles.name}>
               <span
+                data-tasklist-marker=""
                 className={cn(
                   styles.marker,
                   task.status === "completed" && styles.markerDone,
-                  task.unnumbered &&
-                    task.status !== "completed" &&
-                    styles.markerEmpty,
+                  task.unnumbered && task.status !== "completed" && styles.markerEmpty,
                 )}
                 aria-hidden="true"
               >
                 {task.status === "completed" ? (
                   <Icon name="check" size={14} decorative />
                 ) : task.unnumbered ? null : (
-                  index + 1
+                  number
                 )}
               </span>
               <span className={styles.nameText}>

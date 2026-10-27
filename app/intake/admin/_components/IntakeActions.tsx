@@ -28,9 +28,10 @@ export function IntakeActions({ inviteId, status, locale }: { inviteId: string; 
   async function run(action: Action) {
     setBusy(action);
     setFailed(false);
-    const { httpStatus } = await postJson(`/api/intake/admin/intakes/${inviteId}/${action}`, {});
+    const { httpStatus, data } = await postJson(`/api/intake/admin/intakes/${inviteId}/${action}`, {});
     if (httpStatus === 200) {
-      window.location.assign(action === "delete" ? "/intake/admin" : `/intake/admin/intakes/${inviteId}?done=${action}`);
+      const mailFailed = data.mail === "failed" ? "&mail=failed" : "";
+      window.location.assign(action === "delete" ? "/intake/admin" : `/intake/admin/intakes/${inviteId}?done=${action}${mailFailed}`);
       return;
     }
     setBusy(null);

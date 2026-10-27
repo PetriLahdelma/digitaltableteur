@@ -255,14 +255,21 @@ intake per questionnaire.
   idle, 12 h absolute), with the signature counter checked and stored.
 - **Enrolment.** `npm run intake:admin-enrol` creates a one-time enrolment
   token (SHA-256 stored, 15 minutes) and prints `/intake/admin/enrol#t=`.
-  Registering a passkey needs that token or an admin session, so the second
-  passkey is added from inside admin and recovery is rerunning the script,
-  which needs the database credentials (Vercel access). In the sandbox the
-  dev endpoint creates the token, which is spent in the same transaction
-  that stores the passkey (a conditional update, so a link registers one
-  passkey however many tabs race). Passkeys are listed and removable in
-  admin; the last one cannot be removed, and removing one (usually a lost
-  device) ends every other admin session.
+  It reaches the database through the Neon CLI (`neonctl connection-string`,
+  held in memory only), because the Vercel variables are sensitive and
+  `vercel env pull` returns them empty; recovery therefore needs a Neon
+  login to the intake project. In the sandbox the dev endpoint creates the
+  token. A link is spent in the same transaction that stores the passkey (a
+  conditional update, so it registers one passkey however many tabs race),
+  even when the owner is already signed in; using it signs out every other
+  admin session and starts a new one.
+- **Passkey changes.** Adding or removing a passkey from inside admin needs a
+  sign-in from the last 10 minutes (step-up), so a stolen session cookie
+  alone cannot swap the owner's passkeys; otherwise the page asks to confirm
+  with a passkey first. The last passkey cannot be removed (the credential
+  rows are locked, so two removals at once cannot leave none), and removing
+  one (usually a lost device) ends every other admin session. Every add,
+  removal and enrolment-link use emails the owner.
 - **Pages.** `/intake/admin` is one DS `Table` of intakes (client, company,
   form, status, last activity) with a status filter and New invite.
   `/intake/admin/invite` fills name, email, form, language and an optional
@@ -275,13 +282,30 @@ intake per questionnaire.
   locked version, seeds a new draft from it and sets the invite back to
   `active`; the client's next submit is version 2. Submissions get a
   `version` column, unique per invite and version.
-- **Notifications.** Plain links to admin, never answers: on submit, on the
-  first sign-in of an invite, and a day before an unused invite expires (a
-  daily Vercel cron calling `/api/intake/cron/reminders` with `CRON_SECRET`;
-  each reminder is sent once, recorded on the invite).
-- **Audit.** Every admin action writes one entry (`actor: owner`): sign-in,
-  enrol, passkey removal, invite, resend, revoke, reopen, delete, PDF
-  download.
+- **Notifications.** Plain links to admin, never answers (the subject names
+  the client by the name typed on the invite, never by an answer): on
+  submit, on the first sign-in of an invite, about a day before an unused
+  invite expires, and on every passkey change. Mail the owner triggers
+  (invite, resend, reopen) is sent while they wait, so a failure shows in
+  admin; notices sent after a response report failures to Sentry by route
+  and error name only.
+- **Daily cron.** Vercel calls `/api/intake/cron/daily` at 07:00 UTC with
+  `CRON_SECRET` (refused while unset). It runs `purgeExpired` (section 5
+  windows, plus expired passkey challenges and enrolment links), then the
+  expiry reminders for links that expire in 24 to 48 hours; each reminder is
+  claimed once and released again if its send fails.
+- **Retention in admin.** Admin reads leave out versions past their
+  `delete_after`, like the client side, and an expired version cannot be
+  reopened. One undecryptable row shows as unreadable instead of failing the
+  list.
+- **Audit.** Every admin action writes one entry (`actor: owner`): sign-in
+  (with the passkey's label), enrol, passkey add and removal (label and a
+  short credential tag), invite, resend, revoke, reopen, delete, opening an
+  intake (`intake.view`, recorded, not listed as activity) and PDF render and
+  download (with the invite, so they show on the intake).
+- **Migrations.** `scripts/intake-migrate.mjs` runs before the production
+  build; a failed migration fails the build, so the previous deployment and
+  its schema keep serving.
 
 ## 7. Design-system only, enforced
 
@@ -406,8 +430,8 @@ Each phase ends with the local gate and its own commit.
    development keys, mail printed to the terminal; see the script header).
 5. **Admin.** Passkey bootstrap and login, invite, resend, revoke, expire,
    status, download, delete, audit log view.
-6. **PDF.** Print route, Chromium renderer spike, tagging, archive, owner
-   email with attachment.
+6. **PDF.** Print route, Chromium renderer spike, tagging, archive (no email
+   attachment: decision 2).
 7. **Verification.** e2e journey, axe, VoiceOver script, veraPDF, PAC (needs
    Windows), pixel diff, ZAP, ASVS checklist, Observatory, mail-tester,
    Sentry canary, owner pilot.
@@ -417,12 +441,14 @@ Each phase ends with the local gate and its own commit.
 | Variable | Content |
 | --- | --- |
 | `INTAKE_DATABASE_DATABASE_URL` | Pooled Neon connection string, injected by the integration (prefix `INTAKE_DATABASE`) |
-| `INTAKE_DATABASE_DATABASE_URL_UNPOOLED` | Direct connection, used only by the build-time migration |
+| `INTAKE_DATABASE_DATABASE_URL_UNPOOLED` | Direct connection, used only by the build-time migration (the enrolment script asks Neon instead) |
 | `INTAKE_DATA_KEYS` | `keyId:base64` pairs of 32-byte keys; the first is active, later ones only decrypt (rotation) |
 | `INTAKE_HMAC_KEY` | base64, at least 32 bytes; keys email lookup and code digests |
 | `RESEND_API_KEY` | Existing site key; intake mail goes through the verified domain |
 | `INTAKE_EMAIL_FROM` | Optional sender, default `Digitaltableteur <intake@digitaltableteur.com>` |
-| `INTAKE_ORIGIN` | Optional link origin for emails; only the local sandbox sets it |
+| `INTAKE_ORIGIN` | Optional link origin for emails and the passkey RP ID; only the local sandbox sets it (production uses `https://www.digitaltableteur.com`) |
+| `CRON_SECRET` | Bearer for `/api/intake/cron/daily`; without it the cron is refused and nothing is purged or reminded |
+| `INTAKE_OWNER_EMAIL` | Optional address for owner notices; defaults to `CONTACT_EMAIL_TO` (the sandbox points it at Resend's test inbox) |
 
 All are Production-only and marked sensitive; Preview deployments never see
 client data. The two keys were generated on 2026-10-26 straight into Vercel

@@ -9,8 +9,21 @@ import type { IntakeLocale } from "@/app/lib/intake/types";
 
 import { postJson } from "../../_components/api";
 
-/** The owner's sign-in: one button, the browser's passkey prompt, then admin. */
-export function AdminSignIn({ locale, hasPasskeys }: { locale: IntakeLocale; hasPasskeys: boolean }) {
+/**
+ * The owner's sign-in: one button, the browser's passkey prompt, then admin.
+ * `returnTo` brings the owner back after a step-up confirmation (Passkeys).
+ */
+export function AdminSignIn({
+  locale,
+  hasPasskeys,
+  returnTo = "/intake/admin",
+  buttonLabel,
+}: {
+  locale: IntakeLocale;
+  hasPasskeys: boolean;
+  returnTo?: "/intake/admin" | "/intake/admin/passkeys";
+  buttonLabel?: string;
+}) {
   const t = adminCopy(locale);
   const [busy, setBusy] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -26,7 +39,7 @@ export function AdminSignIn({ locale, hasPasskeys }: { locale: IntakeLocale; has
       const response = await startAuthentication({ optionsJSON: start.data.options as never });
       const finish = await postJson("/api/intake/admin/auth/verify", { response });
       if (finish.httpStatus !== 200) throw new Error("verify");
-      window.location.assign("/intake/admin");
+      window.location.assign(returnTo);
     } catch {
       setFailed(true);
       setBusy(false);
@@ -40,7 +53,7 @@ export function AdminSignIn({ locale, hasPasskeys }: { locale: IntakeLocale; has
       {hasPasskeys ? null : <Text size="s">{t("noPasskey")}</Text>}
       <FlexBox direction="row">
         <Button size="lg" icon="seal-check" loading={busy} disabled={!supported} onClick={() => void signIn()}>
-          {t("signInButton")}
+          {buttonLabel ?? t("signInButton")}
         </Button>
       </FlexBox>
     </FlexBox>
@@ -68,7 +81,7 @@ export function AdminEnrol({ locale, via }: { locale: IntakeLocale; via: "link" 
   const [label, setLabel] = useState("");
   const [token, setToken] = useState<string | undefined>();
   const [busy, setBusy] = useState(false);
-  const [problem, setProblem] = useState<"expired" | "failed" | null>(null);
+  const [problem, setProblem] = useState<"expired" | "reauth" | "failed" | null>(null);
 
   const readToken = useRef(false);
 
@@ -90,7 +103,7 @@ export function AdminEnrol({ locale, via }: { locale: IntakeLocale; via: "link" 
     try {
       const start = await postJson("/api/intake/admin/enrol/options", via === "link" ? { enrolmentToken: token } : {});
       if (start.httpStatus === 403) {
-        setProblem("expired");
+        setProblem(start.data.status === "reauth" ? "reauth" : "expired");
         setBusy(false);
         return;
       }
@@ -98,7 +111,7 @@ export function AdminEnrol({ locale, via }: { locale: IntakeLocale; via: "link" 
       const response = await startRegistration({ optionsJSON: start.data.options as never });
       const finish = await postJson("/api/intake/admin/enrol/verify", { response, label, ...(via === "link" ? { enrolmentToken: token } : {}) });
       if (finish.httpStatus === 403) {
-        setProblem("expired");
+        setProblem(finish.data.status === "reauth" ? "reauth" : "expired");
         setBusy(false);
         return;
       }
@@ -112,7 +125,14 @@ export function AdminEnrol({ locale, via }: { locale: IntakeLocale; via: "link" 
 
   return (
     <FlexBox direction="column" gap="var(--space-internal-24)">
-      {problem ? <AlertBanner tone="error" description={problem === "expired" ? t("enrolExpired") : t("genericError")} focusOnMount /> : null}
+      {problem === "reauth" ? (
+        <AlertBanner tone="warning" description={t("reauthExpired")} focusOnMount />
+      ) : problem ? (
+        <AlertBanner tone="error" description={problem === "expired" ? t("enrolExpired") : t("genericError")} focusOnMount />
+      ) : null}
+      {problem === "reauth" ? (
+        <AdminSignIn locale={locale} hasPasskeys returnTo="/intake/admin/passkeys" buttonLabel={t("reauthButton")} />
+      ) : null}
       <TextInput size="lg" width="30ch" type="text" label={t("enrolLabel")} value={label} onValueChange={(value) => setLabel(String(value))} maxLength={60} />
       <FlexBox direction="row">
         <Button size="lg" icon="seal-check" loading={busy} disabled={via === "link" && !token} onClick={() => void create()}>

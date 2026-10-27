@@ -37,6 +37,8 @@ export default async function IntakeAdminDetailPage({ params, searchParams }: Pr
   const t = adminCopy(locale);
   const done = typeof query.done === "string" ? DONE[query.done] : undefined;
   const sent = query.sent === "1";
+  // The action went through but its email did not (invite, resend or reopen).
+  const mailFailed = query.mail === "failed" ? (query.done === "reopen" ? "mailFailedReopen" : "mailFailedInvite") : null;
   const actor = (value: string) => t(value === "owner" ? "actorOwner" : value === "client" ? "actorClient" : "actorSystem");
   const auditLabel = (action: string) => {
     const key = `audit_${action.replace(/\./g, "_")}` as AdminCopyKey;
@@ -56,8 +58,12 @@ export default async function IntakeAdminDetailPage({ params, searchParams }: Pr
             </Title>
             <StatusBadge status={intake.status} locale={locale} />
           </FlexBox>
-          {sent ? <AlertBanner tone="success" description={t("sent", { email: intake.email })} /> : null}
-          {done ? <AlertBanner tone="success" description={t(done, { email: intake.email })} /> : null}
+          {sent && !mailFailed ? <AlertBanner tone="success" description={t("sent", { email: intake.email })} /> : null}
+          {mailFailed ? (
+            <AlertBanner tone="warning" description={t(mailFailed, { email: intake.email })} />
+          ) : done ? (
+            <AlertBanner tone="success" description={t(done, { email: intake.email })} />
+          ) : null}
         </FlexBox>
 
         <Section spacing="none" aria-labelledby="admin-contact">

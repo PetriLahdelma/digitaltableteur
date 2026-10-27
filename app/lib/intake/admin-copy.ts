@@ -12,7 +12,7 @@ export const ADMIN_COPY = {
   signInIntro: { en: "Sign in with your passkey.", fi: "Kirjaudu pääsyavaimellasi.", sv: "Logga in med din nyckel." },
   signInButton: { en: "Sign in with a passkey", fi: "Kirjaudu pääsyavaimella", sv: "Logga in med nyckel" },
   signInFailed: {
-    en: "That did not work. Try again, or use another passkey.",
+    en: "That did not work. Try again or use another passkey.",
     fi: "Kirjautuminen ei onnistunut. Yritä uudelleen tai käytä toista pääsyavainta.",
     sv: "Det fungerade inte. Försök igen eller använd en annan nyckel.",
   },
@@ -58,7 +58,7 @@ export const ADMIN_COPY = {
   inviteTitle: { en: "New invite", fi: "Uusi kutsu", sv: "Ny inbjudan" },
   inviteIntro: {
     en: "The client gets an email with a link that works for 72 hours. One intake per form per client.",
-    fi: "Asiakas saa sähköpostin, jonka linkki toimii 72 tuntia. Yksi esitietolomake kutakin lomaketta kohden asiakasta kohti.",
+    fi: "Asiakas saa sähköpostin, jonka linkki toimii 72 tuntia. Kullakin asiakkaalla voi olla kustakin lomakkeesta yksi.",
     sv: "Kunden får ett mejl med en länk som gäller i 72 timmar. Ett formulär av varje sort per kund.",
   },
   fieldName: { en: "Client name", fi: "Asiakkaan nimi", sv: "Kundens namn" },
@@ -80,6 +80,21 @@ export const ADMIN_COPY = {
   send: { en: "Send invite", fi: "Lähetä kutsu", sv: "Skicka inbjudan" },
   invalid: { en: "Check the highlighted fields.", fi: "Tarkista merkityt kentät.", sv: "Kontrollera de markerade fälten." },
   required: { en: "Required", fi: "Pakollinen", sv: "Obligatoriskt" },
+  invalidEmail: {
+    en: "Enter an email address like name@example.com.",
+    fi: "Kirjoita sähköpostiosoite muodossa nimi@esimerkki.fi.",
+    sv: "Skriv en e-postadress som namn@exempel.se.",
+  },
+  mailFailedInvite: {
+    en: "The invite is saved, but the email to {email} did not go out. Try Resend in a moment.",
+    fi: "Kutsu on tallennettu, mutta sähköposti osoitteeseen {email} ei lähtenyt. Kokeile hetken päästä Lähetä uudelleen.",
+    sv: "Inbjudan är sparad, men mejlet till {email} skickades inte. Försök med Skicka igen om en stund.",
+  },
+  mailFailedReopen: {
+    en: "The intake is open again, but the email to {email} did not go out. Let them know directly.",
+    fi: "Esitiedot ovat taas auki, mutta sähköposti osoitteeseen {email} ei lähtenyt. Kerro asiakkaalle suoraan.",
+    sv: "Förhandsuppgifterna är öppna igen, men mejlet till {email} skickades inte. Hör av dig direkt.",
+  },
   exists: {
     en: "{email} already has this form. Open their intake to resend or reopen it.",
     fi: "Osoitteella {email} on jo tämä lomake. Avaa asiakkaan esitiedot lähettääksesi tai avataksesi sen uudelleen.",
@@ -96,7 +111,7 @@ export const ADMIN_COPY = {
   detailNotYet: { en: "Not yet", fi: "Ei vielä", sv: "Inte än" },
   versionsTitle: { en: "Submitted versions", fi: "Lähetetyt versiot", sv: "Inskickade versioner" },
   version: { en: "Version {n}", fi: "Versio {n}", sv: "Version {n}" },
-  fingerprint: { en: "Fingerprint (SHA-256)", fi: "Tunniste (SHA-256)", sv: "Fingeravtryck (SHA-256)" },
+  fingerprint: { en: "Fingerprint (SHA-256)", fi: "Tiiviste (SHA-256)", sv: "Fingeravtryck (SHA-256)" },
   downloadPdf: { en: "Download PDF", fi: "Lataa PDF", sv: "Ladda ner PDF" },
   noVersions: { en: "Nothing submitted yet.", fi: "Mitään ei ole vielä lähetetty.", sv: "Inget inskickat än." },
   answersTitle: { en: "Answers", fi: "Vastaukset", sv: "Svar" },
@@ -154,11 +169,23 @@ export const ADMIN_COPY = {
   passkeyUnused: { en: "Not used yet", fi: "Ei vielä käytetty", sv: "Inte använd än" },
   addPasskey: { en: "Add a passkey", fi: "Lisää pääsyavain", sv: "Lägg till en nyckel" },
   remove: { en: "Remove", fi: "Poista", sv: "Ta bort" },
-  removeTitle: { en: "Remove this passkey?", fi: "Poistetaanko pääsyavain?", sv: "Ta bort nyckeln?" },
+  removeTitle: { en: "Remove the passkey {label}?", fi: "Poistetaanko pääsyavain {label}?", sv: "Ta bort nyckeln {label}?" },
+  removeLabel: { en: "Remove {label}", fi: "Poista {label}", sv: "Ta bort {label}" },
   removeDescription: {
-    en: "This device can no longer sign in to admin.",
-    fi: "Tällä laitteella ei voi enää kirjautua hallintaan.",
-    sv: "Den här enheten kan inte längre logga in i administrationen.",
+    en: "That device can no longer sign in to admin, and every other admin session is signed out.",
+    fi: "Sillä laitteella ei voi enää kirjautua hallintaan, ja kaikki muut hallinnan istunnot kirjataan ulos.",
+    sv: "Den enheten kan inte längre logga in i administrationen, och alla andra sessioner i administrationen loggas ut.",
+  },
+  reauthIntro: {
+    en: "To add or remove passkeys, confirm it is you with a passkey first.",
+    fi: "Vahvista ensin henkilöllisyytesi pääsyavaimella, niin voit lisätä tai poistaa pääsyavaimia.",
+    sv: "Bekräfta först att det är du med en nyckel, så kan du lägga till eller ta bort nycklar.",
+  },
+  reauthButton: { en: "Confirm with a passkey", fi: "Vahvista pääsyavaimella", sv: "Bekräfta med nyckel" },
+  reauthExpired: {
+    en: "It has been a while since you confirmed with a passkey. Confirm again to continue.",
+    fi: "Edellisestä vahvistuksesta on kulunut hetki. Vahvista uudelleen pääsyavaimella jatkaaksesi.",
+    sv: "Det var ett tag sedan du bekräftade med en nyckel. Bekräfta igen för att fortsätta.",
   },
   lastPasskey: { en: "Your only passkey cannot be removed.", fi: "Ainoaa pääsyavaintasi ei voi poistaa.", sv: "Din enda nyckel kan inte tas bort." },
 } as const satisfies Record<string, LocalizedCopy>;

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { adminCopy } from "@/app/lib/intake/admin-copy";
-import { listPasskeys } from "@/app/lib/intake/service/admin-auth";
+import { isFreshAdminSession, listPasskeys } from "@/app/lib/intake/service/admin-auth";
 import { currentAdmin } from "@/app/lib/intake/service/admin-http";
 
 import { IntakeColumns, IntakePage } from "../../_components/IntakePage";
@@ -27,7 +27,7 @@ export default async function IntakeAdminPasskeysPage({ searchParams }: Props) {
   return (
     <IntakePage locale={locale}>
       <IntakeColumns title={t("passkeys")} intro={t("passkeysIntro")}>
-        <PasskeyList locale={locale} passkeys={passkeys} />
+        <PasskeyList locale={locale} passkeys={passkeys} fresh={isFreshAdminSession(ctx, admin)} />
       </IntakeColumns>
     </IntakePage>
   );

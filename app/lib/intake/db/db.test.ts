@@ -133,7 +133,7 @@ describe("retention purge", () => {
 
     // Gone: the unredeemed invite, the stale draft (and then its abandoned
     // invite), the year-old submission (and then its invite).
-    expect(counts).toEqual({ codes: 1, sessions: 1, rateLimits: 0, drafts: 1, submissions: 1, invites: 3, clients: 1, auditEntries: 1 });
+    expect(counts).toEqual({ codes: 1, sessions: 1, rateLimits: 0, adminChallenges: 0, adminEnrolments: 0, drafts: 1, submissions: 1, invites: 3, clients: 1, auditEntries: 1 });
     expect((await db.select().from(drafts)).map((row) => row.inviteId)).toEqual([live.id]);
     expect((await db.select().from(invites)).map((row) => row.id)).toEqual([live.id]);
     expect((await db.select().from(clients)).map((row) => row.id)).toEqual([keepClient.id]);

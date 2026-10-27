@@ -37,6 +37,11 @@ export const LIMITS = {
   codeFailureAlerts: { limit: 1, windowMs: 24 * 60 * 60 * 1000 },
   /** Admin passkey ceremonies (options and verify) from one network address. */
   adminAuthPerNetwork: { limit: 30, windowMs: 60 * 60 * 1000 },
+  /**
+   * Invite and resend emails from admin in a day. Far above real use; it caps
+   * what a stolen admin session could send from the verified domain.
+   */
+  adminInvitesPerDay: { limit: 40, windowMs: 24 * 60 * 60 * 1000 },
   /** Draft saves for one session, generous for autosave. */
   savesPerSession: { limit: 600, windowMs: 60 * 60 * 1000 },
 } as const;

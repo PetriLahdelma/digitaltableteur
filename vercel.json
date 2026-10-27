@@ -2,7 +2,7 @@
   "installCommand": "bash scripts/vercel-install.sh",
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/((?!intake/).*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -25,7 +25,7 @@
   ],
   "crons": [
     {
-      "path": "/api/intake/cron/reminders",
+      "path": "/api/intake/cron/daily",
       "schedule": "0 7 * * *"
     }
   ]
