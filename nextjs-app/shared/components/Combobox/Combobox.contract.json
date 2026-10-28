@@ -79,6 +79,16 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/invite/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
         },
