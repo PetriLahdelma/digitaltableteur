@@ -1,8 +1,8 @@
 {
   "storyId": "site-contactformeditorial-default",
   "mode": "forced-colors",
-  "sourceSHA": "e02094e91e0dc7a4ceef8d6de1fde38113d81382",
-  "capturedAt": "2026-10-28T19:57:46.860Z",
+  "sourceSHA": "972352ab923a8b6cf6ba370f3f52b4d1db023e8e",
+  "capturedAt": "2026-10-28T22:24:53.847Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
