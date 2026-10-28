@@ -364,10 +364,6 @@ digitaltableteur/
 │   ├── styles/                # Design tokens & global styles
 │   └── locales/               # i18n translation files
 │
-│   ├── cors.js                # CORS middleware
-│   ├── openai-chat.js         # AI chat endpoint
-│   ├── save-contact.js        # Contact form handler
-│   └── download-cv.js         # Secure CV download
 │
 ├── scripts/                   # Automation & tooling
 │   ├── linear/                # Issue management

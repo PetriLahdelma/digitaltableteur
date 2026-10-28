@@ -29,7 +29,6 @@ export const IN_SCOPE_COMPONENTS = [
   { name: "CheckboxGroup", tier: "molecule", group: "form", root: "components", status: "beta" },
   { name: "FileUpload", tier: "molecule", group: "form", root: "components", status: "beta" },
   { name: "ContactForm", tier: "organism", group: "form", root: "components", status: "beta" },
-  { name: "NewsletterWaitlist", tier: "organism", group: "form", root: "components", status: "beta" },
   { name: "ChatWidget", tier: "organism", group: "overlay", root: "components", status: "beta" },
   { name: "SiteHeader", tier: "pattern", group: "navigation", root: "patterns", status: "beta" },
   { name: "SiteFooter", tier: "pattern", group: "navigation", root: "patterns", status: "beta" },

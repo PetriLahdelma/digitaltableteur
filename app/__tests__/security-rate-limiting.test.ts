@@ -1,7 +1,7 @@
 /**
  * Security Tests: Rate Limiting
  *
- * Tests the rate limiting pattern used in save-contact and download-cv routes.
+ * Tests the rate limiting pattern used in the contact and download-cv routes.
  * Uses a Map-based bucket system with configurable window and max requests.
  *
  * Key patterns tested:
@@ -11,17 +11,17 @@
  * - Window expiry resets the bucket
  * - Different keys (IPs) have independent buckets
  *
- * @see app/api/save-contact/route.ts (3 req / 15 min)
+ * @see app/api/contact/route.ts (3 req / 15 min)
  * @see app/api/download-cv/route.ts (5 req / 15 min)
  */
 
 import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
 
-// Configuration matching save-contact route
+// Configuration matching the contact route
 const RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
 const RATE_LIMIT_MAX = 3; // requests per window per IP
 
-// Test implementation - mirrors the exact logic from save-contact/route.ts
+// Test implementation - mirrors the rate-limit logic in contact/route.ts
 const buckets = new Map<string, { count: number; windowStart: number }>();
 
 function rateLimit(key: string): boolean {

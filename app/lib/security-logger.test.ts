@@ -124,7 +124,7 @@ describe("SecurityLogger", () => {
       SecurityLogger.logDataAccess(
         "203.0.113.11",
         "Mozilla/5.0",
-        "/api/save-contact",
+        "/api/contact",
         "POST",
         false,
         {

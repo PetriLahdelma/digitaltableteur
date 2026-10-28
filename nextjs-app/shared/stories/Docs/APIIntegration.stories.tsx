@@ -47,13 +47,6 @@ const APIIntegrationDocsContent = () => {
             </tr>
             <tr>
               <td>
-                <code>/api/save-contact</code>
-              </td>
-              <td>POST</td>
-              <td>Contact submission persistence (MongoDB)</td>
-            </tr>
-            <tr>
-              <td>
                 <code>/api/download-cv</code>
               </td>
               <td>POST</td>
@@ -232,7 +225,7 @@ export const donnyTools = { getOpenHours: { description: 'Get business opening h
       </section>
 
       <section className={styles.section}>
-        <h2>Contact Form API (/api/save-contact)</h2>
+        <h2>Contact Form API (/api/contact)</h2>
         <p>
           Handles contact form submissions with Resend email delivery and MongoDB
           persistence.
@@ -258,7 +251,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Email delivery via Resend (save-contact also persists to MongoDB)
+    // The real route stores the submission in MongoDB first, then emails via Resend
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -281,7 +274,7 @@ export async function POST(request: NextRequest) {
 
         <h3>Request Format</h3>
         <pre className={styles.code}>
-          {`POST /api/save-contact
+          {`POST /api/contact
 Content-Type: application/json
 
 {
@@ -529,7 +522,7 @@ curl -X POST http://localhost:3000/api/chat \\
   -d '{"messages":[{"role":"user","content":"Hello"}]}'
 
 # Test contact form
-curl -X POST http://localhost:3000/api/save-contact \\
+curl -X POST http://localhost:3000/api/contact \\
   -H "Content-Type: application/json" \\
   -d '{"name":"Test","email":"test@example.com","message":"Hello"}'
 
@@ -647,13 +640,7 @@ describe('Chat API', () => { it('should handle user messages', async () => { con
               <td>
                 <code>app/api/contact/route.ts</code>
               </td>
-              <td>Contact email via Resend</td>
-            </tr>
-            <tr>
-              <td>
-                <code>app/api/save-contact/route.ts</code>
-              </td>
-              <td>Contact persistence (MongoDB)</td>
+              <td>Contact submission: stored in MongoDB, emailed via Resend</td>
             </tr>
             <tr>
               <td>

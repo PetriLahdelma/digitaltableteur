@@ -110,8 +110,8 @@ All composed from real component instances + Phosphor glyphs + tokens.
 - **ContactForm (470:2)**: heading + labeled Inputs (Full name, Email) + Message TextArea +
   FileUpload instance + full-width Submit Button. GAP: honeypot + per-field validation/error
   states are behavioral, not modeled; copy is illustrative (real copy is i18n).
-- **NewsletterWaitlist (471:21)**: expanded state — title + subtitle + email Input + Notify
-  Button. GAP: collapsed trigger/expand animation is behavioral, not modeled.
+- **NewsletterWaitlist (471:21)**: code component removed 2026-10-28 (no consumer); the Figma
+  component remains in the library until it is retired there.
 - **ChatWidget (473:25)**: panel with shadow, dark header (ChatCircleDots + title + close X),
   bot/user message bubbles, input row + PaperPlaneTilt send button. GAPs: message bubbles are
   bespoke (no Bubble component); launcher FAB, streaming/typing/error states not modeled.

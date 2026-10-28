@@ -88,14 +88,6 @@ digitaltableteur/
 │           • JIT search commands (find components, tests, stories)
 │           • Common gotchas
 │
-│   └── 📄 AGENTS.md (NEW - 120 lines)
-│       └── Serverless function quick reference
-│           • File structure
-│           • Key patterns (CORS middleware, validation, env vars)
-│           • Touch points (cors.js, openai-chat.js, save-contact.js)
-│           • JIT search commands
-│           • Common gotchas (CORS, method validation, error handling)
-│           • Required environment variables
 │
 ├── docs/ (Critical Reference Documentation)
 │   └── 📄 AGENTS.md (NEW - 80 lines)

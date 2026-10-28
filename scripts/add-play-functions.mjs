@@ -17,7 +17,6 @@ const targetComponents = [
   "nextjs-app/shared/components/Gallery/Gallery.stories.tsx",
   "nextjs-app/shared/components/FileUpload/FileUpload.stories.tsx",
   "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.stories.tsx",
-  "nextjs-app/shared/components/NewsletterWaitlist/NewsletterWaitlist.stories.tsx",
   "nextjs-app/shared/components/WorkNav/WorkNav.stories.tsx",
   "nextjs-app/shared/components/ContactForm/ContactForm.stories.tsx",
   "nextjs-app/shared/components/Modal/Modal.stories.tsx",

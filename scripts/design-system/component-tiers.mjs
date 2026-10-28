@@ -46,7 +46,6 @@ export const COMPONENT_TIERS = {
   MCPActionButton: { tier: "molecule" },
   Modal: { tier: "molecule" },
   NavMenuList: { tier: "molecule" },
-  NewsletterWaitlist: { tier: "organism" },
   OpenHours: { tier: "molecule" },
   PersonCard: { tier: "molecule" },
   PhoneInput: { tier: "molecule" },

@@ -394,13 +394,13 @@ Returns: streamed Response`}
           </div>
 
           <div className={styles.apiItem}>
-            <h3>/api/contact & /api/save-contact</h3>
+            <h3>/api/contact</h3>
             <p>
-              Contact form handlers. Email delivery is via Resend; submissions
+              Contact form handler. Email delivery is via Resend; submissions
               persist to MongoDB. Validated with Zod and rate-limited.
             </p>
             <pre className={styles.code}>
-              {`POST /api/contact | /api/save-contact
+              {`POST /api/contact
 Body: { name, email, phone?, message }
 Returns: { success: boolean }`}
             </pre>

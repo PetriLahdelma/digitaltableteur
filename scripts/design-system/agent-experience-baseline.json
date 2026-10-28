@@ -485,11 +485,6 @@
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
-    "NewsletterWaitlist": {
-      "maxPropCount": 4,
-      "maxFiniteStateBits": 1,
-      "maxSlotCount": 0
-    },
     "NextLayout": {
       "maxPropCount": 2,
       "maxFiniteStateBits": 0,

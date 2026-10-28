@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-28T16:43:28.171Z",
+  "generatedAt": "2026-10-28T19:08:05.006Z",
   "summary": {
-    "componentCount": 192,
+    "componentCount": 191,
     "statusCounts": {
-      "beta": 49,
+      "beta": 48,
       "stable": 108,
       "deprecated": 3,
       "alpha": 32
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 91.9,
-    "codebaseComponentCount": 209,
-    "usageCoveragePercent": 94.3,
+    "catalogCompletenessPercent": 91.8,
+    "codebaseComponentCount": 208,
+    "usageCoveragePercent": 94.8,
     "componentsWithProductionUsage": 45,
     "notReadyForStablePromotion": false
   },
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 209,
-    "inCatalog": 192,
+    "totalComponentsInCodebase": 208,
+    "inCatalog": 191,
     "outOfCatalog": 17,
-    "catalogCompletenessPercent": 91.9,
+    "catalogCompletenessPercent": 91.8,
     "artifactCoverage": {
-      "stories": 176,
-      "tests": 188,
+      "stories": 175,
+      "tests": 187,
       "mdx": 7,
-      "spec": 192
+      "spec": 191
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,12 +77,12 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 192,
+    "catalogedComponents": 191,
     "withAnyUsage": 181,
     "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 930,
-    "aliasImportFiles": 479,
+    "totalEvidenceRows": 925,
+    "aliasImportFiles": 474,
     "relativeImportFiles": 491,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -102,12 +102,12 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 192,
+      "digitaltableteur": 191,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 49,
+        "beta": 48,
         "stable": 108,
         "deprecated": 3,
         "alpha": 32
@@ -8306,10 +8306,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 68,
+        "importCount": 67,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 39,
+        "componentImportCount": 38,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
@@ -39105,10 +39105,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Modal",
-        "importCount": 7,
+        "importCount": 6,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 6,
+        "componentImportCount": 5,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/ContactForm/ContactForm.tsx",
@@ -39132,12 +39132,6 @@
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./Modal/Modal",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/NewsletterWaitlist/NewsletterWaitlist.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Modal",
             "context": "component"
           },
           {
@@ -41025,390 +41019,6 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "NavMenuList.spec.md"
-          },
-          "requiredA11y": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "contract.json"
-          },
-          "keyboard": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "contract.json"
-          },
-          "a11yCriteria": {
-            "origin": "derived",
-            "authorship": "mixed",
-            "from": "contract.a11y + derive-a11y-criteria.mjs"
-          },
-          "compositionRules": {
-            "origin": "derived",
-            "authorship": "mixed",
-            "from": "avoidWhen filter"
-          },
-          "forbiddenUse": {
-            "origin": "derived",
-            "authorship": "mixed",
-            "from": "avoidWhen + replacement policy"
-          },
-          "replacementFor": {
-            "origin": "derived",
-            "authorship": "mixed",
-            "from": "replacement policy"
-          },
-          "temporal": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "contract.json"
-          },
-          "consequence": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "contract.json"
-          }
-        },
-        "governance": null,
-        "content": null,
-        "temporal": null,
-        "consequence": null
-      }
-    },
-    {
-      "name": "NewsletterWaitlist",
-      "contract": {
-        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-        "name": "NewsletterWaitlist",
-        "tier": "organism",
-        "group": "form",
-        "status": "beta",
-        "description": "Newsletter waitlist signup with inline email capture.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=471-21",
-        "radixPrimitive": null,
-        "element": "div",
-        "variants": {},
-        "slots": [],
-        "asChild": false,
-        "subParts": [],
-        "requiredStories": [
-          "Default",
-          "Playground",
-          "Example",
-          "ForcedColors"
-        ],
-        "a11y": {
-          "keyboard": [
-            "Tab",
-            "Enter"
-          ],
-          "ariaRequirements": [
-            "submit button labeled",
-            "validation errors announced"
-          ],
-          "reducedMotion": true,
-          "reviewed": true,
-          "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-          "forcedColorsVerified": true,
-          "accessibilityTreeVerified": true
-        },
-        "tokens": {
-          "colors": [],
-          "spacing": []
-        },
-        "lightDarkVerified": true,
-        "consumers": [],
-        "schemaVersion": 2,
-        "props": {
-          "className": {
-            "optional": true,
-            "type": "string",
-            "description": "Optional class name for styling extension"
-          },
-          "onSuccess": {
-            "optional": true,
-            "type": "(email: string) => void",
-            "description": "Callback when email is successfully submitted"
-          },
-          "onError": {
-            "optional": true,
-            "type": "(error: Error) => void",
-            "description": "Callback when submission fails"
-          },
-          "disabled": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Disable the component"
-          }
-        },
-        "forbiddenUse": [
-          "mount more than one instance per page. The success Modal",
-          "try to control the transformation state from outside. The",
-          "bypass the validation. The regex catches obvious typos but"
-        ],
-        "displayName": "NewsletterWaitlist",
-        "keywords": [
-          "newsletter",
-          "waitlist",
-          "signup",
-          "email capture"
-        ],
-        "dense": "Inline email-capture signup for the newsletter waitlist with validation + submission states",
-        "usage": {
-          "description": "Inline newsletter/waitlist signup: email capture with validation and submit feedback. Marketing-page module."
-        }
-      },
-      "spec": "# NewsletterWaitlist\n\n## Intent\nCapture an email address with the lightest possible visual weight.\nThe button-to-input transformation defers commitment until the user\nhas explicitly opted in to entering data, which avoids the visual\nnoise of a permanent form occupying valuable hero space.\n\n## Interaction contract\n- Keyboard: Tab focuses the Button. Enter / Space activates it,\n  transforming to the input mode. Inside input mode, Tab walks\n  through Inputs → Cancel → Submit; Enter submits.\n- Pointer: click on the Button transforms; click on Cancel resets;\n  click on Submit posts the email.\n- Screen readers: the Button announces \"newsletter signup, button\".\n  After activation, the Inputs label announces the email field\n  context. Loading state announces \"busy\" on the submit button.\n  Success Modal announces its title; the Modal's focus trap kicks\n  in.\n\n## Do / don't\n- Do: pass `onSuccess` if analytics or a parent component needs to\n  react to signups. The callback fires after the success Modal\n  appears, with the submitted email.\n- Do: pass `disabled` during maintenance windows or when the\n  backing endpoint is known to be down. The component degrades\n  gracefully (greyed Button, no transformation).\n- Don't: mount more than one instance per page. The success Modal\n  isn't scoped to the originating component — opening two collides\n  on focus management.\n- Don't: try to control the transformation state from outside. The\n  component owns it; exposing it would invite consumers to break\n  the contract.\n- Don't: bypass the validation. The regex catches obvious typos but\n  the server is the source of truth — never assume client-side\n  validation alone gates a real submission.\n\n## Design notes\n- Tokens: Button uses `Button variant=\"primary\" size=\"l\"` in trigger\n  mode. The input form uses standard `--space-internal-12` gaps\n  between Inputs, Cancel, and Submit. The success Modal uses\n  `severity=\"success\"`.\n- Figma: https://www.figma.com/design/digitaltableteur/newsletter-waitlist\n  — button mode and input mode are separate frames; the transition\n  is a CSS opacity + width interpolation.\n- The endpoint is `/api/save-contact` with body `{ email, type:\n  'newsletter', source: 'waitlist' }`. Changing the endpoint\n  requires coordinated change in the API route, the contact-store\n  shape, and the email template that fires on signup.\n- The Modal closes the form and resets to Button mode on dismiss.\n  This is intentional — the user has succeeded; the form is done.\n",
-      "documentationDebt": false,
-      "usage": {
-        "publicImport": "@dt/NewsletterWaitlist",
-        "importCount": 0,
-        "productionImportCount": 0,
-        "patternImportCount": 0,
-        "componentImportCount": 0,
-        "evidence": []
-      },
-      "agent": {
-        "preferredImport": "@dt/NewsletterWaitlist",
-        "intent": "Capture an email address with the lightest possible visual weight. The button-to-input transformation defers commitment until the user has explicitly opted in to entering data, which avoids the visual noise of a permane…",
-        "props": {
-          "className": {
-            "optional": true,
-            "type": "string",
-            "description": "Optional class name for styling extension"
-          },
-          "onSuccess": {
-            "optional": true,
-            "type": "(email: string) => void",
-            "description": "Callback when email is successfully submitted"
-          },
-          "onError": {
-            "optional": true,
-            "type": "(error: Error) => void",
-            "description": "Callback when submission fails"
-          },
-          "disabled": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Disable the component"
-          }
-        },
-        "propRelationships": [],
-        "forbiddenCombos": [],
-        "variants": {},
-        "cvaVariants": {},
-        "variantsFnName": null,
-        "useWhen": [
-          "pass `onSuccess` if analytics or a parent component needs to react to signups. The callback fires after the success Modal appears, with the submitted email.",
-          "pass `disabled` during maintenance windows or when the backing endpoint is known to be down. The component degrades gracefully (greyed Button, no transformation)."
-        ],
-        "avoidWhen": [
-          "mount more than one instance per page. The success Modal isn't scoped to the originating component — opening two collides on focus management.",
-          "try to control the transformation state from outside. The component owns it; exposing it would invite consumers to break the contract.",
-          "bypass the validation. The regex catches obvious typos but the server is the source of truth — never assume client-side validation alone gates a real submission."
-        ],
-        "requiredA11y": [
-          "submit button labeled",
-          "validation errors announced"
-        ],
-        "keyboard": [
-          "Tab",
-          "Enter"
-        ],
-        "compositionRules": [],
-        "canonicalExamples": [
-          "Default",
-          "Playground",
-          "Example",
-          "ForcedColors"
-        ],
-        "replacementFor": [],
-        "forbiddenUse": [
-          "mount more than one instance per page. The success Modal isn't scoped to the originating component — opening two collides on focus management.",
-          "try to control the transformation state from outside. The component owns it; exposing it would invite consumers to break the contract.",
-          "bypass the validation. The regex catches obvious typos but the server is the source of truth — never assume client-side validation alone gates a real submission."
-        ],
-        "composesWith": [],
-        "prefersOver": [],
-        "declaredPropCount": 4,
-        "guidelines": [
-          {
-            "level": "should",
-            "guidance": "pass `onSuccess` if analytics or a parent component needs to react to signups",
-            "rationale": "The callback fires after the success Modal appears, with the submitted email.",
-            "rationaleSource": "inferred",
-            "source": "spec.md#do-dont"
-          },
-          {
-            "level": "should",
-            "guidance": "pass `disabled` during maintenance windows or when the backing endpoint is known to be down",
-            "rationale": "The component degrades gracefully (greyed Button, no transformation).",
-            "rationaleSource": "inferred",
-            "source": "spec.md#do-dont"
-          },
-          {
-            "level": "should-not",
-            "guidance": "mount more than one instance per page",
-            "rationale": "The success Modal isn't scoped to the originating component — opening two collides on focus management.",
-            "rationaleSource": "inferred",
-            "source": "spec.md#do-dont"
-          },
-          {
-            "level": "should-not",
-            "guidance": "try to control the transformation state from outside",
-            "rationale": "The component owns it; exposing it would invite consumers to break the contract.",
-            "rationaleSource": "inferred",
-            "source": "spec.md#do-dont"
-          },
-          {
-            "level": "should-not",
-            "guidance": "bypass the validation",
-            "rationale": "The regex catches obvious typos but the server is the source of truth — never assume client-side validation alone gates a real submission.",
-            "rationaleSource": "inferred",
-            "source": "spec.md#do-dont"
-          }
-        ],
-        "a11yCriteria": [
-          {
-            "id": "axe-no-violations",
-            "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
-            "wcag": [
-              {
-                "sc": "2.5.8",
-                "name": "Target Size (Minimum)",
-                "level": "AA",
-                "en301549": "9.2.5.8",
-                "coverage": "partial"
-              }
-            ]
-          },
-          {
-            "id": "accessibility-tree",
-            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
-            "wcag": [
-              {
-                "sc": "1.3.1",
-                "name": "Info and Relationships",
-                "level": "A",
-                "en301549": "9.1.3.1",
-                "coverage": "partial"
-              },
-              {
-                "sc": "4.1.2",
-                "name": "Name, Role, Value",
-                "level": "A",
-                "en301549": "9.4.1.2",
-                "coverage": "partial"
-              }
-            ]
-          },
-          {
-            "id": "forced-colors-real-browser",
-            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
-          },
-          {
-            "id": "keyboard-contract",
-            "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
-            "wcag": [
-              {
-                "sc": "2.1.1",
-                "name": "Keyboard",
-                "level": "A",
-                "en301549": "9.2.1.1",
-                "coverage": "partial"
-              },
-              {
-                "sc": "2.1.2",
-                "name": "No Keyboard Trap",
-                "level": "A",
-                "en301549": "9.2.1.2",
-                "coverage": "partial"
-              }
-            ]
-          },
-          {
-            "id": "aria-requirements",
-            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
-            "wcag": [
-              {
-                "sc": "4.1.2",
-                "name": "Name, Role, Value",
-                "level": "A",
-                "en301549": "9.4.1.2",
-                "coverage": "partial"
-              }
-            ]
-          },
-          {
-            "id": "human-a11y-review",
-            "statement": "A human completed an end-to-end accessibility review of this component.",
-            "verificationMode": "manual",
-            "note": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components."
-          }
-        ],
-        "docOrigin": {
-          "props": {
-            "origin": "generated",
-            "authorship": "machine-generated",
-            "from": "TypeScript AST"
-          },
-          "variants": {
-            "origin": "generated",
-            "authorship": "machine-generated",
-            "from": "TypeScript AST"
-          },
-          "cvaVariants": {
-            "origin": "generated",
-            "authorship": "machine-generated",
-            "from": "TypeScript AST"
-          },
-          "propRelationships": {
-            "origin": "generated",
-            "authorship": "machine-generated",
-            "from": "TypeScript AST + controlled/uncontrolled pairs"
-          },
-          "forbiddenCombos": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "contract.json"
-          },
-          "canonicalExamples": {
-            "origin": "generated",
-            "authorship": "machine-generated",
-            "from": "stories.tsx"
-          },
-          "declaredPropCount": {
-            "origin": "generated",
-            "authorship": "machine-generated",
-            "from": "TypeScript AST"
-          },
-          "intent": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "NewsletterWaitlist.spec.md"
-          },
-          "useWhen": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "NewsletterWaitlist.spec.md"
-          },
-          "avoidWhen": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "NewsletterWaitlist.spec.md"
-          },
-          "guidelines": {
-            "origin": "authored",
-            "authorship": "human-authored",
-            "from": "NewsletterWaitlist.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
@@ -65874,10 +65484,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 63,
+        "importCount": 62,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 30,
+        "componentImportCount": 29,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
@@ -67087,10 +66697,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TextInput",
-        "importCount": 12,
+        "importCount": 11,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 7,
+        "componentImportCount": 6,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/FieldPrompt.tsx",
@@ -67120,12 +66730,6 @@
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./TextInput/TextInput",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/NewsletterWaitlist/NewsletterWaitlist.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/TextInput",
             "context": "component"
           },
           {
@@ -68901,10 +68505,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 35,
+        "importCount": 34,
         "productionImportCount": 0,
         "patternImportCount": 6,
-        "componentImportCount": 15,
+        "componentImportCount": 14,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",

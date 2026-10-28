@@ -86,7 +86,6 @@ export const componentCatalog = {
   "MultiCombobox": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "NavLink": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "NavMenuList": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
-  "NewsletterWaitlist": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "NextLayout": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "OpenHours": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "Pagination": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),

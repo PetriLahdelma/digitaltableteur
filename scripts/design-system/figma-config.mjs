@@ -83,7 +83,6 @@ export const FIGMA_NODE_IDS = {
   RadioGroup: "383:36",
   FileUpload: "384:26",
   ContactForm: "470:2",
-  NewsletterWaitlist: "471:21",
   ChatWidget: "473:25",
   SiteHeader: "476:2",
   SiteFooter: "477:6",

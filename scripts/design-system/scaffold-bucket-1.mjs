@@ -527,7 +527,7 @@ export const COMPONENTS_DATA = [
       "Put two controls inside one `FormField` — wrap each in its own.",
     ],
     whenToUse: [
-      "Every form field in `ContactForm`, `NewsletterWaitlist`, and any consumer form.",
+      "Every form field in `ContactForm` and any consumer form.",
     ],
     whenNotToUse: [
       "Multi-control groupings (checkbox set, radio set) — use `FormGroup` + `CheckboxGroup`.",
