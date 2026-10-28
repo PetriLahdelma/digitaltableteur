@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-28T16:29:01.316Z",
+  "generatedAt": "2026-10-28T16:43:28.171Z",
   "summary": {
     "componentCount": 192,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 181,
     "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 929,
+    "totalEvidenceRows": 930,
     "aliasImportFiles": 479,
-    "relativeImportFiles": 490,
+    "relativeImportFiles": 491,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -85214,7 +85214,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PricingCalculator",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 0,
@@ -85224,6 +85224,12 @@
             "importKind": "relative",
             "importPath": "../PricingCalculator",
             "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/data/consulting-catalog.ts",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/patterns/PricingCalculator/pricingMath",
+            "context": "other"
           }
         ]
       },
