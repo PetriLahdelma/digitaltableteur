@@ -1,8 +1,8 @@
 {
   "storyId": "site-contactformeditorial-forced-colors",
   "mode": "light",
-  "sourceSHA": "073ca9e816057a208ee5b9ee17a5c35d0907fe14",
-  "capturedAt": "2026-10-28T18:57:27.940Z",
+  "sourceSHA": "e02094e91e0dc7a4ceef8d6de1fde38113d81382",
+  "capturedAt": "2026-10-28T19:57:32.264Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
