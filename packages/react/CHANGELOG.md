@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.47 - 2026-10-29
+
+- `PhoneInput` and `Combobox` (and `MultiCombobox`, `FileUpload`, which share
+  its field styling): focus shows the same double ring as `TextInput`:
+  border, a gap and the focus ring, from the focus-ring tokens. Before, the
+  ring sat flush on the border (Combobox also added an inset shadow) and read
+  as one thick border. In an error state the border stays red and the ring
+  matches `TextInput`. No API change.
+
 ## 0.1.46 - 2026-10-28
 
 - `Timestamp`: `timeZone` (IANA, for example "Europe/Helsinki") for every
