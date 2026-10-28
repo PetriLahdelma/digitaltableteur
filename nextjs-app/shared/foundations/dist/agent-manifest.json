@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-28T19:08:05.006Z",
+  "generatedAt": "2026-10-28T22:56:13.821Z",
   "summary": {
     "componentCount": 191,
     "statusCounts": {
@@ -16181,6 +16181,16 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/invite/page.tsx",
             "since": "2026-06-04"
           },
           {
@@ -51371,31 +51381,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeChrome.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeField.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/_components/IntakeForm.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/admin/_components/InviteForm.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/admin/invite/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
             "since": "2026-06-04"
           },
           {
