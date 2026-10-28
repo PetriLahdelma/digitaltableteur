@@ -7,39 +7,47 @@ import {
   getHourlyRate,
   mapProblemToService,
 } from "./consulting-catalog";
+import { ENGAGEMENTS } from "./engagements";
 
 describe("consulting-catalog", () => {
-  it("exposes hourly rate €90 typical, €90–150 range", () => {
+  it("quotes the pricing page's standard and partnership rates", () => {
     const rate = getHourlyRate();
-    expect(rate.typicalEur).toBe(90);
-    expect(rate.rangeEur.min).toBe(90);
-    expect(rate.rangeEur.max).toBe(150);
-    expect(rate.currency).toBe("EUR");
-  });
-
-  it("lists four fixed packages from €7k", () => {
-    const packages = getConsultingPackages();
-    expect(packages).toHaveLength(4);
-    expect(packages[0]?.name).toBe("Design System Audit");
-    expect(packages[0]?.priceRangeEur).toMatch(/€7/);
+    const partnership = enTranslation.engagementPages.partnership;
+    expect(rate.standardEur).toBe(120);
+    expect(rate.partnershipEur).toBe(90);
+    expect(partnership.price).toBe(`${rate.partnershipEur} €/h`);
+    expect(partnership.investNote).toContain(`${rate.standardEur} €/h`);
+    expect(rate.vat).toBe("excluded");
+    expect(rate.note).not.toMatch(/preferred/i);
   });
 
   // Donny and the WebMCP tools quote this catalog; the pricing page quotes the
-  // locale files. UX Sprint drifted (€8k here vs €7k on the page, 2026-07-18).
-  it("matches the pricing page's package prices and durations", () => {
-    const pageKeyById: Record<string, string> = {
-      "design-system-lift-off": "1",
-      "ai-ready-designops": "2",
-      "ux-sprint": "3",
-      "design-system-audit": "Audit",
-    };
-    for (const pkg of getConsultingPackages()) {
-      const n = pageKeyById[pkg.id];
-      expect(n, pkg.id).toBeDefined();
-      const page = enTranslation as Record<string, string>;
-      expect(pkg.priceRangeEur, pkg.id).toBe(page[`pricingPackage${n}Price`]);
-      expect(pkg.duration, pkg.id).toBe(page[`pricingPackage${n}Duration`]);
+  // locale files. They drifted twice (UX Sprint €8k vs €7k, 2026-07-18; four
+  // packages vs ten offers and €90/h "typical", 2026-10-28), so the catalog
+  // now reads the engagement data itself.
+  it("lists every offer on the engagement pages with the page's price and duration", () => {
+    const packages = getConsultingPackages();
+    expect(packages.map((pkg) => pkg.id)).toEqual(ENGAGEMENTS.map((e) => e.packageId));
+    const page = enTranslation as unknown as Record<string, unknown>;
+    const lookup = (key: string) =>
+      key.split(".").reduce<unknown>(
+        (node, part) => (node && typeof node === "object" ? (node as Record<string, unknown>)[part] : undefined),
+        page,
+      );
+    for (const [index, pkg] of packages.entries()) {
+      const engagement = ENGAGEMENTS[index];
+      expect(pkg.priceRangeEur, pkg.id).toBe(lookup(engagement.priceKey));
+      expect(pkg.duration, pkg.id).toBe(lookup(engagement.durationKey));
+      expect(pkg.url, pkg.id).toMatch(new RegExp(`/engagements/${engagement.slug}$`));
     }
+  });
+
+  it("names each offer's pricing model from its visible price", () => {
+    const model = Object.fromEntries(getConsultingPackages().map((pkg) => [pkg.id, pkg.pricingModel]));
+    expect(model["design-system-audit"]).toBe("fixed_scope");
+    expect(model["embedded-partnership"]).toBe("hourly");
+    expect(model["designops-copilot"]).toBe("monthly");
+    expect(model.workshop).toBe("quoted");
   });
 
   it("finds case study by slug", () => {

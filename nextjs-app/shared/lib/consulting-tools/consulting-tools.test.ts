@@ -29,11 +29,10 @@ describe("consulting-tool executors", () => {
     expect(CONSULTING_TOOL_NAMES).toContain("get_hourly_rate");
   });
 
-  it("get_hourly_rate returns €90–150 range", () => {
+  it("get_hourly_rate returns the pricing page's rates", () => {
     const result = executeGetHourlyRate();
     const text = result.content[0]?.text ?? "";
-    expect(text).toContain("90");
-    expect(text).toContain("150");
+    expect(JSON.parse(text)).toMatchObject({ standardEur: 120, partnershipEur: 90 });
   });
 });
 

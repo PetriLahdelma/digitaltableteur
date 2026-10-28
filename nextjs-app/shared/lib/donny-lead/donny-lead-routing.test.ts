@@ -29,7 +29,7 @@ describe("donny-lead-routing", () => {
       problem: "We need AI designops automation for our team",
     });
     expect(result.recommendedPackageId).toBe("ai-ready-designops");
-    expect(result.packages).toHaveLength(4);
+    expect(result.packages.map((pkg) => pkg.id)).toContain("ai-ready-designops");
   });
 
   it("drafts follow-up with disclaimer for clients", () => {

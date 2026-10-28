@@ -60,7 +60,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
     {
       name: "list_pricing_packages",
       description:
-        "List fixed consulting packages with EUR price ranges and duration (preferred over hourly for defined outcomes).",
+        "List every consulting offer on the pricing page: name, price as shown, duration, pricing model (fixed_scope, hourly, monthly or quoted) and URL.",
       inputSchema: { type: "object", properties: {} },
       annotations: READ_ONLY,
       execute: () => executeListPricingPackages(),
@@ -68,7 +68,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
     {
       name: "get_hourly_rate",
       description:
-        "Get typical and range hourly consulting rates in EUR (€90/h typical, €90–150/h depending on scope).",
+        "Get the hourly rates in EUR as the pricing page shows them: the standard rate and the partnership rate with its conditions. VAT excluded.",
       inputSchema: { type: "object", properties: {} },
       annotations: READ_ONLY,
       execute: () => executeGetHourlyRate(),

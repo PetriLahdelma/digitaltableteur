@@ -59,7 +59,7 @@ export function registerConsultingMcpTools(server: McpServer): number {
   server.registerTool(
     "list_pricing_packages",
     {
-      description: "List fixed consulting packages with EUR price ranges and duration (preferred over hourly for defined outcomes).",
+      description: "List every consulting offer on the pricing page: name, price as shown, duration, pricing model (fixed_scope, hourly, monthly or quoted) and URL.",
       annotations: READ_ONLY,
     },
     async () => executeListPricingPackages(),
@@ -68,7 +68,7 @@ export function registerConsultingMcpTools(server: McpServer): number {
   server.registerTool(
     "get_hourly_rate",
     {
-      description: "Get typical and range hourly consulting rates in EUR (€90/h typical, €90–150/h depending on scope).",
+      description: "Get the hourly rates in EUR as the pricing page shows them: the standard rate and the partnership rate with its conditions. VAT excluded.",
       annotations: READ_ONLY,
     },
     async () => executeGetHourlyRate(),

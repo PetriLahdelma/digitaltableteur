@@ -3,8 +3,13 @@
  * English canonical copy — UI pages may localize via i18n keys separately.
  */
 
+import { getEngagementEntries } from "@/app/lib/engagementCatalog";
 import { getPseoCatalog } from "@/lib/pseo/catalog";
 import { WEEKLY_HOURS } from "@/nextjs-app/shared/data/openHours";
+import {
+  DURATION_OPTIONS,
+  STANDARD_RATE,
+} from "@/nextjs-app/shared/patterns/PricingCalculator/pricingMath";
 import {
   isRoutableProject,
   projects,
@@ -16,20 +21,31 @@ const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://www.digitaltableteur.com";
 
+/**
+ * How an offer is priced, read from its visible price: a range for a fixed
+ * scope, a rate per hour or month, or a quote.
+ */
+export type PricingModel = "fixed_scope" | "hourly" | "monthly" | "quoted";
+
 export interface ConsultingPackage {
+  /** The package id the contact form and `?package=` links use. */
   id: string;
   name: string;
+  /** The price exactly as the pricing page shows it. */
   priceRangeEur: string;
   duration: string;
   description: string;
-  pricingModel: "fixed_package";
+  pricingModel: PricingModel;
+  url: string;
 }
 
 export interface HourlyRate {
-  typicalEur: number;
-  rangeEur: { min: number; max: number };
+  standardEur: number;
+  partnershipEur: number;
+  partnershipConditions: string;
   currency: "EUR";
   unit: "hour";
+  vat: "excluded";
   note: string;
 }
 
@@ -57,51 +73,46 @@ export interface ConsultingFitResult {
   rationale: string;
 }
 
+const PARTNERSHIP_DISCOUNT =
+  DURATION_OPTIONS.find((option) => option.partnership)?.discount ?? 0;
+
+/**
+ * The pricing calculator's rates (pricingMath.ts), so agents quote what the
+ * pricing page shows.
+ */
 export const HOURLY_RATE: HourlyRate = {
-  typicalEur: 90,
-  rangeEur: { min: 90, max: 150 },
+  standardEur: STANDARD_RATE,
+  partnershipEur: STANDARD_RATE * (1 - PARTNERSHIP_DISCOUNT),
+  partnershipConditions:
+    "6- or 12-month engagements at 4 or more days a week (75% or more of a week).",
   currency: "EUR",
   unit: "hour",
-  note: "Typical rate is €90/h. Complex or urgent engagements may be quoted up to €150/h. Fixed packages are usually preferred for defined outcomes.",
+  vat: "excluded",
+  note: "Packages are estimates for a fixed scope, workshops are quoted and every price is confirmed in a written proposal. Prices exclude Finnish VAT.",
 };
 
-export const CONSULTING_PACKAGES: ConsultingPackage[] = [
-  {
-    id: "design-system-audit",
-    name: "Design System Audit",
-    priceRangeEur: "€7–14k",
-    duration: "2 weeks",
-    description:
-      "An inventory, severity-ranked findings and a 90-day roadmap for an existing design system.",
-    pricingModel: "fixed_package",
-  },
-  {
-    id: "ux-sprint",
-    name: "UX Sprint",
-    priceRangeEur: "€7–14k",
-    duration: "2 weeks",
-    description: "Prototype, eval plan and handoff your team can ship.",
-    pricingModel: "fixed_package",
-  },
-  {
-    id: "ai-ready-designops",
-    name: "AI-Ready Ops",
-    priceRangeEur: "€11–17k",
-    duration: "3 weeks",
-    description:
-      "Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.",
-    pricingModel: "fixed_package",
-  },
-  {
-    id: "design-system-lift-off",
-    name: "Design System Lift-Off",
-    priceRangeEur: "€14–20k",
-    duration: "4 weeks",
-    description:
-      "Audit, tokens, core components, Storybook and an adoption playbook.",
-    pricingModel: "fixed_package",
-  },
-];
+function pricingModelOf(price: ReturnType<typeof getEngagementEntries>[number]["price"]): PricingModel {
+  if (!price) return "quoted";
+  if (price.unitCode === "HUR") return "hourly";
+  if (price.unitCode === "MON") return "monthly";
+  return "fixed_scope";
+}
+
+/**
+ * Every offer on the pricing and engagement pages, from the same source
+ * (app/lib/engagementCatalog), so agents and visitors see the same offers.
+ */
+export const CONSULTING_PACKAGES: ConsultingPackage[] = getEngagementEntries().map(
+  (entry) => ({
+    id: entry.config.packageId,
+    name: entry.name,
+    priceRangeEur: entry.priceLabel,
+    duration: entry.durationLabel,
+    description: entry.copy.metaDescription,
+    pricingModel: pricingModelOf(entry.price),
+    url: `${baseUrl}${entry.path}`,
+  }),
+);
 
 const SERVICE_KEYWORDS: Array<{
   serviceSlug: string;

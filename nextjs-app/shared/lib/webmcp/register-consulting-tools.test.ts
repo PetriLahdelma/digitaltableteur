@@ -21,14 +21,13 @@ describe("register-consulting-tools", () => {
     expect(registerTool).toHaveBeenCalledTimes(9);
   });
 
-  it("get_hourly_rate execute returns €90–150 range", async () => {
+  it("get_hourly_rate execute returns the pricing page's rates", async () => {
     const tool = buildConsultingWebMcpTools().find(
       (t) => t.name === "get_hourly_rate",
     );
     expect(tool).toBeDefined();
     const result = await tool!.execute!();
     const text = result.content[0]?.text ?? "";
-    expect(text).toContain("90");
-    expect(text).toContain("150");
+    expect(JSON.parse(text)).toMatchObject({ standardEur: 120, partnershipEur: 90 });
   });
 });
