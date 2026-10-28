@@ -12,8 +12,13 @@ import { render, act, waitFor } from "@testing-library/react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
 vi.mock("next/script", () => ({
-  default: (props: { id?: string; src?: string }) => (
-    <script data-testid="analytics-script" data-id={props.id} data-src={props.src} />
+  default: (props: { id?: string; src?: string; children?: unknown }) => (
+    <script
+      data-testid="analytics-script"
+      data-id={props.id}
+      data-src={props.src}
+      data-body={typeof props.children === "string" ? props.children : ""}
+    />
   ),
 }));
 
@@ -153,5 +158,41 @@ describe("DeferredAnalytics — C3: teardown when analytics is not consented", (
     expect(
       (window as unknown as Record<string, boolean>)[disableKey],
     ).toBe(false);
+  });
+
+  it("declares analytics consent granted and every advertising signal denied", async () => {
+    seedConsent({ essential: true, analytics: true, marketing: false, functional: true });
+    const { container } = renderAnalytics();
+    await fireInteraction();
+    await waitFor(() => expect(container.querySelector('[data-id="gtm-base"]')).not.toBeNull());
+    const body = container.querySelector('[data-id="gtm-base"]')?.getAttribute("data-body") ?? "";
+    expect(body.indexOf("'consent', 'default'")).toBeLessThan(body.indexOf("gtm.js"));
+    expect(body).toContain("analytics_storage: 'granted'");
+    for (const signal of ["ad_storage", "ad_user_data", "ad_personalization"]) {
+      expect(body).toContain(`${signal}: 'denied'`);
+    }
+  });
+
+  it("marks a browser as internal traffic with ?dt_internal=1 and unmarks it with 0", async () => {
+    seedConsent({ essential: true, analytics: true, marketing: false, functional: true });
+    window.history.replaceState(null, "", "/?dt_internal=1");
+    const first = renderAnalytics();
+    await fireInteraction();
+    await waitFor(() =>
+      expect(first.container.querySelector('[data-id="gtag-config"]')?.getAttribute("data-body")).toContain(
+        "traffic_type: 'internal'",
+      ),
+    );
+    first.unmount();
+
+    window.history.replaceState(null, "", "/?dt_internal=0");
+    const second = renderAnalytics();
+    await fireInteraction();
+    await waitFor(() => expect(second.container.querySelector('[data-id="gtag-config"]')).not.toBeNull());
+    expect(second.container.querySelector('[data-id="gtag-config"]')?.getAttribute("data-body")).not.toContain(
+      "traffic_type",
+    );
+    expect(localStorage.getItem("dt-internal-traffic")).toBeNull();
+    window.history.replaceState(null, "", "/");
   });
 });

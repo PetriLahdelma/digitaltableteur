@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useReducer, useRef, useState } from "react";
-import { trackLead } from "../../lib/trackLead";
+import { trackLead } from "../../lib/analytics";
 import { useNavigationSearchParams } from "../../lib/navigation";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
@@ -537,7 +537,7 @@ export function ContactFormEditorial({
         throw new Error("Failed to submit form");
       }
 
-      trackLead("contact_form");
+      trackLead("contact_form", { engagementPackage: selectedEngagement?.packageId });
       showToast(t("contactSuccessMessage"), {
         tone: "success",
         duration: 5000,

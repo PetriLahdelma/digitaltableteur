@@ -8,7 +8,7 @@ import React, {
   useState,
   useReducer,
 } from "react";
-import { trackLead } from "../../lib/trackLead";
+import { trackEvent, trackLead } from "../../lib/analytics";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import type { UIMessage } from "ai";
@@ -910,11 +910,15 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       // A new message ends the undo window: restoring the old transcript now
       // would silently discard this one.
       setClearedTranscript(null);
+      if (!messages.some((message) => message.role === "user")) {
+        trackEvent("chat_start");
+      }
       sendMessage({ text: trimmed });
       setDraft("");
     },
     [
       draft,
+      messages,
       isStreaming,
       sendMessage,
       error,

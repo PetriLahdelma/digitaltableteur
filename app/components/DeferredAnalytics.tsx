@@ -17,6 +17,25 @@ const INTERACTION_EVENTS: (keyof WindowEventMap)[] = [
   "mousemove",
 ];
 
+/**
+ * Owner's browsers are marked once with ?dt_internal=1 (and unmarked with
+ * ?dt_internal=0). Marked browsers send traffic_type=internal, which the GA4
+ * "Internal Traffic" data filter excludes from reports. An IP rule would not
+ * work: the owner works from several networks.
+ */
+const INTERNAL_TRAFFIC_KEY = "dt-internal-traffic";
+
+function readInternalTrafficFlag(): boolean {
+  try {
+    const param = new URLSearchParams(window.location.search).get("dt_internal");
+    if (param === "1") window.localStorage.setItem(INTERNAL_TRAFFIC_KEY, "1");
+    if (param === "0") window.localStorage.removeItem(INTERNAL_TRAFFIC_KEY);
+    return window.localStorage.getItem(INTERNAL_TRAFFIC_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 /** GA/GTM identifiers that should be dropped when analytics consent is absent. */
 const ANALYTICS_COOKIE_PREFIXES = ["_ga", "_gid", "_gat", "_dc_gtm_"];
 
@@ -66,6 +85,10 @@ function clearAnalyticsCookies(): void {
  * `hasConsent("analytics")` is false, so GA/GTM/ahrefs never mount. This
  * component MUST be rendered inside <CookieConsentProvider>.
  *
+ * The scripts only mount after analytics consent, so they declare consent
+ * mode signals to match: analytics_storage granted, every advertising signal
+ * denied (the site has no advertising and no marketing consent category).
+ *
  * Revocation also tears down already-initialized tracking: it sets GA's
  * `ga-disable-<id>` flag (which halts any loaded gtag) and clears `_ga*`
  * cookies, so withdrawing consent stops tracking that was live in the session.
@@ -74,6 +97,11 @@ export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
   const { hasConsent } = useCookieConsent();
   const analyticsAllowed = hasConsent("analytics");
   const [shouldLoad, setShouldLoad] = useState(false);
+  const [internalTraffic, setInternalTraffic] = useState(false);
+
+  useEffect(() => {
+    setInternalTraffic(readInternalTrafficFlag());
+  }, []);
 
   // React to consent being absent/withdrawn: disable any loaded GA and drop its
   // cookies. Re-enable when analytics is (re-)granted so a later load tracks.
@@ -112,6 +140,14 @@ export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
     <>
       <Script id="gtm-base" strategy="afterInteractive">
         {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            analytics_storage: 'granted',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -135,7 +171,7 @@ export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gaMeasurementId}');
+          gtag('config', '${gaMeasurementId}'${internalTraffic ? ", { traffic_type: 'internal' }" : ""});
         `}
       </Script>
     </>

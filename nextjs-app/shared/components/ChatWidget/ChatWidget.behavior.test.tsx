@@ -169,6 +169,22 @@ describe("ChatWidget behaviors", () => {
     expect(toggle).toHaveAttribute("aria-expanded", "false");
   });
 
+  it("reports chat_start for the first message of a conversation only", async () => {
+    const gtag = vi.fn();
+    (window as unknown as { gtag?: unknown }).gtag = gtag;
+    try {
+      render(<ChatWidget />);
+      fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
+      const textarea = await screen.findByLabelText(/ask the AI assistant a question/i);
+      fireEvent.change(textarea, { target: { value: "Hello Donny" } });
+      fireEvent.submit(textarea.closest("form")!);
+      expect(gtag).toHaveBeenCalledWith("event", "chat_start", {});
+      expect(JSON.stringify(gtag.mock.calls)).not.toContain("Hello Donny");
+    } finally {
+      delete (window as unknown as { gtag?: unknown }).gtag;
+    }
+  });
+
   it("opts the open panel out of Lenis wheel capture for nested chat scrolling", async () => {
     render(<ChatWidget />);
 
