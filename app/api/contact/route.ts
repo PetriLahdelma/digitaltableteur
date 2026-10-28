@@ -4,6 +4,10 @@ import type { Collection, Document, ObjectId } from "mongodb";
 import { getDatabase } from "../../lib/mongodb";
 import { z } from "zod";
 import { createCorsHeaders } from "../chat-shared";
+import {
+  CONTACT_ATTACHMENT_MAX_BASE64_CHARS,
+  checkContactAttachment,
+} from "../../lib/contact-attachment";
 import { deliverStoredContact } from "../../lib/contact-delivery";
 import { checkRateLimit } from "../../lib/rate-limit";
 import { getClientIp, getUserAgent } from "../../lib/security-logger";
@@ -27,7 +31,12 @@ const contactSchema = z.object({
   attachmentName: z.string().max(255).optional().nullable(),
   attachmentType: z.string().max(255).optional().nullable(),
   attachmentSize: z.number().int().nonnegative().optional().nullable(),
-  attachmentData: z.string().max(5_000_000).optional().nullable(), // base64 payload if included
+  // data: URL; checkContactAttachment verifies size, type and name.
+  attachmentData: z
+    .string()
+    .max(CONTACT_ATTACHMENT_MAX_BASE64_CHARS + 100)
+    .optional()
+    .nullable(),
   attachmentNotice: z.string().max(2000).optional().nullable(),
   followUpPreferences: z.string().max(500).optional().nullable(),
   requestPortfolioMaterials: z.boolean().optional().nullable(),
@@ -107,6 +116,15 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const attachmentCheck = checkContactAttachment(parsed);
+  if (!attachmentCheck.ok) {
+    return NextResponse.json(
+      { error: attachmentCheck.reason },
+      { status: 400, headers: corsHeaders },
+    );
+  }
+  const attachment = attachmentCheck.attachment;
+
   // Sanitize all inputs to prevent NoSQL injection
   const sanitizedParsed = {
     name: sanitize(parsed.name),
@@ -124,11 +142,22 @@ export async function POST(req: NextRequest) {
     orgStage: parsed.orgStage ? sanitize(parsed.orgStage) : null,
     whyUs: parsed.whyUs ? sanitize(parsed.whyUs) : null,
     time: parsed.time ? sanitize(parsed.time) : null,
-    attachmentName: parsed.attachmentName ? sanitize(parsed.attachmentName) : null,
-    attachmentType: parsed.attachmentType ? sanitize(parsed.attachmentType) : null,
-    attachmentData: parsed.attachmentData,
-    attachmentSize:
-      typeof parsed.attachmentSize === "number" ? parsed.attachmentSize : null,
+    attachmentName: attachment
+      ? sanitize(attachment.name)
+      : parsed.attachmentName
+        ? sanitize(parsed.attachmentName)
+        : null,
+    attachmentType: attachment
+      ? attachment.type
+      : parsed.attachmentType
+        ? sanitize(parsed.attachmentType)
+        : null,
+    attachmentData: attachment?.data ?? null,
+    attachmentSize: attachment
+      ? attachment.size
+      : typeof parsed.attachmentSize === "number"
+        ? parsed.attachmentSize
+        : null,
     attachmentNotice: parsed.attachmentNotice
       ? sanitize(parsed.attachmentNotice)
       : null,

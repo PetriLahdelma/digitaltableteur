@@ -291,6 +291,10 @@ export function ContactFormEditorial({
   const [emailSuggestion, setEmailSuggestion] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
+  // Required fields the visitor has typed in. An untouched empty field does
+  // not show "required" on blur, so tabbing past it or a stray blur (a
+  // cookie banner click) stays quiet until submit.
+  const editedFieldsRef = useRef(new Set<ValidatedField>());
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
   // One id per form fill: a retried submit reuses it, so the server finds
@@ -366,6 +370,11 @@ export function ContactFormEditorial({
     if (field === "email") setEmailSuggestion(getEmailSuggestion(value));
   };
 
+  const handleRequiredBlur = (field: ValidatedField, value: string) => {
+    if (!value.trim() && !editedFieldsRef.current.has(field)) return;
+    validateField(field, value);
+  };
+
   // === HANDLERS ===
   const updateField =
     (field: Exclude<keyof FormState, "projectType" | "followUpPreferences">) =>
@@ -379,11 +388,11 @@ export function ContactFormEditorial({
         payload: { field, value: e.target.value },
       });
 
-      if (
-        (field === "name" || field === "email" || field === "message") &&
-        (formErrors[field] || (field === "email" && emailSuggestion))
-      ) {
-        validateField(field, e.target.value);
+      if (field === "name" || field === "email" || field === "message") {
+        editedFieldsRef.current.add(field);
+        if (formErrors[field] || (field === "email" && emailSuggestion)) {
+          validateField(field, e.target.value);
+        }
       }
     };
 
@@ -427,6 +436,7 @@ export function ContactFormEditorial({
   const resetFormState = () => {
     dispatchForm({ type: "RESET" });
     submissionIdRef.current = null;
+    editedFieldsRef.current.clear();
     setAttachmentFile(null);
     setAttachmentDataUrl(null);
     setAttachmentError("");
@@ -585,10 +595,9 @@ export function ContactFormEditorial({
           required
           value={formData.name}
           onChange={updateField("name")}
-          onBlur={(event) => validateField("name", event.currentTarget.value)}
+          onBlur={(event) => handleRequiredBlur("name", event.currentTarget.value)}
           error={formErrors.name}
           autoComplete="name"
-          autoFocus
         />
 
         <div className={styles.fieldWithSuggestion}>
@@ -601,7 +610,7 @@ export function ContactFormEditorial({
             value={formData.email}
             onChange={updateField("email")}
             onBlur={(event) =>
-              validateField("email", event.currentTarget.value)
+              handleRequiredBlur("email", event.currentTarget.value)
             }
             error={formErrors.email}
             aria-describedby={
@@ -629,7 +638,7 @@ export function ContactFormEditorial({
           value={formData.message}
           onChange={updateField("message")}
           onBlur={(event) =>
-            validateField("message", event.currentTarget.value)
+            handleRequiredBlur("message", event.currentTarget.value)
           }
           error={formErrors.message}
           placeholder={t("contactMessagePlaceholder")}

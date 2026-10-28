@@ -14,6 +14,7 @@ import {
 } from "@ai-sdk/gateway";
 import {
   ChatApiError,
+  readChatBody,
   validateMessages,
   buildSystemPrompt,
   createCorsHeaders,
@@ -179,8 +180,8 @@ export async function POST(request: NextRequest) {
   const corsHeaders = createCorsHeaders(requestOrigin);
 
   try {
-    const body = await request.json();
-    const messages = normalizeIncomingMessages(body.messages);
+    const body = (await readChatBody(request)) as { messages?: unknown } | null;
+    const messages = normalizeIncomingMessages(body?.messages);
 
     const lastMessage = messages[messages.length - 1] as {
       content?: string | Array<string | { text?: string }>;
@@ -262,7 +263,7 @@ export async function POST(request: NextRequest) {
     const code: ChatErrorCode =
       normalized.status === 429
         ? "ai_busy"
-        : normalized.status === 400
+        : normalized.status === 400 || normalized.status === 413
           ? "bad_request"
           : normalized.status >= 500
             ? "ai_unavailable"

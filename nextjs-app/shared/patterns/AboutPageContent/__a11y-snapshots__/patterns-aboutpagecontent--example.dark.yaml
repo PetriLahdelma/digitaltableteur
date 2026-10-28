@@ -9,8 +9,8 @@
   - heading "Tools, not just advice" [level=3]
   - paragraph: "Tooling to support your team: Rhythmguard, Project Spine and machine-readable component contracts that agents and CI can check."
 - article:
-  - heading "Accessibility, proven" [level=3]
-  - paragraph: Automated checks cover every component, forced colors and target size included, so accessibility is shown, not promised.
+  - heading "Accessibility, tested" [level=3]
+  - paragraph: Automated checks run on every component, forced colors and target size included. The results show which criteria were tested; they are not a certificate of full conformance.
 - article:
   - heading "One team from brand to code" [level=3]
   - paragraph: Identity, product design and engineering in the same hands, so nothing is lost between the concept and the shipped interface.

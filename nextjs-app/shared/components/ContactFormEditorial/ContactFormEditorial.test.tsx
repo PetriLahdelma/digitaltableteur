@@ -71,6 +71,30 @@ describe("ContactFormEditorial", () => {
     expect(await axe(container)).toHaveNoViolations();
   }, 30_000);
 
+  it("does not focus a field on load or flag an untouched field on blur", async () => {
+    const user = userEvent.setup();
+    render(<ContactFormEditorial />);
+
+    const name = screen.getByLabelText(/contactFullName/);
+    expect(name).not.toHaveFocus();
+
+    await user.click(name);
+    await user.tab();
+    expect(name).not.toHaveAttribute("aria-invalid", "true");
+    expect(screen.queryByText("contactValidationFullNameRequired")).not.toBeInTheDocument();
+  });
+
+  it("flags a required field on blur once the visitor has typed in it", async () => {
+    const user = userEvent.setup();
+    render(<ContactFormEditorial />);
+
+    const name = screen.getByLabelText(/contactFullName/);
+    await user.type(name, "P");
+    await user.clear(name);
+    await user.tab();
+    expect(name).toHaveAttribute("aria-invalid", "true");
+  });
+
   it("allows an invalid submit attempt, reports every error, and focuses the first field", async () => {
     const user = userEvent.setup();
     const fetchSpy = vi.spyOn(globalThis, "fetch");

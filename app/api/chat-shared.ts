@@ -189,6 +189,45 @@ export const createCorsHeaders = (origin: string | null | undefined) => {
 };
 
 /**
+ * Server-side request bounds. The widget sends the whole conversation on
+ * every turn and caps the composer at 1,000 characters; these limits hold
+ * for any client, so an oversized request is refused before it reaches the
+ * guardrail or the model. The body cap leaves room for a long conversation
+ * with tool results (the route keeps only the latest turns for the model).
+ */
+export const CHAT_MAX_BODY_BYTES = 256 * 1024;
+export const CHAT_MAX_MESSAGES = 100;
+export const CHAT_MAX_USER_TEXT_CHARS = 1_000;
+
+/** Read and parse the request body within CHAT_MAX_BODY_BYTES. */
+export async function readChatBody(request: Request): Promise<unknown> {
+  const declared = Number(request.headers.get("content-length"));
+  if (Number.isFinite(declared) && declared > CHAT_MAX_BODY_BYTES) {
+    throw new ChatApiError(413, "Chat request is too large");
+  }
+  const raw = await request.text();
+  if (new TextEncoder().encode(raw).byteLength > CHAT_MAX_BODY_BYTES) {
+    throw new ChatApiError(413, "Chat request is too large");
+  }
+  try {
+    return JSON.parse(raw) as unknown;
+  } catch {
+    throw new ChatApiError(400, "Chat request is not valid JSON");
+  }
+}
+
+function userTextLength(record: Record<string, unknown>): number {
+  const source = record.content ?? record.parts;
+  if (typeof source === "string") return source.length;
+  if (!Array.isArray(source)) return 0;
+  return source.reduce<number>((total, part) => {
+    if (typeof part === "string") return total + part.length;
+    const text = (part as { text?: unknown } | null)?.text;
+    return total + (typeof text === "string" ? text.length : 0);
+  }, 0);
+}
+
+/**
  * Validates that messages is an array of message objects.
  * Each message must have either content (string/array) or parts (array).
  * Uses Record<string, unknown>[] to remain compatible with downstream casts.
@@ -198,6 +237,12 @@ export function validateMessages(
 ): asserts messages is Record<string, unknown>[] {
   if (!Array.isArray(messages)) {
     throw new ChatApiError(400, "messages must be an array");
+  }
+  if (messages.length === 0) {
+    throw new ChatApiError(400, "messages must not be empty");
+  }
+  if (messages.length > CHAT_MAX_MESSAGES) {
+    throw new ChatApiError(413, "Too many messages in one request");
   }
   for (const msg of messages) {
     if (typeof msg !== "object" || msg === null) {
@@ -209,6 +254,9 @@ export function validateMessages(
     const hasParts = Array.isArray(record.parts);
     if (!hasContent && !hasParts) {
       throw new ChatApiError(400, "Invalid message format");
+    }
+    if (record.role === "user" && userTextLength(record) > CHAT_MAX_USER_TEXT_CHARS) {
+      throw new ChatApiError(413, "Message is too long");
     }
   }
 }

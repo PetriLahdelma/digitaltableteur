@@ -194,4 +194,47 @@ describe("contact route", () => {
     const response = await POST(createContactRequest({ submissionId: "not-a-uuid" }));
     expect(response.status).toBe(400);
   });
+
+  it("refuses an attachment whose bytes are not a PDF, PNG or JPEG", async () => {
+    const response = await POST(
+      createContactRequest({
+        attachmentName: "brief.pdf",
+        attachmentType: "application/pdf",
+        attachmentData: `data:application/pdf;base64,${Buffer.from("MZ not a pdf").toString("base64")}`,
+      }),
+    );
+    expect(response.status).toBe(400);
+    expect(getDatabaseMock).not.toHaveBeenCalled();
+  });
+
+  it("stores the type and size measured from the attachment bytes", async () => {
+    const collection = {
+      createIndex: vi.fn(async () => "submissionId_1"),
+      insertOne: vi.fn(async () => ({ insertedId: "contact-1" })),
+      updateOne: vi.fn(async () => ({ modifiedCount: 1 })),
+    };
+    getDatabaseMock.mockResolvedValue({
+      collection: vi.fn(() => collection),
+    } as unknown as MockDb);
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response("{}", { status: 200 }));
+
+    const pdf = Buffer.from("%PDF-1.7 test");
+    const response = await POST(
+      createContactRequest({
+        attachmentName: "../brief.PDF",
+        attachmentType: "text/html",
+        attachmentSize: 999_999,
+        attachmentData: `data:application/octet-stream;base64,${pdf.toString("base64")}`,
+      }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(collection.insertOne).toHaveBeenCalledWith(
+      expect.objectContaining({
+        attachmentName: "brief.PDF",
+        attachmentType: "application/pdf",
+        attachmentSize: pdf.length,
+      }),
+    );
+  });
 });
