@@ -35,7 +35,6 @@ import {
   resolveLeadPersona,
 } from "@/nextjs-app/shared/lib/donny-lead/donny-lead-routing";
 import { resolveDonnyBookingEmbed } from "@/nextjs-app/shared/lib/donny-booking";
-import { storeDonnyLead } from "../lib/donny-lead-store";
 
 // ToolSet type matches ai package's expected tool shape
 type ToolMap = Record<string, Tool<any, any>>;
@@ -542,7 +541,7 @@ const staticTools: ToolMap = {
 
   "studio.createLead": tool({
     description:
-      "Store a qualified lead from chat when the visitor explicitly consents to follow-up. Requires consent=true. Email is optional but recommended. Returns contact form prefill — never auto-submits the contact form.",
+      "Prepare a contact-form prefill from a qualified chat when the visitor wants follow-up. Stores nothing: the visitor reviews and submits the form on /contact, and only that submission is saved. Requires consent=true. Never auto-submits the contact form.",
     inputSchema: jsonSchema<{
       persona: string;
       consent: boolean;
@@ -619,26 +618,12 @@ const staticTools: ToolMap = {
         summary: input?.summary,
       });
 
-      const { leadId, stored } = await storeDonnyLead({
-        persona,
-        name: input?.name,
-        email: input?.email,
-        company: input?.company,
-        need: input?.need,
-        budget: input?.budget,
-        timeline: input?.timeline,
-        role: input?.role,
-        recommendedPackageId: input?.recommendedPackageId,
-        recommendedCaseSlugs: input?.recommendedCaseSlugs,
-        summary: input?.summary,
-      });
-
+      // Nothing is stored here: the model's consent flag is not the
+      // visitor's own action. The visitor's submit on /contact is.
       return {
-        stored,
-        leadId: leadId ?? undefined,
+        stored: false,
         contactPrefill,
         contactUrl: "/contact",
-        reason: stored ? undefined : "storage_unavailable",
       };
     },
   }),

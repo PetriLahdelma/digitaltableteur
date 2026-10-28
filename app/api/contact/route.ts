@@ -1,14 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import sanitize from "mongo-sanitize";
+import type { Collection, Document, ObjectId } from "mongodb";
 import { getDatabase } from "../../lib/mongodb";
 import { z } from "zod";
 import { createCorsHeaders } from "../chat-shared";
-import {
-  buildContactNotificationHtml,
-  buildContactNotificationSubject,
-  buildContactNotificationText,
-  type ContactNotificationPayload,
-} from "../../lib/contact-notification-email";
+import { deliverStoredContact } from "../../lib/contact-delivery";
 import { checkRateLimit } from "../../lib/rate-limit";
 import { getClientIp, getUserAgent } from "../../lib/security-logger";
 
@@ -36,54 +32,35 @@ const contactSchema = z.object({
   followUpPreferences: z.string().max(500).optional().nullable(),
   requestPortfolioMaterials: z.boolean().optional().nullable(),
   time: z.string().max(200).optional().nullable(),
+  // One id per form fill, sent again on a retry, so a retried submit
+  // finds the stored record instead of inserting a duplicate.
+  submissionId: z.string().uuid().optional().nullable(),
 });
 
-async function sendEmailViaResend(payload: ContactNotificationPayload) {
-  const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const TO = process.env.CONTACT_EMAIL_TO || "mail@digitaltableteur.com";
-  const FROM =
-    process.env.CONTACT_EMAIL_FROM ||
-    "Digitaltableteur <onboarding@resend.dev>";
+let submissionIdIndexEnsured: Promise<unknown> | null = null;
 
-  if (!RESEND_API_KEY) {
-    throw new Error("RESEND_API_KEY is not configured");
-  }
-
-  const subject = buildContactNotificationSubject(payload);
-  const text = buildContactNotificationText(payload);
-  const html = buildContactNotificationHtml(payload);
-
-  const attachments = [];
-  if (payload.attachmentData && payload.attachmentName) {
-    const parts = payload.attachmentData.split(",");
-    const base64Content = parts.length > 1 ? parts[1] : parts[0];
-    attachments.push({
-      filename: payload.attachmentName,
-      content: base64Content,
-      contentType: payload.attachmentType || undefined,
+function ensureSubmissionIdIndex(collection: Collection<Document>) {
+  submissionIdIndexEnsured ??= collection
+    .createIndex(
+      { submissionId: 1 },
+      {
+        unique: true,
+        partialFilterExpression: { submissionId: { $type: "string" } },
+      },
+    )
+    .catch((indexError) => {
+      console.error("contacts submissionId index error:", indexError);
+      submissionIdIndexEnsured = null;
     });
-  }
+  return submissionIdIndexEnsured;
+}
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${RESEND_API_KEY}`,
-    },
-    body: JSON.stringify({
-      from: FROM,
-      to: [TO],
-      reply_to: payload.email,
-      subject,
-      text,
-      html,
-      ...(attachments.length ? { attachments } : {}),
-    }),
-  });
-
-  if (!res.ok) {
-    throw new Error(`Resend send failed: ${res.status}`);
-  }
+function isDuplicateKeyError(error: unknown): boolean {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    (error as { code?: unknown }).code === 11000
+  );
 }
 
 export async function POST(req: NextRequest) {
@@ -161,55 +138,53 @@ export async function POST(req: NextRequest) {
     requestPortfolioMaterials: parsed.requestPortfolioMaterials === true,
   };
 
+  const submissionId = parsed.submissionId ?? null;
+
   try {
     const db = await getDatabase();
     const collection = db.collection("contacts");
+    if (submissionId) await ensureSubmissionIdIndex(collection);
 
-    const insertResult = await collection.insertOne({
-      ...sanitizedParsed,
-      submittedFrom: ip,
-      userAgent,
-      emailDeliveryStatus: "pending",
-      createdAt: new Date(),
-    });
-
+    let id: ObjectId;
     try {
-      await sendEmailViaResend(sanitizedParsed);
-    } catch (emailError) {
-      await collection.updateOne(
-        { _id: insertResult.insertedId },
-        {
-          $set: {
-            emailDeliveryStatus: "failed",
-            emailDeliveryError:
-              emailError instanceof Error ? emailError.message : "Unknown",
-            emailDeliveryUpdatedAt: new Date(),
-          },
-        },
+      const insertResult = await collection.insertOne({
+        ...sanitizedParsed,
+        ...(submissionId ? { submissionId } : {}),
+        submittedFrom: ip,
+        userAgent,
+        emailDeliveryStatus: "pending",
+        emailDeliveryAttempts: 0,
+        createdAt: new Date(),
+      });
+      id = insertResult.insertedId;
+    } catch (insertError) {
+      if (!submissionId || !isDuplicateKeyError(insertError)) throw insertError;
+      // A retry of a submission that is already stored: never insert it
+      // twice, only finish the notification if it has not gone out yet.
+      const existing = await collection.findOne(
+        { submissionId },
+        { projection: { _id: 1, emailDeliveryStatus: 1 } },
       );
-      throw emailError;
+      if (!existing) throw insertError;
+      if (existing.emailDeliveryStatus !== "failed") {
+        // Sent, or still pending from the first attempt (the cron picks up
+        // a pending record that never finished).
+        const sent = existing.emailDeliveryStatus === "sent";
+        return NextResponse.json(
+          { status: sent ? "ok" : "accepted" },
+          { status: sent ? 200 : 202, headers: corsHeaders },
+        );
+      }
+      id = existing._id;
     }
 
-    try {
-      await collection.updateOne(
-        { _id: insertResult.insertedId },
-        {
-          $set: {
-            emailDeliveryStatus: "sent",
-            emailDeliveryUpdatedAt: new Date(),
-          },
-        },
-      );
-    } catch (updateError) {
-      console.warn(
-        "Contact email status update failed:",
-        updateError instanceof Error ? updateError.message : "Unknown",
-      );
-    }
+    // The submission is saved, so the visitor gets a success either way. A
+    // failed notification is marked, reported and retried by the daily cron.
+    const delivered = await deliverStoredContact(collection, id, sanitizedParsed);
 
     return NextResponse.json(
-      { status: "ok" },
-      { status: 200, headers: corsHeaders },
+      { status: delivered ? "ok" : "accepted" },
+      { status: delivered ? 200 : 202, headers: corsHeaders },
     );
   } catch (err) {
     console.error(

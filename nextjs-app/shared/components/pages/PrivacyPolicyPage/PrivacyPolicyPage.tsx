@@ -304,6 +304,12 @@ export function PrivacyPolicyPage() {
           {t("privacyPolicyRightsExercise")}
         </Text>
         <Text as="p" size="xs">
+          {t("privacyPolicyRightsSelfService")}{" "}
+          <Link href="/privacy-policy/delete" size="inherit">
+            {t("privacyPolicyRightsSelfServiceLink")}
+          </Link>
+        </Text>
+        <Text as="p" size="xs">
           {t("privacyPolicyRightsComplaint")}
         </Text>
       </Section>

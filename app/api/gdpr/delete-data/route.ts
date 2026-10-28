@@ -1,12 +1,22 @@
 /**
- * GDPR Data Deletion API Endpoint
- * Allows users to request deletion of their personal data
- * Complies with GDPR Article 17 (Right to Erasure)
+ * GDPR Data Deletion API Endpoint (GDPR Article 17, Right to Erasure)
+ *
+ * POST /api/gdpr/delete-data asks for erasure: when data exists for the
+ * address, a one-time confirmation link is mailed to it (app/lib/gdpr-
+ * deletion.ts). Nothing is deleted here. The link opens
+ * /privacy-policy/delete, which confirms through
+ * POST /api/gdpr/delete-data/confirm.
  */
 
-import { NextRequest, NextResponse } from "next/server";
+import * as Sentry from "@sentry/nextjs";
+import { after, NextRequest, NextResponse } from "next/server";
 import sanitize from "mongo-sanitize";
 import { getDatabase } from "../../../lib/mongodb";
+import {
+  issueDeletionLink,
+  normalizeEmail,
+  type DeletionLocale,
+} from "../../../lib/gdpr-deletion";
 import {
   SecurityLogger,
   getClientIp,
@@ -15,36 +25,16 @@ import {
 import { createCorsHeaders } from "../../chat-shared";
 import { checkRateLimit } from "../../../lib/rate-limit";
 
-interface DeleteDataRequest {
-  email: string;
-  reason?: string;
-  confirmationToken?: string;
-}
-
 const GDPR_RATE_LIMIT_WINDOW_MS = 3_600_000; // 1 hour
 const GDPR_RATE_LIMIT_MAX = 3; // requests per window per email
 const GDPR_IP_RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
 const GDPR_IP_RATE_LIMIT_MAX = 10; // requests per window per IP
 
-/**
- * Audit-trail retention. The deletion_requests record exists to demonstrate
- * that an erasure request was honoured (GDPR Art. 5(2) accountability and
- * Art. 17(3)(e) legal-claims defence), so it keeps the requested email but is
- * data-minimised: no user agent, IP truncated to network granularity, and the
- * whole record expires via a TTL index after 12 months.
- */
-const DELETION_AUDIT_TTL_SECONDS = 60 * 60 * 24 * 365;
+const LOCALES: readonly DeletionLocale[] = ["en", "fi", "sv"];
 
-/** Truncate an IP to network granularity (IPv4 /24, IPv6 /48-ish). */
-const anonymizeIp = (ip: string): string => {
-  if (ip.includes(":")) {
-    return `${ip.split(":").slice(0, 3).join(":")}::`;
-  }
-  const parts = ip.split(".");
-  return parts.length === 4 ? `${parts.slice(0, 3).join(".")}.0` : "unknown";
-};
-
-let auditTtlIndexEnsured: Promise<unknown> | null = null;
+/** The same answer whether or not data exists, so nothing can be probed. */
+const REQUEST_ACCEPTED_MESSAGE =
+  "If data is associated with this email address, a confirmation link has been sent to it. Nothing is deleted until the link is opened and the deletion confirmed.";
 
 /**
  * POST /api/gdpr/delete-data
@@ -56,9 +46,11 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const rawEmail = body.email;
-    const email = rawEmail ? sanitize(rawEmail) : null;
-    const reason = body.reason;
+    const rawEmail = typeof body.email === "string" ? body.email : null;
+    const email = rawEmail ? normalizeEmail(sanitize(rawEmail)) : null;
+    const locale: DeletionLocale = LOCALES.includes(body.locale)
+      ? body.locale
+      : "en";
 
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -134,61 +126,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    try {
-      const db = await getDatabase();
-      const contacts = db.collection("contacts");
+    // The lookup and the mail run after the response, so the answer and
+    // its timing are the same whether or not data exists.
+    after(async () => {
+      try {
+        await issueDeletionLink(await getDatabase(), email, locale);
+      } catch (error) {
+        Sentry.captureException(error, { tags: { area: "gdpr", step: "issue-link" } });
+      }
+    });
 
-      // Delete any data associated with this email. No existence check
-      // first: the response must be identical whether or not records
-      // existed, so the endpoint cannot be used to probe which email
-      // addresses are stored. The actual count goes to the audit trail only.
-      const deletionResult = await contacts.deleteMany({ email });
+    SecurityLogger.logDataDeletion(ip, userAgent, email, true, "Link requested");
 
-      // Data-minimised audit trail (see DELETION_AUDIT_TTL_SECONDS note).
-      const deletionRequests = db.collection("deletion_requests");
-      auditTtlIndexEnsured ??= deletionRequests
-        .createIndex(
-          { requestedAt: 1 },
-          { expireAfterSeconds: DELETION_AUDIT_TTL_SECONDS },
-        )
-        .catch((indexError) => {
-          console.error("deletion_requests TTL index error:", indexError);
-          auditTtlIndexEnsured = null;
-        });
-      await auditTtlIndexEnsured;
-      await deletionRequests.insertOne({
-        email,
-        reason: reason || "User request",
-        requestedAt: new Date(),
-        requestIp: anonymizeIp(ip),
-        deletedCount: deletionResult.deletedCount,
-        status: "completed",
-      });
-
-      SecurityLogger.logDataDeletion(ip, userAgent, email, true);
-
-      return NextResponse.json(
-        {
-          message:
-            "If data was associated with this email address, it has been deleted.",
-          deleted: true,
-        },
-        { status: 200 },
-      );
-    } catch (err) {
-      console.error("MongoDB deletion error:", err);
-      SecurityLogger.logDataDeletion(
-        ip,
-        userAgent,
-        email,
-        false,
-        "Database error",
-      );
-      return NextResponse.json(
-        { error: "Failed to delete data. Please try again later." },
-        { status: 500 },
-      );
-    }
+    return NextResponse.json(
+      { message: REQUEST_ACCEPTED_MESSAGE, requested: true },
+      { status: 202 },
+    );
   } catch (error) {
     console.error("GDPR deletion request error:", error);
     SecurityLogger.logDataDeletion(
@@ -243,7 +196,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     message:
-      "To request deletion of your personal data, send a POST request with your email address. The request is processed the same way whether or not data exists.",
+      "To request deletion of your personal data, use https://www.digitaltableteur.com/privacy-policy/delete or send a POST request with your email address. A confirmation link is mailed to that address; nothing is deleted until it is confirmed.",
   });
 }
 

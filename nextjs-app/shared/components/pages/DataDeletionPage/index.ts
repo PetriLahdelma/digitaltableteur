@@ -1,0 +1,1 @@
+export { DataDeletionPage } from "./DataDeletionPage";

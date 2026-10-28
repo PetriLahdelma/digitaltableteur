@@ -153,20 +153,22 @@ test.describe.serial("GDPR deletion API", () => {
       data: { email: testEmail("a"), reason: "E2E anti-enumeration test" },
     });
     skipIfRateLimitedOrDbDown(first);
-    expect(first.status()).toBe(200);
+    expect(first.status()).toBe(202);
 
     const second = await request.post("/api/gdpr/delete-data", {
       data: { email: testEmail("b"), reason: "E2E anti-enumeration test" },
     });
     skipIfRateLimitedOrDbDown(second);
-    expect(second.status()).toBe(200);
+    expect(second.status()).toBe(202);
 
     const firstBody = await first.json();
     const secondBody = await second.json();
 
     // Identical shape and content: no record counts, no existence signal.
+    // Nothing is deleted here: a confirmation link is mailed when data exists.
     expect(firstBody).toEqual(secondBody);
-    expect(firstBody.deleted).toBe(true);
+    expect(firstBody.requested).toBe(true);
+    expect(firstBody).not.toHaveProperty("deleted");
     expect(firstBody).not.toHaveProperty("recordsDeleted");
   });
 

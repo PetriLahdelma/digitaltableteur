@@ -21,3 +21,9 @@
 .anchorTarget {
   scroll-margin-block-start: var(--space-layout-120);
 }
+
+/* Forms inside a column FlexBox otherwise shrink to their content. */
+
+.fullWidthForm {
+  inline-size: 100%;
+}

@@ -1033,10 +1033,16 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   }, [messages, emailWorkflow.step, t, setMessages]);
 
+  // One id per drafted message, reused when a failed send is retried, so
+  // the server never stores the same message twice.
+  const chatSubmissionIdRef = useRef<string | null>(null);
+
   // Handle send side-effects when entering 'sending'
   useEffect(() => {
     if (emailWorkflow.step !== "sending" || !("draft" in emailWorkflow)) return;
     const draft = emailWorkflow.draft;
+    chatSubmissionIdRef.current ??= crypto.randomUUID();
+    const submissionId = chatSubmissionIdRef.current;
     let cancelled = false;
     (async () => {
       try {
@@ -1049,12 +1055,14 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             phone: draft.phone?.trim() || "",
             interest: draft.interest,
             message: draft.message.trim(),
+            submissionId,
           }),
         });
         if (!response.ok) {
           const { error } = await response.json().catch(() => ({}));
           throw new Error(error || "sendFailed");
         }
+        chatSubmissionIdRef.current = null;
         if (cancelled) return;
         dispatchEmailWorkflow({ type: "SEND_SUCCESS" });
       } catch (err: any) {

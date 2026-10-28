@@ -293,6 +293,9 @@ export function ContactFormEditorial({
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+  // One id per form fill: a retried submit reuses it, so the server finds
+  // the stored submission instead of saving a duplicate.
+  const submissionIdRef = useRef<string | null>(null);
 
   // Attachment state
   const [attachmentFile, setAttachmentFile] = useState<File | null>(null);
@@ -423,6 +426,7 @@ export function ContactFormEditorial({
 
   const resetFormState = () => {
     dispatchForm({ type: "RESET" });
+    submissionIdRef.current = null;
     setAttachmentFile(null);
     setAttachmentDataUrl(null);
     setAttachmentError("");
@@ -477,6 +481,7 @@ export function ContactFormEditorial({
 
     const now = new Date();
     const time = now.toLocaleString();
+    submissionIdRef.current ??= crypto.randomUUID();
 
     try {
       const response = await fetch("/api/contact", {
@@ -513,6 +518,7 @@ export function ContactFormEditorial({
               : null,
           attachmentNotice: attachmentEmailNotice,
           time,
+          submissionId: submissionIdRef.current,
         }),
       });
 
