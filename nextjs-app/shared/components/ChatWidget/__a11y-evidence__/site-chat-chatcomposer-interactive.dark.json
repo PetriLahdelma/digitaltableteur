@@ -1,8 +1,8 @@
 {
   "storyId": "site-chat-chatcomposer-interactive",
   "mode": "dark",
-  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-  "capturedAt": "2026-10-27T18:42:50.340Z",
+  "sourceSHA": "7530523f1f1eeed018d40ea1e27f403eacc7125e",
+  "capturedAt": "2026-10-28T16:27:59.563Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
