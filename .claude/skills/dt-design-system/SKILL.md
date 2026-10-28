@@ -85,6 +85,10 @@ npm run build:tokens
 
 Regenerates `nextjs-app/shared/foundations/dist/agent-manifest.json`.
 
+### Typography
+
+For text styling (measure, leading, rhythm, figures, small caps, hyphenation, EN/FI/SV quotes and numbers, logical properties) also load the personal `web-typography` skill. Map its advice onto existing tokens (`--font-size-text-*`, `--line-height-*`, `--tracking-*` in `variables.css`) and the `Text`/`Title` components; never add raw values beside them. Satoshi (`app/fonts/Satoshi-Variable*.woff2`, `wght` 300–900, default instance 900) is the single typeface: it has `tnum`, `pnum`, `frac`, `sups`, `ordn`, `kern`, `liga` and `ss01`–`ss04`, but **no** `onum`, `lnum`, `smcp` or `c2sc`, and its `case` only remaps three combining slash marks (useless for caps labels). So prose keeps its default lining figures, tables and prices use `tabular-nums`, acronyms stay in full caps and uppercase labels rely on tracking alone. `app/fonts.ts` passes no `weight` to `localFont`; Chromium treats the missing descriptor as `auto` (the font's 300–900 range, measured identical to an explicit range), so adding `weight: "300 900"` is optional hygiene, not a fix.
+
 ### @dt usage gate
 
 Do **not** replace pattern-level `<h*>` / header chrome `<button>` with `@dt/Title` / `@dt/Button` unless explicitly requested — that changes typography and breaks section CSS. Fix heading **levels** only (`h3` → `h2`) while keeping existing classes. `npm run lint:dt-usage` flags `@/components/ui/*` in `app/`, patterns, pages, and shared components (known shadcn debt allowlisted).
