@@ -8,7 +8,6 @@ import {
   PhoneInput,
   FlexBox,
   RadioGroup,
-  Select,
   Text,
   TextArea,
   TextInput,
@@ -141,40 +140,23 @@ export function IntakeField({
         );
       break;
     case "select":
-      // A long list (every time zone) gets type-to-filter; a short one stays a native select.
-      control =
-        field.options.length > 12 ? (
-          <Combobox
-            label={field.label[locale]}
-            options={field.options.map((option) => ({
-              value: option.id,
-              label: option.label[locale],
-            }))}
-            value={typeof value === "string" ? value : ""}
-            onValueChange={(next) => onChange(next)}
-            placeholder={copy.selectPlaceholder}
-            required={required}
-            helperText={help}
-            error={error}
-          />
-        ) : (
-          <Select
-            label={field.label[locale]}
-            size="lg"
-            value={typeof value === "string" ? value : ""}
-            onValueChange={(next) => onChange(next)}
-            options={[
-              { value: "", label: copy.selectPlaceholder },
-              ...field.options.map((option) => ({
-                value: option.id,
-                label: option.label[locale],
-              })),
-            ]}
-            required={required}
-            helperText={help}
-            error={error}
-          />
-        );
+      // Every select is the design-system dropdown, so short and long lists
+      // look and behave the same; long ones (every time zone) also filter.
+      control = (
+        <Combobox
+          label={field.label[locale]}
+          options={field.options.map((option) => ({
+            value: option.id,
+            label: option.label[locale],
+          }))}
+          value={typeof value === "string" ? value : ""}
+          onValueChange={(next) => onChange(next)}
+          placeholder={copy.selectPlaceholder}
+          required={required}
+          helperText={help}
+          error={error}
+        />
+      );
       break;
     case "scale":
       control = (

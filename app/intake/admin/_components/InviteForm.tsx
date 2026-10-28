@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AlertBanner, Button, FlexBox, RadioGroup, Select, Text, TextArea, TextInput, Title } from "@digitaltableteur/react";
+import { AlertBanner, Button, Combobox, FlexBox, RadioGroup, Text, TextArea, TextInput, Title } from "@digitaltableteur/react";
 import SummaryList from "@dt/SummaryList";
 
 import { adminCopy } from "@/app/lib/intake/admin-copy";
@@ -129,8 +129,7 @@ export function InviteForm({
         {problem ? <AlertBanner tone="error" description={problem} focusOnMount /> : null}
         <TextInput size="lg" type="text" label={t("fieldName")} value={form.name} onValueChange={(value) => set("name")(String(value))} error={errors.name} required autoComplete="off" />
         <TextInput size="lg" width="30ch" type="email" label={t("fieldEmail")} value={form.email} onValueChange={(value) => set("email")(String(value))} error={errors.email} required autoComplete="off" />
-        <Select
-          size="lg"
+        <Combobox
           label={t("fieldForm")}
           value={form.questionnaireId}
           onValueChange={set("questionnaireId")}
