@@ -8,6 +8,7 @@ import React, {
   useState,
   useReducer,
 } from "react";
+import { trackLead } from "../../lib/trackLead";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import type { UIMessage } from "ai";
@@ -1063,6 +1064,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           throw new Error(error || "sendFailed");
         }
         chatSubmissionIdRef.current = null;
+        trackLead("chat");
         if (cancelled) return;
         dispatchEmailWorkflow({ type: "SEND_SUCCESS" });
       } catch (err: any) {

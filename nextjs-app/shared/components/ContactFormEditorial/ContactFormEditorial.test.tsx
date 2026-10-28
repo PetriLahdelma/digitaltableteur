@@ -158,6 +158,39 @@ describe("ContactFormEditorial", () => {
     expect(container.querySelector("form")).toHaveAttribute("novalidate");
   });
 
+  it("reports generate_lead only after the API accepts the enquiry", async () => {
+    const gtag = vi.fn();
+    (window as unknown as { gtag?: unknown }).gtag = gtag;
+    const fetchSpy = vi
+      .spyOn(globalThis, "fetch")
+      .mockResolvedValueOnce(new Response(null, { status: 500 }))
+      .mockResolvedValueOnce(new Response(null, { status: 202 }));
+    const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
+    const user = userEvent.setup();
+    try {
+      render(<ContactFormEditorial />);
+      await user.type(screen.getByLabelText(/contactFullName/), "Test Person");
+      await user.type(screen.getByLabelText(/^contactEmail/), "test@example.com");
+      await user.type(screen.getByLabelText(/^contactMessage/), "Hello there");
+      const submit = screen.getByRole("button", { name: /send|submit/i });
+
+      await user.click(submit);
+      await waitFor(() => expect(fetchSpy).toHaveBeenCalledTimes(1));
+      await waitFor(() => expect(submit).toBeEnabled());
+      expect(gtag).not.toHaveBeenCalled();
+
+      await user.click(submit);
+      await waitFor(() =>
+        expect(gtag).toHaveBeenCalledWith("event", "generate_lead", { lead_source: "contact_form" }),
+      );
+      expect(gtag).toHaveBeenCalledTimes(1);
+    } finally {
+      delete (window as unknown as { gtag?: unknown }).gtag;
+      fetchSpy.mockRestore();
+      consoleError.mockRestore();
+    }
+  }, 30_000);
+
   it("shows an error toast and keeps input when submission fails", async () => {
     showToastMock.mockClear();
     const consoleError = vi
