@@ -78,85 +78,85 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-default.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.101Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:42.601Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-default.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:32.292Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:32.360Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-default.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:43.519Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:37.463Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-example.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.708Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:43.085Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-example.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:33.544Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:32.851Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-example.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.107Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:38.006Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-keyboard-selection.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.995Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:43.340Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-keyboard-selection.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:33.928Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:33.107Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-keyboard-selection.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.399Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:38.268Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-playground.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.411Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:42.843Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-playground.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:32.836Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:32.610Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-playground.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:43.808Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:37.710Z",
             "passed": true,
             "runner": "local"
           }
@@ -174,141 +174,141 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-default.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.101Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:42.601Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-default.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:58.513Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:47.413Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-default.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:32.292Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:32.360Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-default.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:43.519Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:37.463Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-example.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.708Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:43.085Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-example.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.016Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:47.865Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-example.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:33.544Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:32.851Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-example.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.107Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:38.006Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-forced-colors.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:53.019Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:43.364Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-forced-colors.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.327Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:48.127Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:33.975Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:33.132Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-forced-colors.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.428Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:38.291Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-keyboard-selection.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.995Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:43.340Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-keyboard-selection.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.294Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:48.103Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-keyboard-selection.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:33.928Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:33.107Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-keyboard-selection.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.399Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:38.268Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-playground.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.411Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:42.843Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-playground.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:58.765Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:47.643Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-playground.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:32.836Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:32.610Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-playground.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:43.808Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:37.710Z",
             "passed": true,
             "runner": "local"
           }
@@ -322,29 +322,29 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-default.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:58.513Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:47.413Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-example.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.016Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:47.865Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-keyboard-selection.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.294Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:48.103Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Combobox/__a11y-evidence__/forms-combobox-playground.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:58.765Z",
+            "sourceCommit": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+            "capturedAt": "2026-10-28T22:52:47.643Z",
             "passed": true,
             "runner": "local"
           }
