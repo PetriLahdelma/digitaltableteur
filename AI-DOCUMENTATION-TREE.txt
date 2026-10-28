@@ -88,7 +88,6 @@ digitaltableteur/
 │           • JIT search commands (find components, tests, stories)
 │           • Common gotchas
 │
-├── api-legacy-vercel-functions/ (Serverless Functions)
 │   └── 📄 AGENTS.md (NEW - 120 lines)
 │       └── Serverless function quick reference
 │           • File structure
@@ -158,7 +157,6 @@ Generic agents read AGENTS.md for quick reference:
 
 1. Need Next.js patterns → cat app/AGENTS.md
 2. Need component rules → cat shared/components/AGENTS.md
-3. Need serverless patterns → cat api-legacy-vercel-functions/AGENTS.md
 4. Need automation commands → cat scripts/AGENTS.md
 
 ═══════════════════════════════════════════════════════════════════

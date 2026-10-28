@@ -46,7 +46,7 @@ Chief coordinating agent responsible for project-wide planning, task delegation,
 - **Root**: `/CLAUDE.md` (this file)
 - **Apps**: `/app/CLAUDE.md`, `/src/` legacy context
 - **Components**: `/shared/components/CLAUDE.md`, `docs/LLM_COMPONENT_GENERATION_RULES.md`
-- **APIs**: `/api-legacy-vercel-functions/AGENTS.md`
+- **APIs**: `/app/api/AGENTS.md`
 - **Migration**: `docs/NEXTJS_MIGRATION_PLAN.md`
 
 ### Key Commands
@@ -166,7 +166,7 @@ npm run generate-sentry-summary
 **User**: "Contact form is broken in production"
 
 **Orchestrator Actions**:
-1. Read `api-legacy-vercel-functions/contact.js` and related frontend code
+1. Read `app/api/contact/route.ts` and related frontend code
 2. Check Sentry for recent errors: `npm run generate-sentry-summary`
 3. Delegate to **systems-architect**: "Diagnose issue (likely CORS or EmailJS config)"
 4. If simple fix: Implement directly

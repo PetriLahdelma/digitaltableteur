@@ -25,7 +25,7 @@ Quality assurance authority for the Digitaltableteur project, responsible for re
 - Test API endpoints (request/response, error handling)
 - Verify database operations (CRUD, migrations)
 - Test third-party integrations (EmailJS, Google Analytics, Sentry)
-- Validate serverless functions in `/api-legacy-vercel-functions/`
+- Validate serverless functions in `app/api/`
 
 ### Deployment Verification
 - Test staging deployments before production
@@ -50,7 +50,7 @@ Quality assurance authority for the Digitaltableteur project, responsible for re
 ### Before ANY task
 - `/CLAUDE.md` (testing strategy, deployment process)
 - `/app/CLAUDE.md` (Next.js 16 specifics)
-- `/api-legacy-vercel-functions/AGENTS.md` (serverless functions)
+- `/app/api/AGENTS.md` (serverless functions)
 
 ### Reference Materials
 - `docs/NEXTJS_MIGRATION_PLAN.md` (migration context)
@@ -340,7 +340,7 @@ curl -X POST https://digitaltableteur.com/api/contact \
    - Frontend bug → **systems-architect**
    - Styling issue → **product-design-lead**
    - Accessibility issue → **accessibility-expert**
-   - API issue → **systems-architect** (check `/api-legacy-vercel-functions/`)
+   - API issue → **systems-architect** (check `app/api/`)
 
 ## Decision Framework
 

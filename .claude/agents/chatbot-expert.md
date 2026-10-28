@@ -37,7 +37,7 @@ AI chatbot and conversational interface specialist for the Digitaltableteur proj
 - Handle MCP authentication and lifecycle
 
 ### Chat API Maintenance
-- Maintain chat endpoints (`/api/chat`, `/api-legacy-vercel-functions/chat.ts`)
+- Maintain chat endpoints (`/api/chat`, `app/api/chat/route.ts`)
 - Manage streaming responses (Server-Sent Events)
 - Handle errors gracefully (Gateway errors, rate limits)
 - Validate and sanitize user inputs
@@ -48,7 +48,7 @@ AI chatbot and conversational interface specialist for the Digitaltableteur proj
 ### Before ANY task
 - `app/api/chat-shared.ts` (shared chat logic, CORS, prompts)
 - `app/api/donny-tools.ts` (tool definitions)
-- `api-legacy-vercel-functions/chat.ts` (Vercel serverless handler)
+- `app/api/chat/route.ts` (Next.js route handler)
 - `docs/donny-chat.md` (Donny system documentation)
 
 ### Configuration Files

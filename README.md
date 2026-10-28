@@ -242,7 +242,6 @@ Root Documentation (Universal Rules)
 Subdirectory Documentation (Specific Context)
 ├── app/CLAUDE.md + AGENTS.md      # Next.js App Router patterns
 ├── shared/components/CLAUDE.md + AGENTS.md  # Component library rules
-├── api-legacy-vercel-functions/AGENTS.md    # Serverless patterns
 ├── docs/AGENTS.md                 # Documentation navigation
 └── scripts/AGENTS.md              # Automation patterns
 
@@ -365,7 +364,6 @@ digitaltableteur/
 │   ├── styles/                # Design tokens & global styles
 │   └── locales/               # i18n translation files
 │
-├── api-legacy-vercel-functions/  # Serverless functions
 │   ├── cors.js                # CORS middleware
 │   ├── openai-chat.js         # AI chat endpoint
 │   ├── save-contact.js        # Contact form handler

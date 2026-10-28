@@ -59,7 +59,6 @@
     "node_modules",
     "src",
     "shared_backup_20251123",
-    "api-legacy-vercel-functions",
     "digitaltableteur-blog",
     "scripts/design-system/agent-bench/fixtures",
     "**/*.test.ts",

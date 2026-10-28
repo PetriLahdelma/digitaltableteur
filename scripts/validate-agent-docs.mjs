@@ -81,7 +81,6 @@ const requiredAreas = [
   "providers/AGENTS.md",
   "scripts/AGENTS.md",
   "docs/AGENTS.md",
-  "api-legacy-vercel-functions/AGENTS.md",
   "digitaltableteur-blog/AGENTS.md",
 ];
 

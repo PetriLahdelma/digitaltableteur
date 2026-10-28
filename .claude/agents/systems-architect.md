@@ -62,7 +62,7 @@ Technical architecture authority for the Digitaltableteur monorepo, specializing
 ### For specific work
 
 - **Component APIs**: `docs/LLM_COMPONENT_GENERATION_RULES.md` (Section 4: Component API Design)
-- **Serverless functions**: `/api-legacy-vercel-functions/AGENTS.md`
+- **Serverless functions**: `/app/api/AGENTS.md`
 - **Testing**: `/CLAUDE.md` Testing Strategy section
 
 ## Key Principles
@@ -265,7 +265,7 @@ export function SearchInput() {
 
 ### Task 2: Design API Route
 
-1. **Read** existing functions in `/api-legacy-vercel-functions/`
+1. **Read** existing functions in `app/api/`
 2. **Plan**:
    - HTTP method (GET, POST, PUT, DELETE)
    - Request validation (Zod schema recommended)
