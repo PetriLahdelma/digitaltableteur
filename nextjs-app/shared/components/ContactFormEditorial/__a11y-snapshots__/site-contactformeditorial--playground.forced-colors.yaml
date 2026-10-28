@@ -1,6 +1,5 @@
 - text: Full Name*
-- textbox "Full Name*" [invalid]
-- alert: Full name is required
+- textbox "Full Name*"
 - text: Email Address*
 - textbox "Email Address*"
 - text: Your Message*
