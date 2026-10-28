@@ -14,3 +14,10 @@
 .prosePage section {
   margin-block-end: 2rem;
 }
+
+/* Linked sections (e.g. #business-contacts from the email signature): clear
+   the sticky site header when the page opens at the anchor. */
+
+.anchorTarget {
+  scroll-margin-block-start: var(--space-layout-120);
+}

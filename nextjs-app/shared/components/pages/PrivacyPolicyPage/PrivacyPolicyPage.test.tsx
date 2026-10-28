@@ -23,9 +23,22 @@ describe("PrivacyPolicyPage", () => {
     // DS structure after the dogfooding swaps: Text paragraphs, DS List items,
     // DS Section wrappers (the dead onBack back-button affordance is gone).
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
-    expect(screen.getAllByRole("list").length).toBe(6);
+    expect(screen.getAllByRole("list").length).toBe(7);
     expect(
       screen.getAllByText(/Last updated/i)[0].closest("p"),
     ).toBeInTheDocument();
+  });
+
+  it("gives business contacts a stable anchor for the email signature", () => {
+    const { container } = renderWithProviders(<PrivacyPolicyPage />);
+    const section = container.querySelector("#business-contacts");
+    expect(section).not.toBeNull();
+    expect(section).toHaveTextContent(/Business contacts, partners and recruiters/);
+    expect(section?.querySelector('a[href="mailto:mail@digitaltableteur.com"]')).not.toBeNull();
+  });
+
+  it("no longer treats continued use of the site as accepting the policy", () => {
+    renderWithProviders(<PrivacyPolicyPage />);
+    expect(screen.queryByText(/constitutes acceptance/i)).not.toBeInTheDocument();
   });
 });

@@ -68,12 +68,21 @@ export function PrivacyPolicyPage() {
     "privacyPolicyWebsiteVisitorsItem3",
   ];
 
+  const businessContacts = [
+    "privacyPolicyBusinessContactsItem1",
+    "privacyPolicyBusinessContactsItem2",
+    "privacyPolicyBusinessContactsItem3",
+    "privacyPolicyBusinessContactsItem4",
+  ];
+
   const sharingItems = [
     "privacyPolicySharingItem1",
     "privacyPolicySharingItem2",
     "privacyPolicySharingItem3",
     "privacyPolicySharingItem4",
     "privacyPolicySharingItem5",
+    "privacyPolicySharingItem6",
+    "privacyPolicySharingItem7",
   ];
 
   const cookiesItems = [
@@ -109,7 +118,7 @@ export function PrivacyPolicyPage() {
       </Text>
       <Text as="p" size="xs">
         {t("privacyPolicyLastUpdatedLabel")}{" "}
-        <Timestamp value="2026-10-26" format="date" size="xs" />
+        <Timestamp value="2026-10-28" format="date" size="xs" />
       </Text>
 
       <Section spacing="none">
@@ -175,6 +184,41 @@ export function PrivacyPolicyPage() {
         <Text as="p" size="xs">
           {t("privacyPolicyChatBody")}
         </Text>
+
+        {/* Linked from the email signature: keep the id stable. */}
+        <Section
+          spacing="none"
+          id="business-contacts"
+          className={styles.anchorTarget}
+        >
+          <Title level={3} size="xxs">
+            {t("privacyPolicyBusinessContactsSubtitle")}
+          </Title>
+          <Text as="p" size="xs">
+            {t("privacyPolicyBusinessContactsIntro")}
+          </Text>
+          <List
+            as="ul"
+            size="xs"
+            listStyleType="dash"
+            items={businessContacts.map((key) => t(key))}
+          />
+          <Text as="p" size="xs">
+            {t("privacyPolicyBusinessContactsSource")}
+          </Text>
+          <Text as="p" size="xs">
+            {t("privacyPolicyBusinessContactsUsage")}
+          </Text>
+          <Text as="p" size="xs">
+            {t("privacyPolicyBusinessContactsRetention")}
+          </Text>
+          <Text as="p" size="xs">
+            {renderContactLinks(
+              t("privacyPolicyBusinessContactsObjection"),
+              "mail@digitaltableteur.com",
+            )}
+          </Text>
+        </Section>
       </Section>
 
       <Section spacing="none">
