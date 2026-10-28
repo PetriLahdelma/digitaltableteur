@@ -1,0 +1,16 @@
+{
+  "storyId": "forms-phoneinput-example",
+  "mode": "light",
+  "sourceSHA": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+  "capturedAt": "2026-10-28T22:52:14.449Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

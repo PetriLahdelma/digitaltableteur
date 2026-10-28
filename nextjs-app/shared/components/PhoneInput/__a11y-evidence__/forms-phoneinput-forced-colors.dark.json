@@ -1,8 +1,8 @@
 {
   "storyId": "forms-phoneinput-forced-colors",
   "mode": "dark",
-  "sourceSHA": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-  "capturedAt": "2026-10-27T18:10:49.587Z",
+  "sourceSHA": "7801211fa310bb23da64db5c76edfffb59a4dd81",
+  "capturedAt": "2026-10-28T22:52:23.651Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
