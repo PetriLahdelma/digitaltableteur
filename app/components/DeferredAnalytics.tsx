@@ -94,7 +94,7 @@ function clearAnalyticsCookies(): void {
  * cookies, so withdrawing consent stops tracking that was live in the session.
  */
 export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
-  const { hasConsent } = useCookieConsent();
+  const { hasConsent, isReady } = useCookieConsent();
   const analyticsAllowed = hasConsent("analytics");
   const [shouldLoad, setShouldLoad] = useState(false);
   const [internalTraffic, setInternalTraffic] = useState(false);
@@ -105,7 +105,11 @@ export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
 
   // React to consent being absent/withdrawn: disable any loaded GA and drop its
   // cookies. Re-enable when analytics is (re-)granted so a later load tracks.
+  // Wait until the stored choice has been read: before that, consent looks
+  // absent on every full page load, and clearing _ga then made each load a
+  // new GA user (100% new users, every session "Direct").
   useEffect(() => {
+    if (!isReady) return;
     const disableFlag = `ga-disable-${gaMeasurementId}`;
     const globals = window as unknown as Record<string, boolean>;
     if (analyticsAllowed) {
@@ -114,7 +118,7 @@ export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
     }
     globals[disableFlag] = true;
     clearAnalyticsCookies();
-  }, [analyticsAllowed, gaMeasurementId]);
+  }, [isReady, analyticsAllowed, gaMeasurementId]);
 
   useEffect(() => {
     if (!analyticsAllowed || shouldLoad) return;

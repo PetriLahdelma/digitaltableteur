@@ -143,6 +143,21 @@ describe("DeferredAnalytics — C3: teardown when analytics is not consented", (
     expect(document.cookie).not.toMatch(/_gid=/);
   });
 
+  it("keeps the _ga cookie across a page load when analytics was granted", async () => {
+    // Regression: before the stored choice loaded, consent looked absent and
+    // the cookie was cleared on every load, so each load was a new GA user.
+    document.cookie = "_ga=GA1.1.111.222; path=/";
+    seedConsent({ essential: true, analytics: true, marketing: false, functional: true });
+    renderAnalytics();
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(document.cookie).toMatch(/_ga=GA1\.1\.111\.222/);
+    expect((window as unknown as Record<string, boolean>)[disableKey]).toBe(false);
+    document.cookie = "_ga=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  });
+
   it("leaves the GA disable flag off when analytics is granted", async () => {
     seedConsent({
       essential: true,
