@@ -873,10 +873,6 @@ export function ContactFormEditorial({
         .
       </p>
 
-      <p className={styles.replyPromise}>
-        {t("contactReplyPromise", "A reply follows within one business day.")}
-      </p>
-
       {/* Submit Button */}
       <Button
         submits
@@ -890,6 +886,10 @@ export function ContactFormEditorial({
           ? t("contactSubmitting", "Sending...")
           : t("contactSubmit")}
       </Button>
+
+      <p className={styles.replyPromise}>
+        {t("contactReplyPromise", "A reply follows within one business day.")}
+      </p>
     </motion.form>
   );
 }
