@@ -269,12 +269,19 @@ export async function POST(request: NextRequest) {
             ? "ai_unavailable"
             : "unknown";
     const ref = createChatErrorRef();
-    logChatFailure({
-      ref,
-      detail: { code, providerStatus: normalized.status, message: normalized.message },
-      level: "error",
-      error,
-    });
+    if (error instanceof ChatApiError && code === "bad_request") {
+      // Our own request validation (too large, malformed): the visitor's
+      // mistake, not an outage, so it stays out of Sentry. A gateway 400 is
+      // a config fault and still goes through logChatFailure below.
+      console.warn(`[chat] ref=${ref} code=${code} status=${normalized.status} ${normalized.message}`);
+    } else {
+      logChatFailure({
+        ref,
+        detail: { code, providerStatus: normalized.status, message: normalized.message },
+        level: "error",
+        error,
+      });
+    }
     // The body is visible in devtools: send a neutral text, keep the
     // specific cause (auth, config, provider) in the log under `ref`.
     const publicMessage: Record<ChatErrorCode, string> = {
