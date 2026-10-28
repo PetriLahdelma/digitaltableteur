@@ -10,12 +10,16 @@ import React, {
 } from "react";
 import Button from "@dt/Button";
 import Progress from "@dt/Progress";
+import { trackEvent } from "../../lib/analytics";
 import { isAllowedDonnyBookingEmbedUrl } from "../../lib/donny-booking";
 import { useLocalization } from "../../lib/translation";
 import { useTheme } from "../ThemeProvider";
 import styles from "./DonnyBookingEmbed.module.css";
 
-const Cal = lazy(() => import("@calcom/embed-react"));
+// One shared import for the lazy embed component and its event API.
+let calEmbedModule: Promise<typeof import("@calcom/embed-react")> | null = null;
+const loadCalEmbed = () => (calEmbedModule ??= import("@calcom/embed-react"));
+const Cal = lazy(loadCalEmbed);
 
 function ClientOnly({
   children,
@@ -107,6 +111,36 @@ export function DonnyBookingEmbed({
     isAllowedCalOrigin(calOrigin)
       ? calLink
       : "";
+
+  // A confirmed Cal.com booking becomes a GA4 book_meeting event through the
+  // site's consent-gated gtag. Cal's own GA app would load analytics on the
+  // booking page itself, where the visitor never gave analytics consent.
+  // bookingSuccessfulV2 carries booking metadata only; none of it is sent.
+  useEffect(() => {
+    if (!safeCalLink) return;
+    let cal: Awaited<ReturnType<typeof import("@calcom/embed-react").getCalApi>> | null = null;
+    let cancelled = false;
+    const onBooked = () => {
+      trackEvent("book_meeting", {
+        booking_source: window.location.pathname.startsWith("/contact") ? "contact_page" : "chat",
+      });
+    };
+    void loadCalEmbed()
+      .then(({ getCalApi }) => getCalApi(embedJsUrl ? { embedJsUrl } : undefined))
+      .then((api) => {
+        if (cancelled) return;
+        cal = api;
+        api("on", { action: "bookingSuccessfulV2", callback: onBooked });
+      })
+      .catch(() => {
+        // Analytics only: a failed embed API load must not affect booking.
+      });
+    return () => {
+      cancelled = true;
+      cal?.("off", { action: "bookingSuccessfulV2", callback: onBooked });
+    };
+  }, [safeCalLink, embedJsUrl]);
+
   const safeEmbedUrl =
     configured &&
     provider === "calendly" &&

@@ -11,6 +11,8 @@
  *   accepted an enquiry. This is the key event; it replaces the old rule
  *   that turned every /contact page view into generate_lead.
  * - chat_start {}: the first message of a Donny conversation.
+ * - book_meeting {booking_source}: Cal.com confirmed a booking made in the
+ *   embed (DonnyBookingEmbed), from the contact page or the chat.
  */
 export type LeadSource = "contact_form" | "chat";
 

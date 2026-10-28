@@ -11,7 +11,17 @@ vi.mock("../ThemeProvider", () => ({
   useTheme: () => ({ theme: siteTheme.current }),
 }));
 
+const calApi = vi.hoisted(() => ({
+  handlers: new Map<string, () => void>(),
+  api: vi.fn(),
+}));
+calApi.api.mockImplementation((command: string, options: { action: string; callback: () => void }) => {
+  if (command === "on") calApi.handlers.set(options.action, options.callback);
+  if (command === "off") calApi.handlers.delete(options.action);
+});
+
 vi.mock("@calcom/embed-react", () => ({
+  getCalApi: vi.fn(async () => calApi.api),
   default: function MockCal({
     calLink,
     config,
@@ -153,5 +163,30 @@ describe("DonnyBookingEmbed", () => {
     });
 
     expect(screen.getByTestId("donny-booking-fallback")).toBeInTheDocument();
+  });
+
+  it("reports book_meeting when Cal confirms a booking, and stops listening on unmount", async () => {
+    const gtag = vi.fn();
+    (window as unknown as { gtag?: unknown }).gtag = gtag;
+    try {
+      const view = renderEmbed({
+        configured: true,
+        provider: "calcom",
+        meetingLabel: "30min",
+        embedUrl: "https://app.cal.eu/digitaltableteur/30min/embed?embed=true",
+        fallbackUrl: "https://cal.eu/digitaltableteur/30min",
+        calLink: "digitaltableteur/30min",
+        calOrigin: "https://cal.eu",
+        embedJsUrl: "https://app.cal.eu/embed/embed.js",
+      });
+      await vi.waitFor(() => expect(calApi.handlers.has("bookingSuccessfulV2")).toBe(true));
+      calApi.handlers.get("bookingSuccessfulV2")?.();
+      expect(gtag).toHaveBeenCalledWith("event", "book_meeting", { booking_source: "chat" });
+
+      view.unmount();
+      expect(calApi.handlers.has("bookingSuccessfulV2")).toBe(false);
+    } finally {
+      delete (window as unknown as { gtag?: unknown }).gtag;
+    }
   });
 });
