@@ -135,7 +135,13 @@ describe("ChatWidget behaviors", () => {
     await screen.findByText(/The connection dropped/i);
 
     fireEvent.click(screen.getByRole("button", { name: /AI assistant/i }));
-    fireEvent.click(screen.getByRole("button", { name: /Clear/i }));
+    // Only the greeting is on screen, so the header's New chat button is
+    // hidden; the clear shortcut still resets from the input.
+    fireEvent.keyDown(screen.getByRole("textbox", { name: /Ask/i }), {
+      key: "Backspace",
+      metaKey: true,
+      shiftKey: true,
+    });
 
     expect(mockClearError).toHaveBeenCalled();
     expect(mockSetMessages).toHaveBeenCalledWith(

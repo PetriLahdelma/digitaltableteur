@@ -29,11 +29,51 @@ describe("ChatComposer keyboard submit", () => {
     return { onSubmit, onValueChange };
   }
 
-  it("does NOT submit on plain Enter (adds newline instead)", () => {
+  it("submits exactly once on plain Enter", () => {
     const { onSubmit } = setup();
     const textarea = screen.getByLabelText(/Label/i);
     fireEvent.keyDown(textarea, { key: "Enter" });
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not submit an empty message on Enter", () => {
+    const { onSubmit } = setup({ value: "   " });
+    fireEvent.keyDown(screen.getByLabelText(/Label/i), { key: "Enter" });
     expect(onSubmit).not.toHaveBeenCalled();
+  });
+
+  it("does not submit on the Enter that confirms an IME composition", () => {
+    const { onSubmit } = setup();
+    const textarea = screen.getByLabelText(/Label/i);
+    fireEvent.keyDown(textarea, { key: "Enter", isComposing: true });
+    fireEvent.keyDown(textarea, { key: "Enter", keyCode: 229 });
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
+  it("adds a line on Enter from a touch keyboard; Cmd+Enter still sends", () => {
+    const matchMedia = vi
+      .spyOn(window, "matchMedia")
+      .mockImplementation(
+        (query: string) =>
+          ({ matches: query.includes("pointer: coarse"), media: query }) as MediaQueryList,
+      );
+    try {
+      const { onSubmit } = setup();
+      const textarea = screen.getByLabelText(/Label/i);
+      fireEvent.keyDown(textarea, { key: "Enter" });
+      expect(onSubmit).not.toHaveBeenCalled();
+      fireEvent.keyDown(textarea, { key: "Enter", metaKey: true });
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+    } finally {
+      matchMedia.mockRestore();
+    }
+  });
+
+  it("describes the Enter and Shift + Enter keys to assistive tech", () => {
+    setup();
+    expect(screen.getByLabelText(/Label/i)).toHaveAccessibleDescription(
+      "Press Enter to send. Use Shift + Enter for a new line.",
+    );
   });
 
   it("submits exactly once on Cmd+Enter (macOS metaKey)", () => {
@@ -79,7 +119,7 @@ describe("ChatComposer keyboard submit", () => {
   });
 });
 
-describe("ChatComposer inline reset", () => {
+describe("ChatComposer reset shortcut", () => {
   function setupWithReset(
     overrides: Partial<Parameters<typeof ChatComposer>[0]> = {},
   ) {
@@ -102,22 +142,6 @@ describe("ChatComposer inline reset", () => {
     );
     return { onReset };
   }
-
-  it("renders the clear button and calls onReset on click", () => {
-    const { onReset } = setupWithReset();
-    const resetButton = screen.getByRole("button", {
-      name: /clear conversation/i,
-    });
-    fireEvent.click(resetButton);
-    expect(onReset).toHaveBeenCalledTimes(1);
-  });
-
-  it("disables the clear button while sending", () => {
-    setupWithReset({ isSending: true });
-    expect(
-      screen.getByRole("button", { name: /clear conversation/i }),
-    ).toBeDisabled();
-  });
 
   it("resets on Cmd+Shift+Backspace (macOS)", () => {
     const { onReset } = setupWithReset();
@@ -159,39 +183,14 @@ describe("ChatComposer inline reset", () => {
     expect(onReset).not.toHaveBeenCalled();
   });
 
-  it("does not render a clear button when onReset is omitted", () => {
-    const onSubmit = vi.fn();
-    render(
-      <ChatComposer
-        inputId="chat-input"
-        value="Hello"
-        onValueChange={vi.fn()}
-        onSubmit={onSubmit}
-        isSending={false}
-      />,
-    );
-    expect(screen.queryByRole("button", { name: /clear|reset/i })).toBeNull();
-  });
-
-  it("has no accessibility violations with the clear button visible", async () => {
-    const onSubmit = vi.fn();
-    const { container } = render(
-      <ChatComposer
-        inputId="chat-input"
-        value="Hello"
-        onValueChange={vi.fn()}
-        onSubmit={onSubmit}
-        onReset={vi.fn()}
-        isSending={false}
-      />,
-    );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+  it("renders no clear button: New chat lives in the header", () => {
+    setupWithReset();
+    expect(screen.queryByRole("button", { name: /clear|reset|new chat/i })).toBeNull();
   });
 });
 
-describe("ChatComposer shortcut hint", () => {
-  it("marks each key in the send hint as <kbd>", () => {
+describe("ChatComposer footer", () => {
+  it("renders the fine print under the input and no visible key hint", () => {
     const { container } = render(
       <ChatComposer
         inputId="chat-input"
@@ -199,14 +198,11 @@ describe("ChatComposer shortcut hint", () => {
         onValueChange={vi.fn()}
         onSubmit={vi.fn()}
         isSending={false}
+        footer={<>Answers may be wrong. <a href="/ai-use">About this AI</a></>}
       />,
     );
-    const keys = [...container.querySelectorAll("kbd")].map(
-      (key) => key.textContent,
-    );
-    expect(keys).toEqual(["⌘", "Enter", "Ctrl", "Enter"]);
-    // No bracket markers leak into the rendered sentence.
-    expect(container.textContent).not.toMatch(/[[\]]/);
+    expect(screen.getByRole("link", { name: "About this AI" })).toBeInTheDocument();
+    expect(container.querySelector("kbd")).toBeNull();
   });
 });
 

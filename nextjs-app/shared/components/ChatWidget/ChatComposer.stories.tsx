@@ -17,6 +17,15 @@ const meta: Meta<typeof ChatComposer> = {
     isSending: false,
     onSubmit: noop,
     maxLength: 1_000,
+    footer: (
+      <>
+        Answers draw on site content and may be wrong.{" "}
+        <a href="/ai-use">About this AI</a>
+      </>
+    ),
+  },
+  argTypes: {
+    footer: { table: { disable: true } },
   },
   parameters: {
     design: {

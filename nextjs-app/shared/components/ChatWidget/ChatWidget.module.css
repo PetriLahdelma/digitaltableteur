@@ -370,14 +370,14 @@
 .inputRow {
   display: flex;
 
-  /* Top-align: the column next to the send button now holds the textarea
-     plus the hint/clear row, so centering would drag the button down. */
+  /* Top-align: the column holds the textarea plus the fine print under
+     it, so centering would drag the send button down. */
   align-items: flex-start;
   gap: 0.75rem;
   font-family: var(--font-sans);
 }
 
-/* Shares the input's width so the hint row inherits its alignment. */
+/* Shares the input's width so the fine print inherits its alignment. */
 
 .inputColumn {
   display: flex;
@@ -569,71 +569,27 @@
   filter: drop-shadow(0 0 8px rgb(255 255 255 / 40%));
 }
 
-.hintRow {
-  display: flex;
+/* Fine print under the input: the accuracy note and the About this AI
+   link. Centred under the field, as chat products set their disclaimers. */
 
-  /* One rule pads both the hint (left) and the clear button (right)
-     symmetrically inside the input column. */
-  padding-inline: 1rem;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.shortcutHint {
-  background-color: transparent;
-  font-family: var(--font-body, sans-serif);
-  font-size: 0.85rem;
-  color: var(--shortcut-hint-color, #4b5563);
-}
-
-.hintRow .shortcutHint {
+.composerFooter {
   margin: 0;
-}
-
-/* Inline reset action: matches the shortcut hint typography but sits one
-   step darker so it reads as interactive next to the static hint text. */
-
-.resetInline {
-  display: inline-flex;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  gap: 0.3rem;
-  border: 0;
-  background: none;
+  padding-inline: var(--space-internal-8);
   font-family: var(--font-body, sans-serif);
-  font-size: 0.85rem;
-  white-space: nowrap;
-  color: var(--shortcut-hint-strong-color, #1f2937);
-  cursor: pointer;
-}
-
-.resetInline:hover:not(:disabled) {
-  text-decoration: underline;
-}
-
-.resetInline:focus-visible {
-  border-radius: var(--radius-sm);
-  outline: 2px solid currentcolor;
-  outline-offset: 2px;
-}
-
-.resetInline:disabled {
-  color: var(--shortcut-hint-color, #4b5563);
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* Dark theme: the panel surface is dark, so "more prominent than the hint"
-   flips to lighter, not darker. The light-theme #1f2937 is unreadable here. */
-
-:global(.themeDark) .resetInline {
-  color: var(--color-text);
-}
-
-:global(.themeDark) .resetInline:disabled {
+  font-size: var(--font-size-text-xxs);
+  line-height: 1.4;
+  text-align: center;
   color: var(--secondary-text-color);
+}
+
+.visuallyHidden {
+  position: absolute;
+  padding: 0;
+  block-size: 1px;
+  inline-size: 1px;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
 }
 
 @media (width <= 768px) {
@@ -686,18 +642,6 @@
 
   .sendButton :global([data-button-slot="text"]) {
     display: none;
-  }
-
-  .hintRow {
-    padding-inline: 0.25rem;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .shortcutHint,
-  .resetInline {
-    font-size: 0.75rem;
-    line-height: 1.35;
   }
 }
 
@@ -806,15 +750,6 @@
   border-color: rgb(255 255 255 / 30%);
 }
 
-:global(.themeHCB) .shortcutHint {
-  background-color: transparent;
-  color: rgb(255 255 255 / 85%);
-}
-
-:global(.themeHCB) .resetInline {
-  color: #fff;
-}
-
 /* Header avatar: white body + black eyes on dark panel */
 
 :global(.themeHCB) .headerAvatar {
@@ -867,15 +802,6 @@
 
 :global(.themeHCW) .header {
   border-color: rgb(0 0 0 / 30%);
-}
-
-:global(.themeHCW) .shortcutHint {
-  background-color: transparent;
-  color: rgb(0 0 0 / 75%);
-}
-
-:global(.themeHCW) .resetInline {
-  color: #000;
 }
 
 :global(.themeHCW) .headerAvatar {

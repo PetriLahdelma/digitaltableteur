@@ -2,11 +2,10 @@ import React, { useImperativeHandle, useRef } from "react";
 import Button from "@dt/Button";
 import { ChatTextArea } from "./ChatTextArea";
 import Label from "@dt/Label";
-import HelperText from "@dt/HelperText";
+import Text from "@dt/Text";
 import styles from "./ChatWidget.module.css";
 import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
-import Kbd from "@dt/Kbd";
 
 /**
  * Props for the ChatComposer component.
@@ -20,7 +19,8 @@ import Kbd from "@dt/Kbd";
  * @property {string} value - Current value of the textarea (controlled)
  * @property {function} onValueChange - Callback fired when textarea value changes
  * @property {function} onSubmit - Callback fired when form is submitted
- * @property {function} [onReset] - Callback fired when the inline reset button is clicked; button is hidden when omitted
+ * @property {function} [onReset] - Callback for the ⌘/Ctrl + Shift + Backspace shortcut (the visible control is the header's New chat button)
+ * @property {React.ReactNode} [footer] - Fine print under the input (the accuracy note and its link)
  * @property {boolean} isSending - Whether a message is currently being sent (disables input)
  * @property {number} [maxLength] - Maximum character length (default: 1000)
  * @property {number} [minRows] - Minimum number of visible rows (controls initial height)
@@ -36,6 +36,8 @@ export interface ChatComposerProps {
   onValueChange: (value: string) => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onReset?: () => void;
+  /** Fine print under the input: the accuracy note and its link. */
+  footer?: React.ReactNode;
   /** Interrupts a streaming reply without discarding the conversation. */
   onStop?: () => void;
   isSending: boolean;
@@ -54,6 +56,12 @@ export interface ChatComposerHandle {
   focusInput: () => void;
 }
 
+/** True on phones and tablets without a mouse: their Return key has no easy Shift. */
+const isTouchKeyboard = () =>
+  typeof window !== "undefined" &&
+  typeof window.matchMedia === "function" &&
+  window.matchMedia("(hover: none) and (pointer: coarse)")?.matches === true;
+
 const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
   (
     {
@@ -67,6 +75,7 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
       onSubmit,
       onReset,
       onStop,
+      footer,
       isSending,
       maxLength = 1_000,
     },
@@ -85,24 +94,13 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
     const sendButtonText = t("chatSendLabel", "Send");
     const canStop = isSending && Boolean(onStop);
     const stopLabel = t("chatStop", "Stop response");
-    const resetLabel = t("chatReset", "Clear");
-    const resetAriaLabel = t("chatResetAria", "Clear conversation");
-    const resetShortcutTitle = t(
-      "chatResetShortcutTitle",
-      "Clear conversation (⌘ + Shift + ⌫ on Mac, Ctrl + Shift + Backspace on Windows)",
+    // No visible shortcut hint: Enter sends and Shift + Enter adds a line,
+    // the convention of chat inputs. Screen readers still hear it.
+    const shortcutHint = t(
+      "chatShortcutHint",
+      "Press Enter to send. Use Shift + Enter for a new line.",
     );
-    // Translations mark key names with brackets ("Press [⌘] + [Enter]…") so
-    // each language keeps its own word order; brackets render as <kbd>.
-    const withKeys = (text: string) =>
-      text.split(/\[([^\]]+)\]/).map((part, index) =>
-        index % 2 === 1 ? (
-          <Kbd key={index} size="sm" variant="secondary">
-            {part}
-          </Kbd>
-        ) : (
-          part
-        ),
-      );
+    const hintId = `${inputId}-hint`;
     const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
     useImperativeHandle(
@@ -123,8 +121,8 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
           {resolvedLabel}
         </Label>
         <div className={styles.inputRow}>
-          {/* Column wrapper keeps the textarea and the hint/clear row the
-              same width, so one padding rule aligns both with the input. */}
+          {/* Column wrapper keeps the textarea and the fine print under it
+              the same width, so one padding rule aligns both. */}
           <div className={styles.inputColumn}>
             {/* Relative shell lets the send button sit inside the input's
                 borders while remaining a real submit button right after the
@@ -142,23 +140,28 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
               maxLength={maxLength}
               readOnly={isSending}
               ref={textAreaRef}
+              aria-describedby={hintId}
               onKeyDown={(e) => {
-                if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && !isSending) {
-                  // Trigger submit programmatically while preserving normal Enter behavior for newlines.
-                  const form = e.currentTarget.form;
-                  if (form) {
-                    e.preventDefault();
-                    // Construct a synthetic submit event to reuse existing logic.
-                    const submitEvent = new Event("submit", {
-                      cancelable: true,
-                      bubbles: true,
-                    });
-                    form.dispatchEvent(submitEvent);
-                  }
+                if (e.key === "Enter") {
+                  // The Enter that confirms an IME composition (Japanese,
+                  // Chinese, Korean) must not send the half-typed message.
+                  if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+                  const withModifier = e.metaKey || e.ctrlKey;
+                  if (e.shiftKey && !withModifier) return;
+                  // On touch keyboards Return adds a line (there is no easy
+                  // Shift) and the Send button sends; ⌘/Ctrl + Enter still
+                  // sends from a hardware keyboard.
+                  if (!withModifier && isTouchKeyboard()) return;
+                  e.preventDefault();
+                  if (isSending || !(value ?? "").trim()) return;
+                  // Reuse the form's submit logic with a synthetic event.
+                  e.currentTarget.form?.dispatchEvent(
+                    new Event("submit", { cancelable: true, bubbles: true }),
+                  );
                   return;
                 }
-                // ⌘/Ctrl + Shift + Backspace clears the conversation,
-                // mirroring the inline clear button next to the shortcut hint.
+                // ⌘/Ctrl + Shift + Backspace clears the conversation, the
+                // shortcut for the header's New chat button.
                 if (
                   e.key === "Backspace" &&
                   e.shiftKey &&
@@ -184,29 +187,14 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
                 {canStop ? t("chatStopLabel", "Stop") : sendButtonText}
               </Button>
             </div>
-            <div className={styles.hintRow}>
-              <HelperText className={styles.shortcutHint}>
-                {withKeys(
-                  t(
-                    "chatShortcutSubmit",
-                    "Press [⌘] + [Enter] (Mac) or [Ctrl] + [Enter] to send.",
-                  ),
-                )}
-              </HelperText>
-              {onReset && (
-                <button
-                  type="button"
-                  className={styles.resetInline}
-                  onClick={onReset}
-                  disabled={isSending}
-                  aria-label={resetAriaLabel}
-                  title={resetShortcutTitle}
-                >
-                  <Icon name="arrow-clockwise" size="xs" />
-                  {resetLabel}
-                </button>
-              )}
-            </div>
+            <span id={hintId} className={styles.visuallyHidden}>
+              {shortcutHint}
+            </span>
+            {footer ? (
+              <Text as="p" size="xs" className={styles.composerFooter}>
+                {footer}
+              </Text>
+            ) : null}
           </div>
         </div>
       </form>

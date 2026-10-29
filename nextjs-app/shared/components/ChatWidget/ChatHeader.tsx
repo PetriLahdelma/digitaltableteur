@@ -20,10 +20,13 @@ import Icon from "@dt/Icon";
  */
 export interface ChatHeaderProps {
   title: string;
-  description: string;
+  /** Optional line under the title; the widget shows its accuracy note under the input instead. */
+  description?: string;
   /** Optional inline action after the description, e.g. a link to the AI-use policy. */
   descriptionAction?: React.ReactNode;
   onMinimize: () => void;
+  /** Starts a new chat (clears the conversation); the button shows only when this is set. */
+  onNewChat?: () => void;
   /**
    * Current state for Donny avatar animation.
    * Maps to chat interaction states like idle, listening, thinking, success, error.
@@ -57,6 +60,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   description,
   descriptionAction,
   onMinimize,
+  onNewChat,
   avatarState = "idle",
   enableIdleExpressions = false,
   trackMouse = false,
@@ -67,6 +71,11 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   const t = useTranslate();
   const tagline = t("chatTagline", "Digitaltableteur");
   const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
+  const newChatLabel = t("chatNewChat", "New chat");
+  const newChatTitle = t(
+    "chatNewChatTitle",
+    "New chat (⌘ + Shift + ⌫ on Mac, Ctrl + Shift + Backspace on Windows)",
+  );
 
   // Finnish (Europe/Helsinki) business hours: Mon–Fri 09:00–17:00 local time (inclusive start, exclusive end)
   // Recalculates every 60s so the status dot updates without a page refresh
@@ -152,12 +161,26 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         <Title level={2} size="s" className={styles.title}>
           {title}
         </Title>
-        <Text as="p" size="xs" className={styles.subtitle}>
-          {description}
-          {descriptionAction ? <> {descriptionAction}</> : null}
-        </Text>
+        {description ? (
+          <Text as="p" size="xs" className={styles.subtitle}>
+            {description}
+            {descriptionAction ? <> {descriptionAction}</> : null}
+          </Text>
+        ) : null}
       </div>
       <div className={styles.headerActions}>
+        {onNewChat ? (
+          <Button
+            type="button"
+            onClick={onNewChat}
+            accessibleName={newChatLabel}
+            tooltip={newChatTitle}
+            variant="tertiary"
+            size="md"
+            icon={<Icon name="note-pencil" />}
+            className={styles.minimizeButton}
+          />
+        ) : null}
         <Button
           type="button"
           onClick={onMinimize}

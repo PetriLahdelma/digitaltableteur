@@ -71,7 +71,7 @@ const seedTranscript = () =>
   );
 
 const clearButton = () =>
-  document.querySelector<HTMLButtonElement>('[aria-label="Clear conversation"]')!;
+  document.querySelector<HTMLButtonElement>('[aria-label="New chat"]')!;
 
 beforeEach(() => {
   sessionStorage.clear();
@@ -153,9 +153,17 @@ describe("clear-undo-window", () => {
     expect(screen.queryByText("Undo")).toBeNull();
   });
 
-  it("offers no undo when there was nothing to clear", () => {
+  it("moves focus to the input after New chat removes its own button", () => {
+    seedTranscript();
     render(<ChatWidget />);
     fireEvent.click(clearButton());
+    expect(clearButton()).toBeNull();
+    expect(document.getElementById("donny-input")).toHaveFocus();
+  });
+
+  it("offers no New chat (so no undo) when there is nothing to clear", () => {
+    render(<ChatWidget />);
+    expect(clearButton()).toBeNull();
     expect(screen.queryByText("Undo")).toBeNull();
   });
 });

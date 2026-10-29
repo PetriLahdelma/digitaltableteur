@@ -125,11 +125,19 @@ describe("ChatHeader button interactions", () => {
     expect(onMinimize).toHaveBeenCalledTimes(1);
   });
 
-  // Clear (formerly Reset) moved to ChatComposer, inline next to the
-  // shortcut hint. See ChatComposer.test.tsx for its interaction tests.
-  it("does not render a clear/reset button", () => {
+  it("renders no New chat button without onNewChat", () => {
     render(withI18n(<ChatHeader {...baseProps} />));
 
-    expect(screen.queryByRole("button", { name: /clear|reset/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /new chat|clear|reset/i })).toBeNull();
+  });
+
+  it("starts a new chat from the header button, with the shortcut in its tooltip", async () => {
+    const onNewChat = vi.fn();
+    render(withI18n(<ChatHeader {...baseProps} onNewChat={onNewChat} />));
+
+    const newChat = screen.getByRole("button", { name: "New chat" });
+    expect(newChat).toHaveAttribute("title", expect.stringContaining("Shift"));
+    await userEvent.click(newChat);
+    expect(onNewChat).toHaveBeenCalledTimes(1);
   });
 });

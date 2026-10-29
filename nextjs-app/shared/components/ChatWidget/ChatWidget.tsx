@@ -992,6 +992,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   }, [stop, setMessages, clearError, greetingText, playBeat, messages]);
 
+  // The header button unmounts once the chat is empty; send focus to the
+  // input so keyboard users are not dropped on the page body.
+  const handleNewChat = useCallback(() => {
+    handleReset();
+    composerRef.current?.focusInput();
+  }, [handleReset]);
+
   const handleUndoClear = useCallback(() => {
     if (!clearedTranscript) return;
     setMessages(clearedTranscript);
@@ -1106,15 +1113,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         >
           <ChatHeader
             title={resolvedTitle}
-            description={resolvedDescription}
-            descriptionAction={
-              noticeDismissed ? (
-                <Link href="/ai-use" className={styles.aboutAiLink}>
-                  {t("chatAboutAiLink", "About this AI")}
-                </Link>
-              ) : undefined
-            }
             onMinimize={closeChat}
+            onNewChat={messages.length > 1 ? handleNewChat : undefined}
             avatarState={avatarState}
             enableIdleExpressions={avatarState === "idle"}
             trackMouse
@@ -1212,6 +1212,14 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             onSubmit={handleSubmit}
             onReset={handleReset}
             onStop={stop}
+            footer={
+              <>
+                {resolvedDescription}{" "}
+                <Link href="/ai-use" className={styles.aboutAiLink}>
+                  {t("chatAboutAiLink", "About this AI")}
+                </Link>
+              </>
+            }
             isSending={isStreaming}
             maxLength={1_000}
           />

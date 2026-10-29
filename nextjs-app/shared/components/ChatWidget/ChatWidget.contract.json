@@ -75,7 +75,7 @@
     "validity": [
       {
         "id": "clear-undo-window",
-        "statement": "After Clear, the previous transcript can be restored with Undo for the undo-window threshold; sending a new message or the window ending makes the clear final.",
+        "statement": "After New chat clears the conversation, the previous transcript can be restored with Undo for the undo-window threshold; sending a new message or the window ending makes the clear final.",
         "state": "cleared",
         "staleAfterMs": 10000,
         "threshold": "undoWindowMs",
@@ -135,7 +135,7 @@
       {
         "id": "clear-undo-window",
         "class": "reversible",
-        "statement": "Clear empties the conversation and offers Undo for ten seconds.",
+        "statement": "New chat empties the conversation and offers Undo for ten seconds.",
         "confirmation": "none",
         "recovery": "undo",
         "verification": "automated",

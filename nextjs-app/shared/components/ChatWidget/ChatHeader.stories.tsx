@@ -12,8 +12,12 @@ const meta: Meta<typeof ChatHeader> = {
   tags: ["autodocs"],
   args: {
     title: "Chat with Donny",
-    description: "DT-specific answers, no fluff.",
     onMinimize: noop,
+    onNewChat: noop,
+  },
+  argTypes: {
+    onMinimize: { table: { disable: true } },
+    onNewChat: { table: { disable: true } },
   },
 };
 

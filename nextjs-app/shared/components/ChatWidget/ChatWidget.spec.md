@@ -13,6 +13,17 @@ guardrails, and its email-handoff flow — because every consumer of
 - Keyboard: Tab reaches the floating toggle. Enter / Space opens the panel
   and focuses the composer. Tab follows the rendered controls; Shift+Tab
   reaches the transcript and header. Escape closes and restores launcher focus.
+- Composer: Enter sends and Shift + Enter adds a line, the chat-input
+  convention, so no visible key hint is shown; the input's accessible
+  description says it instead. ⌘/Ctrl + Enter also sends. On touch keyboards
+  (no hover, coarse pointer) Return adds a line and the Send button sends.
+  The Enter that confirms an IME composition never sends.
+- New chat: an icon button in the header, shown once there is a conversation.
+  It clears the transcript (Undo restores it for ten seconds) and moves focus
+  to the input, since the button itself unmounts. ⌘/Ctrl + Shift + Backspace
+  in the input does the same.
+- The accuracy note ("Answers draw on site content and may be wrong.") and
+  the About this AI link sit under the input, where people type.
 - The visually hidden open-state launcher is excluded from Tab and the
   accessibility tree. Moving focus out of the nonmodal panel closes it without
   stealing focus from the destination, so background controls stay unobscured.
