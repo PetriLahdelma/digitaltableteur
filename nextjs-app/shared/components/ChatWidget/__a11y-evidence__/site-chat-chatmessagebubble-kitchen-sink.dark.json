@@ -1,9 +1,9 @@
 {
   "storyId": "site-chat-chatmessagebubble-kitchen-sink",
   "mode": "dark",
-  "sourceSHA": "3f5ddb559cb4560af7b6dc7d3169b50c7a236aa6",
-  "capturedAt": "2026-09-30T06:33:29.580Z",
-  "runner": null,
+  "sourceSHA": "d6946f965b62eae291d573b7a3d373e9cfa3857f",
+  "capturedAt": "2026-10-29T07:07:57.510Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

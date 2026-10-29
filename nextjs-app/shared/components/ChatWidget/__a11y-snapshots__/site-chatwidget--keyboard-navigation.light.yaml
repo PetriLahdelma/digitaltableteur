@@ -7,7 +7,7 @@
       - text: Digitaltableteur
       - status "Available now"
     - heading "Meet Donny" [level=2]
-    - paragraph: This Storybook preview simulates the chat flow.
+    - button "New chat"
     - button "Minimize chat":
       - img "Minimize chat"
   - complementary "AI assistant information":
@@ -21,20 +21,28 @@
     - group "Donny, AI assistant":
       - text: Donny, AI assistant
       - paragraph: Hi! I’m Donny, Digitaltableteur’s AI assistant. Ask me about the work or a design system challenge.
+    - group "You":
+      - text: You
+      - paragraph: Hello Donny
+    - group "Donny, AI assistant":
+      - text: Donny, AI assistant
+      - status "Thinking…"
   - text: Ask the AI assistant a question
   - textbox "Ask the AI assistant a question":
     - /placeholder: Describe your design system challenge…
-    - text: Hello Donny
-  - button "Send message": Send
-  - paragraph: Press ⌘ + Enter (Mac) or Ctrl + Enter to send.
-  - button "Clear conversation": Clear
+  - button "Stop response": Stop
+  - text: Press Enter to send. Use Shift + Enter for a new line.
+  - paragraph:
+    - text: This Storybook preview simulates the chat flow.
+    - link "About this AI":
+      - /url: /ai-use
 - dialog "Meet Donny":
   - banner:
     - paragraph:
       - text: Digitaltableteur
       - status "Available now"
     - heading "Meet Donny" [level=2]
-    - paragraph: This Storybook preview simulates the chat flow.
+    - button "New chat"
     - button "Minimize chat":
       - img "Minimize chat"
   - complementary "AI assistant information":
@@ -48,10 +56,18 @@
     - group "Donny, AI assistant":
       - text: Donny, AI assistant
       - paragraph: Hi! I’m Donny, Digitaltableteur’s AI assistant. Ask me about the work or a design system challenge.
+    - group "You":
+      - text: You
+      - paragraph: Hello Donny
+    - group "Donny, AI assistant":
+      - text: Donny, AI assistant
+      - status "Thinking…"
   - text: Ask the AI assistant a question
   - textbox "Ask the AI assistant a question":
     - /placeholder: Describe your design system challenge…
-    - text: Hello Donny
-  - button "Send message": Send
-  - paragraph: Press ⌘ + Enter (Mac) or Ctrl + Enter to send.
-  - button "Clear conversation": Clear
+  - button "Stop response": Stop
+  - text: Press Enter to send. Use Shift + Enter for a new line.
+  - paragraph:
+    - text: This Storybook preview simulates the chat flow.
+    - link "About this AI":
+      - /url: /ai-use

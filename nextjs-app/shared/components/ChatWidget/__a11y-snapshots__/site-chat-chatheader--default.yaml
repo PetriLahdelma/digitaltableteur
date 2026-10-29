@@ -4,6 +4,6 @@
     - text: Digitaltableteur
     - status "Available now"
   - heading "Chat with Donny" [level=2]
-  - paragraph: DT-specific answers, no fluff.
+  - button "New chat"
   - button "Minimize chat":
     - img "Minimize chat"

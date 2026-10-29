@@ -7,7 +7,6 @@
       - text: Digitaltableteur
       - status "Available now"
     - heading "Meet Donny" [level=2]
-    - paragraph: This Storybook preview simulates the chat flow.
     - button "Minimize chat":
       - img "Minimize chat"
   - complementary "AI assistant information":
@@ -25,15 +24,17 @@
   - textbox "Ask the AI assistant a question":
     - /placeholder: Describe your design system challenge…
   - button "Send message" [disabled]: Send
-  - paragraph: Press ⌘ + Enter (Mac) or Ctrl + Enter to send.
-  - button "Clear conversation": Clear
+  - text: Press Enter to send. Use Shift + Enter for a new line.
+  - paragraph:
+    - text: This Storybook preview simulates the chat flow.
+    - link "About this AI":
+      - /url: /ai-use
 - dialog "Meet Donny":
   - banner:
     - paragraph:
       - text: Digitaltableteur
       - status "Available now"
     - heading "Meet Donny" [level=2]
-    - paragraph: This Storybook preview simulates the chat flow.
     - button "Minimize chat":
       - img "Minimize chat"
   - complementary "AI assistant information":
@@ -51,5 +52,8 @@
   - textbox "Ask the AI assistant a question":
     - /placeholder: Describe your design system challenge…
   - button "Send message" [disabled]: Send
-  - paragraph: Press ⌘ + Enter (Mac) or Ctrl + Enter to send.
-  - button "Clear conversation": Clear
+  - text: Press Enter to send. Use Shift + Enter for a new line.
+  - paragraph:
+    - text: This Storybook preview simulates the chat flow.
+    - link "About this AI":
+      - /url: /ai-use

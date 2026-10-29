@@ -1,9 +1,9 @@
 {
   "storyId": "site-chat-chatmessages-long-conversation",
   "mode": "light",
-  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-  "capturedAt": "2026-09-30T06:11:07.620Z",
-  "runner": null,
+  "sourceSHA": "d6946f965b62eae291d573b7a3d373e9cfa3857f",
+  "capturedAt": "2026-10-29T07:07:41.091Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

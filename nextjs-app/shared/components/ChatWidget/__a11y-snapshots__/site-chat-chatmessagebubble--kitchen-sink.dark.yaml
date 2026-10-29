@@ -1,12 +1,12 @@
 - status: Work in progress (alpha)
-- group "Donny · AI assistant":
-  - text: Donny · AI assistant
+- group "Donny, AI assistant":
+  - text: Donny, AI assistant
   - paragraph: Hello! I'm Donny, your guide to Digitaltableteur. How can I help you today?
 - group "You":
   - text: You
   - paragraph: Can you tell me about the services you offer?
-- group "Donny · AI assistant":
-  - text: Donny · AI assistant
+- group "Donny, AI assistant":
+  - text: Donny, AI assistant
   - paragraph:
     - text: We offer a comprehensive range of services including
     - strong: design
@@ -21,6 +21,6 @@
     - listitem: Web and mobile development
     - listitem: Content architecture and editorial strategy
     - listitem: AI-powered innovation
-- group "Donny · AI assistant":
-  - text: Donny · AI assistant
+- group "Donny, AI assistant":
+  - text: Donny, AI assistant
   - status "Thinking…"

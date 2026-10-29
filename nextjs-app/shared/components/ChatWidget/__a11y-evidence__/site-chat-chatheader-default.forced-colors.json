@@ -1,8 +1,8 @@
 {
   "storyId": "site-chat-chatheader-default",
   "mode": "forced-colors",
-  "sourceSHA": "e02094e91e0dc7a4ceef8d6de1fde38113d81382",
-  "capturedAt": "2026-10-28T19:58:30.333Z",
+  "sourceSHA": "d6946f965b62eae291d573b7a3d373e9cfa3857f",
+  "capturedAt": "2026-10-29T07:08:24.445Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

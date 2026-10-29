@@ -1,24 +1,24 @@
 - status: Work in progress (alpha)
 - log "Chat messages":
-  - group "Donny · AI assistant":
-    - text: Donny · AI assistant
+  - group "Donny, AI assistant":
+    - text: Donny, AI assistant
     - paragraph: Hi! I'm Donny, the Digitaltableteur studio guide. Feel free to ask about our work or anything you notice on the site.
   - group "You":
     - text: You
     - paragraph: What services do you offer?
-  - group "Donny · AI assistant":
-    - text: Donny · AI assistant
+  - group "Donny, AI assistant":
+    - text: Donny, AI assistant
     - paragraph: We blend strategic design, development, and content craft to ship end-to-end brand and digital experiences.
     - text: Design Development Strategy AI Innovation
   - group "You":
     - text: You
     - paragraph: Can you tell me more about your design process?
-  - group "Donny · AI assistant":
-    - text: Donny · AI assistant
+  - group "Donny, AI assistant":
+    - text: Donny, AI assistant
     - paragraph: Our design process is collaborative and iterative. We start with discovery workshops to understand your goals, then move through wireframing, prototyping, and user testing before final implementation.
   - group "You":
     - text: You
     - paragraph: What technologies do you work with?
-  - group "Donny · AI assistant":
-    - text: Donny · AI assistant
+  - group "Donny, AI assistant":
+    - text: Donny, AI assistant
     - paragraph: We specialize in modern web technologies including React, TypeScript, Next.js, and cutting-edge CSS. We also work with headless CMS solutions and serverless architectures.

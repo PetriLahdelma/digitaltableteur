@@ -1,9 +1,9 @@
 {
   "storyId": "site-chat-chatmessages-empty-state",
   "mode": "forced-colors",
-  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-  "capturedAt": "2026-09-30T06:12:14.048Z",
-  "runner": null,
+  "sourceSHA": "d6946f965b62eae291d573b7a3d373e9cfa3857f",
+  "capturedAt": "2026-10-29T07:08:21.288Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
