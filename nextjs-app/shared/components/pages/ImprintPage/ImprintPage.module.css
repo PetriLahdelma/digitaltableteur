@@ -1,34 +1,53 @@
+/* The imprint shares the legal documents' frame: the same width, title and
+   lead as the privacy, AI use and accessibility pages. Its details are a
+   definition list: label and value side by side from 768px, stacked and
+   tightly grouped below, with a hairline between entries. */
+
 .page {
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  max-inline-size: 680px;
-  font-family: var(--primary-body-font, sans-serif);
-  line-height: 1.6;
+  margin-inline: auto;
+  padding-block: var(--space-layout-48) var(--space-layout-96);
+  padding-inline: var(--space-internal-16);
+  max-inline-size: var(--container-sm);
 }
 
-.page h1 {
-  font-family: var(--secondary-heading-font, sans-serif);
-  font-size: 2rem;
-  font-weight: var(--secondary-heading-weight, 400);
-  margin-block-end: 1rem;
-}
-
-.page p {
-  margin-block-end: 1rem;
+.lead {
+  margin-block: var(--space-layout-24) 0;
+  max-inline-size: var(--measure-reading);
+  color: var(--primary-text-color);
 }
 
 .section {
-  margin-block-start: 2rem;
+  margin-block-start: var(--space-layout-48);
+}
+
+.details {
+  margin: 0;
+  border-block-start: 1px solid var(--color-border-light);
+  font-size: var(--font-size-text-s);
+  line-height: var(--line-height-normal);
 }
 
 .row {
-  padding-block: 0.5rem 1rem;
+  display: grid;
+  padding-block: var(--space-internal-12);
+  gap: var(--space-internal-4);
+  border-block-end: 1px solid var(--color-border-light);
+}
+
+@media (width >= 768px) {
+  .row {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: var(--space-layout-24);
+  }
 }
 
 .term {
-  margin: 0 0 0.35rem;
-  font-weight: 600;
+  margin: 0;
+  color: var(--color-muted);
 }
+
+/* Tabular figures keep IDs and numbers the same width row to row. */
 
 .value {
   display: flex;
@@ -37,6 +56,7 @@
   align-items: center;
   gap: var(--space-internal-4);
   white-space: pre-line;
+  font-variant-numeric: tabular-nums;
 }
 
 .valueText {
@@ -76,9 +96,3 @@
    The DS treatment draws the wave as a repeating mask on a pseudo-element,
    so descenders cannot interrupt it, and it matches the underline used
    everywhere else on the site. */
-
-@media (width <= 768px) {
-  .page h1 {
-    margin-block-start: 1.5rem;
-  }
-}

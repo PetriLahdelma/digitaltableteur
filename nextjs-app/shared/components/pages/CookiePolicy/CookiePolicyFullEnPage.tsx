@@ -187,7 +187,7 @@ export function CookiePolicyFullEnPage({
         or prototype copy) are reviewed with AI-assisted tooling. Humans remain
         accountable for every deliverable and personal data is minimised before
         any prompt is sent. See the{" "}
-        <Link href="/ai-use">AI use & transparency statement</Link> for details.
+        <Link href="/ai-use">AI use and transparency statement</Link> for details.
       </p>
       <Title level={3}>How to exercise your rights</Title>
       <p>

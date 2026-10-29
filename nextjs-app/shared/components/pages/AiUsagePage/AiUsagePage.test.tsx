@@ -8,7 +8,7 @@ describe("AiUsagePage", () => {
     renderWithProviders(<AiUsagePage />);
     expect(
       screen.getByRole("heading", {
-        name: /AI use & transparency statement/i,
+        name: /AI use and transparency statement/i,
         level: 1,
       }),
     ).toBeInTheDocument();

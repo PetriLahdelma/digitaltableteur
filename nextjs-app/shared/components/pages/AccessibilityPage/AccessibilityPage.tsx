@@ -95,155 +95,155 @@ export function AccessibilityPage() {
 
   return (
     <Container size="sm" className={styles.prosePage}>
-      <Title level={1} size="xs">
+      <Title level={1} size="m">
         {t("accessibilityHeading")}
       </Title>
-      <Text as="p" size="xs">{t("accessibilityIntro")}</Text>
-      <Text as="p" size="xs">
+      <Text as="p" size="m" className={styles.lead}>{t("accessibilityIntro")}</Text>
+      <Text as="p" size="xs" className={styles.meta}>
         {t("accessibilityLastUpdatedLabel")}{" "}
         <Timestamp value="2026-09-27" format="date" size="xs" />
       </Text>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityConformanceTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityConformanceBody")}</Text>
-        <Text as="p" size="xs">{t("accessibilityConformanceLevel")}</Text>
+        <Text as="p" size="s">{t("accessibilityConformanceBody")}</Text>
+        <Text as="p" size="s">{t("accessibilityConformanceLevel")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityMeasuresTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityMeasuresIntro")}</Text>
+        <Text as="p" size="s">{t("accessibilityMeasuresIntro")}</Text>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={measures.map((key) => t(key))}
         />
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityStandardsTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityStandardsBody")}</Text>
+        <Text as="p" size="s">{t("accessibilityStandardsBody")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityTechnicalTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityTechnicalIntro")}</Text>
+        <Text as="p" size="s">{t("accessibilityTechnicalIntro")}</Text>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={technicalSpecs.map((key) => emphasiseLeadingLabel(t(key)))}
         />
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityCompatibilityTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityCompatibilityBody")}</Text>
+        <Text as="p" size="s">{t("accessibilityCompatibilityBody")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityLimitationsTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityLimitationsIntro")}</Text>
+        <Text as="p" size="s">{t("accessibilityLimitationsIntro")}</Text>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={limitations.map((key) => t(key))}
         />
-        <Text as="p" size="xs">{t("accessibilityLimitationsFooter")}</Text>
+        <Text as="p" size="s">{t("accessibilityLimitationsFooter")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityShortcomingsTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityShortcomingsIntro")}</Text>
+        <Text as="p" size="s">{t("accessibilityShortcomingsIntro")}</Text>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={shortcomings.map((key) => t(key))}
         />
-        <Text as="p" size="xs">{t("accessibilityShortcomingsFooter")}</Text>
+        <Text as="p" size="s">{t("accessibilityShortcomingsFooter")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityTestingTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityTestingBody")}</Text>
+        <Text as="p" size="s">{t("accessibilityTestingBody")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityMonitoringTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityMonitoringBody")}</Text>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">{t("accessibilityMonitoringBody")}</Text>
+        <Text as="p" size="s">
           <strong>{t("accessibilityMonitoringAgency")}</strong>
         </Text>
-        <Text as="p" size="xs">{t("accessibilityMonitoringWebsite")}</Text>
-        <Text as="p" size="xs">{t("accessibilityMonitoringEmail")}</Text>
-        <Text as="p" size="xs">{t("accessibilityMonitoringPhone")}</Text>
+        <Text as="p" size="s">{t("accessibilityMonitoringWebsite")}</Text>
+        <Text as="p" size="s">{t("accessibilityMonitoringEmail")}</Text>
+        <Text as="p" size="s">{t("accessibilityMonitoringPhone")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityPublicationTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityPublicationWebsite")}</Text>
-        <Text as="p" size="xs">{t("accessibilityPublicationStatement")}</Text>
-        <Text as="p" size="xs">{t("accessibilityPublicationAct")}</Text>
+        <Text as="p" size="s">{t("accessibilityPublicationWebsite")}</Text>
+        <Text as="p" size="s">{t("accessibilityPublicationStatement")}</Text>
+        <Text as="p" size="s">{t("accessibilityPublicationAct")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityFeedbackTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityFeedbackIntro")}</Text>
-        <Text as="p" size="xs">{t("accessibilityFeedbackEmail")}</Text>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">{t("accessibilityFeedbackIntro")}</Text>
+        <Text as="p" size="s">{t("accessibilityFeedbackEmail")}</Text>
+        <Text as="p" size="s">
           {renderContactLinks(
             t("accessibilityContactBody"),
             "mail@digitaltableteur.com",
             "+358 45 657 4469",
           )}
         </Text>
-        <Text as="p" size="xs">{t("accessibilityFeedbackResponse")}</Text>
+        <Text as="p" size="s">{t("accessibilityFeedbackResponse")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityComplaintTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityComplaintBody")}</Text>
+        <Text as="p" size="s">{t("accessibilityComplaintBody")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityAlternativeTitle")}
         </Title>
-        <Text as="p" size="xs">{t("accessibilityAlternativeBody")}</Text>
+        <Text as="p" size="s">{t("accessibilityAlternativeBody")}</Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("accessibilityContactTitle")}
         </Title>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {renderContactLinks(
             t("accessibilityContactBody"),
             "mail@digitaltableteur.com",

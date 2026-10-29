@@ -268,10 +268,11 @@ export function EnhancedArticleCard({
             id={excerptId}
             lang={contentLanguage}
             className={cn(
-              // Full excerpt at the reading measure: a clamp cut it under the
-              // WCAG 1.4.12 spacing override, and 14px read too small.
+              // Full excerpt, no clamp: a clamp cut it under the WCAG 1.4.12
+              // spacing override. It runs the card width (owner choice: the
+              // teaser is one to three lines, so the long line is accepted).
               "font-body text-muted-foreground",
-              "mb-4 max-w-[var(--measure-reading)]",
+              "mb-4",
               isFeatured ? "text-lg" : "text-base",
             )}
           >

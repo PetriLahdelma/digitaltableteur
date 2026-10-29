@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1789,
+  "warningCount": 1775,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -7050,24 +7050,6 @@
       "id": "nextjs-app/shared/components/pages/AboutPage/AboutPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
     },
     {
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "line": 11,
-      "column": 18,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "line": 15,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::2"
-    },
-    {
       "file": "nextjs-app/shared/components/pages/Blog/Blog.module.css",
       "line": 22,
       "column": 5,
@@ -7759,114 +7741,6 @@
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "id": "nextjs-app/shared/components/pages/Home/Home.module.css::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 13,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-block-end\" to come before \"font-weight\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::order/properties-order::Expected \"margin-block-end\" to come before \"font-weight\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 29,
-      "column": 15,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.35rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.35rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 25,
-      "column": 18,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 82,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 3,
-      "column": 17,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 13,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 17,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 25,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 3,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 21,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 29,
-      "column": 15,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css",
-      "line": 4,
-      "column": 20,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"680px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.module.css::rhythmguard/use-scale::Unexpected off-scale value \"680px\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.module.css",

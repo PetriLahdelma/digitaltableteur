@@ -118,133 +118,133 @@ export function AiUsagePage() {
 
   return (
     <Container size="sm" className={styles.prosePage}>
-      <Title level={1} size="xs">
+      <Title level={1} size="m">
         {t("aiPolicyHeading")}
       </Title>
-      <Text as="p" size="xs">
+      <Text as="p" size="m" className={styles.lead}>
         {t("aiPolicyIntro")}
       </Text>
-      <Text as="p" size="xs">
+      <Text as="p" size="xs" className={styles.meta}>
         {t("aiPolicyLastUpdatedLabel")}{" "}
         <Timestamp value="2026-09-23" format="date" size="xs" />
       </Text>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyAssistantTitle")}
         </Title>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyAssistantScope")}
         </Text>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyAssistantBoundary")}
         </Text>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyAssistantData")}
         </Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyPrinciplesTitle")}
         </Title>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={principles.map((key) => emphasiseLeadingLabel(t(key)))}
         />
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyUseCasesTitle")}
         </Title>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={useCases.map((key) => emphasiseLeadingLabel(t(key)))}
         />
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyNotUsedTitle")}
         </Title>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyNotUsedBody")}
         </Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyProvidersTitle")}
         </Title>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyProvidersIntro")}
         </Text>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={providers.map((key) => emphasiseLeadingLabel(t(key)))}
         />
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyProvidersFooter")}
         </Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyDataTitle")}
         </Title>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyDataIntro")}
         </Text>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={dataItems.map((key) => emphasiseLeadingLabel(t(key)))}
         />
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyDataFooter")}
         </Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicySafeguardsTitle")}
         </Title>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={safeguards.map((key) => emphasiseLeadingLabel(t(key)))}
         />
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyLimitationsTitle")}
         </Title>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyLimitationsBody")}
         </Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyRightsTitle")}
         </Title>
         <List
           as="ul"
-          size="xs"
+          size="s"
           listStyleType="dash"
           items={rights.map((key) => emphasiseLeadingLabel(t(key)))}
         />
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {renderContactLinks(
             t("aiPolicyRightsFooter"),
             "mail@digitaltableteur.com",
@@ -253,19 +253,19 @@ export function AiUsagePage() {
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyChangesTitle")}
         </Title>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {t("aiPolicyChangesBody")}
         </Text>
       </Section>
 
       <Section spacing="none">
-        <Title level={2} size="xxs">
+        <Title level={2} size="xs">
           {t("aiPolicyContactTitle")}
         </Title>
-        <Text as="p" size="xs">
+        <Text as="p" size="s">
           {renderContactLinks(
             t("aiPolicyContactBody"),
             "mail@digitaltableteur.com",

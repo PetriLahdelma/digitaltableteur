@@ -3,16 +3,68 @@
 }
 
 /* Policy prose wrapper (privacy, ai-usage, accessibility): Container owns
-   measure/centering/page margins; this only carries block padding and
-   section rhythm. Link, Text, Title, List own their own appearance (no
-   descendant element rules). */
+   centering and page margins. Link, Text, Title and List own their
+   appearance; the rules below only set the space between blocks and the
+   measure, which is the wrapper's job. */
+
+/* Legal documents (privacy, AI use, accessibility). One rhythm for every
+   block: 16px between paragraphs and lists, headings with twice as much
+   space above as below, so an H2 opens a section and an H3 stays inside it.
+   The components' own bottom margins are reset here; without that a
+   paragraph after a list sat flush against it. */
 
 .prosePage {
-  padding-block: 2rem;
+  padding-block: var(--space-layout-48) var(--space-layout-96);
+}
+
+.prosePage > *,
+.prosePage section > * {
+  margin-block: 0;
+}
+
+/* Title, then the lead and the date it was last changed. */
+
+.prosePage > h1 + * {
+  margin-block-start: var(--space-layout-24);
+}
+
+.prosePage section > :where(:not(:first-child)) {
+  margin-block-start: var(--space-internal-16);
 }
 
 .prosePage section {
-  margin-block-end: 2rem;
+  margin-block-start: var(--space-layout-64);
+}
+
+.prosePage section > h2 + * {
+  margin-block-start: var(--space-internal-16);
+}
+
+.prosePage section > h3 {
+  margin-block-start: var(--space-layout-32);
+}
+
+.prosePage section > h2 + h3 {
+  margin-block-start: var(--space-layout-24);
+}
+
+.prosePage section > h3 + * {
+  margin-block-start: var(--space-internal-12);
+}
+
+/* Reading measure for paragraphs and lists; headings may run wider. */
+
+.prosePage :where(p, ul, ol) {
+  max-inline-size: var(--measure-reading);
+}
+
+.lead {
+  color: var(--primary-text-color);
+}
+
+.meta {
+  margin-block-start: var(--space-internal-16);
+  color: var(--color-muted);
 }
 
 /* Linked sections (e.g. #business-contacts from the email signature): clear

@@ -3,7 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { Icon, Title } from "@digitaltableteur/react";
+import { Icon, Text, Title } from "@digitaltableteur/react";
 import DtLink from "../../Link";
 import { IconButton } from "../../IconButton";
 import { VisuallyHidden } from "../../VisuallyHidden";
@@ -64,26 +64,28 @@ export function ImprintPage() {
 
   return (
     <div className={styles.page}>
-      <Title level={1} size="xs">
+      <Title level={1} size="m">
         {t("imprintHeading")}
       </Title>
-      <p>{t("imprintIntro")}</p>
+      <Text as="p" size="m" className={styles.lead}>
+        {t("imprintIntro")}
+      </Text>
 
       <section className={styles.section}>
-        <div className={styles.details}>
+        <dl className={styles.details}>
           {imprintRows.map((row) => {
             const copied = Boolean(row.copyKey) && copiedKey === row.copyKey;
             return (
               <div key={row.label} className={styles.row}>
-                <p className={styles.term}>{row.label}</p>
+                <dt className={styles.term}>{row.label}</dt>
                 {row.href ? (
-                  <p className={styles.value}>
+                  <dd className={styles.value}>
                     <DtLink href={row.href} underline="always">
                       {row.value}
                     </DtLink>
-                  </p>
+                  </dd>
                 ) : (
-                  <p className={styles.value}>
+                  <dd className={styles.value}>
                     <span className={styles.valueText}>{row.value}</span>
                     {row.copyKey ? (
                       <IconButton
@@ -105,12 +107,12 @@ export function ImprintPage() {
                         }
                       />
                     ) : null}
-                  </p>
+                  </dd>
                 )}
               </div>
             );
           })}
-        </div>
+        </dl>
 
         {/* The icon swap and relabelled button are visual-only signals. */}
         <div aria-live="polite">
