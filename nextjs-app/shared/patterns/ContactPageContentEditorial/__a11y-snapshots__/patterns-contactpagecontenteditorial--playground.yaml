@@ -4,6 +4,12 @@
 - text: HKI HQ Hämeentie 8 C 00530 Helsinki
 - link "mail@digitaltableteur.com":
   - /url: mailto:mail@digitaltableteur.com
+- button "Copy email address"
+- status
+- 'link "Signal: digitaltableteur.36 External link"':
+  - /url: https://signal.me/#eu/DAORs02ecybx9A6Wdnoc049YwSIgnDpEyUZg5XoE9pb50COGkbtF1KU5gxPNo5At
+  - text: "Signal: digitaltableteur.36"
+  - img "External link"
 - tablist "Contact options":
   - tab "Send a message" [selected]
   - tab "Book a call"
@@ -21,8 +27,8 @@
     - link "privacy policy":
       - /url: /privacy-policy
     - text: .
-  - paragraph: A reply follows within one business day.
   - button "Submit"
+  - paragraph: A reply follows within one business day.
 - img "Portrait of Petri Lahdelma"
 - heading "New Business Inquiries" [level=2]
 - paragraph: Petri Lahdelma
