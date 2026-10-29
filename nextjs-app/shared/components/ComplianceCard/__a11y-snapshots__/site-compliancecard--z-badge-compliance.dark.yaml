@@ -1,0 +1,28 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 12/12" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: All 5 files present TypeScript strict
+- img "Pass"
+- text: Exported interface, forwardRef Translation support
+- img "Pass"
+- text: useTranslation, all keys present CSS Modules
+- img "Pass"
+- text: No inline styles Design tokens
+- img "Pass"
+- text: Now 100% - no hardcoded fallbacks Logical properties
+- img "Pass"
+- text: No physical directions found Theme support
+- img "Pass"
+- text: Uses token variables Size variants
+- img "Pass"
+- text: s/m/l implemented State variants
+- img "Pass"
+- text: success/info/error/warning/neutral Accessibility
+- img "Pass"
+- text: aria-label on close button Storybook stories
+- img "Pass"
+- text: File exists Tests
+- img "Pass"
+- text: File exists
+- separator "Resize table"

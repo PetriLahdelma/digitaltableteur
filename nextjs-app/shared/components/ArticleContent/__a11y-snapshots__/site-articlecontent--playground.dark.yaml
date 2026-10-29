@@ -1,0 +1,7 @@
+- heading "Designing with systems" [level=2]
+- paragraph: A design system is only as good as the decisions it makes easy. The goal is not to constrain, but to remove the thousand small choices that slow a team down and let people focus on the problem in front of them.
+- heading "Start from the tokens" [level=3]
+- paragraph: Tokens are the vocabulary. Colour, type, space and motion, named once and referenced everywhere, so a change in intent becomes a change in one place rather than a hunt across a codebase.
+- list:
+  - listitem: Name things for their role, not their value.
+  - listitem: Let the platform enforce the rules you care about.

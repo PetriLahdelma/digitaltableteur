@@ -1,0 +1,16 @@
+{
+  "storyId": "site-compliancecard-z-badge-compliance",
+  "mode": "dark",
+  "sourceSHA": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+  "capturedAt": "2026-10-29T17:42:22.123Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

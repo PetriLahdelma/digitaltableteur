@@ -1,9 +1,9 @@
 {
   "storyId": "site-compliancecard-playground",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:31:59.811Z",
-  "runner": null,
+  "sourceSHA": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+  "capturedAt": "2026-10-29T17:42:17.171Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

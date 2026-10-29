@@ -1,8 +1,8 @@
 {
   "storyId": "site-compliancecard-example",
   "mode": "forced-colors",
-  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-  "capturedAt": "2026-09-29T19:07:20.366Z",
+  "sourceSHA": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+  "capturedAt": "2026-10-29T17:42:29.322Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
