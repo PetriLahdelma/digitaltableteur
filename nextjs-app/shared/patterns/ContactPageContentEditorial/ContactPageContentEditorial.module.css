@@ -149,6 +149,21 @@
 /* The address is a DS Link (underline="hover"): the wavy underline appears
    on hover and keyboard focus. */
 
+/* Email (with its copy button) and Signal, stacked under the address */
+
+.directLines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-internal-8);
+}
+
+.mailRow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-4);
+}
+
 .mailLink {
   /* The column stretches its children; the wave must end with the text. */
   inline-size: fit-content;

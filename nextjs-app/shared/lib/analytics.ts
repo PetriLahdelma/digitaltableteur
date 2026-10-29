@@ -13,6 +13,10 @@
  * - chat_start {}: the first message of a Donny conversation.
  * - book_meeting {booking_source}: Cal.com confirmed a booking made in the
  *   embed (DonnyBookingEmbed), from the contact page or the chat.
+ * - contact_channel_click {lead_source}: a direct line on the contact page
+ *   was used: "email_copy" (the copy button) or "signal" (the Signal link).
+ *   It reuses the Lead source dimension; it is not a key event, because a
+ *   copied address or an opened chat is not yet an enquiry.
  */
 export type LeadSource = "contact_form" | "chat";
 

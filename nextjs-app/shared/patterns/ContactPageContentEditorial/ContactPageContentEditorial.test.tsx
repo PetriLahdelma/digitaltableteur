@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { describe, it, expect, vi } from "vitest";
 import { ContactPageContentEditorial } from "./ContactPageContentEditorial";
@@ -45,6 +46,25 @@ describe("ContactPageContentEditorial", () => {
       <ContactPageContentEditorial initialInquiryMode="book" />,
     );
     expect(container.firstElementChild).toBeInTheDocument();
+  });
+
+  it("copies the email address and links to Signal by username", async () => {
+    const user = userEvent.setup();
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText },
+      configurable: true,
+    });
+    render(<ContactPageContentEditorial />);
+
+    await user.click(screen.getByRole("button", { name: "Copy email address" }));
+    expect(writeText).toHaveBeenCalledWith("mail@digitaltableteur.com");
+    expect(await screen.findByText("Copied")).toBeInTheDocument();
+
+    const signal = screen.getByRole("link", { name: /Signal: digitaltableteur\.36/ });
+    expect(signal).toHaveAttribute("href", expect.stringMatching(/^https:\/\/signal\.me\/#eu\//));
+    expect(signal).toHaveAttribute("target", "_blank");
+    expect(signal.getAttribute("rel")).toContain("noopener");
   });
 
   it("has no axe violations", async () => {

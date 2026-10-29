@@ -6,7 +6,8 @@ import { useTranslate } from "../../lib/translation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useHydrationSafeMotion } from "../../hooks/useHydrationSafeMotion";
 import { cn } from "../../lib/cn";
-import { Icon, Link, Text, Title } from "@digitaltableteur/react";
+import { CodeCopyButton, Icon, Link, Text, Title } from "@digitaltableteur/react";
+import { trackEvent } from "../../lib/analytics";
 import {
   ContactInquiryPanel,
   type ContactInquiryMode,
@@ -16,6 +17,13 @@ import type { SiteBookingConfig } from "../../lib/donny-booking";
 import { ContactFormEditorial } from "../../components/ContactFormEditorial";
 import { ContactFormSuccessEditorial } from "../../components/ContactFormSuccessEditorial";
 import styles from "./ContactPageContentEditorial.module.css";
+
+const CONTACT_EMAIL = "mail@digitaltableteur.com";
+// Signal username link: it never reveals the phone number and can be reset
+// in the app without changing the username shown next to it.
+const SIGNAL_USERNAME = "digitaltableteur.36";
+const SIGNAL_URL =
+  "https://signal.me/#eu/DAORs02ecybx9A6Wdnoc049YwSIgnDpEyUZg5XoE9pb50COGkbtF1KU5gxPNo5At";
 
 const NEW_BUSINESS_PORTRAIT = {
   src: "/images/authors/petri-lahdelma-inquiries.png",
@@ -149,14 +157,39 @@ export function ContactPageContentEditorial({
                 </span>
               </address>
 
-              <Link
-                href="mailto:mail@digitaltableteur.com"
-                size="inherit"
-                underline="hover"
-                className={styles.mailLink}
-              >
-                mail@digitaltableteur.com
-              </Link>
+              <div className={styles.directLines}>
+                <span className={styles.mailRow}>
+                  <Link
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    size="inherit"
+                    underline="hover"
+                    className={styles.mailLink}
+                  >
+                    {CONTACT_EMAIL}
+                  </Link>
+                  <CodeCopyButton
+                    value={CONTACT_EMAIL}
+                    label={t("contactCopyEmail", "Copy email address")}
+                    onCopy={() =>
+                      trackEvent("contact_channel_click", {
+                        lead_source: "email_copy",
+                      })
+                    }
+                  />
+                </span>
+                <Link
+                  href={SIGNAL_URL}
+                  size="inherit"
+                  underline="hover"
+                  className={styles.mailLink}
+                  target="_blank"
+                  onClick={() =>
+                    trackEvent("contact_channel_click", { lead_source: "signal" })
+                  }
+                >
+                  {`${t("contactSignalLabel", "Signal")}: ${SIGNAL_USERNAME}`}
+                </Link>
+              </div>
             </motion.div>
           </div>
 
