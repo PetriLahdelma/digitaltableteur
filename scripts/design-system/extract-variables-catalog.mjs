@@ -51,6 +51,7 @@ function inferUsage(name) {
   if (name === "--font-mono") return "Monospace font stack for code and technical UI.";
   if (name.startsWith("--line-height-")) return `Line-height for ${name.replace("--line-height-", "")} typography rhythm.`;
   if (name.startsWith("--tracking-")) return `Letter-spacing for ${name.replace("--tracking-", "")} display/heading styles.`;
+  if (name.startsWith("--measure-")) return `Max inline size for ${name.replace("--measure-", "")} text, in em so it follows the block's own font size.`;
   if (name.startsWith("--duration-")) return `Motion duration for ${name.replace("--duration-", "")} transitions.`;
   if (name.startsWith("--ease-")) return `Cubic-bezier easing curve (${name.replace("--ease-", "")}).`;
   if (name.startsWith("--stagger-")) return `Animation stagger delay between siblings.`;
@@ -184,7 +185,7 @@ function categorize(name) {
   if (name.startsWith("--color-") || name.startsWith("--accent-") || name.startsWith("--main-body") || name.startsWith("--link-") || name.startsWith("--logo-") || name.startsWith("--selection-"))
     return "color";
   if (name === "--home-gradient") return "color";
-  if (name.startsWith("--font-") || name.startsWith("--line-height") || name.startsWith("--tracking-") || name.startsWith("--font-weight"))
+  if (name.startsWith("--font-") || name.startsWith("--line-height") || name.startsWith("--tracking-") || name.startsWith("--measure-") || name.startsWith("--font-weight"))
     return "typography";
   if (name.startsWith("--space-")) return "space";
   if (name.startsWith("--duration-") || name.startsWith("--ease-") || name.startsWith("--stagger-") || name.startsWith("--motion-"))

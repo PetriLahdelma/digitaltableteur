@@ -90,7 +90,7 @@ export function ValuesSection({
                 className={cn(
                   "font-body text-lg",
                   "text-muted-foreground",
-                  "max-w-2xl mx-auto",
+                  "max-w-[var(--measure-reading)] mx-auto",
                 )}
               >
                 {subtitle}

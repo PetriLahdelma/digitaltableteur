@@ -27,6 +27,12 @@
   gap: var(--space-internal-12);
 }
 
+/* Reading measure: the panel alone allowed 85 characters per line. */
+
+.answer :where(p) {
+  max-inline-size: var(--measure-reading);
+}
+
 .badge {
   margin-block-start: var(--space-internal-4);
 }

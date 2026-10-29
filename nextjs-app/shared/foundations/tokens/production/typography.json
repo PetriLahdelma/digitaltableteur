@@ -14,6 +14,11 @@
           "reason": "font stack starts from --font-body, which next/font sets at runtime (not in variables.css)"
         },
         {
+          "cssVar": "--measure-reading",
+          "css": "30em",
+          "reason": "\"30em\" is not a px/rem dimension"
+        },
+        {
           "cssVar": "--line-height-code-s",
           "css": "1.125rem",
           "reason": "\"1.125rem\" is not a unitless number"

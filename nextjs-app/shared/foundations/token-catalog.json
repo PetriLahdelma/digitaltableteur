@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-25T17:18:24.399Z",
-  "tokenCount": 227,
-  "usageCoverage": 172,
+  "generatedAt": "2026-10-29T17:03:27.485Z",
+  "tokenCount": 228,
+  "usageCoverage": 173,
   "themes": [
     {
       "id": "light",
@@ -2209,6 +2209,13 @@
           "name": "--font-mono",
           "value": "var(--font-code, source-code-pro), menlo, monaco, consolas, \"Courier New\", monospace",
           "usage": "Monospace font stack for code and technical UI.",
+          "category": "typography",
+          "subgroup": "Families & aliases"
+        },
+        {
+          "name": "--measure-reading",
+          "value": "30em",
+          "usage": "Max inline size for reading text, in em so it follows the block's own font size.",
           "category": "typography",
           "subgroup": "Families & aliases"
         }

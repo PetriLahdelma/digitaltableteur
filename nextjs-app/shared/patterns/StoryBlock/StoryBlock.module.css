@@ -53,6 +53,12 @@
   margin-block-end: 0;
 }
 
+/* Reading measure: a full-width column at 1280px ran to 104 characters. */
+
+.paragraph :where(p) {
+  max-inline-size: var(--measure-reading);
+}
+
 /* Figure styling */
 
 .figure {

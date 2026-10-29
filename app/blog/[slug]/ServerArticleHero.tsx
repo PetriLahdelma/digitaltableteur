@@ -72,7 +72,7 @@ export function ServerArticleHero({
             {title}
           </h1>
           {excerpt ? (
-            <p className="mt-4 font-body text-lg leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-[var(--measure-reading)] font-body text-lg leading-relaxed text-muted-foreground">
               {excerpt}
             </p>
           ) : null}

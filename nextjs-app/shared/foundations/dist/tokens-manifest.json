@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
   "source": "nextjs-app/shared/styles/variables.css",
-  "tokenCount": 227,
-  "usageCoverage": 172,
+  "tokenCount": 228,
+  "usageCoverage": 173,
   "dtcgFiles": [
     "tokens/production/color.json",
     "tokens/production/elevation.json",
@@ -228,6 +228,7 @@
     "--line-height-loose",
     "--font-title",
     "--font-text",
+    "--measure-reading",
     "--line-height-code-s",
     "--line-height-code-m",
     "--line-height-code-row",
@@ -257,5 +258,5 @@
     "--font-size-button-m",
     "--font-size-button-l"
   ],
-  "generatedAt": "2026-10-25T17:18:24.468Z"
+  "generatedAt": "2026-10-29T17:03:27.572Z"
 }

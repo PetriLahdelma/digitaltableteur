@@ -340,6 +340,11 @@
   --container-xl: 1440px; /* Extra wide layouts */
   --container-full: 100%; /* Full bleed sections */
 
+  /* Reading measure, in em so it follows each block's own size: about 67
+     characters per line in Satoshi (average letter 0.445em, counted in
+     Chromium). Cap paragraphs, lists and quotes with it, not media. */
+  --measure-reading: 30em;
+
   /* Grid system */
   --grid-columns-mobile: 4; /* 4 columns on mobile */
   --grid-columns-tablet: 8; /* 8 columns on tablet */

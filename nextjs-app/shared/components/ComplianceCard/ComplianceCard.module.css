@@ -39,7 +39,7 @@
   margin: 0;
   font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.25rem;
+  line-height: 1.4286;
   color: color-mix(in srgb, var(--color-text) 70%, transparent);
 }
 

@@ -10,6 +10,10 @@ export const articleProseClassName = cn(
   "prose-p:font-body prose-p:text-base prose-p:tablet:text-lg",
   "prose-p:leading-relaxed prose-p:text-foreground/90",
   "prose-p:my-6",
+  // Reading measure: max-w-none let paragraphs run to 105 characters per
+  // line. Media, tables and code keep the full column.
+  "prose-p:max-w-[var(--measure-reading)] prose-ul:max-w-[var(--measure-reading)]",
+  "prose-ol:max-w-[var(--measure-reading)] prose-blockquote:max-w-[var(--measure-reading)]",
   "prose-a:text-primary prose-a:font-medium prose-a:underline",
   "prose-a:underline-offset-2 hover:prose-a:text-primary/80",
   "prose-li:font-body prose-li:text-base prose-li:tablet:text-lg",

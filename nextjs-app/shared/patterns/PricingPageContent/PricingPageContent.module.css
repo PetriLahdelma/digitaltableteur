@@ -241,6 +241,7 @@
 
 .testimonial .testimonialQuote {
   margin: 0;
+  max-inline-size: var(--measure-reading);
   color: var(--inverted-text-color);
 }
 

@@ -65,6 +65,7 @@ export function inferType(token) {
   if (name.startsWith("--font-") || name.includes("-font")) return "fontFamily";
   if (name.startsWith("--line-height-")) return "number";
   if (name.startsWith("--tracking-")) return "dimension";
+  if (name.startsWith("--measure-")) return "dimension";
   if (name.endsWith("-color") || name.endsWith("-bg") || name.endsWith("-background") || isColorLikeValue(value)) {
     return "color";
   }

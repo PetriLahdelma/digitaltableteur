@@ -79,11 +79,9 @@ a:focus-visible {
   }
 }
 
-@media (width <= 768px) {
-  html {
-    font-size: 18px;
-  }
-}
+/* No root font-size here: the site leaves it at the reader's default
+   (16px unless they changed it), so stories must too or every rem renders
+   larger in Storybook than on the site. */
 
 code {
   font-family: var(--font-mono);
