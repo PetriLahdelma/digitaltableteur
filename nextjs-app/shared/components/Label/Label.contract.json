@@ -8,7 +8,16 @@
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-6",
     "radixPrimitive": null,
     "element": "label",
-    "variants": {},
+    "variants": {
+        "variant": {
+            "values": [
+                "field",
+                "option"
+            ],
+            "default": "field",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
