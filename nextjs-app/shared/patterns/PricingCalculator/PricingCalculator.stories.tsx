@@ -60,9 +60,9 @@ export const Interactive: Story = {
       canvas.getByText(format.format(defaults.totalHours)),
     ).toBeInTheDocument();
 
-    // 12 months at the default 5 days/week earns the 90 €/h partnership rate.
+    // 12 months at the default 5 days/week earns the €90/h partnership rate.
     await userEvent.click(canvas.getByRole("radio", { name: /12\s*months/i }));
-    await expect(canvas.getByText(/^90\s?€\//)).toBeInTheDocument();
+    await expect(canvas.getByText(/^€90\//)).toBeInTheDocument();
 
     // Dropping below 4 days/week loses the partnership rate again.
     await userEvent.click(canvas.getByRole("radio", { name: /3\s*days/i }));
@@ -71,7 +71,7 @@ export const Interactive: Story = {
     await expect(
       canvas.getByText(format.format(next.totalHours)),
     ).toBeInTheDocument();
-    await expect(canvas.queryByText(/^90\s?€\//)).toBeNull();
+    await expect(canvas.queryByText(/^€90\//)).toBeNull();
   },
 };
 
