@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T07:08:47.361Z",
+  "generatedAt": "2026-10-29T07:16:48.658Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -12848,7 +12848,9 @@
         "Button",
         "Icon",
         "Title",
-        "Text"
+        "Text",
+        "Kbd",
+        "Tooltip"
       ],
       "prefersOver": [],
       "declaredPropCount": 16,
@@ -18017,9 +18019,12 @@
         "put whole phrases inside one Kbd; one key (or chord symbol) per cap."
       ],
       "composesWith": [
-        "Badge",
-        "StatusDot",
-        "Icon"
+        "Icon",
+        "Button",
+        "Title",
+        "Text",
+        "DonnyAvatar",
+        "Tooltip"
       ],
       "prefersOver": [],
       "declaredPropCount": 2,
@@ -38733,8 +38738,8 @@
       "composesWith": [
         "Button",
         "Title",
-        "TextInput",
         "Icon",
+        "TextInput",
         "CheckboxGroup",
         "Link"
       ],
@@ -40356,8 +40361,8 @@
       "composesWith": [
         "Text",
         "Button",
-        "TextInput",
         "Icon",
+        "TextInput",
         "Link",
         "Badge"
       ],
@@ -41268,7 +41273,14 @@
         "attach tooltips to non-focusable elements; hover-only hints exclude keyboard and touch users.",
         "promote to stable without production consumer evidence."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Button",
+        "Title",
+        "Text",
+        "DonnyAvatar",
+        "Icon",
+        "Kbd"
+      ],
       "prefersOver": [],
       "declaredPropCount": 4,
       "guidelines": [

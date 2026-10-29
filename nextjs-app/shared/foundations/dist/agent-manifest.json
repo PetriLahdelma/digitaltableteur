@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-29T07:08:47.703Z",
+  "generatedAt": "2026-10-29T07:16:48.975Z",
   "summary": {
     "componentCount": 191,
     "statusCounts": {
@@ -81,17 +81,17 @@
     "withAnyUsage": 181,
     "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 924,
-    "aliasImportFiles": 473,
+    "totalEvidenceRows": 926,
+    "aliasImportFiles": 475,
     "relativeImportFiles": 491,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-10-16T06:06:39.419Z",
+    "generatedAt": "2026-10-29T07:16:41.509Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 96,
+    "nodesWithComposesWith": 97,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -22376,7 +22376,9 @@
           "Button",
           "Icon",
           "Title",
-          "Text"
+          "Text",
+          "Kbd",
+          "Tooltip"
         ],
         "prefersOver": [],
         "declaredPropCount": 16,
@@ -31471,11 +31473,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Kbd",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 1,
+        "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Kbd",
+            "context": "component"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -31562,9 +31570,12 @@
           "put whole phrases inside one Kbd; one key (or chord symbol) per cap."
         ],
         "composesWith": [
-          "Badge",
-          "StatusDot",
-          "Icon"
+          "Icon",
+          "Button",
+          "Title",
+          "Text",
+          "DonnyAvatar",
+          "Tooltip"
         ],
         "prefersOver": [],
         "declaredPropCount": 2,
@@ -65649,8 +65660,8 @@
         "composesWith": [
           "Button",
           "Title",
-          "TextInput",
           "Icon",
+          "TextInput",
           "CheckboxGroup",
           "Link"
         ],
@@ -68688,8 +68699,8 @@
         "composesWith": [
           "Text",
           "Button",
-          "TextInput",
           "Icon",
+          "TextInput",
           "Link",
           "Badge"
         ],
@@ -70225,11 +70236,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Tooltip",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 1,
+        "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Tooltip",
+            "context": "component"
+          },
           {
             "path": "nextjs-app/shared/components/interactive/index.ts",
             "importKind": "alias",
@@ -70308,7 +70325,14 @@
           "attach tooltips to non-focusable elements; hover-only hints exclude keyboard and touch users.",
           "promote to stable without production consumer evidence."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Button",
+          "Title",
+          "Text",
+          "DonnyAvatar",
+          "Icon",
+          "Kbd"
+        ],
         "prefersOver": [],
         "declaredPropCount": 4,
         "guidelines": [
