@@ -48,7 +48,7 @@ describe("ContactPageContentEditorial", () => {
     expect(container.firstElementChild).toBeInTheDocument();
   });
 
-  it("mails, copies the email address and opens Signal", async () => {
+  it("mails, calls, copies and opens WhatsApp or Signal", async () => {
     const user = userEvent.setup();
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, "clipboard", {
@@ -65,10 +65,20 @@ describe("ContactPageContentEditorial", () => {
     expect(writeText).toHaveBeenCalledWith("mail@digitaltableteur.com");
     expect(await screen.findByText("Copied")).toBeInTheDocument();
 
-    const signal = screen.getByRole("link", { name: /Message on Signal/ });
+    expect(
+      screen.getByRole("link", { name: "+358 45 657 4469" }),
+    ).toHaveAttribute("href", "tel:+358456574469");
+    await user.click(screen.getByRole("button", { name: "Copy phone number" }));
+    expect(writeText).toHaveBeenCalledWith("+358 45 657 4469");
+
+    const whatsapp = screen.getByRole("link", { name: /WhatsApp/ });
+    expect(whatsapp).toHaveAttribute("href", "https://wa.me/358456574469");
+    const signal = screen.getByRole("link", { name: /Signal/ });
     expect(signal).toHaveAttribute("href", expect.stringMatching(/^https:\/\/signal\.me\/#eu\//));
-    expect(signal).toHaveAttribute("target", "_blank");
-    expect(signal.getAttribute("rel")).toContain("noopener");
+    for (const chat of [whatsapp, signal]) {
+      expect(chat).toHaveAttribute("target", "_blank");
+      expect(chat.getAttribute("rel")).toContain("noopener");
+    }
   });
 
   it("has no axe violations", async () => {

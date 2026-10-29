@@ -19,8 +19,11 @@ import { ContactFormSuccessEditorial } from "../../components/ContactFormSuccess
 import styles from "./ContactPageContentEditorial.module.css";
 
 const CONTACT_EMAIL = "mail@digitaltableteur.com";
-// Signal username link (digitaltableteur.36): it never reveals the phone
-// number. Resetting the link in the app retires this URL.
+const CONTACT_PHONE = "+358 45 657 4469";
+const CONTACT_PHONE_E164 = CONTACT_PHONE.replace(/\s/g, "");
+const WHATSAPP_URL = `https://wa.me/${CONTACT_PHONE_E164.slice(1)}`;
+// Signal username link (digitaltableteur.36). Resetting the link in the app
+// retires this URL.
 const SIGNAL_URL =
   "https://signal.me/#eu/DAORs02ecybx9A6Wdnoc049YwSIgnDpEyUZg5XoE9pb50COGkbtF1KU5gxPNo5At";
 
@@ -187,9 +190,57 @@ export function ContactPageContentEditorial({
                 </div>
                 <div className={styles.lineRow}>
                   <dt className={styles.lineLabel}>
-                    {t("contactChatLabel", "Chat")}
+                    {t("contactCallLabel", "Call")}
                   </dt>
                   <dd className={styles.lineValue}>
+                    <Link
+                      href={`tel:${CONTACT_PHONE_E164}`}
+                      size="inherit"
+                      underline="hover"
+                      className={cn(styles.lineLink, styles.phoneLink)}
+                      onClick={() =>
+                        trackEvent("contact_channel_click", {
+                          lead_source: "phone",
+                        })
+                      }
+                    >
+                      {CONTACT_PHONE}
+                    </Link>
+                    <CodeCopyButton
+                      value={CONTACT_PHONE}
+                      label={t("contactCopyPhone", "Copy phone number")}
+                      size="md"
+                      className={styles.copyButton}
+                      onCopy={() =>
+                        trackEvent("contact_channel_click", {
+                          lead_source: "phone_copy",
+                        })
+                      }
+                    />
+                  </dd>
+                </div>
+                <div className={styles.lineRow}>
+                  <dt className={styles.lineLabel}>
+                    {t("contactChatLabel", "Chat")}
+                  </dt>
+                  <dd className={cn(styles.lineValue, styles.chatLine)}>
+                    <Link
+                      href={WHATSAPP_URL}
+                      target="_blank"
+                      size="inherit"
+                      underline="hover"
+                      className={cn(styles.lineLink, styles.chatLink)}
+                      onClick={() =>
+                        trackEvent("contact_channel_click", {
+                          lead_source: "whatsapp",
+                        })
+                      }
+                    >
+                      WhatsApp
+                    </Link>
+                    <span className={styles.lineJoin}>
+                      {t("contactChatOr", "or")}
+                    </span>
                     <Link
                       href={SIGNAL_URL}
                       target="_blank"
@@ -202,7 +253,7 @@ export function ContactPageContentEditorial({
                         })
                       }
                     >
-                      {t("contactSignalCta", "Message on Signal")}
+                      Signal
                     </Link>
                   </dd>
                 </div>

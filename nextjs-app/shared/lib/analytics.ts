@@ -14,9 +14,10 @@
  * - book_meeting {booking_source}: Cal.com confirmed a booking made in the
  *   embed (DonnyBookingEmbed), from the contact page or the chat.
  * - contact_channel_click {lead_source}: a direct line on the contact page
- *   was used: "email_copy" (the copy button) or "signal" (the Message on Signal button).
+ *   was used: "email_copy" or "phone_copy" (a copy button), "phone" (the
+ *   tel: link), "whatsapp" or "signal" (a chat link).
  *   It reuses the Lead source dimension; it is not a key event, because a
- *   copied address or an opened chat is not yet an enquiry.
+ *   copied address, a dialled number or an opened chat is not yet an enquiry.
  */
 export type LeadSource = "contact_form" | "chat";
 

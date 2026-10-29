@@ -186,6 +186,16 @@
   color: var(--color-text);
 }
 
+/* The number never breaks across lines, even at 320px. */
+
+.phoneLink {
+  white-space: nowrap;
+}
+
+.lineJoin {
+  color: var(--color-muted);
+}
+
 /* The md copy button's 40px hover square keeps a clear gap from the
    address (the row's gap). Pinned to the top of the text box and pulled up
    4px, its glyph centres on the x-height; the matching 4px off the bottom
@@ -198,12 +208,22 @@
   opacity: 0;
 }
 
-/* The Signal link's only span is Link's external (new tab) icon: its
-   children are plain text. It reveals with the wave, like the copy icon. */
+/* Two links share the chat line, so it aligns on text baselines ("or" has
+   no wave padding). A chat link's only span is Link's external icon; a
+   hidden-but-reserved icon would leave a gap after WhatsApp, so it is
+   visually hidden and its "External link" label still reads. */
+
+.chatLine {
+  align-items: baseline;
+}
 
 .chatLink > span {
-  transition: opacity var(--duration-fast) var(--ease-out-cubic);
-  opacity: 0;
+  position: absolute;
+  block-size: 1px;
+  inline-size: 1px;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
 }
 
 /* Hidden, not removed: both stay announced, the copy button stays in the
@@ -215,24 +235,20 @@
 }
 
 .lineValue:hover .copyButton,
-.lineValue:focus-within .copyButton,
-.lineValue:hover .chatLink > span,
-.lineValue:focus-within .chatLink > span {
+.lineValue:focus-within .copyButton {
   opacity: 1;
 }
 
 /* Touch screens have no hover: keep the icons visible there. */
 
 @media (hover: none) {
-  .copyButton,
-  .chatLink > span {
+  .copyButton {
     opacity: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .copyButton,
-  .chatLink > span {
+  .copyButton {
     transition: none;
   }
 }
