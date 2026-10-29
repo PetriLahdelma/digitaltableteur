@@ -36,66 +36,129 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.dark.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:24.816Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:02.938Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:15.389Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:49.179Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.light.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:20.074Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:56.137Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.dark.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:25.101Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:04.111Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:15.621Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:50.547Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.light.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:20.316Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:57.455Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.dark.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:25.344Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:04.399Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:15.851Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:50.922Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.light.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:20.545Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:57.795Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-large-measure.dark.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:03.531Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-large-measure.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:49.838Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-large-measure.light.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:56.764Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-playground.dark.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:03.817Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-playground.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:50.207Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-playground.light.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:57.107Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-small-measure.dark.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:03.242Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-small-measure.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:49.504Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-small-measure.light.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:56.429Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -111,87 +174,171 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.dark.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:24.816Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:02.938Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.forced-colors.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:29.447Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:09.439Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:15.389Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:49.179Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.light.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:20.074Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:56.137Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.dark.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:25.101Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:04.111Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.forced-colors.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:29.664Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:10.550Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:15.621Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:50.547Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.light.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:20.316Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:57.455Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.dark.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:25.344Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:04.399Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.forced-colors.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:29.867Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:10.832Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:15.851Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:50.922Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.light.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:20.545Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:57.795Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-large-measure.dark.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:03.531Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-large-measure.forced-colors.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:09.986Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-large-measure.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:49.838Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-large-measure.light.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:56.764Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-playground.dark.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:03.817Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-playground.forced-colors.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:10.259Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-playground.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:50.207Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-playground.light.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:57.107Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-small-measure.dark.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:03.242Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-small-measure.forced-colors.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:09.711Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-small-measure.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:49.504Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-small-measure.light.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:40:56.429Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -203,24 +350,45 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-default.forced-colors.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:29.447Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:09.439Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-example.forced-colors.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:29.664Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:10.550Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-forced-colors.forced-colors.json",
-            "sourceCommit": "a9e52793dd026ee75a23e4b1bbd3d7e58ff48d30",
-            "capturedAt": "2026-10-15T15:04:29.867Z",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:10.832Z",
             "passed": true,
-            "runner": "local-2026-10-15e"
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-large-measure.forced-colors.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:09.986Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-playground.forced-colors.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:10.259Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleContent/__a11y-evidence__/site-articlecontent-small-measure.forced-colors.json",
+            "sourceCommit": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
+            "capturedAt": "2026-10-29T17:41:09.711Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
