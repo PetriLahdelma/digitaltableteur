@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.49 - 2026-10-29
+
+- `CodeCopyButton`: new `size` prop. `sm` (default, unchanged) is the 28px
+  square with a 16px glyph for code surfaces; `md` is the 40px square of
+  `Button` md with a 20px glyph, for a copy control beside body text.
+
 ## 0.1.48 - 2026-10-29
 
 - `PhoneInput`: the country code picker ("FI +358") opens the same list as
