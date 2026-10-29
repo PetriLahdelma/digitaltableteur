@@ -170,6 +170,12 @@
       "level": "additive",
       "detail": "keyboard gained \"Enter, Space, Escape and typeahead by name or calling code (country select)\"",
       "bump": "patch"
+    },
+    {
+      "component": "CodeCopyButton",
+      "level": "additive",
+      "detail": "prop `size` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -1345,6 +1351,13 @@
         "resetAfterMs": {
           "optional": true,
           "type": "number"
+        },
+        "size": {
+          "optional": true,
+          "values": [
+            "md",
+            "sm"
+          ]
         },
         "value": {
           "optional": false,

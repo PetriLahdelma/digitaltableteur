@@ -9,7 +9,16 @@
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1976-7275",
     "radixPrimitive": null,
     "element": "button",
-    "variants": {},
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -114,6 +123,15 @@
             "optional": true,
             "type": "number",
             "description": "How long the check mark stays, in milliseconds."
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md"
+            ],
+            "description": "Size token: sm (28px, code surfaces) or md (40px, beside body text)."
         }
     }
 }

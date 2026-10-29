@@ -4362,6 +4362,11 @@
           "required": true
         },
         {
+          "name": "size",
+          "type": "sm | md",
+          "required": false
+        },
+        {
           "name": "label",
           "type": "string",
           "required": false
@@ -4392,6 +4397,15 @@
           "optional": true,
           "type": "number",
           "description": "How long the check mark stays, in milliseconds."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md"
+          ],
+          "description": "Size token: sm (28px, code surfaces) or md (40px, beside body text)."
         }
       },
       "composesWith": [
@@ -4444,7 +4458,12 @@
         {
           "story": "CustomLabel",
           "description": null,
-          "source": "export const CustomLabel: Story = {\n  tags: [\"example\"],\n  args: { label: \"Copy install command\" },\n};"
+          "source": "export const CustomLabel: Story = {\n  tags: [\"example\"],\n  args: { label: \"Copy install command\" },\n};\n\n/** md: beside body text, as on the contact page email line. */"
+        },
+        {
+          "story": "Medium",
+          "description": null,
+          "source": "export const Medium: Story = {\n  tags: [\"example\"],\n  args: { size: \"md\", label: \"Copy email address\", value: \"mail@example.com\" },\n};"
         },
         {
           "story": "Disabled",

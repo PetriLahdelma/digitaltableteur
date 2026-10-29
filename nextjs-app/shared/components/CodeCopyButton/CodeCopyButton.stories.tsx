@@ -36,6 +36,12 @@ export const CustomLabel: Story = {
   args: { label: "Copy install command" },
 };
 
+/** md: beside body text, as on the contact page email line. */
+export const Medium: Story = {
+  tags: ["example"],
+  args: { size: "md", label: "Copy email address", value: "mail@example.com" },
+};
+
 export const Disabled: Story = {
   tags: ["example"],
   args: { disabled: true },

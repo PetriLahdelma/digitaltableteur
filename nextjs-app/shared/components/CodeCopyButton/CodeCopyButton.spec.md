@@ -17,8 +17,11 @@ after a successful copy; a polite live region announces Copied or Copy failed.
 - Don't: report success with the check mark alone.
 
 ## Design notes
-- 28px square, radius-md; glyph `--color-muted`, hover `--color-neutral-bg`,
-  copied `--color-success`. HC themes outline the hover state.
+- `size="sm"` (default): 28px square with a 16px glyph, for code surfaces.
+  `size="md"`: 40px square with a 20px glyph, the Button md icon size, for a
+  copy control beside body text (the contact page email). Radius-md; glyph
+  `--color-muted`, hover `--color-neutral-bg`, copied `--color-success`. HC
+  themes outline the hover state.
 - A refused clipboard (insecure origin, denied permission) falls back to
   execCommand, then reports failure instead of a false success.
 - Figma: CodeCopyButton (1976:7275), State Idle / Hover / Copied.

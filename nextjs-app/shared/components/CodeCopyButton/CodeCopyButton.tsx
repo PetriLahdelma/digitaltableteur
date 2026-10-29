@@ -8,6 +8,11 @@ import { cn } from "../../lib/cn";
 import styles from "./CodeCopyButton.module.css";
 
 export type CodeCopyButtonStatus = "idle" | "copied" | "error";
+export type CodeCopyButtonSize = "sm" | "md";
+
+/** Glyph px per size: sm suits code surfaces, md matches Button md and the
+ *  20px icons that sit beside body text (Link's external icon). */
+const GLYPH_SIZE: Record<CodeCopyButtonSize, number> = { sm: 16, md: 20 };
 
 export interface CodeCopyButtonProps
   extends Omit<
@@ -22,6 +27,8 @@ export interface CodeCopyButtonProps
   onCopy?: (text: string) => void;
   /** How long the check mark stays, in milliseconds. @default 1600 */
   resetAfterMs?: number;
+  /** Size token: sm (28px, code surfaces) or md (40px, beside body text). @default "sm" */
+  size?: CodeCopyButtonSize;
 }
 
 /**
@@ -39,6 +46,7 @@ export const CodeCopyButton = React.forwardRef<
       label,
       onCopy,
       resetAfterMs = 1600,
+      size = "sm",
       className,
       disabled,
       onClick,
@@ -90,7 +98,8 @@ export const CodeCopyButton = React.forwardRef<
         <button
           ref={ref}
           type={type}
-          className={styles.button}
+          className={cn(styles.button, size === "md" && styles.md)}
+          data-size={size}
           aria-label={label || t("codeCopyButton.copy")}
           data-status={status}
           disabled={disabled}
@@ -98,9 +107,9 @@ export const CodeCopyButton = React.forwardRef<
           {...rest}
         >
           {status === "copied" ? (
-            <Check className={styles.icon} size={16} aria-hidden="true" />
+            <Check className={styles.icon} size={GLYPH_SIZE[size]} aria-hidden="true" />
           ) : (
-            <Copy className={styles.icon} size={16} aria-hidden="true" />
+            <Copy className={styles.icon} size={GLYPH_SIZE[size]} aria-hidden="true" />
           )}
         </button>
         <span className={styles.visuallyHidden} role="status" aria-live="polite">

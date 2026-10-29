@@ -25,6 +25,13 @@
     color var(--duration-fast) var(--ease-out-cubic);
 }
 
+/* md: the 40px square of Button md (icon only), for use beside body text. */
+
+.button.md {
+  block-size: 2.5rem;
+  inline-size: 2.5rem;
+}
+
 .button:hover {
   background-color: var(--color-neutral-bg);
   color: var(--color-text);

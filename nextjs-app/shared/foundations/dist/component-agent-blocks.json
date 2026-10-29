@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T07:16:48.658Z",
+  "generatedAt": "2026-10-29T10:07:49.416Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -8715,11 +8715,28 @@
           "optional": true,
           "type": "number",
           "description": "How long the check mark stays, in milliseconds."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md"
+          ],
+          "description": "Size token: sm (28px, code surfaces) or md (40px, beside body text)."
         }
       },
       "propRelationships": [],
       "forbiddenCombos": [],
-      "variants": {},
+      "variants": {
+        "size": {
+          "values": [
+            "sm",
+            "md"
+          ],
+          "default": "sm"
+        }
+      },
       "cvaVariants": {},
       "variantsFnName": null,
       "useWhen": [
@@ -8751,7 +8768,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 4,
+      "declaredPropCount": 5,
       "guidelines": [
         {
           "level": "should",

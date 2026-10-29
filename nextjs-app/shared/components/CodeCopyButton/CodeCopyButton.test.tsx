@@ -78,6 +78,17 @@ describe("CodeCopyButton", () => {
     ).toBeInTheDocument();
   });
 
+  it("renders sm by default and md with the larger glyph", () => {
+    const { rerender } = render(<CodeCopyButton value="x" />);
+    const button = screen.getByRole("button");
+    expect(button).toHaveAttribute("data-size", "sm");
+    expect(button.querySelector("svg")).toHaveAttribute("width", "16");
+
+    rerender(<CodeCopyButton value="x" size="md" />);
+    expect(button).toHaveAttribute("data-size", "md");
+    expect(button.querySelector("svg")).toHaveAttribute("width", "20");
+  });
+
   it("has no axe violations", async () => {
     const { container } = render(<CodeCopyButton value="x" />);
     expect(await axe(container)).toHaveNoViolations();
