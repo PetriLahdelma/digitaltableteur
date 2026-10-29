@@ -186,11 +186,13 @@
   color: var(--color-text);
 }
 
-/* The copy button's hover square keeps a clear gap from the address (the
-   row's gap); pinned to the text box, since centring on a link box padded
-   for the wave would drop the glyph below the x-height. */
+/* The md copy button's 40px hover square keeps a clear gap from the
+   address (the row's gap). Pinned to the top of the text box and pulled up
+   4px, its glyph centres on the x-height; the matching 4px off the bottom
+   keeps the row as tall as the link, so Chat sits where it did. */
 
 .copyButton {
+  margin-block: calc(-1 * var(--space-internal-4));
   align-self: flex-start;
   transition: opacity var(--duration-fast) var(--ease-out-cubic);
   opacity: 0;

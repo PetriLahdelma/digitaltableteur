@@ -175,6 +175,7 @@ export function ContactPageContentEditorial({
                     <CodeCopyButton
                       value={CONTACT_EMAIL}
                       label={t("contactCopyEmail", "Copy email address")}
+                      size="md"
                       className={styles.copyButton}
                       onCopy={() =>
                         trackEvent("contact_channel_click", {
