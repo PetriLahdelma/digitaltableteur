@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T04:50:06.444Z",
+  "generatedAt": "2026-10-29T07:08:47.361Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -6864,7 +6864,7 @@
         "validity": [
           {
             "id": "clear-undo-window",
-            "statement": "After Clear, the previous transcript can be restored with Undo for the undo-window threshold; sending a new message or the window ending makes the clear final.",
+            "statement": "After New chat clears the conversation, the previous transcript can be restored with Undo for the undo-window threshold; sending a new message or the window ending makes the clear final.",
             "state": "cleared",
             "staleAfterMs": 10000,
             "threshold": "undoWindowMs",
@@ -6924,7 +6924,7 @@
           {
             "id": "clear-undo-window",
             "class": "reversible",
-            "statement": "Clear empties the conversation and offers Undo for ten seconds.",
+            "statement": "New chat empties the conversation and offers Undo for ten seconds.",
             "confirmation": "none",
             "recovery": "undo",
             "verification": "automated",
@@ -16795,10 +16795,10 @@
       "composesWith": [
         "Label",
         "Icon",
-        "Button",
         "GroupLabel",
-        "Kbd",
-        "Radio"
+        "Radio",
+        "Text",
+        "VisuallyHidden"
       ],
       "prefersOver": [
         "AlertBanner for field-level hints"
@@ -17164,7 +17164,7 @@
         "Badge",
         "Title",
         "ComplianceCard",
-        "HelperText"
+        "Label"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,
@@ -18017,12 +18017,9 @@
         "put whole phrases inside one Kbd; one key (or chord symbol) per cap."
       ],
       "composesWith": [
-        "Icon",
-        "Button",
-        "Label",
-        "HelperText",
         "Badge",
-        "StatusDot"
+        "StatusDot",
+        "Icon"
       ],
       "prefersOver": [],
       "declaredPropCount": 2,
@@ -18279,10 +18276,10 @@
         "use a Label as a section heading. Headings carry navigation semantics that Label does not."
       ],
       "composesWith": [
-        "HelperText",
+        "Text",
         "Button",
         "Icon",
-        "Text",
+        "HelperText",
         "Checkbox",
         "TextInput"
       ],
