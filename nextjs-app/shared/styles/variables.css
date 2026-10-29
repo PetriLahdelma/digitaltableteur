@@ -907,7 +907,11 @@
   }
 }
 
-/* Hyphenation rules for headings - supports multiple languages */
+/* Headings break only where a word must. Finnish and Swedish headings
+   hyphenate, since their compounds outrun a phone line; English ones do
+   not: display type reads badly split, and the dictionary breaks coined
+   words wrongly ("Agen-tOps"). overflow-wrap still catches a word longer
+   than the line. */
 
 h1,
 h2,
@@ -916,6 +920,10 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  hyphens: manual;
+}
+
+:is(h1, h2, h3, h4, h5, h6):is(:lang(fi), :lang(sv)) {
   hyphens: auto;
 }
 

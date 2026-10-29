@@ -124,8 +124,10 @@ export function EnhancedArticleCard({
             id={titleId}
             lang={contentLanguage}
             className={cn(
+              // No line clamp on titles: under the WCAG 1.4.12 spacing
+              // override a clamped title loses its last words.
               "font-display font-semibold text-sm text-foreground",
-              "line-clamp-2 mb-1",
+              "mb-1",
               "group-hover:text-primary transition-colors",
             )}
           >
@@ -242,7 +244,7 @@ export function EnhancedArticleCard({
           lang={contentLanguage}
           className={cn(
             "font-display font-semibold text-foreground",
-            "line-clamp-2 mb-2",
+            "mb-2",
             "group-hover:text-primary transition-colors",
             isFeatured ? "text-xl tablet:text-2xl" : "text-lg",
           )}
