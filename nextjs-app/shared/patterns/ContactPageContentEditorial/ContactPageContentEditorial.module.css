@@ -146,42 +146,43 @@
   transition: color var(--duration-fast) var(--ease-out-cubic);
 }
 
-/* Direct lines: a labelled email row (mailto link plus copy) and the
-   Signal button under it. The label is muted like the address; the address
-   is full ink, and like links elsewhere on the site its wavy underline and
-   the copy icon appear on hover or keyboard focus. */
+/* Direct lines: labelled rows (Email with copy, Chat on Signal). Labels are
+   muted like the address; values are full ink, and like links elsewhere on
+   the site their wavy underline and trailing icon appear on hover or
+   keyboard focus. One grid with subgrid rows lines the values up. */
 
 .directLines {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-layout-24);
-}
-
-/* Baseline, not center: the wavy underline pads the link's box below the
-   text, so centring would drop the label under the address line. */
-
-.mailRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-internal-4) var(--space-internal-16);
+  display: grid;
+  margin: 0;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--space-internal-8) var(--space-internal-16);
   font-family: var(--font-body);
   font-size: var(--font-size-text-s);
 }
 
-.mailLabel {
+/* Baseline, not center: the wavy underline pads the link's box below the
+   text, so centring would drop the label under the value's line. */
+
+.lineRow {
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+  grid-column: 1 / -1;
+}
+
+.lineLabel {
   color: var(--color-muted);
 }
 
-.mailValue {
+.lineValue {
   display: inline-flex;
+  margin: 0;
   min-inline-size: 0;
   align-items: center;
   gap: var(--space-internal-4);
 }
 
-.mailLink {
+.lineLink {
   color: var(--color-text);
 }
 
@@ -196,29 +197,41 @@
   opacity: 0;
 }
 
-/* Hidden, not removed: it stays in the tab order and shows on focus. It
-   also stays up while its "Copied" check is showing (Safari does not focus
-   a clicked button). */
+/* The Signal link's only span is Link's external (new tab) icon: its
+   children are plain text. It reveals with the wave, like the copy icon. */
+
+.chatLink > span {
+  transition: opacity var(--duration-fast) var(--ease-out-cubic);
+  opacity: 0;
+}
+
+/* Hidden, not removed: both stay announced, the copy button stays in the
+   tab order, and it stays up while its "Copied" check is showing (Safari
+   does not focus a clicked button). */
 
 .copyButton:has([data-status="copied"]) {
   opacity: 1;
 }
 
-.mailValue:hover .copyButton,
-.mailValue:focus-within .copyButton {
+.lineValue:hover .copyButton,
+.lineValue:focus-within .copyButton,
+.lineValue:hover .chatLink > span,
+.lineValue:focus-within .chatLink > span {
   opacity: 1;
 }
 
-/* Touch screens have no hover: keep the copy icon visible there. */
+/* Touch screens have no hover: keep the icons visible there. */
 
 @media (hover: none) {
-  .copyButton {
+  .copyButton,
+  .chatLink > span {
     opacity: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .copyButton {
+  .copyButton,
+  .chatLink > span {
     transition: none;
   }
 }

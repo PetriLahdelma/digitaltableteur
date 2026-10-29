@@ -6,8 +6,7 @@ import { useTranslate } from "../../lib/translation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useHydrationSafeMotion } from "../../hooks/useHydrationSafeMotion";
 import { cn } from "../../lib/cn";
-import { Button, CodeCopyButton, Icon, Link, Text, Title } from "@digitaltableteur/react";
-import { SiSignal } from "react-icons/si";
+import { CodeCopyButton, Icon, Link, Text, Title } from "@digitaltableteur/react";
 import { trackEvent } from "../../lib/analytics";
 import {
   ContactInquiryPanel,
@@ -157,17 +156,19 @@ export function ContactPageContentEditorial({
                 </span>
               </address>
 
-              <div className={styles.directLines}>
-                <div className={styles.mailRow}>
-                  <span className={styles.mailLabel}>
+              {/* Label and value pairs: a description list, so assistive tech
+                  reads "Email" and "Chat" as the names of what follows. */}
+              <dl className={styles.directLines}>
+                <div className={styles.lineRow}>
+                  <dt className={styles.lineLabel}>
                     {t("contactEmailLabel", "Email")}
-                  </span>
-                  <span className={styles.mailValue}>
+                  </dt>
+                  <dd className={styles.lineValue}>
                     <Link
                       href={`mailto:${CONTACT_EMAIL}`}
                       size="inherit"
                       underline="hover"
-                      className={styles.mailLink}
+                      className={styles.lineLink}
                     >
                       {CONTACT_EMAIL}
                     </Link>
@@ -181,22 +182,30 @@ export function ContactPageContentEditorial({
                         })
                       }
                     />
-                  </span>
+                  </dd>
                 </div>
-                <Button
-                  href={SIGNAL_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="secondary"
-                  rounded
-                  icon={<SiSignal aria-hidden="true" />}
-                  onClick={() =>
-                    trackEvent("contact_channel_click", { lead_source: "signal" })
-                  }
-                >
-                  {t("contactSignalCta", "Message on Signal")}
-                </Button>
-              </div>
+                <div className={styles.lineRow}>
+                  <dt className={styles.lineLabel}>
+                    {t("contactChatLabel", "Chat")}
+                  </dt>
+                  <dd className={styles.lineValue}>
+                    <Link
+                      href={SIGNAL_URL}
+                      target="_blank"
+                      size="inherit"
+                      underline="hover"
+                      className={cn(styles.lineLink, styles.chatLink)}
+                      onClick={() =>
+                        trackEvent("contact_channel_click", {
+                          lead_source: "signal",
+                        })
+                      }
+                    >
+                      {t("contactSignalCta", "Message on Signal")}
+                    </Link>
+                  </dd>
+                </div>
+              </dl>
             </motion.div>
           </div>
 
