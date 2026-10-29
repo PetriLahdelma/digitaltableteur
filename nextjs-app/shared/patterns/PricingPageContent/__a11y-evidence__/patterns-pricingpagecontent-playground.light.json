@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-pricingpagecontent-playground",
   "mode": "light",
-  "sourceSHA": "4799078362967bef666a937f8d7c886cc6726604",
-  "capturedAt": "2026-10-26T20:14:10.051Z",
-  "runner": "local-claude",
+  "sourceSHA": "a33d84473d596d16b721176426665aa7f081b6a0",
+  "capturedAt": "2026-10-29T09:48:46.938Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true
