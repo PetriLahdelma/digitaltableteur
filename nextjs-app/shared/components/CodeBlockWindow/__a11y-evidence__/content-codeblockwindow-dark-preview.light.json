@@ -1,0 +1,16 @@
+{
+  "storyId": "content-codeblockwindow-dark-preview",
+  "mode": "light",
+  "sourceSHA": "5273c1132711e819f118e27d64289e47d4264953",
+  "capturedAt": "2026-10-29T20:57:15.384Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

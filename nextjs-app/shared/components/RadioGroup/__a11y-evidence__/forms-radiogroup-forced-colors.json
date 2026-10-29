@@ -1,0 +1,16 @@
+{
+  "storyId": "forms-radiogroup-forced-colors",
+  "mode": "light",
+  "sourceSHA": "5273c1132711e819f118e27d64289e47d4264953",
+  "capturedAt": "2026-10-29T20:56:31.897Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

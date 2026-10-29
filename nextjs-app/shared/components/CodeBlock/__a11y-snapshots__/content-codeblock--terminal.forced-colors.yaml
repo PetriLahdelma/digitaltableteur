@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- button "Copy code"
+- status
+- code: "npm i -D stylelint stylelint-plugin-rhythmguard # .stylelintrc.json { \"extends\": [\"stylelint-plugin-rhythmguard/configs/strict\"] } npx stylelint \"src/**/*.css\""

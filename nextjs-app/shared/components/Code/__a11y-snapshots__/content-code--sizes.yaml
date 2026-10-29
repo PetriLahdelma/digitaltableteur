@@ -1,0 +1,13 @@
+- status: Work in progress (beta)
+- paragraph:
+  - text: "Small beside xs text:"
+  - code: "--prebuilt"
+- paragraph:
+  - text: "Medium beside body text:"
+  - code: useCodeBlock()
+- paragraph:
+  - text: "Large beside large text:"
+  - code: app/page.tsx
+- paragraph:
+  - text: "Inherit takes the size of the text around it:"
+  - code: AGENTS.md

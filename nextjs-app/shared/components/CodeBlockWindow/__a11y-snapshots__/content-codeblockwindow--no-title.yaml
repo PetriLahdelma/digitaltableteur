@@ -1,3 +1,4 @@
+- status: Deprecated
 - figure:
   - button "Copy code to clipboard": Copy
   - group "Code block in BASH":

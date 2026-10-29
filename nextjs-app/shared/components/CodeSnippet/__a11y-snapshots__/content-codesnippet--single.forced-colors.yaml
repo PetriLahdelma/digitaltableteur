@@ -1,3 +1,4 @@
+- status: Deprecated
 - figure:
   - text: bash
   - button "Copy code to clipboard": Copy

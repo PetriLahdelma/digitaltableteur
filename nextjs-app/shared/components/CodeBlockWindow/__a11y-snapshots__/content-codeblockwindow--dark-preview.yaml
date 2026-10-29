@@ -1,3 +1,4 @@
+- status: Deprecated
 - figure:
   - text: theme-dark.tsx
   - button "Copy code to clipboard": Copy

@@ -1,3 +1,4 @@
+- status: Deprecated
 - figure:
   - text: payload.json
   - button "Copy code to clipboard": Copy

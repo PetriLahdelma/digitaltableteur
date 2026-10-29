@@ -1,3 +1,4 @@
+- status: Deprecated
 - paragraph:
   - text: To install the package, run
   - 'button "Copy code: npm install @digitaltableteur/components"': npm install @digitaltableteur/components

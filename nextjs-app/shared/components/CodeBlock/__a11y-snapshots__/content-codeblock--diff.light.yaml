@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- text: next.config.js diff
+- button "Copy code"
+- status
+- code: "module.exports = { experimental: { Removed line appDir: true, Removed line }, Removed line reactStrictMode: true, Added line }"

@@ -1,3 +1,4 @@
+- status: Deprecated
 - figure:
   - text: long-line.ts
   - button "Copy code to clipboard": Copy

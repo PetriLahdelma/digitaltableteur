@@ -1,9 +1,9 @@
 {
   "storyId": "forms-radiogroup-playground",
   "mode": "light",
-  "sourceSHA": "4799078362967bef666a937f8d7c886cc6726604",
-  "capturedAt": "2026-10-26T20:13:05.376Z",
-  "runner": "local-claude",
+  "sourceSHA": "5273c1132711e819f118e27d64289e47d4264953",
+  "capturedAt": "2026-10-29T20:56:36.563Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "content-codesnippet-inline",
   "mode": "dark",
-  "sourceSHA": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-  "capturedAt": "2026-08-03T16:53:45.366Z",
-  "runner": "fix-hcb-code-comment",
+  "sourceSHA": "5273c1132711e819f118e27d64289e47d4264953",
+  "capturedAt": "2026-10-29T20:57:22.761Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

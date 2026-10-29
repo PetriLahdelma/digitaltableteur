@@ -5,13 +5,14 @@
   - banner:
     - paragraph:
       - text: Digitaltableteur
-      - status "Available now"
+      - status "Outside open hours"
+      - text: Studio offline
     - heading "Meet Donny" [level=2]
     - button "New chat"
     - button "Minimize chat":
       - img "Minimize chat"
   - complementary "AI assistant information":
-    - paragraph: Don't share sensitive personal data. This conversation stays in this tab until you clear or close it.
+    - paragraph: Don’t share sensitive personal data. This conversation stays in this tab until you clear or close it.
     - link "AI use and data details":
       - /url: /ai-use
     - link "Report a problem":
@@ -40,13 +41,14 @@
   - banner:
     - paragraph:
       - text: Digitaltableteur
-      - status "Available now"
+      - status "Outside open hours"
+      - text: Studio offline
     - heading "Meet Donny" [level=2]
     - button "New chat"
     - button "Minimize chat":
       - img "Minimize chat"
   - complementary "AI assistant information":
-    - paragraph: Don't share sensitive personal data. This conversation stays in this tab until you clear or close it.
+    - paragraph: Don’t share sensitive personal data. This conversation stays in this tab until you clear or close it.
     - link "AI use and data details":
       - /url: /ai-use
     - link "Report a problem":

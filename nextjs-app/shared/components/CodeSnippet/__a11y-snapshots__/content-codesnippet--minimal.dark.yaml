@@ -1,3 +1,4 @@
+- status: Deprecated
 - figure:
   - text: typescript
   - button "Copy"

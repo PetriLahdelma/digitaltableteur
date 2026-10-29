@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- text: DemoButton.tsx
+- button "Copy code"
+- status
+- code: "type Props = { label: string; }; export function DemoButton({ label }: Props) { return ( <button type=\"button\" aria-label={label}> {label} </button> ); }"
