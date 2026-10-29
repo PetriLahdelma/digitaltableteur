@@ -368,11 +368,6 @@
   gap: var(--space-layout-8);
 }
 
-.newBadge {
-  composes: brandchip from "../../styles/brand-chip.module.css";
-  flex-shrink: 0;
-}
-
 .aaasSummary {
   margin: 0;
   max-inline-size: 52ch;

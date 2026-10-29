@@ -21,7 +21,6 @@ const translations = {
     contactInquiryModeLabel: "Contact options",
     contactInquiryMessageTab: "Send a message",
     contactInquiryBookTab: "Book a call",
-    contactInquiryBookTabNew: "NEW!",
     contactBookingUnavailable:
       "The calendar didn't load. Send a message and a reply with times follows within one business day.",
     contactBookingUseForm: "Use the contact form",
@@ -32,7 +31,6 @@ const translations = {
     contactInquiryModeLabel: "Yhteydenottotavat",
     contactInquiryMessageTab: "Lähetä viesti",
     contactInquiryBookTab: "Varaa puhelu",
-    contactInquiryBookTabNew: "UUSI!",
     contactBookingUnavailable:
       "Ajanvaraus ei ole vielä käytössä. Lähetä viesti, niin ehdotamme aikoja yleensä yhden arkipäivän kuluessa.",
     contactBookingUseForm: "Käytä yhteydenottolomaketta",
@@ -125,7 +123,7 @@ describe("ContactInquiryPanel", () => {
     expect(
       screen.getByRole("tab", { name: /Book a call/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText("NEW!")).toBeInTheDocument();
+    expect(screen.queryByText("NEW!")).toBeNull();
     expect(
       screen.getByRole("tab", { name: /Send a message/i }),
     ).toHaveAttribute("aria-selected", "true");
@@ -151,7 +149,7 @@ describe("ContactInquiryPanel", () => {
     expect(
       screen.getByRole("tab", { name: /Book a call/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText("NEW!")).toBeInTheDocument();
+    expect(screen.queryByText("NEW!")).toBeNull();
     expect(
       screen.getByText(/The calendar didn.t load/i),
     ).toBeInTheDocument();

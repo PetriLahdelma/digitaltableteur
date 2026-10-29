@@ -139,9 +139,6 @@ export const ContactInquiryPanel = forwardRef<
           size="sm"
           className={styles.modeTabs}
         />
-        <span className={styles.newBadge} aria-hidden="true">
-          {t("contactInquiryBookTabNew", "NEW!")}
-        </span>
       </div>
 
       <div className={styles.panelBody}>

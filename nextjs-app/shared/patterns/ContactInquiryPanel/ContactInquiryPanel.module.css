@@ -25,16 +25,6 @@
   font-weight: var(--font-weight-medium);
 }
 
-.newBadge {
-  composes: brandchip from "../../styles/brand-chip.module.css";
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-  transform: none;
-  inset-block-start: calc(-1 * var(--space-internal-8));
-  inset-inline-end: var(--space-layout-16);
-}
-
 .panelBody {
   inline-size: 100%;
   min-inline-size: 0;

@@ -580,9 +580,6 @@ export function PricingPageContent({ className, heroBackground }: PricingPageCon
               >
                 {t("pricingAaasTitle", "Agent track")}
               </Title>
-              <span className={styles.newBadge} aria-hidden="true">
-                {t("contactInquiryBookTabNew", "NEW!")}
-              </span>
             </div>
             <Text as="p" size="m" className={styles.aaasSummary}>
               {t(

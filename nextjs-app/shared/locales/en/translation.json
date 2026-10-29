@@ -89,7 +89,6 @@
   "contactInquiryModeLabel": "Contact options",
   "contactInquiryMessageTab": "Send a message",
   "contactInquiryBookTab": "Book a call",
-  "contactInquiryBookTabNew": "NEW!",
   "contactBookingUnavailable": "The calendar didn't load. Send a message and a reply with times follows within one business day.",
   "contactBookingUseForm": "Use the contact form",
   "contactBookingEmail": "Send an email instead",
