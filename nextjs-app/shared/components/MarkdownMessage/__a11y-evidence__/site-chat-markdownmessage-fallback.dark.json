@@ -1,0 +1,16 @@
+{
+  "storyId": "site-chat-markdownmessage-fallback",
+  "mode": "dark",
+  "sourceSHA": "c17be984b6b8ee308fb1c79a23c14fd84c8852bd",
+  "capturedAt": "2026-10-29T07:41:32.978Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
