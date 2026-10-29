@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-designsprintssection-playground",
   "mode": "forced-colors",
-  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-  "capturedAt": "2026-09-30T06:12:31.453Z",
-  "runner": null,
+  "sourceSHA": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+  "capturedAt": "2026-10-29T20:52:20.510Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

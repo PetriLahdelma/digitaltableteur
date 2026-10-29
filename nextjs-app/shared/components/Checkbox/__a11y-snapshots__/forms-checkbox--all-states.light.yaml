@@ -1,0 +1,10 @@
+- checkbox "Unchecked"
+- text: Unchecked
+- checkbox "Checked" [checked]
+- text: Checked
+- checkbox "Indeterminate" [checked=mixed]
+- text: Indeterminate
+- checkbox "Disabled unchecked" [disabled]
+- text: Disabled unchecked
+- checkbox "Disabled checked" [checked] [disabled]
+- text: Disabled checked

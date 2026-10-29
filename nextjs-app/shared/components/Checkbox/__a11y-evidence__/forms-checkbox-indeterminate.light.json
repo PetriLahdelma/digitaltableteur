@@ -1,0 +1,16 @@
+{
+  "storyId": "forms-checkbox-indeterminate",
+  "mode": "light",
+  "sourceSHA": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+  "capturedAt": "2026-10-29T20:49:48.771Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

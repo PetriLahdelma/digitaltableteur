@@ -1,0 +1,16 @@
+{
+  "storyId": "site-projectcard-coming-soon",
+  "mode": "forced-colors",
+  "sourceSHA": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+  "capturedAt": "2026-10-29T20:50:50.454Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

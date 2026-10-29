@@ -1,0 +1,4 @@
+- checkbox "I accept the terms of service"
+- text: I accept the terms of service
+- paragraph: Required to create an account
+- button "Continue"

@@ -4,7 +4,7 @@
 - paragraph: "Proof over promises: each of these is visible in the work."
 - article:
   - heading "Design systems in production" [level=3]
-  - paragraph: Systems that serve hundreds of people who build with them, from SAP Build Apps to the Helsinki Design System and this site's own contract-driven library.
+  - paragraph: Systems that serve hundreds of people who build with them, from SAP Build Apps to the Helsinki Design System and this site’s own contract-driven library.
 - article:
   - heading "Tools, not just advice" [level=3]
   - paragraph: "Tooling to support your team: Rhythmguard, Project Spine and machine-readable component contracts that agents and CI can check."
@@ -47,7 +47,7 @@
     - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
     - img "Reliable Partner, verified by Vastuu Group"
   - paragraph: A Vastuu Group Reliable Partner
-  - paragraph: Tax, pension and employer obligations are continuously verified through Vastuu Group's Reliable Partner programme, as required by the Finnish Contractor's Obligations Act.
+  - paragraph: Tax, pension and employer obligations are continuously verified through Vastuu Group’s Reliable Partner programme, as required by the Finnish Contractor’s Obligations Act.
   - paragraph:
     - link "Open the Reliable Partner report (PDF, opens in a new tab)":
       - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
@@ -80,7 +80,7 @@
     - listitem "Storybook 10"
     - listitem "npm"
   - term: react
-  - definition: 0.1.43
+  - definition: 0.1.50
   - term: web-components
   - definition: 0.11.0
   - term: tokens
@@ -91,7 +91,7 @@
     - /url: /changelog
 - region "Ready to build something great?":
   - heading "Ready to build something great?" [level=2]
-  - paragraph: Let's discuss your next project and explore how to bring your vision to life.
+  - paragraph: Let’s discuss your next project and explore how to bring your vision to life.
   - link "Get in touch":
     - /url: /contact?mode=book
   - link "See the work":

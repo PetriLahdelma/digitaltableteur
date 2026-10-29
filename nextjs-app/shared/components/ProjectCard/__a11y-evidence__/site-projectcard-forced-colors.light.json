@@ -1,9 +1,9 @@
 {
   "storyId": "site-projectcard-forced-colors",
   "mode": "light",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:27:19.196Z",
-  "runner": null,
+  "sourceSHA": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+  "capturedAt": "2026-10-29T20:50:39.932Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

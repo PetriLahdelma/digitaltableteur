@@ -1,5 +1,5 @@
 - region "Pricing calculator":
-  - status: 75 hours at 5 days/week, 120€/hour, total 9,000 €
+  - status: 75 hours at 5 days/week, €120/hour, total €9,000
   - heading "Pricing calculator" [level=2]
   - paragraph: Adjust duration and workload to see your total investment.
   - group "Duration":
@@ -26,15 +26,15 @@
     - text: 5 days
   - text: Allocation 100%
   - paragraph: 5 days/week × 7.5 hrs/day
-  - text: "Total hours: 75 Standard rate: 120€/hour"
+  - text: "Total hours: 75 Standard rate: €120/hour"
   - paragraph: Your price
-  - paragraph: 120€/hour
-  - paragraph: Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.
+  - paragraph: €120/hour
+  - paragraph: Partnership rate €90/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.
   - paragraph: "Prices exclude Finnish VAT. This is an estimate, not an offer: scope, schedule and price are confirmed in a written proposal."
-  - text: "Total Investment: 9,000 €"
+  - text: "Total Investment: €9,000"
   - link "Get in touch":
     - /url: /contact?mode=book&duration=2w&days=5
-  - paragraph: "What's included in your investment:"
+  - paragraph: "What’s included in your investment:"
   - list:
     - listitem: — 2 weeks design partnership
     - listitem: — Dedicated design expertise for 5 days per week

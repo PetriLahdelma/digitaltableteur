@@ -1,9 +1,9 @@
 {
   "storyId": "site-projectcard-playground",
   "mode": "light",
-  "sourceSHA": "e97246dda02211701bf2dc9aa874bafb424b14bc",
-  "capturedAt": "2026-08-14T08:35:52.913Z",
-  "runner": null,
+  "sourceSHA": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+  "capturedAt": "2026-10-29T20:50:33.872Z",
+  "runner": "local",
   "checks": {
     "accessibility-tree": {
       "passed": true

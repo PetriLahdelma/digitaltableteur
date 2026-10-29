@@ -1,0 +1,6 @@
+- checkbox "Small (sm)" [checked]
+- text: Small (sm)
+- checkbox "Medium (md)" [checked]
+- text: Medium (md)
+- checkbox "Large (lg)" [checked]
+- text: Large (lg)
