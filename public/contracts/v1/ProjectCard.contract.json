@@ -78,40 +78,151 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-coming-soon.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:44.920Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-coming-soon.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:33.640Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-coming-soon.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.257Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:39.968Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:44.192Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:32.907Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:18.780Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:38.556Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:40.183Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:45.391Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:34.096Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:18.993Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.710Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:40.379Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:45.637Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:34.317Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:19.196Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.932Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-playground.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:45.156Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-playground.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:33.872Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-playground.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.490Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-square-ratio.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:44.679Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-square-ratio.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:33.403Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-square-ratio.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.025Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-title-below.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:44.428Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-title-below.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:33.143Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-title-below.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:38.792Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -126,61 +237,200 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-coming-soon.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:44.920Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-coming-soon.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.454Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-coming-soon.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:33.640Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-coming-soon.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.257Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:39.968Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:44.192Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:45.349Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:49.808Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:32.907Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:18.780Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:38.556Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:40.183Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:45.391Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:45.612Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.877Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:34.096Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:18.993Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.710Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:40.379Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:45.637Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:45.885Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:51.097Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:34.317Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:19.196Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.932Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-playground.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:45.156Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-playground.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.666Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-playground.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:33.872Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-playground.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.490Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-square-ratio.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:44.679Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-square-ratio.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.245Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-square-ratio.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:33.403Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-square-ratio.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:39.025Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-title-below.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:44.428Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-title-below.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.038Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-title-below.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:33.143Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-title-below.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:38.792Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -191,23 +441,51 @@
         "check": "npm run test:stories:hc",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-coming-soon.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.454Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:45.349Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:49.808Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:45.612Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.877Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:06:45.885Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:51.097Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-playground.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.666Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-square-ratio.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.245Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ProjectCard/__a11y-evidence__/site-projectcard-title-below.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:50.038Z",
             "passed": true,
             "runner": "local"
           }

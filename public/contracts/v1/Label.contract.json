@@ -28,6 +28,15 @@
       "type": "boolean",
       "optional": true,
       "description": "Dims the label and shows a not-allowed cursor."
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "option",
+        "field"
+      ],
+      "optional": true,
+      "description": "`field` names a control above or beside it (medium weight); `option` is\nthe text of a checkbox, radio or switch, which reads as plain text."
     }
   },
   "accessibility": {
@@ -42,16 +51,151 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-default.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:22.329Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-default.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.309Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-default.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:16.834Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-disabled.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:23.219Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-disabled.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:12.172Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-disabled.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.686Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:04.736Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:23.453Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:12.401Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:13.158Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.912Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-playground.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:22.550Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-playground.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.532Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-playground.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.048Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-required.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:23.016Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-required.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.966Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-required.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.485Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-with-tooltip.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:22.790Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-with-tooltip.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.750Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-with-tooltip.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.264Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-z-label-compliance.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:22.098Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-z-label-compliance.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.081Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-z-label-compliance.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:16.603Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -66,42 +210,228 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-default.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:22.329Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-default.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:27.742Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-default.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.309Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-default.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:16.834Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-disabled.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:23.219Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-disabled.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.572Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-disabled.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:12.172Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-disabled.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.686Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:03.829Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:23.241Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:08:53.421Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.593Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-example.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:12.192Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:10.882Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.705Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:04.736Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:23.453Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:08:53.874Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.801Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:12.401Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:13.158Z",
-            "passed": true
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.912Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-playground.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:22.550Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-playground.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:27.950Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-playground.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.532Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-playground.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.048Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-required.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:23.016Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-required.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.360Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-required.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.966Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-required.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.485Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-with-tooltip.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:22.790Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-with-tooltip.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.157Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-with-tooltip.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.750Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-with-tooltip.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:17.264Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-z-label-compliance.dark.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:22.098Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-z-label-compliance.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:27.529Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-z-label-compliance.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:11.081Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-z-label-compliance.light.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:16.603Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -112,9 +442,51 @@
         "check": "npm run test:stories:hc",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-default.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:27.742Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-disabled.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.572Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:08:53.874Z",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.801Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-playground.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:27.950Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-required.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.360Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-with-tooltip.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:28.157Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Label/__a11y-evidence__/forms-label-z-label-compliance.forced-colors.json",
+            "sourceCommit": "c4cdd76abc4ef66f4704086521bfda17586b4286",
+            "capturedAt": "2026-10-29T20:50:27.529Z",
             "passed": true,
             "runner": "local"
           }

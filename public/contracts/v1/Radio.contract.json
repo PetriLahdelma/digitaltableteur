@@ -76,51 +76,150 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:22.813Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:43.469Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:30.165Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:26.621Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:36.839Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-disabled-options.dark.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:44.197Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-disabled-options.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:30.906Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-disabled-options.light.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:37.571Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:23.052Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:44.438Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:31.141Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:26.982Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:37.809Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:23.302Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:44.663Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:31.380Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:27.375Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:38.064Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-in-an-exclusive-set.dark.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:43.712Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-in-an-exclusive-set.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:30.424Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-in-an-exclusive-set.light.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:37.084Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:22.587Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:43.225Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:29.905Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:26.210Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:36.566Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-sizes.dark.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:43.958Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-sizes.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:30.668Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-sizes.light.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:37.335Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -136,79 +235,199 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:22.813Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:43.469Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:12.687Z",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:49.833Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:30.165Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:26.621Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:36.839Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-disabled-options.dark.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:44.197Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-disabled-options.forced-colors.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.504Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-disabled-options.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:30.906Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-disabled-options.light.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:37.571Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:23.052Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:44.438Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:13.073Z",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.734Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:31.141Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:26.982Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:37.809Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:23.302Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:44.663Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:13.435Z",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.956Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:31.380Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:27.375Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:38.064Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-in-an-exclusive-set.dark.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:43.712Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-in-an-exclusive-set.forced-colors.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.061Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-in-an-exclusive-set.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:30.424Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-in-an-exclusive-set.light.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:37.084Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:34:22.587Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:43.225Z",
+            "passed": true,
+            "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:12.346Z",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:49.604Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:29.905Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:26.210Z",
-            "passed": true
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:36.566Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-sizes.dark.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:43.958Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-sizes.forced-colors.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.284Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-sizes.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:30.668Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-sizes.light.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:37.335Z",
+            "passed": true,
+            "runner": "local"
           }
         ]
       },
@@ -220,29 +439,50 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:12.687Z",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:49.833Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-disabled-options.forced-colors.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.504Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:13.073Z",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.734Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:13.435Z",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.956Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-in-an-exclusive-set.forced-colors.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.061Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:05:12.346Z",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:49.604Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Radio/__a11y-evidence__/forms-radio-sizes.forced-colors.json",
+            "sourceCommit": "5273c1132711e819f118e27d64289e47d4264953",
+            "capturedAt": "2026-10-29T20:56:50.284Z",
             "passed": true,
             "runner": "local"
           }
