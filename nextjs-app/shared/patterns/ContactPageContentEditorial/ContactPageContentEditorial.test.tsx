@@ -48,7 +48,7 @@ describe("ContactPageContentEditorial", () => {
     expect(container.firstElementChild).toBeInTheDocument();
   });
 
-  it("copies the email address and links to Signal by username", async () => {
+  it("mails, copies the email address and opens Signal", async () => {
     const user = userEvent.setup();
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, "clipboard", {
@@ -57,11 +57,15 @@ describe("ContactPageContentEditorial", () => {
     });
     render(<ContactPageContentEditorial />);
 
+    expect(
+      screen.getByRole("link", { name: "mail@digitaltableteur.com" }),
+    ).toHaveAttribute("href", "mailto:mail@digitaltableteur.com");
+
     await user.click(screen.getByRole("button", { name: "Copy email address" }));
     expect(writeText).toHaveBeenCalledWith("mail@digitaltableteur.com");
     expect(await screen.findByText("Copied")).toBeInTheDocument();
 
-    const signal = screen.getByRole("link", { name: /Signal: digitaltableteur\.36/ });
+    const signal = screen.getByRole("link", { name: /Message on Signal/ });
     expect(signal).toHaveAttribute("href", expect.stringMatching(/^https:\/\/signal\.me\/#eu\//));
     expect(signal).toHaveAttribute("target", "_blank");
     expect(signal.getAttribute("rel")).toContain("noopener");

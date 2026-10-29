@@ -146,35 +146,51 @@
   transition: color var(--duration-fast) var(--ease-out-cubic);
 }
 
-/* The address is a DS Link (underline="hover"): the wavy underline appears
-   on hover and keyboard focus. */
-
-/* Email (with its copy button) and Signal, stacked under the address */
+/* Direct lines: a labelled email row (mailto link plus copy) and the
+   Signal button under it. The label is muted like the address; the address
+   itself is full ink with the site's wavy underline, so it reads as a link. */
 
 .directLines {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-internal-8);
+  gap: var(--space-layout-24);
 }
 
+/* Baseline, not center: the wavy underline pads the link's box below the
+   text, so centring would drop the label under the address line. */
+
 .mailRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-internal-4) var(--space-internal-16);
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-s);
+}
+
+.mailLabel {
+  color: var(--color-muted);
+}
+
+.mailValue {
   display: inline-flex;
+  min-inline-size: 0;
   align-items: center;
   gap: var(--space-internal-4);
 }
 
 .mailLink {
-  /* The column stretches its children; the wave must end with the text. */
-  inline-size: fit-content;
-  align-self: flex-start;
-  font-family: var(--font-body);
-  font-size: var(--font-size-text-s);
-  color: var(--color-muted);
+  color: var(--color-text);
 }
 
-.mailLink:hover {
-  color: var(--color-primary);
+/* The copy button's 28px hit box would leave a wide gap and, centred on a
+   link box padded for the wave, a low glyph. Pull it in and pin it to the
+   text box so the glyph sits one word space away, on the x-height. */
+
+.copyButton {
+  margin-inline-start: calc(-1 * var(--space-internal-2));
+  align-self: flex-start;
 }
 
 .newBusiness {
