@@ -3,10 +3,15 @@
    marks sit back in the muted colour. */
 
 /* 11vi of the viewport: about 158px at 1440 wide, past 128px from 1170px,
-   48px on a phone. Hyphenation stays off so words are never split. */
+   48px on a phone. Hyphenation stays off, so a word that fits is never
+   split. overflow-wrap: break-word only breaks a word wider than the line,
+   which happens under the WCAG 1.4.12 text-spacing override
+   ("Digitaltableteur" grew 63px past a 375px screen and main clips it). */
 
 .text {
-  --manifesto-size: clamp(3rem, 11vi, 12rem);
+  /* The floor eases below 331px so "Digitaltableteur" fits a 320px screen
+     (48px set it 3px wider than the line). */
+  --manifesto-size: clamp(min(3rem, 14.5vi), 11vi, 12rem);
   --manifesto-rise: 0.3em;
 
   /* Satoshi draws × on the maths axis: its ink starts 0.111em above the
@@ -20,7 +25,7 @@
   font-weight: var(--font-weight-title);
   line-height: 0.95;
   letter-spacing: var(--tracking-tighter);
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
   hyphens: manual;
   color: var(--color-text);
   text-wrap: pretty;
@@ -61,6 +66,10 @@
 
 .word {
   display: inline-block;
+
+  /* An inline-block is as wide as its longest word; capped at the line, the
+     break-word above can act inside it. */
+  max-inline-size: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
