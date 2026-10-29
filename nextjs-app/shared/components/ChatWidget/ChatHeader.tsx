@@ -6,6 +6,13 @@ import { DonnyAvatar, type DonnyState } from "@dt/DonnyAvatar";
 import styles from "./ChatWidget.module.css";
 import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
+import Kbd from "@dt/Kbd";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@dt/Tooltip";
 
 /**
  * Props for the ChatHeader component.
@@ -72,10 +79,13 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   const tagline = t("chatTagline", "Digitaltableteur");
   const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
   const newChatLabel = t("chatNewChat", "New chat");
-  const newChatTitle = t(
-    "chatNewChatTitle",
-    "New chat (⌘ + Shift + ⌫ on Mac, Ctrl + Shift + Backspace on Windows)",
-  );
+  // The tooltip shows the clear shortcut as keys for this platform. It only
+  // renders once opened, so reading navigator after mount is hydration safe.
+  const [isMac, setIsMac] = useState(true);
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad/i.test(navigator.platform || navigator.userAgent));
+  }, []);
+  const newChatKeys = isMac ? ["⌘", "⇧", "⌫"] : ["Ctrl", "Shift", "Backspace"];
 
   // Finnish (Europe/Helsinki) business hours: Mon–Fri 09:00–17:00 local time (inclusive start, exclusive end)
   // Recalculates every 60s so the status dot updates without a page refresh
@@ -170,16 +180,31 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       </div>
       <div className={styles.headerActions}>
         {onNewChat ? (
-          <Button
-            type="button"
-            onClick={onNewChat}
-            accessibleName={newChatLabel}
-            tooltip={newChatTitle}
-            variant="tertiary"
-            size="md"
-            icon={<Icon name="note-pencil" />}
-            className={styles.minimizeButton}
-          />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  type="button"
+                  onClick={onNewChat}
+                  accessibleName={newChatLabel}
+                  variant="tertiary"
+                  size="md"
+                  icon={<Icon name="note-pencil" />}
+                  className={styles.minimizeButton}
+                />
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className={styles.newChatTooltip}>
+                {newChatLabel}
+                <span className={styles.newChatKeys}>
+                  {newChatKeys.map((key) => (
+                    <Kbd key={key} size="sm" variant="secondary">
+                      {key}
+                    </Kbd>
+                  ))}
+                </span>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         ) : null}
         <Button
           type="button"

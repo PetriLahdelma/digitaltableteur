@@ -131,13 +131,20 @@ describe("ChatHeader button interactions", () => {
     expect(screen.queryByRole("button", { name: /new chat|clear|reset/i })).toBeNull();
   });
 
-  it("starts a new chat from the header button, with the shortcut in its tooltip", async () => {
+  it("starts a new chat from the header button", async () => {
     const onNewChat = vi.fn();
     render(withI18n(<ChatHeader {...baseProps} onNewChat={onNewChat} />));
 
-    const newChat = screen.getByRole("button", { name: "New chat" });
-    expect(newChat).toHaveAttribute("title", expect.stringContaining("Shift"));
-    await userEvent.click(newChat);
+    await userEvent.click(screen.getByRole("button", { name: "New chat" }));
     expect(onNewChat).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows the clear shortcut as keys in the New chat tooltip", async () => {
+    render(withI18n(<ChatHeader {...baseProps} onNewChat={vi.fn()} />));
+
+    await userEvent.hover(screen.getByRole("button", { name: "New chat" }));
+    const tooltip = await screen.findByRole("tooltip");
+    expect(tooltip).toHaveTextContent(/New chat/);
+    expect(document.querySelectorAll("kbd").length).toBeGreaterThanOrEqual(3);
   });
 });

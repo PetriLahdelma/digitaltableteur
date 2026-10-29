@@ -207,6 +207,19 @@
   text-underline-offset: 0.15em;
 }
 
+/* New chat tooltip: the action name, then its clear shortcut as keys. */
+
+.newChatTooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-8);
+}
+
+.newChatKeys {
+  display: inline-flex;
+  gap: var(--space-internal-2);
+}
+
 .headerActions {
   display: flex;
   align-items: center;
