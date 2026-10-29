@@ -239,6 +239,16 @@ function renderComponentPart(
   return null;
 }
 
+/**
+ * Visitors type line breaks with Shift + Enter; Markdown would fold a single
+ * newline into a space. Mark each single newline as a hard break (two
+ * trailing spaces) so the bubble keeps the lines as typed, while blank lines
+ * still split paragraphs and typed lists still render as lists.
+ */
+export function withHardBreaks(text: string): string {
+  return text.replace(/([^\n])\n(?=[^\n])/g, "$1  \n");
+}
+
 interface StreamingMarkdownPartProps {
   content: string;
   fallback: string;
@@ -302,22 +312,13 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
       ) : (
         <>
           {message.parts.map((part, idx) => {
-            // Visitors' messages are plain text, shown as typed: line breaks
-            // (Shift + Enter) kept and nothing parsed as Markdown, so "1." or
-            // "#" at a line start stays literal. Donny's replies stay Markdown.
-            if (part.kind === "text" && !isAssistant) {
-              const text = part.content.trim();
-              return text ? (
-                <Text key={idx} as="p" className={styles.userText}>
-                  {text}
-                </Text>
-              ) : null;
-            }
             if (part.kind === "text") {
               return (
                 <StreamingMarkdownPart
                   key={idx}
-                  content={part.content}
+                  content={
+                    isAssistant ? part.content : withHardBreaks(part.content)
+                  }
                   fallback={fallback}
                   role={message.role}
                   isStreaming={isAssistant && isStreaming}

@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
-import ChatMessageBubble from "@dt/ChatWidget/ChatMessageBubble";
+import ChatMessageBubble, { withHardBreaks } from "@dt/ChatWidget/ChatMessageBubble";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
 import type { ProcessedMessage } from "@dt/ChatWidget/messageProcessor";
@@ -84,14 +84,14 @@ describe("ChatMessageBubble", () => {
       );
     });
 
-    it("keeps a user message's line breaks and shows Markdown characters literally", () => {
+    it("keeps a user message's line breaks and still renders typed lists", () => {
       render(
         withI18n(
           <ChatMessageBubble
             message={{
               id: "msg-lines",
               role: "user",
-              parts: [{ kind: "text", content: "Moi\naukioloajat?\n# not a heading\n1. not a list" }],
+              parts: [{ kind: "text", content: "Moi\naukioloajat?\n\nIn this order:\n1. Audit\n2. Roadmap" }],
             }}
             isStreaming={false}
           />,
@@ -99,9 +99,14 @@ describe("ChatMessageBubble", () => {
       );
 
       const bubble = screen.getByTestId("chat-message-user");
-      const text = bubble.querySelector("p")!;
-      expect(text.textContent).toBe("Moi\naukioloajat?\n# not a heading\n1. not a list");
-      expect(bubble.querySelector("h1, ol, li")).toBeNull();
+      const firstParagraph = bubble.querySelector("p")!;
+      expect(firstParagraph.querySelector("br")).not.toBeNull();
+      expect(firstParagraph.textContent).toBe("Moi\naukioloajat?");
+      expect(bubble.querySelectorAll("li")).toHaveLength(2);
+    });
+
+    it("marks only single newlines as hard breaks", () => {
+      expect(withHardBreaks("a\nb\n\nc")).toBe("a  \nb\n\nc");
     });
 
     it("still renders assistant replies as Markdown", () => {

@@ -91,6 +91,18 @@
   font-size: 1rem;
 }
 
+/* The app's global reset hides list markers (list-style-type " ") for
+   nav and menus; Markdown lists are content, so show them, as article prose
+   does. Without this, chat replies and typed lists lost their numbers. */
+
+.root ul {
+  list-style-type: disc;
+}
+
+.root ol {
+  list-style-type: decimal;
+}
+
 .root li + li {
   margin-block-start: var(--space-internal-4);
 }
