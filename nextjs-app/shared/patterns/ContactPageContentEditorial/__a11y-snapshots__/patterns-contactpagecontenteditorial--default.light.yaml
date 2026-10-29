@@ -8,11 +8,22 @@
     - /url: mailto:mail@digitaltableteur.com
   - button "Copy email address"
   - status
+- term: Call
+- definition:
+  - link "+358 45 657 4469":
+    - /url: tel:+358456574469
+  - button "Copy phone number"
+  - status
 - term: Chat
 - definition:
-  - link "Message on Signal External link":
+  - link "WhatsApp External link":
+    - /url: https://wa.me/358456574469
+    - text: WhatsApp
+    - img "External link"
+  - text: or
+  - link "Signal External link":
     - /url: https://signal.me/#eu/DAORs02ecybx9A6Wdnoc049YwSIgnDpEyUZg5XoE9pb50COGkbtF1KU5gxPNo5At
-    - text: Message on Signal
+    - text: Signal
     - img "External link"
 - tablist "Contact options":
   - tab "Send a message" [selected]
