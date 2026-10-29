@@ -1,0 +1,16 @@
+{
+  "storyId": "actions-codecopybutton-custom-label",
+  "mode": "light",
+  "sourceSHA": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+  "capturedAt": "2026-10-29T10:08:51.653Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

@@ -1,8 +1,8 @@
 {
   "storyId": "actions-codecopybutton-forced-colors",
   "mode": "dark",
-  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-  "capturedAt": "2026-10-27T18:42:35.861Z",
+  "sourceSHA": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+  "capturedAt": "2026-10-29T10:08:58.618Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

@@ -1,0 +1,16 @@
+{
+  "storyId": "actions-codecopybutton-medium",
+  "mode": "forced-colors",
+  "sourceSHA": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+  "capturedAt": "2026-10-29T10:09:03.682Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
