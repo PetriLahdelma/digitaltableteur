@@ -28,6 +28,15 @@
       "type": "number",
       "optional": true,
       "description": "How long the check mark stays, in milliseconds."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "sm",
+        "md"
+      ],
+      "optional": true,
+      "description": "Size token: sm (28px, code surfaces) or md (40px, beside body text)."
     }
   },
   "accessibility": {
@@ -42,86 +51,149 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-custom-label.dark.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:57.668Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-custom-label.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:45.665Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-custom-label.light.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:51.653Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-default.dark.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:35.046Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:57.184Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-default.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:41:47.588Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:45.160Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-default.light.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:15.119Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:51.159Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-disabled.dark.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:58.140Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-disabled.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:46.137Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-disabled.light.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:52.148Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-example.dark.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:35.593Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:58.382Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-example.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:41:48.098Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:46.423Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-example.light.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:15.731Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:52.389Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-forced-colors.dark.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:35.861Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:58.618Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:41:48.335Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:46.667Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-forced-colors.light.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:15.996Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:52.624Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-medium.dark.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:57.905Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-medium.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:45.906Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-medium.light.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:51.905Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-playground.dark.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:35.339Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:57.429Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-playground.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:41:47.836Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:45.422Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-playground.light.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:15.446Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:51.411Z",
             "passed": true,
             "runner": "local"
           }
@@ -138,114 +210,198 @@
         "check": "npm run test:stories:matrix:ci",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-custom-label.dark.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:57.668Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-custom-label.forced-colors.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:03.453Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-custom-label.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:45.665Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-custom-label.light.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:51.653Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-default.dark.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:35.046Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:57.184Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-default.forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:43:14.817Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:02.924Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-default.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:41:47.588Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:45.160Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-default.light.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:15.119Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:51.159Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-disabled.dark.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:58.140Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-disabled.forced-colors.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:03.918Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-disabled.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:46.137Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-disabled.light.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:52.148Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-example.dark.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:35.593Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:58.382Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-example.forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:43:15.305Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:04.151Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-example.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:41:48.098Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:46.423Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-example.light.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:15.731Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:52.389Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-forced-colors.dark.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:35.861Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:58.618Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-forced-colors.forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:43:15.538Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:04.377Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:41:48.335Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:46.667Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-forced-colors.light.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:15.996Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:52.624Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-medium.dark.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:57.905Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-medium.forced-colors.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:03.682Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-medium.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:45.906Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-medium.light.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:51.905Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-playground.dark.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:35.339Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:57.429Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-playground.forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:43:15.059Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:03.208Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-playground.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:41:47.836Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:45.422Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-playground.light.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:42:15.446Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:08:51.411Z",
             "passed": true,
             "runner": "local"
           }
@@ -258,30 +414,51 @@
         "check": "npm run test:stories:hc",
         "evidence": [
           {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-custom-label.forced-colors.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:03.453Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-default.forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:43:14.817Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:02.924Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-disabled.forced-colors.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:03.918Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-example.forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:43:15.305Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:04.151Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-forced-colors.forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:43:15.538Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:04.377Z",
+            "passed": true,
+            "runner": "local"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-medium.forced-colors.json",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:03.682Z",
             "passed": true,
             "runner": "local"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/CodeCopyButton/__a11y-evidence__/actions-codecopybutton-playground.forced-colors.json",
-            "sourceCommit": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-            "capturedAt": "2026-10-27T18:43:15.059Z",
+            "sourceCommit": "d1b68f8a3c00a361c3124bdd153cfbcb23f99675",
+            "capturedAt": "2026-10-29T10:09:03.208Z",
             "passed": true,
             "runner": "local"
           }
