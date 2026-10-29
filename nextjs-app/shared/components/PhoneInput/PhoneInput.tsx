@@ -1,4 +1,14 @@
-import React, { useId } from "react";
+"use client";
+
+import React, {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { createPortal } from "react-dom";
 import PhoneInputLib, { getCountryCallingCode } from "react-phone-number-input";
 import type { Country, Labels, Value } from "react-phone-number-input";
 import en from "react-phone-number-input/locale/en";
@@ -6,10 +16,13 @@ import fi from "react-phone-number-input/locale/fi";
 import sv from "react-phone-number-input/locale/sv";
 import "react-phone-number-input/style.css";
 import styles from "./PhoneInput.module.css";
+import fieldStyles from "../Combobox/ComboboxField.module.css";
+import { useComboboxDropdown } from "../Combobox/useComboboxDropdown";
 import Label from "@dt/Label/Label";
 import HelperText from "@dt/HelperText/HelperText";
 import Icon from "@dt/Icon/Icon";
 import { useLocalization } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 
 const COUNTRY_LABELS: Record<string, Labels> = { en, fi, sv };
 
@@ -19,58 +32,284 @@ interface CountrySelectProps {
   options: { value?: Country; label: string; divider?: boolean }[];
   disabled?: boolean;
   readOnly?: boolean;
-  onFocus?: React.FocusEventHandler<HTMLSelectElement>;
-  onBlur?: React.FocusEventHandler<HTMLSelectElement>;
+  onFocus?: React.FocusEventHandler<HTMLElement>;
+  onBlur?: React.FocusEventHandler<HTMLElement>;
   "aria-label"?: string;
 }
 
+interface CountryOption {
+  value: Country;
+  label: string;
+  /** First option after the default country: drawn with a rule above it */
+  afterDivider: boolean;
+}
+
 /**
- * Country code picker: a native select (full keyboard and screen reader
- * support, type-to-jump) listing "Finland +358", shown closed as "FI +358".
+ * Country code picker, shown closed as "FI +358". Opens the same portaled
+ * list as Combobox (select-only combobox pattern): arrow keys move, Enter or
+ * Space picks, and typing jumps to a country name or a calling code ("358").
  * No flag images: they load from a third-party host that a strict CSP blocks.
  */
 function CountrySelect({
   value,
   onChange,
-  options,
+  options: rawOptions,
   disabled,
   readOnly,
   onFocus,
   onBlur,
   "aria-label": ariaLabel,
 }: CountrySelectProps) {
+  const pickerId = `phone-country-${useId()}`;
+  const listboxId = `${pickerId}-listbox`;
+  const inactive = disabled || readOnly;
+  const [open, setOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
+  const typeahead = useRef<{
+    text: string;
+    timer: ReturnType<typeof setTimeout> | null;
+  }>({
+    text: "",
+    timer: null,
+  });
+
+  const options = useMemo(() => {
+    const result: CountryOption[] = [];
+    let pendingDivider = false;
+    for (const option of rawOptions) {
+      if (option.divider) {
+        pendingDivider = true;
+        continue;
+      }
+      // The international option is turned off, so every option has a value.
+      if (!option.value) continue;
+      result.push({
+        value: option.value,
+        label: `${option.label} +${getCountryCallingCode(option.value)}`,
+        afterDivider: pendingDivider,
+      });
+      pendingDivider = false;
+    }
+    return result;
+  }, [rawOptions]);
+
+  const closeDropdown = useCallback(() => setOpen(false), []);
+  const { mounted, dropdownStyle, controlRef, listRef, containerRef } =
+    useComboboxDropdown(open, options.length, closeDropdown);
+
+  const openDropdown = (index?: number) => {
+    if (inactive) return;
+    const selected = options.findIndex((option) => option.value === value);
+    setHighlightedIndex(index ?? (selected >= 0 ? selected : 0));
+    setOpen(true);
+  };
+
+  const selectOption = (option: CountryOption) => {
+    onChange(option.value);
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (!open || !listRef.current) return;
+    listRef.current
+      .querySelector(`[data-option-index="${highlightedIndex}"]`)
+      ?.scrollIntoView?.({ block: "nearest" });
+  }, [highlightedIndex, listRef, open]);
+
+  useEffect(
+    () => () => {
+      if (typeahead.current.timer) clearTimeout(typeahead.current.timer);
+    },
+    [],
+  );
+
+  const findTypeaheadMatch = (search: string): number => {
+    const query = search.toLocaleLowerCase();
+    const byName = options.findIndex((option) =>
+      option.label.toLocaleLowerCase().startsWith(query),
+    );
+    if (byName >= 0) return byName;
+    return options.findIndex((option) =>
+      option.label
+        .toLocaleLowerCase()
+        .split(/[\s/()_,.+-]+/)
+        .some((word) => word.startsWith(query)),
+    );
+  };
+
+  const handleTypeahead = (character: string) => {
+    const state = typeahead.current;
+    if (state.timer) clearTimeout(state.timer);
+    state.text += character;
+    state.timer = setTimeout(() => {
+      state.text = "";
+      state.timer = null;
+    }, 700);
+    const match = findTypeaheadMatch(state.text);
+    if (!open) openDropdown(match >= 0 ? match : undefined);
+    else if (match >= 0) setHighlightedIndex(match);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (inactive) return;
+    const isPrintable =
+      event.key.length === 1 &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      !event.altKey;
+    // A space while a search is being typed is part of it ("new z").
+    if (isPrintable && (event.key !== " " || typeahead.current.text)) {
+      event.preventDefault();
+      handleTypeahead(event.key);
+      return;
+    }
+    switch (event.key) {
+      case "ArrowDown":
+      case "ArrowUp": {
+        event.preventDefault();
+        if (!open) {
+          openDropdown();
+          return;
+        }
+        const step = event.key === "ArrowDown" ? 1 : -1;
+        setHighlightedIndex(
+          (current) => (current + step + options.length) % options.length,
+        );
+        break;
+      }
+      case "Home":
+      case "End": {
+        if (!open) return;
+        event.preventDefault();
+        setHighlightedIndex(event.key === "Home" ? 0 : options.length - 1);
+        break;
+      }
+      case "Enter":
+      case " ": {
+        event.preventDefault();
+        if (!open) {
+          openDropdown();
+          return;
+        }
+        const option = options[highlightedIndex];
+        if (option) selectOption(option);
+        break;
+      }
+      case "Escape": {
+        if (!open) return;
+        event.preventDefault();
+        closeDropdown();
+        break;
+      }
+      case "Tab": {
+        closeDropdown();
+        break;
+      }
+      default:
+        break;
+    }
+  };
+
+  const optionId = (option: CountryOption) =>
+    `${pickerId}-option-${option.value}`;
+  const highlighted = open ? options[highlightedIndex] : undefined;
+
+  const dropdown = open && dropdownStyle && (
+    <ul
+      ref={listRef}
+      id={listboxId}
+      role="listbox"
+      aria-label={ariaLabel}
+      className={fieldStyles.dropdown}
+      style={{
+        top: dropdownStyle.top,
+        left: dropdownStyle.left,
+        width: dropdownStyle.width,
+      }}
+      data-state="open"
+      data-lenis-prevent=""
+      data-lenis-prevent-wheel=""
+      data-lenis-prevent-touch=""
+    >
+      {options.map((option, index) => {
+        const selected = option.value === value;
+        return (
+          <li
+            key={option.value}
+            role="presentation"
+            className={option.afterDivider ? styles.countryDivider : undefined}
+          >
+            <button
+              id={optionId(option)}
+              type="button"
+              role="option"
+              tabIndex={-1}
+              data-option-index={index}
+              aria-selected={selected}
+              className={cn(
+                fieldStyles.option,
+                selected && fieldStyles.optionSelected,
+                index === highlightedIndex && fieldStyles.optionHighlighted,
+              )}
+              onMouseEnter={() => setHighlightedIndex(index)}
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => selectOption(option)}
+            >
+              <span className={fieldStyles.optionLabel}>{option.label}</span>
+              {selected ? (
+                <Icon
+                  name="check"
+                  className={fieldStyles.optionCheck}
+                  ariaLabel=""
+                />
+              ) : null}
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
   return (
-    <span className={styles.country}>
-      <span className={styles.countryValue} aria-hidden="true">
-        {value ? `${value} +${getCountryCallingCode(value)}` : "+"}
-        <Icon name="caret-down" size={16} decorative />
-      </span>
-      <select
-        className={styles.countrySelect}
-        value={value ?? ""}
+    <div
+      ref={(node) => {
+        containerRef.current = node;
+        // The list opens under the whole phone field, as Combobox's does.
+        // `composes` makes the field class a list; its first name is local.
+        const fieldClass = styles["phone-input"].split(" ")[0];
+        controlRef.current =
+          node?.closest<HTMLDivElement>(`.${fieldClass}`) ?? node;
+      }}
+      className={styles.country}
+    >
+      <button
+        type="button"
+        role="combobox"
+        className={styles.countryTrigger}
         aria-label={ariaLabel}
-        disabled={disabled || readOnly}
+        aria-expanded={open}
+        aria-controls={listboxId}
+        aria-haspopup="listbox"
+        aria-activedescendant={highlighted ? optionId(highlighted) : undefined}
+        disabled={inactive}
+        data-state={open ? "open" : "closed"}
         onFocus={onFocus}
         onBlur={onBlur}
-        onChange={(event) =>
-          onChange((event.target.value || undefined) as Country | undefined)
-        }
+        onClick={() => (open ? closeDropdown() : openDropdown())}
+        onKeyDown={handleKeyDown}
       >
-        {options.map((option, index) =>
-          option.divider ? (
-            <option key={`divider-${index}`} disabled value="">
-              ──────────
-            </option>
-          ) : (
-            <option key={option.value ?? "international"} value={option.value ?? ""}>
-              {option.value
-                ? `${option.label} +${getCountryCallingCode(option.value)}`
-                : option.label}
-            </option>
-          ),
-        )}
-      </select>
-    </span>
+        <span className={styles.countryValue}>
+          {value ? `${value} +${getCountryCallingCode(value)}` : "+"}
+        </span>
+        <Icon
+          name="caret-down"
+          size={16}
+          decorative
+          className={cn(styles.countryCaret, open && styles.countryCaretOpen)}
+        />
+      </button>
+      {mounted && dropdown && createPortal(dropdown, document.body)}
+    </div>
   );
 }
 

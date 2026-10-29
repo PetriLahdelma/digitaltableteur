@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import PhoneInput from "./PhoneInput";
@@ -30,21 +30,59 @@ describe("PhoneInput", () => {
     expect(input.value.replace(/\s/g, "")).toBe("0401234567");
   });
 
-  it("lists countries with their calling codes, the default first", () => {
+  it("lists countries with their calling codes, the default first", async () => {
+    const user = userEvent.setup();
     render(<PhoneInput label="Phone" />);
-    const country = screen.getByRole("combobox") as HTMLSelectElement;
+    const country = screen.getByRole("combobox");
     expect(country).toHaveAccessibleName(/country/i);
-    expect(country.value).toBe("FI");
-    expect(country.options[0].textContent).toBe("Finland +358");
+    expect(country).toHaveTextContent("FI +358");
+    expect(country).toHaveAttribute("aria-expanded", "false");
+    await user.click(country);
+    expect(country).toHaveAttribute("aria-expanded", "true");
+    const options = within(screen.getByRole("listbox")).getAllByRole("option");
+    expect(options[0]).toHaveTextContent("Finland +358");
+    expect(options[0]).toHaveAttribute("aria-selected", "true");
   });
 
   it("formats the number for the chosen country", async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
     render(<PhoneInput label="Phone" onChange={onChange} />);
-    await user.selectOptions(screen.getByRole("combobox"), "SE");
+    await user.click(screen.getByRole("combobox"));
+    await user.click(screen.getByRole("option", { name: "Sweden +46" }));
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+    expect(screen.getByRole("combobox")).toHaveTextContent("SE +46");
     await user.type(screen.getByRole("textbox"), "0701234567");
     expect(onChange).toHaveBeenLastCalledWith("+46701234567");
+  });
+
+  it("picks a country from the keyboard by name or calling code", async () => {
+    const user = userEvent.setup();
+    render(<PhoneInput label="Phone" />);
+    const country = screen.getByRole("combobox");
+    country.focus();
+    await user.keyboard("swe");
+    expect(country).toHaveAttribute("aria-expanded", "true");
+    expect(country.getAttribute("aria-activedescendant")).toMatch(/-option-SE$/);
+    await user.keyboard("{Enter}");
+    expect(country).toHaveTextContent("SE +46");
+
+    await new Promise((resolve) => setTimeout(resolve, 750));
+    country.focus();
+    await user.keyboard("372");
+    expect(country.getAttribute("aria-activedescendant")).toMatch(/-option-EE$/);
+    await user.keyboard("{Escape}");
+    expect(country).toHaveAttribute("aria-expanded", "false");
+    expect(country).toHaveTextContent("SE +46");
+  });
+
+  it("does not open the country list when disabled", async () => {
+    const user = userEvent.setup();
+    render(<PhoneInput label="Phone" disabled />);
+    const country = screen.getByRole("combobox");
+    expect(country).toBeDisabled();
+    await user.click(country);
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
 
   it("renders helper text when provided", () => {

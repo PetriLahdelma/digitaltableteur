@@ -7,14 +7,17 @@ in the design-system field chrome (Label, HelperText, error wiring). Emits
 E.164 (`+358401234567`) — the interchange format — via `onChange`.
 
 ## Interaction contract
-- Keyboard: Tab reaches the country select, then the number input. Arrow
-  keys or typing a country name ("swe") change country in the select;
-  digits format live in the input, in the national format ("040 123 4567").
-- Pointer: click the code ("FI +358") to open the native country list,
-  which reads "Finland +358" with the default country first.
+- Keyboard: Tab reaches the country picker, then the number input. The
+  picker is a select-only combobox: Arrow keys, Enter or Space open the
+  list; typing a country name ("swe") or a calling code ("358") jumps to
+  it; Enter picks and moves focus to the number input; Escape closes.
+  Digits format live in the input, in the national format ("040 123 4567").
+- Pointer: click the code ("FI +358") to open the country list, the same
+  portaled list as Combobox, under the whole field. It reads
+  "Finland +358" with the default country first, above a rule.
 - Screen readers: label associated via `htmlFor`/generated id; error and
   helper text linked with `aria-describedby`; `aria-invalid` set while
-  `error` is present. The country select is named "<label> country"
+  `error` is present. The country picker is named "<label> country"
   (localized in EN/FI/SV from the library's locale files).
 
 ## Do / don't
@@ -31,6 +34,9 @@ E.164 (`+358401234567`) — the interchange format — via `onChange`.
   strict CSP (the client intake area) blocks and which leaks the visit.
 - `size="lg"` gives the 3rem height every lg field shares (TextInput,
   Select, Combobox).
+- The country list reuses Combobox's dropdown (`useComboboxDropdown` and
+  the `ComboboxField.module.css` list styles), so every dropdown on the
+  site opens, highlights and scrolls the same way.
 - Library chrome is restyled via `:global(.PhoneInput*)` overrides in
   `PhoneInput.module.css` using design tokens (`--color-primary`,
   `--color-error`, `--font-text`).

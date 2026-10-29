@@ -86,50 +86,60 @@
   opacity: 1;
 }
 
-/* Country code picker: the visible value with a native select over it. */
+/* Country code picker: a compact trigger inside the field that opens the
+   shared Combobox list. */
 
 .country {
   display: flex;
-  position: relative;
   margin-inline-end: var(--space-internal-8);
-  padding-inline: var(--space-internal-4) var(--space-internal-8);
-  align-items: center;
+  align-items: stretch;
   align-self: stretch;
   border-inline-end: 1px solid var(--color-border);
 }
 
-.countryValue {
+.countryTrigger {
   display: inline-flex;
+  padding-inline: var(--space-internal-4) var(--space-internal-8);
   align-items: center;
   gap: var(--space-internal-4);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font: inherit;
   white-space: nowrap;
+  color: inherit;
+  cursor: pointer;
   font-variant-numeric: tabular-nums;
 }
 
-/* The native select covers the visible value, so a click or tap anywhere on
-   it opens the full country list. */
-
-.countrySelect {
-  position: absolute;
-  inset: 0;
-  block-size: 100%;
-  inline-size: 100%;
-  border: 0;
-  font-size: 1rem;
-  cursor: pointer;
-  opacity: 0;
-}
-
-.countrySelect:disabled {
-  cursor: not-allowed;
-}
-
-.country:has(.countrySelect:focus-visible) {
-  border-radius: var(--radius-sm);
+.countryTrigger:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
 }
 
-.country:has(.countrySelect:disabled) .countryValue {
+.countryTrigger:disabled {
   color: var(--color-disabled-placeholder);
+  cursor: not-allowed;
+}
+
+.countryCaret {
+  transition: transform var(--duration-fast) var(--ease-out-cubic);
+}
+
+.countryCaretOpen {
+  transform: rotate(180deg);
+}
+
+/* Rule between the default country and the rest of the list */
+
+.countryDivider {
+  margin-block-start: var(--space-internal-4);
+  padding-block-start: var(--space-internal-4);
+  border-block-start: 1px solid var(--color-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countryCaret {
+    transition: none;
+  }
 }
