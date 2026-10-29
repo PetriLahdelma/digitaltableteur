@@ -179,19 +179,18 @@
   margin: 0;
   min-inline-size: 0;
   align-items: center;
-  gap: var(--space-internal-4);
+  gap: var(--space-internal-6);
 }
 
 .lineLink {
   color: var(--color-text);
 }
 
-/* The copy button's 28px hit box would leave a wide gap and, centred on a
-   link box padded for the wave, a low glyph. Pull it in and pin it to the
-   text box so the glyph sits one word space away, on the x-height. */
+/* The copy button's hover square keeps a clear gap from the address (the
+   row's gap); pinned to the text box, since centring on a link box padded
+   for the wave would drop the glyph below the x-height. */
 
 .copyButton {
-  margin-inline-start: calc(-1 * var(--space-internal-2));
   align-self: flex-start;
   transition: opacity var(--duration-fast) var(--ease-out-cubic);
   opacity: 0;
