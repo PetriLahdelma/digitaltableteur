@@ -611,7 +611,7 @@
     },
     "nextjs-app/shared/patterns/ValuesSection/ValuesSection.tsx": {
       "rawElements": 1,
-      "utilityLines": 9
+      "utilityLines": 8
     },
     "nextjs-app/shared/patterns/WorkHero/WorkHero.tsx": {
       "rawElements": 0,
