@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.50 - 2026-10-29
+
+- Size floor: text people read is at least 16px and only tracked labels,
+  badges and tags go down to 14px. `HelperText`, the `AlertBanner`
+  description, the `Breadcrumb`, `Gallery` captions, the `FileUpload`
+  editorial buttons, the `ExpandableSection` trigger and the `CodeBlock`
+  caption move from 14-15.2px to 16px; `Badge` xs and sm and `Kbd` sm move
+  from 12px to 14px. The `--font-size-text-xs` token is now a flat 1rem.
+- `Label`: medium weight (500). New `variant` prop: `field` (default) for a
+  label that names a control, `option` (regular weight) for the text of a
+  checkbox, radio or switch, which `Checkbox`, `Radio` and `Switch` now use.
+  `Combobox`, `Select` and the other field labels share the weight.
+- `GroupLabel`: same size as a field label (was one step larger); weight
+  alone now carries the hierarchy: group 600, field 500, option 400.
+- `Code`: new `size="inherit"` takes the size of the surrounding text, for
+  inline code in article prose; the monospace then matches the body's
+  x-height.
+
 ## 0.1.49 - 2026-10-29
 
 - `CodeCopyButton`: new `size` prop. `sm` (default, unchanged) is the 28px

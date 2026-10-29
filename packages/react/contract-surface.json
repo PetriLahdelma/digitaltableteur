@@ -176,6 +176,18 @@
       "level": "additive",
       "detail": "prop `size` added",
       "bump": "patch"
+    },
+    {
+      "component": "Code",
+      "level": "additive",
+      "detail": "prop `size` added value \"inherit\"",
+      "bump": "patch"
+    },
+    {
+      "component": "Label",
+      "level": "additive",
+      "detail": "prop `variant` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -1209,6 +1221,7 @@
         "size": {
           "optional": true,
           "values": [
+            "inherit",
             "lg",
             "md",
             "sm"
@@ -2587,6 +2600,13 @@
         "tooltipText": {
           "optional": true,
           "type": "string"
+        },
+        "variant": {
+          "optional": true,
+          "values": [
+            "field",
+            "option"
+          ]
         }
       },
       "slots": [],
