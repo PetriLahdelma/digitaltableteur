@@ -1,8 +1,8 @@
 {
   "storyId": "site-chatwidget-default",
   "mode": "dark",
-  "sourceSHA": "1659a8b6385f3ef4b9678bd97180e2ec841c1b87",
-  "capturedAt": "2026-10-29T07:16:19.681Z",
+  "sourceSHA": "3fc33c931748a613721fb30052df415a648cbf68",
+  "capturedAt": "2026-10-29T07:33:42.175Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

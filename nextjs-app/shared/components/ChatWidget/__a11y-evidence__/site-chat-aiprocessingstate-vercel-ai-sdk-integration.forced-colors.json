@@ -1,8 +1,8 @@
 {
   "storyId": "site-chat-aiprocessingstate-vercel-ai-sdk-integration",
   "mode": "forced-colors",
-  "sourceSHA": "1659a8b6385f3ef4b9678bd97180e2ec841c1b87",
-  "capturedAt": "2026-10-29T07:16:32.929Z",
+  "sourceSHA": "3fc33c931748a613721fb30052df415a648cbf68",
+  "capturedAt": "2026-10-29T07:33:57.329Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {

@@ -1,11 +1,4 @@
 - status: Work in progress (alpha)
 - group "You":
   - text: You
-  - paragraph: "I need help with:"
-  - list:
-    - listitem: a design system audit
-    - listitem: token naming
-  - paragraph: "In this order:"
-  - list:
-    - listitem: Audit
-    - listitem: Roadmap
+  - paragraph: "I need help with: - a design system audit - token naming In this order: 1. Audit 2. Roadmap"
