@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.48 - 2026-10-29
+
+- `PhoneInput`: the country code picker ("FI +358") opens the same list as
+  `Combobox` under the whole field instead of the browser's native select.
+  It is a select-only combobox: Arrow keys, Enter or Space open it, typing a
+  country name ("swe") or a calling code ("358") jumps to it, Enter picks
+  and moves focus to the number input, Escape closes. No API change.
+
 ## 0.1.47 - 2026-10-29
 
 - `PhoneInput` and `Combobox` (and `MultiCombobox`, `FileUpload`, which share
