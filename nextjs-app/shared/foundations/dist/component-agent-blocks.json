@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T19:08:04.709Z",
+  "generatedAt": "2026-10-29T04:43:33.908Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -25013,11 +25013,11 @@
       "requiredA11y": [
         "label associated via htmlFor/id",
         "error via HelperText linked with aria-describedby + aria-invalid",
-        "country select has its own accessible name from the library"
+        "country picker is a select-only combobox (aria-expanded, aria-controls, aria-activedescendant) named from the library's localized label"
       ],
       "keyboard": [
         "Tab",
-        "Arrow keys (country select)",
+        "Arrow keys, Enter, Space, Escape and typeahead (country picker)",
         "typing digits"
       ],
       "compositionRules": [],

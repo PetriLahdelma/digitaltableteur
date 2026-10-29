@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-28T22:56:13.821Z",
+  "generatedAt": "2026-10-29T04:43:53.765Z",
   "summary": {
     "componentCount": 191,
     "statusCounts": {
@@ -16175,6 +16175,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
           },
@@ -16200,6 +16205,21 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
           },
@@ -16211,11 +16231,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -42753,7 +42768,7 @@
         "a11y": {
           "keyboard": [
             "Tab",
-            "Arrow keys (country select)",
+            "Arrow keys, Enter, Space, Escape and typeahead (country picker)",
             "typing digits"
           ],
           "reducedMotion": true,
@@ -42762,7 +42777,7 @@
           "ariaRequirements": [
             "label associated via htmlFor/id",
             "error via HelperText linked with aria-describedby + aria-invalid",
-            "country select has its own accessible name from the library"
+            "country picker is a select-only combobox (aria-expanded, aria-controls, aria-activedescendant) named from the library's localized label"
           ],
           "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
           "accessibilityTreeVerified": true,
@@ -43166,7 +43181,7 @@
           "E.164",
           "contact"
         ],
-        "dense": "international phone field wrapping react-phone-number-input; flag + country select + formatted input, own label/error/helperText, defaultCountry FI, emits E.164 via onChange(value)",
+        "dense": "international phone field wrapping react-phone-number-input; country picker (Combobox list) + formatted input, own label/error/helperText, defaultCountry FI, emits E.164 via onChange(value)",
         "usage": {
           "description": "PhoneInput wraps react-phone-number-input with the design-system field chrome: Label, error and helper wiring, and token-based styling over the library's country selector and input. It formats as you type and emits the E.164 value (or undefined while incomplete) through onChange. The default country is FI; override defaultCountry per audience.",
           "bestPractices": [
@@ -43202,9 +43217,9 @@
               "description": "@dt/Label tied to the input via htmlFor; shows the required marker and disabled dimming."
             },
             {
-              "name": "Country select",
+              "name": "Country picker",
               "required": true,
-              "description": "Flag button + native select from the library, restyled with design tokens; picks the calling code."
+              "description": "Compact trigger (\"FI +358\") that opens the shared Combobox list of \"Country +code\" options; no flag images."
             },
             {
               "name": "Number input",
@@ -43225,7 +43240,7 @@
           }
         }
       },
-      "spec": "# PhoneInput\n\n## Intent\nInternational phone entry without making users think about calling codes:\nwraps `react-phone-number-input` (country code select + formatting input)\nin the design-system field chrome (Label, HelperText, error wiring). Emits\nE.164 (`+358401234567`) — the interchange format — via `onChange`.\n\n## Interaction contract\n- Keyboard: Tab reaches the country select, then the number input. Arrow\n  keys or typing a country name (\"swe\") change country in the select;\n  digits format live in the input, in the national format (\"040 123 4567\").\n- Pointer: click the code (\"FI +358\") to open the native country list,\n  which reads \"Finland +358\" with the default country first.\n- Screen readers: label associated via `htmlFor`/generated id; error and\n  helper text linked with `aria-describedby`; `aria-invalid` set while\n  `error` is present. The country select is named \"<label> country\"\n  (localized in EN/FI/SV from the library's locale files).\n\n## Do / don't\n- Do: validate with `isValidPhoneNumber` from `react-phone-number-input`\n  on blur or submit; the field formats but never blocks input.\n- Do: treat `onChange(undefined)` as \"incomplete\", not as an error.\n- Do: set `defaultCountry` for the audience (defaults to `FI`).\n- Don't: read the DOM input value — it is the national display format,\n  not the E.164 value.\n- Don't: split country code and number into two fields.\n\n## Design notes\n- No flag images: the library loads them from a third-party host, which a\n  strict CSP (the client intake area) blocks and which leaks the visit.\n- `size=\"lg\"` gives the 3rem height every lg field shares (TextInput,\n  Select, Combobox).\n- Library chrome is restyled via `:global(.PhoneInput*)` overrides in\n  `PhoneInput.module.css` using design tokens (`--color-primary`,\n  `--color-error`, `--font-text`).\n- Error state colors the control with `--color-error` / `--color-error-bg`\n  and renders the message through `HelperText state=\"error\"`.\n- The required marker on the Label reflects the `required` prop.\n",
+      "spec": "# PhoneInput\n\n## Intent\nInternational phone entry without making users think about calling codes:\nwraps `react-phone-number-input` (country code select + formatting input)\nin the design-system field chrome (Label, HelperText, error wiring). Emits\nE.164 (`+358401234567`) — the interchange format — via `onChange`.\n\n## Interaction contract\n- Keyboard: Tab reaches the country picker, then the number input. The\n  picker is a select-only combobox: Arrow keys, Enter or Space open the\n  list; typing a country name (\"swe\") or a calling code (\"358\") jumps to\n  it; Enter picks and moves focus to the number input; Escape closes.\n  Digits format live in the input, in the national format (\"040 123 4567\").\n- Pointer: click the code (\"FI +358\") to open the country list, the same\n  portaled list as Combobox, under the whole field. It reads\n  \"Finland +358\" with the default country first, above a rule.\n- Screen readers: label associated via `htmlFor`/generated id; error and\n  helper text linked with `aria-describedby`; `aria-invalid` set while\n  `error` is present. The country picker is named \"<label> country\"\n  (localized in EN/FI/SV from the library's locale files).\n\n## Do / don't\n- Do: validate with `isValidPhoneNumber` from `react-phone-number-input`\n  on blur or submit; the field formats but never blocks input.\n- Do: treat `onChange(undefined)` as \"incomplete\", not as an error.\n- Do: set `defaultCountry` for the audience (defaults to `FI`).\n- Don't: read the DOM input value — it is the national display format,\n  not the E.164 value.\n- Don't: split country code and number into two fields.\n\n## Design notes\n- No flag images: the library loads them from a third-party host, which a\n  strict CSP (the client intake area) blocks and which leaks the visit.\n- `size=\"lg\"` gives the 3rem height every lg field shares (TextInput,\n  Select, Combobox).\n- The country list reuses Combobox's dropdown (`useComboboxDropdown` and\n  the `ComboboxField.module.css` list styles), so every dropdown on the\n  site opens, highlights and scrolls the same way.\n- Library chrome is restyled via `:global(.PhoneInput*)` overrides in\n  `PhoneInput.module.css` using design tokens (`--color-primary`,\n  `--color-error`, `--font-text`).\n- Error state colors the control with `--color-error` / `--color-error-bg`\n  and renders the message through `HelperText state=\"error\"`.\n- The required marker on the Label reflects the `required` prop.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PhoneInput",
@@ -43591,11 +43606,11 @@
         "requiredA11y": [
           "label associated via htmlFor/id",
           "error via HelperText linked with aria-describedby + aria-invalid",
-          "country select has its own accessible name from the library"
+          "country picker is a select-only combobox (aria-expanded, aria-controls, aria-activedescendant) named from the library's localized label"
         ],
         "keyboard": [
           "Tab",
-          "Arrow keys (country select)",
+          "Arrow keys, Enter, Space, Escape and typeahead (country picker)",
           "typing digits"
         ],
         "compositionRules": [],

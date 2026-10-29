@@ -12174,7 +12174,7 @@
       "tier": 1,
       "status": "stable",
       "description": "International phone field: country selector + formatted number input with field chrome.",
-      "dense": "international phone field wrapping react-phone-number-input; flag + country select + formatted input, own label/error/helperText, defaultCountry FI, emits E.164 via onChange(value)",
+      "dense": "international phone field wrapping react-phone-number-input; country picker (Combobox list) + formatted input, own label/error/helperText, defaultCountry FI, emits E.164 via onChange(value)",
       "keywords": [
         "phone",
         "telephone",
@@ -12570,9 +12570,9 @@
             "description": "@dt/Label tied to the input via htmlFor; shows the required marker and disabled dimming."
           },
           {
-            "name": "Country select",
+            "name": "Country picker",
             "required": true,
-            "description": "Flag button + native select from the library, restyled with design tokens; picks the calling code."
+            "description": "Compact trigger (\"FI +358\") that opens the shared Combobox list of \"Country +code\" options; no flag images."
           },
           {
             "name": "Number input",
