@@ -148,7 +148,8 @@
 
 /* Direct lines: a labelled email row (mailto link plus copy) and the
    Signal button under it. The label is muted like the address; the address
-   itself is full ink with the site's wavy underline, so it reads as a link. */
+   is full ink, and like links elsewhere on the site its wavy underline and
+   the copy icon appear on hover or keyboard focus. */
 
 .directLines {
   display: flex;
@@ -191,6 +192,35 @@
 .copyButton {
   margin-inline-start: calc(-1 * var(--space-internal-2));
   align-self: flex-start;
+  transition: opacity var(--duration-fast) var(--ease-out-cubic);
+  opacity: 0;
+}
+
+/* Hidden, not removed: it stays in the tab order and shows on focus. It
+   also stays up while its "Copied" check is showing (Safari does not focus
+   a clicked button). */
+
+.copyButton:has([data-status="copied"]) {
+  opacity: 1;
+}
+
+.mailValue:hover .copyButton,
+.mailValue:focus-within .copyButton {
+  opacity: 1;
+}
+
+/* Touch screens have no hover: keep the copy icon visible there. */
+
+@media (hover: none) {
+  .copyButton {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copyButton {
+    transition: none;
+  }
 }
 
 .newBusiness {

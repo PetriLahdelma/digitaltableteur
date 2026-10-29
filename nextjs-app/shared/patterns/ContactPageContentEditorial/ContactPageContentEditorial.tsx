@@ -166,6 +166,7 @@ export function ContactPageContentEditorial({
                     <Link
                       href={`mailto:${CONTACT_EMAIL}`}
                       size="inherit"
+                      underline="hover"
                       className={styles.mailLink}
                     >
                       {CONTACT_EMAIL}
