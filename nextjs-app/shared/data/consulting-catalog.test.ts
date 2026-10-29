@@ -15,8 +15,8 @@ describe("consulting-catalog", () => {
     const partnership = enTranslation.engagementPages.partnership;
     expect(rate.standardEur).toBe(120);
     expect(rate.partnershipEur).toBe(90);
-    expect(partnership.price).toBe(`${rate.partnershipEur} €/h`);
-    expect(partnership.investNote).toContain(`${rate.standardEur} €/h`);
+    expect(partnership.price).toBe(`€${rate.partnershipEur}/h`);
+    expect(partnership.investNote).toContain(`€${rate.standardEur}/h`);
     expect(rate.vat).toBe("excluded");
     expect(rate.note).not.toMatch(/preferred/i);
   });

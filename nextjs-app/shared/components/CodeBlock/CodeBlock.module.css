@@ -290,7 +290,7 @@
 .caption {
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--font-size-text-xxs);
+  font-size: var(--font-size-text-xs);
   line-height: var(--line-height-normal);
   color: var(--color-muted);
 }

@@ -27,7 +27,7 @@
 
 .intro {
   margin-block-start: var(--space-layout-16);
-  max-inline-size: 52ch;
+  max-inline-size: var(--measure-reading);
   color: var(--color-muted);
 }
 

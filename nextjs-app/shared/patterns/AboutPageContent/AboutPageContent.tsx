@@ -294,7 +294,7 @@ export function AboutPageContent({
       />
 
       <div className={styles.timelineLink}>
-        <DtLink underline="hover" href="/timeline" size="sm">
+        <DtLink underline="hover" href="/timeline" size="lg">
           {t("aboutTimelineLink", "See two decades of work on the timeline")}
           <span aria-hidden="true"> →</span>
         </DtLink>

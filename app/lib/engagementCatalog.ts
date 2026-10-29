@@ -50,7 +50,8 @@ function lookup(key: string): string {
 }
 
 /**
- * Reads the visible price strings: "€7–14k", "€5–8k / mo" and "90 €/h".
+ * Reads the visible price strings: "€7–14k", "€5–8k / mo" and "€90/h"
+ * (also "90 €/h", the Finnish and Swedish order).
  * Anything else ("Quoted per workshop") is a quote, not a price.
  */
 export function parseEngagementPrice(label: string): EngagementPrice | null {
@@ -63,9 +64,9 @@ export function parseEngagementPrice(label: string): EngagementPrice | null {
       ...(/\/\s*mo/i.test(label) ? { unitCode: "MON" as const } : {}),
     };
   }
-  const hourly = label.match(/(\d+(?:\.\d+)?)\s*€\s*\/\s*h/i);
+  const hourly = label.match(/(?:€\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*€)\s*\/\s*h/i);
   if (hourly) {
-    const amount = Number(hourly[1]);
+    const amount = Number(hourly[1] ?? hourly[2]);
     return { minPrice: amount, maxPrice: amount, currency: "EUR", unitCode: "HUR" };
   }
   return null;
@@ -117,9 +118,15 @@ export function getEngagementEntry(slug: string): EngagementEntry | undefined {
   return getEngagementEntries().find((entry) => entry.config.slug === slug);
 }
 
+/** The site copy binds numbers to units with no-break spaces; plain-text
+ *  outputs for agents use ordinary spaces. */
+const plainSpaces = (text: string) => text.replace(/[\u00a0\u202f]/g, " ");
+
 /** One line per engagement for llms.txt. */
 export function formatEngagementLine(entry: EngagementEntry, baseUrl: string): string {
-  return `- [${entry.name}](${baseUrl}${entry.path}): ${entry.priceLabel}, ${entry.durationLabel}. ${entry.copy.metaDescription}`;
+  return plainSpaces(
+    `- [${entry.name}](${baseUrl}${entry.path}): ${entry.priceLabel}, ${entry.durationLabel}. ${entry.copy.metaDescription}`,
+  );
 }
 
 /** Full markdown brief of one engagement, for agents and llms-full.txt. */
@@ -173,5 +180,5 @@ export function formatEngagementMarkdown(
     copy.faq.map((item) => `**${item.question}** ${item.answer}`).join("\n\n"),
     "",
   ];
-  return lines.join("\n");
+  return plainSpaces(lines.join("\n"));
 }

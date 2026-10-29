@@ -65,7 +65,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
         className={[styles.input, styles[`input--${normalizedSize}`]].join(" ")}
         onChange={(e) => onCheckedChange?.(e.target.checked)}
       />
-      {showLabel ? <Label htmlFor={id}>{label}</Label> : null}
+      {showLabel ? <Label htmlFor={id} variant="option">{label}</Label> : null}
     </div>
   );
 });

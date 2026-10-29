@@ -151,7 +151,7 @@ code {
   /* Prose width for readable content */
 
   .prose-width {
-    max-inline-size: 65ch;
+    max-inline-size: var(--measure-reading);
   }
 
   /* Screen reader only */

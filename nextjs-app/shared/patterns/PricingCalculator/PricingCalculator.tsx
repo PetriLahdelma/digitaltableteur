@@ -221,6 +221,18 @@ export function PricingCalculator({
       }),
     [resolvedLanguage],
   );
+  // Euro amounts in the reader's convention: "€9,000" in English, "9 000 €"
+  // with no-break spaces in Finnish and Swedish.
+  const currencyFormat = useMemo(
+    () =>
+      new Intl.NumberFormat(resolvedLanguage || "en", {
+        style: "currency",
+        currency: "EUR",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }),
+    [resolvedLanguage],
+  );
   const daysFormat = useMemo(
     () =>
       new Intl.NumberFormat(resolvedLanguage || "en", {
@@ -245,12 +257,12 @@ export function PricingCalculator({
       : t("pricingCalcUnitMonths", "months");
   };
 
-  const durationPhrase = `${duration.amount} ${unitLabel(duration)}`;
-  const ratePhrase = t("pricingCalcRatePerHour", "{{rate}}€/hour", {
-    rate: pricing.effectiveRate,
+  const durationPhrase = `${duration.amount}\u00a0${unitLabel(duration)}`;
+  const ratePhrase = t("pricingCalcRatePerHour", "{{rate}}/hour", {
+    rate: currencyFormat.format(pricing.effectiveRate),
   });
-  const standardRatePhrase = t("pricingCalcRatePerHour", "{{rate}}€/hour", {
-    rate: pricing.standardRate,
+  const standardRatePhrase = t("pricingCalcRatePerHour", "{{rate}}/hour", {
+    rate: currencyFormat.format(pricing.standardRate),
   });
 
   return (
@@ -263,12 +275,12 @@ export function PricingCalculator({
         <div role="status">
           {t(
             "pricingCalcLiveSummary",
-            "{{hours}} hours at {{days}} days/week, {{rate}}, total {{total}} €",
+            "{{hours}} hours at {{days}} days/week, {{rate}}, total {{total}}",
             {
               hours: numberFormat.format(pricing.totalHours),
               days: daysPerWeek,
               rate: ratePhrase,
-              total: numberFormat.format(pricing.total),
+              total: currencyFormat.format(pricing.total),
             },
           )}
           {pricing.discount > 0
@@ -447,7 +459,7 @@ export function PricingCalculator({
           <Text as="p" size="s" className={styles.priceHint}>
             {t(
               "pricingCalcPartnershipHint",
-              "Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.",
+              "Partnership rate €90/hour applies on 6 and 12 month engagements at 4+ days per week (75%+) workloads.",
             )}
           </Text>
           <Text as="p" size="xs" className={cn(styles.priceHint, styles.priceTerms)}>
@@ -463,7 +475,7 @@ export function PricingCalculator({
             {t("pricingCalcTotalInvestmentLabel", "Total Investment:")}
           </Text>
           <Text as="span" size="l" className={styles.totalValue}>
-            {numberFormat.format(pricing.total)}&nbsp;€
+            {currencyFormat.format(pricing.total)}
           </Text>
           {pricing.discount > 0 ? (
             <Text as="span" size="s" className={styles.totalNote}>

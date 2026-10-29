@@ -26,13 +26,13 @@
 .xs {
   padding: 0 var(--space-internal-8);
   block-size: 24px;
-  font-size: 0.75rem;
+  font-size: var(--font-size-text-xxs);
 }
 
 .sm {
   padding: 0 var(--space-internal-12);
   block-size: 32px;
-  font-size: 0.75rem;
+  font-size: var(--font-size-text-xxs);
 }
 
 .lg {
@@ -204,7 +204,7 @@
 
 .removable.sm {
   padding-inline-start: var(--space-internal-12);
-  font-size: 0.75rem;
+  font-size: var(--font-size-text-xxs);
 }
 
 .removable.md {

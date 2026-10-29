@@ -104,7 +104,7 @@ export const projects: Project[] = [
     slug: "vr-design-system",
     title: "VR Design System",
     description:
-      "Industrialising VR's live design system into one agent-ready source of truth: DTCG tokens, an enforceable component contract and accessibility as a CI gate across web and mobile.",
+      "Industrialising VR’s live design system into one agent-ready source of truth: DTCG tokens, an enforceable component contract and accessibility as a CI gate across web and mobile.",
     thumbnail: "/images/portfolio/vr-design-system/thumbnail.png",
     category: "design-systems",
     tags: ["Design Systems", "Design Tokens", "Accessibility", "Agent-ready"],
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     slug: "process-genius-design-system",
     title: "Process Genius Design System",
     description:
-      "A contract-driven design system for Genius Core, Process Genius's facility operations platform: modernised components, design tokens and machine-readable contracts, built alongside the existing library.",
+      "A contract-driven design system for Genius Core, Process Genius’s facility operations platform: modernised components, design tokens and machine-readable contracts, built alongside the existing library.",
     thumbnail: "/images/portfolio/process-genius/thumbnail.png",
     category: "design-systems",
     tags: ["Design Systems", "Design Tokens", "Component Contracts", "Accessibility"],
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     slug: "sap-build-apps",
     title: "SAP Build Apps Design System",
     description:
-      "Led the design system for SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.",
+      "Led the design system for SAP’s flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.",
     thumbnail: "/images/portfolio/sap-build-apps/Build Product Icon_1000px.png",
     category: "design-systems",
     tags: ["Design Systems", "Enterprise", "Low-Code Platform", "SAP BTP"],
@@ -233,7 +233,7 @@ export const projects: Project[] = [
     slug: "ring-stats",
     title: "Ring Stats",
     description:
-      "A weekend project: a calm macOS menu-bar glance at today's ring scores and battery, private by default and honest about freshness.",
+      "A weekend project: a calm macOS menu-bar glance at today’s ring scores and battery, private by default and honest about freshness.",
     thumbnail: "/images/portfolio/ring-stats/thumbnail-v5.webp",
     category: "ux-design",
     secondaryCategories: ["tools"],

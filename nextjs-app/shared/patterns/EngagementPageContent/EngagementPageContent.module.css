@@ -29,7 +29,7 @@
 }
 
 .lead {
-  max-inline-size: 65ch;
+  max-inline-size: var(--measure-reading);
 }
 
 .facts {

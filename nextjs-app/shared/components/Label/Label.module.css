@@ -3,8 +3,16 @@
   align-items: center;
   gap: 0.25rem; /* 8px */
   font-family: var(--font-text);
-  font-size: 1rem; /* 16px */
+  font-size: var(--font-size-text-xs);
+  font-weight: var(--font-weight-medium);
   color: var(--color-primary);
+}
+
+/* One size for every form label; weight carries the hierarchy: group
+   heading 600 (GroupLabel), field label 500, option text 400. */
+
+.label.option {
+  font-weight: var(--font-weight-text);
 }
 
 .label.disabled {

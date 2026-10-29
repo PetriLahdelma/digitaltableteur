@@ -77,6 +77,8 @@ function clean(text) {
     .replace(/\s+—\s+/g, ": ") // house style: no em dashes
     .replace(/—/g, ", ")
     .replace(/\s*·\s*/g, ", ") // house style: no middle dots
+    .replace(/"([^"]*)"/g, "“$1”") // typographic quotes and apostrophes
+    .replace(/([\p{L}\d])'(?=\p{L})/gu, "$1’")
     .replace(/^\w/, (c) => c.toUpperCase())
     .trim();
 }

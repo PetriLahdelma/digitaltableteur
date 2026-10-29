@@ -145,7 +145,7 @@
 .article img + figcaption {
   display: block;
   margin-block-start: 0.5rem;
-  font-size: 0.95rem;
+  font-size: var(--font-size-text-xs);
   color: var(--color-gray-medium);
   text-align: center;
 }
@@ -157,7 +157,7 @@
 
 .article figcaption {
   margin-block-start: 0.5rem;
-  font-size: 0.95rem;
+  font-size: var(--font-size-text-xs);
   color: var(--color-gray-medium);
 }
 

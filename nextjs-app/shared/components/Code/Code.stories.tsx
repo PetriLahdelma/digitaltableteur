@@ -44,6 +44,10 @@ export const Sizes: Story = {
       <Text size="l">
         Large beside large text: <Code size="lg">app/page.tsx</Code>
       </Text>
+      <Text size="m">
+        Inherit takes the size of the text around it:{" "}
+        <Code size="inherit">AGENTS.md</Code>
+      </Text>
     </div>
   ),
 };

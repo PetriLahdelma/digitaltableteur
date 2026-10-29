@@ -340,7 +340,7 @@
 
 .swatchHex {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xxs);
   font-weight: 400;
   text-transform: uppercase;
   color: var(--knob-brand);
@@ -432,7 +432,7 @@
 }
 
 .typeCaption {
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xxs);
   font-weight: 400;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -440,7 +440,7 @@
 
 @media (width < 768px) {
   .typeCaption {
-    font-size: 0.75rem;
+    font-size: var(--font-size-text-xxs);
   }
 }
 
@@ -452,7 +452,7 @@
 
 .typeLabel {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: var(--font-size-text-xxs);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;

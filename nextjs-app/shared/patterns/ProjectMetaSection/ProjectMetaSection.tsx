@@ -273,7 +273,7 @@ export function ProjectMetaSection({
                     <p className={cn("font-body font-medium text-sm text-foreground", styles.teamMemberName)}>
                       {member.name}
                     </p>
-                    <p className={cn("font-body text-xs text-muted-foreground", styles.teamMemberRole)}>
+                    <p className={cn("font-body text-sm text-muted-foreground", styles.teamMemberRole)}>
                       {member.role}
                     </p>
                   </li>

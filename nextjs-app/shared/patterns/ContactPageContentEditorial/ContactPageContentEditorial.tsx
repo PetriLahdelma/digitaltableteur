@@ -103,7 +103,7 @@ export function ContactPageContentEditorial({
                   : { duration: 0 }
               }
             >
-              {t("contactHeadline", "Let's talk.")}
+              {t("contactHeadline", "Let’s talk.")}
             </motion.h1>
 
             {/* Divider */}

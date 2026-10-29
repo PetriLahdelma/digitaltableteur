@@ -11,7 +11,7 @@
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-md);
   font-family: var(--font-text);
-  font-size: 0.9rem;
+  font-size: var(--font-size-text-xs);
   line-height: 1.5;
 }
 

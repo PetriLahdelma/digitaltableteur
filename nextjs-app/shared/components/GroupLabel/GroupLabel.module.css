@@ -1,8 +1,9 @@
 /*
  * The group heading. One treatment for every group of controls, so a
- * radio set, a checkbox set and a card choice read the same: semibold on
- * the small text step, in the title colour. Single-field labels keep the
- * lighter Label treatment, which keeps the hierarchy visible.
+ * radio set, a checkbox set and a card choice read the same: semibold, in
+ * the title colour, at the same size as a field label. Weight alone carries
+ * the hierarchy (group 600, field label 500, option text 400), so a group
+ * reads as the parent of its fields without jumping a size.
  */
 
 .groupLabel {
@@ -10,7 +11,7 @@
   align-items: center;
   gap: var(--space-internal-4);
   font-family: var(--font-text);
-  font-size: var(--font-size-text-s);
+  font-size: var(--font-size-text-xs);
   font-weight: 600;
   color: var(--color-title, var(--color-primary));
 }

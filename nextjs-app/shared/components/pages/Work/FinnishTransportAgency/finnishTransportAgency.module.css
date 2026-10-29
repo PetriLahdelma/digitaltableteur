@@ -237,7 +237,7 @@
 
 .colorIntro {
   margin-block: var(--space-layout-16) var(--space-layout-32);
-  max-inline-size: 60ch;
+  max-inline-size: var(--measure-reading);
 }
 
 /* Applications Section */
@@ -314,7 +314,7 @@
 
 .typographyIntro {
   margin-block: var(--space-layout-16) var(--space-layout-32);
-  max-inline-size: 60ch;
+  max-inline-size: var(--measure-reading);
 }
 
 .typographyWaterfall {
@@ -359,7 +359,7 @@
 }
 
 .waterfallBody {
-  max-inline-size: 55ch;
+  max-inline-size: var(--measure-reading);
   font-family: "Felbridge Pro", var(--font-sans);
   font-size: clamp(14px, 1.5vi, 16px);
   font-weight: 400;

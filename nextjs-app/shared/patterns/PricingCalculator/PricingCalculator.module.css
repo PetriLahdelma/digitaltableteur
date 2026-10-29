@@ -217,6 +217,10 @@
   gap: var(--space-layout-16);
 }
 
+.summaryFooter :where(p) {
+  max-inline-size: var(--measure-reading);
+}
+
 /* The two lists share a row and a top edge; their length only changes the
    height of this row. */
 

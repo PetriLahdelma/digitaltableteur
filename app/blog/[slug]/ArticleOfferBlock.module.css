@@ -18,6 +18,7 @@
 .title,
 .body {
   margin: 0;
+  max-inline-size: var(--measure-reading);
 }
 
 .actions {

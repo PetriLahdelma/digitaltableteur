@@ -9,7 +9,7 @@
 }
 
 .lead {
-  max-inline-size: 70ch;
+  max-inline-size: var(--measure-reading);
   margin-block-start: 1rem;
 }
 

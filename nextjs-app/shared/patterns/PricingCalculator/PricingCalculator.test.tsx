@@ -113,7 +113,7 @@ describe("PricingCalculator", () => {
     ).toBeInTheDocument();
     // The partnership pricing rule is stated in visible copy.
     expect(
-      screen.getByText(/Partnership rate 90€\/hour applies/i),
+      screen.getByText(/Partnership rate €90\/hour applies/i),
     ).toBeInTheDocument();
     // A polite status region carries the recomputed summary for AT.
     expect(screen.getByRole("status").textContent).toContain("75");
@@ -126,7 +126,7 @@ describe("PricingCalculator", () => {
 
     await user.click(screen.getByRole("radio", { name: /12\s*months/i }));
     const struck = document.querySelector("s");
-    expect(struck).toHaveTextContent("120€/hour");
+    expect(struck).toHaveTextContent("€120/hour");
     expect(
       screen.getByText("(replaced by the partnership rate)", { exact: false }),
     ).toBeInTheDocument();
@@ -149,7 +149,7 @@ describe("PricingCalculator", () => {
     expect(
       screen.getByText(format.format(computePricing("12m", 5).totalHours)),
     ).toBeInTheDocument();
-    expect(screen.getByText("90€/hour")).toBeInTheDocument();
+    expect(screen.getByText("€90/hour")).toBeInTheDocument();
     expect(
       screen.getByText("Partnership pricing: 1 day per week is free."),
     ).toBeInTheDocument();
@@ -159,7 +159,7 @@ describe("PricingCalculator", () => {
     const next = computePricing("12m", 3);
     expect(next.effectiveRate).toBe(120);
     expect(screen.getByText(format.format(next.totalHours))).toBeInTheDocument();
-    expect(screen.queryByText("90€/hour")).toBeNull();
+    expect(screen.queryByText("€90/hour")).toBeNull();
     expect(
       screen.queryByText("Partnership pricing: 1 day per week is free."),
     ).toBeNull();
@@ -273,7 +273,7 @@ describe("workload as percentages", () => {
     expect(screen.getByRole("radio", { name: /^75%/ })).toBeChecked();
     expect(screen.getByRole("radio", { name: /^25%/ })).toBeInTheDocument();
     expect(screen.queryByRole("radio", { name: /days/ })).toBeNull();
-    expect(screen.getAllByText("90€/hour").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("€90/hour").length).toBeGreaterThan(0);
   });
 
   it("opens the percentage view for a percentage-only URL workload", async () => {

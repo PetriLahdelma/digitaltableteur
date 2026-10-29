@@ -85,14 +85,14 @@
 
 .separator {
   font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xs);
   font-weight: 400;
   color: rgb(0 0 0 / 60%);
 }
 
 .connectionDegree {
   font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xs);
   font-weight: 400;
   color: rgb(0 0 0 / 60%);
 }
@@ -100,7 +100,7 @@
 .titleCompany {
   margin-block-start: 0;
   font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xs);
   line-height: 1.33;
   color: rgb(0 0 0 / 60%);
 }

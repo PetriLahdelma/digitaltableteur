@@ -159,6 +159,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <Label
           htmlFor={id}
           disabled={disabled}
+          variant="option"
           className={styles.label}
         >
           {showLabel && label}

@@ -23,8 +23,8 @@
       "end": "min",
       "ladder": "--font-size-text",
       "tokens": [
-        "--font-size-text-xxs",
-        "--font-size-text-xs"
+        "--font-size-text-xs",
+        "--font-size-text-s"
       ],
       "type": "collapsed"
     }

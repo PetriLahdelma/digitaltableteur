@@ -143,7 +143,7 @@ export function ProjectCard({
               {tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs font-body text-muted-foreground"
+                  className="text-sm font-body text-muted-foreground"
                 >
                   {tag}
                 </span>

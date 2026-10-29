@@ -35,7 +35,7 @@
   border-radius: var(--radius-lg);
   background: transparent;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--font-size-text-xs);
   font-weight: 600;
   color: var(--color-primary);
   cursor: pointer;
@@ -64,7 +64,7 @@
   border: none;
   background: transparent;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--font-size-text-xs);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;

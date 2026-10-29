@@ -212,6 +212,7 @@
     "--space-layout-160",
     "--font-mono",
     "--font-size-text-xxs",
+    "--font-size-text-xs",
     "--font-size-disclaimer",
     "--font-size-code-xs",
     "--font-size-code-s",
@@ -238,7 +239,6 @@
     "--tracking-wider",
     "--tracking-widest",
     "--font-size-text",
-    "--font-size-text-xs",
     "--font-size-text-s",
     "--font-size-text-m",
     "--font-size-text-l",
@@ -258,5 +258,5 @@
     "--font-size-button-m",
     "--font-size-button-l"
   ],
-  "generatedAt": "2026-10-29T17:03:27.572Z"
+  "generatedAt": "2026-10-29T20:32:19.913Z"
 }

@@ -28,7 +28,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
       hero={
         <ProjectHero
           title={project.title}
-          description="A comprehensive design system powering SAP Build Apps, SAP's flagship low-code platform (formerly AppGyver). Serving 300+ developers and designers who build consistent, accessible enterprise applications with a unified component library spanning Figma and ReactTS."
+          description="A comprehensive design system powering SAP Build Apps, SAP’s flagship low-code platform (formerly AppGyver). Serving 300+ developers and designers who build consistent, accessible enterprise applications with a unified component library spanning Figma and ReactTS."
           image={{
             src: "/images/portfolio/sap-build-apps/storybook_front.png",
             alt: "SAP Build Apps design system component library overview",

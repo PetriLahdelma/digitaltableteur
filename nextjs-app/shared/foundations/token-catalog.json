@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-29T17:03:27.485Z",
+  "generatedAt": "2026-10-29T20:32:19.844Z",
   "tokenCount": 228,
   "usageCoverage": 173,
   "themes": [
@@ -2347,7 +2347,7 @@
         },
         {
           "name": "--font-size-text-xs",
-          "value": "clamp(0.875rem, 0.208vi + 0.8333rem, 1rem)",
+          "value": "1rem",
           "usage": "Fluid type size token (text-xs); uses clamp().",
           "category": "typography",
           "subgroup": "Type scale"
@@ -2389,7 +2389,7 @@
         },
         {
           "name": "--font-size-disclaimer",
-          "value": "0.75rem",
+          "value": "var(--font-size-text-xs)",
           "usage": "12px, for disclaimer copy only (price terms, legal small print). Below the 14px text-scale floor on purpose; never for body, UI or captions.",
           "category": "typography",
           "subgroup": "Type scale"

@@ -14,7 +14,8 @@
             "values": [
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "inherit"
             ],
             "default": "md",
             "propSourced": true

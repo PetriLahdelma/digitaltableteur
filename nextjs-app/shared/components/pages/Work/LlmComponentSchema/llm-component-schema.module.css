@@ -29,7 +29,7 @@
 
 .pipelineCaption {
   max-inline-size: 720px;
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xs);
   text-align: center;
   color: var(--secondary-text-color);
   font-style: italic;

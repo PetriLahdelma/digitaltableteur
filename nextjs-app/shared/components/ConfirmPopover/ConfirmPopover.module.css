@@ -56,7 +56,7 @@
   margin: 0;
   margin-block-start: var(--space-internal-8);
   font-family: var(--font-text);
-  font-size: var(--font-size-text-xxs);
+  font-size: var(--font-size-text-xs);
   line-height: 1.5;
   color: var(--color-muted);
 }

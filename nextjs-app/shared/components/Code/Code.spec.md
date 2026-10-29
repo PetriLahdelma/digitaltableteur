@@ -9,7 +9,7 @@ Renders a semantic `<code>` on the light surface with a hairline border.
 - Screen readers: announced as regular text; `<code>` conveys the semantic.
 
 ## Do / don't
-- Do: match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).
+- Do: match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l), or use `inherit` where the text size varies, such as article prose.
 - Do: keep it to a few words inside a sentence.
 - Don't: add a copy affordance; a copyable command is a Snippet.
 - Don't: use it for keyboard keys; that is Kbd.

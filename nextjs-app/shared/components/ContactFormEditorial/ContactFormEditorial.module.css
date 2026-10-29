@@ -31,7 +31,7 @@
 .emailSuggestion {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: var(--font-size-text-xs);
   color: var(--color-muted);
 }
 
@@ -83,7 +83,7 @@
 .attachmentNotice {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: var(--font-size-text-xs);
   color: var(--color-muted);
 }
 
@@ -98,7 +98,7 @@
 .privacy {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--font-size-text-xs);
   color: var(--color-muted);
 }
 
@@ -126,7 +126,7 @@
   border-radius: var(--radius-lg);
   background-color: var(--color-primary);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--font-size-text-xs);
   font-weight: 600;
   color: var(--inverted-text-color);
   cursor: pointer;

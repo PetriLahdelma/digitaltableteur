@@ -172,7 +172,7 @@ export function EvidencePerPublishSection({
                   <span className={styles.recordText}>{row.records}</span>
                 </TableCell>
                 <TableCell>
-                  <span className="text-xs">{row.headline}</span>
+                  <span className="text-sm">{row.headline}</span>
                 </TableCell>
                 <TableCell>
                   <DtLink href={`/ds-health/${row.file}`} size="sm">

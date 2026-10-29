@@ -24,7 +24,7 @@
 .privacyPolicy {
   margin-block-end: 1.2rem;
   font-family: var(--font-text);
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xs);
   text-align: center;
   color: var(--color-primary);
 }
@@ -93,6 +93,6 @@
 
   .privacyPolicy {
     margin-block-end: 1rem;
-    font-size: 0.8rem;
+    font-size: var(--font-size-text-xs);
   }
 }

@@ -62,7 +62,8 @@ const readFrontmatter = (filePath: string): PostMeta => {
     title: fm.title ?? fileSlug,
     slug: fm.slug ?? fileSlug,
     excerpt: fm.excerpt,
-    readTime: fm.readTime,
+    // "14 min read" keeps its number with the unit (no-break space).
+    readTime: fm.readTime?.replace(/(\d) (?=min\b)/, "$1\u00a0"),
     publishedAt: fm.publishedAt,
     intendedPublishedAt: fm.intendedPublishedAt,
     draft: fm.draft,

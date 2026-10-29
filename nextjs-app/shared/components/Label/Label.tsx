@@ -10,6 +10,12 @@ export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> 
   required?: boolean;
   /** Dims the label and shows a not-allowed cursor. @default false */
   disabled?: boolean;
+  /**
+   * `field` names a control above or beside it (medium weight); `option` is
+   * the text of a checkbox, radio or switch, which reads as plain text.
+   * @default "field"
+   */
+  variant?: "field" | "option";
 }
 
 /** Form field label with required, disabled, and tooltip affordances. */
@@ -22,6 +28,7 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
       tooltipText,
       required,
       disabled = false,
+      variant = "field",
       title,
       ...rest
     },
@@ -31,7 +38,7 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
       <label
         ref={ref}
         htmlFor={htmlFor}
-        className={[styles.label, disabled ? styles.disabled : "", className]
+        className={[styles.label, variant === "option" ? styles.option : "", disabled ? styles.disabled : "", className]
           .filter(Boolean)
           .join(" ")}
         title={title || tooltipText}

@@ -184,7 +184,7 @@ export function HomePage() {
         donnyTarget="home.contactCta"
         title={t("homeCtaTitle", "Ready to create something extraordinary?")}
         primaryAction={{
-          label: t("homeCtaLink", "Let's talk"),
+          label: t("homeCtaLink", "Let’s talk"),
           href: "/contact?mode=book",
         }}
         background="primary"

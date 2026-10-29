@@ -392,7 +392,7 @@ const MdxCode = (props: React.ComponentPropsWithoutRef<"code">) => {
   if (Object.prototype.hasOwnProperty.call(props, "data-language")) {
     return <code {...props} />;
   }
-  return <Code {...props} />;
+  return <Code size="inherit" {...props} />;
 };
 
 /** MDX lower-case `<figure>` bypasses MDXProvider; use `<ArticleFigure>` in content. */

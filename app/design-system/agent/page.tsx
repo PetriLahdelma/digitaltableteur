@@ -186,7 +186,7 @@ export default function DesignSystemAgentPage() {
                 </p>
               ) : null}
               {p.avoidWhen?.[0] ? (
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="mt-1 text-sm text-muted-foreground">
                   Avoid: {p.avoidWhen[0]}
                 </p>
               ) : null}

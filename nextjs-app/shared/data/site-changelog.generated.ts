@@ -12,6 +12,228 @@ export interface SiteChangelogEntry {
 
 export const SITE_CHANGELOG: SiteChangelogEntry[] = [
   {
+    "date": "2026-10-29",
+    "sha": "d9e030ea8",
+    "area": "Site",
+    "text": "Reading measure token caps long lines site-wide"
+  },
+  {
+    "date": "2026-10-29",
+    "sha": "74f94b397",
+    "area": "Site",
+    "text": "Call line with tel link and copy; chat offers WhatsApp or Signal"
+  },
+  {
+    "date": "2026-10-29",
+    "sha": "e8910e3e5",
+    "area": "Site",
+    "text": "Size prop with an md size for use beside body text"
+  },
+  {
+    "date": "2026-10-29",
+    "sha": "8fd11448e",
+    "area": "Site",
+    "text": "Signal as a labelled Chat line under Email"
+  },
+  {
+    "date": "2026-10-29",
+    "sha": "1659a8b63",
+    "area": "Donny",
+    "text": "New chat tooltip shows its shortcut as keys"
+  },
+  {
+    "date": "2026-10-29",
+    "sha": "d6946f965",
+    "area": "Donny",
+    "text": "Enter sends, New chat in the header, accuracy note under the input"
+  },
+  {
+    "date": "2026-10-29",
+    "sha": "e02a04464",
+    "area": "Site",
+    "text": "Labelled email row with copy and a Message on Signal button"
+  },
+  {
+    "date": "2026-10-29",
+    "sha": "b5c22e904",
+    "area": "Site",
+    "text": "Copy-email button and a Signal link under the address"
+  },
+  {
+    "date": "2026-10-29",
+    "sha": "86fccb1d3",
+    "area": "Site",
+    "text": "Country picker uses the shared Combobox list"
+  },
+  {
+    "date": "2026-10-28",
+    "sha": "35220acc3",
+    "area": "Site",
+    "text": "Book_meeting when Cal.com confirms a booking"
+  },
+  {
+    "date": "2026-10-28",
+    "sha": "e02094e91",
+    "area": "Site",
+    "text": "Engagement package on leads, chat_start, consent signals and internal traffic"
+  },
+  {
+    "date": "2026-10-28",
+    "sha": "570fb69fc",
+    "area": "Site",
+    "text": "Send generate_lead when an enquiry is accepted"
+  },
+  {
+    "date": "2026-10-28",
+    "sha": "fa883c019",
+    "area": "Site",
+    "text": "Business contacts notice; drop untrue policy claims"
+  },
+  {
+    "date": "2026-10-28",
+    "sha": "8d1ed3064",
+    "area": "Site",
+    "text": "TimeZone prop, so a server render need not show UTC"
+  },
+  {
+    "date": "2026-10-27",
+    "sha": "c51dcafc2",
+    "area": "Site",
+    "text": "Content width up to the container; plain underlines for links inside"
+  },
+  {
+    "date": "2026-10-27",
+    "sha": "c534b4a1d",
+    "area": "Site",
+    "text": "Privacy note as an info banner with the link inline; consume @digitaltableteur/react 0.1.44"
+  },
+  {
+    "date": "2026-10-27",
+    "sha": "2e8646a67",
+    "area": "Site",
+    "text": "Submission answers use the full width, as Check and submit does"
+  },
+  {
+    "date": "2026-10-27",
+    "sha": "6b10eecae",
+    "area": "Site",
+    "text": "Admin area with passkey sign-in, invites, versions and owner notices"
+  },
+  {
+    "date": "2026-10-27",
+    "sha": "574da8a31",
+    "area": "Site",
+    "text": "Check-and-submit summary, PDF download, branded email"
+  },
+  {
+    "date": "2026-10-27",
+    "sha": "28adfef32",
+    "area": "Design system",
+    "text": "SummaryList, ConfirmPopover, field widths and sizes"
+  },
+  {
+    "date": "2026-10-27",
+    "sha": "19e642e52",
+    "area": "Site",
+    "text": "Stepped form with a task-list rail, check and submit, dropdowns"
+  },
+  {
+    "date": "2026-10-27",
+    "sha": "e9ce1a7ac",
+    "area": "Site",
+    "text": "Task-list rail and a header account slot"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "37f4eab41",
+    "area": "Site",
+    "text": "An area can limit the header’s languages"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "c51f4eeb3",
+    "area": "Site",
+    "text": "Client area with invite sign-in, autosave and submission"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "88e4923b1",
+    "area": "Site",
+    "text": "HideLegend for groups under a visible heading"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "479907836",
+    "area": "Site",
+    "text": "Label names the navigation landmark"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "29f52969f",
+    "area": "Site",
+    "text": "FocusOnMount for form error summaries"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "9fb79b71d",
+    "area": "Site",
+    "text": "Rating scale anchors and a hidden legend"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "ab6ce1454",
+    "area": "Site",
+    "text": "Provision Neon in Frankfurt and migrate on deploy"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "8b89fd315",
+    "area": "Site",
+    "text": "Postgres data layer with retention purge"
+  },
+  {
+    "date": "2026-10-26",
+    "sha": "be573ff7c",
+    "area": "Site",
+    "text": "Calculator and Packages jump buttons in the hero"
+  },
+  {
+    "date": "2026-10-25",
+    "sha": "a01c917a6",
+    "area": "Site",
+    "text": "Dt-code-block, dt-snippet, dt-code and dt-code-copy-button; wc 0.11.0"
+  },
+  {
+    "date": "2026-10-25",
+    "sha": "f052eaf3b",
+    "area": "Site",
+    "text": "Move code surfaces to CodeBlock, Snippet and Code (react 0.1.39)"
+  },
+  {
+    "date": "2026-10-25",
+    "sha": "7b4e3293c",
+    "area": "Design system",
+    "text": "CodeBlock, Snippet, Code and CodeCopyButton"
+  },
+  {
+    "date": "2026-10-24",
+    "sha": "12b0db928",
+    "area": "Site",
+    "text": "Generic graders and a second frozen held-out set"
+  },
+  {
+    "date": "2026-10-24",
+    "sha": "e67ce1891",
+    "area": "Site",
+    "text": "Grader backtest against twelve shipped bugs"
+  },
+  {
+    "date": "2026-10-24",
+    "sha": "4df045631",
+    "area": "Site",
+    "text": "Measurement plan; bench runs no longer see their own graders"
+  },
+  {
     "date": "2026-10-22",
     "sha": "5cdcb65c1",
     "area": "Design system",
@@ -303,7 +525,7 @@ export const SITE_CHANGELOG: SiteChangelogEntry[] = [
     "date": "2026-10-16",
     "sha": "5296f2cb1",
     "area": "Design system",
-    "text": "StageList, and the article's \"Who to call and when\" as a call sheet"
+    "text": "StageList, and the article’s “Who to call and when” as a call sheet"
   },
   {
     "date": "2026-10-15",
@@ -399,7 +621,7 @@ export const SITE_CHANGELOG: SiteChangelogEntry[] = [
     "date": "2026-09-27",
     "sha": "5db0bc6c1",
     "area": "Site",
-    "text": "Decision-first case study summaries; drop \"we/our\" from marketing copy"
+    "text": "Decision-first case study summaries; drop “we/our” from marketing copy"
   },
   {
     "date": "2026-09-26",
@@ -1089,7 +1311,7 @@ export const SITE_CHANGELOG: SiteChangelogEntry[] = [
     "date": "2026-07-14",
     "sha": "d5cb69fb1",
     "area": "Design system",
-    "text": "Add useStreamingText hook + apply to Donny's active reply"
+    "text": "Add useStreamingText hook + apply to Donny’s active reply"
   },
   {
     "date": "2026-07-13",
@@ -1713,7 +1935,7 @@ export const SITE_CHANGELOG: SiteChangelogEntry[] = [
     "date": "2026-07-06",
     "sha": "0e214fd9b",
     "area": "Site",
-    "text": "Author page back button, contact email, \"About the author\""
+    "text": "Author page back button, contact email, “About the author”"
   },
   {
     "date": "2026-07-06",

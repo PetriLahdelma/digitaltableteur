@@ -27,7 +27,7 @@
   font-family: var(--font-body);
   font-size: var(--font-size-text-l);
   line-height: var(--line-height-relaxed);
-  color: var(--color-muted-foreground);
+  color: var(--primary-text-color);
 }
 
 .benefitsGrid {

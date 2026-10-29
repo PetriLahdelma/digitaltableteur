@@ -11,8 +11,8 @@
    * MultiCombobox and FileUpload labels read like every other field label
    * (unified 2026-08-05; was 13px/600/--primary-text-color). */
   font-family: var(--font-text);
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: var(--font-size-text-xs); /* = Label .label */
+  font-weight: var(--font-weight-medium); /* = Label .label (2026-10-29) */
   color: var(--color-primary);
 }
 

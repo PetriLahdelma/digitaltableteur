@@ -41,6 +41,17 @@
   line-height: var(--line-height-code-m);
 }
 
+/* The size of the text around it. A monospace set at the same size matches
+   Satoshi's x-height (Source Code Pro 0.486em against 0.483em, measured), so
+   inline code reads as part of the line rather than a smaller aside. */
+
+.inherit.inherit {
+  padding-block: 1px;
+  padding-inline: calc(var(--space-internal-4) + 1px);
+  font-size: inherit;
+  line-height: inherit;
+}
+
 @media (forced-colors: active) {
   .code.code {
     border-color: CanvasText;

@@ -11,7 +11,7 @@ describe("ContactPage", () => {
   it("renders the editorial contact hero and intro", () => {
     renderWithProviders(<ContactPage />);
 
-    expect(screen.getByRole("heading", { name: /Let's talk/i, level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Let’s talk/i, level: 1 })).toBeInTheDocument();
     expect(
       screen.getByText(/Projects, ideas and hellos are all welcome/i),
     ).toBeInTheDocument();

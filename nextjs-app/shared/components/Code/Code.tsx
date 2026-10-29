@@ -2,12 +2,13 @@ import React from "react";
 import { cn } from "../../lib/cn";
 import styles from "./Code.module.css";
 
-export type CodeSize = "sm" | "md" | "lg";
+export type CodeSize = "sm" | "md" | "lg" | "inherit";
 
 export interface CodeProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Match the surrounding text: `sm` beside Body xxs/xs, `md` beside s/m,
-   * `lg` beside l.
+   * `lg` beside l, or `inherit` to take the size of whatever text it sits
+   * in (article prose, where the body size varies).
    * @default "md"
    */
   size?: CodeSize;

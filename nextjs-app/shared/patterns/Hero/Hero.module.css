@@ -185,7 +185,7 @@
 }
 
 .heroDescription {
-  max-inline-size: 65ch;
+  max-inline-size: var(--measure-reading);
   line-height: var(--line-height-relaxed, 1.7);
   color: var(--color-white);
   opacity: 0.85;

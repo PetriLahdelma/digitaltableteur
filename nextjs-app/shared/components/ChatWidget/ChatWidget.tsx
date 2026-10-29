@@ -1021,7 +1021,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       // Inject a synthetic assistant message with required phrase OR email info prior to workflow UI.
       const phraseGeneral = t(
         "chatEmailSendPhrase",
-        "Sure thing! Let's send an email!",
+        "Sure thing! Let’s send an email!",
       );
       const phraseSimple = t(
         "chatEmailSimplePhrase",

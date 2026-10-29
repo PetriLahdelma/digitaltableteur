@@ -23,6 +23,15 @@
  * These map Tailwind utility classes to CSS custom properties
  */
 @theme inline {
+  /* Size floor (variables.css): Tailwind's 12px xs and 14px sm read too
+     small, so xs is the 14px label size and sm is 16px. */
+  --text-xs: 0.875rem;
+  /* stylelint-disable-next-line custom-property-pattern -- Tailwind v4 names line heights --text-*--line-height */
+  --text-xs--line-height: 1.25rem;
+  --text-sm: 1rem;
+  /* stylelint-disable-next-line custom-property-pattern -- Tailwind v4 names line heights --text-*--line-height */
+  --text-sm--line-height: 1.5rem;
+
   /* Border radius tokens */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-29T17:03:34.038Z",
+  "generatedAt": "2026-10-29T20:32:27.807Z",
   "summary": {
     "componentCount": 191,
     "statusCounts": {
@@ -13735,7 +13735,8 @@
             "values": [
               "sm",
               "md",
-              "lg"
+              "lg",
+              "inherit"
             ],
             "default": "md",
             "propSourced": true
@@ -13839,7 +13840,7 @@
           }
         }
       },
-      "spec": "# Code\n\n## Intent\nInline code for a function name, prop, file path or CLI flag inside prose.\nRenders a semantic `<code>` on the light surface with a hairline border.\n\n## Interaction contract\n- Static, non-interactive; no keyboard or pointer behavior of its own.\n- Screen readers: announced as regular text; `<code>` conveys the semantic.\n\n## Do / don't\n- Do: match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).\n- Do: keep it to a few words inside a sentence.\n- Don't: add a copy affordance; a copyable command is a Snippet.\n- Don't: use it for keyboard keys; that is Kbd.\n\n## Design notes\n- Tokens: `--color-light-bg`, `--color-border-light`, `--color-text`, `--radius-md`, `--font-mono`.\n- Rules are doubled on the class so article prose styles never outrank them.\n- Figma: Code (1976:7364). Replaces CodeSnippet `variant=\"inline\"`.\n",
+      "spec": "# Code\n\n## Intent\nInline code for a function name, prop, file path or CLI flag inside prose.\nRenders a semantic `<code>` on the light surface with a hairline border.\n\n## Interaction contract\n- Static, non-interactive; no keyboard or pointer behavior of its own.\n- Screen readers: announced as regular text; `<code>` conveys the semantic.\n\n## Do / don't\n- Do: match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l), or use `inherit` where the text size varies, such as article prose.\n- Do: keep it to a few words inside a sentence.\n- Don't: add a copy affordance; a copyable command is a Snippet.\n- Don't: use it for keyboard keys; that is Kbd.\n\n## Design notes\n- Tokens: `--color-light-bg`, `--color-border-light`, `--color-text`, `--radius-md`, `--font-mono`.\n- Rules are doubled on the class so article prose styles never outrank them.\n- Figma: Code (1976:7364). Replaces CodeSnippet `variant=\"inline\"`.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Code",
@@ -13866,9 +13867,10 @@
             "values": [
               "sm",
               "md",
-              "lg"
+              "lg",
+              "inherit"
             ],
-            "description": "Match the surrounding text: `sm` beside Body xxs/xs, `md` beside s/m,\n`lg` beside l."
+            "description": "Match the surrounding text: `sm` beside Body xxs/xs, `md` beside s/m,\n`lg` beside l, or `inherit` to take the size of whatever text it sits\nin (article prose, where the body size varies)."
           }
         },
         "propRelationships": [],
@@ -13878,7 +13880,8 @@
             "values": [
               "sm",
               "md",
-              "lg"
+              "lg",
+              "inherit"
             ],
             "default": "sm"
           }
@@ -13886,7 +13889,7 @@
         "cvaVariants": {},
         "variantsFnName": null,
         "useWhen": [
-          "match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).",
+          "match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l), or use `inherit` where the text size varies, such as article prose.",
           "keep it to a few words inside a sentence."
         ],
         "avoidWhen": [
@@ -13915,7 +13918,7 @@
         "guidelines": [
           {
             "level": "should",
-            "guidance": "match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l).",
+            "guidance": "match `size` to the surrounding text (sm with xxs/xs, md with s/m, lg with l), or use `inherit` where the text size varies, such as article prose.",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
@@ -31936,6 +31939,15 @@
             "optional": true,
             "type": "boolean",
             "description": "Dims the label and shows a not-allowed cursor."
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "option",
+              "field"
+            ],
+            "description": "`field` names a control above or beside it (medium weight); `option` is\nthe text of a checkbox, radio or switch, which reads as plain text."
           }
         },
         "forbiddenUse": [
@@ -32102,11 +32114,28 @@
             "optional": true,
             "type": "boolean",
             "description": "Dims the label and shows a not-allowed cursor."
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "option",
+              "field"
+            ],
+            "description": "`field` names a control above or beside it (medium weight); `option` is\nthe text of a checkbox, radio or switch, which reads as plain text."
           }
         },
         "propRelationships": [],
         "forbiddenCombos": [],
-        "variants": {},
+        "variants": {
+          "variant": {
+            "values": [
+              "option",
+              "field"
+            ],
+            "default": "option"
+          }
+        },
         "cvaVariants": {},
         "variantsFnName": null,
         "useWhen": [
@@ -32142,7 +32171,7 @@
           "TextInput"
         ],
         "prefersOver": [],
-        "declaredPropCount": 4,
+        "declaredPropCount": 5,
         "guidelines": [
           {
             "level": "should",

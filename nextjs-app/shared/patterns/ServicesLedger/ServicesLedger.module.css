@@ -89,7 +89,7 @@
 .rowText {
   display: block;
   margin-block-start: var(--space-layout-8);
-  max-inline-size: 56ch;
+  max-inline-size: var(--measure-reading);
   font-size: var(--font-size-text-s);
   line-height: 1.55;
   color: var(--color-muted);

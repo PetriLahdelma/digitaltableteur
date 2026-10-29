@@ -100,7 +100,7 @@
   }
 
   .caption {
-    font-size: 0.95rem;
+    font-size: var(--font-size-text-xs);
     border-end-end-radius: var(--radius-lg);
     border-end-start-radius: var(--radius-lg);
   }

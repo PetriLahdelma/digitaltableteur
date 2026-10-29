@@ -9,7 +9,7 @@
 .eyebrow {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: var(--font-size-text-xxs);
   font-weight: 600;
   line-height: var(--line-height-normal);
   letter-spacing: 0.04em;

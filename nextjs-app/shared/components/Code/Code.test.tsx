@@ -18,6 +18,11 @@ describe("Code", () => {
     expect(screen.getByText("init").className).toMatch(/md/);
   });
 
+  it("takes the surrounding size with size inherit", () => {
+    render(<Code size="inherit">AGENTS.md</Code>);
+    expect(screen.getByText("AGENTS.md").className).toMatch(/inherit/);
+  });
+
   it("has no axe violations inside prose", async () => {
     const { container } = render(
       <p>

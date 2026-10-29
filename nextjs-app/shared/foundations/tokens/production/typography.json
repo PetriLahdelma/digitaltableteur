@@ -64,11 +64,6 @@
           "reason": "\"clamp(1.125rem, 0.208vi + 1.0833rem, 1.25rem)\" is not a px/rem dimension"
         },
         {
-          "cssVar": "--font-size-text-xs",
-          "css": "clamp(0.875rem, 0.208vi + 0.8333rem, 1rem)",
-          "reason": "\"clamp(0.875rem, 0.208vi + 0.8333rem, 1rem)\" is not a px/rem dimension"
-        },
-        {
           "cssVar": "--font-size-text-s",
           "css": "clamp(1rem, 0.208vi + 0.9583rem, 1.125rem)",
           "reason": "\"clamp(1rem, 0.208vi + 0.9583rem, 1.125rem)\" is not a px/rem dimension"
@@ -199,13 +194,26 @@
               "css": "0.875rem"
             }
           }
+        },
+        "xs": {
+          "$value": {
+            "value": 1,
+            "unit": "rem"
+          },
+          "$type": "dimension",
+          "$description": "Fluid type size token (text-xs); uses clamp().",
+          "$extensions": {
+            "com.digitaltableteur": {
+              "cssVar": "--font-size-text-xs",
+              "category": "typography",
+              "subgroup": "Type scale",
+              "css": "1rem"
+            }
+          }
         }
       },
       "disclaimer": {
-        "$value": {
-          "value": 0.75,
-          "unit": "rem"
-        },
+        "$value": "{font.size.text.xs}",
         "$type": "dimension",
         "$description": "12px, for disclaimer copy only (price terms, legal small print). Below the 14px text-scale floor on purpose; never for body, UI or captions.",
         "$extensions": {
@@ -213,7 +221,7 @@
             "cssVar": "--font-size-disclaimer",
             "category": "typography",
             "subgroup": "Type scale",
-            "css": "0.75rem"
+            "css": "var(--font-size-text-xs)"
           }
         }
       },

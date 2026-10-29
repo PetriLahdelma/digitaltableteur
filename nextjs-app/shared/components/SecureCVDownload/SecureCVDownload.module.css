@@ -41,7 +41,7 @@
 
 .errorText {
   margin-block-start: 0.25rem;
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xs);
   text-align: start;
   color: var(--color-error);
 }

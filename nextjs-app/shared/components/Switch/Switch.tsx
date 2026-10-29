@@ -110,6 +110,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       <Label
         id={labelId}
         htmlFor={switchId}
+        variant="option"
         className={styles.label}
         disabled={effectiveDisabled}
       >

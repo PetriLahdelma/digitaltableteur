@@ -135,7 +135,7 @@ export function EnhancedArticleCard({
               {title}
             </Link>
           </h3>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {formattedDate}
             {readTime && `, ${readTime}`}
           </p>
@@ -268,9 +268,11 @@ export function EnhancedArticleCard({
             id={excerptId}
             lang={contentLanguage}
             className={cn(
+              // Full excerpt at the reading measure: a clamp cut it under the
+              // WCAG 1.4.12 spacing override, and 14px read too small.
               "font-body text-muted-foreground",
-              "line-clamp-2 mb-4",
-              isFeatured ? "text-base" : "text-sm",
+              "mb-4 max-w-[var(--measure-reading)]",
+              isFeatured ? "text-lg" : "text-base",
             )}
           >
             {excerpt}
@@ -285,7 +287,7 @@ export function EnhancedArticleCard({
               showReadMore ? "justify-between" : "justify-start",
             )}
           >
-            <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+            <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
               {showAuthor && author && (
                 <>
                   <div className="relative size-7 shrink-0 overflow-hidden rounded-full bg-muted">

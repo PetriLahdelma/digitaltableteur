@@ -83,7 +83,7 @@
 
 .madeWith {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-xs);
   letter-spacing: 0.02em;
   color: color-mix(in srgb, var(--color-text) 60%, transparent);
 }

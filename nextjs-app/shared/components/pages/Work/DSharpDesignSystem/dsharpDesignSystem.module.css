@@ -8,7 +8,7 @@
   border-radius: var(--radius-md);
   background-color: rgb(87 113 100 / 8%);
   font-family: "DM Mono", var(--font-mono, monospace);
-  font-size: 0.88em;
+  font-size: 1em; /* same size as the text: DM Mono then matches its x-height (0.88em measured 0.88 of it) */
   color: inherit;
 }
 

@@ -3913,7 +3913,7 @@
         {
           "story": "Sizes",
           "description": null,
-          "source": "export const Sizes: Story = {\n  tags: [\"example\"],\n  render: () => (\n    <div>\n      <Text size=\"xs\">\n        Small beside xs text: <Code size=\"sm\">--prebuilt</Code>\n      </Text>\n      <Text size=\"m\">\n        Medium beside body text: <Code size=\"md\">useCodeBlock()</Code>\n      </Text>\n      <Text size=\"l\">\n        Large beside large text: <Code size=\"lg\">app/page.tsx</Code>\n      </Text>\n    </div>\n  ),\n};"
+          "source": "export const Sizes: Story = {\n  tags: [\"example\"],\n  render: () => (\n    <div>\n      <Text size=\"xs\">\n        Small beside xs text: <Code size=\"sm\">--prebuilt</Code>\n      </Text>\n      <Text size=\"m\">\n        Medium beside body text: <Code size=\"md\">useCodeBlock()</Code>\n      </Text>\n      <Text size=\"l\">\n        Large beside large text: <Code size=\"lg\">app/page.tsx</Code>\n      </Text>\n      <Text size=\"m\">\n        Inherit takes the size of the text around it:{\" \"}\n        <Code size=\"inherit\">AGENTS.md</Code>\n      </Text>\n    </div>\n  ),\n};"
         }
       ]
     },
@@ -9247,6 +9247,11 @@
           "required": true
         },
         {
+          "name": "variant",
+          "type": "option | field",
+          "required": false
+        },
+        {
           "name": "tooltipText",
           "type": "string",
           "required": false
@@ -9282,6 +9287,15 @@
           "optional": true,
           "type": "boolean",
           "description": "Dims the label and shows a not-allowed cursor."
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "option",
+            "field"
+          ],
+          "description": "`field` names a control above or beside it (medium weight); `option` is\nthe text of a checkbox, radio or switch, which reads as plain text."
         }
       },
       "composesWith": [
