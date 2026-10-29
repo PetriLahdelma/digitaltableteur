@@ -93,10 +93,6 @@
       "rawElements": 0,
       "utilityLines": 1
     },
-    "nextjs-app/shared/components/ChatWidget/ChatComposer.tsx": {
-      "rawElements": 1,
-      "utilityLines": 0
-    },
     "nextjs-app/shared/components/ChatWidget/ChatMessageBubble.tsx": {
       "rawElements": 2,
       "utilityLines": 0
