@@ -84,6 +84,43 @@ describe("ChatMessageBubble", () => {
       );
     });
 
+    it("keeps a user message's line breaks and shows Markdown characters literally", () => {
+      render(
+        withI18n(
+          <ChatMessageBubble
+            message={{
+              id: "msg-lines",
+              role: "user",
+              parts: [{ kind: "text", content: "Moi\naukioloajat?\n# not a heading\n1. not a list" }],
+            }}
+            isStreaming={false}
+          />,
+        ),
+      );
+
+      const bubble = screen.getByTestId("chat-message-user");
+      const text = bubble.querySelector("p")!;
+      expect(text.textContent).toBe("Moi\naukioloajat?\n# not a heading\n1. not a list");
+      expect(bubble.querySelector("h1, ol, li")).toBeNull();
+    });
+
+    it("still renders assistant replies as Markdown", () => {
+      render(
+        withI18n(
+          <ChatMessageBubble
+            message={{
+              id: "msg-md",
+              role: "assistant",
+              parts: [{ kind: "text", content: "1. First\n2. Second" }],
+            }}
+            isStreaming={false}
+          />,
+        ),
+      );
+
+      expect(screen.getByTestId("chat-message-assistant").querySelectorAll("li")).toHaveLength(2);
+    });
+
     it("applies correct data-role attribute", () => {
       const { rerender } = render(
         withI18n(

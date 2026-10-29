@@ -302,6 +302,17 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
       ) : (
         <>
           {message.parts.map((part, idx) => {
+            // Visitors' messages are plain text, shown as typed: line breaks
+            // (Shift + Enter) kept and nothing parsed as Markdown, so "1." or
+            // "#" at a line start stays literal. Donny's replies stay Markdown.
+            if (part.kind === "text" && !isAssistant) {
+              const text = part.content.trim();
+              return text ? (
+                <Text key={idx} as="p" className={styles.userText}>
+                  {text}
+                </Text>
+              ) : null;
+            }
             if (part.kind === "text") {
               return (
                 <StreamingMarkdownPart

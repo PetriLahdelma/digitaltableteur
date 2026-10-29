@@ -320,6 +320,20 @@
   color: var(--inverted-text-color);
 }
 
+/* Plain-text user message: pre-wrap keeps the visitor's line breaks. The
+   bubble selector outranks Text's own ink, so the inverted colour holds;
+   type matches the Markdown paragraphs in assistant replies. */
+
+.message[data-role="user"] .userText {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  color: inherit;
+}
+
 .fullWidthComponent {
   display: block;
   margin-block-start: 0.5rem;
