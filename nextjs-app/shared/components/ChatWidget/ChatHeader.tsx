@@ -189,7 +189,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
                   accessibleName={newChatLabel}
                   variant="tertiary"
                   size="md"
-                  icon={<Icon name="note-pencil" />}
+                  icon={<Icon name="pencil" />}
                   className={styles.minimizeButton}
                 />
               </TooltipTrigger>
