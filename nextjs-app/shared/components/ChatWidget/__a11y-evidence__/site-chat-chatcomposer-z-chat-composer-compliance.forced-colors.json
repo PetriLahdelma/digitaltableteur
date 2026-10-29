@@ -1,8 +1,8 @@
 {
   "storyId": "site-chat-chatcomposer-z-chat-composer-compliance",
   "mode": "forced-colors",
-  "sourceSHA": "c17be984b6b8ee308fb1c79a23c14fd84c8852bd",
-  "capturedAt": "2026-10-29T07:41:14.383Z",
+  "sourceSHA": "8b2d16b38f8b80fb96e932e7cd8a420c72e9d46b",
+  "capturedAt": "2026-10-29T10:20:22.550Z",
   "runner": "local",
   "checks": {
     "accessibility-tree": {
