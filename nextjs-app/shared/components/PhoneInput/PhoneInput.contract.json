@@ -33,7 +33,8 @@
     "a11y": {
         "keyboard": [
             "Tab",
-            "Arrow keys, Enter, Space, Escape and typeahead (country picker)",
+            "Arrow keys (country select)",
+            "Enter, Space, Escape and typeahead by name or calling code (country select)",
             "typing digits"
         ],
         "reducedMotion": true,

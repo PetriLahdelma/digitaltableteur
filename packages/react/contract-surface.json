@@ -164,6 +164,12 @@
       "level": "additive",
       "detail": "prop `timeZone` added",
       "bump": "patch"
+    },
+    {
+      "component": "PhoneInput",
+      "level": "additive",
+      "detail": "keyboard gained \"Enter, Space, Escape and typeahead by name or calling code (country select)\"",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -3554,6 +3560,7 @@
       "subParts": [],
       "keyboard": [
         "Arrow keys (country select)",
+        "Enter, Space, Escape and typeahead by name or calling code (country select)",
         "Tab",
         "typing digits"
       ]
