@@ -36,6 +36,13 @@ export type AccordionProps = {
   openIds?: string[];
   /** Called with the full set of open ids whenever it changes. */
   onOpenChange?: (openIds: string[]) => void;
+  /**
+   * Wraps each trigger in a heading of this level, so the section titles
+   * join the page outline (screen reader users list and jump by headings).
+   * Pick the level below the heading that introduces the accordion. Unset,
+   * triggers are plain buttons.
+   */
+  headingLevel?: 2 | 3 | 4 | 5 | 6;
   /** Optional utility classes on the container. */
   className?: string;
 };
@@ -49,6 +56,7 @@ const Accordion: React.FC<AccordionProps> = ({
   defaultOpenIds,
   openIds: controlledOpenIds,
   onOpenChange,
+  headingLevel,
   className = "",
 }) => {
   const isControlled = controlledOpenIds !== undefined;
@@ -83,6 +91,10 @@ const Accordion: React.FC<AccordionProps> = ({
     return null;
   }
 
+  const Heading = headingLevel ? (`h${headingLevel}` as const) : null;
+  const wrapInHeading = (trigger: React.ReactElement) =>
+    Heading ? <Heading className={styles.heading}>{trigger}</Heading> : trigger;
+
   return (
     <div
       className={[styles.accordion, styles[variant], className]
@@ -96,20 +108,22 @@ const Accordion: React.FC<AccordionProps> = ({
             key={item.id}
             className={`${styles.item} ${open ? styles.open : ""}`.trim()}
           >
-            <button
-              type="button"
-              id={`trigger-${item.id}`}
-              className={styles.trigger}
-              aria-expanded={open}
-              aria-controls={`panel-${item.id}`}
-              disabled={item.disabled}
-              onClick={() => toggle(item.id, item.disabled)}
-            >
-              <span className={styles.title}>{item.title}</span>
-              <span className={styles.icon} aria-hidden="true">
-                <Icon name="caret-right" size={16} weight="bold" />
-              </span>
-            </button>
+            {wrapInHeading(
+              <button
+                type="button"
+                id={`trigger-${item.id}`}
+                className={styles.trigger}
+                aria-expanded={open}
+                aria-controls={`panel-${item.id}`}
+                disabled={item.disabled}
+                onClick={() => toggle(item.id, item.disabled)}
+              >
+                <span className={styles.title}>{item.title}</span>
+                <span className={styles.icon} aria-hidden="true">
+                  <Icon name="caret-right" size={16} weight="bold" />
+                </span>
+              </button>,
+            )}
             {/* Panel stays mounted (so aria-controls always resolves) and its
                 height animates via grid-template-rows. Closed panels are inert
                 and hidden from assistive tech. */}

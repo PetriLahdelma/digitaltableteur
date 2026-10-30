@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T22:36:08.120Z",
+  "generatedAt": "2026-10-30T22:48:51.095Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 181,
     "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 943,
+    "totalEvidenceRows": 944,
     "aliasImportFiles": 492,
-    "relativeImportFiles": 492,
+    "relativeImportFiles": 493,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -1829,6 +1829,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/ServerArticleMain.tsx",
             "since": "2026-06-04"
           },
@@ -1863,8 +1868,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ArticleContent",
-        "importCount": 4,
-        "productionImportCount": 2,
+        "importCount": 5,
+        "productionImportCount": 3,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
@@ -1878,6 +1883,12 @@
             "path": "app/blog/[slug]/ClientArticleShell.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/ArticleContent",
+            "context": "production"
+          },
+          {
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/ArticleContent/articleProseClasses",
             "context": "production"
           },
           {

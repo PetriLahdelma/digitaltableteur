@@ -123,6 +123,18 @@ describe("Accordion", () => {
     expect(isOpen("1")).toBe(false);
   });
 
+  it("wraps each trigger in a heading when headingLevel is set", () => {
+    render(<Accordion items={items} headingLevel={3} />);
+    const headings = screen.getAllByRole("heading", { level: 3 });
+    expect(headings.map((h) => h.textContent)).toEqual(["First Item", "Second Item", "Third Item"]);
+    expect(headings[0].querySelector("button")).toBe(trigger("First Item"));
+  });
+
+  it("renders plain button triggers without headingLevel", () => {
+    render(<Accordion items={items} />);
+    expect(screen.queryAllByRole("heading")).toHaveLength(0);
+  });
+
   it("applies the variant class", () => {
     const { container, rerender } = render(
       <Accordion items={items} variant="divided" />,
