@@ -17,9 +17,22 @@ around the real control + portaled `TooltipContent`.
   `aria-describedby` — the tooltip describes, it never names. The
   trigger must carry its own accessible name (e.g. IconButton `label`).
 
+## Keyboard shortcuts
+- `shortcut` lists the keys held together for the trigger's action, one
+  entry per key: `["⌘", "⇧", "⌫"]` on Mac, `["Ctrl", "Shift", "Backspace"]`
+  elsewhere. The bubble renders them after the label as keycaps joined by
+  plus signs, so they read as one chord, not a sequence.
+- Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as Phosphor icons: no text face
+  carries them, so as text they fall back to a system font at the wrong
+  size. Each icon key keeps its translated name (`tooltip.keys.*`, EN/FI/SV)
+  in the DOM for screen readers. Other entries render as uppercase text.
+- Keycaps take the bubble's own ink (`currentcolor` tints), so they adapt to
+  light, dark and forced colours without per-theme rules.
+
 ## Do / don't
 - Do: wrap the real Button/IconButton with `asChild` so it receives the
   tooltip wiring directly.
+- Do: use `shortcut` for key hints instead of hand-built `Kbd` children.
 - Do: share one `TooltipProvider` per surface so adjacent hints open
   instantly once one is shown.
 - Don't: put links, buttons, or any interactive content inside the

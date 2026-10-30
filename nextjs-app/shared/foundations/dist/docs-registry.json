@@ -19550,7 +19550,7 @@
       "tier": 1,
       "status": "beta",
       "description": "Radix tooltip primitive set (Provider, Trigger, Content) for icon hints.",
-      "dense": "Radix tooltip set: Provider (delayDuration) > Tooltip > Trigger asChild + Content (side top|right|bottom|left); opens on hover+focus, Escape dismisses, aria-describedby wired",
+      "dense": "Radix tooltip set: Provider (delayDuration) > Tooltip > Trigger asChild + Content (side top|right|bottom|left, shortcut keys as keycaps); opens on hover+focus, Escape dismisses, aria-describedby wired",
       "keywords": [
         "tooltip",
         "hint",
@@ -19558,7 +19558,9 @@
         "hover",
         "icon label",
         "describedby",
-        "radix"
+        "radix",
+        "keyboard shortcut",
+        "kbd"
       ],
       "importLine": "import { Tooltip } from \"@dt/Tooltip\";",
       "keyProps": [
@@ -19580,6 +19582,11 @@
         {
           "name": "sideOffset",
           "type": "number",
+          "required": false
+        },
+        {
+          "name": "shortcut",
+          "type": "string[]",
           "required": false
         }
       ],
@@ -19609,12 +19616,18 @@
           "optional": false,
           "type": "ReactNode",
           "description": "Hint content — a short phrase, never interactive."
+        },
+        "shortcut": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Keys held together for the trigger's action, one entry per key; rendered after the label as keycaps joined by plus signs. Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as icons with a translated key name for assistive technology."
         }
       },
       "composesWith": [
         "Button",
         "IconButton",
-        "Icon"
+        "Icon",
+        "Kbd"
       ],
       "prefersOver": [
         "title attribute (unstyled, mouse-only, slow to appear)"
@@ -19644,6 +19657,10 @@
             "description": "Pick side by surrounding space; Radix flips automatically when the preferred side runs out of room."
           },
           {
+            "guidance": true,
+            "description": "Show a keyboard shortcut with the shortcut prop, never hand-built Kbd children: it sizes the keycaps to the label, draws modifier symbols as icons and joins keys with plus signs. Pass platform words (Ctrl, Shift) on Windows."
+          },
+          {
             "guidance": false,
             "description": "Do not put links, buttons, or anything interactive inside TooltipContent — it is unreachable by keyboard and touch."
           },
@@ -19671,7 +19688,7 @@
           {
             "name": "TooltipContent",
             "required": true,
-            "description": "Portaled bubble with arrow; side sets preferred placement, sideOffset the gap; fade/scale animation drops under reduced motion."
+            "description": "Portaled bubble with arrow; side sets preferred placement, sideOffset the gap; fade/scale animation drops under reduced motion; optional shortcut keycaps after the label."
           }
         ]
       },
@@ -19688,7 +19705,12 @@
         {
           "story": "WithIconButton",
           "description": "The most common use: an icon-only control keeps its own accessible name (label) while the tooltip shows the sighted hint. The tooltip describes; it never names.",
-          "source": "export const WithIconButton: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The most common use: an icon-only control keeps its own accessible name (label) while the tooltip shows the sighted hint. The tooltip describes; it never names.\",\n      },\n    },\n  },\n  render: () => (\n    <TooltipProvider>\n      <div style={{ display: \"flex\", gap: \"0.5rem\" }}>\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <IconButton icon=\"star\" label=\"Favorite\" variant=\"tertiary\" />\n          </TooltipTrigger>\n          <TooltipContent>Add to favorites</TooltipContent>\n        </Tooltip>\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <IconButton\n              icon=\"share-network\"\n              label=\"Share\"\n              variant=\"tertiary\"\n            />\n          </TooltipTrigger>\n          <TooltipContent>Share this page</TooltipContent>\n        </Tooltip>\n      </div>\n    </TooltipProvider>\n  ),\n};\n\n/** Provider-level delayDuration tunes how fast hints appear. */"
+          "source": "export const WithIconButton: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The most common use: an icon-only control keeps its own accessible name (label) while the tooltip shows the sighted hint. The tooltip describes; it never names.\",\n      },\n    },\n  },\n  render: () => (\n    <TooltipProvider>\n      <div style={{ display: \"flex\", gap: \"0.5rem\" }}>\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <IconButton icon=\"star\" label=\"Favorite\" variant=\"tertiary\" />\n          </TooltipTrigger>\n          <TooltipContent>Add to favorites</TooltipContent>\n        </Tooltip>\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <IconButton\n              icon=\"share-network\"\n              label=\"Share\"\n              variant=\"tertiary\"\n            />\n          </TooltipTrigger>\n          <TooltipContent>Share this page</TooltipContent>\n        </Tooltip>\n      </div>\n    </TooltipProvider>\n  ),\n};\n\n/** A keyboard shortcut after the label: keycaps joined by plus signs. */"
+        },
+        {
+          "story": "WithShortcut",
+          "description": "shortcut lists the keys held together for the trigger's action. Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as icons with the key's name for screen readers; other entries render as text, so pass the platform's own words on Windows and Linux.",
+          "source": "export const WithShortcut: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"shortcut lists the keys held together for the trigger's action. Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as icons with the key's name for screen readers; other entries render as text, so pass the platform's own words on Windows and Linux.\",\n      },\n    },\n  },\n  render: () => (\n    <TooltipProvider>\n      <div style={{ display: \"flex\", gap: \"12rem\", padding: \"1rem 4rem 4rem\" }}>\n        <Tooltip defaultOpen>\n          <TooltipTrigger asChild>\n            <IconButton icon=\"plus\" label=\"New chat\" variant=\"tertiary\" />\n          </TooltipTrigger>\n          <TooltipContent side=\"bottom\" shortcut={[\"⌘\", \"⇧\", \"⌫\"]}>\n            New chat\n          </TooltipContent>\n        </Tooltip>\n        <Tooltip defaultOpen>\n          <TooltipTrigger asChild>\n            <IconButton icon=\"plus\" label=\"New chat\" variant=\"tertiary\" />\n          </TooltipTrigger>\n          <TooltipContent side=\"bottom\" shortcut={[\"Ctrl\", \"Shift\", \"Backspace\"]}>\n            New chat\n          </TooltipContent>\n        </Tooltip>\n      </div>\n    </TooltipProvider>\n  ),\n};\n\n/** Provider-level delayDuration tunes how fast hints appear. */"
         },
         {
           "story": "Delay",

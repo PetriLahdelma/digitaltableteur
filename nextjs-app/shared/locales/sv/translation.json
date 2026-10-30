@@ -1358,6 +1358,16 @@
     "addedLine": "Tillagd rad",
     "removedLine": "Borttagen rad"
   },
+  "tooltip": {
+    "keys": {
+      "command": "Kommando",
+      "shift": "Skift",
+      "backspace": "Backsteg",
+      "option": "Alternativ",
+      "control": "Kontroll",
+      "return": "Retur"
+    }
+  },
   "codeCopyButton": {
     "copy": "Kopiera kod",
     "copied": "Kopierad",

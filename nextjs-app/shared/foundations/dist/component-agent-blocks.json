@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T19:31:01.325Z",
+  "generatedAt": "2026-10-30T06:59:25.702Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -12868,7 +12868,6 @@
         "Icon",
         "Title",
         "Text",
-        "Kbd",
         "Tooltip"
       ],
       "prefersOver": [],
@@ -18038,12 +18037,9 @@
         "put whole phrases inside one Kbd; one key (or chord symbol) per cap."
       ],
       "composesWith": [
-        "Icon",
-        "Button",
-        "Title",
-        "Text",
-        "DonnyAvatar",
-        "Tooltip"
+        "Badge",
+        "StatusDot",
+        "Icon"
       ],
       "prefersOver": [],
       "declaredPropCount": 2,
@@ -38774,8 +38770,8 @@
       "composesWith": [
         "Button",
         "Title",
-        "Icon",
         "TextInput",
+        "Icon",
         "CheckboxGroup",
         "Link"
       ],
@@ -41268,6 +41264,11 @@
           "optional": false,
           "type": "ReactNode",
           "description": "Hint content — a short phrase, never interactive."
+        },
+        "shortcut": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Keyboard shortcut for the trigger's action, one entry per key\n(`[\"⌘\", \"⇧\", \"⌫\"]`). Rendered after the label as keycaps drawn for the\ntooltip's dark surface."
         }
       },
       "propRelationships": [],
@@ -41277,6 +41278,7 @@
       "variantsFnName": null,
       "useWhen": [
         "wrap the real Button/IconButton with `asChild` so it receives the tooltip wiring directly.",
+        "use `shortcut` for key hints instead of hand-built `Kbd` children.",
         "share one `TooltipProvider` per surface so adjacent hints open instantly once one is shown."
       ],
       "avoidWhen": [
@@ -41314,15 +41316,21 @@
         "Title",
         "Text",
         "DonnyAvatar",
-        "Icon",
-        "Kbd"
+        "Icon"
       ],
       "prefersOver": [],
-      "declaredPropCount": 4,
+      "declaredPropCount": 5,
       "guidelines": [
         {
           "level": "should",
           "guidance": "wrap the real Button/IconButton with `asChild` so it receives the tooltip wiring directly.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "use `shortcut` for key hints instead of hand-built `Kbd` children.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"

@@ -78,4 +78,42 @@ describe("Tooltip", () => {
     const { container } = renderTooltip({ defaultOpen: true });
     expect(await axe(container)).toHaveNoViolations();
   });
+
+  it("renders a shortcut as keycaps joined by plus signs", () => {
+    render(
+      <TooltipProvider delayDuration={0}>
+        <Tooltip defaultOpen>
+          <TooltipTrigger asChild>
+            <button type="button">New chat</button>
+          </TooltipTrigger>
+          <TooltipContent shortcut={["⌘", "⇧", "Backspace"]}>
+            New chat
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>,
+    );
+    const tooltip = screen.getByRole("tooltip");
+    const bubble = document.querySelector("[data-side]") as HTMLElement;
+
+    expect(bubble.querySelectorAll("kbd")).toHaveLength(3);
+    // Symbols are drawn as icons; the key's name is what assistive tech reads.
+    expect(tooltip).toHaveTextContent("New chatCommand+Shift+Backspace");
+    expect(bubble.querySelectorAll("kbd svg")).toHaveLength(2);
+  });
+
+  it("has no axe violations with a shortcut", async () => {
+    const { container } = render(
+      <TooltipProvider delayDuration={0}>
+        <Tooltip defaultOpen>
+          <TooltipTrigger asChild>
+            <button type="button">New chat</button>
+          </TooltipTrigger>
+          <TooltipContent shortcut={["Ctrl", "Shift", "Backspace"]}>
+            New chat
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
+  });
 });

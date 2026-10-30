@@ -1358,6 +1358,16 @@
     "addedLine": "Lisätty rivi",
     "removedLine": "Poistettu rivi"
   },
+  "tooltip": {
+    "keys": {
+      "command": "Komento",
+      "shift": "Vaihto",
+      "backspace": "Askelpalautin",
+      "option": "Optio",
+      "control": "Control",
+      "return": "Rivinvaihto"
+    }
+  },
   "codeCopyButton": {
     "copy": "Kopioi koodi",
     "copied": "Kopioitu",

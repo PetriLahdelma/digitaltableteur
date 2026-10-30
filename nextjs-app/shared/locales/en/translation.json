@@ -1358,6 +1358,16 @@
     "addedLine": "Added line",
     "removedLine": "Removed line"
   },
+  "tooltip": {
+    "keys": {
+      "command": "Command",
+      "shift": "Shift",
+      "backspace": "Backspace",
+      "option": "Option",
+      "control": "Control",
+      "return": "Return"
+    }
+  },
   "codeCopyButton": {
     "copy": "Copy code",
     "copied": "Copied",

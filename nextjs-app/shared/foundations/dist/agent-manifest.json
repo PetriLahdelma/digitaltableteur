@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-29T20:58:55.853Z",
+  "generatedAt": "2026-10-30T06:59:26.035Z",
   "summary": {
     "componentCount": 191,
     "statusCounts": {
@@ -82,8 +82,8 @@
     "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
     "totalEvidenceRows": 926,
-    "aliasImportFiles": 475,
-    "relativeImportFiles": 491,
+    "aliasImportFiles": 474,
+    "relativeImportFiles": 492,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -22415,7 +22415,6 @@
           "Icon",
           "Title",
           "Text",
-          "Kbd",
           "Tooltip"
         ],
         "prefersOver": [],
@@ -31517,15 +31516,15 @@
         "componentImportCount": 2,
         "evidence": [
           {
-            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Kbd",
-            "context": "component"
-          },
-          {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./Kbd/Kbd",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Tooltip/Tooltip.tsx",
+            "importKind": "relative",
+            "importPath": "../Kbd",
             "context": "component"
           },
           {
@@ -31608,12 +31607,9 @@
           "put whole phrases inside one Kbd; one key (or chord symbol) per cap."
         ],
         "composesWith": [
-          "Icon",
-          "Button",
-          "Title",
-          "Text",
-          "DonnyAvatar",
-          "Tooltip"
+          "Badge",
+          "StatusDot",
+          "Icon"
         ],
         "prefersOver": [],
         "declaredPropCount": 2,
@@ -65733,8 +65729,8 @@
         "composesWith": [
           "Button",
           "Title",
-          "Icon",
           "TextInput",
+          "Icon",
           "CheckboxGroup",
           "Link"
         ],
@@ -70220,6 +70216,11 @@
             "optional": false,
             "type": "ReactNode",
             "description": "Hint content — a short phrase, never interactive."
+          },
+          "shortcut": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Keys held together for the trigger's action, one entry per key; rendered after the label as keycaps joined by plus signs. Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as icons with a translated key name for assistive technology."
           }
         },
         "forbiddenUse": [
@@ -70238,9 +70239,11 @@
           "hover",
           "icon label",
           "describedby",
-          "radix"
+          "radix",
+          "keyboard shortcut",
+          "kbd"
         ],
-        "dense": "Radix tooltip set: Provider (delayDuration) > Tooltip > Trigger asChild + Content (side top|right|bottom|left); opens on hover+focus, Escape dismisses, aria-describedby wired",
+        "dense": "Radix tooltip set: Provider (delayDuration) > Tooltip > Trigger asChild + Content (side top|right|bottom|left, shortcut keys as keycaps); opens on hover+focus, Escape dismisses, aria-describedby wired",
         "usage": {
           "description": "Tooltip is the composed Radix primitive set for supplementary hints on focusable controls — most often icon-only buttons. Wrap a subtree in `TooltipProvider` (sets `delayDuration`, default 200ms), then per hint: `Tooltip` (open state) containing `TooltipTrigger asChild` around the real control and `TooltipContent` with the text and a `side` placement (top by default, flips when out of room). It opens on hover and keyboard focus, dismisses on Escape, and Radix links the content to the trigger via aria-describedby. The content is description, not a name: the trigger still needs its own accessible label.",
           "bestPractices": [
@@ -70259,6 +70262,10 @@
             {
               "guidance": true,
               "description": "Pick side by surrounding space; Radix flips automatically when the preferred side runs out of room."
+            },
+            {
+              "guidance": true,
+              "description": "Show a keyboard shortcut with the shortcut prop, never hand-built Kbd children: it sizes the keycaps to the label, draws modifier symbols as icons and joins keys with plus signs. Pass platform words (Ctrl, Shift) on Windows."
             },
             {
               "guidance": false,
@@ -70288,7 +70295,7 @@
             {
               "name": "TooltipContent",
               "required": true,
-              "description": "Portaled bubble with arrow; side sets preferred placement, sideOffset the gap; fade/scale animation drops under reduced motion."
+              "description": "Portaled bubble with arrow; side sets preferred placement, sideOffset the gap; fade/scale animation drops under reduced motion; optional shortcut keycaps after the label."
             }
           ]
         },
@@ -70302,10 +70309,11 @@
         "composesWith": [
           "Button",
           "IconButton",
-          "Icon"
+          "Icon",
+          "Kbd"
         ]
       },
-      "spec": "# Tooltip\n\n## Intent\nSupplementary hints for focusable controls — most often icon-only\nbuttons that keep their own accessible name while the tooltip carries\nthe visible phrase. Composed Radix primitive set: `TooltipProvider`\n(shared open delay) > `Tooltip` (open state) > `TooltipTrigger asChild`\naround the real control + portaled `TooltipContent`.\n\n## Interaction contract\n- Keyboard: opens on focus of the trigger (no pointer needed); `Escape`\n  dismisses without moving focus. The trigger stays in the normal tab\n  sequence; the content is never focusable.\n- Pointer: opens on hover after the provider's `delayDuration`\n  (default 200ms); closes on leave.\n- Screen readers: Radix links the content to the trigger via\n  `aria-describedby` — the tooltip describes, it never names. The\n  trigger must carry its own accessible name (e.g. IconButton `label`).\n\n## Do / don't\n- Do: wrap the real Button/IconButton with `asChild` so it receives the\n  tooltip wiring directly.\n- Do: share one `TooltipProvider` per surface so adjacent hints open\n  instantly once one is shown.\n- Don't: put links, buttons, or any interactive content inside the\n  bubble — unreachable by keyboard and touch.\n- Don't: attach tooltips to non-focusable elements; hover-only hints\n  exclude keyboard and touch users.\n- Don't: promote to stable without production consumer evidence.\n\n## Design notes\n- Tokens: bubble surface/text and radius come from `variables.css` via\n  Tooltip.module.css; fade/scale enter animation drops under\n  `prefers-reduced-motion`.\n- `side` sets preferred placement (top default); Radix flips it when\n  out of room. `sideOffset` tunes the gap (4px default).\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-tooltip\n",
+      "spec": "# Tooltip\n\n## Intent\nSupplementary hints for focusable controls — most often icon-only\nbuttons that keep their own accessible name while the tooltip carries\nthe visible phrase. Composed Radix primitive set: `TooltipProvider`\n(shared open delay) > `Tooltip` (open state) > `TooltipTrigger asChild`\naround the real control + portaled `TooltipContent`.\n\n## Interaction contract\n- Keyboard: opens on focus of the trigger (no pointer needed); `Escape`\n  dismisses without moving focus. The trigger stays in the normal tab\n  sequence; the content is never focusable.\n- Pointer: opens on hover after the provider's `delayDuration`\n  (default 200ms); closes on leave.\n- Screen readers: Radix links the content to the trigger via\n  `aria-describedby` — the tooltip describes, it never names. The\n  trigger must carry its own accessible name (e.g. IconButton `label`).\n\n## Keyboard shortcuts\n- `shortcut` lists the keys held together for the trigger's action, one\n  entry per key: `[\"⌘\", \"⇧\", \"⌫\"]` on Mac, `[\"Ctrl\", \"Shift\", \"Backspace\"]`\n  elsewhere. The bubble renders them after the label as keycaps joined by\n  plus signs, so they read as one chord, not a sequence.\n- Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as Phosphor icons: no text face\n  carries them, so as text they fall back to a system font at the wrong\n  size. Each icon key keeps its translated name (`tooltip.keys.*`, EN/FI/SV)\n  in the DOM for screen readers. Other entries render as uppercase text.\n- Keycaps take the bubble's own ink (`currentcolor` tints), so they adapt to\n  light, dark and forced colours without per-theme rules.\n\n## Do / don't\n- Do: wrap the real Button/IconButton with `asChild` so it receives the\n  tooltip wiring directly.\n- Do: use `shortcut` for key hints instead of hand-built `Kbd` children.\n- Do: share one `TooltipProvider` per surface so adjacent hints open\n  instantly once one is shown.\n- Don't: put links, buttons, or any interactive content inside the\n  bubble — unreachable by keyboard and touch.\n- Don't: attach tooltips to non-focusable elements; hover-only hints\n  exclude keyboard and touch users.\n- Don't: promote to stable without production consumer evidence.\n\n## Design notes\n- Tokens: bubble surface/text and radius come from `variables.css` via\n  Tooltip.module.css; fade/scale enter animation drops under\n  `prefers-reduced-motion`.\n- `side` sets preferred placement (top default); Radix flips it when\n  out of room. `sideOffset` tunes the gap (4px default).\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-tooltip\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Tooltip",
@@ -70357,6 +70365,11 @@
             "optional": false,
             "type": "ReactNode",
             "description": "Hint content — a short phrase, never interactive."
+          },
+          "shortcut": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Keyboard shortcut for the trigger's action, one entry per key\n(`[\"⌘\", \"⇧\", \"⌫\"]`). Rendered after the label as keycaps drawn for the\ntooltip's dark surface."
           }
         },
         "propRelationships": [],
@@ -70366,6 +70379,7 @@
         "variantsFnName": null,
         "useWhen": [
           "wrap the real Button/IconButton with `asChild` so it receives the tooltip wiring directly.",
+          "use `shortcut` for key hints instead of hand-built `Kbd` children.",
           "share one `TooltipProvider` per surface so adjacent hints open instantly once one is shown."
         ],
         "avoidWhen": [
@@ -70403,15 +70417,21 @@
           "Title",
           "Text",
           "DonnyAvatar",
-          "Icon",
-          "Kbd"
+          "Icon"
         ],
         "prefersOver": [],
-        "declaredPropCount": 4,
+        "declaredPropCount": 5,
         "guidelines": [
           {
             "level": "should",
             "guidance": "wrap the real Button/IconButton with `asChild` so it receives the tooltip wiring directly.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "use `shortcut` for key hints instead of hand-built `Kbd` children.",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"

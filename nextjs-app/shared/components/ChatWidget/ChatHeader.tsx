@@ -6,7 +6,6 @@ import { DonnyAvatar, type DonnyState } from "@dt/DonnyAvatar";
 import styles from "./ChatWidget.module.css";
 import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
-import Kbd from "@dt/Kbd";
 import {
   Tooltip,
   TooltipContent,
@@ -189,19 +188,12 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
                   accessibleName={newChatLabel}
                   variant="tertiary"
                   size="md"
-                  icon={<Icon name="pencil" />}
+                  icon={<Icon name="plus" />}
                   className={styles.minimizeButton}
                 />
               </TooltipTrigger>
-              <TooltipContent side="bottom" className={styles.newChatTooltip}>
+              <TooltipContent side="bottom" shortcut={newChatKeys}>
                 {newChatLabel}
-                <span className={styles.newChatKeys}>
-                  {newChatKeys.map((key) => (
-                    <Kbd key={key} size="sm" variant="secondary">
-                      {key}
-                    </Kbd>
-                  ))}
-                </span>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

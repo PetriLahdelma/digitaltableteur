@@ -35,6 +35,13 @@ const meta = {
       control: "text",
       description: "Hint text (short phrase, never interactive content)",
     },
+    shortcut: {
+      control: { type: "inline-check" },
+      options: ["⌘", "⇧", "⌥", "⌃", "⌫", "↵", "K"],
+      description:
+        "Keys pressed together for the trigger's action, shown as keycaps after the label",
+      table: { category: "Content", defaultValue: { summary: "none" } },
+    },
     className: {
       control: "text",
       description: "Extra class on the content bubble",
@@ -45,6 +52,7 @@ const meta = {
     side: "top" as const,
     sideOffset: 4,
     children: "Helpful hint about this action.",
+    shortcut: [],
     className: "",
   },
 } satisfies Meta<typeof TooltipContent>;
@@ -154,6 +162,42 @@ export const WithIconButton: Story = {
             />
           </TooltipTrigger>
           <TooltipContent>Share this page</TooltipContent>
+        </Tooltip>
+      </div>
+    </TooltipProvider>
+  ),
+};
+
+/** A keyboard shortcut after the label: keycaps joined by plus signs. */
+export const WithShortcut: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "shortcut lists the keys held together for the trigger's action. Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as icons with the key's name for screen readers; other entries render as text, so pass the platform's own words on Windows and Linux.",
+      },
+    },
+  },
+  render: () => (
+    <TooltipProvider>
+      <div style={{ display: "flex", gap: "12rem", padding: "1rem 4rem 4rem" }}>
+        <Tooltip defaultOpen>
+          <TooltipTrigger asChild>
+            <IconButton icon="plus" label="New chat" variant="tertiary" />
+          </TooltipTrigger>
+          <TooltipContent side="bottom" shortcut={["⌘", "⇧", "⌫"]}>
+            New chat
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip defaultOpen>
+          <TooltipTrigger asChild>
+            <IconButton icon="plus" label="New chat" variant="tertiary" />
+          </TooltipTrigger>
+          <TooltipContent side="bottom" shortcut={["Ctrl", "Shift", "Backspace"]}>
+            New chat
+          </TooltipContent>
         </Tooltip>
       </div>
     </TooltipProvider>

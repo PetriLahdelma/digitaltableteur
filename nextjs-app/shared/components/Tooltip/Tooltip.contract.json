@@ -84,6 +84,11 @@
             "optional": false,
             "type": "ReactNode",
             "description": "Hint content — a short phrase, never interactive."
+        },
+        "shortcut": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Keys held together for the trigger's action, one entry per key; rendered after the label as keycaps joined by plus signs. Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as icons with a translated key name for assistive technology."
         }
     },
     "forbiddenUse": [
@@ -102,9 +107,11 @@
         "hover",
         "icon label",
         "describedby",
-        "radix"
+        "radix",
+        "keyboard shortcut",
+        "kbd"
     ],
-    "dense": "Radix tooltip set: Provider (delayDuration) > Tooltip > Trigger asChild + Content (side top|right|bottom|left); opens on hover+focus, Escape dismisses, aria-describedby wired",
+    "dense": "Radix tooltip set: Provider (delayDuration) > Tooltip > Trigger asChild + Content (side top|right|bottom|left, shortcut keys as keycaps); opens on hover+focus, Escape dismisses, aria-describedby wired",
     "usage": {
         "description": "Tooltip is the composed Radix primitive set for supplementary hints on focusable controls — most often icon-only buttons. Wrap a subtree in `TooltipProvider` (sets `delayDuration`, default 200ms), then per hint: `Tooltip` (open state) containing `TooltipTrigger asChild` around the real control and `TooltipContent` with the text and a `side` placement (top by default, flips when out of room). It opens on hover and keyboard focus, dismisses on Escape, and Radix links the content to the trigger via aria-describedby. The content is description, not a name: the trigger still needs its own accessible label.",
         "bestPractices": [
@@ -123,6 +130,10 @@
             {
                 "guidance": true,
                 "description": "Pick side by surrounding space; Radix flips automatically when the preferred side runs out of room."
+            },
+            {
+                "guidance": true,
+                "description": "Show a keyboard shortcut with the shortcut prop, never hand-built Kbd children: it sizes the keycaps to the label, draws modifier symbols as icons and joins keys with plus signs. Pass platform words (Ctrl, Shift) on Windows."
             },
             {
                 "guidance": false,
@@ -152,7 +163,7 @@
             {
                 "name": "TooltipContent",
                 "required": true,
-                "description": "Portaled bubble with arrow; side sets preferred placement, sideOffset the gap; fade/scale animation drops under reduced motion."
+                "description": "Portaled bubble with arrow; side sets preferred placement, sideOffset the gap; fade/scale animation drops under reduced motion; optional shortcut keycaps after the label."
             }
         ]
     },
@@ -166,6 +177,7 @@
     "composesWith": [
         "Button",
         "IconButton",
-        "Icon"
+        "Icon",
+        "Kbd"
     ]
 }
