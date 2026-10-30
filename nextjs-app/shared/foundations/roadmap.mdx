@@ -1,0 +1,105 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideFacts, GuideGaps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { a11yFigures, catalogFigures, tokenFigures, usageFigures, formatDate } from '../../../.storybook/blocks/guide/guideData';
+import Code from "@dt/Code";
+import StatusDot from "@dt/StatusDot";
+
+<Meta title="Overview/Roadmap" />
+
+export const Done = () => <StatusDot tone="success" size="md">Done</StatusDot>;
+
+<GuidePage
+  kicker="Overview"
+  title="Roadmap"
+  lede="Where the system stands, what is still open and what is out of scope on purpose. The figures are read from the generated manifest and reports when Storybook builds, so they match the repo rather than the last time someone edited this page."
+>
+
+<GuideFacts
+  facts={[
+    { value: catalogFigures.components, label: "Governed components", note: `${catalogFigures.completeness}% of ${catalogFigures.codebaseComponents} component folders` },
+    { value: catalogFigures.status.stable, of: catalogFigures.components, label: "Stable" },
+    { value: usageFigures.strictConsumedCount, of: usageFigures.governedCount, label: "Imported from the npm package", note: `Report from ${formatDate(usageFigures.generatedAt)}` },
+    { value: usageFigures.transitiveConsumedCount, of: usageFigures.governedCount, label: "Rendered on a production page" },
+  ]}
+/>
+
+## Status mix
+
+<GuideTable
+  caption="Components by status"
+  columns={["Status", "Components"]}
+  rows={[
+    ["Stable", catalogFigures.status.stable],
+    ["Beta", catalogFigures.status.beta],
+    ["Alpha", catalogFigures.status.alpha],
+    ["Deprecated", catalogFigures.status.deprecated],
+  ]}
+/>
+
+## Foundations and tokens
+
+<GuideTable
+  caption="Foundation work"
+  columns={["Area", "Status", "Notes"]}
+  rows={[
+    ["Production tokens", <Done />, `variables.css is the runtime source, with ${tokenFigures.tokens} tokens in the catalog.`],
+    ["DTCG export", <Done />, "npm run build:tokens writes tokens/production/*.json and the token packages."],
+    ["Radius and elevation", <Done />, "A tight radius scale and a four-step shadow ramp, gated by check:radius-shadow."],
+    ["Foundation pages", <Done />, "Color, Typography, Space, Motion, Layout, Radius, Elevation, Focus, Themes, Contrast and the Token catalog."],
+    ["Tailwind bridge", <Done />, "The DT-THEME block in app/tailwind.css, regenerated with the tokens."],
+    ["Themes", <Done />, "Light, dark, high-contrast black and high-contrast white."],
+    ["Agent manifest", <Done />, "Token summary, contracts, doc semantics and catalog completeness in one generated file."],
+  ]}
+/>
+
+## Quality gates
+
+Promotion to stable is gated on committed evidence, not on a template being filled in.
+
+<GuideTable
+  caption="Quality gates"
+  columns={["Gate", "How it runs"]}
+  rows={[
+    ["Accessibility-tree snapshots", <>Committed per stable component; captured with <Code size="inherit">DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:ci</Code></>],
+    ["Forced colours in a real browser", <Code size="inherit">npm run test:stories:hc</Code>],
+    ["Light and dark visual baselines", <Code size="inherit">npm run test:visual</Code>],
+    ["Doc semantics", <Code size="inherit">npm run check:doc-semantics</Code>],
+    ["Contract and props parity", <Code size="inherit">npm run check:contract-props</Code>],
+    ["Token discipline", <><Code size="inherit">check:tokens</Code>, <Code size="inherit">check:radius-shadow</Code> and the stylelint baseline</>],
+  ]}
+/>
+
+## Consumption
+
+Four packages publish to npm and are consumed back into the site: `@digitaltableteur/react`, `@digitaltableteur/web-components`, `@digitaltableteur/tokens` and `@digitaltableteur/tokens-css`. Raising direct imports from the package is a standing goal, one component at a time. `npm run report:component-usage` regenerates the figures above.
+
+## Open work
+
+<GuideGaps
+  items={[
+    `${usageFigures.governedCount - usageFigures.strictConsumedCount} governed components are not yet imported from the npm package by the site.`,
+    `${a11yFigures.total - a11yFigures.reviewed} components have no reviewed accessibility record.`,
+    "Site CSS under app/ still has raw border-radius values outside the scope of check:radius-shadow.",
+    "The web components package records its accessibility notes but does not gate on them.",
+    "A few shell components (SiteHeader, Logo, SiteFooter) report consumer drift; run npm run audit:consumers.",
+    "The theme is applied after hydration, so a saved dark choice can flash light on first paint.",
+  ]}
+/>
+
+## Not planned
+
+- Importing `foundations/dist/tokens.css` at runtime (ADR-0004).
+- Copying another system's palette or spacing values into this repo (ADR-0005).
+
+## Commands
+
+```bash
+npm run build:tokens            # catalog, DTCG, dist, Tailwind bridge and agent manifest
+npm run check:contrast          # WCAG AA semantic pairs in every theme
+npm run check:radius-shadow     # radius and elevation token discipline
+npm run validate:components     # all component gates
+npm run audit:catalog           # catalog completeness against the codebase
+npm run report:component-usage  # npm consumption figures
+```
+
+</GuidePage>

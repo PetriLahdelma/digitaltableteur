@@ -1,0 +1,120 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import Code from "@dt/Code";
+import { GuidePage, GuideFacts, GuideSection, GuideTable, GuideGaps } from '../../../.storybook/blocks/guide/GuidePage';
+import { a11yFigures, contrastFigures } from '../../../.storybook/blocks/guide/guideData';
+
+<Meta title="Overview/Accessibility" />
+
+<GuidePage
+  kicker="Foundations"
+  title="Accessibility"
+  lede="WCAG 2.2 AA is the floor for every component in this system. This page sets out what the system guarantees, how each guarantee is checked and what you still own when you build a page with it."
+>
+
+<GuideFacts
+  facts={[
+    {
+      value: contrastFigures.passing,
+      of: contrastFigures.pairs,
+      label: "Contrast pairs passing",
+      note: `Across ${contrastFigures.themes} themes`,
+    },
+    {
+      value: a11yFigures.reviewed,
+      of: a11yFigures.total,
+      label: "Components with a reviewed accessibility record",
+    },
+    {
+      value: a11yFigures.accessibilityTree,
+      of: a11yFigures.total,
+      label: "Accessibility tree verified",
+      note: "Roles, names and states",
+    },
+    {
+      value: a11yFigures.realBrowserForcedColors,
+      of: a11yFigures.total,
+      label: "Forced colours verified in a real browser",
+    },
+  ]}
+/>
+
+## What the system guarantees
+
+Each guarantee below is backed by a check that fails the build or the story run. A guarantee without a check is a hope, so the table names both.
+
+<GuideTable
+  caption="Accessibility guarantees and how each one is checked"
+  columns={["Area", "Guarantee", "How it is checked"]}
+  rows={[
+    [
+      "Colour contrast",
+      "Every semantic text and background pair meets AA (4.5:1, or 3:1 for large text) in light, dark, high-contrast black and high-contrast white.",
+      <Code size="inherit">npm run check:contrast</Code>,
+    ],
+    [
+      "Focus",
+      "Every interactive element shows a focus ring: 2px with a 2px offset, 3px in the high-contrast themes and the system Highlight colour under forced colours.",
+      <>The <Code size="inherit">--focus-ring-*</Code> tokens, shown in Foundations/Focus</>,
+    ],
+    [
+      "Forced colours",
+      "Boundaries, state and focus survive Windows High Contrast, where the browser replaces every colour.",
+      <Code size="inherit">npm run test:stories:hc</Code>,
+    ],
+    [
+      "Semantics",
+      "Roles, accessible names and states stay as reviewed. A change to the accessibility tree fails the story run until someone looks at it.",
+      "Accessibility-tree snapshots per story",
+    ],
+    [
+      "Automated rules",
+      "Component tests render the component and run axe against the result.",
+      <Code size="inherit">npm test</Code>,
+    ],
+    [
+      "Motion",
+      "Animated components honour prefers-reduced-motion. Motion tokens set defaults; the component decides what reduced motion means for it.",
+      "The reducedMotion flag in each contract",
+    ],
+  ]}
+/>
+
+## What stable means
+
+A component reaches the stable tier only with evidence committed next to it: an axe test, accessibility-tree snapshots, a forced-colours check and a dated review note in its contract. Templates and good intentions do not count. Beta and alpha components can be used, but read their contract before you rely on them for a key flow.
+
+## What you still own
+
+The components handle their own semantics. The page around them is yours.
+
+- Give every icon-only button an accessible name. A tooltip is not a name.
+- Keep one h1 per page and do not skip heading levels. Pick the heading level for the outline and the size for the look.
+- Write alt text that says what the image is for, or mark it decorative.
+- Make link text make sense on its own. “Read more” next to five cards is five identical links.
+- Ship every user-facing string in English, Finnish and Swedish, and set the page language.
+- Never remove a focus style. Restyle it with the focus tokens instead.
+- Do not use colour as the only signal. Pair status colours with text or an icon.
+
+## Check your work
+
+Run these before you open a pull request. The first two take seconds.
+
+```bash
+npm test                     # component tests, axe included
+npm run check:contrast       # semantic colour pairs in all four themes
+npm run test:stories:hc      # stories under forced colours in a real browser
+npm run test:a11y:pages      # page-level checks on the site
+```
+
+## Known gaps
+
+<GuideGaps
+  items={[
+    `${a11yFigures.total - a11yFigures.reviewed} components have no reviewed accessibility record yet.`,
+    `${a11yFigures.total - a11yFigures.realBrowserForcedColors} components have not been checked under forced colours in a real browser.`,
+    "Target size is tested on site pages (44px on phones) but not per component, and no token sets a minimum target.",
+    "The web components package records its accessibility notes but does not gate on them yet.",
+  ]}
+/>
+
+</GuidePage>

@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideFacts, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { a11yFigures, governanceFigures } from '../../../.storybook/blocks/guide/guideData';
+import Code from "@dt/Code";
+
+<Meta title="Overview/Governance" />
+
+<GuidePage
+  kicker="Overview"
+  title="Governance"
+  lede="Every component is defined by a machine-readable contract. When the contract, the code and the docs disagree, the build fails. That is what lets people and agents build to spec instead of copying what they see."
+>
+
+<GuideFacts
+  facts={[
+    { value: a11yFigures.total, label: "Contracts", note: "One per component and pattern" },
+    { value: governanceFigures.usageRules, label: "Machine-checked usage rules", note: "forbiddenCombos across all contracts" },
+    { value: governanceFigures.withConsumers, label: "Components with recorded consumers" },
+  ]}
+/>
+
+## The contract
+
+Each component folder holds a `<Name>.contract.json`, validated against `scripts/design-system/contract.schema.v2.json`. Unknown keys are errors, and every contract carries a `schemaVersion` so it can be migrated.
+
+<GuideTable
+  caption="What a contract declares"
+  columns={["Field group", "Fields", "Used for"]}
+  rows={[
+    ["Identity", <Code size="inherit">name tier group status description</Code>, "Where it sits in the sidebar and how far it can be trusted."],
+    ["API", <Code size="inherit">props variants slots asChild subParts</Code>, "The public surface, checked against the TypeScript props."],
+    ["Usage", <Code size="inherit">usage composesWith prefersOver forbiddenUse forbiddenCombos</Code>, "When to use it, what it pairs with and which combinations are not allowed."],
+    ["Accessibility", <Code size="inherit">a11y</Code>, "Keyboard support, ARIA requirements and what has been verified."],
+    ["Evidence", <Code size="inherit">requiredStories consumers governance lightDarkVerified</Code>, "The stories it must have, who uses it in production and when it was reviewed."],
+    ["Design", <Code size="inherit">tokens theming figma</Code>, "The tokens it reads and its source in Figma."],
+  ]}
+/>
+
+## From change to merge
+
+<GuideSteps
+  steps={[
+    { title: "Change the component", body: "Edit the code, its stories and, when the API moves, the contract in the same commit." },
+    { title: "Rebuild the generated files", body: "npm run build:tokens regenerates the agent blocks and the manifest the gates compare against." },
+    { title: "Push", body: "The pre-push hook runs the contract gates, typecheck and lint. A contract that has drifted from its code cannot leave the machine." },
+  ]}
+/>
+
+## The gates
+
+<GuideTable
+  caption="Drift gates"
+  columns={["Gate", "Fails when"]}
+  rows={[
+    [<Code size="inherit">validate:components</Code>, "The contract, code and stories disagree, or a status is claimed without its evidence."],
+    [<Code size="inherit">check:contract-props</Code>, "Contract props no longer match the props extracted from the TypeScript."],
+    [<Code size="inherit">check:contract-drift</Code>, "A contract has drifted from the spec.md it is derived from."],
+    [<Code size="inherit">check:consumers</Code>, "A stable component's consumers list does not match the real import graph."],
+    [<Code size="inherit">check:doc-semantics</Code>, "Guideline levels, doc origin or review dates are missing or malformed."],
+    [<Code size="inherit">validate:agent-usage</Code>, "Code uses a combination a contract forbids."],
+    [<Code size="inherit">audit:controls</Code>, "A Storybook control cannot be operated or has no visible effect."],
+    [<Code size="inherit">audit:rhythm:check</Code>, "Spacing or motion uses a raw value instead of a token."],
+    [<Code size="inherit">audit:snapshot-debt</Code>, "A stable component lacks accessibility-tree snapshots in all four modes."],
+    [<Code size="inherit">check:astryx-roadmap</Code>, "A roadmap invariant regresses, such as a coupling ratchet."],
+  ]}
+/>
+
+Most of these run in the pre-push hook, so the local gate catches drift before anything reaches a pull request.
+
+## Rules agents can check
+
+When a component already detects an invalid prop combination at runtime, the contract records it as a `forbiddenCombos` rule, with the condition, what it forbids or requires, a severity and the evidence. `validate:agent-usage` then checks every call site against those rules, so a combination that only warned in the console now fails the check.
+
+## For agents
+
+The schema, the generated `agent-manifest.json` and `docs-registry.json` in `nextjs-app/shared/foundations/dist/` are the authoritative inputs for generating or changing a component. Generate against the schema; the gates above verify the result. See [Agent readiness](?path=/docs/overview-agent-readiness--docs) for the tools that read them.
+
+</GuidePage>

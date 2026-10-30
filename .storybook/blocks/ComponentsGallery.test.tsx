@@ -16,15 +16,12 @@ describe("ComponentsGallery", () => {
     expect(cards).toHaveLength(DOC_TIER_1.length);
   });
 
-  it("links the Button card to its documentation and playground", () => {
+  it("makes each card a single link to the component's documentation", () => {
     render(<ComponentsGallery />);
     const buttonCard = screen.getByText("Button").closest("article");
-    expect(
-      buttonCard?.querySelector("a[href*='actions-button--docs']"),
-    ).not.toBeNull();
-    expect(
-      buttonCard?.querySelector("a[href*='actions-button--playground']"),
-    ).not.toBeNull();
+    const links = buttonCard?.querySelectorAll("a") ?? [];
+    expect(links).toHaveLength(1);
+    expect(links[0]?.getAttribute("href")).toContain("actions-button--docs");
   });
 
   it("falls back to a monogram when a component has no playground defaults", () => {

@@ -1,0 +1,339 @@
+/* Guide page frame. Proportions follow digitaltableteur.com: display title,
+   muted kicker and lede, prose held to the reading measure, hairline rules
+   and borders instead of tinted boxes. Every rule is scoped under .page so
+   Storybook's docs styles and the global li margin cannot leak in. */
+
+.page {
+  margin-inline: auto;
+  padding-block: var(--space-layout-48) var(--space-layout-96);
+
+  /* Story pages render full-bleed (layout: fullscreen); docs pages sit in
+     Storybook's padded container. The gutter keeps both off the edges. */
+  padding-inline: var(--space-layout-24);
+  box-sizing: content-box;
+  max-inline-size: var(--container-md);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  container-type: inline-size;
+}
+
+/* Docs pages already sit in Storybook's padded container. */
+
+:global(.sbdocs) .page {
+  padding-inline: 0;
+}
+
+.page .header {
+  display: flex;
+  margin-block-end: var(--space-layout-64);
+  flex-direction: column;
+  gap: var(--space-internal-16);
+}
+
+.page .kicker {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* The display size follows the viewport; cap it by the column so a long
+   word ("Digitaltableteur") never breaks mid-word on a phone. */
+
+.page .title {
+  margin: 0;
+  font-size: min(var(--font-size-title-xl), 12cqi);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.page .lede {
+  margin: 0;
+  max-inline-size: var(--measure-reading);
+  color: var(--color-muted);
+  text-wrap: pretty;
+}
+
+.page .section {
+  margin-block-start: var(--space-layout-64);
+}
+
+.page .h2 {
+  margin-block: var(--space-layout-64) var(--space-layout-16);
+  padding-block-start: var(--space-layout-24);
+  border-block-start: 1px solid var(--color-border-light);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.page .section > .h2 {
+  margin-block-start: 0;
+}
+
+.page .h3 {
+  margin-block: var(--space-layout-32) var(--space-internal-8);
+  font-weight: 500;
+}
+
+.page .p {
+  margin-block: 0 var(--space-internal-16);
+  max-inline-size: var(--measure-reading);
+  text-wrap: pretty;
+}
+
+.page .block {
+  margin-block: var(--space-layout-24) var(--space-layout-32);
+}
+
+/* Lists: the site's em-dash marker, muted, hung outside the text column. */
+
+.page .list,
+.page .orderedList {
+  margin-block: 0 var(--space-layout-24);
+  padding: 0;
+  max-inline-size: var(--measure-reading);
+  font-size: var(--font-size-text-m);
+  line-height: var(--line-height-relaxed);
+}
+
+.page .list {
+  list-style: none;
+}
+
+.page .orderedList {
+  padding-inline-start: var(--space-internal-32);
+  list-style: decimal;
+}
+
+.page .orderedList > .item::marker {
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.page .item {
+  margin-block: 0 var(--space-internal-8);
+}
+
+.page .list > .item {
+  position: relative;
+  padding-inline-start: var(--space-internal-32);
+}
+
+.page .list > .item::before {
+  position: absolute;
+  color: var(--color-muted);
+  content: "\2014";
+  inset-inline-start: 0;
+}
+
+.page .quote {
+  margin-block: var(--space-layout-24);
+  margin-inline: 0;
+  padding-inline-start: var(--space-internal-16);
+  border-inline-start: 2px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.page .rule {
+  margin-block: var(--space-layout-48);
+  border: 0;
+  border-block-start: 1px solid var(--color-border-light);
+}
+
+/* Facts: figures on a hairline, no cards. */
+
+.page .facts {
+  display: grid;
+  margin-block: var(--space-layout-32);
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--space-layout-24) var(--space-layout-32);
+}
+
+.page .fact {
+  display: flex;
+  padding-block-start: var(--space-internal-16);
+  flex-direction: column;
+  gap: var(--space-internal-8);
+  border-block-start: 1px solid var(--color-border);
+}
+
+/* The figure reads first; the label stays first in the DOM so dt precedes dd. */
+
+.page .factValue {
+  display: flex;
+  margin: 0;
+  flex-wrap: wrap;
+  order: -1;
+  align-items: baseline;
+  gap: var(--space-internal-8);
+}
+
+.page .factFigure {
+  margin: 0;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.page .factOf {
+  white-space: nowrap;
+  color: var(--color-muted);
+}
+
+.page .factLabel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-4);
+}
+
+.page .factNote {
+  color: var(--color-muted);
+}
+
+/* Steps: the site's numbered cards. */
+
+.page .steps {
+  display: grid;
+  margin-block: var(--space-layout-32);
+  padding: 0;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-internal-16);
+  list-style: none;
+}
+
+.page .step {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+}
+
+.page .stepNumber {
+  margin-block-end: var(--space-internal-8);
+  font-weight: 400;
+}
+
+.page .stepTitle {
+  margin: 0;
+  font-weight: 500;
+}
+
+.page .stepBody {
+  margin: 0;
+  color: var(--color-muted);
+  text-wrap: pretty;
+}
+
+.page .gaps {
+  display: flex;
+  margin-block: var(--space-layout-24);
+  padding: 0;
+  max-inline-size: var(--measure-reading);
+  flex-direction: column;
+  gap: var(--space-internal-12);
+  list-style: none;
+}
+
+.page .gap {
+  display: flex;
+  margin: 0;
+  align-items: flex-start;
+  gap: var(--space-internal-12);
+}
+
+/* Centre the dot on the first line of text. */
+
+.page .gap > :first-child {
+  margin-block-start: var(--space-internal-8);
+  flex-shrink: 0;
+}
+
+/* Text and Title carry a bottom margin for running prose; inside these
+   composed rows the gap owns the spacing. */
+
+.page .gap > :last-child,
+.page .factLabel > *,
+.page .factValue > * {
+  margin: 0;
+}
+
+/* Row headings in guide tables are short labels; keep them on one line. */
+
+.page .block th[scope="row"] {
+  white-space: nowrap;
+}
+
+/* Link cards. The title link's ::after covers the card, so the whole card
+   is the hit area while the accessible name stays the title. */
+
+.page .cards {
+  display: grid;
+  margin-block: var(--space-layout-24) var(--space-layout-32);
+  padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--space-internal-16);
+  list-style: none;
+}
+
+.page .cardsTwo {
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+}
+
+.page .card {
+  display: flex;
+  position: relative;
+  margin: 0;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+  transition: border-color var(--duration-instant) var(--ease-out-cubic);
+}
+
+.page .card:hover,
+.page .card:focus-within {
+  border-color: var(--color-border);
+}
+
+.page .cardTitle {
+  margin: 0;
+  font-weight: 500;
+}
+
+.page .cardTitle a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page .cardTitle a::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+}
+
+.page .cardTitle a:focus-visible {
+  outline: none;
+}
+
+.page .card:has(a:focus-visible) {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.page .cardMeta,
+.page .cardBody {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page .card {
+    transition: none;
+  }
+}
+
+/* DS Code breaks anywhere so it never overflows running text. In a table
+   that lets auto layout squeeze a column to one character ("ligh/t"); break
+   only when a value is longer than its column can ever be. */
+
+.page table code {
+  overflow-wrap: break-word;
+}

@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideFacts, GuideCards, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { catalogFigures, tokenFigures } from '../../../.storybook/blocks/guide/guideData';
+import Code from "@dt/Code";
+
+<Meta title="Overview/Introduction" />
+
+<GuidePage
+  kicker="Overview"
+  title="Digitaltableteur Design System"
+  lede="The components, tokens and rules behind digitaltableteur.com, published as npm packages and documented here. Storybook documents what ships: every value on these pages resolves from the same files the site loads."
+>
+
+<GuideFacts
+  facts={[
+    { value: catalogFigures.components, label: "Components in the catalog", note: `${catalogFigures.status.stable} stable, ${catalogFigures.status.beta} beta, ${catalogFigures.status.alpha} alpha` },
+    { value: tokenFigures.tokens, label: "Design tokens", note: "Read from variables.css" },
+    { value: tokenFigures.themes, label: "Themes", note: "Light, dark and two high-contrast themes" },
+    { value: 3, label: "Languages", note: "English, Finnish and Swedish" },
+  ]}
+/>
+
+## Start here
+
+<GuideCards
+  items={[
+    { title: "Principles", href: "?path=/docs/overview-principles--docs", body: "What the system optimises for and the rules every component follows." },
+    { title: "Components", href: "?path=/docs/overview-components--docs", body: "Every component with a live preview and its status, grouped as in the sidebar." },
+    { title: "Tokens", href: "?path=/docs/overview-tokens--docs", body: "The custom properties behind colour, type, space and motion, and how to use them." },
+    { title: "Theming", href: "?path=/docs/overview-theming--docs", body: "Four themes, how the active one is chosen and how to add a brand layer." },
+    { title: "Localization", href: "?path=/docs/overview-localization--docs", body: "English, Finnish and Swedish copy, and how components receive translations." },
+    { title: "Accessibility", href: "?path=/docs/overview-accessibility--docs", body: "What the system guarantees, how each guarantee is checked and what you still own." },
+    { title: "Governance", href: "?path=/docs/overview-governance--docs", body: "Contracts and the gates that turn drift between code and docs into a failed build." },
+    { title: "Agent readiness", href: "?path=/docs/overview-agent-readiness--docs", body: "The CLI, MCP server and generated files that let coding agents use the system." },
+    { title: "Roadmap", href: "?path=/docs/overview-roadmap--docs", body: "Where the system stands today, what is open and what is out of scope on purpose." },
+  ]}
+/>
+
+## Packages
+
+Four packages publish to npm and are consumed back into the site, so the site is the first user of every release.
+
+<GuideTable
+  caption="Published packages"
+  columns={["Package", "What it contains"]}
+  rows={[
+    [<Code size="inherit">@digitaltableteur/react</Code>, "React components and the host adapters for links, images, navigation and translation."],
+    [<Code size="inherit">@digitaltableteur/web-components</Code>, "Framework-neutral custom elements that mirror the React components."],
+    [<Code size="inherit">@digitaltableteur/tokens</Code>, "The tokens as DTCG JSON, generated from variables.css."],
+    [<Code size="inherit">@digitaltableteur/tokens-css</Code>, "The tokens as CSS custom properties, with every theme included."],
+  ]}
+/>
+
+## Foundations
+
+The foundations live under **Foundations** in the sidebar. Each page renders live specimens with the computed values for the active theme.
+
+<GuideTable
+  caption="Foundation pages"
+  columns={["Foundation", "What it covers"]}
+  rows={[
+    ["Color", "Semantic, status, accent and greyscale colours, with a matrix per theme."],
+    ["Typography", "The fluid type scale, the Satoshi family and vertical rhythm."],
+    ["Space", "Layout spacing between blocks and internal spacing inside them."],
+    ["Motion", "Durations, easing curves, stagger and distance."],
+    ["Layout", "Breakpoints, containers and the grid."],
+    ["Radius and Elevation", "Corner radii and the four-step shadow ramp."],
+    ["Focus", "The focus ring tokens for every theme."],
+    ["Themes and Contrast", "The four themes side by side, and the contrast ratio of every semantic pair."],
+    ["Token catalog", "A searchable index of every token with its usage note."],
+  ]}
+/>
+
+## House rules
+
+1. Add a token to `variables.css` first, then run `npm run build:tokens`. Never import the generated JSON at runtime.
+2. Style components with CSS Modules and `var(--token)`. No hard-coded colours, sizes or spacing.
+3. Use logical properties such as `margin-inline` and `padding-block`, so layouts follow the writing direction.
+4. Test in every theme and language before you call something done. The Storybook toolbar switches both.
+
+## Stack
+
+React 19 and TypeScript in strict mode, styled with CSS Modules over custom properties. Storybook 10 for documentation, Vitest with Testing Library and axe for tests, and i18next for translations. The site that consumes it all runs on Next.js 16.
+
+</GuidePage>

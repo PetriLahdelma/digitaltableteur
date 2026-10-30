@@ -1,13 +1,15 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 import { ComponentsGallery } from "../../../.storybook/blocks/ComponentsGallery";
+import { GuidePage } from "../../../.storybook/blocks/guide/GuidePage";
 
 <Meta title="Overview/Components" />
 
-# Components
-
-Every Tier 1 component in the system, grouped the way the sidebar is. Each
-card renders a live preview from the component's contract playground defaults;
-portal and utility components (Modal, Tooltip, Toast, SkipLink, Spacer) show a
-representative preview instead.
+<GuidePage
+  kicker="Overview"
+  title="Components"
+  lede="Every component, grouped as in the sidebar. Each preview renders the component with its playground defaults; open a card for its documentation and controls."
+>
 
 <ComponentsGallery />
+
+</GuidePage>

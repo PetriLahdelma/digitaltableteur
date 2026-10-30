@@ -5,6 +5,7 @@ import {
   // eslint-disable-next-line import/no-relative-packages -- repo-internal single source for doc tiers
 } from "../../scripts/design-system/doc-tiers.mjs";
 import Button from "@dt/Button";
+import Card from "@dt/Card";
 import Select from "@dt/Select";
 import Text from "@dt/Text";
 import TextInput from "@dt/TextInput";
@@ -237,9 +238,6 @@ export function GalleryCard({
   const docsHref = managerHref(
     `/docs/${storyIdFromTitle(`${category}/${name}`)}--docs`,
   );
-  const playgroundHref = managerHref(
-    `/story/${storyIdFromTitle(`${category}/${name}`)}--playground`,
-  );
   const spec = PREVIEW_SPECS[name];
   const defaults = contract?.playground?.defaults;
   const Component = resolveComponent(name);
@@ -261,8 +259,10 @@ export function GalleryCard({
     .filter(Boolean)
     .join(" ");
 
+  // One link per card: the name's hit area is stretched over the card, so
+  // the card is a single tab stop named after the component.
   return (
-    <article className={styles.card}>
+    <Card as="article" variant="default" padding="none" className={styles.card}>
       <span className={styles.preview} aria-hidden="true">
         {canPreview ? (
           <PreviewBoundary fallback={<Monogram name={name} />}>
@@ -273,25 +273,12 @@ export function GalleryCard({
         )}
       </span>
       <span className={styles.meta}>
-        <span className={styles.nameRow}>
-          <a className={styles.name} href={docsHref} target="_top">
-            {name}
-          </a>
-          {contract ? <StatusPill status={contract.status} /> : null}
-        </span>
-        <Text as="span" size="xs" lineHeight="snug" className={styles.dense}>
-          {contract?.dense ?? contract?.description ?? ""}
-        </Text>
-        <span className={styles.links}>
-          <a href={docsHref} target="_top">
-            Documentation
-          </a>
-          <a href={playgroundHref} target="_top">
-            Playground
-          </a>
-        </span>
+        <a className={styles.name} href={docsHref} target="_top">
+          {name}
+        </a>
+        {contract ? <StatusPill status={contract.status} /> : null}
       </span>
-    </article>
+    </Card>
   );
 }
 
@@ -374,7 +361,7 @@ export function ComponentsGallery() {
           {filteredEntries.length} of {GALLERY_ENTRIES.length} components
         </Text>
         {filtersActive ? (
-          <Button variant="tertiary" size="sm" onClick={resetFilters}>
+          <Button variant="tertiary" onClick={resetFilters}>
             Reset filters
           </Button>
         ) : null}
@@ -388,7 +375,7 @@ export function ComponentsGallery() {
           <Text as="p" size="s">
             Try a broader interface intent or remove one of the filters.
           </Text>
-          <Button variant="secondary" size="sm" onClick={resetFilters}>
+          <Button variant="secondary" onClick={resetFilters}>
             Show all components
           </Button>
         </div>
@@ -399,7 +386,7 @@ export function ComponentsGallery() {
         if (entries.length === 0) return null;
         return (
           <section key={categoryName} className={styles.section}>
-            <Title as="h2" size="xs" className={styles.heading}>
+            <Title as="h2" size="s" lineHeight="snug" className={styles.heading}>
               {categoryName}
             </Title>
             <div className={styles.grid}>

@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideFacts, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { catalogFigures, formatDate } from '../../../.storybook/blocks/guide/guideData';
+import Code from "@dt/Code";
+
+<Meta title="Overview/Agent readiness" />
+
+<GuidePage
+  kicker="Overview"
+  title="Agent readiness"
+  lede="Coding agents use the system through the same contracts and gates as people. They find components with a CLI or an MCP server, read generated descriptions instead of source and have their output checked by the governance gates."
+>
+
+<GuideFacts
+  facts={[
+    { value: catalogFigures.components, label: "Components described for agents", note: `Manifest generated ${formatDate(catalogFigures.generatedAt)}` },
+    { value: 8, label: "MCP tools", note: "Six design-system tools, two docs tools" },
+    { value: `${catalogFigures.completeness}%`, label: "Catalog completeness", note: `Of ${catalogFigures.codebaseComponents} component folders` },
+  ]}
+/>
+
+## The loop
+
+<GuideSteps
+  steps={[
+    { title: "Discover", body: "find-component or the MCP find tool ranks existing components against an intent, with status and real usage counts." },
+    { title: "Read", body: "The contract and the generated agent block give props, variants, usage rules and examples as data." },
+    { title: "Generate", body: "The agent writes code against the contract schema, not against what a screenshot looks like." },
+    { title: "Verify", body: "validate_component_usage, validate:agent-usage and the pre-push gates reject raw UI, forbidden combinations and drift." },
+  ]}
+/>
+
+## Generated files
+
+`npm run build:tokens` writes these to `nextjs-app/shared/foundations/dist/`. Run it before anything below if the files are missing.
+
+<GuideTable
+  caption="Generated agent inputs"
+  columns={["File", "Contents"]}
+  rows={[
+    [<Code size="inherit">agent-manifest.json</Code>, "Every catalog component with its tokens, coverage, status and the relationship graph."],
+    [<Code size="inherit">component-agent-blocks.json</Code>, "One block per component: props, variants, usage and examples."],
+    [<Code size="inherit">docs-registry.json</Code>, "Rendered doc sections and example sources per component."],
+    [<Code size="inherit">contract-rules.json</Code>, "The forbiddenCombos rules, ready for usage validation."],
+    [<Code size="inherit">component-catalog.zod.ts</Code>, "A Zod schema of the catalog for typed consumers."],
+    [<Code size="inherit">tokens-manifest.json</Code>, "The tokens as data."],
+  ]}
+/>
+
+## CLI
+
+```bash
+npm run find-component -- "confirm before deleting"
+```
+
+Returns ranked matches with status, tier, the `@dt/*` import, a description and how many production files use each one, so the agent picks an existing component before writing a new one.
+
+## MCP server
+
+```bash
+npm run ds:mcp
+```
+
+Starts `digitaltableteur-design-system` over stdio for Claude Desktop, Cursor and similar clients. Production serves the same tools over HTTP at `/mcp`.
+
+<GuideTable
+  caption="MCP tools"
+  columns={["Tool", "Use it to"]}
+  rows={[
+    [<Code size="inherit">list_components</Code>, "List the catalog with status, import path, usage counts and neighbours, filtered by status."],
+    [<Code size="inherit">find_component_for_intent</Code>, "Rank components against a plain-language task, with imports, variants and the commands that validate them."],
+    [<Code size="inherit">suggest_pattern_for_layout</Code>, "Rank layout patterns for a page-level intent, with when to use and avoid each."],
+    [<Code size="inherit">get_component_contract</Code>, "Fetch one component's contract, agent block and usage evidence."],
+    [<Code size="inherit">get_tokens</Code>, "Read the token catalog summary and token metadata."],
+    [<Code size="inherit">validate_component_usage</Code>, "Check a file or snippet for raw UI and validate component props."],
+    [<Code size="inherit">search</Code>, "Search the docs registry."],
+    [<Code size="inherit">get</Code>, "Get a component's docs by section: usage, props, examples or theming."],
+  ]}
+/>
+
+## Evals
+
+Retrieval and composition quality is measured, not assumed.
+
+```bash
+npm run agent:eval            # the full agent eval
+npm run agent:eval:intents    # intent to component retrieval
+npm run agent:eval:patterns   # pattern composition
+```
+
+Read the scores against held-out tasks. A grader tuned on the bugs it is scored on will always look better than it is.
+
+</GuidePage>

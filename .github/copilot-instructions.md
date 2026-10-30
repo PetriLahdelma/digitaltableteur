@@ -147,7 +147,7 @@ npm run eslint-fix   # Auto-fix linting issues
 
 - Visual tests run via the Storybook test runner using Playwright and `pixelmatch`-based snapshot diffing
 - Diff artifacts land in `__visual__/diffs/__diff_output__` and are published to `public/visual-diff/report.json`
-- The Storybook “Overview / Test Health Overview” story surfaces active visual diffs; when no diffs exist, it renders a placeholder state
+- The Storybook “Overview / Test health” story shows a dated snapshot of the last local run, read from docs/test-metrics.json
 
 ## Deployment & Cache Busting
 

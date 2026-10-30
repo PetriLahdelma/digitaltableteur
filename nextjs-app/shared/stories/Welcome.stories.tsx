@@ -1,46 +1,72 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useTranslation } from "react-i18next";
+import CodeBlock from "@dt/CodeBlock";
 import { useTheme } from "@dt/ThemeProvider";
-import styles from "./Welcome.module.css";
+import {
+  GuideCards,
+  GuideList,
+  GuidePage,
+  GuideSection,
+} from "../../../.storybook/blocks/guide/GuidePage";
 
 const WelcomeContent = () => {
   const { t } = useTranslation();
   useTheme(); // ensure story re-renders on theme change
 
   return (
-    <article className={styles.wrapper}>
-      <header className={styles.header}>
-        <h1>{t("storybookWelcomeTitle")}</h1>
-        <p className={styles.subtitle}>{t("storybookWelcomeSubtitle")}</p>
-      </header>
+    <GuidePage
+      kicker="Storybook"
+      title={t("storybookWelcomeTitle")}
+      lede={t("storybookWelcomeSubtitle")}
+    >
+      <GuideSection title={t("storybookWelcomeQuickLinks")}>
+        <GuideCards
+          items={[
+            {
+              title: "Introduction",
+              href: "?path=/docs/overview-introduction--docs",
+              body: t("storybookWelcomeLinkDocs"),
+            },
+            {
+              title: "Components",
+              href: "?path=/docs/overview-components--docs",
+              body: t("storybookWelcomeLinkComponents"),
+            },
+            {
+              title: "Test health",
+              href: "?path=/story/overview-test-health--dashboard",
+              body: t("storybookWelcomeLinkDashboard"),
+            },
+          ]}
+        />
+      </GuideSection>
 
-      <section className={styles.section}>
-        <h2>{t("storybookWelcomeQuickLinks")}</h2>
-        <ul>
-          <li>{t("storybookWelcomeLinkDashboard")}</li>
-          <li>{t("storybookWelcomeLinkDocs")}</li>
-          <li>{t("storybookWelcomeLinkComponents")}</li>
-        </ul>
-      </section>
+      <GuideSection title={t("storybookWelcomeCommands")}>
+        <CodeBlock
+          language="bash"
+          copyable
+          code={[
+            `npm run storybook   # ${t("storybookWelcomeCommandStorybook")}`,
+            `npm run test        # ${t("storybookWelcomeCommandTests")}`,
+            `npm run test:a11y   # ${t("storybookWelcomeCommandA11y")}`,
+          ].join("\n")}
+        />
+      </GuideSection>
 
-      <section className={styles.section}>
-        <h2>{t("storybookWelcomeCommands")}</h2>
-        <pre className={styles.code}>
-          {`npm run storybook   # ${t("storybookWelcomeCommandStorybook")}\nnpm run test        # ${t("storybookWelcomeCommandTests")}\nnpm run test:a11y   # ${t("storybookWelcomeCommandA11y")}`}
-        </pre>
-      </section>
-
-      <section className={styles.section}>
-        <h2>{t("storybookWelcomeInsideTitle")}</h2>
-        <p>{t("storybookWelcomeInsideDescription")}</p>
-        <ul>
-          <li>{t("storybookWelcomeInsideTokens")}</li>
-          <li>{t("storybookWelcomeInsideThemes")}</li>
-          <li>{t("storybookWelcomeInsideLocalization")}</li>
-        </ul>
-      </section>
-    </article>
+      <GuideSection
+        title={t("storybookWelcomeInsideTitle")}
+        intro={t("storybookWelcomeInsideDescription")}
+      >
+        <GuideList
+          items={[
+            t("storybookWelcomeInsideTokens"),
+            t("storybookWelcomeInsideThemes"),
+            t("storybookWelcomeInsideLocalization"),
+          ]}
+        />
+      </GuideSection>
+    </GuidePage>
   );
 };
 
@@ -48,7 +74,7 @@ const meta: Meta<typeof WelcomeContent> = {
   title: "Overview/Welcome",
   component: WelcomeContent,
   tags: ["!autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: { layout: "fullscreen", wip: { disabled: true } },
 };
 
 export default meta;

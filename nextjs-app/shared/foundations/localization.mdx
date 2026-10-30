@@ -1,0 +1,100 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideFacts, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { localeFigures } from '../../../.storybook/blocks/guide/guideData';
+import Code from "@dt/Code";
+
+<Meta title="Overview/Localization" />
+
+<GuidePage
+  kicker="Foundations"
+  title="Localization"
+  lede="Interface copy ships in English, Finnish and Swedish, and a missing key fails the tests. Design-system components never import i18next: the app hands them a translate function, so the package works in any host."
+>
+
+<GuideFacts
+  facts={[
+    { value: localeFigures.keys, label: "Keys in each language", note: "English is the source" },
+    { value: localeFigures.missingFi, label: "Missing from Finnish" },
+    { value: localeFigures.missingSv, label: "Missing from Swedish" },
+  ]}
+/>
+
+## Languages
+
+<GuideTable
+  caption="Supported languages"
+  columns={["Language", "Code", "File"]}
+  rows={[
+    ["English", <Code size="inherit">en</Code>, <Code size="inherit">nextjs-app/shared/locales/en/translation.json</Code>],
+    ["Finnish (suomi)", <Code size="inherit">fi</Code>, <Code size="inherit">nextjs-app/shared/locales/fi/translation.json</Code>],
+    ["Swedish (svenska)", <Code size="inherit">sv</Code>, <Code size="inherit">nextjs-app/shared/locales/sv/translation.json</Code>],
+  ]}
+/>
+
+Case studies and blog posts stay in English on purpose. Everything else a visitor reads, including labels, errors and accessible names, is translated.
+
+## How the language is chosen
+
+<GuideSteps
+  steps={[
+    { title: "The server renders English", body: "Every page is rendered in English first, so crawlers and link previews always get real content." },
+    { title: "The saved choice applies", body: "After hydration the client reads the visitor's choice from localStorage (i18nextLng) or the i18next cookie and switches." },
+    { title: "Changes are saved twice", body: "Picking a language writes both, so the choice survives blocked storage. The cookie lasts a year." },
+  ]}
+/>
+
+There is no browser-language detection: a first visit is in English until the visitor picks a language.
+
+## In a design-system component
+
+Components call `useTranslate()` and always pass the English text as a fallback, so they render sensibly even with no translation runtime at all.
+
+```tsx
+import { useTranslate } from "../../lib/translation";
+
+export function Pagination() {
+  const t = useTranslate();
+  return <nav aria-label={t("blogPageNavigation", "Page navigation")}>{/* ... */}</nav>;
+}
+```
+
+The app connects that hook to i18next once, through `TranslationProvider` inside `I18nProvider`. Another host can pass its own translate function, or none.
+
+## In app code
+
+Pages and site sections use react-i18next directly:
+
+```tsx
+import { useTranslation } from "react-i18next";
+
+function PricingIntro() {
+  const { t } = useTranslation();
+  return <p>{t("pricingIntro")}</p>;
+}
+```
+
+Values go in with interpolation, never by gluing strings together, because word order differs between the three languages:
+
+```json
+{
+  "uploadLimit": "Files up to {{size}}",
+  "daysLeft_one": "{{count}} day left",
+  "daysLeft_other": "{{count}} days left"
+}
+```
+
+## Adding a string
+
+1. Add the key to the English file with the final copy.
+2. Add the same key to the Finnish and Swedish files. A placeholder in English is not a translation.
+3. Run `npm test`. The translation coverage test fails on any key missing from a language.
+4. Check the component with the Locale menu in the Storybook toolbar, in all three languages.
+
+## Writing for three languages
+
+- Finnish words run long. Let labels wrap instead of truncating them, and test buttons with the Finnish copy.
+- Keep punctuation, units and currency inside the translated string, so each language can place them.
+- Format dates and numbers with Intl for the active language, not by hand.
+- Translate accessible names and alt text too. A screen reader user hears them in the page language.
+
+</GuidePage>

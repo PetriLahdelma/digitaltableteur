@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import Code from "@dt/Code";
+
+<Meta title="Overview/Utilities" />
+
+<GuidePage
+  kicker="Overview"
+  title="Utilities"
+  lede="A short list of hooks and providers that the components are built on. It stays short on purpose: a utility joins only when a shipped component needs it or when it keeps the package independent of any one framework."
+>
+
+## At a glance
+
+All of these are exported from `@digitaltableteur/react`.
+
+<GuideTable
+  caption="Utilities"
+  columns={["Utility", "Does", "Used by"]}
+  rows={[
+    [<Code size="inherit">useMediaQuery</Code>, "Subscribes to a media query without hydration mismatches.", "Responsive components"],
+    [<Code size="inherit">LayerProvider, useLayer</Code>, "Chooses where portals mount and which z-index tier they use.", "Modal, popovers, toasts, tooltips"],
+    [<Code size="inherit">useFocusTrap</Code>, "Keeps focus inside an overlay and returns it on close.", "Modal"],
+    [<Code size="inherit">useScrollLock</Code>, "Locks page scroll while an overlay is open.", "Modal"],
+    [<Code size="inherit">useOverflow, useScrollOverflow</Code>, "Reports overflow and whether a track can scroll further.", "Horizontal tracks"],
+    [<Code size="inherit">useStreamingText</Code>, "Smooths streamed text into an even reveal.", "Donny chat replies"],
+    [<Code size="inherit">LinkProvider, Link</Code>, "Lets the host app supply its router link.", "Every component that links"],
+    [<Code size="inherit">ThemeProvider, useTheme</Code>, "Holds and changes the active theme.", "The whole app"],
+  ]}
+/>
+
+## Responsive
+
+### useMediaQuery(query)
+
+Returns `false` on the server and on the first client render, so hydration always matches, then follows the real result and updates when it changes. Use it for breakpoint logic that CSS cannot express.
+
+```tsx
+import { useMediaQuery } from "@digitaltableteur/react";
+
+const isNarrow = useMediaQuery("(width < 768px)");
+```
+
+For reduced motion use `useHydrationSafeMotion`, and for the colour scheme use the theme provider.
+
+## Overlays
+
+The overlays are built in-house rather than on a headless library, so they own focus and scroll through these hooks.
+
+### LayerProvider and useLayer(options)
+
+`LayerProvider` lets the host choose the DOM node that portals mount into; without it they use `document.body`. `useLayer()` returns that container and the z-index tier for a `modal`, `popover`, `toast` or `tooltip`.
+
+### useFocusTrap(ref, active)
+
+While active it remembers the focused element, makes the page behind `inert` so Tab cannot leave, moves focus into `ref` and puts it back on release.
+
+### useScrollLock(active)
+
+Locks body scroll while active and restores the previous `overflow` value on release, so nested locks compose.
+
+## Overflow
+
+### useOverflow(ref, options)
+
+Reports whether an element overflows on the x or y axis, watching both the element and the window for size changes. Call `refresh()` after a content change that does not resize the container.
+
+### useScrollOverflow(ref, options)
+
+Adds `canScrollStart` and `canScrollEnd`, kept current while scrolling. Use it to show or hide previous and next buttons on a horizontal track.
+
+## Streaming text
+
+### useStreamingText(targetText, isStreaming, options)
+
+Turns bursty streamed text into an even reveal without delaying the final value. It keeps grapheme clusters intact, skips the animation for reduced motion, offers `natural`, `fast` and `instant` speeds and snaps to the full text when streaming ends.
+
+```tsx
+import { useStreamingText } from "@digitaltableteur/react";
+
+const shown = useStreamingText(accumulatedText, isStreaming);
+```
+
+Pass the accumulated text, not single chunks, and keep transport and errors outside the hook. It only controls how fast text appears.
+
+## Navigation
+
+### LinkProvider and Link
+
+`Link` renders whatever link the host provides and falls back to a plain anchor. The app passes its router link once at the root, so no component imports a framework link and the package stays portable.
+
+```tsx
+import { Link, LinkProvider } from "@digitaltableteur/react";
+
+<LinkProvider component={NextLinkAdapter}>{children}</LinkProvider>;
+
+<Link href="/work">Work</Link>;
+```
+
+## Theming
+
+`useTheme()` reads and sets the active theme from `ThemeProvider`. See [Theming](?path=/docs/overview-theming--docs) for the full API.
+
+## Not adopted
+
+Some utilities other systems ship are left out because they serve features declared out of scope here: `useGridFocus`, `useTreeFocus`, media-scoped theming and `useImageMode`. Others wait for a component that needs them: `useClickableContainer`, `useEntryAnimation`, `useInputContainer`, `useListFocus` and `useKeyboardHint`.
+
+</GuidePage>

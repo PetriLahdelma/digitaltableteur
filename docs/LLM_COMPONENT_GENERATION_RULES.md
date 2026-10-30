@@ -1754,7 +1754,7 @@ npm run test:visual -- --updateSnapshot      # Update baselines
 **Visual regression report:**
 
 - Generated at `public/visual-diff/report.json`
-- Consumed by Storybook "Overview / Test Health Overview" story
+- Consumed by Storybook "Overview / Test health" story
 - Shows diff thumbnails when changes detected
 - Placeholder message when no diffs
 

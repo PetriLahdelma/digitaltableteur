@@ -1,8 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React, { useMemo, useState } from "react";
+import Code from "@dt/Code";
+import CodeBlock from "@dt/CodeBlock";
 import Icon from "@dt/Icon";
+import SegmentedControl from "@dt/SegmentedControl";
+import Text from "@dt/Text";
+import TextInput from "@dt/TextInput";
 import Toast from "@dt/Toast";
-import styles from "./Documentation.module.css";
+import { resolvePhosphorIcon } from "../../components/Icon/iconRegistry";
+import {
+  GuideCards,
+  GuideList,
+  GuidePage,
+  GuideSection,
+  GuideTable,
+} from "../../../../.storybook/blocks/guide/GuidePage";
+import styles from "./Icons.module.css";
 import {
   filterBrowsableIconNames,
   resolveBrowserPhosphorIcon,
@@ -1530,418 +1543,246 @@ const ALL_ICON_NAMES = [
 /** Names from ALL_ICON_NAMES that exist in @phosphor-icons/react (browser uses full set, not iconRegistry). */
 const BROWSABLE_ICON_NAMES = filterBrowsableIconNames(ALL_ICON_NAMES);
 
-// IconCard component for click-to-copy functionality
-interface IconCardProps {
-  name: string;
-  onCopy: (name: string) => void;
-}
+/** Icons @dt/Icon can render today: the curated registry plus its aliases. */
+const REGISTERED = new Set(
+  BROWSABLE_ICON_NAMES.filter((name) => resolvePhosphorIcon(name) !== null),
+);
 
-const IconCard = ({ name, onCopy }: IconCardProps) => {
-  const [showHint, setShowHint] = useState(false);
+const SIZES = [
+  ["2xs", 12],
+  ["xs", 16],
+  ["sm", 20],
+  ["md", 24],
+  ["lg", 32],
+  ["xl", 48],
+  ["2xl", 64],
+] as const;
+
+const WEIGHTS = ["thin", "light", "regular", "bold", "fill", "duotone"] as const;
+
+const code = (value: string) => <Code size="inherit">{value}</Code>;
+
+const IconsDocsContent = () => (
+  <GuidePage
+    kicker="Reference"
+    title="Icons"
+    lede={
+      <>
+        Icons come from Phosphor and render through {code("@dt/Icon")}, which
+        sets the size, weight and accessible name. {REGISTERED.size} icons are
+        registered for use today; the browser shows all{" "}
+        {BROWSABLE_ICON_NAMES.length} so you can pick one to add.
+      </>
+    }
+  >
+    <GuideSection title="Usage">
+      <CodeBlock
+        language="tsx"
+        copyable
+        code={`import Icon from "@dt/Icon";
+
+<Icon name="Check" size="sm" decorative />
+<Icon name="WarningCircle" size="md" ariaLabel="Action required" />`}
+      />
+    </GuideSection>
+
+    <GuideSection
+      title="Sizes"
+      intro="Named sizes map to fixed pixel values. Pass a number only for a one-off that no preset covers."
+    >
+      <ul className={styles.specimens}>
+        {SIZES.map(([size, px]) => (
+          <li key={size} className={styles.specimen}>
+            <span className={styles.glyph}>
+              <Icon name="Heart" size={size} decorative />
+            </span>
+            <Text as="span" size="xs" className={styles.specimenLabel}>
+              {size}
+              <span className={styles.specimenNote}>{px}px</span>
+            </Text>
+          </li>
+        ))}
+      </ul>
+    </GuideSection>
+
+    <GuideSection
+      title="Weights"
+      intro="Regular is the default. Use bold or fill for emphasis and selected states, light and thin only at large sizes."
+    >
+      <ul className={styles.specimens}>
+        {WEIGHTS.map((weight) => (
+          <li key={weight} className={styles.specimen}>
+            <span className={styles.glyph}>
+              <Icon name="Heart" size="lg" weight={weight} decorative />
+            </span>
+            <Text as="span" size="xs" className={styles.specimenLabel}>
+              {weight}
+            </Text>
+          </li>
+        ))}
+      </ul>
+    </GuideSection>
+
+    <GuideSection title="Props">
+      <GuideTable
+        caption="Icon props"
+        columns={["Prop", "Type", "Default", "Does"]}
+        rows={[
+          [code("name"), code("string"), "Required", "Phosphor name in PascalCase or kebab-case, or a registered alias."],
+          [code("size"), code("2xs to 2xl, or a number"), code("md"), "A named size or pixels."],
+          [code("weight"), code("thin light regular bold fill duotone"), code("regular"), "The Phosphor weight."],
+          [code("ariaLabel"), code("string"), "None", "The accessible name. Give one when the icon carries meaning on its own."],
+          [code("decorative"), code("boolean"), "true without ariaLabel", "Hides the icon from assistive technology."],
+          [code("color"), code("string"), code("currentColor"), "Overrides the inherited text colour. Prefer a token."],
+          [code("rotate"), code("0 90 180 270"), code("0"), "Quarter-turn rotation."],
+          [code("flip"), code("horizontal vertical both"), "None", "Mirrors the glyph on one or both axes."],
+          [code("mirrored"), code("boolean"), code("false"), "Phosphor's own horizontal mirroring, for direction-aware icons."],
+          [code("spin"), code("boolean"), code("false"), "Continuous rotation, for loading. Stops under reduced motion."],
+          [code("pulse"), code("boolean"), code("false"), "A pulse when spin is off."],
+        ]}
+      />
+    </GuideSection>
+
+    <GuideSection title="Accessibility">
+      <GuideList
+        items={[
+          <>An icon next to a visible label is decorative: leave out {code("ariaLabel")} and it is hidden from screen readers.</>,
+          <>An icon that stands alone needs an {code("ariaLabel")} that says what it means, not what it shows.</>,
+          <>An icon-only button gets its name from the button, not the icon. A tooltip is not a name.</>,
+          "Do not rely on an icon alone to show status. Pair it with text.",
+        ]}
+      />
+    </GuideSection>
+
+    <GuideSection
+      title="Adding an icon"
+      intro="Find it in the browser, then add the Phosphor import to iconRegistry.ts. Unregistered names render nothing and log a warning in development."
+    >
+      <GuideCards
+        columns={2}
+        items={[
+          {
+            title: "Icon browser",
+            href: "?path=/story/docs-icons--browse",
+            body: `Search all ${BROWSABLE_ICON_NAMES.length} Phosphor icons and copy a name. Registered icons are marked.`,
+          },
+          {
+            title: "Icon component",
+            href: "?path=/docs/content-icon--docs",
+            body: "The component page with controls and every story.",
+          },
+        ]}
+      />
+    </GuideSection>
+  </GuidePage>
+);
+
+type IconFilter = "all" | "registered";
+
+const IconTile = ({ name, onCopy }: { name: string; onCopy: (name: string) => void }) => {
   const PhosphorComponent = resolveBrowserPhosphorIcon(name);
+  const registered = REGISTERED.has(name);
 
-  const handleClick = async () => {
+  const copy = async () => {
     try {
       await navigator.clipboard.writeText(name);
       onCopy(name);
-    } catch (err) {
-      console.error("Failed to copy:", err);
+    } catch {
+      // Clipboard can be blocked in an embedded preview; the name stays visible.
     }
   };
 
   return (
-    <button
-      type="button"
-      className={styles.iconCard}
-      onClick={handleClick}
-      onMouseEnter={() => setShowHint(true)}
-      onMouseLeave={() => setShowHint(false)}
-      aria-label={`Copy ${name} icon name`}
-    >
-      <div className={styles.iconDisplay}>
-        {PhosphorComponent ? (
-          <PhosphorComponent size={48} weight="regular" aria-hidden />
-        ) : (
-          <span aria-hidden>—</span>
-        )}
-      </div>
-      <div className={styles.iconName}>{name}</div>
-      {showHint && <div className={styles.copyHint}>Click to copy</div>}
-    </button>
-  );
-};
-
-// Documentation Component
-const IconsDocsContent = () => {
-  return (
-    <article className={styles.wrapper}>
-      <header className={styles.header}>
-        <h1>Icons</h1>
-        <p className={styles.lead}>
-          Complete Phosphor Icons library with {ALL_ICON_NAMES.length} icons
-          integrated via the Icon component.
-        </p>
-      </header>
-
-      <section className={styles.section}>
-        <h2>Overview</h2>
-        <p>
-          All icons are from{" "}
-          <a
-            href="https://phosphoricons.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Phosphor Icons
-          </a>
-          , a flexible icon family for interfaces, diagrams, presentations, and
-          more. The Icon component provides a consistent API for rendering any
-          Phosphor icon with customizable size, weight, and color.
-        </p>
-      </section>
-
-      <section className={styles.section}>
-        <h2>Basic Usage</h2>
-        <pre className={styles.code}>
-          {`import Icon from '@dt/Icon';
-
-function MyComponent() { return (
-    <>
-      <Icon name="Heart" size="md" />
-      <Icon name="Star" size="lg" color="gold" />
-      <Icon name="Check" size="sm" weight="bold" />
-    </>
-  );
-}`}
-        </pre>
-      </section>
-
-      <section className={styles.section}>
-        <h2>Props</h2>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Prop</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <code>name</code>
-              </td>
-              <td>
-                <code>string</code>
-              </td>
-              <td>-</td>
-              <td>Icon name (PascalCase or kebab-case)</td>
-            </tr>
-            <tr>
-              <td>
-                <code>size</code>
-              </td>
-              <td>
-                <code>
-                  "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | number
-                </code>
-              </td>
-              <td>
-                <code>"md"</code>
-              </td>
-              <td>Icon size preset or pixel value</td>
-            </tr>
-            <tr>
-              <td>
-                <code>weight</code>
-              </td>
-              <td>
-                <code>
-                  "thin" | "light" | "regular" | "bold" | "fill" | "duotone"
-                </code>
-              </td>
-              <td>
-                <code>"regular"</code>
-              </td>
-              <td>Icon weight/style</td>
-            </tr>
-            <tr>
-              <td>
-                <code>color</code>
-              </td>
-              <td>
-                <code>string</code>
-              </td>
-              <td>
-                <code>"currentColor"</code>
-              </td>
-              <td>Icon color (CSS color value)</td>
-            </tr>
-            <tr>
-              <td>
-                <code>decorative</code>
-              </td>
-              <td>
-                <code>boolean</code>
-              </td>
-              <td>
-                <code>false</code>
-              </td>
-              <td>
-                If true, hides icon from screen readers (use when meaning is
-                conveyed by adjacent text)
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>ariaLabel</code>
-              </td>
-              <td>
-                <code>string</code>
-              </td>
-              <td>-</td>
-              <td>
-                Accessible label for screen readers (required if not decorative)
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>mirrored</code>
-              </td>
-              <td>
-                <code>boolean</code>
-              </td>
-              <td>
-                <code>false</code>
-              </td>
-              <td>Flip icon horizontally (for RTL support)</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section className={styles.section}>
-        <h2>Size Options</h2>
-        <p>
-          The Icon component supports named size presets and custom pixel
-          values:
-        </p>
-        <div className={styles.sizeDemo}>
-          <div className={styles.sizeItem}>
-            <Icon name="Heart" size="2xs" decorative />
-            <span>2xs (12px)</span>
-          </div>
-          <div className={styles.sizeItem}>
-            <Icon name="Heart" size="xs" decorative />
-            <span>xs (14px)</span>
-          </div>
-          <div className={styles.sizeItem}>
-            <Icon name="Heart" size="sm" decorative />
-            <span>sm (16px)</span>
-          </div>
-          <div className={styles.sizeItem}>
-            <Icon name="Heart" size="md" decorative />
-            <span>md (20px)</span>
-          </div>
-          <div className={styles.sizeItem}>
-            <Icon name="Heart" size="lg" decorative />
-            <span>lg (24px)</span>
-          </div>
-          <div className={styles.sizeItem}>
-            <Icon name="Heart" size="xl" decorative />
-            <span>xl (32px)</span>
-          </div>
-          <div className={styles.sizeItem}>
-            <Icon name="Heart" size="2xl" decorative />
-            <span>2xl (48px)</span>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <h2>Weight Options</h2>
-        <p>
-          Phosphor icons support six distinct weights for visual hierarchy and
-          emphasis:
-        </p>
-        <div className={styles.weightDemo}>
-          <div className={styles.weightItem}>
-            <Icon name="Heart" size="lg" weight="thin" decorative />
-            <span>thin</span>
-          </div>
-          <div className={styles.weightItem}>
-            <Icon name="Heart" size="lg" weight="light" decorative />
-            <span>light</span>
-          </div>
-          <div className={styles.weightItem}>
-            <Icon name="Heart" size="lg" weight="regular" decorative />
-            <span>regular</span>
-          </div>
-          <div className={styles.weightItem}>
-            <Icon name="Heart" size="lg" weight="bold" decorative />
-            <span>bold</span>
-          </div>
-          <div className={styles.weightItem}>
-            <Icon name="Heart" size="lg" weight="fill" decorative />
-            <span>fill</span>
-          </div>
-          <div className={styles.weightItem}>
-            <Icon name="Heart" size="lg" weight="duotone" decorative />
-            <span>duotone</span>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <h2>Accessibility</h2>
-        <p>The Icon component follows accessibility best practices:</p>
-        <ul>
-          <li>
-            <strong>Decorative icons</strong>: Set <code>decorative=true</code>{" "}
-            when the icon's meaning is conveyed by adjacent text (e.g., button
-            labels)
-          </li>
-          <li>
-            <strong>Meaningful icons</strong>: Provide an <code>ariaLabel</code>{" "}
-            when the icon stands alone or adds semantic meaning
-          </li>
-          <li>
-            <strong>Color contrast</strong>: Ensure sufficient contrast ratios
-            for text-like icons
-          </li>
-          <li>
-            <strong>Interactive icons</strong>: Wrap in a button or link with
-            proper labels
-          </li>
-        </ul>
-        <pre className={styles.code}>
-          {`// Decorative (adjacent text provides meaning)
-<Button>
-  <Icon name="Download" size="sm" decorative />
-  Download File
-</Button>
-
-// Meaningful (icon conveys unique information)
-<Icon 
-  name="WarningCircle" 
-  size="md" 
-  ariaLabel="Warning: Action required"
-/>`}
-        </pre>
-      </section>
-
-      <section className={styles.section}>
-        <h2>Browse Icons</h2>
-        <p>
-          Visit the <strong>Icon Browser</strong> story to search and explore
-          all {ALL_ICON_NAMES.length} available icons. Click any icon to copy
-          its name for easy reference.
-        </p>
-      </section>
-    </article>
-  );
-};
-
-// Icon Browser Component for searchable grid
-const IconBrowserContent = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [copiedIcon, setCopiedIcon] = useState<string | null>(null);
-  const [showToast, setShowToast] = useState(false);
-
-  const filteredIcons = useMemo(() => {
-    if (!searchQuery.trim()) {
-      return BROWSABLE_ICON_NAMES;
-    }
-
-    const query = searchQuery.toLowerCase();
-    return BROWSABLE_ICON_NAMES.filter((name) =>
-      name.toLowerCase().includes(query),
-    );
-  }, [searchQuery]);
-
-  const handleCopy = (name: string) => {
-    setCopiedIcon(name);
-    setShowToast(true);
-
-    setTimeout(() => {
-      setShowToast(false);
-    }, 2000);
-  };
-
-  return (
-    <article className={styles.wrapper}>
-      <header className={styles.header}>
-        <h1>Icon Browser</h1>
-        <p className={styles.lead}>
-          Search and browse {BROWSABLE_ICON_NAMES.length} Phosphor icons. Click
-          any icon to copy its name to clipboard.
-        </p>
-      </header>
-
-      <section className={styles.section}>
-        <div className={styles.searchContainer}>
-          <div className={styles.searchWrapper}>
-            <Icon
-              name="MagnifyingGlass"
-              size="sm"
-              className={styles.searchIcon}
-              decorative
-            />
-            <input
-              type="text"
-              placeholder="Search icons... (e.g., 'heart', 'arrow', 'user')"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className={styles.searchInput}
-              aria-label="Search icons"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery("")}
-                className={styles.clearButton}
-                aria-label="Clear search"
-                type="button"
-              >
-                <Icon name="X" size="xs" decorative />
-              </button>
-            )}
-          </div>
-          <div className={styles.resultCount}>
-            {filteredIcons.length}{" "}
-            {filteredIcons.length === 1 ? "icon" : "icons"}
-          </div>
-        </div>
-
-        <div className={styles.iconGrid}>
-          {filteredIcons.map((iconName) => (
-            <IconCard key={iconName} name={iconName} onCopy={handleCopy} />
+    <li className={styles.tileItem}>
+      <button
+        type="button"
+        className={styles.tile}
+        onClick={copy}
+        aria-label={`Copy ${name}${registered ? ", registered" : ""}`}
+      >
+        <span className={styles.tileGlyph}>
+          {PhosphorComponent ? <PhosphorComponent size={28} weight="regular" aria-hidden /> : null}
+        </span>
+        <span className={styles.tileName}>
+          {/* Break long names only between their words: GlobeHemisphere|East. */}
+          {name.split(/(?=[A-Z])/).map((part, index) => (
+            <React.Fragment key={index}>
+              {index > 0 ? <wbr /> : null}
+              {part}
+            </React.Fragment>
           ))}
-        </div>
+        </span>
+        {registered ? <span className={styles.tileMark} aria-hidden="true" /> : null}
+      </button>
+    </li>
+  );
+};
 
-        {filteredIcons.length === 0 && (
-          <div className={styles.emptyState}>
-            <Icon name="MagnifyingGlass" size="2xl" decorative />
-            <p>No icons found matching "{searchQuery}"</p>
-            <button
-              onClick={() => setSearchQuery("")}
-              className={styles.resetButton}
-              type="button"
-            >
-              Clear search
-            </button>
-          </div>
-        )}
-      </section>
+const IconBrowserContent = () => {
+  const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState<IconFilter>("all");
+  const [copied, setCopied] = useState<string | null>(null);
 
-      {showToast && copiedIcon && (
-        <Toast
-          message={`Copied "${copiedIcon}" to clipboard`}
-          open={showToast}
-          onClose={() => setShowToast(false)}
+  const icons = useMemo(() => {
+    const needle = query.trim().toLowerCase();
+    return BROWSABLE_ICON_NAMES.filter(
+      (name) =>
+        (filter === "all" || REGISTERED.has(name)) &&
+        (!needle || name.toLowerCase().includes(needle)),
+    );
+  }, [filter, query]);
+
+  return (
+    <GuidePage
+      kicker="Reference"
+      title="Icon browser"
+      lede="Every Phosphor icon. Select one to copy its name; a dot marks the icons @dt/Icon can render without adding them to the registry first."
+    >
+      <div className={styles.toolbar}>
+        <TextInput
+          label="Search icons"
+          type="search"
+          value={query}
+          onValueChange={(value) => setQuery(String(value))}
+          clearable
         />
+        <SegmentedControl
+          ariaLabel="Which icons"
+          value={filter}
+          onValueChange={(value) => setFilter(value as IconFilter)}
+          items={[
+            { value: "all", label: `All ${BROWSABLE_ICON_NAMES.length}` },
+            { value: "registered", label: `Registered ${REGISTERED.size}` },
+          ]}
+        />
+      </div>
+
+      <Text as="p" size="s" className={styles.count} aria-live="polite">
+        {icons.length} {icons.length === 1 ? "icon" : "icons"}
+      </Text>
+
+      {icons.length > 0 ? (
+        <ul className={styles.tiles}>
+          {icons.map((name) => (
+            <IconTile key={name} name={name} onCopy={setCopied} />
+          ))}
+        </ul>
+      ) : (
+        <Text as="p" size="m" className={styles.empty}>
+          No icon name contains “{query}”. Try a shorter word, such as arrow or user.
+        </Text>
       )}
-    </article>
+
+      {copied ? (
+        <Toast
+          message={`Copied ${copied}`}
+          open
+          tone="success"
+          duration={2000}
+          onClose={() => setCopied(null)}
+        />
+      ) : null}
+    </GuidePage>
   );
 };
 
@@ -1949,8 +1790,9 @@ const meta: Meta = {
   title: "Docs/Icons",
   parameters: {
     layout: "fullscreen",
+    wip: { disabled: true },
     vitest: {
-      skip: true, // Skip Vitest tests for this large documentation showcase (1952 lines, 1515 icons)
+      skip: true, // Large documentation showcase (1515 icons); no behaviour to unit test.
     },
   },
 };

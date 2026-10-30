@@ -1,0 +1,127 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideGaps, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import Code from "@dt/Code";
+
+<Meta title="Overview/Theming" />
+
+<GuidePage
+  kicker="Foundations"
+  title="Theming"
+  lede="Four themes share one set of token names. A theme only changes values, so a component styled with tokens works in every theme without knowing which one is active."
+>
+
+## The themes
+
+<GuideTable
+  caption="Production themes"
+  columns={["Theme", "Value", "Class on html", "For"]}
+  rows={[
+    ["Light", <Code size="inherit">light</Code>, "None (the :root values)", "The default for every visitor without a saved choice or a dark system setting."],
+    ["Dark", <Code size="inherit">dark</Code>, <Code size="inherit">.themeDark</Code>, "Visitors who choose it, or whose system asks for dark."],
+    ["High contrast black", <Code size="inherit">hcb</Code>, <Code size="inherit">.themeHCB</Code>, "Maximum contrast on black, with wider focus rings."],
+    ["High contrast white", <Code size="inherit">hcw</Code>, <Code size="inherit">.themeHCW</Code>, "Maximum contrast on white, with wider focus rings."],
+  ]}
+/>
+
+Two system settings are honoured on top of the active theme. Under `forced-colors: active` the tokens hand over to system colours such as Canvas and CanvasText. Under `prefers-contrast: more` the text tokens darken in light mode and lighten in dark mode.
+
+## How the active theme is chosen
+
+<GuideSteps
+  steps={[
+    { title: "A saved choice", body: "The theme the visitor picked last, read from localStorage (theme) or, if storage is blocked, from the dt_theme cookie." },
+    { title: "The system setting", body: "Without a saved choice, prefers-color-scheme decides between light and dark, and the page follows it if the setting changes." },
+    { title: "Light", body: "The fallback when neither is available, and what the server renders." },
+  ]}
+/>
+
+`ThemeProvider` applies the result as a class and a `data-theme` attribute on both `html` and `body`, and sets `color-scheme` so form controls and scrollbars match.
+
+## Using it
+
+Wrap the app once, at the root:
+
+```tsx
+import { ThemeProvider } from "@dt/ThemeProvider";
+
+export function App({ children }) {
+  return <ThemeProvider>{children}</ThemeProvider>;
+}
+```
+
+Read or change the theme anywhere below it:
+
+```tsx
+import { useTheme } from "@dt/ThemeProvider";
+
+function ThemeMenu() {
+  const { theme, setTheme, toggleTheme, isExplicitChoice } = useTheme();
+  return (
+    <button onClick={() => setTheme("hcb")}>
+      High contrast ({theme})
+    </button>
+  );
+}
+```
+
+<GuideTable
+  caption="useTheme return value"
+  columns={["Field", "What it does"]}
+  rows={[
+    [<Code size="inherit">theme</Code>, "The active theme: light, dark, hcb or hcw."],
+    [<Code size="inherit">setTheme(theme)</Code>, "Switches theme and saves it as the visitor's choice."],
+    [<Code size="inherit">toggleTheme()</Code>, "Moves to the next theme in the order light, dark, hcb, hcw."],
+    [<Code size="inherit">systemPreference</Code>, "What the operating system asks for: light or dark."],
+    [<Code size="inherit">isExplicitChoice</Code>, "Whether the visitor has picked a theme, which then overrides the system setting."],
+  ]}
+/>
+
+Pass `forcedTheme` to pin a subtree, for example an embed that must stay light whatever the host page does.
+
+## Writing theme-aware CSS
+
+Use semantic tokens and let the theme do the rest. Reach for a theme class only for something a token cannot express, and add the token instead if the need repeats.
+
+```css
+/* Card.module.css */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text);
+}
+```
+
+Never branch on the theme in TypeScript to pick a colour. If a component needs a different picture or icon per theme, that is the one case for `useTheme`.
+
+## In Storybook
+
+The Theme menu in the toolbar switches every story and docs page, using the same classes as the site. Check a component in all four themes before you change its status.
+
+## Brand layers
+
+A brand is another override layer over the same names, like a theme. Write a brand file that re-points semantic tokens:
+
+```json
+{
+  "name": "acme",
+  "selector": "[data-brand=\"acme\"]",
+  "tokens": { "--color-primary": "#5b21b6", "--color-info": "#0ea5e9" }
+}
+```
+
+```bash
+npm run generate:theme scripts/design-system/themes/acme.brand.json
+```
+
+The script rejects any token that is not in the catalog and writes a scoped block to `foundations/dist/themes/acme.css`. Load it and set `data-brand="acme"` on a subtree; the theme overrides still apply on top. The acme brand ships as the worked example.
+
+## Known gaps
+
+<GuideGaps
+  items={[
+    "The theme is applied after hydration and there is no CSS fallback for a saved dark choice, so a returning dark-theme visitor can see light for a moment on first paint.",
+    "High-contrast themes are only reachable through a choice. There is no system setting that selects them automatically.",
+  ]}
+/>
+
+</GuidePage>

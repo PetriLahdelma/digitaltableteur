@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { catalogFigures } from '../../../.storybook/blocks/guide/guideData';
+
+<Meta title="Overview/Principles" />
+
+<GuidePage
+  kicker="Overview"
+  title="Principles"
+  lede="Six rules decide what goes into the system and how it is built. When two of them pull against each other, the one higher on the list wins."
+>
+
+<GuideSteps
+  steps={[
+    {
+      title: "Production is the source of truth",
+      body: "Storybook documents what ships. Tokens come from the file the site loads and components from the same packages the site imports. Nothing exists only in Storybook.",
+    },
+    {
+      title: "Evidence over intent",
+      body: "A status is earned with evidence committed next to the component: tests, accessibility snapshots, a review note. A gate that fails the build replaces a rule that asks people to remember.",
+    },
+    {
+      title: "Accessible by default",
+      body: "WCAG 2.2 AA is the floor. Every component works with a keyboard, under forced colours and with reduced motion before it is called stable.",
+    },
+    {
+      title: "Tokens, not values",
+      body: "Colour, type, space, radius and motion come from tokens. A raw value in a stylesheet is either a missing token or a mistake.",
+    },
+    {
+      title: "Every theme, every language",
+      body: "Light, dark and both high-contrast themes, in English, Finnish and Swedish. A component that works in one combination and breaks in another is not finished.",
+    },
+    {
+      title: "Reuse before you build",
+      body: "Look for an existing component first. A new one has to do a job no existing component can, and a wrapper that adds nothing is removed.",
+    },
+  ]}
+/>
+
+## Status
+
+Every component carries one of four statuses in its contract. The status says how much you can rely on it, and each step up is gated.
+
+<GuideTable
+  caption="Component statuses"
+  columns={["Status", "Count", "What it means", "To get here"]}
+  rows={[
+    ["Alpha", catalogFigures.status.alpha, "Works, but the API may still change. Fine for a prototype, risky for a key flow.", "A contract and stories."],
+    ["Beta", catalogFigures.status.beta, "The API is settled and documented. Small changes can still happen.", "A spec, usage docs and the contract fields agents read."],
+    ["Stable", catalogFigures.status.stable, "Safe to build on. Breaking changes go through deprecation.", "Accessibility snapshots, a production consumer and a dated review."],
+    ["Deprecated", catalogFigures.status.deprecated, "Do not use. The contract names the replacement.", "No consumers left, and a reason that names the successor."],
+  ]}
+/>
+
+## Tiers
+
+The tier describes size, not importance. It decides where a component sits in the folder tree and what it may depend on: a tier only builds on the tiers above it in this table.
+
+<GuideTable
+  caption="Component tiers"
+  columns={["Tier", "What it is", "Examples"]}
+  rows={[
+    ["Atom", "A single primitive with no other components inside.", "Button, Icon, Text, TextInput"],
+    ["Molecule", "A few atoms combined into one control or block.", "CheckboxGroup, Card, Select"],
+    ["Organism", "A complete, self-contained section.", "ContactForm, ChatWidget"],
+    ["Pattern", "A page region composed from organisms.", "SiteHeader, HomeHero"],
+    ["Template", "A page shell that patterns slot into.", "NextLayout"],
+  ]}
+/>
+
+## Grouping
+
+The sidebar groups components by what they are for (Actions, Forms, Feedback, Navigation and so on), never by tier. Someone looking for a loading indicator looks under Feedback, not under Atoms.
+
+</GuidePage>

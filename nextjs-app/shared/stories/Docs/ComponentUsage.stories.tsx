@@ -1,15 +1,20 @@
 import React, { useMemo, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import Card from "@dt/Card";
+import Code from "@dt/Code";
 import Select from "@dt/Select";
-import TextInput from "@dt/TextInput";
-import Title from "@dt/Title";
+import StatusDot from "@dt/StatusDot";
+import Table from "@dt/Table";
+import TableCell from "@dt/TableCell";
+import TableHeaderCell from "@dt/TableHeaderCell";
+import TableRow from "@dt/TableRow";
 import Text from "@dt/Text";
-import Badge from "@dt/Badge";
-import Icon from "@dt/Icon";
-import { IconButton } from "@dt/IconButton";
+import TextInput from "@dt/TextInput";
 import usageReport from "../../foundations/dist/component-usage.json";
-import styles from "./Documentation.module.css";
+import { StatusPill } from "../../../../.storybook/blocks/StatusPill";
+import type { ComponentStatus } from "../../../../.storybook/blocks/StatusPill";
+import { GuideFacts, GuidePage } from "../../../../.storybook/blocks/guide/GuidePage";
+import { formatDate } from "../../../../.storybook/blocks/guide/guideData";
+import styles from "./ComponentUsage.module.css";
 
 type UsageRow = {
   name: string;
@@ -41,24 +46,13 @@ type SortKey =
   | "directImportCount"
   | "prodPageCount";
 
-type BadgeTone = "neutral" | "error" | "warning" | "success" | "info";
-
 const NUMERIC_SORT_KEYS: SortKey[] = [
   "exported",
   "directImportCount",
   "prodPageCount",
 ];
 
-const STATUS_TONE: Record<string, BadgeTone> = {
-  stable: "success",
-  beta: "info",
-  alpha: "warning",
-  deprecated: "error",
-};
-
-const statusLabel = (status: string | null) => status ?? "—";
-const statusTone = (status: string): BadgeTone =>
-  STATUS_TONE[status] ?? "neutral";
+const statusLabel = (status: string | null) => status ?? "none";
 
 const report = usageReport as {
   generatedAt: string;
@@ -90,24 +84,7 @@ const summary = report.summary ?? computeSummary();
 const KIND_OPTIONS = Array.from(new Set(rows.map((row) => row.kind))).sort();
 const STATUS_OPTIONS = Array.from(
   new Set(rows.map((row) => statusLabel(row.status))),
-).sort((a, b) => (a === "—" ? 1 : b === "—" ? -1 : a.localeCompare(b)));
-
-const StatCard = ({
-  figure,
-  children,
-}: {
-  figure: React.ReactNode;
-  children: React.ReactNode;
-}) => (
-  <Card variant="default" padding="md">
-    <Title size="m" className={styles.statFigure}>
-      {figure}
-    </Title>
-    <Text size="s" className={styles.statLabel}>
-      {children}
-    </Text>
-  </Card>
-);
+).sort((a, b) => (a === "none" ? 1 : b === "none" ? -1 : a.localeCompare(b)));
 
 const ComponentUsageContent = () => {
   const [query, setQuery] = useState("");
@@ -168,228 +145,170 @@ const ComponentUsageContent = () => {
     setSortDir(NUMERIC_SORT_KEYS.includes(key) ? "desc" : "asc");
   };
 
-  // Literal Icon names so the icon-registry codegen (build:icons) discovers
-  // caret-up / caret-down / caret-up-down; the active column shows its
-  // direction, idle columns show the neutral up-down affordance.
-  const sortGlyph = (state: "asc" | "desc" | "none") => {
-    if (state === "asc") return <Icon name="caret-up" size="xs" />;
-    if (state === "desc") return <Icon name="caret-down" size="xs" />;
-    return <Icon name="caret-up-down" size="xs" />;
-  };
-
-  const sortableHeader = (label: string, key: SortKey) => {
-    const active = sortKey === key;
-    return (
-      <th
-        aria-sort={
-          active ? (sortDir === "asc" ? "ascending" : "descending") : "none"
-        }
-      >
-        <span className={styles.sortHeaderCell}>
-          {label}
-          <IconButton
-            icon={sortGlyph(active ? sortDir : "none")}
-            label={`Sort by ${label}`}
-            title={`Sort by ${label}`}
-            variant="tertiary"
-            size="sm"
-            onClick={() => toggleSort(key)}
-          />
-        </span>
-      </th>
-    );
-  };
+  const header = (label: string, key: SortKey, align?: "end") => (
+    <TableHeaderCell
+      scope="col"
+      align={align}
+      sortable
+      sortDirection={
+        sortKey === key ? (sortDir === "asc" ? "ascending" : "descending") : "none"
+      }
+      onSort={() => toggleSort(key)}
+    >
+      {label}
+    </TableHeaderCell>
+  );
 
   return (
-    <article className={styles.wrapper}>
-      <header className={styles.header}>
-        <h1>Component Usage</h1>
-        <p className={styles.lead}>
-          Real adoption data from the production codebase, measured over the{" "}
-          <strong>{summary.governedCount} governed</strong> (contract-bearing)
-          components rather than the raw catalog, which also lists non-component
-          dirs and bespoke one-off page components. Two honest consumption
-          signals: components this repo imports directly from the npm barrel
-          (strict dogfooding), and components that ship in the package and reach
-          a production page (transitive).
-        </p>
-      </header>
+    <GuidePage
+      kicker="Reference"
+      title="Component usage"
+      lede={
+        <>
+          How much of the system the site really uses, measured over the{" "}
+          {summary.governedCount} governed components. Direct imports count
+          the site importing from the npm package; production pages count
+          components that reach a live page through anything.
+        </>
+      }
+    >
+      <GuideFacts
+        facts={[
+          {
+            value: summary.strictConsumedCount,
+            of: summary.governedCount,
+            label: "Imported from @digitaltableteur/react",
+          },
+          {
+            value: summary.transitiveConsumedCount,
+            of: summary.governedCount,
+            label: "Rendered on a production page",
+          },
+          {
+            value: summary.exportedCount,
+            of: summary.governedCount,
+            label: "Exported from the package",
+          },
+          {
+            value: summary.catalogCount,
+            label: "Catalog entries",
+            note: `Report from ${formatDate(generatedAt)}`,
+          },
+        ]}
+      />
 
-      <section className={styles.section}>
-        <div className={styles.principleGrid}>
-          <StatCard figure={summary.governedCount}>
-            Governed components{" "}
-            <span className={styles.subtle}>
-              (of {summary.catalogCount} catalog entries)
-            </span>
-          </StatCard>
-          <StatCard
-            figure={`${summary.transitiveConsumedCount}/${summary.governedCount}`}
-          >
-            Shipped in <code>@digitaltableteur/react</code> and rendered in
-            production (transitive)
-          </StatCard>
-          <StatCard
-            figure={`${summary.strictConsumedCount}/${summary.governedCount}`}
-          >
-            Directly imported from <code>@digitaltableteur/react</code> as a
-            runtime value (strict dogfooding)
-          </StatCard>
-          <StatCard figure={summary.exportedCount}>
-            Exported from the package barrel
-          </StatCard>
-          <StatCard figure={new Date(generatedAt).toLocaleDateString("en-GB")}>
-            Generated{" "}
-            {new Date(generatedAt).toLocaleTimeString("en-GB", {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
-          </StatCard>
-          <StatCard figure="Regenerate">
-            <code>npm run report:component-usage</code>
-          </StatCard>
-        </div>
-      </section>
+      <div className={styles.controls}>
+        <TextInput
+          label="Search"
+          type="search"
+          clearable
+          placeholder="Component name or importer path"
+          value={query}
+          onValueChange={(value) => setQuery(String(value))}
+        />
+        <Select
+          label="Kind"
+          value={kind}
+          onValueChange={setKind}
+          options={[
+            { value: "all", label: "All kinds" },
+            ...KIND_OPTIONS.map((option) => ({ value: option, label: option })),
+          ]}
+        />
+        <Select
+          label="Status"
+          value={status}
+          onValueChange={setStatus}
+          options={[
+            { value: "all", label: "All statuses" },
+            ...STATUS_OPTIONS.map((option) => ({ value: option, label: option })),
+          ]}
+        />
+        <Select
+          label="In package"
+          value={inPackage}
+          onValueChange={(value) => setInPackage(value as "all" | "in" | "out")}
+          options={[
+            { value: "all", label: "Any" },
+            { value: "in", label: "Exported" },
+            { value: "out", label: "Not exported" },
+          ]}
+        />
+      </div>
 
-      <section className={styles.section}>
-        <div className={styles.usageControls}>
-          <div className={styles.usageControlGrow}>
-            <TextInput
-              label="Search"
-              type="search"
-              clearable
-              placeholder="Component name or importer path…"
-              value={query}
-              onValueChange={(value) => setQuery(String(value))}
-            />
-          </div>
-          <div className={styles.usageControl}>
-            <Select
-              label="Kind"
-              value={kind}
-              onValueChange={setKind}
-              options={[
-                { value: "all", label: "All kinds" },
-                ...KIND_OPTIONS.map((option) => ({
-                  value: option,
-                  label: option,
-                })),
-              ]}
-            />
-          </div>
-          <div className={styles.usageControl}>
-            <Select
-              label="Status"
-              value={status}
-              onValueChange={setStatus}
-              options={[
-                { value: "all", label: "All statuses" },
-                ...STATUS_OPTIONS.map((option) => ({
-                  value: option,
-                  label: option,
-                })),
-              ]}
-            />
-          </div>
-          <div className={styles.usageControl}>
-            <Select
-              label="In package"
-              value={inPackage}
-              onValueChange={(value) =>
-                setInPackage(value as "all" | "in" | "out")
-              }
-              options={[
-                { value: "all", label: "Any" },
-                { value: "in", label: "Exported" },
-                { value: "out", label: "Not exported" },
-              ]}
-            />
-          </div>
-        </div>
-        <p className={styles.resultCount}>
-          {sorted.length} of {rows.length} components
-        </p>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              {sortableHeader("Component", "name")}
-              {sortableHeader("Kind", "kind")}
-              {sortableHeader("Status", "status")}
-              {sortableHeader("In package", "exported")}
-              {sortableHeader("Direct imports", "directImportCount")}
-              {sortableHeader("Prod pages", "prodPageCount")}
-              <th>Importers</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sorted.map((row) => (
-              <tr key={`${row.kind}-${row.name}`}>
-                <td>
-                  <code>{row.name}</code>
-                </td>
-                <td>{row.kind}</td>
-                <td>
-                  {row.status ? (
-                    <Badge
-                      variant="primary"
-                      size="sm"
-                      tone={statusTone(row.status)}
-                    >
-                      {row.status}
-                    </Badge>
-                  ) : (
-                    "—"
-                  )}
-                </td>
-                <td>
-                  {row.exported ? (
-                    <Icon
-                      name="check-circle"
-                      color="var(--color-success)"
-                      ariaLabel="In package"
-                    />
-                  ) : (
-                    <Icon
-                      name="x-circle"
-                      color="var(--color-error)"
-                      ariaLabel="Not in package"
-                    />
-                  )}
-                </td>
-                <td>{row.directImportCount}</td>
-                <td>{row.prodPageCount}</td>
-                <td>
-                  {row.directImporters.length > 0 ? (
-                    <details>
-                      <summary>
-                        {row.directImporters.length} file
-                        {row.directImporters.length === 1 ? "" : "s"}
-                      </summary>
-                      <ul>
-                        {row.directImporters.map((path) => (
-                          <li key={path}>
-                            <code>{path}</code>
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  ) : (
-                    "—"
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-    </article>
+      <Text as="p" size="s" className={styles.count} aria-live="polite">
+        {sorted.length} of {rows.length} components
+      </Text>
+
+      <Table caption="Component usage" hideCaption size="md" stickyHeader>
+        <thead>
+          <TableRow>
+            {header("Component", "name")}
+            {header("Kind", "kind")}
+            {header("Status", "status")}
+            {header("In package", "exported")}
+            {header("Direct imports", "directImportCount", "end")}
+            {header("Prod pages", "prodPageCount", "end")}
+            <TableHeaderCell scope="col">Importers</TableHeaderCell>
+          </TableRow>
+        </thead>
+        <tbody>
+          {sorted.map((row) => (
+            <TableRow key={`${row.kind}-${row.name}`}>
+              <TableHeaderCell scope="row">
+                <Code size="inherit">{row.name}</Code>
+              </TableHeaderCell>
+              <TableCell>{row.kind}</TableCell>
+              <TableCell>
+                {row.status ? (
+                  <StatusPill status={row.status as ComponentStatus} />
+                ) : (
+                  <span className={styles.none}>None</span>
+                )}
+              </TableCell>
+              <TableCell>
+                {row.exported ? (
+                  <StatusDot tone="success" size="md">
+                    Exported
+                  </StatusDot>
+                ) : (
+                  <span className={styles.none}>No</span>
+                )}
+              </TableCell>
+              <TableCell numeric>{row.directImportCount}</TableCell>
+              <TableCell numeric>{row.prodPageCount}</TableCell>
+              <TableCell>
+                {row.directImporters.length > 0 ? (
+                  <details className={styles.importers}>
+                    <summary>
+                      {row.directImporters.length}{" "}
+                      {row.directImporters.length === 1 ? "file" : "files"}
+                    </summary>
+                    <ul>
+                      {row.directImporters.map((path) => (
+                        <li key={path}>
+                          <Code size="sm">{path}</Code>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                ) : (
+                  <span className={styles.none}>None</span>
+                )}
+              </TableCell>
+            </TableRow>
+          ))}
+        </tbody>
+      </Table>
+    </GuidePage>
   );
 };
 
 const meta: Meta = {
-  title: "Docs/ComponentUsage",
+  title: "Docs/Component usage",
   parameters: {
     layout: "fullscreen",
+    wip: { disabled: true },
     vitest: {
       skip: true, // Documentation showcase; data-driven, no behavior to test.
     },

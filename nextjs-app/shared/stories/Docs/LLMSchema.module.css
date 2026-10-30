@@ -1,0 +1,30 @@
+/* LLM schema reference: diagrams get room around them; example headings
+   take the guide h3 spacing. */
+
+.diagram {
+  margin-block: var(--space-layout-24) var(--space-layout-32);
+}
+
+/* DS Mermaid takes hex colours (pink by default) through inline custom
+   properties, so its diagrams cannot follow the theme. Re-point them at
+   tokens here; !important is the only way past an inline declaration. */
+/* stylelint-disable declaration-no-important -- overrides an inline style */
+
+.diagram [style*="--mermaid-color"] {
+  --mermaid-color: var(--color-text) !important;
+  --mermaid-node-bg: var(--color-surface) !important;
+  --mermaid-line-color: var(--color-border) !important;
+}
+/* stylelint-enable declaration-no-important */
+
+/* Tall top-to-bottom charts scale up to the full column otherwise. */
+
+.diagram.compact svg {
+  min-inline-size: 0;
+  max-inline-size: calc(var(--space-layout-160) * 2);
+}
+
+.exampleTitle.exampleTitle {
+  margin-block: var(--space-layout-32) var(--space-internal-12);
+  font-weight: 500;
+}

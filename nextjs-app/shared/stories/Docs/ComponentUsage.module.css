@@ -1,0 +1,45 @@
+/* Component usage reference: filters on one row, then the DS table. */
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(3, minmax(9rem, 1fr));
+  align-items: end;
+  gap: var(--space-internal-16);
+}
+
+.count {
+  margin-block: var(--space-internal-16) var(--space-internal-12);
+  color: var(--color-muted);
+}
+
+.none {
+  color: var(--color-muted);
+}
+
+.importers summary {
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.importers ul {
+  display: flex;
+  margin: var(--space-internal-8) 0 0;
+  padding: 0;
+  flex-direction: column;
+  gap: var(--space-internal-4);
+  list-style: none;
+}
+
+.importers li {
+  margin: 0;
+}
+
+@media (width <= 900px) {
+  .controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .controls > :first-child {
+    grid-column: 1 / -1;
+  }
+}

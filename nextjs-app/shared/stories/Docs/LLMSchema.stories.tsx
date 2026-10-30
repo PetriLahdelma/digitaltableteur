@@ -1,6 +1,17 @@
-import React, { useEffect, useId, useMemo, useState } from "react";
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import styles from "./Documentation.module.css";
+import Code from "@dt/Code";
+import CodeBlock from "@dt/CodeBlock";
+import Mermaid from "@dt/Mermaid";
+import Title from "@dt/Title";
+import {
+  GuideList,
+  GuidePage,
+  GuideSection,
+  GuideSteps,
+  GuideTable,
+} from "../../../../.storybook/blocks/guide/GuidePage";
+import styles from "./LLMSchema.module.css";
 import schemaTemplate from "../../../../docs/LLM_COMPONENT_SCHEMA_TEMPLATE.json";
 import accordionSchema from "../../components/Accordion/schema.json";
 
@@ -145,255 +156,169 @@ flowchart TD
   validate --> output[Final UI]
 `;
 
-let mermaidConfigured = false;
+const code = (value: string) => <Code size="inherit">{value}</Code>;
 
-const loadMermaid = async () => {
-  const { default: mermaid } = await import("mermaid");
-  if (!mermaidConfigured) {
-    mermaid.initialize({
-      startOnLoad: false,
-      securityLevel: "strict",
-      theme: "base",
-    });
-    mermaidConfigured = true;
-  }
-  return mermaid;
-};
+/** Long JSON stays scrollable inside its block instead of running for pages. */
+const JSON_MAX_HEIGHT = 420;
 
-type MermaidDiagramProps = { title?: string; code: string };
-
-const MermaidDiagram: React.FC<MermaidDiagramProps> = ({ title, code }) => {
-  const rawId = useId();
-  const renderId = useMemo(
-    () => `mermaid-${rawId.replace(/[:]/g, "")}`,
-    [rawId],
-  );
-  const containerId = `${renderId}-container`;
-  const [svg, setSvg] = useState("");
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    const render = async () => {
-      try {
-        const mermaid = await loadMermaid();
-        const result = await mermaid.render(renderId, code);
-        if (cancelled) return;
-        setSvg(result.svg);
-        setError(null);
-        if (result.bindFunctions) {
-          requestAnimationFrame(() => {
-            const node = document.getElementById(containerId);
-            if (node) {
-              result.bindFunctions?.(node);
-            }
-          });
-        }
-      } catch (err) {
-        if (!cancelled) {
-          setSvg("");
-          setError(err instanceof Error ? err.message : String(err));
-        }
-      }
-    };
-
-    render();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [code, renderId, containerId]);
-
+function Diagram({
+  title,
+  chart,
+  description,
+  steps,
+  compact = false,
+}: {
+  title: string;
+  chart: string;
+  description: string;
+  steps: string[];
+  /** Cap the width of a tall top-to-bottom chart. */
+  compact?: boolean;
+}) {
   return (
-    <figure className={styles.mermaidBlock}>
-      {title ? (
-        <figcaption className={styles.mermaidTitle}>{title}</figcaption>
-      ) : null}
-      {svg ? (
-        <div
-          id={containerId}
-          className={styles.mermaid}
-          dangerouslySetInnerHTML={{ __html: svg }}
-        />
-      ) : (
-        <pre className={styles.code}>{code}</pre>
-      )}
-      {error ? (
-        <pre className={styles.code}>{`Mermaid render failed: ${error}`}</pre>
-      ) : null}
-    </figure>
+    <div className={compact ? `${styles.diagram} ${styles.compact}` : styles.diagram}>
+      <Mermaid
+        chart={chart}
+        title={title}
+        description={description}
+        accessibleDetails={
+          <ol>
+            {steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        }
+      />
+    </div>
   );
-};
+}
 
-const LLMSchemaDocsContent = () => {
-  return (
-    <article className={styles.wrapper}>
-      <header className={styles.header}>
-        <h1>LLM Component Schema</h1>
-        <p className={styles.lead}>
-          A schema is the blueprint that makes components programmable,
-          controllable, and AI-readable. Tokens are the DNA. Schema is the
-          skeleton. Generative rules are the brain.
-        </p>
-        <p className={styles.subtitle}>
-          Template: <code>{TEMPLATE_PATH}</code>
-        </p>
-      </header>
+const LLMSchemaDocsContent = () => (
+  <GuidePage
+    kicker="Reference"
+    title="LLM component schema"
+    lede={
+      <>
+        A schema is the blueprint that makes components programmable,
+        controllable and AI-readable. Tokens are the DNA, the schema is the
+        skeleton and generative rules are the brain. The template lives at{" "}
+        {code(TEMPLATE_PATH)}.
+      </>
+    }
+  >
+    <GuideSection
+      title="Why a schema exists"
+      intro="Without a schema, AI can only render pixels. With one, it can reason about behaviour, constraints and intent. That is the difference between a static design and a programmable system."
+    >
+      <GuideList
+        items={[
+          "It defines intent and structure, not just appearance.",
+          "It standardises behaviour across variants and contexts.",
+          "It gives AI a single source of truth for constraints.",
+          "It makes automated validation and consistency checks possible.",
+        ]}
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>Why a schema exists</h2>
-        <p>
-          Without schema, AI can only render pixels. With schema, AI can reason
-          about behavior, constraints, and intent. That is the difference
-          between a static design and a programmable system.
-        </p>
-        <ul>
-          <li>Schema defines intent and structure, not just appearance.</li>
-          <li>It standardizes behavior across variants and contexts.</li>
-          <li>It gives AI a single source of truth for constraints.</li>
-          <li>It enables automated validation and consistency checks.</li>
-        </ul>
-      </section>
+    <GuideSection
+      title="The AI design system stack"
+      intro="The schema sits between tokens (what is possible) and rules (how it should adapt). An interpreter then renders the UI and validates it."
+    >
+      <GuideSteps
+        steps={[
+          { title: "Tokens, the DNA", body: "Colour, typography, spacing, radii, elevation and motion." },
+          { title: "Schema, the skeleton", body: "Structure, behaviour, accessibility and constraints." },
+          { title: "Rules, the brain", body: "Context-aware adaptation and personalisation." },
+          { title: "Interpreter", body: "Applies the rules, validates the constraints and renders the UI." },
+        ]}
+      />
+      <Diagram
+        title="AI design system stack"
+        chart={stackDiagram}
+        description="Token layers feed the schema library, which feeds the generative rules engine and an AI interpreter that renders and validates the UI."
+        steps={[
+          "Token layers (base, brand, mode, context) feed the schema library.",
+          "The schema library (components, patterns, layouts) feeds the generative rules engine and validation.",
+          "Context signals (user, device, intent) also feed the rules engine.",
+          "The rules engine drives the AI interpreter.",
+          "The interpreter produces the UI output and runs validation for constraints and accessibility.",
+        ]}
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>AI Design System Stack</h2>
-        <p>
-          The schema sits between tokens (what is possible) and rules (how it
-          should adapt). The interpreter then renders and validates UI.
-        </p>
-        <MermaidDiagram title="AI Design System Stack" code={stackDiagram} />
-        <div className={styles.principleGrid}>
-          <div className={styles.principle}>
-            <h3>Tokens (DNA)</h3>
-            <p>Colors, typography, spacing, radii, elevation, motion.</p>
-          </div>
-          <div className={styles.principle}>
-            <h3>Schema (Skeleton)</h3>
-            <p>Structure, behavior, accessibility, and constraints.</p>
-          </div>
-          <div className={styles.principle}>
-            <h3>Rules (Brain)</h3>
-            <p>Context-aware adaptation and personalization.</p>
-          </div>
-          <div className={styles.principle}>
-            <h3>Interpreter</h3>
-            <p>Applies rules, validates constraints, renders UI.</p>
-          </div>
-        </div>
-      </section>
+    <GuideSection
+      title="Schema anatomy"
+      intro="Every component schema describes the same major parts."
+    >
+      <GuideTable
+        caption="Schema sections"
+        columns={["Section", "Describes"]}
+        rows={[
+          ["Behavior map", "What the component does by default."],
+          ["Interaction logic", "Triggers, effects and feedback."],
+          ["States and transitions", "How it changes over time."],
+          ["Layout logic", "Direction, spacing and sizing rules."],
+          ["Accessibility rules", "Roles, ARIA relationships and keyboard support."],
+          ["Constraints", "Nesting limits and content rules."],
+          ["Generative rules", "Context-driven token overrides."],
+        ]}
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>Schema anatomy (the blueprint)</h2>
-        <p>Every component schema describes the same major categories.</p>
-        <MermaidDiagram
-          title="Schema Blueprint"
-          code={schemaBlueprintDiagram}
-        />
-        <ul>
-          <li>
-            <strong>Behavior map</strong>: what the component does, by default.
-          </li>
-          <li>
-            <strong>Interaction logic</strong>: triggers, effects, feedback.
-          </li>
-          <li>
-            <strong>States and transitions</strong>: how it changes over time.
-          </li>
-          <li>
-            <strong>Layout logic</strong>: direction, spacing, sizing rules.
-          </li>
-          <li>
-            <strong>Accessibility rules</strong>: roles, aria, keyboard support.
-          </li>
-          <li>
-            <strong>Constraints</strong>: nesting limits and content rules.
-          </li>
-          <li>
-            <strong>Generative rules</strong>: context-driven token overrides.
-          </li>
-        </ul>
-      </section>
+    <GuideSection
+      title="Token layers"
+      intro="Tokens are layered so AI can reason about intent and context, not only values."
+    >
+      <GuideTable
+        caption="Token layers"
+        columns={["Layer", "Purpose", "Examples"]}
+        rows={[
+          ["Base", "Raw primitives and scale", <>{code("token.color.gray.900")} {code("token.space.16")}</>],
+          ["Brand", "Identity and voice", <>{code("brand.accent")} {code("brand.display")}</>],
+          ["Mode", "Theme-specific overrides", <>{code("mode.dark.surface")} {code("mode.light.text")}</>],
+          ["Contextual", "Emotion, season and accessibility", <>{code("context.a11y.highContrast")} {code("context.emotion.calm")}</>],
+        ]}
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>Token layers (Atomic DNA)</h2>
-        <p>Tokens are layered so AI can reason about intent and context.</p>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Layer</th>
-              <th>Purpose</th>
-              <th>Examples</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Base</td>
-              <td>Raw primitives and scale</td>
-              <td>
-                <code>token.color.gray.900</code>, <code>token.space.16</code>
-              </td>
-            </tr>
-            <tr>
-              <td>Brand</td>
-              <td>Identity and voice</td>
-              <td>
-                <code>brand.accent</code>, <code>brand.display</code>
-              </td>
-            </tr>
-            <tr>
-              <td>Mode</td>
-              <td>Theme-specific overrides</td>
-              <td>
-                <code>mode.dark.surface</code>, <code>mode.light.text</code>
-              </td>
-            </tr>
-            <tr>
-              <td>Contextual</td>
-              <td>Emotion, season, accessibility</td>
-              <td>
-                <code>context.a11y.highContrast</code>,{" "}
-                <code>context.emotion.calm</code>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section className={styles.section}>
-        <h2>Behavior map and interaction logic</h2>
-        <p>
-          The behavior map describes purpose and defaults. Interaction logic
-          describes triggers and feedback.
-        </p>
-        <pre className={styles.code}>
-          {`"behavior": {
+    <GuideSection
+      title="Behaviour and interaction"
+      intro="The behaviour map describes purpose and defaults. Interaction logic describes triggers and feedback."
+    >
+      <CodeBlock
+        language="json"
+        copyable
+        code={`"behavior": {
   "map": "Clicking a trigger opens a panel and closes others.",
   "stateModel": "uncontrolled",
   "rendering": "Panels render only when open.",
   "defaultState": "all closed"
 },
 "interaction": {
-  "logic": [
-    { "trigger": "onClick", "effect": "toggle panel" }
-  ],
-  "feedback": {
-    "hover": "highlight trigger",
-    "focus": "focus ring",
-    "active": "press feedback"
-  }
+  "logic": [{ "trigger": "onClick", "effect": "toggle panel" }],
+  "feedback": { "hover": "highlight trigger", "focus": "focus ring", "active": "press feedback" }
 }`}
-        </pre>
-      </section>
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>States, transitions, and constraints</h2>
-        <p>
-          States describe the finite set of conditions. Transitions describe how
-          the component moves between them. Constraints define what is allowed.
-        </p>
-        <MermaidDiagram title="State Transitions" code={stateDiagram} />
-        <pre className={styles.code}>
-          {`"states": {
+    <GuideSection
+      title="States, transitions and constraints"
+      intro="States are the finite set of conditions, transitions are how the component moves between them and constraints say what is allowed."
+    >
+      <Diagram
+        title="State transitions"
+        chart={stateDiagram}
+        description="A pointer moves the component between idle, hovered and active; the disabled flag moves it in and out of disabled."
+        steps={[
+          "Idle to hovered on pointer enter, and back on pointer leave.",
+          "Idle to active on pointer down, and back on pointer up.",
+          "Idle to disabled when disabled becomes true, and back when it becomes false.",
+        ]}
+      />
+      <CodeBlock
+        language="json"
+        copyable
+        code={`"states": {
   "default": "Idle",
   "hover": "Pointer hover",
   "focus": "Keyboard focus",
@@ -401,50 +326,48 @@ const LLMSchemaDocsContent = () => {
   "disabled": "Non-interactive"
 },
 "constraints": {
-  "nesting": [
-    "Card cannot contain another Card.",
-    "Button cannot contain form elements."
-  ],
-  "content": [
-    "Label must be <= 2 lines in compact mode."
-  ]
+  "nesting": ["Card cannot contain another Card.", "Button cannot contain form elements."],
+  "content": ["Label must be <= 2 lines in compact mode."]
 }`}
-        </pre>
-      </section>
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>Accessibility mapping</h2>
-        <p>
-          Accessibility rules make semantics explicit and enforceable. Use
-          roles, aria relationships, and keyboard behavior to define expected
-          interaction.
-        </p>
-        <pre className={styles.code}>
-          {`"accessibility": {
-  "roles": {
-    "container": "div",
-    "primary": "button",
-    "panel": "region"
-  },
-  "aria": {
-    "expanded": "true when open",
-    "controls": "panel-id",
-    "labelledBy": "trigger-id"
-  },
+    <GuideSection
+      title="Accessibility mapping"
+      intro="Accessibility rules make semantics explicit and enforceable: roles, ARIA relationships and keyboard behaviour define the expected interaction."
+    >
+      <CodeBlock
+        language="json"
+        copyable
+        code={`"accessibility": {
+  "roles": { "container": "div", "primary": "button", "panel": "region" },
+  "aria": { "expanded": "true when open", "controls": "panel-id", "labelledBy": "trigger-id" },
   "keyboard": "Enter/Space toggles panel"
 }`}
-        </pre>
-      </section>
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>Generative rules</h2>
-        <p>
-          Rules transform context into token overrides. They are the bridge
-          between intent and appearance.
-        </p>
-        <MermaidDiagram title="Generative Rule Pipeline" code={rulesDiagram} />
-        <pre className={styles.code}>
-          {`"generativeRules": {
+    <GuideSection
+      title="Generative rules"
+      intro="Rules turn context into token overrides. They are the bridge between intent and appearance."
+    >
+      <Diagram
+        title="Generative rule pipeline"
+        compact
+        chart={rulesDiagram}
+        description="Context inputs are matched to rules, which produce token overrides; the result is rendered and validated before it becomes the final UI."
+        steps={[
+          "Context inputs go to rule matching.",
+          "Matching rules produce token overrides.",
+          "The overrides are rendered.",
+          "The render is validated for constraints and accessibility.",
+          "The validated render is the final UI.",
+        ]}
+      />
+      <CodeBlock
+        language="json"
+        copyable
+        code={`"generativeRules": {
   "contextInputs": ["variant", "mode", "density", "contentType"],
   "rules": [
     { "if": { "variant": "primary" }, "then": { "tokens": { "color": "brand.accent" } } },
@@ -454,60 +377,67 @@ const LLMSchemaDocsContent = () => {
     { "if": { "accessibility": "dyslexic" }, "then": { "tokens": { "fontWeight": "semibold" } } }
   ]
 }`}
-        </pre>
-      </section>
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>Example: Button schema (excerpt)</h2>
-        <pre className={styles.code}>{buttonExampleJson}</pre>
-      </section>
+    <GuideSection title="Examples">
+      <Title as="h3" size="xxs" lineHeight="snug" className={styles.exampleTitle}>
+        Button schema, excerpt
+      </Title>
+      <CodeBlock language="json" copyable maxHeight={JSON_MAX_HEIGHT} code={buttonExampleJson} />
+      <Title as="h3" size="xxs" lineHeight="snug" className={styles.exampleTitle}>
+        Accordion schema, in use
+      </Title>
+      <CodeBlock
+        language="json"
+        copyable
+        filename={ACCORDION_SCHEMA_PATH}
+        maxHeight={JSON_MAX_HEIGHT}
+        code={accordionJson}
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>Example: Accordion schema (real)</h2>
-        <p>
-          This is the live schema used by the Accordion component:{" "}
-          <code>{ACCORDION_SCHEMA_PATH}</code>.
-        </p>
-        <pre className={styles.code}>{accordionJson}</pre>
-      </section>
+    <GuideSection
+      title="The template"
+      intro="Start every new schema from the template, and keep it at a stable path so LLMs can load it directly."
+    >
+      <CodeBlock
+        language="json"
+        copyable
+        filename={TEMPLATE_PATH}
+        maxHeight={JSON_MAX_HEIGHT}
+        code={templateJson}
+      />
+    </GuideSection>
 
-      <section className={styles.section}>
-        <h2>Template file</h2>
-        <p>
-          Use the template as the starting point for any new component. Keep it
-          in a stable location so LLMs can load it directly.
-        </p>
-        <pre className={styles.code}>{templateJson}</pre>
-      </section>
+    <GuideSection title="Adding a schema to a component">
+      <GuideList
+        ordered
+        items={[
+          <>Create {code("schema.json")} in the component folder.</>,
+          "Describe anatomy, layout, behaviour and constraints.",
+          "Link the token layers and define the generative rules.",
+          "Pass the schema to the component's stories.",
+        ]}
+      />
+      <CodeBlock
+        language="tsx"
+        copyable
+        code={`import schema from "./schema.json";
 
-      <section className={styles.section}>
-        <h2>Implementation checklist</h2>
-        <ol>
-          <li>
-            Create <code>schema.json</code> in the component folder.
-          </li>
-          <li>Describe anatomy, layout, behavior, and constraints.</li>
-          <li>Link token layers and define generative rules.</li>
-          <li>Import the schema into the Storybook docs page.</li>
-        </ol>
-        <pre className={styles.code}>
-          {`import schema from "./schema.json";
-
-const meta = { title: "Atoms/MyComponent",
+const meta = {
+  title: "Actions/MyComponent",
   component: MyComponent,
-  tags: ["autodocs"],
-  parameters: { llm: { schema }
-  }
+  parameters: { llm: { schema } },
 };`}
-        </pre>
-      </section>
-    </article>
-  );
-};
+      />
+    </GuideSection>
+  </GuidePage>
+);
 
 const meta: Meta = {
-  title: "Docs/LLM Schema",
-  parameters: { layout: "fullscreen", vitest: { skip: true } },
+  title: "Docs/LLM schema",
+  parameters: { layout: "fullscreen", wip: { disabled: true }, vitest: { skip: true } },
 };
 
 export default meta;

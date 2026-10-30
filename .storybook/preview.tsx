@@ -22,6 +22,7 @@ import { resolveDesignParameters } from "./lib/resolve-figma-from-contract";
 import { autogenArgTypes, autogenArgs } from "./lib/controls-autogen";
 import { DtDocsContainer } from "./blocks/DtDocsContainer";
 import { DtDocsPage } from "./blocks/DtDocsPage";
+import { guideDocsComponents } from "./blocks/guide/guideMdx";
 import { dtSourceTransform } from "./blocks/sourceTransform";
 
 // Import global styles - CRITICAL for design tokens and component styling
@@ -510,6 +511,9 @@ const preview: Preview = {
       // legible in dark/HCB/HCW (see DtDocsContainer for the regression note).
       container: DtDocsContainer,
       page: DtDocsPage,
+      // Markdown in guide pages (GuidePage) renders as DS components; every
+      // other docs page keeps Storybook's defaults. See guide/guideMdx.tsx.
+      components: guideDocsComponents,
       source: { transform: dtSourceTransform },
     },
     controls: {
@@ -573,16 +577,21 @@ const preview: Preview = {
           "Overview",
           [
             "Welcome",
+            "Introduction",
+            "Principles",
             "Components",
-            "Test Health Overview",
-            "00-Overview",
-            "01-Principles",
-            "02-Tokens",
-            "03-Theming",
-            "04-Accessibility",
-            "05-Roadmap",
+            "Tokens",
+            "Theming",
+            "Localization",
+            "Accessibility",
+            "Governance",
+            "Agent readiness",
+            "Utilities",
+            "Roadmap",
+            "Test health",
           ],
           "Docs",
+          ["Icons", "Component usage", "API integration", "LLM schema"],
           "Foundations",
           [
             "Color",

@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { GuidePage, GuideFacts, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { tokenCategories, tokenFigures, formatDate } from '../../../.storybook/blocks/guide/guideData';
+import Code from "@dt/Code";
+
+<Meta title="Overview/Tokens" />
+
+<GuidePage
+  kicker="Foundations"
+  title="Tokens"
+  lede="Every visual decision is a CSS custom property in variables.css. Components read tokens with var(), themes override them and the build turns them into packages and data for agents."
+>
+
+<GuideFacts
+  facts={[
+    { value: tokenFigures.tokens, label: "Tokens in the catalog", note: `Generated ${formatDate(tokenFigures.generatedAt)}` },
+    { value: Object.keys(tokenCategories).length, label: "Categories" },
+    { value: tokenFigures.themes, label: "Themes", note: "Each overrides the same names" },
+  ]}
+/>
+
+## How a token travels
+
+<GuideSteps
+  steps={[
+    { title: "Defined in variables.css", body: "The light values sit on :root. Dark and the high-contrast themes override the same names under their theme class." },
+    { title: "Built into data", body: "npm run build:tokens writes the token catalog, DTCG JSON, the Tailwind bridge and the agent manifest from that one file." },
+    { title: "Published", body: "@digitaltableteur/tokens carries the JSON and @digitaltableteur/tokens-css the custom properties, every theme included." },
+    { title: "Read by components", body: "CSS Modules use var(--token). A theme change swaps values; no component code branches on the theme." },
+  ]}
+/>
+
+## Categories
+
+<GuideTable
+  caption="Token categories"
+  columns={["Category", "Tokens", "Prefix", "Use for"]}
+  rows={[
+    ["Color", tokenCategories.color, <Code size="inherit">--color-*</Code>, "Text, surfaces, borders and status. Accents (--accent-*) are for brand moments, not default UI."],
+    ["Typography", tokenCategories.typography, <Code size="inherit">--font-*</Code>, "Families, the fluid size scale, line heights and weights."],
+    ["Space", tokenCategories.space, <Code size="inherit">--space-*</Code>, "Gaps and padding. See the two kinds of space below."],
+    ["Layout", tokenCategories.layout, <Code size="inherit">--container-*</Code>, "Breakpoints, container widths, page margins and the grid."],
+    ["Motion", tokenCategories.motion, <Code size="inherit">--duration-*</Code>, "Durations and easing curves for transitions and animation."],
+    ["Elevation", tokenCategories.elevation, <Code size="inherit">--shadow-*</Code>, "The four-step shadow ramp and overlays."],
+    ["Radius", tokenCategories.radius, <Code size="inherit">--radius-*</Code>, "Corner radii from sm to xl, plus full and circle."],
+    ["Focus", tokenCategories.focus, <Code size="inherit">--focus-ring-*</Code>, "Focus ring colour, width and offset per theme."],
+  ]}
+/>
+
+## Two kinds of space
+
+Layout space (`--space-layout-*`) separates blocks: sections, cards in a grid, a heading and the paragraph under it. Internal space (`--space-internal-*`) pads the inside of a block: a button label, a card body, an input. Keeping them apart lets the page breathe without making controls bloated, and the reverse.
+
+## Do and don't
+
+<GuideTable
+  caption="Token usage do and don't"
+  columns={["Do", "Don't"]}
+  rows={[
+    [<Code size="inherit">padding-inline: var(--space-internal-16)</Code>, <Code size="inherit">padding: 16px</Code>],
+    [<Code size="inherit">color: var(--color-text)</Code>, <Code size="inherit">color: #041b23</Code>],
+    ["Add the token to variables.css, then run build:tokens", "Import the generated JSON in app CSS"],
+    ["Pick the semantic token (--color-error)", "Reach for the raw palette value behind it"],
+  ]}
+/>
+
+## Adding a token
+
+1. Check the [token catalog](?path=/story/foundations-token-catalog--overview) first. Most needs are already covered.
+2. Add it to `variables.css` with a usage comment, and give every theme a value.
+3. Run `npm run build:tokens` and commit the regenerated files.
+4. Run `npm run check:contrast` if it is a colour that text sits on.
+
+## Tailwind
+
+The build writes a DT-THEME block into `app/tailwind.css` that maps tokens into the `dt` namespace, so they never collide with the shadcn keys.
+
+<GuideTable
+  caption="Tailwind utilities for tokens"
+  columns={["Token", "Utilities"]}
+  rows={[
+    [<Code size="inherit">--color-success</Code>, <Code size="inherit">bg-dt-success text-dt-success</Code>],
+    [<Code size="inherit">--color-border</Code>, <Code size="inherit">border-dt-border</Code>],
+    [<Code size="inherit">--font-size-title-m</Code>, <Code size="inherit">text-dt-title-m</Code>],
+    [<Code size="inherit">--radius-lg</Code>, <Code size="inherit">rounded-dt-lg</Code>],
+  ]}
+/>
+
+## Checks
+
+`check:tokens` flags raw colours that should be semantic tokens and `check:phantom-tokens` flags references to tokens that do not exist; both run in `npm run lint:all`. `check:token-descriptions` makes sure every token explains its use.
+
+</GuidePage>

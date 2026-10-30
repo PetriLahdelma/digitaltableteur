@@ -1348,7 +1348,7 @@ import contract from "./${c.name}.contract.json";
 // Alpha-tier story scaffold for ${c.name}. The component lives outside the
 // previous catalog (per \`npm run audit:catalog\` on 2026-05-26) and is being
 // brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
+// nextjs-app/shared/foundations/roadmap.mdx. Stories are intentionally
 // minimal at alpha — Default + Playground must include required props (not just
 // variant axes) or stories fail at runtime. Example compositions are added when
 // porting from production (see Roadmap Phase 1).

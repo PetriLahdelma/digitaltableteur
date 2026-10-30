@@ -1,12 +1,8 @@
 .discovery {
   display: grid;
   margin-block-end: var(--space-internal-12);
-  padding: var(--space-internal-16);
   grid-template-columns: minmax(0, 2fr) repeat(2, minmax(11rem, 1fr));
   gap: var(--space-internal-16);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  background: var(--main-body-background-color);
 }
 
 .resultsHeader {
@@ -40,13 +36,17 @@
 }
 
 .section {
-  margin-block-end: var(--space-layout-32);
+  margin-block-start: var(--space-layout-48);
 }
 
+/* Same treatment as guide-page section headings: a hairline above, regular
+   weight, so the gallery reads as part of the guide frame. */
+
 .heading {
-  margin-block: 0 var(--space-internal-16);
-  padding-block-end: var(--space-internal-8);
-  border-block-end: 1px solid var(--color-border-light);
+  margin-block: 0 var(--space-layout-16);
+  padding-block-start: var(--space-layout-24);
+  border-block-start: 1px solid var(--color-border-light);
+  font-weight: 400;
 }
 
 .grid {
@@ -83,43 +83,32 @@
   }
 }
 
-/* .gallery prefix outguns the docs container's `.sbdocs a` link styling,
-   which otherwise paints its underline and link color into the cards. */
-
 .card {
   display: flex;
+  position: relative;
   flex-direction: column;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md, 8px);
-  background: var(--main-body-background-color);
   color: var(--color-text);
-  transition: border-color 120ms ease;
+  transition: border-color var(--duration-instant) var(--ease-out-cubic);
   overflow: hidden;
 }
 
 .card:hover,
 .card:focus-within {
-  border-color: var(--color-primary);
+  border-color: var(--color-border);
 }
 
-.card:focus-within {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.card:has(.name:focus-visible) {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .preview {
   display: grid;
-  padding: var(--space-internal-12);
+  padding: var(--space-internal-16);
   block-size: 120px;
   place-items: center;
   border-block-end: 1px solid var(--color-border-light);
-  background: radial-gradient(
-    circle at 1px 1px,
-    var(--color-border-light) 1px,
-    transparent 0
-  );
-  background-color: var(--main-body-background-color);
-  background-size: 16px 16px;
+  background-color: var(--color-light-bg);
   pointer-events: none;
 
   /* `contain: layout` makes the preview a containing block for any
@@ -216,53 +205,33 @@
 
 .meta {
   display: flex;
-  padding: var(--space-internal-12);
-  flex-direction: column;
-  gap: var(--space-internal-4);
-}
-
-.nameRow {
-  display: flex;
+  padding: var(--space-internal-12) var(--space-internal-16);
   justify-content: space-between;
   align-items: center;
   gap: var(--space-internal-8);
 }
 
-.name {
-  font-weight: 600;
+/* .gallery prefix outguns the docs container's `.sbdocs a` link styling. */
+
+.gallery .name {
+  font-size: var(--font-size-text-s);
+  font-weight: 500;
   text-decoration: none;
   color: var(--color-text);
 }
 
-.name:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
+.gallery .name::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.gallery .name:focus-visible {
+  outline: none;
 }
 
 .dense {
-  display: -webkit-box;
   color: var(--color-muted);
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
-
-.links {
-  display: flex;
-  margin-block-start: var(--space-internal-4);
-  gap: var(--space-internal-12);
-  font-size: var(--font-size-text-xs);
-}
-
-.gallery .links a {
-  text-decoration: none;
-  color: var(--color-primary);
-}
-
-.gallery .links a:hover,
-.gallery .links a:focus-visible {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
 }
 
 @media (prefers-reduced-motion: reduce) {
