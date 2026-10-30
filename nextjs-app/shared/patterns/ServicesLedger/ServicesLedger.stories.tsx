@@ -51,13 +51,45 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    services: { table: { category: "Content", type: { summary: "ServicesLedgerItem[]" } } },
-    machineLinks: { table: { category: "Content", type: { summary: "ServicesLedgerLink[]" } } },
-    labels: { table: { category: "Content", type: { summary: "ServicesLedgerLabels" } } },
+    title: {
+      control: "text",
+      description: "Section heading (h2); also names the section landmark",
+      table: { category: "Content" },
+    },
+    description: {
+      control: "text",
+      description: "Optional intro line under the heading",
+      table: { category: "Content" },
+    },
+    services: {
+      description: "Offers in order: index, machine key, title, description, capabilities and link",
+      table: { category: "Content", type: { summary: "ServicesLedgerItem[]" } },
+    },
+    machineLinks: {
+      description: "Machine-readable endpoints listed at the top of the machine view",
+      table: { category: "Content", type: { summary: "ServicesLedgerLink[]" } },
+    },
+    labels: {
+      description: "Switch, machine view and copy-button copy, translated by the page",
+      table: { category: "Content", type: { summary: "ServicesLedgerLabels" } },
+    },
+    id: {
+      control: "text",
+      description: "Section id; the heading and panel ids derive from it",
+      table: { category: "Advanced", defaultValue: { summary: "services" } },
+    },
+    donnyTarget: {
+      control: "text",
+      description: "Donny site action target id for this section",
+      table: { category: "Advanced", defaultValue: { summary: "home.services" } },
+    },
     className: { table: { disable: true } },
   },
   args: {
     title: "Services",
+    description: "",
+    id: "services",
+    donnyTarget: "home.services",
     services,
     labels,
     machineLinks: [

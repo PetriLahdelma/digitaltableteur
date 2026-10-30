@@ -138,7 +138,9 @@ check(
 );
 
 // 7. Evidence
-const titleMatch = stories.match(/title:\s*["'`]([^"'`]+)["'`]/);
+// The meta title is a group path ("Patterns/ServicesLedger"); match that, not
+// the first `title:` in the file, which can be story data.
+const titleMatch = stories.match(/title:\s*["'`]([^"'`]*\/[^"'`]+)["'`]/);
 const titleSlug = titleMatch ? slug(titleMatch[1]) : "";
 const records = readEvidenceRecords(dir).filter(
   (r) => Object.values(r.checks ?? {}).every((c) => c?.passed === true) && isEvidenceFresh(dir, r),
