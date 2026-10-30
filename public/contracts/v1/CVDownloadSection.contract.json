@@ -2,7 +2,7 @@
   "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
   "specVersion": "1.0",
   "name": "CVDownloadSection",
-  "status": "alpha",
+  "status": "deprecated",
   "description": "CV download call-to-action section.",
   "props": {
     "title": {
@@ -63,6 +63,9 @@
         "verification": "unverified"
       }
     ]
+  },
+  "deprecation": {
+    "reason": "Zero production consumers (only the patterns barrel re-exported it); the site no longer offers a CV download section. If a CV download returns, compose SecureCVDownload (the gated download control) inside a Section instead of reviving this wrapper."
   },
   "source": [
     "../../../nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx"

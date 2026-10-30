@@ -3,7 +3,7 @@
     "name": "ProjectDetailTemplate",
     "tier": "template",
     "group": "layout",
-    "status": "alpha",
+    "status": "deprecated",
     "description": "Full case study page template.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-template",
     "radixPrimitive": null,
@@ -73,5 +73,6 @@
     "forbiddenUse": [
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
-    ]
+    ],
+    "deprecatedReason": "Zero production consumers (only the patterns barrel re-exported it). Superseded by ProjectDetailLayout, which every case-study page composes with ProjectHero, ProjectMetaSection and RelatedProjects; build new case studies on ProjectDetailLayout."
 }

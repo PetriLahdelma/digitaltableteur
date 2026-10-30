@@ -99,3 +99,5 @@ institutional memory that outlives the code.
 | Component | Tier | Deprecated | Reason (tombstone) | Removable after | Removed |
 |---|---|---|---|---|---|
 | Hero | pattern | 2026-07-10 (#1043) | Zero production consumers; superseded by HeroSection + the six specialized heroes (HomeHero, ProjectHero, ContactHero, AboutHero, ArticleHero, BlogHero). Carried a nested-interactive defect (raw `<a>` wrapping `<Button>`); successors must use `<Button href>`. | 2026-08-09 | — |
+| ProjectDetailTemplate | pattern | 2026-10-31 | Zero production consumers (only the patterns barrel re-exported it). Superseded by ProjectDetailLayout, which every case-study page composes with ProjectHero, ProjectMetaSection and RelatedProjects; build new case studies on ProjectDetailLayout. | 2026-11-30 | — |
+| CVDownloadSection | pattern | 2026-10-31 | Zero production consumers (only the patterns barrel re-exported it); the site no longer offers a CV download section. If a CV download returns, compose SecureCVDownload (the gated download control) inside a Section instead of reviving this wrapper. | 2026-11-30 | — |

@@ -3,7 +3,7 @@
     "name": "CVDownloadSection",
     "tier": "pattern",
     "group": "content",
-    "status": "alpha",
+    "status": "deprecated",
     "description": "CV download call-to-action section.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-cvdownload-section",
     "radixPrimitive": null,
@@ -63,5 +63,6 @@
     "forbiddenUse": [
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
-    ]
+    ],
+    "deprecatedReason": "Zero production consumers (only the patterns barrel re-exported it); the site no longer offers a CV download section. If a CV download returns, compose SecureCVDownload (the gated download control) inside a Section instead of reviving this wrapper."
 }

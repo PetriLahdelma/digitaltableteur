@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T23:34:00.168Z",
+  "generatedAt": "2026-10-30T23:49:13.986Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
       "beta": 53,
       "stable": 108,
-      "deprecated": 3,
-      "alpha": 29
+      "deprecated": 5,
+      "alpha": 27
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 91.9,
@@ -109,8 +109,8 @@
       "digitaltableteur": {
         "beta": 53,
         "stable": 108,
-        "deprecated": 3,
-        "alpha": 29
+        "deprecated": 5,
+        "alpha": 27
       },
       "dsharp": {
         "beta": 110,
@@ -78936,7 +78936,7 @@
         "name": "CVDownloadSection",
         "tier": "pattern",
         "group": "content",
-        "status": "alpha",
+        "status": "deprecated",
         "description": "CV download call-to-action section.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-cvdownload-section",
         "radixPrimitive": null,
@@ -78996,7 +78996,8 @@
         "forbiddenUse": [
           "invent parallel primitives inside this folder",
           "promote to stable without production consumer evidence"
-        ]
+        ],
+        "deprecatedReason": "Zero production consumers (only the patterns barrel re-exported it); the site no longer offers a CV download section. If a CV download returns, compose SecureCVDownload (the gated download control) inside a Section instead of reviving this wrapper."
       },
       "spec": "# CVDownloadSection\n\n## Intent\nCV download call-to-action section.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-cvdownload-section\n",
       "documentationDebt": false,
@@ -88586,7 +88587,7 @@
         "name": "ProjectDetailTemplate",
         "tier": "template",
         "group": "layout",
-        "status": "alpha",
+        "status": "deprecated",
         "description": "Full case study page template.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-template",
         "radixPrimitive": null,
@@ -88656,7 +88657,8 @@
         "forbiddenUse": [
           "invent parallel primitives inside this folder",
           "promote to stable without production consumer evidence"
-        ]
+        ],
+        "deprecatedReason": "Zero production consumers (only the patterns barrel re-exported it). Superseded by ProjectDetailLayout, which every case-study page composes with ProjectHero, ProjectMetaSection and RelatedProjects; build new case studies on ProjectDetailLayout."
       },
       "spec": "# ProjectDetailTemplate\n\n## Intent\nFull case study page template.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-template\n",
       "documentationDebt": false,
