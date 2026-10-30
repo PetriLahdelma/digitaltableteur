@@ -42,6 +42,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = { tags: ["beta-matrix"] };
 
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  name: "Example (design system audit page)",
+  args: { engagementId: "audit" },
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+};
+
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: { engagementId: "audit" },
+};
+
 export const LiftOff: Story = {
   tags: ["example"],
   args: { engagementId: "liftoff" },

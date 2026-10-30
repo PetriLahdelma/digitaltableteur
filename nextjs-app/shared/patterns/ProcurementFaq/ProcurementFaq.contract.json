@@ -10,7 +10,9 @@
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
     ],
     "lightDarkVerified": false,
     "name": "ProcurementFaq",

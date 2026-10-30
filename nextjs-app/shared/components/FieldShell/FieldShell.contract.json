@@ -3,15 +3,13 @@
     "name": "FieldShell",
     "tier": "molecule",
     "group": "form",
-    "status": "alpha",
+    "status": "beta",
     "description": "The frame every text and choice field is built on: a label row with icon actions at its end, the control, then a status message and a helper line.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2065-7823",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
-    "slots": [
-        "children"
-    ],
+    "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
@@ -33,7 +31,7 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "forcedColorsVerified": false,
+        "forcedColorsVerified": true,
         "reviewedNote": "2026-10-30 (Claude, Storybook 6010, Chromium; real key presses): label is a <label for> the control and carries ${id}-label for aria-labelledby controls (Combobox, MultiCombobox); fieldDescribedBy lists the status message then the helper (verified on Company size: named by its label, described by 'Choose a company size', aria-invalid only for error). Actions: native buttons named by aria-label; DS Tooltip opens on keyboard focus (Shift+Tab onto Paste shows 'Paste'), not pointer-only. Menu action: Enter opens, ArrowDown moves Use-the-size-from-last-time -> Reset, Escape closes and returns focus to the trigger; aria-haspopup=menu, aria-expanded tracks state. Focus ring sits inside the 32px box, 4px clear of the control (measured). Hit area 44px on coarse pointers. No motion of its own; Menu and Tooltip carry the DS reduced-motion handling. Forced colors: icon ButtonText, ring Highlight 3px inset. The label is always required; hideLabel hides it visually and keeps it as the accessible name."
     },
     "tokens": {
@@ -48,7 +46,7 @@
             "--space-internal-8"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "forbiddenUse": [
         "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
         "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",

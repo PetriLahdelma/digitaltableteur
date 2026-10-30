@@ -17,7 +17,7 @@ import styles from "./FieldShell.stories.module.css";
 const meta = {
   title: "Forms/FieldShell",
   component: FieldShell,
-  tags: ["alpha", "!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,
@@ -40,18 +40,18 @@ const meta = {
     children: { table: { disable: true } },
     actions: { table: { disable: true } },
     className: { table: { disable: true } },
-    label: { control: "text", table: { category: "Content" } },
-    helperText: { control: "text", table: { category: "Content" } },
-    statusMessage: { control: "text", table: { category: "Content" } },
+    label: { control: "text", description: "Visible field label; stays the control's accessible name when hidden", table: { category: "Content" } },
+    helperText: { control: "text", description: "Supporting copy under the control, after the status message", table: { category: "Content" } },
+    statusMessage: { control: "text", description: "Message under the control, styled and announced for the status", table: { category: "Content" } },
     status: {
       control: "radio",
       options: [undefined, "error", "warning", "success"],
       description: "Colours the control border and styles the status message.",
       table: { category: "Appearance" },
     },
-    required: { control: "boolean", table: { category: "Behavior", defaultValue: { summary: "false" } } },
-    disabled: { control: "boolean", table: { category: "Behavior", defaultValue: { summary: "false" } } },
-    hideLabel: { control: "boolean", table: { category: "Accessibility", defaultValue: { summary: "false" } } },
+    required: { control: "boolean", description: "Shows the required marker on the label", table: { category: "Behavior", defaultValue: { summary: "false" } } },
+    disabled: { control: "boolean", description: "Dims the label and disables every action", table: { category: "Behavior", defaultValue: { summary: "false" } } },
+    hideLabel: { control: "boolean", description: "Visually hides the label; with no actions the label row takes no room", table: { category: "Accessibility", defaultValue: { summary: "false" } } },
   },
   render: (args) => (
     <FieldShell

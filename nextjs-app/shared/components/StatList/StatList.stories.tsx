@@ -15,7 +15,7 @@ const items: StatListItem[] = [
 const meta = {
   title: "Content/StatList",
   component: StatList,
-  tags: ["alpha", "!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,

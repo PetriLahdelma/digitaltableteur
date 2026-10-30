@@ -20,7 +20,9 @@
  *   6. the figma link resolves to a real component in figma-component-index.json;
  *   7. fresh, passing a11y evidence exists for every required story in light,
  *      dark and forced-colors, and axe + the accessibility tree resolve to
- *      `automated` through deriveA11yCriteria.
+ *      `automated` through deriveA11yCriteria;
+ *   8. after writing, validate:components accepts the component at beta
+ *      (otherwise every write is rolled back).
  * Only then does it set status "beta", set lightDarkVerified and
  * forcedColorsVerified (true, because the evidence just proved them), flip the
  * stories meta lifecycle tag alpha -> beta and drop the name from the
@@ -79,6 +81,14 @@ check(
   "required stories exported",
   required.length > 0 && missingStories.length === 0,
   missingStories.length ? `missing: ${missingStories.join(", ")}` : `${required.join(", ")}`,
+);
+// validate:components requires these two at beta; checking here keeps the
+// evidence step below honest (it only looks at the required stories).
+const betaStories = ["Example", "ForcedColors"].filter((s) => !required.includes(s));
+check(
+  "requiredStories include Example and ForcedColors (beta rule)",
+  betaStories.length === 0,
+  `add ${betaStories.join(" and ")} to the stories and to contract.requiredStories`,
 );
 
 // 3. axe in tests
@@ -171,6 +181,9 @@ if (CHECK_ONLY) {
 }
 
 // Promote: only what the checks above proved.
+const before = new Map(
+  [contractPath, storiesPath, join(HERE, "alpha-age.baseline.json")].map((p) => [p, readFileSync(p, "utf8")]),
+);
 contract.status = "beta";
 contract.lightDarkVerified = true;
 contract.a11y.forcedColorsVerified = true;
@@ -184,6 +197,29 @@ const baseline = JSON.parse(readFileSync(baselinePath, "utf8"));
 if (baseline.legacyOverdue.includes(name)) {
   baseline.legacyOverdue = baseline.legacyOverdue.filter((n) => n !== name);
   writeFileSync(baselinePath, `${JSON.stringify(baseline, null, 2)}\n`);
+}
+
+// Every other beta rule (Controls documentation, slots, tokens, docs) lives in
+// validate:components. Run it on the result and roll back if this component
+// fails, so promote never leaves a beta the pre-push gate would reject.
+let validation = "";
+try {
+  validation = execFileSync("npx", ["tsx", join(HERE, "validate-components.ts")], {
+    cwd: ROOT,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+} catch (err) {
+  validation = `${err.stdout ?? ""}${err.stderr ?? ""}`;
+}
+const own = validation
+  .split("\n")
+  .filter((line) => line.includes("✗") && line.includes(`${name}.`));
+if (own.length) {
+  for (const [p, text] of before) writeFileSync(p, text);
+  console.error(`\n✗ Not promoted: validate:components rejects ${name} at beta. Rolled back.`);
+  for (const line of own) console.error(line);
+  process.exit(1);
 }
 
 console.log(`\n✓ ${name} promoted to beta.`);

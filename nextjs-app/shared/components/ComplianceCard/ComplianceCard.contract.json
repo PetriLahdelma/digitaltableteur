@@ -31,8 +31,8 @@
     },
     "tokens": {
         "colors": [
-            "--color-error",
-            "--color-success",
+            "--color-error-contrast",
+            "--color-success-contrast",
             "--color-warning-contrast"
         ],
         "spacing": []
