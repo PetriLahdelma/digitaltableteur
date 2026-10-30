@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.12.0 - 2026-10-30
+
+Requires `@digitaltableteur/tokens-css` 0.2.0.
+
+- Status colours follow the fill and text-tone split in tokens-css 0.2.0:
+  messages, labels, borders, outlines, icons, progress bars and status dots
+  use `--color-*-contrast`; filled badges and toasts keep the status fill
+  under `--color-on-status` text. Seven elements (badge, card, helper text,
+  list item, menu, toast, toast stack) failed WCAG colour contrast in the
+  light theme against the new palette and now pass in light, dark and
+  forced colours.
+- Fallback colours match the new palette.
+- The optional `@digitaltableteur/react` peer accepts 0.2.x.
+
 ## 0.11.0 - 2026-10-25
 
 - New elements, native twins of the React code components, pixel-identical
