@@ -5,6 +5,7 @@ import Image from "next/image";
 import { cn } from "../../lib/cn";
 import { gsap, useGSAP } from "../../lib/gsap";
 import { useAnimationContext } from "../../lib/animation";
+import { useAutoplayWhenVisible } from "../../hooks/useAutoplayWhenVisible";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { TextReveal } from "../../components/animations/TextReveal";
@@ -23,6 +24,8 @@ export interface ProjectHeroVideo {
   poster?: string;
   alt: string;
   playbackRate?: number;
+  /** Loop muted while on screen; the controls still pause it. */
+  autoPlay?: boolean;
 }
 
 export interface ProjectHeroProps {
@@ -67,6 +70,8 @@ export function ProjectHero({
   const isSplit = variant === "split";
   const hasVideo = Boolean(video?.src);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const autoPlay = hasVideo && Boolean(video?.autoPlay);
+  useAutoplayWhenVisible(videoRef, autoPlay);
   const scrollTargetId = `project-content-${useId().replaceAll(":", "")}`;
 
   useEffect(() => {
@@ -120,6 +125,8 @@ export function ProjectHero({
               ref={videoRef}
               aria-label={video!.alt}
               controls
+              muted={autoPlay}
+              loop={autoPlay}
               preload="metadata"
               playsInline
               poster={video!.poster}
@@ -262,6 +269,8 @@ export function ProjectHero({
                   ref={videoRef}
                   aria-label={video!.alt}
                   controls
+                  muted={autoPlay}
+                  loop={autoPlay}
                   preload="metadata"
                   playsInline
                   poster={video!.poster}
@@ -417,6 +426,8 @@ export function ProjectHero({
                     ref={videoRef}
                     aria-label={video!.alt}
                     controls
+                    muted={autoPlay}
+                    loop={autoPlay}
                     preload="metadata"
                     playsInline
                     poster={video!.poster}

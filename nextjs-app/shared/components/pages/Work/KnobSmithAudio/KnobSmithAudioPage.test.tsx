@@ -22,18 +22,16 @@ describe("KnobSmithAudioPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("requires user action to play its interface demonstrations", () => {
+  it("loops its muted interface demonstrations, which visitors can pause", () => {
     const { container } = renderWithProviders(<KnobSmithAudioPage />);
-    const videos = Array.from(container.querySelectorAll("video"));
-    const controlledVideos = Array.from(
-      container.querySelectorAll("video[controls]"),
-    );
+    const videos = Array.from(container.querySelectorAll("video[controls]"));
 
-    expect(controlledVideos).toHaveLength(3);
+    expect(videos).toHaveLength(3);
     for (const video of videos) {
-      expect(video).toHaveAttribute("preload", "metadata");
+      expect(video).toHaveAttribute("loop");
+      expect((video as HTMLVideoElement).muted).toBe(true);
+      // Playback starts from script so reduced motion is respected.
       expect(video).not.toHaveAttribute("autoplay");
-      expect(video).not.toHaveAttribute("loop");
     }
   });
 });

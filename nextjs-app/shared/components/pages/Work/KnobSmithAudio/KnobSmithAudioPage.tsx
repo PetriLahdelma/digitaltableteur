@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { List, Text, Title } from "@digitaltableteur/react";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
 import { LogoReveal } from "../../../LogoReveal";
+import { useAutoplayWhenVisible } from "../../../../hooks/useAutoplayWhenVisible";
 import { LogoConstruction } from "../../../LogoConstruction";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
@@ -19,6 +20,10 @@ import { AdobeToolIcon } from "../AdobeToolIcon";
 import styles from "./knobSmithAudio.module.css";
 
 export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
+  const knobsVideoRef = useRef<HTMLVideoElement>(null);
+  const meterVideoRef = useRef<HTMLVideoElement>(null);
+  useAutoplayWhenVisible(knobsVideoRef);
+  useAutoplayWhenVisible(meterVideoRef);
   const project = getProjectBySlug("knobsmith-audio");
 
   if (!project) {
@@ -36,6 +41,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             src: "/images/portfolio/knobsmith-audio/LCD-screen_1.webm",
             alt: "KnobSmith Audio plugin LCD screen animation",
             playbackRate: 3,
+            autoPlay: true,
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
@@ -204,8 +210,11 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.videoContainer}>
           <div className={styles.knobsVideoContainer}>
             <video
+              ref={knobsVideoRef}
               aria-label="KnobSmith Audio knob interaction animation"
               controls
+              muted
+              loop
               preload="metadata"
               playsInline
               className={styles.knobsVideo}
@@ -273,8 +282,11 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.videoContainer}>
           <div className={styles.meterVideoWrapper}>
             <video
+              ref={meterVideoRef}
               aria-label="KnobSmith Audio VU meter animation"
               controls
+              muted
+              loop
               preload="metadata"
               playsInline
               className={styles.meterVideo}
@@ -405,6 +417,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           wordmarkWidth={400}
           wordmarkHeight={84}
           enableHover={true}
+          surface="onDark"
         />
         <Text size="xs" className={styles.logoRevealCaption}>
           Some animated logo reveals: icon emerges first, wordmark follows.
