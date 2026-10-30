@@ -17,6 +17,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 
+import { useOverflow } from "../../../../hooks/useOverflow";
 import styles from "./dsharpDesignSystem.module.css";
 
 const HERO_LOGO = "/images/portfolio/dsharp-design-system/dsharp-hero-logo.svg";
@@ -74,6 +75,34 @@ type BadgeProps = {
   dot?: string | null;
 };
 
+
+/**
+ * Diagrams keep their drawn width (one SVG unit per pixel) on narrow screens
+ * and scroll sideways instead of shrinking their labels below reading size.
+ * Only a wrapper that actually scrolls joins the tab order, named for
+ * keyboard users.
+ */
+function SpecimenScroll({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { isOverflowing } = useOverflow(ref, { axis: "x" });
+  return (
+    <div
+      ref={ref}
+      className={styles.specimenScroll}
+      {...(isOverflowing
+        ? { tabIndex: 0, role: "region", "aria-label": label }
+        : {})}
+    >
+      {children}
+    </div>
+  );
+}
 function SvgBadge({
   x,
   y,
@@ -152,157 +181,159 @@ function FoundationsSpecimen() {
 
   return (
     <figure className={styles.specimenFigure}>
-      <svg
-        viewBox="0 0 880 520"
-        role="img"
-        aria-label="DSharp Design System foundations: color, typography, spacing"
-        className={styles.specimenSvg}
-      >
-        <defs>
-          <filter
-            id="swatchElevation"
-            x="-20%"
-            y="-20%"
-            width="140%"
-            height="140%"
-          >
-            <feDropShadow
-              dx="0"
-              dy="2"
-              stdDeviation="3"
-              floodColor="#1a1a1a"
-              floodOpacity="0.12"
-            />
-          </filter>
-        </defs>
+      <SpecimenScroll label="Foundations diagram">
+        <svg
+          viewBox="0 0 880 520"
+          role="img"
+          aria-label="DSharp Design System foundations: color, typography, spacing"
+          className={styles.specimenSvg}
+        >
+          <defs>
+            <filter
+              id="swatchElevation"
+              x="-20%"
+              y="-20%"
+              width="140%"
+              height="140%"
+            >
+              <feDropShadow
+                dx="0"
+                dy="2"
+                stdDeviation="3"
+                floodColor="#1a1a1a"
+                floodOpacity="0.12"
+              />
+            </filter>
+          </defs>
 
-        {/* Color row */}
-        <g transform="translate(40, 36)">
-          <SpecimenCaption x={0} y={0} label="Color, primitives" />
-          {colors.map(([name, value], i) => {
-            const x = i * 130;
-            const needsElevation = name === "surface/raised";
-            return (
-              <g key={name} transform={`translate(${x}, 16)`}>
-                <rect
-                  x={0}
-                  y={0}
-                  width={110}
-                  height={84}
-                  rx={8}
-                  fill={value}
-                  filter={needsElevation ? "url(#swatchElevation)" : undefined}
-                />
-                <text
-                  x={0}
-                  y={108}
-                  fill={palette.ink}
-                  fontFamily={FONT_MONO}
-                  fontSize={11}
-                  fontWeight={500}
-                >
-                  {name}
-                </text>
-                <text
-                  x={0}
-                  y={122}
-                  fill={palette.inkSubtle}
-                  fontFamily={FONT_MONO}
-                  fontSize={10}
-                >
-                  {value}
-                </text>
-              </g>
-            );
-          })}
-        </g>
+          {/* Color row */}
+          <g transform="translate(40, 36)">
+            <SpecimenCaption x={0} y={0} label="Color, primitives" />
+            {colors.map(([name, value], i) => {
+              const x = i * 130;
+              const needsElevation = name === "surface/raised";
+              return (
+                <g key={name} transform={`translate(${x}, 16)`}>
+                  <rect
+                    x={0}
+                    y={0}
+                    width={110}
+                    height={84}
+                    rx={8}
+                    fill={value}
+                    filter={needsElevation ? "url(#swatchElevation)" : undefined}
+                  />
+                  <text
+                    x={0}
+                    y={108}
+                    fill={palette.ink}
+                    fontFamily={FONT_MONO}
+                    fontSize={11}
+                    fontWeight={500}
+                  >
+                    {name}
+                  </text>
+                  <text
+                    x={0}
+                    y={122}
+                    fill={palette.inkSubtle}
+                    fontFamily={FONT_MONO}
+                    fontSize={10}
+                  >
+                    {value}
+                  </text>
+                </g>
+              );
+            })}
+          </g>
 
-        {/* Typography */}
-        <g transform="translate(40, 220)">
-          <SpecimenCaption x={0} y={0} label="Type, DM Sans / DM Mono" />
-          <text
-            x={0}
-            y={88}
-            fill={palette.ink}
-            fontFamily={FONT_SANS}
-            fontSize={88}
-            fontWeight={700}
-            letterSpacing="-0.02em"
-          >
-            Aa
-          </text>
-          <g transform="translate(180, 42)">
+          {/* Typography */}
+          <g transform="translate(40, 220)">
+            <SpecimenCaption x={0} y={0} label="Type, DM Sans / DM Mono" />
             <text
               x={0}
-              y={0}
+              y={88}
               fill={palette.ink}
               fontFamily={FONT_SANS}
-              fontSize={22}
-              fontWeight={600}
+              fontSize={88}
+              fontWeight={700}
+              letterSpacing="-0.02em"
             >
-              Modeling beats decoration.
+              Aa
             </text>
-            <text
-              x={0}
-              y={30}
-              fill={palette.inkSubtle}
-              fontFamily={FONT_SANS}
-              fontSize={14}
-            >
-              Headings, body, captions and mono share one type ramp.
-            </text>
-            <text
-              x={0}
-              y={56}
-              fill={palette.opalDark}
-              fontFamily={FONT_MONO}
-              fontSize={12}
-              fontWeight={500}
-            >
-              var(--font-sans), var(--font-mono)
-            </text>
+            <g transform="translate(180, 42)">
+              <text
+                x={0}
+                y={0}
+                fill={palette.ink}
+                fontFamily={FONT_SANS}
+                fontSize={22}
+                fontWeight={600}
+              >
+                Modeling beats decoration.
+              </text>
+              <text
+                x={0}
+                y={30}
+                fill={palette.inkSubtle}
+                fontFamily={FONT_SANS}
+                fontSize={14}
+              >
+                Headings, body, captions and mono share one type ramp.
+              </text>
+              <text
+                x={0}
+                y={56}
+                fill={palette.opalDark}
+                fontFamily={FONT_MONO}
+                fontSize={12}
+                fontWeight={500}
+              >
+                var(--font-sans), var(--font-mono)
+              </text>
+            </g>
           </g>
-        </g>
 
-        {/* Space scale */}
-        <g transform="translate(40, 380)">
-          <SpecimenCaption x={0} y={0} label="Space, 14-step rhythm" />
-          {space.map((value, i) => {
-            const x = i * 88;
-            return (
-              <g key={value} transform={`translate(${x}, 18)`}>
-                <rect
-                  x={0}
-                  y={48 - Math.min(value, 76)}
-                  width={Math.min(value, 76) || 4}
-                  height={Math.min(value, 76) || 4}
-                  fill={palette.opalDark}
-                  rx={2}
-                />
-                <text
-                  x={0}
-                  y={72}
-                  fill={palette.ink}
-                  fontFamily={FONT_MONO}
-                  fontSize={11}
-                  fontWeight={500}
-                >
-                  --space-{i + 1}
-                </text>
-                <text
-                  x={0}
-                  y={86}
-                  fill={palette.inkSubtle}
-                  fontFamily={FONT_MONO}
-                  fontSize={10}
-                >
-                  {value}px
-                </text>
-              </g>
-            );
-          })}
-        </g>
-      </svg>
+          {/* Space scale */}
+          <g transform="translate(40, 380)">
+            <SpecimenCaption x={0} y={0} label="Space, 14-step rhythm" />
+            {space.map((value, i) => {
+              const x = i * 88;
+              return (
+                <g key={value} transform={`translate(${x}, 18)`}>
+                  <rect
+                    x={0}
+                    y={48 - Math.min(value, 76)}
+                    width={Math.min(value, 76) || 4}
+                    height={Math.min(value, 76) || 4}
+                    fill={palette.opalDark}
+                    rx={2}
+                  />
+                  <text
+                    x={0}
+                    y={72}
+                    fill={palette.ink}
+                    fontFamily={FONT_MONO}
+                    fontSize={11}
+                    fontWeight={500}
+                  >
+                    --space-{i + 1}
+                  </text>
+                  <text
+                    x={0}
+                    y={86}
+                    fill={palette.inkSubtle}
+                    fontFamily={FONT_MONO}
+                    fontSize={10}
+                  >
+                    {value}px
+                  </text>
+                </g>
+              );
+            })}
+          </g>
+        </svg>
+      </SpecimenScroll>
       <figcaption className={styles.specimenCaption}>
         Six brand primitives, one type ramp and the 14-step space scale. The
         scale numbers are the same set Rhythmguard later enforces in lint, so
@@ -513,167 +544,169 @@ function SvgButton({
 function AtomsSpecimen() {
   return (
     <figure className={styles.specimenFigure}>
-      <svg
-        viewBox="0 0 880 600"
-        role="img"
-        aria-label="DSharp Button atom: variants, sizes and interaction states"
-        className={styles.specimenSvg}
-      >
-        {/* Variants row */}
-        <g transform="translate(48, 56)">
-          <SpecimenCaption x={0} y={0} label="Button, variants" />
-          <text
-            x={0}
-            y={22}
-            fill={palette.inkSubtle}
-            fontFamily={FONT_SANS}
-            fontSize={13}
-          >
-            Six variants, one type ramp, one radius scale.
-          </text>
-          <g transform="translate(0, 48)">
-            <SvgButton x={0} y={0} label="Promote" variant="primary" />
-            <SvgButton x={132} y={0} label="Cancel" variant="secondary" />
-            <SvgButton x={252} y={0} label="Inspect" variant="ghost" />
-            <SvgButton x={372} y={0} label="View source" variant="link" />
-            <SvgButton x={500} y={0} label="Drop layer" variant="danger" />
-            <SvgButton x={628} y={0} label="" variant="icon" />
-            <SvgButton
-              x={684}
-              y={0}
-              label="New concept"
-              variant="primary"
-              withIcon
-            />
-          </g>
-          <g transform="translate(0, 96)">
-            {[
-              { x: 0, label: "Primary" },
-              { x: 132, label: "Secondary" },
-              { x: 252, label: "Ghost" },
-              { x: 372, label: "Link" },
-              { x: 500, label: "Danger" },
-              { x: 628, label: "Icon" },
-              { x: 684, label: "Primary + icon" },
-            ].map((item) => (
-              <text
-                key={item.label}
-                x={item.x}
-                y={0}
-                fill={palette.inkMuted}
-                fontFamily={FONT_MONO}
-                fontSize={10}
-                letterSpacing="0.06em"
-              >
-                {item.label}
-              </text>
-            ))}
-          </g>
-        </g>
-
-        {/* Sizes row */}
-        <g transform="translate(48, 264)">
-          <SpecimenCaption x={0} y={0} label="Button, sizes" />
-          <text
-            x={0}
-            y={22}
-            fill={palette.inkSubtle}
-            fontFamily={FONT_SANS}
-            fontSize={13}
-          >
-            Heights snap to the space scale: 28, 32, 40.
-          </text>
-          <g transform="translate(0, 48)">
-            <SvgButton x={0} y={6} label="Save" variant="primary" size="sm" />
-            <SvgButton x={100} y={4} label="Save" variant="primary" size="md" />
-            <SvgButton x={216} y={0} label="Save" variant="primary" size="lg" />
-          </g>
-          <g transform="translate(0, 102)">
-            {[
-              { x: 0, label: "sm, 28px" },
-              { x: 100, label: "md, 32px" },
-              { x: 216, label: "lg, 40px" },
-            ].map((item) => (
-              <text
-                key={item.label}
-                x={item.x}
-                y={0}
-                fill={palette.inkMuted}
-                fontFamily={FONT_MONO}
-                fontSize={10}
-                letterSpacing="0.06em"
-              >
-                {item.label}
-              </text>
-            ))}
-          </g>
-        </g>
-
-        {/* States row */}
-        <g transform="translate(48, 432)">
-          <SpecimenCaption x={0} y={0} label="Button, states" />
-          <text
-            x={0}
-            y={22}
-            fill={palette.inkSubtle}
-            fontFamily={FONT_SANS}
-            fontSize={13}
-          >
-            Every variant carries the same four states; focus uses the accent
-            token, never the platform default.
-          </text>
-          <g transform="translate(0, 56)">
-            <SvgButton
+      <SpecimenScroll label="Button diagram">
+        <svg
+          viewBox="0 0 880 600"
+          role="img"
+          aria-label="DSharp Button atom: variants, sizes and interaction states"
+          className={styles.specimenSvg}
+        >
+          {/* Variants row */}
+          <g transform="translate(48, 56)">
+            <SpecimenCaption x={0} y={0} label="Button, variants" />
+            <text
               x={0}
-              y={0}
-              label="Promote"
-              variant="primary"
-              state="default"
-            />
-            <SvgButton
-              x={132}
-              y={0}
-              label="Promote"
-              variant="primary"
-              state="hover"
-            />
-            <SvgButton
-              x={264}
-              y={0}
-              label="Promote"
-              variant="primary"
-              state="focus"
-            />
-            <SvgButton
-              x={396}
-              y={0}
-              label="Promote"
-              variant="primary"
-              state="disabled"
-            />
-          </g>
-          <g transform="translate(0, 108)">
-            {[
-              { x: 0, label: "Default" },
-              { x: 132, label: "Hover" },
-              { x: 264, label: "Focus" },
-              { x: 396, label: "Disabled" },
-            ].map((item) => (
-              <text
-                key={item.label}
-                x={item.x}
+              y={22}
+              fill={palette.inkSubtle}
+              fontFamily={FONT_SANS}
+              fontSize={13}
+            >
+              Six variants, one type ramp, one radius scale.
+            </text>
+            <g transform="translate(0, 48)">
+              <SvgButton x={0} y={0} label="Promote" variant="primary" />
+              <SvgButton x={132} y={0} label="Cancel" variant="secondary" />
+              <SvgButton x={252} y={0} label="Inspect" variant="ghost" />
+              <SvgButton x={372} y={0} label="View source" variant="link" />
+              <SvgButton x={500} y={0} label="Drop layer" variant="danger" />
+              <SvgButton x={628} y={0} label="" variant="icon" />
+              <SvgButton
+                x={684}
                 y={0}
-                fill={palette.inkMuted}
-                fontFamily={FONT_MONO}
-                fontSize={10}
-                letterSpacing="0.06em"
-              >
-                {item.label}
-              </text>
-            ))}
+                label="New concept"
+                variant="primary"
+                withIcon
+              />
+            </g>
+            <g transform="translate(0, 96)">
+              {[
+                { x: 0, label: "Primary" },
+                { x: 132, label: "Secondary" },
+                { x: 252, label: "Ghost" },
+                { x: 372, label: "Link" },
+                { x: 500, label: "Danger" },
+                { x: 628, label: "Icon" },
+                { x: 684, label: "Primary + icon" },
+              ].map((item) => (
+                <text
+                  key={item.label}
+                  x={item.x}
+                  y={0}
+                  fill={palette.inkMuted}
+                  fontFamily={FONT_MONO}
+                  fontSize={10}
+                  letterSpacing="0.06em"
+                >
+                  {item.label}
+                </text>
+              ))}
+            </g>
           </g>
-        </g>
-      </svg>
+
+          {/* Sizes row */}
+          <g transform="translate(48, 264)">
+            <SpecimenCaption x={0} y={0} label="Button, sizes" />
+            <text
+              x={0}
+              y={22}
+              fill={palette.inkSubtle}
+              fontFamily={FONT_SANS}
+              fontSize={13}
+            >
+              Heights snap to the space scale: 28, 32, 40.
+            </text>
+            <g transform="translate(0, 48)">
+              <SvgButton x={0} y={6} label="Save" variant="primary" size="sm" />
+              <SvgButton x={100} y={4} label="Save" variant="primary" size="md" />
+              <SvgButton x={216} y={0} label="Save" variant="primary" size="lg" />
+            </g>
+            <g transform="translate(0, 102)">
+              {[
+                { x: 0, label: "sm, 28px" },
+                { x: 100, label: "md, 32px" },
+                { x: 216, label: "lg, 40px" },
+              ].map((item) => (
+                <text
+                  key={item.label}
+                  x={item.x}
+                  y={0}
+                  fill={palette.inkMuted}
+                  fontFamily={FONT_MONO}
+                  fontSize={10}
+                  letterSpacing="0.06em"
+                >
+                  {item.label}
+                </text>
+              ))}
+            </g>
+          </g>
+
+          {/* States row */}
+          <g transform="translate(48, 432)">
+            <SpecimenCaption x={0} y={0} label="Button, states" />
+            <text
+              x={0}
+              y={22}
+              fill={palette.inkSubtle}
+              fontFamily={FONT_SANS}
+              fontSize={13}
+            >
+              Every variant carries the same four states; focus uses the accent
+              token, never the platform default.
+            </text>
+            <g transform="translate(0, 56)">
+              <SvgButton
+                x={0}
+                y={0}
+                label="Promote"
+                variant="primary"
+                state="default"
+              />
+              <SvgButton
+                x={132}
+                y={0}
+                label="Promote"
+                variant="primary"
+                state="hover"
+              />
+              <SvgButton
+                x={264}
+                y={0}
+                label="Promote"
+                variant="primary"
+                state="focus"
+              />
+              <SvgButton
+                x={396}
+                y={0}
+                label="Promote"
+                variant="primary"
+                state="disabled"
+              />
+            </g>
+            <g transform="translate(0, 108)">
+              {[
+                { x: 0, label: "Default" },
+                { x: 132, label: "Hover" },
+                { x: 264, label: "Focus" },
+                { x: 396, label: "Disabled" },
+              ].map((item) => (
+                <text
+                  key={item.label}
+                  x={item.x}
+                  y={0}
+                  fill={palette.inkMuted}
+                  fontFamily={FONT_MONO}
+                  fontSize={10}
+                  letterSpacing="0.06em"
+                >
+                  {item.label}
+                </text>
+              ))}
+            </g>
+          </g>
+        </svg>
+      </SpecimenScroll>
       <figcaption className={styles.specimenCaption}>
         Button is the load-bearing atom in any system: six variants, three
         sizes, four states, all driven from the same tokens. DSharp&rsquo;s
@@ -719,348 +752,350 @@ function MoleculesSpecimen() {
 
   return (
     <figure className={styles.specimenFigure}>
-      <svg
-        viewBox="0 0 880 432"
-        role="img"
-        aria-label="DSharp molecules: Alert, Tabs, FormField and a Table composed from domain atoms"
-        className={styles.specimenSvg}
-      >
-        {/* Alert */}
-        <g transform="translate(48, 48)">
-          <SpecimenCaption x={0} y={0} label="Alert, warning" />
-          <g transform="translate(0, 24)">
-            <rect
-              x={0}
-              y={0}
-              width={384}
-              height={112}
-              rx={12}
-              fill={palette.statusReviewTint}
-            />
-            <rect
-              x={0}
-              y={0}
-              width={4}
-              height={112}
-              rx={2}
-              fill={palette.statusReview}
-            />
-            <g transform="translate(20, 22)">
-              <circle cx={10} cy={10} r={10} fill={palette.statusReview} />
-              <line
-                x1={10}
-                y1={5}
-                x2={10}
-                y2={11}
-                stroke="#fff"
-                strokeWidth={1.6}
-                strokeLinecap="round"
-              />
-              <circle cx={10} cy={14} r={1} fill="#fff" />
-            </g>
-            <text
-              x={56}
-              y={36}
-              fill={palette.ink}
-              fontFamily={FONT_SANS}
-              fontSize={14}
-              fontWeight={600}
-            >
-              Mapping review required
-            </text>
-            <text
-              x={56}
-              y={58}
-              fill={palette.inkSubtle}
-              fontFamily={FONT_SANS}
-              fontSize={13}
-            >
-              3 columns need confirmation before promotion.
-            </text>
-            <SvgButton
-              x={56}
-              y={74}
-              label="Open review"
-              variant="primary"
-              size="sm"
-            />
-            <SvgButton
-              x={172}
-              y={74}
-              label="Dismiss"
-              variant="ghost"
-              size="sm"
-            />
-          </g>
-        </g>
-
-        {/* Tabs */}
-        <g transform="translate(472, 48)">
-          <SpecimenCaption x={0} y={0} label="Tabs, contextual navigation" />
-          <g transform="translate(0, 24)">
-            <rect
-              x={0}
-              y={0}
-              width={384}
-              height={112}
-              rx={12}
-              fill={palette.surface}
-              stroke={palette.border}
-            />
-            <g transform="translate(24, 32)">
-              {["Definition", "Sources", "Lineage", "Mappings"].map(
-                (label, i) => {
-                  const x = i * 80;
-                  const active = i === 0;
-                  return (
-                    <g key={label}>
-                      <text
-                        x={x}
-                        y={0}
-                        fill={active ? palette.ink : palette.inkSubtle}
-                        fontFamily={FONT_SANS}
-                        fontSize={13}
-                        fontWeight={active ? 600 : 500}
-                      >
-                        {label}
-                      </text>
-                      {active ? (
-                        <rect
-                          x={x - 6}
-                          y={14}
-                          width={64}
-                          height={2}
-                          rx={1}
-                          fill={palette.opalDark}
-                        />
-                      ) : null}
-                    </g>
-                  );
-                },
-              )}
-              <line
-                x1={-24}
-                y1={16}
-                x2={360}
-                y2={16}
-                stroke={palette.border}
-                strokeWidth={1}
-              />
-            </g>
-            <text
-              x={24}
-              y={84}
-              fill={palette.inkMuted}
-              fontFamily={FONT_MONO}
-              fontSize={10}
-              letterSpacing="0.06em"
-            >
-              role=&quot;tablist&quot;, roving focus, arrow-key nav
-            </text>
-          </g>
-        </g>
-
-        {/* FormField */}
-        <g transform="translate(48, 240)">
-          <SpecimenCaption
-            x={0}
-            y={0}
-            label="FormField, label, control, helper"
-          />
-          <g transform="translate(0, 24)">
-            <rect
-              x={0}
-              y={0}
-              width={384}
-              height={156}
-              rx={12}
-              fill={palette.surface}
-              stroke={palette.border}
-            />
-            <g transform="translate(24, 28)">
-              <text
+      <SpecimenScroll label="Molecules diagram">
+        <svg
+          viewBox="0 0 880 432"
+          role="img"
+          aria-label="DSharp molecules: Alert, Tabs, FormField and a Table composed from domain atoms"
+          className={styles.specimenSvg}
+        >
+          {/* Alert */}
+          <g transform="translate(48, 48)">
+            <SpecimenCaption x={0} y={0} label="Alert, warning" />
+            <g transform="translate(0, 24)">
+              <rect
                 x={0}
                 y={0}
+                width={384}
+                height={112}
+                rx={12}
+                fill={palette.statusReviewTint}
+              />
+              <rect
+                x={0}
+                y={0}
+                width={4}
+                height={112}
+                rx={2}
+                fill={palette.statusReview}
+              />
+              <g transform="translate(20, 22)">
+                <circle cx={10} cy={10} r={10} fill={palette.statusReview} />
+                <line
+                  x1={10}
+                  y1={5}
+                  x2={10}
+                  y2={11}
+                  stroke="#fff"
+                  strokeWidth={1.6}
+                  strokeLinecap="round"
+                />
+                <circle cx={10} cy={14} r={1} fill="#fff" />
+              </g>
+              <text
+                x={56}
+                y={36}
                 fill={palette.ink}
                 fontFamily={FONT_SANS}
-                fontSize={13}
+                fontSize={14}
                 fontWeight={600}
               >
-                Layer
+                Mapping review required
               </text>
               <text
-                x={36}
-                y={0}
-                fill={palette.archMoment}
-                fontFamily={FONT_SANS}
-                fontSize={13}
-                fontWeight={600}
-              >
-                *
-              </text>
-              <text
-                x={0}
-                y={18}
+                x={56}
+                y={58}
                 fill={palette.inkSubtle}
                 fontFamily={FONT_SANS}
-                fontSize={12}
+                fontSize={13}
               >
-                Promote only validated concepts.
+                3 columns need confirmation before promotion.
               </text>
-              <g transform="translate(0, 32)">
-                <rect
-                  x={0}
-                  y={0}
-                  width={336}
-                  height={36}
-                  rx={8}
-                  fill={palette.surface}
-                  stroke={palette.opalDark}
-                  strokeWidth={1.5}
-                />
-                <SvgBadge
-                  x={12}
-                  y={7}
-                  label="silver"
-                  bg={palette.layerSilverTint}
-                  fg={palette.layerSilver}
-                  dot={palette.layerSilver}
-                  width={76}
-                />
-                <path
-                  d="M 314 14 L 318 18 L 322 14"
-                  fill="none"
-                  stroke={palette.inkSubtle}
-                  strokeWidth={1.4}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+              <SvgButton
+                x={56}
+                y={74}
+                label="Open review"
+                variant="primary"
+                size="sm"
+              />
+              <SvgButton
+                x={172}
+                y={74}
+                label="Dismiss"
+                variant="ghost"
+                size="sm"
+              />
+            </g>
+          </g>
+
+          {/* Tabs */}
+          <g transform="translate(472, 48)">
+            <SpecimenCaption x={0} y={0} label="Tabs, contextual navigation" />
+            <g transform="translate(0, 24)">
+              <rect
+                x={0}
+                y={0}
+                width={384}
+                height={112}
+                rx={12}
+                fill={palette.surface}
+                stroke={palette.border}
+              />
+              <g transform="translate(24, 32)">
+                {["Definition", "Sources", "Lineage", "Mappings"].map(
+                  (label, i) => {
+                    const x = i * 80;
+                    const active = i === 0;
+                    return (
+                      <g key={label}>
+                        <text
+                          x={x}
+                          y={0}
+                          fill={active ? palette.ink : palette.inkSubtle}
+                          fontFamily={FONT_SANS}
+                          fontSize={13}
+                          fontWeight={active ? 600 : 500}
+                        >
+                          {label}
+                        </text>
+                        {active ? (
+                          <rect
+                            x={x - 6}
+                            y={14}
+                            width={64}
+                            height={2}
+                            rx={1}
+                            fill={palette.opalDark}
+                          />
+                        ) : null}
+                      </g>
+                    );
+                  },
+                )}
+                <line
+                  x1={-24}
+                  y1={16}
+                  x2={360}
+                  y2={16}
+                  stroke={palette.border}
+                  strokeWidth={1}
                 />
               </g>
               <text
-                x={0}
-                y={92}
-                fill={palette.statusReview}
-                fontFamily={FONT_SANS}
-                fontSize={12}
+                x={24}
+                y={84}
+                fill={palette.inkMuted}
+                fontFamily={FONT_MONO}
+                fontSize={10}
+                letterSpacing="0.06em"
               >
-                Requires owner sign-off before gold promotion.
+                role=&quot;tablist&quot;, roving focus, arrow-key nav
               </text>
             </g>
           </g>
-        </g>
 
-        {/* Table */}
-        <g transform="translate(472, 240)">
-          <SpecimenCaption x={0} y={0} label="Table, composing the atoms" />
-          <g transform="translate(0, 24)">
-            <rect
+          {/* FormField */}
+          <g transform="translate(48, 240)">
+            <SpecimenCaption
               x={0}
               y={0}
-              width={384}
-              height={156}
-              rx={12}
-              fill={palette.surface}
-              stroke={palette.border}
+              label="FormField, label, control, helper"
             />
-            <rect
-              x={0}
-              y={0}
-              width={384}
-              height={32}
-              fill={palette.surfaceRaised}
-            />
-            <rect
-              x={0}
-              y={0}
-              width={12}
-              height={32}
-              fill={palette.surfaceRaised}
-            />
-            <line
-              x1={0}
-              y1={32}
-              x2={384}
-              y2={32}
-              stroke={palette.border}
-              strokeWidth={1}
-            />
-            <text
-              x={24}
-              y={20}
-              fill={palette.inkMuted}
-              fontFamily={FONT_MONO}
-              fontSize={10}
-              letterSpacing="0.08em"
-            >
-              CONCEPT
-            </text>
-            <text
-              x={192}
-              y={20}
-              fill={palette.inkMuted}
-              fontFamily={FONT_MONO}
-              fontSize={10}
-              letterSpacing="0.08em"
-            >
-              LAYER
-            </text>
-            <text
-              x={296}
-              y={20}
-              fill={palette.inkMuted}
-              fontFamily={FONT_MONO}
-              fontSize={10}
-              letterSpacing="0.08em"
-            >
-              QUALITY
-            </text>
-            {tableRows.map((row, i) => {
-              const y = 32 + i * 40;
-              return (
-                <g key={row.name}>
-                  {i > 0 ? (
-                    <line
-                      x1={24}
-                      y1={y}
-                      x2={360}
-                      y2={y}
-                      stroke={palette.border}
-                      strokeWidth={1}
-                    />
-                  ) : null}
-                  <text
-                    x={24}
-                    y={y + 24}
-                    fill={palette.ink}
-                    fontFamily={FONT_SANS}
-                    fontSize={13}
-                    fontWeight={500}
-                  >
-                    {row.name}
-                  </text>
-                  <SvgBadge
-                    x={192}
-                    y={y + 11}
-                    label={row.layer}
-                    bg={row.layerTint}
-                    fg={row.layerColor}
-                    dot={row.layerColor}
-                    width={84}
+            <g transform="translate(0, 24)">
+              <rect
+                x={0}
+                y={0}
+                width={384}
+                height={156}
+                rx={12}
+                fill={palette.surface}
+                stroke={palette.border}
+              />
+              <g transform="translate(24, 28)">
+                <text
+                  x={0}
+                  y={0}
+                  fill={palette.ink}
+                  fontFamily={FONT_SANS}
+                  fontSize={13}
+                  fontWeight={600}
+                >
+                  Layer
+                </text>
+                <text
+                  x={36}
+                  y={0}
+                  fill={palette.archMoment}
+                  fontFamily={FONT_SANS}
+                  fontSize={13}
+                  fontWeight={600}
+                >
+                  *
+                </text>
+                <text
+                  x={0}
+                  y={18}
+                  fill={palette.inkSubtle}
+                  fontFamily={FONT_SANS}
+                  fontSize={12}
+                >
+                  Promote only validated concepts.
+                </text>
+                <g transform="translate(0, 32)">
+                  <rect
+                    x={0}
+                    y={0}
+                    width={336}
+                    height={36}
+                    rx={8}
+                    fill={palette.surface}
+                    stroke={palette.opalDark}
+                    strokeWidth={1.5}
                   />
                   <SvgBadge
-                    x={296}
-                    y={y + 11}
-                    label={row.quality}
-                    bg={row.qualityTint}
-                    fg={row.qualityColor}
-                    width={72}
+                    x={12}
+                    y={7}
+                    label="silver"
+                    bg={palette.layerSilverTint}
+                    fg={palette.layerSilver}
+                    dot={palette.layerSilver}
+                    width={76}
+                  />
+                  <path
+                    d="M 314 14 L 318 18 L 322 14"
+                    fill="none"
+                    stroke={palette.inkSubtle}
+                    strokeWidth={1.4}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </g>
-              );
-            })}
+                <text
+                  x={0}
+                  y={92}
+                  fill={palette.statusReview}
+                  fontFamily={FONT_SANS}
+                  fontSize={12}
+                >
+                  Requires owner sign-off before gold promotion.
+                </text>
+              </g>
+            </g>
           </g>
-        </g>
-      </svg>
+
+          {/* Table */}
+          <g transform="translate(472, 240)">
+            <SpecimenCaption x={0} y={0} label="Table, composing the atoms" />
+            <g transform="translate(0, 24)">
+              <rect
+                x={0}
+                y={0}
+                width={384}
+                height={156}
+                rx={12}
+                fill={palette.surface}
+                stroke={palette.border}
+              />
+              <rect
+                x={0}
+                y={0}
+                width={384}
+                height={32}
+                fill={palette.surfaceRaised}
+              />
+              <rect
+                x={0}
+                y={0}
+                width={12}
+                height={32}
+                fill={palette.surfaceRaised}
+              />
+              <line
+                x1={0}
+                y1={32}
+                x2={384}
+                y2={32}
+                stroke={palette.border}
+                strokeWidth={1}
+              />
+              <text
+                x={24}
+                y={20}
+                fill={palette.inkMuted}
+                fontFamily={FONT_MONO}
+                fontSize={10}
+                letterSpacing="0.08em"
+              >
+                CONCEPT
+              </text>
+              <text
+                x={192}
+                y={20}
+                fill={palette.inkMuted}
+                fontFamily={FONT_MONO}
+                fontSize={10}
+                letterSpacing="0.08em"
+              >
+                LAYER
+              </text>
+              <text
+                x={296}
+                y={20}
+                fill={palette.inkMuted}
+                fontFamily={FONT_MONO}
+                fontSize={10}
+                letterSpacing="0.08em"
+              >
+                QUALITY
+              </text>
+              {tableRows.map((row, i) => {
+                const y = 32 + i * 40;
+                return (
+                  <g key={row.name}>
+                    {i > 0 ? (
+                      <line
+                        x1={24}
+                        y1={y}
+                        x2={360}
+                        y2={y}
+                        stroke={palette.border}
+                        strokeWidth={1}
+                      />
+                    ) : null}
+                    <text
+                      x={24}
+                      y={y + 24}
+                      fill={palette.ink}
+                      fontFamily={FONT_SANS}
+                      fontSize={13}
+                      fontWeight={500}
+                    >
+                      {row.name}
+                    </text>
+                    <SvgBadge
+                      x={192}
+                      y={y + 11}
+                      label={row.layer}
+                      bg={row.layerTint}
+                      fg={row.layerColor}
+                      dot={row.layerColor}
+                      width={84}
+                    />
+                    <SvgBadge
+                      x={296}
+                      y={y + 11}
+                      label={row.quality}
+                      bg={row.qualityTint}
+                      fg={row.qualityColor}
+                      width={72}
+                    />
+                  </g>
+                );
+              })}
+            </g>
+          </g>
+        </svg>
+      </SpecimenScroll>
       <figcaption className={styles.specimenCaption}>
         Molecules combine atoms without inventing a second palette. The table
         composes <code>LayerBadge</code> and <code>QualityBadge</code> instead
@@ -1234,515 +1269,517 @@ function OrganismsSpecimen() {
 
   return (
     <figure className={styles.specimenFigure}>
-      <svg
-        viewBox="0 0 880 856"
-        role="img"
-        aria-label="DSharp organisms: LayerNav, ConceptCard, AIToolbar and the ConceptDiagram canvas"
-        className={styles.specimenSvg}
-      >
-        {/* LayerNav */}
-        <g transform="translate(48, 48)">
-          <SpecimenCaption x={0} y={0} label="LayerNav, medallion sidebar" />
-          <g transform="translate(0, 24)">
-            <rect
-              x={0}
-              y={0}
-              width={236}
-              height={332}
-              rx={12}
-              fill={palette.surfaceRaised}
-              stroke={palette.border}
-            />
-            <text
-              x={20}
-              y={28}
-              fill={palette.inkMuted}
-              fontFamily={FONT_MONO}
-              fontSize={10}
-              letterSpacing="0.08em"
-            >
-              LAYERS
-            </text>
-            {layerNav.map((row, i) => {
-              const y = 48 + i * 56;
-              return (
-                <g key={row.name}>
-                  {row.active ? (
-                    <rect
-                      x={8}
-                      y={y - 6}
-                      width={220}
-                      height={48}
-                      rx={8}
-                      fill={palette.surface}
-                      stroke={palette.opalDark}
-                      strokeWidth={1.5}
-                    />
-                  ) : null}
-                  <circle cx={26} cy={y + 18} r={5} fill={row.color} />
-                  <text
-                    x={42}
-                    y={y + 16}
-                    fill={palette.ink}
-                    fontFamily={FONT_SANS}
-                    fontSize={13}
-                    fontWeight={row.active ? 600 : 500}
-                  >
-                    {row.name}
-                  </text>
-                  <text
-                    x={42}
-                    y={y + 32}
-                    fill={palette.inkSubtle}
-                    fontFamily={FONT_SANS}
-                    fontSize={11}
-                  >
-                    {row.count} tables
-                  </text>
-                  <rect
-                    x={184}
-                    y={y + 7}
-                    width={36}
-                    height={22}
-                    rx={6}
-                    fill={row.tint}
-                  />
-                  <text
-                    x={202}
-                    y={y + 22}
-                    textAnchor="middle"
-                    fill={row.color}
-                    fontFamily={FONT_MONO}
-                    fontSize={11}
-                    fontWeight={600}
-                  >
-                    {row.count}
-                  </text>
-                </g>
-              );
-            })}
-          </g>
-        </g>
-
-        {/* ConceptCard */}
-        <g transform="translate(316, 48)">
-          <SpecimenCaption x={0} y={0} label="ConceptCard, archetype tint" />
-          <g transform="translate(0, 24)">
-            <rect
-              x={0}
-              y={0}
-              width={252}
-              height={332}
-              rx={12}
-              fill={palette.surface}
-            />
-            <rect
-              x={0}
-              y={0}
-              width={252}
-              height={64}
-              rx={12}
-              fill={palette.archPartyTint}
-            />
-            <rect
-              x={0}
-              y={54}
-              width={252}
-              height={10}
-              fill={palette.archPartyTint}
-            />
-            <text
-              x={20}
-              y={28}
-              fill={palette.archParty}
-              fontFamily={FONT_MONO}
-              fontSize={10}
-              fontWeight={600}
-              letterSpacing="0.1em"
-            >
-              PARTY
-            </text>
-            <text
-              x={20}
-              y={50}
-              fill={palette.ink}
-              fontFamily={FONT_SANS}
-              fontSize={18}
-              fontWeight={700}
-            >
-              Customer
-            </text>
-            <text
-              x={20}
-              y={90}
-              fill={palette.inkSubtle}
-              fontFamily={FONT_SANS}
-              fontSize={12}
-            >
-              A person or organisation that orders.
-            </text>
-            <line
-              x1={20}
-              y1={110}
-              x2={232}
-              y2={110}
-              stroke={palette.border}
-              strokeWidth={1}
-            />
-            {[
-              { label: "id", type: "binary(32)", key: true },
-              { label: "name", type: "string", key: false },
-              { label: "email", type: "string", key: false },
-              { label: "since", type: "date", key: false },
-            ].map((attr, i) => {
-              const y = 134 + i * 28;
-              return (
-                <g key={attr.label}>
-                  <text
-                    x={20}
-                    y={y}
-                    fill={palette.ink}
-                    fontFamily={FONT_MONO}
-                    fontSize={12}
-                    fontWeight={attr.key ? 600 : 400}
-                  >
-                    {attr.label}
-                  </text>
-                  {attr.key ? (
-                    <g transform={`translate(40, ${y - 11})`}>
-                      <rect
-                        x={0}
-                        y={0}
-                        width={22}
-                        height={14}
-                        rx={3}
-                        fill={palette.opalDark}
-                      />
-                      <text
-                        x={11}
-                        y={10}
-                        textAnchor="middle"
-                        fill="#fff"
-                        fontFamily={FONT_MONO}
-                        fontSize={9}
-                        fontWeight={700}
-                      >
-                        PK
-                      </text>
-                    </g>
-                  ) : null}
-                  <text
-                    x={232}
-                    y={y}
-                    textAnchor="end"
-                    fill={palette.inkSubtle}
-                    fontFamily={FONT_MONO}
-                    fontSize={11}
-                  >
-                    {attr.type}
-                  </text>
-                </g>
-              );
-            })}
-            <line
-              x1={20}
-              y1={272}
-              x2={232}
-              y2={272}
-              stroke={palette.border}
-              strokeWidth={1}
-            />
-            <g transform="translate(20, 290)">
-              <text
+      <SpecimenScroll label="Organisms diagram">
+        <svg
+          viewBox="0 0 880 856"
+          role="img"
+          aria-label="DSharp organisms: LayerNav, ConceptCard, AIToolbar and the ConceptDiagram canvas"
+          className={styles.specimenSvg}
+        >
+          {/* LayerNav */}
+          <g transform="translate(48, 48)">
+            <SpecimenCaption x={0} y={0} label="LayerNav, medallion sidebar" />
+            <g transform="translate(0, 24)">
+              <rect
                 x={0}
-                y={14}
-                fill={palette.inkMuted}
-                fontFamily={FONT_MONO}
-                fontSize={10}
-                letterSpacing="0.06em"
-              >
-                3 relations
-              </text>
+                y={0}
+                width={236}
+                height={332}
+                rx={12}
+                fill={palette.surfaceRaised}
+                stroke={palette.border}
+              />
               <text
-                x={0}
+                x={20}
                 y={28}
                 fill={palette.inkMuted}
                 fontFamily={FONT_MONO}
                 fontSize={10}
-                letterSpacing="0.06em"
+                letterSpacing="0.08em"
               >
-                8,912 rows
+                LAYERS
               </text>
+              {layerNav.map((row, i) => {
+                const y = 48 + i * 56;
+                return (
+                  <g key={row.name}>
+                    {row.active ? (
+                      <rect
+                        x={8}
+                        y={y - 6}
+                        width={220}
+                        height={48}
+                        rx={8}
+                        fill={palette.surface}
+                        stroke={palette.opalDark}
+                        strokeWidth={1.5}
+                      />
+                    ) : null}
+                    <circle cx={26} cy={y + 18} r={5} fill={row.color} />
+                    <text
+                      x={42}
+                      y={y + 16}
+                      fill={palette.ink}
+                      fontFamily={FONT_SANS}
+                      fontSize={13}
+                      fontWeight={row.active ? 600 : 500}
+                    >
+                      {row.name}
+                    </text>
+                    <text
+                      x={42}
+                      y={y + 32}
+                      fill={palette.inkSubtle}
+                      fontFamily={FONT_SANS}
+                      fontSize={11}
+                    >
+                      {row.count} tables
+                    </text>
+                    <rect
+                      x={184}
+                      y={y + 7}
+                      width={36}
+                      height={22}
+                      rx={6}
+                      fill={row.tint}
+                    />
+                    <text
+                      x={202}
+                      y={y + 22}
+                      textAnchor="middle"
+                      fill={row.color}
+                      fontFamily={FONT_MONO}
+                      fontSize={11}
+                      fontWeight={600}
+                    >
+                      {row.count}
+                    </text>
+                  </g>
+                );
+              })}
             </g>
-            <SvgBadge
-              x={150}
-              y={300}
-              label="silver"
-              bg={palette.layerSilverTint}
-              fg={palette.layerSilver}
-              dot={palette.layerSilver}
-              width={68}
-            />
-            <rect
-              x={0}
-              y={0}
-              width={252}
-              height={332}
-              rx={12}
-              fill="none"
-              stroke={palette.opalDark}
-              strokeWidth={1.5}
-            />
           </g>
-        </g>
 
-        {/* Inspector */}
-        <g transform="translate(600, 48)">
-          <SpecimenCaption x={0} y={0} label="Inspector, contract pane" />
-          <g transform="translate(0, 24)">
-            <rect
-              x={0}
-              y={0}
-              width={232}
-              height={332}
-              rx={12}
-              fill={palette.surfaceRaised}
-              stroke={palette.border}
-            />
-            <text
-              x={20}
-              y={28}
-              fill={palette.ink}
-              fontFamily={FONT_SANS}
-              fontSize={13}
-              fontWeight={600}
-            >
-              Customer.contract
-            </text>
-            <text
-              x={20}
-              y={46}
-              fill={palette.inkMuted}
-              fontFamily={FONT_MONO}
-              fontSize={10}
-              letterSpacing="0.06em"
-            >
-              tier: atom, group: domain
-            </text>
-            <line
-              x1={20}
-              y1={62}
-              x2={212}
-              y2={62}
-              stroke={palette.border}
-              strokeWidth={1}
-            />
-            {[
-              ["variants", "primary / ghost"],
-              ["slots", "label, helper"],
-              ["asChild", "true"],
-              ["a11y.reviewed", "true"],
-              ["tokens.declared", "12"],
-              ["stories.required", "5 / 5"],
-              ["status", "stable"],
-              ["figma", "EVr7qLFN..."],
-            ].map(([key, value], i) => {
-              const y = 84 + i * 24;
-              return (
-                <g key={key}>
-                  <text
-                    x={20}
-                    y={y}
-                    fill={palette.inkSubtle}
-                    fontFamily={FONT_MONO}
-                    fontSize={11}
-                  >
-                    {key}
-                  </text>
-                  <text
-                    x={212}
-                    y={y}
-                    textAnchor="end"
-                    fill={palette.ink}
-                    fontFamily={FONT_MONO}
-                    fontSize={11}
-                    fontWeight={500}
-                  >
-                    {value}
-                  </text>
-                </g>
-              );
-            })}
-          </g>
-        </g>
-
-        {/* AIToolbar */}
-        <g transform="translate(48, 440)">
-          <SpecimenCaption
-            x={0}
-            y={0}
-            label="AIToolbar, scoped agent actions"
-          />
-          <g transform="translate(0, 24)">
-            <rect
-              x={0}
-              y={0}
-              width={784}
-              height={64}
-              rx={12}
-              fill="rgba(87, 113, 100, 0.06)"
-              stroke="rgba(87, 113, 100, 0.22)"
-            />
-            <g transform="translate(20, 18)">
+          {/* ConceptCard */}
+          <g transform="translate(316, 48)">
+            <SpecimenCaption x={0} y={0} label="ConceptCard, archetype tint" />
+            <g transform="translate(0, 24)">
               <rect
                 x={0}
                 y={0}
-                width={36}
-                height={28}
-                rx={6}
-                fill={palette.opalDark}
+                width={252}
+                height={332}
+                rx={12}
+                fill={palette.surface}
+              />
+              <rect
+                x={0}
+                y={0}
+                width={252}
+                height={64}
+                rx={12}
+                fill={palette.archPartyTint}
+              />
+              <rect
+                x={0}
+                y={54}
+                width={252}
+                height={10}
+                fill={palette.archPartyTint}
               />
               <text
-                x={18}
-                y={19}
-                textAnchor="middle"
-                fill="#fff"
+                x={20}
+                y={28}
+                fill={palette.archParty}
                 fontFamily={FONT_MONO}
-                fontSize={11}
-                fontWeight={700}
+                fontSize={10}
+                fontWeight={600}
                 letterSpacing="0.1em"
               >
-                AI
+                PARTY
               </text>
-            </g>
-            {[
-              "Classify columns",
-              "Suggest mapping",
-              "Promote to silver",
-              "Explain lineage",
-            ].map((action, i) => {
-              const x = 76 + i * 148;
-              return (
-                <g key={action}>
-                  <rect
-                    x={x}
-                    y={18}
-                    width={136}
-                    height={28}
-                    rx={6}
-                    fill={palette.surface}
-                    stroke={palette.border}
-                  />
-                  <text
-                    x={x + 68}
-                    y={36}
-                    textAnchor="middle"
-                    fill={palette.ink}
-                    fontFamily={FONT_SANS}
-                    fontSize={12}
-                    fontWeight={500}
-                  >
-                    {action}
-                  </text>
-                </g>
-              );
-            })}
-            <g transform="translate(689, 18)">
-              <circle cx={6} cy={14} r={4} fill={palette.statusGood} />
               <text
-                x={16}
-                y={18}
-                fill={palette.inkSubtle}
-                fontFamily={FONT_MONO}
-                fontSize={11}
+                x={20}
+                y={50}
+                fill={palette.ink}
+                fontFamily={FONT_SANS}
+                fontSize={18}
+                fontWeight={700}
               >
-                2 running
+                Customer
               </text>
+              <text
+                x={20}
+                y={90}
+                fill={palette.inkSubtle}
+                fontFamily={FONT_SANS}
+                fontSize={12}
+              >
+                A person or organisation that orders.
+              </text>
+              <line
+                x1={20}
+                y1={110}
+                x2={232}
+                y2={110}
+                stroke={palette.border}
+                strokeWidth={1}
+              />
+              {[
+                { label: "id", type: "binary(32)", key: true },
+                { label: "name", type: "string", key: false },
+                { label: "email", type: "string", key: false },
+                { label: "since", type: "date", key: false },
+              ].map((attr, i) => {
+                const y = 134 + i * 28;
+                return (
+                  <g key={attr.label}>
+                    <text
+                      x={20}
+                      y={y}
+                      fill={palette.ink}
+                      fontFamily={FONT_MONO}
+                      fontSize={12}
+                      fontWeight={attr.key ? 600 : 400}
+                    >
+                      {attr.label}
+                    </text>
+                    {attr.key ? (
+                      <g transform={`translate(40, ${y - 11})`}>
+                        <rect
+                          x={0}
+                          y={0}
+                          width={22}
+                          height={14}
+                          rx={3}
+                          fill={palette.opalDark}
+                        />
+                        <text
+                          x={11}
+                          y={10}
+                          textAnchor="middle"
+                          fill="#fff"
+                          fontFamily={FONT_MONO}
+                          fontSize={9}
+                          fontWeight={700}
+                        >
+                          PK
+                        </text>
+                      </g>
+                    ) : null}
+                    <text
+                      x={232}
+                      y={y}
+                      textAnchor="end"
+                      fill={palette.inkSubtle}
+                      fontFamily={FONT_MONO}
+                      fontSize={11}
+                    >
+                      {attr.type}
+                    </text>
+                  </g>
+                );
+              })}
+              <line
+                x1={20}
+                y1={272}
+                x2={232}
+                y2={272}
+                stroke={palette.border}
+                strokeWidth={1}
+              />
+              <g transform="translate(20, 290)">
+                <text
+                  x={0}
+                  y={14}
+                  fill={palette.inkMuted}
+                  fontFamily={FONT_MONO}
+                  fontSize={10}
+                  letterSpacing="0.06em"
+                >
+                  3 relations
+                </text>
+                <text
+                  x={0}
+                  y={28}
+                  fill={palette.inkMuted}
+                  fontFamily={FONT_MONO}
+                  fontSize={10}
+                  letterSpacing="0.06em"
+                >
+                  8,912 rows
+                </text>
+              </g>
+              <SvgBadge
+                x={150}
+                y={300}
+                label="silver"
+                bg={palette.layerSilverTint}
+                fg={palette.layerSilver}
+                dot={palette.layerSilver}
+                width={68}
+              />
+              <rect
+                x={0}
+                y={0}
+                width={252}
+                height={332}
+                rx={12}
+                fill="none"
+                stroke={palette.opalDark}
+                strokeWidth={1.5}
+              />
             </g>
           </g>
-        </g>
 
-        {/* ConceptDiagram */}
-        <g transform="translate(48, 564)">
-          <SpecimenCaption x={0} y={0} label="ConceptDiagram, ER canvas" />
-          <g transform="translate(0, 24)">
-            <rect
+          {/* Inspector */}
+          <g transform="translate(600, 48)">
+            <SpecimenCaption x={0} y={0} label="Inspector, contract pane" />
+            <g transform="translate(0, 24)">
+              <rect
+                x={0}
+                y={0}
+                width={232}
+                height={332}
+                rx={12}
+                fill={palette.surfaceRaised}
+                stroke={palette.border}
+              />
+              <text
+                x={20}
+                y={28}
+                fill={palette.ink}
+                fontFamily={FONT_SANS}
+                fontSize={13}
+                fontWeight={600}
+              >
+                Customer.contract
+              </text>
+              <text
+                x={20}
+                y={46}
+                fill={palette.inkMuted}
+                fontFamily={FONT_MONO}
+                fontSize={10}
+                letterSpacing="0.06em"
+              >
+                tier: atom, group: domain
+              </text>
+              <line
+                x1={20}
+                y1={62}
+                x2={212}
+                y2={62}
+                stroke={palette.border}
+                strokeWidth={1}
+              />
+              {[
+                ["variants", "primary / ghost"],
+                ["slots", "label, helper"],
+                ["asChild", "true"],
+                ["a11y.reviewed", "true"],
+                ["tokens.declared", "12"],
+                ["stories.required", "5 / 5"],
+                ["status", "stable"],
+                ["figma", "EVr7qLFN..."],
+              ].map(([key, value], i) => {
+                const y = 84 + i * 24;
+                return (
+                  <g key={key}>
+                    <text
+                      x={20}
+                      y={y}
+                      fill={palette.inkSubtle}
+                      fontFamily={FONT_MONO}
+                      fontSize={11}
+                    >
+                      {key}
+                    </text>
+                    <text
+                      x={212}
+                      y={y}
+                      textAnchor="end"
+                      fill={palette.ink}
+                      fontFamily={FONT_MONO}
+                      fontSize={11}
+                      fontWeight={500}
+                    >
+                      {value}
+                    </text>
+                  </g>
+                );
+              })}
+            </g>
+          </g>
+
+          {/* AIToolbar */}
+          <g transform="translate(48, 440)">
+            <SpecimenCaption
               x={0}
               y={0}
-              width={784}
-              height={232}
-              rx={12}
-              fill={palette.surfaceRaised}
-              stroke={palette.border}
+              label="AIToolbar, scoped agent actions"
             />
-            {/* dotted background grid */}
-            {Array.from({ length: 8 }).map((_, gx) =>
-              Array.from({ length: 4 }).map((_, gy) => (
-                <circle
-                  key={`g${gx}-${gy}`}
-                  cx={48 + gx * 96}
-                  cy={36 + gy * 48}
-                  r={1}
-                  fill="rgba(41, 38, 40, 0.08)"
+            <g transform="translate(0, 24)">
+              <rect
+                x={0}
+                y={0}
+                width={784}
+                height={64}
+                rx={12}
+                fill="rgba(87, 113, 100, 0.06)"
+                stroke="rgba(87, 113, 100, 0.22)"
+              />
+              <g transform="translate(20, 18)">
+                <rect
+                  x={0}
+                  y={0}
+                  width={36}
+                  height={28}
+                  rx={6}
+                  fill={palette.opalDark}
                 />
-              )),
-            )}
-            <ConceptCardNode
-              x={32}
-              y={48}
-              title="Person"
-              archetype="party"
-              archetypeColor={palette.archParty}
-              archetypeTint={palette.archPartyTint}
-              attrs={[
-                { label: "id", type: "int", key: true },
-                { label: "name", type: "string" },
-                { label: "dob", type: "date" },
-              ]}
-            />
-            <ConceptCardNode
-              x={296}
-              y={48}
-              title="Membership"
-              archetype="moment"
-              archetypeColor={palette.archMoment}
-              archetypeTint={palette.archMomentTint}
-              emphasized
-              attrs={[
-                { label: "id", type: "int", key: true },
-                { label: "start", type: "date" },
-                { label: "end", type: "date" },
-              ]}
-            />
-            <ConceptCardNode
-              x={560}
-              y={48}
-              title="Project"
-              archetype="description"
-              archetypeColor={palette.archDescription}
-              archetypeTint={palette.archDescriptionTint}
-              attrs={[
-                { label: "id", type: "int", key: true },
-                { label: "code", type: "string" },
-                { label: "name", type: "string" },
-              ]}
-            />
-            {/* Connectors */}
-            <path
-              d="M 224 104 C 252 104, 268 104, 296 104"
-              fill="none"
-              stroke={palette.inkSubtle}
-              strokeWidth={1.25}
-            />
-            <path
-              d="M 488 104 C 516 104, 532 104, 560 104"
-              fill="none"
-              stroke={palette.inkSubtle}
-              strokeWidth={1.25}
-            />
+                <text
+                  x={18}
+                  y={19}
+                  textAnchor="middle"
+                  fill="#fff"
+                  fontFamily={FONT_MONO}
+                  fontSize={11}
+                  fontWeight={700}
+                  letterSpacing="0.1em"
+                >
+                  AI
+                </text>
+              </g>
+              {[
+                "Classify columns",
+                "Suggest mapping",
+                "Promote to silver",
+                "Explain lineage",
+              ].map((action, i) => {
+                const x = 76 + i * 148;
+                return (
+                  <g key={action}>
+                    <rect
+                      x={x}
+                      y={18}
+                      width={136}
+                      height={28}
+                      rx={6}
+                      fill={palette.surface}
+                      stroke={palette.border}
+                    />
+                    <text
+                      x={x + 68}
+                      y={36}
+                      textAnchor="middle"
+                      fill={palette.ink}
+                      fontFamily={FONT_SANS}
+                      fontSize={12}
+                      fontWeight={500}
+                    >
+                      {action}
+                    </text>
+                  </g>
+                );
+              })}
+              <g transform="translate(689, 18)">
+                <circle cx={6} cy={14} r={4} fill={palette.statusGood} />
+                <text
+                  x={16}
+                  y={18}
+                  fill={palette.inkSubtle}
+                  fontFamily={FONT_MONO}
+                  fontSize={11}
+                >
+                  2 running
+                </text>
+              </g>
+            </g>
           </g>
-        </g>
-      </svg>
+
+          {/* ConceptDiagram */}
+          <g transform="translate(48, 564)">
+            <SpecimenCaption x={0} y={0} label="ConceptDiagram, ER canvas" />
+            <g transform="translate(0, 24)">
+              <rect
+                x={0}
+                y={0}
+                width={784}
+                height={232}
+                rx={12}
+                fill={palette.surfaceRaised}
+                stroke={palette.border}
+              />
+              {/* dotted background grid */}
+              {Array.from({ length: 8 }).map((_, gx) =>
+                Array.from({ length: 4 }).map((_, gy) => (
+                  <circle
+                    key={`g${gx}-${gy}`}
+                    cx={48 + gx * 96}
+                    cy={36 + gy * 48}
+                    r={1}
+                    fill="rgba(41, 38, 40, 0.08)"
+                  />
+                )),
+              )}
+              <ConceptCardNode
+                x={32}
+                y={48}
+                title="Person"
+                archetype="party"
+                archetypeColor={palette.archParty}
+                archetypeTint={palette.archPartyTint}
+                attrs={[
+                  { label: "id", type: "int", key: true },
+                  { label: "name", type: "string" },
+                  { label: "dob", type: "date" },
+                ]}
+              />
+              <ConceptCardNode
+                x={296}
+                y={48}
+                title="Membership"
+                archetype="moment"
+                archetypeColor={palette.archMoment}
+                archetypeTint={palette.archMomentTint}
+                emphasized
+                attrs={[
+                  { label: "id", type: "int", key: true },
+                  { label: "start", type: "date" },
+                  { label: "end", type: "date" },
+                ]}
+              />
+              <ConceptCardNode
+                x={560}
+                y={48}
+                title="Project"
+                archetype="description"
+                archetypeColor={palette.archDescription}
+                archetypeTint={palette.archDescriptionTint}
+                attrs={[
+                  { label: "id", type: "int", key: true },
+                  { label: "code", type: "string" },
+                  { label: "name", type: "string" },
+                ]}
+              />
+              {/* Connectors */}
+              <path
+                d="M 224 104 C 252 104, 268 104, 296 104"
+                fill="none"
+                stroke={palette.inkSubtle}
+                strokeWidth={1.25}
+              />
+              <path
+                d="M 488 104 C 516 104, 532 104, 560 104"
+                fill="none"
+                stroke={palette.inkSubtle}
+                strokeWidth={1.25}
+              />
+            </g>
+          </g>
+        </svg>
+      </SpecimenScroll>
       <figcaption className={styles.specimenCaption}>
         Every organism reads the same domain semantics. LayerNav surfaces the
         medallion layers; ConceptCard tints by archetype; the Inspector renders

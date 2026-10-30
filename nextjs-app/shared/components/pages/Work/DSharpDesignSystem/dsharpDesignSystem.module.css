@@ -89,10 +89,35 @@
   gap: var(--space-layout-16);
 }
 
+/* Below 880px of room the diagram keeps its drawn width and the wrapper
+   scrolls: shrunk to a phone it set 10-unit labels at 4px. */
+
+.specimenScroll {
+  /* Size containment: the 880px diagram does not count toward the
+     GridBlock column's width, so the column stays the screen's width and
+     this box scrolls instead of the page clipping it. */
+  contain: inline-size;
+
+  /* Physical fallbacks must precede their logical counterparts. */
+  overflow-x: auto;
+  /* stylelint-disable-next-line order/properties-order */
+  overflow-inline: auto;
+  overscroll-behavior-x: contain;
+  /* stylelint-disable-next-line order/properties-order */
+  overscroll-behavior-inline: contain;
+}
+
+.specimenScroll:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: var(--space-internal-2);
+}
+
 .specimenSvg {
   display: block;
-  inline-size: 100%;
   block-size: auto;
+  inline-size: 100%;
+  /* stylelint-disable-next-line rhythmguard/use-scale -- the diagrams' viewBox width: one SVG unit per pixel */
+  min-inline-size: 880px;
   overflow: visible;
 }
 
