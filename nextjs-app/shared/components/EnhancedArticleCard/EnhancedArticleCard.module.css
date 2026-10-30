@@ -67,6 +67,16 @@
   opacity: 1;
 }
 
+/* Touch screens have no hover: show the cue at rest there, as the contact
+   copy buttons do. */
+
+@media (hover: none) {
+  .readMore {
+    transform: none;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card:hover {
     transform: none;
