@@ -1,7 +1,7 @@
 import React from "react";
 import SelectOption from "./SelectOption";
 import Select from "@dt/Select";
-import { userEvent, within } from "storybook/test";
+import { expect, userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import contract from "./SelectOption.contract.json";
 export default {
@@ -31,8 +31,12 @@ export const Default = () => {
 
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const select = await canvas.findByLabelText(/select an option/i);
-  await userEvent.selectOptions(select, "option2");
+  const trigger = await canvas.findByRole("combobox", { name: /select an option/i });
+  await userEvent.click(trigger);
+  // The option list renders in a portal on document.body.
+  const body = within(canvasElement.ownerDocument.body);
+  await userEvent.click(await body.findByRole("option", { name: /option 2/i }));
+  await expect(trigger).toHaveTextContent(/option 2/i);
 };
 Default.tags = ["beta-matrix"];
 

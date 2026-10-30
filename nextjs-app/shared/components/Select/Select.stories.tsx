@@ -2,7 +2,7 @@ import contract from "./Select.contract.json";
 import React, { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import Select from "@dt/Select";
-import { userEvent, within } from "storybook/test";
+import { expect, userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import SelectOption from "./SelectOption";
 import Icon from "@dt/Icon";
@@ -137,10 +137,22 @@ const SelectStory: React.FC<React.ComponentProps<typeof Select>> = (args) => {
   const translatedHelperText = args.helperText
     ? t(args.helperText as string)
     : undefined;
+  // Own the value so the canvas stays operable; the value control re-seeds it.
+  const [value, setValue] = useState(args.value);
+  const [seed, setSeed] = useState(args.value);
+  if (seed !== args.value) {
+    setSeed(args.value);
+    setValue(args.value);
+  }
   return (
     <div className={styles.container}>
       <Select
         {...args}
+        value={value}
+        onValueChange={(next) => {
+          setValue(next);
+          args.onValueChange?.(next);
+        }}
         label={t(args.label as string)}
         options={translatedOptions}
         error={translatedError}
@@ -301,8 +313,12 @@ WithHelperText.args = {
 
 Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  const select = await canvas.findByLabelText(/select an option/i);
-  await userEvent.selectOptions(select, "option2");
+  const trigger = await canvas.findByRole("combobox", { name: /select an option/i });
+  await userEvent.click(trigger);
+  // The option list renders in a portal on document.body.
+  const body = within(canvasElement.ownerDocument.body);
+  await userEvent.click(await body.findByRole("option", { name: /option 2/i }));
+  await expect(trigger).toHaveTextContent(/option 2/i);
   // Focus test
   await userEvent.tab();
 };
