@@ -1,8 +1,8 @@
 {
   "storyId": "patterns-servicesledger-forced-colors",
   "mode": "light",
-  "sourceSHA": "a502f336fff3d195454fac82bcba6fb17dc0c85d",
-  "capturedAt": "2026-10-30T22:29:11.127Z",
+  "sourceSHA": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+  "capturedAt": "2026-10-30T22:33:14.049Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
