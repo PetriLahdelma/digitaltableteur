@@ -1,0 +1,16 @@
+{
+  "storyId": "content-kbd-default",
+  "mode": "light",
+  "sourceSHA": "e43173f817c2becb5bda656a7a06d878f90db805",
+  "capturedAt": "2026-10-30T08:02:50.814Z",
+  "runner": "local",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
