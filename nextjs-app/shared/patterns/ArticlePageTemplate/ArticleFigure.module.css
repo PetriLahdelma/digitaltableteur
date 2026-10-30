@@ -13,7 +13,12 @@
   inline-size: 100%;
 }
 
-/* Span the full article content column */
+/* Span the full article content column: breaks out of the measure the
+   article sets on every block, symmetrically about the same centre. */
+.figureFull {
+  max-inline-size: none;
+}
+
 .figureFull .media {
   display: block;
   inline-size: 100%;
@@ -34,7 +39,7 @@
   padding-inline: 0;
 }
 
-/* Smaller diagram, centered in the column */
+/* Smaller diagram, at the text measure on the article's centre axis */
 .figureCenter {
   display: flex;
   flex-direction: column;
@@ -44,7 +49,7 @@
 .figureCenter .media {
   display: block;
   inline-size: 100%;
-  max-inline-size: 32rem;
+  max-inline-size: var(--article-measure, 32rem);
   margin-inline: auto;
 }
 
@@ -66,7 +71,7 @@
 .caption {
   margin-block-start: var(--space-internal-12, 0.75rem);
   inline-size: 100%;
-  max-inline-size: 32rem;
+  max-inline-size: var(--article-measure, 32rem);
   margin-inline: auto;
   padding-inline: var(--space-layout-8, 0.5rem);
   text-align: center;

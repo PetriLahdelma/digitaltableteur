@@ -10,10 +10,16 @@ export const articleProseClassName = cn(
   "prose-p:font-body prose-p:text-base prose-p:tablet:text-lg",
   "prose-p:leading-relaxed prose-p:text-foreground/90",
   "prose-p:my-6",
-  // Reading measure: max-w-none let paragraphs run to 105 characters per
-  // line. Media, tables and code keep the full column.
-  "prose-p:max-w-[var(--measure-reading)] prose-ul:max-w-[var(--measure-reading)]",
-  "prose-ol:max-w-[var(--measure-reading)] prose-blockquote:max-w-[var(--measure-reading)]",
+  // One centred axis. Every block sits at the reading measure (30em of the
+  // paragraph size: text-base below tablet, text-lg above), centred in the
+  // column, so headings, lists, quotes, code and centre figures share the
+  // paragraphs' edges. Full figures and tables break out to the column,
+  // symmetrically. Set as an absolute length on the container because
+  // --measure-reading is in em and would resolve per element. The centring
+  // is important: embedded components (StageList, cards) reset their own
+  // inline margins in unlayered CSS, which beats a layered utility.
+  "[--article-measure:30rem] tablet:[--article-measure:33.75rem]",
+  "[&>*]:!mx-auto [&>*]:max-w-[var(--article-measure)] [&>table]:max-w-none",
   "prose-a:text-primary prose-a:font-medium prose-a:underline",
   "prose-a:underline-offset-2 hover:prose-a:text-primary/80",
   "prose-li:font-body prose-li:text-base prose-li:tablet:text-lg",
@@ -34,7 +40,7 @@ export const articleProseClassName = cn(
   // ::before/::after; the chip background already marks it as code.
   "prose-code:before:content-none prose-code:after:content-none",
   "prose-pre:bg-muted prose-pre:rounded-lg prose-pre:p-4",
-  "prose-pre:mx-auto prose-pre:max-w-[80%] prose-pre:max-h-[35vh]",
+  "prose-pre:max-h-[35vh]",
   "prose-pre:overflow-x-hidden prose-pre:overflow-y-auto prose-pre:whitespace-pre-wrap prose-pre:break-words prose-pre:my-6",
   "prose-img:rounded-lg",
   "prose-figure:my-0",
