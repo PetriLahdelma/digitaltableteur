@@ -31,7 +31,7 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": false,
-        "reviewedNote": "2026-10-31: reviewed live in Storybook (Default, both views). The section is labelled by its h2; the Human / Machine switch is a labelled radiogroup (roving tabindex, arrow keys move and select); the ledger is an ordered list whose rows are single links named by the offer title (aria-labelledby) and described by the description and capabilities (aria-describedby), fixed in this review because the name was the whole row; the index numbers are aria-hidden; the machine view's copy button announces Copied through aria-live; Tab order runs switch, rows, then the machine view links and copy button."
+        "reviewedNote": "2026-10-31: reviewed live in Storybook (Default, both views). The section is labelled by its h2; the Human / Machine switch is a labelled radiogroup (roving tabindex, arrow keys move and select); the ledger is an ordered list whose rows are single links. Each link's name is the whole row on purpose: WCAG 2.5.3 (Label in Name) needs the name to contain the visible text, and naming it by the title alone fails axe label-content-name-mismatch. The index numbers are aria-hidden; the machine view's copy button announces Copied through aria-live; Tab order runs switch, rows, then the machine view links and copy button."
     },
     "tokens": {
         "colors": [
