@@ -321,6 +321,7 @@ export function EngagementPageContent({
           </Title>
           <Accordion
             variant="divided"
+            headingLevel={3}
             defaultOpenId={faq.length ? `${uid}-faq-0` : undefined}
             items={faq.map((item, index) => ({
               id: `${uid}-faq-${index}`,

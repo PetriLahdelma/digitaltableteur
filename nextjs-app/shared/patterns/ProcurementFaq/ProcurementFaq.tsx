@@ -82,6 +82,7 @@ export function ProcurementFaq({
       </div>
       <Accordion
         variant="divided"
+        headingLevel={headingLevel === 2 ? 3 : 4}
         className={styles.list}
         defaultOpenId={items[0] ? `${id}-${items[0].id}` : undefined}
         items={items.map((item) => ({

@@ -30,7 +30,7 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-10-30: reviewed live in Storybook (Default). The section is labelled by its h2; 14 Accordion triggers expose aria-expanded and aria-controls, each panel is a labelled region, collapsed panels are hidden; Tab reaches each trigger in order with a visible 2px inset focus ring; Enter and Space toggle; one item opens at a time; motion respects prefers-reduced-motion; the Reliable Partner link is named by its image alt and the AI policy link by its text. Known gap shared with the DS Accordion: triggers are not wrapped in heading elements, so FAQ questions are not in the heading outline."
+        "reviewedNote": "2026-10-30: reviewed live in Storybook (Default). The section is labelled by its h2; 14 Accordion triggers expose aria-expanded and aria-controls, each panel is a labelled region, collapsed panels are hidden; Tab reaches each trigger in order with a visible 2px inset focus ring; Enter and Space toggle; one item opens at a time; motion respects prefers-reduced-motion; the Reliable Partner link is named by its image alt and the AI policy link by its text. 2026-10-31: FAQ questions are headings one level below their section (Accordion headingLevel), so they join the outline; triggers look the same."
     },
     "tokens": {
         "colors": [

@@ -31,7 +31,7 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-10-30: reviewed live in Storybook (Default, Audit). One h1 labels the article; every section is labelled by its h2; the breadcrumb is a labelled nav with an ordered list; steps are an ordered list; decorative icons and step numbers are aria-hidden (no unhidden SVG); proof links read 'Read the case study: <title>'; the badge link is named by its image alt; Tab order follows reading order through breadcrumb, hero calls to action, proof links, FAQ triggers, other engagements and booking. Known gap shared with the DS Accordion: FAQ triggers are not wrapped in heading elements."
+        "reviewedNote": "2026-10-30: reviewed live in Storybook (Default, Audit). One h1 labels the article; every section is labelled by its h2; the breadcrumb is a labelled nav with an ordered list; steps are an ordered list; decorative icons and step numbers are aria-hidden (no unhidden SVG); proof links read 'Read the case study: <title>'; the badge link is named by its image alt; Tab order follows reading order through breadcrumb, hero calls to action, proof links, FAQ triggers, other engagements and booking. 2026-10-31: FAQ questions are headings one level below their section (Accordion headingLevel), so they join the outline; triggers look the same."
     },
     "tokens": {
         "colors": [
