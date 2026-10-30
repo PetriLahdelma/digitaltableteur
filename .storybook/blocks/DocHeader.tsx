@@ -34,7 +34,7 @@ export function DocHeader({
     <header className={styles.header} data-doc-block="doc-header">
       {contract.group ? (
         <Text as="span" size="s" className={styles.group}>
-          {contract.group}
+          {groupLabel(contract.group)}
         </Text>
       ) : null}
       <div className={styles.titleRow}>
@@ -85,6 +85,12 @@ export function DocHeader({
       ) : null}
     </header>
   );
+}
+
+/** Contract group slug as a sentence-case kicker: "data-display" -> "Data display". */
+function groupLabel(group: string): string {
+  const words = group.replace(/-/g, " ");
+  return words.charAt(0).toUpperCase() + words.slice(1);
 }
 
 export function ImplementationSwitch({

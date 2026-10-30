@@ -8,7 +8,6 @@
 
 .group {
   color: var(--color-muted);
-  text-transform: lowercase;
 }
 
 .titleRow {
@@ -52,11 +51,18 @@
   font-size: var(--font-size-text-s);
 }
 
+/* Both items take the nav's size explicitly: Storybook's docs styles reset a
+   span to 16px while the link kept the fluid text-s, so the current tab read
+   smaller than the other. Weights follow DS Tabs: 500 at rest, 600 current. */
+
 .implementations a,
-.currentImplementation {
+.implementations .currentImplementation {
   margin-block-end: -1px;
   padding-block: var(--space-internal-8);
   border-block-end: 2px solid transparent;
+  font-size: inherit;
+  font-weight: var(--font-weight-medium);
+  line-height: inherit;
   color: var(--color-muted);
   text-decoration: none;
 }
@@ -72,7 +78,7 @@
   outline-offset: var(--focus-ring-offset, 2px);
 }
 
-.currentImplementation {
+.implementations .currentImplementation {
   border-block-end-color: var(--color-text);
   color: var(--color-text);
   font-weight: 600;
