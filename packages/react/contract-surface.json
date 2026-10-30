@@ -434,6 +434,12 @@
       "level": "additive",
       "detail": "component added to the public API",
       "bump": "patch"
+    },
+    {
+      "component": "Accordion",
+      "level": "additive",
+      "detail": "prop `headingLevel` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -454,6 +460,10 @@
         "defaultOpenIds": {
           "optional": true,
           "type": "string[]"
+        },
+        "headingLevel": {
+          "optional": true,
+          "type": "2 | 3 | 4 | 5 | 6"
         },
         "items": {
           "optional": false,

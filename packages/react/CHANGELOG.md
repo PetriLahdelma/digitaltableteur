@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2 - 2026-10-31
+
+- `Accordion`: new `headingLevel` (2-6) wraps each trigger in a heading of
+  that level, so the section titles join the page outline and screen reader
+  users can list and jump to them. The heading adds structure only; the
+  trigger looks the same. Unset, triggers stay plain buttons.
+
 ## 0.2.1 - 2026-10-30
 
 - Fields render the size scale's type (md 18px on a 24px line, sm 16px, lg
