@@ -12,8 +12,18 @@ import React, {
 import { createPortal } from "react-dom";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
-import HelperText from "@dt/HelperText";
 import Icon from "@dt/Icon";
+import {
+  FieldShell,
+  fieldDescribedBy,
+  fieldIds,
+  fieldSizeClass,
+  fieldStatusClass,
+  resolveFieldStatus,
+  type FieldAction,
+  type FieldSize,
+  type FieldStatus,
+} from "@dt/FieldShell";
 import styles from "./ComboboxField.module.css";
 import { useComboboxDropdown } from "./useComboboxDropdown";
 
@@ -38,12 +48,22 @@ export interface ComboboxProps {
   placeholder?: string;
   /** Assistive text below the field */
   helperText?: string;
-  /** Error message; renders above the helper line and sets aria-invalid */
+  /** Error message; shorthand for status="error" with this message. Sets aria-invalid */
   error?: string;
+  /** Semantic state: colours the border and styles statusMessage. `error` overrides it. */
+  status?: FieldStatus;
+  /** Message under the field for `status`, above the helper line */
+  statusMessage?: string;
+  /** Icon buttons at the end of the label row: each runs an operation or opens a menu */
+  actions?: FieldAction[];
   /** Marks the field required. @default false */
   required?: boolean;
   /** Disables the control. @default false */
   disabled?: boolean;
+  /** Field size shared by every DS field: 40, 48 or 56px tall. @default "md" */
+  size?: FieldSize;
+  /** Submits the value with a surrounding form, through a hidden input */
+  name?: string;
   /** Classes on the field wrapper */
   className?: string;
 }
@@ -60,8 +80,13 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       placeholder,
       helperText,
       error,
+      status,
+      statusMessage,
+      actions,
       required = false,
       disabled = false,
+      size = "md",
+      name,
       className,
     },
     ref,
@@ -70,8 +95,8 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
     const generatedId = useId();
     const fieldId = providedId ?? `combobox-${generatedId}`;
     const listboxId = `${fieldId}-listbox`;
-    const errorId = `${fieldId}-error`;
-    const helperId = `${fieldId}-helper`;
+    const field = resolveFieldStatus({ status, statusMessage, error });
+    const labelId = fieldIds(fieldId).label;
 
     const [open, setOpen] = useState(false);
     const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -85,12 +110,10 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       [options, value],
     );
 
-    const describedBy = [
-      error ? errorId : null,
-      helperText ? helperId : null,
-    ]
-      .filter(Boolean)
-      .join(" ");
+    const describedBy = fieldDescribedBy(fieldId, {
+      statusMessage: field.statusMessage,
+      helperText,
+    });
 
     const closeDropdown = useCallback(() => {
       setOpen(false);
@@ -303,29 +326,30 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
     );
 
     return (
-      <div className={cn(styles.field, className)} ref={containerRef}>
-        <label id={`${fieldId}-label`} htmlFor={fieldId} className={styles.label}>
-          {label}
-          {required && (
-            <>
-              <span className={styles.required} aria-hidden="true">
-                *
-              </span>
-              <span className="sr-only"> (required)</span>
-            </>
-          )}
-        </label>
-
+      <FieldShell
+        ref={containerRef}
+        className={className}
+        controlId={fieldId}
+        label={label}
+        required={required}
+        disabled={disabled}
+        status={field.status}
+        statusMessage={field.statusMessage}
+        helperText={helperText}
+        actions={actions}
+      >
         <div className={styles.wrapper}>
           <div
             ref={controlRef}
             className={cn(
               styles.control,
+              fieldSizeClass(size),
               open && styles.controlOpen,
-              error && styles.controlError,
+              fieldStatusClass(field.status),
               disabled && styles.disabled,
             )}
             data-state={open ? "open" : "closed"}
+            data-field-status={field.status}
           >
             <button
               ref={ref}
@@ -334,9 +358,9 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
               role="combobox"
               className={styles.trigger}
               disabled={disabled}
-              aria-labelledby={`${fieldId}-label`}
-              aria-describedby={describedBy || undefined}
-              aria-invalid={error ? true : undefined}
+              aria-labelledby={labelId}
+              aria-describedby={describedBy}
+              aria-invalid={field.status === "error" ? true : undefined}
               aria-required={required || undefined}
               aria-expanded={open}
               aria-controls={listboxId}
@@ -382,16 +406,8 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
 
           {mounted && dropdown && createPortal(dropdown, document.body)}
         </div>
-
-        {error && (
-          <HelperText id={errorId} state="error">
-            {error}
-          </HelperText>
-        )}
-        {helperText && (
-          <HelperText id={helperId}>{helperText}</HelperText>
-        )}
-      </div>
+        {name ? <input type="hidden" name={name} value={value} /> : null}
+      </FieldShell>
     );
   },
 );

@@ -1,0 +1,14 @@
+.form {
+  display: grid;
+  max-inline-size: var(--container-sm);
+  gap: var(--space-layout-32);
+}
+
+/* Two fields side by side: one with actions, one without, so their controls
+   can be compared at the same height. */
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: var(--space-layout-24);
+}

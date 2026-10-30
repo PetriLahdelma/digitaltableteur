@@ -4,10 +4,10 @@
     "tier": "atom",
     "group": "form",
     "status": "stable",
-    "description": "Native dropdown select with labelled options, error state, and size tokens.",
+    "description": "Single-choice field that opens the DS option list (a select-only combobox), with labelled options, statuses, label-row actions and size tokens.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-23",
     "radixPrimitive": null,
-    "element": "select",
+    "element": "button",
     "variants": {
         "size": {
             "values": [
@@ -34,18 +34,24 @@
     ],
     "a11y": {
         "keyboard": [
-            "Arrow keys",
+            "Tab",
+            "ArrowDown",
+            "ArrowUp",
+            "Home",
+            "End",
             "Enter",
             "Space",
-            "Tab"
+            "Escape",
+            "Type-ahead"
         ],
         "ariaRequirements": [
-            "associated label",
-            "error announced via HelperText"
+            "combobox named by the associated label",
+            "listbox with aria-selected and aria-activedescendant",
+            "status message and helper linked with aria-describedby; error announced as an alert"
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
+        "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed. 2026-10-30: engine changed from the native <select> to the Combobox select-only combobox (owner decision: DS list, never the OS popup); keyboard contract re-verified in unit tests (open, pick, Escape, type-ahead via Combobox). AT and forced-colors evidence must be recaptured before this ships.",
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true
@@ -108,6 +114,21 @@
             "type": "string",
             "description": "Error message under the control; sets aria-invalid and aria-describedby."
         },
+        "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the control for `status`, above the helper line"
+        },
+        "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+        },
         "size": {
             "optional": true,
             "type": "union",
@@ -135,12 +156,47 @@
             "optional": true,
             "type": "(value: string) => void",
             "deprecated": true
+        },
+        "children": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "`<option>` or `SelectOption` children; an option with value \"\" becomes the placeholder"
+        },
+        "value": {
+            "optional": true,
+            "type": "string",
+            "description": "Selected value (controlled); \"\" shows the placeholder"
+        },
+        "defaultValue": {
+            "optional": true,
+            "type": "string",
+            "description": "Initial value when uncontrolled"
+        },
+        "required": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Marks the field required."
+        },
+        "id": {
+            "optional": true,
+            "type": "string",
+            "description": "Explicit control id (wires the label); auto-generated when omitted"
+        },
+        "name": {
+            "optional": true,
+            "type": "string",
+            "description": "Submits the value with a surrounding form, through a hidden input"
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Classes on the field wrapper"
         }
     },
     "forbiddenUse": [
-        "ship a Select with `value` and `defaultValue` both set —",
-        "use Select for a freeform value with suggestions. Use an",
-        "wrap the native chevron with a button overlay. The native"
+        "ship a Select with `value` and `defaultValue` both set; `value` wins and a dev warning fires.",
+        "use Select for a freeform value with suggestions; use TextInput.",
+        "render a native <select> beside or inside it; every DS dropdown opens the DS list."
     ],
     "composesWith": [
         "TextInput",
@@ -155,13 +211,13 @@
         "dropdown select options",
         "select",
         "dropdown",
-        "native select",
         "options",
-        "picker"
+        "picker",
+        "listbox"
     ],
-    "dense": "native select with label, options array or option children, own error + helperText, sm/md/lg; onValueChange(value)",
+    "dense": "single choice on the DS list (Combobox engine): label, options or option children ('' = placeholder), status, helperText, actions, sm/md/lg, name; onValueChange(value)",
     "usage": {
-        "description": "Select wraps the native select element with the field chrome: label, chevron, helper and error text. Feed it an options array (or option children for grouped markup) and read changes via onValueChange. Native means built-in keyboard support, platform mobile pickers, and zero positioning code.",
+        "description": "Select is the single-choice field. It renders Combobox's select-only combobox inside FieldShell, so it opens the same DS option list as every other dropdown on the site, never the operating system's popup. Feed it an options array or option children (an empty-value option becomes the placeholder) and read changes via onValueChange; pass name to submit with a native form.",
         "bestPractices": [
             {
                 "guidance": true,
@@ -172,20 +228,20 @@
                 "description": "Lead with an empty placeholder option when there is no safe default, and validate it as unselected."
             },
             {
-                "guidance": true,
-                "description": "Use the options array for flat lists; pass children only when you need optgroups."
-            },
-            {
-                "guidance": true,
-                "description": "Keep option labels short; native pickers truncate long labels differently per platform."
-            },
-            {
                 "guidance": false,
                 "description": "Do not use Select for search-among-many; Combobox owns typeahead."
             },
             {
+                "guidance": true,
+                "description": "Pass name when the field submits with a native form; a hidden input carries the selected value."
+            },
+            {
                 "guidance": false,
                 "description": "Do not silently preselect a consequential option (billing plans); make the user choose."
+            },
+            {
+                "guidance": true,
+                "description": "Keep option labels short; the list truncates nothing, so long labels wrap and slow scanning."
             }
         ]
     },

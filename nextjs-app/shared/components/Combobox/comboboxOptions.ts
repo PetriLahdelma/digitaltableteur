@@ -16,22 +16,28 @@ function extractOptionLabel(node: ReactNode): string {
   return "";
 }
 
-/** Map native `<option>` children to combobox options. */
+/**
+ * Map option children to combobox options: native `<option>` elements and
+ * option components such as Select's `SelectOption` (a `value` prop, and a
+ * `label` prop or text children).
+ */
 export function optionsFromSelectChildren(children: ReactNode): ComboboxOption[] {
   const options: ComboboxOption[] = [];
 
   Children.forEach(children, (child) => {
-    if (!isValidElement(child) || child.type !== "option") return;
+    if (!isValidElement(child)) return;
 
     const props = child.props as {
       value?: string | number;
+      label?: string;
       disabled?: boolean;
       children?: ReactNode;
     };
+    if (child.type !== "option" && props.value === undefined) return;
 
     options.push({
       value: String(props.value ?? ""),
-      label: extractOptionLabel(props.children),
+      label: extractOptionLabel(props.children) || props.label || "",
       disabled: props.disabled,
     });
   });

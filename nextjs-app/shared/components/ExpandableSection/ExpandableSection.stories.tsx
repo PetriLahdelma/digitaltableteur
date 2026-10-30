@@ -4,6 +4,8 @@ import { useArgs } from "storybook/preview-api";
 import { expect, userEvent, within } from "storybook/test";
 import { ExpandableSection } from "./ExpandableSection";
 import contract from "./ExpandableSection.contract.json";
+import Select from "@dt/Select";
+import TextArea from "@dt/TextArea";
 
 function ExpandableSectionDemo(
   args: React.ComponentProps<typeof ExpandableSection>,
@@ -111,19 +113,21 @@ export const Example: Story = {
               paddingBlockStart: "0.75rem",
             }}
           >
-            <label className="text-sm">Budget range</label>
-            <select className="rounded border px-2 py-1 text-sm">
-              <option>Select…</option>
-              <option>Under €10k</option>
-            </select>
+            <Select
+              label="Budget range"
+              options={[
+                { value: "", label: "Select…" },
+                { value: "under-10k", label: "Under €10k" },
+              ]}
+            />
             <ExpandableSection
               collapsedLabel="+ Add more details"
               expandedLabel="− Hide"
               expanded={tier3}
               onExpandedChange={setTier3}
             >
-              <textarea
-                className="mt-2 w-full rounded border p-2 text-sm"
+              <TextArea
+                label="Anything to read first"
                 rows={3}
                 placeholder="What should we read first?"
               />

@@ -182,6 +182,21 @@
             "type": "string",
             "description": "Validation error message; renders above the helper line and sets aria-invalid"
         },
+        "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+        },
+        "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+        },
         "helperText": {
             "optional": true,
             "type": "string",

@@ -1,7 +1,13 @@
 import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import styles from "./TextArea.module.css";
-import Label from "@dt/Label";
-import HelperText from "@dt/HelperText";
+import {
+  FieldShell,
+  fieldDescribedBy,
+  fieldStatusClass,
+  resolveFieldStatus,
+  type FieldAction,
+  type FieldStatus,
+} from "@dt/FieldShell";
 
 export interface TextAreaProps
   extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> {
@@ -9,8 +15,14 @@ export interface TextAreaProps
   label: string;
   /** Value synced into the field; typing still works after it is set */
   value?: string;
-  /** Validation error message; renders above the helper line */
+  /** Validation error message; shorthand for status="error" with this message. Sets aria-invalid */
   error?: string;
+  /** Semantic state: colours the border and styles statusMessage. `error` overrides it. */
+  status?: FieldStatus;
+  /** Message under the field for `status`, above the helper line */
+  statusMessage?: string;
+  /** Icon buttons at the end of the label row: each runs an operation or opens a menu */
+  actions?: FieldAction[];
   /** Helper copy below the field */
   helperText?: string;
   /** Change handler receiving the raw string value */
@@ -29,6 +41,9 @@ const TextArea: React.FC<TextAreaProps> = ({
   placeholder,
   value = "",
   error,
+  status,
+  statusMessage,
+  actions,
   helperText,
   onChange,
   disabled = false,
@@ -45,14 +60,13 @@ const TextArea: React.FC<TextAreaProps> = ({
   // collide when two TextAreas share a label (the raw label string was used as
   // the DOM id before, which produced duplicate ids and broke on spaces).
   const inputId = useId();
-  const errorId = `${inputId}-error`;
-  const helperId = `${inputId}-helper`;
 
-  const hasError = !!error;
-  const describedBy =
-    [hasError && errorId, helperText && helperId]
-      .filter(Boolean)
-      .join(" ") || undefined;
+  const field = resolveFieldStatus({ status, statusMessage, error });
+  const hasError = field.status === "error";
+  const describedBy = fieldDescribedBy(inputId, {
+    statusMessage: field.statusMessage,
+    helperText,
+  });
 
   useEffect(() => {
     setTextValue(value);
@@ -116,13 +130,25 @@ const TextArea: React.FC<TextAreaProps> = ({
     if (onChange) onChange(e.target.value);
   };
 
-  const textareaClassName = `${styles.input} ${error ? styles.error : ""} ${animateResize ? styles.animatedTextarea : ""}`;
+  const textareaClassName = [
+    styles.input,
+    fieldStatusClass(field.status),
+    animateResize ? styles.animatedTextarea : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div className={styles.inputContainer}>
-      <Label htmlFor={inputId} required={!!rest.required} disabled={disabled}>
-        {label}
-      </Label>
+    <FieldShell
+      controlId={inputId}
+      label={label}
+      required={!!rest.required}
+      disabled={disabled}
+      status={field.status}
+      statusMessage={field.statusMessage}
+      helperText={helperText}
+      actions={actions}
+    >
       <textarea
         ref={textAreaRef}
         id={inputId}
@@ -136,15 +162,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         aria-describedby={describedBy}
         {...rest}
       />
-      {hasError && (
-        <HelperText id={errorId} state="error">
-          {error}
-        </HelperText>
-      )}
-      {helperText && (
-        <HelperText id={helperId}>{helperText}</HelperText>
-      )}
-    </div>
+    </FieldShell>
   );
 };
 

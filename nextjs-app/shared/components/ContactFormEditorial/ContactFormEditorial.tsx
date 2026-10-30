@@ -658,7 +658,6 @@ export function ContactFormEditorial({
       >
         <div className={styles.fields}>
           <Combobox
-            className={styles.alignedCombobox}
             label={t("contactOrgStageLabel", "Organisation")}
             placeholder={t("contactSelectPlaceholder", "Select...")}
             value={formData.orgStage}
@@ -673,7 +672,6 @@ export function ContactFormEditorial({
           />
 
           <Combobox
-            className={styles.alignedCombobox}
             label={t("contactPackageLabel", "Package")}
             placeholder={t("contactPackageNone", "Not sure yet / custom")}
             value={formData.engagementPackage}
@@ -705,7 +703,6 @@ export function ContactFormEditorial({
             />
           ) : (
             <Combobox
-              className={styles.alignedCombobox}
               label={t("contactBudgetLabel", "Budget range")}
               placeholder={t("contactSelectPlaceholder", "Select...")}
               value={formData.budget}
@@ -721,7 +718,6 @@ export function ContactFormEditorial({
           )}
 
           <Combobox
-            className={styles.alignedCombobox}
             label={t("contactStartLabel", "When should work start?")}
             placeholder={t("contactSelectPlaceholder", "Select...")}
             value={formData.timeline}
@@ -736,7 +732,6 @@ export function ContactFormEditorial({
           />
 
           <MultiCombobox
-            className={styles.alignedCombobox}
             label={t("contactNeedsLabel", "What do you need?")}
             options={PROJECT_TYPE_OPTIONS.map((opt) => ({
               value: opt.value,
@@ -800,7 +795,6 @@ export function ContactFormEditorial({
             />
 
             <Combobox
-              className={styles.alignedCombobox}
               label={t("contactHearAbout")}
               placeholder={t("contactSelectPlaceholder", "Select...")}
               value={formData.hearAbout}

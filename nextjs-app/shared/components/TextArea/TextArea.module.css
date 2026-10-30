@@ -1,39 +1,17 @@
-.inputContainer {
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-  margin-block-end: 1rem;
-}
-
-.label {
-  align-items: flex-start;
-  font-family: var(--font-text);
-  font-size: 1rem;
-  color: var(--color-primary);
-}
-
 .input {
   composes: field from "../../styles/field.module.css";
-  margin-block: 0.5rem;
-  padding: 0.5rem;
+  display: block;
+  padding-block: var(--field-padding-block);
+  padding-inline: var(--field-padding-inline);
   inline-size: 100%;
-  min-block-size: 2.5rem;
-  font-family: var(--font-text);
-  font-size: 1rem;
   color: var(--color-primary);
 }
 
-.errorMessage {
-  font-family: var(--font-text);
-  font-size: 1rem;
-  color: var(--color-error);
-  margin-block-start: 0.5rem;
-}
+/* Muted, not faded: --color-muted alone passes AA on the field surface. */
 
 .input::placeholder {
-  color: var(--color-primary);
-  opacity: 0.5;
-  font-style: italic;
+  color: var(--color-muted);
+  opacity: 1;
 }
 
 .input:focus,
@@ -52,17 +30,6 @@
     outline: 3px solid Highlight;
     outline-offset: 2px;
   }
-}
-
-.error {
-  border-color: var(--color-error);
-  background-color: var(--color-error-bg);
-}
-
-.input.error::placeholder {
-  /* Placeholder still hints the error context but stays AA-contrast on the
-   * tinted error background. */
-  color: var(--color-error-text);
 }
 
 .input:disabled {

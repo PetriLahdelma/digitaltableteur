@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1557,
+  "warningCount": 1514,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -184,7 +184,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 77,
+      "line": 83,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -193,7 +193,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 18,
+      "line": 17,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -202,7 +202,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 42,
+      "line": 41,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -211,7 +211,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 78,
+      "line": 84,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -229,7 +229,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 61,
+      "line": 67,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -238,7 +238,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 89,
+      "line": 95,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -247,16 +247,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 11,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"text-transform\" to come before \"color\" (order/properties-order)",
-      "id": ".storybook/blocks/DocHeader.module.css::order/properties-order::Expected \"text-transform\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 72,
+      "line": 78,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -265,7 +256,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 43,
+      "line": 42,
       "column": 39,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -274,7 +265,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 86,
+      "line": 92,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -283,7 +274,7 @@
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
-      "line": 94,
+      "line": 100,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -1264,7 +1255,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 141,
+      "line": 143,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1273,7 +1264,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 142,
+      "line": 144,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1282,7 +1273,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 143,
+      "line": 145,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1291,7 +1282,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 144,
+      "line": 146,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3154,7 +3145,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 161,
+      "line": 162,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -3163,7 +3154,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 192,
+      "line": 191,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -3172,7 +3163,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 150,
+      "line": 151,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3181,7 +3172,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 171,
+      "line": 172,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3190,7 +3181,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 217,
+      "line": 216,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3613,20 +3604,20 @@
     },
     {
       "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 147,
+      "line": 123,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".submitButton:disabled\" to come before selector \".submitButton:hover:not(:disabled)\", at line 138 (no-descending-specificity)",
+      "text": "Expected selector \".submitButton:disabled\" to come before selector \".submitButton:hover:not(:disabled)\", at line 114 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::no-descending-specificity::Expected selector \".submitButton:disabled\" to come before selector \".submitButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css",
-      "line": 142,
+      "line": 118,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".submitButton:focus-visible\" to come before selector \".submitButton:hover:not(:disabled)\", at line 138 (no-descending-specificity)",
+      "text": "Expected selector \".submitButton:focus-visible\" to come before selector \".submitButton:hover:not(:disabled)\", at line 114 (no-descending-specificity)",
       "id": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.module.css::no-descending-specificity::Expected selector \".submitButton:focus-visible\" to come before selector \".submitButton:hover:not(:disabled)\" (no-descending-specificity)::1"
     },
     {
@@ -5098,7 +5089,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 78,
+      "line": 22,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9444,240 +9435,6 @@
       "id": "nextjs-app/shared/components/SegmentedControl/SegmentedControl.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 40px or 48px). (rhythmguard/use-scale)::1"
     },
     {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 81,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"color\" to come before \"inset-inline-end\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::order/properties-order::Expected \"color\" to come before \"inset-inline-end\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 29,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.375rem\". Use one of the tokens that hold it: var(--space-internal-6) or var(--space-layout-6). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use one of the tokens that hold it: var(--space-internal-6) or var(--space-layout-6). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 29,
-      "column": 29,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.375rem\". Use one of the tokens that hold it: var(--space-internal-6) or var(--space-layout-6). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use one of the tokens that hold it: var(--space-internal-6) or var(--space-layout-6). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 5,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 17,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 17,
-      "column": 26,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 36,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 36,
-      "column": 26,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::5"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 29,
-      "column": 38,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 17,
-      "column": 33,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.75rem\". Use var(--space-internal-12) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". Use var(--space-internal-12) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 36,
-      "column": 33,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.75rem\". Use var(--space-internal-12) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". Use var(--space-internal-12) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 42,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.875rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.875rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 80,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 29,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 17,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2.5rem\". Use var(--space-layout-40) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.5rem\". Use var(--space-layout-40) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 36,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2.5rem\". Use var(--space-layout-40) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.5rem\". Use var(--space-layout-40) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 42,
-      "column": 14,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 56,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 62,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 68,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 29,
-      "column": 12,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 29,
-      "column": 29,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 29,
-      "column": 38,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 42,
-      "column": 24,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 29,
-      "column": 21,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"2.25rem\". Use scale values (nearest: 32px or 40px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.25rem\". Use scale values (nearest: 32px or 40px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Select/Select.module.css",
-      "line": 42,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 40px or 48px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/Select/Select.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 40px or 48px). (rhythmguard/use-scale)::1"
-    },
-    {
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
       "line": 53,
       "column": 3,
@@ -10984,25 +10741,7 @@
     },
     {
       "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 5,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-block-end\" to come before \"flex-direction\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/TextArea/TextArea.module.css::order/properties-order::Expected \"margin-block-end\" to come before \"flex-direction\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 30,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-block-start\" to come before \"color\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/TextArea/TextArea.module.css::order/properties-order::Expected \"margin-block-start\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 84,
+      "line": 51,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11011,43 +10750,7 @@
     },
     {
       "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 17,
-      "column": 17,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextArea/TextArea.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 18,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextArea/TextArea.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 30,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextArea/TextArea.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 5,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextArea/TextArea.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 45,
+      "line": 23,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11056,7 +10759,7 @@
     },
     {
       "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "line": 53,
+      "line": 31,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11065,17 +10768,8 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 29,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.375rem\". Use one of the tokens that hold it: var(--space-internal-6) or var(--space-layout-6). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use one of the tokens that hold it: var(--space-internal-6) or var(--space-layout-6). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 17,
-      "column": 17,
+      "line": 70,
+      "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
@@ -11083,70 +10777,7 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 18,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 35,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 47,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 136,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::5"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 41,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.625rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 101,
-      "column": 17,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 3,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 65,
+      "line": 22,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11155,7 +10786,7 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 73,
+      "line": 30,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11164,7 +10795,7 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 141,
+      "line": 75,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11173,30 +10804,12 @@
     },
     {
       "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 151,
+      "line": 85,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 29,
-      "column": 12,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
-      "line": 41,
-      "column": 12,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/TextInput/TextInput.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Toast/Toast.module.css",
@@ -11218,7 +10831,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Toast/Toast.module.css",
-      "line": 117,
+      "line": 127,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11227,7 +10840,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Toast/Toast.module.css",
-      "line": 124,
+      "line": 134,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11236,7 +10849,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Toast/Toast.module.css",
-      "line": 93,
+      "line": 103,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11245,7 +10858,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Toast/Toast.module.css",
-      "line": 111,
+      "line": 121,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11578,7 +11191,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 96,
+      "line": 87,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11587,7 +11200,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 116,
+      "line": 107,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11596,7 +11209,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 124,
+      "line": 115,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11605,7 +11218,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 81,
+      "line": 72,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -13990,7 +13603,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 471,
+      "line": 482,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -13999,7 +13612,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 577,
+      "line": 595,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -14008,7 +13621,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 823,
+      "line": 864,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

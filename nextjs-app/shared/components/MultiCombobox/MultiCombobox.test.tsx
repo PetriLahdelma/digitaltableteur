@@ -216,11 +216,11 @@ describe("MultiCombobox", () => {
     expect(input).toHaveAttribute("aria-invalid", "true");
     expect(input).toHaveAttribute(
       "aria-describedby",
-      "project-type-error project-type-helper",
+      "project-type-status project-type-helper",
     );
     expect(screen.getByText("Pick at least one project type")).toHaveAttribute(
       "id",
-      "project-type-error",
+      "project-type-status",
     );
     expect(screen.getByText("Choose at least one")).toHaveAttribute(
       "id",

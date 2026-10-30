@@ -1,50 +1,42 @@
 # Select
 
 ## Intent
-Provide a labelled, validated, native `<select>` so consumers don't
-hand-author the label / id / `aria-invalid` / helper-text wiring every
-time. The native control is chosen on purpose — accessibility and
-mobile UX exceed any custom combobox in scope for this system.
+A labelled single-choice field that opens the DS option list, so every
+dropdown on the site looks and behaves the same. Select is a thin wrapper
+over Combobox (a WAI-ARIA select-only combobox): it keeps the `options` /
+`<option>` children API, turns an empty-value option into the placeholder
+and adds uncontrolled use, `size` and form submission through `name`.
+Decided 2026-10-30 (owner): DS fields use the DS menu, never the operating
+system's native popup; this replaces the earlier native `<select>`.
 
 ## Interaction contract
-- Keyboard: native browser behaviour. ArrowUp / ArrowDown moves the
-  highlighted option; Enter / Space opens or commits depending on
-  platform; type-ahead jumps to the first matching option. Tab moves
-  focus to the next field.
-- Pointer: click opens the native picker. Click outside closes.
-  Touch on iOS / Android invokes the platform sheet.
-- Screen readers: the label is announced first, then the current
-  value, then "list, N items". Each option is announced with its
-  position ("3 of 7"). Error state announces via `aria-invalid` +
-  the helper text live region.
+- Keyboard: Tab focuses the field. ArrowDown, ArrowUp, Enter or Space open
+  the list; arrows move the highlight; Home / End jump to the ends; typing
+  jumps to the first option whose label (or any word in it) starts with
+  the typed text; Enter or Space picks; Escape closes and keeps the value.
+- Pointer: click the field or the chevron to open the list; click an option
+  to pick it; click outside closes.
+- Screen readers: a combobox named by the label, announcing the selected
+  option; the list is a listbox with `aria-selected` on the picked option
+  and `aria-activedescendant` tracking the highlight. The status message
+  and helper line are linked with `aria-describedby`; an error sets
+  `aria-invalid` and is announced as an alert.
 
 ## Do / don't
 - Do: use `onValueChange` (the new contract). The legacy `onChange`
   still works but emits a deprecation warning in development.
-- Do: label every Select. Visually-hidden labels are fine — use the
-  `<Label>` primitive with `visuallyHidden` if the design has no
-  visible label.
+- Do: pass `name` when the field submits with a native form; a hidden
+  input carries the value.
 - Don't: ship a Select with `value` and `defaultValue` both set —
   `value` wins and a dev-mode warning fires.
-- Don't: use Select for a freeform value with suggestions. Use an
-  Input plus a custom autosuggest pattern.
-- Don't: wrap the native chevron with a button overlay. The native
-  click target is the entire control already; an overlay breaks
-  forced-colors and mobile sheets.
+- Don't: use Select for a freeform value with suggestions, or for several
+  values; use TextInput, or MultiCombobox for several.
 
 ## Design notes
-- Tokens: control surface uses `--color-surface`; border uses
-  `--color-border` (default) or `--color-error-border` (error state).
-  Height is `--input-height-md` by default, scaling to `--input-height-sm`
-  and `--input-height-lg` via the `size` prop. Padding uses
-  `--space-internal-12` inline.
-- Figma: https://www.figma.com/design/digitaltableteur/select — three
-  sizes (sm / md / lg), four states (default / focus / error /
-  disabled).
-- The custom chevron is rendered via `<Icon name="caret-down" />` so
-  it inherits theme tokens. In forced-colors mode the system draws
-  its own chevron and ours becomes invisible — acceptable since the
-  native affordance carries.
+- Built on FieldShell and the shared field chrome: label row with
+  optional actions, 40 / 48 / 56px heights for sm / md / lg, 16px inset,
+  status border colours from `styles/field.module.css`.
+- The option list is Combobox's portaled list (`useComboboxDropdown`),
+  shared with MultiCombobox and PhoneInput's country picker.
 - The deprecated `onChange` is still called *after* `onValueChange`
-  to keep backwards compatibility predictable. Code paths that
-  legitimately need both fire in a stable order.
+  to keep backwards compatibility predictable.

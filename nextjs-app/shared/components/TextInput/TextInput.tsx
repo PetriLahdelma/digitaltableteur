@@ -7,9 +7,16 @@ export const textInputVariants = cva("", {
 
 import React, { useEffect, useId, useRef, useState } from "react";
 import styles from "./TextInput.module.css";
-import Label from "@dt/Label";
-import HelperText from "@dt/HelperText";
 import Icon from "@dt/Icon";
+import {
+  FieldShell,
+  fieldDescribedBy,
+  fieldSizeClass,
+  fieldStatusClass,
+  resolveFieldStatus,
+  type FieldAction,
+  type FieldStatus,
+} from "@dt/FieldShell";
 import { useTranslate } from "../../lib/translation";
 import {
   parsePhoneNumber,
@@ -61,8 +68,14 @@ export interface TextInputProps extends Omit<
   // EXISTING PROPS
   /** Controlled value; an initial "" is treated as absent (uncontrolled), later changes always sync in */
   value?: string | number;
-  /** Validation error message; renders above the helper line and sets aria-invalid */
+  /** Validation error message; shorthand for status="error" with this message. Sets aria-invalid */
   error?: string;
+  /** Semantic state: colours the border and styles statusMessage. `error` overrides it. */
+  status?: FieldStatus;
+  /** Message under the field for `status`, above the helper line */
+  statusMessage?: string;
+  /** Icon buttons at the end of the label row: each runs an operation or opens a menu */
+  actions?: FieldAction[];
   /** Helper copy below the field */
   helperText?: string;
   /** Disables the input. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it. */
@@ -97,6 +110,9 @@ const TextInput: React.FC<TextInputProps> = ({
   value,
   defaultValue,
   error,
+  status,
+  statusMessage,
+  actions,
   helperText,
   // New props (v1.1.0)
   size = "md",
@@ -114,8 +130,6 @@ const TextInput: React.FC<TextInputProps> = ({
 
   // Generate stable unique IDs for accessibility
   const inputId = useId();
-  const errorId = `${inputId}-error`;
-  const helperId = `${inputId}-helper`;
 
   // Deprecation warnings (development only)
   if (process.env.NODE_ENV !== "production") {
@@ -139,14 +153,17 @@ const TextInput: React.FC<TextInputProps> = ({
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
 
-  // Compute error state for ARIA attributes
-  const hasError = !!(error || phoneError || emailError);
-  const errorMessage = error || phoneError || emailError;
-
-  // Compute aria-describedby - link to error and helper text
-  const describedBy =
-    [hasError && errorId, helperText && helperId].filter(Boolean).join(" ") ||
-    undefined;
+  // Built-in phone and email validation report as an error too.
+  const field = resolveFieldStatus({
+    status,
+    statusMessage,
+    error: error || phoneError || emailError,
+  });
+  const hasError = field.status === "error";
+  const describedBy = fieldDescribedBy(inputId, {
+    statusMessage: field.statusMessage,
+    helperText,
+  });
 
   useEffect(() => {
     // Skip the mount run so an initial "" doesn't clobber defaultValue.
@@ -234,7 +251,14 @@ const TextInput: React.FC<TextInputProps> = ({
       ref={inputRef}
       id={inputId}
       name={label.replace(/\s+/g, "-").toLowerCase()}
-      className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${clearable ? styles.inputClearable : widthClass} ${hasError ? styles.error : ""}`}
+      className={[
+        styles.input,
+        fieldSizeClass(normalizedSize),
+        clearable ? styles.inputClearable : widthClass,
+        fieldStatusClass(field.status),
+      ]
+        .filter(Boolean)
+        .join(" ")}
       type={type}
       placeholder={placeholder}
       value={inputValue}
@@ -247,16 +271,18 @@ const TextInput: React.FC<TextInputProps> = ({
   );
 
   return (
-    <div className={styles.inputContainer}>
-      <Label
-        htmlFor={inputId}
-        required={!!rest.required}
-        disabled={disabled}
-        className={hideLabel ? styles.srOnly : undefined}
-      >
-        {label}
-      </Label>
-      {/* Non-clearable consumers keep the exact previous DOM (no wrapper). */}
+    <FieldShell
+      controlId={inputId}
+      label={label}
+      required={!!rest.required}
+      disabled={disabled}
+      hideLabel={hideLabel}
+      status={field.status}
+      statusMessage={field.statusMessage}
+      helperText={helperText}
+      actions={actions}
+    >
+      {/* Non-clearable consumers keep the bare input (no wrapper). */}
       {clearable ? (
         <div className={`${styles.inputShell} ${widthClass}`}>
           {inputElement}
@@ -274,13 +300,7 @@ const TextInput: React.FC<TextInputProps> = ({
       ) : (
         inputElement
       )}
-      {hasError && (
-        <HelperText id={errorId} state="error">
-          {errorMessage}
-        </HelperText>
-      )}
-      {helperText && <HelperText id={helperId}>{helperText}</HelperText>}
-    </div>
+    </FieldShell>
   );
 };
 

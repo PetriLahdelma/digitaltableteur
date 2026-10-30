@@ -1,0 +1,120 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "FieldShell",
+    "tier": "molecule",
+    "group": "form",
+    "status": "alpha",
+    "description": "The frame every text and choice field is built on: a label row with icon actions at its end, the control, then a status message and a helper line.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2065-7823",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [
+        "children"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Label-row actions come before the control in Tab order, as they sit above it.",
+            "An action with items opens a menu on Enter, Space or ArrowDown; arrow keys move through the items and Escape closes it."
+        ],
+        "ariaRequirements": [
+            "The label is a <label for> the control and carries the id `${controlId}-label` for controls named with aria-labelledby.",
+            "The control's aria-describedby lists the status message and then the helper line (fieldDescribedBy builds it).",
+            "An error message is announced as an alert; aria-invalid is set by the control only for status error.",
+            "Each action is an icon button named by its label, which is also its tooltip."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": false,
+        "reviewedNote": "2026-10-30 (Claude, Storybook 6010, Chromium; real key presses): label is a <label for> the control and carries ${id}-label for aria-labelledby controls (Combobox, MultiCombobox); fieldDescribedBy lists the status message then the helper (verified on Company size: named by its label, described by 'Choose a company size', aria-invalid only for error). Actions: native buttons named by aria-label; DS Tooltip opens on keyboard focus (Shift+Tab onto Paste shows 'Paste'), not pointer-only. Menu action: Enter opens, ArrowDown moves Use-the-size-from-last-time -> Reset, Escape closes and returns focus to the trigger; aria-haspopup=menu, aria-expanded tracks state. Focus ring sits inside the 32px box, 4px clear of the control (measured). Hit area 44px on coarse pointers. No motion of its own; Menu and Tooltip carry the DS reduced-motion handling. Forced colors: icon ButtonText, ring Highlight 3px inset. The label is always required; hideLabel hides it visually and keeps it as the accessible name."
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-error",
+            "--color-warning-contrast",
+            "--color-success"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8"
+        ]
+    },
+    "lightDarkVerified": false,
+    "forbiddenUse": [
+        "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
+        "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
+        "use it for a group of controls; FormField's fieldset owns the group case."
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "controlId": {
+            "optional": false,
+            "type": "string",
+            "description": "id of the control inside; the label, status and helper ids derive from it."
+        },
+        "label": {
+            "optional": false,
+            "type": "string",
+            "description": "Visible field label."
+        },
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode",
+            "description": "The control: an input, textarea, select or composite control."
+        },
+        "status": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "success",
+                "warning",
+                "error"
+            ],
+            "description": "Semantic state; pairs with `statusMessage`."
+        },
+        "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the control, styled and announced for `status`."
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string",
+            "description": "Supporting copy under the control, after the status message."
+        },
+        "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row, level with the label."
+        },
+        "required": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Shows the required marker on the label."
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Dims the label and disables every action."
+        },
+        "hideLabel": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visually hides the label; it stays the control's accessible name."
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the field wrapper."
+        }
+    }
+}

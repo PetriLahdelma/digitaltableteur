@@ -32,7 +32,10 @@ vi.mock("@dt/Icon", () => ({
 }));
 
 // Mock Phosphor icons to avoid React context issues in tests
-vi.mock("@phosphor-icons/react", () => ({
+// Keep the real icon set (Tooltip's Kbd and others import more icons) and
+// stub only the HelperText state icons the assertions look for.
+vi.mock("@phosphor-icons/react", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@phosphor-icons/react")>()),
   WarningCircle: ({ size }: { size?: number }) => (
     <span
       data-testid="warning-circle-icon"

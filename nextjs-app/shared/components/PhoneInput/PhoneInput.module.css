@@ -1,32 +1,16 @@
-.phone-input-container {
-  display: flex;
-  margin-block-end: var(--space-internal-16);
-  inline-size: 100%;
-  flex-direction: column;
-}
+/* The country trigger has its own 4px inset, so the start padding is 4px
+   less and its code lines up with the text of the other fields. */
 
 .phone-input {
   composes: field from "../../styles/field.module.css";
   display: flex;
-  margin-block: var(--space-internal-8);
-  padding: var(--space-internal-8);
+  padding-block: var(--field-padding-block);
+  padding-inline: calc(var(--field-padding-inline) - var(--space-internal-4))
+    var(--field-padding-inline);
   inline-size: 100%;
-  min-block-size: 2.5rem;
   align-items: center;
   gap: var(--space-internal-8);
-  font-family: var(--font-text);
-  font-size: 1rem;
   color: var(--color-primary);
-}
-
-.phone-input--sm {
-  min-block-size: 2rem;
-  font-size: 0.875rem;
-}
-
-.phone-input--lg {
-  block-size: 3rem;
-  font-size: 1.125rem;
 }
 
 /* Same ring as TextInput: tokens with an offset, so focus reads as a
@@ -40,15 +24,6 @@
   outline-offset: var(--focus-ring-offset);
 }
 
-.phone-input.error {
-  border-color: var(--color-error);
-  background-color: var(--color-error-bg);
-}
-
-.phone-input.error:focus-within {
-  border-color: var(--color-error);
-}
-
 /* Override library styles to match design system */
 
 .phone-input :global(.PhoneInputInput) {
@@ -57,15 +32,13 @@
   border: none;
   outline: none;
   background: transparent;
-  font-family: var(--font-text);
-  font-size: inherit;
+  font: inherit;
   color: var(--color-primary);
 }
 
 .phone-input :global(.PhoneInputInput)::placeholder {
-  color: var(--color-primary);
-  opacity: 0.5;
-  font-style: italic;
+  color: var(--color-muted);
+  opacity: 1;
 }
 
 /* Dedicated-token disabled surface (no opacity), matching the text inputs */

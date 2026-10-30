@@ -105,7 +105,7 @@ describe("FormFieldEditorial", () => {
     it("links helper and error together when both are present", () => {
       render(<FormFieldEditorial label="Notes" type="textarea" helperText="Optional." error="Too long" />);
       const field = screen.getByRole("textbox", { name: "Notes" });
-      expect(field.getAttribute("aria-describedby")?.split(" ")).toEqual(["notes-error", "notes-helper"]);
+      expect(field.getAttribute("aria-describedby")?.split(" ")).toEqual(["notes-status", "notes-helper"]);
     });
 
     it("has no axe violations", async () => {

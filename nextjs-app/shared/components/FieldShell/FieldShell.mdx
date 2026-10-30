@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './FieldShell.stories.tsx';
+
+<Meta of={Stories} />
+
+# FieldShell
+
+**Status:** alpha, **Tier:** molecule, **Group:** form
+
+## In use
+The frame inside TextInput, TextArea, Select, Combobox, MultiCombobox and
+PhoneInput. The **Example** story shows all six with statuses and actions.
+
+## How to use
+
+Most of the time, use the fields' own props:
+
+```tsx
+<TextInput
+  type="password"
+  label="Password"
+  status="success"
+  statusMessage="Strong password"
+  actions={[
+    { label: 'Generate password', icon: 'sparkle', onClick: generate },
+    {
+      label: 'More options',
+      items: [
+        { label: 'Copy', onSelect: copy },
+        { label: 'Clear', onSelect: clear, tone: 'destructive' },
+      ],
+    },
+  ]}
+/>
+```
+
+For a new kind of control, wrap it directly:
+
+```tsx
+import { FieldShell, fieldDescribedBy, fieldStatusClass } from '@dt/FieldShell';
+
+<FieldShell controlId="code" label="Code" status={status} statusMessage={message}>
+  <input
+    id="code"
+    className={fieldStatusClass(status)}
+    aria-describedby={fieldDescribedBy('code', { statusMessage: message })}
+  />
+</FieldShell>
+```
+
+## When to use
+- Any single control that needs a label, a status and a helper line.
+
+## When not to use
+- A group of radios or checkboxes: use FormField.
+- Inside a DS field, which already renders one.
+
+## Accessibility
+- The label names the control; the status message and helper line describe it.
+- Errors are announced as alerts; aria-invalid is set for errors only.
+- Actions are icon buttons named by their label, which is also the tooltip.
+
+## Promotion notes
+- Promote with the six fields after AT snapshots and the consumer forms are
+  re-captured.

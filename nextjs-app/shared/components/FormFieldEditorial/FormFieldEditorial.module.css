@@ -1,58 +1,46 @@
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-internal-8);
-}
-
-/* Labels */
-
-.label {
-  display: block;
-
-  /* Typography matches the Label primitive exactly — the editorial fields
-   * share the one unified label treatment (2026-08-05; was 13px/600, the
-   * same hand-rolled style ComboboxField retired in #1409). */
-  font-family: var(--font-text);
-  font-size: var(--font-size-text-xs); /* = Label .label */
-  font-weight: var(--font-weight-medium); /* = Label .label (2026-10-29) */
-  color: var(--color-primary);
-}
-
-.required {
-  margin-inline-start: var(--space-internal-4);
-  color: var(--color-error-text);
-}
-
-/* Bordered input */
+/* Text and textarea controls on the shared field chrome; the label row and
+   messages come from FieldShell, the select from Combobox. */
 
 .input {
-  padding: var(--space-internal-12) var(--space-internal-16);
+  composes: field from "../../styles/field.module.css";
+  padding-block: var(--field-padding-block);
+  padding-inline: var(--field-padding-inline);
   inline-size: 100%;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
   outline: none;
-  background: transparent;
-  font-family: var(--font-body);
-  font-size: var(--font-size-text);
   color: var(--color-text);
   transition:
     border-color var(--duration-fast) var(--ease-out-cubic),
     outline-color var(--duration-fast) var(--ease-out-cubic);
 }
 
-.input::placeholder {
+.textarea {
+  composes: field from "../../styles/field.module.css";
+  display: block;
+  padding-block: var(--field-padding-block);
+  padding-inline: var(--field-padding-inline);
+  inline-size: 100%;
+  min-block-size: 140px;
+  outline: none;
+  color: var(--color-text);
+  transition:
+    border-color var(--duration-fast) var(--ease-out-cubic),
+    outline-color var(--duration-fast) var(--ease-out-cubic);
+  /* stylelint-disable-next-line declaration-block-no-duplicate-properties -- progressive logical fallback */
+  resize: vertical;
+  resize: block;
+}
+
+.input::placeholder,
+.textarea::placeholder {
   color: var(--color-muted);
   opacity: 1;
 }
 
-.input:focus {
+.input:focus,
+.textarea:focus {
   border-color: var(--color-primary);
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
-}
-
-.input.hasError {
-  border-color: var(--color-error);
 }
 
 /* Read-only: a fixed value, still focusable, selectable and submitted. The
@@ -70,121 +58,9 @@
   border-color: var(--color-border);
 }
 
-/* Bordered textarea */
-
-.textarea {
-  padding: var(--space-internal-16);
-  inline-size: 100%;
-  min-block-size: 140px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  outline: none;
-  background: transparent;
-  font-family: var(--font-body);
-  font-size: var(--font-size-text);
-  color: var(--color-text);
-  transition:
-    border-color var(--duration-fast) var(--ease-out-cubic),
-    outline-color var(--duration-fast) var(--ease-out-cubic);
-  /* stylelint-disable-next-line declaration-block-no-duplicate-properties -- progressive logical fallback */
-  resize: vertical;
-  resize: block;
-}
-
-.textarea::placeholder {
-  color: var(--color-muted);
-  opacity: 1;
-}
-
-.textarea:focus {
-  border-color: var(--color-primary);
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
-}
-
-.textarea.hasError {
-  border-color: var(--color-error);
-}
-
-/* Select wrapper for custom chevron */
-
-.selectWrapper {
-  display: flex;
-  position: relative;
-  align-items: center;
-}
-
-.select {
-  padding: var(--space-internal-12) var(--space-internal-16);
-  padding-inline-end: calc(var(--space-internal-32) + var(--space-internal-8));
-  inline-size: 100%;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  outline: none;
-  background: transparent;
-  font-family: var(--font-body);
-  font-size: var(--font-size-text);
-  color: var(--color-text);
-  cursor: pointer;
-  transition:
-    border-color var(--duration-fast) var(--ease-out-cubic),
-    outline-color var(--duration-fast) var(--ease-out-cubic);
-  appearance: none;
-}
-
-.select:focus {
-  border-color: var(--color-primary);
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
-}
-
-.select.hasError {
-  border-color: var(--color-error);
-}
-
-/* Placeholder option styling */
-
-.select option[value=""] {
-  color: var(--color-muted);
-}
-
-.chevronSlot {
-  display: flex;
-  position: absolute;
-  inset-block: 0;
-  padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
-  inline-size: calc(var(--space-internal-32) + var(--space-internal-8));
-  justify-content: flex-end;
-  align-items: center;
-  pointer-events: none;
-  inset-inline-end: 0;
-}
-
-.chevron {
-  display: block;
-  flex-shrink: 0;
-  color: var(--color-muted);
-  transition: transform var(--duration-normal) var(--ease-out-expo);
-}
-
-.select:focus + .chevronSlot .chevron {
-  color: var(--color-primary);
-}
-
-/* Helper text */
-
-.helper {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: var(--font-size-text-s);
-  color: var(--color-muted);
-}
-
-/* Error message */
-
-.error {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: var(--font-size-text-xs);
-  color: var(--color-error-text);
+@media (forced-colors: active) {
+  .input:focus,
+  .textarea:focus {
+    outline-color: Highlight;
+  }
 }

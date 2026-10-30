@@ -13,7 +13,15 @@ import { createPortal } from "react-dom";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import Badge from "@dt/Badge";
-import HelperText from "@dt/HelperText";
+import {
+  FieldShell,
+  fieldDescribedBy,
+  fieldIds,
+  fieldStatusClass,
+  resolveFieldStatus,
+  type FieldAction,
+  type FieldStatus,
+} from "@dt/FieldShell";
 import Icon from "@dt/Icon";
 import fieldStyles from "../Combobox/ComboboxField.module.css";
 import { useComboboxDropdown } from "../Combobox/useComboboxDropdown";
@@ -40,8 +48,14 @@ export interface MultiComboboxProps {
   placeholder?: string;
   /** Assistive text below the field */
   helperText?: string;
-  /** Error message; renders above the helper line and sets aria-invalid */
+  /** Error message; shorthand for status="error" with this message. Sets aria-invalid */
   error?: string;
+  /** Semantic state: colours the border and styles statusMessage. `error` overrides it. */
+  status?: FieldStatus;
+  /** Message under the field for `status`, above the helper line */
+  statusMessage?: string;
+  /** Icon buttons at the end of the label row: each runs an operation or opens a menu */
+  actions?: FieldAction[];
   /** Marks the field required. @default false */
   required?: boolean;
   /** Disables the control. @default false */
@@ -60,6 +74,9 @@ export function MultiCombobox({
   placeholder,
   helperText,
   error,
+  status,
+  statusMessage,
+  actions,
   required = false,
   disabled = false,
   className,
@@ -68,8 +85,8 @@ export function MultiCombobox({
   const generatedId = useId();
   const fieldId = providedId ?? `multicombobox-${generatedId}`;
   const listboxId = `${fieldId}-listbox`;
-  const errorId = `${fieldId}-error`;
-  const helperId = `${fieldId}-helper`;
+  const field = resolveFieldStatus({ status, statusMessage, error });
+  const labelId = fieldIds(fieldId).label;
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -91,9 +108,10 @@ export function MultiCombobox({
     );
   }, [options, query]);
 
-  const describedBy = [error ? errorId : null, helperText ? helperId : null]
-    .filter(Boolean)
-    .join(" ");
+  const describedBy = fieldDescribedBy(fieldId, {
+    statusMessage: field.statusMessage,
+    helperText,
+  });
 
   const closeDropdown = useCallback(() => {
     setOpen(false);
@@ -342,23 +360,18 @@ export function MultiCombobox({
   );
 
   return (
-    <div className={cn(fieldStyles.field, className)} ref={containerRef}>
-      <label
-        id={`${fieldId}-label`}
-        htmlFor={fieldId}
-        className={fieldStyles.label}
-      >
-        {label}
-        {required && (
-          <>
-            <span className={fieldStyles.required} aria-hidden="true">
-              *
-            </span>
-            <span className="sr-only"> (required)</span>
-          </>
-        )}
-      </label>
-
+    <FieldShell
+      ref={containerRef}
+      className={className}
+      controlId={fieldId}
+      label={label}
+      required={required}
+      disabled={disabled}
+      status={field.status}
+      statusMessage={field.statusMessage}
+      helperText={helperText}
+      actions={actions}
+    >
       <div className={fieldStyles.wrapper}>
         <div
           ref={controlRef}
@@ -366,10 +379,11 @@ export function MultiCombobox({
             fieldStyles.control,
             styles.control,
             open && fieldStyles.controlOpen,
-            error && fieldStyles.controlError,
+            fieldStatusClass(field.status),
             disabled && fieldStyles.disabled,
           )}
           data-state={open ? "open" : "closed"}
+          data-field-status={field.status}
           onMouseDown={(event) => {
             if ((event.target as HTMLElement).closest("[data-chip-remove]")) {
               return;
@@ -448,9 +462,9 @@ export function MultiCombobox({
               value={query}
               disabled={disabled}
               placeholder={value.length === 0 ? placeholder : undefined}
-              aria-labelledby={`${fieldId}-label`}
-              aria-describedby={describedBy || undefined}
-              aria-invalid={error ? true : undefined}
+              aria-labelledby={labelId}
+              aria-describedby={describedBy}
+              aria-invalid={field.status === "error" ? true : undefined}
               aria-required={required || undefined}
               aria-expanded={open}
               aria-controls={listboxId}
@@ -525,13 +539,7 @@ export function MultiCombobox({
         {mounted && dropdown && createPortal(dropdown, document.body)}
       </div>
 
-      {error && (
-        <HelperText id={errorId} state="error">
-          {error}
-        </HelperText>
-      )}
-      {helperText && <HelperText id={helperId}>{helperText}</HelperText>}
-    </div>
+    </FieldShell>
   );
 }
 

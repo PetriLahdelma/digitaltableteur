@@ -6,15 +6,29 @@ import Combobox, {
   optionsFromSelectChildren,
   splitPlaceholderOption,
 } from "@dt/Combobox";
+import {
+  FieldShell,
+  fieldDescribedBy,
+  fieldStatusClass,
+  resolveFieldStatus,
+  type FieldAction,
+  type FieldStatus,
+} from "@dt/FieldShell";
 import styles from "./FormFieldEditorial.module.css";
 
 type InputType = "text" | "email" | "tel" | "textarea" | "select";
 
 interface BaseProps {
-  /** Field label (displayed as uppercase) */
+  /** Field label */
   label: string;
-  /** Error message */
+  /** Error message; shorthand for status="error" with this message */
   error?: string;
+  /** Semantic state: colours the border and styles statusMessage. `error` overrides it. */
+  status?: FieldStatus;
+  /** Message under the field for `status`, above the helper line */
+  statusMessage?: string;
+  /** Icon buttons at the end of the label row: each runs an operation or opens a menu */
+  actions?: FieldAction[];
   /** Whether the field is required */
   required?: boolean;
   /** Additional className */
@@ -22,8 +36,8 @@ interface BaseProps {
   /** Field ID (auto-generated from label if not provided) */
   id?: string;
   /**
-   * Supporting text under the field, linked with aria-describedby. Text and
-   * textarea fields only; use it to say why a read-only value is fixed.
+   * Supporting text under the field, linked with aria-describedby. Use it,
+   * for example, to say why a read-only value is fixed.
    */
   helperText?: string;
 }
@@ -72,28 +86,39 @@ export const FormFieldEditorial = forwardRef<
   HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
   FormFieldEditorialProps
 >(function FormFieldEditorial(props, ref) {
-  const { label, error, required, className, id: providedId, type = "text", helperText, ...restProps } = props;
+  const {
+    label,
+    error,
+    status,
+    statusMessage,
+    actions,
+    required,
+    className,
+    id: providedId,
+    type = "text",
+    helperText,
+    ...restProps
+  } = props;
   const id = providedId || generateId(label);
-  const errorId = `${id}-error`;
-  const helperId = `${id}-helper`;
+  const field = resolveFieldStatus({ status, statusMessage, error });
+  const hasError = field.status === "error";
+  const describe = (external?: string) =>
+    fieldDescribedBy(id, { statusMessage: field.statusMessage, helperText }, external);
 
-  const labelElement = (
-    <label htmlFor={id} className={styles.label}>
-      {label}
-      {required && <span className={styles.required}>*</span>}
-    </label>
-  );
-
-  const errorElement = error && (
-    <p id={errorId} className={styles.error} role="alert">
-      {error}
-    </p>
-  );
-
-  const helperElement = helperText && (
-    <p id={helperId} className={styles.helper}>
-      {helperText}
-    </p>
+  const shell = (control: ReactNode) => (
+    <FieldShell
+      controlId={id}
+      label={label}
+      required={required}
+      disabled={"disabled" in restProps ? !!restProps.disabled : false}
+      status={field.status}
+      statusMessage={field.statusMessage}
+      helperText={helperText}
+      actions={actions}
+      className={className}
+    >
+      {control}
+    </FieldShell>
   );
 
   if (type === "textarea") {
@@ -102,26 +127,17 @@ export const FormFieldEditorial = forwardRef<
       "aria-describedby": externalDescribedBy,
       ...forwardedTextareaProps
     } = textareaProps;
-    const describedBy =
-      [error && errorId, helperText && helperId, externalDescribedBy]
-        .filter(Boolean)
-        .join(" ") || undefined;
-    return (
-      <div className={cn(styles.field, className)}>
-        {labelElement}
-        <textarea
-          ref={(node) => setForwardedRef(ref, node)}
-          id={id}
-          rows={rows}
-          className={cn(styles.textarea, error && styles.hasError)}
-          aria-invalid={!!error}
-          aria-required={required || undefined}
-          aria-describedby={describedBy}
-          {...forwardedTextareaProps}
-        />
-        {helperElement}
-        {errorElement}
-      </div>
+    return shell(
+      <textarea
+        ref={(node) => setForwardedRef(ref, node)}
+        id={id}
+        rows={rows}
+        className={cn(styles.textarea, fieldStatusClass(field.status))}
+        aria-invalid={hasError}
+        aria-required={required || undefined}
+        aria-describedby={describe(externalDescribedBy)}
+        {...forwardedTextareaProps}
+      />,
     );
   }
 
@@ -152,6 +168,10 @@ export const FormFieldEditorial = forwardRef<
           } as React.ChangeEvent<HTMLSelectElement>);
         }}
         error={error}
+        status={status}
+        statusMessage={statusMessage}
+        helperText={helperText}
+        actions={actions}
         required={required}
         disabled={disabled}
         className={className}
@@ -165,26 +185,17 @@ export const FormFieldEditorial = forwardRef<
     "aria-describedby": externalDescribedBy,
     ...forwardedInputProps
   } = inputProps;
-  const describedBy =
-    [error && errorId, helperText && helperId, externalDescribedBy]
-      .filter(Boolean)
-      .join(" ") || undefined;
-  return (
-    <div className={cn(styles.field, className)}>
-      {labelElement}
-      <input
-        ref={(node) => setForwardedRef(ref, node)}
-        id={id}
-        type={type}
-        className={cn(styles.input, error && styles.hasError)}
-        aria-invalid={!!error}
-        aria-required={required || undefined}
-        aria-describedby={describedBy}
-        {...forwardedInputProps}
-      />
-      {helperElement}
-      {errorElement}
-    </div>
+  return shell(
+    <input
+      ref={(node) => setForwardedRef(ref, node)}
+      id={id}
+      type={type}
+      className={cn(styles.input, fieldStatusClass(field.status))}
+      aria-invalid={hasError}
+      aria-required={required || undefined}
+      aria-describedby={describe(externalDescribedBy)}
+      {...forwardedInputProps}
+    />,
   );
 });
 

@@ -118,7 +118,7 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/Combobox/Combobox.tsx": {
-      "rawElements": 4,
+      "rawElements": 5,
       "utilityLines": 0
     },
     "nextjs-app/shared/components/CommandPalette/CommandPalette.tsx": {
@@ -178,6 +178,10 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/ExpandableSection/ExpandableSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/FieldShell/FieldShell.tsx": {
       "rawElements": 1,
       "utilityLines": 0
     },
@@ -313,10 +317,6 @@
       "rawElements": 1,
       "utilityLines": 0
     },
-    "nextjs-app/shared/components/Select/Select.tsx": {
-      "rawElements": 1,
-      "utilityLines": 0
-    },
     "nextjs-app/shared/components/SelectableCard/SelectableCard.tsx": {
       "rawElements": 1,
       "utilityLines": 0
@@ -438,10 +438,6 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx": {
-      "rawElements": 3,
-      "utilityLines": 0
-    },
-    "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx": {
       "rawElements": 3,
       "utilityLines": 0
     },

@@ -2,10 +2,12 @@
    height like every other field. Chips that do not fit collapse into a "+N"
    badge (measured in the component), so the field never scrolls or clips. */
 
+/* Centres a 32px chip (Badge sm) in the field height. */
+
 .inner {
   display: flex;
-  padding-block: var(--space-internal-8);
-  padding-inline: var(--space-internal-16) 0;
+  padding-block: calc((var(--field-block-size) - 2px - 2rem) / 2);
+  padding-inline: var(--field-padding-inline) 0;
   min-inline-size: 0;
   flex: 1;
   flex-wrap: nowrap;
@@ -40,7 +42,7 @@
 }
 
 .input {
-  padding-block: var(--space-internal-4);
+  padding-block: 0;
   padding-inline: 0 var(--space-internal-8);
   min-inline-size: 4rem;
   max-inline-size: 100%;
@@ -48,9 +50,7 @@
   border: none;
   outline: none;
   background: transparent;
-  font-family: var(--font-body);
-  font-size: var(--font-size-text);
-  line-height: 1.4;
+  font: inherit;
   color: var(--color-text);
 }
 
@@ -60,14 +60,14 @@
 
 .input::placeholder {
   color: var(--color-muted);
-  opacity: 0.78;
+  opacity: 1;
 }
 
 .control .chevronButton {
   position: static;
   inset: auto;
   padding: 0;
-  padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
+  padding-inline-end: var(--space-internal-16);
   inline-size: calc(var(--space-internal-32) + var(--space-internal-8));
   justify-content: flex-end;
   align-items: center;
@@ -98,6 +98,13 @@
 
 .badge {
   max-inline-size: 100%;
+}
+
+/* The label gives way when a lone chip is narrower than its text, so the
+   ellipsis lands in the label and the remove button stays inside the chip. */
+
+.badge :global(.badge__content) {
+  min-inline-size: 0;
 }
 
 .measure .badgeWrap,

@@ -1,19 +1,81 @@
 /**
- * Shared form-field chrome — the single source of truth for the resting shell
+ * Shared form-field chrome: the single source of truth for the resting shell
  * (border, radius, surface, transition) of DS input controls. TextInput,
- * TextArea, Select and PhoneInput all `composes: field from` this rule so the
- * field treatment can never drift between them again.
+ * TextArea, Select, PhoneInput and the Combobox controls all
+ * `composes: field from` this rule so the field treatment can never drift
+ * between them again.
  *
- * Only the resting chrome lives here. Focus / error / disabled states stay in
- * each component because their selectors differ (`:focus` on a single control
- * vs `:focus-within` on PhoneInput's composite container), but they reference
- * the same tokens (--color-primary focus, --color-error error).
+ * Size lives here too: one scale for every field, so a TextInput, a Select
+ * and a Combobox side by side are the same height with the same text size
+ * and inset. Components read the --field-* properties for their padding;
+ * FieldShell's fieldSizeClass() picks sm or lg (md is the default).
+ *
+ *   size  height  text   inset
+ *   sm    40px    16px   12px
+ *   md    48px    18px   16px
+ *   lg    56px    20px   16px
+ *
+ * Focus and disabled states stay in each component because their selectors
+ * differ (`:focus` on a single control vs `:focus-within` on a composite
+ * container). Status colours live here, applied by FieldShell's
+ * fieldStatusClass(): they outrank the components' focus rules so a field
+ * keeps its status border while focused, and lose to `:disabled`.
  */
+
+/* The class components compose. The resting chrome below sits in :where()
+ * (no specificity), so a component's own rule always wins however the
+ * bundler orders the two stylesheets; in the Next build this file can load
+ * after the component's, which let these rules beat equal-specificity
+ * overrides such as a textarea's min-height. */
 
 .field {
   box-sizing: border-box;
+}
+
+:where(.field) {
+  min-block-size: var(--field-block-size);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
+  font-family: var(--font-text);
+  font-size: var(--field-font-size);
+  line-height: var(--field-line-height);
   transition: border-color 0.3s;
+
+  --field-block-size: 3rem;
+  --field-font-size: 1.125rem;
+  --field-line-height: 1.5rem;
+  --field-padding-inline: var(--space-internal-16);
+
+  /* Vertical padding that centres one line of text in the height. */
+  --field-padding-block: calc(
+    (var(--field-block-size) - var(--field-line-height) - 2px) / 2
+  );
+}
+
+:where(.field.sizeSm) {
+  --field-block-size: 2.5rem;
+  --field-font-size: 1rem;
+  --field-padding-inline: var(--space-internal-12);
+}
+
+:where(.field.sizeLg) {
+  --field-block-size: 3.5rem;
+  --field-font-size: 1.25rem;
+  --field-line-height: 1.75rem;
+}
+
+.field.statusError,
+.field.statusError:is(:hover, :focus, :focus-visible, :focus-within) {
+  border-color: var(--color-error-contrast);
+}
+
+.field.statusWarning,
+.field.statusWarning:is(:hover, :focus, :focus-visible, :focus-within) {
+  border-color: var(--color-warning-contrast);
+}
+
+.field.statusSuccess,
+.field.statusSuccess:is(:hover, :focus, :focus-visible, :focus-within) {
+  border-color: var(--color-success-contrast);
 }

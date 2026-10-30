@@ -151,11 +151,11 @@ describe("Combobox", () => {
     expect(trigger).toHaveAttribute("aria-invalid", "true");
     expect(trigger).toHaveAttribute(
       "aria-describedby",
-      "timeline-error timeline-helper",
+      "timeline-status timeline-helper",
     );
     expect(screen.getByText("Timeline is required")).toHaveAttribute(
       "id",
-      "timeline-error",
+      "timeline-status",
     );
     expect(screen.getByText("Choose a timeline")).toHaveAttribute(
       "id",

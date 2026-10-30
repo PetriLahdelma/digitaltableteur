@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import TextArea from "./TextArea";
 import styles from "./TextArea.module.css";
+import fieldStyles from "../../styles/field.module.css";
 
 describe("TextArea", () => {
   it("renders with label", () => {
@@ -93,7 +94,7 @@ describe("TextArea", () => {
   it("applies error styling when error prop is provided", () => {
     render(<TextArea label="Description" error="Error" />);
     const textarea = screen.getByRole("textbox");
-    expect(textarea.className).toContain(styles.error);
+    expect(textarea.className).toContain(fieldStyles.statusError);
   });
 
   it("wires aria-invalid and aria-describedby to the error message", () => {

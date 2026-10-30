@@ -102,6 +102,21 @@
             "optional": true,
             "type": "string",
             "description": "Supporting text under the field, linked with aria-describedby. Text and textarea fields only; use it to say why a read-only value is fixed."
+        },
+        "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+        },
+        "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
         }
     },
     "forbiddenUse": [

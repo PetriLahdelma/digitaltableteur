@@ -35,32 +35,8 @@
   color: var(--color-muted);
 }
 
-/*
- * The editorial name/email/message fields set the form's resting control
- * height (0.75rem block padding -> 56px at the 18px root). The embedded DS
- * controls ship md metrics (0.5rem -> 47px), so these class+element
- * selectors lift them to the editorial scale. Scoped to .fields only; the
- * components' own md sizing is untouched elsewhere.
- */
-
-/* (Native selects left the form when Budget/Timeline/Hear-about moved to
- * Combobox; the only remaining <select> is react-phone-number-input's
- * internal country picker, which keeps its own metrics.) */
-
-/* PhoneInput pads its composite wrapper (0.5rem); the inner input makes up
- * the remaining quarter rem so the wrapper rests at the same 56px. */
-
-.fields input[type="tel"] {
-  padding-block: var(--space-internal-4);
-}
-
-/* MultiCombobox rests 2px shy of the editorial height; pin its control
- * (field > wrapper > control in the DS markup) to the same formula the
- * editorial inputs resolve to: 2x0.75rem padding + 1.5rem line + borders. */
-
-.fields .alignedCombobox > div > div {
-  min-block-size: calc(2 * var(--space-internal-24) + 2px);
-}
+/* Every control in the form is a DS field on the shared 48px scale, so no
+   per-control height overrides are needed here. */
 
 .checkboxField {
   padding-inline-start: var(--space-internal-8);

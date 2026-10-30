@@ -18,8 +18,15 @@ import "react-phone-number-input/style.css";
 import styles from "./PhoneInput.module.css";
 import fieldStyles from "../Combobox/ComboboxField.module.css";
 import { useComboboxDropdown } from "../Combobox/useComboboxDropdown";
-import Label from "@dt/Label/Label";
-import HelperText from "@dt/HelperText/HelperText";
+import {
+  FieldShell,
+  fieldDescribedBy,
+  fieldSizeClass,
+  fieldStatusClass,
+  resolveFieldStatus,
+  type FieldAction,
+  type FieldStatus,
+} from "@dt/FieldShell";
 import Icon from "@dt/Icon/Icon";
 import { useLocalization } from "../../lib/translation";
 import { cn } from "../../lib/cn";
@@ -318,8 +325,14 @@ export interface PhoneInputProps {
   label: string;
   /** Phone number value (E.164 format) */
   value?: string;
-  /** Error message; renders above the helper line */
+  /** Error message; shorthand for status="error" with this message. Sets aria-invalid */
   error?: string;
+  /** Semantic state: colours the border and styles statusMessage. `error` overrides it. */
+  status?: FieldStatus;
+  /** Message under the field for `status`, above the helper line */
+  statusMessage?: string;
+  /** Icon buttons at the end of the label row: each runs an operation or opens a menu */
+  actions?: FieldAction[];
   /** Helper text below the input */
   helperText?: string;
   /** Placeholder text */
@@ -342,6 +355,9 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   label,
   value,
   error,
+  status,
+  statusMessage,
+  actions,
   helperText,
   placeholder,
   disabled = false,
@@ -355,11 +371,11 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   const labels = COUNTRY_LABELS[language.slice(0, 2)] ?? en;
   const generatedId = useId();
   const fieldId = providedId ?? `phone-input-${generatedId}`;
-  const errorId = `${fieldId}-error`;
-  const helperId = `${fieldId}-helper`;
-  const describedBy = [error ? errorId : null, helperText ? helperId : null]
-    .filter(Boolean)
-    .join(" ");
+  const field = resolveFieldStatus({ status, statusMessage, error });
+  const describedBy = fieldDescribedBy(fieldId, {
+    statusMessage: field.statusMessage,
+    helperText,
+  });
 
   const handleChange = (phoneValue: Value) => {
     onChange?.(phoneValue);
@@ -373,10 +389,16 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
       : value;
 
   return (
-    <div className={styles["phone-input-container"]}>
-      <Label htmlFor={fieldId} required={required} disabled={disabled}>
-        {label}
-      </Label>
+    <FieldShell
+      controlId={fieldId}
+      label={label}
+      required={required}
+      disabled={disabled}
+      status={field.status}
+      statusMessage={field.statusMessage}
+      helperText={helperText}
+      actions={actions}
+    >
       <PhoneInputLib
         id={fieldId}
         value={e164}
@@ -384,12 +406,12 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
         placeholder={placeholder}
         disabled={disabled}
         required={required}
-        aria-describedby={describedBy || undefined}
-        aria-invalid={error ? true : undefined}
+        aria-describedby={describedBy}
+        aria-invalid={field.status === "error" ? true : undefined}
         className={[
           styles["phone-input"],
-          size !== "md" ? styles[`phone-input--${size}`] : null,
-          error ? styles.error : null,
+          fieldSizeClass(size),
+          fieldStatusClass(field.status),
         ]
           .filter(Boolean)
           .join(" ")}
@@ -400,13 +422,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
         countryOptionsOrder={[defaultCountry, "|", "..."]}
         countrySelectComponent={CountrySelect}
       />
-      {error && (
-        <HelperText id={errorId} state="error">
-          {error}
-        </HelperText>
-      )}
-      {helperText && <HelperText id={helperId}>{helperText}</HelperText>}
-    </div>
+    </FieldShell>
   );
 };
 

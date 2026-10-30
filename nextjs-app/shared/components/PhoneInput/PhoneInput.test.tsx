@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import PhoneInput from "./PhoneInput";
 import styles from "./PhoneInput.module.css";
+import fieldStyles from "../../styles/field.module.css";
 
 describe("PhoneInput", () => {
   it("identifies the phone purpose through the underlying library control", () => {
@@ -123,7 +124,7 @@ describe("PhoneInput", () => {
   it("applies error styling when error provided", () => {
     const { container } = render(<PhoneInput label="Phone" error="Error" />);
     const phoneInputDiv = container.querySelector(`.${styles["phone-input"]}`);
-    expect(phoneInputDiv).toHaveClass(styles.error);
+    expect(phoneInputDiv).toHaveClass(fieldStyles.statusError);
   });
 
   it("links label to input via htmlFor", () => {

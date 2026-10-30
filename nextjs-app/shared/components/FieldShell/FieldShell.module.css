@@ -1,0 +1,125 @@
+/* Field frame: label row, control, messages. The frame sets no outer margin;
+   the form or stack around it owns the space between fields. */
+
+.field {
+  display: flex;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+}
+
+/* The label row is one label line tall whether or not it holds actions, so
+   fields with and without actions put their controls at the same height. */
+
+.header {
+  display: flex;
+  min-block-size: var(--field-label-line);
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-8);
+
+  /* Label (text-xs) at the body line height: 16px type on a 24px line. */
+  --field-label-line: calc(var(--font-size-text-xs) * 1.5);
+}
+
+/* A visually hidden label with nothing beside it takes no room. */
+
+.headerHidden {
+  min-block-size: 0;
+}
+
+/* Actions keep the icon-button glyph size (24px) on a 32px square box. The
+   box centres on the label line with negative margins, so the row stays one
+   label line tall with or without actions, and the end margin pulls the last
+   glyph flush with the control's end edge. */
+
+.actions {
+  display: flex;
+  margin-block: calc((var(--field-label-line) - var(--field-action-size)) / 2);
+  margin-inline: auto calc((var(--field-action-size) - var(--field-action-glyph)) / -2);
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0;
+
+  --field-action-size: 2rem;
+  --field-action-glyph: 1.5rem;
+}
+
+.action {
+  display: inline-flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  block-size: var(--field-action-size);
+  inline-size: var(--field-action-size);
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* The ring sits inside the box: an outset ring reached 10px below the label
+   line and overlapped the control, which starts 8px below it. */
+
+.action:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: calc(-1 * var(--focus-ring-width));
+}
+
+.action:disabled {
+  color: var(--color-disabled-placeholder);
+  cursor: not-allowed;
+}
+
+/* Touch: a 44px hit area around the 32px box, invisible and layout-free. */
+
+@media (pointer: coarse) {
+  .action::after {
+    position: absolute;
+    inset: calc((var(--field-action-size) - var(--size-target-touch)) / 2);
+    content: "";
+  }
+}
+
+@media (forced-colors: active) {
+  .action {
+    color: ButtonText;
+  }
+
+  .action:focus-visible {
+    outline-color: Highlight;
+  }
+
+  .action:disabled {
+    color: GrayText;
+  }
+}
+
+/* Status message then helper line read as one block under the control. */
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-4);
+}
+
+.messages > * {
+  margin-block: 0;
+}
+
+.srOnly {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  block-size: 1px;
+  inline-size: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
