@@ -174,7 +174,30 @@
     "Combobox": {},
     "CommandPalette": {},
     "ComplianceCard": {},
-    "ConfirmPopover": {},
+    "ConfirmPopover": {
+      "forbiddenCombos": [
+        {
+          "id": "confirmpopover-arrow-centres",
+          "when": {
+            "arrow": {
+              "present": true
+            },
+            "align": {
+              "oneOf": [
+                "start",
+                "end"
+              ]
+            }
+          },
+          "forbid": [
+            "align"
+          ],
+          "reason": "A speech-bubble pointer sits in the middle of the popover's edge, so the popover centres on the trigger and align is ignored. Drop align, e.g. <ConfirmPopover side=\"left\" arrow />.",
+          "severity": "warning",
+          "evidence": "ConfirmPopover.tsx development warning (arrow && align !== \"center\")"
+        }
+      ]
+    },
     "ContactForm": {},
     "ContactFormEditorial": {},
     "Container": {},

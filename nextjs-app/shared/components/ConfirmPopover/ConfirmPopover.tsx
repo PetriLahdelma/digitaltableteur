@@ -43,9 +43,9 @@ export interface ConfirmPopoverProps {
   onOpenChange?: (open: boolean) => void;
   /** Preferred side of the trigger; flips when out of room. @default "top" */
   side?: "top" | "right" | "bottom" | "left";
-  /** Alignment along that side. @default "start" */
+  /** Alignment along that side. Not used with `arrow`, which always centres the popover on the trigger. @default "start" */
   align?: "start" | "center" | "end";
-  /** Draws a pointer from the popover's edge to the trigger, like a speech bubble. @default false */
+  /** Draws a pointer from the middle of the popover's edge to the trigger, like a speech bubble; `side` picks the edge (top, right, bottom or left) and the popover centres on the trigger. @default false */
   arrow?: boolean;
   /** Keys that run the action without the popover, one entry per key; shown under the description so the next time can skip the question. */
   shortcut?: string[];
@@ -72,12 +72,22 @@ export function ConfirmPopover({
   onConfirm,
   onOpenChange,
   side = "top",
-  align = "start",
+  align,
   arrow = false,
   shortcut,
   className,
 }: ConfirmPopoverProps) {
   const t = useTranslate();
+  // A speech bubble points from the middle of its edge, so the popover centres
+  // on the trigger: start or end would leave the pointer off-centre.
+  if (process.env.NODE_ENV !== "production" && arrow && align && align !== "center") {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[ConfirmPopover] align="${align}" is ignored with arrow: the popover ` +
+        "centres on the trigger so the pointer sits in the middle of its edge.",
+    );
+  }
+  const resolvedAlign = arrow ? "center" : (align ?? "start");
   const [open, setOpen] = React.useState(false);
   const cancelRef = React.useRef<HTMLButtonElement>(null);
   const firstChoiceRef = React.useRef<HTMLButtonElement>(null);
@@ -118,7 +128,7 @@ export function ConfirmPopover({
           aria-labelledby={titleId}
           aria-describedby={shownDescription ? descriptionId : undefined}
           side={side}
-          align={align}
+          align={resolvedAlign}
           sideOffset={8}
           collisionPadding={16}
           className={[styles.content, className].filter(Boolean).join(" ")}

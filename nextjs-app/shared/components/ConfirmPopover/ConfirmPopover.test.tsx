@@ -153,4 +153,26 @@ describe("ConfirmPopover", () => {
     expect(dialog.querySelector("kbd")).toBeNull();
     expect(dialog.querySelector('svg[viewBox="0 0 16 8"]')).toBeNull();
   });
+
+  it("centres on the trigger with an arrow, ignoring align", async () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    render(
+      <ConfirmPopover
+        title="Start a new chat?"
+        confirmLabel="New chat"
+        side="left"
+        align="start"
+        arrow
+        onConfirm={vi.fn()}
+      >
+        <button type="button">New chat</button>
+      </ConfirmPopover>,
+    );
+    await userEvent.click(screen.getByRole("button", { name: "New chat" }));
+    const dialog = await screen.findByRole("alertdialog");
+
+    expect(dialog).toHaveAttribute("data-align", "center");
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining('align="start" is ignored with arrow'));
+    warn.mockRestore();
+  });
 });

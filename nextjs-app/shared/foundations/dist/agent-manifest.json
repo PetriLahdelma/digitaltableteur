@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T08:06:35.491Z",
+  "generatedAt": "2026-10-30T09:46:22.649Z",
   "summary": {
     "componentCount": 191,
     "statusCounts": {
@@ -17778,12 +17778,12 @@
               "start",
               "end"
             ],
-            "description": "Alignment along that side."
+            "description": "Alignment along that side. Not used with arrow, which always centres the popover on the trigger."
           },
           "arrow": {
             "optional": true,
             "type": "boolean",
-            "description": "Draws a pointer from the popover's edge to the trigger, like a speech bubble. Off by default."
+            "description": "Draws a pointer from the middle of the popover's edge to the trigger, like a speech bubble; side picks the edge (top, right, bottom or left) and the popover centres on the trigger. Off by default."
           },
           "shortcut": {
             "optional": true,
@@ -17795,9 +17795,31 @@
             "type": "string",
             "description": "Extra class on the popover surface."
           }
-        }
+        },
+        "forbiddenCombos": [
+          {
+            "id": "confirmpopover-arrow-centres",
+            "when": {
+              "arrow": {
+                "present": true
+              },
+              "align": {
+                "oneOf": [
+                  "start",
+                  "end"
+                ]
+              }
+            },
+            "forbid": [
+              "align"
+            ],
+            "reason": "A speech-bubble pointer sits in the middle of the popover's edge, so the popover centres on the trigger and align is ignored. Drop align, e.g. <ConfirmPopover side=\"left\" arrow />.",
+            "severity": "warning",
+            "evidence": "ConfirmPopover.tsx development warning (arrow && align !== \"center\")"
+          }
+        ]
       },
-      "spec": "# ConfirmPopover\n\n## Intent\nAsks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.\n\n## Interaction contract\n- Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.\n- Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.\n- Screen readers: `role=\"alertdialog\"`, named by `title`, described by `description`.\n- With `choices`: the first step asks which action (`title`) and lists one button per choice; focus starts on the first choice (a confirmation always follows). Picking one mounts a new alertdialog with that choice's question, description and confirm label, so screen readers announce it, and focus starts on Cancel. `onConfirm` receives the choice's `id`.\n\n## Do / don't\n- Do: repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.\n- Do: use `tone=\"error\"` for actions that remove something.\n- Don't: use it when the action can be undone; offer Undo instead.\n- Do: keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\".\n- Don't: put forms or long explanations inside; use Modal.\n\n## Design notes\n- Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.\n- Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.\n- `arrow` (off by default) draws a 16x8 pointer to the trigger: the fill\n  covers the surface border where they join and the stroke carries the border\n  round the point, so it reads as one speech bubble. Forced colours use\n  Canvas and CanvasText.\n- `shortcut` shows the keys that run the action without asking, under the\n  description, through the shared keycap row (`Kbd/KbdShortcut`, also used by\n  Tooltip): modifier symbols as icons with translated names, joined by plus\n  signs, tinted with the muted ink.\n- Production use with both: the chat's New chat button (`side=\"left\"`).\n- Figma: not yet drawn.\n",
+      "spec": "# ConfirmPopover\n\n## Intent\nAsks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.\n\n## Interaction contract\n- Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.\n- Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.\n- Screen readers: `role=\"alertdialog\"`, named by `title`, described by `description`.\n- With `choices`: the first step asks which action (`title`) and lists one button per choice; focus starts on the first choice (a confirmation always follows). Picking one mounts a new alertdialog with that choice's question, description and confirm label, so screen readers announce it, and focus starts on Cancel. `onConfirm` receives the choice's `id`.\n\n## Do / don't\n- Do: repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.\n- Do: use `tone=\"error\"` for actions that remove something.\n- Don't: use it when the action can be undone; offer Undo instead.\n- Do: keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\".\n- Don't: put forms or long explanations inside; use Modal.\n\n## Design notes\n- Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.\n- Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.\n- `arrow` (off by default) draws a 16x8 pointer from the middle of the edge `side` names (top, right, bottom or left) and centres the popover on the trigger; `align` does not apply (dev warning, `forbiddenCombos`): the fill\n  covers the surface border where they join and the stroke carries the border\n  round the point, so it reads as one speech bubble. Forced colours use\n  Canvas and CanvasText.\n- `shortcut` shows the keys that run the action without asking, under the\n  description, through the shared keycap row (`Kbd/KbdShortcut`, also used by\n  Tooltip): modifier symbols as icons with translated names, joined by plus\n  signs, tinted with the muted ink.\n- Production use with both: the chat's New chat button (`side=\"left\"`).\n- Figma: not yet drawn.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ConfirmPopover",
@@ -17904,12 +17926,12 @@
               "start",
               "end"
             ],
-            "description": "Alignment along that side."
+            "description": "Alignment along that side. Not used with `arrow`, which always centres the popover on the trigger."
           },
           "arrow": {
             "optional": true,
             "type": "boolean",
-            "description": "Draws a pointer from the popover's edge to the trigger, like a speech bubble."
+            "description": "Draws a pointer from the middle of the popover's edge to the trigger, like a speech bubble; `side` picks the edge (top, right, bottom or left) and the popover centres on the trigger."
           },
           "shortcut": {
             "optional": true,
@@ -17923,7 +17945,28 @@
           }
         },
         "propRelationships": [],
-        "forbiddenCombos": [],
+        "forbiddenCombos": [
+          {
+            "id": "confirmpopover-arrow-centres",
+            "when": {
+              "arrow": {
+                "present": true
+              },
+              "align": {
+                "oneOf": [
+                  "start",
+                  "end"
+                ]
+              }
+            },
+            "forbid": [
+              "align"
+            ],
+            "reason": "A speech-bubble pointer sits in the middle of the popover's edge, so the popover centres on the trigger and align is ignored. Drop align, e.g. <ConfirmPopover side=\"left\" arrow />.",
+            "severity": "warning",
+            "evidence": "ConfirmPopover.tsx development warning (arrow && align !== \"center\")"
+          }
+        ],
         "variants": {
           "tone": {
             "values": [

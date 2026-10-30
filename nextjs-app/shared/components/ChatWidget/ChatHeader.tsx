@@ -183,7 +183,6 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
             confirmLabel={newChatLabel}
             onConfirm={onNewChat}
             side="left"
-            align="start"
             arrow
             shortcut={newChatKeys}
           >

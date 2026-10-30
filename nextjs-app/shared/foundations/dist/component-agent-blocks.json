@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T08:06:35.164Z",
+  "generatedAt": "2026-10-30T09:46:22.365Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -10183,12 +10183,12 @@
             "start",
             "end"
           ],
-          "description": "Alignment along that side."
+          "description": "Alignment along that side. Not used with `arrow`, which always centres the popover on the trigger."
         },
         "arrow": {
           "optional": true,
           "type": "boolean",
-          "description": "Draws a pointer from the popover's edge to the trigger, like a speech bubble."
+          "description": "Draws a pointer from the middle of the popover's edge to the trigger, like a speech bubble; `side` picks the edge (top, right, bottom or left) and the popover centres on the trigger."
         },
         "shortcut": {
           "optional": true,
@@ -10202,7 +10202,28 @@
         }
       },
       "propRelationships": [],
-      "forbiddenCombos": [],
+      "forbiddenCombos": [
+        {
+          "id": "confirmpopover-arrow-centres",
+          "when": {
+            "arrow": {
+              "present": true
+            },
+            "align": {
+              "oneOf": [
+                "start",
+                "end"
+              ]
+            }
+          },
+          "forbid": [
+            "align"
+          ],
+          "reason": "A speech-bubble pointer sits in the middle of the popover's edge, so the popover centres on the trigger and align is ignored. Drop align, e.g. <ConfirmPopover side=\"left\" arrow />.",
+          "severity": "warning",
+          "evidence": "ConfirmPopover.tsx development warning (arrow && align !== \"center\")"
+        }
+      ],
       "variants": {
         "tone": {
           "values": [

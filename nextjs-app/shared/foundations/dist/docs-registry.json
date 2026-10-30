@@ -5187,12 +5187,12 @@
             "start",
             "end"
           ],
-          "description": "Alignment along that side."
+          "description": "Alignment along that side. Not used with arrow, which always centres the popover on the trigger."
         },
         "arrow": {
           "optional": true,
           "type": "boolean",
-          "description": "Draws a pointer from the popover's edge to the trigger, like a speech bubble. Off by default."
+          "description": "Draws a pointer from the middle of the popover's edge to the trigger, like a speech bubble; side picks the edge (top, right, bottom or left) and the popover centres on the trigger. Off by default."
         },
         "shortcut": {
           "optional": true,

@@ -19,7 +19,7 @@ Asks for confirmation right where the person acted, for one costly action ("Clea
 ## Design notes
 - Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.
 - Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.
-- `arrow` (off by default) draws a 16x8 pointer to the trigger: the fill
+- `arrow` (off by default) draws a 16x8 pointer from the middle of the edge `side` names (top, right, bottom or left) and centres the popover on the trigger; `align` does not apply (dev warning, `forbiddenCombos`): the fill
   covers the surface border where they join and the stroke carries the border
   round the point, so it reads as one speech bubble. Forced colours use
   Canvas and CanvasText.
