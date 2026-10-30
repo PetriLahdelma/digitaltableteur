@@ -1,0 +1,31 @@
+{
+  "note": "Alphas already past the 14-day limit when check:alpha-age landed (2026-10-30). This list only shrinks: remove a name when its component is promoted or deleted; never add one. Everything else must leave alpha within 14 days of the commit that made it alpha.",
+  "legacyOverdue": [
+    "AboutHero",
+    "ArticleHero",
+    "ArticleLayout",
+    "ArticlePageTemplate",
+    "BlogHero",
+    "BlogIndexContent",
+    "CVDownloadSection",
+    "CaseStudySummary",
+    "ContentSection",
+    "Lightbox",
+    "ManifestoSection",
+    "Mermaid",
+    "PixelLoop",
+    "ProjectDetailLayout",
+    "ProjectDetailTemplate",
+    "ProjectHero",
+    "ProjectMetaSection",
+    "RelatedPosts",
+    "RelatedProjects",
+    "ReliablePartnerBadge",
+    "SocialIconLink",
+    "StatsSection",
+    "TableOfContents",
+    "ValuesSection",
+    "WorkCTA",
+    "WorkHero"
+  ]
+}

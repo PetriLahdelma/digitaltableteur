@@ -103,7 +103,8 @@ Coverage target: >80%. Include axe-core in component tests.
 
 ## Status lifecycle
 
-- **WIP** → Storybook badge; not production-ready
+- **WIP / alpha** → Storybook badge; not production-ready. **Alpha is a 14-day stay**, counted from the commit that made the contract alpha: `npm run check:alpha-age` (every pre-push) fails once a component overstays. Promote it or remove it. Alphas already overdue on 2026-10-30 are named in `scripts/design-system/alpha-age.baseline.json`; that list only shrinks.
+- **alpha → beta** → `npm run promote -- <Name>` (`--check` to dry-run). It refuses unless the required stories exist, tests assert axe, docs exist, `a11y.reviewed` has a dated `reviewedNote`, the `figma` link resolves to a real component in `figma-component-index.json` (build it in Figma; never a placeholder), and fresh passing `__a11y-evidence__` exists for every required story in light, dark and forced-colors. Only then does it set the status and the verification flags. Never hand-flip `status` or the `*Verified` booleans: `validate:components` rejects a beta whose flags are not backed by evidence.
 - **beta** → contract + spec required, plus docs: a Carbon-style MDX page or contract doc-field adoption (`usage`/`keywords`/`dense` + autodocs frame; colocated MDX must then be deleted); honest doc debt tracked in `agent-manifest.json`
 - **stable** → a11y snapshots, production consumer, review evidence in contract
 - **deprecated** → zero consumers (or migrated first) + required `deprecatedReason` naming successors; hidden from `find-component` by default; removal rules + log in [`docs/design-system/deprecation-policy.md`](../../../docs/design-system/deprecation-policy.md)

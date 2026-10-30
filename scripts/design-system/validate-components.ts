@@ -15,6 +15,7 @@ import { validateContractSchema } from './contract-schema-lib.mjs'
 import { docFieldErrors } from './doc-fields-rules.mjs'
 import { docTierFor } from './doc-tiers.mjs'
 import { deriveA11yCriteria } from './derive-a11y-criteria.mjs'
+import { readEvidenceRecords, isEvidenceFresh } from './a11y-evidence-lib.mjs'
 
 type VariantMap = Record<string, { values: string[]; default: string | null }>
 
@@ -566,6 +567,36 @@ export function validateComponentsDir(root: string): ValidationResult {
         }
         if (manifest.status === 'stable' && manifest.a11y.reviewed !== true) {
             errors.push(`${name}.contract.json: stable requires a11y.reviewed to be true`)
+        }
+
+        // Beta evidence gate (2026-10-30). The booleans above are claims; at
+        // beta (and stable) each one must be backed by a fresh, passing
+        // __a11y-evidence__ record, so a promotion cannot assert what no
+        // browser run proved. axe + the accessibility tree resolve through
+        // deriveA11yCriteria exactly as the stable gate does; light/dark and
+        // forced-colors need a passing record captured in that mode at a
+        // commit the component has not moved past.
+        if (manifest.status === 'beta' || manifest.status === 'stable') {
+            const criteria = deriveA11yCriteria(manifest, { componentDir: dir })
+            if (manifest.status === 'beta') {
+                for (const id of ['axe-no-violations', 'accessibility-tree']) {
+                    const criterion = criteria.find((c) => c.id === id)
+                    if (criterion && criterion.verificationMode !== 'automated') {
+                        errors.push(`${name}.contract.json: beta requires fresh passing a11y evidence for '${id}' (currently ${criterion.verificationMode}${criterion.note ? `: ${criterion.note}` : ''}). Capture it with the a11y evidence recapture (light, dark and forced-colors passes) and commit ${name}/__a11y-evidence__.`)
+                    }
+                }
+            }
+            const passingModes = new Set(
+                readEvidenceRecords(dir)
+                    .filter((r: any) => Object.values(r.checks ?? {}).every((c: any) => c?.passed === true) && isEvidenceFresh(dir, r))
+                    .map((r: any) => r.mode),
+            )
+            if (manifest.lightDarkVerified === true && !(passingModes.has('light') && passingModes.has('dark'))) {
+                errors.push(`${name}.contract.json: lightDarkVerified is true but no fresh passing evidence exists in both light and dark modes (found: ${[...passingModes].join(', ') || 'none'}). Recapture with DT_THEME=light and DT_THEME=dark, or set the flag to false.`)
+            }
+            if (manifest.a11y.forcedColorsVerified === true && !passingModes.has('forced-colors')) {
+                errors.push(`${name}.contract.json: a11y.forcedColorsVerified is true but no fresh passing forced-colors evidence exists. Recapture with DT_FORCED_COLORS=active, or set the flag to false.`)
+            }
         }
 
         // Deprecation gate (docs/design-system/deprecation-policy.md R2): the

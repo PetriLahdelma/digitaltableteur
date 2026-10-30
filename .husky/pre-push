@@ -20,6 +20,10 @@ if echo "$changed" | grep -qE '\.(astro|css|[cm]?js|jsx|html|svelte|ts|tsx|vue)$
   npm run lint:css
   npm run audit:rhythm:check
 fi
+# Alpha is a short stay: a contract may stay alpha for 14 days from the commit
+# that made it alpha, then it is promoted or removed. Runs on every push (an
+# overdue alpha does not wait for a DS change to surface).
+npm run check:alpha-age
 echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|scripts/design-system' || exit 0
 # Contract gate: keep the local gate a superset of the farm's validate job for
 # contract-touching changes (2026-07-03 incident: ten red farm runs because

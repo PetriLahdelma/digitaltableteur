@@ -66,14 +66,15 @@ When a component detects an invalid prop combination at runtime (a dev warning, 
 
 `check:contract-props` compares contracts against freshly built agent blocks. Contracts with authored `usage` (doc-adopted) own their `composesWith`/`prefersOver`/`forbiddenUse`; only props are machine-checked for them. Props must be declared locally on the `<Name>Props` interface — a prop that only arrives via a native attribute extension (e.g. `disabled`) is invisible to the extractor and will be flagged stale.
 
-### Step 4: Promote (remove WIP badge)
+### Step 4: Promote alpha → beta (within 14 days)
 
-Only when ALL pass:
+Alpha is a 14-day stay (`npm run check:alpha-age` runs on every push). Promote with the command, never by editing `status`:
 
-- Unit + axe tests green
-- `npm run test:stories:smoke` for the story
-- Full i18n coverage
-- Visual check in Storybook or via `npx agent-browser`
+1. Review a11y yourself (keyboard, ARIA, focus, reduced motion) and record it: `a11y.reviewed: true` plus a dated `a11y.reviewedNote` saying what you checked.
+2. Build the component in Figma (fileKey `PC2UPdYwm8qGt6ZTg0AakF`, the right tier page, DT variables bound), add its node to `scripts/design-system/figma-component-index.json` and put the node URL in the contract. Never a placeholder link.
+3. Capture a11y evidence for every required story in light, dark and forced-colors, and commit `__a11y-evidence__`.
+4. `npm run promote -- <Name> --check`, fix what it reports, then `npm run promote -- <Name>`.
+5. Also confirm: unit + axe tests green, full i18n coverage, a visual check in Storybook.
 
 Ask the user before promoting contract status to stable.
 
