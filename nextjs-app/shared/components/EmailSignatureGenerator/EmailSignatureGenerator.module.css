@@ -77,7 +77,7 @@
   display: grid;
   margin-block-end: var(--space-layout-24);
   grid-template-columns: 1fr 1fr;
-  gap: 0 var(--space-internal-16);
+  gap: var(--space-internal-16);
 }
 
 @media (width <= 600px) {
@@ -360,7 +360,7 @@
   }
 
   .formGrid {
-    gap: 0 var(--space-internal-12);
+    gap: var(--space-internal-12);
   }
 }
 

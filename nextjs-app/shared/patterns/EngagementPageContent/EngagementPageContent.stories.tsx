@@ -12,7 +12,7 @@ const meta = {
     a11y: { test: "error" },
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1912-33",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2070-770",
     },
     docs: { description: { component: contract.description } },
   },

@@ -23,9 +23,11 @@
   --field-label-line: calc(var(--font-size-text-xs) * 1.5);
 }
 
-/* A visually hidden label with nothing beside it takes no room. */
+/* A visually hidden label with nothing beside it takes no room: the empty row
+   collapses and pulls back the frame gap below it. */
 
 .headerHidden {
+  margin-block-end: calc(-1 * var(--space-internal-8));
   min-block-size: 0;
 }
 
