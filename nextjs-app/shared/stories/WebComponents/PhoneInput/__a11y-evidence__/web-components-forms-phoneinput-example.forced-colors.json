@@ -1,8 +1,8 @@
 {
   "storyId": "web-components-forms-phoneinput-example",
   "mode": "forced-colors",
-  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-  "capturedAt": "2026-10-30T19:02:09.342Z",
+  "sourceSHA": "66f430500290e9c319fe95539afc4288cef2dd42",
+  "capturedAt": "2026-10-30T20:52:43.280Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

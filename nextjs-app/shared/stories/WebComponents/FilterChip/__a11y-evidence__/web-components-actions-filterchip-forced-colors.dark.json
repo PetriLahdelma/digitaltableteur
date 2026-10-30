@@ -1,8 +1,8 @@
 {
   "storyId": "web-components-actions-filterchip-forced-colors",
   "mode": "dark",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:25:14.806Z",
+  "sourceSHA": "66f430500290e9c319fe95539afc4288cef2dd42",
+  "capturedAt": "2026-10-30T20:49:51.575Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

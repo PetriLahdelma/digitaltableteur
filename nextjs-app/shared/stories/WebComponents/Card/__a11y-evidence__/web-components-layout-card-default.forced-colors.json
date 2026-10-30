@@ -1,8 +1,8 @@
 {
   "storyId": "web-components-layout-card-default",
   "mode": "forced-colors",
-  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
-  "capturedAt": "2026-10-30T19:05:11.023Z",
+  "sourceSHA": "66f430500290e9c319fe95539afc4288cef2dd42",
+  "capturedAt": "2026-10-30T20:53:06.291Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

@@ -1,8 +1,8 @@
 {
   "storyId": "web-components-site-valuecard-default",
   "mode": "forced-colors",
-  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
-  "capturedAt": "2026-10-30T19:04:51.652Z",
+  "sourceSHA": "66f430500290e9c319fe95539afc4288cef2dd42",
+  "capturedAt": "2026-10-30T20:53:16.938Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

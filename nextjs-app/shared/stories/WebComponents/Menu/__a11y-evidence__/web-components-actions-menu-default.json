@@ -1,16 +1,16 @@
 {
   "storyId": "web-components-actions-menu-default",
   "mode": "light",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:15:53.646Z",
+  "sourceSHA": "66f430500290e9c319fe95539afc4288cef2dd42",
+  "capturedAt": "2026-10-30T20:44:47.336Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
     },
     "axe-no-violations": {
-      "passed": false,
-      "axeViolations": 1
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }
