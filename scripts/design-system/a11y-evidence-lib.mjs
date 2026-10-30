@@ -170,18 +170,43 @@ export function cssDiffIsA11yRelevant(diff) {
  * change could affect the component's accessibility.
  *
  * - A non-CSS source file (.tsx/.ts, incl. stories) can change structure, roles,
- *   or props → a11y-relevant.
+ *   or props → a11y-relevant, except a stories file whose diff only swaps the
+ *   lifecycle tag (what `npm run promote` writes), which renders nothing new.
  * - A CSS file is a11y-relevant only if its diff touches a contrast- or
  *   tree-affecting property. A geometry/type-size-only change is a11y-neutral.
  *
  * @param {string[]} changedFiles
- * @param {(file: string) => string} getCssDiff unified diff for a CSS file
+ * @param {(file: string) => string} getDiff unified diff for one changed file
  * @returns {boolean}
  */
-export function isA11yRelevantChange(changedFiles, getCssDiff) {
+export function isA11yRelevantChange(changedFiles, getDiff) {
   if (changedFiles.length === 0) return false;
-  if (changedFiles.some((f) => !f.endsWith(".css"))) return true;
-  return changedFiles.some((f) => cssDiffIsA11yRelevant(getCssDiff(f)));
+  return changedFiles.some((f) => {
+    if (f.endsWith(".css")) return cssDiffIsA11yRelevant(getDiff(f));
+    if (/\.stories\.[jt]sx?$/.test(f)) return !storiesDiffIsLifecycleOnly(getDiff(f));
+    return true;
+  });
+}
+
+const LIFECYCLE_TAG = /(["'])(?:alpha|beta|stable|deprecated)\1/g;
+
+/**
+ * Does a stories-file diff change nothing but lifecycle tags? Removed and added
+ * lines must match one for one once each `"alpha"`/`"beta"`/`"stable"`/
+ * `"deprecated"` string is masked.
+ * @param {string} diff
+ * @returns {boolean}
+ */
+export function storiesDiffIsLifecycleOnly(diff) {
+  const removed = [];
+  const added = [];
+  for (const line of diff.split("\n")) {
+    if (/^[+-]{3}/.test(line)) continue;
+    if (line.startsWith("-")) removed.push(line.slice(1).replace(LIFECYCLE_TAG, '"<lifecycle>"'));
+    else if (line.startsWith("+")) added.push(line.slice(1).replace(LIFECYCLE_TAG, '"<lifecycle>"'));
+  }
+  if (removed.length === 0 && added.length === 0) return false;
+  return removed.length === added.length && removed.sort().join("\n") === added.sort().join("\n");
 }
 
 /**

@@ -9,6 +9,7 @@ import {
   evidenceCheckVerdicts,
   evidenceFile,
   isA11yRelevantChange,
+  storiesDiffIsLifecycleOnly,
   isEvidenceFresh,
   readEvidenceRecords,
   writeEvidenceRecord,
@@ -183,5 +184,22 @@ describe("isA11yRelevantChange", () => {
   it("true if ANY changed file is relevant (mixed css)", () => {
     const getDiff = (f) => (f.includes("bad") ? diff("+  color: red;") : diff("+  padding: 4px;"));
     expect(isA11yRelevantChange(["c/ok.module.css", "c/bad.module.css"], getDiff)).toBe(true);
+  });
+  it("a stories diff that only swaps the lifecycle tag is neutral (npm run promote)", () => {
+    const retag = () => diff('-  tags: ["alpha", "autodocs"],', '+  tags: ["beta", "autodocs"],');
+    expect(isA11yRelevantChange(["c/Kbd.stories.tsx"], retag)).toBe(false);
+  });
+  it("a stories diff that changes anything besides the tag stays relevant", () => {
+    const retagAndArgs = () =>
+      diff('-  tags: ["alpha", "autodocs"],', '+  tags: ["beta", "autodocs"],', '+  args: { disabled: true },');
+    expect(isA11yRelevantChange(["c/Kbd.stories.tsx"], retagAndArgs)).toBe(true);
+    const otherTag = () => diff('-  tags: ["alpha", "autodocs"],', '+  tags: ["beta", "example"],');
+    expect(isA11yRelevantChange(["c/Kbd.stories.tsx"], otherTag)).toBe(true);
+  });
+});
+
+describe("storiesDiffIsLifecycleOnly", () => {
+  it("ignores the +++/--- headers and an empty diff is not lifecycle-only", () => {
+    expect(storiesDiffIsLifecycleOnly("--- a/x\n+++ b/x\n")).toBe(false);
   });
 });
