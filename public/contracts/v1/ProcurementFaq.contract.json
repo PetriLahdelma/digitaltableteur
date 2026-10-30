@@ -34,64 +34,64 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-default.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:05.492Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:08.380Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-default.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:47.862Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:12:56.486Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-default.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:56.702Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:02.326Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-example.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:05.857Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:08.727Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-example.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.295Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:12:56.834Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-example.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:57.095Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:02.703Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-forced-colors.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:06.285Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:09.043Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.670Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:12:57.168Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-forced-colors.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:57.428Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:03.084Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -109,85 +109,85 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-default.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:05.492Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:08.380Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-default.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:13.968Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:13.920Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-default.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:47.862Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:12:56.486Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-default.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:56.702Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:02.326Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-example.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:05.857Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:08.727Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-example.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.266Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:14.232Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-example.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.295Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:12:56.834Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-example.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:57.095Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:02.703Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-forced-colors.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:06.285Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:09.043Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-forced-colors.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.554Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:14.537Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.670Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:12:57.168Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-forced-colors.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:57.428Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:03.084Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -201,22 +201,22 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-default.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:13.968Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:13.920Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-example.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.266Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:14.232Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ProcurementFaq/__a11y-evidence__/patterns-procurementfaq-forced-colors.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.554Z",
+            "sourceCommit": "7aa8e3cc2288f61bd0bb98433d7ecd298abaa204",
+            "capturedAt": "2026-10-30T23:13:14.537Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -245,7 +245,7 @@
         "id": "human-a11y-review",
         "statement": "A human completed an end-to-end accessibility review of this component.",
         "verification": "manual",
-        "note": "2026-10-30: reviewed live in Storybook (Default). The section is labelled by its h2; 14 Accordion triggers expose aria-expanded and aria-controls, each panel is a labelled region, collapsed panels are hidden; Tab reaches each trigger in order with a visible 2px inset focus ring; Enter and Space toggle; one item opens at a time; motion respects prefers-reduced-motion; the Reliable Partner link is named by its image alt and the AI policy link by its text. Known gap shared with the DS Accordion: triggers are not wrapped in heading elements, so FAQ questions are not in the heading outline.",
+        "note": "2026-10-30: reviewed live in Storybook (Default). The section is labelled by its h2; 14 Accordion triggers expose aria-expanded and aria-controls, each panel is a labelled region, collapsed panels are hidden; Tab reaches each trigger in order with a visible 2px inset focus ring; Enter and Space toggle; one item opens at a time; motion respects prefers-reduced-motion; the Reliable Partner link is named by its image alt and the AI policy link by its text. 2026-10-31: FAQ questions are headings one level below their section (Accordion headingLevel), so they join the outline; triggers look the same.",
         "reviewedAt": "2026-10-30"
       }
     ]
