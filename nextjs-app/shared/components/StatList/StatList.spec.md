@@ -20,4 +20,4 @@ numbers at a glance and still hear them in order with a screen reader.
 - Tokens: --font-size-title-s and -m for figures, --color-border hairlines
   (rule) or --color-surface tiles (card), --space-layout-24/32 gaps.
 - Figures use the regular-weight display face, as on the site's display lines.
-- Figma: not drawn yet.
+- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2066-359 (Variant x Size x Align; items are the `StatList/Item` part).

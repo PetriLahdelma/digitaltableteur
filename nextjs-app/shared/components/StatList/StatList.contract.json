@@ -5,7 +5,7 @@
     "group": "display",
     "status": "alpha",
     "description": "Key figures as a description list: each item pairs a figure with what it counts, an optional total and a short note.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2066-359",
     "radixPrimitive": null,
     "element": "dl",
     "variants": {
@@ -52,8 +52,9 @@
             "The figure is drawn above the label with CSS order only; reading order is unchanged."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": false,
+        "reviewedNote": "2026-10-30 (Claude, code + unit tests + Storybook): renders a <dl>; each item is a <dt> label then <dd> figure (+ optional <dd> note), so assistive tech reads the label before the figure; the figure is drawn first with CSS order only, so visual and reading order differ on purpose and the reading order is the meaningful one. 'of N' is localized (statListOf, EN/FI/SV). Not interactive, no focus targets, no motion. Forced colors: rule and card borders map to CanvasText. Contrast: figure --color-title, label --color-text, note --color-muted, all AA in the four themes (check:contrast)."
     },
     "tokens": {
         "colors": [

@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T16:18:03.405Z",
+  "generatedAt": "2026-10-30T18:29:18.098Z",
   "summary": {
-    "componentCount": 192,
+    "componentCount": 193,
     "statusCounts": {
       "beta": 48,
       "stable": 108,
       "deprecated": 3,
-      "alpha": 33
+      "alpha": 34
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 91.9,
-    "codebaseComponentCount": 209,
+    "codebaseComponentCount": 210,
     "usageCoveragePercent": 93.8,
     "componentsWithProductionUsage": 45,
     "notReadyForStablePromotion": false
@@ -25,8 +25,8 @@
   },
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
-    "tokenCount": 230,
-    "usageCoverage": 178,
+    "tokenCount": 234,
+    "usageCoverage": 182,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",
@@ -53,19 +53,19 @@
         "label": "High contrast (white)"
       }
     ],
-    "contrastPairCount": 12
+    "contrastPairCount": 19
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 209,
-    "inCatalog": 192,
+    "totalComponentsInCodebase": 210,
+    "inCatalog": 193,
     "outOfCatalog": 17,
     "catalogCompletenessPercent": 91.9,
     "artifactCoverage": {
-      "stories": 176,
-      "tests": 188,
-      "mdx": 8,
-      "spec": 192
+      "stories": 177,
+      "tests": 189,
+      "mdx": 9,
+      "spec": 193
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 192,
-    "withAnyUsage": 180,
+    "catalogedComponents": 193,
+    "withAnyUsage": 181,
     "withProductionUsage": 45,
-    "uniqueImportedComponents": 180,
-    "totalEvidenceRows": 934,
-    "aliasImportFiles": 482,
-    "relativeImportFiles": 493,
+    "uniqueImportedComponents": 181,
+    "totalEvidenceRows": 943,
+    "aliasImportFiles": 492,
+    "relativeImportFiles": 492,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-10-30T14:50:09.917Z",
+    "generatedAt": "2026-10-30T17:46:06.580Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 102,
+    "nodesWithComposesWith": 104,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,7 +102,7 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 192,
+      "digitaltableteur": 193,
       "dsharp": 112
     },
     "statusMix": {
@@ -110,7 +110,7 @@
         "beta": 48,
         "stable": 108,
         "deprecated": 3,
-        "alpha": 33
+        "alpha": 34
       },
       "dsharp": {
         "beta": 110,
@@ -12569,10 +12569,10 @@
         ],
         "composesWith": [
           "TextInput",
-          "Label",
-          "Text",
           "Title",
+          "Label",
           "Button",
+          "Text",
           "Grid"
         ],
         "prefersOver": [],
@@ -16227,7 +16227,17 @@
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1297-3061",
         "radixPrimitive": null,
         "element": "button",
-        "variants": {},
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+          }
+        },
         "slots": [],
         "asChild": false,
         "subParts": [],
@@ -16389,6 +16399,21 @@
             "type": "string",
             "description": "Error message; renders above the helper line and sets aria-invalid"
           },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+          },
           "required": {
             "optional": true,
             "type": "boolean",
@@ -16403,6 +16428,16 @@
             "optional": true,
             "type": "string",
             "description": "Classes on the field wrapper"
+          },
+          "size": {
+            "optional": true,
+            "type": "FieldSize",
+            "description": "Field size shared by every DS field: 40, 48 or 56px tall."
+          },
+          "name": {
+            "optional": true,
+            "type": "string",
+            "description": "Submits the value with a surrounding form, through a hidden input"
           }
         },
         "forbiddenUse": [
@@ -16516,10 +16551,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Combobox",
-        "importCount": 2,
+        "importCount": 4,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 2,
+        "componentImportCount": 3,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.tsx",
@@ -16532,6 +16567,18 @@
             "importKind": "alias",
             "importPath": "@dt/Combobox",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Select/Select.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Combobox",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Combobox",
+            "context": "story"
           }
         ]
       },
@@ -16577,7 +16624,22 @@
           "error": {
             "optional": true,
             "type": "string",
-            "description": "Error message; renders above the helper line and sets aria-invalid"
+            "description": "Error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+          },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
           },
           "required": {
             "optional": true,
@@ -16588,6 +16650,16 @@
             "optional": true,
             "type": "boolean",
             "description": "Disables the control."
+          },
+          "size": {
+            "optional": true,
+            "type": "FieldSize",
+            "description": "Field size shared by every DS field: 40, 48 or 56px tall."
+          },
+          "name": {
+            "optional": true,
+            "type": "string",
+            "description": "Submits the value with a surrounding form, through a hidden input"
           },
           "className": {
             "optional": true,
@@ -16637,14 +16709,15 @@
           "nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`)."
         ],
         "composesWith": [
+          "MultiCombobox",
+          "PhoneInput",
           "Button",
           "FileUpload",
-          "MultiCombobox",
           "CheckboxGroup",
-          "PhoneInput"
+          "TextInput"
         ],
         "prefersOver": [],
-        "declaredPropCount": 11,
+        "declaredPropCount": 16,
         "guidelines": [
           {
             "level": "should",
@@ -24718,6 +24791,518 @@
       }
     },
     {
+      "name": "FieldShell",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "FieldShell",
+        "tier": "molecule",
+        "group": "form",
+        "status": "alpha",
+        "description": "The frame every text and choice field is built on: a label row with icon actions at its end, the control, then a status message and a helper line.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {},
+        "slots": [
+          "children"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Label-row actions come before the control in Tab order, as they sit above it.",
+            "An action with items opens a menu on Enter, Space or ArrowDown; arrow keys move through the items and Escape closes it."
+          ],
+          "ariaRequirements": [
+            "The label is a <label for> the control and carries the id `${controlId}-label` for controls named with aria-labelledby.",
+            "The control's aria-describedby lists the status message and then the helper line (fieldDescribedBy builds it).",
+            "An error message is announced as an alert; aria-invalid is set by the control only for status error.",
+            "Each action is an icon button named by its label, which is also its tooltip."
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-border",
+            "--color-error",
+            "--color-warning-contrast",
+            "--color-success"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-8"
+          ]
+        },
+        "lightDarkVerified": false,
+        "forbiddenUse": [
+          "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
+          "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
+          "use it for a group of controls; FormField's fieldset owns the group case."
+        ],
+        "schemaVersion": 2,
+        "props": {
+          "controlId": {
+            "optional": false,
+            "type": "string",
+            "description": "id of the control inside; the label, status and helper ids derive from it."
+          },
+          "label": {
+            "optional": false,
+            "type": "string",
+            "description": "Visible field label."
+          },
+          "children": {
+            "optional": false,
+            "type": "React.ReactNode",
+            "description": "The control: an input, textarea, select or composite control."
+          },
+          "status": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "success",
+              "warning",
+              "error"
+            ],
+            "description": "Semantic state; pairs with `statusMessage`."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the control, styled and announced for `status`."
+          },
+          "helperText": {
+            "optional": true,
+            "type": "string",
+            "description": "Supporting copy under the control, after the status message."
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row, level with the label."
+          },
+          "required": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Shows the required marker on the label."
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Dims the label and disables every action."
+          },
+          "hideLabel": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visually hides the label; it stays the control's accessible name."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the field wrapper."
+          }
+        }
+      },
+      "spec": "# FieldShell\n\n## Intent\nOne frame for every DS text and choice field, so TextInput, TextArea, Select,\nCombobox, MultiCombobox and PhoneInput share the same label row, status\ncolours, message lines and spacing instead of each rolling its own.\n\n## Interaction contract\n- Keyboard: the shell itself takes no focus. Label-row actions are icon\n  buttons in DOM order before the control. An action with `items` is a menu\n  button: Enter, Space or ArrowDown opens it, arrows move, Escape closes.\n- Pointer: clicking the label focuses the control. A direct action runs its\n  `onClick`; a menu action opens its menu at the end of the row.\n- Screen readers: the label names the control (`for`, plus the\n  `${controlId}-label` id for aria-labelledby). `fieldDescribedBy` gives the\n  control the status message id, then the helper id. An error message is an\n  alert; warning and success are plain text with their icon.\n\n## Do / don't\n- Do: use the fields' `status`, `statusMessage` and `actions` props; reach\n  for FieldShell directly only for a new kind of control.\n- Do: name each action with a verb (\"Paste\", \"Generate password\").\n- Do: keep `error` for validation; it is shorthand for status error.\n- Don't: nest a DS field inside another FieldShell.\n- Don't: put text buttons or links in the label row.\n- Don't: use it to group controls; that is FormField.\n\n## Design notes\n- Tokens: --space-internal-8 between label row, control and messages,\n  --space-internal-4 between the status message and the helper line.\n  Status borders: --color-error, --color-warning-contrast, --color-success\n  (styles/field.module.css, applied with fieldStatusClass).\n- The label row is one label line tall (24px) with or without actions;\n  the 40px icon buttons centre on it, so fields side by side keep their\n  controls level.\n- No outer margin: the form or stack owns the space between fields.\n- A status border holds through hover and focus and gives way to disabled.\n- Figma: not drawn yet.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/FieldShell",
+        "importCount": 7,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 7,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/Combobox/Combobox.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/FieldShell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/FieldShell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/FieldShell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/FieldShell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Select/Select.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/FieldShell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/TextArea/TextArea.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/FieldShell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/TextInput/TextInput.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/FieldShell",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/FieldShell",
+        "intent": "One frame for every DS text and choice field, so TextInput, TextArea, Select, Combobox, MultiCombobox and PhoneInput share the same label row, status colours, message lines and spacing instead of each rolling its own.",
+        "props": {
+          "controlId": {
+            "optional": false,
+            "type": "string",
+            "description": "id of the control inside; the label, status and helper ids derive from it."
+          },
+          "label": {
+            "optional": false,
+            "type": "string",
+            "description": "Visible field label."
+          },
+          "children": {
+            "optional": false,
+            "type": "React.ReactNode",
+            "description": "The control: an input, textarea, select or composite control."
+          },
+          "status": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "success",
+              "warning",
+              "error"
+            ],
+            "description": "Semantic state; pairs with `statusMessage`."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the control, styled and announced for `status`."
+          },
+          "helperText": {
+            "optional": true,
+            "type": "string",
+            "description": "Supporting copy under the control, after the status message."
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row, level with the label."
+          },
+          "required": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Shows the required marker on the label."
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Dims the label and disables every action."
+          },
+          "hideLabel": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visually hides the label; it stays the control's accessible name."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the field wrapper."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "use the fields' `status`, `statusMessage` and `actions` props; reach for FieldShell directly only for a new kind of control.",
+          "name each action with a verb (\"Paste\", \"Generate password\").",
+          "keep `error` for validation; it is shorthand for status error."
+        ],
+        "avoidWhen": [
+          "nest a DS field inside another FieldShell.",
+          "put text buttons or links in the label row.",
+          "use it to group controls; that is FormField."
+        ],
+        "requiredA11y": [
+          "The label is a <label for> the control and carries the id `${controlId}-label` for controls named with aria-labelledby.",
+          "The control's aria-describedby lists the status message and then the helper line (fieldDescribedBy builds it).",
+          "An error message is announced as an alert; aria-invalid is set by the control only for status error.",
+          "Each action is an icon button named by its label, which is also its tooltip."
+        ],
+        "keyboard": [
+          "Label-row actions come before the control in Tab order, as they sit above it.",
+          "An action with items opens a menu on Enter, Space or ArrowDown; arrow keys move through the items and Escape closes it."
+        ],
+        "compositionRules": [
+          "nest a DS field inside another FieldShell."
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "nest a DS field inside another FieldShell.",
+          "put text buttons or links in the label row.",
+          "use it to group controls; that is FormField."
+        ],
+        "composesWith": [
+          "Icon",
+          "Combobox"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 11,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "use the fields' `status`, `statusMessage` and `actions` props; reach for FieldShell directly only for a new kind of control.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "name each action with a verb (\"Paste\", \"Generate password\").",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "keep `error` for validation; it is shorthand for status error.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "nest a DS field inside another FieldShell.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "put text buttons or links in the label row.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it to group controls; that is FormField.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "FieldShell.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "FieldShell.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "FieldShell.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "FieldShell.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "FileUpload",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -27148,6 +27733,21 @@
             "optional": true,
             "type": "string",
             "description": "Supporting text under the field, linked with aria-describedby. Text and textarea fields only; use it to say why a read-only value is fixed."
+          },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
           }
         },
         "forbiddenUse": [
@@ -27205,12 +27805,27 @@
           "label": {
             "optional": false,
             "type": "string",
-            "description": "Field label (displayed as uppercase)"
+            "description": "Field label"
           },
           "error": {
             "optional": true,
             "type": "string",
-            "description": "Error message"
+            "description": "Error message; shorthand for status=\"error\" with this message"
+          },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
           },
           "required": {
             "optional": true,
@@ -27230,7 +27845,7 @@
           "helperText": {
             "optional": true,
             "type": "string",
-            "description": "Supporting text under the field, linked with aria-describedby. Text and\ntextarea fields only; use it to say why a read-only value is fixed."
+            "description": "Supporting text under the field, linked with aria-describedby. Use it,\nfor example, to say why a read-only value is fixed."
           }
         },
         "propRelationships": [
@@ -27279,7 +27894,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 8,
+        "declaredPropCount": 11,
         "guidelines": [
           {
             "level": "should",
@@ -29332,10 +29947,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/HelperText",
-        "importCount": 11,
+        "importCount": 6,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 11,
+        "componentImportCount": 6,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/Checkbox/Checkbox.tsx",
@@ -29344,7 +29959,7 @@
             "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/Combobox/Combobox.tsx",
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
             "importKind": "alias",
             "importPath": "@dt/HelperText",
             "context": "component"
@@ -29356,25 +29971,7 @@
             "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/HelperText",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/HelperText/HelperText",
-            "context": "component"
-          },
-          {
             "path": "nextjs-app/shared/components/RadioGroup/RadioGroup.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/HelperText",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/Select/Select.tsx",
             "importKind": "alias",
             "importPath": "@dt/HelperText",
             "context": "component"
@@ -29387,18 +29984,6 @@
           },
           {
             "path": "nextjs-app/shared/components/Switch/Switch.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/HelperText",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/TextArea/TextArea.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/HelperText",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/TextInput/TextInput.tsx",
             "importKind": "alias",
             "importPath": "@dt/HelperText",
             "context": "component"
@@ -29466,11 +30051,11 @@
         ],
         "composesWith": [
           "Label",
-          "Icon",
           "GroupLabel",
           "Radio",
           "Text",
-          "VisuallyHidden"
+          "VisuallyHidden",
+          "Icon"
         ],
         "prefersOver": [
           "AlertBanner for field-level hints"
@@ -30197,12 +30782,12 @@
           "import a Phosphor component directly from `@phosphor-icons/react` to get the same shape — you lose the alias map, the SR semantics, and the size ladder. Use Icon."
         ],
         "composesWith": [
-          "Button",
           "Text",
+          "Button",
           "ComplianceCard",
           "Badge",
           "Title",
-          "Label"
+          "Menu"
         ],
         "prefersOver": [],
         "declaredPropCount": 12,
@@ -32185,10 +32770,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Label",
-        "importCount": 12,
+        "importCount": 9,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 10,
+        "componentImportCount": 7,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/ChatWidget/ChatComposer.tsx",
@@ -32203,15 +32788,15 @@
             "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/index.ts",
-            "importKind": "relative",
-            "importPath": "./Label/Label",
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Label",
             "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Label/Label",
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./Label/Label",
             "context": "component"
           },
           {
@@ -32221,25 +32806,7 @@
             "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/Select/Select.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Label",
-            "context": "component"
-          },
-          {
             "path": "nextjs-app/shared/components/Switch/Switch.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Label",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/TextArea/TextArea.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Label",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/TextInput/TextInput.tsx",
             "importKind": "alias",
             "importPath": "@dt/Label",
             "context": "component"
@@ -32338,10 +32905,10 @@
         "composesWith": [
           "Text",
           "Button",
-          "Icon",
-          "HelperText",
           "Checkbox",
-          "TextInput"
+          "TextInput",
+          "Icon",
+          "Grid"
         ],
         "prefersOver": [],
         "declaredPropCount": 5,
@@ -33792,19 +34359,13 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 18,
-        "productionImportCount": 2,
+        "importCount": 17,
+        "productionImportCount": 1,
         "patternImportCount": 3,
         "componentImportCount": 11,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../Link",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
             "importKind": "relative",
             "importPath": "../../Link",
             "context": "production"
@@ -33865,6 +34426,12 @@
           },
           {
             "path": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
@@ -38204,10 +38771,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Menu",
-        "importCount": 5,
+        "importCount": 6,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 4,
+        "componentImportCount": 5,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/Avatar/Avatar.tsx",
@@ -38217,6 +38784,12 @@
           },
           {
             "path": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Menu",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
             "importKind": "alias",
             "importPath": "@dt/Menu",
             "context": "component"
@@ -38836,8 +39409,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -38851,8 +39424,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -38873,8 +39446,7 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "unverified"
           },
           {
             "id": "keyboard-contract",
@@ -38900,8 +39472,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -40022,6 +40594,21 @@
             "type": "string",
             "description": "Error message; renders above the helper line and sets aria-invalid"
           },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+          },
           "required": {
             "optional": true,
             "type": "boolean",
@@ -40150,7 +40737,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/MultiCombobox",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
@@ -40160,6 +40747,12 @@
             "importKind": "alias",
             "importPath": "@dt/MultiCombobox",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/MultiCombobox",
+            "context": "story"
           }
         ]
       },
@@ -40205,7 +40798,22 @@
           "error": {
             "optional": true,
             "type": "string",
-            "description": "Error message; renders above the helper line and sets aria-invalid"
+            "description": "Error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+          },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
           },
           "required": {
             "optional": true,
@@ -40263,14 +40871,15 @@
           "use for single-select — use `Combobox` instead."
         ],
         "composesWith": [
+          "Combobox",
+          "PhoneInput",
           "Button",
           "FileUpload",
-          "Combobox",
           "CheckboxGroup",
-          "PhoneInput"
+          "TextInput"
         ],
         "prefersOver": [],
-        "declaredPropCount": 11,
+        "declaredPropCount": 14,
         "guidelines": [
           {
             "level": "should",
@@ -43116,6 +43725,21 @@
             "type": "string",
             "description": "Error message; renders above the helper line"
           },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+          },
           "helperText": {
             "optional": true,
             "type": "string",
@@ -43490,7 +44114,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PhoneInput",
-        "importCount": 3,
+        "importCount": 4,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 3,
@@ -43512,6 +44136,12 @@
             "importKind": "relative",
             "importPath": "./PhoneInput/PhoneInput",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/PhoneInput",
+            "context": "story"
           }
         ]
       },
@@ -43532,7 +44162,22 @@
           "error": {
             "optional": true,
             "type": "string",
-            "description": "Error message; renders above the helper line"
+            "description": "Error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+          },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
           },
           "helperText": {
             "optional": true,
@@ -43874,11 +44519,11 @@
           "CheckboxGroup",
           "FileUpload",
           "TextInput",
-          "Modal",
-          "Toast"
+          "TextArea",
+          "Select"
         ],
         "prefersOver": [],
-        "declaredPropCount": 11,
+        "declaredPropCount": 14,
         "guidelines": [
           {
             "level": "should",
@@ -51598,10 +52243,10 @@
         "tier": "atom",
         "group": "form",
         "status": "stable",
-        "description": "Native dropdown select with labelled options, error state, and size tokens.",
+        "description": "Single-choice field that opens the DS option list (a select-only combobox), with labelled options, statuses, label-row actions and size tokens.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-23",
         "radixPrimitive": null,
-        "element": "select",
+        "element": "button",
         "variants": {
           "size": {
             "values": [
@@ -51628,18 +52273,24 @@
         ],
         "a11y": {
           "keyboard": [
-            "Arrow keys",
+            "Tab",
+            "ArrowDown",
+            "ArrowUp",
+            "Home",
+            "End",
             "Enter",
             "Space",
-            "Tab"
+            "Escape",
+            "Type-ahead"
           ],
           "ariaRequirements": [
-            "associated label",
-            "error announced via HelperText"
+            "combobox named by the associated label",
+            "listbox with aria-selected and aria-activedescendant",
+            "status message and helper linked with aria-describedby; error announced as an alert"
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
+          "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed. 2026-10-30: engine changed from the native <select> to the Combobox select-only combobox (owner decision: DS list, never the OS popup); keyboard contract re-verified in unit tests (open, pick, Escape, type-ahead via Combobox). AT and forced-colors evidence must be recaptured before this ships.",
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true
@@ -51702,6 +52353,21 @@
             "type": "string",
             "description": "Error message under the control; sets aria-invalid and aria-describedby."
           },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the control for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+          },
           "size": {
             "optional": true,
             "type": "union",
@@ -51729,12 +52395,47 @@
             "optional": true,
             "type": "(value: string) => void",
             "deprecated": true
+          },
+          "children": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "`<option>` or `SelectOption` children; an option with value \"\" becomes the placeholder"
+          },
+          "value": {
+            "optional": true,
+            "type": "string",
+            "description": "Selected value (controlled); \"\" shows the placeholder"
+          },
+          "defaultValue": {
+            "optional": true,
+            "type": "string",
+            "description": "Initial value when uncontrolled"
+          },
+          "required": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Marks the field required."
+          },
+          "id": {
+            "optional": true,
+            "type": "string",
+            "description": "Explicit control id (wires the label); auto-generated when omitted"
+          },
+          "name": {
+            "optional": true,
+            "type": "string",
+            "description": "Submits the value with a surrounding form, through a hidden input"
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Classes on the field wrapper"
           }
         },
         "forbiddenUse": [
-          "ship a Select with `value` and `defaultValue` both set —",
-          "use Select for a freeform value with suggestions. Use an",
-          "wrap the native chevron with a button overlay. The native"
+          "ship a Select with `value` and `defaultValue` both set; `value` wins and a dev warning fires.",
+          "use Select for a freeform value with suggestions; use TextInput.",
+          "render a native <select> beside or inside it; every DS dropdown opens the DS list."
         ],
         "composesWith": [
           "TextInput",
@@ -51749,13 +52450,13 @@
           "dropdown select options",
           "select",
           "dropdown",
-          "native select",
           "options",
-          "picker"
+          "picker",
+          "listbox"
         ],
-        "dense": "native select with label, options array or option children, own error + helperText, sm/md/lg; onValueChange(value)",
+        "dense": "single choice on the DS list (Combobox engine): label, options or option children ('' = placeholder), status, helperText, actions, sm/md/lg, name; onValueChange(value)",
         "usage": {
-          "description": "Select wraps the native select element with the field chrome: label, chevron, helper and error text. Feed it an options array (or option children for grouped markup) and read changes via onValueChange. Native means built-in keyboard support, platform mobile pickers, and zero positioning code.",
+          "description": "Select is the single-choice field. It renders Combobox's select-only combobox inside FieldShell, so it opens the same DS option list as every other dropdown on the site, never the operating system's popup. Feed it an options array or option children (an empty-value option becomes the placeholder) and read changes via onValueChange; pass name to submit with a native form.",
           "bestPractices": [
             {
               "guidance": true,
@@ -51766,20 +52467,20 @@
               "description": "Lead with an empty placeholder option when there is no safe default, and validate it as unselected."
             },
             {
-              "guidance": true,
-              "description": "Use the options array for flat lists; pass children only when you need optgroups."
-            },
-            {
-              "guidance": true,
-              "description": "Keep option labels short; native pickers truncate long labels differently per platform."
-            },
-            {
               "guidance": false,
               "description": "Do not use Select for search-among-many; Combobox owns typeahead."
             },
             {
+              "guidance": true,
+              "description": "Pass name when the field submits with a native form; a hidden input carries the selected value."
+            },
+            {
               "guidance": false,
               "description": "Do not silently preselect a consequential option (billing plans); make the user choose."
+            },
+            {
+              "guidance": true,
+              "description": "Keep option labels short; the list truncates nothing, so long labels wrap and slow scanning."
             }
           ]
         },
@@ -51803,11 +52504,11 @@
           }
         }
       },
-      "spec": "# Select\n\n## Intent\nProvide a labelled, validated, native `<select>` so consumers don't\nhand-author the label / id / `aria-invalid` / helper-text wiring every\ntime. The native control is chosen on purpose — accessibility and\nmobile UX exceed any custom combobox in scope for this system.\n\n## Interaction contract\n- Keyboard: native browser behaviour. ArrowUp / ArrowDown moves the\n  highlighted option; Enter / Space opens or commits depending on\n  platform; type-ahead jumps to the first matching option. Tab moves\n  focus to the next field.\n- Pointer: click opens the native picker. Click outside closes.\n  Touch on iOS / Android invokes the platform sheet.\n- Screen readers: the label is announced first, then the current\n  value, then \"list, N items\". Each option is announced with its\n  position (\"3 of 7\"). Error state announces via `aria-invalid` +\n  the helper text live region.\n\n## Do / don't\n- Do: use `onValueChange` (the new contract). The legacy `onChange`\n  still works but emits a deprecation warning in development.\n- Do: label every Select. Visually-hidden labels are fine — use the\n  `<Label>` primitive with `visuallyHidden` if the design has no\n  visible label.\n- Don't: ship a Select with `value` and `defaultValue` both set —\n  `value` wins and a dev-mode warning fires.\n- Don't: use Select for a freeform value with suggestions. Use an\n  Input plus a custom autosuggest pattern.\n- Don't: wrap the native chevron with a button overlay. The native\n  click target is the entire control already; an overlay breaks\n  forced-colors and mobile sheets.\n\n## Design notes\n- Tokens: control surface uses `--color-surface`; border uses\n  `--color-border` (default) or `--color-error-border` (error state).\n  Height is `--input-height-md` by default, scaling to `--input-height-sm`\n  and `--input-height-lg` via the `size` prop. Padding uses\n  `--space-internal-12` inline.\n- Figma: https://www.figma.com/design/digitaltableteur/select — three\n  sizes (sm / md / lg), four states (default / focus / error /\n  disabled).\n- The custom chevron is rendered via `<Icon name=\"caret-down\" />` so\n  it inherits theme tokens. In forced-colors mode the system draws\n  its own chevron and ours becomes invisible — acceptable since the\n  native affordance carries.\n- The deprecated `onChange` is still called *after* `onValueChange`\n  to keep backwards compatibility predictable. Code paths that\n  legitimately need both fire in a stable order.\n",
+      "spec": "# Select\n\n## Intent\nA labelled single-choice field that opens the DS option list, so every\ndropdown on the site looks and behaves the same. Select is a thin wrapper\nover Combobox (a WAI-ARIA select-only combobox): it keeps the `options` /\n`<option>` children API, turns an empty-value option into the placeholder\nand adds uncontrolled use, `size` and form submission through `name`.\nDecided 2026-10-30 (owner): DS fields use the DS menu, never the operating\nsystem's native popup; this replaces the earlier native `<select>`.\n\n## Interaction contract\n- Keyboard: Tab focuses the field. ArrowDown, ArrowUp, Enter or Space open\n  the list; arrows move the highlight; Home / End jump to the ends; typing\n  jumps to the first option whose label (or any word in it) starts with\n  the typed text; Enter or Space picks; Escape closes and keeps the value.\n- Pointer: click the field or the chevron to open the list; click an option\n  to pick it; click outside closes.\n- Screen readers: a combobox named by the label, announcing the selected\n  option; the list is a listbox with `aria-selected` on the picked option\n  and `aria-activedescendant` tracking the highlight. The status message\n  and helper line are linked with `aria-describedby`; an error sets\n  `aria-invalid` and is announced as an alert.\n\n## Do / don't\n- Do: use `onValueChange` (the new contract). The legacy `onChange`\n  still works but emits a deprecation warning in development.\n- Do: pass `name` when the field submits with a native form; a hidden\n  input carries the value.\n- Don't: ship a Select with `value` and `defaultValue` both set —\n  `value` wins and a dev-mode warning fires.\n- Don't: use Select for a freeform value with suggestions, or for several\n  values; use TextInput, or MultiCombobox for several.\n\n## Design notes\n- Built on FieldShell and the shared field chrome: label row with\n  optional actions, 40 / 48 / 56px heights for sm / md / lg, 16px inset,\n  status border colours from `styles/field.module.css`.\n- The option list is Combobox's portaled list (`useComboboxDropdown`),\n  shared with MultiCombobox and PhoneInput's country picker.\n- The deprecated `onChange` is still called *after* `onValueChange`\n  to keep backwards compatibility predictable.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Select",
-        "importCount": 3,
+        "importCount": 5,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
@@ -51825,6 +52526,18 @@
             "context": "component"
           },
           {
+            "path": "nextjs-app/shared/components/ExpandableSection/ExpandableSection.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Select",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Select",
+            "context": "story"
+          },
+          {
             "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Select",
@@ -51834,27 +52547,47 @@
       },
       "agent": {
         "preferredImport": "@dt/Select",
-        "intent": "Provide a labelled, validated, native `<select>` so consumers don't hand-author the label / id / `aria-invalid` / helper-text wiring every time. The native control is chosen on purpose — accessibility and mobile UX exce…",
+        "intent": "A labelled single-choice field that opens the DS option list, so every dropdown on the site looks and behaves the same. Select is a thin wrapper over Combobox (a WAI-ARIA select-only combobox): it keeps the `options` / …",
         "props": {
           "label": {
             "optional": false,
             "type": "string",
-            "description": "Label text displayed above the select dropdown"
+            "description": "Label text displayed above the field"
           },
           "options": {
             "optional": true,
             "type": "SelectOptionItem[]",
             "description": "Option objects with value, label, and optional disabled; children override this"
           },
+          "children": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "`<option>` or `SelectOption` children; an option with value \"\" becomes the placeholder"
+          },
           "helperText": {
             "optional": true,
             "type": "string",
-            "description": "Supporting text under the control; always rendered, below `error` when both are set."
+            "description": "Supporting text under the control, below the status message."
           },
           "error": {
             "optional": true,
             "type": "string",
-            "description": "Error message under the control; sets aria-invalid and aria-describedby."
+            "description": "Error message under the control; shorthand for status=\"error\" with this message. Sets aria-invalid."
+          },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the control for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
           },
           "size": {
             "optional": true,
@@ -51869,6 +52602,16 @@
             ],
             "description": "Size variant for select"
           },
+          "value": {
+            "optional": true,
+            "type": "string",
+            "description": "Selected value (controlled); \"\" shows the placeholder"
+          },
+          "defaultValue": {
+            "optional": true,
+            "type": "string",
+            "description": "Initial value when uncontrolled"
+          },
           "onValueChange": {
             "optional": true,
             "type": "(value: string) => void",
@@ -51877,7 +52620,27 @@
           "disabled": {
             "optional": true,
             "type": "boolean",
-            "description": "Disables the select. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it."
+            "description": "Disables the select."
+          },
+          "required": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Marks the field required."
+          },
+          "id": {
+            "optional": true,
+            "type": "string",
+            "description": "Explicit control id (wires the label); auto-generated when omitted"
+          },
+          "name": {
+            "optional": true,
+            "type": "string",
+            "description": "Submits the value with a surrounding form, through a hidden input"
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Classes on the field wrapper"
           },
           "onChange": {
             "optional": true,
@@ -51886,7 +52649,16 @@
             "deprecation": "Use onValueChange instead. Will be removed in v2.0.0"
           }
         },
-        "propRelationships": [],
+        "propRelationships": [
+          {
+            "kind": "mutuallyExclusive",
+            "props": [
+              "value",
+              "defaultValue"
+            ],
+            "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+          }
+        ],
         "forbiddenCombos": [],
         "variants": {
           "size": {
@@ -51905,22 +52677,27 @@
         "variantsFnName": null,
         "useWhen": [
           "use `onValueChange` (the new contract). The legacy `onChange` still works but emits a deprecation warning in development.",
-          "label every Select. Visually-hidden labels are fine — use the `<Label>` primitive with `visuallyHidden` if the design has no visible label."
+          "pass `name` when the field submits with a native form; a hidden input carries the value."
         ],
         "avoidWhen": [
           "ship a Select with `value` and `defaultValue` both set — `value` wins and a dev-mode warning fires.",
-          "use Select for a freeform value with suggestions. Use an Input plus a custom autosuggest pattern.",
-          "wrap the native chevron with a button overlay. The native click target is the entire control already; an overlay breaks forced-colors and mobile sheets."
+          "use Select for a freeform value with suggestions, or for several values; use TextInput, or MultiCombobox for several."
         ],
         "requiredA11y": [
-          "associated label",
-          "error announced via HelperText"
+          "combobox named by the associated label",
+          "listbox with aria-selected and aria-activedescendant",
+          "status message and helper linked with aria-describedby; error announced as an alert"
         ],
         "keyboard": [
-          "Arrow keys",
+          "Tab",
+          "ArrowDown",
+          "ArrowUp",
+          "Home",
+          "End",
           "Enter",
           "Space",
-          "Tab"
+          "Escape",
+          "Type-ahead"
         ],
         "compositionRules": [],
         "canonicalExamples": [
@@ -51931,19 +52708,18 @@
         "replacementFor": [],
         "forbiddenUse": [
           "ship a Select with `value` and `defaultValue` both set — `value` wins and a dev-mode warning fires.",
-          "use Select for a freeform value with suggestions. Use an Input plus a custom autosuggest pattern.",
-          "wrap the native chevron with a button overlay. The native click target is the entire control already; an overlay breaks forced-colors and mobile sheets."
+          "use Select for a freeform value with suggestions, or for several values; use TextInput, or MultiCombobox for several."
         ],
         "composesWith": [
           "TextInput",
+          "TextArea",
           "Text",
+          "PhoneInput",
           "Button",
-          "CheckboxGroup",
-          "Modal",
-          "Toast"
+          "CheckboxGroup"
         ],
         "prefersOver": [],
-        "declaredPropCount": 8,
+        "declaredPropCount": 18,
         "guidelines": [
           {
             "level": "should",
@@ -51954,9 +52730,9 @@
           },
           {
             "level": "should",
-            "guidance": "label every Select",
-            "rationale": "Visually-hidden labels are fine — use the `<Label>` primitive with `visuallyHidden` if the design has no visible label.",
-            "rationaleSource": "inferred",
+            "guidance": "pass `name` when the field submits with a native form; a hidden input carries the value.",
+            "rationale": null,
+            "rationaleSource": null,
             "source": "spec.md#do-dont"
           },
           {
@@ -51968,16 +52744,9 @@
           },
           {
             "level": "should-not",
-            "guidance": "use Select for a freeform value with suggestions",
-            "rationale": "Use an Input plus a custom autosuggest pattern.",
-            "rationaleSource": "inferred",
-            "source": "spec.md#do-dont"
-          },
-          {
-            "level": "should-not",
-            "guidance": "wrap the native chevron with a button overlay",
-            "rationale": "The native click target is the entire control already; an overlay breaks forced-colors and mobile sheets.",
-            "rationaleSource": "inferred",
+            "guidance": "use Select for a freeform value with suggestions, or for several values; use TextInput, or MultiCombobox for several.",
+            "rationale": null,
+            "rationaleSource": null,
             "source": "spec.md#do-dont"
           }
         ],
@@ -52066,7 +52835,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed."
+            "note": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed. 2026-10-30: engine changed from the native <select> to the Combobox select-only combobox (owner decision: DS list, never the OS popup); keyboard contract re-verified in unit tests (open, pick, Escape, type-ahead via Combobox). AT and forced-colors evidence must be recaptured before this ships."
           }
         ],
         "docOrigin": {
@@ -66451,7 +67220,7 @@
           "Title",
           "Icon",
           "CheckboxGroup",
-          "Toast"
+          "Link"
         ],
         "prefersOver": [
           "raw paragraph elements"
@@ -66759,6 +67528,21 @@
             "type": "string",
             "description": "Validation error message; renders above the helper line"
           },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+          },
           "helperText": {
             "optional": true,
             "type": "string",
@@ -66845,7 +67629,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TextArea",
-        "importCount": 3,
+        "importCount": 5,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 3,
@@ -66867,6 +67651,18 @@
             "importKind": "relative",
             "importPath": "./TextArea",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ExpandableSection/ExpandableSection.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TextArea",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TextArea",
+            "context": "story"
           }
         ]
       },
@@ -66887,7 +67683,22 @@
           "error": {
             "optional": true,
             "type": "string",
-            "description": "Validation error message; renders above the helper line"
+            "description": "Validation error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+          },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
           },
           "helperText": {
             "optional": true,
@@ -66951,14 +67762,14 @@
         ],
         "composesWith": [
           "TextInput",
+          "Select",
+          "PhoneInput",
           "Button",
           "Text",
-          "CheckboxGroup",
-          "Badge",
-          "Modal"
+          "CheckboxGroup"
         ],
         "prefersOver": [],
-        "declaredPropCount": 8,
+        "declaredPropCount": 11,
         "guidelines": [
           {
             "level": "should",
@@ -67366,6 +68177,21 @@
             "type": "string",
             "description": "Validation error message; renders above the helper line and sets aria-invalid"
           },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+          },
           "helperText": {
             "optional": true,
             "type": "string",
@@ -67483,7 +68309,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TextInput",
-        "importCount": 12,
+        "importCount": 13,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 6,
@@ -67525,6 +68351,12 @@
             "context": "component"
           },
           {
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TextInput",
+            "context": "story"
+          },
+          {
             "path": "nextjs-app/shared/components/FormField/FormField.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/TextInput",
@@ -67552,12 +68384,6 @@
             "path": "nextjs-app/shared/stories/KitchenSink.stories.tsx",
             "importKind": "relative",
             "importPath": "../components/TextInput/TextInput.stories",
-            "context": "story"
-          },
-          {
-            "path": "nextjs-app/shared/stories/MigrationDecisionBoard/FormPrimitivesComparison.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/TextInput",
             "context": "story"
           }
         ]
@@ -67620,7 +68446,22 @@
           "error": {
             "optional": true,
             "type": "string",
-            "description": "Validation error message; renders above the helper line and sets aria-invalid"
+            "description": "Validation error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+          },
+          "status": {
+            "optional": true,
+            "type": "FieldStatus",
+            "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+          },
+          "statusMessage": {
+            "optional": true,
+            "type": "string",
+            "description": "Message under the field for `status`, above the helper line"
+          },
+          "actions": {
+            "optional": true,
+            "type": "FieldAction[]",
+            "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
           },
           "helperText": {
             "optional": true,
@@ -67754,13 +68595,13 @@
         "composesWith": [
           "Text",
           "Button",
-          "CheckboxGroup",
           "TextArea",
-          "Badge",
-          "Toast"
+          "Select",
+          "CheckboxGroup",
+          "Badge"
         ],
         "prefersOver": [],
-        "declaredPropCount": 14,
+        "declaredPropCount": 17,
         "guidelines": [
           {
             "level": "should",
@@ -71046,11 +71887,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Tooltip",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 1,
+        "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Tooltip",
+            "context": "component"
+          },
           {
             "path": "nextjs-app/shared/components/interactive/index.ts",
             "importKind": "alias",
@@ -71135,7 +71982,12 @@
           "attach tooltips to non-focusable elements; hover-only hints exclude keyboard and touch users.",
           "promote to stable without production consumer evidence."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Label",
+          "HelperText",
+          "Icon",
+          "Menu"
+        ],
         "prefersOver": [],
         "declaredPropCount": 5,
         "guidelines": [

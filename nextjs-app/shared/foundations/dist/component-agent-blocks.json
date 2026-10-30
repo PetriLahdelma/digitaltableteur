@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T15:34:40.428Z",
+  "generatedAt": "2026-10-30T18:03:09.218Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -7063,10 +7063,10 @@
       ],
       "composesWith": [
         "TextInput",
-        "Label",
-        "Text",
         "Title",
+        "Label",
         "Button",
+        "Text",
         "Grid"
       ],
       "prefersOver": [],
@@ -9323,7 +9323,22 @@
         "error": {
           "optional": true,
           "type": "string",
-          "description": "Error message; renders above the helper line and sets aria-invalid"
+          "description": "Error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+        },
+        "status": {
+          "optional": true,
+          "type": "FieldStatus",
+          "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string",
+          "description": "Message under the field for `status`, above the helper line"
+        },
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]",
+          "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
         },
         "required": {
           "optional": true,
@@ -9334,6 +9349,16 @@
           "optional": true,
           "type": "boolean",
           "description": "Disables the control."
+        },
+        "size": {
+          "optional": true,
+          "type": "FieldSize",
+          "description": "Field size shared by every DS field: 40, 48 or 56px tall."
+        },
+        "name": {
+          "optional": true,
+          "type": "string",
+          "description": "Submits the value with a surrounding form, through a hidden input"
         },
         "className": {
           "optional": true,
@@ -9383,14 +9408,15 @@
         "nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`)."
       ],
       "composesWith": [
+        "MultiCombobox",
+        "PhoneInput",
         "Button",
         "FileUpload",
-        "MultiCombobox",
         "CheckboxGroup",
-        "PhoneInput"
+        "TextInput"
       ],
       "prefersOver": [],
-      "declaredPropCount": 11,
+      "declaredPropCount": 16,
       "guidelines": [
         {
           "level": "should",
@@ -14288,6 +14314,343 @@
       "temporal": null,
       "consequence": null
     },
+    "FieldShell": {
+      "preferredImport": "@dt/FieldShell",
+      "intent": "One frame for every DS text and choice field, so TextInput, TextArea, Select, Combobox, MultiCombobox and PhoneInput share the same label row, status colours, message lines and spacing instead of each rolling its own.",
+      "props": {
+        "controlId": {
+          "optional": false,
+          "type": "string",
+          "description": "id of the control inside; the label, status and helper ids derive from it."
+        },
+        "label": {
+          "optional": false,
+          "type": "string",
+          "description": "Visible field label."
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode",
+          "description": "The control: an input, textarea, select or composite control."
+        },
+        "status": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "success",
+            "warning",
+            "error"
+          ],
+          "description": "Semantic state; pairs with `statusMessage`."
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string",
+          "description": "Message under the control, styled and announced for `status`."
+        },
+        "helperText": {
+          "optional": true,
+          "type": "string",
+          "description": "Supporting copy under the control, after the status message."
+        },
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]",
+          "description": "Icon buttons at the end of the label row, level with the label."
+        },
+        "required": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Shows the required marker on the label."
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Dims the label and disables every action."
+        },
+        "hideLabel": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Visually hides the label; it stays the control's accessible name."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Merged onto the field wrapper."
+        }
+      },
+      "propRelationships": [],
+      "forbiddenCombos": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "use the fields' `status`, `statusMessage` and `actions` props; reach for FieldShell directly only for a new kind of control.",
+        "name each action with a verb (\"Paste\", \"Generate password\").",
+        "keep `error` for validation; it is shorthand for status error."
+      ],
+      "avoidWhen": [
+        "nest a DS field inside another FieldShell.",
+        "put text buttons or links in the label row.",
+        "use it to group controls; that is FormField."
+      ],
+      "requiredA11y": [
+        "The label is a <label for> the control and carries the id `${controlId}-label` for controls named with aria-labelledby.",
+        "The control's aria-describedby lists the status message and then the helper line (fieldDescribedBy builds it).",
+        "An error message is announced as an alert; aria-invalid is set by the control only for status error.",
+        "Each action is an icon button named by its label, which is also its tooltip."
+      ],
+      "keyboard": [
+        "Label-row actions come before the control in Tab order, as they sit above it.",
+        "An action with items opens a menu on Enter, Space or ArrowDown; arrow keys move through the items and Escape closes it."
+      ],
+      "compositionRules": [
+        "nest a DS field inside another FieldShell."
+      ],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "nest a DS field inside another FieldShell.",
+        "put text buttons or links in the label row.",
+        "use it to group controls; that is FormField."
+      ],
+      "composesWith": [
+        "Icon",
+        "Combobox"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 11,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "use the fields' `status`, `statusMessage` and `actions` props; reach for FieldShell directly only for a new kind of control.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "name each action with a verb (\"Paste\", \"Generate password\").",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "keep `error` for validation; it is shorthand for status error.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "nest a DS field inside another FieldShell.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "put text buttons or links in the label row.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it to group controls; that is FormField.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "2.5.8",
+              "name": "Target Size (Minimum)",
+              "level": "AA",
+              "en301549": "9.2.5.8",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "1.3.1",
+              "name": "Info and Relationships",
+              "level": "A",
+              "en301549": "9.1.3.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual",
+          "wcag": [
+            {
+              "sc": "2.1.1",
+              "name": "Keyboard",
+              "level": "A",
+              "en301549": "9.2.1.1",
+              "coverage": "partial"
+            },
+            {
+              "sc": "2.1.2",
+              "name": "No Keyboard Trap",
+              "level": "A",
+              "en301549": "9.2.1.2",
+              "coverage": "partial"
+            }
+          ]
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+          "wcag": [
+            {
+              "sc": "4.1.2",
+              "name": "Name, Role, Value",
+              "level": "A",
+              "en301549": "9.4.1.2",
+              "coverage": "partial"
+            }
+          ]
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST + controlled/uncontrolled pairs"
+        },
+        "forbiddenCombos": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "FieldShell.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "FieldShell.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "FieldShell.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "FieldShell.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        },
+        "temporal": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "consequence": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        }
+      },
+      "governance": null,
+      "content": null,
+      "temporal": null,
+      "consequence": null
+    },
     "FileUpload": {
       "preferredImport": "@dt/FileUpload",
       "intent": "Wrap the native file input in a labelled, validated, AT-friendly form control so consumers don't fight the native styling vs. accessibility trade-off. The native input is kept hidden but functional; the visible control …",
@@ -15617,12 +15980,27 @@
         "label": {
           "optional": false,
           "type": "string",
-          "description": "Field label (displayed as uppercase)"
+          "description": "Field label"
         },
         "error": {
           "optional": true,
           "type": "string",
-          "description": "Error message"
+          "description": "Error message; shorthand for status=\"error\" with this message"
+        },
+        "status": {
+          "optional": true,
+          "type": "FieldStatus",
+          "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string",
+          "description": "Message under the field for `status`, above the helper line"
+        },
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]",
+          "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
         },
         "required": {
           "optional": true,
@@ -15642,7 +16020,7 @@
         "helperText": {
           "optional": true,
           "type": "string",
-          "description": "Supporting text under the field, linked with aria-describedby. Text and\ntextarea fields only; use it to say why a read-only value is fixed."
+          "description": "Supporting text under the field, linked with aria-describedby. Use it,\nfor example, to say why a read-only value is fixed."
         }
       },
       "propRelationships": [
@@ -15691,7 +16069,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 8,
+      "declaredPropCount": 11,
       "guidelines": [
         {
           "level": "should",
@@ -16872,11 +17250,11 @@
       ],
       "composesWith": [
         "Label",
-        "Icon",
         "GroupLabel",
         "Radio",
         "Text",
-        "VisuallyHidden"
+        "VisuallyHidden",
+        "Icon"
       ],
       "prefersOver": [
         "AlertBanner for field-level hints"
@@ -17237,12 +17615,12 @@
         "import a Phosphor component directly from `@phosphor-icons/react` to get the same shape — you lose the alias map, the SR semantics, and the size ladder. Use Icon."
       ],
       "composesWith": [
-        "Button",
         "Text",
+        "Button",
         "ComplianceCard",
         "Badge",
         "Title",
-        "Label"
+        "Menu"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,
@@ -18373,10 +18751,10 @@
       "composesWith": [
         "Text",
         "Button",
-        "Icon",
-        "HelperText",
         "Checkbox",
-        "TextInput"
+        "TextInput",
+        "Icon",
+        "Grid"
       ],
       "prefersOver": [],
       "declaredPropCount": 5,
@@ -22251,8 +22629,8 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "2.5.8",
@@ -22266,8 +22644,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "1.3.1",
@@ -22288,8 +22666,7 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "unverified"
         },
         {
           "id": "keyboard-contract",
@@ -22315,8 +22692,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
           "wcag": [
             {
               "sc": "4.1.2",
@@ -22926,7 +23303,22 @@
         "error": {
           "optional": true,
           "type": "string",
-          "description": "Error message; renders above the helper line and sets aria-invalid"
+          "description": "Error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+        },
+        "status": {
+          "optional": true,
+          "type": "FieldStatus",
+          "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string",
+          "description": "Message under the field for `status`, above the helper line"
+        },
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]",
+          "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
         },
         "required": {
           "optional": true,
@@ -22984,14 +23376,15 @@
         "use for single-select — use `Combobox` instead."
       ],
       "composesWith": [
+        "Combobox",
+        "PhoneInput",
         "Button",
         "FileUpload",
-        "Combobox",
         "CheckboxGroup",
-        "PhoneInput"
+        "TextInput"
       ],
       "prefersOver": [],
-      "declaredPropCount": 11,
+      "declaredPropCount": 14,
       "guidelines": [
         {
           "level": "should",
@@ -24791,7 +25184,22 @@
         "error": {
           "optional": true,
           "type": "string",
-          "description": "Error message; renders above the helper line"
+          "description": "Error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+        },
+        "status": {
+          "optional": true,
+          "type": "FieldStatus",
+          "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string",
+          "description": "Message under the field for `status`, above the helper line"
+        },
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]",
+          "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
         },
         "helperText": {
           "optional": true,
@@ -25133,11 +25541,11 @@
         "CheckboxGroup",
         "FileUpload",
         "TextInput",
-        "Modal",
-        "Toast"
+        "TextArea",
+        "Select"
       ],
       "prefersOver": [],
-      "declaredPropCount": 11,
+      "declaredPropCount": 14,
       "guidelines": [
         {
           "level": "should",
@@ -29868,27 +30276,47 @@
     },
     "Select": {
       "preferredImport": "@dt/Select",
-      "intent": "Provide a labelled, validated, native `<select>` so consumers don't hand-author the label / id / `aria-invalid` / helper-text wiring every time. The native control is chosen on purpose — accessibility and mobile UX exce…",
+      "intent": "A labelled single-choice field that opens the DS option list, so every dropdown on the site looks and behaves the same. Select is a thin wrapper over Combobox (a WAI-ARIA select-only combobox): it keeps the `options` / …",
       "props": {
         "label": {
           "optional": false,
           "type": "string",
-          "description": "Label text displayed above the select dropdown"
+          "description": "Label text displayed above the field"
         },
         "options": {
           "optional": true,
           "type": "SelectOptionItem[]",
           "description": "Option objects with value, label, and optional disabled; children override this"
         },
+        "children": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "`<option>` or `SelectOption` children; an option with value \"\" becomes the placeholder"
+        },
         "helperText": {
           "optional": true,
           "type": "string",
-          "description": "Supporting text under the control; always rendered, below `error` when both are set."
+          "description": "Supporting text under the control, below the status message."
         },
         "error": {
           "optional": true,
           "type": "string",
-          "description": "Error message under the control; sets aria-invalid and aria-describedby."
+          "description": "Error message under the control; shorthand for status=\"error\" with this message. Sets aria-invalid."
+        },
+        "status": {
+          "optional": true,
+          "type": "FieldStatus",
+          "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string",
+          "description": "Message under the control for `status`, above the helper line"
+        },
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]",
+          "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
         },
         "size": {
           "optional": true,
@@ -29903,6 +30331,16 @@
           ],
           "description": "Size variant for select"
         },
+        "value": {
+          "optional": true,
+          "type": "string",
+          "description": "Selected value (controlled); \"\" shows the placeholder"
+        },
+        "defaultValue": {
+          "optional": true,
+          "type": "string",
+          "description": "Initial value when uncontrolled"
+        },
         "onValueChange": {
           "optional": true,
           "type": "(value: string) => void",
@@ -29911,7 +30349,27 @@
         "disabled": {
           "optional": true,
           "type": "boolean",
-          "description": "Disables the select. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it."
+          "description": "Disables the select."
+        },
+        "required": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Marks the field required."
+        },
+        "id": {
+          "optional": true,
+          "type": "string",
+          "description": "Explicit control id (wires the label); auto-generated when omitted"
+        },
+        "name": {
+          "optional": true,
+          "type": "string",
+          "description": "Submits the value with a surrounding form, through a hidden input"
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Classes on the field wrapper"
         },
         "onChange": {
           "optional": true,
@@ -29920,7 +30378,16 @@
           "deprecation": "Use onValueChange instead. Will be removed in v2.0.0"
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ],
       "forbiddenCombos": [],
       "variants": {
         "size": {
@@ -29939,22 +30406,27 @@
       "variantsFnName": null,
       "useWhen": [
         "use `onValueChange` (the new contract). The legacy `onChange` still works but emits a deprecation warning in development.",
-        "label every Select. Visually-hidden labels are fine — use the `<Label>` primitive with `visuallyHidden` if the design has no visible label."
+        "pass `name` when the field submits with a native form; a hidden input carries the value."
       ],
       "avoidWhen": [
         "ship a Select with `value` and `defaultValue` both set — `value` wins and a dev-mode warning fires.",
-        "use Select for a freeform value with suggestions. Use an Input plus a custom autosuggest pattern.",
-        "wrap the native chevron with a button overlay. The native click target is the entire control already; an overlay breaks forced-colors and mobile sheets."
+        "use Select for a freeform value with suggestions, or for several values; use TextInput, or MultiCombobox for several."
       ],
       "requiredA11y": [
-        "associated label",
-        "error announced via HelperText"
+        "combobox named by the associated label",
+        "listbox with aria-selected and aria-activedescendant",
+        "status message and helper linked with aria-describedby; error announced as an alert"
       ],
       "keyboard": [
-        "Arrow keys",
+        "Tab",
+        "ArrowDown",
+        "ArrowUp",
+        "Home",
+        "End",
         "Enter",
         "Space",
-        "Tab"
+        "Escape",
+        "Type-ahead"
       ],
       "compositionRules": [],
       "canonicalExamples": [
@@ -29965,19 +30437,18 @@
       "replacementFor": [],
       "forbiddenUse": [
         "ship a Select with `value` and `defaultValue` both set — `value` wins and a dev-mode warning fires.",
-        "use Select for a freeform value with suggestions. Use an Input plus a custom autosuggest pattern.",
-        "wrap the native chevron with a button overlay. The native click target is the entire control already; an overlay breaks forced-colors and mobile sheets."
+        "use Select for a freeform value with suggestions, or for several values; use TextInput, or MultiCombobox for several."
       ],
       "composesWith": [
         "TextInput",
+        "TextArea",
         "Text",
+        "PhoneInput",
         "Button",
-        "CheckboxGroup",
-        "Modal",
-        "Toast"
+        "CheckboxGroup"
       ],
       "prefersOver": [],
-      "declaredPropCount": 8,
+      "declaredPropCount": 18,
       "guidelines": [
         {
           "level": "should",
@@ -29988,9 +30459,9 @@
         },
         {
           "level": "should",
-          "guidance": "label every Select",
-          "rationale": "Visually-hidden labels are fine — use the `<Label>` primitive with `visuallyHidden` if the design has no visible label.",
-          "rationaleSource": "inferred",
+          "guidance": "pass `name` when the field submits with a native form; a hidden input carries the value.",
+          "rationale": null,
+          "rationaleSource": null,
           "source": "spec.md#do-dont"
         },
         {
@@ -30002,16 +30473,9 @@
         },
         {
           "level": "should-not",
-          "guidance": "use Select for a freeform value with suggestions",
-          "rationale": "Use an Input plus a custom autosuggest pattern.",
-          "rationaleSource": "inferred",
-          "source": "spec.md#do-dont"
-        },
-        {
-          "level": "should-not",
-          "guidance": "wrap the native chevron with a button overlay",
-          "rationale": "The native click target is the entire control already; an overlay breaks forced-colors and mobile sheets.",
-          "rationaleSource": "inferred",
+          "guidance": "use Select for a freeform value with suggestions, or for several values; use TextInput, or MultiCombobox for several.",
+          "rationale": null,
+          "rationaleSource": null,
           "source": "spec.md#do-dont"
         }
       ],
@@ -30100,7 +30564,7 @@
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed."
+          "note": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed. 2026-10-30: engine changed from the native <select> to the Combobox select-only combobox (owner decision: DS list, never the OS popup); keyboard contract re-verified in unit tests (open, pick, Escape, type-ahead via Combobox). AT and forced-colors evidence must be recaptured before this ships."
         }
       ],
       "docOrigin": {
@@ -39179,7 +39643,7 @@
         "Title",
         "Icon",
         "CheckboxGroup",
-        "Toast"
+        "Link"
       ],
       "prefersOver": [
         "raw paragraph elements"
@@ -39385,7 +39849,22 @@
         "error": {
           "optional": true,
           "type": "string",
-          "description": "Validation error message; renders above the helper line"
+          "description": "Validation error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+        },
+        "status": {
+          "optional": true,
+          "type": "FieldStatus",
+          "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string",
+          "description": "Message under the field for `status`, above the helper line"
+        },
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]",
+          "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
         },
         "helperText": {
           "optional": true,
@@ -39449,14 +39928,14 @@
       ],
       "composesWith": [
         "TextInput",
+        "Select",
+        "PhoneInput",
         "Button",
         "Text",
-        "CheckboxGroup",
-        "Badge",
-        "Modal"
+        "CheckboxGroup"
       ],
       "prefersOver": [],
-      "declaredPropCount": 8,
+      "declaredPropCount": 11,
       "guidelines": [
         {
           "level": "should",
@@ -39735,7 +40214,22 @@
         "error": {
           "optional": true,
           "type": "string",
-          "description": "Validation error message; renders above the helper line and sets aria-invalid"
+          "description": "Validation error message; shorthand for status=\"error\" with this message. Sets aria-invalid"
+        },
+        "status": {
+          "optional": true,
+          "type": "FieldStatus",
+          "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string",
+          "description": "Message under the field for `status`, above the helper line"
+        },
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]",
+          "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
         },
         "helperText": {
           "optional": true,
@@ -39869,13 +40363,13 @@
       "composesWith": [
         "Text",
         "Button",
-        "CheckboxGroup",
         "TextArea",
-        "Badge",
-        "Toast"
+        "Select",
+        "CheckboxGroup",
+        "Badge"
       ],
       "prefersOver": [],
-      "declaredPropCount": 14,
+      "declaredPropCount": 17,
       "guidelines": [
         {
           "level": "should",
@@ -41722,7 +42216,12 @@
         "attach tooltips to non-focusable elements; hover-only hints exclude keyboard and touch users.",
         "promote to stable without production consumer evidence."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Label",
+        "HelperText",
+        "Icon",
+        "Menu"
+      ],
       "prefersOver": [],
       "declaredPropCount": 5,
       "guidelines": [
