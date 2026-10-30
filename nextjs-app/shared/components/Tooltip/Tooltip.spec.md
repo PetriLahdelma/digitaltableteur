@@ -26,6 +26,8 @@ around the real control + portaled `TooltipContent`.
   carries them, so as text they fall back to a system font at the wrong
   size. Each icon key keeps its translated name (`tooltip.keys.*`, EN/FI/SV)
   in the DOM for screen readers. Other entries render as uppercase text.
+- The keycap row is the shared `Kbd/KbdShortcut`, also used by
+  ConfirmPopover's `shortcut`.
 - Keycaps take the bubble's own ink (`currentcolor` tints), so they adapt to
   light, dark and forced colours without per-theme rules.
 

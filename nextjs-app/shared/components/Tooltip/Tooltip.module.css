@@ -12,9 +12,8 @@
   transform-origin: var(--radix-tooltip-content-transform-origin);
 }
 
-/* Shortcut: label, then the keys. The keycaps take the tooltip's own ink
-   (currentColor) instead of the page's light keycap, so they sit on the dark
-   bubble in every theme without a per-theme override. */
+/* Shortcut: label, then the keys (KbdShortcut tints them with the bubble's
+   own ink). */
 
 .withShortcut {
   display: inline-flex;
@@ -22,52 +21,6 @@
   align-items: center;
   gap: var(--space-internal-12);
   white-space: nowrap;
-}
-
-.shortcut {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-internal-4);
-}
-
-/* The plus says "together": the keys are held at once, not pressed in turn. */
-
-.plus {
-  opacity: 0.72;
-}
-
-/* Keycaps sized to the label: a 1.5em cap with the key at the label's own
-   size, so the shortcut reads at the same weight as the words beside it. */
-
-.content .key {
-  padding-inline: var(--space-internal-4);
-  block-size: 1.5em;
-  min-inline-size: 1.5em;
-  border-color: color-mix(in srgb, currentcolor 32%, transparent);
-  background-color: color-mix(in srgb, currentcolor 12%, transparent);
-  font-size: 1em;
-  color: inherit;
-}
-
-.content .keyIcon {
-  block-size: 1rem;
-  inline-size: 1rem;
-}
-
-/* Word keys (Ctrl, Shift) are uppercase mono: at the label size they shout,
-   so they drop to the cap height of the icon keys. */
-
-.keyWord {
-  font-size: var(--font-size-text-xxs);
-}
-
-.keyName {
-  position: absolute;
-  block-size: 1px;
-  inline-size: 1px;
-  white-space: nowrap;
-  clip-path: inset(50%);
-  overflow: hidden;
 }
 
 /* Enter / exit motion driven by Radix data-state */
@@ -117,11 +70,6 @@
 
   .arrow {
     fill: Canvas;
-  }
-
-  .content .key {
-    border-color: CanvasText;
-    background-color: Canvas;
   }
 }
 

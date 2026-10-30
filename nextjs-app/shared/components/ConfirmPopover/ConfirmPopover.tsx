@@ -4,6 +4,7 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
 
 import Button from "../Button/Button";
+import { KbdShortcut } from "../Kbd/KbdShortcut";
 import { useTranslate } from "../../lib/translation";
 import styles from "./ConfirmPopover.module.css";
 
@@ -44,6 +45,10 @@ export interface ConfirmPopoverProps {
   side?: "top" | "right" | "bottom" | "left";
   /** Alignment along that side. @default "start" */
   align?: "start" | "center" | "end";
+  /** Draws a pointer from the popover's edge to the trigger, like a speech bubble. @default false */
+  arrow?: boolean;
+  /** Keys that run the action without the popover, one entry per key; shown under the description so the next time can skip the question. */
+  shortcut?: string[];
   /** Extra class on the popover surface. */
   className?: string;
 }
@@ -68,6 +73,8 @@ export function ConfirmPopover({
   onOpenChange,
   side = "top",
   align = "start",
+  arrow = false,
+  shortcut,
   className,
 }: ConfirmPopoverProps) {
   const t = useTranslate();
@@ -135,6 +142,11 @@ export function ConfirmPopover({
               {shownDescription}
             </p>
           ) : null}
+          {shortcut?.length ? (
+            <p className={styles.shortcut}>
+              <KbdShortcut keys={shortcut} />
+            </p>
+          ) : null}
           {choosing ? (
             <div className={styles.choices}>
               {choices?.map((choice, index) => (
@@ -172,6 +184,16 @@ export function ConfirmPopover({
               </Button>
             )}
           </div>
+          {arrow ? (
+            <PopoverPrimitive.Arrow asChild width={16} height={8}>
+              {/* The fill covers the surface's border where the pointer joins
+                  it; the stroke carries the border round the point. */}
+              <svg className={styles.arrow} viewBox="0 0 16 8" aria-hidden="true">
+                <path className={styles.arrowFill} d="M0 0 L8 8 L16 0 Z" />
+                <path className={styles.arrowStroke} d="M0 0 L8 8 L16 0" />
+              </svg>
+            </PopoverPrimitive.Arrow>
+          ) : null}
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Portal>
     </PopoverPrimitive.Root>

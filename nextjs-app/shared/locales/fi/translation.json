@@ -52,6 +52,8 @@
   "chatAboutAiLink": "Tietoa tekoälystä",
   "chatReportLink": "Ilmoita ongelmasta",
   "chatNewChat": "Uusi keskustelu",
+  "chatNewChatConfirmTitle": "Aloitetaanko uusi keskustelu?",
+  "chatNewChatConfirmDescription": "Nykyinen keskustelu tyhjennetään.",
   "chatSlowResponse": "Työ on yhä käynnissä. Tämä kestää tavallista kauemmin; voit pysäyttää ja yrittää uudelleen.",
   "chatCleared": "Keskustelu tyhjennetty.",
   "chatUndoClear": "Kumoa",

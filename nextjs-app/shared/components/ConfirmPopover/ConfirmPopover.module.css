@@ -61,6 +61,36 @@
   color: var(--color-muted);
 }
 
+/* Speech-bubble pointer. Radix rotates it to the trigger's side; pulling it
+   1px toward the surface lets the fill cover the border where they join. */
+
+.arrow {
+  display: block;
+  overflow: visible;
+  translate: 0 -1px;
+}
+
+.arrowFill {
+  fill: var(--color-white);
+}
+
+.arrowStroke {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+/* The shortcut row sits under the consequence, in its muted ink. */
+
+.shortcut {
+  margin: 0;
+  margin-block-start: var(--space-internal-12);
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-xs);
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
 /* Choices stack full width, one action per line, above Cancel. */
 
 .choices {
@@ -96,8 +126,17 @@
   }
 
   .title,
-  .description {
+  .description,
+  .shortcut {
     color: CanvasText;
+  }
+
+  .arrowFill {
+    fill: Canvas;
+  }
+
+  .arrowStroke {
+    stroke: CanvasText;
   }
 }
 

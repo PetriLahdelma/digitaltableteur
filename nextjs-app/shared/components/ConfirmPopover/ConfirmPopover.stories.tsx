@@ -21,6 +21,8 @@ const meta = {
     description: "Everything you entered on this screen is removed. This cannot be undone.",
     confirmLabel: "Clear answers",
     tone: "error",
+    arrow: false,
+    shortcut: [],
     onConfirm: () => {},
     children: <Button variant="tertiary">Clear answers</Button>,
   },
@@ -29,6 +31,17 @@ const meta = {
     onConfirm: { table: { disable: true } },
     onOpenChange: { table: { disable: true } },
     choices: { table: { disable: true } },
+    arrow: {
+      control: "boolean",
+      description: "Pointer from the popover's edge to the trigger, like a speech bubble",
+      table: { category: "Appearance", defaultValue: { summary: "false" } },
+    },
+    shortcut: {
+      control: { type: "inline-check" },
+      options: ["⌘", "⇧", "⌥", "⌃", "⌫", "↵", "K"],
+      description: "Keys that run the action without the popover, shown under the description",
+      table: { category: "Content", defaultValue: { summary: "none" } },
+    },
   },
 } satisfies Meta<typeof ConfirmPopover>;
 
@@ -103,6 +116,36 @@ export const WithChoices: Story = {
       name: "Clear every answer in the form?",
     });
     await expect(within(dialog).getByRole("button", { name: "Cancel" })).toHaveFocus();
+  },
+};
+
+/* The chat's New chat button: opens to the left with a pointer and names the
+   shortcut that skips the question next time. */
+export const WithArrowAndShortcut: Story = {
+  args: {
+    title: "Start a new chat?",
+    description: "This conversation will be cleared.",
+    confirmLabel: "New chat",
+    tone: "neutral",
+    side: "left",
+    arrow: true,
+    shortcut: ["⌘", "⇧", "⌫"],
+    children: <Button variant="tertiary">New chat</Button>,
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "arrow draws a pointer to the trigger; shortcut shows the keys that run the action without asking.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button", { name: "New chat" }));
+    const dialog = await screen.findByRole("alertdialog", { name: "Start a new chat?" });
+    await expect(dialog.querySelectorAll("kbd")).toHaveLength(3);
   },
 };
 

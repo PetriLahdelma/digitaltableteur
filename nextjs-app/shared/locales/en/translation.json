@@ -52,6 +52,8 @@
   "chatAboutAiLink": "About this AI",
   "chatReportLink": "Report a problem",
   "chatNewChat": "New chat",
+  "chatNewChatConfirmTitle": "Start a new chat?",
+  "chatNewChatConfirmDescription": "This conversation will be cleared.",
   "chatSlowResponse": "Still working on it. This is taking longer than usual; you can stop and try again.",
   "chatCleared": "Conversation cleared.",
   "chatUndoClear": "Undo",

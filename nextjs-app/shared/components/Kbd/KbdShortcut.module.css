@@ -1,0 +1,57 @@
+/* A chord row. The keycaps take the surrounding ink (currentColor) instead of
+   the page's light keycap, so they sit on a dark tooltip and a white popover
+   without a per-surface override. */
+
+.shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-4);
+  white-space: nowrap;
+}
+
+/* The plus says "together": the keys are held at once, not pressed in turn. */
+
+.plus {
+  opacity: 0.72;
+}
+
+/* Keycaps sized to the text: a 1.5em cap with the key at the text's own
+   size, so the shortcut reads at the same weight as the words beside it. */
+
+.shortcut .key {
+  padding-inline: var(--space-internal-4);
+  block-size: 1.5em;
+  min-inline-size: 1.5em;
+  border-color: color-mix(in srgb, currentcolor 32%, transparent);
+  background-color: color-mix(in srgb, currentcolor 12%, transparent);
+  font-size: 1em;
+  color: inherit;
+}
+
+.keyIcon {
+  block-size: 1rem;
+  inline-size: 1rem;
+}
+
+/* Word keys (Ctrl, Shift) are uppercase mono: at the text size they shout,
+   so they drop to the cap height of the icon keys. */
+
+.keyWord {
+  font-size: var(--font-size-text-xxs);
+}
+
+.keyName {
+  position: absolute;
+  block-size: 1px;
+  inline-size: 1px;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+@media (forced-colors: active) {
+  .shortcut .key {
+    border-color: CanvasText;
+    background-color: Canvas;
+  }
+}

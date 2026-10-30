@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T06:59:25.702Z",
+  "generatedAt": "2026-10-30T07:46:05.308Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -10185,6 +10185,16 @@
           ],
           "description": "Alignment along that side."
         },
+        "arrow": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Draws a pointer from the popover's edge to the trigger, like a speech bubble."
+        },
+        "shortcut": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Keys that run the action without the popover, one entry per key; shown under the description so the next time can skip the question."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -10245,9 +10255,15 @@
         "use it when the action can be undone; offer Undo instead.",
         "put forms or long explanations inside; use Modal."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Button",
+        "Title",
+        "Text",
+        "DonnyAvatar",
+        "Icon"
+      ],
       "prefersOver": [],
-      "declaredPropCount": 12,
+      "declaredPropCount": 14,
       "guidelines": [
         {
           "level": "should",
@@ -12868,7 +12884,7 @@
         "Icon",
         "Title",
         "Text",
-        "Tooltip"
+        "ConfirmPopover"
       ],
       "prefersOver": [],
       "declaredPropCount": 16,
@@ -41311,13 +41327,7 @@
         "attach tooltips to non-focusable elements; hover-only hints exclude keyboard and touch users.",
         "promote to stable without production consumer evidence."
       ],
-      "composesWith": [
-        "Button",
-        "Title",
-        "Text",
-        "DonnyAvatar",
-        "Icon"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 5,
       "guidelines": [

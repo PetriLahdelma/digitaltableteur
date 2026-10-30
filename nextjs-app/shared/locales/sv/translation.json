@@ -52,6 +52,8 @@
   "chatAboutAiLink": "Om AI-assistenten",
   "chatReportLink": "Rapportera ett problem",
   "chatNewChat": "Ny chatt",
+  "chatNewChatConfirmTitle": "Starta en ny chatt?",
+  "chatNewChatConfirmDescription": "Den här konversationen kommer att rensas.",
   "chatSlowResponse": "Arbetar fortfarande. Det tar längre tid än vanligt; du kan stoppa och försöka igen.",
   "chatCleared": "Konversationen har rensats.",
   "chatUndoClear": "Ångra",

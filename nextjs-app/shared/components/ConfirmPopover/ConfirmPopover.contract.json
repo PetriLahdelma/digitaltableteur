@@ -132,6 +132,16 @@
             ],
             "description": "Alignment along that side."
         },
+        "arrow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Draws a pointer from the popover's edge to the trigger, like a speech bubble. Off by default."
+        },
+        "shortcut": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Keys that run the action without the popover, one entry per key; shown under the description as keycaps joined by plus signs."
+        },
         "className": {
             "optional": true,
             "type": "string",

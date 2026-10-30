@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
@@ -131,20 +131,34 @@ describe("ChatHeader button interactions", () => {
     expect(screen.queryByRole("button", { name: /new chat|clear|reset/i })).toBeNull();
   });
 
-  it("starts a new chat from the header button", async () => {
+  it("asks before starting a new chat, then starts it", async () => {
     const onNewChat = vi.fn();
     render(withI18n(<ChatHeader {...baseProps} onNewChat={onNewChat} />));
 
     await userEvent.click(screen.getByRole("button", { name: "New chat" }));
+    const dialog = await screen.findByRole("alertdialog", { name: "Start a new chat?" });
+    expect(dialog).toHaveTextContent("This conversation will be cleared.");
+    expect(onNewChat).not.toHaveBeenCalled();
+
+    await userEvent.click(within(dialog).getByRole("button", { name: "New chat" }));
     expect(onNewChat).toHaveBeenCalledTimes(1);
   });
 
-  it("shows the clear shortcut as keys in the New chat tooltip", async () => {
+  it("cancels the new chat without clearing", async () => {
+    const onNewChat = vi.fn();
+    render(withI18n(<ChatHeader {...baseProps} onNewChat={onNewChat} />));
+
+    await userEvent.click(screen.getByRole("button", { name: "New chat" }));
+    await userEvent.click(await screen.findByRole("button", { name: "Cancel" }));
+    expect(screen.queryByRole("alertdialog")).toBeNull();
+    expect(onNewChat).not.toHaveBeenCalled();
+  });
+
+  it("shows the clear shortcut as keys in the New chat popover", async () => {
     render(withI18n(<ChatHeader {...baseProps} onNewChat={vi.fn()} />));
 
-    await userEvent.hover(screen.getByRole("button", { name: "New chat" }));
-    const tooltip = await screen.findByRole("tooltip");
-    expect(tooltip).toHaveTextContent(/New chat/);
-    expect(document.querySelectorAll("kbd").length).toBeGreaterThanOrEqual(3);
+    await userEvent.click(screen.getByRole("button", { name: "New chat" }));
+    const dialog = await screen.findByRole("alertdialog");
+    expect(dialog.querySelectorAll("kbd").length).toBe(3);
   });
 });

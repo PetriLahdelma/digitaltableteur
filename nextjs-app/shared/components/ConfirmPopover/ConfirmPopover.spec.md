@@ -19,4 +19,13 @@ Asks for confirmation right where the person acted, for one costly action ("Clea
 ## Design notes
 - Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.
 - Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.
+- `arrow` (off by default) draws a 16x8 pointer to the trigger: the fill
+  covers the surface border where they join and the stroke carries the border
+  round the point, so it reads as one speech bubble. Forced colours use
+  Canvas and CanvasText.
+- `shortcut` shows the keys that run the action without asking, under the
+  description, through the shared keycap row (`Kbd/KbdShortcut`, also used by
+  Tooltip): modifier symbols as icons with translated names, joined by plus
+  signs, tinted with the muted ink.
+- Production use with both: the chat's New chat button (`side="left"`).
 - Figma: not yet drawn.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T06:59:26.035Z",
+  "generatedAt": "2026-10-30T07:54:49.929Z",
   "summary": {
     "componentCount": 191,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 181,
     "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 926,
+    "totalEvidenceRows": 925,
     "aliasImportFiles": 474,
-    "relativeImportFiles": 492,
+    "relativeImportFiles": 491,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -17780,6 +17780,16 @@
             ],
             "description": "Alignment along that side."
           },
+          "arrow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Draws a pointer from the popover's edge to the trigger, like a speech bubble. Off by default."
+          },
+          "shortcut": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Keys that run the action without the popover, one entry per key; shown under the description as keycaps joined by plus signs."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -17787,14 +17797,14 @@
           }
         }
       },
-      "spec": "# ConfirmPopover\n\n## Intent\nAsks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.\n\n## Interaction contract\n- Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.\n- Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.\n- Screen readers: `role=\"alertdialog\"`, named by `title`, described by `description`.\n- With `choices`: the first step asks which action (`title`) and lists one button per choice; focus starts on the first choice (a confirmation always follows). Picking one mounts a new alertdialog with that choice's question, description and confirm label, so screen readers announce it, and focus starts on Cancel. `onConfirm` receives the choice's `id`.\n\n## Do / don't\n- Do: repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.\n- Do: use `tone=\"error\"` for actions that remove something.\n- Don't: use it when the action can be undone; offer Undo instead.\n- Do: keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\".\n- Don't: put forms or long explanations inside; use Modal.\n\n## Design notes\n- Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.\n- Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.\n- Figma: not yet drawn.\n",
+      "spec": "# ConfirmPopover\n\n## Intent\nAsks for confirmation right where the person acted, for one costly action (\"Clear the answers in this section?\"). After Ant Design's Popconfirm: smaller and closer than a modal, so the person keeps their place.\n\n## Interaction contract\n- Keyboard: the trigger opens it; focus starts on Cancel; Tab moves to the confirm button; Escape cancels and returns focus to the trigger.\n- Pointer: a click outside cancels; the confirm button runs `onConfirm` and closes.\n- Screen readers: `role=\"alertdialog\"`, named by `title`, described by `description`.\n- With `choices`: the first step asks which action (`title`) and lists one button per choice; focus starts on the first choice (a confirmation always follows). Picking one mounts a new alertdialog with that choice's question, description and confirm label, so screen readers announce it, and focus starts on Cancel. `onConfirm` receives the choice's `id`.\n\n## Do / don't\n- Do: repeat the action in `confirmLabel` (\"Clear answers\", not \"Yes\"); say what happens in `description`.\n- Do: use `tone=\"error\"` for actions that remove something.\n- Don't: use it when the action can be undone; offer Undo instead.\n- Do: keep `choices` to two or three related actions, for example \"Clear this section\" and \"Clear all\".\n- Don't: put forms or long explanations inside; use Modal.\n\n## Design notes\n- Tokens: `--color-white` surface, `--color-border` edge, `--shadow-lg`; 24px padding, 32px between the text and the buttons.\n- Buttons are default size (md), Cancel secondary, confirm primary in the chosen tone.\n- `arrow` (off by default) draws a 16x8 pointer to the trigger: the fill\n  covers the surface border where they join and the stroke carries the border\n  round the point, so it reads as one speech bubble. Forced colours use\n  Canvas and CanvasText.\n- `shortcut` shows the keys that run the action without asking, under the\n  description, through the shared keycap row (`Kbd/KbdShortcut`, also used by\n  Tooltip): modifier symbols as icons with translated names, joined by plus\n  signs, tinted with the muted ink.\n- Production use with both: the chat's New chat button (`side=\"left\"`).\n- Figma: not yet drawn.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ConfirmPopover",
-        "importCount": 3,
+        "importCount": 4,
         "productionImportCount": 3,
         "patternImportCount": 0,
-        "componentImportCount": 0,
+        "componentImportCount": 1,
         "evidence": [
           {
             "path": "app/intake/_components/IntakeForm.tsx",
@@ -17813,6 +17823,12 @@
             "importKind": "alias",
             "importPath": "@dt/ConfirmPopover",
             "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/ConfirmPopover",
+            "context": "component"
           }
         ]
       },
@@ -17890,6 +17906,16 @@
             ],
             "description": "Alignment along that side."
           },
+          "arrow": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Draws a pointer from the popover's edge to the trigger, like a speech bubble."
+          },
+          "shortcut": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Keys that run the action without the popover, one entry per key; shown under the description so the next time can skip the question."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -17950,9 +17976,15 @@
           "use it when the action can be undone; offer Undo instead.",
           "put forms or long explanations inside; use Modal."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Button",
+          "Title",
+          "Text",
+          "DonnyAvatar",
+          "Icon"
+        ],
         "prefersOver": [],
-        "declaredPropCount": 12,
+        "declaredPropCount": 14,
         "guidelines": [
           {
             "level": "should",
@@ -22415,7 +22447,7 @@
           "Icon",
           "Title",
           "Text",
-          "Tooltip"
+          "ConfirmPopover"
         ],
         "prefersOver": [],
         "declaredPropCount": 16,
@@ -31491,6 +31523,36 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/IntakeActions.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/passkeys/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/forms/[inviteId]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/layout.tsx",
             "since": "2026-06-04"
           },
@@ -31510,21 +31572,15 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Kbd",
-        "importCount": 3,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 2,
+        "componentImportCount": 1,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./Kbd/Kbd",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/Tooltip/Tooltip.tsx",
-            "importKind": "relative",
-            "importPath": "../Kbd",
             "context": "component"
           },
           {
@@ -70313,21 +70369,15 @@
           "Kbd"
         ]
       },
-      "spec": "# Tooltip\n\n## Intent\nSupplementary hints for focusable controls — most often icon-only\nbuttons that keep their own accessible name while the tooltip carries\nthe visible phrase. Composed Radix primitive set: `TooltipProvider`\n(shared open delay) > `Tooltip` (open state) > `TooltipTrigger asChild`\naround the real control + portaled `TooltipContent`.\n\n## Interaction contract\n- Keyboard: opens on focus of the trigger (no pointer needed); `Escape`\n  dismisses without moving focus. The trigger stays in the normal tab\n  sequence; the content is never focusable.\n- Pointer: opens on hover after the provider's `delayDuration`\n  (default 200ms); closes on leave.\n- Screen readers: Radix links the content to the trigger via\n  `aria-describedby` — the tooltip describes, it never names. The\n  trigger must carry its own accessible name (e.g. IconButton `label`).\n\n## Keyboard shortcuts\n- `shortcut` lists the keys held together for the trigger's action, one\n  entry per key: `[\"⌘\", \"⇧\", \"⌫\"]` on Mac, `[\"Ctrl\", \"Shift\", \"Backspace\"]`\n  elsewhere. The bubble renders them after the label as keycaps joined by\n  plus signs, so they read as one chord, not a sequence.\n- Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as Phosphor icons: no text face\n  carries them, so as text they fall back to a system font at the wrong\n  size. Each icon key keeps its translated name (`tooltip.keys.*`, EN/FI/SV)\n  in the DOM for screen readers. Other entries render as uppercase text.\n- Keycaps take the bubble's own ink (`currentcolor` tints), so they adapt to\n  light, dark and forced colours without per-theme rules.\n\n## Do / don't\n- Do: wrap the real Button/IconButton with `asChild` so it receives the\n  tooltip wiring directly.\n- Do: use `shortcut` for key hints instead of hand-built `Kbd` children.\n- Do: share one `TooltipProvider` per surface so adjacent hints open\n  instantly once one is shown.\n- Don't: put links, buttons, or any interactive content inside the\n  bubble — unreachable by keyboard and touch.\n- Don't: attach tooltips to non-focusable elements; hover-only hints\n  exclude keyboard and touch users.\n- Don't: promote to stable without production consumer evidence.\n\n## Design notes\n- Tokens: bubble surface/text and radius come from `variables.css` via\n  Tooltip.module.css; fade/scale enter animation drops under\n  `prefers-reduced-motion`.\n- `side` sets preferred placement (top default); Radix flips it when\n  out of room. `sideOffset` tunes the gap (4px default).\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-tooltip\n",
+      "spec": "# Tooltip\n\n## Intent\nSupplementary hints for focusable controls — most often icon-only\nbuttons that keep their own accessible name while the tooltip carries\nthe visible phrase. Composed Radix primitive set: `TooltipProvider`\n(shared open delay) > `Tooltip` (open state) > `TooltipTrigger asChild`\naround the real control + portaled `TooltipContent`.\n\n## Interaction contract\n- Keyboard: opens on focus of the trigger (no pointer needed); `Escape`\n  dismisses without moving focus. The trigger stays in the normal tab\n  sequence; the content is never focusable.\n- Pointer: opens on hover after the provider's `delayDuration`\n  (default 200ms); closes on leave.\n- Screen readers: Radix links the content to the trigger via\n  `aria-describedby` — the tooltip describes, it never names. The\n  trigger must carry its own accessible name (e.g. IconButton `label`).\n\n## Keyboard shortcuts\n- `shortcut` lists the keys held together for the trigger's action, one\n  entry per key: `[\"⌘\", \"⇧\", \"⌫\"]` on Mac, `[\"Ctrl\", \"Shift\", \"Backspace\"]`\n  elsewhere. The bubble renders them after the label as keycaps joined by\n  plus signs, so they read as one chord, not a sequence.\n- Modifier symbols (⌘ ⇧ ⌥ ⌃ ⌫ ↵) render as Phosphor icons: no text face\n  carries them, so as text they fall back to a system font at the wrong\n  size. Each icon key keeps its translated name (`tooltip.keys.*`, EN/FI/SV)\n  in the DOM for screen readers. Other entries render as uppercase text.\n- The keycap row is the shared `Kbd/KbdShortcut`, also used by\n  ConfirmPopover's `shortcut`.\n- Keycaps take the bubble's own ink (`currentcolor` tints), so they adapt to\n  light, dark and forced colours without per-theme rules.\n\n## Do / don't\n- Do: wrap the real Button/IconButton with `asChild` so it receives the\n  tooltip wiring directly.\n- Do: use `shortcut` for key hints instead of hand-built `Kbd` children.\n- Do: share one `TooltipProvider` per surface so adjacent hints open\n  instantly once one is shown.\n- Don't: put links, buttons, or any interactive content inside the\n  bubble — unreachable by keyboard and touch.\n- Don't: attach tooltips to non-focusable elements; hover-only hints\n  exclude keyboard and touch users.\n- Don't: promote to stable without production consumer evidence.\n\n## Design notes\n- Tokens: bubble surface/text and radius come from `variables.css` via\n  Tooltip.module.css; fade/scale enter animation drops under\n  `prefers-reduced-motion`.\n- `side` sets preferred placement (top default); Radix flips it when\n  out of room. `sideOffset` tunes the gap (4px default).\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-tooltip\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Tooltip",
-        "importCount": 2,
+        "importCount": 1,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 2,
+        "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Tooltip",
-            "context": "component"
-          },
           {
             "path": "nextjs-app/shared/components/interactive/index.ts",
             "importKind": "alias",
@@ -70412,13 +70462,7 @@
           "attach tooltips to non-focusable elements; hover-only hints exclude keyboard and touch users.",
           "promote to stable without production consumer evidence."
         ],
-        "composesWith": [
-          "Button",
-          "Title",
-          "Text",
-          "DonnyAvatar",
-          "Icon"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 5,
         "guidelines": [

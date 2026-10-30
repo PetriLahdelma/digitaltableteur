@@ -4,7 +4,7 @@
  * appear in this file, so each `describe` is named after its claim id.
  */
 import React from "react";
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import ChatWidget from "@dt/ChatWidget";
@@ -73,6 +73,14 @@ const seedTranscript = () =>
 const clearButton = () =>
   document.querySelector<HTMLButtonElement>('[aria-label="New chat"]')!;
 
+// The header button asks first; confirming in its popover clears.
+const startNewChat = () => {
+  fireEvent.click(clearButton());
+  fireEvent.click(
+    within(screen.getByRole("alertdialog")).getByRole("button", { name: "New chat" }),
+  );
+};
+
 beforeEach(() => {
   sessionStorage.clear();
   localStorage.clear();
@@ -123,7 +131,7 @@ describe("clear-undo-window", () => {
     render(<ChatWidget />);
     expect(screen.getByText("Remember the fjord trip")).toBeInTheDocument();
 
-    fireEvent.click(clearButton());
+    startNewChat();
     expect(screen.queryByText("Remember the fjord trip")).toBeNull();
     expect(screen.getByText("Conversation cleared.")).toBeInTheDocument();
 
@@ -136,7 +144,7 @@ describe("clear-undo-window", () => {
     vi.useFakeTimers();
     seedTranscript();
     render(<ChatWidget />);
-    fireEvent.click(clearButton());
+    startNewChat();
     act(() => vi.advanceTimersByTime(TEMPORAL_THRESHOLDS.undoWindowMs));
     expect(screen.queryByText("Undo")).toBeNull();
     expect(screen.queryByText("Remember the fjord trip")).toBeNull();
@@ -145,7 +153,7 @@ describe("clear-undo-window", () => {
   it("finalizes the clear when a new message is sent", () => {
     seedTranscript();
     render(<ChatWidget />);
-    fireEvent.click(clearButton());
+    startNewChat();
     const textarea = document.getElementById("donny-input") as HTMLTextAreaElement;
     fireEvent.change(textarea, { target: { value: "A new question" } });
     fireEvent.submit(textarea.closest("form")!);
@@ -156,7 +164,7 @@ describe("clear-undo-window", () => {
   it("moves focus to the input after New chat removes its own button", () => {
     seedTranscript();
     render(<ChatWidget />);
-    fireEvent.click(clearButton());
+    startNewChat();
     expect(clearButton()).toBeNull();
     expect(document.getElementById("donny-input")).toHaveFocus();
   });

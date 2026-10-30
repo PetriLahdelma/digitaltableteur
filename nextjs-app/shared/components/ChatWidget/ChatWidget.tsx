@@ -432,6 +432,20 @@ const loadStoredMessages = (
   return null;
 };
 
+/**
+ * True when the target sits in a popover opened from inside the panel. Radix
+ * portals popover content to the body, outside the panel, so pointer and focus
+ * there would otherwise read as "outside" and close the chat; the trigger's
+ * aria-controls names the content it owns.
+ */
+function isInPanelLayer(panel: HTMLElement | null, target: EventTarget | null) {
+  if (!panel || !(target instanceof Element)) return false;
+  const layer = target.closest("[data-radix-popper-content-wrapper] > [id]");
+  return Boolean(
+    layer && panel.querySelector(`[aria-controls="${CSS.escape(layer.id)}"]`),
+  );
+}
+
 /** Collapsible AI chat widget anchored to the viewport. */
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   title,
@@ -857,9 +871,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeChat();
-      }
+      // A popover or menu that handled this Escape marks it defaultPrevented
+      // (Radix does); it closes that layer only, not the panel.
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      closeChat();
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
@@ -873,6 +888,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       const target = event.target as Node | null;
       if (target && panel.contains(target)) return;
       if (target && toggleButtonRef.current?.contains(target)) return;
+      if (isInPanelLayer(panel, target)) return;
       closeChat();
     };
     document.addEventListener("pointerdown", handlePointerDown);
@@ -884,6 +900,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     const handleFocusOutside = (event: FocusEvent) => {
       const target = event.target;
       if (!(target instanceof Node) || panelRef.current?.contains(target)) return;
+      if (isInPanelLayer(panelRef.current, target)) return;
       // This is a nonmodal panel. Keyboard users may leave it, but it must
       // not cover the next page control or steal focus back to the launcher.
       stop();

@@ -6,12 +6,7 @@ import { DonnyAvatar, type DonnyState } from "@dt/DonnyAvatar";
 import styles from "./ChatWidget.module.css";
 import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@dt/Tooltip";
+import { ConfirmPopover } from "@dt/ConfirmPopover";
 
 /**
  * Props for the ChatHeader component.
@@ -179,24 +174,28 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       </div>
       <div className={styles.headerActions}>
         {onNewChat ? (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  type="button"
-                  onClick={onNewChat}
-                  accessibleName={newChatLabel}
-                  variant="tertiary"
-                  size="md"
-                  icon={<Icon name="plus" />}
-                  className={styles.minimizeButton}
-                />
-              </TooltipTrigger>
-              <TooltipContent side="bottom" shortcut={newChatKeys}>
-                {newChatLabel}
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <ConfirmPopover
+            title={t("chatNewChatConfirmTitle", "Start a new chat?")}
+            description={t(
+              "chatNewChatConfirmDescription",
+              "This conversation will be cleared.",
+            )}
+            confirmLabel={newChatLabel}
+            onConfirm={onNewChat}
+            side="left"
+            align="start"
+            arrow
+            shortcut={newChatKeys}
+          >
+            <Button
+              type="button"
+              accessibleName={newChatLabel}
+              variant="tertiary"
+              size="md"
+              icon={<Icon name="plus" />}
+              className={styles.minimizeButton}
+            />
+          </ConfirmPopover>
         ) : null}
         <Button
           type="button"

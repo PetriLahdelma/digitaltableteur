@@ -122,4 +122,35 @@ describe("ConfirmPopover", () => {
     await userEvent.click(screen.getByRole("button", { name: "Clear all answers" }));
     expect(onConfirm).toHaveBeenCalledWith("all");
   });
+
+  it("draws a pointer and the shortcut keys when asked", async () => {
+    render(
+      <ConfirmPopover
+        title="Start a new chat?"
+        description="This conversation will be cleared."
+        confirmLabel="New chat"
+        side="left"
+        arrow
+        shortcut={["⌘", "⇧", "⌫"]}
+        onConfirm={vi.fn()}
+      >
+        <button type="button">New chat</button>
+      </ConfirmPopover>,
+    );
+    await userEvent.click(screen.getByRole("button", { name: "New chat" }));
+    const dialog = await screen.findByRole("alertdialog", { name: "Start a new chat?" });
+
+    expect(dialog.querySelectorAll("kbd")).toHaveLength(3);
+    expect(dialog).toHaveTextContent("Command+Shift+Backspace");
+    expect(dialog.querySelector('svg[viewBox="0 0 16 8"]')).not.toBeNull();
+    expect(await axe(document.body)).toHaveNoViolations();
+  });
+
+  it("draws neither by default", async () => {
+    renderPopover();
+    await userEvent.click(screen.getByRole("button", { name: "Clear answers" }));
+    const dialog = await screen.findByRole("alertdialog");
+    expect(dialog.querySelector("kbd")).toBeNull();
+    expect(dialog.querySelector('svg[viewBox="0 0 16 8"]')).toBeNull();
+  });
 });
