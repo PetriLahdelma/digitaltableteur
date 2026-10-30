@@ -1,20 +1,23 @@
 /* Ruled services ledger. Theme tokens only, so it follows all four themes. */
 
-/* The Human / Machine switch, at the end of the row, in the body face like
-   the site's buttons. The ledger's own top rule sits right under it, so the
-   bar draws no line of its own. */
+/* The Human / Machine view switch (SegmentedControl): centred on phones,
+   at the end of the row from tablet up. The ledger's own top rule sits right
+   under it, so the bar draws no line of its own. */
 
 .bar {
   display: flex;
   margin-block-end: var(--space-layout-24);
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
 
-.switch {
-  display: flex;
-  gap: var(--space-layout-4);
+@media (width >= 768px) {
+  .bar {
+    justify-content: flex-end;
+  }
 }
+
+/* Pill button (the machine view's copy control). */
 
 .pill {
   padding: var(--space-layout-6) var(--space-layout-16);
@@ -26,12 +29,6 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
   cursor: pointer;
-}
-
-.pill[aria-pressed="true"] {
-  border-color: var(--color-text);
-  background: var(--color-text);
-  color: var(--main-body-background-color);
 }
 
 .pill:focus-visible {
@@ -233,13 +230,3 @@
   gap: var(--space-layout-24);
   list-style: none;
 }
-
-/* stylelint-disable scale-unlimited/declaration-strict-value -- forced-colors system colours */
-@media (forced-colors: active) {
-  .pill[aria-pressed="true"] {
-    border-color: Highlight;
-    background: Highlight;
-    color: HighlightText;
-  }
-}
-/* stylelint-enable scale-unlimited/declaration-strict-value */

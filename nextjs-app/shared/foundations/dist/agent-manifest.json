@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T07:54:49.929Z",
+  "generatedAt": "2026-10-30T07:58:02.719Z",
   "summary": {
     "componentCount": 191,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 181,
     "withProductionUsage": 45,
     "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 925,
+    "totalEvidenceRows": 926,
     "aliasImportFiles": 474,
-    "relativeImportFiles": 491,
+    "relativeImportFiles": 492,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -11865,8 +11865,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -11880,8 +11880,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -11902,8 +11902,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -11930,8 +11930,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -31703,8 +31703,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -31718,8 +31718,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -31740,14 +31740,14 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -51117,11 +51117,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SegmentedControl",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
-        "patternImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/ServicesLedger/ServicesLedger.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/SegmentedControl",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -70513,8 +70519,8 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "2.5.8",
@@ -70528,8 +70534,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "1.3.1",
@@ -70550,8 +70556,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -70578,8 +70584,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
             "wcag": [
               {
                 "sc": "4.1.2",
@@ -89797,11 +89803,11 @@
         "element": "section",
         "a11y": {
           "keyboard": [
-            "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
+            "Tab reaches the Human / Machine view switch as one stop (arrow keys, Home and End change the view), then each row link."
           ],
           "ariaRequirements": [
             "The section is labelled by its heading.",
-            "The view buttons expose their state with aria-pressed and point at the panel with aria-controls.",
+            "The view switch is the SegmentedControl radiogroup, named by the view label; each option reports aria-checked.",
             "Row index numbers are decorative (aria-hidden)."
           ],
           "reducedMotion": true,
@@ -89866,7 +89872,8 @@
           "Section",
           "Container",
           "FadeIn",
-          "Link"
+          "Link",
+          "SegmentedControl"
         ],
         "forbiddenUse": [
           "Put portfolio images or case-study art in the ledger; the homepage work section shows the work.",
@@ -89884,7 +89891,7 @@
           "description": "Homepage services section since 2026-10-20 (replaces ServicesSection there). Labels and capability strings come from the page so all three locales apply."
         }
       },
-      "spec": "# ServicesLedger\n\n## Intent\nSay what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A Human / Machine switch re-renders the same offers as plain text with the site's machine endpoints, so the agent-ready positioning is shown rather than claimed.\n\n## Interaction contract\n- Keyboard: Tab reaches each row link, then the two view buttons; Enter or Space switches the view\n- Screen readers: section labelled by its heading; the view buttons report their state with aria-pressed and control the panel; index numbers are decorative\n\n## Do / don't\n- Do: keep capability labels short nouns; keep the machine view to the same facts as the human view\n- Don't: put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that\n\n## Design notes\n- Benchmarked against Koto, Evil Martians and basement.studio (HUMAN / MACHINE); chosen as option A on 2026-10-20\n- Replaces ServicesSection on the homepage; ServicesSection stays for other uses\n",
+      "spec": "# ServicesLedger\n\n## Intent\nSay what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A Human / Machine view switch (SegmentedControl, centred on phones) re-renders the same offers as plain text with the site's machine endpoints, so the agent-ready positioning is shown rather than claimed.\n\n## Interaction contract\n- Keyboard: Tab reaches the Human / Machine view switch as one stop (arrow keys, Home and End change the view), then each row link\n- Screen readers: section labelled by its heading; the view switch is a SegmentedControl radiogroup whose options report aria-checked; index numbers are decorative\n\n## Do / don't\n- Do: keep capability labels short nouns; keep the machine view to the same facts as the human view\n- Don't: put portfolio images or case-study art in the ledger (owner decision 2026-10-20); the homepage has a work section for that\n\n## Design notes\n- Benchmarked against Koto, Evil Martians and basement.studio (HUMAN / MACHINE); chosen as option A on 2026-10-20\n- Replaces ServicesSection on the homepage; ServicesSection stays for other uses\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ServicesLedger",
@@ -89909,7 +89916,7 @@
       },
       "agent": {
         "preferredImport": "@dt/ServicesLedger",
-        "intent": "Say what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A Human / Machine switch re-renders the same offer…",
+        "intent": "Say what the studio does as a ruled ledger: one row per offer with its index, title, description and capabilities, each linking to where the offer is shown in practice. A Human / Machine view switch (SegmentedControl, c…",
         "props": {
           "title": {
             "optional": true,
@@ -89959,11 +89966,11 @@
         ],
         "requiredA11y": [
           "The section is labelled by its heading.",
-          "The view buttons expose their state with aria-pressed and point at the panel with aria-controls.",
+          "The view switch is the SegmentedControl radiogroup, named by the view label; each option reports aria-checked.",
           "Row index numbers are decorative (aria-hidden)."
         ],
         "keyboard": [
-          "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
+          "Tab reaches the Human / Machine view switch as one stop (arrow keys, Home and End change the view), then each row link."
         ],
         "compositionRules": [],
         "canonicalExamples": [

@@ -19,11 +19,11 @@
     "element": "section",
     "a11y": {
         "keyboard": [
-            "Tab reaches each row link, then the Human and Machine buttons; Enter or Space switches the view."
+            "Tab reaches the Human / Machine view switch as one stop (arrow keys, Home and End change the view), then each row link."
         ],
         "ariaRequirements": [
             "The section is labelled by its heading.",
-            "The view buttons expose their state with aria-pressed and point at the panel with aria-controls.",
+            "The view switch is the SegmentedControl radiogroup, named by the view label; each option reports aria-checked.",
             "Row index numbers are decorative (aria-hidden)."
         ],
         "reducedMotion": true,
@@ -88,7 +88,8 @@
         "Section",
         "Container",
         "FadeIn",
-        "Link"
+        "Link",
+        "SegmentedControl"
     ],
     "forbiddenUse": [
         "Put portfolio images or case-study art in the ledger; the homepage work section shows the work.",

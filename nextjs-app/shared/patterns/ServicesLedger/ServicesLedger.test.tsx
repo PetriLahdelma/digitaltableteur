@@ -48,21 +48,22 @@ describe("ServicesLedger", () => {
 
   it("switches to the machine view and back", () => {
     render(<ServicesLedger {...props} />);
-    const machine = screen.getByRole("button", { name: "Machine" });
-    expect(machine).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByRole("radiogroup", { name: "View" })).toBeInTheDocument();
+    const machine = screen.getByRole("radio", { name: "Machine" });
+    expect(machine).toHaveAttribute("aria-checked", "false");
     fireEvent.click(machine);
-    expect(machine).toHaveAttribute("aria-pressed", "true");
+    expect(machine).toHaveAttribute("aria-checked", "true");
     expect(screen.getByText("* 01 BUILD_THE_SYSTEM")).toBeInTheDocument();
     expect(screen.getByText(/capabilities: tokens, machine-readable-contracts/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "/llms.txt" })).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Human" }));
+    fireEvent.click(screen.getByRole("radio", { name: "Human" }));
     expect(screen.getByRole("link", { name: /Build the system/ })).toBeInTheDocument();
   });
 
   it("has no axe violations in either view", async () => {
     const { container } = render(<ServicesLedger {...props} />);
     expect(await axe(container)).toHaveNoViolations();
-    fireEvent.click(screen.getByRole("button", { name: "Machine" }));
+    fireEvent.click(screen.getByRole("radio", { name: "Machine" }));
     expect(await axe(container)).toHaveNoViolations();
   });
 });

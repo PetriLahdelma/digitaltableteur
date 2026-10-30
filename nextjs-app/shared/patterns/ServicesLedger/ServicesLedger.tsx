@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
+import { SegmentedControl } from "../../components/SegmentedControl";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { Link } from "../../lib/linkComponent";
 import { cn } from "../../lib/cn";
@@ -181,20 +182,15 @@ export function ServicesLedger({
         )}
 
         <div className={styles.bar}>
-          <div className={styles.switch} role="group" aria-label={labels.view}>
-            {(["human", "machine"] as const).map((m) => (
-              <button
-                key={m}
-                type="button"
-                className={styles.pill}
-                aria-pressed={mode === m}
-                aria-controls={panelId}
-                onClick={() => setMode(m)}
-              >
-                {m === "human" ? labels.human : labels.machine}
-              </button>
-            ))}
-          </div>
+          <SegmentedControl
+            items={[
+              { value: "human", label: labels.human },
+              { value: "machine", label: labels.machine },
+            ]}
+            value={mode}
+            onValueChange={(next) => setMode(next as "human" | "machine")}
+            ariaLabel={labels.view}
+          />
         </div>
 
         <div id={panelId}>

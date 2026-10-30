@@ -24705,7 +24705,8 @@
         "Section",
         "Container",
         "FadeIn",
-        "Link"
+        "Link",
+        "SegmentedControl"
       ],
       "prefersOver": [],
       "forbiddenUse": [
