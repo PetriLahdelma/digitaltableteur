@@ -80,17 +80,20 @@ function LightboxHarness(args: React.ComponentProps<typeof Lightbox>) {
 }
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: { images: IMAGES, open: false },
   render: (args) => <LightboxHarness {...args} />,
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: { images: IMAGES, initialIndex: 0, open: false },
   render: (args) => <LightboxHarness {...args} />,
 };
 
 /** Opening from a specific thumbnail, which is the real gallery flow. */
 export const Example: Story = {
+  tags: ["beta-matrix"],
   args: { images: IMAGES },
   render: (args) => {
     function Gallery() {
@@ -145,6 +148,7 @@ export const Example: Story = {
  * fail here: the panel can lose its boundary once author colours are dropped.
  */
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   args: { images: IMAGES },
   parameters: {
     docs: {

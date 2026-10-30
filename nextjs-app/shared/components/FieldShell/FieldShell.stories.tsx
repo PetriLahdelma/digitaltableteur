@@ -82,6 +82,7 @@ export const Default: Story = {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 
@@ -187,6 +188,7 @@ function ExampleForm() {
 }
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: {
     controls: { disable: true },
     docs: {
@@ -222,6 +224,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   args: { status: "error", statusMessage: "Enter the company name" },
   globals: { forcedColors: "active" },
   parameters: {

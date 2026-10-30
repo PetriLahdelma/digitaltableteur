@@ -41,6 +41,7 @@ function InLanguage({
 }
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   parameters: {
     docs: {
       description: {
@@ -51,7 +52,7 @@ export const Default: Story = {
   },
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Languages: Story = {
   parameters: {
@@ -125,6 +126,7 @@ export const Unlinked: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: {
     controls: { disable: true },
     docs: {
@@ -162,6 +164,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   parameters: {
     controls: { disable: true },

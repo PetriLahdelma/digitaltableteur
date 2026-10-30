@@ -49,14 +49,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: {
     controls: { disable: true },
     docs: {
@@ -150,6 +153,7 @@ export const WithArrowAndShortcut: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   parameters: {
     docs: { description: { story: "Forced-colors verification story." } },

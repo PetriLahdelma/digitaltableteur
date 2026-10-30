@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Tag required lifecycle stories so test-runner can target them:
- * Default, Playground, Example, ForcedColors on beta/stable-tier components.
+ * Default, Playground, Example, ForcedColors on alpha, beta and stable components.
  *
  * Walks every component contract under shared/components and shared/patterns
  * (including nested folders like `components/animations/<Name>`). For each
@@ -18,7 +18,10 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const REQUIRED = ["Default", "Playground", "Example", "ForcedColors"];
-const ELIGIBLE_STATUS = new Set(["beta", "stable"]);
+// Alpha is included (2026-10-30): promotion to beta needs captured evidence for
+// these four stories, so an alpha must already run under the matrix or it can
+// never collect that evidence.
+const ELIGIBLE_STATUS = new Set(["alpha", "beta", "stable"]);
 const roots = [
   "nextjs-app/shared/components",
   "nextjs-app/shared/patterns",
