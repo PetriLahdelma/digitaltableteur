@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.51 - 2026-10-30
+
+- `TooltipContent`: new `shortcut` prop, one entry per key held together
+  (`["⌘", "⇧", "⌫"]`, or `["Ctrl", "Shift", "Backspace"]` off Mac). The keys
+  render after the label as keycaps sized to it and joined by plus signs.
+  Modifier symbols draw as icons, since no text face carries them, and keep
+  their translated name (EN/FI/SV) for screen readers. The keycaps take the
+  bubble's own ink, so they work in light, dark and forced colours.
+
 ## 0.1.50 - 2026-10-29
 
 - Size floor: text people read is at least 16px and only tracked labels,

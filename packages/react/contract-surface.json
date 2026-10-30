@@ -188,6 +188,12 @@
       "level": "additive",
       "detail": "prop `variant` added",
       "bump": "patch"
+    },
+    {
+      "component": "Tooltip",
+      "level": "additive",
+      "detail": "prop `shortcut` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -5395,6 +5401,10 @@
         "className": {
           "optional": true,
           "type": "string"
+        },
+        "shortcut": {
+          "optional": true,
+          "type": "string[]"
         },
         "side": {
           "optional": true,
