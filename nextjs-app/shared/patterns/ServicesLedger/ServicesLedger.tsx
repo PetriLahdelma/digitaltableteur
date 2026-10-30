@@ -163,8 +163,10 @@ export function ServicesLedger({
     >
       <Container size="lg">
         {(title || description) && (
-          // Same header as the other homepage sections (ServicesSection).
-          <FadeIn className="text-center mb-16 desktop:mb-20">
+          // Same header as the other homepage sections (ServicesSection), but
+          // the view switch belongs to it: it sits close under the heading,
+          // not at the section's heading-to-content distance.
+          <FadeIn className="text-center mb-6 desktop:mb-8">
             {title && (
               <h2
                 id={`${id}-title`}
