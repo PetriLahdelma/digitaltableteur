@@ -39,7 +39,7 @@ const styles = `
 
   .error {
     margin: 0;
-    color: var(--color-error, #b00020);
+    color: var(--color-error-contrast, #ce3139);
     font-size: var(--font-size-text-s, 0.875rem);
   }
 

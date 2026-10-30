@@ -24,7 +24,7 @@ const styles = `
   :host([hidden]) { display: none; }
   .field { display: flex; flex-direction: column; gap: var(--space-internal-8, 0.5rem); }
   .label { display: block; color: var(--color-text, CanvasText); font-size: 0.8125rem; font-weight: 600; }
-  .required { margin-inline-start: var(--space-internal-4, 0.25rem); color: var(--color-error, #b00020); }
+  .required { margin-inline-start: var(--space-internal-4, 0.25rem); color: var(--color-error-contrast, #ce3139); }
   .srOnly { position: absolute; inline-size: 1px; block-size: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
   .wrapper { position: relative; }
   .control {
@@ -42,7 +42,7 @@ const styles = `
   }
   .control[data-state="open"], .control:focus-within { border-color: var(--color-primary, CanvasText); }
   .control:focus-within { outline-color: var(--focus-ring-color, var(--color-primary, CanvasText)); }
-  .control.error { border-color: var(--color-error, #b00020); }
+  .control.error { border-color: var(--color-error-contrast, #ce3139); }
   .control.disabled { border-color: var(--color-primary-disabled, GrayText); background: var(--color-disabled-bg-light, #eee); color: var(--color-disabled-placeholder, GrayText); cursor: not-allowed; }
   .inner { display: flex; padding-block: var(--space-internal-8, 0.5rem); padding-inline: var(--space-internal-16, 1rem) 0; min-inline-size: 0; flex-wrap: wrap; align-items: center; gap: var(--space-internal-6, 0.375rem); }
   .chip { display: inline-flex; max-inline-size: 100%; align-items: center; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-md, 0.375rem); background: var(--color-neutral-bg, #eee); color: var(--color-text, CanvasText); overflow: hidden; }
@@ -64,7 +64,7 @@ const styles = `
   .check { font-weight: 700; }
   .empty { padding: var(--space-internal-12, 0.75rem) var(--space-internal-16, 1rem); color: var(--color-muted, GrayText); }
   .message { margin: 0; font-size: var(--font-size-text-s, 0.875rem); color: var(--color-text, CanvasText); }
-  .errorMessage { color: var(--color-error-text, var(--color-error, #b00020)); }
+  .errorMessage { color: var(--color-error-text, var(--color-error-contrast, #ce3139)); }
   @media (prefers-reduced-motion: reduce) { .chevron { transition: none; } }
   @media (forced-colors: active) {
     .control, .listbox, .chip { border-color: CanvasText; background: Canvas; color: CanvasText; }

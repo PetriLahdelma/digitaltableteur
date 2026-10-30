@@ -51,10 +51,10 @@ const styles = `
   :host([data-dt-group-position="middle"]) .control { border-radius: 0; }
   :host([data-dt-group-position="last"]) .control { border-start-start-radius: 0; border-end-start-radius: 0; }
   .control:active:not(:disabled, [aria-disabled="true"]) { transform: scale(0.97); }
-  .error { --btn-accent: var(--color-error); }
+  .error { --btn-accent: var(--color-error-contrast); }
   .warning { --btn-accent: var(--color-warning-contrast); }
-  .success { --btn-accent: var(--color-success); }
-  .info { --btn-accent: var(--color-info); }
+  .success { --btn-accent: var(--color-success-contrast); }
+  .info { --btn-accent: var(--color-info-contrast); }
   .primary { border: 0; background: var(--btn-accent); color: var(--btn-on-accent); }
   .secondary { border: 0.125rem solid var(--btn-accent); background: transparent; color: var(--btn-accent); }
   .tertiary { border: 0; background: transparent; color: var(--btn-accent); }

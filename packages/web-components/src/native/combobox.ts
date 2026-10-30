@@ -19,11 +19,11 @@ const styles = `
   .field { display: grid; gap: var(--space-internal-8, 0.5rem); }
   label { color: var(--color-primary, currentcolor); font: inherit; }
   label.disabled { color: var(--color-muted-light, GrayText); cursor: not-allowed; }
-  .required { color: var(--color-error, #b00020); }
+  .required { color: var(--color-error-contrast, #ce3139); }
   .control { position: relative; display: flex; align-items: center; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-lg, 0.5rem); background: var(--color-white, Canvas); }
   .control:focus-within { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: var(--focus-ring-offset, 2px); }
   .control.open { border-end-start-radius: 0; border-end-end-radius: 0; }
-  .control.error { border-color: var(--color-error, #b00020); background: var(--color-error-bg, Canvas); }
+  .control.error { border-color: var(--color-error-contrast, #ce3139); background: var(--color-error-bg, Canvas); }
   .control.disabled { border-color: var(--color-primary-disabled, GrayText); background: var(--color-disabled-bg-light, #eee); }
   input { box-sizing: border-box; inline-size: 100%; min-inline-size: 0; min-block-size: 2.75rem; border: 0; background: transparent; color: var(--primary-text-color, CanvasText); padding: 0.625rem 2.75rem 0.625rem 0.75rem; font: inherit; }
   input:focus-visible { outline: 0; }
@@ -40,7 +40,7 @@ const styles = `
   .option:disabled { color: var(--color-disabled-placeholder, GrayText); cursor: not-allowed; }
   .empty { padding: 0.75rem 0.625rem; color: var(--color-muted, #666); font-size: 0.875rem; }
   .message { margin: 0; font-size: 0.875rem; color: var(--color-primary, currentcolor); }
-  .errorMessage { color: var(--color-error-text, var(--color-error, #b00020)); }
+  .errorMessage { color: var(--color-error-text, var(--color-error-contrast, #ce3139)); }
   .source { display: none; }
   @media (forced-colors: active) { .control, .listbox { border-color: CanvasText; } .control.error { border-color: Mark; } .option.highlighted { outline: 1px solid Highlight; } }
   @media (prefers-reduced-motion: reduce) { .chevron { transition: none; } }

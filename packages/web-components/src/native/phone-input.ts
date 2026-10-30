@@ -26,11 +26,11 @@ const styles = `
   .field { display: grid; gap: var(--space-internal-8, 0.5rem); }
   label { color: var(--color-primary, currentcolor); font: inherit; }
   label.disabled { color: var(--color-muted-light, GrayText); cursor: not-allowed; }
-  .required { color: var(--color-error, #b00020); }
+  .required { color: var(--color-error-contrast, #ce3139); }
   .srOnly { position: absolute; inline-size: 1px; block-size: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
   .control { display: grid; grid-template-columns: minmax(5.75rem, auto) minmax(0, 1fr); overflow: hidden; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-lg, 0.5rem); background: var(--color-white, Canvas); }
   .control:focus-within { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: var(--focus-ring-offset, 2px); }
-  .control.error { border-color: var(--color-error, #b00020); background: var(--color-error-bg, Canvas); }
+  .control.error { border-color: var(--color-error-contrast, #ce3139); background: var(--color-error-bg, Canvas); }
   select, input { box-sizing: border-box; min-block-size: 2.75rem; border: 0; background: transparent; color: var(--primary-text-color, CanvasText); font: inherit; }
   select { inline-size: 100%; padding: 0.625rem 0.5rem; border-inline-end: 1px solid var(--color-border, #767676); }
   input { inline-size: 100%; min-inline-size: 0; padding: 0.625rem 0.75rem; }
@@ -38,7 +38,7 @@ const styles = `
   select:disabled, input:disabled { color: var(--color-disabled-placeholder, GrayText); cursor: not-allowed; }
   .control.disabled { border-color: var(--color-primary-disabled, GrayText); background: var(--color-disabled-bg-light, #eee); }
   .message { margin: 0; font-size: 0.875rem; color: var(--color-primary, currentcolor); }
-  .errorMessage { color: var(--color-error-text, var(--color-error, #b00020)); }
+  .errorMessage { color: var(--color-error-text, var(--color-error-contrast, #ce3139)); }
   @media (forced-colors: active) { .control { border-color: CanvasText; } .control.error { border-color: Mark; } select { border-inline-end-color: CanvasText; } }
 `;
 

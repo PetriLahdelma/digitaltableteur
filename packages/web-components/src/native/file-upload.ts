@@ -70,7 +70,7 @@ const styles = `
   }
 
   .required {
-    color: var(--color-error, #b00020);
+    color: var(--color-error-contrast, #ce3139);
   }
 
   .srOnly {
@@ -149,7 +149,7 @@ const styles = `
 
   .summaryField[aria-invalid="true"],
   .editorialTrigger[aria-invalid="true"] {
-    border-color: var(--color-error, #b00020);
+    border-color: var(--color-error-contrast, #ce3139);
   }
 
   .summaryField:disabled,
@@ -235,7 +235,7 @@ const styles = `
   }
 
   .errorMessage {
-    color: var(--color-error-text, var(--color-error, #b00020));
+    color: var(--color-error-text, var(--color-error-contrast, #ce3139));
   }
 
   @media (forced-colors: active) {

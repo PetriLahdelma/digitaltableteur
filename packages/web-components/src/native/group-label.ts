@@ -44,7 +44,7 @@ const styles = `
   }
 
   .required {
-    color: var(--color-error, #b00020);
+    color: var(--color-error-contrast, #ce3139);
   }
 
   .optional {

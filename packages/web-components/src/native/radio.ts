@@ -62,7 +62,7 @@ const styles = `
     font-size: 0.875rem;
   }
   .error {
-    color: var(--color-error-text, var(--color-error));
+    color: var(--color-error-text, var(--color-error-contrast));
   }
   @media (prefers-reduced-motion: reduce) {
     input {

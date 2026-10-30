@@ -26,7 +26,7 @@ const styles = `
   .vertical { flex-direction: column; }
   .horizontal { flex-flow: row wrap; }
   .message { margin: 0.5rem 0 0; font-size: 0.875rem; }
-  .error { color: var(--color-error, #b00020); }
+  .error { color: var(--color-error-contrast, #ce3139); }
 `;
 
 let radioGroupCounter = 0;

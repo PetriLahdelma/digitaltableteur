@@ -33,10 +33,10 @@ const styles = `
   .square { border-radius: 0; }
   .primary { background: var(--color-primary); color: var(--color-white); }
   .secondary { border-color: var(--color-primary); background: transparent; color: var(--color-primary); }
-  .success.primary { background: var(--color-success); } .success.secondary { border-color: var(--color-success); color: var(--color-success); }
-  .info.primary { background: var(--color-info); } .info.secondary { border-color: var(--color-info); color: var(--color-info); }
-  .error.primary { background: var(--color-error); } .error.secondary { border-color: var(--color-error); color: var(--color-error); }
-  .warning.primary { background: var(--color-warning-contrast); } .warning.secondary { border-color: var(--color-warning-contrast); color: var(--color-warning-contrast); }
+  .success.primary { background: var(--color-success); color: var(--color-on-status); } .success.secondary { border-color: var(--color-success-contrast); color: var(--color-success-contrast); }
+  .info.primary { background: var(--color-info); color: var(--color-on-status); } .info.secondary { border-color: var(--color-info-contrast); color: var(--color-info-contrast); }
+  .error.primary { background: var(--color-error); color: var(--color-on-status); } .error.secondary { border-color: var(--color-error-contrast); color: var(--color-error-contrast); }
+  .warning.primary { background: var(--color-warning); color: var(--color-on-status); } .warning.secondary { border-color: var(--color-warning-contrast); color: var(--color-warning-contrast); }
   .neutral.primary { background: var(--color-neutral-bg); color: var(--color-neutral-text); } .neutral.secondary { border-color: var(--color-neutral-text); color: var(--color-neutral-text); }
   .icon { display: inline-flex; flex: none; align-items: center; justify-content: center; line-height: 0; }
   .dot { inline-size: 0.5em; block-size: 0.5em; border-radius: 50%; background: currentcolor; }

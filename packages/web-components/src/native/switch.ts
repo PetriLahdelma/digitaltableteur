@@ -28,7 +28,7 @@ const styles = `
   button[aria-checked="true"] .handle { translate: calc(var(--switch-width) - var(--switch-height)) -50%; }
   .loading .handle::after { content: ""; position: absolute; inset: 20%; border: 1px solid currentcolor; border-inline-end-color: transparent; border-radius: 50%; animation: spin 700ms linear infinite; }
   .message { margin: var(--space-internal-8, 0.5rem) 0 0; font-size: 0.875rem; color: var(--color-primary); }
-  .error { color: var(--color-error-text, var(--color-error)); }
+  .error { color: var(--color-error-text, var(--color-error-contrast)); }
   @keyframes spin { to { rotate: 1turn; } }
   @media (prefers-reduced-motion: reduce) { button, .handle { transition: none; } .loading .handle::after { animation: none; } }
   @media (forced-colors: active) { button { forced-color-adjust: none; background: Canvas; outline: 1px solid CanvasText; } button[aria-checked="true"] { background: Highlight; } .handle { background: CanvasText; box-shadow: none; } }

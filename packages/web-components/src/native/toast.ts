@@ -67,13 +67,13 @@ const styles = `
       var(--space-internal-24, 1.5rem);
     font-size: var(--font-size-button-l, 1.125rem);
   }
-  .success { background: var(--color-success, #08783e); }
-  .error { background: var(--color-error, #b42318); }
+  .success { background: var(--color-success, #27ae60); color: var(--color-on-status, #041b23); }
+  .error { background: var(--color-error, #ff6161); color: var(--color-on-status, #041b23); }
   .warning {
-    background: var(--color-warning, #f4c430);
+    background: var(--color-warning, #e2b93b);
     color: var(--color-warning-text, #171717);
   }
-  .info { background: var(--color-info, #1267a5); }
+  .info { background: var(--color-info, #509cff); color: var(--color-on-status, #041b23); }
   .top-left {
     inset-block: var(--space-layout-24, 1.5rem) auto;
     inset-inline: var(--space-layout-24, 1.5rem) auto;

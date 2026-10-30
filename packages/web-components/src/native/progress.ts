@@ -39,10 +39,10 @@ const styles = `
     transform-origin: left center;
   }
 
-  .success { background: var(--color-success); }
-  .info { background: var(--color-info); }
-  .warning { background: var(--color-warning); }
-  .error { background: var(--color-error); }
+  .success { background: var(--color-success-contrast); }
+  .info { background: var(--color-info-contrast); }
+  .warning { background: var(--color-warning-contrast); }
+  .error { background: var(--color-error-contrast); }
 
   .indeterminate {
     inline-size: 40%;

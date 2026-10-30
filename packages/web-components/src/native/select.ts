@@ -25,7 +25,7 @@ const styles = `
   .container { display: flex; inline-size: 100%; flex-direction: column; gap: 0.5rem; }
   label { display: flex; align-items: center; gap: 0.25rem; color: var(--color-primary, currentcolor); font: inherit; }
   label.disabled { color: var(--color-muted-light, GrayText); cursor: not-allowed; }
-  .required { color: var(--color-error, #b00020); }
+  .required { color: var(--color-error-contrast, #ce3139); }
   .srOnly { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .wrapper { position: relative; display: flex; inline-size: 100%; align-items: center; }
   select { box-sizing: border-box; inline-size: 100%; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-lg, 0.5rem); background-color: var(--color-white, Canvas); color: var(--primary-text-color, CanvasText); appearance: none; font-family: inherit; transition: border-color 0.3s; }
@@ -33,13 +33,13 @@ const styles = `
   select.md { padding: 0.5rem 2.5rem 0.5rem 0.75rem; font-size: 1rem; line-height: 1.5; }
   select.lg { padding: 0.625rem 2.75rem 0.625rem 0.875rem; font-size: 1.125rem; line-height: 1.75; }
   select:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: var(--focus-ring-offset, 2px); }
-  select.error { border-color: var(--color-error, #b00020); }
-  select.error:focus-visible { outline-color: var(--color-error, #b00020); }
+  select.error { border-color: var(--color-error-contrast, #ce3139); }
+  select.error:focus-visible { outline-color: var(--color-error-contrast, #ce3139); }
   select:disabled { border-color: var(--color-primary-disabled, GrayText); background-color: var(--color-disabled-bg-light, #eee); color: var(--color-disabled-placeholder, GrayText); cursor: not-allowed; }
   .chevron { position: absolute; inset-inline-end: 1rem; inline-size: 1rem; block-size: 1rem; color: var(--color-primary, currentcolor); pointer-events: none; }
   .chevron::before { content: ""; display: block; inline-size: 0.55rem; block-size: 0.55rem; border-inline-end: 2px solid currentcolor; border-block-end: 2px solid currentcolor; rotate: 45deg; translate: 0 -20%; }
   .message { display: flex; margin: 0; align-items: center; gap: 0.375rem; background: transparent; font-size: 0.875rem; color: var(--color-primary, currentcolor); }
-  .errorMessage { color: var(--color-error, #b00020); }
+  .errorMessage { color: var(--color-error-contrast, #ce3139); }
   @media (forced-colors: active) { select { border-color: CanvasText; } select.error { border-color: Mark; } }
 `;
 

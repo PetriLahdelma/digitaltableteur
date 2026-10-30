@@ -100,7 +100,7 @@ const styles = `
   .destructive,
   .destructive .icon,
   .destructive .trailingIcon {
-    color: var(--color-error, #b3261e);
+    color: var(--color-error-contrast, #ce3139);
   }
   /* On the error-tinted hover/active/highlighted surface only the root's own
      color flips to --color-error-text (the label inherits it); .icon and
@@ -109,7 +109,7 @@ const styles = `
   .destructive:hover,
   .destructive:active,
   .destructive.highlighted {
-    background-color: color-mix(in srgb, var(--color-error, #b3261e) 10%, transparent);
+    background-color: color-mix(in srgb, var(--color-error, #ff6161) 10%, transparent);
     color: var(--color-error-text, #7a1f1f);
   }
   .disabled,

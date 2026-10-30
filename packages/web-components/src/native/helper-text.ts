@@ -31,10 +31,10 @@ const styles = `
     line-height: 1.45;
   }
 
-  .error { color: var(--color-error, #b00020); }
-  .warning { color: var(--color-warning-contrast, #b76f00); }
-  .success { color: var(--color-success, #007f3a); }
-  .info { color: var(--color-info, #0f62fe); }
+  .error { color: var(--color-error-contrast, #ce3139); }
+  .warning { color: var(--color-warning-contrast, #876b06); }
+  .success { color: var(--color-success-contrast, #017f40); }
+  .info { color: var(--color-info-contrast, #206ecd); }
 
   .icon {
     display: inline-flex;

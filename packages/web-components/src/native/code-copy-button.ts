@@ -46,7 +46,7 @@ export const codeCopyButtonStyles = `
     outline-offset: 0;
   }
   .copyButton[data-status="copied"] {
-    color: var(--color-success);
+    color: var(--color-success-contrast);
   }
   .copyButton:disabled {
     color: var(--color-disabled-text);

@@ -27,7 +27,7 @@ const styles = `
   input:disabled + label { color: var(--color-muted-light, #666); cursor: not-allowed; }
   .srOnly { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); }
   .message { margin: 0.375rem 0 0; font-size: 0.875rem; }
-  .error { color: var(--color-error-text, var(--color-error)); }
+  .error { color: var(--color-error-text, var(--color-error-contrast)); }
 `;
 
 export class DtCheckboxElement extends DigitaltableteurElement {

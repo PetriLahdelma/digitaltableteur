@@ -129,7 +129,7 @@ const groupStyles = `
   .vertical { flex-direction: column; }
   .horizontal { flex-flow: row wrap; }
   .message { margin-block-start: var(--space-internal-8); color: var(--secondary-text-color); }
-  .error { color: var(--color-error); }
+  .error { color: var(--color-error-contrast); }
 `;
 
 function parseValue(value: string | null): string | string[] {

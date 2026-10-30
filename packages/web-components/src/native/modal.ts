@@ -19,10 +19,10 @@ export type DtModalIconSize = (typeof ICON_SIZES)[number];
 export type DtModalAnimation = (typeof ANIMATIONS)[number];
 
 const severityIcon: Record<DtModalSeverity, { name: string; color: string }> = {
-  success: { name: "check-circle", color: "var(--color-success)" },
-  error: { name: "x-circle", color: "var(--color-error)" },
+  success: { name: "check-circle", color: "var(--color-success-contrast)" },
+  error: { name: "x-circle", color: "var(--color-error-contrast)" },
   warning: { name: "warning", color: "var(--color-warning-contrast)" },
-  info: { name: "info", color: "var(--color-info)" },
+  info: { name: "info", color: "var(--color-info-contrast)" },
 };
 
 const focusableSelector = [
@@ -72,19 +72,19 @@ const styles = `
     box-shadow: var(--modal-shadow, 0 4px 8px rgb(0 0 0 / 20%));
   }
   .panel.success {
-    border-block-start: 4px solid var(--color-success);
+    border-block-start: 4px solid var(--color-success-contrast);
     max-inline-size: 30vi;
   }
   .panel.error {
-    border-block-start: 4px solid var(--color-error);
+    border-block-start: 4px solid var(--color-error-contrast);
     max-inline-size: 30vi;
   }
   .panel.warning {
-    border-block-start: 4px solid var(--color-warning);
+    border-block-start: 4px solid var(--color-warning-contrast);
     max-inline-size: 30vi;
   }
   .panel.info {
-    border-block-start: 4px solid var(--color-info);
+    border-block-start: 4px solid var(--color-info-contrast);
     max-inline-size: 30vi;
   }
   .panel.loading {

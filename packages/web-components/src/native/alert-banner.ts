@@ -26,10 +26,10 @@ const styles = `
   .action { margin-block-start: var(--space-internal-4, 0.25rem); }
   .dismiss { margin-inline-start: auto; padding: var(--space-internal-4) var(--space-internal-8); border: 0; border-radius: var(--radius-md); background: transparent; color: inherit; font: inherit; cursor: pointer; }
   .dismiss:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, currentcolor); outline-offset: 2px; }
-  .info { border: 1px solid color-mix(in srgb, var(--color-info) 40%, var(--color-surface)); background: color-mix(in srgb, var(--color-info) 12%, var(--color-surface)); }
-  .success { border: 1px solid color-mix(in srgb, var(--color-success) 40%, var(--color-surface)); background: color-mix(in srgb, var(--color-success) 12%, var(--color-surface)); }
-  .warning { border: 1px solid color-mix(in srgb, var(--color-warning) 46%, var(--color-surface)); background: color-mix(in srgb, var(--color-warning) 16%, var(--color-surface)); }
-  .error { border: 1px solid color-mix(in srgb, var(--color-error) 40%, var(--color-surface)); background: color-mix(in srgb, var(--color-error) 12%, var(--color-surface)); }
+  .info { border: 1px solid color-mix(in srgb, var(--color-info-contrast) 40%, var(--color-surface)); background: color-mix(in srgb, var(--color-info) 12%, var(--color-surface)); }
+  .success { border: 1px solid color-mix(in srgb, var(--color-success-contrast) 40%, var(--color-surface)); background: color-mix(in srgb, var(--color-success) 12%, var(--color-surface)); }
+  .warning { border: 1px solid color-mix(in srgb, var(--color-warning-contrast) 46%, var(--color-surface)); background: color-mix(in srgb, var(--color-warning) 16%, var(--color-surface)); }
+  .error { border: 1px solid color-mix(in srgb, var(--color-error-contrast) 40%, var(--color-surface)); background: color-mix(in srgb, var(--color-error) 12%, var(--color-surface)); }
 `;
 
 export class DtAlertBannerElement extends DigitaltableteurElement {

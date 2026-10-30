@@ -25,12 +25,12 @@ const styles = `
   input.md { min-block-size: 2.5rem; padding: 0.5rem 0.75rem; }
   input.lg { min-block-size: 3rem; padding: 0.75rem 1rem; }
   input:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: var(--focus-ring-offset, 2px); }
-  input[aria-invalid="true"] { border-color: var(--color-error); }
+  input[aria-invalid="true"] { border-color: var(--color-error-contrast); }
   input:disabled { background: var(--color-disabled-bg-light, #eee); color: var(--color-muted-light, #666); cursor: not-allowed; }
   .clear { position: absolute; inset-inline-end: 0.5rem; display: inline-grid; place-items: center; min-inline-size: 1.5rem; min-block-size: 1.5rem; border: 0; border-radius: 999px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
   .hasClear { padding-inline-end: 2.5rem !important; }
   .message { margin: 0; font-size: 0.875rem; color: var(--color-primary, currentcolor); }
-  .error { color: var(--color-error-text, var(--color-error)); }
+  .error { color: var(--color-error-text, var(--color-error-contrast)); }
   @media (forced-colors: active) { input { border-color: CanvasText; } input[aria-invalid="true"] { border-color: Mark; } }
 `;
 
