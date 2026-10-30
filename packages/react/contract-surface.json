@@ -212,6 +212,12 @@
       "level": "additive",
       "detail": "prop `flush` added",
       "bump": "patch"
+    },
+    {
+      "component": "StatList",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -4700,6 +4706,45 @@
       "keyboard": [
         "Space toggles the focused tick box; Enter follows the focused index link to its entry.",
         "Tab moves through the index links and the checklist tick boxes in reading order; the other layouts hold no controls."
+      ]
+    },
+    "StatList": {
+      "element": "dl",
+      "props": {
+        "align": {
+          "optional": true,
+          "values": [
+            "center",
+            "start"
+          ]
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "items": {
+          "optional": false,
+          "type": "StatListItem[]"
+        },
+        "size": {
+          "optional": true,
+          "values": [
+            "lg",
+            "md"
+          ]
+        },
+        "variant": {
+          "optional": true,
+          "values": [
+            "card",
+            "rule"
+          ]
+        }
+      },
+      "slots": [],
+      "subParts": [],
+      "keyboard": [
+        "Not interactive."
       ]
     },
     "StatusDot": {

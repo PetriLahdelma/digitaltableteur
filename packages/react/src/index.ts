@@ -327,6 +327,11 @@ export type {
   StageListStage,
   StageListVariant,
 } from "../../../nextjs-app/shared/components/StageList";
+export { default as StatList } from "../../../nextjs-app/shared/components/StatList/StatList";
+export type {
+  StatListItem,
+  StatListProps,
+} from "../../../nextjs-app/shared/components/StatList";
 export { default as StatusDot } from "../../../nextjs-app/shared/components/StatusDot/StatusDot";
 export type {
   StatusDotProps,

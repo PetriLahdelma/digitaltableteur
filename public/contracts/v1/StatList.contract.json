@@ -4,6 +4,10 @@
   "name": "StatList",
   "status": "alpha",
   "description": "Key figures as a description list: each item pairs a figure with what it counts, an optional total and a short note.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { StatList } from \"@digitaltableteur/react\";"
+  },
   "props": {
     "items": {
       "type": "StatListItem[]",
