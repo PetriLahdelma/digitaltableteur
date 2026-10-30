@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T19:46:13.350Z",
+  "generatedAt": "2026-10-30T19:50:17.329Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
@@ -24843,9 +24843,9 @@
         },
         "lightDarkVerified": true,
         "forbiddenUse": [
-          "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
-          "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
-          "use it for a group of controls; FormField's fieldset owns the group case."
+          "nest a DS field inside another FieldShell.",
+          "put text buttons or links in the label row.",
+          "use it to group controls; that is FormField."
         ],
         "schemaVersion": 2,
         "props": {
@@ -24909,7 +24909,11 @@
             "type": "string",
             "description": "Merged onto the field wrapper."
           }
-        }
+        },
+        "composesWith": [
+          "Icon",
+          "Combobox"
+        ]
       },
       "spec": "# FieldShell\n\n## Intent\nOne frame for every DS text and choice field, so TextInput, TextArea, Select,\nCombobox, MultiCombobox and PhoneInput share the same label row, status\ncolours, message lines and spacing instead of each rolling its own.\n\n## Interaction contract\n- Keyboard: the shell itself takes no focus. Label-row actions are icon\n  buttons in DOM order before the control. An action with `items` is a menu\n  button: Enter, Space or ArrowDown opens it, arrows move, Escape closes.\n- Pointer: clicking the label focuses the control. A direct action runs its\n  `onClick`; a menu action opens its menu at the end of the row.\n- Screen readers: the label names the control (`for`, plus the\n  `${controlId}-label` id for aria-labelledby). `fieldDescribedBy` gives the\n  control the status message id, then the helper id. An error message is an\n  alert; warning and success are plain text with their icon.\n\n## Do / don't\n- Do: use the fields' `status`, `statusMessage` and `actions` props; reach\n  for FieldShell directly only for a new kind of control.\n- Do: name each action with a verb (\"Paste\", \"Generate password\").\n- Do: keep `error` for validation; it is shorthand for status error.\n- Don't: nest a DS field inside another FieldShell.\n- Don't: put text buttons or links in the label row.\n- Don't: use it to group controls; that is FormField.\n\n## Design notes\n- Tokens: --space-internal-8 between label row, control and messages,\n  --space-internal-4 between the status message and the helper line.\n  Status borders: --color-error, --color-warning-contrast, --color-success\n  (styles/field.module.css, applied with fieldStatusClass).\n- The label row is one label line tall (24px) with or without actions;\n  the 40px icon buttons centre on it, so fields side by side keep their\n  controls level.\n- No outer margin: the form or stack owns the space between fields.\n- A status border holds through hover and focus and gives way to disabled.\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2065-7823 (Status variants; the label-row action is the private `_FieldShell/Action` part).\n",
       "documentationDebt": false,
@@ -32223,7 +32227,17 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
           },
           {
@@ -32233,7 +32247,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/InviteFlow.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/SignInFlow.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/admin/_components/IntakeActions.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/PasskeyFlows.tsx",
             "since": "2026-06-04"
           },
           {
@@ -32243,32 +32277,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/enrol/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/admin/passkeys/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ]
@@ -35886,47 +35900,47 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
+            "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
+            "path": "app/intake/_components/SignInFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/index.ts",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "path": "app/intake/admin/_components/PasskeyFlows.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/EngagementPageContent/index.ts",
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -38602,10 +38616,10 @@
             "optional": true,
             "type": "union",
             "values": [
-              "left",
-              "right",
               "top",
-              "bottom"
+              "right",
+              "bottom",
+              "left"
             ],
             "description": "Preferred side relative to the trigger; flips when out of room."
           },
@@ -38614,8 +38628,8 @@
             "type": "union",
             "values": [
               "center",
-              "end",
-              "start"
+              "start",
+              "end"
             ],
             "description": "Alignment along the trigger edge."
           },
@@ -38731,47 +38745,47 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
+            "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
+            "path": "app/intake/_components/SignInFlow.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/index.ts",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "path": "app/intake/admin/_components/PasskeyFlows.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/EngagementPageContent/index.ts",
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
             "since": "2026-06-04"
           }
         ]
@@ -60817,9 +60831,8 @@
         },
         "lightDarkVerified": true,
         "forbiddenUse": [
-          "animate figures counting up; the figure is the content, not a decoration.",
-          "put more than a short qualifier in the note; long explanations belong in the text around the list.",
-          "use it for tables of several values per row."
+          "animate figures counting up.",
+          "use it for several values per row; use Table."
         ],
         "schemaVersion": 2,
         "props": {
@@ -60832,8 +60845,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "rule",
-              "card"
+              "card",
+              "rule"
             ],
             "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
           },
@@ -60850,8 +60863,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "start",
-              "center"
+              "center",
+              "start"
             ],
             "description": "Text alignment inside each item."
           },

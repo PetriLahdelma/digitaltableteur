@@ -60,7 +60,7 @@ describe("FieldShell", () => {
   it("runs a direct action on click", async () => {
     const user = userEvent.setup();
     const onClick = vi.fn();
-    render(<Shell actions={[{ label: "Paste", icon: "clipboard-text", onClick }]} />);
+    render(<Shell actions={[{ label: "Paste", icon: "clipboard", onClick }]} />);
     await user.click(screen.getByRole("button", { name: "Paste" }));
     expect(onClick).toHaveBeenCalledOnce();
   });
@@ -91,7 +91,7 @@ describe("FieldShell", () => {
     render(
       <Shell
         disabled
-        actions={[{ label: "Paste", icon: "clipboard-text", onClick: vi.fn() }]}
+        actions={[{ label: "Paste", icon: "clipboard", onClick: vi.fn() }]}
       />,
     );
     expect(screen.getByRole("button", { name: "Paste" })).toBeDisabled();
@@ -121,7 +121,7 @@ describe("FieldShell", () => {
         status="success"
         statusMessage="Address verified"
         helperText="Used for the confirmation only"
-        actions={[{ label: "Paste", icon: "clipboard-text", onClick: vi.fn() }]}
+        actions={[{ label: "Paste", icon: "clipboard", onClick: vi.fn() }]}
       />,
     );
     expect(await axe(container)).toHaveNoViolations();

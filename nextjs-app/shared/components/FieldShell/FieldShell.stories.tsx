@@ -57,7 +57,7 @@ const meta = {
     <FieldShell
       {...args}
       statusMessage={args.statusMessage || undefined}
-      actions={[{ label: "Paste", icon: "clipboard-text", onClick: () => undefined }]}
+      actions={[{ label: "Paste", icon: "clipboard", onClick: () => undefined }]}
     >
       <input
         id={args.controlId}
@@ -106,7 +106,7 @@ function ExampleForm() {
           defaultValue="anna@example.com"
           status="success"
           statusMessage="Address verified"
-          actions={[{ label: "Paste", icon: "clipboard-text", onClick: () => undefined }]}
+          actions={[{ label: "Paste", icon: "clipboard", onClick: () => undefined }]}
         />
         <PhoneInput label="Phone" helperText="Only if you prefer a call" />
       </div>

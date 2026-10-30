@@ -7178,12 +7178,15 @@
           "description": "Merged onto the field wrapper."
         }
       },
-      "composesWith": [],
+      "composesWith": [
+        "Icon",
+        "Combobox"
+      ],
       "prefersOver": [],
       "forbiddenUse": [
-        "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
-        "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
-        "use it for a group of controls; FormField's fieldset owns the group case."
+        "nest a DS field inside another FieldShell.",
+        "put text buttons or links in the label row.",
+        "use it to group controls; that is FormField."
       ],
       "usage": null,
       "tokens": {
@@ -10905,12 +10908,12 @@
         },
         {
           "name": "side",
-          "type": "left | right | top | bottom",
+          "type": "top | right | bottom | left",
           "required": false
         },
         {
           "name": "align",
-          "type": "center | end | start",
+          "type": "center | start | end",
           "required": false
         },
         {
@@ -10938,10 +10941,10 @@
           "optional": true,
           "type": "union",
           "values": [
-            "left",
-            "right",
             "top",
-            "bottom"
+            "right",
+            "bottom",
+            "left"
           ],
           "description": "Preferred side relative to the trigger; flips when out of room."
         },
@@ -10950,8 +10953,8 @@
           "type": "union",
           "values": [
             "center",
-            "end",
-            "start"
+            "start",
+            "end"
           ],
           "description": "Alignment along the trigger edge."
         },
@@ -17157,7 +17160,7 @@
         },
         {
           "name": "variant",
-          "type": "rule | card",
+          "type": "card | rule",
           "required": false
         },
         {
@@ -17167,7 +17170,7 @@
         },
         {
           "name": "align",
-          "type": "start | center",
+          "type": "center | start",
           "required": false
         },
         {
@@ -17186,8 +17189,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "rule",
-            "card"
+            "card",
+            "rule"
           ],
           "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
         },
@@ -17204,8 +17207,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "start",
-            "center"
+            "center",
+            "start"
           ],
           "description": "Text alignment inside each item."
         },
@@ -17218,9 +17221,8 @@
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "animate figures counting up; the figure is the content, not a decoration.",
-        "put more than a short qualifier in the note; long explanations belong in the text around the list.",
-        "use it for tables of several values per row."
+        "animate figures counting up.",
+        "use it for several values per row; use Table."
       ],
       "usage": null,
       "tokens": {
