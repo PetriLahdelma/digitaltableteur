@@ -1,8 +1,8 @@
 {
   "storyId": "patterns-procurementfaq-default",
   "mode": "dark",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:26:21.024Z",
+  "sourceSHA": "2b311e4d58d58194da7f293e610c5228396de68d",
+  "capturedAt": "2026-10-30T19:41:05.492Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

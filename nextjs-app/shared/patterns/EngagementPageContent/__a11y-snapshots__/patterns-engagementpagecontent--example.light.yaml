@@ -1,0 +1,151 @@
+- status: Work in progress (alpha)
+- article "Find where your design system is costing the team time":
+  - navigation "Breadcrumb":
+    - list:
+      - listitem:
+        - link "Home":
+          - /url: /
+      - listitem:
+        - link "Pricing":
+          - /url: /pricing
+      - listitem: Design system audit
+  - text: Design system audit
+  - heading "Find where your design system is costing the team time" [level=1]
+  - paragraph: Similar components behave differently. Accessibility defects return in new features. Figma and production disagree about what belongs in the system. A focused audit turns those symptoms into an inventory, severity-ranked findings and a 90-day roadmap.
+  - term: Timeline
+  - definition: 2 weeks
+  - term: Investment
+  - definition: €7–14k
+  - term: Package
+  - definition: Design System Audit
+  - link "Book an audit":
+    - /url: /contact?mode=book&package=design-system-audit
+  - link "Send a question":
+    - /url: /contact?mode=message&package=design-system-audit
+  - paragraph: "Next available start: Q1 2027"
+  - region "Use an audit when the system exists but trust is slipping":
+    - heading "Use an audit when the system exists but trust is slipping" [level=2]
+    - list:
+      - listitem: Components look similar but behave differently across squads
+      - listitem: Accessibility defects return because the pattern is not documented
+      - listitem: Design and engineering disagree about what is in the system
+      - listitem: Token changes break several applications because naming and ownership are unclear
+  - region "What the audit reviews":
+    - heading "What the audit reviews" [level=2]
+    - paragraph: The work starts from the UI surfaces, components, tokens and patterns your team uses now. A representative sample is reviewed for consistency, accessibility and token use. Ownership, review and release practices are mapped alongside the inventory, so the roadmap separates quick fixes from structural work.
+    - heading "Not included unless scoped separately" [level=3]
+    - list:
+      - listitem: A full component rebuild
+      - listitem: A migration across every product
+      - listitem: An accessibility conformance certificate
+  - region "How the audit runs":
+    - heading "How the audit runs" [level=2]
+    - list:
+      - listitem: Map live UI surfaces and who owns each pattern family.
+      - listitem: Sample important flows for consistency, accessibility and token use.
+      - listitem: Rank findings by user impact, rework cost and fix complexity.
+      - listitem: Agree on minimum standards and an adoption sequence stakeholders can follow.
+  - region "What you receive":
+    - heading "What you receive" [level=2]
+    - list:
+      - listitem: An inventory of the components, tokens and patterns in use
+      - listitem: Severity-ranked findings with effort estimates
+      - listitem: A 90-day roadmap separating quick wins from structural fixes
+      - listitem: Governance recommendations for RFCs, review and release cadence
+  - region "How the price is set":
+    - paragraph: Investment
+    - paragraph: €7–14k
+    - paragraph: 2 weeks, fixed scope
+    - link "Estimate a custom engagement":
+      - /url: /pricing#calculator
+    - heading "How the price is set" [level=2]
+    - paragraph: Final scope depends on the number of product surfaces, repositories and teams included.
+    - link "Reliable Partner, verified by Vastuu Group":
+      - /url: /docs/reliable-partner/reliable-partner-report-en.pdf
+      - img "Reliable Partner, verified by Vastuu Group"
+    - paragraph: "Digitaltableteur is a Vastuu Group Reliable Partner: tax, pension and employer obligations continuously verified."
+  - region "Relevant published work":
+    - heading "Relevant published work" [level=2]
+    - list:
+      - listitem:
+        - paragraph: City of Helsinki, 2020 to 2022
+        - heading "Helsinki Design System" [level=3]
+        - paragraph: Research, component structures, accessibility review, documentation and delivery practices for a design system used across many digital services.
+        - 'link "Read the case study : Helsinki Design System"':
+          - /url: /work/helsinki-design-system
+      - listitem:
+        - paragraph: DSharp, 2026 to present
+        - heading "DSharp Design System" [level=3]
+        - paragraph: Tokens, component contracts, Storybook, MCP, CLI and enforcement tooling for an AI-assisted design-system architecture.
+        - 'link "Read the case study : DSharp Design System"':
+          - /url: /work/dsharp-design-system
+      - listitem:
+        - paragraph: Open source, 2025 to present
+        - heading "LLM Component Schema" [level=3]
+        - paragraph: A published schema and CLI for component contracts, with drift detection and evaluation benchmarks.
+        - 'link "Read the case study : LLM Component Schema"':
+          - /url: /work/llm-component-schema
+  - region "About the audit":
+    - heading "About the audit" [level=2]
+    - button "How much of the product does the audit cover?" [expanded]
+    - region "How much of the product does the audit cover?":
+      - paragraph: A representative sample of the surfaces, components, tokens and patterns in use, not every screen. Scope depends on the surfaces, repositories and teams included.
+    - button "Does the audit fix what it finds?"
+    - button "Is this an accessibility conformance audit?"
+  - region "Buying from Digitaltableteur":
+    - heading "Buying from Digitaltableteur" [level=2]
+    - paragraph: Answers for procurement, legal and finance teams. Anything not covered here can go in the first message.
+    - button "Who is the contracting party?" [expanded]
+    - region "Who is the contracting party?":
+      - paragraph: Digitaltableteur, a Finnish sole trader registered in the Trade Register. Business ID 2264455-2, VAT ID FI22644552, Hämeentie 8 C 26, 00530 Helsinki.
+    - button "Is Digitaltableteur a verified supplier?"
+    - button "Who does the work?"
+    - button "How is invoicing handled?"
+    - button "Do prices include VAT?"
+    - button "Is the work insured?"
+    - button "Can a client NDA or framework agreement be used?"
+    - button "How is personal data handled?"
+    - button "Where does the work happen?"
+    - button "Who owns the work?"
+    - button "Which working languages are available?"
+    - button "Is the work remote or on site?"
+    - button "Does the work cover accessibility law?"
+    - button "Is AI used on client work?"
+  - region "Other engagements":
+    - heading "Other engagements" [level=2]
+    - list:
+      - listitem:
+        - link "UX sprint 2 weeks, €7–14k":
+          - /url: /engagements/ux-sprint
+      - listitem:
+        - link "Design System Lift-Off 4 weeks, €14–20k":
+          - /url: /engagements/design-system-lift-off
+      - listitem:
+        - link "AI-Ready Ops 3 weeks, €11–17k":
+          - /url: /engagements/ai-ready-ops
+      - listitem:
+        - link "Embedded partnership 6 or 12 months, €90/h":
+          - /url: /engagements/embedded-partnership
+      - listitem:
+        - link "Design System Workshop 2 days, with prep and analysis, Quoted per workshop":
+          - /url: /engagements/design-system-workshop
+      - listitem:
+        - link "DesignOps Pilot Ongoing, €5–8k / mo":
+          - /url: /engagements/designops-pilot
+      - listitem:
+        - link "Agent Pilot 3 weeks, €9–15k":
+          - /url: /engagements/agent-pilot
+      - listitem:
+        - link "Design System MCP 4 weeks, €12–18k":
+          - /url: /engagements/design-system-mcp
+      - listitem:
+        - link "Agent Workforce 6 weeks, €20–32k":
+          - /url: /engagements/agent-workforce
+  - region "Start with a 30-minute call":
+    - heading "Start with a 30-minute call" [level=2]
+    - paragraph: Talk through the system, the teams involved and what the audit should answer. A calendar invite arrives by email.
+    - paragraph: "Next available start: Q1 2027"
+    - link "Book an audit":
+      - /url: /contact?mode=book&package=design-system-audit
+    - link "Send a question":
+      - /url: /contact?mode=message&package=design-system-audit

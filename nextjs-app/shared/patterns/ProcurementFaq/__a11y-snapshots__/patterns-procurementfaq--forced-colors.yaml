@@ -1,0 +1,20 @@
+- status: Work in progress (alpha)
+- region "Buying from Digitaltableteur":
+  - heading "Buying from Digitaltableteur" [level=2]
+  - paragraph: Answers for procurement, legal and finance teams. Anything not covered here can go in the first message.
+  - button "Who is the contracting party?" [expanded]
+  - region "Who is the contracting party?":
+    - paragraph: Digitaltableteur, a Finnish sole trader registered in the Trade Register. Business ID 2264455-2, VAT ID FI22644552, Hämeentie 8 C 26, 00530 Helsinki.
+  - button "Is Digitaltableteur a verified supplier?"
+  - button "Who does the work?"
+  - button "How is invoicing handled?"
+  - button "Do prices include VAT?"
+  - button "Is the work insured?"
+  - button "Can a client NDA or framework agreement be used?"
+  - button "How is personal data handled?"
+  - button "Where does the work happen?"
+  - button "Who owns the work?"
+  - button "Which working languages are available?"
+  - button "Is the work remote or on site?"
+  - button "Does the work cover accessibility law?"
+  - button "Is AI used on client work?"

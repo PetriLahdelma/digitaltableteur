@@ -1,4 +1,4 @@
-- status: Work in progress (alpha)
+- status: Work in progress (beta)
 - text: Company
 - button "Paste"
 - textbox "Company" [invalid]
