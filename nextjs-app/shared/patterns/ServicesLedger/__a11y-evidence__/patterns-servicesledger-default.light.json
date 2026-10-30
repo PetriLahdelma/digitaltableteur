@@ -1,8 +1,8 @@
 {
   "storyId": "patterns-servicesledger-default",
   "mode": "light",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:21:42.228Z",
+  "sourceSHA": "a502f336fff3d195454fac82bcba6fb17dc0c85d",
+  "capturedAt": "2026-10-30T22:29:10.577Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

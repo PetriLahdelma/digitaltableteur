@@ -1,0 +1,16 @@
+{
+  "storyId": "patterns-servicesledger-example",
+  "mode": "forced-colors",
+  "sourceSHA": "a502f336fff3d195454fac82bcba6fb17dc0c85d",
+  "capturedAt": "2026-10-30T22:29:20.459Z",
+  "runner": "local-recapture",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
