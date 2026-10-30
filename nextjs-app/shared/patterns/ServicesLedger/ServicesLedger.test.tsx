@@ -46,6 +46,14 @@ describe("ServicesLedger", () => {
     expect(screen.getByText("Machine-readable contracts")).toBeInTheDocument();
   });
 
+  it("names each row link by its offer and describes it with the rest", () => {
+    render(<ServicesLedger {...props} />);
+    const link = screen.getByRole("link", { name: "Build the system" });
+    expect(link).toHaveAccessibleDescription(
+      "Design systems that hold up in production. Tokens Machine-readable contracts",
+    );
+  });
+
   it("switches to the machine view and back", () => {
     render(<ServicesLedger {...props} />);
     expect(screen.getByRole("radiogroup", { name: "View" })).toBeInTheDocument();

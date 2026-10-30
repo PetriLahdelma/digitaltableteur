@@ -71,3 +71,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = { tags: ["beta-matrix"] };
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  name: "Example (homepage services)",
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+};
+
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

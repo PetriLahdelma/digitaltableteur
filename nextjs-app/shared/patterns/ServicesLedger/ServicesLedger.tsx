@@ -122,14 +122,21 @@ function MachineView({
               * {s.index} {s.machineKey}
             </p>
             <p>{s.description}</p>
-            <p className={styles.machineMuted}>capabilities: {s.capabilities.map(slug).join(", ")}</p>
+            <p className={styles.machineMuted}>
+              capabilities: {s.capabilities.map(slug).join(", ")}
+            </p>
             <p className={styles.machineMuted}>
               more: <a href={s.href}>{s.href}</a>
             </p>
           </li>
         ))}
       </ul>
-      <button type="button" className={styles.pill} onClick={copy} aria-live="polite">
+      <button
+        type="button"
+        className={styles.pill}
+        onClick={copy}
+        aria-live="polite"
+      >
         {copied ? labels.copied : labels.copy}
       </button>
     </div>
@@ -197,27 +204,47 @@ export function ServicesLedger({
 
         <div id={panelId}>
           {mode === "machine" ? (
-            <MachineView services={services} links={machineLinks} labels={labels} />
+            <MachineView
+              services={services}
+              links={machineLinks}
+              labels={labels}
+            />
           ) : (
             <ol className={styles.ledger}>
-              {services.map((s) => (
-                <li key={s.machineKey}>
-                  <Link href={s.href} className={styles.row} data-donny-target={s.donnyTarget}>
-                    <span className={styles.index} aria-hidden="true">
-                      {s.index}
-                    </span>
-                    <span className={styles.body}>
-                      <span className={styles.rowTitle}>{s.title}</span>
-                      <span className={styles.rowText}>{s.description}</span>
-                    </span>
-                    <ul className={styles.caps}>
-                      {s.capabilities.map((c) => (
-                        <li key={c}>{c}</li>
-                      ))}
-                    </ul>
-                  </Link>
-                </li>
-              ))}
+              {services.map((s) => {
+                // The whole row links, but its name is the offer alone; the
+                // description and capabilities are its description, so a
+                // links list reads "Build the system", not the whole row.
+                const rowId = `${id}-${s.machineKey.toLowerCase()}`;
+                return (
+                  <li key={s.machineKey}>
+                    <Link
+                      href={s.href}
+                      className={styles.row}
+                      data-donny-target={s.donnyTarget}
+                      aria-labelledby={`${rowId}-title`}
+                      aria-describedby={`${rowId}-text ${rowId}-caps`}
+                    >
+                      <span className={styles.index} aria-hidden="true">
+                        {s.index}
+                      </span>
+                      <span className={styles.body}>
+                        <span id={`${rowId}-title`} className={styles.rowTitle}>
+                          {s.title}
+                        </span>
+                        <span id={`${rowId}-text`} className={styles.rowText}>
+                          {s.description}
+                        </span>
+                      </span>
+                      <ul id={`${rowId}-caps`} className={styles.caps}>
+                        {s.capabilities.map((c) => (
+                          <li key={c}>{c}</li>
+                        ))}
+                      </ul>
+                    </Link>
+                  </li>
+                );
+              })}
             </ol>
           )}
         </div>
