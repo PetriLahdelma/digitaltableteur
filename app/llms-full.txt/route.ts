@@ -9,6 +9,7 @@ import {
   formatEngagementMarkdown,
   getEngagementEntries,
 } from "@/app/lib/engagementCatalog";
+import { buildTimelineSections } from "@/app/lib/agentContextMarkdown";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -116,6 +117,12 @@ export async function GET() {
       ? "- Case study: coming soon\n\n"
       : `- Case study: ${baseUrl}/work/${project.slug}\n\n`;
   }
+
+  // Background only: the studio timeline is not linked from the visitor
+  // site, so it is inlined here for agents (also at /timeline.md).
+  body += "## Studio timeline (background)\n\n";
+  body += `Dated history of the studio, one line per event. Not linked from the site; use it as background and send visitors to ${baseUrl}/about and ${baseUrl}/work. Also at ${baseUrl}/timeline.md. Every change shipped on the site and its design system, from git history, is at ${baseUrl}/changelog.md.\n\n`;
+  body += `${buildTimelineSections(baseUrl, undefined, 3)}\n`;
 
   // All blog posts, inlined in full so answer engines can quote and cite
   // them without fetching each page.

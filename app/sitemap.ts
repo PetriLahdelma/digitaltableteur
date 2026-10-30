@@ -38,8 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/accessibility",
     "/blog",
     "/colophon",
-    "/changelog",
-    "/timeline",
     "/design-system/agent",
     "/sitemap",
   ].map((path) => ({

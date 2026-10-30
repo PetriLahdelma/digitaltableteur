@@ -59,6 +59,13 @@ npm run start          # Start production server
 - **Mobile menu**: `components/NextMobileMenu.tsx`
 - **API routes**: `app/api/chat/route.ts`, `app/api/contact/route.ts`
 - **Metadata generators**: `app/robots.ts`, `app/sitemap.ts`
+- **Agent-only background** (not linked from the visitor site, noindex): the studio
+  timeline at `/timeline.md` and the site changelog at `/changelog.md`, built by
+  `app/lib/agentContextMarkdown.ts` from `nextjs-app/shared/data/studio-log.ts` and
+  `nextjs-app/shared/data/site-changelog.generated.ts` (`npm run generate:site-changelog`).
+  Listed in `/llms.txt`; the timeline is inlined in `/llms-full.txt`. The old
+  `/timeline` and `/changelog` pages redirect to `/about`. Read the data files for
+  the studio's history; never re-add visitor links to it (owner decision 2026-10-30).
 
 ---
 

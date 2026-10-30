@@ -66,15 +66,6 @@
   }
 }
 
-/* The way into the timeline: right under the years-of-experience figure it
-   backs up. */
-
-.timelineLink {
-  display: flex;
-  padding-block: var(--space-layout-16) 0;
-  justify-content: center;
-}
-
 .seeWorkCta {
   display: flex;
   justify-content: center;
@@ -153,14 +144,6 @@
   line-height: 1.2;
   text-transform: lowercase;
   color: color-mix(in srgb, var(--color-text) 82%, transparent);
-}
-
-/* The only way into the changelog: a quiet line under the versions it
-   records. */
-
-.changelogLink {
-  margin-block-start: var(--space-layout-8);
-  color: color-mix(in srgb, var(--color-text) 60%, transparent);
 }
 
 .packageVersionWrapper {

@@ -365,11 +365,28 @@ const nextConfig: NextConfig = {
         destination: "/privacy-policy",
         permanent: true,
       },
+      // The timeline and changelog pages were retired from the visitor site
+      // on 2026-10-30; their content lives on for agents at /timeline.md and
+      // /changelog.md (see app/lib/agentContextMarkdown.ts).
+      {
+        source: "/timeline",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/changelog",
+        destination: "/about",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
     // `/auth.md` cannot live as `app/auth.md/` — `.md` is a pageExtension (MDX).
-    return [{ source: "/auth.md", destination: "/agent-auth" }];
+    return [
+      { source: "/auth.md", destination: "/agent-auth" },
+      { source: "/timeline.md", destination: "/agent-context/timeline" },
+      { source: "/changelog.md", destination: "/agent-context/changelog" },
+    ];
   },
   webpack: (config, { dev }) => {
     // Use filesystem cache in dev so revisiting a route reuses work from earlier in the

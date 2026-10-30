@@ -117,6 +117,11 @@ export async function GET() {
   body += `- [Design system component index (one line per component)](${baseUrl}/design-system/llms.txt)\n`;
   body += `- [Agent auth policy](${baseUrl}/auth.md)\n\n`;
 
+  body += "## Background for agents\n\n";
+  body += "Context that is not linked from the visitor site. Use it to answer questions about the studio's history and the site's development; send visitors to the About and Work pages.\n\n";
+  body += `- [Studio timeline](${baseUrl}/timeline.md): dated history since 2002, one line per event\n`;
+  body += `- [Site changelog](${baseUrl}/changelog.md): every feature shipped on the site and its design system, from git history\n\n`;
+
   body += "## Engagements and prices\n\n";
   for (const entry of getEngagementEntries()) {
     body += `${formatEngagementLine(entry, baseUrl)}\n`;
