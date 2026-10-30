@@ -85,28 +85,138 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "2.5.8"
         ],
-        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.dark.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:03.417Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.light.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:22:58.093Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.dark.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:03.417Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.forced-colors.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:08.561Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.light.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:22:58.093Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.dark.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:03.450Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.forced-colors.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:08.607Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.light.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:22:58.125Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.dark.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:03.492Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.forced-colors.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:08.638Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.light.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:22:58.162Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.dark.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:02.913Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.forced-colors.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:08.242Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.light.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:22:57.627Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "manual",
-        "note": "Storybook forced-colors addon (simulated, not real browser HC).",
-        "reviewedAt": "2026-06-18"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.forced-colors.json",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:23:08.561Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
       },
       {
         "id": "aria-requirements",
@@ -115,7 +225,7 @@
         "wcag": [
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
       },
       {
         "id": "human-a11y-review",

@@ -1,9 +1,9 @@
 {
   "storyId": "content-badge-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "446e91b31d6bb4c60dd6e7c240875c7ae9d90e87",
-  "capturedAt": "2026-09-29T20:01:21.448Z",
-  "runner": "local",
+  "sourceSHA": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+  "capturedAt": "2026-10-30T16:23:08.638Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

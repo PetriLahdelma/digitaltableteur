@@ -219,87 +219,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:27.113Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:29.328Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:32.799Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:34.909Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:15.831Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:18.050Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-example.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:21.426Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:23.709Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:27.146Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:29.353Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:32.835Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:34.939Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:15.872Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:18.076Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-forced-colors.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:21.477Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:23.734Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:27.081Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:29.300Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:32.756Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:34.881Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:15.803Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:18.021Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Button/__a11y-evidence__/actions-button-playground.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:34:21.396Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:23.681Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           }
         ]
       },

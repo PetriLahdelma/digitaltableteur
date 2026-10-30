@@ -60,39 +60,45 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:36.869Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:50.218Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:44.344Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:44.908Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:37.275Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:50.731Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:44.785Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:45.373Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:37.080Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:50.489Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:44.565Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:45.146Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -108,79 +114,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:36.869Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:50.218Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:18.475Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:55.401Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:44.344Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:44.908Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:37.275Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:50.731Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:19.151Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:55.851Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:44.785Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:45.373Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:37.298Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:50.752Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-forced-colors.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:19.199Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:55.874Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:44.820Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:45.396Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:36:37.080Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:50.489Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:18.783Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:55.622Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:27:44.565Z",
-            "passed": true
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:45.146Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -192,24 +206,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-default.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:18.475Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:55.401Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-example.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:19.151Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:55.851Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/StatusDot/__a11y-evidence__/feedback-statusdot-playground.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:11:18.783Z",
+            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+            "capturedAt": "2026-10-30T16:24:55.622Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },

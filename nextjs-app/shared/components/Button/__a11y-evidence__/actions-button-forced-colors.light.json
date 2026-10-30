@@ -1,9 +1,9 @@
 {
   "storyId": "actions-button-forced-colors",
   "mode": "light",
-  "sourceSHA": "c4fc52e555934539e4641eac129a893062a03c72",
-  "capturedAt": "2026-10-17T07:34:21.477Z",
-  "runner": "local-2026-10-17",
+  "sourceSHA": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
+  "capturedAt": "2026-10-30T16:24:23.734Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
