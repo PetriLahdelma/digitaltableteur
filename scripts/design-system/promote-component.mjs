@@ -88,7 +88,7 @@ const betaStories = ["Example", "ForcedColors"].filter((s) => !required.includes
 check(
   "requiredStories include Example and ForcedColors (beta rule)",
   betaStories.length === 0,
-  `add ${betaStories.join(" and ")} to the stories and to contract.requiredStories`,
+  betaStories.length ? `add ${betaStories.join(" and ")} to the stories and to contract.requiredStories` : "",
 );
 
 // 3. axe in tests

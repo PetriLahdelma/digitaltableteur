@@ -83,85 +83,85 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:05.393Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:30.345Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:47.791Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:19.859Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:56.628Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:24.981Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:06.060Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:30.943Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.534Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:20.485Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:57.303Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:25.629Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:06.361Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:31.218Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.787Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:20.719Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:57.547Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:25.867Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:05.666Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:30.583Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.076Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:20.105Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:56.905Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:25.238Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -179,113 +179,113 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:05.393Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:30.345Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:13.909Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:35.261Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:47.791Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:19.859Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:56.628Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:24.981Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:06.060Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:30.943Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.515Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:35.790Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.534Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:20.485Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:57.303Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:25.629Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:06.361Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:31.218Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.769Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:35.997Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.787Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:20.719Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:57.547Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:25.867Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.dark.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:05.666Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:30.583Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.170Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:35.472Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:48.076Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:20.105Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.light.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:40:56.905Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:25.238Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -299,29 +299,29 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:13.909Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:35.261Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.515Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:35.790Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.769Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:35.997Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.forced-colors.json",
-            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
-            "capturedAt": "2026-10-30T19:41:14.170Z",
+            "sourceCommit": "4eb094025b6f9ef457e81a5155e10532f23de315",
+            "capturedAt": "2026-10-30T20:14:35.472Z",
             "passed": true,
             "runner": "local-recapture"
           }
