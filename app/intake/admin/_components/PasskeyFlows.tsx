@@ -133,7 +133,7 @@ export function AdminEnrol({ locale, via }: { locale: IntakeLocale; via: "link" 
       {problem === "reauth" ? (
         <AdminSignIn locale={locale} hasPasskeys returnTo="/intake/admin/passkeys" buttonLabel={t("reauthButton")} />
       ) : null}
-      <TextInput size="lg" width="30ch" type="text" label={t("enrolLabel")} value={label} onValueChange={(value) => setLabel(String(value))} maxLength={60} />
+      <TextInput width="30ch" type="text" label={t("enrolLabel")} value={label} onValueChange={(value) => setLabel(String(value))} maxLength={60} />
       <FlexBox direction="row">
         <Button size="lg" icon="seal-check" loading={busy} disabled={via === "link" && !token} onClick={() => void create()}>
           {t("enrolButton")}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 
-import { Text, Title } from "@digitaltableteur/react";
+import { StatList, Text, Title } from "@digitaltableteur/react";
 
 import styles from "./colophon.module.css";
 
@@ -25,40 +25,20 @@ export function ColophonPage() {
         <Title level={2} className={styles.sectionTitle}>
           By the numbers
         </Title>
-        <div className={styles.statGrid}>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>200+</span>
-            <span className={styles.statLabel}>Components & patterns</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>12</span>
-            <span className={styles.statLabel}>Portfolio case studies</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>100</span>
-            <span className={styles.statLabel}>Topic guides (PSEO)</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>12</span>
-            <span className={styles.statLabel}>Published blog posts</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>198</span>
-            <span className={styles.statLabel}>Design tokens</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>4</span>
-            <span className={styles.statLabel}>Theme modes</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>3</span>
-            <span className={styles.statLabel}>Languages</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>14</span>
-            <span className={styles.statLabel}>MCP server configs</span>
-          </div>
-        </div>
+        <StatList
+          variant="card"
+          align="center"
+          items={[
+            { id: "components-patterns", value: "200+", label: "Components & patterns" },
+            { id: "portfolio-case-studies", value: "12", label: "Portfolio case studies" },
+            { id: "topic-guides-pseo", value: "100", label: "Topic guides (PSEO)" },
+            { id: "published-blog-posts", value: "12", label: "Published blog posts" },
+            { id: "design-tokens", value: "198", label: "Design tokens" },
+            { id: "theme-modes", value: "4", label: "Theme modes" },
+            { id: "languages", value: "3", label: "Languages" },
+            { id: "mcp-server-configs", value: "14", label: "MCP server configs" },
+          ]}
+        />
       </section>
 
       <section className={styles.section}>

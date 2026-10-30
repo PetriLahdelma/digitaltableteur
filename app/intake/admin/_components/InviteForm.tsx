@@ -127,8 +127,8 @@ export function InviteForm({
     >
       <FlexBox direction="column" gap="var(--space-internal-24)">
         {problem ? <AlertBanner tone="error" description={problem} focusOnMount /> : null}
-        <TextInput size="lg" type="text" label={t("fieldName")} value={form.name} onValueChange={(value) => set("name")(String(value))} error={errors.name} required autoComplete="off" />
-        <TextInput size="lg" width="30ch" type="email" label={t("fieldEmail")} value={form.email} onValueChange={(value) => set("email")(String(value))} error={errors.email} required autoComplete="off" />
+        <TextInput type="text" label={t("fieldName")} value={form.name} onValueChange={(value) => set("name")(String(value))} error={errors.name} required autoComplete="off" />
+        <TextInput width="30ch" type="email" label={t("fieldEmail")} value={form.email} onValueChange={(value) => set("email")(String(value))} error={errors.email} required autoComplete="off" />
         <Combobox
           label={t("fieldForm")}
           value={form.questionnaireId}

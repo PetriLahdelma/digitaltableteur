@@ -64,7 +64,6 @@ export function IntakeField({
         <PhoneInput
           label={field.label[locale]}
           defaultCountry="FI"
-          size="lg"
           value={typeof value === "string" ? value : ""}
           onChange={(next) => onChange(next ?? "")}
           required={required}
@@ -79,7 +78,6 @@ export function IntakeField({
         <TextInput
           label={field.label[locale]}
           type={field.kind}
-          size="lg"
           width={field.kind === "email" ? "30ch" : "full"}
           value={typeof value === "string" ? value : ""}
           onValueChange={(next) => onChange(String(next))}

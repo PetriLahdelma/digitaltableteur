@@ -73,7 +73,6 @@ export function CodeStep({
             />
           ) : null}
           <TextInput
-            size="lg"
             width="10ch"
             label={copy.codeLabel}
             type="text"
