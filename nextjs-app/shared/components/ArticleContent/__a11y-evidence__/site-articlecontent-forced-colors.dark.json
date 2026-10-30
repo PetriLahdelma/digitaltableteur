@@ -1,8 +1,8 @@
 {
   "storyId": "site-articlecontent-forced-colors",
   "mode": "dark",
-  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-  "capturedAt": "2026-10-30T18:55:25.199Z",
+  "sourceSHA": "31ad88f23d24d55f6bd4d80decd08ff4d8bf6345",
+  "capturedAt": "2026-10-30T21:12:42.376Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
