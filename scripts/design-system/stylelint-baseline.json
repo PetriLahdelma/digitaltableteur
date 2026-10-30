@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1514,
+  "warningCount": 1513,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -8365,7 +8365,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 527,
+      "line": 531,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -8392,7 +8392,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 457,
+      "line": 461,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -8419,7 +8419,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 522,
+      "line": 526,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -8428,7 +8428,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 400,
+      "line": 404,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -8446,7 +8446,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 388,
+      "line": 392,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -8473,7 +8473,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 253,
+      "line": 257,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -8482,7 +8482,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 541,
+      "line": 545,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -8491,7 +8491,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 545,
+      "line": 549,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -8500,7 +8500,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 550,
+      "line": 554,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -11227,16 +11227,16 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 66,
+      "line": 71,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".caption\" to come before selector \".figureFull .caption\", at line 31 (no-descending-specificity)",
+      "text": "Expected selector \".caption\" to come before selector \".figureFull .caption\", at line 35 (no-descending-specificity)",
       "id": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css::no-descending-specificity::Expected selector \".caption\" to come before selector \".figureFull .caption\" (no-descending-specificity)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 27,
+      "line": 31,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11245,7 +11245,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 61,
+      "line": 66,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11254,7 +11254,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 73,
+      "line": 78,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11263,7 +11263,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 62,
+      "line": 67,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11272,7 +11272,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 20,
+      "line": 24,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11281,7 +11281,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 48,
+      "line": 53,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11290,7 +11290,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 70,
+      "line": 75,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11299,7 +11299,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 34,
+      "line": 38,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -11308,17 +11308,8 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 6,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css::order/properties-order::Expected \"padding\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 47,
-      "column": 20,
+      "line": 52,
+      "column": 43,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"32rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
@@ -11326,8 +11317,8 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 69,
-      "column": 20,
+      "line": 74,
+      "column": 43,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"32rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
@@ -11335,7 +11326,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 11,
+      "line": 6,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -11344,7 +11335,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 17,
+      "line": 15,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -11353,7 +11344,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticleFigure.module.css",
-      "line": 38,
+      "line": 21,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",

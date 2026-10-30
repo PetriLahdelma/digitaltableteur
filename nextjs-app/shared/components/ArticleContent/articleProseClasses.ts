@@ -1,5 +1,14 @@
 import { cn } from "../../lib/cn";
 
+/**
+ * The article text measure as an absolute length: 30em of the paragraph size
+ * (text-base below tablet, text-lg above). --measure-reading is in em and
+ * would resolve per element, so headings, figures and the hero image read
+ * this instead to share the paragraphs' edges.
+ */
+export const articleMeasureClassName =
+  "[--article-measure:30rem] tablet:[--article-measure:33.75rem]";
+
 /** Shared MDX article typography — safe for server and client components. */
 export const articleProseClassName = cn(
   "prose prose-lg dark:prose-invert max-w-none",
@@ -13,12 +22,11 @@ export const articleProseClassName = cn(
   // One centred axis. Text blocks sit at the reading measure (30em of the
   // paragraph size: text-base below tablet, text-lg above), centred in the
   // column, so headings, lists, quotes, code and centre figures share the
-  // paragraphs' edges. Embedded components (not-prose: StageList, full
-  // figures) and tables keep the full column and their own layouts. Set as
-  // an absolute length on the container because --measure-reading is in em
-  // and would resolve per element. The centring is important: embedded
+  // paragraphs' edges; figures cap themselves at the same measure.
+  // Embedded components (not-prose, e.g. StageList) and tables keep the full
+  // column and their own layouts. The centring is important: embedded
   // components reset their own inline margins in unlayered CSS.
-  "[--article-measure:30rem] tablet:[--article-measure:33.75rem]",
+  articleMeasureClassName,
   "[&>*]:!mx-auto [&>*:not(.not-prose):not(table)]:max-w-[var(--article-measure)]",
   "prose-a:text-primary prose-a:font-medium prose-a:underline",
   "prose-a:underline-offset-2 hover:prose-a:text-primary/80",

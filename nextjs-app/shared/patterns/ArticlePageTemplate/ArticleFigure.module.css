@@ -1,9 +1,13 @@
 /* Article inline figures — outside prose img rules (parent has not-prose) */
 
+/* Figures take the article's text measure, so images share the paragraphs'
+   edges on the one centred axis. Outside an article there is no measure and
+   the figure keeps its container width. */
 .figure {
   margin-block: var(--space-layout-32, 2rem);
-  inline-size: 100%;
   padding: 0;
+  inline-size: 100%;
+  max-inline-size: var(--article-measure, none);
   border: 0;
 }
 
@@ -13,12 +17,7 @@
   inline-size: 100%;
 }
 
-/* Span the full article content column: breaks out of the measure the
-   article sets on every block, symmetrically about the same centre. */
-.figureFull {
-  max-inline-size: none;
-}
-
+/* Full: the image fills the figure (the text measure in an article). */
 .figureFull .media {
   display: block;
   inline-size: 100%;
@@ -40,6 +39,7 @@
 }
 
 /* Smaller diagram, at the text measure on the article's centre axis */
+
 .figureCenter {
   display: flex;
   flex-direction: column;

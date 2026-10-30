@@ -3,6 +3,8 @@ import Image from "next/image";
 import { getPostMetaBySlug } from "@/app/blog/postMetadata";
 import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import { Container } from "@/nextjs-app/shared/components/Container";
+import { articleMeasureClassName } from "@/nextjs-app/shared/components/ArticleContent/articleProseClasses";
+import { cn } from "@/nextjs-app/shared/lib/cn";
 import { Author } from "@digitaltableteur/react";
 
 function formatPublishedDate(iso?: string): string {
@@ -93,7 +95,13 @@ export function ServerArticleHero({
         {mainImageUrl ? (
           // Uncaptioned hero art is decorative: a plain wrapper, so screen
           // readers don't announce an empty, unnamed figure.
-          <HeroWrapper className="mx-auto mt-10 max-w-4xl">
+          // Same width as the article's text blocks.
+          <HeroWrapper
+            className={cn(
+              articleMeasureClassName,
+              "mx-auto mt-10 max-w-[var(--article-measure)]",
+            )}
+          >
             <Image
               src={mainImageUrl}
               /* Hero art is decorative unless the post supplies its own alt:
@@ -104,7 +112,7 @@ export function ServerArticleHero({
               height={900}
               priority
               className="h-auto w-full rounded-lg"
-              sizes="(max-width: 768px) 100vw, 960px"
+              sizes="(max-width: 768px) 100vw, 540px"
             />
             {mainImageCaption ? (
               <figcaption className="mt-3 text-center text-sm text-muted-foreground">
